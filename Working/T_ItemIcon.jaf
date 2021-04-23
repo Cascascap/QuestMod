@@ -1,0 +1,207 @@
+int T_ItemIcon::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_ItemIcon::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_ItemIcon::getZ()
+{
+	return this.m_nZ;
+}
+
+int T_ItemIcon::getItemNo()
+{
+	return this.m_nItemNo;
+}
+
+bool T_ItemIcon::getJudge()
+{
+	return this.m_bJudge;
+}
+
+bool T_ItemIcon::getShow()
+{
+	return this.m_spIcon.getShow();
+}
+
+int T_ItemIcon::getWidth()
+{
+	return this.m_spIcon.getWidth();
+}
+
+int T_ItemIcon::getHeight()
+{
+	return this.m_spIcon.getHeight();
+}
+
+int T_ItemIcon::getSpNo()
+{
+	return this.m_spIcon.getSpNo();
+}
+
+bool T_ItemIcon::isCreated()
+{
+	return this.m_spIcon.isCreated();
+}
+
+ref T_TextSprite T_ItemIcon::getSp()
+{
+	return this.m_spIcon;
+}
+
+ref T_Sprite T_ItemIcon::getRankSp()
+{
+	return this.m_spRank;
+}
+
+T_ItemIcon::T_ItemIcon()
+{
+	this.clear();
+}
+
+T_ItemIcon::~T_ItemIcon()
+{
+	this.delete();
+}
+
+bool T_ItemIcon::create(int nItemNo, bool bJudge)
+{
+	this.delete();
+	if (!this.createIcon(nItemNo, bJudge))
+	{
+		return false;
+	}
+	this.createRank(nItemNo);
+	this.m_nItemNo = nItemNo;
+	this.m_bJudge = bJudge;
+	return true;
+}
+
+void T_ItemIcon::delete()
+{
+	this.m_spIcon.delete();
+	this.m_spRank.delete();
+	this.clear();
+}
+
+void T_ItemIcon::clear()
+{
+	this.m_nItemNo = -1;
+	this.m_bJudge = false;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+}
+
+bool T_ItemIcon::remake()
+{
+	if (this.m_nItemNo <= 0)
+	{
+		return false;
+	}
+	bool bShow = this.m_spIcon.getShow();
+	if (!this.createIcon(this.m_nItemNo, this.m_bJudge))
+	{
+		return false;
+	}
+	this.createRank(this.m_nItemNo);
+	this.setPos(this.m_nX, this.m_nY);
+	this.setZ(this.m_nZ);
+	this.setShow(bShow);
+	return true;
+}
+
+bool T_ItemIcon::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!this.m_spIcon.copyToSprite(rfsDst, nDstX, nDstY))
+	{
+		return false;
+	}
+	if (this.m_spRank.isCreated())
+	{
+		if (!this.m_spRank.copyToSprite(rfsDst, nDstX, (nDstY + 100) - this.m_spRank.getHeight(), -1, -1, 0))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+void T_ItemIcon::setJudge(bool bJudge)
+{
+	if (this.m_nItemNo <= 0)
+	{
+		return;
+	}
+	if (this.m_bJudge == bJudge)
+	{
+		return;
+	}
+	this.m_bJudge = bJudge;
+	this.remake();
+}
+
+void T_ItemIcon::setRank()
+{
+	this.createRank(this.m_nItemNo);
+	this.setPos(this.m_nX, this.m_nY);
+	this.setZ(this.m_nZ);
+	this.setShow(this.m_spIcon.getShow());
+}
+
+void T_ItemIcon::setPos(int nX, int nY)
+{
+	this.m_spIcon.setPos(nX, nY);
+	this.m_spRank.setPos(nX, (nY + 100) - this.m_spRank.getHeight());
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_ItemIcon::setZ(int nZ)
+{
+	this.m_spIcon.setZ(nZ, -1);
+	this.m_spRank.setZ(nZ + 1);
+	this.m_nZ = nZ;
+}
+
+void T_ItemIcon::setShow(bool bShow)
+{
+	this.m_spIcon.setShow(bShow);
+	this.m_spRank.setShow(bShow);
+}
+
+bool T_ItemIcon::createIcon(int nItemNo, bool bJudge)
+{
+	int nCgNo = 0;
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	nCgNo = アイテム_ＣＧ番号(nItemNo);
+	if (this.m_spIcon.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_ItemIcon::createRank(int nItemNo)
+{
+	this.m_spRank.delete();
+	int nRank = アイテム_レアランク(nItemNo);
+	if (nRank <= 0)
+	{
+		return false;
+	}
+	this.m_spRank.setCg(11420 + nRank);
+	return true;
+}
+

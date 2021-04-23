@@ -1,0 +1,2148 @@
+int キャラ_番号(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ番号(nCharaNo, -1);
+}
+
+int キャラ_登録状態(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ登録状態(nCharaNo, -1);
+}
+
+int キャラ_ゲスト(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃゲスト(nCharaNo, -1);
+}
+
+int キャラ_削除禁止(int nCharaNo)
+{
+	return キャラ_番号(nCharaNo) != 2;
+}
+
+string キャラ_名前(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	return Ｃ名前(nCharaNo, "");
+}
+
+string キャラ_短縮名前(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	return Ｃ短縮名前(nCharaNo, "");
+}
+
+int キャラ_顔ＣＧ(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ顔ＣＧ(nCharaNo, -1);
+}
+
+string キャラ_顔ＣＧ文字列(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	return Ｃ顔ＣＧ文字列(nCharaNo, "");
+}
+
+int キャラ_ポリゴン(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃポリゴン(nCharaNo, -1);
+}
+
+int キャラ_職業(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ職業(nCharaNo, -1);
+}
+
+int キャラ_性別(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ性別(nCharaNo, -1);
+}
+
+int キャラ_レベル(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return ＣＬＶ(nCharaNo, -1);
+}
+
+int キャラ_レベル最大(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (キャラ_レベル上限なし(キャラ_番号(nCharaNo)))
+	{
+		return 2147483647;
+	}
+	return ＣＬＶ最大(nCharaNo, -1);
+}
+
+bool キャラ_レベル上限なし(int nNo)
+{
+	switch (nNo)
+	{
+		case 1:
+		case 72:
+		case 92:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+int キャラ_ＥＸＰ(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return ＣＥＸＰ(nCharaNo, -1);
+}
+
+int キャラ_ＥＸＰ最大(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return ＣＥＸＰ最大(nCharaNo, -1);
+}
+
+int キャラ_転生回数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ転生回数(nCharaNo, -1);
+}
+
+int キャラ_城ボーナス回数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ城ボーナス回数(nCharaNo, -1);
+}
+
+int キャラ_戦闘参加回数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ戦闘参加回数(nCharaNo, -1);
+}
+
+int キャラ_体力(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ体力(nCharaNo, -1);
+}
+
+int キャラ_体力最大(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ体力最大(nCharaNo, -1);
+}
+
+int キャラ_素早さ(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ素早さ(nCharaNo, -1);
+}
+
+int キャラ_攻撃力(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ攻撃力(nCharaNo, -1);
+}
+
+int キャラ_防御力(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ防御力(nCharaNo, -1);
+}
+
+int キャラ_命中率(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ命中率(nCharaNo, -1);
+}
+
+int キャラ_回避率(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ回避率(nCharaNo, -1);
+}
+
+int キャラ_必殺率(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ必殺率(nCharaNo, -1);
+}
+
+int キャラ_衝撃率(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ衝撃率(nCharaNo, -1);
+}
+
+int キャラ_耐性率(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ耐性率(nCharaNo, -1);
+}
+
+int キャラ_魔法力(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ魔法力(nCharaNo, -1);
+}
+
+int キャラ_魔抵力(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ魔抵力(nCharaNo, -1);
+}
+
+int キャラ_炎耐性(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ炎耐性(nCharaNo, -1);
+}
+
+int キャラ_氷耐性(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ氷耐性(nCharaNo, -1);
+}
+
+int キャラ_雷耐性(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ雷耐性(nCharaNo, -1);
+}
+
+int キャラ_光耐性(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ光耐性(nCharaNo, -1);
+}
+
+int キャラ_闇耐性(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ闇耐性(nCharaNo, -1);
+}
+
+int キャラ_弱点属性(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ弱点属性(nCharaNo, -1);
+}
+
+int キャラ_武器(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ武器(nCharaNo, -1);
+}
+
+int キャラ_防具(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ防具(nCharaNo, -1);
+}
+
+int キャラ_持ち物(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ持ち物(nCharaNo, -1);
+}
+
+int キャラ_オプション(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃオプション(nCharaNo, -1);
+}
+
+int キャラ_スキルポイント(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃスキルポイント(nCharaNo, -1);
+}
+
+int キャラ_スキル枠最大(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃスキル枠最大(nCharaNo, -1);
+}
+
+int キャラ_持ち物スキル(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ持ち物スキル(nCharaNo, -1);
+}
+
+int キャラ_スキル番号(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	int nSkillNo = Ｃスキル番号(nCharaNo, nNo, -1);
+	return nSkillNo != 569 ? nSkillNo : 0;
+}
+
+int キャラ_スキル保有(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル保有(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル実装中(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル実装中(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル使用禁止(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル使用禁止(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル使用回数(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル使用回数(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル使用回数最大(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル使用回数最大(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキルランク(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキルランク(nCharaNo, nNo, -1);
+}
+
+int キャラ_戦闘使用済み(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル戦闘使用済み(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル確率(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル確率(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル条件(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル条件(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル一度使用(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキル一度使用(nCharaNo, nNo, -1);
+}
+
+string キャラ_スキル表示文(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return "";
+	}
+	return Ｃスキル表示文(nCharaNo, nNo, "");
+}
+
+int キャラ_スキルモーション(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	return Ｃスキルモーション(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル枠キープ数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ[nCharaNo].スキル枠キープ数;
+}
+
+bool キャラ_登録スキル(int nCharaNo, ref array@int anSkillNo)
+{
+	if (anSkillNo === NULL)
+	{
+		return false;
+	}
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	int cnt2 = anSkillNo.Numof();
+	int i = 0;
+	int cnt = _min(cnt2, rfsData.登録スキル.Numof());
+	anSkillNo.Fill(0, cnt2, 0);
+	for (i = 0; i < cnt; ++i)
+	{
+		anSkillNo[i] = rfsData.登録スキル[i];
+	}
+	return true;
+}
+
+bool キャラ_登録スキルあり(int nCharaNo)
+{
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = rfsData.登録スキル.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (rfsData.登録スキル[i] > 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+string キャラ_台詞(int nCharaNo, int nNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	if (!キャラ_台詞確認(nNo))
+	{
+		return "";
+	}
+	return Ｃ台詞(nCharaNo, nNo, "");
+}
+
+int キャラ_台詞番号(int nCharaNo, string szMessage)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (szMessage.Empty())
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = Ｃ[0].台詞.Numof();
+	for (i = 1; i < cnt; ++i)
+	{
+		if (szMessage == Ｃ台詞(nCharaNo, i, ""))
+		{
+			return i;
+		}
+	}
+	return 0;
+}
+
+int キャラ_宝箱解除回数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ宝箱解除回数(nCharaNo, -1);
+}
+
+int キャラ_トラップ解除回数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃトラップ解除回数(nCharaNo, -1);
+}
+
+int キャラ_ハニージッポ回数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃハニージッポ回数(nCharaNo, -1);
+}
+
+int キャラ_ボス(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃボス(nCharaNo, -1);
+}
+
+int キャラ_種族(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ種族(nCharaNo, -1);
+}
+
+int キャラ_タイプ(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃタイプ(nCharaNo, -1);
+}
+
+int キャラ_悪口耐性(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ悪口耐性(nCharaNo, -1);
+}
+
+int キャラ_状態変化(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ状態変化(nCharaNo, -1);
+}
+
+int キャラ_守護率(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ守護率(nCharaNo, -1);
+}
+
+int キャラ_隠密率(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ隠密率(nCharaNo, -1);
+}
+
+int キャラ_狂戦士(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ狂戦士(nCharaNo, -1);
+}
+
+int キャラ_全体加護(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ全体加護(nCharaNo, -1);
+}
+
+int キャラ_バリア(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃバリア(nCharaNo, -1);
+}
+
+int キャラ_攻撃付与(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ攻撃付与(nCharaNo, -1);
+}
+
+int キャラ_防御付与(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ防御付与(nCharaNo, -1);
+}
+
+int キャラ_溜め(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	return Ｃ溜め(nCharaNo, -1);
+}
+
+bool キャラ_弱点把握(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	return Ｃ弱点把握(nCharaNo, -1) > 0;
+}
+
+int キャラ_番号設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ番号(nCharaNo, nValue);
+	return Ｃ番号(nCharaNo, -1);
+}
+
+int キャラ_登録状態設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ登録状態(nCharaNo, nValue);
+	return Ｃ登録状態(nCharaNo, -1);
+}
+
+string キャラ_名前設定(int nCharaNo, string szText)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	Ｃ名前(nCharaNo, szText);
+	return Ｃ名前(nCharaNo, "");
+}
+
+string キャラ_短縮名前設定(int nCharaNo, string szText)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	Ｃ短縮名前(nCharaNo, szText);
+	return Ｃ短縮名前(nCharaNo, "");
+}
+
+int キャラ_顔ＣＧ設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ顔ＣＧ(nCharaNo, nValue);
+	return Ｃ顔ＣＧ(nCharaNo, -1);
+}
+
+string キャラ_顔ＣＧ文字列設定(int nCharaNo, string szText)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	Ｃ顔ＣＧ文字列(nCharaNo, szText);
+	return Ｃ顔ＣＧ文字列(nCharaNo, "");
+}
+
+int キャラ_職業設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ職業(nCharaNo, nValue);
+	return Ｃ職業(nCharaNo, -1);
+}
+
+int キャラ_性別設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ性別(nCharaNo, nValue);
+	return Ｃ性別(nCharaNo, -1);
+}
+
+int キャラ_レベル設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	ＣＬＶ(nCharaNo, nValue);
+	return ＣＬＶ(nCharaNo, -1);
+}
+
+int キャラ_レベル最大設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	ＣＬＶ最大(nCharaNo, nValue);
+	return ＣＬＶ最大(nCharaNo, -1);
+}
+
+int キャラ_ＥＸＰ設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	ＣＥＸＰ(nCharaNo, nValue);
+	return ＣＥＸＰ(nCharaNo, -1);
+}
+
+int キャラ_ＥＸＰ最大設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	ＣＥＸＰ最大(nCharaNo, nValue);
+	return ＣＥＸＰ最大(nCharaNo, -1);
+}
+
+int キャラ_体力設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ体力(nCharaNo, nValue);
+	return Ｃ体力(nCharaNo, -1);
+}
+
+int キャラ_体力最大設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ体力最大(nCharaNo, nValue);
+	return Ｃ体力最大(nCharaNo, -1);
+}
+
+int キャラ_素早さ設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ素早さ(nCharaNo, nValue);
+	return Ｃ素早さ(nCharaNo, -1);
+}
+
+int キャラ_攻撃力設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ攻撃力(nCharaNo, nValue);
+	return Ｃ攻撃力(nCharaNo, -1);
+}
+
+int キャラ_防御力設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ防御力(nCharaNo, nValue);
+	return Ｃ防御力(nCharaNo, -1);
+}
+
+int キャラ_命中率設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ命中率(nCharaNo, nValue);
+	return Ｃ命中率(nCharaNo, -1);
+}
+
+int キャラ_回避率設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ回避率(nCharaNo, nValue);
+	return Ｃ回避率(nCharaNo, -1);
+}
+
+int キャラ_必殺率設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ必殺率(nCharaNo, nValue);
+	return Ｃ必殺率(nCharaNo, -1);
+}
+
+int キャラ_衝撃率設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ衝撃率(nCharaNo, nValue);
+	return Ｃ衝撃率(nCharaNo, -1);
+}
+
+int キャラ_耐性率設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ耐性率(nCharaNo, nValue);
+	return Ｃ耐性率(nCharaNo, -1);
+}
+
+int キャラ_魔法力設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ魔法力(nCharaNo, nValue);
+	return Ｃ魔法力(nCharaNo, -1);
+}
+
+int キャラ_魔抵力設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ魔抵力(nCharaNo, nValue);
+	return Ｃ魔抵力(nCharaNo, -1);
+}
+
+int キャラ_炎耐性設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ炎耐性(nCharaNo, nValue);
+	return Ｃ炎耐性(nCharaNo, -1);
+}
+
+int キャラ_氷耐性設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ氷耐性(nCharaNo, nValue);
+	return Ｃ氷耐性(nCharaNo, -1);
+}
+
+int キャラ_雷耐性設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ雷耐性(nCharaNo, nValue);
+	return Ｃ雷耐性(nCharaNo, -1);
+}
+
+int キャラ_光耐性設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ光耐性(nCharaNo, nValue);
+	return Ｃ光耐性(nCharaNo, -1);
+}
+
+int キャラ_闇耐性設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ闇耐性(nCharaNo, nValue);
+	return Ｃ闇耐性(nCharaNo, -1);
+}
+
+int キャラ_弱点属性設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ弱点属性(nCharaNo, nValue);
+	return Ｃ弱点属性(nCharaNo, -1);
+}
+
+int キャラ_武器設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (nValue <= 0)
+	{
+		Ｃアイテム外す(nCharaNo, 1);
+		return 0;
+	}
+	Ｃ武器(nCharaNo, nValue);
+	return Ｃ武器(nCharaNo, -1);
+}
+
+int キャラ_防具設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (nValue <= 0)
+	{
+		Ｃアイテム外す(nCharaNo, 11);
+		return 0;
+	}
+	Ｃ防具(nCharaNo, nValue);
+	return Ｃ防具(nCharaNo, -1);
+}
+
+int キャラ_持ち物設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (nValue <= 0)
+	{
+		Ｃアイテム外す(nCharaNo, 17);
+		return 0;
+	}
+	Ｃ持ち物(nCharaNo, nValue);
+	return Ｃ持ち物(nCharaNo, -1);
+}
+
+int キャラ_オプション設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (nValue <= 0)
+	{
+		Ｃアイテム外す(nCharaNo, 21);
+		return 0;
+	}
+	Ｃオプション(nCharaNo, nValue);
+	return Ｃオプション(nCharaNo, -1);
+}
+
+int キャラ_スキルポイント設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃスキルポイント(nCharaNo, nValue);
+	return Ｃスキルポイント(nCharaNo, -1);
+}
+
+int キャラ_スキルポイント＋(int nCharaNo, int nValue)
+{
+	return キャラ_スキルポイント設定(nCharaNo, 数値_加算(キャラ_スキルポイント(nCharaNo), nValue));
+}
+
+int キャラ_スキルポイント－(int nCharaNo, int nValue)
+{
+	return キャラ_スキルポイント設定(nCharaNo, 数値_減算(キャラ_スキルポイント(nCharaNo), nValue));
+}
+
+int キャラ_スキル枠最大設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃスキル枠最大(nCharaNo, nValue);
+	return Ｃスキル枠最大(nCharaNo, -1);
+}
+
+int キャラ_スキル番号設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル番号(nCharaNo, nNo, nValue);
+	return Ｃスキル番号(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル保有設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル保有(nCharaNo, nNo, nValue);
+	return Ｃスキル保有(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル実装中設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル実装中(nCharaNo, nNo, nValue);
+	return Ｃスキル実装中(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル使用回数設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル使用回数(nCharaNo, nNo, nValue);
+	return Ｃスキル使用回数(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル使用回数＋(int nCharaNo, int nNo)
+{
+	int nValue = キャラ_スキル使用回数(nCharaNo, nNo);
+	if (nValue < 0)
+	{
+		return 0;
+	}
+	return キャラ_スキル使用回数設定(nCharaNo, nNo, 数値_加算(nValue, 1));
+}
+
+int キャラ_スキル使用回数－(int nCharaNo, int nNo)
+{
+	int nValue = キャラ_スキル使用回数(nCharaNo, nNo);
+	if (nValue < 0)
+	{
+		return 0;
+	}
+	return キャラ_スキル使用回数設定(nCharaNo, nNo, 数値_減算(nValue, 1));
+}
+
+int キャラ_スキル使用回数最大設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル使用回数最大(nCharaNo, nNo, nValue);
+	return Ｃスキル使用回数最大(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキルランク設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキルランク(nCharaNo, nNo, nValue);
+	return Ｃスキルランク(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル戦闘使用済み設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル戦闘使用済み(nCharaNo, nNo, nValue);
+	return Ｃスキル戦闘使用済み(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル確率設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル確率(nCharaNo, nNo, nValue);
+	return Ｃスキル確率(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル条件設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル条件(nCharaNo, nNo, nValue);
+	return Ｃスキル条件(nCharaNo, nNo, -1);
+}
+
+int キャラ_スキル一度使用設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキル一度使用(nCharaNo, nNo, nValue);
+	return Ｃスキル一度使用(nCharaNo, nNo, -1);
+}
+
+string キャラ_スキル表示文設定(int nCharaNo, int nNo, string szText)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return "";
+	}
+	Ｃスキル表示文(nCharaNo, nNo, szText);
+	return Ｃスキル表示文(nCharaNo, nNo, "");
+}
+
+int キャラ_スキルモーション設定(int nCharaNo, int nNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (!キャラ_スキル確認(nNo))
+	{
+		return -1;
+	}
+	Ｃスキルモーション(nCharaNo, nNo, nValue);
+	return Ｃスキルモーション(nCharaNo, nNo, -1);
+}
+
+bool キャラ_登録スキル設定(int nCharaNo, ref array@int anSkillNo)
+{
+	if (anSkillNo === NULL)
+	{
+		return false;
+	}
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = rfsData.登録スキル.Numof();
+	int cnt2 = _min(cnt, anSkillNo.Numof());
+	rfsData.登録スキル.Fill(0, cnt, 0);
+	for (i = 0; i < cnt2; ++i)
+	{
+		ref int nSkillNo = anSkillNo[i];
+		rfsData.登録スキル[i] = nSkillNo > 0 ? nSkillNo : 0;
+	}
+	return true;
+}
+
+bool キャラ_登録スキルクリア(int nCharaNo)
+{
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	rfsData.登録スキル.Fill(0, rfsData.登録スキル.Numof(), 0);
+	return true;
+}
+
+string キャラ_台詞設定(int nCharaNo, int nNo, string szText)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return "";
+	}
+	if (!キャラ_台詞確認(nNo))
+	{
+		return "";
+	}
+	Ｃ台詞(nCharaNo, nNo, szText);
+	return Ｃ台詞(nCharaNo, nNo, "");
+}
+
+int キャラ_宝箱解除回数設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ宝箱解除回数(nCharaNo, nValue);
+	return Ｃ宝箱解除回数(nCharaNo, -1);
+}
+
+int キャラ_トラップ解除回数設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃトラップ解除回数(nCharaNo, nValue);
+	return Ｃトラップ解除回数(nCharaNo, -1);
+}
+
+int キャラ_ハニージッポ回数設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃハニージッポ回数(nCharaNo, nValue);
+	return Ｃハニージッポ回数(nCharaNo, -1);
+}
+
+int キャラ_ボス設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃボス(nCharaNo, nValue);
+	return Ｃボス(nCharaNo, -1);
+}
+
+int キャラ_状態変化設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ状態変化(nCharaNo, nValue);
+	return Ｃ状態変化(nCharaNo, -1);
+}
+
+int キャラ_守護率設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ守護率(nCharaNo, nValue);
+	return Ｃ守護率(nCharaNo, -1);
+}
+
+int キャラ_隠密率設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ隠密率(nCharaNo, nValue);
+	return Ｃ隠密率(nCharaNo, -1);
+}
+
+int キャラ_狂戦士設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ狂戦士(nCharaNo, nValue);
+	return Ｃ狂戦士(nCharaNo, -1);
+}
+
+int キャラ_全体加護設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ全体加護(nCharaNo, nValue);
+	return Ｃ全体加護(nCharaNo, -1);
+}
+
+int キャラ_バリア設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃバリア(nCharaNo, nValue);
+	return Ｃバリア(nCharaNo, -1);
+}
+
+int キャラ_攻撃付与設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ攻撃付与(nCharaNo, nValue);
+	return Ｃ攻撃付与(nCharaNo, -1);
+}
+
+int キャラ_防御付与設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ防御付与(nCharaNo, nValue);
+	return Ｃ防御付与(nCharaNo, -1);
+}
+
+int キャラ_溜め設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ溜め(nCharaNo, nValue);
+	return Ｃ溜め(nCharaNo, -1);
+}
+
+int キャラ_弱点把握設定(int nCharaNo, int nValue)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	Ｃ弱点把握(nCharaNo, nValue);
+	return Ｃ弱点把握(nCharaNo, -1);
+}
+
+int キャラ_体力ダメージ(int nCharaNo, int nDamage)
+{
+	return キャラ_体力設定(nCharaNo, nDamage < 0 ? 0 : 数値_減算(キャラ_体力(nCharaNo), nDamage));
+}
+
+int キャラ_体力回復(int nCharaNo, int nHeal)
+{
+	return キャラ_体力設定(nCharaNo, nHeal < 0 ? キャラ_体力最大(nCharaNo) : 数値_加算(キャラ_体力(nCharaNo), nHeal));
+}
+
+bool キャラ_レベルアップ可能(int nCharaNo)
+{
+	if (キャラ_体力(nCharaNo) <= 0)
+	{
+		return false;
+	}
+	int nMax = キャラ_ＥＸＰ最大(nCharaNo);
+	if (nMax <= 0)
+	{
+		return false;
+	}
+	if (キャラ_ＥＸＰ(nCharaNo) < nMax)
+	{
+		return false;
+	}
+	return キャラ_レベル(nCharaNo) < キャラ_レベル最大(nCharaNo);
+}
+
+bool キャラ_レベルアップ(int nCharaNo)
+{
+	if (!キャラ_レベルアップ可能(nCharaNo))
+	{
+		return false;
+	}
+	キャラ_ＥＸＰ設定(nCharaNo, 数値_減算(キャラ_ＥＸＰ(nCharaNo), キャラ_ＥＸＰ最大(nCharaNo)));
+	キャラ_レベル設定(nCharaNo, 数値_加算(キャラ_レベル(nCharaNo), 1));
+	キャラ_スキルポイント＋(nCharaNo, Ｔ戦闘後の取得スキルポイント算出(nCharaNo));
+	キャラ_再計算(nCharaNo, false);
+	return true;
+}
+
+bool キャラ_消去(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	Ｃ初期化(nCharaNo);
+	return true;
+}
+
+bool キャラ_再計算(int nCharaNo, bool bHeal)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	int nOld = Ｃスキル枠最大(nCharaNo, -1);
+	Ｃ再計算(nCharaNo);
+	int nMax = Ｃスキル枠最大(nCharaNo, -1);
+	if (nOld > nMax)
+	{
+		int i = 0;
+		int cnt = キャラ_スキル数();
+		bool bFlag = false;
+		for (i = 1; i <= cnt; ++i)
+		{
+			if (キャラ_スキル番号(nCharaNo, i) <= 0)
+			{
+				continue;
+			}
+			int nPos = キャラ_スキル実装中(nCharaNo, i);
+			if (nPos > nMax)
+			{
+				キャラ_スキル実装中設定(nCharaNo, i, 0);
+				bFlag = true;
+			}
+		}
+		if (bFlag)
+		{
+			Ｃ再計算(nCharaNo);
+		}
+	}
+	if (bHeal)
+	{
+		キャラ_体力設定(nCharaNo, キャラ_体力最大(nCharaNo));
+		キャラスキル_使用回数回復(nCharaNo);
+	}
+	return true;
+}
+
+bool キャラ_確認(int nCharaNo)
+{
+	return nCharaNo > 0 && nCharaNo < Ｃ.Numof();
+}
+
+bool キャラ_スキル確認(int nNo)
+{
+	return nNo > 0 && nNo < Ｃ[0].スキル.Numof();
+}
+
+bool キャラ_台詞確認(int nNo)
+{
+	return nNo > 0 && nNo < Ｃ[0].台詞.Numof();
+}
+
+int キャラ_数()
+{
+	return Ｃ.Numof() - 1;
+}
+
+int キャラ_スキル数()
+{
+	return Ｃ[0].スキル.Numof() - 1;
+}
+
+int キャラ_検索(int nNo)
+{
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = Ｃ.Numof();
+	for (i = 1; i < cnt; ++i)
+	{
+		if (Ｃ番号(i, -1) == nNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+ref sＣ キャラ_データ参照(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return NULL;
+	}
+	return Ｃ[nCharaNo];
+}
+
+bool キャラ_スタメン(int nCharaNo)
+{
+	return キャラ_登録状態(nCharaNo) == 1;
+}
+
+bool キャラ_１軍(int nCharaNo)
+{
+	return キャラ_登録状態(nCharaNo) == 2;
+}
+
+bool キャラ_１軍使用済み(int nCharaNo)
+{
+	return キャラ_登録状態(nCharaNo) == 3;
+}
+
+bool キャラ_２軍(int nCharaNo)
+{
+	return キャラ_登録状態(nCharaNo) == 4;
+}
+
+bool キャラ_登録済(int nCharaNo)
+{
+	return キャラ_登録状態(nCharaNo) > 0;
+}
+
+bool キャラ_登録済_１軍(int nCharaNo)
+{
+	switch (キャラ_登録状態(nCharaNo))
+	{
+		case 1:
+		case 2:
+		case 3:
+			return true;
+		case 4:
+		default:
+			break;
+	}
+	return false;
+}
+
+bool キャラ_登録済_使用(int nCharaNo)
+{
+	switch (キャラ_登録状態(nCharaNo))
+	{
+		case 1:
+		case 3:
+			return true;
+		case 2:
+		case 4:
+		default:
+			break;
+	}
+	return false;
+}
+
+bool キャラ_保有(int nCharaNo)
+{
+	switch (キャラ_登録状態(nCharaNo))
+	{
+		case 1:
+		case 2:
+			return true;
+		case 3:
+		case 4:
+		default:
+			break;
+	}
+	return false;
+}
+
+bool キャラ_配置不可(int nCharaNo)
+{
+	switch (キャラ_登録状態(nCharaNo))
+	{
+		case 3:
+			return true;
+		case 1:
+		case 2:
+		case 4:
+		default:
+			break;
+	}
+	return false;
+}
+
+int キャラ_登録数()
+{
+	int i = 0;
+	int cnt = キャラ_数();
+	int nCount = 0;
+	for (i = 20; i <= cnt; ++i)
+	{
+		if (キャラ_登録済(i))
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int キャラ_１軍使用済み数()
+{
+	int i = 0;
+	int cnt = キャラ_数();
+	int nCount = 0;
+	for (i = 20; i <= cnt; ++i)
+	{
+		if (キャラ_１軍使用済み(i))
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+void キャラ_１軍使用済み解除()
+{
+	int i = 0;
+	int cnt = キャラ_数();
+	for (i = 20; i <= cnt; ++i)
+	{
+		if (キャラ_１軍使用済み(i))
+		{
+			キャラ_登録状態設定(i, 2);
+		}
+	}
+}
+
+bool キャラ_レベルＵＰ可(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	if (ＣＬＶ(nCharaNo, -1) >= ＣＬＶ最大(nCharaNo, -1))
+	{
+		return false;
+	}
+	return ＣＥＸＰ(nCharaNo, -1) >= ＣＥＸＰ最大(nCharaNo, -1);
+}
+
+bool キャラ_ダメージあり(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	return Ｃ体力(nCharaNo, -1) < Ｃ体力最大(nCharaNo, -1);
+}
+
+bool キャラ_魔法使い(int nCharaNo)
+{
+	switch (キャラ_職業(nCharaNo))
+	{
+		case 4:
+		case 5:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+string キャラ_職業名(int nCharaNo)
+{
+	return 職業_名前(キャラ_職業(nCharaNo));
+}
+
+string キャラ_職業短縮名(int nCharaNo)
+{
+	return 職業_短縮名(キャラ_職業(nCharaNo));
+}
+
+int キャラ_職業アイコン(int nCharaNo)
+{
+	return 職業_アイコン(キャラ_職業(nCharaNo));
+}
+
+bool 職業_確認(int nType)
+{
+	return nType > 0 && nType < 9;
+}
+
+string 職業_名前(int nType)
+{
+	if (!職業_確認(nType))
+	{
+		return "";
+	}
+	return Ｃ職業文字列(nType, 0);
+}
+
+string 職業_短縮名(int nType)
+{
+	if (!職業_確認(nType))
+	{
+		return "";
+	}
+	return Ｃ職業文字列(nType, 1);
+}
+
+int 職業_アイコン(int nType)
+{
+	switch (nType)
+	{
+		case 1:
+			return 10081;
+		case 2:
+			return 10082;
+		case 3:
+			return 10083;
+		case 4:
+			return 10084;
+		case 5:
+			return 10085;
+		case 6:
+			return 10086;
+		case 7:
+			return 10087;
+		case 8:
+			return 10088;
+		default:
+			break;
+	}
+	return 0;
+}
+
+string キャラ_性別名(int nCharaNo)
+{
+	return 性別文字列(キャラ_性別(nCharaNo));
+}
+
+string 性別文字列(int nSex)
+{
+	switch (nSex)
+	{
+		case 1:
+			return "Male";
+		case 2:
+			return "Female";
+		case 3:
+			return "Female (No ero)";
+		case 9:
+			return "Non-human";
+		default:
+			break;
+	}
+	return "?";
+}
+
+int キャラ_装備取得(int nCharaNo, int nType)
+{
+	switch (nType)
+	{
+		case 21:
+			return キャラ_オプション(nCharaNo);
+		case 1:
+			return キャラ_武器(nCharaNo);
+		case 11:
+			return キャラ_防具(nCharaNo);
+		case 17:
+			return キャラ_持ち物(nCharaNo);
+		default:
+			break;
+	}
+	return -1;
+}
+
+bool キャラ_装備設定(int nCharaNo, int nType, int nItemNo)
+{
+	int nOldItemNo = キャラ_装備取得(nCharaNo, nType);
+	if (nItemNo > 0 && nType != アイテム_種類(nItemNo))
+	{
+		return false;
+	}
+	switch (nType)
+	{
+		case 21:
+			if (キャラ_オプション設定(nCharaNo, nItemNo) < 0)
+			{
+				return false;
+			}
+			break;
+		case 1:
+			if (キャラ_武器設定(nCharaNo, nItemNo) < 0)
+			{
+				return false;
+			}
+			break;
+		case 11:
+			if (キャラ_防具設定(nCharaNo, nItemNo) < 0)
+			{
+				return false;
+			}
+			break;
+		case 17:
+			if (キャラ_持ち物設定(nCharaNo, nItemNo) < 0)
+			{
+				return false;
+			}
+			break;
+		default:
+			return false;
+	}
+	if (nOldItemNo > 0 && nOldItemNo != nItemNo)
+	{
+		if (アイテム_消滅します(nOldItemNo) > 0)
+		{
+			アイテム_存在設定(nOldItemNo, 0);
+			アイテム_補充(nOldItemNo);
+		}
+	}
+	キャラ_再計算(nCharaNo, true);
+	if (nType == 21)
+	{
+		Ｃオプション装備後(nCharaNo);
+	}
+	return true;
+}
+
+int キャラ_仮装備(int nCharaNo, int nType, int nItemNo, ref sＣ sData)
+{
+	if (sData === NULL)
+	{
+		return -1;
+	}
+	if (nItemNo > 0 && nType != アイテム_種類(nItemNo))
+	{
+		return -1;
+	}
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return -1;
+	}
+	sＣ sOld;
+	sOld = rfsData;
+	switch (nType)
+	{
+		case 21:
+			rfsData.オプション = nItemNo;
+			break;
+		case 1:
+			rfsData.武器 = nItemNo;
+			break;
+		case 11:
+			rfsData.防具 = nItemNo;
+			break;
+		case 17:
+			rfsData.持ち物 = nItemNo;
+			break;
+		default:
+			return -1;
+	}
+	キャラ_再計算(nCharaNo, true);
+	sData = rfsData;
+	int nLevelMax = キャラ_レベル最大(nCharaNo);
+	rfsData = sOld;
+	return nLevelMax;
+}
+
+bool キャラ_装備外し確認(int nCharaNo, int nType)
+{
+	int nOldItemNo = キャラ_装備取得(nCharaNo, nType);
+	if (nOldItemNo < 0)
+	{
+		return false;
+	}
+	if (nOldItemNo == 0)
+	{
+		return true;
+	}
+	return アイテム_装備外し確認(nOldItemNo);
+}
+
+bool キャラ_装備変更(int nCharaNo, int nType, int nItemNo)
+{
+	if (!キャラ_装備外し確認(nCharaNo, nType))
+	{
+		return false;
+	}
+	return キャラ_装備設定(nCharaNo, nType, nItemNo);
+}
+
+bool キャラ_配置可能(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	if (キャラ_１軍使用済み(nCharaNo))
+	{
+		return false;
+	}
+	return true;
+}
+
+int キャラ_スキル残り回数(int nCharaNo, bool bWait)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (Ｃスキル実装中(nCharaNo, i, -1) <= 0)
+		{
+			continue;
+		}
+		int nSkillNo = キャラ_スキル番号(nCharaNo, i);
+		if (!bWait && nSkillNo == 384)
+		{
+			continue;
+		}
+		if (スキル_タイプ(nSkillNo) != 10)
+		{
+			continue;
+		}
+		if (Ｃスキル使用禁止(nCharaNo, i, -1) >= 2)
+		{
+			continue;
+		}
+		nCount += Ｃスキル使用回数(nCharaNo, i, -1);
+	}
+	return nCount;
+}
+

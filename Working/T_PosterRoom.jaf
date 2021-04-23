@@ -1,0 +1,624 @@
+int T_PosterRoom::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 20 ? -1 : 110000 + nIndex + 1;
+}
+
+int T_PosterRoom::getDataIndex(int nID)
+{
+	if (nID < 110000)
+	{
+		return -1;
+	}
+	int idx = nID + -110001;
+	return idx < 0 || idx >= 20 ? -1 : idx;
+}
+
+T_PosterRoom::T_PosterRoom()
+{
+	this.clear();
+}
+
+T_PosterRoom::~T_PosterRoom()
+{
+	this.delete();
+}
+
+int T_PosterRoom::run()
+{
+	int nRet = 0;
+	int nID = this.getFirstData();
+	if (!this.create(1))
+	{
+		return 0;
+	}
+	_EFFECT(1, 500);
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+bool T_PosterRoom::createBase(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_sData.getCount();
+	if (this.m_spBase.setCg(8500) < 0)
+	{
+		this.m_spBase.createPixelOnly(1024, 768);
+		this.m_spBase.fill(0, 0, 1024, 768, 0, 128, 128, 255);
+		for (i = 0; i < cnt; ++i)
+		{
+			ref T_PosterData rfData = this.m_sData.get(i);
+			this.m_spBase.fill(rfData.m_nX, rfData.m_nY, rfData.m_nWidth, rfData.m_nHeight, 0, 0, 0, 255);
+		}
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!ポスター_確認(i))
+		{
+			continue;
+		}
+		ref T_PosterData rfData = this.m_sData.get(i);
+		T_Sprite spWork;
+		if (spWork.setCg(rfData.m_nThumbnailNo) < 0)
+		{
+			this.m_spBase.fill(rfData.m_nX, rfData.m_nY, rfData.m_nWidth, rfData.m_nHeight, 255, 255, 255, 255);
+		}
+		else
+		{
+			this.m_spBase.copyCg(rfData.m_nX, rfData.m_nY, spWork, 0, 0, spWork.getWidth(), spWork.getHeight());
+		}
+		spWork.delete();
+	}
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_spBase.setShow(1);
+	return true;
+}
+
+void T_PosterRoom::deleteBase()
+{
+	this.m_spBase.delete();
+	this.clear();
+}
+
+int T_PosterRoom::moveUp(int nID)
+{
+	if (nID > 900000)
+	{
+		return this.getButtonID(this.m_sData.getIndex(1, 0));
+	}
+	if (nID > 110000)
+	{
+		return this.moveUpData(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+			return this.getLastData();
+		default:
+			break;
+	}
+	return this.getFirstData();
+}
+
+int T_PosterRoom::moveDown(int nID)
+{
+	if (nID > 900000)
+	{
+		return this.getButtonID(this.m_sData.getIndex(0, 0));
+	}
+	if (nID > 110000)
+	{
+		return this.moveDownData(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+			return this.getFirstData();
+		default:
+			break;
+	}
+	return this.getLastData();
+}
+
+int T_PosterRoom::moveLeft(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.moveLeftData(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+			return this.getLastData();
+		default:
+			break;
+	}
+	return this.getFirstData();
+}
+
+int T_PosterRoom::moveRight(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.moveRightData(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+			return this.getFirstData();
+		default:
+			break;
+	}
+	return this.getLastData();
+}
+
+void T_PosterRoom::setSelect(int nID, bool bSelect)
+{
+	if (nID > 900000)
+	{
+		システムバー_選択設定(nID, bSelect, true);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+		return;
+	}
+}
+
+bool T_PosterRoom::create(int nZ)
+{
+	this.delete();
+	if (!this.createBase(nZ))
+	{
+		return false;
+	}
+	システムバー_作成(15, -1, true);
+	this.m_spBack.create(1024, 768, 0, 0, 0, 128);
+	this.m_spBack.setPos(0, 0);
+	this.m_spBack.setZ(nZ + 10);
+	this.m_sButton.create();
+	int i = 0;
+	int cnt = this.m_sData.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createButton(i);
+	}
+	ボタン登録_ＣＧ(this.m_sButton, 100001, 990, 14, 10007, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(nZ + 1);
+	this.m_sButton.setShow(true);
+	this.m_sShortcutInfo.create(9901);
+	this.m_sShortcutInfo.addAll(this.m_sButton);
+	this.m_sShortcutInfo.addAll(システムバー_ボタン群());
+	this.m_sInputKey.create(1, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&ポスター部屋_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&ポスター部屋_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&ポスター部屋_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&ポスター部屋_右矢印);
+	this.m_sInputKey.setSelectCallback(&ポスター部屋_選択設定);
+	this.setButtonActive();
+	return true;
+}
+
+void T_PosterRoom::delete()
+{
+	this.m_spBack.delete();
+	this.m_spPoster.delete();
+	this.m_sButton.delete();
+	this.m_sShortcutInfo.delete();
+	this.m_sInputKey.delete();
+	this.deleteBase();
+	システムバー_削除();
+	this.clear();
+}
+
+void T_PosterRoom::clear()
+{
+	return;
+}
+
+bool T_PosterRoom::createButton(int nIndex)
+{
+	ref T_PosterData rfData = this.m_sData.get(nIndex);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	int nID = this.getButtonID(nIndex);
+	T_Sprite spWork;
+	if (spWork.setCg(rfData.m_nThumbnailNo) < 0)
+	{
+		return ボタン登録_矩形(this.m_sButton, nID, rfData.m_nX, rfData.m_nY, rfData.m_nWidth, rfData.m_nHeight, false);
+	}
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	T_TextSprite spFrame1;
+	T_TextSprite spFrame2;
+	spFrame1.create(nW, nH, 216, 255, 0, 102);
+	DrawGraph.CopyAMapMin(spFrame1.getSp().getSpNo(), 0, 0, spWork.getSpNo(), 0, 0, nW, nH);
+	spFrame2.create(nW, nH, 255, 0, 0, 128);
+	DrawGraph.CopyAMapMin(spFrame2.getSp().getSpNo(), 0, 0, spWork.getSpNo(), 0, 0, nW, nH);
+	this.m_sButton.addButtonRect(nID, nW, nH, nW, nH, -1, -1);
+	this.m_sButton.setButtonFrameSp(nID, 0, spFrame1, 0);
+	this.m_sButton.setButtonFrameSp(nID, 1, spFrame2, 0);
+	this.m_sButton.setButtonPos(nID, rfData.m_nX, rfData.m_nY);
+	spWork.delete();
+	return true;
+}
+
+bool T_PosterRoom::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	this.m_sShortcutInfo.setShow(false);
+	switch (nID)
+	{
+		case 100001:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.systemBar(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.execData(nID);
+	}
+	return false;
+}
+
+bool T_PosterRoom::execData(int nID)
+{
+	int idx = this.getDataIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	if (!this.showPoster(idx, true))
+	{
+		return false;
+	}
+	while (true)
+	{
+		idx = this.checkInputPoster(idx);
+		if (idx < 0)
+		{
+			break;
+		}
+		this.showPoster(idx, false);
+	}
+	this.hidePoster();
+	return false;
+}
+
+bool T_PosterRoom::showPoster(int nIndex, bool bEffect)
+{
+	if (!ポスター_確認(nIndex))
+	{
+		return false;
+	}
+	ref T_PosterData rfData = this.m_sData.get(nIndex);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	int nCgNo = rfData.m_nCgNo;
+	if (nCgNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_spPoster.setCg(nCgNo) < 0)
+	{
+		sact_text_metrics_t tmText;
+		tmText.nSize = 24;
+		tmText.nFace = 258;
+		tmText.nWeight = 40;
+		tmText.nColorR = 0;
+		tmText.nColorG = 0;
+		tmText.nColorB = 0;
+		this.m_spPoster.createPixelOnly(509, 710);
+		this.m_spPoster.fill(0, 0, 509, 710, 255, 255, 255, 255);
+		this.m_spPoster.textDrawCenter(1, "ＣＧ%05D" % nCgNo, tmText, 0);
+	}
+	this.m_spPoster.setPos(258, 13);
+	this.m_spPoster.setZ(this.m_spBack.getZ() + 1, -1);
+	this.m_spPoster.setShow(true);
+	this.m_spBack.setShow(1);
+	if (bEffect)
+	{
+		_EFFECT(1, 500);
+	}
+	else
+	{
+		UPDATE(true);
+	}
+	return true;
+}
+
+void T_PosterRoom::hidePoster()
+{
+	this.m_spPoster.delete();
+	this.m_spBack.setShow(0);
+	_EFFECT(1, 500);
+}
+
+int T_PosterRoom::checkInputPoster(int nIndex)
+{
+	int nRet = -1;
+	int nKey = 0;
+	キー_クリア(true);
+	while (true)
+	{
+		nKey = キー_決定();
+		if (nKey > 0)
+		{
+			break;
+		}
+		nKey = キー_キャンセル();
+		if (nKey > 0)
+		{
+			break;
+		}
+		switch (ホイール_確認(true))
+		{
+			case 9991:
+				return this.m_sData.getPrevIndex(nIndex);
+			case 9992:
+				return this.m_sData.getNextIndex(nIndex);
+			default:
+				break;
+		}
+		UPDATE(true);
+	}
+	キー_離し待ち(nKey, true);
+	return nRet;
+}
+
+bool T_PosterRoom::systemBar(int nID)
+{
+	int nRet = システムバー_実行(nID);
+	if (nRet == 910002)
+	{
+		システムメニュー_ロード();
+	}
+	return false;
+}
+
+int T_PosterRoom::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			nRet = 100001;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_PosterRoom::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (システムバー_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sButton.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			システムバー_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label0:
+	this.m_sButton.setInputFlag(true);
+	システムバー_入力ＯＮ();
+	return 0;
+}
+
+int T_PosterRoom::checkKey(int nID)
+{
+	int nID2 = システムバー_キー確認(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	this.m_sShortcutInfo.check();
+	return 0;
+}
+
+void T_PosterRoom::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	システムバー_選択解除();
+}
+
+void T_PosterRoom::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 900000)
+	{
+		システムバー_カーソル設定(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_PosterRoom::setButtonActive()
+{
+	int i = 0;
+	int cnt = this.m_sData.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getButtonID(i), ポスター_確認(i));
+	}
+}
+
+int T_PosterRoom::moveUpData(int nID)
+{
+	int idx = this.getDataIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstData();
+	}
+	int nRow = this.m_sData.getRow(idx);
+	int nCol = this.m_sData.getCol(idx);
+	int idx2 = this.m_sData.getIndex(nRow - 1, nCol);
+	if (idx2 < 0)
+	{
+		if (nCol == 0)
+		{
+			return 900001;
+		}
+		idx2 = this.m_sData.getIndex(1, nCol);
+	}
+	return this.getButtonID(idx2);
+}
+
+int T_PosterRoom::moveDownData(int nID)
+{
+	int idx = this.getDataIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastData();
+	}
+	int nRow = this.m_sData.getRow(idx);
+	int nCol = this.m_sData.getCol(idx);
+	int idx2 = this.m_sData.getIndex(nRow + 1, nCol);
+	if (idx2 < 0)
+	{
+		if (nCol == 0)
+		{
+			return 900001;
+		}
+		idx2 = this.m_sData.getIndex(0, nCol);
+	}
+	return this.getButtonID(idx2);
+}
+
+int T_PosterRoom::moveLeftData(int nID)
+{
+	int idx = this.getDataIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstData();
+	}
+	int nRow = this.m_sData.getRow(idx);
+	int nCol = this.m_sData.getCol(idx);
+	int idx2 = this.m_sData.getIndex(nRow, nCol - 1);
+	if (idx2 < 0)
+	{
+		idx2 = this.m_sData.getIndex(nRow, 9);
+	}
+	return this.getButtonID(idx2);
+}
+
+int T_PosterRoom::moveRightData(int nID)
+{
+	int idx = this.getDataIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastData();
+	}
+	int nRow = this.m_sData.getRow(idx);
+	int nCol = this.m_sData.getCol(idx);
+	int idx2 = this.m_sData.getIndex(nRow, nCol + 1);
+	if (idx2 < 0)
+	{
+		idx2 = this.m_sData.getIndex(nRow, 0);
+	}
+	return this.getButtonID(idx2);
+}
+
+int T_PosterRoom::getFirstData()
+{
+	int idx = this.m_sData.getFirstIndex();
+	if (idx < 0)
+	{
+		return 100001;
+	}
+	return this.getButtonID(idx);
+}
+
+int T_PosterRoom::getLastData()
+{
+	int idx = this.m_sData.getLastIndex();
+	if (idx < 0)
+	{
+		return 100001;
+	}
+	return this.getButtonID(idx);
+}
+

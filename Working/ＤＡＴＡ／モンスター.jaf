@@ -1,0 +1,3626 @@
+void ‚b“G“o˜^(int iic, int no)
+{
+	int £–½’† = 0;
+	int £‰ñ”ğ = 0;
+	int £ÕŒ‚ = 0;
+	if (no == 348)
+	{
+		‚b“G“o˜^‚P(iic, no, 100074, "Fighter in Training", 0, 2, 22, 150, 18, 60, 10, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "", 1, 100, 438, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh, and I just started adventuring yesterday...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Shit! Take this!");
+	}
+	if (no == 261)
+	{
+		‚b“G“o˜^‚P(iic, no, 100074, "Weak Fighter", 0, 2, 22, 250, 18, 80, 10, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "", 1, 100, 438, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh, and I just started adventuring yesterday...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Shit! Take this!");
+	}
+	if (no == 262)
+	{
+		‚b“G“o˜^‚P(iic, no, 100074, "Regular Fighter", 0, 2, 22, 450, 20, 180, 10, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "", 1, 100, 438, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Urgh,$they look kinda strong...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Argh! Take that!");
+	}
+	if (no == 263)
+	{
+		‚b“G“o˜^‚P(iic, no, 100074, "Skilled Fighter", 0, 2, 22, 800, 27, 280, 100, 0, 0, 110, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "", 1, 100, 438, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hmph, challenging me...?$Come at me!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Where are you looking?!$I'm over here!!");
+	}
+	if (no == 350)
+	{
+		‚b“G“o˜^‚P(iic, no, 100067, "Bird", 0, 2, 22, 800, 27, 280, 100, 0, 0, 140, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll protect you,$Matilda!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Here I go!");
+	}
+	if (no == 264)
+	{
+		‚b“G“o˜^‚P(iic, no, 100074, "Strong Fighter", 0, 2, 22, 1400, 32, 450, 100, 0, 0, 115, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, "", 1, 30, 467, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hrm, these guys...$They're good?!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I won't lose! HAAH!!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Try this attack!");
+	}
+	if (no == 265)
+	{
+		‚b“G“o˜^‚P(iic, no, 100074, "Famous Fighter", 0, 2, 22, 2400, 38, 800, 200, 0, 0, 120, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, "", 1, 30, 467, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Now!$We fight!!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "You'll be rust on my blade!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Take my special attaaack!");
+	}
+	if (no == 266)
+	{
+		‚b“G“o˜^‚P(iic, no, 100140, "Weak Guard", 0, 2, 22, 250, 18, 80, 20, 0, 20, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 212, "", 0, 30, 467, "", 1, 100, 249, "", 1, 2, 438, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh, I'm scared...$Why is this happening to me on my first adventure...?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Shit! Shit!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "(Waaah, I'm in trouble, I'm scared, I'm really scared!)$ ªTremble, shake");
+	}
+	if (no == 267)
+	{
+		‚b“G“o˜^‚P(iic, no, 100140, "Regular Guard", 0, 2, 22, 450, 20, 180, 150, 0, 30, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 212, "", 0, 30, 467, "", 1, 100, 249, "", 1, 2, 438, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Shit,$these guys are strong...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "There! Take that!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "(That was close!$ Agh, I've gotta do better!)");
+	}
+	if (no == 268)
+	{
+		‚b“G“o˜^‚P(iic, no, 100140, "Skilled Guard", 0, 2, 22, 800, 25, 240, 150, 0, 40, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 212, "", 0, 30, 467, "", 1, 100, 249, "", 1, 3, 438, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Heheh,$you're ten years early to be challenging us!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Come on now!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Whoa there!$Your moves are too obvious!");
+	}
+	if (no == 269)
+	{
+		‚b“G“o˜^‚P(iic, no, 100140, "Strong Guard", 0, 2, 22, 1400, 28, 400, 200, 0, 50, 115, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 212, "", 0, 30, 467, "", 1, 100, 249, "", 1, 3, 438, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Tch,$ these guys are good.)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hm! There!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'm gonna guard.");
+	}
+	if (no == 270)
+	{
+		‚b“G“o˜^‚P(iic, no, 100140, "Famous Guard", 0, 2, 22, 2300, 34, 600, 300, 0, 60, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 212, "", 0, 30, 467, "", 1, 100, 249, "", 1, 4, 438, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Finally, a challenge!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Aha! An opening!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I won't be defeated!");
+	}
+	if (no == 349)
+	{
+		‚b“G“o˜^‚P(iic, no, 100078, "Gunner in Training", 0, 2, 22, 100, 18, 70, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Ugh,$ can I really point this$ thing at people and shoot?)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm gonna shoot, you know?$O-Okay? You got it?!$ªFreaking out");
+	}
+	if (no == 271)
+	{
+		‚b“G“o˜^‚P(iic, no, 100078, "Weak Gunner", 0, 2, 22, 250, 18, 70, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Ugh,$ can I really point this$ thing at people and shoot?)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm gonna shoot, you know?$O-Okay? You got it?!$ªFreaking out");
+	}
+	if (no == 272)
+	{
+		‚b“G“o˜^‚P(iic, no, 100078, "Regular Gunner", 0, 2, 22, 450, 25, 200, 50, 0, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Whoa,$ those guys look$ strong...)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "(Ah?!$ Okay, now!)");
+	}
+	if (no == 273)
+	{
+		‚b“G“o˜^‚P(iic, no, 100078, "Skilled Gunner", 0, 2, 22, 800, 25, 280, 50, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Haha, these guys are dumbasses!$I'll show them I always hit my mark!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Haha, you're full of openings!");
+	}
+	if (no == 274)
+	{
+		‚b“G“o˜^‚P(iic, no, 100078, "Strong Gunner", 0, 2, 22, 1400, 28, 450, 50, 0, 0, 130, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "There's nothing worse than being unprepared.$That's what my intuition tells me.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Aaaim, and now...!");
+	}
+	if (no == 275)
+	{
+		‚b“G“o˜^‚P(iic, no, 100078, "Famous Gunner", 0, 2, 22, 2400, 39, 800, 100, 0, 0, 140, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I won't miss an opening, even for a second!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I see it!$I'll take this chance!!");
+	}
+	if (no == 276)
+	{
+		‚b“G“o˜^‚P(iic, no, 100077, "Weak Ranger", 0, 2, 22, 250, 22, 60, 0, 0, 0, 100, 20, 0, 40, 0, 0, 0, 0, 0, 0, 0, 121, "", 1, 30, 467, "attacked with a knife.", 2, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "We're really fighting?!$Aaaah, what do I do?!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ugh, I've got no choice!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I guess I'll just throw these!");
+	}
+	if (no == 277)
+	{
+		‚b“G“o˜^‚P(iic, no, 100077, "Regular Ranger", 0, 2, 22, 450, 28, 140, 0, 0, 0, 110, 30, 0, 50, 0, 0, 0, 0, 0, 0, 0, 121, "", 1, 30, 467, "attacked with a knife.", 2, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(What the heck?$ These guys are strong...)$ ªGulp");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'll strike first!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Shubibibibi!");
+	}
+	if (no == 278)
+	{
+		‚b“G“o˜^‚P(iic, no, 100077, "Skilled Ranger", 0, 2, 22, 800, 33, 240, 0, 0, 0, 120, 30, 0, 50, 0, 0, 0, 0, 0, 0, 0, 121, "", 1, 30, 467, "attacked with a knife.", 2, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "These guys should be easy with my speed.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Can you keep up?");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Check out my shuriken skills!");
+	}
+	if (no == 279)
+	{
+		‚b“G“o˜^‚P(iic, no, 100077, "Strong Ranger", 0, 2, 22, 1300, 40, 400, 0, 0, 0, 150, 30, 0, 60, 0, 0, 0, 0, 0, 0, 0, 121, "", 1, 30, 467, "attacked with a knife.", 2, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "It's all about speed!$If I can move first,$I've got what I need!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I've seen through you!$How about this?!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hah!");
+	}
+	if (no == 280)
+	{
+		‚b“G“o˜^‚P(iic, no, 100077, "Famous Ranger", 0, 2, 22, 2000, 46, 750, 0, 0, 0, 180, 30, 0, 60, 0, 0, 0, 0, 0, 0, 0, 121, "", 1, 30, 467, "attacked with a knife.", 2, 100, 438, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(...$ Whoever moves first$ is gonna die!)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ack, I'm impressed!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I don't think you have time to look away.");
+	}
+	if (no == 281)
+	{
+		‚b“G“o˜^‚P(iic, no, 100085, "Weak Sorcerer", 0, 2, 22, 200, 15, 60, 0, 100, 200, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 168, "", 1, 40, 174, "", 1, 60, 181, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(...Will I be able$ to use my magic?)$ ªHeart pounding");
+	}
+	if (no == 282)
+	{
+		‚b“G“o˜^‚P(iic, no, 100085, "Regular Sorcerer", 0, 2, 22, 350, 18, 100, 0, 150, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, "", 1, 40, 174, "", 1, 60, 181, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(These guys look strong.$ I can't mess this up.)");
+	}
+	if (no == 283)
+	{
+		‚b“G“o˜^‚P(iic, no, 100085, "Skilled Sorcerer", 0, 2, 22, 700, 25, 200, 0, 200, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, "", 1, 40, 174, "", 1, 60, 181, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "You'd better run if you don't want to feel my power!");
+	}
+	if (no == 284)
+	{
+		‚b“G“o˜^‚P(iic, no, 100085, "Strong Sorcerer", 0, 2, 22, 900, 30, 300, 0, 400, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 168, "", 1, 40, 179, "", 1, 60, 181, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hrm, they're good...$I've got to concentrate!");
+	}
+	if (no == 285)
+	{
+		‚b“G“o˜^‚P(iic, no, 100085, "Famous Sorcerer", 0, 2, 22, 1400, 35, 450, 0, 700, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 172, "", 1, 30, 179, "", 1, 60, 185, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "No matter how strong my foe may be, my magic will triumph!");
+	}
+	if (no == 286)
+	{
+		‚b“G“o˜^‚P(iic, no, 100168, "Weak Brawler", 0, 2, 22, 270, 18, 80, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 473, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "H-Heh!$C-C--Come at me!$ªTrembling with excitement");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hah!");
+	}
+	if (no == 287)
+	{
+		‚b“G“o˜^‚P(iic, no, 100168, "Regular Brawler", 0, 2, 22, 800, 20, 200, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 473, "punched.", 1, 100, 259, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh, these guys are strong!$Heheh,$I'm getting excited.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Haaah!");
+	}
+	if (no == 288)
+	{
+		‚b“G“o˜^‚P(iic, no, 100168, "Skilled Brawler", 0, 2, 22, 1300, 25, 300, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 473, "punched.", 1, 100, 259, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hey, hey, hey!$Let's do this!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Heh,$take this!");
+	}
+	if (no == 289)
+	{
+		‚b“G“o˜^‚P(iic, no, 100168, "Strong Brawler", 0, 2, 22, 2000, 28, 500, 0, 0, 0, 140, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 473, "punched.", 1, 100, 259, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "You look strong!$This'll be fun!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hiyah!");
+	}
+	if (no == 290)
+	{
+		‚b“G“o˜^‚P(iic, no, 100168, "Famous Brawler", 0, 2, 22, 3000, 34, 900, 0, 0, 0, 140, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 473, "punched.", 1, 100, 259, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I look forward to this.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hmph!");
+	}
+	if (no == 291)
+	{
+		‚b“G“o˜^‚P(iic, no, 100170, "Weak Monster Tamer", 0, 2, 22, 250, 18, 30, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Will you fight for me,$ my monster?)$ ªHeart pounding");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Argh!$(Smack!!)");
+	}
+	if (no == 292)
+	{
+		‚b“G“o˜^‚P(iic, no, 100170, "Regular Monster Tamer", 0, 2, 22, 450, 20, 70, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "It'll work out if I've got my partner.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Come on!$(Thwack!!)");
+	}
+	if (no == 293)
+	{
+		‚b“G“o˜^‚P(iic, no, 100170, "Skilled Monster Tamer", 0, 2, 22, 800, 25, 100, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Come on, partner, take them out!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "You!$(Crack!!)");
+	}
+	if (no == 294)
+	{
+		‚b“G“o˜^‚P(iic, no, 100170, "Strong Monster Tamer", 0, 2, 22, 1000, 28, 170, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hey, do you really think you'll be able to win against us?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "It's not just the monster who can attack, you know!$(Swish, swish!!)");
+	}
+	if (no == 295)
+	{
+		‚b“G“o˜^‚P(iic, no, 100170, "Famous Monster Tamer", 0, 2, 22, 2000, 34, 250, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Now, go!$My friend!!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Don't forget about me, now.$(Crack, crack, crack, crack!)");
+	}
+	if (no == 340)
+	{
+		‚b“G“o˜^‚P(iic, no, 100074, "Burglar Leader", 0, 2, 22, 450, 20, 140, 10, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "attacked with a sword.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Now leave all your valuables.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "It was bad luck that you ran into us.");
+	}
+	if (no == 342)
+	{
+		‚b“G“o˜^‚P(iic, no, 100078, "Stray Archer", 0, 2, 22, 450, 20, 120, 0, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm taking your women.$Leave them here.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Women are valuable.$I'll defeat them without injuring them.");
+	}
+	if (no == 341)
+	{
+		‚b“G“o˜^‚P(iic, no, 100077, "Washed-Up Assassin", 0, 2, 22, 450, 24, 100, 0, 0, 0, 120, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 121, "", 1, 30, 467, "attacked with a knife.", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Even I used to be...$Oh, whatever.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Sorry, but you guys are gonna have to die.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Shuriken, shu, shu.");
+	}
+	if (no == 296)
+	{
+		‚b“G“o˜^‚P(iic, no, 100222, "Leopold", 0, 2, 22, 800, 28, 170, 150, 150, 0, 160, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Vanilla!$We can do this!!$ªHeart pounding");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urgh, we're gonna write our names in the Bond Journal!!");
+	}
+	if (no == 297)
+	{
+		‚b“G“o˜^‚P(iic, no, 100170, "Bonded Man", 0, 2, 22, 1600, 28, 400, 200, 0, 200, 180, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 307, "", 1, 1, 249, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Let's go,$Crimson Flash!$ªProbably the crimson eye's name");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "This is the whip of our bond!$(Ca-crack!!)");
+	}
+	if (no == 345)
+	{
+		‚b“G“o˜^‚P(iic, no, 100168, "Nirote Guma", 0, 24, 22, 3000, 25, 450, 300, 0, 300, 200, 0, 50, 0, 50, 5, 0, 0, 0, 0, 0, 386, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 481, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm trash.$There's no reason for me to live.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Don't get in my way!");
+	}
+	if (no == 363)
+	{
+		‚b“G“o˜^‚P(iic, no, 100230, "Contaminated Fighter", 0, 24, 22, 2400, 38, 800, 200, 0, 0, 140, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 468, "", 1, 30, 467, "", 1, 100, 0, "", 1, 0, 481, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Uegh, heehee...$Heehee...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Spliiit!$Heheehee!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Cut cut cut cut$cut you in haaaalf!");
+	}
+	if (no == 450)
+	{
+		‚b“G“o˜^‚P(iic, no, 100230, "Contaminated Fighter (Weak)", 0, 24, 22, 800, 27, 280, 100, 0, 0, 140, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, "", 1, 30, 467, "", 1, 100, 0, "", 1, 0, 481, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "......It's no use...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Come on... come on!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Aah... ah...$AAaAAAaAAah!!");
+	}
+	if (no == 364)
+	{
+		‚b“G“o˜^‚P(iic, no, 100231, "Contaminated Guard", 0, 24, 22, 2300, 34, 600, 300, 0, 60, 150, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 212, "", 0, 30, 467, "", 1, 100, 249, "", 1, 4, 481, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Cut me, please...$It feels good...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hurry up and cut me already...$Hurry!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'll take that attaaack!");
+	}
+	if (no == 365)
+	{
+		‚b“G“o˜^‚P(iic, no, 100232, "Contaminated Gunner", 0, 24, 22, 2400, 39, 800, 100, 0, 0, 180, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 402, "", 1, 100, 481, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Please just leave me alone.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "It hurts, doesn't it...");
+	}
+	if (no == 367)
+	{
+		‚b“G“o˜^‚P(iic, no, 100234, "Contaminated Ranger", 0, 24, 22, 2000, 46, 750, 0, 0, 0, 280, 0, 0, 60, 100, 0, 0, 0, 0, 0, 0, 121, "", 1, 30, 467, "attacked with knife.", 2, 100, 481, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "What's wrong?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Huh...?$Sorry, I stabbed you.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I dunno...$What do you think...");
+	}
+	if (no == 366)
+	{
+		‚b“G“o˜^‚P(iic, no, 100233, "Contaminated Sorcerer", 0, 24, 22, 1400, 35, 450, 0, 700, 200, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 172, "", 1, 30, 179, "", 1, 60, 185, "", 1, 100, 481, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh... Uuughh...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Aah...!?");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Ahahahahahahahaha!!");
+	}
+	if (no == 308)
+	{
+		‚b“G“o˜^‚P(iic, no, 100192, "Kalar", 0, 13, 22, 300, 28, 140, 20, 100, 50, 120, 20, 0, 20, 30, 0, 0, 0, 0, 0, 0, 175, "", 2, 40, 402, "", 1, 100, 291, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(It's a human...$ If I'm caught...)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Please hit, my arrow!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+	}
+	if (no == 309)
+	{
+		‚b“G“o˜^‚P(iic, no, 100191, "Kalar Commander", 0, 13, 22, 350, 28, 160, 40, 120, 100, 140, 30, 0, 20, 60, 0, 0, 0, 0, 0, 0, 236, "cast defensive magic.", 2, 50, 175, "", 2, 40, 402, "", 1, 100, 291, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Protect the forest!$Drive out the humans!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Aim for their arms and legs!$Just stop them from moving!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Spirits of the forest...$Please protect us.");
+	}
+	if (no == 298)
+	{
+		‚b“G“o˜^‚P(iic, no, 100199, "Helmanian Soldier A", 0, 2, 22, 380, 20, 160, 20, 0, 0, 130, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 471, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "All us grunts can do is fight like we're ordered to.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Toooh!");
+	}
+	if (no == 304)
+	{
+		‚b“G“o˜^‚P(iic, no, 100194, "Templar", 0, 2, 22, 1500, 34, 450, 200, 200, 100, 160, 0, 0, 50, 40, 2, 0, 0, 0, 40, 0, 224, "", 2, 30, 472, "attacked with mace.", 1, 100, 0, "", 1, 0, 298, "", 1, 2, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Everything is for the Lady.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Fool!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Protect us!");
+	}
+	if (no == 452)
+	{
+		‚b“G“o˜^‚P(iic, no, 100194, "Templar", 0, 2, 22, 8000, 34, 750, 200, 400, 100, 160, 20, 0, 50, 40, 2, 0, 0, 0, 40, 0, 224, "", 2, 30, 472, "attacked with mace.", 1, 100, 0, "", 1, 0, 298, "", 1, 2, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Everything is for the Lady.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Now!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Give us your protection...");
+	}
+	if (no == 305)
+	{
+		‚b“G“o˜^‚P(iic, no, 100172, "Amazusa Employee", 0, 2, 22, 100, 18, 95, 20, 0, 0, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 385, "attacked with a weapon.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Raise my salary, Boss! ");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Take that!$And that!");
+	}
+	if (no == 258)
+	{
+		‚b“G“o˜^‚P(iic, no, 100171, "Lion Soldier", 0, 2, 22, 250, 20, 150, 0, 0, 0, 80, 0, 20, 20, 30, 0, 0, 0, 0, 0, 0, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Actin' like you're so cute!$I'll tear your face off!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Don' un'erestimate us!!");
+	}
+	if (no == 259)
+	{
+		‚b“G“o˜^‚P(iic, no, 100171, "Cheetah Soldier", 0, 2, 22, 300, 28, 300, 0, 0, 0, 130, 0, 30, 10, 30, 0, 0, 0, 0, 0, 0, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "No second thoughts!$We're sticking with our leader for the rest of our lives!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "With our leader, we'll shine!");
+	}
+	if (no == 260)
+	{
+		‚b“G“o˜^‚P(iic, no, 100181, "Wrestler Sumo", 0, 2, 22, 800, 25, 200, 50, 100, 0, 160, 20, 0, 10, 30, 0, 0, 0, 0, 0, 0, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Like I'd be raped by this man!$ªSeriously thinks that");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Stay away from me,$you rapist!");
+	}
+	if (no == 356)
+	{
+		‚b“G“o˜^‚P(iic, no, 100181, "Wrestler Sumo", 0, 2, 22, 2000, 30, 600, 50, 100, 0, 180, 0, 0, 10, 30, 0, 0, 0, 0, 0, 0, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Kill all men who judge women by their appearances!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm gonna punch you in the face!");
+	}
+	if (no == 343)
+	{
+		‚b“G“o˜^‚P(iic, no, 100170, "Helmanian Monster Tamer", 0, 2, 22, 1000, 35, 400, 200, 0, 200, 150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 447, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I specialize in handling monsters.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Get away from me!$Shoo, shoo!");
+	}
+	if (no == 355)
+	{
+		‚b“G“o˜^‚P(iic, no, 100199, "Helmanian Soldier", 0, 2, 22, 800, 30, 400, 20, 0, 0, 150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 471, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "This is just my job.$Don't think badly of me.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Shaaa!$Helmanian Thrust!");
+	}
+	if (no == 299)
+	{
+		‚b“G“o˜^‚P(iic, no, 100173, "Helmanian Knight", 0, 2, 22, 2000, 35, 700, 350, 0, 0, 180, 0, 30, 30, 30, 0, 0, 0, 0, 0, 0, 213, "", 0, 20, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Third Army Knight Squadron,$entering battle.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Take my steel sword!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I won't lose to you.");
+		‚b‚rˆê“xg—p(iic, 1, 1);
+	}
+	if (no == 353)
+	{
+		‚b“G“o˜^‚P(iic, no, 100173, "Helmanian Knight", 0, 2, 22, 2000, 35, 700, 350, 0, 0, 180, 0, 30, 30, 30, 0, 0, 0, 0, 0, 0, 213, "", 0, 20, 467, "", 1, 100, 249, "", 1, 3, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll admit you're brave to face the Third Army Knight Squadron.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'll cut you down!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "You've met your match.");
+		‚b‚rˆê“xg—p(iic, 1, 1);
+	}
+	if (no == 300)
+	{
+		‚b“G“o˜^‚P(iic, no, 100173, "Captain Org", 0, 2, 22, 5000, 35, 300, 300, 0, 0, 150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Do you know who my father is?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Go ahead and die. One hit.");
+	}
+	if (no == 301)
+	{
+		‚b“G“o˜^‚P(iic, no, 100184, "Commander Isaac", 0, 2, 22, 5000, 55, 800, 300, 0, 0, 190, 10, 30, 80, 50, 0, 0, 0, 0, 0, 0, 206, "", 1, 20, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Guess this'll be a warm up before the queen.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Don't make me get serious.");
+	}
+	if (no == 302)
+	{
+		‚b“G“o˜^‚P(iic, no, 100174, "Amitos", 0, 2, 22, 5000, 40, 900, 300, 0, 0, 200, 0, 70, 80, 80, 0, 0, 0, 0, 0, 0, 389, "blew away her surroundings.", 1, 50, 467, "attacked with her weapon.", 1, 100, 0, "", 1, 0, 305, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Yield.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Beat it!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I won't even leave your ashes!");
+	}
+	if (no == 303)
+	{
+		‚b“G“o˜^‚P(iic, no, 100174, "Amitos (Weakened)", 0, 2, 22, 5000, 40, 400, 300, 0, 0, 200, 0, 70, 80, 80, 0, 0, 0, 0, 0, 0, 386, "pressed forward.", 1, 50, 385, "attacked with her weapon.", 1, 100, 0, "", 1, 0, 305, "", 1, 0, 0, "", 1, 0);
+		‚b‘Ì—Í(iic, 2000);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "You don't have the right to fight me!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Die!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "This is it!");
+	}
+	if (no == 323)
+	{
+		‚b“G“o˜^‚P(iic, no, 100072, "Matilda (LV 15)", 0, 2, 22, 800, 25, 200, 0, 0, 0, 140, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 2);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Now is the time for justice!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Take this!$The hammer of justice!");
+	}
+	if (no == 324)
+	{
+		‚b“G“o˜^‚P(iic, no, 100072, "Matilda (LV 22)", 0, 2, 22, 1200, 25, 300, 0, 0, 0, 140, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 2);
+		‚b‚k‚u(iic, 22);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Now is the time for justice!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'll show you how strong I've gotten!");
+	}
+	if (no == 325)
+	{
+		‚b“G“o˜^‚P(iic, no, 100072, "Matilda (LV 35)", 0, 2, 22, 2000, 30, 450, 100, 0, 0, 160, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 399, "punched powerfully.", 2, 30, 385, "punched.", 1, 100, 259, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 2);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Now is the time for justice!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm stronger than I was before!$Witness my awesome power!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Fly!$The swift punch of justice!");
+	}
+	if (no == 326)
+	{
+		‚b“G“o˜^‚P(iic, no, 100072, "Matilda (LV 38)", 0, 2, 22, 2400, 30, 550, 150, 0, 0, 160, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 399, "punched powerfully.", 2, 30, 385, "punched.", 1, 100, 259, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 2);
+		‚b‚k‚u(iic, 38);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Atone while you still can...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I stake my life on this strike!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Fly!$The swift punch of justice!");
+	}
+	if (no == 327)
+	{
+		‚b“G“o˜^‚P(iic, no, 100069, "Matilda (X)", 0, 2, 22, 3000, 50, 770, 100, 0, 500, 200, 40, 0, 0, 100, 0, 0, 0, 0, 0, 40, 399, "punched powerfully.", 2, 40, 385, "punched.", 1, 100, 259, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚k‚u(iic, 39);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I will punish the wicked Rance with Chaos the Lightblade!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Here I go!$Justice Puuunch!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Evil be vanquished!");
+	}
+	if (no == 328)
+	{
+		‚b“G“o˜^‚P(iic, no, 100189, "Dark Matilda", 0, 2, 22, 7000, 80, 1300, 100, 0, 500, 200, 60, 30, 100, 100, 1, 0, 0, 0, 0, 40, 399, "punched powerfully.", 2, 30, 385, "punched.", 1, 100, 259, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 0);
+		‚b‚k‚u(iic, 39);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh... Ah... Ugh...$Kill... Ran...ce...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", ".........");
+	}
+	if (no == 484)
+	{
+		‚b“G“o˜^‚P(iic, no, 100312, "Dark Matilda", 0, 2, 22, 9000, 90, 1300, 100, 0, 500, 200, 60, 80, 150, 100, 1, 0, 0, 0, 0, 40, 399, "punched powerfully.", 2, 30, 385, "punched.", 1, 100, 259, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 0);
+		‚b‚k‚u(iic, 39);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh... Ah... Ugh...$Kill... Ran...ce...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", ".........");
+	}
+	if (no == 333)
+	{
+		‚b“G“o˜^‚P(iic, no, 100071, "Alkanese", 1, 2, 22, 2000, 40, 800, 80, 0, 80, 200, 20, 0, 50, 100, 0, 0, 0, 0, 0, 0, 133, "pounded the ground with her axe.", 1, 30, 472, "brandished her axe.", 1, 100, 305, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hah!$You think you're all that!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Haha!$Go ahead and dodge this if you can!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Come on!$Already done?!");
+	}
+	if (no == 334)
+	{
+		‚b“G“o˜^‚P(iic, no, 100071, "Alkanese (Weakened)", 1, 2, 22, 2000, 35, 300, 70, 0, 70, 200, 0, 0, 20, 40, 0, 0, 0, 0, 0, 0, 133, "pounded the ground with her axe.", 1, 40, 472, "brandished her axe.", 1, 100, 305, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‘Ì—Í(iic, 1000);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Rrah!$I won't lose to a coward like this!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Don't underestimate me,$shitspigot!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Go to hell!");
+	}
+	if (no == 335)
+	{
+		‚b“G“o˜^‚P(iic, no, 100183, "Alkanese Copy", 0, 4, 22, 500, 25, 300, 100, 0, 0, 200, 0, 0, 20, 40, 0, 0, 0, 0, 0, 0, 133, "pounded the ground with her axe.", 1, 20, 472, "brandished her axe.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Let's do this thing!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Crumble!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I'll destroy you!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Brooooo!");
+	}
+	if (no == 336)
+	{
+		‚b“G“o˜^‚P(iic, no, 100073, "Aegis", 1, 13, 22, 1500, 40, 700, 100, 600, 200, 200, 30, 0, 0, 100, 0, 0, 0, 0, 0, 0, 176, "", 2, 30, 402, "shot an arrow.", 1, 100, 291, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "What now?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Dodge or you're dead.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Leave this forest!");
+	}
+	if (no == 337)
+	{
+		‚b“G“o˜^‚P(iic, no, 100149, "Silbarrel", 0, 2, 22, 1000, 40, 300, 100, 400, 200, 200, 30, 0, 0, 100, 1, 0, 0, 0, 0, 0, 422, "", 1, 30, 385, "jabbed.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Who'd waste their life on something like love?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I don't give a shit about love or men or marriage!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Come over here if you'd like to see my beauty.");
+	}
+	if (no == 458)
+	{
+		‚b“G“o˜^‚P(iic, no, 100149, "Super Silbarrel", 0, 2, 22, 4000, 60, 1800, 700, 400, 900, 200, 30, 0, 0, 100, 1, 0, 0, 0, 0, 0, 422, "", 1, 30, 385, "jabbed.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Who'd waste their life on something like love?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I don't give a shit about love or men or marriage!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Come over here if you'd like to see my beauty.");
+	}
+	£–½’† = 80;
+	£‰ñ”ğ = 0;
+	£ÕŒ‚ = 0;
+	if (no == 135)
+	{
+		‚b“G“o˜^‚P(iic, no, 100125, "Squidman", 0, 4, 0, 150, 18, 75, 0, 0, 0, 80, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 385, "squid punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Squid, squid, squid!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Squiiid, squiiid!$(Squid Punch!)");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Squiiiid!$(Squid Drill!$ Spin, spin!)");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 136)
+	{
+		‚b“G“o˜^‚P(iic, no, 100125, "Squidman (Love)", 0, 4, 0, 450, 22, 300, 0, 0, 0, 100, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 385, "squid punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll protect you,$Kraken!$Squid!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Squiiiid!$(Kraken! I love you!)");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Squiiiid!$(Kraken! I love you!)");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 137)
+	{
+		‚b“G“o˜^‚P(iic, no, 100121, "Ruronta", 0, 4, 19, 240, 21, 85, 0, 0, 0, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 390, "punched, oozing poison.", 1, 40, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "*twist* *twist* *twist*");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urororooon$Puuunch!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Urorooon$Poison Puuunch!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 138)
+	{
+		‚b“G“o˜^‚P(iic, no, 100099, "Doggy", 0, 6, 0, 100, 24, 100, 0, 0, 0, 80, 20, 0, 10, 0, 0, 0, 0, 0, 0, 0, 436, "marked its territory.", 2, 30, 396, "tackled powerfully.", 1, 10, 385, "tackled.", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "*whiiine*");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Woof, woof!$ªPlaying");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Rrrr, woof, woof!$ªA little angry");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Pssssssh$ªThis is my territory");
+	}
+	if (no == 139)
+	{
+		‚b“G“o˜^‚P(iic, no, 100141, "Roper", 0, 4, 16, 140, 18, 0, 0, 30, 20, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 187, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Bzz, bzz, bzz$(Emitting low frequency waves)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ropsh!$(Flash!)");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 140)
+	{
+		‚b“G“o˜^‚P(iic, no, 100100, "Hanny", 0, 8, 17, 280, 18, 100, 10, 0, 9999, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 420, "", 2, 20, 385, "punched with its short arms.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Haniho!$I'm a hanny!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Take that! And that!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hanny Flash!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 142)
+	{
+		‚b“G“o˜^‚P(iic, no, 100003, "Can Can", 0, 3, 22, 200, 24, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 231, "pestered, \"Play with me! Play with me!\"", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 1);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Fighting is so boring!$Let's play together!$*grin*");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Play with me! Play with me!$Let's play together!");
+	}
+	if (no == 143)
+	{
+		‚b“G“o˜^‚P(iic, no, 100178, "Lucky Can Can", 0, 3, 22, 200, 24, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 231, "pestered, \"Play with me! Play with me!\"", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 2);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm so glad I met you!$I'm so lucky!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "If you play with me, I'll do something good for you.");
+	}
+	if (no == 141)
+	{
+		‚b“G“o˜^‚P(iic, no, 100089, "Grape", 0, 7, 0, 200, 23, 99, 10, 0, 0, 100, 0, 0, 50, 0, 5, 0, 0, 0, 0, 0, 385, "did a grape-ish attack.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 2);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "G-Gr... Graaaape...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...Graaape...");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gr... Gr... Graaape.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Gr... Gr... Graaape.");
+	}
+	if (no == 357)
+	{
+		‚b“G“o˜^‚P(iic, no, 100098, "Tofu Ghost", 0, 4, 20, 100, 20, 50, 0, 0, 0, 100, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 406, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 4);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(I am you.$ You are me?)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I will not kill you.$I will only get in your way.");
+	}
+	£–½’† = 100;
+	£‰ñ”ğ = 0;
+	£ÕŒ‚ = 0;
+	if (no == 144)
+	{
+		‚b“G“o˜^‚P(iic, no, 100144, "Yankee", 0, 4, 22, 300, 20, 150, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, 20, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 384, "did a practice swing.", 0, 10, 400, "did a full swing.", 2, 20, 385, "swung his bat.", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Go to hell!$Go to heeell!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "HIT!!!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Home run!$Ca-crack!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Give me chocolate?$Gyahahaha!");
+	}
+	if (no == 145)
+	{
+		‚b“G“o˜^‚P(iic, no, 100188, "Yankee (Braceleted)", 0, 4, 22, 600, 20, 150, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, 20, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 400, "did a full swing.", 2, 20, 385, "swung his bat.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ggh... Gyagya...$Kill, kill.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm done for...$But I'm taking you with me...");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gyahahahaha!$Crush everything!$To pieces!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Bh... Bh... Bh...");
+	}
+	if (no == 148)
+	{
+		‚b“G“o˜^‚P(iic, no, 100156, "Rust", 0, 10, 21, 280, 15, 0, 0, 150, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 40, 203, "", 1, 80, 384, "is moving slowly.", 0, 100, 303, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HEIL. M. M. RUNE.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "RURU$RURU$RU");
+	}
+	if (no == 149)
+	{
+		‚b“G“o˜^‚P(iic, no, 100053, "Meatball", 0, 4, 0, 330, 20, 100, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 212, "", 0, 20, 385, "kicked, for some reason.", 1, 100, 249, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "What's for dinner today?$Better not be meatballs.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Explode!$Meat kiiiiick!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Before the spaghetti,$you deal with ME!");
+	}
+	if (no == 146)
+	{
+		‚b“G“o˜^‚P(iic, no, 100131, "Goldfish", 0, 7, 16, 250, 23, 130, 0, 0, 0, 120, 20, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gyoppee$(I love pastries!)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gyoppee$(I'm gonna tackle you!)");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 147)
+	{
+		‚b“G“o˜^‚P(iic, no, 100113, "Puryo", 0, 4, 19, 250, 20, 140, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 50, 5, 0, 0, 0, 0, 0, 403, "", 1, 100, 299, "", 0, 3, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Puryoryoryo!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Puryo!!");
+	}
+	if (no == 151)
+	{
+		‚b“G“o˜^‚P(iic, no, 100106, "Uppy", 0, 6, 19, 310, 20, 180, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, 10, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 466, "breathed fire.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Uppy!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Uppy!$Fwoooosh, fwooosh");
+	}
+	if (no == 153)
+	{
+		‚b“G“o˜^‚P(iic, no, 100075, "97 Chi-Ha", 0, 3, 22, 500, 18, 190, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, 10, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 435, "is embarrassed.", 1, 30, 409, "fired main cannon.", 2, 100, 303, "", 0, 1, 304, "", 0, 1, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Target in range!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Whoa, firing!$Please hit!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Aaah!$Firing failed~!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "First, I'll observe the enemy.$Reconnaissance is an important mission, too.");
+	}
+	if (no == 312)
+	{
+		‚b“G“o˜^‚P(iic, no, 100086, "Sanuki Aloe", 0, 7, 0, 400, 5, 0, 0, 0, 0, £–½’†, 0, 0, £ÕŒ‚, 100, 5, 0, 0, 0, 0, 0, 212, "", 0, 60, 384, "isn't doing anything.", 0, 100, 249, "", 1, 3, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "............");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "......Aloe.");
+	}
+	if (no == 152)
+	{
+		‚b“G“o˜^‚P(iic, no, 100087, "Soil Pollution", 0, 6, 19, 300, 20, 180, 0, 0, 0, £–½’†, £‰ñ”ğ, 10, 10, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 417, "", 1, 100, 299, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Nom, nom.$(Eating dirt)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Bree!$Bree, bree, breeee!");
+	}
+	£–½’† = 100;
+	£‰ñ”ğ = 0;
+	£ÕŒ‚ = 0;
+	if (no == 154)
+	{
+		‚b“G“o˜^‚P(iic, no, 100108, "Circle", 0, 11, 16, 500, 22, 200, 0, 0, 50, £–½’†, 30, 0, 10, £ÕŒ‚, 0, 0, 40, 0, 0, 0, 390, "flew forward.", 1, 50, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "›@›@›@›");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "›@¨@¨@¨@you");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "›@¨@poison@¨@you");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 155)
+	{
+		‚b“G“o˜^‚P(iic, no, 100051, "Polyman", 0, 12, 0, 520, 20, 220, 0, 0, 0, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 235, "scraped polygons together.", 1, 35, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "My name is Polyman.$Poly poly power!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "100,000 Polygon Punch!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Activate shading effect!$Poly power up!");
+	}
+	if (no == 163)
+	{
+		‚b“G“o˜^‚P(iic, no, 100088, "Gates 95", 0, 4, 22, 500, 25, 240, 0, 0, 100, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 429, "", 1, 50, 463, "fired Gates Beam.", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "ME might be micro,$but ME's still great!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Operation Beam!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "You can't use that,$ME decided.");
+	}
+	if (no == 156)
+	{
+		‚b“G“o˜^‚P(iic, no, 100179, "Magball", 0, 11, 0, 580, 28, 200, 0, 0, 0, 150, £‰ñ”ğ, 30, £ÕŒ‚, 50, 3, 0, 0, 0, 0, 0, 406, "", 1, 100, 304, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Shiiing!$(Eye flashes)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Shiiiing!");
+	}
+	if (no == 158)
+	{
+		‚b“G“o˜^‚P(iic, no, 100101, "Green Hanny", 0, 8, 17, 600, 20, 180, 10, 0, 9999, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 420, "", 2, 40, 385, "thrust his triden.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Aiyaaa!$A human! Guess I'll beat 'em!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "It'll hurt if it stabs you!$See? See?");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hanny Flash!");
+	}
+	if (no == 159)
+	{
+		‚b“G“o˜^‚P(iic, no, 100090, "Auntie Bat", 0, 6, 16, 320, 26, 160, 0, 0, 50, £–½’†, 30, 0, 70, £ÕŒ‚, 1, 0, 0, 0, 0, 40, 384, "is flying around.", 0, 20, 415, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Auntie's a bat auntie.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Auntie can produce ultrasonic waves.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Auntie's taking a break right now.");
+	}
+	if (no == 157)
+	{
+		‚b“G“o˜^‚P(iic, no, 100022, "Wooden Boxen", 0, 12, 22, 800, 24, 140, 20, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 212, "", 0, 20, 385, "corner jabbed.", 1, 100, 249, "", 1, 3, 306, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I can't let you see what's inside this box.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Corners are a pretty lethal weapon.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'll show you the strength of boxes!");
+	}
+	if (no == 164)
+	{
+		‚b“G“o˜^‚P(iic, no, 100001, "Gecky", 0, 3, 22, 550, 22, 200, 0, 0, 0, £–½’†, £‰ñ”ğ, 50, £ÕŒ‚, 100, 4, 0, 0, 0, 0, 0, 398, "did a handstand whirlwind kick.", 2, 40, 385, "kicked.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "These guys look tough.$I'm gonna get serious.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gecky Kick!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Secret Technique:$Handstand Whirlwind Kick!");
+	}
+	if (no == 165)
+	{
+		‚b“G“o˜^‚P(iic, no, 100011, "Kraken", 0, 3, 22, 600, 22, 180, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 40, 0, 0, 0, 385, "slapped.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Heewawawah, M-$Mr-Mr. Squidman,$p-p-p-pr-protect me...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ugh, ugh...$Waah, waah, *slap*!");
+	}
+	if (no == 160)
+	{
+		‚b“G“o˜^‚P(iic, no, 100068, "Rotten Corpse", 0, 4, 21, 800, 10, 200, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 100, 1, 0, 0, 0, 0, 0, 384, "is spacing out.", 0, 40, 385, "punched.", 1, 100, 303, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Aaah, uhhh, aah...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "AAaah...");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Brains, squishy squish.");
+	}
+	if (no == 161)
+	{
+		‚b“G“o˜^‚P(iic, no, 100151, "Putrid Corpse", 0, 4, 21, 1500, 10, 200, 0, 0, 0, £–½’†, 0, 0, £ÕŒ‚, 100, 1, 0, 0, 0, 0, 0, 384, "is spacing out.", 0, 40, 385, "punched.", 1, 100, 303, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "AAAh, uhh, aah...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "AAaugh...");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Brains, squishy squish.$Squished...");
+	}
+	£–½’† = 100;
+	£‰ñ”ğ = 0;
+	£ÕŒ‚ = 5;
+	if (no == 166)
+	{
+		‚b“G“o˜^‚P(iic, no, 100142, "Ham Bambara", 0, 4, 22, 800, 25, 250, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 213, "protected itself with its shield.", 0, 30, 471, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Wanta rape human women, oink!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Oinkheeheehee!$Die, humans, oink!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I only care about myself, oink!");
+	}
+	if (no == 171)
+	{
+		‚b“G“o˜^‚P(iic, no, 100110, "Crimson Eye", 0, 4, 0, 880, 26, 0, 0, 200, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 20, 4, 0, 0, 0, 0, 0, 172, "", 1, 15, 201, "", 1, 30, 168, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I shall deign to kill you!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Won't you burn for me?!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Become ash!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Releasing pink eye gas.");
+	}
+	if (no == 172)
+	{
+		‚b“G“o˜^‚P(iic, no, 100110, "Bonded Crimson Eye", 0, 4, 0, 2700, 26, 0, 0, 400, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 20, 4, 0, 0, 0, 0, 0, 172, "", 1, 15, 201, "", 1, 30, 168, "", 1, 100, 307, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll kill you with the power of our bond!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "These are the flames of our bond!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Please hurry up and disappear!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Releasing pink eye gas.");
+	}
+	if (no == 174)
+	{
+		‚b“G“o˜^‚P(iic, no, 100097, "Jar", 0, 6, 17, 150, 20, 0, 20, 500, 0, £–½’†, 30, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 384, "made no response. It looks like it's just a jar.", 0, 10, 221, "made a \"piroro~\" noise.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(I'm a jar! Just a jar!)");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Pipiro piro piro~");
+	}
+	if (no == 170)
+	{
+		‚b“G“o˜^‚P(iic, no, 100092, "D. Shield", 0, 4, 16, 980, 24, 230, 100, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 20, 3, 0, 0, 0, 0, 0, 212, "", 0, 20, 127, "blew fire.", 1, 100, 249, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Spin... spin...$My. Eyes. Spin.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'll. Breathe. Fire.$Fwoosh. Fwoosh.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I'll. Breathe. Fire.$Fwoosh. Fwoosh.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'll... protect... everyone...$Guaaard block!");
+	}
+	if (no == 168)
+	{
+		‚b“G“o˜^‚P(iic, no, 100026, "Crab Girl", 0, 3, 22, 900, 20, 270, 0, 0, 0, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 427, "", 2, 50, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 0, 0);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "W-We're going to fight...?!$I'm embarrassed, but here I go!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "C-Crab Punch...");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Here's my special move...$Oh, I'm gonna fall...$Owowow, how embarrassing...");
+	}
+	if (no == 173)
+	{
+		‚b“G“o˜^‚P(iic, no, 100118, "Not Yet Horned Whale", 0, 6, 0, 900, 25, 0, 0, 200, 0, £–½’†, £‰ñ”ğ, 30, 20, 20, 5, 0, 0, 40, 0, 0, 181, "shot electricity from its horn.", 1, 100, 246, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Kupooo.$Not done yet!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Kupo!$(Electricity)");
+	}
+	if (no == 313)
+	{
+		‚b“G“o˜^‚P(iic, no, 100153, "South American Aloe", 0, 7, 0, 1200, 5, 0, 0, 0, 0, £–½’†, 0, 0, £ÕŒ‚, 100, 5, 0, 0, 0, 0, 0, 212, "", 0, 60, 384, "isn't doing anything.", 0, 100, 249, "", 1, 3, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "............");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "......Aloe.");
+	}
+	if (no == 162)
+	{
+		‚b“G“o˜^‚P(iic, no, 100150, "Giant Corpse", 0, 4, 21, 3350, 10, 300, 0, 0, 0, £–½’†, 0, 0, 30, 100, 1, 0, 0, 0, 0, 0, 384, "is spacing out.", 0, 40, 385, "punched.", 1, 100, 303, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "AaAaaah...$UuUAaAah...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "OOAAaah...");
+		“G‘äŒ“o˜^(iic, "x‰‡", "...*spaaace*");
+	}
+	if (no == 184)
+	{
+		‚b“G“o˜^‚P(iic, no, 100098, "Lone Spirit", 0, 4, 20, 300, 20, 300, 0, 0, 0, £–½’†, £‰ñ”ğ, 20, 0, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 406, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Huh?$ Come to think of it,$ how did I die?)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm so jealous of you living things!$Fuck you!!");
+	}
+	if (no == 358)
+	{
+		‚b“G“o˜^‚P(iic, no, 100122, "Cockroach", 0, 6, 0, 600, 35, 250, 0, 0, 0, 200, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 385, "", 1, 100, 248, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 15);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Rustle rustle rustle...)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "(Rustle rustle rustle...$ Sproing!)");
+		if (FA[131] == 1)
+		{
+			‚b‰Š‘Ï«(iic, 80);
+		}
+		if (FA[132] == 1)
+		{
+			‚b•X‘Ï«(iic, 80);
+		}
+		if (FA[133] == 1)
+		{
+			‚b—‹‘Ï«(iic, 80);
+		}
+		if (FA[134] == 1)
+		{
+			‚bŒõ‘Ï«(iic, 80);
+		}
+		if (FA[135] == 1)
+		{
+			‚bˆÅ‘Ï«(iic, 80);
+		}
+		if (FA[136] == 1)
+		{
+			‚b‚r’Ç‰Á(iic, 476, 0);
+		}
+		if (FA[137] == 1)
+		{
+			‚b‚r’Ç‰Á(iic, 477, 0);
+		}
+		if (FA[138] == 1)
+		{
+			‚b‚r’Ç‰Á(iic, 478, 0);
+		}
+		if (FA[139] == 1)
+		{
+			‚b‚r’Ç‰Á(iic, 479, 0);
+		}
+		if (FA[140] == 1)
+		{
+			‚b‚r’Ç‰Á(iic, 480, 0);
+		}
+	}
+	£–½’† = 110;
+	£‰ñ”ğ = 10;
+	£ÕŒ‚ = 10;
+	if (no == 176)
+	{
+		‚b“G“o˜^‚P(iic, no, 100018, "Odds", 0, 4, 22, 1000, 27, 300, 50, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 30, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Geheheheh.$Come at me.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Geheh!$I'll crush youuu!");
+	}
+	if (no == 181)
+	{
+		‚b“G“o˜^‚P(iic, no, 100031, "Japanese Soldier", 0, 4, 0, 1000, 33, 0, 0, 300, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚ + 50, 0, 0, 0, 0, 0, 0, 440, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I am a Japanese soldier!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Mikado-chan,$banzai!");
+	}
+	if (no == 169)
+	{
+		‚b“G“o˜^‚P(iic, no, 100062, "Ironhead", 0, 4, 16, 1000, 25, 450, 20, 0, 0, £–½’† + 30, £‰ñ”ğ + 30, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 403, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Kweeeeeh!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Kwah!$(I'll eat you whole)");
+	}
+	if (no == 179)
+	{
+		‚b“G“o˜^‚P(iic, no, 100157, "Rommel", 0, 10, 21, 1000, 30, 0, 0, 300, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 204, "", 1, 50, 203, "", 1, 100, 303, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HEIL. M. M. RUNE.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "RURU$RURU$RU");
+	}
+	if (no == 177)
+	{
+		‚b“G“o˜^‚P(iic, no, 100129, "Anton", 0, 6, 0, 1100, 33, 330, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 201, "spit disgusting string.", 2, 50, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gigigigii...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gchgchgchgch!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gsaaan!");
+	}
+	if (no == 180)
+	{
+		‚b“G“o˜^‚P(iic, no, 100096, "Hornet", 0, 4, 16, 700, 30, 300, 0, 0, 0, £–½’†, £‰ñ”ğ + 30, 0, 30, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 390, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm a bee man.$Nice to meet you.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm gonna stab you with my member.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I'm gonna stab you with my member.");
+	}
+	if (no == 187)
+	{
+		‚b“G“o˜^‚P(iic, no, 100010, "Frog Lady", 0, 3, 22, 1024, 30, 300, 0, 300, 0, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚, £ÕŒ‚, 2, 0, 0, 0, 0, 0, 181, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I go home early on rainy days.$I mean, I'm a frog lady.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+	}
+	if (no == 178)
+	{
+		‚b“G“o˜^‚P(iic, no, 100102, "Blue Hanny", 0, 8, 17, 1100, 33, 330, 0, 0, 9999, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 420, "", 2, 40, 385, "thrust his triden.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "They call him Blue Lightning!$Me, that is, me.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm gonna attack like,$\"Blue Attack!\"");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hanny Flash!$Bwawawawan!");
+	}
+	if (no == 175)
+	{
+		‚b“G“o˜^‚P(iic, no, 100005, "Splish-Splash", 0, 3, 22, 1200, 33, 100, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 40, 0, 0, 0, 414, "", 1, 15, 413, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ahh...$Feels good down there...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Don't look...$Water attack, yah, yah!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Eeek! Pervert!$Take some sulphuric acid!$Peh! Peh!");
+	}
+	if (no == 182)
+	{
+		‚b“G“o˜^‚P(iic, no, 100058, "Mechavalry Copter", 0, 12, 16, 950, 33, 330, 0, 0, 0, £–½’†, £‰ñ”ğ + 30, 0, £ÕŒ‚ + 10, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 408, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "*rattle* *rattle* *rattle* *rattle*");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "*rattle*$*shake* *shake* *shake* *shake*!");
+	}
+	if (no == 188)
+	{
+		‚b“G“o˜^‚P(iic, no, 100002, "Maid Lady", 0, 3, 22, 880, 30, 300, 0, 300, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 221, "nursed cordially.", 1, 40, 385, "attacked with her duster.", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Cleaning, cleaning, laundry~ô$All this dust just won't do!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I need to clean, so please get out of my way.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Oh my,$are you alright?");
+	}
+	if (no == 183)
+	{
+		‚b“G“o˜^‚P(iic, no, 100127, "Scream Man", 0, 4, 20, 500, 33, 330, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 30, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 410, "screamed.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Uuuugh...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "UWAAaaaah!$UWAAaaaah!");
+	}
+	if (no == 186)
+	{
+		‚b“G“o˜^‚P(iic, no, 100061, "Vevetar", 0, 15, 0, 1000, 33, 330, 0, 0, 0, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 40, 428, "threw bombs.", 1, 80, 469, "attacked with its scythe.", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Who's a fatty?!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Throwing bombs is the best!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Slicing with my scythe is the best!");
+	}
+	if (no == 252)
+	{
+		‚b“G“o˜^‚P(iic, no, 100036, "Bone", 0, 5, 21, 1000, 25, 300, 0, 0, 0, £–½’†, £‰ñ”ğ, 50, 0, 0, 1, 0, 0, 0, 0, 0, 385, "attacked with its weapon.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Get your 60 liters of calcium a day!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I've got a bone to pick with you!");
+	}
+	£–½’† = 110;
+	£‰ñ”ğ = 10;
+	£ÕŒ‚ = 10;
+	if (no == 189)
+	{
+		‚b“G“o˜^‚P(iic, no, 100119, "Samera~i", 0, 4, 22, 1200, 30, 400, 0, 0, 0, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 40, 40, 0, 0, 0, 467, "displayed his splendid swordsmanship.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "You say you will kill me?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Do not worry.$I will not take your life.");
+	}
+	if (no == 185)
+	{
+		‚b“G“o˜^‚P(iic, no, 100094, "Ghost", 0, 4, 20, 800, 33, 400, 0, 100, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 20, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 431, "drained energy.", 2, 30, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Found a living thing.$I'm gonna suck it.$I'm gonna suck it.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm going to fly through that warm body of yours.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'm going to suck up your experience.$Here I gooo!");
+	}
+	if (no == 150)
+	{
+		‚b“G“o˜^‚P(iic, no, 100152, "Blue Meatball", 0, 4, 0, 1300, 20, 350, 80, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 212, "", 0, 20, 385, "used its spear and still kicked for some reason.", 1, 100, 249, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm not rotting.$It's not mold, either.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Blue Mold Kiiiick!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "That's right!$I am the Blue Meat Shield!");
+	}
+	if (no == 352)
+	{
+		‚b“G“o˜^‚P(iic, no, 100084, "Giant Soil Pollution", 0, 6, 19, 1800, 20, 380, 0, 0, 0, £–½’†, £‰ñ”ğ, 20, £ÕŒ‚ + 20, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 417, "", 1, 100, 299, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Nom, nom.$(Eating dirt)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Bree!$Breebreee!$Breereereereeree!");
+	}
+	if (no == 197)
+	{
+		‚b“G“o˜^‚P(iic, no, 100004, "Magisco", 0, 3, 22, 1000, 33, 0, 0, 400, 100, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚ + 10, 4, 40, 0, 0, 0, 0, 172, "", 1, 20, 169, "", 1, 30, 168, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Don't stare so much!$Not with those lustful eyes!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+	}
+	if (no == 198)
+	{
+		‚b“G“o˜^‚P(iic, no, 100007, "Zashiki-Warashi", 0, 3, 22, 1300, 30, 370, 0, 0, 0, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 423, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "La, la, la,$fox and tanuki and$Zashiki-Warashi!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Mr. Fox, Mr. Tanuki,$get 'em!$Stuffed Animal Punch!");
+		switch (Ÿƒ[ƒ‹ƒh)
+		{
+			case 2:
+				“G‘äŒ“o˜^(iic, "‘å‹Z", "People under level 45,$die, please.");
+				break;
+			case 3:
+				“G‘äŒ“o˜^(iic, "‘å‹Z", "People under level 65,$die, please.");
+				break;
+			default:
+				“G‘äŒ“o˜^(iic, "‘å‹Z", "People under level 25,$die, please.");
+				break;
+		}
+	}
+	if (no == 496)
+	{
+		‚b“G“o˜^‚P(iic, no, 100007, "Zashiki-Warashi (5 Killer)", 0, 3, 22, 1300, 30, 370, 0, 0, 0, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 599, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "La, la, la,$fox and tanuki and$Zashiki-Warashi!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Mr. Fox, Mr. Tanuki,$get 'em!$Stuffed Animal Punch!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "If your level's divisible by 5,$die, please.");
+	}
+	if (no == 199)
+	{
+		‚b“G“o˜^‚P(iic, no, 100185, "Ralga's Cat", 0, 3, 22, 1300, 35, 350, 0, 0, 100, £–½’† + 10, £‰ñ”ğ + 10, 40, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 406, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm gonna get 'em and Mistress Ralga will reward me!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Meow, take this!");
+	}
+	if (no == 191)
+	{
+		‚b“G“o˜^‚P(iic, no, 100124, "Lead Orb", 0, 11, 18, 1300, 30, 370, 100, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 30, £ÕŒ‚ + 30, 0, 0, 0, 0, 0, 0, 212, "", 0, 20, 387, "punched powerfully.", 1, 30, 385, "punched.", 1, 100, 259, "", 1, 4, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "EEEœ››EE");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "~~~~~$>>@œ›@¨@");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "~~~~~$>>@œ›@¨@šš");
+		“G‘äŒ“o˜^(iic, "x‰‡", "¦|¦|¦");
+	}
+	if (no == 194)
+	{
+		‚b“G“o˜^‚P(iic, no, 100107, "Happy", 0, 6, 19, 1000, 28, 500, 0, 0, 0, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 130, "shot a freezing beam.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HAPPY!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Sparkllle!");
+	}
+	if (no == 195)
+	{
+		‚b“G“o˜^‚P(iic, no, 100128, "Smile Man", 0, 4, 20, 1000, 35, 370, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 30, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 412, "smiled.", 1, 20, 410, "smiled.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hoho!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hohoho!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hohohoho!");
+	}
+	if (no == 193)
+	{
+		‚b“G“o˜^‚P(iic, no, 100013, "Catpot", 0, 4, 17, 300, 35, 0, 550, 370, 550, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚ + 30, 3, 0, 0, 0, 0, 40, 220, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "iLEƒÖEMjMeow~");
+		“G‘äŒ“o˜^(iic, "x‰‡", "iLGƒÖGMjMeow~");
+	}
+	if (no == 192)
+	{
+		‚b“G“o˜^‚P(iic, no, 100021, "Iron Boxen", 0, 12, 22, 1200, 28, 350, 100, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 212, "", 0, 30, 385, "corner jabbed.", 1, 100, 249, "", 1, 3, 306, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm bigger on the inside, you know.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Corners are pretty dangerous.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'll show you that I've got the strength of a safe!");
+	}
+	if (no == 190)
+	{
+		‚b“G“o˜^‚P(iic, no, 100057, "Mechavalry Metal", 0, 12, 0, 1200, 30, 360, 50, 0, 50, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚ + 20, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 408, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "*rattle* *rattle*");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "*shake* *shake* *shake*$Boom!");
+	}
+	if (no == 196)
+	{
+		‚b“G“o˜^‚P(iic, no, 100063, "Asshole", 0, 6, 22, 1600, 23, 300, 20, 50, 100, £–½’†, £‰ñ”ğ + 20, 0, £ÕŒ‚, £ÕŒ‚ + 50, 1, 40, 40, 0, 0, 0, 431, "used Brain-wipe Dance.", 2, 50, 385, "used Hip Attack.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Fumey fume~,$farty fart~");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Oh, I haven't wiped my ass, by the way.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "This is too much for you young'uns.$I'll just be taking it~ô");
+	}
+	if (no == 255)
+	{
+		‚b“G“o˜^‚P(iic, no, 100040, "Bone S", 0, 5, 21, 1300, 25, 450, 0, 0, 0, £–½’†, £‰ñ”ğ, 50, 0, 0, 1, 0, 0, 0, 0, 0, 474, "attacked with a weapon.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Don't worry,$the arrow is bone too.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Booone Arrooow!!");
+	}
+	if (no == 446)
+	{
+		‚b“G“o˜^‚P(iic, no, 100284, "Abnormal Uppy", 0, 6, 19, 1200, 30, 400, 0, 0, 0, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 466, "blew fire.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Uuupypyyy!$Uuupypyyy!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Uuuupypypypy!$Fwoooosh, fwooooosh");
+	}
+	if (no == 331)
+	{
+		‚b“G“o˜^‚P(iic, no, 100193, "Green Dragon", 1, 11, 16, 7000, 45, 400, 100, 500, 100, 250, 20, 0, 60, 100, 1, 0, 0, 0, 0, 0, 443, "", 2, 40, 403, "bit.", 1, 100, 0, "", 1, 0, 305, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "............");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Kshaaaaa!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Fwooooosh");
+	}
+	if (no == 306)
+	{
+		‚b“G“o˜^‚P(iic, no, 100190, "Crystal Robo", 1, 12, 0, 6000, 45, 400, 100, 400, 100, 180, 0, 0, 50, 80, 5, 0, 0, 0, 0, 0, 388, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Destroy, destroy.$Destroy all enemies in range.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Complete destruction.$End life.");
+	}
+	if (no == 307)
+	{
+		‚b“G“o˜^‚P(iic, no, 100167, "Crystal Robo", 1, 12, 0, 9000, 45, 500, 100, 400, 100, 180, 0, 0, 50, 80, 5, 0, 0, 0, 0, 0, 389, "", 2, 20, 388, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rğŒ(iic, 1, 50);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Uhyahyahyahya!$Kill all kalars!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "This is where we get serious!$Hyahahahahahahaha!");
+	}
+	if (no == 339)
+	{
+		‚b“G“o˜^‚P(iic, no, 100029, "Yudain", 0, 4, 22, 1500, 35, 400, 0, 0, 400, 200, 90, 0, 0, 100, 0, 0, 0, 0, 0, 0, 385, "kicked.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Space Sheriff Yudain!$In the midst of battle!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I like mikos!$Dah, dah, dah, daaah!");
+	}
+	£–½’† = 115;
+	£‰ñ”ğ = 15;
+	£ÕŒ‚ = 15;
+	if (no == 453)
+	{
+		‚b“G“o˜^‚P(iic, no, 100024, "Bear", 0, 4, 0, 1500, 40, 600, 150, 0, 200, £–½’† + 40, £‰ñ”ğ + 20, 30, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 385, "used Bear Punch.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hibernation...$Or so you thought!$I was merely napping!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Punch!$And again, punch!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Vaccuuuum...$Blinding jab!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 389)
+	{
+		‚b“G“o˜^‚P(iic, no, 100028, "Larva", 0, 7, 0, 1500, 40, 500, 150, 0, 200, £–½’† + 40, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Mi... mimi, mi...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Mejeeeee!");
+	}
+	if (no == 201)
+	{
+		‚b“G“o˜^‚P(iic, no, 100103, "Red Hanny", 0, 8, 17, 1400, 32, 480, 0, 0, 9999, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 420, "used Hanny Flash.", 2, 40, 385, "thrust triden.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "„¤|æ|„¢ô„¡|æ|„£$@„¤|æ|„¢ô");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "(OO)‰‰");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hanny Exercise 1!$Open your mouth wide and Hanny Flash!");
+	}
+	if (no == 338)
+	{
+		‚b“G“o˜^‚P(iic, no, 100187, "Snowy Mountain Japanese Soldier", 1, 4, 0, 3000, 38, 500, 50, 400, 0, £–½’† + 100, £‰ñ”ğ, 0, £ÕŒ‚ + 50, £ÕŒ‚ + 50, 5, 0, 40, 0, 0, 0, 440, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll show you the terror of the snowy mountain.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Japaaan,$banzaaai!");
+	}
+	if (no == 203)
+	{
+		‚b“G“o˜^‚P(iic, no, 100111, "Ebony Eye", 0, 4, 0, 999, 30, 0, 0, 550, 200, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 40, 196, "", 1, 80, 194, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Geheheh, I'm gonna kill ya.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gahaha!$The darkness is waitin' for ya.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gweheheh,$blow away with the wind!");
+	}
+	if (no == 204)
+	{
+		‚b“G“o˜^‚P(iic, no, 100158, "Goering", 0, 10, 21, 1600, 34, 0, 0, 480, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 204, "", 1, 50, 203, "", 1, 100, 303, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HEIL. M. M. RUNE.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "RURU$RURU$RU");
+	}
+	if (no == 200)
+	{
+		‚b“G“o˜^‚P(iic, no, 100014, "North Slug", 0, 4, 19, 1500, 32, 480, 0, 0, 50, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 398, "hit slow and hard.", 2, 30, 445, "spit something.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Slug, slug.$Don't burn me.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Slug, slug...$He was a good guy.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Okay, I'm gonna slug slug you.$Take a ni~ce, long nap.");
+	}
+	if (no == 205)
+	{
+		‚b“G“o˜^‚P(iic, no, 100056, "Mechavalry Tank", 0, 12, 0, 1400, 33, 560, 150, 0, 50, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 20, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 409, "fired its cannon.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ka-clank, ka-clank.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ka-ka-ka-clank.$Kabooom!");
+	}
+	if (no == 208)
+	{
+		‚b“G“o˜^‚P(iic, no, 100044, "Burner", 0, 4, 0, 1600, 32, 550, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚ + 50, 4, 0, 0, 0, 0, 0, 444, "", 2, 40, 385, "headbutted.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Will you become rust on my horn?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Horned Bug Slice!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Fwooooosh!");
+	}
+	if (no == 310)
+	{
+		‚b“G“o˜^‚P(iic, no, 100192, "Elite Kalar", 0, 13, 22, 900, 40, 440, 80, 440, 100, £–½’†, £‰ñ”ğ + 20, 30, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 175, "", 2, 20, 402, "", 1, 100, 291, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "We will defend Pencilcow!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "There!$You will not escape!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+	}
+	if (no == 311)
+	{
+		‚b“G“o˜^‚P(iic, no, 100191, "Elite Kalar", 0, 13, 22, 900, 40, 440, 80, 440, 100, £–½’†, £‰ñ”ğ + 20, 30, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 236, "cast defensive magic.", 2, 50, 175, "", 2, 60, 402, "", 1, 100, 291, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "No human will escape us!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hit!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Give us power,$our forest!");
+	}
+	if (no == 202)
+	{
+		‚b“G“o˜^‚P(iic, no, 100132, "President Garter", 0, 4, 18, 1800, 25, 500, 200, 0, 0, £–½’†, 0, 30, £ÕŒ‚, 100, 4, 0, 0, 0, 0, 0, 384, "is spacing out.", 0, 25, 385, "languidly punched.", 1, 100, 0, "", 1, 0, 304, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hm?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hm~, hm~");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Hm~, ah~$Hm?");
+	}
+	if (no == 210)
+	{
+		‚b“G“o˜^‚P(iic, no, 100035, "Ice Boxen", 0, 12, 22, 2000, 28, 350, 20, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 40, 0, 0, 0, 212, "", 0, 20, 385, "corner jabbed.", 1, 100, 249, "", 1, 3, 306, "", 1, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "(Shit,$ I'm starting to melt...)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Sorry I don't have any icicles to stab you with.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Please keep the ice picks away.");
+	}
+	if (no == 206)
+	{
+		‚b“G“o˜^‚P(iic, no, 100009, "Lantyrn", 0, 3, 22, 1500, 32, 400, 0, 500, 200, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 188, "flashed her light.", 1, 40, 385, "used Spoiled Brat Punch.", 2, 100, 246, "", 1, 2, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Come on, it's pretty, isn't it?$Come closer~");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Alright, you're close!$Lan-punch!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+	}
+	if (no == 207)
+	{
+		‚b“G“o˜^‚P(iic, no, 100059, "NASU", 0, 4, 19, 1800, 32, 480, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 2, 0, 0, 0, 0, 0, 424, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I am NASU!$Nice to meet you...$(Mutter)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "With poison, poison...$(Mutter mutter)");
+	}
+	if (no == 253)
+	{
+		‚b“G“o˜^‚P(iic, no, 100037, "Bone W", 0, 5, 21, 1800, 32, 450, 0, 0, 0, £–½’†, £‰ñ”ğ, 50, 0, 0, 1, 0, 0, 0, 0, 0, 472, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Looks like you've got some backbone.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Bone Slash!");
+	}
+	if (no == 219)
+	{
+		‚b“G“o˜^‚P(iic, no, 100169, "Bug", 0, 4, 0, 300, 52, 660, 0, 0, 400, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 30, 0, 3, 0, 0, 0, 0, 0, 400, "performed a special bug kick.", 2, 50, 385, "bug punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Maybe I should start using a card or a switch.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Kicks are indispensable for a Rider!!$Kiiiiick!!!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "The second half of the broadcast...$Now's when I use my special move!");
+	}
+	if (no == 362)
+	{
+		‚b“G“o˜^‚P(iic, no, 100281, "Abnormal Bone", 0, 5, 21, 1400, 30, 500, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 90, 90, 90, 0, 0, 385, "attacked with a weapon.", 1, 100, 479, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm an abnormal bone.$I can only love young girls.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I want to hit girls.$I want to crush girls.");
+	}
+	if (no == 361)
+	{
+		‚b“G“o˜^‚P(iic, no, 100280, "Abnormal Squidman", 0, 4, 0, 1200, 33, 550, 100, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 0, 5, 0, 0, 0, 0, 0, 396, "squid punched powerfully.", 1, 30, 385, "squid punched.", 1, 100, 477, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Abnormal squid!$I'm a broken squid!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Octopus Punch!$Oh, that's not right.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Squid Punch!$Geheheheheheh.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 441)
+	{
+		‚b“G“o˜^‚P(iic, no, 100283, "Abnormal Ruronta", 0, 4, 19, 1350, 33, 300, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 0, 5, 0, 80, 80, 80, 80, 390, "punched, oozing poison.", 1, 40, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urourouro... Uro!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Urorororooo,$urororororooo,$Urorororooooo!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 442)
+	{
+		‚b“G“o˜^‚P(iic, no, 100283, "Abnormal Ruronta", 0, 4, 19, 1350, 33, 300, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 0, 4, 80, 0, 80, 80, 80, 390, "punched, oozing poison.", 1, 40, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urourouro... Uro!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Urorororooo,$urororororooo,$Urorororooooo!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 443)
+	{
+		‚b“G“o˜^‚P(iic, no, 100283, "Abnormal Ruronta", 0, 4, 19, 1350, 33, 300, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 0, 3, 80, 80, 0, 80, 80, 390, "punched, oozing poison.", 1, 40, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urourouro... Uro!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Urorororooo,$urororororooo,$Urorororooooo!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 444)
+	{
+		‚b“G“o˜^‚P(iic, no, 100283, "Abnormal Ruronta", 0, 4, 19, 1350, 33, 300, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 0, 1, 80, 80, 80, 0, 80, 390, "punched, oozing poison.", 1, 40, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urourouro... Uro!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Urorororooo,$urororororooo,$Urorororooooo!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 445)
+	{
+		‚b“G“o˜^‚P(iic, no, 100283, "Abnormal Ruronta", 0, 4, 19, 1350, 33, 300, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, 0, 2, 80, 80, 80, 80, 0, 390, "punched, oozing poison.", 1, 40, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle wriggle");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urourouro... Uro!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Urorororooo,$urororororooo,$Urorororooooo!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 257)
+	{
+		‚b“G“o˜^‚P(iic, no, 100054, "Boss Bone", 1, 5, 21, 100, 30, 450, 0, 400, 0, 160, 20, 50, 0, 0, 1, 0, 0, 0, 0, 0, 196, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Heheheh...$I'm gonna break some bones.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Take this! Osteomyelitis!");
+	}
+	if (no == 329)
+	{
+		‚b“G“o˜^‚P(iic, no, 100221, "Lord of the Abyss", 1, 4, 0, 5000, 50, 600, 200, 600, 200, 200, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 192, "", 1, 80, 467, "attacked with a blade of darkness.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 30);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I will hammer injustice.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "The agony of eternity.");
+	}
+	£–½’† = 115;
+	£‰ñ”ğ = 15;
+	£ÕŒ‚ = 15;
+	if (no == 440)
+	{
+		‚b“G“o˜^‚P(iic, no, 100282, "Abnormal Samera~i", 0, 4, 22, 2000, 35, 700, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 80, 80, 80, 514, "displayed his magnificent multiattack skills.", 1, 30, 467, "displayed his magnificent sword skills.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 25);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "BANZAI!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "KILL!");
+	}
+	if (no == 209)
+	{
+		‚b“G“o˜^‚P(iic, no, 100034, "Ranken", 0, 4, 22, 1700, 32, 600, 20, 0, 0, £–½’†, £‰ñ”ğ, 50, £ÕŒ‚ + 20, £ÕŒ‚, 4, 40, 0, 0, 0, 40, 398, "did a super attack.", 2, 30, 385, "did a pro wrestler kick.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Today's dinner has been decided.$Collecting ingredients now, raaah.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Pound ingredients well to make them soft, raaah.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Don't run.$I want to finish this quickly, raaah.");
+	}
+	if (no == 256)
+	{
+		‚b“G“o˜^‚P(iic, no, 100039, "Bone M", 0, 5, 21, 2000, 35, 0, 0, 500, 0, £–½’†, £‰ñ”ğ, 50, 0, 50, 1, 0, 0, 0, 0, 0, 197, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Witness the bone magic passed down through the bone family!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Bone Blast!!");
+	}
+	if (no == 220)
+	{
+		‚b“G“o˜^‚P(iic, no, 100060, "Captain Vanilla", 0, 3, 22, 2200, 37, 650, 0, 0, 0, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 40, 0, 0, 0, 426, "used Tuna Uppercut.", 2, 35, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Challenging me?$A mere human?$I'll show you.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Stop standing!$Fall already!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Farewell. Sleep.$Tuna Uppercuuut!!");
+	}
+	if (no == 221)
+	{
+		‚b“G“o˜^‚P(iic, no, 100060, "Captain Vanilla", 1, 3, 22, 2200, 37, 650, 0, 0, 0, £–½’† + 20, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 40, 0, 0, 0, 426, "used Tuna Uppercut.", 2, 50, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Leo,$I'll get these guys.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Youuu!$You're in my way!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Sure kill! Tuna Uppercut!");
+	}
+	if (no == 211)
+	{
+		‚b“G“o˜^‚P(iic, no, 100019, "Hugant", 0, 4, 22, 2300, 35, 770, 0, 0, 0, £–½’†, 0, 10, £ÕŒ‚ + 20, £ÕŒ‚ + 20, 3, 0, 0, 0, 0, 0, 425, "attacked with its weapon.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Whoa!$Found some little people.");
+		switch (Ÿƒ[ƒ‹ƒh)
+		{
+			case 2:
+				“G‘äŒ“o˜^(iic, "UŒ‚", "Small fry under level 65.$I'll crush you in one hit.");
+				break;
+			case 3:
+				“G‘äŒ“o˜^(iic, "UŒ‚", "Small fry under level 85.$I'll crush you in one hit.");
+				break;
+			default:
+				“G‘äŒ“o˜^(iic, "UŒ‚", "Small fry under level 35.$I'll crush you in one hit.");
+				break;
+		}
+	}
+	if (no == 212)
+	{
+		‚b“G“o˜^‚P(iic, no, 100019, "Familiar Hugant", 0, 4, 22, 2300, 45, 770, 100, 0, 100, £–½’†, 0, 10, £ÕŒ‚ + 20, £ÕŒ‚ + 20, 3, 0, 0, 0, 0, 0, 425, "attacked with its weapon.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ah, ugh.$Master, what do I do next?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Just beat this?$Toooooh!");
+	}
+	if (no == 214)
+	{
+		‚b“G“o˜^‚P(iic, no, 100155, "Demonemone", 0, 4, 0, 1400, 38, 0, 0, 550, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 40, 0, 0, 181, "", 1, 50, 185, "", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Demon?!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Shockmon.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Shockflashmon.");
+	}
+	if (no == 215)
+	{
+		‚b“G“o˜^‚P(iic, no, 100117, "Horned Whale", 0, 6, 0, 2400, 35, 0, 0, 650, 0, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚ + 20, £ÕŒ‚ + 20, 5, 0, 0, 40, 0, 0, 181, "shot electricity from its horn.", 1, 100, 246, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Kupooo!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Kupoook!$(Electricity)");
+	}
+	if (no == 216)
+	{
+		‚b“G“o˜^‚P(iic, no, 100091, "Blue Wand", 0, 12, 16, 1000, 50, 400, 0, 0, 0, £–½’†, £‰ñ”ğ + 20, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 394, "tackled with its sharp edges.", 1, 50, 393, "tackled with its sharp edges.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Whiiiiir");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...Whack$ªTackled");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "...Whack$...Whack$ªTackled");
+	}
+	if (no == 217)
+	{
+		‚b“G“o˜^‚P(iic, no, 100091, "Blue Wand", 0, 12, 16, 1000, 50, 400, 0, 0, 0, £–½’†, £‰ñ”ğ + 20, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 394, "tackled with its sharp edges.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Whiiiiir");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...Whack$ªTackled");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "...Whack$...Whack$ªTackled");
+	}
+	if (no == 218)
+	{
+		‚b“G“o˜^‚P(iic, no, 100109, "Circle MkII", 0, 11, 16, 1000, 40, 730, 0, 0, 0, £–½’†, £‰ñ”ğ + 30, 30, £ÕŒ‚, £ÕŒ‚, 0, 0, 40, 0, 0, 0, 390, "flew forward.", 1, 50, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "œ@œ@œ@œ");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "œ@¨@¨@¨@you");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "œ@¨@poison@¨@you");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 213)
+	{
+		‚b“G“o˜^‚P(iic, no, 100055, "Mechavalry Submarine", 0, 12, 0, 2400, 40, 750, 200, 0, 0, £–½’† + 70, £‰ñ”ğ, 0, £ÕŒ‚ + 50, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 162, "", 0, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ka-clank, ka-clank.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ka-ka-clank.$Ba-boom!$Ba-boom!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Clank clank clank!$(Loading torpedos)");
+	}
+	if (no == 167)
+	{
+		‚b“G“o˜^‚P(iic, no, 100148, "Giant Ham Bambara", 1, 4, 22, 10000, 25, 500, 20, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 213, "protected itself with its shield.", 0, 30, 465, "attacked with its spear.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "NOOO!$GET AWAY!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'M ATTACKING YOU!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I'M ATTACKING YOU!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'M DEFENDING!");
+	}
+	if (no == 226)
+	{
+		‚b“G“o˜^‚P(iic, no, 100045, "Thunderfish", 0, 6, 16, 1600, 44, 700, 0, 0, 500, £–½’†, £‰ñ”ğ + 10, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 40, 0, 0, 239, "replenished electricity and got stronger.", 0, 25, 391, "covered itself in electricity and tackled.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "ƒ¦ƒµèè‰‡");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "„„Š‡uƒÌ’‡[");
+		“G‘äŒ“o˜^(iic, "x‰‡", "„AƒÉƒÉƒÉ...©");
+	}
+	if (no == 228)
+	{
+		‚b“G“o˜^‚P(iic, no, 100116, "Nyo~", 0, 4, 0, 2300, 35, 666, 0, 400, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 220, "", 2, 20, 411, "nyo nyo'd.", 1, 30, 410, "nyo nyo'd.", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Nyo~$Nyo~");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Nyon.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Nyo nyo nyo~");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Nyo~$Nyo~");
+	}
+	if (no == 314)
+	{
+		‚b“G“o˜^‚P(iic, no, 100186, "Emperor Aloe", 0, 7, 0, 3000, 5, 0, 0, 0, 0, £–½’†, 0, 0, £ÕŒ‚, 100, 5, 0, 0, 0, 0, 0, 212, "", 0, 50, 384, "isn't doing anything.", 0, 100, 249, "", 1, 3, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "............");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", ".........Aloe.");
+	}
+	if (no == 370)
+	{
+		‚b“G“o˜^‚P(iic, no, 100269, "Red Dragon", 1, 11, 16, 10000, 55, 800, 100, 500, 100, 250, 80, 0, 60, 150, 4, 0, 0, 0, 0, 0, 560, "", 2, 40, 403, "bit.", 1, 100, 0, "", 1, 0, 305, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Shagyaaa!!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gafh!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Fwoooooooosh...");
+	}
+	£–½’† = 120;
+	£‰ñ”ğ = 20;
+	£ÕŒ‚ = 20;
+	if (no == 222)
+	{
+		‚b“G“o˜^‚P(iic, no, 100032, "Animated Armor", 0, 4, 17, 2400, 38, 850, 400, 0, 200, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 212, "", 0, 20, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hey, I'm Animated Armor!$People call me Arty.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Argh, I'll chop you up!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Oh, it's fine,$just attack me, already.");
+	}
+	if (no == 254)
+	{
+		‚b“G“o˜^‚P(iic, no, 100038, "Bone K", 0, 5, 21, 3000, 38, 800, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 212, "", 0, 50, 471, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm big-boned.$They won't break that easily.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Guess I'll hit 'em...");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Bone Guard,$by bones,$for bones.");
+	}
+	if (no == 223)
+	{
+		‚b“G“o˜^‚P(iic, no, 100104, "Black Hanny", 0, 8, 17, 2200, 42, 850, 0, 0, 9999, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 385, "lunged with fireworks.", 1, 30, 420, "used Hanny Flash.", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ah, fireworks are so much fun.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Firaiyaaa!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "It's pretty, isn't it?$Hanihooo! Tamayaaa!");
+	}
+	if (no == 230)
+	{
+		‚b“G“o˜^‚P(iic, no, 100154, "Majician", 0, 3, 22, 1800, 42, 0, 0, 500, 400, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 172, "", 1, 20, 173, "", 1, 30, 168, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Human mages are no match for me!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Let's have some fun.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Heheh, this is gonna be a little showy.");
+	}
+	if (no == 224)
+	{
+		‚b“G“o˜^‚P(iic, no, 100135, "Stone Guardian", 0, 4, 18, 5000, 38, 1000, 300, 0, 300, £–½’†, 0, 0, £ÕŒ‚ + 30, £ÕŒ‚ + 30, 0, 0, 0, 0, 0, 0, 418, "", 1, 30, 385, "punched.", 1, 100, 437, "", 1, 1, 0, "", 0, 0, 582, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		í“¬ƒCƒxƒ“ƒg–¼ = "ƒXƒg[ƒ“E‚f";
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I won't let you through.$My Creator has ordered me.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "You won't get away.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Shake, break, shatter!$No one will get away from here!");
+	}
+	if (no == 227)
+	{
+		‚b“G“o˜^‚P(iic, no, 100016, "Night Horror", 0, 4, 20, 3000, 40, 770, 0, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 403, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 304, "", 0, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HAWWW!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "GAZI GAZI!");
+	}
+	if (no == 231)
+	{
+		‚b“G“o˜^‚P(iic, no, 100012, "Tokko", 0, 3, 22, 2300, 38, 600, 50, 0, 0, £–½’†, £‰ñ”ğ + 20, 0, £ÕŒ‚, £ÕŒ‚, 2, 0, 0, 0, 0, 0, 470, "attacked with her weapon.", 2, 40, 230, "", 0, 20, 388, "attacked with her weapon.", 1, 100, 246, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		‚bˆ«Œû‘Ï«(iic, 2);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "It is time for your judgment!$Please prepare yourself.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I will show no mercy!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Concentrate...$I'm betting everything on my next attack.");
+	}
+	£–½’† = 130;
+	£‰ñ”ğ = 20;
+	£ÕŒ‚ = 20;
+	if (no == 225)
+	{
+		‚b“G“o˜^‚P(iic, no, 100043, "Love Me Tender", 0, 4, 0, 2700, 42, 730, 100, 750, 100, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 40, 220, "used a mysterious healing spell.", 0, 25, 405, "", 1, 30, 403, "", 1, 50, 404, "", 1, 100, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I love you.$I might love you.$Enough to eat you up.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Love meee, I love youuu.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "You're so cute!$Love me! Help me!");
+	}
+	if (no == 359)
+	{
+		‚b“G“o˜^‚P(iic, no, 100093, "Rad Actor", 0, 7, 0, 2200, 40, 400, 100, 0, 100, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 50, 50, 0, 384, "used Radish Applause (...but it failed).", 0, 30, 419, "used Radish Applause.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Root crops like us are highly nutritious!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Die and rot, harvesters.  ");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "R-Rad-Radish!");
+	}
+	if (no == 232)
+	{
+		‚b“G“o˜^‚P(iic, no, 100177, "Rad Diviner", 0, 7, 0, 22000, 40, 550, 100, 0, 100, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 50, 50, 0, 384, "used Radish Applause (...but it failed).", 0, 10, 419, "used Radish Applause.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I was sealed away!$I was the god of vegetables, too!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "You're from the Alicist Church, aren't you?$Die! Die!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "R-Rad-Radish!");
+	}
+	if (no == 229)
+	{
+		‚b“G“o˜^‚P(iic, no, 100161, "Himmler", 0, 10, 21, 2500, 39, 0, 0, 700, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 204, "", 1, 50, 203, "", 1, 100, 303, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HEIL. M. M. RUNE.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "RURU$RURU$RU");
+	}
+	if (no == 434)
+	{
+		‚b“G“o˜^‚P(iic, no, 100274, "Mechavalry Copter MkII", 0, 12, 16, 2800, 38, 990, 0, 0, 0, £–½’†, £‰ñ”ğ + 40, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 408, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ka-clunk-clunk-clank-clunk.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Clank!$Clank clunk clunk clunk!!");
+	}
+	if (no == 435)
+	{
+		‚b“G“o˜^‚P(iic, no, 100275, "Mechavalry Metal MkII", 0, 12, 0, 2800, 38, 1100, 100, 0, 100, £–½’† + 40, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 408, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ka-clank-clank-clank. Ka-clank-clank-clank.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Clank clank clank clank!$Ba-boom!!");
+	}
+	if (no == 399)
+	{
+		‚b“G“o˜^‚P(iic, no, 100049, "Mechavalry Pillbox", 0, 12, 17, 1000, 40, 850, 400, 0, 200, £–½’†, 0, 0, £ÕŒ‚ + 50, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 409, "fired its main armament.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Clunk clunk clunk clunk.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Clank clank clank clank,$boom!");
+	}
+	if (no == 425)
+	{
+		‚b“G“o˜^‚P(iic, no, 100272, "Elastic Grape", 0, 7, 0, 1000, 53, 600, 10, 0, 10, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 385, "did a grape-ish attack.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Grape! Grape!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gr-Grape!");
+	}
+	£–½’† = 125;
+	£‰ñ”ğ = 25;
+	£ÕŒ‚ = 25;
+	if (no == 239)
+	{
+		‚b“G“o˜^‚P(iic, no, 100006, "Nekomatamata", 0, 3, 22, 3000, 60, 900, 150, 0, 150, £–½’† + 20, £‰ñ”ğ + 20, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 407, "clawed like crazy.", 1, 40, 406, "clawed.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "*yawn*...$I'm tired, meow...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Mmmeow!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Fshaaaa!$Gimme that bonito!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 250)
+	{
+		‚b“G“o˜^‚P(iic, no, 100050, "One-eyed Golem", 0, 12, 18, 3000, 38, 950, 300, 0, 300, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 212, "", 0, 50, 385, "punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Nuun... Nuun...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Nuun!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Nuu!");
+	}
+	if (no == 248)
+	{
+		‚b“G“o˜^‚P(iic, no, 100112, "Alabaster Eye", 0, 4, 0, 2300, 39, 0, 150, 800, 150, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 2, 0, 0, 0, 50, 0, 190, "", 1, 50, 187, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Nyooo!$Nyooo!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Nyooon!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Nyonyonyooo!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Nyooo!$Nyooo!");
+	}
+	if (no == 242)
+	{
+		‚b“G“o˜^‚P(iic, no, 100134, "Cranium Flower", 0, 7, 0, 3200, 42, 660, 150, 0, 150, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 499, "", 1, 100, 0, "", 1, 0, 304, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Flower flower flower flower.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Fly, my children!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Flower!");
+	}
+	if (no == 234)
+	{
+		‚b“G“o˜^‚P(iic, no, 100133, "Former President Garter", 0, 4, 18, 4000, 35, 800, 300, 0, 0, £–½’†, 0, 30, £ÕŒ‚, 100, 4, 40, 0, 40, 0, 0, 384, "is staying very still.", 0, 40, 385, "punched, slowly.", 1, 100, 0, "", 1, 0, 304, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hm?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hm~, hm~");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Hm~, hm~$Hm?");
+	}
+	if (no == 429)
+	{
+		‚b“G“o˜^‚P(iic, no, 100277, "Magneball", 0, 11, 0, 3000, 42, 1100, 150, 0, 150, £–½’† + 50, £‰ñ”ğ, 30, £ÕŒ‚, £ÕŒ‚ + 50, 3, 0, 0, 0, 0, 0, 407, "", 1, 20, 406, "", 1, 100, 304, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Flaaaaash!$(eye flashes)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Flasssh!");
+	}
+	if (no == 249)
+	{
+		‚b“G“o˜^‚P(iic, no, 100176, "Uncle Bat", 0, 6, 16, 2400, 42, 350, 150, 0, 150, £–½’†, £‰ñ”ğ + 40, 0, 100, £ÕŒ‚, 1, 0, 0, 0, 0, 40, 416, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Well, hello.$Uncle loves happy children.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "No need to be scared.$Just relax.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Uncle's... a little tired.");
+	}
+	if (no == 241)
+	{
+		‚b“G“o˜^‚P(iic, no, 100166, "Aimameyas", 0, 12, 16, 3100, 42, 950, 150, 0, 0, £–½’†, £‰ñ”ğ + 40, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 80, 0, 235, "", 0, 50, 469, "", 1, 10, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚rˆê“xg—p(iic, 2, 1);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Swords won't work on me!$They won't!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...Zwah!$(Insta-slash!)");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Zawhhh!!$(Super shredding slash!)");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'll finish this with one last strike!$I will!");
+	}
+	if (no == 390)
+	{
+		‚b“G“o˜^‚P(iic, no, 100162, "Goebbels", 0, 10, 21, 2800, 39, 0, 0, 900, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 204, "", 1, 50, 203, "", 1, 100, 303, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HEIL. M. M. RUNE.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "RURU$RURU$RU");
+	}
+	if (no == 246)
+	{
+		‚b“G“o˜^‚P(iic, no, 100130, "Armored Anton", 0, 6, 0, 2800, 40, 900, 500, 0, 150, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 201, "shot a disgusting string.", 2, 50, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gigi... Gigigi...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gigigiii!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gisan, gisaaan!");
+	}
+	if (no == 432)
+	{
+		‚b“G“o˜^‚P(iic, no, 100270, "Giant Hornet", 0, 4, 16, 2000, 46, 1200, 150, 0, 150, £–½’†, £‰ñ”ğ + 30, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 390, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "The name's Beeson! I'm single!$Nice to meet you!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Now, take my member!");
+	}
+	if (no == 395)
+	{
+		‚b“G“o˜^‚P(iic, no, 100126, "King Squidman", 0, 4, 0, 2700, 40, 950, 150, 0, 150, £–½’†, £‰ñ”ğ, 20, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 385, "squid punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I am King Squidman!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Take my King Squid Punch~!");
+	}
+	if (no == 449)
+	{
+		‚b“G“o˜^‚P(iic, no, 100126, "King Squidman (Love)", 0, 4, 0, 5200, 40, 2000, 150, 0, 150, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 385, "squid punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "For love,$I am King Squidman!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "For love,$take my King Squid Punch~!");
+	}
+	if (no == 245)
+	{
+		‚b“G“o˜^‚P(iic, no, 100046, "Swortoad", 0, 4, 22, 3000, 42, 1000, 150, 0, 150, £–½’†, £‰ñ”ğ + 30, 20, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 400, "did a jumping kick.", 1, 80, 385, "attacked with something.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Croak, croak, croak.$You're about to croak.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Your body's about to croak!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Take my frog jumping kick and croak!");
+	}
+	if (no == 438)
+	{
+		‚b“G“o˜^‚P(iic, no, 100278, "Fishball", 0, 4, 0, 2900, 40, 800, 150, 0, 150, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚ + 20, 4, 0, 0, 0, 0, 0, 212, "", 0, 20, 385, "kicked, for some reason.", 1, 100, 249, "", 1, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Cheap! Healthy! Delicious!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Destroy evil!$Fish meat kick attack!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Come at me!$Fish meat defense!");
+	}
+	if (no == 439)
+	{
+		‚b“G“o˜^‚P(iic, no, 100279, "Tricerawhale", 0, 6, 0, 4330, 40, 0, 150, 1000, 150, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 40, 0, 0, 184, "shot electricity from its horns.", 1, 30, 181, "shot electricity from its horns.", 1, 100, 246, "", 1, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 35);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Kupo, kupo,$kuuu.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Kupo?$(Electricity)");
+	}
+	if (no == 371)
+	{
+		‚b“G“o˜^‚P(iic, no, 100268, "Blue Dragon", 1, 11, 16, 20000, 60, 1500, 100, 500, 100, 250, 100, 0, 60, 150, 1, 0, 0, 0, 0, 0, 561, "", 2, 40, 403, "bit.", 1, 100, 0, "", 1, 0, 305, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Guggu...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gmooo.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Orrrrrrrrrr...");
+	}
+	if (no == 330)
+	{
+		‚b“G“o˜^‚P(iic, no, 100220, "Masuzoe", 1, 9, 0, 40000, 50, 999, 0, 1500, 9999, 500, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 430, "", 1, 80, 220, "", 1, 10, 421, "", 2, 100, 305, "", 0, 1, 475, "", 0, 1);
+		‚b‚rğŒ(iic, 1, 50);
+		‚b‚rğŒ(iic, 2, 50);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", ".........");
+		“G‘äŒ“o˜^(iic, "UŒ‚", ".........");
+		“G‘äŒ“o˜^(iic, "x‰‡", ".........");
+	}
+	if (no == 396)
+	{
+		‚b“G“o˜^‚P(iic, no, 100180, "Mechavalry Destroyer", 1, 12, 0, 9000, 35, 1000, 400, 0, 300, 250, 0, 0, 0, 100, 3, 0, 0, 0, 0, 0, 513, "", 1, 100, 0, "", 1, 0, 305, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Vweeen, vweeen.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ka-clank clank clank!$B-B-B-B-B-Boom!!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Ka-clank clank clank!$B-B-B-B-B-Boom!!");
+	}
+	if (no == 397)
+	{
+		‚b“G“o˜^‚P(iic, no, 100114, "One-Fanged Puryo ", 1, 4, 19, 7000, 45, 1250, 300, 0, 300, 200, 0, 0, 0, 100, 5, 0, 0, 0, 0, 0, 403, "", 1, 100, 299, "", 0, 3, 0, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Puryo...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Puryo...!");
+	}
+	£–½’† = 130;
+	£‰ñ”ğ = 30;
+	£ÕŒ‚ = 30;
+	if (no == 454)
+	{
+		‚b“G“o˜^‚P(iic, no, 100024, "Bear", 0, 4, 0, 4500, 55, 1800, 150, 0, 200, £–½’† + 40, £‰ñ”ğ + 20, 30, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 385, "bear punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hibernation...$Or so you thought! Predation!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Punch!$And predation!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Vacyuuuum...$To the jewels!");
+	}
+	if (no == 436)
+	{
+		‚b“G“o˜^‚P(iic, no, 100276, "Mechavalry Tank MkII", 0, 12, 0, 5000, 45, 1990, 300, 0, 50, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚ + 30, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 409, "fired its main armament.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ka-thunk thunk thunk. Ka-thunk thunk thunk.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ka-Ka-Ka-thunk thunk.$B-B-Boooom!!");
+	}
+	if (no == 251)
+	{
+		‚b“G“o˜^‚P(iic, no, 100052, "Polysaurus", 0, 12, 0, 4200, 45, 1600, 200, 0, 200, £–½’†, 0, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 235, "cried, \"Gggyayayayaaa!\"", 0, 35, 129, "breathed fire.", 2, 40, 403, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gweh! Gweh!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gyaaaass!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Uboooooooh!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Ggyaaaan!");
+	}
+	if (no == 393)
+	{
+		‚b“G“o˜^‚P(iic, no, 100023, "Serious Sumo", 0, 4, 17, 4800, 45, 1400, 300, 0, 200, £–½’†, 0, 50, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 510, "pushed.", 1, 40, 385, "slapped.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "No time outs.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hm, hm, hm, hm!$Push, push!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Yah!$Brainbuster!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Put your back into it!");
+	}
+	if (no == 244)
+	{
+		‚b“G“o˜^‚P(iic, no, 100027, "Shadow", 0, 4, 20, 4300, 45, 1300, 200, 0, 200, £–½’†, 0, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 80, 406, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Heheheheheheheheheheheh.$Heheheheheheheheheheheh.$Heheheheheheheheheheheh.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "HAHAHAHAHA!");
+	}
+	if (no == 402)
+	{
+		‚b“G“o˜^‚P(iic, no, 100033, "Mr. Metaboly", 0, 15, 0, 4000, 45, 1000, 200, 0, 200, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 385, "", 1, 100, 396, "", 1, 100, 399, "", 1, 100, 503, "", 1, 100, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚rˆê“xg—p(iic, 2, 1);
+		‚b‚rˆê“xg—p(iic, 3, 1);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Phew, phew.$I'm metabolizing.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Argh!$Haah, haah.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hee, hee.$Hurry up and die!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Stop that!$Put that away!");
+	}
+	if (no == 398)
+	{
+		‚b“G“o˜^‚P(iic, no, 100146, "Animated Fine Armor", 0, 4, 17, 4300, 45, 1500, 600, 0, 400, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 212, "", 0, 20, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hey, have we met before?$My name's Animated Fine Armor.$You can call me Sir Ar.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hahaha,$how do you like this attack?");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Whoa there!$I'm expensive, so please don't scuff me.");
+	}
+	if (no == 238)
+	{
+		‚b“G“o˜^‚P(iic, no, 100123, "Golden Orb", 0, 11, 18, 4500, 45, 1800, 200, 0, 200, £–½’†, £‰ñ”ğ, 30, £ÕŒ‚ + 30, £ÕŒ‚, 0, 0, 0, 80, 0, 0, 212, "", 0, 20, 387, "tackled violently.", 1, 30, 385, "tackled.", 1, 100, 259, "", 1, 4, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "EEE››EE");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "`````$„„@›@¨@");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "`````$„„@›@¨@šš");
+		“G‘äŒ“o˜^(iic, "x‰‡", "¦|¦|¦");
+	}
+	if (no == 400)
+	{
+		‚b“G“o˜^‚P(iic, no, 100048, "Hanny Cannon", 0, 8, 17, 2500, 38, 950, 400, 0, 9999, £–½’† + 40, 0, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 420, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hanny hanny hanny hanny...$ªDriving noise");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hannyyyyyyy!!$ªBombarding noise");
+	}
+	if (no == 373)
+	{
+		‚b“G“o˜^‚P(iic, no, 100239, "Healcinth", 0, 3, 22, 3200, 38, 0, 200, 700, 200, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 429, "", 1, 50, 169, "", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "......$ªShaking head");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "......!!");
+	}
+	if (no == 483)
+	{
+		‚b“G“o˜^‚P(iic, no, 100240, "Healcinth", 0, 3, 22, 3200, 38, 0, 200, 700, 200, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 429, "", 1, 50, 169, "", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "......$ªShaking head");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "......!!");
+	}
+	if (no == 456)
+	{
+		‚b“G“o˜^‚P(iic, no, 100293, "Battle Booklet", 0, 3, 22, 4200, 35, 0, 200, 700, 200, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 235, "", 1, 50, 236, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll tip the scales.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "No opportunity will be missed.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Concentrate on firepower.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Press the attack here.");
+	}
+	if (no == 424)
+	{
+		‚b“G“o˜^‚P(iic, no, 100175, "Flying Monitor Lizard", 0, 4, 16, 12000, 50, 1500, 200, 700, 200, 220, 100, 0, 0, 30, 0, 0, 0, 0, 0, 0, 554, "sent out a shockwave.", 2, 100, 403, "", 1, 100, 246, "", 1, 2, 0, "", 1, 0, 0, "", 0, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gieee...$...Giee......");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gieeee!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gyawaaa!!");
+	}
+	if (no == 387)
+	{
+		‚b“G“o˜^‚P(iic, no, 100137, "Z Guardian", 1, 12, 0, 6900, 45, 1500, 300, 1500, 300, 200, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 190, "", 2, 30, 504, "", 1, 100, 250, "", 0, 4, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Standing by.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Firing.$Please stand by.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Obliterating.$99% complete.");
+	}
+	£–½’† = 135;
+	£‰ñ”ğ = 35;
+	£ÕŒ‚ = 35;
+	if (no == 391)
+	{
+		‚b“G“o˜^‚P(iic, no, 100163, "Hitler", 0, 10, 21, 5000, 50, 0, 0, 1700, 2000, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 204, "", 1, 50, 203, "", 1, 100, 303, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "HEIL. M. M. RUNE.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "");
+		“G‘äŒ“o˜^(iic, "x‰‡", "RURU$RURU$RU");
+	}
+	if (no == 374)
+	{
+		lint £‘Ì—Í = 5000;
+		if (Ÿiiq == 201)
+		{
+			£‘Ì—Í += ‚pƒNƒŠƒA‰ñ”(Ÿiiq, -1) * 1000;
+		}
+		‚b“G“o˜^‚P(iic, no, 100273, "Angel Knight Clone", 0, 14, 22, £‘Ì—Í, 60, 2000, 300, 2000, 300, £–½’†, £‰ñ”ğ + 20, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 191, "", 2, 15, 172, "", 2, 15, 179, "", 2, 15, 388, "", 1, 100, 475, "", 1, 0);
+		‚b‚r’Ç‰Á(iic, 246, 4);
+		‚b‚r’Ç‰Á(iic, 307, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Commencing extermination!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Finding additional targets.$...Perish!");
+	}
+	if (no == 247)
+	{
+		‚b“G“o˜^‚P(iic, no, 100064, "The Invincible Iron Bird", 0, 4, 23, 4000, 43, 1300, 300, 0, 300, £–½’†, 0, 0, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 0, 505, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Hohoi...$Hoi hoi hohoi...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ba-boo-boo-boom!!$(small bird breaks speed of sound)");
+	}
+	if (no == 240)
+	{
+		‚b“G“o˜^‚P(iic, no, 100008, "Valkyrie", 0, 3, 22, 5500, 55, 2200, 300, 0, 300, £–½’†, £‰ñ”ğ + 50, 40, £ÕŒ‚ + 30, £ÕŒ‚, 0, 40, 0, 40, 40, 0, 392, "performed a shockwave punch.", 1, 50, 385, "punched, fast and hard.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		‚bˆ«Œû‘Ï«(iic, 1);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", ".........");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hmph...!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "HAAah!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 237)
+	{
+		‚b“G“o˜^‚P(iic, no, 100105, "Super Hanny", 0, 8, 17, 6000, 50, 2222, 300, 0, 9999, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 420, "used Super Hanny Flash.", 2, 30, 385, "super punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hey!$I'm a super hanny!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Dadadadadadadada!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Ha...nny...$Flash...$Waaaaave!!");
+	}
+	if (no == 386)
+	{
+		‚b“G“o˜^‚P(iic, no, 100095, "Hexapillar", 0, 12, 16, 6600, 50, 1800, 300, 1700, 300, £–½’† + 40, £‰ñ”ğ + 40, 0, £ÕŒ‚, £ÕŒ‚, 5, 0, 0, 0, 0, 0, 179, "flew forward.", 1, 30, 180, "flew forward.", 1, 30, 174, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Pillllllllll.$Pillllllllll.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Lah, lah, lah, lah.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Lalalalala!");
+	}
+	if (no == 473)
+	{
+		‚b“G“o˜^‚P(iic, no, 100302, "Silbarrel, age 5", 0, 2, 22, 1000, 80, 1500, 300, 400, 4200, £–½’†, 30, 0, 0, 100, 0, 0, 0, 0, 80, 0, 422, "", 1, 30, 385, "jabbed.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "What's with the pity in your eyes?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Urya!$Torya!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Don't judge by appearances! That's mean!");
+	}
+	if (no == 372)
+	{
+		‚b“G“o˜^‚P(iic, no, 100267, "Black Dragon", 1, 11, 16, 50000, 80, 2000, 100, 500, 100, 250, 130, 0, 60, 150, 1, 0, 0, 0, 0, 0, 562, "", 2, 40, 403, "bit.", 1, 100, 0, "", 1, 0, 305, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...This is... annoying......");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Goaah!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I won't even leave your bones...!!");
+	}
+	if (no == 354)
+	{
+		‚b“G“o˜^‚P(iic, no, 100227, "Hanny King", 1, 0, 0, 25000, 90, 10, 0, 10, 9999, 500, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 458, "", 1, 100, 305, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hanihooo!$You guys are wonderful!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hanihooo, bwawawaaan!$You die, okay?");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hanihooo, bwawawaaan!$You die, okay?");
+	}
+	£–½’† = 145;
+	£‰ñ”ğ = 45;
+	£ÕŒ‚ = 40;
+	if (no == 461)
+	{
+		‚b“G“o˜^‚P(iic, no, 100138, "E. Shield", 0, 4, 16, 6000, 60, 2000, 1200, 0, 500, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 3, 0, 0, 0, 0, 0, 212, "", 0, 40, 127, "breathed fire.", 1, 100, 249, "", 1, 3, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Spin... Spin...$Eyes... spinning.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I... breathe... fire.$Fwoosh... Fwoosh.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "I... breathe... fire.$Fwoosh... Fwoosh.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I'll... protect... everyone.$Guaaard Block!");
+	}
+	if (no == 235)
+	{
+		‚b“G“o˜^‚P(iic, no, 100015, "Dark Chippy", 0, 4, 0, 6000, 70, 2500, 800, 0, 800, £–½’† + 30, £‰ñ”ğ + 30, 50, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 404, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Cheee...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Cha!");
+	}
+	if (no == 233)
+	{
+		‚b“G“o˜^‚P(iic, no, 100047, "Bigfoot", 0, 4, 0, 7000, 38, 2500, 300, 0, 300, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 567, "stepped forward.", 2, 30, 385, "stepped forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Sorry!$...But I gotta step on you!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "You know what they say about guys with big feet!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Sorry to be barefoot!");
+	}
+	if (no == 392)
+	{
+		‚b“G“o˜^‚P(iic, no, 100115, "Conturtle", 0, 4, 17, 8400, 66, 3000, 1500, 0, 0, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 4, 0, 0, 0, 0, 0, 409, "", 1, 100, 0, "", 0, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ohhh...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gyaos!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gyaooos!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Alright, alright,$just attack me, already.");
+	}
+	if (no == 401)
+	{
+		‚b“G“o˜^‚P(iic, no, 100042, "Nygo!", 0, 4, 0, 5800, 99, 2000, 400, 0, 1500, £–½’†, £‰ñ”ğ, 0, £ÕŒ‚, £ÕŒ‚, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gyogyogyo...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Yon!$ªUltra high speed");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "...$ªUltra attack speed");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Nygo!");
+	}
+	if (no == 480)
+	{
+		‚b“G“o˜^‚P(iic, no, 100309, "Iron Guardian", 0, 4, 18, 10000, 65, 3000, 2000, 0, 2000, £–½’†, 0, 0, £ÕŒ‚ + 30, £ÕŒ‚ + 30, 0, 0, 0, 0, 0, 0, 418, "", 1, 30, 385, "punched.", 1, 100, 437, "", 1, 1, 0, "", 0, 0, 582, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		í“¬ƒCƒxƒ“ƒg–¼ = "ƒXƒg[ƒ“E‚f";
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "You shall not pass.$That was my Creator's order.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I won't let you get away.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Tremble, break, crumble.$No one will get away.");
+	}
+	if (no == 388)
+	{
+		‚b“G“o˜^‚P(iic, no, 100136, "Gunagan", 1, 15, 0, 120000, 80, 4200, 1000, 4200, 2000, 500, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 384, "", 0, 30, 515, "", 1, 100, 0, "", 1, 0, 475, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Goaaah!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Ggaaah!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Goohhhn!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Uuuuugh...");
+	}
+	if (no == 394)
+	{
+		‚b“G“o˜^‚P(iic, no, 100065, "Crazy King", 1, 4, 0, 900000, 100, 20000, 4000, 20000, 4000, 250, 0, 50, 70, 200, 0, 0, 80, 0, 0, 0, 555, "used Crazy Geyser, physical torrent.", 1, 40, 564, "used Crazy Geyser, magical torrent.", 1, 30, 385, "", 2, 100, 475, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 99);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gah gah gah!$ªProvocation");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gah!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gagyaaan!$ªProud");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Gan gan giginn!");
+	}
+	if (no == 459)
+	{
+		‚b“G“o˜^‚P(iic, no, 100143, "Ammoth", 1, 4, 0, 70000, 80, 5000, 200, 0, 200, 300, 0, 0, 0, 100, 0, 0, 80, 0, 0, 0, 556, "spewed bubbles.", 2, 60, 565, "used Nose Slap.", 1, 100, 0, "", 1, 0, 475, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ammoô");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Powoo!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Powoooon!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "THUD, THUD$ªSkipping");
+	}
+	£–½’† = 170;
+	£‰ñ”ğ = 60;
+	£ÕŒ‚ = 60;
+	if (no == 468)
+	{
+		‚b“G“o˜^‚P(iic, no, 100297, "Ice Hugant", 0, 4, 0, 10000, 70, 2000, 1500, 0, 1500, 170, 60, 30, 100, 100, 5, 0, 90, 0, 50, 50, 596, "attacked with its weapon.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Found warm little people!$They look tasty!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Small fry under level 100!$I'll crush you in one hit!");
+	}
+	if (no == 319)
+	{
+		‚b“G“o˜^‚P(iic, no, 100195, "Pastel", 1, 13, 22, 5000, 45, 600, 400, 600, 400, 300, 30, 0, 0, 60, 0, 0, 0, 0, 0, 0, 433, "", 2, 100, 199, "", 1, 50, 194, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Get back, Reset!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Become dust!$Become dust!$Become duuust!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "This is the end!$Black Destruction Beam!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "We curse thee!");
+	}
+	if (no == 320)
+	{
+		‚b“G“o˜^‚P(iic, no, 100196, "Modern", 1, 13, 22, 5000, 60, 1200, 200, 100, 800, 500, 30, 0, 0, 100, 4, 0, 0, 0, 40, 40, 140, "", 1, 50, 141, "", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		if (EV("‚P‚Q‚`æ‘ãƒJƒ‰[^í“¬Œã", -2147483648) == false)
+		{
+			‚b‚r’Ç‰Á(iic, 305, 0);
+		}
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll take revenge for Pastel.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I was the queen.$I won't lose easily.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "How's this?");
+	}
+	if (no == 321)
+	{
+		‚b“G“o˜^‚P(iic, no, 100197, "Vivid", 1, 13, 22, 3000, 60, 1200, 200, 100, 800, 500, 30, 0, 0, 500, 5, 0, 0, 0, 0, 0, 434, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		if (EV("‚P‚Q‚`’†¢‘ãƒJƒ‰[^í“¬Œã", -2147483648) == false)
+		{
+			‚b‚r’Ç‰Á(iic, 305, 0);
+		}
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Not coming?");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Give up.");
+	}
+	if (no == 315)
+	{
+		‚b“G“o˜^‚P(iic, no, 100223, "Attack Spirit", 0, 12, 0, 2000, 40, 1300, 0, 0, 0, 300, 30, 0, 0, 200, 2, 0, 0, 0, 0, 0, 385, "spirit punched.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", ".........");
+		“G‘äŒ“o˜^(iic, "UŒ‚", ".........");
+	}
+	if (no == 318)
+	{
+		‚b“G“o˜^‚P(iic, no, 100226, "Magic Spirit", 0, 12, 0, 2000, 40, 0, 0, 600, 0, 300, 30, 0, 0, 200, 2, 0, 0, 0, 0, 0, 171, "", 1, 50, 178, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", ".........");
+	}
+	if (no == 316)
+	{
+		‚b“G“o˜^‚P(iic, no, 100224, "Defense Spirit", 0, 12, 0, 2000, 40, 100, 300, 100, 100, 0, 0, 0, 0, 200, 2, 0, 0, 0, 0, 0, 212, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 249, "", 1, 4, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", ".........");
+		“G‘äŒ“o˜^(iic, "x‰‡", ".........");
+	}
+	if (no == 317)
+	{
+		‚b“G“o˜^‚P(iic, no, 100225, "Healing Spirit", 0, 12, 0, 2000, 40, 100, 0, 1000, 0, 500, 30, 0, 0, 200, 2, 0, 0, 0, 0, 0, 221, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", ".........");
+		“G‘äŒ“o˜^(iic, "x‰‡", ".........");
+	}
+	if (no == 322)
+	{
+		‚b“G“o˜^‚P(iic, no, 100198, "Full", 1, 13, 22, 8000, 80, 1200, 200, 600, 200, 500, 0, 0, 200, 300, 0, 0, 0, 0, 0, 0, 433, "", 1, 100, 173, "", 2, 30, 181, "", 2, 100, 475, "", 1, 0, 299, "", 1, 1);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		if (EV("‚P‚Q‚`æ‘c‚Æ‚Ì‘ÎŒˆ^í“¬Œã", -2147483648) == false)
+		{
+			‚b‚r’Ç‰Á(iic, 305, 0);
+		}
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Heheheh...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Fall.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "This is the end,$child of man.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "I curse thee!");
+	}
+	if (no == 428)
+	{
+		‚b“G“o˜^‚P(iic, no, 100290, "Warrior Gajel", 1, 2, 22, 12400, 38, 800, 600, 0, 600, 180, 40, 100, 20, 80, 1, 0, 0, 0, 0, 0, 468, "", 1, 30, 467, "", 1, 100, 438, "", 1, 1, 481, "", 1, 0, 299, "", 1, 1);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Come on!$Hurry up!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Rrraaahh!$Die already!!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Fuckin' diiie!$Gajel Special!!");
+	}
+	if (no == 427)
+	{
+		‚b“G“o˜^‚P(iic, no, 100292, "Assassin Paraly", 1, 2, 22, 12000, 80, 750, 0, 0, 0, 280, 100, 100, 60, 0, 1, 0, 0, 0, 0, 0, 121, "", 2, 30, 539, "attacked with a knife.", 1, 100, 481, "", 0, 1, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "You're second-rate...$No, third...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...Where are you looking?");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Try and dodge this.");
+	}
+	if (no == 426)
+	{
+		‚b“G“o˜^‚P(iic, no, 100291, "Sorceror Hellbell", 1, 2, 22, 17400, 35, 450, 0, 900, 200, 180, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 171, "", 1, 30, 178, "", 1, 60, 184, "", 1, 100, 481, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hello, reckless adventurers.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Hohoho!$You won't get away.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Bell bell bell bell$Hellbeeell!");
+	}
+	if (no == 384)
+	{
+		‚b“G“o˜^‚P(iic, no, 100228, "Black Bird", 0, 24, 22, 800, 27, 280, 100, 0, 0, 140, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 467, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 20);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'm Bird...$I'm Bird Lithfie.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I'm strong, aren't I...?!$I'm cool, aren't I...?!");
+	}
+	if (no == 368)
+	{
+		lint iic2 = 0;
+		lint vv = 0;
+		iic2 = ‚b”Ô†æ“¾(1);
+		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 2)
+		{
+			vv = 476;
+		}
+		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 3)
+		{
+			vv = 477;
+		}
+		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 7)
+		{
+			vv = 479;
+		}
+		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 4)
+		{
+			vv = 478;
+		}
+		‚b“G“o˜^‚P(iic, no, 100238, "Dark Rance", 1, 15, 22, 10000, 38, 100, 100, 700, 100, 200, 30, 0, 0, 50, 0, 0, 0, 0, 0, 0, 500, "harvested a soul.", 1, 100, 0, "", 1, 0, vv, "", 1, 0, 475, "", 0, 1, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Black darkness, deeper than the abyss. Obsidian.$My true name is absolute and just.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Watch closely the destruction of all Creation! „|„u„x„r„y„u... Take this! Schlach!");
+	}
+	if (no == 369)
+	{
+		‚b“G“o˜^‚P(iic, no, 100030, "Goblin", 0, 4, 22, 20000, 50, 900, 0, 0, 200, 120, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 401, "", 1, 10, 400, "", 1, 30, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Pwawawaawaaah.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Miiko miko miko miko.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Miiko miko miko miko.");
+	}
+	if (no == 451)
+	{
+		‚b“G“o˜^‚P(iic, no, 100288, "Troll", 0, 4, 22, 5000, 50, 900, 0, 900, 200, 120, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 187, "", 1, 30, 181, "", 1, 30, 168, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Pwawawaawaaah.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Schooool swimsuit suit suit.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Schooool swimsuit suit suit.");
+	}
+	if (no == 360)
+	{
+		‚b“G“o˜^‚P(iic, no, 100020, "Huge Goldfish", 0, 7, 16, 7000, 45, 700, 150, 0, 150, 200, 50, 20, 50, 50, 5, 0, 0, 0, 0, 0, 399, "flew forward.", 1, 40, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Gyopee!$(Humans are my favorite food.)");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gyopee!$(I'll squish you with a tackle.)");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Gyopee!$(You're squished!)");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 376)
+	{
+		‚b“G“o˜^‚P(iic, no, 100066, "Kaito", 1, 9, 22, 30000, 66, 1800, 1500, 600, 0, 300, 80, 50, 120, 100, 0, 0, 0, 0, 0, 0, 384, "", 0, 10, 501, "threw a super heavy punch.", 1, 100, 259, "", 1, 4, 502, "", 1, 0, 305, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Don't think your fists will reach me...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Yah!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "...Haahhhh...");
+	}
+	if (no == 377)
+	{
+		‚b“G“o˜^‚P(iic, no, 100261, "Kaito", 1, 9, 22, 25000, 66, 1800, 1500, 600, 400, 300, 80, 50, 120, 100, 0, 0, 0, 0, 0, 0, 384, "", 0, 10, 501, "threw a super heavy punch.", 1, 100, 259, "", 1, 4, 502, "", 1, 0, 305, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Your fists are useless against me, human...!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I will not forgive you!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "...Why......");
+	}
+	if (no == 437)
+	{
+		‚b“G“o˜^‚P(iic, no, 100165, "Okayu Fever", 0, 4, 0, 2000, 45, 700, 0, 700, 200, 140, 40, 0, 30, 30, 5, 0, 0, 0, 0, 0, 169, "flew forward.", 2, 40, 385, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Upo!$I'll get you, upo!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Uppo!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Upo Flame!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 423)
+	{
+		‚b“G“o˜^‚P(iic, no, 100285, "Crystal Robo", 1, 12, 0, 9000, 45, 500, 100, 400, 100, 180, 0, 0, 50, 80, 5, 0, 0, 0, 0, 0, 389, "", 2, 20, 388, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rğŒ(iic, 1, 50);
+		‚b‚k‚u(iic, 40);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Wehya uHIhi uhya!$Everybody's gonna die!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Ba-baaang!!$You're deaaad!!");
+	}
+	if (no == 383)
+	{
+		‚b“G“o˜^‚P(iic, no, 100229, "BS", 1, 2, 22, 14400, 50, 1700, 2000, 1000, 1500, 250, 0, 0, 80, 80, 0, 0, 0, 0, 0, 0, 224, "", 2, 20, 506, "", 0, 30, 472, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0);
+		‚b‚r’Ç‰Á(iic, 298, 1);
+		‚b‚rˆê“xg—p(iic, 2, 1);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "All is for the Great Goddess Alice.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "This is all you've got?");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Useless!");
+	}
+	if (no == 375)
+	{
+		‚b“G“o˜^‚P(iic, no, 100235, "Pastel", 1, 13, 22, 5000, 45, 600, 400, 600, 400, 300, 50, 0, 0, 60, 0, 0, 0, 0, 0, 0, 433, "", 2, 100, 199, "", 1, 50, 194, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 45);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Rance... Rance...$Reset... Reset...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "We'll kill you...$We'll kill you!!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "......");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Everyone should be cursed!");
+	}
+	if (no == 380)
+	{
+		‚b“G“o˜^‚P(iic, no, 100262, "Salvenaott", 1, 2, 22, 6000, 65, 1000, 1000, 0, 1000, 300, 0, 20, 20, 80, 0, 0, 0, 0, 0, 0, 514, "", 1, 40, 467, "attacked powerfully.", 1, 100, 299, "", 1, 1, 0, "", 1, 0, 307, "", 1, 0);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "What's wrong?!$Hurry and come at me!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Gaaahahahaha!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Don't die now!$I haven't had enough fun!");
+	}
+	if (no == 378)
+	{
+		‚b“G“o˜^‚P(iic, no, 100263, "Vecdran", 1, 2, 22, 8000, 70, 1000, 1000, 0, 1000, 200, 0, 0, 20, 40, 0, 0, 0, 0, 0, 0, 212, "", 0, 30, 467, "smacked his axe against the ground.", 1, 100, 307, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Let's see here...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "I won't relent.");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Let's end this.");
+	}
+	if (no == 379)
+	{
+		‚b“G“o˜^‚P(iic, no, 100266, "Seconaott", 0, 2, 22, 5000, 80, 800, 1000, 0, 1000, 300, 60, 50, 150, 100, 0, 0, 0, 0, 0, 0, 551, "attacked with a brutal dagger.", 1, 100, 0, "", 1, 0, 307, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll end this quickly.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "What do you think?$Pretty good, right?");
+	}
+	if (no == 381)
+	{
+		‚b“G“o˜^‚P(iic, no, 100264, "Paluott", 1, 2, 22, 5000, 50, 1200, 1000, 1000, 1000, 200, 0, 0, 100, 40, 0, 0, 0, 0, 0, 0, 220, "chanted \"Healing.\"", 1, 50, 385, "swiped with his staff.", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "............");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...Gh.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "......This is nothing.");
+	}
+	if (no == 382)
+	{
+		‚b“G“o˜^‚P(iic, no, 100265, "Contaott", 1, 2, 22, 5000, 50, 0, 1000, 1000, 1000, 200, 0, 0, 20, 80, 0, 0, 0, 0, 0, 0, 173, "", 1, 50, 169, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 50);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Whispering cord, child's play, a lattice ripple...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "A widow's ankle! Biting rainfall!$Bulging ribs!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Ancient milk, hand-pushed spirit, spirals!");
+	}
+	if (no == 344 && FA[254] >= 200)
+	{
+		no = 457;
+	}
+	if (no == 344)
+	{
+		lint Œõ = 0;
+		lint ˆÅ = 0;
+		lint ‰Š = 0;
+		lint ra = 0;
+		ra = RAND(3);
+		if (ra == 1)
+		{
+			Œõ = 95;
+		}
+		if (ra == 2)
+		{
+			ˆÅ = 95;
+		}
+		if (ra == 3)
+		{
+			‰Š = 95;
+		}
+		‚b“G“o˜^‚P(iic, no, 100287, "Hopeful", 0, 2, 22, 2000, 42, 700, 200, 500, 200, 200, 20, 0, 20, 40, 0, ‰Š, 0, 0, Œõ, ˆÅ, 467, "jabbed quickly.", 1, 70, 498, "", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 42);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Walk with the Shepherds.$The world must be destroyed.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "If you can't understand our teachings, then die.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "This is a mysterious powder I received from Mistress Am.$Accept it with joy.");
+	}
+	if (no == 457)
+	{
+		‚b“G“o˜^‚P(iic, no, 100100, "Hanny (Shepherd)", 0, 8, 17, 280, 18, 100, 10, 0, 9999, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 420, "", 2, 80, 385, "punched with its tiny arms.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Hanihooo!$I'm a hanny!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Take that! And that!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Hanny Flash!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "");
+	}
+	if (no == 430)
+	{
+		‚b“G“o˜^‚P(iic, no, 100237, "Am Yisael", 1, 24, 22, 40000, 70, 1500, 1000, 1000, 1000, 300, 0, 0, 20, 90, 0, 0, 0, 0, 0, 0, 545, "", 1, 30, 519, "", 1, 30, 557, "", 2, 40, 546, "", 2, 100, 475, "", 1, 0);
+		‚b‚k‚u(iic, 60);
+		‚b‚rˆê“xg—p(iic, 1, 1);
+		‚b‚r’Ç‰Á(iic, 305, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Heheh, what a scary face.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "This is for a new era.");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Enter my embrace.");
+	}
+	if (no == 455)
+	{
+		‚b“G“o˜^‚P(iic, no, 100286, "Goddess Alice", 1, 14, 22, 500000, 100, 20000, 3000, 10000, 3000, 500, 80, 0, 100, 200, 0, 0, 0, 0, 0, 0, 547, "handed down divine punishment.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 475, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 100);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Fwahh...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...This is boring.");
+	}
+	if (no == 351)
+	{
+		‚b“G“o˜^‚P(iic, no, 100145, "Snatcher", 0, 6, 0, 505, 30, 100, 0, 0, 0, 200, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 449, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Money...$...Money...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Money...$Gimme it.$I want it.");
+	}
+	if (no == 448)
+	{
+		lint iic2 = 0;
+		iic2 = ‚o‚s‚`ƒ‰ƒ“ƒ_ƒ€(0, 0);
+		lint ‘Ì—Í = 100;
+		lint ‘f‘‚³ = 30;
+		lint UŒ‚—Í = 300;
+		lint –hŒä—Í = 0;
+		lint –‚–@—Í = 300;
+		lint –‚’ï—Í = 0;
+		lint –½’†—¦ = 300;
+		lint ‰ñ”ğ—¦ = 0;
+		lint •KE—¦ = 0;
+		lint ÕŒ‚—¦ = 0;
+		lint ‘Ï«—¦ = 0;
+		lint ‰Š = 0;
+		lint •X = 0;
+		lint —‹ = 0;
+		lint Œõ = 0;
+		lint ˆÅ = 0;
+		lint type = 0;
+		if (iic2 != 0)
+		{
+			‘Ì—Í = ‚b‘Ì—ÍÅ‘å(iic2, -1);
+			‘f‘‚³ = ‚b‘f‘‚³(iic2, -1);
+			UŒ‚—Í = ‚bUŒ‚—Í(iic2, -1);
+			–hŒä—Í = ‚b–hŒä—Í(iic2, -1);
+			–‚–@—Í = ‚b–‚–@—Í(iic2, -1);
+			–‚’ï—Í = ‚b–‚’ï—Í(iic2, -1);
+			–½’†—¦ = ‚b–½’†—¦(iic2, -1);
+			‰ñ”ğ—¦ = ‚b‰ñ”ğ—¦(iic2, -1);
+			•KE—¦ = ‚b•KE—¦(iic2, -1);
+			ÕŒ‚—¦ = ‚bÕŒ‚—¦(iic2, -1);
+			‘Ï«—¦ = ‚b‘Ï«—¦(iic2, -1);
+			‰Š = ‚b‰Š‘Ï«(iic2, -1);
+			•X = ‚b•X‘Ï«(iic2, -1);
+			—‹ = ‚b—‹‘Ï«(iic2, -1);
+			Œõ = ‚bŒõ‘Ï«(iic2, -1);
+			ˆÅ = ‚bˆÅ‘Ï«(iic2, -1);
+		}
+		if (‚bE‹Æ(iic2, -1) == 4)
+		{
+			type = 2;
+		}
+		if (‚bE‹Æ(iic2, -1) == 5)
+		{
+			type = 3;
+		}
+		if (‚bE‹Æ(iic2, -1) == 2)
+		{
+			type = 4;
+		}
+		if (type == 0)
+		{
+			‚b“G“o˜^‚P(iic, no, 100289, "CopyPaste", 0, 4, 0, ‘Ì—Í, ‘f‘‚³, UŒ‚—Í, –hŒä—Í, –‚–@—Í, –‚’ï—Í, –½’†—¦, ‰ñ”ğ—¦, •KE—¦, ÕŒ‚—¦, ‘Ï«—¦, 0, ‰Š, •X, —‹, Œõ, ˆÅ, 393, "attacked.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		}
+		if (type == 2)
+		{
+			‚b“G“o˜^‚P(iic, no, 100289, "CopyPaste", 0, 4, 0, ‘Ì—Í, ‘f‘‚³, UŒ‚—Í, –hŒä—Í, –‚–@—Í, –‚’ï—Í, –½’†—¦, ‰ñ”ğ—¦, •KE—¦, ÕŒ‚—¦, ‘Ï«—¦, 0, ‰Š, •X, —‹, Œõ, ˆÅ, 168, "", 1, 30, 181, "", 1, 30, 187, "", 1, 30, 194, "", 1, 100, 0, "", 1, 0);
+		}
+		if (type == 3)
+		{
+			‚b“G“o˜^‚P(iic, no, 100289, "CopyPaste", 0, 4, 0, ‘Ì—Í, ‘f‘‚³, UŒ‚—Í, –hŒä—Í, –‚–@—Í, –‚’ï—Í, –½’†—¦, ‰ñ”ğ—¦, •KE—¦, ÕŒ‚—¦, ‘Ï«—¦, 0, ‰Š, •X, —‹, Œõ, ˆÅ, 221, "", 1, 40, 393, "attacked.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		}
+		if (type == 4)
+		{
+			‚b“G“o˜^‚P(iic, no, 100289, "CopyPaste", 0, 4, 0, ‘Ì—Í, ‘f‘‚³, UŒ‚—Í, –hŒä—Í, –‚–@—Í, –‚’ï—Í, –½’†—¦, ‰ñ”ğ—¦, •KE—¦, ÕŒ‚—¦, ‘Ï«—¦, 0, ‰Š, •X, —‹, Œõ, ˆÅ, 212, "", 1, 30, 393, "attacked.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		}
+		if (iic2 != 0)
+		{
+			‚b–¼‘O(iic, ‚b’Zk–¼‘O(iic2, "") + " CopyPaste");
+			“G‘äŒ“o˜^(iic, "‘Ò‹@", ‚b‘äŒ(iic2, 1, ""));
+			“G‘äŒ“o˜^(iic, "UŒ‚", ‚b‘äŒ(iic2, 3, ""));
+			“G‘äŒ“o˜^(iic, "‘å‹Z", ‚b‘äŒ(iic2, 4, ""));
+			“G‘äŒ“o˜^(iic, "x‰‡", ‚b‘äŒ(iic2, 5, ""));
+		}
+	}
+	if (no == 347)
+	{
+		int hp = 100;
+		int at = 100;
+		int sp = 10;
+		int df = 0;
+		int loop = 0;
+		for (loop = 1; loop < 6; ++loop)
+		{
+			if (PTA[loop] != 0 && ‚b‘Ì—ÍÅ‘å(PTA[loop], -1) > hp)
+			{
+				hp = ‚b‘Ì—ÍÅ‘å(PTA[loop], -1);
+			}
+			if (PTA[loop] != 0 && ‚bUŒ‚—Í(PTA[loop], -1) / 2 > at)
+			{
+				at = ‚bUŒ‚—Í(PTA[loop], -1) / 2;
+			}
+			if (PTA[loop] != 0 && ‚b‘f‘‚³(PTA[loop], -1) > sp)
+			{
+				sp = ‚b‘f‘‚³(PTA[loop], -1);
+			}
+			if (PTA[loop] != 0 && ‚b–hŒä—Í(PTA[loop], -1) / 2 > df)
+			{
+				df = ‚b–hŒä—Í(PTA[loop], -1) / 2;
+			}
+		}
+		hp = hp * 3;
+		if (hp > 5000)
+		{
+			hp = 5000;
+		}
+		‚b“G“o˜^‚P(iic, no, 100025, "Pocky Rock", 0, 11, 0, hp, sp, at, df, 100, 100, 400, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 385, "thrust forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Pockpock.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "...Rockrock.");
+	}
+	if (no == 431)
+	{
+		int hp = 100;
+		int at = 100;
+		int sp = 10;
+		int df = 0;
+		int loop = 0;
+		for (loop = 1; loop < 6; ++loop)
+		{
+			if (PTA[loop] != 0 && ‚b‘Ì—ÍÅ‘å(PTA[loop], -1) > hp)
+			{
+				hp = ‚b‘Ì—ÍÅ‘å(PTA[loop], -1);
+			}
+			if (PTA[loop] != 0 && ‚b‘f‘‚³(PTA[loop], -1) > sp)
+			{
+				sp = ‚b‘f‘‚³(PTA[loop], -1);
+			}
+			if (PTA[loop] != 0 && ‚b–hŒä—Í(PTA[loop], -1) > df)
+			{
+				df = ‚b–hŒä—Í(PTA[loop], -1);
+			}
+		}
+		hp = hp * 2;
+		if (hp > 5000)
+		{
+			hp = 5000;
+		}
+		‚b“G“o˜^‚P(iic, no, 100120, "Treasure Dango", 0, 6, 0, hp, sp, at, df, 100, 100, 400, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 384, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 10);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I just picked up something good, too...$I've gotta get away...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Treasure.$Treasure.");
+	}
+	if (no == 403 || no == 404 || no == 405 || no == 406 || no == 407 || no == 408 || no == 409 || no == 410 || no == 411 || no == 412 || no == 413 || no == 414 || no == 415 || no == 416 || no == 417 || no == 418 || no == 419 || no == 420 || no == 421 || no == 422)
+	{
+		int hp = 100;
+		int loop = 0;
+		for (loop = 1; loop < 6; ++loop)
+		{
+			if (PTA[loop] != 0 && ‚bUŒ‚—Í(PTA[loop], -1) > hp)
+			{
+				hp = ‚bUŒ‚—Í(PTA[loop], -1);
+			}
+		}
+		hp = hp * 2;
+		if (hp > 5000)
+		{
+			hp = 5000;
+		}
+		int pol = 100003;
+		if (no == 403)
+		{
+			pol = 100241;
+		}
+		if (no == 404)
+		{
+			pol = 100242;
+		}
+		if (no == 405)
+		{
+			pol = 100243;
+		}
+		if (no == 406)
+		{
+			pol = 100244;
+		}
+		if (no == 407)
+		{
+			pol = 100245;
+		}
+		if (no == 408)
+		{
+			pol = 100246;
+		}
+		if (no == 409)
+		{
+			pol = 100247;
+		}
+		if (no == 410)
+		{
+			pol = 100248;
+		}
+		if (no == 411)
+		{
+			pol = 100249;
+		}
+		if (no == 412)
+		{
+			pol = 100250;
+		}
+		if (no == 413)
+		{
+			pol = 100251;
+		}
+		if (no == 414)
+		{
+			pol = 100252;
+		}
+		if (no == 415)
+		{
+			pol = 100253;
+		}
+		if (no == 416)
+		{
+			pol = 100254;
+		}
+		if (no == 417)
+		{
+			pol = 100255;
+		}
+		if (no == 418)
+		{
+			pol = 100256;
+		}
+		if (no == 419)
+		{
+			pol = 100257;
+		}
+		if (no == 420)
+		{
+			pol = 100258;
+		}
+		if (no == 421)
+		{
+			pol = 100259;
+		}
+		if (no == 422)
+		{
+			pol = 100260;
+		}
+		‚b“G“o˜^‚P(iic, no, pol, "Billboard", 0, 6, 0, hp, 30, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 384, "", 0, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Want a poster?$Want one?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Want a poster?$Want one?");
+	}
+	if (no == 491)
+	{
+		‚bƒJƒXƒ^ƒ€“o˜^(iic, no, ŸƒJƒXƒ^ƒ€–¼[1]);
+	}
+	if (no == 492)
+	{
+		‚bƒJƒXƒ^ƒ€“o˜^(iic, no, ŸƒJƒXƒ^ƒ€–¼[2]);
+	}
+	if (no == 493)
+	{
+		‚bƒJƒXƒ^ƒ€“o˜^(iic, no, ŸƒJƒXƒ^ƒ€–¼[3]);
+	}
+	if (no == 494)
+	{
+		‚bƒJƒXƒ^ƒ€“o˜^(iic, no, ŸƒJƒXƒ^ƒ€–¼[4]);
+	}
+	if (no == 495)
+	{
+		‚bƒJƒXƒ^ƒ€“o˜^(iic, no, ŸƒJƒXƒ^ƒ€–¼[5]);
+	}
+	if (no == 481)
+	{
+		‚b“G“o˜^‚P(iic, no, 100310, "Glass Guardian", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 460)
+	{
+		‚b“G“o˜^‚P(iic, no, 100076, "KIUWRI", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 462)
+	{
+		‚b“G“o˜^‚P(iic, no, 100139, "Giant Uppy", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 463)
+	{
+		‚b“G“o˜^‚P(iic, no, 100147, "Giant Happy", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 464)
+	{
+		‚b“G“o˜^‚P(iic, no, 100236, "Philanthropist Gates", 0, 4, 0, 6000, 99, 2000, 2000, 0, 2000, 200, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 429, "", 1, 50, 463, "shot a Gates Beam.", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Retire?$Whatever do you mean?");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Filthy Rich Beam!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "That's against the law.");
+	}
+	if (no == 465)
+	{
+		‚b“G“o˜^‚P(iic, no, 100294, "Transparent Cockroach", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 466)
+	{
+		‚b“G“o˜^‚P(iic, no, 100295, "Heroic Samera~i", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 467)
+	{
+		‚b“G“o˜^‚P(iic, no, 100296, "Unbreakable Jar", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 469)
+	{
+		‚b“G“o˜^‚P(iic, no, 100298, "Space Burner", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 470)
+	{
+		‚b“G“o˜^‚P(iic, no, 100299, "Blue Puryo", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 471)
+	{
+		‚b“G“o˜^‚P(iic, no, 100300, "Hellhound", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 472)
+	{
+		‚b“G“o˜^‚P(iic, no, 100301, "Gold Coin", 0, 12, 0, 1000, 99, 0, 400, 0, 2500, 200, 100, 0, 100, 100, 1, 90, 0, 0, 90, 0, 384, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "We are$flesh from$the golden hanny.");
+	}
+	if (no == 474)
+	{
+		‚b“G“o˜^‚P(iic, no, 100303, "Silbarrel, 80-years-old", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 475)
+	{
+		‚b“G“o˜^‚P(iic, no, 100304, "Bone S MkII", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 476)
+	{
+		‚b“G“o˜^‚P(iic, no, 100305, "Bone W MkII", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 477)
+	{
+		‚b“G“o˜^‚P(iic, no, 100306, "Bone K MkII", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 478)
+	{
+		‚b“G“o˜^‚P(iic, no, 100307, "Bone M MkII", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 479)
+	{
+		‚b“G“o˜^‚P(iic, no, 100308, "Bone MkII", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 482)
+	{
+		‚b“G“o˜^‚P(iic, no, 100311, "Poisonous Goldfish", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 485)
+	{
+		‚b“G“o˜^‚P(iic, no, 100079, "Red Justice Person", 0, 4, 0, 2700, 99, 2000, 400, 0, 1500, 200, 140, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Ugh...$This training makes me queasy...");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Yahoo!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 486)
+	{
+		‚b“G“o˜^‚P(iic, no, 100080, "B Ranger", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 487)
+	{
+		‚b“G“o˜^‚P(iic, no, 100081, "C Ranger", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 488)
+	{
+		‚b“G“o˜^‚P(iic, no, 100082, "D Ranger", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 489)
+	{
+		‚b“G“o˜^‚P(iic, no, 100083, "E Ranger", 0, 4, 0, 2000, 99, 2000, 400, 0, 1500, 200, 100, 0, 100, 100, 1, 0, 0, 0, 0, 0, 385, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 70);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "––––");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "––––");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "––––");
+		“G‘äŒ“o˜^(iic, "x‰‡", "––––");
+	}
+	if (no == 114)
+	{
+		‚b“G“o˜^‚P(iic, no, 100003, "Can Can Familiar", 0, 60, 22, 500, 20, 1, 0, 0, 0, 200, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 393, "pestered, \"Play with me, play with me!\"", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 113)
+	{
+		‚b“G“o˜^‚P(iic, no, 100075, "Chi-Ha Familiar", 0, 60, 22, 500, 25, 200, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 393, "fired main armament.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 115)
+	{
+		‚b“G“o˜^‚P(iic, no, 100001, "Gecky Familiar", 0, 60, 22, 500, 30, 200, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 393, "kicked.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 116)
+	{
+		‚b“G“o˜^‚P(iic, no, 100004, "Magisco Familiar", 0, 60, 22, 500, 20, 190, 0, 100, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 169, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 117)
+	{
+		‚b“G“o˜^‚P(iic, no, 100011, "Kraken Familiar", 0, 60, 22, 500, 28, 250, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 393, "slapped.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 118)
+	{
+		‚b“G“o˜^‚P(iic, no, 100026, "Crab Girl Familiar", 0, 60, 22, 500, 25, 300, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 393, "punched.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 119)
+	{
+		‚b“G“o˜^‚P(iic, no, 100005, "Splish-Splash Familiar", 0, 60, 22, 500, 10, 50, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 414, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 120)
+	{
+		‚b“G“o˜^‚P(iic, no, 100010, "Frog Lady Familiar", 0, 60, 22, 500, 30, 190, 0, 300, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 181, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 121)
+	{
+		‚b“G“o˜^‚P(iic, no, 100002, "Maid Lady Familiar", 0, 60, 22, 500, 40, 190, 0, 200, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 221, "nursed.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 122)
+	{
+		‚b“G“o˜^‚P(iic, no, 100007, "Zashiki-Warashi Familiar", 0, 60, 22, 500, 30, 350, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 393, "used Stuffed Animal Punch.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 346)
+	{
+		‚b“G“o˜^‚P(iic, no, 100185, "Ralga's Cat Familiar", 0, 60, 22, 500, 40, 450, 0, 0, 0, 200, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 385, "scratched.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 123)
+	{
+		‚b“G“o˜^‚P(iic, no, 100009, "Lantyrn Familiar", 0, 60, 22, 500, 35, 220, 0, 200, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 189, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 124)
+	{
+		‚b“G“o˜^‚P(iic, no, 100012, "Tokko Familiar", 0, 60, 22, 500, 38, 300, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 388, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 125)
+	{
+		‚b“G“o˜^‚P(iic, no, 100154, "Majician Familiar", 0, 60, 22, 500, 42, 300, 0, 350, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 169, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 128)
+	{
+		‚b“G“o˜^‚P(iic, no, 100060, "Captain Vanilla Familiar", 0, 60, 22, 500, 40, 500, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 393, "punched.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 126)
+	{
+		‚b“G“o˜^‚P(iic, no, 100006, "Nekomatamata Familiar", 0, 60, 22, 500, 70, 660, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 406, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 127)
+	{
+		‚b“G“o˜^‚P(iic, no, 100008, "Valkyrie Familiar", 0, 60, 22, 500, 50, 800, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 393, "punched.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+	if (no == 129)
+	{
+		‚b“G“o˜^‚P(iic, no, 100293, "Battle Booklet Familiar", 0, 60, 22, 500, 40, 190, 0, 200, 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 234, "dictated battle strategies.", 1, 100, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0, 0, "", 0, 0);
+	}
+}
+
+void ‚b‘äŒ“o˜^^“G“Áê(lint iic, lint no, lint iis, string ğŒ)
+{
+	if (no == 323 || no == 324 || no == 325 || no == 326)
+	{
+		int aa = ‚o‚s‚`‘”();
+		if (ğŒ == "‘¼ls“®" && RAND(2) == 1 && aa == 5)
+		{
+			Ÿí“¬‘äŒ = "Attacking me with 5 is cowardly!$But I'll still win!";
+			return;
+		}
+		if (ğŒ == "‘¼ls“®" && RAND(2) == 1 && aa == 4)
+		{
+			Ÿí“¬‘äŒ = "Attacking me with 4 is cowardly!$But I'll still win!";
+			return;
+		}
+		if (ğŒ == "‘¼ls“®" && RAND(2) == 1 && aa == 3)
+		{
+			Ÿí“¬‘äŒ = "Attacking me with 3 is cowardly!$But I'll still win!";
+			return;
+		}
+	}
+	if (no == 164 && í“¬ƒCƒxƒ“ƒg–¼ == "˜A‚êƒVƒ‡ƒ“‚â‚à‚è‚ñ")
+	{
+		if (ğŒ == "‘¼ls“®" && RAND(2) == 1)
+		{
+			Ÿí“¬‘äŒ = "(Ugh...$I have to pee...)";
+			return;
+		}
+	}
+	if (no == 164 && í“¬ƒCƒxƒ“ƒg–¼ == "ƒQƒCƒc‚Æ‚â‚à‚è‚ñ")
+	{
+		if (ğŒ == "‘¼ls“®")
+		{
+			Ÿí“¬‘äŒ = "Viva 95!$It's love!";
+			return;
+		}
+		if (ğŒ == "UŒ‚’Êí" || ğŒ == "UŒ‚‘å‹Z")
+		{
+			Ÿí“¬‘äŒ = "Micro Kick$for Master Gates!";
+			return;
+		}
+	}
+}
+
+void “G‘äŒ“o˜^(lint iic, string ğŒ, string •¶š—ñ)
+{
+	if (ğŒ == "‘Ò‹@")
+	{
+		‚b‘äŒ(iic, 2, •¶š—ñ);
+	}
+	if (ğŒ == "UŒ‚")
+	{
+		‚b‘äŒ(iic, 3, •¶š—ñ);
+	}
+	if (ğŒ == "‘å‹Z")
+	{
+		‚b‘äŒ(iic, 4, •¶š—ñ);
+	}
+	if (ğŒ == "x‰‡")
+	{
+		‚b‘äŒ(iic, 5, •¶š—ñ);
+	}
+}
+
+string •ßŠl^•¶š—ñ(int £ƒAƒCƒeƒ€”Ô†)
+{
+	if (£ƒAƒCƒeƒ€”Ô† == 227)
+	{
+		return "yCan Canz$\"No, are you going to bully me...?$I just want to play with you!$I don't like bullies!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 234)
+	{
+		return "yFrog Ladyz$\"N-No, what are you doing?$I don't want this... Oh, let me go,$my eggs will come out!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 233)
+	{
+		return "ySplish-Splashz$\"Oh, I'm getting wet...$Please stop, sir...$I... I... I'll get wet.\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 232)
+	{
+		return "yCrab Girlz$\"You're terrible, you're terrible...$You know my pincers can't cut through these ropes... Augh.\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 231)
+	{
+		return "yKrakenz$\"Ah, awa awa, awawawawa...$I'm so, I'm sososo, I'm sorrrr, let me, let me let me g... Pyaaa!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 230)
+	{
+		return "yMagiscoz$\"Hey, wait...! Don't look at me from that angle!$Hah, ngh, don't touch my tail!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 229)
+	{
+		return "yGeckyz$\"Kh, ah...! Humans really like some weird stuff... Ah, stop! Don't pull that, eee...!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 228)
+	{
+		return "y97 Chi-Haz$\"Th... This is too much! I know my armor's thin, but... I can't face my ancestors like this!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 243)
+	{
+		return "yRalga's Catz$\"You're cocky for a human! I-I won't show my body to anyone but Mistress Ralga... Die, meow!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 242)
+	{
+		return "yCaptain Vanillaz$\"Waaaah, stop, let me go! Having my freedom stolen is the one thing I...$...Nooo, don't look at my cheeest!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 241)
+	{
+		return "yValkyriez$\"To think I would be disgraced in such a way... So this is defeat... Very well, do as you like.\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 240)
+	{
+		return "yNekomatamataz$\"Mew, I'm all tied up...$*squirm* *squirm*, *bite* *bite*...$Oh...... It tastes good.\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 239)
+	{
+		return "yMajicianz$\"No, ah, what is this? No, I don't want to feel this! Nooo, I'm discovering something about myself...!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 238)
+	{
+		return "yTokkoz$\"No... Showing this much skin to a gentleman... P-Please take responsibility for this...\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 237)
+	{
+		return "yLantyrnz$\"What... you think you can just hang me fcause I'm a lantyrn? Th-There isn't... any light down there, ah!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 236)
+	{
+		return "yZashiki-Warashiz$\"Nooo... So this is what happens when you leave the countryside...$I want to go home... Ah, aaah...\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 235)
+	{
+		return "yMaid Ladyz$\"Y-You mustn't, you mustn't,$I still have work to do...$Ahn, you mustn't, Master!\"";
+	}
+	if (£ƒAƒCƒeƒ€”Ô† == 244)
+	{
+		return "yBattle Bookletz$\"D-Damn it! I cannot disgrace myself by being taken captive...$Wh-What is this...? Aaaaah?!\"";
+	}
+	return "";
+}
+
+void ‚bƒJƒXƒ^ƒ€“o˜^(int iic, int no, string ¯•Ê–¼)
+{
+	if (ƒJƒXƒ^ƒ€‚x‚x(iic, no, ¯•Ê–¼) == 1)
+	{
+		return;
+	}
+	if (¯•Ê–¼ == "Prototype #1")
+	{
+		‚b“G“o˜^‚P(iic, no, 100144, "Yankee X2", 0, 4, 22, 300, 20, 150, 0, 0, 0, 100, 50, 0, 20, 50, 0, 0, 0, 0, 0, 0, 384, "did a practice swing.", 0, 10, 400, "did a full swing.", 2, 20, 385, "hit with its bat.", 1, 100, 0, "", 1, 0, 0, "", 1, 0);
+		‚b‚k‚u(iic, 5);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Go to hell!$Go to heeell!");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "HIT!!!");
+		“G‘äŒ“o˜^(iic, "‘å‹Z", "Home Run!$Ca-claaang!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "Give me chocolate?$Gyahahaha!");
+		return;
+	}
+	if (¯•Ê–¼ == "Kaito (True)")
+	{
+		‚b“G“o˜^‚P(iic, no, 100066, "Kaito (True)", 1, 9, 22, 15000, 66, 5000, 2500, 5000, 0, 300, 80, 50, 120, 100, 0, 0, 0, 0, 0, 0, 501, "threw an incredibly heavy punch.", 1, 100, 259, "", 1, 4, 502, "", 1, 0, 475, "", 1, 0, 598, "", 1, 0);
+		‚b‚k‚u(iic, 100);
+		“G‘äŒ“o˜^(iic, "‘Ò‹@", "You cannot defeat me with your frail strength.");
+		“G‘äŒ“o˜^(iic, "UŒ‚", "Yah!!");
+		“G‘äŒ“o˜^(iic, "x‰‡", "...Haaaah...");
+		return;
+	}
+	‚b“G“o˜^‚P(iic, no, 100098, "Data-less Ghost", 0, 4, 20, 100, 20, 50, 0, 0, 0, 100, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 406, "flew forward.", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
+	‚b‚k‚u(iic, 4);
+	“G‘äŒ“o˜^(iic, "‘Ò‹@", "(I am you.$ You are me?)");
+	“G‘äŒ“o˜^(iic, "UŒ‚", "I will not kill you.$I will just get in your way.");
+}
+
+void ‚b“G“o˜^‚P(int iic, int no, int porigon, string –¼‘O, int ‚a‚n‚r‚r, int í‘°, int ƒ^ƒCƒv, int ‚g‚o, int ‘f‘, int UŒ‚, int –hŒä, int –‚—Í, int –‚’ï, int –½’†, int ‰ñ”ğ, int •KE, int ÕŒ‚, int ‘Ï«, int ã“_, int ‰Š‘Ï, int •X‘Ï, int —‹‘Ï, int Œõ‘Ï, int ˆÅ‘Ï, int ƒXƒLƒ‹‚P, string •\¦‚P, int ƒ‚[ƒVƒ‡ƒ“‚P, int Šm—¦‚P, int ƒXƒLƒ‹‚Q, string •\¦‚Q, int ƒ‚[ƒVƒ‡ƒ“‚Q, int Šm—¦‚Q, int ƒXƒLƒ‹‚R, string •\¦‚R, int ƒ‚[ƒVƒ‡ƒ“‚R, int Šm—¦‚R, int ƒXƒLƒ‹‚S, string •\¦‚S, int ƒ‚[ƒVƒ‡ƒ“‚S, int Šm—¦‚S, int ƒXƒLƒ‹‚T, string •\¦‚T, int ƒ‚[ƒVƒ‡ƒ“‚T, int Šm—¦‚T)
+{
+	int bbx = 0;
+	int £Œø‰Ê—L‚è = 1;
+	if (í‘° == 60)
+	{
+		£Œø‰Ê—L‚è = 0;
+	}
+	if (no == 448 || no == 347 || no == 431)
+	{
+		£Œø‰Ê—L‚è = 0;
+	}
+	if (no == 394)
+	{
+		£Œø‰Ê—L‚è = 0;
+	}
+	if (Ÿƒ[ƒ‹ƒh == 2 && £Œø‰Ê—L‚è == 1)
+	{
+		int £”{—¦ = 2;
+		if (‚a‚n‚r‚r == 0 && ‚p“ïˆÕ“x(Ÿiiq, -1) < 35 && RAND(2) == 1)
+		{
+			£”{—¦ = 4;
+		}
+		if (‚a‚n‚r‚r == 0 && RAND(2) == 1)
+		{
+			£”{—¦ = 3;
+		}
+		if (‚g‚o != 0)
+		{
+			‚g‚o += 250;
+		}
+		if (UŒ‚ != 0)
+		{
+			UŒ‚ += 200;
+		}
+		if (–‚—Í != 0)
+		{
+			–‚—Í += 200;
+		}
+		–hŒä += 600;
+		–‚’ï += 600;
+		if (no == 456)
+		{
+			£”{—¦ = 2;
+		}
+		if (£”{—¦ == 2)
+		{
+			–¼‘O += "‡A";
+			‚g‚o = ‚g‚o * 2;
+			UŒ‚ = UŒ‚ * 2;
+			–‚—Í = –‚—Í * 2;
+			‘f‘ = ‘f‘ + 5;
+			–½’† += 10;
+			‰ñ”ğ += 10;
+			ÕŒ‚ += 10;
+			‘Ï« += 10;
+		}
+		if (£”{—¦ == 3)
+		{
+			–¼‘O += "‡B";
+			‚g‚o = ‚g‚o * 3;
+			UŒ‚ = UŒ‚ * 3;
+			–‚—Í = –‚—Í * 3;
+			‘f‘ = ‘f‘ + 8;
+			–½’† += 15;
+			‰ñ”ğ += 15;
+			ÕŒ‚ += 15;
+			‘Ï« += 15;
+		}
+		if (£”{—¦ == 4)
+		{
+			–¼‘O += "‡C";
+			‚g‚o = ‚g‚o * 4;
+			UŒ‚ = UŒ‚ * 4;
+			–‚—Í = –‚—Í * 4;
+			‘f‘ = ‘f‘ + 15;
+			–½’† += 20;
+			‰ñ”ğ += 20;
+			ÕŒ‚ += 30;
+			‘Ï« += 30;
+		}
+	}
+	if (Ÿƒ[ƒ‹ƒh == 3 && £Œø‰Ê—L‚è == 1)
+	{
+		int £”{—¦ = 4;
+		if (‚a‚n‚r‚r == 0 && RAND(4) == 1)
+		{
+			£”{—¦ = 6;
+		}
+		if (‚a‚n‚r‚r == 0 && RAND(2) == 1)
+		{
+			£”{—¦ = 5;
+		}
+		if (‚a‚n‚r‚r == 1)
+		{
+			£”{—¦ = 5;
+		}
+		if (‚g‚o != 0)
+		{
+			‚g‚o += 250;
+		}
+		if (UŒ‚ != 0)
+		{
+			UŒ‚ += 200;
+		}
+		if (–‚—Í != 0)
+		{
+			–‚—Í += 200;
+		}
+		–hŒä += 1200;
+		–‚’ï += 2400;
+		if (no == 331)
+		{
+			UŒ‚ += 500;
+		}
+		if (no == 257)
+		{
+			–‚—Í += 800;
+			£”{—¦ = 7;
+		}
+		if (no == 456)
+		{
+			£”{—¦ = 2;
+		}
+		if (no == 302)
+		{
+			£”{—¦ = 7;
+		}
+		if (no == 301)
+		{
+			£”{—¦ = 7;
+		}
+		if (no == 353)
+		{
+			£”{—¦ = 7;
+		}
+		if (no == 299)
+		{
+			£”{—¦ = 6;
+		}
+		if (£”{—¦ == 2)
+		{
+			–¼‘O += "‡A";
+			‚g‚o = ‚g‚o * 2;
+			UŒ‚ = UŒ‚ * 2;
+			–‚—Í = –‚—Í * 2;
+			‘f‘ = ‘f‘ + 5;
+			–½’† += 10;
+			‰ñ”ğ += 10;
+			ÕŒ‚ += 10;
+			‘Ï« += 10;
+		}
+		if (£”{—¦ == 4)
+		{
+			–¼‘O += "‡C";
+			‚g‚o = ‚g‚o * 4;
+			UŒ‚ = UŒ‚ * 4;
+			–‚—Í = –‚—Í * 4;
+			‘f‘ = ‘f‘ + 15;
+			–½’† += 20;
+			‰ñ”ğ += 20;
+			ÕŒ‚ += 30;
+			‘Ï« += 30;
+		}
+		if (£”{—¦ == 5)
+		{
+			–¼‘O += "‡D";
+			‚g‚o = ‚g‚o * 5;
+			UŒ‚ = UŒ‚ * 5;
+			–‚—Í = –‚—Í * 5;
+			‘f‘ = ‘f‘ + 20;
+			–½’† += 20;
+			‰ñ”ğ += 20;
+			ÕŒ‚ += 30;
+			‘Ï« += 30;
+		}
+		if (£”{—¦ == 6)
+		{
+			–¼‘O += "‡E";
+			‚g‚o = ‚g‚o * 6;
+			UŒ‚ = UŒ‚ * 6;
+			–‚—Í = –‚—Í * 6;
+			‘f‘ = ‘f‘ + 20;
+			–½’† += 20;
+			‰ñ”ğ += 20;
+			ÕŒ‚ += 30;
+			‘Ï« += 30;
+		}
+		if (£”{—¦ == 7)
+		{
+			–¼‘O += "‡F";
+			‚g‚o = ‚g‚o * 7;
+			UŒ‚ = UŒ‚ * 7;
+			–‚—Í = –‚—Í * 7;
+			‘f‘ = ‘f‘ + 25;
+			–½’† += 20;
+			‰ñ”ğ += 20;
+			ÕŒ‚ += 30;
+			‘Ï« += 30;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3 && ‘f‘ < 50)
+		{
+			‘f‘ = 50;
+		}
+	}
+	if (í‘° == 60 && Ÿƒ[ƒ‹ƒh == 2)
+	{
+		UŒ‚ = UŒ‚ + 300;
+		–‚—Í = –‚—Í + 300;
+		‘f‘ = ‘f‘ + 5;
+	}
+	if (í‘° == 60 && Ÿƒ[ƒ‹ƒh == 3)
+	{
+		UŒ‚ = UŒ‚ + 1500;
+		–‚—Í = –‚—Í + 1500;
+		‘f‘ = ‘f‘ + 15;
+	}
+	if (Ÿ“G‹­‰»—¦ == 130 && Ÿƒ[ƒ‹ƒh == 1 && £Œø‰Ê—L‚è == 1)
+	{
+		–¼‘O += "+";
+		‚g‚o = ‚g‚o * 1.29999995231628;
+		UŒ‚ = UŒ‚ * 1.29999995231628;
+		–‚—Í = –‚—Í * 1.29999995231628;
+	}
+	if (Ÿ“G‹­‰»—¦ == 130 && Ÿƒ[ƒ‹ƒh != 1 && £Œø‰Ê—L‚è == 1)
+	{
+		‚g‚o = ‚g‚o * 2;
+		UŒ‚ = UŒ‚ * 1.29999995231628;
+		–‚—Í = –‚—Í * 1.29999995231628;
+	}
+	if (Ÿ“G‹­‰»—¦ == 1000 && £Œø‰Ê—L‚è == 1)
+	{
+		–¼‘O += "+";
+		‚g‚o = ‚g‚o * 10;
+		UŒ‚ = UŒ‚ * 10;
+		–‚—Í = –‚—Í * 10;
+		‘f‘ = ‘f‘ + 10;
+		–½’† += 100;
+		‰ñ”ğ += 100;
+		–hŒä += 300;
+		–‚’ï += 300;
+	}
+	‚b‰Šú‰»(iic);
+	‚b”Ô†(iic, no);
+	‚bƒ|ƒŠƒSƒ“(iic, porigon);
+	‚b–¼‘O(iic, –¼‘O);
+	‚b‘Ì—ÍÅ‘å(iic, ‚g‚o);
+	‚b‘Ì—Í(iic, ‚g‚o);
+	‚b‘f‘‚³(iic, ‘f‘);
+	‚bƒ{ƒX(iic, ‚a‚n‚r‚r);
+	‚bí‘°(iic, í‘°);
+	‚bƒ^ƒCƒv(iic, ƒ^ƒCƒv);
+	‚b“o˜^ó‘Ô(iic, 51);
+	‚bUŒ‚—Í(iic, UŒ‚);
+	‚b–hŒä—Í(iic, –hŒä);
+	‚b–‚–@—Í(iic, –‚—Í);
+	‚b–‚’ï—Í(iic, –‚’ï);
+	‚b–½’†—¦(iic, –½’†);
+	‚b‰ñ”ğ—¦(iic, ‰ñ”ğ);
+	‚b•KE—¦(iic, •KE);
+	‚bÕŒ‚—¦(iic, ÕŒ‚);
+	‚b‘Ï«—¦(iic, ‘Ï«);
+	‚bã“_‘®«(iic, ã“_);
+	‚b‰Š‘Ï«(iic, ‰Š‘Ï);
+	‚b•X‘Ï«(iic, •X‘Ï);
+	‚b—‹‘Ï«(iic, —‹‘Ï);
+	‚bŒõ‘Ï«(iic, Œõ‘Ï);
+	‚bˆÅ‘Ï«(iic, ˆÅ‘Ï);
+	‚b“GƒXƒLƒ‹“o˜^(iic, ƒXƒLƒ‹‚P, ƒ‚[ƒVƒ‡ƒ“‚P, Šm—¦‚P, •\¦‚P);
+	‚b“GƒXƒLƒ‹“o˜^(iic, ƒXƒLƒ‹‚Q, ƒ‚[ƒVƒ‡ƒ“‚Q, Šm—¦‚Q, •\¦‚Q);
+	‚b“GƒXƒLƒ‹“o˜^(iic, ƒXƒLƒ‹‚R, ƒ‚[ƒVƒ‡ƒ“‚R, Šm—¦‚R, •\¦‚R);
+	‚b“GƒXƒLƒ‹“o˜^(iic, ƒXƒLƒ‹‚S, ƒ‚[ƒVƒ‡ƒ“‚S, Šm—¦‚S, •\¦‚S);
+	‚b“GƒXƒLƒ‹“o˜^(iic, ƒXƒLƒ‹‚T, ƒ‚[ƒVƒ‡ƒ“‚T, Šm—¦‚T, •\¦‚T);
+	if (¡‚l^ã“_”cˆ¬(no, 0, "") == 1)
+	{
+		‚bã“_”cˆ¬(iic, 1);
+	}
+}
+
+void ‚b“GƒXƒLƒ‹“o˜^(int iic, int iis, int ƒ‚[ƒVƒ‡ƒ“, int Šm—¦, string •\¦)
+{
+	int loop = 0;
+	int no = 0;
+	int aa = 0;
+	if (iis == 0)
+	{
+		return;
+	}
+	no = ‚b“GƒXƒLƒ‹’Ç‰Á(iic, iis);
+	‚b‚rƒ‚[ƒVƒ‡ƒ“(iic, no, ƒ‚[ƒVƒ‡ƒ“);
+	‚b‚rŠm—¦(iic, no, Šm—¦);
+	‚b‚rÀ‘•’†(iic, no, 1);
+	if (•\¦ != "")
+	{
+		‚bƒXƒLƒ‹•\¦•¶(iic, no, •\¦);
+	}
+	if (‚rs“®í—Ş(iis, -1) == 0 && Šm—¦ < 5)
+	{
+		‚b‚rƒ‰ƒ“ƒN(iic, no, Šm—¦);
+	}
+}
+

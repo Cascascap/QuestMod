@@ -1,0 +1,118 @@
+void 数値点滅_作成(int nZ)
+{
+	g_sBlinkNumber.create(nZ);
+	g_nBlinkNumberUpdate = -1;
+}
+
+void 数値点滅_削除()
+{
+	g_sBlinkNumber.delete();
+	g_nBlinkNumberUpdate = -1;
+}
+
+bool 数値点滅_サスペンド()
+{
+	数値点滅_削除();
+	return true;
+}
+
+bool 数値点滅_レジューム()
+{
+	数値点滅_作成(9701);
+	return true;
+}
+
+bool 数値点滅_登録_数字(ref T_Number rfsNumber, int nValue)
+{
+	if (rfsNumber === NULL || !rfsNumber.isCreated())
+	{
+		return false;
+	}
+	int nOld = rfsNumber.getValue();
+	rfsNumber.setValue(nValue, 0, false);
+	return g_sBlinkNumber.add(rfsNumber.getPosX(), rfsNumber.getPosY(), rfsNumber.getWidth(), rfsNumber.getHeight(), nOld, nValue);
+}
+
+bool 数値点滅_登録_数字テキスト(ref T_DrawNumber rfsDrawNumber, int nValue)
+{
+	if (rfsDrawNumber === NULL || !rfsDrawNumber.isCreated())
+	{
+		return false;
+	}
+	int nOld = rfsDrawNumber.getValue();
+	rfsDrawNumber.setValue(nValue, false);
+	ref T_DrawLine rfsLine = rfsDrawNumber.getText().getLine(0);
+	if (rfsLine === NULL)
+	{
+		return false;
+	}
+	return g_sBlinkNumber.add(rfsLine.getPosX(), rfsLine.getPosY(), rfsLine.getRealWidth(), rfsLine.getRealHeight(), nOld, nValue);
+}
+
+bool 数値点滅_登録_テキスト(ref T_DrawText rfsDrawText, int nOldValue, int nNewValue)
+{
+	if (rfsDrawText === NULL || !rfsDrawText.isCreated())
+	{
+		return false;
+	}
+	ref T_DrawLine rfsLine = rfsDrawText.getLine(0);
+	if (rfsLine === NULL)
+	{
+		return false;
+	}
+	return g_sBlinkNumber.add(rfsLine.getPosX(), rfsLine.getPosY(), rfsLine.getRealWidth(), rfsLine.getRealHeight(), nOldValue, nNewValue);
+}
+
+bool 数値点滅_開始()
+{
+	g_nBlinkNumberUpdate = g_sBlinkNumber.start();
+	return g_nBlinkNumberUpdate > 0;
+}
+
+void 数値点滅_終了()
+{
+	g_sBlinkNumber.end();
+	g_nBlinkNumberUpdate = 0;
+}
+
+void 数値点滅_終了待ち(bool bKeyCancel)
+{
+	int nKey = 0;
+	while (g_nBlinkNumberUpdate > 0)
+	{
+		if (bKeyCancel)
+		{
+			if (未読スキップ中確認())
+			{
+				break;
+			}
+			if (ホイール_確認(true) == 9992)
+			{
+				break;
+			}
+			if (nKey > 0)
+			{
+				if (!キー_押下(nKey))
+				{
+					break;
+				}
+			}
+			else
+			{
+				int nKey2 = キー_メッセージ送り();
+				if (nKey2 > 0)
+				{
+					nKey = nKey2;
+				}
+				nKey2 = キー_キャンセル();
+				if (nKey2 > 0)
+				{
+					nKey = nKey2;
+				}
+			}
+		}
+		UPDATE(true);
+	}
+	数値点滅_終了();
+}
+

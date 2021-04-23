@@ -1,0 +1,6 @@
+void パーティ状況_実行()
+{
+	T_PartyStatus sPartyStatus;
+	sPartyStatus.run(9001);
+}
+

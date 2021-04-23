@@ -1,0 +1,56 @@
+int キー待ち_左クリック()
+{
+	int nKey = 0;
+	キー_クリア(true);
+	while (true)
+	{
+		nKey = キー_決定();
+		if (nKey > 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	キー_離し待ち(nKey, true);
+	return nKey;
+}
+
+int キー待ち_右クリック()
+{
+	int nKey = 0;
+	キー_クリア(true);
+	while (true)
+	{
+		nKey = キー_キャンセル();
+		if (nKey > 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	キー_離し待ち(nKey, true);
+	return nKey;
+}
+
+int キー待ち_クリック()
+{
+	int nKey = 0;
+	キー_クリア(true);
+	while (true)
+	{
+		nKey = キー_決定();
+		if (nKey > 0)
+		{
+			break;
+		}
+		nKey = キー_キャンセル();
+		if (nKey > 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	キー_離し待ち(nKey, true);
+	return nKey;
+}
+

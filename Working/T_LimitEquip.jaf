@@ -1,0 +1,184 @@
+int T_LimitEquip::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_LimitEquip::checkKey(int nID)
+{
+	return this.m_sButton.checkKey();
+}
+
+void T_LimitEquip::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_LimitEquip::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_LimitEquip::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_LimitEquip::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+void T_LimitEquip::setShow(bool bShow)
+{
+	this.m_sButton.setShow(bShow);
+}
+
+int T_LimitEquip::getType()
+{
+	return this.m_nType;
+}
+
+int T_LimitEquip::getEquipType()
+{
+	return this.m_nEquipType;
+}
+
+bool T_LimitEquip::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_LimitEquip::getButtonKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_LimitEquip::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_LimitEquip::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_LimitEquip::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_LimitEquip::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_LimitEquip::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+int T_LimitEquip::getPrev(int nID)
+{
+	return this.m_sButton.getPrevButton(nID, false, false);
+}
+
+int T_LimitEquip::getNext(int nID)
+{
+	return this.m_sButton.getNextButton(nID, false, false);
+}
+
+int T_LimitEquip::getFirst()
+{
+	return this.m_sButton.getFirstButton(false);
+}
+
+int T_LimitEquip::getLast()
+{
+	return this.m_sButton.getLastButton(false);
+}
+
+T_LimitEquip::T_LimitEquip()
+{
+	this.clear();
+}
+
+T_LimitEquip::~T_LimitEquip()
+{
+	this.delete();
+}
+
+bool T_LimitEquip::create(int nType, int nX, int nY, int nZ, int nButtonID)
+{
+	this.delete();
+	if (nType <= 0 || nType >= 2)
+	{
+		return false;
+	}
+	int i = 0;
+	this.m_sButton.create();
+	switch (nType)
+	{
+		case 1:
+			for (i = 1; i < 3; ++i)
+			{
+				ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, nButtonID + i, nX + 0 * (i - 1), nY + 34 * (i - 1), (11086 + i) - 1, -1, -1, -2147483648, -2147483648);
+			}
+			break;
+		default:
+			return false;
+	}
+	this.m_sButton.setZ(nZ);
+	this.m_nType = nType;
+	this.m_nButtonID = nButtonID;
+	return true;
+}
+
+void T_LimitEquip::delete()
+{
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_LimitEquip::clear()
+{
+	this.m_nType = 0;
+	this.m_nButtonID = 0;
+	this.m_nEquipType = 0;
+}
+
+bool T_LimitEquip::setEquipType(int nEquipType)
+{
+	if (nEquipType < 1 || nEquipType >= 3)
+	{
+		return false;
+	}
+	if (nEquipType != this.m_nEquipType)
+	{
+		this.m_nEquipType = nEquipType;
+	}
+	else
+	{
+		this.m_nEquipType = 0;
+	}
+	return true;
+}
+
+void T_LimitEquip::setButtonActive()
+{
+	int i = 0;
+	for (i = 1; i < 3; ++i)
+	{
+		this.m_sButton.setButtonStatus(this.m_nButtonID + i, this.checkEquipType(i) ? 0 : 2);
+	}
+}
+
+bool T_LimitEquip::checkEquipType(int nEquipType)
+{
+	if (nEquipType < 1 || nEquipType >= 3)
+	{
+		return false;
+	}
+	return this.m_nEquipType > 0 ? nEquipType == this.m_nEquipType : 1;
+}
+

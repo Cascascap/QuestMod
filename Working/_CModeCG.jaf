@@ -1,0 +1,53 @@
+_CModeCG::_CModeCG()
+{
+}
+
+void _CModeCG::_Create(_CModeCGInfo _ModeCGInfo)
+{
+	if (_ModeCGInfo._GetCG().Empty())
+	{
+		this._Release();
+		return;
+	}
+	if (this._m_ModeCGInfo._GetCG() != _ModeCGInfo._GetCG())
+	{
+		this._Release();
+		this.m_CGSprite.SetCG(_ModeCGInfo._GetCG());
+		this.m_CGSprite.SetPos(_ModeCGInfo._GetX(), _ModeCGInfo._GetY());
+		this.m_CGSprite.SetZ(_ModeCGInfo._GetZ());
+		this.m_CGSprite.SetShow(_ModeCGInfo._GetShow());
+		this._m_ModeCGInfo = _ModeCGInfo;
+		return;
+	}
+	if (this._m_ModeCGInfo._GetX() != _ModeCGInfo._GetX() || this._m_ModeCGInfo._GetY() != _ModeCGInfo._GetY())
+	{
+		this.m_CGSprite.SetPos(_ModeCGInfo._GetX(), _ModeCGInfo._GetY());
+		this._m_ModeCGInfo._SetX(_ModeCGInfo._GetX());
+		this._m_ModeCGInfo._SetY(_ModeCGInfo._GetY());
+	}
+	if (this._m_ModeCGInfo._GetZ() != _ModeCGInfo._GetZ())
+	{
+		this.m_CGSprite.SetZ(_ModeCGInfo._GetZ());
+		this._m_ModeCGInfo._SetZ(_ModeCGInfo._GetZ());
+	}
+	if (this._m_ModeCGInfo._GetShow() != _ModeCGInfo._GetShow())
+	{
+		this.m_CGSprite.SetShow(_ModeCGInfo._GetShow());
+		this._m_ModeCGInfo._SetShow(_ModeCGInfo._GetShow());
+	}
+}
+
+void _CModeCG::_Release()
+{
+	this.m_CGSprite.Release();
+}
+
+void _CModeCG::_SetShow(bool _bShow)
+{
+	if (this._m_ModeCGInfo._GetShow() != _bShow)
+	{
+		this.m_CGSprite.SetShow(_bShow);
+		this._m_ModeCGInfo._SetShow(_bShow);
+	}
+}
+

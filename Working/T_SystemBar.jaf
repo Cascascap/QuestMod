@@ -1,0 +1,303 @@
+void T_SystemBar::setActive(bool bActive)
+{
+	this.m_bActive = bActive;
+}
+
+void T_SystemBar::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+bool T_SystemBar::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_SystemBar::getButtonKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_SystemBar::getMode()
+{
+	return this.m_nMode;
+}
+
+int T_SystemBar::getMapNo()
+{
+	return this.m_nMapNo;
+}
+
+bool T_SystemBar::getShow()
+{
+	return this.m_bShow;
+}
+
+bool T_SystemBar::getActive()
+{
+	return this.m_bActive;
+}
+
+int T_SystemBar::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_SystemBar::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_SystemBar::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_SystemBar::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_SystemBar::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+ref T_ButtonGroup T_SystemBar::getButton()
+{
+	return this.m_sButton;
+}
+
+bool T_SystemBar::suspend()
+{
+	this.m_sButton.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_SystemBar::resume()
+{
+	this.m_sButton.resume();
+	return this.m_spBase.resume();
+}
+
+bool T_SystemBar::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+T_SystemBar::T_SystemBar()
+{
+	this.clear();
+}
+
+T_SystemBar::~T_SystemBar()
+{
+	this.delete();
+}
+
+void T_SystemBar::create(int nMode, int nMapNo)
+{
+	this.delete();
+	this.m_sButton.create();
+	this.createButton(10010, 2, 740, 900001, 90);
+	if (nMode >= 30)
+	{
+		goto label0;
+	}
+	this.createButton(10011, 93, 740, 900002, 88);
+	this.createButton(10012, 195, 740, 900003, 67);
+	this.createBase();
+label0:
+	this.m_sButton.setZ(821);
+	this.setButtonActive(nMode, nMapNo);
+	this.setShow(true);
+	this.m_nMode = nMode;
+	this.m_nMapNo = nMapNo;
+}
+
+void T_SystemBar::delete()
+{
+	this.hideComment(-1);
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_SystemBar::clear()
+{
+	this.m_nMode = 0;
+	this.m_nMapNo = 0;
+	this.m_bShow = false;
+	this.m_bActive = false;
+	this.m_nCommentID = 0;
+}
+
+int T_SystemBar::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	if (!this.m_bActive)
+	{
+		return 0;
+	}
+	int nRet = this.m_sButton.checkInput(nSelectID);
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+	return nRet;
+}
+
+int T_SystemBar::checkKey()
+{
+	if (!this.m_bActive)
+	{
+		return 0;
+	}
+	return this.m_sButton.checkKey();
+}
+
+void T_SystemBar::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	this.hideComment(-1);
+}
+
+void T_SystemBar::setSelect(int nID, bool bSelect, bool bSound)
+{
+	if (!this.m_bActive)
+	{
+		return;
+	}
+	this.m_sButton.setButtonSelect(nID, bSelect, bSound);
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+void T_SystemBar::setCursor(int nID)
+{
+	if (!this.m_bActive)
+	{
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_SystemBar::setStatus(int nID, int nStatus)
+{
+	this.m_sButton.setButtonStatus(nID, nStatus);
+}
+
+void T_SystemBar::setExecute(int nID, bool bExecute)
+{
+	this.m_sButton.setButtonSelect(nID, false, true);
+	this.m_sButton.setButtonStatus(nID, bExecute ? 2 : 0);
+}
+
+void T_SystemBar::setShow(bool bShow)
+{
+	this.setButtonShow(bShow);
+	this.m_spBase.setShow(bShow);
+	this.m_bShow = bShow;
+}
+
+bool T_SystemBar::setMode(int nMode, int nMapNo)
+{
+	if (this.m_nMode < 0)
+	{
+		return false;
+	}
+	this.setButtonActive(nMode, nMapNo);
+	this.m_nMode = nMode;
+	this.m_nMapNo = nMapNo;
+	this.setButtonShow(this.m_spBase.getShow());
+	return true;
+}
+
+void T_SystemBar::setButtonActive(int nMode, int nMapNo)
+{
+	this.m_sButton.setButtonActive(900001, システムバー_有効確認(nMode, 900001));
+	this.m_sButton.setButtonActive(900002, システムバー_有効確認(nMode, 900002));
+	this.m_sButton.setButtonActive(900003, システムバー_有効確認(nMode, 900003));
+}
+
+void T_SystemBar::createBase()
+{
+	this.m_spBase.setCg(10009);
+	this.m_spBase.setPos(0, 736);
+	this.m_spBase.setZ(801);
+	if (◆ワールド < 2)
+	{
+		return;
+	}
+	if (◆ワールド < 9)
+	{
+		this.m_spBase.blendCg(888, 4, (10032 + ◆ワールド) - 2, 255);
+	}
+	else
+	{
+		this.m_spBase.blendCg(888, 4, 10039, 255);
+	}
+}
+
+void T_SystemBar::createButton(int nCgNo, int nX, int nY, int nID, int nKey)
+{
+	T_Button sButton;
+	ＣＧ_システムボタン作成(nCgNo, 2, sButton, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonPos(nID, nX, nY);
+	this.m_sButton.setButtonKey(nID, nKey);
+}
+
+void T_SystemBar::setButtonShow(bool bShow)
+{
+	this.m_sButton.setButtonShow(900001, bShow);
+	this.m_sButton.setButtonShow(900002, bShow);
+	this.m_sButton.setButtonShow(900003, bShow);
+	ミニステータス_ボタン表示設定(this.m_nMode == 19 ? 0 : bShow);
+}
+
+void T_SystemBar::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	string szText = "";
+	switch (nID)
+	{
+		default:
+		case 900001:
+		case 900002:
+		case 900003:
+			this.hideComment(-1);
+			return;
+	}
+	if (説明_表示(nID, "", szText, "", 500, false) > 0)
+	{
+		int nX = this.m_sButton.getButtonPosX(nID);
+		int nY = 736 - 説明_高();
+		説明_位置設定(nX, nY);
+	}
+	this.m_nCommentID = nID;
+}
+
+void T_SystemBar::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+	}
+	this.m_nCommentID = -1;
+}
+

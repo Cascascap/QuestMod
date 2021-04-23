@@ -1,0 +1,160 @@
+int T_BattleGirl::getCharaNo()
+{
+	return this.m_nCharaNo;
+}
+
+bool T_BattleGirl::isCreated()
+{
+	return this.m_nCharaNo > 0;
+}
+
+T_BattleGirl::T_BattleGirl()
+{
+	this.clear();
+}
+
+T_BattleGirl::~T_BattleGirl()
+{
+	this.delete();
+}
+
+bool T_BattleGirl::create(int nCharaNo, int nZ)
+{
+	this.delete();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (!従魔_存在確認())
+	{
+		return false;
+	}
+	int nNo = 戦闘番号_味方取得(nCharaNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	int nItemCgNo = 従魔_アイテム番号();
+	string szName = 戦闘従魔_アイコン(nItemCgNo);
+	string szName2 = 戦闘従魔_カットイン(nItemCgNo);
+	if (szName.Empty() || szName2.Empty())
+	{
+		return false;
+	}
+	this.m_nCharaNo = nCharaNo;
+	this.m_nX = 戦闘味方_位置Ｘ(nNo - 1);
+	this.m_nY = 戦闘味方_位置Ｙ(nNo - 1);
+	this.m_nZ = nZ;
+	this.m_szIconName = Ｆｌａｓｈファイル名(szName);
+	this.m_szCutInName = Ｆｌａｓｈファイル名(szName2);
+	return true;
+}
+
+void T_BattleGirl::delete()
+{
+	this.m_sIcon.delete();
+	this.m_sCutIn.delete();
+	this.clear();
+}
+
+void T_BattleGirl::clear()
+{
+	this.m_nCharaNo = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_bCutInShow = false;
+	this.m_szIconName = "";
+	this.m_szCutInName = "";
+}
+
+bool T_BattleGirl::remake()
+{
+	if (this.m_nCharaNo <= 0)
+	{
+		return false;
+	}
+	int nNo = 戦闘番号_味方取得(this.m_nCharaNo);
+	if (nNo <= 0)
+	{
+		this.delete();
+		return false;
+	}
+	this.m_nX = 戦闘味方_位置Ｘ(nNo - 1);
+	this.m_nY = 戦闘味方_位置Ｙ(nNo - 1);
+	return true;
+}
+
+bool T_BattleGirl::update()
+{
+	if (this.m_nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (this.m_bCutInShow)
+	{
+		if (this.m_sCutIn.update() < 0)
+		{
+			this.endCutIn();
+		}
+	}
+	return this.m_sIcon.update();
+}
+
+bool T_BattleGirl::startCutIn()
+{
+	if (this.m_nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	this.endCutIn();
+	this.m_sCutIn.create(-1);
+	this.m_sCutIn.setPos(this.m_nX, this.m_nY);
+	this.m_sCutIn.setZ(this.m_nZ + 50);
+	this.m_sCutIn.setFileName(this.m_szCutInName);
+	this.m_sCutIn.play(true, false);
+	this.m_bCutInShow = true;
+	return true;
+}
+
+void T_BattleGirl::endCutIn()
+{
+	this.m_sCutIn.delete();
+	this.m_bCutInShow = false;
+}
+
+void T_BattleGirl::setShow(bool bShow)
+{
+	if (this.m_nCharaNo <= 0)
+	{
+		return;
+	}
+	if (bShow == this.m_bShow)
+	{
+		return;
+	}
+	if (bShow)
+	{
+		this.m_sIcon.create(-1);
+		this.m_sIcon.setPos(this.m_nX + 111, this.m_nY + 80);
+		this.m_sIcon.setZ(this.m_nZ);
+		this.m_sIcon.setFileName(this.m_szIconName);
+		this.m_sIcon.loop();
+	}
+	else
+	{
+		this.m_sIcon.delete();
+		this.endCutIn();
+	}
+	this.m_bShow = bShow;
+}
+

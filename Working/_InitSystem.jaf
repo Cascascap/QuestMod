@@ -1,0 +1,5 @@
+_CInitSystem::_CInitSystem()
+{
+	InitSystem();
+}
+

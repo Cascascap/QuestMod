@@ -1,0 +1,15 @@
+int AFL_PlayTime_GetMinuteTime()
+{
+	return g_PlayMinuteTime;
+}
+
+void AFL_PlayTime_SetMinuteTime(int MinuteTime)
+{
+	g_PlayMinuteTime = MinuteTime;
+}
+
+int AFL_TotalPlayTime_GetMinuteTime()
+{
+	return SYS_TotalPlayTime_GetMinuteTime();
+}
+

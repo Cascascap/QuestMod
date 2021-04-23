@@ -1,0 +1,53 @@
+void Ｒ８ジングル(int nSoundNo, bool bWait)
+{
+	if (メッセージスキップ中())
+	{
+		return;
+	}
+	if (!効果音_あり(nSoundNo))
+	{
+		return;
+	}
+	if (bWait)
+	{
+		効果音強制終了待ちあり(nSoundNo);
+	}
+	else
+	{
+		システム効果音(nSoundNo);
+	}
+}
+
+bool 効果音_あり(int nSoundNo)
+{
+	if (nSoundNo <= 0)
+	{
+		return false;
+	}
+	return KiwiSoundEngine.Sound_IsExist(nSoundNo);
+}
+
+void 効果音_再生(int nSoundNo)
+{
+	if (!効果音_あり(nSoundNo))
+	{
+		return;
+	}
+	if (nSoundNo == g_n効果音再生番号)
+	{
+		if (system.GetTime() - g_n効果音再生時間 < 50)
+		{
+			return;
+		}
+	}
+	システム効果音(nSoundNo);
+	g_n効果音再生番号 = nSoundNo;
+	g_n効果音再生時間 = system.GetTime();
+}
+
+void 効果音_クリア()
+{
+	g_n効果音再生番号 = -1;
+	g_n効果音再生時間 = -1;
+}
+

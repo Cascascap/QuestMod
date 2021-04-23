@@ -1,0 +1,86 @@
+void タイトル_実行(bool bDebug)
+{
+	NET_Initialize();
+	アリスロゴ();
+	タイトル_警告();
+	if (ユーザーログフラグ())
+	{
+		LOG_OPEN();
+	}
+	while (true)
+	{
+		switch (タイトル画面())
+		{
+			case 1:
+				タイトル_ロード();
+				break;
+			case 2:
+				タイトル_再開();
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+int タイトル画面()
+{
+	画面_クリア(true, true);
+	仮字枠非表示();
+	ＯＰ曲_再生();
+	T_Title sTitle;
+	int nRet = sTitle.run();
+	音楽_再生(0);
+	return nRet;
+}
+
+void タイトル_ロード()
+{
+	Ｄ３Ｄモード_ＯＮ();
+	３Ｄ設定_レベル取得();
+	if (!自動セーブファイル_あり())
+	{
+		中断セーブファイル_削除(false);
+		jump クエスト_プロローグ;
+	}
+	if (!自動セーブ_ロード())
+	{
+		return;
+	}
+	中断セーブファイル_削除(false);
+	セーブデータ_送信();
+	jump ゲーム_メイン;
+}
+
+void タイトル_再開()
+{
+	Ｄ３Ｄモード_ＯＮ();
+	３Ｄ設定_レベル取得();
+	int nRet = 中断セーブ_ロード();
+	if (nRet < 0)
+	{
+		return;
+	}
+	中断セーブファイル_削除(false);
+	if (nRet > 0)
+	{
+		jump ゲーム_マップ;
+	}
+	jump ゲーム_メイン;
+}
+
+void タイトル_警告()
+{
+	画面_クリア(true, true);
+	仮字枠非表示();
+	T_Sprite spWarning;
+	spWarning.setCg(10500);
+	spWarning.setPos(0, 0);
+	spWarning.setZ(101);
+	spWarning.setShow(1);
+	_EFFECT(1, 500);
+	キー待ち_クリック();
+	_黒画面(1, 500);
+	spWarning.delete();
+}
+

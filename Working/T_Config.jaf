@@ -1,0 +1,269 @@
+void T_Config::setSountVolume(int nIndex, float fVolume)
+{
+	if (this.m_nMode == 2)
+	{
+		this.m_sConfigSound.setVolume(nIndex, fVolume, false);
+	}
+}
+
+int T_Config::getMode()
+{
+	return this.m_nMode;
+}
+
+ref T_ConfigMessage T_Config::getMessge()
+{
+	return this.m_sConfigMessage;
+}
+
+ref T_ConfigSound T_Config::getSound()
+{
+	return this.m_sConfigSound;
+}
+
+ref T_ConfigWindow T_Config::getWindow()
+{
+	return this.m_sConfigWindow;
+}
+
+ref T_Config3D T_Config::get3D()
+{
+	return this.m_sConfig3D;
+}
+
+ref T_ConfigConfirm T_Config::getConfirm()
+{
+	return this.m_sConfigConfirm;
+}
+
+ref T_ConfigEtc T_Config::getEtc()
+{
+	return this.m_sConfigEtc;
+}
+
+ref T_ConfigEtc2 T_Config::getEtc2()
+{
+	return this.m_sConfigEtc2;
+}
+
+T_Config::T_Config()
+{
+	this.clear();
+}
+
+T_Config::~T_Config()
+{
+	this.clear();
+}
+
+void T_Config::run(int nMode)
+{
+	this.clear();
+	while (true)
+	{
+		switch (nMode)
+		{
+			case 1:
+				g_bConfigUpdate = true;
+				this.m_nMode = nMode;
+				nMode = this.m_sConfigMessage.run();
+				break;
+			case 2:
+				g_bConfigUpdate = true;
+				this.m_nMode = nMode;
+				nMode = this.m_sConfigSound.run();
+				break;
+			case 3:
+				this.m_nMode = nMode;
+				nMode = this.m_sConfigWindow.run();
+				break;
+			case 4:
+				this.m_nMode = nMode;
+				nMode = this.m_sConfig3D.run();
+				break;
+			case 5:
+				this.m_nMode = nMode;
+				nMode = this.m_sConfigConfirm.run();
+				break;
+			case 6:
+				this.m_nMode = nMode;
+				nMode = this.m_sConfigEtc.run();
+				break;
+			case 7:
+				this.m_nMode = nMode;
+				nMode = this.m_sConfigEtc2.run();
+				break;
+			case 8:
+				nMode = this.execDebug();
+				break;
+			default:
+				goto label0;
+		}
+		g_bConfigUpdate = false;
+		SYS_システム共通セーブ();
+	}
+label0:
+	this.clear();
+}
+
+bool T_Config::update()
+{
+	switch (this.m_nMode)
+	{
+		case 1:
+			return this.m_sConfigMessage.update();
+		case 2:
+			return this.m_sConfigSound.update();
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		default:
+			break;
+	}
+	return false;
+}
+
+int T_Config::moveUp(int nID)
+{
+	switch (this.m_nMode)
+	{
+		case 1:
+			return this.m_sConfigMessage.moveUp(nID);
+		case 2:
+			return this.m_sConfigSound.moveUp(nID);
+		case 3:
+			return this.m_sConfigWindow.moveUp(nID);
+		case 4:
+			return this.m_sConfig3D.moveUp(nID);
+		case 5:
+			return this.m_sConfigConfirm.moveUp(nID);
+		case 6:
+			return this.m_sConfigEtc.moveUp(nID);
+		case 7:
+			return this.m_sConfigEtc2.moveUp(nID);
+		case 8:
+		default:
+			break;
+	}
+	return nID;
+}
+
+int T_Config::moveDown(int nID)
+{
+	switch (this.m_nMode)
+	{
+		case 1:
+			return this.m_sConfigMessage.moveDown(nID);
+		case 2:
+			return this.m_sConfigSound.moveDown(nID);
+		case 3:
+			return this.m_sConfigWindow.moveDown(nID);
+		case 4:
+			return this.m_sConfig3D.moveDown(nID);
+		case 5:
+			return this.m_sConfigConfirm.moveDown(nID);
+		case 6:
+			return this.m_sConfigEtc.moveDown(nID);
+		case 7:
+			return this.m_sConfigEtc2.moveDown(nID);
+		case 8:
+		default:
+			break;
+	}
+	return nID;
+}
+
+int T_Config::moveLeft(int nID)
+{
+	switch (this.m_nMode)
+	{
+		case 1:
+			return this.m_sConfigMessage.moveLeft(nID);
+		case 2:
+			return this.m_sConfigSound.moveLeft(nID);
+		case 3:
+			return this.m_sConfigWindow.moveLeft(nID);
+		case 4:
+			return this.m_sConfig3D.moveLeft(nID);
+		case 5:
+			return this.m_sConfigConfirm.moveLeft(nID);
+		case 6:
+			return this.m_sConfigEtc.moveLeft(nID);
+		case 7:
+			return this.m_sConfigEtc2.moveLeft(nID);
+		case 8:
+		default:
+			break;
+	}
+	return nID;
+}
+
+int T_Config::moveRight(int nID)
+{
+	switch (this.m_nMode)
+	{
+		case 1:
+			return this.m_sConfigMessage.moveRight(nID);
+		case 2:
+			return this.m_sConfigSound.moveRight(nID);
+		case 3:
+			return this.m_sConfigWindow.moveRight(nID);
+		case 4:
+			return this.m_sConfig3D.moveRight(nID);
+		case 5:
+			return this.m_sConfigConfirm.moveRight(nID);
+		case 6:
+			return this.m_sConfigEtc.moveRight(nID);
+		case 7:
+			return this.m_sConfigEtc2.moveRight(nID);
+		case 8:
+		default:
+			break;
+	}
+	return nID;
+}
+
+void T_Config::setSelect(int nID, bool bSelect)
+{
+	switch (this.m_nMode)
+	{
+		case 1:
+			this.m_sConfigMessage.setSelect(nID, bSelect);
+			break;
+		case 2:
+			this.m_sConfigSound.setSelect(nID, bSelect);
+			break;
+		case 3:
+			this.m_sConfigWindow.setSelect(nID, bSelect);
+			break;
+		case 4:
+			this.m_sConfig3D.setSelect(nID, bSelect);
+			break;
+		case 5:
+			this.m_sConfigConfirm.setSelect(nID, bSelect);
+			break;
+		case 6:
+			this.m_sConfigEtc.setSelect(nID, bSelect);
+			break;
+		case 7:
+			this.m_sConfigEtc2.setSelect(nID, bSelect);
+			break;
+		case 8:
+		default:
+			break;
+	}
+}
+
+void T_Config::clear()
+{
+	this.m_nMode = -1;
+}
+
+int T_Config::execDebug()
+{
+	return 0;
+}
+

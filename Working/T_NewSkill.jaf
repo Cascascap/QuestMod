@@ -1,0 +1,369 @@
+int T_NewSkillManager::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_NewSkillManager::checkKey()
+{
+	return this.m_sButton.checkKey();
+}
+
+void T_NewSkillManager::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_NewSkillManager::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_NewSkillManager::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_NewSkillManager::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+int T_NewSkillManager::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_NewSkillManager::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_NewSkillManager::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_NewSkillManager::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_NewSkillManager::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+int T_NewSkillManager::getSkillNo(int nID)
+{
+	return this.m_sList.get(this.getButtonIndex(nID));
+}
+
+int T_NewSkillManager::getCost(int nID)
+{
+	return this.m_sCost.getCost(this.getButtonIndex(nID));
+}
+
+int T_NewSkillManager::getCharaNo()
+{
+	return this.m_sList.getCharaNo();
+}
+
+int T_NewSkillManager::getSkillIndex(int nSkillNo)
+{
+	return this.m_sList.getIndex(nSkillNo);
+}
+
+int T_NewSkillManager::getSkillNoFromIndex(int nIndex)
+{
+	return this.m_sList.get(nIndex);
+}
+
+int T_NewSkillManager::getCostFromIndex(int nIndex)
+{
+	return this.m_sCost.getCost(nIndex);
+}
+
+int T_NewSkillManager::getRow(int nID)
+{
+	return this.getRowFromIndex(this.getButtonIndex(nID));
+}
+
+int T_NewSkillManager::getCol(int nID)
+{
+	return this.getColFromIndex(this.getButtonIndex(nID));
+}
+
+int T_NewSkillManager::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 36 ? -1 : 200000 + nIndex + 1;
+}
+
+int T_NewSkillManager::getButtonIndex(int nID)
+{
+	int idx = nID + -200001;
+	return idx < 0 || idx >= 36 ? -1 : idx;
+}
+
+int T_NewSkillManager::getPosX(int nIndex)
+{
+	int nCol = this.getColFromIndex(nIndex);
+	return nCol < 0 ? -1 : 531 + 199 * nCol;
+}
+
+int T_NewSkillManager::getPosY(int nIndex)
+{
+	int nRow = this.getRowFromIndex(nIndex);
+	return nRow < 0 ? -1 : 127 + 26 * nRow;
+}
+
+int T_NewSkillManager::getIndex(int nRow, int nCol)
+{
+	return nRow < 0 || nRow >= 18 || nCol < 0 || nCol >= 2 ? -1 : nRow * 2 + nCol;
+}
+
+int T_NewSkillManager::getRowFromIndex(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 36 ? -1 : nIndex / 2;
+}
+
+int T_NewSkillManager::getColFromIndex(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 36 ? -1 : nIndex % 2;
+}
+
+T_NewSkillManager::T_NewSkillManager()
+{
+	this.clear();
+}
+
+T_NewSkillManager::~T_NewSkillManager()
+{
+	this.delete();
+}
+
+bool T_NewSkillManager::create(int nCharaNo)
+{
+	this.delete();
+	if (!this.m_sList.create(nCharaNo, 2))
+	{
+		return false;
+	}
+	this.m_sCost.create(1, 36);
+	this.m_sButton.create();
+	int i = 0;
+	int nMax = キャラ_スキルポイント(nCharaNo);
+	for (i = 0; i < 36; ++i)
+	{
+		int nSkillNo = this.m_sList.get(i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		int nCost = キャラスキル_コスト(nCharaNo, nSkillNo);
+		int nX = this.getPosX(i);
+		int nY = this.getPosY(i);
+		bool bActive = nCost > 0 && nCost <= nMax;
+		スキルボタン_登録(this.m_sButton, this.getButtonID(i), nX, nY, false, nCharaNo, nSkillNo, bActive);
+		this.m_sCost.setCost(i, nCost, bActive);
+		this.m_sCost.setPos(i, nX + 154, nY + 2);
+	}
+	return true;
+}
+
+void T_NewSkillManager::delete()
+{
+	this.m_sButton.delete();
+	this.m_sCost.delete();
+	this.clear();
+}
+
+void T_NewSkillManager::clear()
+{
+	this.m_sList.clear();
+}
+
+bool T_NewSkillManager::blink(int nSkillNo, int nCount, int nTime)
+{
+	this.resetSelect();
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_sButton.blinkButton(this.getButtonID(idx), nCount, nTime);
+}
+
+int T_NewSkillManager::moveUp(int nID)
+{
+	int idx = this.getButtonIndex(nID);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int nRow = this.getRowFromIndex(idx);
+	int nCol = this.getColFromIndex(idx);
+	int i = 0;
+	for (i = nRow - 1; i >= 0; --i)
+	{
+		int idx = this.getIndex(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+	}
+	return 0;
+}
+
+int T_NewSkillManager::moveDown(int nID)
+{
+	int idx = this.getButtonIndex(nID);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int nRow = this.getRowFromIndex(idx);
+	int nCol = this.getColFromIndex(idx);
+	int i = 0;
+	for (i = nRow + 1; i < 18; ++i)
+	{
+		int idx = this.getIndex(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+	}
+	return 0;
+}
+
+int T_NewSkillManager::moveLeft(int nID)
+{
+	int idx = this.getButtonIndex(nID);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int nRow = this.getRowFromIndex(idx);
+	int nCol = this.getColFromIndex(idx);
+	int j = 0;
+	for (j = nCol - 1; j >= 0; --j)
+	{
+		int idx = this.getIndex(nRow, j);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+	}
+	return 0;
+}
+
+int T_NewSkillManager::moveRight(int nID)
+{
+	int idx = this.getButtonIndex(nID);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int nRow = this.getRowFromIndex(idx);
+	int nCol = this.getColFromIndex(idx);
+	int j = 0;
+	for (j = nCol + 1; j < 2; ++j)
+	{
+		int idx = this.getIndex(nRow, j);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+	}
+	return 0;
+}
+
+int T_NewSkillManager::moveLeftFromHold(int nRow)
+{
+	if (nRow < 0 || nRow >= 18)
+	{
+		return -1;
+	}
+	int i = 0;
+	int j = 0;
+	for (i = nRow; i >= 0; --i)
+	{
+		for (j = 1; j >= 0; --j)
+		{
+			int idx = this.getIndex(i, j);
+			if (this.m_sList.get(idx) > 0)
+			{
+				return this.getButtonID(idx);
+			}
+		}
+	}
+	return 0;
+}
+
+int T_NewSkillManager::moveRightFromHold(int nRow)
+{
+	if (nRow < 0 || nRow >= 18)
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = nRow; i >= 0; --i)
+	{
+		int idx = this.getIndex(i, 0);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+	}
+	return 0;
+}
+
+void T_NewSkillManager::setZ(int nZ)
+{
+	this.m_sButton.setZ(nZ);
+	this.m_sCost.setZ(nZ);
+}
+
+void T_NewSkillManager::setShow(bool bShow)
+{
+	this.m_sButton.setShow(bShow);
+	this.m_sCost.setShow(bShow);
+}
+
+int T_NewSkillManager::getFirst(int nCol)
+{
+	if (nCol < 0 || nCol >= 2)
+	{
+		goto label0;
+	}
+	int i = 0;
+	for (i = 0; i < 18; ++i)
+	{
+		int idx = this.getIndex(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+	}
+label0:
+	return this.m_sButton.getFirstButton(false);
+}
+
+int T_NewSkillManager::getLast(int nCol)
+{
+	if (nCol < 0 || nCol >= 2)
+	{
+		goto label0;
+	}
+	int i = 0;
+	for (i = 17; i >= 0; --i)
+	{
+		int idx = this.getIndex(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+	}
+label0:
+	return this.m_sButton.getLastButton(false);
+}
+

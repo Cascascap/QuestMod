@@ -1,0 +1,7745 @@
+string キャラ固有番号文字列(lint no, int fg)
+{
+	if (fg == 0)
+	{
+		if (no == 1)
+		{
+			return "Rance";
+		}
+		if (no == 19)
+		{
+			return "Sachiko Senters";
+		}
+		if (no == 33)
+		{
+			return "Crook Mofus";
+		}
+		if (no == 26)
+		{
+			return "Aegis Kalar";
+		}
+		if (no == 3)
+		{
+			return "Alkanese Rize";
+		}
+		if (no == 23)
+		{
+			return "Crane";
+		}
+		if (no == 6)
+		{
+			return "Tilde Sharp";
+		}
+		if (no == 47)
+		{
+			return "Matilda Mateuri";
+		}
+		if (no == 22)
+		{
+			return "Suzume";
+		}
+		if (no == 42)
+		{
+			return "Magic Gandhi";
+		}
+		if (no == 54)
+		{
+			return "Lia P. Leazas";
+		}
+		if (no == 55)
+		{
+			return "Copandon Dot";
+		}
+		if (no == 27)
+		{
+			return "Athena 2.0";
+		}
+		if (no == 4)
+		{
+			return "Kenshin Uesugi";
+		}
+		if (no == 5)
+		{
+			return "Katsuko Uesugi";
+		}
+		if (no == 38)
+		{
+			return "Torako Uesugi";
+		}
+		if (no == 20)
+		{
+			return "Kouhime";
+		}
+		if (no == 24)
+		{
+			return "Kanami Kentou";
+		}
+		if (no == 34)
+		{
+			return "Maris Amaryllis";
+		}
+		if (no == 83)
+		{
+			return "Maris Amaryllis";
+		}
+		if (no == 93)
+		{
+			return "Rick Addison";
+		}
+		if (no == 8)
+		{
+			return "Rick Addison";
+		}
+		if (no == 57)
+		{
+			return "Meg Makibano";
+		}
+		if (no == 58)
+		{
+			return "Atago Macatt";
+		}
+		if (no == 41)
+		{
+			return "Kapalla Uche";
+		}
+		if (no == 40)
+		{
+			return "Aten Gnu";
+		}
+		if (no == 50)
+		{
+			return "Kibako";
+		}
+		if (no == 7)
+		{
+			return "Arms Arc";
+		}
+		if (no == 112)
+		{
+			return "Arms Arc";
+		}
+		if (no == 62)
+		{
+			return "Onoha Mespos";
+		}
+		if (no == 32)
+		{
+			return "Zima Bakasko";
+		}
+		if (no == 48)
+		{
+			return "Tama";
+		}
+		if (no == 56)
+		{
+			return "Frostbyne";
+		}
+		if (no == 59)
+		{
+			return "Prima Hononoman";
+		}
+		if (no == 31)
+		{
+			return "Megadeth Moromi";
+		}
+		if (no == 14)
+		{
+			return "Cessna Benville";
+		}
+		if (no == 49)
+		{
+			return "Alexander";
+		}
+		if (no == 45)
+		{
+			return "Mahoko P. Masai";
+		}
+		if (no == 35)
+		{
+			return "Sel Curchgolf";
+		}
+		if (no == 36)
+		{
+			return "Noah Hakobune";
+		}
+		if (no == 21)
+		{
+			return "Rocky Bank";
+		}
+		if (no == 15)
+		{
+			return "Yulan Mirage";
+		}
+		if (no == 30)
+		{
+			return "Yuzumi Yuzuhara";
+		}
+		if (no == 46)
+		{
+			return "Shitomone Chappie";
+		}
+		if (no == 37)
+		{
+			return "Rose";
+		}
+		if (no == 25)
+		{
+			return "Karma Atlanger";
+		}
+		if (no == 60)
+		{
+			return "Merim Zahl";
+		}
+		if (no == 61)
+		{
+			return "Arlcoate Marius";
+		}
+		if (no == 51)
+		{
+			return "Caloria Cricket";
+		}
+		if (no == 28)
+		{
+			return "Urza Pranaice";
+		}
+		if (no == 9)
+		{
+			return "Teru Mouri";
+		}
+		if (no == 10)
+		{
+			return "Elenoa Ran";
+		}
+		if (no == 11)
+		{
+			return "Wichita Skate";
+		}
+		if (no == 12)
+		{
+			return "Rizna Lanfbit";
+		}
+		if (no == 13)
+		{
+			return "Nozomi Okita";
+		}
+		if (no == 16)
+		{
+			return "Bernard Ceramit･";
+		}
+		if (no == 17)
+		{
+			return "Noir";
+		}
+		if (no == 18)
+		{
+			return "Tomato Pur･e";
+		}
+		if (no == 29)
+		{
+			return "Maria Custard";
+		}
+		if (no == 43)
+		{
+			return "Mill Yorks";
+		}
+		if (no == 39)
+		{
+			return "Shizuka Masou";
+		}
+		if (no == 44)
+		{
+			return "Emi Alphorne";
+		}
+		if (no == 52)
+		{
+			return "Kaoru Quincy";
+		}
+		if (no == 53)
+		{
+			return "Bear";
+		}
+		if (no == 68)
+		{
+			return "Biscuitta Berns";
+		}
+		if (no == 70)
+		{
+			return "Carolie Mate";
+		}
+		if (no == 67)
+		{
+			return "Hikari mi Blanc";
+		}
+		if (no == 73)
+		{
+			return "Caf･ Artful";
+		}
+		if (no == 74)
+		{
+			return "Alex Valse";
+		}
+		if (no == 75)
+		{
+			return "Zethan Soldier A";
+		}
+		if (no == 76)
+		{
+			return "Zethan Soldier B";
+		}
+		if (no == 77)
+		{
+			return "Zethan Soldier C";
+		}
+		if (no == 78)
+		{
+			return "Zethan Soldier D";
+		}
+		if (no == 79)
+		{
+			return "Souun Houjou";
+		}
+		if (no == 80)
+		{
+			return "Kisara Copley";
+		}
+		if (no == 81)
+		{
+			return "Rebecca Copley";
+		}
+		if (no == 82)
+		{
+			return "Feliss";
+		}
+		if (no == 84)
+		{
+			return "Pastel Kalar";
+		}
+		if (no == 72)
+		{
+			return "Reset Kalar";
+		}
+		if (no == 71)
+		{
+			return "Sanakia Drelshkaf";
+		}
+		if (no == 85)
+		{
+			return "Chinu Kobayakawa";
+		}
+		if (no == 86)
+		{
+			return "Kiku Kikkawa";
+		}
+		if (no == 91)
+		{
+			return "Kojika Yamanaka";
+		}
+		if (no == 94)
+		{
+			return "Am Yisael";
+		}
+		if (no == 63)
+		{
+			return "Nopel";
+		}
+		if (no == 64)
+		{
+			return "Doessky";
+		}
+		if (no == 65)
+		{
+			return "Colonel Akashi";
+		}
+		if (no == 87)
+		{
+			return "Eisaku";
+		}
+		if (no == 88)
+		{
+			return "Toby";
+		}
+		if (no == 89)
+		{
+			return "Marcie";
+		}
+		if (no == 90)
+		{
+			return "Andy";
+		}
+		if (no == 92)
+		{
+			return "Dark Rance";
+		}
+		if (no == 113)
+		{
+			return "97 Chi-Ha";
+		}
+		if (no == 114)
+		{
+			return "Can Can";
+		}
+		if (no == 115)
+		{
+			return "Gecky";
+		}
+		if (no == 116)
+		{
+			return "Magisco";
+		}
+		if (no == 117)
+		{
+			return "Kraken";
+		}
+		if (no == 118)
+		{
+			return "Crab Girl";
+		}
+		if (no == 119)
+		{
+			return "Splish-Splash";
+		}
+		if (no == 120)
+		{
+			return "Frog Lady";
+		}
+		if (no == 121)
+		{
+			return "Maid Lady";
+		}
+		if (no == 122)
+		{
+			return "Zashiki-Warashi";
+		}
+		if (no == 346)
+		{
+			return "Ralga's Cat";
+		}
+		if (no == 123)
+		{
+			return "Lantyrn";
+		}
+		if (no == 124)
+		{
+			return "Tokko";
+		}
+		if (no == 125)
+		{
+			return "Majician";
+		}
+		if (no == 126)
+		{
+			return "Nekomatamata";
+		}
+		if (no == 127)
+		{
+			return "Valkyrie";
+		}
+		if (no == 128)
+		{
+			return "Captain Vanilla";
+		}
+		if (no == 129)
+		{
+			return "Battle Booklet";
+		}
+	}
+	if (fg == 1)
+	{
+		if (no == 1)
+		{
+			return "Rance";
+		}
+		if (no == 19)
+		{
+			return "Sachiko";
+		}
+		if (no == 33)
+		{
+			return "Crook";
+		}
+		if (no == 26)
+		{
+			return "Aegis";
+		}
+		if (no == 3)
+		{
+			return "Alkanese";
+		}
+		if (no == 23)
+		{
+			return "Crane";
+		}
+		if (no == 6)
+		{
+			return "Tilde";
+		}
+		if (no == 47)
+		{
+			return "Matilda";
+		}
+		if (no == 22)
+		{
+			return "Suzume";
+		}
+		if (no == 42)
+		{
+			return "Magic";
+		}
+		if (no == 54)
+		{
+			return "Lia";
+		}
+		if (no == 55)
+		{
+			return "Copandon";
+		}
+		if (no == 27)
+		{
+			return "Athena 2.0";
+		}
+		if (no == 4)
+		{
+			return "Kenshin";
+		}
+		if (no == 5)
+		{
+			return "Katsuko";
+		}
+		if (no == 38)
+		{
+			return "Torako";
+		}
+		if (no == 20)
+		{
+			return "Kouhime";
+		}
+		if (no == 24)
+		{
+			return "Kanami";
+		}
+		if (no == 34)
+		{
+			return "Maris";
+		}
+		if (no == 83)
+		{
+			return "Maris";
+		}
+		if (no == 93)
+		{
+			return "Rick";
+		}
+		if (no == 8)
+		{
+			return "Rick";
+		}
+		if (no == 57)
+		{
+			return "Meg";
+		}
+		if (no == 58)
+		{
+			return "Atago";
+		}
+		if (no == 41)
+		{
+			return "Kapalla";
+		}
+		if (no == 40)
+		{
+			return "Aten";
+		}
+		if (no == 50)
+		{
+			return "Kibako";
+		}
+		if (no == 7)
+		{
+			return "Arms";
+		}
+		if (no == 112)
+		{
+			return "Arms";
+		}
+		if (no == 62)
+		{
+			return "Onoha";
+		}
+		if (no == 32)
+		{
+			return "Zima";
+		}
+		if (no == 48)
+		{
+			return "Tama";
+		}
+		if (no == 56)
+		{
+			return "Frostbyne";
+		}
+		if (no == 59)
+		{
+			return "Prima";
+		}
+		if (no == 31)
+		{
+			return "Megadeth";
+		}
+		if (no == 14)
+		{
+			return "Cessna";
+		}
+		if (no == 49)
+		{
+			return "Alexander";
+		}
+		if (no == 45)
+		{
+			return "Mahoko";
+		}
+		if (no == 35)
+		{
+			return "Sel";
+		}
+		if (no == 36)
+		{
+			return "Noah";
+		}
+		if (no == 21)
+		{
+			return "Rocky";
+		}
+		if (no == 15)
+		{
+			return "Yulan";
+		}
+		if (no == 30)
+		{
+			return "Yuzumi";
+		}
+		if (no == 46)
+		{
+			return "Shitomone";
+		}
+		if (no == 37)
+		{
+			return "Rose";
+		}
+		if (no == 25)
+		{
+			return "Karma";
+		}
+		if (no == 60)
+		{
+			return "Merim";
+		}
+		if (no == 61)
+		{
+			return "Arlcoate";
+		}
+		if (no == 51)
+		{
+			return "Caloria";
+		}
+		if (no == 28)
+		{
+			return "Urza";
+		}
+		if (no == 9)
+		{
+			return "Teru";
+		}
+		if (no == 10)
+		{
+			return "Elenoa";
+		}
+		if (no == 11)
+		{
+			return "Wichita";
+		}
+		if (no == 12)
+		{
+			return "Rizna";
+		}
+		if (no == 13)
+		{
+			return "Nozomi";
+		}
+		if (no == 16)
+		{
+			return "Bernard";
+		}
+		if (no == 17)
+		{
+			return "Noir";
+		}
+		if (no == 18)
+		{
+			return "Tomato";
+		}
+		if (no == 29)
+		{
+			return "Maria";
+		}
+		if (no == 43)
+		{
+			return "Mill";
+		}
+		if (no == 39)
+		{
+			return "Shizuka";
+		}
+		if (no == 44)
+		{
+			return "Emi";
+		}
+		if (no == 52)
+		{
+			return "Kaoru";
+		}
+		if (no == 53)
+		{
+			return "Bear";
+		}
+		if (no == 68)
+		{
+			return "Biscuitta";
+		}
+		if (no == 70)
+		{
+			return "Carolie";
+		}
+		if (no == 67)
+		{
+			return "Hikari";
+		}
+		if (no == 73)
+		{
+			return "Caf･";
+		}
+		if (no == 74)
+		{
+			return "Alex";
+		}
+		if (no == 75)
+		{
+			return "Zethan Soldier A";
+		}
+		if (no == 76)
+		{
+			return "Zethan Soldier B";
+		}
+		if (no == 77)
+		{
+			return "Zethan Soldier C";
+		}
+		if (no == 78)
+		{
+			return "Zethan Soldier D";
+		}
+		if (no == 79)
+		{
+			return "Souun";
+		}
+		if (no == 80)
+		{
+			return "Kisara";
+		}
+		if (no == 81)
+		{
+			return "Rebecca";
+		}
+		if (no == 82)
+		{
+			return "Feliss";
+		}
+		if (no == 84)
+		{
+			return "Pastel";
+		}
+		if (no == 72)
+		{
+			return "Reset";
+		}
+		if (no == 71)
+		{
+			return "Sanakia";
+		}
+		if (no == 85)
+		{
+			return "Chinu";
+		}
+		if (no == 86)
+		{
+			return "Kiku";
+		}
+		if (no == 91)
+		{
+			return "Kojika";
+		}
+		if (no == 94)
+		{
+			return "Am";
+		}
+		if (no == 63)
+		{
+			return "Nopel";
+		}
+		if (no == 64)
+		{
+			return "Doessky";
+		}
+		if (no == 65)
+		{
+			return "Colonel Akashi";
+		}
+		if (no == 87)
+		{
+			return "Eisaku";
+		}
+		if (no == 88)
+		{
+			return "Toby";
+		}
+		if (no == 89)
+		{
+			return "Marcie";
+		}
+		if (no == 90)
+		{
+			return "Andy";
+		}
+		if (no == 92)
+		{
+			return "Dark Rance";
+		}
+		if (no == 113)
+		{
+			return "97 Chi-Ha";
+		}
+		if (no == 114)
+		{
+			return "Can Can";
+		}
+		if (no == 115)
+		{
+			return "Gecky";
+		}
+		if (no == 116)
+		{
+			return "Magisco";
+		}
+		if (no == 117)
+		{
+			return "Kraken";
+		}
+		if (no == 118)
+		{
+			return "Crab Girl";
+		}
+		if (no == 119)
+		{
+			return "Splish-Splash";
+		}
+		if (no == 120)
+		{
+			return "Frog Lady";
+		}
+		if (no == 121)
+		{
+			return "Maid Lady";
+		}
+		if (no == 122)
+		{
+			return "Zashiki-Warashi";
+		}
+		if (no == 346)
+		{
+			return "Ralga's Cat";
+		}
+		if (no == 123)
+		{
+			return "Lantyrn";
+		}
+		if (no == 124)
+		{
+			return "Tokko";
+		}
+		if (no == 125)
+		{
+			return "Majician";
+		}
+		if (no == 126)
+		{
+			return "Nekomatamata";
+		}
+		if (no == 127)
+		{
+			return "Valkyrie";
+		}
+		if (no == 128)
+		{
+			return "Captain Vanilla";
+		}
+		if (no == 129)
+		{
+			return "Battle Booklet";
+		}
+	}
+	return "NoName";
+}
+
+int キャラ固有番号顔ＣＧ(lint no)
+{
+	if (no == 1)
+	{
+		return 2000;
+	}
+	if (no == 19)
+	{
+		return 2020;
+	}
+	if (no == 33)
+	{
+		return 2060;
+	}
+	if (no == 26)
+	{
+		return 2050;
+	}
+	if (no == 3)
+	{
+		return 2100;
+	}
+	if (no == 23)
+	{
+		return 2220;
+	}
+	if (no == 6)
+	{
+		return 2300;
+	}
+	if (no == 47)
+	{
+		return 2210;
+	}
+	if (no == 22)
+	{
+		return 2030;
+	}
+	if (no == 42)
+	{
+		return 2310;
+	}
+	if (no == 54)
+	{
+		return 2150;
+	}
+	if (no == 55)
+	{
+		return 2290;
+	}
+	if (no == 27)
+	{
+		return 2200;
+	}
+	if (no == 4)
+	{
+		return 2120;
+	}
+	if (no == 5)
+	{
+		return 2130;
+	}
+	if (no == 38)
+	{
+		return 2140;
+	}
+	if (no == 20)
+	{
+		return 2110;
+	}
+	if (no == 24)
+	{
+		return 2090;
+	}
+	if (no == 34)
+	{
+		return 2160;
+	}
+	if (no == 83)
+	{
+		return 2160;
+	}
+	if (no == 93)
+	{
+		return 2948;
+	}
+	if (no == 8)
+	{
+		return 2948;
+	}
+	if (no == 57)
+	{
+		return 2180;
+	}
+	if (no == 58)
+	{
+		return 2140;
+	}
+	if (no == 41)
+	{
+		return 2530;
+	}
+	if (no == 40)
+	{
+		return 2510;
+	}
+	if (no == 50)
+	{
+		return 2490;
+	}
+	if (no == 7)
+	{
+		return 2500;
+	}
+	if (no == 112)
+	{
+		return 2500;
+	}
+	if (no == 62)
+	{
+		return 2520;
+	}
+	if (no == 32)
+	{
+		return 2540;
+	}
+	if (no == 48)
+	{
+		return 2280;
+	}
+	if (no == 56)
+	{
+		return 2803;
+	}
+	if (no == 59)
+	{
+		return 2944;
+	}
+	if (no == 31)
+	{
+		return 2945;
+	}
+	if (no == 14)
+	{
+		return 2943;
+	}
+	if (no == 49)
+	{
+		return 2946;
+	}
+	if (no == 45)
+	{
+		return 2947;
+	}
+	if (no == 35)
+	{
+		return 2949;
+	}
+	if (no == 36)
+	{
+		return 2720;
+	}
+	if (no == 21)
+	{
+		return 2964;
+	}
+	if (no == 15)
+	{
+		return 2550;
+	}
+	if (no == 30)
+	{
+		return 2680;
+	}
+	if (no == 46)
+	{
+		return 2640;
+	}
+	if (no == 37)
+	{
+		return 2800;
+	}
+	if (no == 25)
+	{
+		return 2730;
+	}
+	if (no == 60)
+	{
+		return 2740;
+	}
+	if (no == 61)
+	{
+		return 2750;
+	}
+	if (no == 51)
+	{
+		return 2620;
+	}
+	if (no == 28)
+	{
+		return 2690;
+	}
+	if (no == 9)
+	{
+		return 2630;
+	}
+	if (no == 10)
+	{
+		return 2560;
+	}
+	if (no == 11)
+	{
+		return 2570;
+	}
+	if (no == 12)
+	{
+		return 2580;
+	}
+	if (no == 13)
+	{
+		return 2590;
+	}
+	if (no == 16)
+	{
+		return 2963;
+	}
+	if (no == 17)
+	{
+		return 2600;
+	}
+	if (no == 18)
+	{
+		return 2610;
+	}
+	if (no == 29)
+	{
+		return 2770;
+	}
+	if (no == 43)
+	{
+		return 2670;
+	}
+	if (no == 39)
+	{
+		return 2650;
+	}
+	if (no == 44)
+	{
+		return 2660;
+	}
+	if (no == 52)
+	{
+		return 2760;
+	}
+	if (no == 53)
+	{
+		return 2965;
+	}
+	if (no == 94)
+	{
+		return 2430;
+	}
+	if (no == 63)
+	{
+		return 2936;
+	}
+	if (no == 64)
+	{
+		return 2801;
+	}
+	if (no == 65)
+	{
+		return 2975;
+	}
+	if (no == 87)
+	{
+		return 2927;
+	}
+	if (no == 88)
+	{
+		return 2927;
+	}
+	if (no == 89)
+	{
+		return 2927;
+	}
+	if (no == 90)
+	{
+		return 2927;
+	}
+	return 0;
+}
+
+string Ｃ名前(lint iic, string 文字列)
+{
+	if (文字列 == "")
+	{
+		return Ｃ[iic].名前;
+	}
+	Ｃ[iic].名前 = 字数制限(文字列, 40);
+	Ｃ[iic].短縮名前 = 字数制限(文字列, 40);
+	return "";
+}
+
+string Ｃ短縮名前(lint iic, string 文字列)
+{
+	if (文字列 == "")
+	{
+		return Ｃ[iic].短縮名前;
+	}
+	Ｃ[iic].短縮名前 = 文字列;
+	return "";
+}
+
+string Ｃ顔ＣＧ文字列(lint iic, string 文字列)
+{
+	if (文字列 == "")
+	{
+		return Ｃ[iic].顔ＣＧ文字列;
+	}
+	Ｃ[iic].顔ＣＧ文字列 = 文字列;
+	return "";
+}
+
+string Ｃ台詞(lint iic, lint no, string 文字列)
+{
+	if (文字列 == "")
+	{
+		return Ｃ[iic].台詞[no];
+	}
+	Ｃ[iic].台詞[no] = 文字列;
+	return "";
+}
+
+lint Ｃ登録状態(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].登録状態;
+	}
+	Ｃ[iic].登録状態 = aa;
+	return 0;
+}
+
+lint Ｃポリゴン(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ポリゴン;
+	}
+	Ｃ[iic].ポリゴン = aa;
+	return 0;
+}
+
+lint Ｃゲスト(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ゲスト;
+	}
+	Ｃ[iic].ゲスト = aa;
+	return 0;
+}
+
+lint Ｃ削除禁止(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].削除禁止;
+	}
+	Ｃ[iic].削除禁止 = aa;
+	return 0;
+}
+
+lint Ｃ状態変化(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].状態変化;
+	}
+	Ｃ[iic].状態変化 = aa;
+	if (aa == 3)
+	{
+		Ｃ攻撃付与(iic, 0);
+		Ｃ防御付与(iic, 0);
+		Ｃ守護率(iic, 0);
+		Ｃ隠密率(iic, 0);
+		Ｃ狂戦士(iic, 0);
+		Ｃ全体加護(iic, 0);
+		Ｃバリア(iic, 0);
+		◆ぴよりました = 0;
+		◆毒りました = 0;
+		◆ターゲットにされた = 0;
+	}
+	return 0;
+}
+
+lint Ｃ宝箱解除回数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].宝箱解除回数;
+	}
+	Ｃ[iic].宝箱解除回数 = aa;
+	return 0;
+}
+
+lint Ｃトラップ解除回数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].トラップ解除回数;
+	}
+	Ｃ[iic].トラップ解除回数 = aa;
+	return 0;
+}
+
+lint Ｃハニージッポ回数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ハニージッポ回数;
+	}
+	Ｃ[iic].ハニージッポ回数 = aa;
+	return 0;
+}
+
+lint Ｃボス(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ボス;
+	}
+	Ｃ[iic].ボス = aa;
+	return 0;
+}
+
+lint Ｃ種族(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].種族;
+	}
+	Ｃ[iic].種族 = aa;
+	return 0;
+}
+
+lint Ｃタイプ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].タイプ;
+	}
+	Ｃ[iic].タイプ = aa;
+	return 0;
+}
+
+lint Ｃ悪口耐性(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].悪口耐性;
+	}
+	Ｃ[iic].悪口耐性 = aa;
+	return 0;
+}
+
+lint Ｃ守護率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].守護率;
+	}
+	Ｃ[iic].守護率 = aa;
+	return 0;
+}
+
+lint Ｃ隠密率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].隠密率;
+	}
+	Ｃ[iic].隠密率 = aa;
+	return 0;
+}
+
+lint Ｃ狂戦士(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].狂戦士;
+	}
+	Ｃ[iic].狂戦士 = aa;
+	return 0;
+}
+
+lint Ｃ全体加護(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].全体加護;
+	}
+	Ｃ[iic].全体加護 = aa;
+	return 0;
+}
+
+lint Ｃバリア(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].バリア;
+	}
+	if (aa >= 3)
+	{
+		aa = 3;
+	}
+	Ｃ[iic].バリア = aa;
+	return 0;
+}
+
+lint Ｃ攻撃付与(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].攻撃付与;
+	}
+	Ｃ[iic].攻撃付与 = aa;
+	return 0;
+}
+
+lint Ｃ防御付与(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].防御付与;
+	}
+	Ｃ[iic].防御付与 = aa;
+	return 0;
+}
+
+lint Ｃ溜め(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].溜め;
+	}
+	Ｃ[iic].溜め = aa;
+	return 0;
+}
+
+lint Ｃ弱点把握(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].弱点把握;
+	}
+	Ｃ[iic].弱点把握 = aa;
+	return 0;
+}
+
+lint Ｃ戦闘後再計算(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].戦闘後再計算;
+	}
+	Ｃ[iic].戦闘後再計算 = aa;
+	return 0;
+}
+
+lint Ｃ番号(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].番号;
+	}
+	Ｃ[iic].番号 = aa;
+	return 0;
+}
+
+lint Ｃ顔ＣＧ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].顔ＣＧ;
+	}
+	Ｃ[iic].顔ＣＧ = aa;
+	return 0;
+}
+
+lint Ｃ立ち絵ＣＧ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].立ち絵ＣＧ;
+	}
+	Ｃ[iic].立ち絵ＣＧ = aa;
+	return 0;
+}
+
+lint Ｃ職業(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].職業;
+	}
+	if (aa >= 9)
+	{
+		LOG_TADA("ＥＲＲＯＲ　Ｃ職業　\n");
+		return 0;
+	}
+	Ｃ[iic].職業 = aa;
+	return 0;
+}
+
+lint Ｃ性別(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].性別;
+	}
+	Ｃ[iic].性別 = aa;
+	return 0;
+}
+
+lint Ｃ職業タイプ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].職業タイプ;
+	}
+	Ｃ[iic].職業タイプ = aa;
+	return 0;
+}
+
+lint ＣＬＶ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ＬＶ;
+	}
+	Ｃ[iic].ＬＶ = aa;
+	return 0;
+}
+
+lint ＣＬＶ最大(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ＬＶ最大;
+	}
+	int max = 999;
+	if (◆ワールド == 3)
+	{
+		max = 9999;
+	}
+	if (aa >= max)
+	{
+		aa = max;
+	}
+	Ｃ[iic].ＬＶ最大 = aa;
+	return 0;
+}
+
+lint ＣＥＸＰ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ＥＸＰ;
+	}
+	Ｃ[iic].ＥＸＰ = aa;
+	return 0;
+}
+
+lint ＣＥＸＰ最大(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].ＥＸＰ最大;
+	}
+	if (aa > 99990000)
+	{
+		aa = 99990000;
+	}
+	Ｃ[iic].ＥＸＰ最大 = aa;
+	return 0;
+}
+
+lint Ｃ転生回数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].転生回数;
+	}
+	if (aa > 10 && ◆ワールド != 3)
+	{
+		aa = 10;
+	}
+	Ｃ[iic].転生回数 = aa;
+	return 0;
+}
+
+lint Ｃ戦闘参加回数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].戦闘参加回数;
+	}
+	Ｃ[iic].戦闘参加回数 = aa;
+	return 0;
+}
+
+lint Ｃ戦闘死亡回数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].戦闘死亡回数;
+	}
+	Ｃ[iic].戦闘死亡回数 = aa;
+	return 0;
+}
+
+lint Ｃ城ボーナス回数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].城ボーナス回数;
+	}
+	Ｃ[iic].城ボーナス回数 = aa;
+	return 0;
+}
+
+lint Ｃ体力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].体力;
+	}
+	if (aa > Ｃ体力最大(iic, -1))
+	{
+		aa = Ｃ体力最大(iic, -1);
+	}
+	Ｃ[iic].体力 = aa;
+	return 0;
+}
+
+lint Ｃ体力最大(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].体力最大;
+	}
+	Ｃ[iic].体力最大 = aa;
+	return 0;
+}
+
+lint Ｃ素早さ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].素早さ;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].素早さ = aa;
+	return 0;
+}
+
+lint Ｃ攻撃力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].攻撃力;
+	}
+	Ｃ[iic].攻撃力 = aa;
+	return 0;
+}
+
+lint Ｃ防御力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].防御力;
+	}
+	if (aa >= 9999)
+	{
+		aa = 9999;
+	}
+	Ｃ[iic].防御力 = aa;
+	return 0;
+}
+
+lint Ｃ命中率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].命中率;
+	}
+	if (aa >= 200)
+	{
+		aa = 200;
+	}
+	Ｃ[iic].命中率 = aa;
+	return 0;
+}
+
+lint Ｃ回避率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].回避率;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].回避率 = aa;
+	return 0;
+}
+
+lint Ｃ必殺率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].必殺率;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].必殺率 = aa;
+	return 0;
+}
+
+lint Ｃ衝撃率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].衝撃率;
+	}
+	if (aa >= 200)
+	{
+		aa = 200;
+	}
+	Ｃ[iic].衝撃率 = aa;
+	return 0;
+}
+
+lint Ｃ耐性率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].耐性率;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].耐性率 = aa;
+	return 0;
+}
+
+lint Ｃ魔法力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].魔法力;
+	}
+	Ｃ[iic].魔法力 = aa;
+	return 0;
+}
+
+lint Ｃ魔抵力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].魔抵力;
+	}
+	if (aa >= 9999)
+	{
+		aa = 9999;
+	}
+	Ｃ[iic].魔抵力 = aa;
+	return 0;
+}
+
+lint Ｃ炎耐性(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].炎耐性;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].炎耐性 = aa;
+	return 0;
+}
+
+lint Ｃ氷耐性(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].氷耐性;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].氷耐性 = aa;
+	return 0;
+}
+
+lint Ｃ雷耐性(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].雷耐性;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].雷耐性 = aa;
+	return 0;
+}
+
+lint Ｃ光耐性(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].光耐性;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].光耐性 = aa;
+	return 0;
+}
+
+lint Ｃ闇耐性(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].闇耐性;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].闇耐性 = aa;
+	return 0;
+}
+
+lint Ｃ弱点属性(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].弱点属性;
+	}
+	Ｃ[iic].弱点属性 = aa;
+	return 0;
+}
+
+lint Ｃ武器(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].武器;
+	}
+	if (Ｃ[iic].武器 != 0)
+	{
+		Ｃアイテム外す(iic, 1);
+	}
+	Ｉ存在(aa, iic);
+	Ｃ[iic].武器 = aa;
+	return 0;
+}
+
+lint Ｃ防具(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].防具;
+	}
+	if (Ｃ[iic].防具 != 0)
+	{
+		Ｃアイテム外す(iic, 11);
+	}
+	Ｉ存在(aa, iic);
+	Ｃ[iic].防具 = aa;
+	return 0;
+}
+
+lint Ｃ持ち物(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].持ち物;
+	}
+	if (Ｃ[iic].持ち物 != 0)
+	{
+		Ｃアイテム外す(iic, 17);
+	}
+	Ｉ存在(aa, iic);
+	Ｃ[iic].持ち物 = aa;
+	return 0;
+}
+
+lint Ｃオプション(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].オプション;
+	}
+	if (Ｃ[iic].オプション != 0)
+	{
+		Ｃアイテム外す(iic, 21);
+	}
+	Ｉ存在(aa, iic);
+	Ｃ[iic].オプション = aa;
+	return 0;
+}
+
+lint Ｃスキルポイント(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキルポイント;
+	}
+	Ｃ[iic].スキルポイント = aa;
+	return 0;
+}
+
+lint Ｃスキル枠最大(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル枠最大;
+	}
+	if (aa >= 6)
+	{
+		aa = 6;
+	}
+	Ｃ[iic].スキル枠最大 = aa;
+	return 0;
+}
+
+lint Ｃ持ち物スキル(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].持ち物スキル;
+	}
+	Ｃ[iic].持ち物スキル = aa;
+	return 0;
+}
+
+lint Ｃスキル枠キープ数(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル枠キープ数;
+	}
+	Ｃ[iic].スキル枠キープ数 = aa;
+	return 0;
+}
+
+lint ＣＦＡ(lint iic, int no, int aa)
+{
+	if (no >= 100)
+	{
+		no = 100;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].ＦＡ[no];
+	}
+	Ｃ[iic].ＦＡ[no] = aa;
+	return 0;
+}
+
+lint Ｃ初期／体力最大(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／体力最大;
+	}
+	if (aa > 2000)
+	{
+		aa = 2000;
+	}
+	Ｃ[iic].初期／体力最大 = aa;
+	return 0;
+}
+
+lint Ｃ初期／素早さ(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／素早さ;
+	}
+	if (aa > 50)
+	{
+		aa = 50;
+	}
+	Ｃ[iic].初期／素早さ = aa;
+	return 0;
+}
+
+lint Ｃ初期／攻撃力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／攻撃力;
+	}
+	if (aa > 500)
+	{
+		aa = 500;
+	}
+	Ｃ[iic].初期／攻撃力 = aa;
+	return 0;
+}
+
+lint Ｃ初期／防御力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／防御力;
+	}
+	if (aa > 500)
+	{
+		aa = 500;
+	}
+	Ｃ[iic].初期／防御力 = aa;
+	return 0;
+}
+
+lint Ｃ初期／命中率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／命中率;
+	}
+	if (aa > 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].初期／命中率 = aa;
+	return 0;
+}
+
+lint Ｃ初期／回避率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／回避率;
+	}
+	if (aa > 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].初期／回避率 = aa;
+	return 0;
+}
+
+lint Ｃ初期／必殺率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／必殺率;
+	}
+	if (aa > 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].初期／必殺率 = aa;
+	return 0;
+}
+
+lint Ｃ初期／衝撃率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／衝撃率;
+	}
+	if (aa > 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].初期／衝撃率 = aa;
+	return 0;
+}
+
+lint Ｃ初期／耐性率(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／耐性率;
+	}
+	if (aa > 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].初期／耐性率 = aa;
+	return 0;
+}
+
+lint Ｃ初期／魔法力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／魔法力;
+	}
+	if (aa > 500)
+	{
+		aa = 500;
+	}
+	Ｃ[iic].初期／魔法力 = aa;
+	return 0;
+}
+
+lint Ｃ初期／魔抵力(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／魔抵力;
+	}
+	if (aa > 500)
+	{
+		aa = 500;
+	}
+	Ｃ[iic].初期／魔抵力 = aa;
+	return 0;
+}
+
+lint Ｃ初期／スキルポイント(lint iic, int aa)
+{
+	if (aa == -1)
+	{
+		return Ｃ[iic].初期／スキルポイント;
+	}
+	if (aa >= 10)
+	{
+		aa = 10;
+	}
+	Ｃ[iic].初期／スキルポイント = aa;
+	return 0;
+}
+
+lint ＣＳ番号(lint iic, int no, int aa)
+{
+	return Ｃスキル番号(iic, no, aa);
+}
+
+lint ＣＳ確率(lint iic, int no, int aa)
+{
+	return Ｃスキル確率(iic, no, aa);
+}
+
+lint ＣＳ条件(lint iic, int no, int aa)
+{
+	return Ｃスキル条件(iic, no, aa);
+}
+
+lint ＣＳ一度使用(lint iic, int no, int aa)
+{
+	return Ｃスキル一度使用(iic, no, aa);
+}
+
+lint ＣＳモーション(lint iic, int no, int aa)
+{
+	return Ｃスキルモーション(iic, no, aa);
+}
+
+lint ＣＳ使用回数(lint iic, int no, int aa)
+{
+	return Ｃスキル使用回数(iic, no, aa);
+}
+
+lint ＣＳ使用回数最大(lint iic, int no, int aa)
+{
+	return Ｃスキル使用回数最大(iic, no, aa);
+}
+
+lint ＣＳ実装中(lint iic, int no, int aa)
+{
+	return Ｃスキル実装中(iic, no, aa);
+}
+
+lint ＣＳ使用禁止(lint iic, int no, int aa)
+{
+	return Ｃスキル使用禁止(iic, no, aa);
+}
+
+lint ＣＳ保有(lint iic, int no, int aa)
+{
+	return Ｃスキル保有(iic, no, aa);
+}
+
+lint ＣＳコスト(lint iic, int no, int aa)
+{
+	return Ｃスキルコスト(iic, no, aa);
+}
+
+lint ＣＳランク(lint iic, int no, int aa)
+{
+	return Ｃスキルランク(iic, no, aa);
+}
+
+lint ＣＳ戦闘使用済み(lint iic, int no, int aa)
+{
+	return Ｃスキル戦闘使用済み(iic, no, aa);
+}
+
+string ＣＳ表示文(lint iic, int no, string 文字列)
+{
+	return Ｃスキル表示文(iic, no, 文字列);
+}
+
+string ＣＳエフェクト(lint iic, int no, string 文字列)
+{
+	return Ｃスキルエフェクト(iic, no, 文字列);
+}
+
+lint Ｃスキル番号(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(2) + " " + system.GetFuncStackName(1) + " " + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].番号;
+	}
+	Ｃ[iic].スキル[no].番号 = aa;
+	return 0;
+}
+
+lint Ｃスキル状態(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].状態;
+	}
+	Ｃ[iic].スキル[no].状態 = aa;
+	return 0;
+}
+
+lint Ｃスキル確率(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].確率;
+	}
+	if (aa >= 100)
+	{
+		aa = 100;
+	}
+	Ｃ[iic].スキル[no].確率 = aa;
+	return 0;
+}
+
+lint Ｃスキル条件(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].条件;
+	}
+	Ｃ[iic].スキル[no].条件 = aa;
+	return 0;
+}
+
+lint Ｃスキル一度使用(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].一度使用;
+	}
+	Ｃ[iic].スキル[no].一度使用 = aa;
+	return 0;
+}
+
+lint Ｃスキルモーション(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].モーション;
+	}
+	Ｃ[iic].スキル[no].モーション = aa;
+	return 0;
+}
+
+lint Ｃスキル使用回数(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].使用回数;
+	}
+	if (aa > Ｃスキル使用回数最大(iic, no, -1))
+	{
+		aa = Ｃスキル使用回数最大(iic, no, -1);
+	}
+	Ｃ[iic].スキル[no].使用回数 = aa;
+	return 0;
+}
+
+lint Ｃスキル使用回数最大(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].使用回数最大;
+	}
+	if (aa < 0)
+	{
+		aa = 1;
+	}
+	if (aa > 99)
+	{
+		aa = 99;
+	}
+	Ｃ[iic].スキル[no].使用回数最大 = aa;
+	return 0;
+}
+
+lint Ｃスキル戦闘使用済み(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].戦闘使用済み;
+	}
+	Ｃ[iic].スキル[no].戦闘使用済み = aa;
+	return 0;
+}
+
+lint Ｃスキルランク(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (Ｃ[iic].スキル[no].ランク == 0)
+	{
+		Ｃ[iic].スキル[no].ランク = 1;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].ランク;
+	}
+	if (aa < 0)
+	{
+		aa = 1;
+	}
+	if (aa > 4)
+	{
+		aa = 4;
+	}
+	Ｃ[iic].スキル[no].ランク = aa;
+	return 0;
+}
+
+lint Ｃスキル実装中(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].実装中;
+	}
+	Ｃ[iic].スキル[no].実装中 = aa;
+	return 0;
+}
+
+lint Ｃスキル使用禁止(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].使用禁止;
+	}
+	Ｃ[iic].スキル[no].使用禁止 = aa;
+	return 0;
+}
+
+lint Ｃスキル保有(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].保有;
+	}
+	Ｃ[iic].スキル[no].保有 = aa;
+	return 0;
+}
+
+lint Ｃスキルコスト(lint iic, int no, int aa)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return 0;
+	}
+	if (aa == -1)
+	{
+		return Ｃ[iic].スキル[no].コスト;
+	}
+	Ｃ[iic].スキル[no].コスト = aa;
+	return 0;
+}
+
+string Ｃスキル表示文(lint iic, int no, string 文字列)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return "";
+	}
+	if (文字列 == "")
+	{
+		return Ｃ[iic].スキル[no].表示文;
+	}
+	Ｃ[iic].スキル[no].表示文 = 文字列;
+	return "";
+}
+
+string Ｃスキルエフェクト(lint iic, int no, string 文字列)
+{
+	if (no >= 21)
+	{
+		LOG_TADA("ＥＲＲＯＲ　" + system.GetFuncStackName(0) + " \n");
+		return "";
+	}
+	if (文字列 == "")
+	{
+		return Ｃ[iic].スキル[no].エフェクト;
+	}
+	Ｃ[iic].スキル[no].エフェクト = 文字列;
+	return "";
+}
+
+void Ｃ初期化(int iic)
+{
+	sＣ 初期データ;
+	Ｃ[iic] = 初期データ;
+}
+
+void Ｃ初期化ＡＬＬ()
+{
+	int iic = 0;
+	for (iic = 1; iic < 201; ++iic)
+	{
+		Ｃ初期化(iic);
+	}
+}
+
+void ＣＳ全初期化(int iic)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		ＣＳ初期化(iic, iic_s);
+	}
+}
+
+void ＣＳ初期化(int iic, int no)
+{
+	ＣＳ番号(iic, no, 0);
+	ＣＳ保有(iic, no, 0);
+	ＣＳ実装中(iic, no, 0);
+	ＣＳ確率(iic, no, 0);
+	ＣＳコスト(iic, no, 0);
+	ＣＳ使用禁止(iic, no, 0);
+	ＣＳ使用回数(iic, no, 0);
+	ＣＳ使用回数最大(iic, no, 0);
+	ＣＳランク(iic, no, 0);
+	ＣＳ戦闘使用済み(iic, no, 0);
+}
+
+lint Ｃ番号取得(int no)
+{
+	lint iic = 0;
+	if (no == 0)
+	{
+		return 0;
+	}
+	for (iic = 20; iic < 201; iic++)
+	{
+		if (Ｃ番号(iic, -1) == no)
+		{
+			return iic;
+		}
+	}
+	return 0;
+}
+
+lint Ｃ有無(int no)
+{
+	return Ｃ番号取得(no);
+}
+
+lint Ｃ番号取得／ランダム()
+{
+	lint max = 181;
+	lint iic = 0;
+	lint loop = 0;
+	for (loop = 1; loop < 50; loop++)
+	{
+		iic = RAND(max) + 19;
+		if (Ｃ登録状態(iic, -1) != 0)
+		{
+			return iic;
+		}
+	}
+	return 0;
+}
+
+void Ｃ番号取得／メイク(ref lint iic1, ref lint iic2, ref lint iic3, ref lint iic4, ref lint iic5, ref lint iic6, ref lint iic7, ref lint iic8, ref lint iic9, ref lint iic10)
+{
+	int iic = 0;
+	int vv = 0;
+	iic1 = 0;
+	iic2 = 0;
+	iic3 = 0;
+	iic4 = 0;
+	iic5 = 0;
+	iic6 = 0;
+	iic7 = 0;
+	iic8 = 0;
+	iic9 = 0;
+	iic10 = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ番号(iic, -1) == 2)
+		{
+			for (; ; )
+			{
+				if (iic1 == 0)
+				{
+					iic1 = iic;
+					break;
+				}
+				if (iic2 == 0)
+				{
+					iic2 = iic;
+					break;
+				}
+				if (iic3 == 0)
+				{
+					iic3 = iic;
+					break;
+				}
+				if (iic4 == 0)
+				{
+					iic4 = iic;
+					break;
+				}
+				if (iic5 == 0)
+				{
+					iic5 = iic;
+					break;
+				}
+				if (iic6 == 0)
+				{
+					iic6 = iic;
+					break;
+				}
+				if (iic7 == 0)
+				{
+					iic7 = iic;
+					break;
+				}
+				if (iic8 == 0)
+				{
+					iic8 = iic;
+					break;
+				}
+				if (iic9 == 0)
+				{
+					iic9 = iic;
+					break;
+				}
+				if (iic10 == 0)
+				{
+					iic10 = iic;
+					break;
+				}
+				break;
+			}
+		}
+	}
+	return;
+}
+
+int Ｃ使用総数取得()
+{
+	int iic = 0;
+	int aa = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) != 0)
+		{
+			++aa;
+		}
+	}
+	return aa;
+}
+
+int Ｃ使用総数取得／メイク()
+{
+	int iic = 0;
+	int aa = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) != 0 && Ｃ番号(iic, -1) == 2)
+		{
+			++aa;
+		}
+	}
+	return aa;
+}
+
+int Ｃ生成(int no)
+{
+	int iic = 0;
+	int ii = 0;
+	int iics = 0;
+	if (no != 2 && Ｃ番号取得(no) != 0)
+	{
+		LOG_TADA("ＥＲＲＯＲ　【" + system.GetFuncStackName(0) + "】 すでにそのキャラはいます\n");
+		return 0;
+	}
+	iic = Ｃ生成／空き番号取得();
+	if (iic == 0)
+	{
+		return 0;
+	}
+	if (iic > ◆Ｃ構造体最大使用位置)
+	{
+		◆Ｃ構造体最大使用位置 = iic;
+	}
+	Ｃ生成／キャラデータ(iic, no, "基本");
+	◆アイテム生成／特殊条件 = "キャラ生成時";
+	Ｃ生成／キャラデータ(iic, no, "装備");
+	◆アイテム生成／特殊条件 = "";
+	Ｃ生成／キャラデータ(iic, no, "スキル");
+	Ｃ生成／キャラデータ(iic, no, "ステータス");
+	LOG_TADA("\n■Ｃ生成　＞＞　" + string(iic) + "　" + Ｃ名前(iic, "") + "\n");
+	Ｃ再計算(iic);
+	Ｃ補給(iic);
+	if (◆ＮＥＷキャラクター番号 < 6)
+	{
+		◆ＮＥＷキャラクター[◆ＮＥＷキャラクター番号] = iic;
+		◆ＮＥＷキャラクター番号++;
+	}
+	return iic;
+}
+
+lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
+{
+	lint ii = 0;
+	lint aa = 0;
+	lint bb = 0;
+	if (iic != 0 && no == 0)
+	{
+		no = Ｃ番号(iic, -1);
+	}
+	if (iic == 0 && no != 0)
+	{
+		iic = Ｃ番号取得(no);
+	}
+	if (フラグ == "スキル")
+	{
+		ＣＳ全初期化(iic);
+		ＣＳ追加(iic, 569, 0);
+		Ｃ持ち物スキル(iic, 569);
+		ＣＳ追加(iic, 568, ＣＦＡ(iic, 3, -1));
+		ＣＳ職業別基本スキル登録(iic, Ｃ職業(iic, -1), 0);
+		スキル／モルルン被害者追加(iic);
+	}
+	if (フラグ == "ステータス")
+	{
+		Ｃ初期／素早さ(iic, 0);
+		Ｃ初期／攻撃力(iic, 0);
+		Ｃ初期／防御力(iic, 0);
+		Ｃ初期／魔法力(iic, 0);
+		Ｃ初期／魔抵力(iic, 0);
+		Ｃ初期／命中率(iic, 0);
+		Ｃ初期／回避率(iic, 0);
+		Ｃ初期／衝撃率(iic, 0);
+		Ｃ初期／耐性率(iic, 0);
+		Ｃ初期／必殺率(iic, 0);
+		Ｃ初期／体力最大(iic, 0);
+	}
+	if (no == 2)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2916, 1, 1, 20, 3, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			if (ＣＦＡ(iic, 12, -1) == 2)
+			{
+				ＣＳ追加(iic, 373, 0);
+			}
+			if (ＣＦＡ(iic, 59, -1) == 1)
+			{
+				ＣＳ追加(iic, 383, 3);
+			}
+			aa = ＣＦＡ(iic, 61, -1);
+			bb = ＣＦＡ(iic, 66, -1);
+			if (bb == 0)
+			{
+				bb = 1;
+			}
+			if (aa != 0)
+			{
+				ＣＳ追加(iic, aa, bb);
+			}
+			aa = ＣＦＡ(iic, 62, -1);
+			bb = ＣＦＡ(iic, 67, -1);
+			if (bb == 0)
+			{
+				bb = 1;
+			}
+			if (aa != 0)
+			{
+				ＣＳ追加(iic, aa, bb);
+			}
+			aa = ＣＦＡ(iic, 63, -1);
+			bb = ＣＦＡ(iic, 68, -1);
+			if (bb == 0)
+			{
+				bb = 1;
+			}
+			if (aa != 0)
+			{
+				ＣＳ追加(iic, aa, bb);
+			}
+			aa = ＣＦＡ(iic, 64, -1);
+			bb = ＣＦＡ(iic, 69, -1);
+			if (bb == 0)
+			{
+				bb = 1;
+			}
+			if (aa != 0)
+			{
+				ＣＳ追加(iic, aa, bb);
+			}
+			aa = ＣＦＡ(iic, 65, -1);
+			bb = ＣＦＡ(iic, 70, -1);
+			if (bb == 0)
+			{
+				bb = 1;
+			}
+			if (aa != 0)
+			{
+				ＣＳ追加(iic, aa, bb);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			if (ＣＦＡ(iic, 47, -1) == 1)
+			{
+				Ｃ初期／体力最大(iic, 120);
+			}
+			if (ＣＦＡ(iic, 47, -1) == 2)
+			{
+				Ｃ初期／体力最大(iic, 130);
+			}
+			if (ＣＦＡ(iic, 48, -1) == 1)
+			{
+				Ｃ初期／攻撃力(iic, 120);
+			}
+			if (ＣＦＡ(iic, 48, -1) == 2)
+			{
+				Ｃ初期／攻撃力(iic, 130);
+			}
+			if (ＣＦＡ(iic, 49, -1) == 1)
+			{
+				Ｃ初期／魔法力(iic, 120);
+			}
+			if (ＣＦＡ(iic, 49, -1) == 2)
+			{
+				Ｃ初期／魔法力(iic, 130);
+			}
+			if (ＣＦＡ(iic, 50, -1) == 1)
+			{
+				Ｃ初期／防御力(iic, 120);
+			}
+			if (ＣＦＡ(iic, 50, -1) == 2)
+			{
+				Ｃ初期／防御力(iic, 130);
+			}
+			if (ＣＦＡ(iic, 51, -1) == 1)
+			{
+				Ｃ初期／魔抵力(iic, 120);
+			}
+			if (ＣＦＡ(iic, 51, -1) == 2)
+			{
+				Ｃ初期／魔抵力(iic, 130);
+			}
+			if (ＣＦＡ(iic, 53, -1) == 1)
+			{
+				Ｃ初期／命中率(iic, 30);
+			}
+			if (ＣＦＡ(iic, 54, -1) == 1)
+			{
+				Ｃ初期／回避率(iic, 30);
+			}
+			if (ＣＦＡ(iic, 55, -1) == 1)
+			{
+				Ｃ初期／必殺率(iic, 30);
+			}
+			if (ＣＦＡ(iic, 56, -1) == 1)
+			{
+				Ｃ初期／衝撃率(iic, 30);
+			}
+			if (ＣＦＡ(iic, 57, -1) == 1)
+			{
+				Ｃ初期／耐性率(iic, 30);
+			}
+			if (ＣＦＡ(iic, 52, -1) == 1)
+			{
+				Ｃ初期／素早さ(iic, 15);
+			}
+			return 1;
+		}
+	}
+	if (no == 1)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2000, 1, 5, 9999, 6, 0);
+			Ｃスキルポイント(iic, 4);
+			Ｃ削除禁止(iic, 1);
+			Ｃ性別(iic, 1);
+			Ｃスキル枠キープ数(iic, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 100, 8);
+			ＣＳ追加(iic, 147, 1);
+			ＣＳ追加(iic, 211, 2);
+			ＣＳ追加(iic, 382, 2);
+			if (Ｑ状態(67, -1) == 2)
+			{
+				Ｃスキル枠キープ数(iic, 0);
+				ＣＳ追加(iic, 365, 0);
+			}
+			Ｃスキル強制実装(iic, 100, 147, 0, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(86, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 120);
+			Ｃ初期／命中率(iic, 20);
+			Ｃ初期／体力最大(iic, 120);
+			return 1;
+		}
+	}
+	if (no == 3)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2100, 1, 1, 60, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1100);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 316, 2);
+			ＣＳ追加(iic, 273, 2);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(101, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(25, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 120);
+			Ｃ初期／命中率(iic, 30);
+			return 1;
+		}
+	}
+	if (no == 4)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2120, 1, 1, 70, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1120);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			Ｃ初期／スキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 382, 2);
+			ＣＳ追加(iic, 314, 3);
+			ＣＳ追加(iic, 233, 1);
+			ＣＳ追加(iic, 292, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(90, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(25, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／衝撃率(iic, 20);
+			Ｃ初期／素早さ(iic, 5);
+			Ｃ初期／回避率(iic, 15);
+			return 1;
+		}
+	}
+	if (no == 5)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2130, 1, 15, 35, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1130);
+			Ｃスキルポイント(iic, 14);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 308, 1);
+			ＣＳ追加(iic, 310, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(86, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(25, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 6)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2300, 1, 1, 44, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1300);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			Ｃ初期／スキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 382, 2);
+			ＣＳ追加(iic, 271, 3);
+			ＣＳ追加(iic, 274, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(86, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(25, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 95);
+			Ｃ初期／素早さ(iic, 3);
+			return 1;
+		}
+	}
+	if (no == 112)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2500, 1, 44, 44, 4, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 382, 2);
+			ＣＳ追加(iic, 104, 8);
+			ＣＳ追加(iic, 134, 3);
+			ＣＳ追加(iic, 276, 3);
+			ＣＳ追加(iic, 277, 3);
+			ＣＳ追加(iic, 279, 4);
+			ＣＳ追加(iic, 317, 4);
+			Ｃスキル強制実装(iic, 104, 100, 134, 207, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(128, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(37, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(182, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 7)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2500, 1, 1, 47, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1500);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 382, 2);
+			ＣＳ追加(iic, 317, 2);
+			ＣＳ追加(iic, 275, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(128, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(37, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(182, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／防御力(iic, 110);
+			Ｃ初期／魔抵力(iic, 110);
+			return 1;
+		}
+	}
+	if (no == 8)
+	{
+		if (フラグ == "基本")
+		{
+			int aa = 45;
+			if (◆ワールド == 3)
+			{
+				aa = 70;
+			}
+			Ｃ生成／基本データ(iic, no, "", 2948, 1, aa, 70, 5, 0);
+			Ｃ性別(iic, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 382, 2);
+			ＣＳ追加(iic, 104, 10);
+			ＣＳ追加(iic, 106, 10);
+			ＣＳ追加(iic, 459, 1);
+			ＣＳ追加(iic, 123, 3);
+			ＣＳ追加(iic, 314, 4);
+			ＣＳ追加(iic, 317, 4);
+			ＣＳ追加(iic, 316, 4);
+			Ｃスキル強制実装(iic, 104, 106, 123, 459, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(320, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(321, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／素早さ(iic, 10);
+			Ｃ初期／攻撃力(iic, 130);
+			Ｃ初期／命中率(iic, 30);
+			return 1;
+		}
+	}
+	if (no == 93)
+	{
+		if (フラグ == "基本")
+		{
+			int aa = 170;
+			Ｃ生成／基本データ(iic, no, "", 2948, 1, 100, 170, 5, 0);
+			Ｃ性別(iic, 1);
+			Ｃスキルポイント(iic, 99);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 382, 2);
+			ＣＳ追加(iic, 459, 1);
+			ＣＳ追加(iic, 259, 3);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(131, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(34, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／素早さ(iic, 10);
+			Ｃ初期／攻撃力(iic, 130);
+			Ｃ初期／命中率(iic, 50);
+			return 1;
+		}
+	}
+	if (no == 10)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2560, 1, 15, 30, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1560);
+			Ｃスキルポイント(iic, 14);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 1);
+			ＣＳ削除(iic, 169);
+			ＣＳ削除(iic, 176);
+			ＣＳ追加(iic, 181, 4);
+			ＣＳ追加(iic, 168, 4);
+			ＣＳ追加(iic, 194, 2);
+			ＣＳ追加(iic, 122, 5);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 90);
+			return 1;
+		}
+	}
+	if (no == 11)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2570, 1, 10, 35, 4, 0);
+			Ｃスキルポイント(iic, 9);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 1);
+			ＣＳ追加(iic, 314, 2);
+			ＣＳ追加(iic, 126, 2);
+			ＣＳ追加(iic, 527, 0);
+			if (EV("町歩き／ウィチタ", -2147483648) == true)
+			{
+				ＣＳ追加(iic, 549, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 95);
+			return 1;
+		}
+	}
+	if (no == 12)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2580, 1, 30, 42, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1580);
+			Ｃスキルポイント(iic, 29);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 1);
+			ＣＳ追加(iic, 187, 2);
+			ＣＳ追加(iic, 201, 2);
+			ＣＳ追加(iic, 452, 0);
+			ＣＳ追加(iic, 529, 0);
+			ＣＳ追加(iic, 536, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(125, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／防御力(iic, 50);
+			return 1;
+		}
+	}
+	if (no == 13)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2590, 1, 25, 59, 4, 0);
+			ＣＦＡ(iic, 13, 2);
+			Ｃスキルポイント(iic, 24);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 372, 0);
+			ＣＳ追加(iic, 154, 2);
+			ＣＳ追加(iic, 536, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(92, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 90);
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／素早さ(iic, 5);
+			Ｃ初期／命中率(iic, 20);
+			return 1;
+		}
+	}
+	if (no == 16)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2963, 1, 1, 25, 4, 0);
+			Ｃ性別(iic, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 117, 4);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／耐性率(iic, 80);
+			return 1;
+		}
+	}
+	if (no == 71)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2330, 1, 22, 22, 4, 0);
+			ＣＦＡ(iic, 13, 2);
+			Ｃスキルポイント(iic, 21);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 314, 1);
+			ＣＳ追加(iic, 315, 1);
+			ＣＳ追加(iic, 317, 1);
+			ＣＳ追加(iic, 316, 1);
+			ＣＳ追加(iic, 284, 1);
+			ＣＳ追加(iic, 285, 1);
+			ＣＳ追加(iic, 286, 1);
+			Ｃスキル強制実装(iic, 100, 0, 0, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(86, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(25, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 17)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2600, 1, 25, 50, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1600);
+			ＣＦＡ(iic, 13, 2);
+			Ｃスキルポイント(iic, 24);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 202, 1);
+			ＣＳ追加(iic, 304, 1);
+			ＣＳ追加(iic, 532, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(217, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 130);
+			return 1;
+		}
+	}
+	if (no == 18)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2610, 1, 1, 37, 3, 0);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 296, 1);
+			ＣＳ追加(iic, 322, 4);
+			ＣＳ追加(iic, 464, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 95);
+			Ｃ初期／攻撃力(iic, 90);
+			return 1;
+		}
+	}
+	if (no == 14)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2943, 1, 1, 18, 3, 0);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 313, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(104, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／必殺率(iic, 10);
+			return 1;
+		}
+	}
+	if (no == 15)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2550, 1, 1, 27, 3, 0);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 125, 3);
+			ＣＳ追加(iic, 314, 1);
+			if (EV("町歩き／ユラン", -2147483648) == true)
+			{
+				ＣＳ追加(iic, 552, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 91)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2811, 1, 27, 27, 6, 0);
+			ＣＦＡ(iic, 13, 2);
+			Ｃスキルポイント(iic, 26);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 585, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 19)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2020, 2, 1, 49, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1020);
+			ＣＥＸＰ(iic, 99);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 212, 3);
+			ＣＳ追加(iic, 298, 1);
+			if (Ｑ状態(29, -1) == 2)
+			{
+				ＣＳ追加(iic, 298, 2);
+			}
+			Ｃスキル強制実装(iic, 100, 119, 212, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(71, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(10, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(215, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 50);
+			return 1;
+		}
+	}
+	if (no == 20)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2110, 2, 25, 40, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1111);
+			Ｃスキルポイント(iic, 24);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 323, 1);
+			ＣＳ追加(iic, 373, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(27, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(118, 0);
+			Ｃ武器(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 21)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2964, 2, 8, 19, 3, 0);
+			Ｃ性別(iic, 1);
+			Ｃスキルポイント(iic, 7);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 51)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 0, 2, 10, 42, 6, 0);
+			Ｃ立ち絵ＣＧ(iic, 1620);
+			Ｃスキルポイント(iic, 9);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 151, 1);
+			ＣＳ追加(iic, 127, 4);
+			ＣＳ追加(iic, 238, 5);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 9)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2630, 2, 25, 47, 3, 0);
+			Ｃスキルポイント(iic, 24);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 259, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／魔抵力(iic, 10);
+			return 1;
+		}
+	}
+	if (no == 22)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2030, 6, 12, 49, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1030);
+			Ｃスキルポイント(iic, 11);
+			Ｃスキル枠キープ数(iic, 1);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 120, 2);
+			ＣＳ追加(iic, 100, 2);
+			ＣＳ追加(iic, 121, 3);
+			ＣＳ追加(iic, 265, 1);
+			ＣＳ追加(iic, 266, 1);
+			ＣＳ追加(iic, 267, 1);
+			ＣＳ追加(iic, 450, 1);
+			if (Ｑ状態(32, -1) == 2)
+			{
+				ＣＳ追加(iic, 366, 1);
+				Ｃスキル枠キープ数(iic, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(71, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／回避率(iic, 10);
+			Ｃ初期／素早さ(iic, 3);
+			return 1;
+		}
+	}
+	if (no == 23)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2220, 6, 15, 38, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1220);
+			Ｃスキルポイント(iic, 14);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 362, 1);
+			ＣＳ追加(iic, 266, 1);
+			ＣＳ追加(iic, 324, 2);
+			ＣＳ追加(iic, 267, 3);
+			ＣＳ追加(iic, 211, 3);
+			ＣＳ追加(iic, 268, 3);
+			ＣＳ追加(iic, 553, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(2, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(178, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(179, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 24)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2090, 6, 20, 40, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1090);
+			Ｃスキルポイント(iic, 19);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 121, 5);
+			if (FA[5] == 2)
+			{
+				ＣＳ追加(iic, 361, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(75, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(14, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 25)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2730, 6, 1, 29, 4, 0);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 373, 0);
+			ＣＳ追加(iic, 374, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 70)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2196, 6, 1, 36, 5, 0);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 219, 20);
+			ＣＳ追加(iic, 537, 0);
+			ＣＳ追加(iic, 538, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 80);
+			Ｃ初期／回避率(iic, 10);
+			return 1;
+		}
+	}
+	if (no == 86)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2797, 6, 35, 42, 6, 0);
+			Ｃスキルポイント(iic, 34);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 584, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 110);
+			return 1;
+		}
+	}
+	if (no == 26)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2050, 3, 1, 50, 5, 1);
+			Ｃ立ち絵ＣＧ(iic, 1050);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 290, 1);
+			ＣＳ追加(iic, 174, 3);
+			ＣＳ追加(iic, 254, 1);
+			ＣＳ追加(iic, 255, 1);
+			ＣＳ追加(iic, 256, 1);
+			ＣＳ追加(iic, 257, 1);
+			ＣＳ追加(iic, 368, 1);
+			ＣＳ追加(iic, 383, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(134, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(8, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／命中率(iic, 15);
+			return 1;
+		}
+	}
+	if (no == 32)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2540, 3, 1, 48, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1540);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 349, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(140, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(8, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／衝撃率(iic, 20);
+			return 1;
+		}
+	}
+	if (no == 27)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2200, 3, 1, 1, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1200);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 367, 1);
+			ＣＳ削除(iic, 108);
+			ＣＳ追加(iic, 108, 1);
+			ＣＳ追加(iic, 109, 1);
+			ＣＳ追加(iic, 110, 1);
+			ＣＳ追加(iic, 336, 0);
+			ＣＳ追加(iic, 337, 0);
+			ＣＳ追加(iic, 338, 0);
+			ＣＳ追加(iic, 339, 0);
+			ＣＳ追加(iic, 340, 0);
+			ＣＳ追加(iic, 563, 0);
+			Ｃスキル強制実装(iic, 108, 109, 110, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(133, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(8, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(216, 0);
+			Ｃ持ち物(iic, ii);
+			ii = Ｉ生成(302, 0);
+			Ｃオプション(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 28)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 0, 3, 30, 75, 5, 0);
+			Ｃスキルポイント(iic, 29);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 323, 2);
+			ＣＳ追加(iic, 237, 2);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(133, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／防御力(iic, 110);
+			Ｃ初期／命中率(iic, 20);
+			return 1;
+		}
+	}
+	if (no == 29)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2770, 3, 20, 40, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1770);
+			Ｃスキルポイント(iic, 19);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 289, 4);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(171, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 30)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2680, 3, 1, 38, 3, 0);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 319, 3);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(170, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 90);
+			Ｃ初期／防御力(iic, 80);
+			Ｃ初期／魔抵力(iic, 70);
+			Ｃ初期／命中率(iic, 30);
+			return 1;
+		}
+	}
+	if (no == 31)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2945, 3, 1, 18, 3, 0);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 521, 0);
+			if (EV("町歩き／メガデス", -2147483648) == true)
+			{
+				ＣＳ追加(iic, 137, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(133, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 72)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2230, 3, 1, 9999, 3, 0);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 373, 0);
+			ＣＳ追加(iic, 288, 2);
+			ＣＳ追加(iic, 287, 2);
+			ＣＳ追加(iic, 290, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(134, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(8, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 30);
+			return 1;
+		}
+	}
+	if (no == 33)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2060, 5, 20, 50, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1060);
+			Ｃスキルポイント(iic, 19);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 221, 3);
+			ＣＳ追加(iic, 224, 2);
+			ＣＳ追加(iic, 265, 1);
+			ＣＳ追加(iic, 266, 1);
+			ＣＳ追加(iic, 267, 1);
+			ＣＳ追加(iic, 320, 2);
+			ＣＳ追加(iic, 146, 4);
+			ＣＳ追加(iic, 311, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(103, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(14, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／防御力(iic, 110);
+			Ｃ初期／魔抵力(iic, 110);
+			return 1;
+		}
+	}
+	if (no == 34)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2160, 5, 40, 67, 6, 0);
+			Ｃ立ち絵ＣＧ(iic, 1160);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 41);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(124, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(19, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 110);
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／魔法力(iic, 110);
+			Ｃ初期／衝撃率(iic, 20);
+			return 1;
+		}
+	}
+	if (no == 83)
+	{
+		if (フラグ == "基本")
+		{
+			int aa = 40;
+			if (◆ワールド == 3)
+			{
+				aa = 67;
+			}
+			Ｃ生成／基本データ(iic, no, "", 2160, 5, aa, 67, 6, 0);
+			Ｃ立ち絵ＣＧ(iic, 1160);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 104, 15);
+			ＣＳ追加(iic, 223, 10);
+			ＣＳ追加(iic, 225, 5);
+			ＣＳ追加(iic, 227, 20);
+			ＣＳ追加(iic, 216, 3);
+			Ｃスキル強制実装(iic, 104, 223, 227, 216, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(124, 5);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(19, 5);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 110);
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／魔法力(iic, 110);
+			Ｃ初期／衝撃率(iic, 20);
+			return 1;
+		}
+	}
+	if (no == 35)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2949, 5, 1, 44, 3, 0);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 36)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2720, 5, 1, 33, 5, 0);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 216, 4);
+			Ｃスキル強制実装(iic, 216, 221, 227, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／命中率(iic, 15);
+			return 1;
+		}
+	}
+	if (no == 73)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2105, 5, 40, 66, 6, 0);
+			Ｃ立ち絵ＣＧ(iic, 1105);
+			ＣＦＡ(iic, 17, 323);
+			ＣＦＡ(iic, 18, 326);
+			ＣＦＡ(iic, 19, 326);
+			ＣＦＡ(iic, 20, 333);
+			ＣＦＡ(iic, 21, 325);
+			ＣＦＡ(iic, 13, 2);
+			Ｃスキルポイント(iic, 41);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 272, 4);
+			ＣＳ追加(iic, 216, 4);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(166, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(50, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／魔法力(iic, 130);
+			Ｃ初期／素早さ(iic, 5);
+			return 1;
+		}
+	}
+	if (no == 85)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2795, 5, 35, 50, 5, 0);
+			ＣＦＡ(iic, 13, 2);
+			Ｃスキルポイント(iic, 34);
+			Ｃ立ち絵ＣＧ(iic, 1795);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 583, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 80);
+			Ｃ初期／耐性率(iic, 100);
+			return 1;
+		}
+	}
+	if (no == 94)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2430, 5, 100, 300, 6, 0);
+			Ｃ立ち絵ＣＧ(iic, 1430);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 99);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 247, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(124, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(19, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 60);
+			Ｃ初期／攻撃力(iic, 110);
+			return 1;
+		}
+	}
+	if (no == 84)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2070, 4, 35, 50, 6, 3);
+			Ｃスキルポイント(iic, 36);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ削除(iic, 169);
+			ＣＳ削除(iic, 168);
+			ＣＳ追加(iic, 187, 5);
+			ＣＳ追加(iic, 189, 3);
+			ＣＳ追加(iic, 190, 1);
+			ＣＳ追加(iic, 290, 0);
+			ＣＳ追加(iic, 383, 3);
+			ＣＳ追加(iic, 433, 0);
+			Ｃスキル強制実装(iic, 187, 189, 0, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(165, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(43, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／魔法力(iic, 130);
+			Ｃ初期／防御力(iic, 100);
+			Ｃ初期／魔抵力(iic, 100);
+			Ｃ初期／素早さ(iic, 5);
+			return 1;
+		}
+	}
+	if (no == 38)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2140, 4, 15, 35, 4, 4);
+			Ｃ立ち絵ＣＧ(iic, 1140);
+			Ｃスキルポイント(iic, 14);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 2);
+			ＣＳ追加(iic, 308, 1);
+			ＣＳ追加(iic, 309, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(160, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(43, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 41)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2530, 4, 8, 24, 3, 1);
+			Ｃ立ち絵ＣＧ(iic, 1530);
+			Ｃスキルポイント(iic, 7);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(160, 6);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(43, 6);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(280, 0);
+			Ｃオプション(iic, ii);
+			ii = Ｉ生成(200, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／魔法力(iic, 90);
+			return 1;
+		}
+	}
+	if (no == 40)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2510, 4, 1, 48, 5, 3);
+			Ｃ立ち絵ＣＧ(iic, 1510);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 2);
+			ＣＳ削除(iic, 169);
+			ＣＳ削除(iic, 168);
+			ＣＳ追加(iic, 330, 1);
+			ＣＳ追加(iic, 177, 1);
+			ＣＳ追加(iic, 194, 4);
+			ＣＳ追加(iic, 195, 4);
+			ＣＳ追加(iic, 250, 3);
+			ＣＳ追加(iic, 369, 1);
+			Ｃスキル強制実装(iic, 194, 250, 0, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(160, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(43, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／防御力(iic, 110);
+			return 1;
+		}
+	}
+	if (no == 42)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2310, 4, 1, 69, 4, 2);
+			Ｃ立ち絵ＣＧ(iic, 1310);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 3);
+			ＣＳ追加(iic, 328, 1);
+			ＣＳ追加(iic, 370, 1);
+			ＣＳ追加(iic, 250, 4);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(163, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(46, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／魔法力(iic, 110);
+			Ｃ初期／魔抵力(iic, 110);
+			return 1;
+		}
+	}
+	if (no == 45)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2947, 4, 1, 25, 3, 3);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 2);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(160, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 46)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2640, 4, 1, 30, 3, 1);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 265, 2);
+			ＣＳ追加(iic, 266, 2);
+			ＣＳ追加(iic, 383, 2);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 43)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2670, 4, 15, 34, 5, 2);
+			Ｃ立ち絵ＣＧ(iic, 1670);
+			Ｃスキルポイント(iic, 14);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 153, 50);
+			if (クリア確認(183) == 0)
+			{
+				ＣＳ追加(iic, 373, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(218, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 39)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2650, 4, 20, 61, 5, 3);
+			Ｃ立ち絵ＣＧ(iic, 1650);
+			Ｃスキルポイント(iic, 19);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 3);
+			ＣＳ追加(iic, 195, 2);
+			ＣＳ追加(iic, 189, 2);
+			ＣＳ追加(iic, 326, 2);
+			ＣＳ追加(iic, 329, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 90);
+			Ｃ初期／魔法力(iic, 120);
+			return 1;
+		}
+	}
+	if (no == 44)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2660, 4, 1, 25, 3, 2);
+			ＣＦＡ(iic, 13, 3);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 300, 0);
+			ＣＳ追加(iic, 301, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 120);
+			return 1;
+		}
+	}
+	if (no == 79)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2127, 4, 50, 53, 5, 4);
+			Ｃ性別(iic, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 3);
+			ＣＳ追加(iic, 534, 5);
+			ＣＳ追加(iic, 535, 5);
+			Ｃスキル強制実装(iic, 534, 535, 0, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(166, 5);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(53, 5);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 50)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2490, 7, 1, 45, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1490);
+			Ｃ初期／スキルポイント(iic, 2);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 145, 4);
+			ＣＳ追加(iic, 331, 1);
+			ＣＳ追加(iic, 332, 1);
+			ＣＳ追加(iic, 333, 1);
+			ＣＳ追加(iic, 334, 1);
+			ＣＳ追加(iic, 335, 1);
+			ＣＳ追加(iic, 292, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(148, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(3, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 120);
+			Ｃ初期／回避率(iic, 20);
+			return 1;
+		}
+	}
+	if (no == 48)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2280, 7, 15, 22, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1280);
+			Ｃスキルポイント(iic, 14);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(148, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(6, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 95);
+			Ｃ初期／魔抵力(iic, 130);
+			return 1;
+		}
+	}
+	if (no == 47)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2210, 7, 35, 55, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1210);
+			ＣＦＡ(iic, 13, 3);
+			Ｃ転生回数(iic, 3);
+			Ｃスキルポイント(iic, 40);
+			Ｃ初期／スキルポイント(iic, 6);
+			■次の転生ＬＶ(iic, 0, "再計算");
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 259, 3);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 110);
+			Ｃ初期／体力最大(iic, 110);
+			Ｃ初期／命中率(iic, 10);
+			Ｃ初期／衝撃率(iic, 10);
+			Ｃ初期／必殺率(iic, 10);
+			return 1;
+		}
+	}
+	if (no == 52)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2760, 7, 20, 38, 5, 0);
+			ＣＦＡ(iic, 13, 2);
+			Ｃスキルポイント(iic, 19);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 146, 6);
+			ＣＳ追加(iic, 247, 0);
+			ＣＳ追加(iic, 528, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(148, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 53)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2965, 7, 1, 66, 3, 0);
+			Ｃ性別(iic, 9);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 441, 0);
+			if (EV("町歩き／松クマ", -2147483648) == true)
+			{
+				ＣＳ追加(iic, 541, 0);
+			}
+			if (Ｑ状態(108, -1) == 2)
+			{
+				ＣＳ追加(iic, 542, 0);
+			}
+			if (Ｑ状態(109, -1) == 2)
+			{
+				ＣＳ追加(iic, 543, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(148, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 49)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2946, 7, 1, 77, 3, 0);
+			Ｃ性別(iic, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(148, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 68)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2450, 7, 20, 38, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1450);
+			Ｃスキルポイント(iic, 19);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 482, 1);
+			if (EV("町歩き／ビスケッタ", -2147483648) == true)
+			{
+				ＣＳ追加(iic, 540, 0);
+			}
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(152, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(6, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／耐性率(iic, 55);
+			return 1;
+		}
+	}
+	if (no == 80)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2325, 7, 1, 38, 5, 1);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			Ｃ初期／スキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			Ｃ立ち絵ＣＧ(iic, 1325);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 383, 1);
+			ＣＳ追加(iic, 516, 3);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(148, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 95);
+			Ｃ初期／攻撃力(iic, 95);
+			return 1;
+		}
+	}
+	if (no == 57)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2180, 8, 1, 8, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1180);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 217, 3);
+			ＣＳ追加(iic, 295, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 61)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2750, 8, 1, 43, 3, 0);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 323, 1);
+			ＣＳ追加(iic, 253, 4);
+			ＣＳ追加(iic, 300, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 58)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2040, 8, 1, 10, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1040);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			int aa = 3;
+			if (クリア確認(153) == 1)
+			{
+				aa = 4;
+			}
+			ＣＳ追加(iic, 232, aa);
+			ＣＳ追加(iic, 295, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 62)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2520, 8, 20, 45, 6, 0);
+			Ｃ立ち絵ＣＧ(iic, 1521);
+			Ｃスキルポイント(iic, 19);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 321, 4);
+			ＣＳ追加(iic, 373, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 56)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2803, 5, 15, 20, 4, 0);
+			Ｃスキルポイント(iic, 14);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 200, 5);
+			ＣＳ追加(iic, 442, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 54)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2150, 8, 20, 20, 5, 0);
+			Ｃ立ち絵ＣＧ(iic, 1150);
+			Ｃスキルポイント(iic, 19);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 152, 1);
+			ＣＳ追加(iic, 269, 1);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(70, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(7, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(180, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 55)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2290, 8, 14, 47, 3, 0);
+			Ｃ立ち絵ＣＧ(iic, 1290);
+			Ｃスキルポイント(iic, 13);
+			ＣＦＡ(iic, 13, 1);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 448, 3);
+			ＣＳ追加(iic, 294, 0);
+			Ｃスキル強制実装(iic, 448, 0, 0, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(69, 0);
+			Ｃ武器(iic, ii);
+			FA[102] = 2;
+			ii = Ｉ生成(3, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(304, 0);
+			Ｃオプション(iic, ii);
+			Ｉ機能(ii, 1, 0);
+			Ｉ情報(ii, "Raises the user's talent cap by 20.$$※Effect activated");
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 59)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2944, 8, 1, 22, 3, 0);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 218, 20);
+			ＣＳ追加(iic, 520, 0);
+			Ｃスキル強制実装(iic, 100, 218, 0, 0, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(181, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 60)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2740, 8, 1, 23, 3, 0);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 265, 1);
+			ＣＳ追加(iic, 266, 1);
+			ＣＳ追加(iic, 267, 1);
+			ＣＳ追加(iic, 297, 1);
+			ＣＳ追加(iic, 295, 1);
+			ＣＳ追加(iic, 300, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			ii = Ｉ生成(208, 0);
+			Ｃ持ち物(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 81)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2305, 8, 1, 38, 4, 0);
+			Ｃ立ち絵ＣＧ(iic, 1305);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			Ｃ初期／スキルポイント(iic, 2);
+			ＣＦＡ(iic, 13, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 200, 5);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 67)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2085, 5, 1, 38, 6, 0);
+			ＣＦＡ(iic, 13, 1);
+			Ｃ立ち絵ＣＧ(iic, 1085);
+			Ｃ転生回数(iic, 1);
+			Ｃスキルポイント(iic, 2);
+			Ｃ初期／スキルポイント(iic, 2);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 200, 5);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 63)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2936, 8, 2, 2, 3, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(66, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(1, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 64)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2801, 8, 2, 10, 3, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 356, 3);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 74)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2991, 4, 58, 60, 6, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 187, 5);
+			ＣＳ追加(iic, 190, 5);
+			ＣＳ追加(iic, 193, 2);
+			ＣＳ追加(iic, 384, 10);
+			Ｃスキル強制実装(iic, 187, 193, 190, 384, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／体力最大(iic, 150);
+			Ｃ初期／魔法力(iic, 150);
+			return 1;
+		}
+	}
+	if (no == 75 || no == 76 || no == 77 || no == 78)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2966, 4, 35, 35, 6, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 168, 5);
+			ＣＳ追加(iic, 171, 5);
+			ＣＳ追加(iic, 176, 5);
+			ＣＳ追加(iic, 190, 2);
+			ＣＳ追加(iic, 384, 10);
+			Ｃスキル強制実装(iic, 168, 171, 176, 190, 384, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			return 1;
+		}
+	}
+	if (no == 92)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2440, 1, 60, 999, 6, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 102, 10);
+			ＣＳ追加(iic, 104, 8);
+			ＣＳ追加(iic, 500, 18);
+			ＣＳ追加(iic, 124, 6);
+			ＣＳ追加(iic, 384, 10);
+			ＣＳ追加(iic, 314, 4);
+			Ｃスキル強制実装(iic, 100, 102, 104, 124, 500, 384);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(98, 0);
+			Ｃ武器(iic, ii);
+			ii = Ｉ生成(37, 0);
+			Ｃ防具(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／攻撃力(iic, 120);
+			Ｃ初期／命中率(iic, 20);
+			Ｃ初期／体力最大(iic, 120);
+			Ｃ初期／耐性率(iic, 40);
+			return 1;
+		}
+	}
+	if (no == 87)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2996, 1, 30, 50, 6, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 102, 6);
+			ＣＳ追加(iic, 104, 4);
+			ＣＳ追加(iic, 420, 10);
+			ＣＳ追加(iic, 384, 10);
+			ＣＳ追加(iic, 317, 4);
+			Ｃスキル強制実装(iic, 100, 102, 104, 420, 384, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(122, 0);
+			Ｃ武器(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ魔抵力(iic, 9999);
+			return 1;
+		}
+	}
+	if (no == 88)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2974, 6, 30, 50, 6, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 420, 10);
+			ＣＳ追加(iic, 384, 10);
+			ＣＳ追加(iic, 121, 8);
+			ＣＳ追加(iic, 267, 3);
+			ＣＳ追加(iic, 268, 4);
+			ＣＳ追加(iic, 211, 5);
+			ＣＳ追加(iic, 265, 4);
+			Ｃスキル強制実装(iic, 121, 420, 211, 267, 268, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(72, 0);
+			Ｃ武器(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ初期／衝撃率(iic, 50);
+			Ｃ魔抵力(iic, 9999);
+			return 1;
+		}
+	}
+	if (no == 89)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2995, 5, 30, 50, 6, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 420, 10);
+			ＣＳ追加(iic, 384, 10);
+			ＣＳ追加(iic, 221, 8);
+			ＣＳ追加(iic, 227, 6);
+			Ｃスキル強制実装(iic, 100, 420, 221, 227, 384, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(103, 0);
+			Ｃ武器(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ魔抵力(iic, 9999);
+			return 1;
+		}
+	}
+	if (no == 90)
+	{
+		if (フラグ == "基本")
+		{
+			Ｃ生成／基本データ(iic, no, "", 2994, 2, 30, 50, 6, 0);
+			return 1;
+		}
+		if (フラグ == "スキル")
+		{
+			ＣＳ追加(iic, 420, 10);
+			ＣＳ追加(iic, 384, 10);
+			ＣＳ追加(iic, 212, 8);
+			ＣＳ追加(iic, 249, 4);
+			ＣＳ追加(iic, 317, 3);
+			Ｃスキル強制実装(iic, 100, 420, 212, 249, 0, 0);
+			return 1;
+		}
+		if (フラグ == "装備")
+		{
+			ii = Ｉ生成(122, 0);
+			Ｃ武器(iic, ii);
+			return 1;
+		}
+		if (フラグ == "ステータス")
+		{
+			Ｃ魔抵力(iic, 9999);
+			return 1;
+		}
+	}
+	LOG_TADA("ＥＲＲＯＲ　Ｃ生成／キャラデータ　iic=" + string(iic) + "　" + フラグ + "\n");
+	return 0;
+}
+
+void Ｃ生成／基本データ(int iic, int no, string 名前, int 顔ＣＧ, int 職業, int ＬＶ, int ＬＶ最大, int スキル枠最大, int ▲ランダム３)
+{
+	Ｃ初期化(iic);
+	Ｃ番号(iic, no);
+	Ｃ登録状態(iic, 2);
+	Ｃ名前(iic, キャラ固有番号文字列(no, 0));
+	Ｃ短縮名前(iic, キャラ固有番号文字列(no, 1));
+	if (顔ＣＧ == 0)
+	{
+		顔ＣＧ = キャラ固有番号顔ＣＧ(no);
+	}
+	Ｃ顔ＣＧ(iic, 顔ＣＧ);
+	Ｃ職業(iic, 職業);
+	ＣＬＶ(iic, ＬＶ);
+	ＣＬＶ最大(iic, ＬＶ最大);
+	Ｃスキル枠最大(iic, スキル枠最大);
+	Ｃ性別(iic, 2);
+	Ｃ台詞登録(iic, no, 0, "");
+	ＣＦＡ(iic, 3, スキル枠最大 - 2);
+	if (ＣＦＡ(iic, 3, -1) == 0)
+	{
+		ＣＦＡ(iic, 3, 1);
+	}
+	int loop = 0;
+	int niis = 0;
+	int ra = 0;
+	if (▲ランダム３ == 0)
+	{
+		ＣＦＡ(iic, 1, RAND(3));
+	}
+	if (▲ランダム３ != 0)
+	{
+		ＣＦＡ(iic, 1, ▲ランダム３);
+	}
+	ＣＦＡ(iic, 2, RAND(5));
+	ＣＦＡ(iic, 16, 505);
+	■次の転生ＬＶ(iic, 0, "再計算");
+	return;
+}
+
+int Ｃ生成／空き番号取得()
+{
+	int iic = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) == 0)
+		{
+			return iic;
+		}
+	}
+	LOG_TADA("ＥＲＲＯＲ　【" + system.GetFuncStackName(0) + "】　空き番号がありません　\n");
+	return 0;
+}
+
+void ＣＳ職業別基本スキル登録(int iic, int 職業, int 元職業)
+{
+	int ▲タイプ = ＣＦＡ(iic, 1, -1);
+	Ｃスキル強制実装(iic, 0, 0, 0, 0, 0, 0);
+	if (元職業 == 1)
+	{
+		ＣＳ削除(iic, 100);
+		ＣＳ削除(iic, 384);
+	}
+	if (元職業 == 2)
+	{
+		ＣＳ削除(iic, 119);
+		ＣＳ削除(iic, 100);
+		ＣＳ削除(iic, 212);
+		ＣＳ削除(iic, 213);
+		ＣＳ削除(iic, 384);
+	}
+	if (元職業 == 3)
+	{
+		ＣＳ削除(iic, 108);
+		ＣＳ削除(iic, 384);
+	}
+	if (元職業 == 6)
+	{
+		ＣＳ削除(iic, 100);
+		ＣＳ削除(iic, 121);
+		ＣＳ削除(iic, 384);
+	}
+	if (元職業 == 7)
+	{
+		ＣＳ削除(iic, 112);
+		ＣＳ削除(iic, 384);
+	}
+	if (元職業 == 5)
+	{
+		ＣＳ削除(iic, 100);
+		ＣＳ削除(iic, 221);
+		ＣＳ削除(iic, 227);
+		ＣＳ削除(iic, 384);
+	}
+	if (元職業 == 4)
+	{
+		ＣＳ削除(iic, 383);
+		ＣＳ削除(iic, 168);
+		ＣＳ削除(iic, 169);
+		ＣＳ削除(iic, 174);
+		ＣＳ削除(iic, 176);
+		ＣＳ削除(iic, 181);
+		ＣＳ削除(iic, 182);
+		ＣＳ削除(iic, 200);
+		ＣＳ削除(iic, 384);
+	}
+	if (元職業 == 8)
+	{
+		ＣＳ削除(iic, 100);
+		Ｃスキル強制実装(iic, 100, 0, 0, 0, 0, 0);
+		ＣＳ削除(iic, 384);
+	}
+	if (職業 == 1)
+	{
+		ＣＳ追加(iic, 100, 8);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 100, 384, 0, 0, 0, 0);
+	}
+	if (職業 == 2)
+	{
+		ＣＳ追加(iic, 119, 2);
+		ＣＳ追加(iic, 100, 6);
+		ＣＳ追加(iic, 212, 3);
+		ＣＳ追加(iic, 213, 3);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 100, 212, 384, 0, 0, 0);
+	}
+	if (職業 == 3)
+	{
+		ＣＳ追加(iic, 108, 8);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 108, 384, 0, 0, 0, 0);
+	}
+	if (職業 == 6)
+	{
+		ＣＳ追加(iic, 100, 6);
+		ＣＳ追加(iic, 121, 2);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 100, 121, 384, 0, 0, 0);
+	}
+	if (職業 == 7)
+	{
+		ＣＳ追加(iic, 112, 8);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 112, 384, 0, 0, 0, 0);
+	}
+	if (職業 == 5)
+	{
+		ＣＳ追加(iic, 100, 6);
+		ＣＳ追加(iic, 221, 2);
+		ＣＳ追加(iic, 227, 2);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 100, 221, 227, 0, 0, 0);
+	}
+	if (職業 == 4 && ▲タイプ == 1)
+	{
+		ＣＳ追加(iic, 383, 1);
+		ＣＳ追加(iic, 200, 3);
+		ＣＳ追加(iic, 174, 2);
+		ＣＳ追加(iic, 176, 2);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 174, 176, 384, 0, 0, 0);
+	}
+	if (職業 == 4 && ▲タイプ == 2)
+	{
+		ＣＳ追加(iic, 383, 1);
+		ＣＳ追加(iic, 200, 3);
+		ＣＳ追加(iic, 181, 2);
+		ＣＳ追加(iic, 182, 2);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 181, 182, 384, 0, 0, 0);
+	}
+	if (職業 == 4 && ▲タイプ == 3)
+	{
+		ＣＳ追加(iic, 383, 1);
+		ＣＳ追加(iic, 200, 3);
+		ＣＳ追加(iic, 168, 2);
+		ＣＳ追加(iic, 169, 2);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 168, 169, 384, 0, 0, 0);
+	}
+	if (職業 == 4 && ▲タイプ == 4)
+	{
+		ＣＳ追加(iic, 200, 3);
+		ＣＳ追加(iic, 533, 5);
+		ＣＳ追加(iic, 384, 20);
+		Ｃスキル強制実装(iic, 533, 384, 0, 0, 0, 0);
+	}
+	if (職業 == 8)
+	{
+		ＣＳ追加(iic, 384, 20);
+		ＣＳ追加(iic, 100, 6);
+		Ｃスキル強制実装(iic, 100, 384, 0, 0, 0, 0);
+	}
+}
+
+void Ｃ削除(lint iic)
+{
+	if (Ｃ武器(iic, -1) != 0 && Ｉ外せません(Ｃ武器(iic, -1), -1) == 0)
+	{
+		Ｃアイテム外す(iic, 1);
+	}
+	if (Ｃ防具(iic, -1) != 0 && Ｉ外せません(Ｃ防具(iic, -1), -1) == 0)
+	{
+		Ｃアイテム外す(iic, 11);
+	}
+	if (Ｃ持ち物(iic, -1) != 0 && Ｉ外せません(Ｃ持ち物(iic, -1), -1) == 0)
+	{
+		Ｃアイテム外す(iic, 17);
+	}
+	Ｃ初期化(iic);
+}
+
+void Ｃ再計算(int iic)
+{
+	if (Ｃ登録状態(iic, -1) == 0)
+	{
+		return;
+	}
+	if (ＣＳ有無(iic, 360, 0) != 0)
+	{
+		ＣＳ削除(iic, 359);
+		ＣＳ削除(iic, 358);
+		ＣＳ削除(iic, 357);
+	}
+	if (ＣＳ有無(iic, 359, 0) != 0)
+	{
+		ＣＳ削除(iic, 358);
+		ＣＳ削除(iic, 357);
+	}
+	if (ＣＳ有無(iic, 358, 0) != 0)
+	{
+		ＣＳ削除(iic, 357);
+	}
+	if (◆ワールド != 3)
+	{
+		ＣＦＡ(iic, 38, 0);
+		ＣＦＡ(iic, 39, 0);
+		ＣＦＡ(iic, 40, 0);
+		ＣＦＡ(iic, 41, 0);
+		ＣＦＡ(iic, 42, 0);
+		ＣＦＡ(iic, 43, 0);
+		ＣＦＡ(iic, 44, 0);
+		ＣＦＡ(iic, 45, 0);
+	}
+	if (◆ワールド == 3)
+	{
+		if (ＣＳ有無／ランク(iic, 276, 0) == 4 && ＣＦＡ(iic, 38, -1) == 0)
+		{
+			ＣＦＡ(iic, 38, 1);
+		}
+		if (ＣＳ有無／ランク(iic, 455, 0) == 4 && ＣＦＡ(iic, 38, -1) == 1)
+		{
+			ＣＦＡ(iic, 38, 2);
+		}
+		if (ＣＳ有無／ランク(iic, 277, 0) == 4 && ＣＦＡ(iic, 39, -1) == 0)
+		{
+			ＣＦＡ(iic, 39, 1);
+		}
+		if (ＣＳ有無／ランク(iic, 456, 0) == 4 && ＣＦＡ(iic, 39, -1) == 1)
+		{
+			ＣＦＡ(iic, 39, 2);
+		}
+		if (ＣＳ有無／ランク(iic, 278, 0) == 4 && ＣＦＡ(iic, 40, -1) == 0)
+		{
+			ＣＦＡ(iic, 40, 1);
+		}
+		if (ＣＳ有無／ランク(iic, 457, 0) == 4 && ＣＦＡ(iic, 40, -1) == 1)
+		{
+			ＣＦＡ(iic, 40, 2);
+		}
+		if (ＣＳ有無／ランク(iic, 279, 0) == 4)
+		{
+			ＣＦＡ(iic, 41, 1);
+		}
+		if (ＣＳ有無／ランク(iic, 280, 0) == 4)
+		{
+			ＣＦＡ(iic, 42, 1);
+		}
+		if (ＣＳ有無／ランク(iic, 281, 0) == 4)
+		{
+			ＣＦＡ(iic, 43, 1);
+		}
+		if (ＣＳ有無／ランク(iic, 282, 0) == 4)
+		{
+			ＣＦＡ(iic, 44, 1);
+		}
+		if (ＣＳ有無／ランク(iic, 283, 0) == 4)
+		{
+			ＣＦＡ(iic, 45, 1);
+		}
+	}
+	LOG_TADA("\n＞Ｃ再計算(iic=" + string(iic) + ")　" + Ｃ名前(iic, "") + "\n");
+	Ｃ素早さ(iic, 0);
+	Ｃ防御力(iic, 0);
+	Ｃ命中率(iic, 0);
+	Ｃ回避率(iic, 0);
+	Ｃ必殺率(iic, 0);
+	Ｃ衝撃率(iic, 0);
+	Ｃ耐性率(iic, 0);
+	Ｃ魔法力(iic, 0);
+	Ｃ魔抵力(iic, 0);
+	Ｃ炎耐性(iic, 0);
+	Ｃ氷耐性(iic, 0);
+	Ｃ雷耐性(iic, 0);
+	Ｃ光耐性(iic, 0);
+	Ｃ闇耐性(iic, 0);
+	Ｃ生成／キャラデータ(iic, 0, "ステータス");
+	int aa = 0;
+	int iis = 0;
+	int iislank = 0;
+	int iic_s = 0;
+	int ▲武器の極め = 100;
+	int ▲防具の極め = 100;
+	int ▲魔法才能 = ＣＳ有無／ランク(iic, 383, 0);
+	int ▲戦士才能 = ＣＳ有無／ランク(iic, 382, 0);
+	int ▲タイプ５ = ＣＦＡ(iic, 2, -1);
+	if (Ｃ職業(iic, -1) == 1)
+	{
+		Ｃ体力最大(iic, 200);
+		Ｃ攻撃力(iic, 50);
+		Ｃ魔法力(iic, 0);
+		Ｃ素早さ(iic, 20);
+		Ｃ命中率(iic, 110);
+		Ｃ回避率(iic, 0);
+		Ｃ必殺率(iic, 0);
+		Ｃ防御力(iic, 0);
+		if (▲戦士才能 == 2)
+		{
+			Ｃ攻撃力(iic, 70);
+			Ｃ命中率(iic, 110);
+			Ｃ必殺率(iic, 20);
+		}
+	}
+	if (Ｃ職業(iic, -1) == 2)
+	{
+		Ｃ体力最大(iic, 250);
+		Ｃ攻撃力(iic, 40);
+		Ｃ魔法力(iic, 0);
+		Ｃ素早さ(iic, 18);
+		Ｃ命中率(iic, 100);
+		Ｃ回避率(iic, 0);
+		Ｃ必殺率(iic, 0);
+		Ｃ防御力(iic, 0);
+	}
+	if (Ｃ職業(iic, -1) == 3)
+	{
+		Ｃ体力最大(iic, 160);
+		Ｃ攻撃力(iic, 40);
+		Ｃ魔法力(iic, 0);
+		Ｃ素早さ(iic, 18);
+		Ｃ命中率(iic, 110);
+		Ｃ回避率(iic, 0);
+		Ｃ必殺率(iic, 0);
+	}
+	if (Ｃ職業(iic, -1) == 6)
+	{
+		Ｃ体力最大(iic, 160);
+		Ｃ攻撃力(iic, 40);
+		Ｃ魔法力(iic, 30);
+		Ｃ素早さ(iic, 25);
+		Ｃ命中率(iic, 120);
+		Ｃ回避率(iic, 20);
+		Ｃ必殺率(iic, 0);
+	}
+	if (Ｃ職業(iic, -1) == 7)
+	{
+		Ｃ体力最大(iic, 250);
+		Ｃ攻撃力(iic, 90);
+		Ｃ魔法力(iic, 0);
+		Ｃ素早さ(iic, 22);
+		Ｃ命中率(iic, 100);
+		Ｃ回避率(iic, 20);
+		Ｃ必殺率(iic, 20);
+	}
+	if (Ｃ職業(iic, -1) == 4)
+	{
+		Ｃ体力最大(iic, 100);
+		Ｃ攻撃力(iic, 30);
+		Ｃ魔法力(iic, 80);
+		Ｃ素早さ(iic, 15);
+		Ｃ命中率(iic, 100);
+		Ｃ回避率(iic, 0);
+		Ｃ必殺率(iic, 0);
+	}
+	if (Ｃ職業(iic, -1) == 5)
+	{
+		Ｃ体力最大(iic, 180);
+		Ｃ攻撃力(iic, 30);
+		Ｃ魔法力(iic, 50);
+		Ｃ素早さ(iic, 15);
+		Ｃ命中率(iic, 100);
+		Ｃ回避率(iic, 0);
+		Ｃ必殺率(iic, 0);
+	}
+	if (Ｃ職業(iic, -1) == 8)
+	{
+		Ｃ体力最大(iic, 120);
+		Ｃ攻撃力(iic, 30);
+		Ｃ魔法力(iic, 0);
+		Ｃ素早さ(iic, 12);
+		Ｃ命中率(iic, 80);
+		Ｃ回避率(iic, 0);
+		Ｃ必殺率(iic, 0);
+	}
+	int loop = 0;
+	int ▲体力系 = 0;
+	int ▲物理系 = 0;
+	int ▲魔法系 = 0;
+	int ▲速度系 = 0;
+	int ▲耐性系 = 0;
+	int ▲防御系 = 0;
+	int ▲命中系 = 0;
+	int ▲必殺 = 0;
+	for (loop = 2; loop < ＣＬＶ(iic, -1) + 1; ++loop)
+	{
+		▲体力系 = 0;
+		▲物理系 = 0;
+		▲魔法系 = 0;
+		▲速度系 = 0;
+		▲耐性系 = 0;
+		▲防御系 = 2;
+		▲命中系 = 0;
+		▲必殺 = 0;
+		if (Ｃ職業(iic, -1) == 1)
+		{
+			▲体力系 = 24;
+			▲物理系 = 5;
+			if (▲戦士才能 == 2)
+			{
+				▲物理系 = 6;
+			}
+		}
+		if (Ｃ職業(iic, -1) == 2)
+		{
+			▲体力系 = 24;
+			▲物理系 = 2;
+			▲防御系 = 4;
+		}
+		if (Ｃ職業(iic, -1) == 3)
+		{
+			▲体力系 = 16;
+			▲物理系 = 4;
+		}
+		if (Ｃ職業(iic, -1) == 6)
+		{
+			▲体力系 = 16;
+			▲物理系 = 4;
+		}
+		if (Ｃ職業(iic, -1) == 7)
+		{
+			▲体力系 = 32;
+			▲物理系 = 7;
+		}
+		if (Ｃ職業(iic, -1) == 4)
+		{
+			▲体力系 = 12;
+			▲物理系 = 1;
+			if (▲魔法才能 == 1)
+			{
+				▲魔法系 = 5;
+			}
+			if (▲魔法才能 == 2)
+			{
+				▲魔法系 = 6;
+			}
+			if (▲魔法才能 == 3)
+			{
+				▲魔法系 = 6;
+			}
+		}
+		if (Ｃ職業(iic, -1) == 5)
+		{
+			▲体力系 = 18;
+			▲物理系 = 1;
+			▲魔法系 = 5;
+		}
+		if (Ｃ職業(iic, -1) == 8)
+		{
+			▲体力系 = 8;
+			▲物理系 = 1;
+		}
+		if (Ｃ職業(iic, -1) != 4 && ▲魔法才能 != 0)
+		{
+			▲魔法系 += 5;
+		}
+		if (loop >= 20)
+		{
+			++▲物理系;
+			++▲魔法系;
+		}
+		if (loop >= 30)
+		{
+			▲物理系 += 2;
+			▲魔法系 += 2;
+			▲防御系 += 2;
+			if (▲戦士才能 == 2)
+			{
+				▲物理系 += 1;
+			}
+			if (▲魔法才能 == 2)
+			{
+				▲魔法系 += 1;
+			}
+			if (▲魔法才能 == 3)
+			{
+				▲魔法系 += 1;
+			}
+		}
+		if (loop >= 40)
+		{
+			▲物理系 = ▲物理系 * 2;
+			▲魔法系 = ▲魔法系 * 2;
+			▲体力系 = ▲体力系 * 2;
+			▲防御系 = ▲防御系 * 2;
+		}
+		if (loop >= 50)
+		{
+			▲物理系 = ▲物理系 * 2;
+			▲魔法系 = ▲魔法系 * 2;
+			▲体力系 = ▲体力系 * 2;
+			▲防御系 = ▲防御系 * 2;
+		}
+		if (loop == 10)
+		{
+			▲体力系 += 50;
+			▲物理系 += 10;
+			▲魔法系 += 10;
+			▲耐性系 += 0;
+			▲速度系 += 5;
+		}
+		if (loop == 20)
+		{
+			▲体力系 += 100;
+			▲物理系 += 20;
+			▲魔法系 += 20;
+			▲耐性系 += 0;
+			▲速度系 += 5;
+			▲命中系 += 5;
+			if (ＣＳ有無(iic, 352, 0) != 0)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　ＤＢ：謎ボーナスを受けています　" + string(▲タイプ５) + "\n");
+				}
+				if (▲タイプ５ == 1)
+				{
+					▲体力系 += 500;
+				}
+				if (▲タイプ５ == 2)
+				{
+					▲物理系 += 200;
+				}
+				if (▲タイプ５ == 3)
+				{
+					▲魔法系 += 200;
+				}
+				if (▲タイプ５ == 4)
+				{
+					▲命中系 += 20;
+				}
+				if (▲タイプ５ == 5)
+				{
+					▲耐性系 += 50;
+				}
+			}
+		}
+		if (loop == 30)
+		{
+			▲体力系 += 150;
+			▲物理系 += 30;
+			▲魔法系 += 30;
+			▲耐性系 += 0;
+			▲防御系 += 15;
+			▲速度系 += 5;
+			▲命中系 += 5;
+		}
+		if (loop == 40)
+		{
+			▲体力系 += 300;
+			▲物理系 += 60;
+			▲魔法系 += 60;
+			▲耐性系 += 0;
+			▲防御系 += 30;
+			▲速度系 += 5;
+			▲命中系 += 5;
+		}
+		if (loop == 50)
+		{
+			▲体力系 += 500;
+			▲物理系 += 100;
+			▲魔法系 += 100;
+			▲耐性系 += 0;
+			▲防御系 += 30;
+			▲速度系 += 5;
+			▲命中系 += 5;
+		}
+		if (loop == 60)
+		{
+			▲体力系 += 500;
+			▲物理系 += 100;
+			▲魔法系 += 100;
+			▲耐性系 += 0;
+			▲防御系 += 30;
+			▲速度系 += 5;
+			▲命中系 += 5;
+		}
+		if (loop == 70)
+		{
+			▲体力系 += 0;
+			▲物理系 += 100;
+			▲魔法系 += 100;
+			▲耐性系 += 0;
+			▲防御系 += 30;
+			▲速度系 += 5;
+			▲命中系 += 5;
+		}
+		if (loop == 80)
+		{
+			▲体力系 += 0;
+			▲物理系 += 100;
+			▲魔法系 += 100;
+			▲耐性系 += 0;
+			▲防御系 += 30;
+			▲速度系 += 5;
+		}
+		if (loop == 90)
+		{
+			▲体力系 += 0;
+			▲物理系 += 100;
+			▲魔法系 += 100;
+			▲耐性系 += 0;
+			▲防御系 += 30;
+			▲速度系 += 5;
+		}
+		Ｃ体力最大(iic, Ｃ体力最大(iic, -1) + ▲体力系);
+		Ｃ攻撃力(iic, Ｃ攻撃力(iic, -1) + ▲物理系);
+		Ｃ魔法力(iic, Ｃ魔法力(iic, -1) + ▲魔法系);
+		Ｃ素早さ(iic, Ｃ素早さ(iic, -1) + ▲速度系);
+		Ｃ耐性率(iic, Ｃ耐性率(iic, -1) + ▲耐性系);
+		Ｃ命中率(iic, Ｃ命中率(iic, -1) + ▲命中系);
+		Ｃ回避率(iic, Ｃ回避率(iic, -1) + ▲命中系);
+		Ｃ防御力(iic, Ｃ防御力(iic, -1) + ▲防御系);
+		Ｃ魔抵力(iic, Ｃ魔抵力(iic, -1) + ▲防御系);
+		Ｃ必殺率(iic, Ｃ必殺率(iic, -1) + ▲必殺);
+	}
+	if (ＣＳ有無(iic, 373, 0) != 0)
+	{
+		Ｃ体力最大(iic, 倍率計算関数(Ｃ体力最大(iic, -1), 80));
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 80));
+		Ｃ魔法力(iic, 倍率計算関数(Ｃ魔法力(iic, -1), 80));
+	}
+	if (ＣＳ有無(iic, 442, 0) != 0)
+	{
+		Ｃ体力最大(iic, 倍率計算関数(Ｃ体力最大(iic, -1), 20));
+	}
+	if (ＣＳ有無(iic, 353, 0) != 0)
+	{
+		Ｃ体力最大(iic, 倍率計算関数(Ｃ体力最大(iic, -1), 70));
+		Ｃ防御力(iic, 倍率計算関数(Ｃ防御力(iic, -1), 70));
+		Ｃ魔抵力(iic, 倍率計算関数(Ｃ魔抵力(iic, -1), 70));
+	}
+	if (ＣＳ有無(iic, 348, 0) != 0)
+	{
+		Ｃ体力最大(iic, 倍率計算関数(Ｃ体力最大(iic, -1), 150));
+		Ｃ素早さ(iic, 倍率計算関数(Ｃ素早さ(iic, -1), 90));
+	}
+	if (ＣＳ有無(iic, 349, 0) != 0)
+	{
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 120));
+		Ｃ魔法力(iic, 倍率計算関数(Ｃ魔法力(iic, -1), 120));
+		Ｃ命中率(iic, 倍率計算関数(Ｃ命中率(iic, -1), 80));
+		Ｃ防御力(iic, 倍率計算関数(Ｃ防御力(iic, -1), 50));
+		Ｃ魔抵力(iic, 倍率計算関数(Ｃ魔抵力(iic, -1), 50));
+		Ｃ回避率(iic, 倍率計算関数(Ｃ回避率(iic, -1), 50));
+	}
+	if (ＣＳ有無(iic, 350, 0) != 0)
+	{
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 90));
+		Ｃ魔法力(iic, 倍率計算関数(Ｃ魔法力(iic, -1), 90));
+		Ｃ命中率(iic, 倍率計算関数(Ｃ命中率(iic, -1), 90));
+		Ｃ防御力(iic, 倍率計算関数(Ｃ防御力(iic, -1), 120));
+		Ｃ魔抵力(iic, 倍率計算関数(Ｃ魔抵力(iic, -1), 120));
+		Ｃ回避率(iic, 倍率計算関数(Ｃ回避率(iic, -1), 120));
+	}
+	if (ＣＳ有無(iic, 441, 0) != 0)
+	{
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 140));
+		Ｃ命中率(iic, 倍率計算関数(Ｃ命中率(iic, -1), 140));
+		Ｃ体力最大(iic, 倍率計算関数(Ｃ体力最大(iic, -1), 50));
+	}
+	if (ＣＳ有無(iic, 313, 1) != 0)
+	{
+		Ｃ命中率(iic, Ｃ命中率(iic, -1) - 30);
+		Ｃ必殺率(iic, Ｃ必殺率(iic, -1) + 60);
+	}
+	if (Ｃ番号(iic, -1) == 44)
+	{
+		int aab = FA[316] * 20;
+		if (aab >= 2000 && ◆ワールド != 3)
+		{
+			aab = 2000;
+		}
+		Ｃ体力最大(iic, Ｃ体力最大(iic, -1) + aab);
+	}
+	◆基本／体力 = Ｃ体力最大(iic, -1);
+	◆基本／攻撃力 = Ｃ攻撃力(iic, -1);
+	◆基本／防御力 = Ｃ防御力(iic, -1);
+	◆基本／魔法力 = Ｃ魔法力(iic, -1);
+	◆基本／魔抵力 = Ｃ魔抵力(iic, -1);
+	◆基本／命中率 = Ｃ命中率(iic, -1);
+	◆基本／回避率 = Ｃ回避率(iic, -1);
+	◆基本／衝撃率 = Ｃ衝撃率(iic, -1);
+	◆基本／耐性率 = Ｃ耐性率(iic, -1);
+	◆基本／必殺率 = Ｃ必殺率(iic, -1);
+	◆基本／素早さ = Ｃ素早さ(iic, -1);
+	if (Ｃ初期／体力最大(iic, -1) != 0)
+	{
+		Ｃ体力最大(iic, 倍率計算関数(Ｃ体力最大(iic, -1), Ｃ初期／体力最大(iic, -1)));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋体力 " + string(Ｃ初期／体力最大(iic, -1)) + "％\n");
+		}
+	}
+	if (Ｃ初期／攻撃力(iic, -1) != 0)
+	{
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), Ｃ初期／攻撃力(iic, -1)));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋攻撃力 " + string(Ｃ初期／攻撃力(iic, -1)) + "％\n");
+		}
+	}
+	if (Ｃ初期／防御力(iic, -1) != 0)
+	{
+		Ｃ防御力(iic, 倍率計算関数(Ｃ防御力(iic, -1), Ｃ初期／防御力(iic, -1)));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋防御力 " + string(Ｃ初期／防御力(iic, -1)) + "％\n");
+		}
+	}
+	if (Ｃ初期／魔法力(iic, -1) != 0)
+	{
+		Ｃ魔法力(iic, 倍率計算関数(Ｃ魔法力(iic, -1), Ｃ初期／魔法力(iic, -1)));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋魔法力 " + string(Ｃ初期／魔法力(iic, -1)) + "％\n");
+		}
+	}
+	if (Ｃ初期／魔抵力(iic, -1) != 0)
+	{
+		Ｃ魔抵力(iic, 倍率計算関数(Ｃ魔抵力(iic, -1), Ｃ初期／魔抵力(iic, -1)));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋魔抵力 " + string(Ｃ初期／魔抵力(iic, -1)) + "％\n");
+		}
+	}
+	if (Ｃ初期／素早さ(iic, -1) != 0)
+	{
+		Ｃ素早さ(iic, Ｃ素早さ(iic, -1) + Ｃ初期／素早さ(iic, -1));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋素早さ " + string(Ｃ初期／素早さ(iic, -1)) + "Ｐ\n");
+		}
+	}
+	if (Ｃ初期／命中率(iic, -1) != 0)
+	{
+		Ｃ命中率(iic, Ｃ命中率(iic, -1) + Ｃ初期／命中率(iic, -1));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋命中 " + string(Ｃ初期／命中率(iic, -1)) + "Ｐ\n");
+		}
+	}
+	if (Ｃ初期／回避率(iic, -1) != 0)
+	{
+		Ｃ回避率(iic, Ｃ回避率(iic, -1) + Ｃ初期／回避率(iic, -1));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋回避 " + string(Ｃ初期／回避率(iic, -1)) + "Ｐ\n");
+		}
+	}
+	if (Ｃ初期／必殺率(iic, -1) != 0)
+	{
+		Ｃ必殺率(iic, Ｃ必殺率(iic, -1) + Ｃ初期／必殺率(iic, -1));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋必殺 " + string(Ｃ初期／必殺率(iic, -1)) + "Ｐ\n");
+		}
+	}
+	if (Ｃ初期／衝撃率(iic, -1) != 0)
+	{
+		Ｃ衝撃率(iic, Ｃ衝撃率(iic, -1) + Ｃ初期／衝撃率(iic, -1));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋衝撃 " + string(Ｃ初期／衝撃率(iic, -1)) + "Ｐ\n");
+		}
+	}
+	if (Ｃ初期／耐性率(iic, -1) != 0)
+	{
+		Ｃ耐性率(iic, Ｃ耐性率(iic, -1) + Ｃ初期／耐性率(iic, -1));
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("　＋耐性 " + string(Ｃ初期／耐性率(iic, -1)) + "Ｐ\n");
+		}
+	}
+	if (Ｃ番号(iic, -1) == 51)
+	{
+		tカロリア = 1620;
+		Ｃ立ち絵ＣＧ(iic, 1620);
+	}
+	if (FA[23] >= 11)
+	{
+		FA[23] = 11;
+	}
+	if (FA[24] >= 11)
+	{
+		FA[24] = 11;
+	}
+	if (Ｃ番号(iic, -1) == 6)
+	{
+		Ｃ素早さ(iic, Ｃ素早さ(iic, -1) + FA[23]);
+		LOG_TADA("　＋素早さ　" + string(FA[23]) + "　仙人効果\n");
+	}
+	if (Ｃ番号(iic, -1) == 1)
+	{
+		Ｃ素早さ(iic, Ｃ素早さ(iic, -1) + FA[24]);
+		LOG_TADA("　＋素早さ　" + string(FA[24]) + "　仙人効果\n");
+	}
+	if (Ｃ番号(iic, -1) == 27)
+	{
+		Ｃ攻撃力(iic, 290 + FA[176]);
+		Ｃ体力最大(iic, 860 + FA[179]);
+		Ｃ命中率(iic, 150 + FA[177]);
+		Ｃ素早さ(iic, 18 + FA[178]);
+		Ｃ必殺率(iic, 0 + FA[180]);
+	}
+	if (Ｃ番号(iic, -1) == 50)
+	{
+		aa = FA[323] * 2;
+		if (aa != 0)
+		{
+			Ｃ体力最大(iic, Ｃ体力最大(iic, -1) + aa);
+		}
+	}
+	if (クリア確認(186) == 1)
+	{
+		Ｃ体力最大(iic, Ｃ体力最大(iic, -1) + 20);
+	}
+	Ｃ体内特殊アイテムの効果計算(iic);
+	if (◆ＤＢ／再計算ログ == 1)
+	{
+		LOG_TADA("　体力（" + string(Ｃ体力最大(iic, -1)) + "）　素早（" + string(Ｃ素早さ(iic, -1)) + "）　攻撃（" + string(Ｃ攻撃力(iic, -1)) + "）　防御(" + string(Ｃ防御力(iic, -1)) + ")　魔法（" + string(Ｃ魔法力(iic, -1)) + "）　魔抵（" + string(Ｃ魔抵力(iic, -1)) + "）　命中（" + string(Ｃ命中率(iic, -1)) + "）　回避（" + string(Ｃ回避率(iic, -1)) + "）　耐性（" + string(Ｃ耐性率(iic, -1)) + "） \n");
+	}
+	Ｃスキル枠最大(iic, ＣＳ有無／ランク(iic, 568, 0) + 2);
+	lint ▲ペプシ剣術 = 0;
+	for (loop = 1; loop < 21; ++loop)
+	{
+		if (ＣＳ保有(iic, loop, -1) == 1)
+		{
+			iis = Ｃスキル番号(iic, loop, -1);
+			iislank = ＣＳランク(iic, loop, -1);
+			if (iis == 346 && ＣＬＶ最大(iic, -1) < 35)
+			{
+				ＣＬＶ最大(iic, 35);
+			}
+			if (iis == 347 && ＣＬＶ最大(iic, -1) < 45)
+			{
+				ＣＬＶ最大(iic, 45);
+			}
+			if (Ｓタイプ(iis, -1) == 20 || Ｓタイプ(iis, -1) == 30)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：");
+				}
+				Ｃ機能適応(iic, Ｓ機能(iis, -1), ＣＳ有無／ランク別効果(iic, iis, 0), 100);
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 314 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 2)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 1)
+				{
+					Ｃ機能適応(iic, 2, 30, 100);
+				}
+				if (iislank == 2)
+				{
+					Ｃ機能適応(iic, 2, 30, 100);
+				}
+				if (iislank == 3)
+				{
+					Ｃ機能適応(iic, 2, 80, 100);
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 2, 80, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 315 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 3)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 3)
+				{
+					Ｃ機能適応(iic, 8, 20, 100);
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 8, 20, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 316 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 4)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 3)
+				{
+					Ｃ機能適応(iic, 19, 20, 100);
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 19, 20, 100);
+					Ｃ機能適応(iic, 2, 100, 100);
+					Ｃ機能適応(iic, 8, 20, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 317 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 7)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 18, 20, 100);
+					Ｃ機能適応(iic, 8, 20, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 320)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 18, 20, 100);
+					Ｃ機能適応(iic, 2, 30, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 318 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 5)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 3)
+				{
+					Ｃ機能適応(iic, 2, 50, 100);
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 2, 150, 100);
+					Ｃ機能適応(iic, 18, 20, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 319 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 6)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 1)
+				{
+					Ｃ機能適応(iic, 2, 200, 100);
+				}
+				if (iislank == 2)
+				{
+					Ｃ機能適応(iic, 2, 400, 100);
+				}
+				if (iislank == 3)
+				{
+					Ｃ機能適応(iic, 2, 600, 100);
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 2, 800, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 593 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 6)
+			{
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("　　" + Ｓ名前(iis, "") + "：ＬＶ" + string(iislank) + "　");
+				}
+				if (iislank == 1)
+				{
+					Ｃ機能適応(iic, 2, 500, 100);
+				}
+				if (iislank == 2)
+				{
+					Ｃ機能適応(iic, 2, 1000, 100);
+				}
+				if (iislank == 3)
+				{
+					Ｃ機能適応(iic, 2, 1500, 100);
+				}
+				if (iislank == 4)
+				{
+					Ｃ機能適応(iic, 2, 2000, 100);
+				}
+				if (◆ＤＢ／再計算ログ == 1)
+				{
+					LOG_TADA("\n");
+				}
+			}
+			if (iis == 357)
+			{
+				ＣＦＡ(iic, 4, 2);
+			}
+			if (iis == 358)
+			{
+				ＣＦＡ(iic, 4, 3);
+			}
+			if (iis == 359)
+			{
+				ＣＦＡ(iic, 4, 4);
+			}
+			if (iis == 360)
+			{
+				ＣＦＡ(iic, 4, 5);
+			}
+			if (iis == 311)
+			{
+				ＣＦＡ(iic, 5, 1);
+			}
+			if (iis == 312)
+			{
+				ＣＦＡ(iic, 36, 7);
+			}
+			if (iis == 461 && Ｃ番号(iic, -1) == 51)
+			{
+				tカロリア = 1621;
+				Ｃ立ち絵ＣＧ(iic, 1621);
+			}
+			if (iis == 574 && Ｉ固有番号(Ｃ武器(iic, -1), -1) == 68)
+			{
+				Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 120));
+			}
+			if (iis == 274 && ＣＳ実装中(iic, loop, -1) != 0)
+			{
+				▲ペプシ剣術 = 1;
+			}
+			if (iis == 541 || iis == 542 || iis == 543)
+			{
+				Ｃ防御力(iic, Ｃ防御力(iic, -1) + 50);
+				Ｃ魔抵力(iic, Ｃ魔抵力(iic, -1) + 50);
+			}
+			if (iis == 512)
+			{
+				Ｃ命中率(iic, Ｃ命中率(iic, -1) + 10);
+				Ｃ回避率(iic, Ｃ回避率(iic, -1) + 10);
+			}
+		}
+	}
+	if (◆ワールド == 3)
+	{
+		if (ＣＦＡ(iic, 38, -1) >= 1 && ＣＳ有無(iic, 276, 0) == 0)
+		{
+			Ｃ体力最大(iic, Ｃ体力最大(iic, -1) + 800);
+		}
+		if (ＣＦＡ(iic, 38, -1) == 2 && ＣＳ有無(iic, 455, 0) == 0)
+		{
+			Ｃ体力最大(iic, Ｃ体力最大(iic, -1) + 800);
+		}
+		if (ＣＦＡ(iic, 39, -1) >= 1 && ＣＳ有無(iic, 277, 0) == 0)
+		{
+			Ｃ攻撃力(iic, Ｃ攻撃力(iic, -1) + 300);
+		}
+		if (ＣＦＡ(iic, 39, -1) == 2 && ＣＳ有無(iic, 456, 0) == 0)
+		{
+			Ｃ攻撃力(iic, Ｃ攻撃力(iic, -1) + 300);
+		}
+		if (ＣＦＡ(iic, 40, -1) >= 1 && ＣＳ有無(iic, 278, 0) == 0)
+		{
+			Ｃ魔法力(iic, Ｃ魔法力(iic, -1) + 300);
+		}
+		if (ＣＦＡ(iic, 40, -1) == 2 && ＣＳ有無(iic, 457, 0) == 0)
+		{
+			Ｃ魔法力(iic, Ｃ魔法力(iic, -1) + 300);
+		}
+		if (ＣＦＡ(iic, 41, -1) == 1 && ＣＳ有無(iic, 279, 0) == 0)
+		{
+			Ｃ命中率(iic, Ｃ命中率(iic, -1) + 50);
+		}
+		if (ＣＦＡ(iic, 42, -1) == 1 && ＣＳ有無(iic, 280, 0) == 0)
+		{
+			Ｃ回避率(iic, Ｃ回避率(iic, -1) + 50);
+		}
+		if (ＣＦＡ(iic, 43, -1) == 1 && ＣＳ有無(iic, 281, 0) == 0)
+		{
+			Ｃ必殺率(iic, Ｃ必殺率(iic, -1) + 50);
+		}
+		if (ＣＦＡ(iic, 44, -1) == 1 && ＣＳ有無(iic, 282, 0) == 0)
+		{
+			Ｃ耐性率(iic, Ｃ耐性率(iic, -1) + 50);
+		}
+		if (ＣＦＡ(iic, 45, -1) == 1 && ＣＳ有無(iic, 283, 0) == 0)
+		{
+			Ｃ衝撃率(iic, Ｃ衝撃率(iic, -1) + 50);
+		}
+	}
+	if (ＣＳ有無／ランク(iic, 317, 0) >= 3)
+	{
+		if (Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 7)
+		{
+			iic_s = ＣＳ番号取得(iic, 100, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 101);
+			}
+			iic_s = ＣＳ番号取得(iic, 102, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 103);
+			}
+			iic_s = ＣＳ番号取得(iic, 104, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 105);
+			}
+			iic_s = ＣＳ番号取得(iic, 106, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 107);
+			}
+			iic_s = ＣＳ番号取得(iic, 578, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 579);
+			}
+		}
+		if (Ｉ種類詳細(Ｃ武器(iic, -1), -1) != 7)
+		{
+			iic_s = ＣＳ番号取得(iic, 101, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 100);
+			}
+			iic_s = ＣＳ番号取得(iic, 103, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 102);
+			}
+			iic_s = ＣＳ番号取得(iic, 105, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 104);
+			}
+			iic_s = ＣＳ番号取得(iic, 107, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 106);
+			}
+			iic_s = ＣＳ番号取得(iic, 579, 0);
+			if (iic_s != 0)
+			{
+				ＣＳ番号(iic, iic_s, 578);
+			}
+		}
+	}
+	◆適応／体力 = 0;
+	◆適応／攻撃力 = 0;
+	◆適応／防御力 = 0;
+	◆適応／魔法力 = 0;
+	◆適応／魔抵力 = 0;
+	◆適応／命中率 = 0;
+	◆適応／回避率 = 0;
+	◆適応／衝撃率 = 0;
+	◆適応／耐性率 = 0;
+	◆適応／必殺率 = 0;
+	◆適応／素早さ = 0;
+	if (Ｃ武器(iic, -1) != 0)
+	{
+		ＣＩ適応(iic, Ｃ武器(iic, -1), ▲武器の極め);
+	}
+	if (Ｃ防具(iic, -1) != 0)
+	{
+		ＣＩ適応(iic, Ｃ防具(iic, -1), ▲防具の極め);
+	}
+	if (Ｃ持ち物(iic, -1) != 0)
+	{
+		ＣＩ適応(iic, Ｃ持ち物(iic, -1), 100);
+	}
+	if (Ｃオプション(iic, -1) != 0)
+	{
+		ＣＩ適応(iic, Ｃオプション(iic, -1), 100);
+	}
+	lint ▲持ち物スキル = 0;
+	lint ▲持ち物スキル数 = 1;
+	if (Ｃ持ち物(iic, -1) != 0 && Ｉ機能(Ｃ持ち物(iic, -1), 1, -1) == 34)
+	{
+		▲持ち物スキル = Ｉ効果(Ｃ持ち物(iic, -1), 1, -1);
+		if (Ｉ機能(Ｃ持ち物(iic, -1), 2, -1) == 26)
+		{
+			▲持ち物スキル数 = Ｉ効果(Ｃ持ち物(iic, -1), 2, -1);
+		}
+		if (Ｉ固有番号(Ｃ持ち物(iic, -1), -1) == 179 && Ｉ固有番号(Ｃ防具(iic, -1), -1) != 2)
+		{
+			▲持ち物スキル = 0;
+		}
+	}
+	if (▲持ち物スキル == 0 && Ｃ持ち物スキル(iic, -1) != 569)
+	{
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("持ち物（スキル）切り替え－－－－　持ち物を外した時\n");
+		}
+		ＣＳ削除(iic, Ｃ持ち物スキル(iic, -1));
+		ＣＳ追加(iic, 569, 0);
+		Ｃ持ち物スキル(iic, 569);
+	}
+	if (▲持ち物スキル != 0 && Ｃ持ち物スキル(iic, -1) != ▲持ち物スキル)
+	{
+		if (◆ＤＢ／再計算ログ == 1)
+		{
+			LOG_TADA("持ち物（スキル）切り替え－－－－　持ち物を付けたor付け替えた\n");
+		}
+		ＣＳ削除(iic, Ｃ持ち物スキル(iic, -1));
+		ＣＳ追加(iic, ▲持ち物スキル, ▲持ち物スキル数);
+		Ｃ持ち物スキル(iic, ▲持ち物スキル);
+	}
+	◆身体ブースト = 100;
+	if (ＣＳ有無(iic, 311, 1) != 0)
+	{
+		◆身体ブースト += 10;
+	}
+	if (Ｉ機能取得(Ｃ武器(iic, -1), 84) != 0)
+	{
+		◆身体ブースト += 10;
+	}
+	if (Ｉ機能取得(Ｃ防具(iic, -1), 84) != 0)
+	{
+		◆身体ブースト += 10;
+	}
+	if (Ｉ機能取得(Ｃ武器(iic, -1), 91) != 0)
+	{
+		◆身体ブースト += 5;
+	}
+	if (Ｉ機能取得(Ｃ防具(iic, -1), 91) != 0)
+	{
+		◆身体ブースト += 5;
+	}
+	if (Ｃ番号(iic, -1) == 1)
+	{
+		Ｃ転生回数(iic, 0);
+	}
+	lint ▲転生回数 = Ｃ転生回数(iic, -1);
+	if (▲転生回数 >= 10 && ◆ワールド < 3)
+	{
+		▲転生回数 = 10;
+	}
+	◆身体ブースト += ▲転生回数 * 2;
+	if (Ｃ番号(iic, -1) == 1 && (FA[188] >= 4 || FA[327] == 1))
+	{
+		lint ▲ランスボーナス = モルルン算出表示(0, "９以下") + モルルン算出表示(0, "１０以上");
+		if (▲ランスボーナス >= 10)
+		{
+			▲ランスボーナス = 10;
+		}
+		◆身体ブースト += ▲ランスボーナス * 2;
+	}
+	if (◆身体ブースト >= 150)
+	{
+		◆身体ブースト = 150;
+	}
+	if (◆身体ブースト > 100)
+	{
+		LOG_TADA("　体力（" + string(Ｃ体力最大(iic, -1)) + "）　素早（" + string(Ｃ素早さ(iic, -1)) + "）　攻撃（" + string(Ｃ攻撃力(iic, -1)) + "）　防御(" + string(Ｃ防御力(iic, -1)) + ")　魔法（" + string(Ｃ魔法力(iic, -1)) + "）　魔抵（" + string(Ｃ魔抵力(iic, -1)) + "）　命中（" + string(Ｃ命中率(iic, -1)) + "）　回避（" + string(Ｃ回避率(iic, -1)) + "）　耐性（" + string(Ｃ耐性率(iic, -1)) + "） \n");
+		LOG_TADA("↓　◆身体ブースト　" + string(◆身体ブースト) + "\n");
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), ◆身体ブースト));
+		Ｃ防御力(iic, 倍率計算関数(Ｃ防御力(iic, -1), ◆身体ブースト));
+		Ｃ魔法力(iic, 倍率計算関数(Ｃ魔法力(iic, -1), ◆身体ブースト));
+		Ｃ魔抵力(iic, 倍率計算関数(Ｃ魔抵力(iic, -1), ◆身体ブースト));
+	}
+	if (▲ペプシ剣術 == 1)
+	{
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 80));
+	}
+	◆疾風突き = 0;
+	◆疾風突き = ＣＦＡ(iic, 30, -1);
+	if (◆疾風突き != 0)
+	{
+		if (◆疾風突き > 5)
+		{
+			◆疾風突き = 5;
+		}
+		Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 100 + ◆疾風突き * 5));
+		Ｃ素早さ(iic, Ｃ素早さ(iic, -1) + ◆疾風突き * 5);
+	}
+	if (ＣＳ有無(iic, 526, 1) != 0)
+	{
+		Ｃ素早さ(iic, Ｃ素早さ(iic, -1) / 2);
+		Ｃ防御力(iic, Ｃ防御力(iic, -1) / 5);
+		Ｃ魔抵力(iic, Ｃ魔抵力(iic, -1) / 5);
+	}
+	if (Ｃ番号(iic, -1) == 27 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 6)
+	{
+		Ｃ命中率(iic, 10);
+	}
+	if (ＣＦＡ(iic, 36, -1) == 7 && ＣＦＡ(iic, 7, -1) == 0)
+	{
+		ＣＦＡ(iic, 7, 1);
+		Ｃスキルポイント(iic, Ｃスキルポイント(iic, -1) + 10);
+	}
+	if (◆ＤＢ／再計算ログ == 1)
+	{
+		LOG_TADA("　体力（" + string(Ｃ体力最大(iic, -1)) + "）　素早（" + string(Ｃ素早さ(iic, -1)) + "）　攻撃（" + string(Ｃ攻撃力(iic, -1)) + "）　防御(" + string(Ｃ防御力(iic, -1)) + ")　魔法（" + string(Ｃ魔法力(iic, -1)) + "）　魔抵（" + string(Ｃ魔抵力(iic, -1)) + "）　命中（" + string(Ｃ命中率(iic, -1)) + "）　回避（" + string(Ｃ回避率(iic, -1)) + "）　耐性（" + string(Ｃ耐性率(iic, -1)) + "） \n");
+	}
+	if (ＣＦＡ(iic, 32, -1) <= ＣＬＶ(iic, -1))
+	{
+		ＣＦＡ(iic, 32, ＣＬＶ(iic, -1));
+	}
+	if (ＣＬＶ(iic, -1) >= 100)
+	{
+		ＣＥＸＰ最大(iic, ＬＶＥＸＰ[100] + (ＣＬＶ(iic, -1) - 100) * 50000);
+	}
+	else
+	{
+		ＣＥＸＰ最大(iic, ＬＶＥＸＰ[ＣＬＶ(iic, -1)]);
+	}
+	if (ＣＬＶ(iic, -1) < ＣＦＡ(iic, 32, -1) && ＣＥＸＰ最大(iic, -1) >= 4980)
+	{
+		ＣＥＸＰ最大(iic, 4980);
+	}
+	if (Ｃ体力(iic, -1) >= Ｃ体力最大(iic, -1))
+	{
+		Ｃ体力(iic, Ｃ体力最大(iic, -1));
+	}
+}
+
+void Ｃ再計算／全キャラ()
+{
+	int iic = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) != 0)
+		{
+			Ｃ再計算(iic);
+		}
+	}
+}
+
+void Ｃ補給(int iic)
+{
+	Ｃ補給／体力(iic, "");
+	Ｃ補給／スキル(iic, "");
+}
+
+void Ｃ補給／体力(int iic, string 条件)
+{
+	if (条件 == "半分")
+	{
+		if (Ｃ体力(iic, -1) < Ｃ体力最大(iic, -1) / 2)
+		{
+			Ｃ体力(iic, Ｃ体力最大(iic, -1) / 2);
+		}
+		return;
+	}
+	Ｃ体力(iic, Ｃ体力最大(iic, -1));
+}
+
+void Ｃ補給／スキル(int iic, string 条件)
+{
+	int loop = 0;
+	int iis = 0;
+	for (loop = 1; loop < 21; ++loop)
+	{
+		if (ＣＳ番号(iic, loop, -1) != 0)
+		{
+			iis = ＣＳ番号(iic, loop, -1);
+			if (条件 == "舞姫" && ＣＳ使用回数最大(iic, loop, -1) >= 2 && iis != 232)
+			{
+				ＣＳ使用回数(iic, loop, ＣＳ使用回数(iic, loop, -1) + 2);
+				if (◆ＤＢ／戦闘ログ == 1)
+				{
+					LOG_TADA("　舞姫効果により　" + Ｓ名前(ＣＳ番号(iic, loop, -1), "") + "が回復\n");
+				}
+			}
+			if (条件 == "待機" && Ｓ基本技(ＣＳ番号(iic, loop, -1), -1) == 1 && ＣＳ使用回数最大(iic, loop, -1) != 0 && ＣＳ使用回数最大(iic, loop, -1) == 0)
+			{
+				ＣＳ使用回数(iic, loop, ＣＳ使用回数(iic, loop, -1) + 1);
+			}
+			if (条件 == "基本のみ＋１" && Ｓ基本技(ＣＳ番号(iic, loop, -1), -1) == 1)
+			{
+				ＣＳ使用回数(iic, loop, ＣＳ使用回数(iic, loop, -1) + 1);
+			}
+			if (条件 == "")
+			{
+				ＣＳ使用回数(iic, loop, ＣＳ使用回数最大(iic, loop, -1));
+			}
+		}
+	}
+}
+
+void Ｃ補給／基本スキル(int iic)
+{
+	int loop = 0;
+	for (loop = 1; loop < 21; ++loop)
+	{
+		if (ＣＳ番号(iic, loop, -1) != 0 && Ｓ基本技(ＣＳ番号(iic, loop, -1), -1) == 1)
+		{
+			ＣＳ使用回数(iic, loop, ＣＳ使用回数最大(iic, loop, -1));
+		}
+	}
+}
+
+void ＣＩ適応(int iic, int ii, int 効果倍率)
+{
+	int loop = 0;
+	if (◆ＤＢ／再計算ログ == 1)
+	{
+		LOG_TADA("　　" + Ｉ名前(ii, "") + "：");
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (Ｉ機能(ii, loop, -1) != 0)
+		{
+			Ｃ機能適応(iic, Ｉ機能(ii, loop, -1), Ｉ効果(ii, loop, -1), 効果倍率);
+		}
+	}
+	if (◆ＤＢ／再計算ログ == 1)
+	{
+		LOG_TADA("\n");
+	}
+}
+
+int ＣＩ武器機能の有無と効果(int iic, int 機能番号)
+{
+	int ii = 0;
+	int loop = 0;
+	ii = Ｃ武器(iic, -1);
+	if (ii == 0)
+	{
+		return 0;
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (Ｉ機能(ii, loop, -1) == 機能番号)
+		{
+			if (Ｉ効果(ii, loop, -1) == 0)
+			{
+				return 1;
+			}
+			return Ｉ効果(ii, loop, -1);
+		}
+	}
+	return 0;
+}
+
+int ＣＩ武器の弱点効果の有無(int iic, int タイプ種族)
+{
+	int ii = 0;
+	int loop = 0;
+	ii = Ｃ武器(iic, -1);
+	if (ii == 0)
+	{
+		return 0;
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (Ｉ機能(ii, loop, -1) == 31 && Ｉ効果(ii, loop, -1) == タイプ種族)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int ＣＩ防具機能の有無と効果(int iic, int 機能番号)
+{
+	int ii = 0;
+	int loop = 0;
+	ii = Ｃ防具(iic, -1);
+	if (ii == 0)
+	{
+		return 0;
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (Ｉ機能(ii, loop, -1) == 機能番号)
+		{
+			if (Ｉ効果(ii, loop, -1) == 0)
+			{
+				return 1;
+			}
+			return Ｉ効果(ii, loop, -1);
+		}
+	}
+	return 0;
+}
+
+int Ｃアイテム外す(int iic, int fg)
+{
+	int ii = 0;
+	int loop = 0;
+	LOG_TADA("＞Ｃアイテム外す ");
+	if (fg == 1)
+	{
+		LOG_TADA(Ｉ名前(Ｃ武器(iic, -1), "") + "\n");
+	}
+	if (fg == 11)
+	{
+		LOG_TADA(Ｉ名前(Ｃ防具(iic, -1), "") + "\n");
+	}
+	if (fg == 17)
+	{
+		LOG_TADA(Ｉ名前(Ｃ持ち物(iic, -1), "") + "\n");
+	}
+	if (fg == 21)
+	{
+		LOG_TADA(Ｉ名前(Ｃオプション(iic, -1), "") + "\n");
+	}
+	if (fg == 1)
+	{
+		ii = Ｃ武器(iic, -1);
+		Ｃ[iic].武器 = 0;
+	}
+	if (fg == 11)
+	{
+		ii = Ｃ防具(iic, -1);
+		Ｃ[iic].防具 = 0;
+	}
+	if (fg == 17)
+	{
+		ii = Ｃ持ち物(iic, -1);
+		Ｃ[iic].持ち物 = 0;
+	}
+	if (fg == 21)
+	{
+		ii = Ｃオプション(iic, -1);
+		Ｃ[iic].オプション = 0;
+	}
+	if (ii == 0)
+	{
+		return 0;
+	}
+	Ｉ存在(ii, 7);
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (Ｉ機能(ii, loop, -1) == 34)
+		{
+			ＣＳ削除(iic, Ｉ効果(ii, loop, -1));
+		}
+	}
+	return ii;
+}
+
+void Ｃオプション装備後(lint iic)
+{
+	int iii = Ｃオプション(iic, -1);
+	int aa = 0;
+	if (Ｉ固有番号(iii, -1) == 306)
+	{
+		Ｃスキルドレイン(iic);
+		aa = 1;
+	}
+	if (Ｉ固有番号(iii, -1) == 303)
+	{
+		aa = 1;
+	}
+	if (Ｉ固有番号(iii, -1) == 304)
+	{
+		aa = 1;
+	}
+	if (Ｉ固有番号(iii, -1) == 305)
+	{
+		aa = 1;
+	}
+	if (Ｉ固有番号(iii, -1) == 252)
+	{
+		aa = 1;
+	}
+	if (aa == 1)
+	{
+		LOG_TADA("　＞　特殊アイテムの機能消滅　" + Ｉ名前(iii, "") + "\n");
+		Ｉ機能(iii, 1, 0);
+		if (Ｉ固有番号(iii, -1) == 304)
+		{
+			Ｉ情報(iii, "Raises the user's talent cap by 10.$$※Effect activated");
+		}
+		if (Ｉ固有番号(iii, -1) == 305)
+		{
+			Ｉ情報(iii, "Raises the user's talent cap by 5.$$※Effect activated");
+		}
+		if (Ｉ固有番号(iii, -1) == 252)
+		{
+			Ｉ情報(iii, "Raises the user's talent cap by 3.$$※Effect activated");
+		}
+		if (Ｉ固有番号(iii, -1) == 306)
+		{
+			Ｉ情報(iii, "Resets the user's skills.$※Effect activated");
+		}
+		if (Ｉ固有番号(iii, -1) == 303)
+		{
+			Ｉ情報(iii, "Raises the user's SP by 3.$※Effect activated");
+		}
+	}
+}
+
+void ＣＳ全実装解除(int iic)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		Ｃスキル実装中(iic, iic_s, 0);
+	}
+}
+
+void ＣＳ全使用済み(int iic)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		ＣＳ使用回数(iic, iic_s, 0);
+	}
+}
+
+void ＣＳ全使用禁止(int iic)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		ＣＳ使用禁止(iic, iic_s, 3);
+	}
+}
+
+void Ｃスキル強制実装(int iic, int sk1, int sk2, int sk3, int sk4, int sk5, int sk6)
+{
+	ＣＳ全実装解除(iic);
+	if (sk1 != 0)
+	{
+		Ｃスキル強制実装Ａ(iic, sk1, 1);
+	}
+	if (sk2 != 0)
+	{
+		Ｃスキル強制実装Ａ(iic, sk2, 2);
+	}
+	if (sk3 != 0)
+	{
+		Ｃスキル強制実装Ａ(iic, sk3, 3);
+	}
+	if (sk4 != 0)
+	{
+		Ｃスキル強制実装Ａ(iic, sk4, 4);
+	}
+	if (sk5 != 0)
+	{
+		Ｃスキル強制実装Ａ(iic, sk5, 5);
+	}
+	if (sk6 != 0)
+	{
+		Ｃスキル強制実装Ａ(iic, sk6, 6);
+	}
+}
+
+void Ｃスキル強制実装Ａ(int iic, int iis, int no)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		if (ＣＳ保有(iic, iic_s, -1) == 1 && ＣＳ実装中(iic, iic_s, -1) == 0 && ＣＳ番号(iic, iic_s, -1) == iis)
+		{
+			ＣＳ実装中(iic, iic_s, no);
+			return;
+		}
+	}
+	return;
+}
+
+int ＣＳ空き番号取得(int iic)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 19; ++iic_s)
+	{
+		if (ＣＳ番号(iic, iic_s, -1) == 0)
+		{
+			return iic_s;
+		}
+	}
+	return 0;
+}
+
+int ＣＳ空き実装番号取得(int iic)
+{
+	int no = 0;
+	int iic_s = 0;
+	for (no = 1; no < 7; ++no)
+	{
+		for (iic_s = 1; iic_s < 21; ++iic_s)
+		{
+			if (ＣＳ実装中(iic, iic_s, -1) == no)
+			{
+				break;
+			}
+			if (iic_s == 20)
+			{
+				return no;
+			}
+		}
+	}
+	return 0;
+}
+
+int ＣＳ有無(lint iic, lint iis, lint fg)
+{
+	return ＣＳ番号取得(iic, iis, fg);
+}
+
+int ＣＳ有無／スタメン(ref lint iic, lint iis, lint fg)
+{
+	return ＣＳ番号取得／スタメン(iic, iis, fg);
+}
+
+int ＣＳ番号取得(int iic, int iis, int fg)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		if (fg == 1 && ＣＳ実装中(iic, iic_s, -1) != 0 && ＣＳ番号(iic, iic_s, -1) == iis)
+		{
+			return iic_s;
+		}
+		if (fg == 2 && ＣＳ実装中(iic, iic_s, -1) == 0 && ＣＳ番号(iic, iic_s, -1) == iis)
+		{
+			return iic_s;
+		}
+		if (fg == 0 && ＣＳ保有(iic, iic_s, -1) == 1 && ＣＳ番号(iic, iic_s, -1) == iis)
+		{
+			return iic_s;
+		}
+	}
+	return 0;
+}
+
+int ＣＳ番号取得／スタメン(ref lint ref_iic, int iis, int fg)
+{
+	int loop = 0;
+	int iic_s = 0;
+	int iic = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0)
+		{
+			iic = PTA[loop];
+			iic_s = ＣＳ番号取得(iic, iis, fg);
+			if (iic_s != 0)
+			{
+				ref_iic = iic;
+				return iic_s;
+			}
+		}
+	}
+	return 0;
+}
+
+int ＣＳ総数取得／スタメン(int iis, int fg)
+{
+	int loop = 0;
+	int re = 0;
+	int aa = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0)
+		{
+			if (ＣＳ番号取得(PTA[loop], iis, fg) != 0)
+			{
+				++aa;
+			}
+		}
+	}
+	return aa;
+}
+
+int ＣＳ有無／機能(int iic, int no, int fg)
+{
+	int iic_s = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		if (fg == 1 && ＣＳ実装中(iic, iic_s, -1) != 0 && Ｓ機能(ＣＳ番号(iic, iic_s, -1), -1) == no)
+		{
+			return iic_s;
+		}
+		if (fg == 2 && ＣＳ実装中(iic, iic_s, -1) == 0 && Ｓ機能(ＣＳ番号(iic, iic_s, -1), -1) == no)
+		{
+			return iic_s;
+		}
+		if (fg == 0 && ＣＳ保有(iic, iic_s, -1) == 1 && Ｓ機能(ＣＳ番号(iic, iic_s, -1), -1) == no)
+		{
+			return iic_s;
+		}
+	}
+	return 0;
+}
+
+int ＣＳ有無／最大回数(int iic, int iis, int fg)
+{
+	int iic_s = ＣＳ番号取得(iic, iis, fg);
+	if (iic_s == 0)
+	{
+		return 0;
+	}
+	return ＣＳ使用回数最大(iic, iic_s, -1);
+}
+
+int ＣＳ有無／ランク(int iic, int iis, int fg)
+{
+	int iic_s = ＣＳ番号取得(iic, iis, fg);
+	if (iic_s == 0)
+	{
+		return 0;
+	}
+	if (Ｓタイプ(iis, -1) == 20 || Ｓタイプ(iis, -1) == 30)
+	{
+		return ＣＳランク(iic, iic_s, -1);
+	}
+	return 0;
+}
+
+int ＣＳ有無／ランク別効果(int iic, int iis, int fg)
+{
+	int iics = ＣＳ番号取得(iic, iis, 0);
+	if (iics == 0)
+	{
+		return 0;
+	}
+	int ▲実装 = 0;
+	if (ＣＳ実装中(iic, iics, -1) == 0)
+	{
+		▲実装 = 0;
+	}
+	if (ＣＳ実装中(iic, iics, -1) != 0)
+	{
+		▲実装 = 1;
+	}
+	if (Ｓタイプ(iis, -1) == 30)
+	{
+		▲実装 = 1;
+	}
+	int aa = ＣＳランク(iic, iics, -1);
+	if (▲実装 == 1 && fg != 2)
+	{
+		if (aa == 1)
+		{
+			return Ｓ効果(iis, -1);
+		}
+		if (aa == 2)
+		{
+			return Ｓ効果２(iis, -1);
+		}
+		if (aa == 3)
+		{
+			return Ｓ効果３(iis, -1);
+		}
+		if (aa == 4)
+		{
+			return Ｓ効果４(iis, -1);
+		}
+	}
+	if (▲実装 == 0 && fg != 1)
+	{
+		if (aa == 1)
+		{
+			return Ｓ効果(iis, -1) / 2;
+		}
+		if (aa == 2)
+		{
+			return Ｓ効果２(iis, -1) / 2;
+		}
+		if (aa == 3)
+		{
+			return Ｓ効果３(iis, -1) / 2;
+		}
+		if (aa == 4)
+		{
+			return Ｓ効果４(iis, -1) / 2;
+		}
+	}
+	return 0;
+}
+
+int ＣＳ有無／ランク別効果／スタメン(ref lint iic, int iis, int fg)
+{
+	int loop = 0;
+	int ▲最大値 = 0;
+	int ▲取得値 = 0;
+	int ▲iic = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0)
+		{
+			iic = PTA[loop];
+			▲取得値 = ＣＳ有無／ランク別効果(iic, iis, fg);
+			if (▲取得値 > ▲最大値)
+			{
+				▲最大値 = ▲取得値;
+				▲iic = iic;
+			}
+		}
+	}
+	iic = ▲iic;
+	return ▲最大値;
+}
+
+lint ＣＳ使用可能なスキルの有無(lint iic)
+{
+	lint aa = 0;
+	lint loop = 0;
+	lint iic_s = 0;
+	for (iic_s = 1; iic_s < 21; iic_s++)
+	{
+		if (ＣＳ実装中(iic, iic_s, -1) != 0 && ＣＳ使用回数(iic, iic_s, -1) != 0 && ＣＳ番号(iic, iic_s, -1) != 384)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+lint ＣＳランダムで使用済みにする(int iic)
+{
+	array@lint ▲スキル番号[11];
+	lint aa = 0;
+	lint iic_s = 0;
+	for (iic_s = 1; iic_s < 21; iic_s++)
+	{
+		if (ＣＳ実装中(iic, iic_s, -1) != 0 && ＣＳ使用回数(iic, iic_s, -1) != 0 && ＣＳ使用禁止(iic, iic_s, -1) == 0 && aa < 10)
+		{
+			aa++;
+			▲スキル番号[aa] = iic_s;
+		}
+	}
+	if (aa == 0)
+	{
+		return 0;
+	}
+	iic_s = ▲スキル番号[RAND(aa)];
+	ＣＳ使用禁止(iic, iic_s, 3);
+	return iic_s;
+}
+
+int ＣＳ追加(int iic, int iis, int 回数)
+{
+	int aa = 0;
+	int loop = 0;
+	int iics = 0;
+	if (◆ＤＢ／再計算ログ == 1)
+	{
+		LOG_TADA("ＣＳ追加 " + Ｓ名前(iis, "") + "　" + string(回数) + "\n");
+	}
+	iics = ＣＳ番号取得(iic, iis, 0);
+	if (iics != 0)
+	{
+		if (Ｓタイプ(iis, -1) == 10)
+		{
+			ＣＳ使用回数最大(iic, iics, ＣＳ使用回数最大(iic, iics, -1) + 回数);
+		}
+		if (Ｓタイプ(iis, -1) == 20 && ＣＳランク(iic, iics, -1) < 回数)
+		{
+			ＣＳランク(iic, iics, 回数);
+		}
+		if (Ｓタイプ(iis, -1) == 30 && ＣＳランク(iic, iics, -1) < 回数)
+		{
+			ＣＳランク(iic, iics, 回数);
+		}
+		return iics;
+	}
+	if (iics == 0)
+	{
+		iics = ＣＳ空き番号取得(iic);
+		if (iics == 0)
+		{
+			LOG_TADA("ＥＲＲＯＲ　ＣＳ空き番号がありません\n");
+			return 0;
+		}
+		ＣＳ番号(iic, iics, iis);
+		ＣＳ保有(iic, iics, 1);
+		Ｃスキル表示文(iic, iics, Ｓ表示文(iis, ""));
+		if (回数 == 0)
+		{
+			回数 = 1;
+		}
+		if (Ｓタイプ(iis, -1) == 10)
+		{
+			ＣＳ使用回数最大(iic, iics, 回数);
+		}
+		if (Ｓタイプ(iis, -1) == 20)
+		{
+			ＣＳランク(iic, iics, 回数);
+		}
+		if (Ｓタイプ(iis, -1) == 30)
+		{
+			ＣＳランク(iic, iics, 回数);
+		}
+		return iics;
+	}
+	LOG_TADA("ＥＲＲＯＲ　ＣＳ追加　\n");
+	return 0;
+}
+
+int Ｃ敵スキル追加(int iic, int iis)
+{
+	int aa = 0;
+	int iics = ＣＳ空き番号取得(iic);
+	if (iics == 0)
+	{
+		LOG_TADA("ＥＲＲＯＲ　ＣＳ空き番号がありません\n");
+		return 0;
+	}
+	int no = ＣＳ空き実装番号取得(iic);
+	if (no == 0)
+	{
+		return 0;
+	}
+	ＣＳ番号(iic, iics, iis);
+	ＣＳ保有(iic, iics, 1);
+	ＣＳ実装中(iic, iics, no);
+	ＣＳ使用回数最大(iic, iics, 99);
+	ＣＳ使用回数(iic, iics, 99);
+	ＣＳ表示文(iic, iics, Ｓ表示文(iis, ""));
+	return iics;
+}
+
+void ＣＳ削除(int iic, int iis)
+{
+	int loop = 0;
+	int no = 0;
+	if (◆ＤＢ／再計算ログ == 1)
+	{
+		LOG_TADA("ＣＳ削除 " + Ｓ名前(iis, "") + "\n");
+	}
+	int iics = ＣＳ番号取得(iic, iis, 0);
+	if (iics == 0)
+	{
+		return;
+	}
+	ＣＳ初期化(iic, iics);
+	return;
+}
+
+void ＣＳ追加／全キャラ(lint iis, int max)
+{
+	int iic = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) != 0)
+		{
+			ＣＳ追加(iic, iis, max);
+		}
+	}
+}
+
+void ＣＳ削除／全キャラ(lint iis)
+{
+	int iic = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) != 0)
+		{
+			ＣＳ削除(iic, iis);
+		}
+	}
+}
+
+int ＣＳランク効果(int iic, int iics)
+{
+	int aa = 0;
+	int bb = 0;
+	int iis = ＣＳ番号(iic, iics, -1);
+	aa = ＣＳランク(iic, iics, -1);
+	if (aa == 0)
+	{
+		aa = 1;
+	}
+	if (aa == 1)
+	{
+		bb = Ｓ効果(iis, -1);
+	}
+	if (aa == 2)
+	{
+		bb = Ｓ効果２(iis, -1);
+	}
+	if (aa == 3)
+	{
+		bb = Ｓ効果３(iis, -1);
+	}
+	if (aa == 4)
+	{
+		bb = Ｓ効果４(iis, -1);
+	}
+	return bb;
+}
+

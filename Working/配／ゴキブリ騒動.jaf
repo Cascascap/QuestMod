@@ -1,0 +1,448 @@
+void ゴキブリ騒動／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(0, 1, 2000);
+	セット表示(5510, 5150, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Throne Room' A;
+	音楽(93, -1, -1);
+	セリフ(2005, "");
+	'"........."' A;
+	ト書き();
+	'Rance found himself struggling with an enormous problem.' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Is something the matter?"' A;
+	セリフ(2000, "");
+	'"...Mm."' A;
+	セリフ(2005, "");
+	'"Why do cockroaches keep showing up in my castle...?"' A;
+	セリフ(2450, "");
+	'"...Cockroaches... you say..."' A;
+	セリフ(2000, "");
+	'"Mm. I can\'t use the thing because of them..."' A;
+	'"It\'s annoying. It\'s incredibly annoying."' A;
+	セリフ(2005, "");
+	'"...Is it dirty in here or something?"' A;
+	セリフ(2450, "");
+	'"We strive to maintain the highest levels of cleanliness and hygienic food storage."' A;
+	セリフ(2000, "");
+	'"Then why."' A;
+	セリフ(2450, "");
+	'"I\'m terribly sorry.' R;
+	' The cockroaches are still appearing all over the castle."' A;
+	セリフ(2005, "");
+	'"Hmmmm..."' A;
+	セリフ(2000, "");
+	'"As the head maid, what do you think about this, Miss Biscuitta?"' A;
+	セリフ(2450, "");
+	'"It feels as if I\'m boiling alive, every day."' A;
+	セリフ(2005, "");
+	'"...Heh?"' A;
+	セリフ(2451, "");
+	'"........."' A;
+	セリフ(2450, "");
+	'"I apologize...' R;
+	' I should not have bored you with my petty emotions."' A;
+	セリフ(2005, "");
+	'"Ah, uh, nah..."' A;
+	セリフ(2000, "");
+	'"Are you, like... really mad...?"' A;
+	セリフ(2450, "");
+	'"It would not do to lose my composure in front of you, Master, but yes, I think I\'m as angry as anyone would be."' A;
+	セリフ(2005, "");
+	'"Mmh... I see..."' A;
+	セリフ(2450, "");
+	'"Yes."' A;
+	セリフ(2005, "");
+	'"W-Well, you are the one looking after the castle and all, Miss Biscuitta.' R;
+	' I guess it should make you pretty mad, mhm..."' A;
+	セリフ(2450, "");
+	'"No, it\'s merely that I cannot stand cockroaches."' A;
+	セリフ(2000, "");
+	'"Ah, gotcha."' A;
+	セリフ(2451, "");
+	'"Yes, when I consider that they must be breeding somewhere near the castle...' R;
+	' I\'m almost overcome with self-hatred for allowing it..."' A;
+	'"........."' A;
+	セリフ(2005, "");
+	'"Well... don\'t go too far..."' A;
+	セリフ(2450, "");
+	'"Yes, of course."' A;
+	セリフ(2000, "");
+	'"Alright, then I\'m gonna exterminate ’em.' R;
+	' So that they never show up again."' A;
+	セリフ(2002, "");
+	'"We\'ll call it \'Operation Cockroach Culling\'!"' A;
+	セリフ(2450, "");
+	'"...Forgive me, Master, but exterminating cockroaches is factually impossible..."' A;
+	セリフ(2005, "");
+	'"...Hm."' A;
+	セリフ(2000, "");
+	'"Nothing\'s impossible for me!' R;
+	' Prepare everything, Miss Biscuitta."' A;
+	セリフ(2450, "");
+	'"........."' A;
+	セリフ(2002, "");
+	'"Prepaaare!!"' A;
+	セリフ(2450, "");
+	'"...Certainly.' R;
+	' Tonight, then."' A;
+	セリフ(2000, "");
+	'"Right!"' A;
+	音楽(0, 1, 2000);
+	エフェクトセット表示(7001, 5511, 0, 0, 0, 0);
+	ト書き();
+	'　' R;
+	'     Late That Night' A;
+	枠消去();
+	背景表示(5151, 1, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Throne Room' A;
+	セリフ(2005, "");
+	'"Hmmm..."' A;
+	セリフ(2450, "");
+	'"........."' A;
+	ト書き();
+	'Silver creatures darted all around the throne room late that night.' A;
+	セリフ(2005, "");
+	'"...There are so many of them..."' A;
+	音楽(13, -1, -1);
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Master, I\'ve lured all the cockroaches in the castle here using D&DT."' A;
+	セリフ(2005, "");
+	'"M-Mm..."' A;
+	セリフ(2450, "");
+	'"You may proceed with the extermination."' A;
+	セリフ(2000, "");
+	'"Yeah, leave it to me."' A;
+	セリフ(2450, "");
+	'"If any of them should escape, they\'ll continue to breed, so do not let a single one leave."' A;
+	セリフ(2000, "");
+	'"So I\'ve just gotta kill ’em all."' A;
+	セリフ(2450, "");
+	'"...Exactly."' A;
+	セリフ(2451, "");
+	'"And you must not let a single one escape."' A;
+	セリフ(2005, "");
+	'"Ah, yeah..."' A;
+	セリフ(2450, "");
+	'"Is something the matter?"' A;
+	セリフ(2000, "");
+	'"You kinda... seem really mad?"' A;
+	セリフ(2450, "");
+	'"...I am quite composed."' A;
+	セリフ(2005, "");
+	'"I-I see..."' A;
+	セリフ(2450, "");
+	'"Yes?"' A;
+	セリフ(2000, "");
+	'"...It\'s nothing."' A;
+	セリフ(2450, "");
+	'"Right."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2002, "");
+	'"Let\'s go, then!' R;
+	' Operation Cockroach Culling, commence!"' A;
+	ADVOFF();
+}
+
+void ゴキブリ騒動／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5511, 5151, 0, 0);
+	音楽(0, 1, 2000);
+	セリフ(2000, "");
+	'"Was that... the last one?"' A;
+	セリフ(2005, "");
+	'"We should have...' R;
+	' gotten all of them now, right...?"' A;
+	'"We did, right? Miss Biscuitta?"' A;
+	音楽(93, -1, -1);
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"It\'s as you say.' R;
+	' The extermination is complete."' A;
+	セリフ(2000, "");
+	'"Oh, it is, it is!' R;
+	' That\'s resolved, then!"' A;
+	セリフ(2450, "");
+	'"I should never have doubted, Master.' R;
+	' That was quite impressive."' A;
+	セリフ(2001, "");
+	'"Wasn\'t it, wasn\'t it?' R;
+	' Gahahahahahahahahahaha!"' A;
+	セリフ(2000, "");
+	'"It\'s so good to know the cockroaches are gone forever!"' A;
+	セリフ(2450, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Hm? What\'s up?"' A;
+	セリフ(2450, "");
+	'"No, it\'s nothing."' A;
+	セリフ(2090, "");
+	'"Umm..."' A;
+	セリフ(2091, "");
+	'"It\'s great that we\'ve exterminated the cockroaches, but...' R;
+	' can we do something about the pervert mice that keep showing up in the attic...?"' A;
+	'"They watch me change, and they steal my underwear... they basically have the run of the place..."' A;
+	セリフ(2000, "");
+	'"It doesn\'t sound like they\'re causing me any harm, so we\'ll ignore them for now."' A;
+	セリフ(2090, "");
+	'"........."' A;
+	セリフ(2001, "");
+	'"Gahahaha, anyway, the cockroach issue is resolved!"' A;
+	セリフ(2450, "");
+	'"........."' A;
+	'"...Good work."' A;
+	セリフ(2000, "");
+	'"Mm."' A;
+	ADVOFF();
+}
+
+void 続ゴキブリ騒動／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, 5150, 0, 0);
+	音楽(0, 1, 2000);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Throne Room' A;
+	音楽(93, -1, -1);
+	セリフ(2005, "");
+	'"Why?!"' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"........."' A;
+	セリフ(2002, "");
+	'"We exterminated the cockroaches, didn\'t we?' R;
+	' So why are there more now?!"' A;
+	セリフ(2450, "");
+	'"...Even if you exterminate the cockroaches in the castle, they\'ll still get in from the local area."' A;
+	セリフ(2002, "");
+	'"Whaaat?!"' A;
+	セリフ(2450, "");
+	'"Especially the nearby mines.' R;
+	' They\'re infested.' R;
+	' I imagine they\'re coming from there..."' A;
+	セリフ(2005, "");
+	'"...So we need to go at the problem from the root, eh...?"' A;
+	セリフ(2450, "");
+	'"Precisely."' A;
+	セリフ(2005, "");
+	'"If it\'s come to this, we\'ll be fuckin\' thorough..."' A;
+	セリフ(2450, "");
+	'"That\'s dangerous.' R;
+	' Especially with the newly evolved breeds that I\'ve heard are becoming more common."' A;
+	セリフ(2002, "");
+	'"I can\'t hide here while they\'re ridiculing me like this!' R;
+	' Miss Biscuitta, make the preparations!"' A;
+	セリフ(2450, "");
+	'"........."' A;
+	'"...If you say so, Master, I will not object."' A;
+	セリフ(2002, "");
+	'"Let\'s go! Operation Cockroach Culling!' R;
+	' This time we\'ll get every last one!"' A;
+	セリフ(2450, "");
+	'"Very well."' A;
+	音楽(0, -1, -1);
+	ADVOFF();
+	地図点滅(30, "", 0, 0);
+	ADVON();
+	音楽(13, -1, -1);
+	セット表示(5530, 5680, 0, 0);
+	ト書き();
+	'An abandoned mine near Cidade.' R;
+	'It used to be a lively place, but it\'s since become a hive of cockroaches.' A;
+	'As it happens, it\'s just because the area has the perfect temperature and humidity for cockroach breeding.' A;
+	セリフ(2000, "");
+	'"........."' A;
+	ト書き();
+	'Cockroaches scuttled about at Rance\'s feet.' A;
+	セリフ(2005, "");
+	'"Khh... I can\'t believe something like this was right next to my castle..."' A;
+	セリフ(2450, "");
+	'"I\'ve already used D&DT to gather all the cockroaches in the mine to here."' A;
+	セリフ(2000, "");
+	'"We\'ll destroy them so that not a single one remains, then."' A;
+	セリフ(2002, "");
+	'"Let\'s do it!"' A;
+	セリフ(2450, "");
+	'"I pray for your fortune in this battle..."' A;
+	ADVOFF();
+}
+
+void 続ゴキブリ騒動／進化()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	'The defeated cockroaches writhed about.' A;
+	ト書き();
+	'　' R;
+	'  <bzzzzt!>' A;
+	'They sent out a mysterious signal to their comrades.' R;
+	'The other cockroaches gained some energy!' A;
+	セリフ(2450, "");
+	'"...It appears as though they\'ve evolved."' A;
+	セリフ(2005, "");
+	'"Y-You\'ve gotta be kidding..."' A;
+	ト書き();
+	'The cockroaches evolved from this battle.' R;
+	if (◆ＡＡ == 5)
+	{
+		'They now resist fire';
+	}
+	if (◆ＡＡ == 4)
+	{
+		'They now resist ice';
+	}
+	if (◆ＡＡ == 3)
+	{
+		'They now resist electric';
+	}
+	if (◆ＡＡ == 1)
+	{
+		'They now resist light';
+	}
+	if (◆ＡＡ == 2)
+	{
+		'They now resist dark';
+	}
+	if (◆ＡＡ == 11)
+	{
+		'They now resist sword';
+	}
+	if (◆ＡＡ == 12)
+	{
+		'They now resist short sword';
+	}
+	if (◆ＡＡ == 13)
+	{
+		'They now resist hammer';
+	}
+	if (◆ＡＡ == 14)
+	{
+		'They now resist spear';
+	}
+	if (◆ＡＡ == 15)
+	{
+		'They now resist bow';
+	}
+	' damage.' A;
+	ADVOFF();
+}
+
+void 続ゴキブリ騒動／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(0, 1, 2000);
+	セット表示(5530, 5680, 0, 0);
+	ト書き();
+	'The cockroaches had been completely flattened. They were dead.' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"H-How\'s that...?' R;
+	' Was that the last one?"' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"........."' A;
+	セリフ(2450, "");
+	'"...Yes, there are no longer any cockroaches here."' A;
+	音楽(94, -1, -1);
+	セリフ(2001, "");
+	'"Ooh, we did it!"' A;
+	セリフ(2450, "");
+	'"Good work."' A;
+	思考(2450, "");
+	'(...I can\'t believe he\'s actually achieved such an unprecedented thing as a cockroach extermination...)' A;
+	セリフ(2005, "");
+	'"Phew, I\'m beat."' A;
+	セリフ(2450, "");
+	'"I\'ve prepared a bath for you.' R;
+	' Please have a nice, relaxing rest tonight."' A;
+	セリフ(2450, "");
+	'"You really have done wonderfully today."' A;
+	ト書き();
+	'Biscuitta gave Rance a deep bow.' A;
+	音楽(0, 1, 2000);
+	エフェクトセット表示(7001, 5510, 0, 0, 0, 0);
+	ト書き();
+	'　' R;
+	'     A Few Days Later' A;
+	枠消去();
+	背景表示(5322, 1, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Hallway' A;
+	音楽(93, -1, -1);
+	セリフ(2000, "");
+	'"Hey, morning, Miss Biscuitta."' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Good morning, Master."' A;
+	セリフ(2000, "");
+	'"Come to think of it, I haven\'t seen a cockroach in a while...' R;
+	' Was our extermination perfect?"' A;
+	セリフ(2450, "");
+	'"Yes, it appears as though they\'ve been annihilated. It\'s thanks to you, Master."' A;
+	セリフ(2450, "");
+	'"There isn\'t a single cockroach inside Rance Castle any longer, and we have detectors set up in the vicinity for complete defense."' A;
+	'"In the rare chance one attempts to infiltrate, the maids will intercept it immediately."' A;
+	'"I have no intention of letting even a single one intrude again."' A;
+	セリフ(2000, "");
+	'"Mm, I see."' A;
+	'"Oh? So that means I can come and go from the castle whenever I want now?"' A;
+	セリフ(2450, "");
+	'"Yes, it is your castle, Master, so that\'s only natural."' A;
+	セリフ(2001, "");
+	'"Gahahaha, I see, I see."' A;
+	'"A wonderful life, free of cockroaches!"' A;
+	セリフ(2450, "");
+	'"Congratulations."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'　' R;
+	'  Congratulations on your victory.' R;
+	'  You can now visit Rance Castle' R;
+	'  whenever you like.' A;
+	ADVOFF();
+}
+

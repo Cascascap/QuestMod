@@ -1,0 +1,67 @@
+T_WorldLevel::T_WorldLevel()
+{
+	this.clear();
+}
+
+T_WorldLevel::~T_WorldLevel()
+{
+	this.delete();
+}
+
+bool T_WorldLevel::create(int nX, int nY, int nZ)
+{
+	this.delete();
+	if (Ｒ８マグナム確認())
+	{
+		nY += 25;
+	}
+	this.m_spBase.setCg(10506);
+	this.m_spBase.setPos(nX, nY);
+	this.m_spBase.setZ(nZ);
+	this.m_sNumber.create(10507, false, 1, 3, 0);
+	this.m_sNumber.setPos(nX + 251, nY + -7);
+	this.m_sNumber.setZ(nZ + 1);
+	return true;
+}
+
+void T_WorldLevel::delete()
+{
+	this.m_spBase.delete();
+	this.m_sNumber.delete();
+	this.clear();
+}
+
+void T_WorldLevel::clear()
+{
+	this.m_nLevel = -1;
+	this.m_bShow = false;
+}
+
+void T_WorldLevel::setShow(bool bShow)
+{
+	if (this.m_nLevel > 1)
+	{
+		this.m_spBase.setShow(bShow);
+		this.m_sNumber.setShow(bShow);
+	}
+	else
+	{
+		this.m_spBase.setShow(0);
+		this.m_sNumber.setShow(false);
+	}
+	this.m_bShow = bShow;
+}
+
+void T_WorldLevel::setBlendRate(int nBlendRate)
+{
+	this.m_spBase.setBlendRate(nBlendRate);
+	this.m_sNumber.setBlendRate(nBlendRate);
+}
+
+void T_WorldLevel::setValue(int nValue)
+{
+	this.m_nLevel = 数値_補正(nValue, 1, 9);
+	this.m_sNumber.setValue(this.m_nLevel, 0, false);
+	this.setShow(this.m_bShow);
+}
+

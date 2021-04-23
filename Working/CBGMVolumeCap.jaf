@@ -1,0 +1,36 @@
+CBGMVolumeCap::CBGMVolumeCap()
+{
+	this.m_CapVolume = 60;
+	this.m_FadeOutTime = 100;
+	this.m_WaitForFadeInTime = 1000;
+	this.m_FadeInTime = 450;
+}
+
+void CBGMVolumeCap::Set(int CapVolume, int FadeOutTime, int WaitForFadeInTime, int FadeInTime)
+{
+	this.m_CapVolume = CapVolume;
+	this.m_FadeOutTime = FadeOutTime;
+	this.m_WaitForFadeInTime = WaitForFadeInTime;
+	this.m_FadeInTime = FadeInTime;
+}
+
+int CBGMVolumeCap::GetCapVolume()
+{
+	return this.m_CapVolume;
+}
+
+int CBGMVolumeCap::GetFadeOutTime()
+{
+	return this.m_FadeOutTime;
+}
+
+int CBGMVolumeCap::GetWaitForFadeInTime()
+{
+	return this.m_WaitForFadeInTime;
+}
+
+int CBGMVolumeCap::GetFadeInTime()
+{
+	return this.m_FadeInTime;
+}
+

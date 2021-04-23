@@ -1,0 +1,335 @@
+int T_CgModeData::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_CgModeData::getStatus()
+{
+	return this.m_nStatus;
+}
+
+int T_CgModeData::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_CgModeData::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_CgModeData::getZ()
+{
+	return this.m_nZ;
+}
+
+T_CgModeData::T_CgModeData()
+{
+	this.clear();
+}
+
+T_CgModeData::~T_CgModeData()
+{
+	this.delete();
+}
+
+void T_CgModeData::create(int nX, int nY, int nZ)
+{
+	this.delete();
+	this.m_sNumber.create(12252, false, 3, 2, 0);
+	this.m_sNumber.setPos(nX + 140, nY + 112);
+	this.m_sNumber.setZ(nZ + 1);
+	this.m_spNew.setCg(20000);
+	this.m_spNew.setPos(nX + 0, nY + 0);
+	this.m_spNew.setZ(nZ + 1);
+	this.m_nX = nX;
+	this.m_nY = nY;
+	this.m_nZ = nZ;
+}
+
+void T_CgModeData::delete()
+{
+	this.m_spBase.delete();
+	this.m_sNumber.delete();
+	this.m_spNew.delete();
+	this.clear();
+}
+
+void T_CgModeData::clear()
+{
+	this.m_nNo = -1;
+	this.m_nStatus = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+}
+
+bool T_CgModeData::exec(int nMode)
+{
+	if (this.m_nNo <= 0 || this.m_nStatus <= 0)
+	{
+		return false;
+	}
+	システムバー_表示設定(false);
+	T_Sprite spWork;
+	spWork.createPixelOnly(1024, 768);
+	spWork.fill(0, 0, 1024, 768, 0, 0, 0, 255);
+	spWork.setPos(0, 0);
+	spWork.setZ(791);
+	spWork.setShow(1);
+	_EFFECT(1, 1000);
+	回想モード_実行ＯＮ();
+	if (nMode == 2)
+	{
+		Ｔ回想記録閲覧(this.m_nNo);
+	}
+	else
+	{
+		ＴＣＧ記録閲覧(this.m_nNo);
+	}
+	回想モード_実行ＯＦＦ();
+	ＣＧモード見た_設定(this.m_nNo - 1, true, true);
+	this.m_nStatus = 2;
+	画面_クリア(true, true);
+	_EFFECT(1, 1000);
+	spWork.delete();
+	システムバー_表示設定(true);
+	ミニステータス_ボタン表示設定(false);
+	ミニステータス_表示設定(false);
+	return true;
+}
+
+bool T_CgModeData::set(int nNo)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	this.m_spBase.delete();
+	int nCgNo = ＣＧモード_サムネイル番号(nNo);
+	if (nCgNo > 0)
+	{
+		this.m_spBase.setCg(nCgNo);
+		this.m_sNumber.setValue(nNo, 0, false);
+		this.m_nNo = nNo;
+		this.m_nStatus = ＣＧモード見た(nNo - 1) ? 2 : 1;
+	}
+	else if (nCgNo == 0)
+	{
+		this.m_sNumber.setValue(nNo, 0, false);
+		this.m_nNo = nNo;
+		this.m_nStatus = 0;
+	}
+	else
+	{
+		this.m_spBase.create(192, 144, 0, 0, 0, 166);
+		this.m_nNo = -1;
+		this.m_nStatus = -1;
+	}
+	this.m_spBase.setPos(this.m_nX, this.m_nY);
+	this.m_spBase.setZ(this.m_nZ);
+	return true;
+}
+
+void T_CgModeData::setShow(bool bShow)
+{
+	if (this.m_nStatus < 0)
+	{
+		this.m_spBase.setShow(bShow);
+		this.m_sNumber.setShow(false);
+		this.m_spNew.setShow(0);
+	}
+	else
+	{
+		this.m_spBase.setShow(this.m_nStatus > 0 ? bShow : 0);
+		this.m_sNumber.setShow(bShow);
+		this.m_spNew.setShow(this.m_nStatus == 1 ? bShow : 0);
+	}
+}
+
+int T_CgModeDataManager::getTopIndex()
+{
+	return this.m_nTopIndex;
+}
+
+bool T_CgModeDataManager::getShow()
+{
+	return this.m_bShow;
+}
+
+T_CgModeDataManager::T_CgModeDataManager()
+{
+	this.clear();
+}
+
+T_CgModeDataManager::~T_CgModeDataManager()
+{
+	this.delete();
+}
+
+void T_CgModeDataManager::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asData[i].create(ＣＧモード_位置Ｘ(i), ＣＧモード_位置Ｙ(i), nZ);
+	}
+	this.m_nMax = ((ＣＧモード_最大数() + 3) / 4) * 4 - 20;
+}
+
+void T_CgModeDataManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asData[i].delete();
+	}
+	this.clear();
+}
+
+void T_CgModeDataManager::clear()
+{
+	this.m_nTopIndex = -1;
+	this.m_nMax = 0;
+	this.m_bShow = false;
+}
+
+int T_CgModeDataManager::moveUp(int nIndex, bool bLoop)
+{
+	int nRow = ＣＧモード_行位置(nIndex);
+	int nCol = ＣＧモード_列位置(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	return nRow > 0 ? ＣＧモード_インデクス(nRow - 1, nCol) : (bLoop ? ＣＧモード_インデクス(3, nCol) : -1);
+}
+
+int T_CgModeDataManager::moveDown(int nIndex, bool bLoop)
+{
+	int nRow = ＣＧモード_行位置(nIndex);
+	int nCol = ＣＧモード_列位置(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	return nRow < 3 ? ＣＧモード_インデクス(nRow + 1, nCol) : (bLoop ? ＣＧモード_インデクス(0, nCol) : -1);
+}
+
+int T_CgModeDataManager::moveLeft(int nIndex, bool bLoop)
+{
+	int nRow = ＣＧモード_行位置(nIndex);
+	int nCol = ＣＧモード_列位置(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	return nCol > 0 ? ＣＧモード_インデクス(nRow, nCol - 1) : (bLoop ? ＣＧモード_インデクス(nRow, 4) : -1);
+}
+
+int T_CgModeDataManager::moveRight(int nIndex, bool bLoop)
+{
+	int nRow = ＣＧモード_行位置(nIndex);
+	int nCol = ＣＧモード_列位置(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	return nCol < 4 ? ＣＧモード_インデクス(nRow, nCol + 1) : (bLoop ? ＣＧモード_インデクス(nRow, 0) : -1);
+}
+
+bool T_CgModeDataManager::exec(int nIndex, int nMode)
+{
+	ref T_CgModeData rfsData = this.get(nIndex);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	return rfsData.exec(nMode);
+}
+
+int T_CgModeDataManager::setTopIndex(int nTopIndex)
+{
+	nTopIndex = 数値_補正(nTopIndex, 0, this.m_nMax);
+	if (this.m_nTopIndex == nTopIndex)
+	{
+		return this.m_nTopIndex;
+	}
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asData[i].set(nTopIndex + i + 1);
+	}
+	this.m_nTopIndex = nTopIndex;
+	this.setShow(this.m_bShow);
+	return nTopIndex;
+}
+
+void T_CgModeDataManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asData[i].setShow(bShow);
+	}
+	this.m_bShow = bShow;
+}
+
+int T_CgModeDataManager::getNo(int nIndex)
+{
+	ref T_CgModeData rfsData = this.get(nIndex);
+	return rfsData !== NULL ? rfsData.getNo() : -1;
+}
+
+int T_CgModeDataManager::getStatus(int nIndex)
+{
+	ref T_CgModeData rfsData = this.get(nIndex);
+	return rfsData !== NULL ? rfsData.getStatus() : -1;
+}
+
+int T_CgModeDataManager::getPosX(int nIndex)
+{
+	ref T_CgModeData rfsData = this.get(nIndex);
+	return rfsData !== NULL ? rfsData.getPosX() : -1;
+}
+
+int T_CgModeDataManager::getPosY(int nIndex)
+{
+	ref T_CgModeData rfsData = this.get(nIndex);
+	return rfsData !== NULL ? rfsData.getPosY() : -1;
+}
+
+int T_CgModeDataManager::getZ(int nIndex)
+{
+	ref T_CgModeData rfsData = this.get(nIndex);
+	return rfsData !== NULL ? rfsData.getZ() : -1;
+}
+
+ref T_CgModeData T_CgModeDataManager::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asData.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asData[nIndex];
+}
+
+int T_CgModeDataManager::search(int nNo)
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].getNo() == nNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

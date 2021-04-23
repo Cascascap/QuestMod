@@ -1,0 +1,90 @@
+void スプライトズーム_縮小(int nCgNo, int nTotalTime)
+{
+	スプライトズーム(nCgNo, nTotalTime, 20.0, 0.0);
+}
+
+void スプライトズーム_拡大(int nCgNo, int nTotalTime)
+{
+	スプライトズーム(nCgNo, nTotalTime, 0.0, 50.0);
+}
+
+void スプライトズーム(int nCgNo, int nTotalTime, float fBeginMagRate, float fEndMagRate)
+{
+	int CGSpriteHandle = AFL_CreateFreeSpriteHandle();
+	int CGSpriteNumber = AFL_GetFreeSpriteNum(CGSpriteHandle);
+	if (!AFL_Sprite_SetCG(CGSpriteNumber, "%d" % nCgNo))
+	{
+		goto label0;
+	}
+	AFL_Sprite_SetShow(CGSpriteNumber, false);
+	int CGWidth = AFL_Sprite_GetWidth(CGSpriteNumber);
+	int CGHeight = AFL_Sprite_GetHeight(CGSpriteNumber);
+	int BackR = 0;
+	int BackG = 0;
+	int BackB = 0;
+	DrawGraph.GetPixelColor(CGSpriteNumber, 0, 0, BackR, BackG, BackB);
+	int ViewSpriteHandle = AFL_CreateFreeSpriteHandle();
+	int ViewSpriteNumber = AFL_GetFreeSpriteNum(ViewSpriteHandle);
+	int ViewWidth = AFL_View_GetWidth();
+	int ViewHeight = AFL_View_GetHeight();
+	AFL_Sprite_Create(ViewSpriteNumber, ViewWidth, ViewHeight);
+	AFL_Sprite_SetZ(ViewSpriteNumber, 999999);
+	CASEffectKeyCancelChecker ASEffectKeyCancelChecker;
+	ASEffectKeyCancelChecker.Init();
+	CASTimer Timer;
+	Timer.Reset();
+	for (; ; )
+	{
+		int Time = Timer.Get();
+		if (Time >= nTotalTime)
+		{
+			Time = nTotalTime;
+		}
+		if (未読スキップ中確認())
+		{
+			break;
+		}
+		if (既読スキップ中確認())
+		{
+			break;
+		}
+		if (ASEffectKeyCancelChecker.IsCancel())
+		{
+			if (ASEffectKeyCancelChecker.IsClickCanceled())
+			{
+				SYS_ReleaseModeByClickCancel();
+			}
+			break;
+		}
+		float Rate = Time / nTotalTime;
+		if (fBeginMagRate > fEndMagRate)
+		{
+			Rate = 1.0 - Math.Pow(1.0 - Rate, 4.0);
+		}
+		else
+		{
+			Rate = Math.Pow(Rate, 4.0);
+		}
+		float MagRate = fBeginMagRate + (fEndMagRate - fBeginMagRate) * Rate;
+		int StretchWidth = CGWidth * MagRate;
+		int StretchHeight = CGHeight * MagRate;
+		int DestX = ViewWidth / 2 - StretchWidth / 2;
+		int DestY = ViewHeight / 2 - StretchHeight / 2;
+		DrawGraph.FillWithAlpha(ViewSpriteNumber, 0, 0, ViewWidth, ViewHeight, BackR, BackG, BackB, 255);
+		DrawGraph.CopyStretchWithAlphaMap(ViewSpriteNumber, DestX, DestY, StretchWidth, StretchHeight, CGSpriteNumber, 0, 0, CGWidth, CGHeight);
+		UPDATE(true);
+		if (Time >= nTotalTime)
+		{
+			break;
+		}
+	}
+label0:
+	AFL_ReleaseFreeSpriteHandle(ViewSpriteHandle);
+	AFL_ReleaseFreeSpriteHandle(CGSpriteHandle);
+	if (fBeginMagRate > fEndMagRate)
+	{
+		画面色設定(BackR, BackG, BackB, true);
+		UPDATE(true);
+	}
+}
+

@@ -1,0 +1,492 @@
+void キー_初期化()
+{
+	g_sKey.init();
+	メッセージ送り_クリア();
+	カーソル_クリア();
+}
+
+void キー_クリア(bool bWheel)
+{
+	g_sKey.clear(bWheel);
+}
+
+bool キー_押下(int nKey)
+{
+	return g_sKey.isDown(nKey);
+}
+
+bool マウス_位置設定(int nX, int nY, bool bMouseFlag)
+{
+	return g_sKey.setMousePos(nX, nY, bMouseFlag);
+}
+
+bool マウス_位置設定_強制(int nX, int nY)
+{
+	return SystemService.MoveMouseCursorPosImmediately(nX, nY);
+}
+
+bool マウス_位置取得(ref int nX, ref int nY)
+{
+	return g_sKey.getMousePos(nX, nY);
+}
+
+void マウス_確認()
+{
+	int nX = 0;
+	int nY = 0;
+	g_sKey.getMousePos(nX, nY);
+}
+
+void マウス_フラグクリア()
+{
+	g_sKey.clearMouseFlag();
+}
+
+void マウス優先設定()
+{
+	g_sKey.setMouseFlag(true, -1);
+}
+
+void キー優先設定()
+{
+	g_sKey.setMouseFlag(false, -1);
+}
+
+bool マウス優先()
+{
+	return g_sKey.getMouseFlag();
+}
+
+bool キー優先()
+{
+	return !g_sKey.getMouseFlag();
+}
+
+string キー_名前(int nKey)
+{
+	return g_sKey.getName(nKey);
+}
+
+int ホイール_確認(bool bClear)
+{
+	return g_sKey.checkWheel(bClear);
+}
+
+void ホイール_クリア()
+{
+	AFL_MouseWheel_ClearCount();
+}
+
+int キー_決定()
+{
+	if (キー_押下(1))
+	{
+		return 1;
+	}
+	if (キー_押下(13))
+	{
+		return 13;
+	}
+	return 0;
+}
+
+int キー_決定_マウスなし()
+{
+	if (キー_押下(13))
+	{
+		return 13;
+	}
+	return 0;
+}
+
+int キー_キャンセル()
+{
+	if (キー_押下(2))
+	{
+		return 2;
+	}
+	if (キー_押下(32))
+	{
+		return 32;
+	}
+	return 0;
+}
+
+int キー_自動送り開始()
+{
+	if (キー_押下(65))
+	{
+		return 65;
+	}
+	return 0;
+}
+
+int キー_自動送り停止()
+{
+	if (キー_押下(65))
+	{
+		return 65;
+	}
+	if (キー_押下(1))
+	{
+		return 1;
+	}
+	if (キー_押下(13))
+	{
+		return 13;
+	}
+	return 0;
+}
+
+int キー_既読スキップ開始()
+{
+	if (キー_押下(83))
+	{
+		return 83;
+	}
+	if (キー_押下(4))
+	{
+		return 4;
+	}
+	return 0;
+}
+
+int キー_既読スキップ停止()
+{
+	if (キー_押下(83))
+	{
+		return 83;
+	}
+	if (キー_押下(4))
+	{
+		return 4;
+	}
+	return 0;
+}
+
+int キー_未読スキップ()
+{
+	if (キー_押下(17))
+	{
+		return 17;
+	}
+	return 0;
+}
+
+int キー_メッセージ送り()
+{
+	if (キー_押下(13))
+	{
+		return 13;
+	}
+	if (キー_押下(1))
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int キー_メッセージ枠消去()
+{
+	if (キー_押下(2))
+	{
+		return 2;
+	}
+	if (キー_押下(90))
+	{
+		return 90;
+	}
+	if (キー_押下(32))
+	{
+		return 32;
+	}
+	return 0;
+}
+
+int キー_メッセージ枠復帰()
+{
+	if (キー_押下(1))
+	{
+		return 1;
+	}
+	if (キー_押下(13))
+	{
+		return 13;
+	}
+	if (キー_押下(2))
+	{
+		return 2;
+	}
+	if (キー_押下(90))
+	{
+		return 90;
+	}
+	if (キー_押下(32))
+	{
+		return 32;
+	}
+	return 0;
+}
+
+int キー_バックログ開始()
+{
+	if (キー_押下(33))
+	{
+		return 33;
+	}
+	return 0;
+}
+
+int キー_ボイス再生()
+{
+	if (キー_押下(8))
+	{
+		return 8;
+	}
+	return 0;
+}
+
+int キー_コンフィグ()
+{
+	if (キー_押下(27))
+	{
+		return 27;
+	}
+	return 0;
+}
+
+int キー_バックシーン()
+{
+	if (キー_押下(36))
+	{
+		return 36;
+	}
+	return 0;
+}
+
+int キー_上矢印(bool bCheckCharKey)
+{
+	if (キー_押下(38))
+	{
+		return 38;
+	}
+	if (bCheckCharKey)
+	{
+		if (キー_押下(87))
+		{
+			return 87;
+		}
+	}
+	return 0;
+}
+
+int キー_下矢印(bool bCheckCharKey)
+{
+	if (キー_押下(40))
+	{
+		return 40;
+	}
+	if (bCheckCharKey)
+	{
+		if (キー_押下(83))
+		{
+			return 83;
+		}
+	}
+	return 0;
+}
+
+int キー_左矢印(bool bCheckCharKey)
+{
+	if (キー_押下(37))
+	{
+		return 37;
+	}
+	if (bCheckCharKey)
+	{
+		if (キー_押下(65))
+		{
+			return 65;
+		}
+	}
+	return 0;
+}
+
+int キー_右矢印(bool bCheckCharKey)
+{
+	if (キー_押下(39))
+	{
+		return 39;
+	}
+	if (bCheckCharKey)
+	{
+		if (キー_押下(68))
+		{
+			return 68;
+		}
+	}
+	return 0;
+}
+
+bool キー_決定確認(int nKey)
+{
+	return nKey == 1 || nKey == 13;
+}
+
+bool キー_キャンセル確認(int nKey)
+{
+	return nKey == 2 || nKey == 32;
+}
+
+bool キー_未読スキップ確認(int nKey)
+{
+	return nKey == 17;
+}
+
+bool キー_メッセージ枠消去確認(int nKey)
+{
+	return nKey == 2 || nKey == 90 || nKey == 32;
+}
+
+void キー_離し待ち(int nKey, bool bClear)
+{
+	if (nKey <= 0)
+	{
+		goto label0;
+	}
+	if (キー_未読スキップ確認(nKey))
+	{
+		return;
+	}
+	if (nKey == 9991 || nKey == 9992)
+	{
+		goto label0;
+	}
+	while (キー_押下(nKey))
+	{
+		UPDATE(true);
+	}
+label0:
+	if (bClear)
+	{
+		キー_クリア(true);
+	}
+}
+
+bool キー_離し待ち_タイマ(int nWaitTime, int nKey, bool bClear)
+{
+	if (nKey <= 0)
+	{
+		goto label0;
+	}
+	if (nKey == 9991 || nKey == 9992)
+	{
+		goto label0;
+	}
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (キー_押下(nKey))
+	{
+		if (sTimer.Get() >= nWaitTime)
+		{
+			return true;
+		}
+		UPDATE(true);
+	}
+label0:
+	if (bClear)
+	{
+		キー_クリア(true);
+	}
+	return false;
+}
+
+void メッセージ送り_クリア()
+{
+	g_nKeyNextPage = 0;
+	キー_クリア(true);
+}
+
+bool メッセージ送り_確認()
+{
+	int nKey = 0;
+	nKey = キー_未読スキップ();
+	if (nKey > 0)
+	{
+		return true;
+	}
+	if (ホイール_確認(true) == 9992)
+	{
+		return true;
+	}
+	nKey = キー_メッセージ送り();
+	if (nKey > 0)
+	{
+		g_nKeyNextPage = nKey;
+		return false;
+	}
+	nKey = キー_キャンセル();
+	if (nKey > 0)
+	{
+		g_nKeyNextPage = nKey;
+		return false;
+	}
+	if (g_nKeyNextPage > 0)
+	{
+		g_nKeyNextPage = 0;
+		return true;
+	}
+	return false;
+}
+
+void メッセージ送り_離し待ち()
+{
+	if (g_nKeyNextPage > 0)
+	{
+		キー_離し待ち(g_nKeyNextPage, true);
+	}
+	メッセージ送り_クリア();
+}
+
+void メッセージ送り_待ち()
+{
+	メッセージ送り_クリア();
+	while (true)
+	{
+		if (メッセージ送り_確認())
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	メッセージ送り_クリア();
+}
+
+void メッセージ送り_待ち_タイマ(int nTime)
+{
+	CASTimer sTimer;
+	メッセージ送り_クリア();
+	sTimer.Reset();
+	while (sTimer.Get() < nTime)
+	{
+		if (メッセージ送り_確認())
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	メッセージ送り_クリア();
+}
+
+bool キャンセル_確認()
+{
+	int nKey = キー_キャンセル();
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	効果音_キャンセル();
+	キー_離し待ち(nKey, true);
+	return true;
+}
+

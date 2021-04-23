@@ -1,0 +1,240 @@
+CASTextSprite::CASTextSprite()
+{
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nZ = 0;
+	this.m_nWidth = 0;
+	this.m_nHeight = 0;
+	this.m_nCharSpace = 0;
+	this.m_justifyColon = -1;
+	this.m_bShow = true;
+}
+
+CASTextSprite::~CASTextSprite()
+{
+	int n = 0;
+	for (n = 0; n < this.m_CharSpriteList.Numof(); ++n)
+	{
+		ChipmunkSpriteEngine.CharSpriteManager_ReleaseHandle(this.m_CharSpriteList[n]);
+	}
+	this.m_CharSpriteList.Free();
+}
+
+void CASTextSprite::Release()
+{
+	this.m_DashCharOffsetList.Free();
+	this.m_DashCharSpriteList.Free();
+	this.m_CharOffsetList.Free();
+	int n = 0;
+	for (n = 0; n < this.m_CharSpriteList.Numof(); ++n)
+	{
+		ChipmunkSpriteEngine.CharSpriteManager_ReleaseHandle(this.m_CharSpriteList[n]);
+	}
+	this.m_CharSpriteList.Free();
+	this.m_Text = "";
+}
+
+void CASTextSprite::SetText(string Text, ref CASCharSpriteProperty Property)
+{
+	this.Release();
+	int nOffsetX = 0;
+	bool bPrevDashChar = false;
+	int nPixelWidth = Property.GetPixelWidth();
+	int nPixelHeight = Property.GetPixelHeight();
+	int nHalfPixelHeight = nPixelHeight / 2;
+	int nChar = 0;
+	for (nChar = 0; nChar < Text.Length(); ++nChar)
+	{
+		string Char = Text.GetPart(nChar, 1);
+		if (Char == "\")
+		{
+			if (!bPrevDashChar)
+			{
+				int nNumofDashChar = this.CalcNumofDashChar(nChar + 1, Text) + 1;
+				int nWidth = nPixelWidth * nNumofDashChar + (nNumofDashChar - 1) * this.m_nCharSpace;
+				int nHeight = nPixelHeight;
+				this.m_DashCharSpriteList.Realloc(this.m_DashCharSpriteList.Numof() + 1);
+				ref CASConstructionSprite ConstructionSprite = this.m_DashCharSpriteList[this.m_DashCharSpriteList.Numof() - 1];
+				ConstructionSprite.AddCreateDashChar(nWidth, nHeight, Property);
+				ConstructionSprite.Build();
+				this.m_DashCharOffsetList.PushBack(nOffsetX);
+				nOffsetX += nWidth;
+				if (nChar < Text.Length() - 1)
+				{
+					nOffsetX += this.m_nCharSpace;
+				}
+				bPrevDashChar = true;
+			}
+			else
+			{
+				continue;
+			}
+		}
+		else
+		{
+			if (Char == ":" && nChar == Text.Length() - 1 && Text.GetPart(0, 1) == ":" && this.m_justifyColon != -1)
+			{
+				nOffsetX = this.m_justifyColon;
+			}
+			int nHandle = ChipmunkSpriteEngine.CharSpriteManager_CreateHandle();
+			ChipmunkSpriteEngine.CharSprite_SetChar(nHandle, Char, Property);
+			this.m_CharSpriteList.PushBack(nHandle);
+			this.m_CharOffsetList.PushBack(nOffsetX);
+			int CharWidth = Property.GetFontWidth(Char);
+			nOffsetX += CharWidth;
+			if (nChar < Text.Length() - 1)
+			{
+				nOffsetX += this.m_nCharSpace;
+			}
+			bPrevDashChar = false;
+		}
+	}
+	this.m_Text = Text;
+	this.m_CharSpriteProperty = Property;
+	this.m_nWidth = nOffsetX;
+	this.m_nHeight = Property.GetSize();
+	this.UpdatePos();
+	this.UpdateZ();
+	if (!this.m_bShow)
+	{
+		this.m_bShow = true;
+		this.SetShow(false);
+	}
+}
+
+void CASTextSprite::SetTextWithoutProperty(string Text)
+{
+	CASCharSpriteProperty Property;
+	Property = this.m_CharSpriteProperty;
+	this.SetText(Text, Property);
+}
+
+int CASTextSprite::CalcNumofDashChar(int nChar, ref string MessageText)
+{
+	int nNumof;
+	for (nNumof = 0; nChar < MessageText.Length(); ++nChar)
+	{
+		if (MessageText.GetPart(nChar, 1) != "\")
+		{
+			break;
+		}
+		++nNumof;
+	}
+	return nNumof;
+}
+
+void CASTextSprite::SetPos(int nX, int nY)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+	this.UpdatePos();
+}
+
+void CASTextSprite::SetZ(int nZ)
+{
+	this.m_nZ = nZ;
+	this.UpdateZ();
+}
+
+void CASTextSprite::SetShow(bool bShow)
+{
+	if (this.m_bShow == bShow)
+	{
+		return;
+	}
+	this.m_bShow = bShow;
+	this.UpdateShow();
+}
+
+void CASTextSprite::SetCharSpace(int nCharSpace)
+{
+	this.m_nCharSpace = nCharSpace;
+	if (!this.m_Text.Empty())
+	{
+		this.SetText(this.m_Text, this.m_CharSpriteProperty);
+	}
+}
+
+int CASTextSprite::GetX()
+{
+	return this.m_nX;
+}
+
+int CASTextSprite::GetY()
+{
+	return this.m_nY;
+}
+
+int CASTextSprite::GetWidth()
+{
+	return this.m_nWidth;
+}
+
+int CASTextSprite::GetHeight()
+{
+	return this.m_nHeight;
+}
+
+void CASTextSprite::UpdatePos()
+{
+	int nChar = 0;
+	for (nChar = 0; nChar < this.m_CharSpriteList.Numof(); ++nChar)
+	{
+		ChipmunkSpriteEngine.CharSprite_SetPos(this.m_CharSpriteList[nChar], this.m_nX + this.m_CharOffsetList[nChar], this.m_nY);
+	}
+	for (nChar = 0; nChar < this.m_DashCharSpriteList.Numof(); ++nChar)
+	{
+		this.m_DashCharSpriteList[nChar].SetPos(this.m_nX + this.m_DashCharOffsetList[nChar], this.m_nY);
+	}
+}
+
+void CASTextSprite::UpdateZ()
+{
+	int nChar = 0;
+	for (nChar = 0; nChar < this.m_CharSpriteList.Numof(); ++nChar)
+	{
+		ChipmunkSpriteEngine.CharSprite_SetZ(this.m_CharSpriteList[nChar], this.m_nZ);
+	}
+	for (nChar = 0; nChar < this.m_DashCharSpriteList.Numof(); ++nChar)
+	{
+		this.m_DashCharSpriteList[nChar].SetZ(this.m_nZ);
+	}
+}
+
+void CASTextSprite::UpdateShow()
+{
+	int nChar = 0;
+	for (nChar = 0; nChar < this.m_CharSpriteList.Numof(); ++nChar)
+	{
+		ChipmunkSpriteEngine.CharSprite_SetShow(this.m_CharSpriteList[nChar], this.m_bShow);
+	}
+	for (nChar = 0; nChar < this.m_DashCharSpriteList.Numof(); ++nChar)
+	{
+		this.m_DashCharSpriteList[nChar].SetShow(this.m_bShow);
+	}
+}
+
+bool CASTextSprite::IsMouseCursorInRect()
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	int X = 0;
+	int Y = 0;
+	if (!AFL_Mouse_GetPos(X, Y))
+	{
+		return false;
+	}
+	if (X < this.m_nX || X >= this.m_nX + this.m_nWidth || Y < this.m_nY || Y >= this.m_nY + this.m_nHeight)
+	{
+		return false;
+	}
+	return true;
+}
+
+void CASTextSprite::SetJustifyColon(int n_justifyColon)
+{
+	this.m_justifyColon = n_justifyColon;
+}
+

@@ -1,0 +1,26 @@
+int 戦闘種別_設定(int nType)
+{
+	g_nBattleType = nType;
+	return g_nBattleType;
+}
+
+void 戦闘種別_クリア()
+{
+	g_nBattleType = -1;
+}
+
+int 戦闘種別()
+{
+	return g_nBattleType;
+}
+
+bool 戦闘中()
+{
+	return g_nBattleType >= 0;
+}
+
+bool ボス戦闘()
+{
+	return g_nBattleType > 0;
+}
+

@@ -1,0 +1,53 @@
+void CASDebugFPS::SetShow(bool Show)
+{
+	if (this.GetShow() == Show)
+	{
+		return;
+	}
+	if (Show)
+	{
+		this.m_TextProperty.SetSize(16);
+		this.m_TextProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+		this.m_TextProperty.SetEdgeWeight(1.0);
+		this.m_TextProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+		this.m_TextSprite.SetPos(0, 0);
+		this.m_TextSprite.SetZ(19000);
+		this.m_TextSprite.SetShow(true);
+	}
+	else
+	{
+		this.m_TextSprite.Release();
+		this.m_FPS = 0.0;
+	}
+	ChipmunkSpriteEngine.FPS_SetShow(Show);
+}
+
+bool CASDebugFPS::GetShow()
+{
+	return ChipmunkSpriteEngine.FPS_GetShow();
+}
+
+void CASDebugFPS::Update()
+{
+	if (!ChipmunkSpriteEngine.FPS_GetShow())
+	{
+		return;
+	}
+	this.m_TextSprite.SetPos(this.IsShowLeft() ? 0 : ChipmunkSpriteEngine.GetScreenWidth() - this.m_TextSprite.GetWidth(), 0);
+	float FPS = ChipmunkSpriteEngine.FPS_Get();
+	if (FPS == this.m_FPS)
+	{
+		return;
+	}
+	this.m_TextSprite.SetText("%.2f fps" % FPS, this.m_TextProperty);
+	this.m_FPS = FPS;
+}
+
+bool CASDebugFPS::IsShowLeft()
+{
+	int MouseX = -1;
+	int MouseY = -1;
+	AFL_Mouse_GetPos(MouseX, MouseY);
+	return MouseX >= ChipmunkSpriteEngine.GetScreenWidth() / 2;
+}
+

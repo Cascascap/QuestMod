@@ -1,0 +1,238 @@
+int T_BattleEffect::getEndFrameNo()
+{
+	return this.m_sFlash.getEndFrameNo();
+}
+
+int T_BattleEffect::getCurrentFrameNo()
+{
+	return this.m_sFlash.getCurrentFrameNo();
+}
+
+T_BattleEffect::T_BattleEffect()
+{
+	this.clear();
+}
+
+T_BattleEffect::~T_BattleEffect()
+{
+	this.delete();
+}
+
+bool T_BattleEffect::create(int nIndex)
+{
+	this.delete();
+	this.m_nIndex = nIndex;
+	return true;
+}
+
+void T_BattleEffect::delete()
+{
+	this.m_sFlash.delete();
+	this.clear();
+}
+
+void T_BattleEffect::clear()
+{
+	this.m_nIndex = -1;
+}
+
+bool T_BattleEffect::update()
+{
+	if (this.m_nIndex < 0)
+	{
+		return false;
+	}
+	if (!g_abBattleEffectUpdate[this.m_nIndex])
+	{
+		return false;
+	}
+	if (this.m_sFlash.update() < 0)
+	{
+		this.stop();
+		return false;
+	}
+	return true;
+}
+
+bool T_BattleEffect::play(int nX, int nY, int nZ, string szEffectName, bool bWait)
+{
+	if (this.m_nIndex < 0)
+	{
+		return false;
+	}
+	this.stop();
+	if (szEffectName.Empty())
+	{
+		return false;
+	}
+	this.m_sFlash.create(-1);
+	this.m_sFlash.setPos(nX, nY);
+	this.m_sFlash.setZ(nZ);
+	if (!this.m_sFlash.playFromFileName(szEffectName, bWait, false))
+	{
+		return false;
+	}
+	g_abBattleEffectUpdate[this.m_nIndex] = !bWait;
+	return true;
+}
+
+void T_BattleEffect::stop()
+{
+	if (this.m_nIndex < 0)
+	{
+		return;
+	}
+	this.m_sFlash.delete();
+	g_abBattleEffectUpdate[this.m_nIndex] = false;
+}
+
+void T_BattleEffect::wait(int nFrameNo)
+{
+	ref bool bUpdate = g_abBattleEffectUpdate[this.m_nIndex];
+	if (nFrameNo < 0)
+	{
+		while (bUpdate)
+		{
+			UPDATE(true);
+		}
+	}
+	else
+	{
+		while (bUpdate)
+		{
+			if (nFrameNo <= this.m_sFlash.getCurrentFrameNo())
+			{
+				break;
+			}
+			UPDATE(true);
+		}
+	}
+}
+
+bool T_BattleEffectManager::playNormal(int nPos, string szEffectName, bool bWait)
+{
+	return this.play(12, nPos, 戦闘エフェクト_名前(szEffectName), bWait);
+}
+
+bool T_BattleEffectManager::playMonster(int nPos, string szEffectName, bool bWait)
+{
+	return this.play(13, nPos, モンスターエフェクト_名前(szEffectName), bWait);
+}
+
+bool T_BattleEffectManager::playSub(int nPos, string szEffectName, bool bWait)
+{
+	return this.play(nPos, nPos, 戦闘エフェクト_名前(szEffectName), bWait);
+}
+
+void T_BattleEffectManager::waitNormal(int nFrameNo)
+{
+	this.m_asEffect[12].wait(nFrameNo);
+}
+
+void T_BattleEffectManager::waitMonster(int nFrameNo)
+{
+	this.m_asEffect[13].wait(nFrameNo);
+}
+
+void T_BattleEffectManager::stopMonster()
+{
+	this.m_asEffect[13].stop();
+}
+
+int T_BattleEffectManager::getEndFrameNo()
+{
+	return this.m_asEffect[12].getEndFrameNo();
+}
+
+int T_BattleEffectManager::getCurrentFrameNo()
+{
+	return this.m_asEffect[12].getCurrentFrameNo();
+}
+
+int T_BattleEffectManager::getMonsterEndFrameNo()
+{
+	return this.m_asEffect[13].getEndFrameNo();
+}
+
+int T_BattleEffectManager::getMonsterCurrentFrameNo()
+{
+	return this.m_asEffect[13].getCurrentFrameNo();
+}
+
+T_BattleEffectManager::T_BattleEffectManager()
+{
+	this.clear();
+}
+
+T_BattleEffectManager::~T_BattleEffectManager()
+{
+	this.delete();
+}
+
+bool T_BattleEffectManager::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.m_asEffect.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asEffect[i].create(i);
+	}
+	this.m_nZ = nZ;
+	return true;
+}
+
+void T_BattleEffectManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asEffect.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asEffect[i].delete();
+	}
+	this.clear();
+}
+
+void T_BattleEffectManager::clear()
+{
+	this.m_nZ = -1;
+}
+
+bool T_BattleEffectManager::update()
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asEffect.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asEffect[i].update())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_BattleEffectManager::play(int nIndex, int nPos, string szEffectName, bool bWait)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	if (nIndex < 0 || nIndex >= this.m_asEffect.Numof())
+	{
+		return false;
+	}
+	int nX = 戦闘エフェクト_位置Ｘ(nPos);
+	int nY = 戦闘エフェクト_位置Ｙ(nPos);
+	if (nX == -2147483648 || nY == -2147483648)
+	{
+		return false;
+	}
+	return this.m_asEffect[nIndex].play(nX, nY, this.m_nZ, szEffectName, bWait);
+}
+

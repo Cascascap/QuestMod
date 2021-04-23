@@ -1,0 +1,219 @@
+int T_MiniMiniSkill::getCharaNo()
+{
+	return this.m_sList.getCharaNo();
+}
+
+int T_MiniMiniSkill::getSkillNo(int nIndex)
+{
+	return this.m_sList.get(nIndex);
+}
+
+int T_MiniMiniSkill::getSkillIndex(int nSkillNo)
+{
+	return this.m_sList.getIndex(nSkillNo);
+}
+
+int T_MiniMiniSkill::getSkillCount()
+{
+	return this.m_sList.getCount();
+}
+
+T_MiniMiniSkill::T_MiniMiniSkill()
+{
+	this.clear();
+}
+
+T_MiniMiniSkill::~T_MiniMiniSkill()
+{
+	this.delete();
+}
+
+bool T_MiniMiniSkill::create(int nCharaNo)
+{
+	this.delete();
+	if (!this.m_sList.create(nCharaNo, 0))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = _min(キャラ_スキル枠最大(nCharaNo), 6);
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this._create(i))
+		{
+			++nCount;
+		}
+	}
+	return nCount > 0;
+}
+
+void T_MiniMiniSkill::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBase[i].delete();
+		this.m_asNumber[i].delete();
+	}
+	this.clear();
+}
+
+void T_MiniMiniSkill::clear()
+{
+	this.m_sList.clear();
+}
+
+bool T_MiniMiniSkill::update()
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.setCount(i, -1);
+	}
+	return true;
+}
+
+int T_MiniMiniSkill::setCount(int nIndex, int nValue)
+{
+	int nValue2 = this.getCount(nIndex);
+	if (nValue2 < 0)
+	{
+		return -1;
+	}
+	this.m_asNumber[nIndex].setValue(nValue < 0 ? nValue2 : nValue, 0, false);
+	return nValue;
+}
+
+void T_MiniMiniSkill::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nY2 = nY + 10 * i;
+		this.m_aspBase[i].setPos(nX, nY2);
+		this.m_asNumber[i].setPos(nX + 11, nY2 + 1);
+	}
+}
+
+void T_MiniMiniSkill::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBase[i].setZ(nZ + 1);
+		this.m_asNumber[i].setZ(nZ + 2);
+	}
+}
+
+void T_MiniMiniSkill::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBase[i].setShow(bShow);
+		this.m_asNumber[i].setShow(bShow);
+	}
+}
+
+void T_MiniMiniSkill::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBase[i].setBlendRate(nBlendRate);
+		this.m_asNumber[i].setBlendRate(nBlendRate);
+	}
+}
+
+int T_MiniMiniSkill::getActiveCount()
+{
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.getSkillNo(i) == 384)
+		{
+			continue;
+		}
+		if (this.getCount(i) > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+bool T_MiniMiniSkill::_create(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 6)
+	{
+		return false;
+	}
+	int nSkillNo = this.getSkillNo(nIndex);
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_aspBase[nIndex].setCg(ミニミニスキルボタン_ＣＧ番号(nSkillNo)) <= 0)
+	{
+		return false;
+	}
+	if (スキル_行動(nSkillNo))
+	{
+		this.m_asNumber[nIndex].create(10210, false, 2, 2, 0);
+	}
+	return true;
+}
+
+ref T_Sprite T_MiniMiniSkill::getSp(int nSkillNo)
+{
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_aspBase[idx];
+}
+
+ref T_Number T_MiniMiniSkill::getNumber(int nSkillNo)
+{
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asNumber[idx];
+}
+
+int T_MiniMiniSkill::getCount(int nIndex)
+{
+	int nSkillNo = this.getSkillNo(nIndex);
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	if (!スキル_行動(nSkillNo))
+	{
+		return -1;
+	}
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	return キャラスキル_使用回数(nCharaNo, nSkillNo);
+}
+

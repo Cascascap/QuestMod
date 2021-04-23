@@ -1,0 +1,316 @@
+int T_EquipList::getPosX()
+{
+	return this.m_rcBase.m_nSx;
+}
+
+int T_EquipList::getPosY()
+{
+	return this.m_rcBase.m_nSy;
+}
+
+int T_EquipList::getZ()
+{
+	return this.getFaceZ();
+}
+
+int T_EquipList::getFaceX()
+{
+	return this.m_sFace.getPosX();
+}
+
+int T_EquipList::getFaceY()
+{
+	return this.m_sFace.getPosY();
+}
+
+int T_EquipList::getFaceZ()
+{
+	return this.m_sFace.getZ();
+}
+
+bool T_EquipList::getShow()
+{
+	return this.m_sFace.getShow();
+}
+
+int T_EquipList::getCharaNo()
+{
+	return this.m_nCharaNo;
+}
+
+bool T_EquipList::getActive()
+{
+	return this.m_bActive;
+}
+
+ref T_Rect T_EquipList::getBaseRect()
+{
+	return this.m_rcBase;
+}
+
+ref T_CharaFace T_EquipList::getFace()
+{
+	return this.m_sFace;
+}
+
+ref T_JobIcon T_EquipList::getJob()
+{
+	return this.m_sJob.getIcon();
+}
+
+T_EquipList::T_EquipList()
+{
+	this.clear();
+}
+
+T_EquipList::~T_EquipList()
+{
+	this.delete();
+}
+
+bool T_EquipList::create(int nCharaNo, int nType, int nItemType)
+{
+	this.delete();
+	if (!this.m_sFace.create(nCharaNo, 2))
+	{
+		return false;
+	}
+	switch (nType)
+	{
+		case 6:
+		case 7:
+			break;
+		case 8:
+		case 11:
+		default:
+			return false;
+	}
+	switch (nItemType)
+	{
+		case 21:
+			this.m_sItem.create(キャラ_オプション(nCharaNo), true, 0);
+			break;
+		case 1:
+			this.m_sItem.create(キャラ_武器(nCharaNo), true, 0);
+			break;
+		case 11:
+			this.m_sItem.create(キャラ_防具(nCharaNo), true, 0);
+			break;
+		case 17:
+			this.m_sItem.create(キャラ_持ち物(nCharaNo), true, 0);
+			break;
+		default:
+			return false;
+	}
+	this.m_spCover.create(489, 128, 0, 0, 0, 128);
+	this.m_spParts.setCg(10413);
+	this.m_sName.create(200, 20, -1, 0, 0, 1);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setFontType(258);
+	this.m_sName.setSpacing(0.949999988079071);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setFontSize(20);
+	this.m_sName.setFontColor(255, 245, 100);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setText(キャラ_名前(nCharaNo), false);
+	this.m_sJob.create(キャラ_職業(nCharaNo), 0);
+	this.m_sJob.setLevel(キャラ_レベル(nCharaNo), キャラ_レベル最大(nCharaNo));
+	this.m_nCharaNo = nCharaNo;
+	this.m_bActive = true;
+	return true;
+}
+
+void T_EquipList::delete()
+{
+	this.m_sFace.delete();
+	this.m_sItem.delete();
+	this.m_spCover.delete();
+	this.m_spParts.delete();
+	this.m_sName.delete();
+	this.m_sJob.delete();
+	this.clear();
+}
+
+void T_EquipList::clear()
+{
+	this.m_nCharaNo = -1;
+	this.m_bActive = false;
+	this.m_rcBase.clear();
+}
+
+void T_EquipList::setPos(int nX, int nY)
+{
+	this.m_sFace.setPos(nX + 4, nY + 6);
+	this.m_sItem.setPos(nX + 108, nY + 0);
+	this.m_spCover.setPos(nX, nY);
+	int nX2 = nX + -39;
+	int nY2 = nY + 3;
+	this.m_spParts.setPos(nX2, nY2);
+	this.m_sName.setPos(nX2 + 2, nY2 + -1);
+	this.m_sJob.setPos(nX2 + 5, nY2 + 19);
+	this.m_rcBase.set(nX, nY, 489, 128);
+}
+
+void T_EquipList::setZ(int nZ)
+{
+	this.m_sFace.setZ(nZ);
+	this.m_sItem.setZ(nZ);
+	this.m_spCover.setZ(nZ + 5);
+	this.m_spParts.setZ(nZ + 10);
+	this.m_sName.setZ(nZ + 11);
+	this.m_sJob.setZ(nZ + 11);
+}
+
+void T_EquipList::setShow(bool bShow)
+{
+	this.m_sFace.setShow(bShow);
+	this.m_sItem.setShow(bShow);
+	this.m_spCover.setShow(this.m_bActive ? 0 : bShow);
+	this.m_spParts.setShow(bShow);
+	this.m_sName.setShow(bShow);
+	this.m_sJob.setShow(bShow);
+}
+
+void T_EquipList::setActive(bool bActive)
+{
+	this.m_bActive = bActive;
+	this.setShow(this.getShow());
+}
+
+int T_EquipList::setItem(int nItemNo)
+{
+	if (nItemNo <= 0)
+	{
+		this.m_sItem.delete();
+		return 0;
+	}
+	if (!this.m_sItem.create(nItemNo, true, 0))
+	{
+		return -1;
+	}
+	this.setPos(this.getPosX(), this.getPosY());
+	this.setZ(this.getZ());
+	this.setShow(this.getShow());
+	return nItemNo;
+}
+
+int T_EquipListManager::getCount()
+{
+	return this.m_asChara.Numof();
+}
+
+int T_EquipListManager::getCharaNo(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asChara.Numof() ? -1 : this.m_asChara[nIndex].getCharaNo();
+}
+
+bool T_EquipListManager::getActive(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asChara.Numof() ? -1 : this.m_asChara[nIndex].getActive();
+}
+
+ref T_EquipList T_EquipListManager::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asChara.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asChara[nIndex];
+}
+
+ref T_EquipList T_EquipListManager::get(int nCharaNo)
+{
+	return this.getFromIndex(this.search(nCharaNo));
+}
+
+T_EquipListManager::T_EquipListManager()
+{
+	this.clear();
+}
+
+T_EquipListManager::~T_EquipListManager()
+{
+	this.delete();
+}
+
+bool T_EquipListManager::create(int nZ, int nType, int nItemType, ref array@int anCharaNo)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	if (anCharaNo === NULL || anCharaNo.Numof() < cnt)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_EquipList rfChara = this.m_asChara[i];
+		if (!rfChara.create(anCharaNo[i], nType, nItemType))
+		{
+			continue;
+		}
+		rfChara.setPos(39, 0 + 128 * i);
+		rfChara.setZ(nZ);
+	}
+	return true;
+}
+
+void T_EquipListManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].delete();
+	}
+	this.clear();
+}
+
+void T_EquipListManager::clear()
+{
+	return;
+}
+
+void T_EquipListManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].setShow(bShow);
+	}
+}
+
+void T_EquipListManager::setActive(int nItemNo)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_EquipList rfChara = this.m_asChara[i];
+		int nCharaNo = rfChara.getCharaNo();
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		rfChara.setActive(アイテム_装備可能(nItemNo, nCharaNo));
+	}
+}
+
+int T_EquipListManager::search(int nCharaNo)
+{
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asChara[i].getCharaNo() == nCharaNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

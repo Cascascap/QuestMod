@@ -1,0 +1,262 @@
+void scrollCameraLength(int nValue)
+{
+	g_sMapParts.scrollCameraLength(nValue);
+}
+
+void startBallAnime(bool bRet)
+{
+	g_sMapParts.startMapQuestAnime(bRet);
+}
+
+int マップ部品_上矢印(int nID)
+{
+	return g_sMapParts.moveUp(nID);
+}
+
+int マップ部品_下矢印(int nID)
+{
+	return g_sMapParts.moveDown(nID);
+}
+
+int マップ部品_左矢印(int nID)
+{
+	return g_sMapParts.moveLeft(nID);
+}
+
+int マップ部品_右矢印(int nID)
+{
+	return g_sMapParts.moveRight(nID);
+}
+
+void マップ部品_作成(int nZ, int nMapNo, int nWalkNo, bool bActive)
+{
+	g_sMapParts.create(nZ, nMapNo, nWalkNo);
+	マップ部品_有効設定(bActive);
+	if (bActive)
+	{
+		エンカウントバー_作成(nZ + 1);
+		マグナムゲージ_作成(nZ + 1);
+		迷宮台詞_作成(9651);
+	}
+}
+
+void マップ部品_削除()
+{
+	g_sMapParts.delete();
+	エンカウントバー_削除();
+	マグナムゲージ_削除();
+	迷宮台詞_削除();
+}
+
+void マップ部品_更新()
+{
+	g_sMapParts.update();
+	エンカウントバー_点滅();
+	マグナムゲージ_点滅();
+}
+
+void マップ部品_配置残り回数更新()
+{
+	g_sMapParts.updateCount();
+}
+
+void マップ部品_カメラ距離設定(float fLength)
+{
+	g_sMapParts.updateCameraLength(fLength);
+}
+
+void マップ部品_状態更新(int nMode, int nObjectNo, int nTotalTime)
+{
+	エンカウントバー_更新();
+	マグナムゲージ_更新();
+	g_sMapParts.updateStatus(nMode, nObjectNo, nTotalTime);
+}
+
+void マップ部品_＋１玉消灯(int nNo)
+{
+	g_sMapParts.eraseMapQuestBall(nNo);
+}
+
+int マップ部品_実行(int nID, ref int nValue)
+{
+	return g_sMapParts.exec(nID, nValue);
+}
+
+int マップ部品_入力確認(ref int nSelectID)
+{
+	return g_sMapParts.checkInput(nSelectID);
+}
+
+bool マップ部品_ホイール確認()
+{
+	return g_sMapParts.checkWheel();
+}
+
+int マップ部品_キー確認(int nID)
+{
+	return g_sMapParts.checkKey(nID);
+}
+
+void マップ部品_選択解除()
+{
+	g_sMapParts.resetSelect();
+}
+
+void マップ部品_選択設定(int nID, bool bSelect)
+{
+	g_sMapParts.setSelect(nID, bSelect);
+}
+
+void マップ部品_カーソル設定(int nID)
+{
+	g_sMapParts.setCursor(nID);
+}
+
+void マップ部品_表示設定(bool bShow)
+{
+	g_sMapParts.setShow(bShow);
+	エンカウントバー_表示設定(bShow);
+	マグナムゲージ_表示設定(bShow);
+}
+
+bool マップ部品_有効設定(bool bActive)
+{
+	bool bOld = g_sMapParts.getActive();
+	g_sMapParts.setActive(bActive);
+	return bOld;
+}
+
+void マップ部品_エリア表示設定(bool bShow)
+{
+	g_sMapParts.setAreaShow(bShow);
+}
+
+void マップ部品_ボタン有効設定(int nID, bool bActive)
+{
+	g_sMapParts.setButtonActive(nID, bActive);
+}
+
+void マップ部品_入力ＯＮ()
+{
+	g_sMapParts.setInputFlag(true);
+}
+
+void マップ部品_入力ＯＦＦ()
+{
+	g_sMapParts.setInputFlag(false);
+}
+
+void マップ部品_ショートカット情報消去()
+{
+	g_sMapParts.setShortcutInfoShow(false);
+}
+
+bool マップ部品_キー操作切り替え確認()
+{
+	return g_sMapParts.changeInputKey();
+}
+
+void マップ部品_キー操作有効設定(bool bFlag)
+{
+	g_sMapParts.setInputKey(bFlag);
+}
+
+bool マップ部品_ボタン有効(int nID)
+{
+	return g_sMapParts.getButtonActive(nID);
+}
+
+int マップ部品_ショートカット(int nID)
+{
+	return g_sMapParts.getButtonKey(nID);
+}
+
+bool マップ部品_キー操作有効()
+{
+	return g_sMapParts.getInputKey();
+}
+
+bool マップ部品_表示中()
+{
+	return g_sMapParts.getShow();
+}
+
+bool マップ部品_有効()
+{
+	return g_sMapParts.getActive();
+}
+
+bool マップ部品_エリア表示中()
+{
+	return g_sMapParts.getAreaShow();
+}
+
+int マップ部品_先頭ＩＤ()
+{
+	return g_sMapParts.getFirst();
+}
+
+int マップ部品_最終ＩＤ()
+{
+	return g_sMapParts.getLast();
+}
+
+int マップ部品_選択ＩＤ()
+{
+	return g_sMapParts.getSelectID();
+}
+
+int マップ部品_押下ＩＤ()
+{
+	return g_sMapParts.getKeyDownID();
+}
+
+int マップ部品_クリックＩＤ()
+{
+	return g_sMapParts.getClickID();
+}
+
+bool マップ部品_押下中()
+{
+	return g_sMapParts.isKeyDown();
+}
+
+bool マップ部品_クリック()
+{
+	return g_sMapParts.isClick();
+}
+
+bool マップ部品_サスペンド()
+{
+	エンカウントバー_サスペンド();
+	マグナムゲージ_サスペンド();
+	return g_sMapParts.suspend();
+}
+
+bool マップ部品_レジューム()
+{
+	エンカウントバー_レジューム();
+	マグナムゲージ_レジューム();
+	return g_sMapParts.resume();
+}
+
+bool マップ部品_サスペンド状態()
+{
+	return g_sMapParts.isSuspend();
+}
+
+void マップ部品_カメラロック設定(bool bLock)
+{
+	return;
+}
+
+bool マップ部品_カメラロック状態()
+{
+	return g_sMapParts.getLockCamera();
+}
+
+void マップ部品_カメラ距離限定解除()
+{
+	return;
+}
+

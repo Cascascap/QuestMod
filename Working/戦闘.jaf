@@ -1,0 +1,786 @@
+bool 戦闘_初期化(int nMapNo, int nFlag)
+{
+	if (!戦闘データ_作成(nMapNo))
+	{
+		return false;
+	}
+	if (!戦闘味方_初期化(201))
+	{
+		return false;
+	}
+	if (!戦闘敵_初期化(171))
+	{
+		return false;
+	}
+	戦闘従魔_作成(236);
+	if (!戦闘行動順_作成(211))
+	{
+		return false;
+	}
+	戦闘背景_作成(nMapNo);
+	戦闘数値_作成(301);
+	戦闘台詞_作成(9651);
+	戦闘エフェクト_作成();
+	戦闘味方_表示設定(true, -1);
+	戦闘敵_表示設定(true);
+	戦闘従魔_表示設定(true);
+	戦闘行動順_表示設定(true);
+	戦闘種別_設定(nFlag);
+	int i = 0;
+	array@int anMonsterNo[5];
+	for (i = 0; i < 5; ++i)
+	{
+		anMonsterNo[i] = 戦闘データ_モンスター番号(戦闘番号_敵(i));
+	}
+	３Ｄ戦闘_初期化(anMonsterNo, 戦闘背景_名前(nMapNo));
+	３Ｄ_表示待ち(false);
+	戦闘台詞_タイマリセット(0);
+	ビュー状態保存モード_ＯＦＦ();
+	戦闘ログ_更新開始();
+	return true;
+}
+
+void 戦闘_終了処理(bool bSuspend)
+{
+	ビュー状態保存モード_ＯＮ();
+	３Ｄ戦闘_終了処理(bSuspend);
+	戦闘通知_削除();
+	戦闘リザルト_削除();
+	戦闘行動順_削除();
+	戦闘従魔_削除();
+	戦闘敵_削除();
+	戦闘味方_削除();
+	戦闘エフェクト_削除();
+	戦闘ログ_削除();
+	戦闘台詞_削除();
+	戦闘数値_削除();
+	戦闘背景_削除();
+	戦闘データ_削除();
+	戦闘種別_クリア();
+}
+
+void 戦闘_奇襲()
+{
+	switch (◆奇襲)
+	{
+		case 1:
+			戦闘通知_奇襲("奇襲成功");
+			break;
+		case 2:
+			戦闘通知_先制攻撃(味方パーティ_検索(FA[73]));
+			break;
+		case 11:
+			戦闘通知_奇襲("奇襲された");
+			break;
+		default:
+			break;
+	}
+}
+
+int 戦闘_ループ()
+{
+	int nRet = 0;
+	◆取得金袋数 = 0;
+	◆取得金額 = 0;
+	if (戦闘_味方行動不可(1))
+	{
+		nRet = 2;
+	}
+label0:
+	if (nRet == 0)
+	{
+		nRet = 戦闘_ターン(0);
+		goto label0;
+	}
+	戦闘ログ_終了メッセージ(nRet);
+	戦闘エフェクト_削除();
+	戦闘タイムオーバ_待ち();
+	戦闘リザルト_金袋入手(nRet);
+	return nRet;
+}
+
+int 戦闘_ターン(int nMode)
+{
+	int nRet = 0;
+	while (true)
+	{
+		if (戦闘情報_回数() <= 0)
+		{
+			nRet = 4;
+			break;
+		}
+		戦闘敵_前進確認();
+		int nNo = 戦闘行動順_行動中設定();
+		if (nNo <= 0)
+		{
+			break;
+		}
+		int nCharaNo = 戦闘番号_ＩＩＣ(nNo);
+		int nRet2 = 戦闘_行動(nNo);
+		if (nRet2 > 0)
+		{
+			nRet = nRet2;
+			break;
+		}
+		if (デバッグモード())
+		{
+			if (nRet2 < 0)
+			{
+				return nRet2;
+			}
+		}
+		戦闘行動順_行動中解除(nCharaNo);
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int 戦闘_終了確認()
+{
+	int cnt1 = 戦闘データ_味方有効数();
+	int cnt2 = 戦闘データ_敵有効数();
+	if (cnt2 <= 0)
+	{
+		return cnt1 > 0 ? 1 : 3;
+	}
+	if (cnt1 <= 0)
+	{
+		return 2;
+	}
+	if (ボス戦闘())
+	{
+		if (戦闘_味方行動不可(0))
+		{
+			return 2;
+		}
+	}
+	return 0;
+}
+
+bool 戦闘_味方行動不可(int nType)
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (戦闘データ_行動可能(戦闘番号_味方(i), false))
+		{
+			return false;
+		}
+	}
+	戦闘通知_行動不可(nType > 0 ? 10337 : 10336);
+	return true;
+}
+
+int 戦闘_行動(int nNo)
+{
+	int nRet = 0;
+	int nTargetNo = -1;
+	int nSkillNo = 0;
+	int nRet2 = 戦闘_行動開始(nNo);
+	if (nRet2 <= 0)
+	{
+		goto label0;
+	}
+	if (戦闘_準備確認(nNo, nSkillNo, nTargetNo))
+	{
+		goto label1;
+	}
+	int nRet3 = 戦闘_行動選択(nNo, nTargetNo);
+	if (デバッグモード())
+	{
+		if (nRet3 < 0)
+		{
+			nRet = nRet3;
+			goto label0;
+		}
+	}
+	if (nRet3 == 100002)
+	{
+		nRet = 2;
+		goto label0;
+	}
+	nSkillNo = nRet3;
+	if (nRet3 == 100003)
+	{
+		goto label0;
+	}
+label1:
+	if (スキル_連続行動(nSkillNo))
+	{
+		nRet = 戦闘_連続行動(nSkillNo, nNo, nTargetNo);
+	}
+	else
+	{
+		nRet = 戦闘_通常行動(nSkillNo, nNo, nTargetNo);
+	}
+label0:
+	戦闘_行動終了(nNo, nSkillNo, nRet);
+	return nRet;
+}
+
+int 戦闘_連続行動(int nSkillNo, int nNo, int nTargetNo)
+{
+	int cnt = Ｔ戦闘_連続行動回数(nNo, nSkillNo);
+	if (cnt < 2)
+	{
+		return 戦闘_通常行動(nSkillNo, nNo, nTargetNo);
+	}
+	int nRet = 0;
+	int i = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nTargetNo2 = nTargetNo > 0 ? nTargetNo : Ｔ戦闘_対象選択(nNo, nSkillNo);
+		nRet = 戦闘_行動実行(nSkillNo, nNo, nTargetNo2);
+		if (nRet > 0)
+		{
+			break;
+		}
+		if (nTargetNo > 0 && 戦闘データ_瀕死状態(nTargetNo))
+		{
+			break;
+		}
+	}
+	return nRet;
+}
+
+int 戦闘_通常行動(int nSkillNo, int nNo, int nTargetNo)
+{
+	if (nSkillNo != 211)
+	{
+		nTargetNo = nTargetNo > 0 ? nTargetNo : Ｔ戦闘_対象選択(nNo, nSkillNo);
+	}
+	int nRet = 戦闘_行動実行(nSkillNo, nNo, nTargetNo);
+	int nNo2 = nTargetNo;
+	int nTargetNo2 = nNo;
+label0:
+	if (nRet == 0)
+	{
+		nRet = 戦闘_カウンター実行(nNo2, nTargetNo2);
+		nNo2 <=> nTargetNo2;
+		goto label0;
+	}
+	return nRet > 0 ? nRet : 0;
+}
+
+int 戦闘_行動開始(int nNo)
+{
+	if (!戦闘データ_有効(nNo))
+	{
+		return -1;
+	}
+	戦闘表示_行動状態設定(nNo, 1);
+	if (!Ｔ戦闘_行動開始(nNo))
+	{
+		if (◆ぴより治った > 0)
+		{
+			戦闘_エフェクト_ぴより解除(nNo);
+		}
+		Ｔ戦闘_スルー行動(nNo);
+		return 0;
+	}
+	return 1;
+}
+
+void 戦闘_行動終了(int nNo, int nSkillNo, int nRet)
+{
+	if (戦闘情報_回数－(true) <= 0)
+	{
+		if (nRet == 0)
+		{
+			戦闘タイムオーバ_表示();
+		}
+	}
+	if (nSkillNo == 100003)
+	{
+		return;
+	}
+	戦闘_行動回数確認(nNo, nSkillNo);
+	戦闘行動順_更新();
+	Ｔ戦闘_行動終了(nNo, nSkillNo);
+	if (戦闘データ_瀕死状態(nNo))
+	{
+		戦闘選択_有効設定();
+		return;
+	}
+	戦闘表示_行動状態設定(nNo, 0);
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘選択_解除(nNo);
+	}
+	else
+	{
+		戦闘選択_有効設定();
+	}
+}
+
+int 戦闘_行動実行(int nSkillNo, int nNo, int nTargetNo)
+{
+	int nRet = 戦闘_逃走処理(nSkillNo, nNo);
+	if (nRet >= 0)
+	{
+		return nRet;
+	}
+	switch (スキル_行動種類(nSkillNo))
+	{
+		case 1:
+		case 2:
+			戦闘_攻撃処理(nSkillNo, nNo, nTargetNo);
+			break;
+		case 3:
+			戦闘_特殊処理(nSkillNo, nNo, nTargetNo);
+			break;
+		case 4:
+			戦闘_補助処理(nSkillNo, nNo, nTargetNo);
+			break;
+		default:
+			return 0;
+	}
+	return 戦闘_終了確認();
+}
+
+int 戦闘_カウンター実行(int nNo, int nTargetNo)
+{
+	if (◆カウンター発動 == 0)
+	{
+		return -1;
+	}
+	if (!戦闘データ_有効(nNo))
+	{
+		return -1;
+	}
+	if (!戦闘データ_有効(nTargetNo))
+	{
+		return -1;
+	}
+	戦闘_エフェクト_カウンター(nNo);
+	戦闘表示_行動状態設定(nTargetNo, 0);
+	戦闘表示_行動状態設定(nNo, 1);
+	int nRet = 戦闘_行動実行(116, nNo, nTargetNo);
+	戦闘表示_行動状態設定(nNo, 0);
+	return nRet;
+}
+
+void 戦闘_攻撃処理(int nSkillNo, int nNo, int nTargetNo)
+{
+	if (スキル_全体(nSkillNo))
+	{
+		if (戦闘番号_味方確認(nNo))
+		{
+			戦闘味方_全体攻撃(nSkillNo, nNo);
+		}
+		else if (戦闘番号_敵確認(nNo))
+		{
+			戦闘敵_全体攻撃(nSkillNo, nNo);
+		}
+		else if (戦闘番号_従魔確認(nNo))
+		{
+			戦闘従魔_全体攻撃(nSkillNo, nNo);
+		}
+	}
+	else if (スキル_横一列(nSkillNo))
+	{
+		if (戦闘番号_味方確認(nNo))
+		{
+			戦闘味方_横一列攻撃(nSkillNo, nNo);
+		}
+		else if (戦闘番号_敵確認(nNo))
+		{
+			戦闘敵_横一列攻撃(nSkillNo, nNo);
+		}
+		else if (戦闘番号_従魔確認(nNo))
+		{
+			戦闘従魔_横一列攻撃(nSkillNo, nNo);
+		}
+	}
+	else if (戦闘番号_味方確認(nNo))
+	{
+		戦闘味方_単体攻撃(nSkillNo, nNo, nTargetNo);
+	}
+	else if (戦闘番号_敵確認(nNo))
+	{
+		戦闘敵_単体攻撃(nSkillNo, nNo, nTargetNo);
+	}
+	else if (戦闘番号_従魔確認(nNo))
+	{
+		戦闘従魔_単体攻撃(nSkillNo, nNo, nTargetNo);
+	}
+	戦闘表示_状態確認(nNo, 0, 0);
+}
+
+void 戦闘_特殊処理(int nSkillNo, int nNo, int nTargetNo)
+{
+	if (スキル_全体(nSkillNo))
+	{
+		if (戦闘番号_味方確認(nNo))
+		{
+			戦闘味方_全体特殊(nSkillNo, nNo);
+		}
+		else if (戦闘番号_敵確認(nNo))
+		{
+			戦闘敵_全体特殊(nSkillNo, nNo);
+		}
+	}
+	else if (スキル_横一列(nSkillNo))
+	{
+		if (戦闘番号_味方確認(nNo))
+		{
+			戦闘味方_横一列特殊(nSkillNo, nNo);
+		}
+		else if (戦闘番号_敵確認(nNo))
+		{
+			戦闘敵_横一列特殊(nSkillNo, nNo);
+		}
+	}
+	else if (戦闘番号_味方確認(nNo))
+	{
+		戦闘味方_単体特殊(nSkillNo, nNo, nTargetNo);
+	}
+	else if (戦闘番号_敵確認(nNo))
+	{
+		戦闘敵_単体特殊(nSkillNo, nNo, nTargetNo);
+	}
+	戦闘表示_状態確認(nNo, 0, 0);
+}
+
+void 戦闘_補助処理(int nSkillNo, int nNo, int nTargetNo)
+{
+	if (スキル_味方全体(nSkillNo))
+	{
+		if (戦闘番号_味方確認(nNo))
+		{
+			戦闘味方_全体補助(nSkillNo, nNo);
+		}
+		else if (戦闘番号_敵確認(nNo))
+		{
+			戦闘敵_全体補助(nSkillNo, nNo);
+		}
+		else if (戦闘番号_従魔確認(nNo))
+		{
+			戦闘従魔_全体補助(nSkillNo, nNo);
+		}
+	}
+	else if (戦闘番号_味方確認(nNo))
+	{
+		戦闘味方_単体補助(nSkillNo, nNo, nTargetNo);
+	}
+	else if (戦闘番号_敵確認(nNo))
+	{
+		戦闘敵_単体補助(nSkillNo, nNo, nTargetNo);
+	}
+	else if (戦闘番号_従魔確認(nNo))
+	{
+		戦闘従魔_単体補助(nSkillNo, nNo, nTargetNo);
+	}
+	戦闘表示_状態確認(nNo, 0, 0);
+}
+
+int 戦闘_逃走処理(int nSkillNo, int nNo)
+{
+	switch (nSkillNo)
+	{
+		case 211:
+		case 217:
+			break;
+		default:
+			return -1;
+	}
+	if (戦闘番号_味方確認(nNo))
+	{
+		return 戦闘味方_逃走(nSkillNo, nNo);
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		return 戦闘敵_逃走(nSkillNo, nNo);
+	}
+	return -1;
+}
+
+bool 戦闘_準備開始(int nNo, int nSkillNo)
+{
+	戦闘エフェクト_敵単体(nNo, "タメ", false);
+	戦闘表示_準備中設定(nNo, true);
+	return true;
+}
+
+bool 戦闘_準備確認(int nNo, ref int nSkillNo, ref int nTargetNo)
+{
+	nSkillNo = 0;
+	nTargetNo = -1;
+	int nSkillNo2 = 戦闘データ_溜め(nNo);
+	if (nSkillNo2 <= 0)
+	{
+		return false;
+	}
+	nSkillNo = nSkillNo2;
+	nTargetNo = Ｔ戦闘_対象選択(nNo, nSkillNo2);
+	戦闘表示_準備中設定(nNo, false);
+	return true;
+}
+
+void 戦闘_狂戦士設定(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘エフェクト_味方単体(nNo, "狂戦士発動", false);
+		戦闘味方_狂戦士設定(nNo, 戦闘データ_狂戦士(nNo));
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘エフェクト_敵単体(nNo, "狂戦士発動", false);
+		戦闘敵_狂戦士設定(nNo, 戦闘データ_狂戦士(nNo));
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+void 戦闘_隠密設定(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘エフェクト_味方単体(nNo, "隠密", false);
+		戦闘味方_隠密設定(nNo, 戦闘データ_隠密(nNo));
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘エフェクト_敵単体(nNo, "隠密", false);
+		戦闘敵_隠密設定(nNo, 戦闘データ_隠密(nNo));
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+void 戦闘_全体加護設定(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘エフェクト_味方単体(nNo, "全体加護", false);
+		戦闘味方_全体加護設定(nNo, 戦闘データ_全体加護(nNo));
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘エフェクト_敵単体(nNo, "全体加護", false);
+		戦闘敵_全体加護設定(nNo, 戦闘データ_全体加護(nNo));
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+void 戦闘_バリア設定(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘エフェクト_味方単体(nNo, "マジックバリア", false);
+		戦闘味方_バリア設定(nNo, 戦闘データ_バリア(nNo));
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘エフェクト_敵単体(nNo, "マジックバリア", false);
+		戦闘敵_バリア設定(nNo, 戦闘データ_バリア(nNo));
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+bool 戦闘_守護確認_スキル(int nSkillNo, int nTargetNo)
+{
+	if (nSkillNo == 116)
+	{
+		return false;
+	}
+	if (スキル_対象_複数攻撃(nSkillNo))
+	{
+		return false;
+	}
+	if (スキル_守護抜け(nSkillNo))
+	{
+		return false;
+	}
+	if (戦闘データ_守護中(nTargetNo))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool 戦闘_守護確認(int nNo)
+{
+	if (!戦闘データ_有効(nNo))
+	{
+		return false;
+	}
+	if (戦闘データ_ぴより状態(nNo))
+	{
+		return false;
+	}
+	if (!確率チェック(戦闘データ_守護率(nNo)))
+	{
+		return false;
+	}
+	int nGuard = 数値_減算(戦闘データ_守護率(nNo), Ｔ戦闘_守護率減少(nNo));
+	戦闘データ_守護率設定(nNo, nGuard > 0 ? nGuard : 0);
+	return true;
+}
+
+void 戦闘_守護設定(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘エフェクト_味方単体(nNo, "守護率ＵＰ", false);
+		戦闘味方_守護設定(nNo, -1);
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘エフェクト_敵単体(nNo, "守護率ＵＰ", false);
+		戦闘敵_守護設定(nNo, -1);
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+void 戦闘_守護解除(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘味方_守護解除(nNo);
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘敵_守護解除(nNo);
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+int 戦闘_行動選択(ref int nNo, ref int nTargetNo)
+{
+	nTargetNo = -1;
+	戦闘選択_自動戦闘停止確認();
+	if (戦闘番号_味方確認(nNo))
+	{
+		return 戦闘選択_味方行動(nNo, nTargetNo);
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		return 戦闘敵_行動選択(nNo);
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return 戦闘従魔_行動選択(nNo);
+	}
+	return -1;
+}
+
+void 戦闘_行動回数確認(int nNo, int nSkillNo)
+{
+	if (!戦闘番号_味方確認(nNo))
+	{
+		return;
+	}
+	if (◆行動回数回復 == 1)
+	{
+		戦闘味方_行動回数回復(nNo, nSkillNo);
+	}
+	else
+	{
+		戦闘味方_行動回数確認(nNo);
+	}
+}
+
+void 戦闘表示_行動状態設定(int nNo, int nStatus)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘味方_行動状態設定(nNo, nStatus);
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘敵_行動状態設定(nNo, nStatus);
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+void 戦闘表示_状態確認(int nNo, int nDamage, int nHeal)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘選択_行動回数更新(nNo, -1);
+		戦闘味方_状態確認(nNo, nDamage, nHeal);
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘敵_状態確認(nNo, nDamage, nHeal);
+		return;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return;
+	}
+}
+
+void 戦闘表示_準備中設定(int nNo, bool bFlag)
+{
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘敵_準備中設定(nNo, bFlag);
+		return;
+	}
+}
+
+int 戦闘_メニュー()
+{
+	int nRet = 0;
+	選択_項目追加(1, "Leave battle screen", -1, -1, -1, "", -1);
+	if (戦闘速度() == 1)
+	{
+		選択_項目追加(30, "Return battle speed to [Standard]", -1, -1, -1, "", -1);
+	}
+	else
+	{
+		選択_項目追加(31, "[Slow] down battle speed", -1, -1, -1, "", -1);
+	}
+	選択_区切り追加();
+	選択_項目追加(99, "Return", -1, -1, -1, "", -1);
+	switch (選択_実行(false, 0, 0, false))
+	{
+		case 1:
+			if (選択_確認("Close battle screen?", 1, "Yes", "No", -1, -1, false))
+			{
+				nRet = 1;
+			}
+			break;
+		default:
+			break;
+	}
+	return nRet;
+}
+

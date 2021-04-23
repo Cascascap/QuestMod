@@ -1,0 +1,158 @@
+int CMessageWindowModel::GetLineSpacing()
+{
+	return this.行間;
+}
+
+void CMessageWindowModel::SetLineSpacing(int lineSpacing)
+{
+	this.行間 = lineSpacing;
+}
+
+CMessageWindowModel::CMessageWindowModel()
+{
+	this.m_InactiveWindowMultipleColor.Set(255, 255, 255, 255);
+	this.効果番号 = 1;
+	this.効果時間 = 200;
+	this.余白上 = 15;
+	this.余白右 = 10;
+	this.余白下 = 15;
+	this.余白左 = 10;
+	this.字間 = 0;
+	this.行間 = 3;
+	this.基準ＣＧ名 = "";
+	this.開始番号 = 0;
+	this.マーク枚数 = 0;
+	this.マーク速度 = 500;
+	this.マークＸ = 3;
+	this.マークＹ = 3;
+	this.マークＸフラグ = 1;
+	this.マークＹフラグ = 1;
+	this.マーク文字 = "";
+	this.マーク文字サイズ = 10;
+	this.フォント = 0;
+	this.m_FontSize = 26;
+	this._文字太さ = 400;
+	this.文字Ｒ = 255;
+	this.文字Ｇ = 255;
+	this.文字Ｂ = 255;
+	this.文字速度 = 23;
+	this.文字配置 = 1;
+	this.飾上 = 0;
+	this.飾右 = 0;
+	this.飾下 = 0;
+	this.飾左 = 0;
+	this.飾Ｒ = 0;
+	this.飾Ｇ = 0;
+	this.飾Ｂ = 0;
+	this.m_オートモードＣＧ.Fill(0, this.m_オートモードＣＧ.Numof(), "");
+	this.オートモードＸ.Fill(0, this.オートモードＸ.Numof(), 0);
+	this.オートモードＹ.Fill(0, this.オートモードＹ.Numof(), 0);
+	this.オートモードＺ.Fill(0, this.オートモードＺ.Numof(), 0);
+	this.m_既読スキップモードＣＧ.Fill(0, this.m_既読スキップモードＣＧ.Numof(), "");
+	this.既読スキップモードＸ.Fill(0, this.既読スキップモードＸ.Numof(), 0);
+	this.既読スキップモードＹ.Fill(0, this.既読スキップモードＹ.Numof(), 0);
+	this.既読スキップモードＺ.Fill(0, this.既読スキップモードＺ.Numof(), 0);
+}
+
+void CMessageWindowModel::SetCGName(string CGName)
+{
+	if (this.m_CGName == CGName)
+	{
+		return;
+	}
+	if (!this.m_CGName.Empty())
+	{
+		WARNING("メッセージウィンドウのＣＧが書き換えられました %s -> %s" % this.m_CGName % CGName);
+	}
+	this.m_CGName = CGName;
+	this.m_FlashFileName = "";
+}
+
+void CMessageWindowModel::SetFlashFileName(string FlashFileName)
+{
+	if (this.m_FlashFileName == FlashFileName)
+	{
+		return;
+	}
+	if (this.m_FlashFileName != "")
+	{
+		WARNING("メッセージウィンドウのフラッシュファイル名が書き換えられました [%s] -> [%s]" % this.m_FlashFileName % FlashFileName);
+	}
+	this.m_FlashFileName = FlashFileName;
+	this.m_CGName = "";
+}
+
+void CMessageWindowModel::SetX(int X)
+{
+	if (this.m_X == X)
+	{
+		return;
+	}
+	if (this.m_X != 0)
+	{
+		WARNING("メッセージウィンドウのＸ座標が書き換えられました %d -> %d" % this.m_X % X);
+	}
+	this.m_X = X;
+}
+
+void CMessageWindowModel::SetY(int Y)
+{
+	if (this.m_Y == Y)
+	{
+		return;
+	}
+	if (this.m_Y != 0)
+	{
+		WARNING("メッセージウィンドウのＹ座標が書き換えられました %d -> %d" % this.m_Y % Y);
+	}
+	this.m_Y = Y;
+}
+
+void CMessageWindowModel::SetFontSize(int FontSize)
+{
+	if (this.m_FontSize == FontSize)
+	{
+		return;
+	}
+	if (this.m_FontSize != 26)
+	{
+		WARNING("メッセージウィンドウのフォントサイズが書き換えられました %d -> %d" % this.m_FontSize % FontSize);
+	}
+	this.m_FontSize = FontSize;
+}
+
+string CMessageWindowModel::GetCGName()
+{
+	return this.m_CGName;
+}
+
+string CMessageWindowModel::GetFlashFileName()
+{
+	return this.m_FlashFileName;
+}
+
+int CMessageWindowModel::GetX()
+{
+	return this.m_X;
+}
+
+int CMessageWindowModel::GetY()
+{
+	return this.m_Y;
+}
+
+int CMessageWindowModel::GetFontSize()
+{
+	return this.m_FontSize;
+}
+
+void CMessageWindowModel::SetInactiveMultipleColor(CASColor Color)
+{
+	this.m_InactiveWindowMultipleColor = Color;
+}
+
+CASColor CMessageWindowModel::GetInactiveMultipleColor()
+{
+	return this.m_InactiveWindowMultipleColor;
+}
+

@@ -1,0 +1,375 @@
+bool ボタン登録_矩形(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nWidth, int nHeight, bool bDeactive)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Button sButton;
+	if (!矩形_ボタン作成(nWidth, nHeight, bDeactive, sButton, -1, -1, -2147483648, -2147483648))
+	{
+		return false;
+	}
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	return true;
+}
+
+bool ボタン登録_ＣＧ(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, int nFrameW, int nFrameH, int nFrameX, int nFrameY)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Button sButton;
+	if (!ＣＧ_システムボタン作成(nCgNo, 2, sButton, nFrameW, nFrameH, nFrameX, nFrameY))
+	{
+		return false;
+	}
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	return true;
+}
+
+bool ボタン登録_透過ＣＧ(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, int nFrameW, int nFrameH, int nFrameX, int nFrameY)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Button sButton;
+	if (!透過ＣＧ_システムボタン作成(nCgNo, 2, sButton, nFrameW, nFrameH, nFrameX, nFrameY))
+	{
+		return false;
+	}
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	return true;
+}
+
+bool ラジオボタン登録_ＣＧ(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, bool bMask)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Button sButton;
+	if (!ＣＧ_ラジオボタン作成(nCgNo, 2, sButton, bMask, -1, -1, -2147483648, -2147483648))
+	{
+		return false;
+	}
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	return true;
+}
+
+bool ボタン登録_ＣＧ_マーク付(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, int nMarkX, int nMarkY, int nMarkCgNo)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Button sButton;
+	array@T_Sprite aspWork[2];
+	if (ＣＧ_分割_横(nCgNo, aspWork) != aspWork.Numof())
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	spWork1.attachSp(aspWork[0].detach());
+	spWork2.attachSp(aspWork[1].detach());
+	spWork1.blendCg(nMarkX, nMarkY, nMarkCgNo, 255);
+	spWork2.blendCg(nMarkX, nMarkY, nMarkCgNo, 255);
+	int nW = spWork1.getWidth();
+	int nH = spWork1.getHeight();
+	sButton.createSp(spWork1, NULL, spWork2);
+	sButton.createFrame(0, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButton.createFrame(1, nW, nH, 255, 0, 0, 128, -2147483648, -2147483648, 0);
+	sButton.createFrame(2, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	return true;
+}
+
+bool ＣＧ_ボタン作成(int nCgNo, int nCount, ref T_Button sButton, int nSpace)
+{
+	if (nCount < 1 || sButton === NULL)
+	{
+		return false;
+	}
+	sButton.delete();
+	array@T_Sprite aspWork;
+	aspWork.Alloc(nCount);
+	if (ＣＧ_分割_横(nCgNo, aspWork) != nCount)
+	{
+		aspWork.Free();
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	T_TextSprite spWork3;
+	switch (nCount)
+	{
+		case 1:
+			spWork1.attachSp(aspWork[0].detach());
+			sButton.createSp(spWork1, NULL, NULL);
+			break;
+		case 2:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork2.attachSp(aspWork[1].detach());
+			sButton.createSp(spWork1, spWork2, NULL);
+			break;
+		default:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork2.attachSp(aspWork[1].detach());
+			spWork3.attachSp(aspWork[2].detach());
+			sButton.createSp(spWork1, spWork2, spWork3);
+			break;
+	}
+	aspWork.Free();
+	int nW = spWork1.getWidth() - nSpace * 2;
+	int nH = spWork1.getHeight() - nSpace * 2;
+	sButton.createFrame(0, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButton.createFrame(1, nW, nH, 255, 0, 0, 128, -2147483648, -2147483648, 0);
+	sButton.createFrame(2, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	return true;
+}
+
+bool ＣＧ_システムボタン作成(int nCgNo, int nCount, ref T_Button sButton, int nFrameW, int nFrameH, int nFrameX, int nFrameY)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	sButton.delete();
+	array@T_Sprite aspWork;
+	aspWork.Alloc(nCount);
+	if (ＣＧ_分割_横(nCgNo, aspWork) != nCount)
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	T_TextSprite spWork3;
+	switch (nCount)
+	{
+		case 3:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork2.attachSp(aspWork[1].detach());
+			spWork3.attachSp(aspWork[2].detach());
+			sButton.createSp(spWork1, spWork2, spWork3);
+			break;
+		case 2:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork2.attachSp(aspWork[1].detach());
+			sButton.createSp(spWork1, NULL, spWork2);
+			break;
+		default:
+			break;
+	}
+	aspWork.Free();
+	sButton.createFrame(0, nFrameW, nFrameH, 216, 255, 0, 102, nFrameX, nFrameY, 0);
+	sButton.createFrame(1, nFrameW, nFrameH, 255, 0, 0, 128, nFrameX, nFrameY, 0);
+	sButton.createFrame(2, nFrameW, nFrameH, 216, 255, 0, 102, nFrameX, nFrameY, 0);
+	return true;
+}
+
+bool 透過ＣＧ_システムボタン作成(int nCgNo, int nCount, ref T_Button sButton, int nFrameW, int nFrameH, int nFrameX, int nFrameY)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	sButton.delete();
+	array@T_Sprite aspWork;
+	aspWork.Alloc(nCount);
+	if (ＣＧ_分割_横(nCgNo, aspWork) != nCount)
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	T_TextSprite spWork3;
+	switch (nCount)
+	{
+		case 3:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork2.attachSp(aspWork[1].detach());
+			spWork3.attachSp(aspWork[2].detach());
+			sButton.createSp(spWork1, spWork2, spWork3);
+			break;
+		case 2:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork2.attachSp(aspWork[1].detach());
+			sButton.createSp(spWork1, NULL, spWork2);
+			break;
+		default:
+			break;
+	}
+	aspWork.Free();
+	int nW = nFrameW < 0 ? spWork1.getWidth() : nFrameW;
+	int nH = nFrameH < 0 ? spWork1.getHeight() : nFrameH;
+	T_TextSprite spFrame1;
+	T_TextSprite spFrame2;
+	T_TextSprite spFrame3;
+	spFrame1.create(nW, nH, 216, 255, 0, 102);
+	spFrame2.create(nW, nH, 255, 0, 0, 128);
+	spFrame3.create(nW, nH, 216, 255, 0, 102);
+	sButton.createFrameSp(0, spFrame1, 0);
+	sButton.createFrameSp(1, spFrame2, 0);
+	sButton.createFrameSp(2, spFrame3, 0);
+	return true;
+}
+
+bool ＣＧ_ラジオボタン作成(int nCgNo, int nCount, ref T_Button sButton, bool bMask, int nFrameW, int nFrameH, int nFrameX, int nFrameY)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	sButton.delete();
+	array@T_Sprite aspWork;
+	aspWork.Alloc(nCount);
+	if (ＣＧ_分割_横(nCgNo, aspWork) != nCount)
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	T_TextSprite spWork3;
+	switch (nCount)
+	{
+		case 3:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork3.attachSp(aspWork[2].detach());
+			spWork2.copy(spWork3, false);
+			aspWork[1].delete();
+			break;
+		case 2:
+			spWork1.attachSp(aspWork[0].detach());
+			spWork2.attachSp(aspWork[1].detach());
+			spWork3.copy(spWork2, false);
+			break;
+		default:
+			break;
+	}
+	aspWork.Free();
+	if (bMask)
+	{
+		spWork2.getSp().blendColor(0, 0, 0, 128);
+	}
+	sButton.createSp(spWork1, spWork2, spWork3);
+	sButton.createFrame(0, nFrameW, nFrameH, 216, 255, 0, 102, nFrameX, nFrameY, 0);
+	sButton.createFrame(1, nFrameW, nFrameH, 255, 0, 0, 128, nFrameX, nFrameY, 0);
+	sButton.createFrame(2, nFrameW, nFrameH, 216, 255, 0, 102, nFrameX, nFrameY, 0);
+	return true;
+}
+
+bool 矩形_ボタン作成(int nWidth, int nHeight, bool bDeactive, ref T_Button sButton, int nFrameW, int nFrameH, int nFrameX, int nFrameY)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	sButton.delete();
+	if (!sButton.createRect(nWidth, nHeight, nWidth, nHeight, -1, -1))
+	{
+		return false;
+	}
+	if (bDeactive)
+	{
+		ref T_TextSprite spWork = sButton.getSp(1);
+		spWork.create(nWidth, nHeight, 0, 0, 0, 128);
+	}
+	sButton.createFrame(0, nFrameW, nFrameH, 216, 255, 0, 102, nFrameX, nFrameY, 0);
+	sButton.createFrame(1, nFrameW, nFrameH, 255, 0, 0, 128, nFrameX, nFrameY, 0);
+	return true;
+}
+
+bool ボタン_テキスト描画(string szText, ref T_Button sButton)
+{
+	if (szText.Empty() || sButton === NULL)
+	{
+		return false;
+	}
+	ref T_TextSprite rfSp;
+	sact_text_metrics_t tmText;
+	tmText.nSize = 20;
+	tmText.nWeight = 0;
+	tmText.nFace = 257;
+	tmText.nColorR = 0;
+	tmText.nColorG = 0;
+	tmText.nColorB = 0;
+	rfSp <- sButton.getSp(0);
+	rfSp.textDrawCenter(0, szText, tmText, 0);
+	rfSp <- sButton.getSp(2);
+	rfSp.textDrawCenter(0, szText, tmText, 0);
+	tmText.nColorR = 128;
+	tmText.nColorG = 128;
+	tmText.nColorB = 128;
+	rfSp <- sButton.getSp(1);
+	rfSp.textDrawCenter(0, szText, tmText, 0);
+	return true;
+}
+
+void 仮ボタン_スプライト作成(ref T_TextSprite rfSp, int nWidth, int nHeight, string szText, int nFontSize, int nColorR, int nColorG, int nColorB, int nLineSize, int nBackColorR, int nBackColorG, int nBackColorB, int nBackRate, int nTextSpace)
+{
+	if (rfSp === NULL)
+	{
+		return;
+	}
+	int nW = nWidth - nLineSize * 2;
+	int nH = nHeight - nLineSize * 2;
+	rfSp.create(nWidth, nHeight, nColorR, nColorG, nColorB, 255);
+	rfSp.fill(nLineSize, nLineSize, nW, nH, nBackColorR, nBackColorG, nBackColorB, nBackRate);
+	sact_text_metrics_t tmText;
+	tmText.nSize = nFontSize;
+	tmText.nColorR = nColorR;
+	tmText.nColorG = nColorG;
+	tmText.nColorB = nColorB;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	tmText.nShadowPixelL = 0;
+	tmText.nShadowPixelR = 0;
+	tmText.nShadowPixelU = 0;
+	tmText.nShadowPixelD = 0;
+	tmText.nShadowColorR = 0;
+	tmText.nShadowColorG = 0;
+	tmText.nShadowColorB = 0;
+	仮ボタン_テキスト描画(rfSp, szText, tmText, nTextSpace);
+}
+
+void 仮ボタン_テキスト描画(ref T_TextSprite rfSp, string szText, ref sact_text_metrics_t tmText, int nTextSpace)
+{
+	if (szText.Empty())
+	{
+		return;
+	}
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return;
+	}
+	int nW = rfSp.getWidth();
+	int nH = rfSp.getHeight();
+	int nSpace = 2;
+	int nCol = (nW - nSpace * 2) / tmText.nSize;
+	int nRow = nH / tmText.nSize;
+	array@string aszText;
+	int cnt = テキスト分割_強制改行(szText, nCol, aszText);
+	if (cnt > 1)
+	{
+		int i = 0;
+		int nTy = nRow > cnt ? (nH - tmText.nSize * cnt) / 2 : nSpace;
+		rfSp.textClear();
+		for (i = 0; i < cnt; ++i)
+		{
+			rfSp.textDrawWidthCenter(0, nTy, aszText[i], tmText, nTextSpace, false);
+			nTy += tmText.nSize;
+		}
+	}
+	else
+	{
+		rfSp.textDrawCenter(0, szText, tmText, nTextSpace);
+	}
+}
+

@@ -1,0 +1,62 @@
+#ゲーム_アイテム屋()
+{
+	Ｒ８アイテム屋(false);
+	jump ゲーム_メイン;
+}
+
+void Ｒ８アイテム屋(bool bTest)
+{
+	Ｔアイテム屋();
+	while (true)
+	{
+		画面_クリア(true, true);
+		仮字枠非表示();
+		システム曲_再生();
+		int nRet = g_sShop.run();
+		Ｔアイテム屋／店を出た();
+		switch (nRet)
+		{
+			case 600001:
+				jump ゲーム_メイン;
+			case 600014:
+				jump ゲーム_クエスト;
+			case 600013:
+				jump ゲーム_パーティ編成;
+			case 600011:
+				jump ゲーム_ランス城;
+			default:
+				return;
+		}
+	}
+}
+
+void アイテム屋_削除()
+{
+	g_sShop.delete();
+}
+
+int アイテム屋_上矢印(int nID)
+{
+	return g_sShop.moveUp(nID);
+}
+
+int アイテム屋_下矢印(int nID)
+{
+	return g_sShop.moveDown(nID);
+}
+
+int アイテム屋_左矢印(int nID)
+{
+	return g_sShop.moveLeft(nID);
+}
+
+int アイテム屋_右矢印(int nID)
+{
+	return g_sShop.moveRight(nID);
+}
+
+void アイテム屋_選択設定(int nID, bool bSelect)
+{
+	g_sShop.setSelect(nID, bSelect);
+}
+

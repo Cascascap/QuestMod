@@ -1,0 +1,42 @@
+void システムボタン(int Ｍ番号, int Ｘ, int Ｙ, int Ｚ, string 通常ＣＧ名, string 選択ＣＧ名, sys_btn_fnc_t 呼出コマンド, bool ピクセル判定)
+{
+	_g_SystemButtonDocument._Set(Ｍ番号, Ｘ, Ｙ, Ｚ, 通常ＣＧ名, 選択ＣＧ名, 呼出コマンド, ピクセル判定);
+	_g_システムボタン変更 = true;
+}
+
+void システムボタン２(int Ｍ番号, sys_btn_fnc_t 呼出コマンド, string 蓋ＣＧ名)
+{
+	_g_SystemButtonDocument._SetForRem(Ｍ番号, 呼出コマンド, 蓋ＣＧ名);
+	_g_システムボタン変更 = true;
+}
+
+void システムボタン選択不可ＣＧ設定(int Ｍ番号, sys_btn_fnc_t 呼出コマンド, string CG)
+{
+	_g_SystemButtonDocument.SetDisableCG(Ｍ番号, 呼出コマンド, CG);
+	_g_システムボタン変更 = true;
+}
+
+void システムボタン選択不可判定関数設定(int Ｍ番号, sys_btn_fnc_t 呼出コマンド, FTIsEnableSystemButton 判定関数)
+{
+	_g_SystemButtonDocument.SetIsEnableSystemButtonFunc(Ｍ番号, 呼出コマンド, 判定関数);
+	_g_システムボタン変更 = true;
+}
+
+void システムボタン可視矩形設定(int Ｍ番号, sys_btn_fnc_t 呼出コマンド, int X, int Y, int Width, int Height)
+{
+	_g_SystemButtonDocument.SetVisibleRect(Ｍ番号, 呼出コマンド, CF_CASRect(X, Y, Width, Height));
+	_g_システムボタン変更 = true;
+}
+
+void システムボタン効果音(int _click, int _cursor)
+{
+	_g_MsgKeyWait._SetSndClick(_click);
+	_g_MsgKeyWait._SetSndCursor(_cursor);
+}
+
+void システムボタン削除(int Ｍ番号)
+{
+	_g_SystemButtonDocument._Clear(Ｍ番号);
+	_g_システムボタン変更 = true;
+}
+

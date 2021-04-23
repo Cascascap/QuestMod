@@ -1,0 +1,437 @@
+int T_Status::moveUp(int nID)
+{
+	switch (nID)
+	{
+		case 100011:
+		case 100012:
+			return 900001;
+		case 100013:
+			return 100012;
+		case 100002:
+			return this.getLastItem();
+		case 100009:
+			return 100002;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		switch (nID)
+		{
+			case 900001:
+				return this.m_bEntrySkill ? 100013 : 100011;
+			case 900002:
+				return this.getLastEquip();
+			case 900003:
+				return this.getLastHold();
+			default:
+				break;
+		}
+	}
+	if (nID > 139000)
+	{
+		return this.getPrevItem(this.getItemRemoveIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this.getPrevItem(this.getItemIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.getPrevHold(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.getPrevEquip(nID);
+	}
+	return this.getFirstEquip();
+}
+
+int T_Status::moveDown(int nID)
+{
+	switch (nID)
+	{
+		case 100011:
+			return 900001;
+		case 100012:
+			return 100013;
+		case 100013:
+			return 900001;
+		case 100002:
+		case 100009:
+			return this.getFirstItem();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		switch (nID)
+		{
+			case 900001:
+				return this.m_bEntrySkill ? 100012 : 100011;
+			case 900002:
+				return this.getFirstEquip();
+			case 900003:
+				return this.getFirstHold();
+			default:
+				break;
+		}
+	}
+	if (nID > 139000)
+	{
+		return this.getNextItem(this.getItemRemoveIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this.getNextItem(this.getItemIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.getNextHold(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.getNextEquip(nID);
+	}
+	return this.getLastEquip();
+}
+
+int T_Status::moveLeft(int nID)
+{
+	switch (nID)
+	{
+		case 100011:
+		case 100012:
+			return this.getItemID(2);
+		case 100013:
+			return this.getItemID(3);
+		case 100002:
+			return this.getLastEquip();
+		case 100009:
+			return this.getFirstHold();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 139000)
+	{
+		return this.moveLeftItem(this.getItemRemoveIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this.moveLeftItem(this.getItemIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveLeftHold(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.moveLeftEquip(nID);
+	}
+	return this.getFirstEquip();
+}
+
+int T_Status::moveRight(int nID)
+{
+	switch (nID)
+	{
+		case 100011:
+		case 100012:
+			return this.getFirstEquip();
+		case 100013:
+			return this.getLastEquip();
+		case 100002:
+			return this.m_bEntrySkill ? 100013 : 100011;
+		case 100009:
+			return this.getFirstHold();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 139000)
+	{
+		return this.moveRightItem(this.getItemRemoveIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this.moveRightItem(this.getItemIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveRightHold(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.moveRightEquip(nID);
+	}
+	return this.getLastEquip();
+}
+
+int T_Status::moveUpLock(int nID)
+{
+	switch (this.m_sCard.getLockMode())
+	{
+		case 1:
+			if (nID == 100001)
+			{
+				return 100001;
+			}
+			else
+			{
+			case 2:
+			}
+			if (nID > 110000)
+			{
+				return this.getPrevEquipLock(nID);
+			}
+			break;
+		default:
+			break;
+	}
+	return this.getFirstEquip();
+}
+
+int T_Status::moveDownLock(int nID)
+{
+	switch (this.m_sCard.getLockMode())
+	{
+		case 1:
+			if (nID == 100001)
+			{
+				return 100001;
+			}
+			else
+			{
+			case 2:
+			}
+			if (nID > 110000)
+			{
+				return this.getNextEquipLock(nID);
+			}
+			break;
+		default:
+			break;
+	}
+	return this.getLastEquip();
+}
+
+int T_Status::moveLeftLock(int nID)
+{
+	switch (this.m_sCard.getLockMode())
+	{
+		case 1:
+			if (nID == 100001)
+			{
+				return this.getFirstEquip();
+			}
+			if (nID > 110000)
+			{
+				return 100001;
+			}
+			break;
+		case 2:
+			if (nID > 110000)
+			{
+				return nID;
+			}
+			break;
+		default:
+			break;
+	}
+	return this.getFirstEquip();
+}
+
+int T_Status::moveRightLock(int nID)
+{
+	switch (this.m_sCard.getLockMode())
+	{
+		case 1:
+			if (nID == 100001)
+			{
+				return this.getFirstEquip();
+			}
+			if (nID > 110000)
+			{
+				return 100001;
+			}
+			break;
+		case 2:
+			if (nID > 110000)
+			{
+				return nID;
+			}
+			break;
+		default:
+			break;
+	}
+	return this.getLastEquip();
+}
+
+int T_Status::moveLeftEquip(int nID)
+{
+	int idx = this.getEquipSkillIndex(nID);
+	if (this.m_bEntrySkill)
+	{
+		return idx < 3 ? 100012 : 100013;
+	}
+	return 100011;
+}
+
+int T_Status::moveRightEquip(int nID)
+{
+	int idx = this.getEquipSkillIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstHold();
+	}
+	int idx2 = this.m_sCard.moveToHold(idx + 12);
+	return idx2 < 0 ? this.getFirstHold() : this.getHoldSkillID(idx2);
+}
+
+int T_Status::moveLeftHold(int nID)
+{
+	int idx = this.m_sCard.moveToEquip(this.getHoldSkillIndex(nID) - 12);
+	return idx < 0 ? this.getFirstEquip() : this.getEquipSkillID(idx);
+}
+
+int T_Status::moveRightHold(int nID)
+{
+	int idx = this.getHoldSkillIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstItem();
+	}
+	int idx2 = idx / 4;
+	return idx2 < 3 ? this.getItemID(idx2) : this.getLastItem();
+}
+
+int T_Status::moveLeftItem(int nIndex)
+{
+	int idx = -1;
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+			idx = this.m_sCard.moveToHold(nIndex * 4);
+			break;
+		default:
+			break;
+	}
+	return idx < 0 ? this.getFirstHold() : this.getHoldSkillID(idx);
+}
+
+int T_Status::moveRightItem(int nIndex)
+{
+	if (this.m_bEntrySkill)
+	{
+		switch (nIndex)
+		{
+			case 0:
+			case 1:
+			case 2:
+				return 100012;
+			case 3:
+				return 100013;
+			default:
+				break;
+		}
+		return 100012;
+	}
+	return 100011;
+}
+
+int T_Status::getPrevEquip(int nID)
+{
+	int idx = this.m_sCard.getPrevEquip(this.getEquipSkillIndex(nID));
+	return idx < 0 ? 900002 : this.getEquipSkillID(idx);
+}
+
+int T_Status::getNextEquip(int nID)
+{
+	int idx = this.m_sCard.getNextEquip(this.getEquipSkillIndex(nID));
+	return idx < 0 ? 900002 : this.getEquipSkillID(idx);
+}
+
+int T_Status::getFirstEquip()
+{
+	int idx = this.m_sCard.getFirstEquip();
+	return idx < 0 ? 900002 : this.getEquipSkillID(idx);
+}
+
+int T_Status::getLastEquip()
+{
+	int idx = this.m_sCard.getLastEquip();
+	return idx < 0 ? 900002 : this.getEquipSkillID(idx);
+}
+
+int T_Status::getPrevEquipLock(int nID)
+{
+	return this.getEquipSkillID(this.m_sCard.getPrevEquip(this.getEquipSkillIndex(nID)));
+}
+
+int T_Status::getNextEquipLock(int nID)
+{
+	return this.getEquipSkillID(this.m_sCard.getNextEquip(this.getEquipSkillIndex(nID)));
+}
+
+int T_Status::getFirstEquipLock()
+{
+	return this.getEquipSkillID(this.m_sCard.getFirstEquip());
+}
+
+int T_Status::getLastEquipLock()
+{
+	return this.getEquipSkillID(this.m_sCard.getLastEquip());
+}
+
+int T_Status::getPrevHold(int nID)
+{
+	int idx = this.m_sCard.getPrevHold(this.getHoldSkillIndex(nID));
+	return idx < 0 ? 900003 : this.getHoldSkillID(idx);
+}
+
+int T_Status::getNextHold(int nID)
+{
+	int idx = this.m_sCard.getNextHold(this.getHoldSkillIndex(nID));
+	return idx < 0 ? 900003 : this.getHoldSkillID(idx);
+}
+
+int T_Status::getFirstHold()
+{
+	int idx = this.m_sCard.getFirstHold();
+	return idx < 0 ? 900003 : this.getHoldSkillID(idx);
+}
+
+int T_Status::getLastHold()
+{
+	int idx = this.m_sCard.getLastHold();
+	return idx < 0 ? 900003 : this.getHoldSkillID(idx);
+}
+
+int T_Status::getPrevItem(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 4)
+	{
+		return this.getFirstItem();
+	}
+	return nIndex > 0 ? this.getItemID(nIndex - 1) : 100002;
+}
+
+int T_Status::getNextItem(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 4)
+	{
+		return this.getLastItem();
+	}
+	return nIndex < 3 ? this.getItemID(nIndex + 1) : 100002;
+}
+

@@ -1,0 +1,59 @@
+void 戦闘数値_作成(int nZ)
+{
+	数字ＣＧ_ロード(10106, false);
+	数字ＣＧ_ロード(10107, false);
+	数字ＣＧ_ロード(10109, false);
+	数字ＣＧ_ロード(10144, false);
+	数字ＣＧ_ロード(10145, false);
+	数字ＣＧ_ロード(10146, false);
+	数字ＣＧ_ロード(10147, false);
+	g_sBattleNumber.create(nZ);
+}
+
+void 戦闘数値_削除()
+{
+	g_sBattleNumber.delete();
+	数字ＣＧ_アンロード(10106);
+	数字ＣＧ_アンロード(10107);
+	数字ＣＧ_アンロード(10109);
+	数字ＣＧ_アンロード(10144);
+	数字ＣＧ_アンロード(10145);
+	数字ＣＧ_アンロード(10146);
+	数字ＣＧ_アンロード(10147);
+}
+
+void 戦闘数値_ダメージ(int nNo, int nDamage, int nSize, bool bCritical)
+{
+	g_sBattleNumber.damage(nNo, nDamage, nSize, bCritical);
+}
+
+void 戦闘数値_ダメージ_味方複数(ref array@int anNo, ref array@int anDamage, ref array@int anSize, ref array@bool abCritical)
+{
+	g_sBattleNumber.damageAllChara(anNo, anDamage, anSize, abCritical);
+}
+
+void 戦闘数値_ダメージ_敵複数(ref array@int anNo, ref array@int anDamage, ref array@int anSize, ref array@bool abCritical)
+{
+	g_sBattleNumber.damageAllMonster(anNo, anDamage, anSize, abCritical);
+}
+
+void 戦闘数値_回復(int nNo, int nHeal)
+{
+	g_sBattleNumber.heal(nNo, nHeal);
+}
+
+void 戦闘数値_回復_味方複数(ref array@int anNo, ref array@int anHeal)
+{
+	g_sBattleNumber.healAllChara(anNo, anHeal);
+}
+
+void 戦闘数値_回復_敵複数(ref array@int anNo, ref array@int anHeal)
+{
+	g_sBattleNumber.healAllMonster(anNo, anHeal);
+}
+
+void 戦闘数値_回避(int nNo)
+{
+	g_sBattleNumber.miss(nNo);
+}
+

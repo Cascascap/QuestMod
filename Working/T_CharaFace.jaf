@@ -1,0 +1,214 @@
+bool T_CharaFace::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	return this.m_spFace.copyToSprite(rfsDst, nDstX, nDstY);
+}
+
+void T_CharaFace::coverColor3D(int nR, int nG, int nB, int nRate, bool bMask)
+{
+	this.m_spFace.coverColor3D(nR, nG, nB, nRate, bMask);
+}
+
+int T_CharaFace::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_CharaFace::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_CharaFace::getZ()
+{
+	return this.m_nZ;
+}
+
+int T_CharaFace::getMoveX()
+{
+	return this.m_nMoveX;
+}
+
+int T_CharaFace::getMoveY()
+{
+	return this.m_nMoveY;
+}
+
+int T_CharaFace::getMoveZ()
+{
+	return this.m_nMoveZ;
+}
+
+bool T_CharaFace::getShow()
+{
+	return this.m_spFace.getShow();
+}
+
+int T_CharaFace::getWidth()
+{
+	return this.m_spFace.getWidth();
+}
+
+int T_CharaFace::getHeight()
+{
+	return this.m_spFace.getHeight();
+}
+
+int T_CharaFace::getSpNo()
+{
+	return this.m_spFace.getSpNo();
+}
+
+bool T_CharaFace::isCreated()
+{
+	return this.m_spFace.isCreated();
+}
+
+bool T_CharaFace::suspend()
+{
+	return this.m_spFace.suspend();
+}
+
+bool T_CharaFace::resume()
+{
+	return this.m_spFace.resume();
+}
+
+bool T_CharaFace::isSuspend()
+{
+	return this.m_spFace.isSuspend();
+}
+
+ref T_TextSprite T_CharaFace::getSp()
+{
+	return this.m_spFace;
+}
+
+T_CharaFace::T_CharaFace()
+{
+	this.clear();
+}
+
+T_CharaFace::~T_CharaFace()
+{
+	this.delete();
+}
+
+bool T_CharaFace::create(int nCharaNo, int nSize)
+{
+	this.delete();
+	if (nSize <= 0)
+	{
+		return false;
+	}
+	int nWidth = 196 / nSize;
+	int nHeight = 232 / nSize;
+	string szFileName = キャラ_顔ＣＧ文字列(nCharaNo);
+	if (!szFileName.Empty())
+	{
+		T_Sprite spWork;
+		if (!spWork.setCgFromFile(キャラ生成_顔ＣＧファイル名(szFileName)))
+		{
+			goto label0;
+		}
+		this.m_spFace.copyStretch(nWidth, nHeight, spWork);
+		return true;
+	}
+	int nCgNo = キャラ_顔ＣＧ(nCharaNo);
+	if (nCgNo < 0)
+	{
+		return false;
+	}
+	if (!this.m_spFace.stretchCg(nCgNo, nWidth, nHeight))
+	{
+		goto label0;
+	}
+	return true;
+label0:
+	int nFontSize = nSize > 1 ? 12 : 24;
+	仮ボタン_スプライト作成(this.m_spFace, nWidth, nHeight, キャラ_短縮名前(nCharaNo), nFontSize, 255, 255, 255, 0, 0, 0, 0, 255, 0);
+	return true;
+}
+
+void T_CharaFace::delete()
+{
+	this.m_spFace.delete();
+	this.clear();
+}
+
+void T_CharaFace::clear()
+{
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+	this.m_nMoveX = -1;
+	this.m_nMoveY = -1;
+	this.m_nMoveZ = -1;
+}
+
+void T_CharaFace::quake(int nQuakeX, int nQuakeY, int nQuakeTime)
+{
+	if (!this.m_spFace.isCreated())
+	{
+		return;
+	}
+	スプライト_揺らし(this.m_spFace.getSpNo(), nQuakeX, nQuakeY, nQuakeTime);
+}
+
+void T_CharaFace::flash(int nFlashTime)
+{
+	if (!this.m_spFace.isCreated())
+	{
+		return;
+	}
+	スプライト_フラッシュ(this.m_spFace.getSpNo(), nFlashTime);
+}
+
+void T_CharaFace::move(int nMoveX, int nMoveY, int nMoveZ, int nMoveTime)
+{
+	if (!this.m_spFace.isCreated())
+	{
+		return;
+	}
+	if (nMoveX < 0 || nMoveY < 0)
+	{
+		スプライト_移動(this.m_spFace, this.m_nX, this.m_nY, nMoveTime);
+		this.m_spFace.setPos(this.m_nX, this.m_nY);
+		this.m_spFace.setZ(this.m_nZ, -1);
+		this.m_nMoveX = -1;
+		this.m_nMoveY = -1;
+		this.m_nMoveZ = -1;
+	}
+	else
+	{
+		this.m_spFace.setZ(nMoveZ < 0 ? this.m_nZ : nMoveZ, -1);
+		スプライト_移動(this.m_spFace, nMoveX, nMoveY, nMoveTime);
+		this.m_spFace.setPos(nMoveX, nMoveY);
+		this.m_nMoveX = nMoveX;
+		this.m_nMoveY = nMoveY;
+		this.m_nMoveZ = nMoveZ;
+	}
+}
+
+void T_CharaFace::setPos(int nX, int nY)
+{
+	this.m_spFace.setPos(nX, nY);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_CharaFace::setZ(int nZ)
+{
+	this.m_spFace.setZ(nZ, -1);
+	this.m_nZ = nZ;
+}
+
+void T_CharaFace::setShow(bool bShow)
+{
+	this.m_spFace.setShow(bShow);
+}
+
+void T_CharaFace::setBlendRate(int nBlendRate)
+{
+	this.m_spFace.setBlendRate(nBlendRate);
+}
+

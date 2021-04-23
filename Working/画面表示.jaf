@@ -1,0 +1,757 @@
+void 顔準備(int nCgNo)
+{
+	_顔準備(パーツ準備(31, nCgNo));
+}
+
+void 顔準備Ｆ(int nCharaNo)
+{
+	_顔準備(パーツ準備Ｆ(31, nCharaNo));
+}
+
+void _顔準備(int nRet)
+{
+	if (nRet > 0)
+	{
+		Ｐ＿座標設定(31, 12, 523);
+		Ｐ＿Ｚ座標設定(31, 8201);
+	}
+	bool bShow = nRet >= 0;
+	Ｐ＿表示設定(31, bShow);
+	Ｐ＿表示設定(32, bShow);
+	Ｐ＿メッセージウィンドウ表示連動設定(31, bShow);
+	Ｐ＿メッセージウィンドウ表示連動設定(32, bShow);
+}
+
+void 顔枠準備(int nCgNo)
+{
+	if (パーツ準備(32, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(32, 0, 511);
+	Ｐ＿Ｚ座標設定(32, 8211);
+	Ｐ＿表示設定(32, false);
+}
+
+void 立ち絵準備(int nCgNo)
+{
+	if (パーツ準備(21, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(21, 0, 0);
+	Ｐ＿Ｚ座標設定(21, 8051);
+	Ｐ＿表示設定(21, true);
+}
+
+void 背景準備(int nCgNo, string szName, bool bFlag)
+{
+	if (パーツ準備(11, bFlag ? 背景変換(nCgNo) : nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(11, 0, 39);
+	Ｐ＿Ｚ座標設定(11, 8031);
+	Ｐ＿表示設定(11, true);
+}
+
+void マスク壁紙準備(int nCgNo)
+{
+	if (パーツ準備(2, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(2, 0, 0);
+	Ｐ＿Ｚ座標設定(2, 8011);
+	Ｐ＿表示設定(2, true);
+}
+
+void 壁紙準備(int nCgNo)
+{
+	if (パーツ準備(1, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(1, 0, 0);
+	Ｐ＿Ｚ座標設定(1, 8001);
+	Ｐ＿表示設定(1, true);
+	全画面色(-2147483648, -2147483648, -2147483648);
+	ポスター部屋_削除();
+}
+
+void イベントＣＧ準備(int nCgNo)
+{
+	if (パーツ準備(41, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(41, 0, 0);
+	Ｐ＿Ｚ座標設定(41, 8021);
+	Ｐ＿表示設定(41, true);
+	ポスター部屋_削除();
+}
+
+void スクロール準備(int nCgNo, int nX, int nY, int nZ)
+{
+	if (パーツ準備(49, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(49, nX, nY);
+	Ｐ＿Ｚ座標設定(49, nZ);
+	Ｐ＿表示設定(49, true);
+}
+
+void ミニイベント準備(int nCgNo)
+{
+	if (パーツ準備(51, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(51, 513, 271);
+	Ｐ＿Ｚ座標設定(51, 8041);
+	Ｐ＿表示設定(51, true);
+}
+
+void 汎用エロ準備(int nFaceCgNo, int nCgNo)
+{
+	汎用エロ顔準備(nFaceCgNo);
+	_汎用エロ準備(nCgNo);
+}
+
+void 汎用エロ準備Ｆ(int nCharaNo, int nCgNo)
+{
+	汎用エロ顔準備Ｆ(nCharaNo);
+	_汎用エロ準備(nCgNo);
+}
+
+void _汎用エロ準備(int nCgNo)
+{
+	if (パーツ準備(52, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(52, 379, 235);
+	Ｐ＿Ｚ座標設定(52, 8041);
+	Ｐ＿表示設定(52, true);
+}
+
+void 汎用エロ顔準備(int nCgNo)
+{
+	_汎用エロ顔準備(パーツ準備(33, nCgNo));
+}
+
+void 汎用エロ顔準備Ｆ(int nCharaNo)
+{
+	_汎用エロ顔準備(パーツ準備Ｆ(33, nCharaNo));
+}
+
+void _汎用エロ顔準備(int nRet)
+{
+	if (nRet > 0)
+	{
+		Ｐ＿座標設定(33, 92, 62);
+		Ｐ＿Ｚ座標設定(33, 8201);
+	}
+	bool bShow = nRet >= 0;
+	Ｐ＿表示設定(33, bShow);
+	Ｐ＿表示設定(34, bShow);
+}
+
+void 汎用エロ顔枠準備(int nCgNo)
+{
+	if (パーツ準備(34, nCgNo) < 0)
+	{
+		return;
+	}
+	Ｐ＿座標設定(34, 80, 50);
+	Ｐ＿Ｚ座標設定(34, 8211);
+	Ｐ＿表示設定(34, false);
+}
+
+int パーツ準備(int nNo, int nCgNo)
+{
+	if (nCgNo <= 0)
+	{
+		Ｐ＿削除(nNo);
+		return -1;
+	}
+	if (nCgNo == パーツ_ＣＧ番号(nNo))
+	{
+		return 0;
+	}
+	Ｐ＿削除(nNo);
+	Ｐ＿ＣＧ設定(nNo, "%d" % nCgNo, 1);
+	return 1;
+}
+
+int パーツ準備Ｆ(int nNo, int nCharaNo)
+{
+	string szName = キャラ_顔ＣＧ文字列(nCharaNo);
+	if (szName.Empty())
+	{
+		Ｐ＿削除(nNo);
+		return -1;
+	}
+	string szFileName = "<save>SaveData\\%s\\%s" % "Face CG" % szName;
+	if (szFileName == パーツ_ＣＧファイル名(nNo))
+	{
+		return 0;
+	}
+	Ｐ＿削除(nNo);
+	Ｐ＿ＣＧ設定(nNo, szFileName, 1);
+	if (Ｐ＿ＣＧ名取得(nNo, 1) == "")
+	{
+		string szName = キャラ_短縮名前(nCharaNo);
+		int nFontSize = 24;
+		CASCharSpriteProperty sCharSpriteProperty;
+		sCharSpriteProperty.SetType(258);
+		sCharSpriteProperty.SetSize(nFontSize);
+		sCharSpriteProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+		sCharSpriteProperty.SetEdgeWeight(0.75);
+		sCharSpriteProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+		int nX = テキスト_Ｘ補正(196, nFontSize, szName, 0);
+		int nY = テキスト_Ｙ補正(232, nFontSize);
+		Ｐ＿構築手順＿作成(nNo, 196, 232, 1);
+		Ｐ＿構築手順＿テキスト(nNo, nX, nY, szName, sCharSpriteProperty, 0, 0, 1);
+		Ｐ＿構築ビルド(nNo, 1);
+	}
+	return 1;
+}
+
+void マップ消し(int nCgNo)
+{
+	if (nCgNo <= 0)
+	{
+		return;
+	}
+	switch (nCgNo)
+	{
+		case 5550:
+		case 50001:
+			return;
+		default:
+			break;
+	}
+	マップ_表示設定(false, -1, -1);
+}
+
+void 顔クリア()
+{
+	顔準備(0);
+}
+
+void 立ち絵クリア()
+{
+	立ち絵準備(0);
+}
+
+void 背景クリア()
+{
+	背景準備(0, "", false);
+}
+
+void マスク壁紙クリア()
+{
+	マスク壁紙準備(0);
+}
+
+void 壁紙クリア()
+{
+	壁紙準備(0);
+}
+
+void イベントＣＧクリア()
+{
+	イベントＣＧ準備(0);
+}
+
+void ミニイベントクリア()
+{
+	ミニイベント準備(0);
+}
+
+void 汎用エロクリア()
+{
+	汎用エロ準備(0, 0);
+}
+
+void 顔表示(int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	顔準備(nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 顔表示Ｆ(int nCharaNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	顔準備Ｆ(nCharaNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 立ち絵表示(int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	if (ＣＧ番号_立ち絵() > 0 && nCgNo > 0)
+	{
+		立ち絵表示２(0, 1, 200);
+	}
+	立ち絵準備(nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 立ち絵表示２(int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	立ち絵準備(nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 背景表示(int nCgNo, int nEffectNo, int nEffectTime, string szName, bool bFlag)
+{
+	画面_準備(false);
+	背景準備(nCgNo, szName, bFlag);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void マスク壁紙表示(int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	マスク壁紙準備(nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 壁紙表示(int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	壁紙準備(nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void イベントＣＧ表示(int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_クリア(false, true);
+	イベントＣＧ準備(nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void イベントＣＧ消去(int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	イベントＣＧ準備(0);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void スクロール表示(int nCgNo, int nX, int nY, int nZ, int nEffectNo, int nEffectTime)
+{
+	画面_クリア(false, true);
+	スクロール準備(nCgNo, nX, nY, nZ);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void ミニイベント表示(int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	ミニイベント準備(nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 汎用エロ表示(int nFaceCgNo, int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	汎用エロ準備(nFaceCgNo, nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 汎用エロ表示Ｆ(int nCharaNo, int nCgNo, int nEffectNo, int nEffectTime)
+{
+	画面_準備(false);
+	汎用エロ準備Ｆ(nCharaNo, nCgNo);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 背景イン(int nCgNo, int nEffectTime, string szName, bool bFlag)
+{
+	背景アウト(500);
+	if (nCgNo <= 0)
+	{
+		return;
+	}
+	画面_準備(false);
+	背景準備(nCgNo, szName, bFlag);
+	Ｒ８ジングル(406, false);
+	背景_移動(-ＣＧ_幅(nCgNo), 39, 0, 39, nEffectTime);
+}
+
+void 背景アウト(int nEffectTime)
+{
+	int nCgNo = ＣＧ番号_背景();
+	if (nCgNo <= 0)
+	{
+		return;
+	}
+	画面_準備(false);
+	背景_移動(0, 39, 1024 + ＣＧ_幅(nCgNo), 39, nEffectTime);
+	背景クリア();
+}
+
+void 背景_移動(int nStrX, int nStrY, int nEndX, int nEndY, int nEffectTime)
+{
+	Ｐ＿モーション移動設定(11, nStrX, nStrY, nEndX, nEndY, 0, nEffectTime);
+	Ｐ＿モーション実行(false);
+}
+
+void 顔表示設定(bool bShow)
+{
+	if (顔表示中())
+	{
+		Ｐ＿表示設定(31, bShow);
+		Ｐ＿表示設定(32, bShow);
+	}
+}
+
+void 立ち絵表示設定(bool bShow)
+{
+	if (立ち絵表示中())
+	{
+		Ｐ＿表示設定(21, bShow);
+	}
+}
+
+void 背景表示設定(bool bShow)
+{
+	if (背景表示中())
+	{
+		Ｐ＿表示設定(11, bShow);
+	}
+}
+
+void マスク壁紙表示設定(bool bShow)
+{
+	if (マスク壁紙表示中())
+	{
+		Ｐ＿表示設定(2, bShow);
+	}
+}
+
+void 壁紙表示設定(bool bShow)
+{
+	if (壁紙表示中())
+	{
+		Ｐ＿表示設定(1, bShow);
+	}
+}
+
+void イベントＣＧ表示設定(bool bShow)
+{
+	if (イベントＣＧ表示中())
+	{
+		Ｐ＿表示設定(41, bShow);
+	}
+}
+
+void スクロール表示設定(bool bShow)
+{
+	if (スクロール表示中())
+	{
+		Ｐ＿表示設定(49, bShow);
+	}
+}
+
+void ミニイベント表示設定(bool bShow)
+{
+	if (ミニイベント表示中())
+	{
+		Ｐ＿表示設定(51, bShow);
+	}
+}
+
+void 汎用エロ表示設定(bool bShow)
+{
+	if (汎用エロ表示中())
+	{
+		Ｐ＿表示設定(52, bShow);
+		Ｐ＿表示設定(33, bShow);
+		Ｐ＿表示設定(34, bShow);
+	}
+}
+
+bool 顔表示中()
+{
+	return ＣＧ番号_顔() > 0 || ＣＧファイル名_顔() != "";
+}
+
+bool 立ち絵表示中()
+{
+	return ＣＧ番号_立ち絵() > 0;
+}
+
+bool 背景表示中()
+{
+	return ＣＧ番号_背景() > 0;
+}
+
+bool マスク壁紙表示中()
+{
+	return ＣＧ番号_マスク壁紙() > 0;
+}
+
+bool 壁紙表示中()
+{
+	return ＣＧ番号_壁紙() > 0;
+}
+
+bool イベントＣＧ表示中()
+{
+	return ＣＧ番号_イベントＣＧ() > 0;
+}
+
+bool スクロール表示中()
+{
+	return ＣＧ番号_スクロール() > 0;
+}
+
+bool ミニイベント表示中()
+{
+	return ＣＧ番号_ミニイベント() > 0;
+}
+
+bool 汎用エロ表示中()
+{
+	return ＣＧ番号_汎用エロ() > 0 || ＣＧファイル名_汎用エロ() != "";
+}
+
+void 全画面揺れ(int nMode, bool bFlag)
+{
+	if (メッセージスキップ中())
+	{
+		UPDATE(true);
+		return;
+	}
+	int nX = 0;
+	int nY = 0;
+	int nTime = 0;
+	switch (nMode)
+	{
+		case 1:
+			nX = 0;
+			nY = 20;
+			nTime = 100;
+			break;
+		case 2:
+			nX = 50;
+			nY = 50;
+			nTime = 300;
+			break;
+		case 3:
+			nX = 100;
+			nY = 100;
+			nTime = 800;
+			break;
+		default:
+			nX = 20;
+			nY = 0;
+			nTime = 200;
+			break;
+	}
+	Ｐ＿モーション画面振動設定(nX, nY, 0, nTime);
+	if (bFlag)
+	{
+		Ｐ＿モーション実行(true);
+	}
+}
+
+void 顔揺れ(int nMode, bool bFlag)
+{
+	if (メッセージスキップ中())
+	{
+		UPDATE(true);
+		return;
+	}
+	int nX = 0;
+	int nY = 0;
+	int nTime = 0;
+	switch (nMode)
+	{
+		case 1:
+			nX = 0;
+			nY = 16;
+			nTime = 100;
+			break;
+		case 2:
+			nX = 32;
+			nY = 32;
+			nTime = 300;
+			break;
+		case 3:
+			nX = 64;
+			nY = 64;
+			nTime = 800;
+			break;
+		default:
+			nX = 16;
+			nY = 0;
+			nTime = 200;
+			break;
+	}
+	Ｐ＿モーション振動設定(31, nX, nY, 0, nTime);
+	if (bFlag)
+	{
+		Ｐ＿モーション実行(true);
+	}
+}
+
+void 立ち絵揺れ(int nMode, bool bFlag)
+{
+	if (メッセージスキップ中())
+	{
+		UPDATE(true);
+		return;
+	}
+	int nX = 0;
+	int nY = 0;
+	int nTime = 0;
+	switch (nMode)
+	{
+		case 1:
+			nX = 0;
+			nY = 16;
+			nTime = 100;
+			break;
+		case 2:
+			nX = 32;
+			nY = 32;
+			nTime = 300;
+			break;
+		case 3:
+			nX = 64;
+			nY = 64;
+			nTime = 800;
+			break;
+		default:
+			nX = 16;
+			nY = 0;
+			nTime = 200;
+			break;
+	}
+	Ｐ＿モーション振動設定(21, nX, nY, 0, nTime);
+	if (bFlag)
+	{
+		Ｐ＿モーション実行(true);
+	}
+}
+
+void 黒画面(int nEffectNo, int nEffectTime)
+{
+	画面_クリア(false, true);
+	画面色設定(0, 0, 0, false);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 白画面(int nEffectNo, int nEffectTime)
+{
+	画面_クリア(false, true);
+	画面色設定(255, 255, 255, false);
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 画面フラッシュ(int nEffectTime)
+{
+	全画面色(255, 255, 255);
+	UPDATE(true);
+	全画面色(-2147483648, -2147483648, -2147483648);
+	EFFECT(1, nEffectTime);
+}
+
+void 上スクロール(int nCgNo, int nScrollTime, bool bKeyCancel)
+{
+	cg_metrics_t cmInfo;
+	if (!ＣＧ_情報(nCgNo, cmInfo))
+	{
+		return;
+	}
+	int nX1 = (1024 - cmInfo.nWidth) / 2;
+	int nY1 = 768 - cmInfo.nHeight;
+	int nX2 = nX1;
+	int nY2 = 0;
+	スクロール表示(nCgNo, nX1, nY1, 8021, 1, 1000);
+	スクロール_実行(nX2, nY2, nScrollTime, bKeyCancel);
+}
+
+void 下スクロール(int nCgNo, int nScrollTime, bool bKeyCancel)
+{
+	cg_metrics_t cmInfo;
+	if (!ＣＧ_情報(nCgNo, cmInfo))
+	{
+		return;
+	}
+	int nX1 = (1024 - cmInfo.nWidth) / 2;
+	int nY1 = 0;
+	int nX2 = nX1;
+	int nY2 = 768 - cmInfo.nHeight;
+	スクロール表示(nCgNo, nX1, nY1, 8021, 1, 1000);
+	スクロール_実行(nX2, nY2, nScrollTime, bKeyCancel);
+}
+
+void 左スクロール(int nCgNo, int nScrollTime, bool bKeyCancel)
+{
+	cg_metrics_t cmInfo;
+	if (!ＣＧ_情報(nCgNo, cmInfo))
+	{
+		return;
+	}
+	int nX1 = 1024 - cmInfo.nWidth;
+	int nY1 = (768 - cmInfo.nHeight) / 2;
+	int nX2 = 0;
+	int nY2 = nY1;
+	スクロール表示(nCgNo, nX1, nY1, 8021, 1, 1000);
+	スクロール_実行(nX2, nY2, nScrollTime, bKeyCancel);
+}
+
+void 右スクロール(int nCgNo, int nScrollTime, bool bKeyCancel)
+{
+	cg_metrics_t cmInfo;
+	if (!ＣＧ_情報(nCgNo, cmInfo))
+	{
+		return;
+	}
+	int nX1 = 0;
+	int nY1 = (768 - cmInfo.nHeight) / 2;
+	int nX2 = 1024 - cmInfo.nWidth;
+	int nY2 = nY1;
+	スクロール表示(nCgNo, nX1, nY1, 8021, 1, 1000);
+	スクロール_実行(nX2, nY2, nScrollTime, bKeyCancel);
+}
+
+void スクロール_実行(int nX, int nY, int nScrollTime, bool bKeyCancel)
+{
+	Ｐ＿モーション移動設定(49, Ｐ＿Ｘ座標取得(49), Ｐ＿Ｙ座標取得(49), nX, nY, 0, nScrollTime);
+	Ｐ＿モーション実行(bKeyCancel);
+}
+
+void スクロール_削除()
+{
+	スクロール準備(0, 0, 0, 0);
+}
+
+void 画面更新(int nEffectNo, int nEffectTime)
+{
+	EFFECT(nEffectNo, nEffectTime);
+}
+
+void 画面消去()
+{
+	画面_クリア(true, true);
+}
+
+void エフェクトキャンセル_停止()
+{
+	効果キャンセル停止();
+}
+
+void エフェクトキャンセル_停止解除()
+{
+	効果キャンセル停止解除();
+}
+

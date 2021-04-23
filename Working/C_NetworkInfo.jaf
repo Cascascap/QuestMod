@@ -1,0 +1,211 @@
+void ネット情報_メニュー(bool bEnableSendMessage)
+{
+	bool bSendMessage = false;
+	if (bEnableSendMessage)
+	{
+		bSendMessage = セーブデータ_送信();
+	}
+	else
+	{
+		bSendMessage = true;
+	}
+	ネット情報_作成(9001);
+	while (true)
+	{
+		選択_テキスト追加("Network", -1, -1, -1);
+		選択_項目追加(1, "Homepage", -1, -1, -1, "", -1);
+		選択_区切り追加();
+		選択_項目追加(11, "Game Version", -1, -1, -1, "", -1);
+		選択_項目追加(12, "Game Progression", -1, -1, -1, "", -1);
+		選択_項目追加(30, "Rance's Level", -1, -1, -1, "", -1);
+		選択_項目追加(16, "Play Time", -1, -1, -1, "", -1);
+		選択_項目追加(31, "Config Stats", -1, -1, -1, "", -1);
+		選択_項目追加(20, "Gameplay Stats", -1, -1, -1, "", -1);
+		選択_項目追加(21, "Achievements", -1, -1, -1, "", -1);
+		選択_区切り追加();
+		選択_項目追加(999, "Return", -1, -1, -1, "", -1);
+		選択_カーソル設定(1);
+		int nNo = 選択_実行(true, 0, 0, false);
+		if (nNo <= 0)
+		{
+			break;
+		}
+		switch (nNo)
+		{
+			case 1:
+				system.OpenWeb("http://mangagamer.org/rance/");
+				break;
+			case 999:
+				goto label0;
+			default:
+				bSendMessage = ネット情報_サービス実行(nNo, bSendMessage);
+				break;
+		}
+	}
+label0:
+	ネット情報_削除();
+}
+
+bool ネット情報_サービス実行(int nNo, bool bSendMessage)
+{
+	if (!ネットワーク接続許可())
+	{
+		if (!ネットサービス_接続確認(0, 9201))
+		{
+			return false;
+		}
+	}
+	if (!bSendMessage)
+	{
+		bSendMessage = セーブデータ_送信();
+	}
+	switch (nNo)
+	{
+		case 11:
+			プレイ人口表示();
+			break;
+		case 12:
+			進行状況表示();
+			break;
+		case 16:
+			累計プレイ時間表示();
+			break;
+		case 20:
+			その他情報表示();
+			break;
+		case 21:
+			その他情報表示２();
+			break;
+		case 30:
+			ランスレベル表示();
+			break;
+		case 31:
+			コンフィグ使用率表示();
+			break;
+		default:
+			break;
+	}
+	return bSendMessage;
+}
+
+void プレイ人口表示()
+{
+	array@string aszResultText;
+	if (ネットサービス_追加データ取得("getverstat", aszResultText) < 0)
+	{
+		選択_通知("There was an error connecting to the server.", "OK", false);
+		return;
+	}
+	ネット情報_表示("●Game Version●", "Percent of users sharing information by game version", aszResultText);
+}
+
+void 進行状況表示()
+{
+	array@string aszResultText;
+	if (ネットサービス_追加データ取得("getchapstat3", aszResultText) < 0)
+	{
+		選択_通知("There was an error connecting to the server.", "OK", false);
+		return;
+	}
+	ネット情報_表示("●Game Progression●", "Story progression by player", aszResultText);
+}
+
+void 累計プレイ時間表示()
+{
+	array@string aszResultText;
+	if (ネットサービス_追加データ取得("gettotaltimestat2", aszResultText) < 0)
+	{
+		選択_通知("There was an error connecting to the server.", "OK", false);
+		return;
+	}
+	ネット情報_表示("●Play Time●", "", aszResultText);
+}
+
+void その他情報表示()
+{
+	array@string aszResultText;
+	if (ネットサービス_追加データ取得("getetcstat", aszResultText) < 0)
+	{
+		選択_通知("There was an error connecting to the server.", "OK", false);
+		return;
+	}
+	ネット情報_表示("●Gameplay Stats●", "", aszResultText);
+}
+
+void その他情報表示２()
+{
+	array@string aszResultText;
+	if (ネットサービス_追加データ取得("getetcstat2", aszResultText) < 0)
+	{
+		選択_通知("There was an error connecting to the server.", "OK", false);
+		return;
+	}
+	ネット情報_表示("●Achievements●", "", aszResultText);
+}
+
+void ランスレベル表示()
+{
+	array@string aszResultText;
+	if (ネットサービス_追加データ取得("getrancelevelstat", aszResultText) < 0)
+	{
+		選択_通知("There was an error connecting to the server.", "OK", false);
+		return;
+	}
+	ネット情報_表示("●Rance's Level●", "", aszResultText);
+}
+
+void コンフィグ使用率表示()
+{
+	array@string aszResultText;
+	if (ネットサービス_追加データ取得("getconfigstat", aszResultText) < 0)
+	{
+		選択_通知("There was an error connecting to the server.", "OK", false);
+		return;
+	}
+	ネット情報_表示("●Config Stats●", "", aszResultText);
+}
+
+void ネット情報_作成(int nZ)
+{
+	g_sNetworkInfo.create(nZ);
+}
+
+void ネット情報_削除()
+{
+	g_sNetworkInfo.delete();
+}
+
+void ネット情報_表示(string szTitle, string szComment, ref array@string aszResultText)
+{
+	g_sNetworkInfo.show(szTitle, szComment, aszResultText);
+	キー待ち_クリック();
+	g_sNetworkInfo.hide();
+}
+
+string ネット情報_％数字(int nBase, int nValue)
+{
+	float fPer = ％計算Ｆ(nBase, nValue) * 100.0 + 0.5;
+	int nPer = fPer;
+	return ("%2D．%02D％" % (nPer / 100)) % (nPer % 100);
+}
+
+bool ネットサービス_接続確認(int nMode, int nZ)
+{
+	bool bOld = ネットワーク接続許可();
+	if (nMode == 1)
+	{
+		ネット情報_作成(9001);
+	}
+	T_NetworkMessage sMessage;
+	bool bRet = sMessage.run(nZ);
+	if (nMode == 1)
+	{
+		ネット情報_削除();
+	}
+	if (bRet && !bOld)
+	{
+		NET_Initialize();
+	}
+	return bRet;
+}
+

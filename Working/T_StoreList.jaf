@@ -1,0 +1,676 @@
+int T_StoreList::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_StoreList::getPosY()
+{
+	return this.m_nY;
+}
+
+bool T_StoreList::getLock()
+{
+	return this.m_bLock;
+}
+
+int T_StoreList::getItemNo()
+{
+	return this.m_sIcon.getItemNo();
+}
+
+bool T_StoreList::getJudge()
+{
+	return this.m_sIcon.getJudge();
+}
+
+ref T_ItemIcon T_StoreList::getIcon()
+{
+	return this.m_sIcon;
+}
+
+T_StoreList::T_StoreList()
+{
+	this.clear();
+}
+
+T_StoreList::~T_StoreList()
+{
+	this.delete();
+}
+
+bool T_StoreList::create(int nItemNo, bool bJudge, int nType)
+{
+	this.delete();
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (!this.m_sIcon.create(nItemNo, bJudge))
+	{
+		return false;
+	}
+	if (!bJudge)
+	{
+		return true;
+	}
+	this.m_sName.create(202, 24, -1, 0, 1, 1);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setFontSize(24);
+	this.m_sName.setFontType(256);
+	this.m_sName.setFontBold(1);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setSpacing(1.0);
+	this.m_sName.setFontColor(70, 6, 1);
+	if (nType == 6)
+	{
+		this.m_sGold.create(11103, false, 7, 1, 1);
+	}
+	else
+	{
+		this.m_spItemType.setCg(this.getItemTypeCgNo(nItemNo));
+	}
+	this.m_sComment.create();
+	this.m_spLevel.setCg(11407);
+	this.m_spLock.setCg(11419);
+	this.m_sJob.create(nItemNo);
+	this.draw(nItemNo);
+	return true;
+}
+
+void T_StoreList::delete()
+{
+	this.m_sName.delete();
+	this.m_sIcon.delete();
+	this.m_spItemType.delete();
+	this.m_sGold.delete();
+	this.m_sComment.delete();
+	this.m_spLevel.delete();
+	this.m_spLock.delete();
+	this.m_sJob.delete();
+	this.clear();
+}
+
+void T_StoreList::clear()
+{
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nGold = -1;
+	this.m_bLevel = false;
+	this.m_bLock = false;
+}
+
+bool T_StoreList::remake()
+{
+	if (!this.m_sIcon.remake())
+	{
+		return false;
+	}
+	this.draw(this.m_sIcon.getItemNo());
+	this.setShow(this.m_sIcon.getShow());
+	return true;
+}
+
+bool T_StoreList::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!this.m_sIcon.copyToSprite(rfsDst, nDstX + 2, nDstY + 25))
+	{
+		return false;
+	}
+	if (!this.m_sIcon.getJudge())
+	{
+		return true;
+	}
+	if (!this.m_sName.copyToSprite(rfsDst, nDstX + 2, nDstY + 1))
+	{
+		return false;
+	}
+	if (!this.m_spItemType.copyToSprite(rfsDst, nDstX + 206, nDstY + 4, -1, -1, 0))
+	{
+		return false;
+	}
+	if (!this.m_sComment.copyToSprite(rfsDst, nDstX + 109, nDstY + 27))
+	{
+		return false;
+	}
+	if (this.m_bLevel)
+	{
+		if (!this.m_spLevel.copyToSprite(rfsDst, nDstX + 105, nDstY + 80))
+		{
+			return false;
+		}
+	}
+	if (this.m_bLock)
+	{
+		if (!this.m_spLock.copyToSprite(rfsDst, nDstX + 297, nDstY + 4))
+		{
+			return false;
+		}
+	}
+	if (!this.m_sJob.copyToSprite(rfsDst, nDstX + 107, nDstY + 98))
+	{
+		return false;
+	}
+	return true;
+}
+
+void T_StoreList::setGold(int nGold)
+{
+	this.m_sGold.setValue(nGold > 0 ? nGold : 0, 0, false);
+	this.m_nGold = nGold;
+	this.setShow(this.m_sIcon.getShow());
+}
+
+void T_StoreList::setPos(int nX, int nY)
+{
+	this.m_sName.setPos(nX + 2, nY + 1);
+	this.m_sIcon.setPos(nX + 2, nY + 25);
+	this.m_spItemType.setPos(nX + 206, nY + 4);
+	this.m_sGold.setPos(nX + 220, nY + 2);
+	this.m_sComment.setPos(nX + 105, nY + 27);
+	this.m_spLevel.setPos(nX + 105, nY + 80);
+	this.m_spLock.setPos(nX + 297, nY + 4);
+	this.m_sJob.setPos(nX + 107, nY + 98);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_StoreList::setZ(int nZ)
+{
+	this.m_sName.setZ(nZ);
+	this.m_sIcon.setZ(nZ);
+	this.m_spItemType.setZ(nZ);
+	this.m_sGold.setZ(nZ);
+	this.m_sComment.setZ(nZ);
+	this.m_spLock.setZ(nZ, -1);
+	this.m_sJob.setZ(nZ);
+	this.m_spLevel.setZ(nZ + 15, -1);
+}
+
+void T_StoreList::setShow(bool bShow)
+{
+	this.m_sName.setShow(bShow);
+	this.m_sIcon.setShow(bShow);
+	this.m_spItemType.setShow(bShow);
+	this.m_sGold.setShow(this.m_nGold >= 0 ? bShow : 0);
+	this.m_sComment.setShow(bShow);
+	this.m_spLevel.setShow(this.m_bLevel && bShow);
+	this.m_sJob.setShow(bShow);
+	this.m_spLock.setShow(this.m_bLock && bShow);
+}
+
+void T_StoreList::setLock(bool bLock)
+{
+	this.m_spLock.setShow(bLock ? this.m_sIcon.getShow() : 0);
+	this.m_bLock = bLock;
+}
+
+void T_StoreList::draw(int nItemNo)
+{
+	string itemName = アイテム_名前(nItemNo);
+	this.m_sName.setMaxLines(1);
+	this.m_sName.setText(itemName, false);
+	string szText = アイテム_実装条件(nItemNo);
+	if (!szText.Empty())
+	{
+		sact_text_metrics_t tmLevel;
+		tmLevel.nSize = 16;
+		tmLevel.nColorR = 0;
+		tmLevel.nColorG = 0;
+		tmLevel.nColorB = 0;
+		tmLevel.nWeight = 0;
+		tmLevel.nFace = 258;
+		tmLevel.nShadowPixelL = 0;
+		tmLevel.nShadowPixelR = 1;
+		tmLevel.nShadowPixelU = 0;
+		tmLevel.nShadowPixelD = 1;
+		tmLevel.nShadowColorR = 224;
+		tmLevel.nShadowColorG = 0;
+		tmLevel.nShadowColorB = 0;
+		float spacing = 0.0;
+		SetFixedWidthSpacing(-4);
+		FitText2(szText, this.m_spLevel.getWidth(), tmLevel.nFace, 16, 12, tmLevel.nSize, 1.0, 0.5, spacing);
+		this.m_spLevel.setShadowRate(51, -1);
+		this.m_spLevel.textDrawWidthCenter2(1, 0, szText, tmLevel, -4, true, spacing);
+		this.m_bLevel = true;
+	}
+	else
+	{
+		this.m_spLevel.textClear();
+		this.m_bLevel = false;
+	}
+	this.m_sComment.setText2(アイテム_情報(nItemNo), this.m_bLevel ? 3 : 4);
+}
+
+int T_StoreList::getItemTypeCgNo(int nItemNo)
+{
+	switch (アイテム_種類(nItemNo))
+	{
+		case 21:
+			return 10407;
+		case 1:
+			return 10408;
+		case 11:
+			return 10409;
+		case 17:
+			return 10410;
+		default:
+			break;
+	}
+	return 0;
+}
+
+ref T_StoreList T_StoreListManager::getItem(int nItemNo)
+{
+	return this.getItemFromIndex(this.searchItem(nItemNo));
+}
+
+int T_StoreListManager::getTopIndex()
+{
+	return this.m_nTopIndex;
+}
+
+int T_StoreListManager::getLockIndex()
+{
+	return this.m_nLockIndex;
+}
+
+int T_StoreListManager::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_StoreListManager::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_StoreListManager::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+bool T_StoreListManager::mouseInRect()
+{
+	return this.m_rcBase.mouseInRect();
+}
+
+int T_StoreListManager::getType()
+{
+	return this.m_sList.getType();
+}
+
+int T_StoreListManager::getItemType()
+{
+	return this.m_sList.getItemType();
+}
+
+int T_StoreListManager::getItemTypeEx()
+{
+	return this.m_sList.getItemTypeEx();
+}
+
+int T_StoreListManager::getJobType()
+{
+	return this.m_sList.getJobType();
+}
+
+int T_StoreListManager::getEquipType()
+{
+	return this.m_sList.getEquipType();
+}
+
+int T_StoreListManager::getCharaNo()
+{
+	return this.m_sList.getCharaNo();
+}
+
+int T_StoreListManager::getLockType()
+{
+	return this.m_sList.getLockType();
+}
+
+int T_StoreListManager::getSortMode()
+{
+	return this.m_sList.getSortMode();
+}
+
+int T_StoreListManager::getIndex(int nItemNo)
+{
+	return this.m_sList.getIndex(nItemNo);
+}
+
+int T_StoreListManager::getListCount()
+{
+	return this.m_sList.getCount();
+}
+
+int T_StoreListManager::getList(int nIndex)
+{
+	return this.m_sList.get(nIndex);
+}
+
+int T_StoreListManager::getPrev(int nIndex)
+{
+	return nIndex < 1 || nIndex >= this.getItemCount() ? this.getLast() : nIndex - 1;
+}
+
+int T_StoreListManager::getNext(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.getItemCount() - 1 ? this.getFirst() : nIndex + 1;
+}
+
+int T_StoreListManager::getFirst()
+{
+	return 0;
+}
+
+int T_StoreListManager::getLast()
+{
+	return this.getItemCount() - 1;
+}
+
+T_StoreListManager::T_StoreListManager()
+{
+	this.clear();
+	this.m_rcBase.set2(532, 0, 1023, 767);
+}
+
+T_StoreListManager::~T_StoreListManager()
+{
+	this.delete();
+}
+
+int T_StoreListManager::create(int nZ, int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	this.delete();
+	int cnt = this.m_sList.create(nType, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType);
+	if (cnt < 0)
+	{
+		return -1;
+	}
+	switch (nType)
+	{
+		case 6:
+			this.m_spBase.setCg(11405);
+			this.m_spBase.setPos(307, 0);
+			break;
+		case 11:
+			this.m_spBase.setCg(11403);
+			this.m_spBase.setPos(0, 0);
+			break;
+		case 7:
+		default:
+			if (nCharaNo > 0)
+			{
+				this.m_spBase.setCg(11415);
+				this.m_spBase.setPos(307, 0);
+			}
+			else
+			{
+				this.m_spBase.setCg(11401);
+				this.m_spBase.setPos(532, 0);
+			}
+			break;
+	}
+	this.m_spFrame.create(381, 128, 0, 255, 255, 128);
+	this.m_spBase.setZ(nZ);
+	this.m_spFrame.setZ(nZ + 20);
+	this.sort(アイテムソートモード(), false);
+	this.setTopIndex(0);
+	return cnt;
+}
+
+void T_StoreListManager::delete()
+{
+	this.m_spBase.delete();
+	this.m_spFrame.delete();
+	this.deleteItem();
+	this.clear();
+}
+
+void T_StoreListManager::clear()
+{
+	this.m_sList.clear();
+	this.m_nTopIndex = -1;
+	this.m_nLockIndex = -1;
+}
+
+bool T_StoreListManager::lock(int nItemNo)
+{
+	int idx = this.searchItem(nItemNo);
+	if (idx < 0)
+	{
+		this.m_spFrame.setShow(0);
+		this.m_nLockIndex = -1;
+		return false;
+	}
+	ref T_StoreList rfsItem = this.m_asItem[idx];
+	this.m_spFrame.setPos(rfsItem.getPosX(), rfsItem.getPosY());
+	this.m_spFrame.setShow(1);
+	this.m_nLockIndex = idx;
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_StoreListManager::blink()
+{
+	if (this.m_nLockIndex < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 350)
+	{
+		return true;
+	}
+	bool bShow = this.m_spFrame.getShow();
+	this.m_spFrame.setShow(!bShow);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+int T_StoreListManager::remake(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	int nIndex = nType < 0 && nItemType < 0 && nJobType < 0 && nEquipType < 0 && nCharaNo < 0 && nItemTypeEx < 0 && nLockType < 0 ? this.m_nTopIndex : 0;
+	int nSortMode = this.m_sList.getSortMode();
+	this.deleteItem();
+	int cnt = this.m_sList.remake(nType, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType);
+	if (cnt < 0)
+	{
+		return -1;
+	}
+	this.setTopIndex(nIndex);
+	return cnt;
+}
+
+bool T_StoreListManager::sort(int nSortMode, bool bCompulsory)
+{
+	nSortMode = nSortMode > 0 ? nSortMode : アイテムソートモード();
+	if (nSortMode < 10)
+	{
+		nSortMode = 1;
+	}
+	if (!this.m_sList.sort(nSortMode, bCompulsory))
+	{
+		return false;
+	}
+	this.setTopIndex(0);
+	アイテムソートモード_設定(this.m_sList.getSortMode());
+	return true;
+}
+
+int T_StoreListManager::setTopIndex(int nIndex)
+{
+	this.deleteItem();
+	int nType = this.m_sList.getType();
+	int cnt = this.m_sList.getCount();
+	int cnt2 = this.getItemCount();
+	int nZ = this.m_spBase.getZ() + 1;
+	bool bAdjust = nType == 11;
+	bool bFlag = cnt2 < this.m_asItem.Numof();
+	nIndex = cnt > cnt2 ? 数値_補正(nIndex, 0, cnt - cnt2) : 0;
+	int i = 0;
+	for (i = 0; i < cnt2; ++i)
+	{
+		int idx = i + nIndex;
+		if (idx >= cnt)
+		{
+			break;
+		}
+		int nItemNo = this.m_sList.get(idx);
+		int nX = bFlag ? アイテム倉庫_位置Ｘ(i + 1, false) : アイテム倉庫_位置Ｘ(i, bAdjust);
+		int nY = bFlag ? アイテム倉庫_位置Ｙ(i + 1, false) : アイテム倉庫_位置Ｙ(i, bAdjust);
+		ref T_StoreList rfsItem = this.m_asItem[i];
+		rfsItem.create(nItemNo, true, nType);
+		rfsItem.setPos(nX, nY);
+		rfsItem.setZ(nZ);
+		this.setLock(i, アイテム_ＬＯＣＫ中(nItemNo));
+	}
+	this.m_nTopIndex = nIndex;
+	this.setGold();
+	this.setShow(this.m_spBase.getShow());
+	return nIndex;
+}
+
+bool T_StoreListManager::setGold()
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	switch (this.m_sList.getType())
+	{
+		case 6:
+			for (i = 0; i < cnt; ++i)
+			{
+				ref T_StoreList rfsItem = this.m_asItem[i];
+				rfsItem.setGold(アイテム_価格(rfsItem.getItemNo()));
+			}
+			return true;
+		case 7:
+		case 11:
+		default:
+			break;
+	}
+	return false;
+}
+
+void T_StoreListManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_spFrame.setShow(0);
+}
+
+bool T_StoreListManager::setLock(int nIndex, bool bLock)
+{
+	switch (this.m_sList.getType())
+	{
+		case 7:
+		case 11:
+			break;
+		case 6:
+		default:
+			return false;
+	}
+	ref T_StoreList rfsItem = this.getItemFromIndex(nIndex);
+	if (rfsItem === NULL)
+	{
+		return false;
+	}
+	rfsItem.setLock(bLock);
+	return true;
+}
+
+bool T_StoreListManager::getLock(int nIndex)
+{
+	switch (this.m_sList.getType())
+	{
+		case 7:
+		case 11:
+			break;
+		case 6:
+		default:
+			return false;
+	}
+	ref T_StoreList rfsItem = this.getItemFromIndex(nIndex);
+	if (rfsItem === NULL)
+	{
+		return false;
+	}
+	return rfsItem.getLock();
+}
+
+int T_StoreListManager::getItemCount()
+{
+	int cnt = this.m_asItem.Numof();
+	if (this.m_sList.getType() != 11)
+	{
+		switch (this.m_sList.getItemType())
+		{
+			case 1:
+			case 11:
+			case 21:
+				--cnt;
+				break;
+			case 17:
+			default:
+				break;
+		}
+	}
+	return cnt;
+}
+
+ref T_ItemIcon T_StoreListManager::getIcon(int nItemNo)
+{
+	ref T_StoreList rfsItem = this.getItem(nItemNo);
+	if (rfsItem === NULL)
+	{
+		return NULL;
+	}
+	return rfsItem.getIcon();
+}
+
+ref T_StoreList T_StoreListManager::getItemFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asItem.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asItem[nIndex];
+}
+
+void T_StoreListManager::deleteItem()
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].delete();
+	}
+}
+
+int T_StoreListManager::searchItem(int nItemNo)
+{
+	if (nItemNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asItem[i].getItemNo() == nItemNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

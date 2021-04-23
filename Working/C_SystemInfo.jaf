@@ -1,0 +1,46 @@
+void システム情報_作成(int nZ)
+{
+	g_sSystemInfo.create(nZ);
+	g_sSystemInfo.update(0, -1);
+}
+
+void システム情報_削除()
+{
+	g_sSystemInfo.delete();
+}
+
+void システム情報_更新(int nMode, int nTotalTime)
+{
+	g_sSystemInfo.update(nMode, nTotalTime);
+}
+
+void システム情報_表示設定(bool bShow)
+{
+	g_sSystemInfo.setShow(bShow);
+}
+
+void システム情報_マーク表示設定(bool bShow)
+{
+	g_sSystemInfo.setMarkShow(bShow);
+}
+
+bool システム情報_サスペンド()
+{
+	return g_sSystemInfo.suspend();
+}
+
+bool システム情報_レジューム()
+{
+	if (!g_sSystemInfo.resume())
+	{
+		return false;
+	}
+	g_sSystemInfo.update(0, -1);
+	return true;
+}
+
+bool システム情報_サスペンド状態()
+{
+	return g_sSystemInfo.isSuspend();
+}
+

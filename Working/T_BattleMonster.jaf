@@ -1,0 +1,744 @@
+bool T_BattleMonster::animeStartHp(int nHp, int nTotalTime)
+{
+	return this.m_sBar.animeStart(nHp, nTotalTime);
+}
+
+bool T_BattleMonster::isAnimeHp()
+{
+	return this.m_sBar.isAnime();
+}
+
+int T_BattleMonster::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_BattleMonster::getStatus()
+{
+	return this.m_nStatus;
+}
+
+int T_BattleMonster::getAttackStatus()
+{
+	return this.m_sMark.getStatus(0);
+}
+
+int T_BattleMonster::getDefenseStatus()
+{
+	return this.m_sMark.getStatus(1);
+}
+
+bool T_BattleMonster::isPoison()
+{
+	return this.m_sMark.getFlag(0);
+}
+
+bool T_BattleMonster::isPiyori()
+{
+	return this.m_sMark.getFlag(1);
+}
+
+bool T_BattleMonster::isDead()
+{
+	return this.m_sMark.getFlag(2);
+}
+
+bool T_BattleMonster::isPrepare()
+{
+	return this.m_sMark2.isPrepare();
+}
+
+bool T_BattleMonster::isGuard()
+{
+	return this.m_sMark2.isGuard();
+}
+
+bool T_BattleMonster::isBurster()
+{
+	return this.m_sMark2.isBurster();
+}
+
+bool T_BattleMonster::isStealth()
+{
+	return this.m_sMark2.isStealth();
+}
+
+bool T_BattleMonster::isProtect()
+{
+	return this.m_sMark2.isProtect();
+}
+
+bool T_BattleMonster::isBarrier()
+{
+	return this.m_sMark2.isBarrier();
+}
+
+int T_BattleMonster::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_BattleMonster::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+bool T_BattleMonster::getShow()
+{
+	return this.m_bShow;
+}
+
+bool T_BattleMonster::getSelect()
+{
+	return this.m_bSelect;
+}
+
+bool T_BattleMonster::isCreated()
+{
+	return this.m_nNo > 0;
+}
+
+ref T_Bar T_BattleMonster::getBar()
+{
+	return this.m_sBar;
+}
+
+ref T_BattleMarkManager T_BattleMonster::getMark()
+{
+	return this.m_sMark;
+}
+
+ref T_BattleMarkNum T_BattleMonster::getMark2()
+{
+	return this.m_sMark2;
+}
+
+ref T_BattleWeakPoint T_BattleMonster::getWeakPoint()
+{
+	return this.m_sWeakPoint;
+}
+
+T_BattleMonster::T_BattleMonster()
+{
+	this.clear();
+}
+
+T_BattleMonster::~T_BattleMonster()
+{
+	this.delete();
+}
+
+bool T_BattleMonster::create(int nNo)
+{
+	this.delete();
+	if (!戦闘データ_有効(nNo))
+	{
+		return false;
+	}
+	this.m_spBase.setCg(10141);
+	sact_text_metrics_t tmName;
+	tmName.nSize = 22;
+	tmName.nWeight = 0;
+	tmName.nFace = 258;
+	tmName.nColorR = 255;
+	tmName.nColorG = 245;
+	tmName.nColorB = 100;
+	float spacing = 1.0;
+	string monsterName = 戦闘データ_名前(nNo);
+	FitText2(monsterName, this.m_spBase.getWidth(), tmName.nFace, 22, 12, tmName.nSize, 1.0, 0.5, spacing);
+	this.m_spBase.textDrawWidthCenter2(2, -2, monsterName, tmName, -4, true, spacing);
+	this.m_sBar.createCg(1, 10142, 0, 0);
+	this.m_sBar.setValue(戦闘データ_体力(nNo), 戦闘データ_体力最大(nNo));
+	this.m_sMark.create(1);
+	this.m_sMark2.create();
+	this.m_sWeakPoint.create(戦闘番号_ＩＩＣ(nNo));
+	this.m_nNo = nNo;
+	this.setStatus(0);
+	return true;
+}
+
+void T_BattleMonster::delete()
+{
+	this.m_spBase.delete();
+	this.m_sBar.delete();
+	this.m_sMark.delete();
+	this.m_sMark2.delete();
+	this.m_sWeakPoint.delete();
+	this.clear();
+}
+
+void T_BattleMonster::clear()
+{
+	this.m_nNo = -1;
+	this.m_nStatus = -1;
+	this.m_bShow = false;
+	this.m_bSelect = false;
+}
+
+bool T_BattleMonster::update(int nTime)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	this.m_sMark.update();
+	this.m_sMark2.update();
+	this.animeHp(nTime);
+	return this.m_nStatus == 1;
+}
+
+void T_BattleMonster::resetMark()
+{
+	this.m_sMark.reset();
+	this.m_sMark2.reset();
+}
+
+void T_BattleMonster::setPos(int nX, int nY)
+{
+	this.m_spBase.setPos(nX, nY);
+	this.m_sBar.setPos(nX + 4, nY + 17);
+	this.m_sMark.setPos(nX + 0, nY + 22);
+	this.m_sMark2.setPos(nX + 37, nY + 22);
+	this.m_sWeakPoint.setPos(nX + 0, nY + 22);
+}
+
+void T_BattleMonster::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ, -1);
+	this.m_sBar.setZ(nZ + 2);
+	this.m_sMark.setZ(nZ + 1);
+	this.m_sMark2.setZ(nZ + 10);
+	this.m_sWeakPoint.setZ(nZ + 15);
+}
+
+void T_BattleMonster::setShow(bool bShow)
+{
+	bool bShow2 = this.isDead() ? 0 : bShow;
+	this.m_spBase.setShow(bShow);
+	this.m_sBar.setShow(bShow2, -1);
+	this.m_sMark.setShow(bShow);
+	this.m_sMark2.setShow(bShow2);
+	this.m_sWeakPoint.setShow(bShow2);
+	this.m_bShow = bShow;
+}
+
+void T_BattleMonster::setSelect(bool bSelect)
+{
+	this.m_bSelect = bSelect;
+	if (!this.isDead())
+	{
+		if (bSelect)
+		{
+			this.m_spBase.coverColor3D(255, 0, 255, 128, false);
+		}
+		else
+		{
+			this.m_spBase.coverColor3D(-1, -1, -1, -1, true);
+		}
+	}
+}
+
+void T_BattleMonster::setBlink(int nBlink)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	if (nBlink > 0)
+	{
+		this.m_spBase.coverColor3D(255, 0, 255, 128, false);
+	}
+	else
+	{
+		this.m_spBase.coverColor3D(-1, -1, -1, -1, true);
+	}
+}
+
+int T_BattleMonster::setStatus(int nStatus)
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	if (nStatus < 0 || nStatus >= 2)
+	{
+		return -1;
+	}
+	if (nStatus == this.m_nStatus)
+	{
+		return this.m_nStatus;
+	}
+	this.m_nStatus = nStatus;
+	if (nStatus == 1)
+	{
+		戦闘_敵点滅(this.m_nNo, 2, 50);
+	}
+	return this.m_nStatus;
+}
+
+int T_BattleMonster::setAttackStatus(int nStatus)
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	return this.m_sMark.setStatus(0, nStatus, 1, 2);
+}
+
+int T_BattleMonster::setDefenseStatus(int nStatus)
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	return this.m_sMark.setStatus(1, nStatus, 11, 12);
+}
+
+bool T_BattleMonster::setPoison(bool bFlag)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	return this.m_sMark.setFlag(0, bFlag, 21);
+}
+
+bool T_BattleMonster::setPiyori(bool bFlag)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	return this.m_sMark.setFlag(1, bFlag, 22);
+}
+
+bool T_BattleMonster::setDead(bool bFlag)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	if (bFlag)
+	{
+		this.m_sMark.reset();
+	}
+	bool bRet = this.m_sMark.setFlag(2, bFlag, 23);
+	this.setShow(this.m_bShow);
+	return bRet;
+}
+
+int T_BattleMonster::animeHp(int nTime)
+{
+	int nTotalTime = this.m_sBar.getTotalTime();
+	if (nTotalTime <= 0)
+	{
+		return -1;
+	}
+	if (nTime >= nTotalTime)
+	{
+		this.m_sBar.animeEnd();
+		return -1;
+	}
+	return this.m_sBar.anime(nTime);
+}
+
+void T_BattleMonsterManager::setForward(bool bFlag)
+{
+	this.m_bForward = bFlag;
+}
+
+bool T_BattleMonsterManager::isForward()
+{
+	return this.m_bForward;
+}
+
+T_BattleMonsterManager::T_BattleMonsterManager()
+{
+	this.clear();
+}
+
+T_BattleMonsterManager::~T_BattleMonsterManager()
+{
+	this.delete();
+}
+
+bool T_BattleMonsterManager::create(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = 戦闘番号_敵(i);
+		ref T_BattleMonster rfMonster = this.m_asMonster[i];
+		if (rfMonster.create(nNo))
+		{
+			rfMonster.setPos(戦闘敵_位置Ｘ(nNo), 戦闘敵_位置Ｙ(nNo));
+			rfMonster.setZ(nZ);
+		}
+	}
+	return true;
+}
+
+void T_BattleMonsterManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMonster[i].delete();
+	}
+	this.m_bForward = false;
+}
+
+void T_BattleMonsterManager::clear()
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMonster[i].clear();
+	}
+	this.m_bForward = false;
+}
+
+bool T_BattleMonsterManager::checkForward()
+{
+	if (this.m_bForward)
+	{
+		return true;
+	}
+	if (!戦闘データ_敵前衛全滅())
+	{
+		return false;
+	}
+	３Ｄ戦闘_カメラ移動(0.0, 0.699999988079071, -2.5, 250);
+	戦闘選択_位置変更();
+	this.m_bForward = true;
+	return true;
+}
+
+void T_BattleMonsterManager::update()
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	int nTime = this.m_sTimer.Get();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMonster[i].update(nTime);
+	}
+}
+
+void T_BattleMonsterManager::updateHp(int nNo, int nHp, int nTotalTime)
+{
+	if (!this.startHp(nNo, nHp, nTotalTime))
+	{
+		return;
+	}
+	this.waitHp(nNo);
+}
+
+bool T_BattleMonsterManager::startHp(int nNo, int nHp, int nTotalTime)
+{
+	ref T_BattleMonster rfMonster = this.get(nNo);
+	if (rfMonster === NULL || rfMonster.isDead())
+	{
+		return false;
+	}
+	if (!rfMonster.animeStartHp(nHp, nTotalTime))
+	{
+		return false;
+	}
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_BattleMonsterManager::waitHp(int nNo)
+{
+	ref T_BattleMonster rfMonster = this.get(nNo);
+	if (rfMonster === NULL || rfMonster.isDead())
+	{
+		return false;
+	}
+	while (rfMonster.isAnimeHp())
+	{
+		UPDATE(true);
+	}
+	return true;
+}
+
+void T_BattleMonsterManager::updateHpAll(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	if (!this.startHpAll(anNo, anHp, nTotalTime))
+	{
+		return;
+	}
+	this.waitHpAll(anNo);
+}
+
+bool T_BattleMonsterManager::startHpAll(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt)
+	{
+		return false;
+	}
+	if (anHp === NULL || anHp.Numof() != cnt)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref int rfnNo = anNo[i];
+		if (rfnNo <= 0)
+		{
+			continue;
+		}
+		if (!this.startHp(rfnNo, anHp[i], nTotalTime))
+		{
+		}
+	}
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_BattleMonsterManager::waitHpAll(ref array@int anNo)
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt)
+	{
+		return false;
+	}
+	bool bAnime = true;
+	while (bAnime)
+	{
+		bAnime = false;
+		for (i = 0; i < cnt; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			if (this.m_asMonster[i].isAnimeHp())
+			{
+				bAnime = true;
+			}
+		}
+		UPDATE(true);
+	}
+	return true;
+}
+
+void T_BattleMonsterManager::blink(int nNo, int nBlinkTime)
+{
+	ref T_BattleMonster rfMonster = this.get(nNo);
+	if (rfMonster === NULL || rfMonster.isDead())
+	{
+		return;
+	}
+	int j = 0;
+	int cnt = 6;
+	bool bBlink = true;
+	CASTimer sTimer;
+	for (j = 0; j < cnt; ++j)
+	{
+		sTimer.Reset();
+		bBlink = !bBlink;
+		rfMonster.setBlink(bBlink);
+		UPDATE(true);
+		while (sTimer.Get() < nBlinkTime)
+		{
+			UPDATE(true);
+		}
+	}
+	rfMonster.setBlink(-1);
+	UPDATE(true);
+}
+
+void T_BattleMonsterManager::blinkAll(ref array@int anNo, int nBlinkTime)
+{
+	int cnt2 = this.m_asMonster.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt2)
+	{
+		return;
+	}
+	int i = 0;
+	int j = 0;
+	int cnt = 6;
+	bool bBlink = true;
+	CASTimer sTimer;
+	for (j = 0; j < cnt; ++j)
+	{
+		sTimer.Reset();
+		bBlink = !bBlink;
+		for (i = 0; i < cnt2; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			ref T_BattleMonster rfMonster = this.m_asMonster[i];
+			rfMonster.setBlink(bBlink);
+		}
+		UPDATE(true);
+		while (sTimer.Get() < nBlinkTime)
+		{
+			UPDATE(true);
+		}
+	}
+	for (i = 0; i < cnt2; ++i)
+	{
+		if (anNo[i] <= 0)
+		{
+			continue;
+		}
+		ref T_BattleMonster rfMonster = this.m_asMonster[i];
+		rfMonster.setBlink(-1);
+	}
+	UPDATE(true);
+}
+
+void T_BattleMonsterManager::showWeakPoint(int nNo)
+{
+	ref T_BattleMonster rfMonster = this.get(nNo);
+	if (rfMonster === NULL || rfMonster.isDead())
+	{
+		return;
+	}
+	ref T_BattleWeakPoint rfsWeakPoint = rfMonster.getWeakPoint();
+	rfsWeakPoint.setShowWeakPoint(true);
+	int j = 0;
+	int cnt = 6;
+	bool bShow = true;
+	CASTimer sTimer;
+	for (j = 0; j < cnt; ++j)
+	{
+		sTimer.Reset();
+		bShow = !bShow;
+		rfsWeakPoint.setShow(bShow);
+		UPDATE(true);
+		while (sTimer.Get() < 100)
+		{
+			UPDATE(true);
+		}
+	}
+	rfsWeakPoint.setShow(true);
+	UPDATE(true);
+}
+
+void T_BattleMonsterManager::showWeakPointAll(ref array@int anNo)
+{
+	int i = 0;
+	int cnt2 = this.m_asMonster.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt2)
+	{
+		return;
+	}
+	for (i = 0; i < cnt2; ++i)
+	{
+		if (anNo[i] <= 0)
+		{
+			continue;
+		}
+		ref T_BattleMonster rfMonster = this.m_asMonster[i];
+		rfMonster.getWeakPoint().setShowWeakPoint(true);
+	}
+	int j = 0;
+	int cnt = 6;
+	bool bShow = true;
+	CASTimer sTimer;
+	for (j = 0; j < cnt; ++j)
+	{
+		sTimer.Reset();
+		bShow = !bShow;
+		for (i = 0; i < cnt2; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			ref T_BattleMonster rfMonster = this.m_asMonster[i];
+			rfMonster.getWeakPoint().setShow(bShow);
+		}
+		UPDATE(true);
+		while (sTimer.Get() < 100)
+		{
+			UPDATE(true);
+		}
+	}
+	for (i = 0; i < cnt2; ++i)
+	{
+		if (anNo[i] <= 0)
+		{
+			continue;
+		}
+		ref T_BattleMonster rfMonster = this.m_asMonster[i];
+		rfMonster.getWeakPoint().setShow(true);
+	}
+	UPDATE(true);
+}
+
+void T_BattleMonsterManager::resetMarkAll()
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleMonster rfMonster = this.m_asMonster[i];
+		rfMonster.resetMark();
+	}
+}
+
+void T_BattleMonsterManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMonster[i].setShow(bShow);
+	}
+}
+
+void T_BattleMonsterManager::setShowWeakPoint(int nNo, bool bShow)
+{
+	ref T_BattleMonster rfMonster = this.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return;
+	}
+	ref T_BattleWeakPoint rfsWeakPoint = rfMonster.getWeakPoint();
+	rfsWeakPoint.setShowWeakPoint(rfMonster.isDead() ? 0 : bShow);
+	rfsWeakPoint.setShow(rfsWeakPoint.getShow());
+	UPDATE(true);
+}
+
+bool T_BattleMonsterManager::isCreated()
+{
+	int i = 0;
+	int cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asMonster[i].isCreated())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+ref T_BattleMonster T_BattleMonsterManager::get(int nNo)
+{
+	int cnt = this.m_asMonster.Numof();
+	int idx = 戦闘番号_敵インデクス(nNo);
+	if (idx < 0 || idx >= cnt)
+	{
+		return NULL;
+	}
+	return this.m_asMonster[idx];
+}
+

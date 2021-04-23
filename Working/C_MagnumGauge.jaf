@@ -1,0 +1,60 @@
+void マグナムゲージ_作成(int nZ)
+{
+	g_sMagnumGauge.create(nZ, マグナム_最大値());
+}
+
+void マグナムゲージ_削除()
+{
+	g_sMagnumGauge.delete();
+}
+
+bool マグナムゲージ_点滅()
+{
+	return g_sMagnumGauge.blink();
+}
+
+void マグナムゲージ_更新()
+{
+	g_sMagnumGauge.setValue(マグナム_数値(), マグナム_最大値());
+}
+
+void マグナムゲージ_数値設定(int nValue, int nMax)
+{
+	g_sMagnumGauge.setValue(nValue, nMax);
+}
+
+void マグナムゲージ_表示設定(bool bShow)
+{
+	g_sMagnumGauge.setShow(bShow);
+}
+
+bool マグナムゲージ_サスペンド()
+{
+	return g_sMagnumGauge.suspend();
+}
+
+bool マグナムゲージ_レジューム()
+{
+	if (!g_sMagnumGauge.resume())
+	{
+		return false;
+	}
+	マグナムゲージ_更新();
+	return true;
+}
+
+bool マグナムゲージ_サスペンド状態()
+{
+	return g_sMagnumGauge.isSuspend();
+}
+
+int マグナム_最大値()
+{
+	return ◆マグナム最大;
+}
+
+int マグナム_数値()
+{
+	return ◆マグナム;
+}
+

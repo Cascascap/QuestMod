@@ -1,0 +1,235 @@
+T_QuestComment::T_QuestComment()
+{
+	this.clear();
+}
+
+T_QuestComment::~T_QuestComment()
+{
+	this.delete();
+}
+
+void T_QuestComment::create()
+{
+	this.delete();
+	bool bBold = 太字確認(256, 0);
+	this.m_spBase.setCg(11014);
+	this.m_spMarkBattle.setCg(11026);
+	this.m_spMarkMap.setCg(11027);
+	this.m_spMarkSub.setCg(11028);
+	this.m_sComment.create(530, 124, -1, -5, 0, 0);
+	this.m_sComment.setTextSpace(-9);
+	this.m_sComment.setDrawType(2);
+	this.m_sComment.setSpacing(1.0);
+	this.m_sComment.setFontType(256);
+	this.m_sComment.setFontSize(30);
+	this.m_sComment.setFontColor(255, 246, 213);
+	this.m_sComment.setFontBold(bBold);
+	this.m_sComment.setShadowPixel(0, 1, 0, 1);
+	this.m_sComment.setShadowColor(0, 0, 0);
+	this.m_sComment.setShadowRate(128);
+	this.m_sPlace.create(530, 30, -1, -5, 0, 0);
+	this.m_sPlace.setTextSpace(-9);
+	this.m_sPlace.setDrawType(2);
+	this.m_sPlace.setSpacing(1.0);
+	this.m_sPlace.setFontType(256);
+	this.m_sPlace.setFontSize(30);
+	this.m_sPlace.setFontColor(255, 246, 213);
+	this.m_sPlace.setFontBold(bBold);
+	this.m_sPlace.setShadowPixel(0, 1, 0, 1);
+	this.m_sPlace.setShadowColor(0, 0, 0);
+	this.m_sPlace.setShadowRate(128);
+	this.m_sInfo.create(300, 75, -1, -5, 0, 0);
+	this.m_sInfo.useOpticalTop = 1;
+	this.m_sInfo.setTextSpace(-9);
+	this.m_sInfo.setDrawType(2);
+	this.m_sInfo.setSpacing(1.0);
+	this.m_sInfo.setFontType(256);
+	this.m_sInfo.setFontSize(30);
+	this.m_sInfo.setFontColor(255, 246, 213);
+	this.m_sInfo.setFontBold(bBold);
+	this.m_sInfo.setShadowPixel(0, 1, 0, 1);
+	this.m_sInfo.setShadowColor(0, 0, 0);
+	this.m_sInfo.setShadowRate(128);
+	this.setPos(41, 101);
+}
+
+void T_QuestComment::delete()
+{
+	int i = 0;
+	int cnt = this.m_asCondition.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCondition[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spMarkBattle.delete();
+	this.m_spMarkMap.delete();
+	this.m_spMarkSub.delete();
+	this.m_sComment.delete();
+	this.m_sPlace.delete();
+	this.m_sInfo.delete();
+	this.clear();
+}
+
+void T_QuestComment::clear()
+{
+	this.m_nQuestNo = -1;
+}
+
+bool T_QuestComment::show(int nQuestNo)
+{
+	bool bShow = false;
+	if (!クエスト_確認(nQuestNo))
+	{
+		goto label0;
+	}
+	string szComment = クエスト_説明文(nQuestNo);
+	string placeName = クエスト_発生場所(nQuestNo);
+	string questInfo = クエスト_情報(nQuestNo);
+	bool isMagnumQuest = マグナム_あり(nQuestNo);
+	szComment = RemoveTrailingWhitespace(szComment);
+	if (szComment.Empty())
+	{
+		goto label0;
+	}
+	bShow = true;
+	this.drawCondition(nQuestNo);
+	if (nQuestNo == this.m_nQuestNo)
+	{
+		goto label0;
+	}
+	this.m_sComment.useOpticalTop = 1;
+	this.m_sComment.setText(szComment, false);
+	this.m_sPlace.setText(placeName, false);
+	this.m_sInfo.setFontSize(30);
+	this.m_sInfo.setLineSpace(-5);
+	this.m_sInfo.setTextSpace(-9);
+	this.m_sInfo.setText(questInfo, false);
+	this.m_nQuestNo = nQuestNo;
+label0:
+	this.setShow(bShow);
+	return bShow;
+}
+
+void T_QuestComment::setPos(int nX, int nY)
+{
+	this.m_spBase.setPos(nX, nY);
+	this.m_spMarkBattle.setPos(nX + 362, nY + 435);
+	this.m_spMarkMap.setPos(nX + 465, nY + 435);
+	this.m_spMarkSub.setPos(nX + 506, nY + 3);
+	this.m_sComment.setPos(nX + 35, nY + 33);
+	this.m_sPlace.setPos(nX + 35, nY + 196);
+	this.m_sInfo.setPos(nX + 35, nY + 393);
+}
+
+void T_QuestComment::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_spMarkBattle.setZ(nZ + 5);
+	this.m_spMarkMap.setZ(nZ + 5);
+	this.m_spMarkSub.setZ(nZ + 5);
+	this.m_sComment.setZ(nZ + 1);
+	this.m_sPlace.setZ(nZ + 1);
+	this.m_sInfo.setZ(nZ + 1);
+}
+
+void T_QuestComment::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asCondition.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCondition[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_spMarkBattle.setShow(クエスト_戦闘あり(this.m_nQuestNo) ? bShow : 0);
+	this.m_spMarkMap.setShow(クエスト_マップあり(this.m_nQuestNo) ? bShow : 0);
+	this.m_spMarkSub.setShow(クエスト_サブ(this.m_nQuestNo) ? bShow : 0);
+	this.m_sComment.setShow(bShow);
+	this.m_sPlace.setShow(bShow);
+	this.m_sInfo.setShow(bShow);
+}
+
+void T_QuestComment::drawCondition(int nQuestNo)
+{
+	int i = 0;
+	int cnt = this.m_asCondition.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCondition[i].delete();
+	}
+	if (!クエスト_確認(nQuestNo))
+	{
+		return;
+	}
+	sact_text_metrics_t tmText;
+	tmText.nSize = 30;
+	tmText.nColorR = 255;
+	tmText.nColorG = 246;
+	tmText.nColorB = 213;
+	tmText.nWeight = 0;
+	tmText.nFace = 256;
+	tmText.nShadowPixelL = 0;
+	tmText.nShadowPixelR = 1;
+	tmText.nShadowPixelU = 0;
+	tmText.nShadowPixelD = 1;
+	tmText.nShadowColorR = 0;
+	tmText.nShadowColorG = 0;
+	tmText.nShadowColorB = 0;
+	if (クエスト_参加条件Ａ(nQuestNo, 1) == 0)
+	{
+		this.m_asCondition[0].createFromTextMetrics2(1, "None", tmText, -9, 1.0);
+		goto label0;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		string szText = クエスト_参加条件(nQuestNo, i + 1);
+		if (szText.Empty())
+		{
+			continue;
+		}
+		if (クエスト_参加条件_有効(nQuestNo, i + 1))
+		{
+			tmText.nColorR = 255;
+			tmText.nColorG = 246;
+			tmText.nColorB = 213;
+		}
+		else
+		{
+			tmText.nColorR = 255;
+			tmText.nColorG = 70;
+			tmText.nColorB = 200;
+		}
+		float spacing = 1.0;
+		SelectFontNumber(tmText.nFace);
+		SetFontSize(tmText.nSize);
+		int maxWidth = 532;
+		while (spacing > 0.5)
+		{
+			SetSpacing(spacing);
+			int textWidth = MeasureText(szText, true);
+			if (textWidth > maxWidth)
+			{
+				spacing -= 0.0500000007450581;
+			}
+			else
+			{
+				break;
+			}
+		}
+		this.m_asCondition[i].createFromTextMetrics2(1, szText, tmText, -9, spacing);
+	}
+label0:
+	int nX = 76;
+	int nY = 369;
+	int nZ = this.m_spBase.getZ();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsCondition = this.m_asCondition[i];
+		rfsCondition.setPos(nX, nY);
+		rfsCondition.setZ(nZ + 1);
+		rfsCondition.setShadowRate(128);
+		nY += 25;
+	}
+}
+

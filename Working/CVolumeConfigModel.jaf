@@ -1,0 +1,276 @@
+CVolumeConfigModel::CVolumeConfigModel()
+{
+	this.m_BackCG = "";
+	this.m_VolumeBoxCG = "";
+	this.m_VolumeBoxUnderCursorCG = "";
+	this.m_ReturnButtonCG = "";
+	this.m_ReturnButtonUnderCursorCG = "";
+	this.m_nReturnButtonX = -2147483648;
+	this.m_nReturnButtonY = -2147483648;
+	this.m_ConfigButtonCG = "";
+	this.m_ConfigButtonUnderCursorCG = "";
+	this.m_nConfigButtonX = -2147483648;
+	this.m_nConfigButtonY = -2147483648;
+	this.m_MuteButtonCG = "";
+	this.m_MuteButtonUnderCursorCG = "";
+	this.m_MuteButtonCheckCG = "";
+	this.m_MuteButtonCheckUnderCursorCG = "";
+	this.m_nDecideSound = -2147483648;
+	this.m_nUnderCursorSound = -2147483648;
+	this.m_nCancelSound = -2147483648;
+}
+
+void CVolumeConfigModel::Clear()
+{
+	this.m_VolumeElementList.Free();
+}
+
+void CVolumeConfigModel::AddVolumeElement(CVolumeElement VolumeElement)
+{
+	this.m_VolumeElementList.PushBack(VolumeElement);
+}
+
+int CVolumeConfigModel::GetNumofElement()
+{
+	return this.m_VolumeElementList.Numof();
+}
+
+ref CVolumeElement CVolumeConfigModel::GetElement(int nIndex)
+{
+	return this.m_VolumeElementList[nIndex];
+}
+
+void CVolumeConfigModel::SetBackCG(string BackCG)
+{
+	this.m_BackCG = BackCG;
+}
+
+void CVolumeConfigModel::SetVolumeBoxCG(string VolumeBoxCG)
+{
+	this.m_VolumeBoxCG = VolumeBoxCG;
+}
+
+void CVolumeConfigModel::SetVolumeBoxUnderCursorCG(string VolumeBoxUnderCursorCG)
+{
+	this.m_VolumeBoxUnderCursorCG = VolumeBoxUnderCursorCG;
+}
+
+void CVolumeConfigModel::SetVolumeAreaRect(int nElement, int nX, int nY, int nWidth, int nHeight)
+{
+	if (nElement >= this.m_VolumeAreaRectList.Numof())
+	{
+		this.m_VolumeAreaRectList.Realloc(nElement + 1);
+	}
+	this.m_VolumeAreaRectList[nElement].x = nX;
+	this.m_VolumeAreaRectList[nElement].y = nY;
+	this.m_VolumeAreaRectList[nElement].w = nWidth;
+	this.m_VolumeAreaRectList[nElement].h = nHeight;
+}
+
+void CVolumeConfigModel::SetReturnButtonCG(string ReturnButtonCG)
+{
+	this.m_ReturnButtonCG = ReturnButtonCG;
+}
+
+void CVolumeConfigModel::SetReturnButtonUnderCursorCG(string ReturnButtonUnderCursorCG)
+{
+	this.m_ReturnButtonUnderCursorCG = ReturnButtonUnderCursorCG;
+}
+
+void CVolumeConfigModel::SetReturnButtonPos(int nX, int nY)
+{
+	this.m_nReturnButtonX = nX;
+	this.m_nReturnButtonY = nY;
+}
+
+void CVolumeConfigModel::SetConfigButtonCG(string ConfigButtonCG)
+{
+	this.m_ConfigButtonCG = ConfigButtonCG;
+}
+
+void CVolumeConfigModel::SetConfigButtonUnderCursorCG(string ConfigButtonUnderCursorCG)
+{
+	this.m_ConfigButtonUnderCursorCG = ConfigButtonUnderCursorCG;
+}
+
+void CVolumeConfigModel::SetConfigButtonPos(int nX, int nY)
+{
+	this.m_nConfigButtonX = nX;
+	this.m_nConfigButtonY = nY;
+}
+
+void CVolumeConfigModel::SetMuteButtonCG(string MuteButtonCG)
+{
+	this.m_MuteButtonCG = MuteButtonCG;
+}
+
+void CVolumeConfigModel::SetMuteButtonUnderCursorCG(string MuteButtonUnderCursorCG)
+{
+	this.m_MuteButtonUnderCursorCG = MuteButtonUnderCursorCG;
+}
+
+void CVolumeConfigModel::SetMuteButtonCheckCG(string MuteButtonCheckCG)
+{
+	this.m_MuteButtonCheckCG = MuteButtonCheckCG;
+}
+
+void CVolumeConfigModel::SetMuteButtonCheckUnderCursorCG(string MuteButtonCheckUnderCursorCG)
+{
+	this.m_MuteButtonCheckUnderCursorCG = MuteButtonCheckUnderCursorCG;
+}
+
+void CVolumeConfigModel::SetMuteButtonPos(int nElement, int nX, int nY)
+{
+	if (nElement >= this.m_MuteButtonPosList.Numof())
+	{
+		this.m_MuteButtonPosList.Realloc(nElement + 1);
+	}
+	this.m_MuteButtonPosList[nElement].x = nX;
+	this.m_MuteButtonPosList[nElement].y = nY;
+}
+
+string CVolumeConfigModel::GetBackCG()
+{
+	return this.m_BackCG;
+}
+
+string CVolumeConfigModel::GetVolumeBoxCG()
+{
+	return this.m_VolumeBoxCG;
+}
+
+string CVolumeConfigModel::GetVolumeBoxUnderCursorCG()
+{
+	return this.m_VolumeBoxUnderCursorCG;
+}
+
+rect_t CVolumeConfigModel::GetVolumeAreaRect(int nElement)
+{
+	if (nElement < 0 || nElement >= this.m_VolumeAreaRectList.Numof())
+	{
+		rect_t ZeroRect;
+		return ZeroRect;
+	}
+	return this.m_VolumeAreaRectList[nElement];
+}
+
+string CVolumeConfigModel::GetReturnButtonCG()
+{
+	return this.m_ReturnButtonCG;
+}
+
+string CVolumeConfigModel::GetReturnButtonUnderCursorCG()
+{
+	return this.m_ReturnButtonUnderCursorCG;
+}
+
+int CVolumeConfigModel::GetReturnButtonX()
+{
+	return this.m_nReturnButtonX;
+}
+
+int CVolumeConfigModel::GetReturnButtonY()
+{
+	return this.m_nReturnButtonY;
+}
+
+string CVolumeConfigModel::GetConfigButtonCG()
+{
+	return this.m_ConfigButtonCG;
+}
+
+string CVolumeConfigModel::GetConfigButtonUnderCursorCG()
+{
+	return this.m_ConfigButtonUnderCursorCG;
+}
+
+int CVolumeConfigModel::GetConfigButtonX()
+{
+	return this.m_nConfigButtonX;
+}
+
+int CVolumeConfigModel::GetConfigButtonY()
+{
+	return this.m_nConfigButtonY;
+}
+
+string CVolumeConfigModel::GetMuteButtonCG()
+{
+	return this.m_MuteButtonCG;
+}
+
+string CVolumeConfigModel::GetMuteButtonUnderCursorCG()
+{
+	return this.m_MuteButtonUnderCursorCG;
+}
+
+string CVolumeConfigModel::GetMuteButtonCheckCG()
+{
+	return this.m_MuteButtonCheckCG;
+}
+
+string CVolumeConfigModel::GetMuteButtonCheckUnderCursorCG()
+{
+	return this.m_MuteButtonCheckUnderCursorCG;
+}
+
+pos_t CVolumeConfigModel::GetMuteButtonPos(int nElement)
+{
+	if (nElement < 0 || nElement >= this.m_MuteButtonPosList.Numof())
+	{
+		pos_t ZeroPos;
+		return ZeroPos;
+	}
+	return this.m_MuteButtonPosList[nElement];
+}
+
+void CVolumeConfigModel::SetDecideSound(int nSound)
+{
+	this.m_nDecideSound = nSound;
+}
+
+void CVolumeConfigModel::SetUnderCursorSound(int nSound)
+{
+	this.m_nUnderCursorSound = nSound;
+}
+
+void CVolumeConfigModel::SetCancelSound(int nSound)
+{
+	this.m_nCancelSound = nSound;
+}
+
+int CVolumeConfigModel::GetDecideSound()
+{
+	return this.m_nDecideSound;
+}
+
+int CVolumeConfigModel::GetUnderCursorSound()
+{
+	return this.m_nUnderCursorSound;
+}
+
+int CVolumeConfigModel::GetCancelSound()
+{
+	return this.m_nCancelSound;
+}
+
+void CVolumeConfigModel::SetTestSound(int nElement, int nSound)
+{
+	if (nElement >= this.m_TestSoundList.Numof())
+	{
+		int nOldNumof = this.m_TestSoundList.Numof();
+		this.m_TestSoundList.Realloc(nElement + 1);
+		this.m_TestSoundList.Fill(nOldNumof, this.m_TestSoundList.Numof() - nOldNumof, -2147483648);
+	}
+	this.m_TestSoundList[nElement] = nSound;
+}
+
+int CVolumeConfigModel::GetTestSound(int nElement)
+{
+	if (nElement < 0 || nElement >= this.m_TestSoundList.Numof())
+	{
+		return -2147483648;
+	}
+	return this.m_TestSoundList[nElement];
+}
+

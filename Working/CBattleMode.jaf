@@ -1,0 +1,598 @@
+bool CBattleMode::SetMonsterPos(int nMonsterIndex, float fX, float fY, float fZ)
+{
+	return this.m_MonsterList.SetPos(nMonsterIndex, fX, fY, fZ);
+}
+
+bool CBattleMode::FlashMonster(int nMonsterIndex, int nTime)
+{
+	return this.m_MonsterList.Flash(nMonsterIndex, nTime);
+}
+
+bool CBattleMode::FlashMonsterAll(ref array@int anNo, int nTime)
+{
+	return this.m_MonsterList.FlashAll(anNo, nTime);
+}
+
+bool CBattleMode::BlinkMonster(int nMonsterIndex, int nCount, int nTime)
+{
+	return this.m_MonsterList.Blink(nMonsterIndex, nCount, nTime);
+}
+
+bool CBattleMode::IsCreated()
+{
+	return this.m_Plugin.GetPlugin() >= 0;
+}
+
+int CBattleMode::GetViewX()
+{
+	return this.m_nViewX;
+}
+
+int CBattleMode::GetViewY()
+{
+	return this.m_nViewY;
+}
+
+int CBattleMode::GetViewWidth()
+{
+	return this.m_nViewWidth;
+}
+
+int CBattleMode::GetViewHeight()
+{
+	return this.m_nViewHeight;
+}
+
+string CBattleMode::GetMapName()
+{
+	return this.m_MapName;
+}
+
+float CBattleMode::GetCameraX()
+{
+	return this.m_fCameraX;
+}
+
+float CBattleMode::GetCameraY()
+{
+	return this.m_fCameraY;
+}
+
+float CBattleMode::GetCameraZ()
+{
+	return this.m_fCameraZ;
+}
+
+float CBattleMode::GetCameraAngleP()
+{
+	return this.m_fCameraAngleP;
+}
+
+ref CReignPlugin CBattleMode::GetPlugin()
+{
+	return this.m_Plugin;
+}
+
+ref CMonsterList CBattleMode::GetMonsterList()
+{
+	return this.m_MonsterList;
+}
+
+CBattleMode::CBattleMode()
+{
+	this.m_nViewX = 0;
+	this.m_nViewY = 0;
+	this.m_nViewWidth = 1024;
+	this.m_nViewHeight = 378;
+	this.Clear();
+}
+
+CBattleMode::~CBattleMode()
+{
+	this.Release();
+}
+
+bool CBattleMode::Create(string szBackName, ref array@int anMonsterNo)
+{
+	this.Release();
+	this.m_Plugin.Create(101, this.m_nViewWidth, this.m_nViewHeight);
+	this.m_Plugin.Bind();
+	LoadReignSetting(this.m_Plugin);
+	this.CreateLight();
+	this.SetGlareParam();
+	this.CreateFreeCamera();
+	this.InitCamera();
+	this.m_Plugin.SetViewport(this.m_nViewX, this.m_nViewY, this.m_nViewWidth, this.m_nViewHeight);
+	this.InitProjection(this.m_nViewWidth, this.m_nViewHeight);
+	this.m_Plugin.SetProjection(this.m_Projection.fWidth, this.m_Projection.fHeight, this.m_Projection.fNear, this.m_Projection.fFar, this.m_Projection.fDeg);
+	this.SetShadowParam();
+	this.SetSSAOParam();
+	this.CreateMap();
+	this.SetMap(szBackName);
+	this.CreateMonsterList(anMonsterNo);
+	this.CreateGold();
+	this.CreatePlayer();
+	this.SetPlayer();
+	this.m_nPrevTime = system.GetTime();
+	return true;
+}
+
+void CBattleMode::Release()
+{
+	this.m_MonsterList.Release();
+	this.m_sGold.Release();
+	this.m_aDirLight.Free();
+	this.m_FreeCamera.Release();
+	this.m_Map.Release();
+	this.m_Plugin.Unbind();
+	this.m_Plugin.Release();
+	this.Clear();
+}
+
+void CBattleMode::Clear()
+{
+	return;
+}
+
+void CBattleMode::InitProjection(int nViewWidth, int nViewHeight)
+{
+	float fNear = 0.5;
+	float fFar = 50.0;
+	float fDeg = 40.0;
+	this.m_Projection.Set(nViewWidth, nViewHeight, fNear, fFar, fDeg);
+}
+
+bool CBattleMode::Suspend(bool bReleaseMonster)
+{
+	if (!this.IsCreated())
+	{
+		return false;
+	}
+	if (bReleaseMonster)
+	{
+		this.m_MonsterList.Release();
+		this.m_sGold.Release();
+	}
+	this.WaitLoading(false);
+	if (!this.m_Plugin.Suspend())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CBattleMode::Resume(ref array@int anMonsterNo)
+{
+	if (!this.IsCreated())
+	{
+		return false;
+	}
+	if (!this.m_Plugin.IsSuspend())
+	{
+		return false;
+	}
+	if (!this.m_Plugin.Resume())
+	{
+		return false;
+	}
+	LoadReignSetting(this.m_Plugin);
+	if (!anMonsterNo.Empty())
+	{
+		this.CreateMonsterList(anMonsterNo);
+		this.CreateGold();
+		this.m_Map.SetDraw(true);
+		this.m_MonsterList.SetDraw(true);
+		this.m_sGold.SetDrawAll(false);
+	}
+	return true;
+}
+
+void CBattleMode::Update()
+{
+	if (!this.IsCreated())
+	{
+		return;
+	}
+	this.m_FreeCamera.Update();
+	this.UpdateMonster();
+}
+
+void CBattleMode::CreateMap()
+{
+	this.m_Map.Create(this.m_Plugin.GetPlugin());
+	this.m_Map.SetType(1);
+	this.m_Map.SetDrawShadow(true);
+	this.m_Map.SetDrawBackShadow(false);
+	this.m_Map.SetDrawMakeShadow(false);
+	this.m_Map.SetAmbient(0.0, 0.0, 0.0);
+}
+
+void CBattleMode::SetMap(string Name)
+{
+	this.m_MapName = Name;
+	this.m_Map.SetDraw(false);
+	if (Name.Empty())
+	{
+		this.m_Map.Load("");
+	}
+	else
+	{
+		this.m_Map.Load("Data\\PolyData\\BG\\" + this.m_MapName);
+	}
+	this.WaitLoading(false);
+	this.m_Map.SetDraw(true);
+	this.m_Map.SetSpecularReflectRate(0.25);
+	this.m_Map.SetFresnelReflectRate(0.25);
+	this.m_Map.SetDrawBump(true);
+	this.m_Map.SetDrawParam(0, this.m_Plugin.GetDrawOption(0) >= 2 ? 1 : 0);
+	this.SetDefaultLightScatteringParam();
+	this.m_Plugin.LoadLightScatteringSetting(this.MakeLightScatteringFileName(this.m_MapName));
+}
+
+void CBattleMode::SetBackCG(int nNum, int nCG)
+{
+	this.m_Plugin.SetBackCGNum(nNum, nCG);
+}
+
+void CBattleMode::CreatePlayer()
+{
+	return;
+}
+
+void CBattleMode::SetPlayer()
+{
+	return;
+}
+
+void CBattleMode::CreateMonsterList(ref array@int anMonsterNo)
+{
+	this.m_MonsterList.Create(this.m_Plugin, anMonsterNo);
+	this.AlignMonsters();
+	this.m_MonsterList.SetDraw(true);
+}
+
+void CBattleMode::SetMonster(int nMonsterIndex, int nMonsterNo)
+{
+	this.m_MonsterList.SetMonster(nMonsterIndex, nMonsterNo);
+}
+
+void CBattleMode::SetMonsterMotion(int nMonsterIndex, int nMotionNo, int nMotionState)
+{
+	this.m_MonsterList.SetMotion(nMonsterIndex, nMotionNo, nMotionState);
+}
+
+void CBattleMode::AlignMonsters()
+{
+	this.InitCamera();
+	SMatrix ViewMatrix;
+	ViewMatrix = this.m_FreeCamera.GetMatrix();
+	SMatrix ProjMatrix;
+	ProjMatrix = this.m_Projection.GetMatrix();
+	ViewMatrix.MulMatrix(ProjMatrix);
+	SMatrix ViewProjInvMatrix;
+	ViewMatrix.GetInverse(ViewProjInvMatrix);
+	this.m_MonsterList.Align(this.m_fCameraX, this.m_fCameraY, this.m_fCameraZ, ViewProjInvMatrix, this.m_Projection);
+}
+
+void CBattleMode::UpdateMonster()
+{
+	this.m_MonsterList.Update();
+}
+
+void CBattleMode::CreateGold()
+{
+	this.m_sGold.Create(this.m_Plugin);
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int idx = í“¬”z’u_“G•À‚Ñ(i);
+		if (idx < 0)
+		{
+			continue;
+		}
+		this.m_sGold.SetPos(i, this.m_MonsterList.GetPosListX(idx), this.m_MonsterList.GetPosListY(idx), this.m_MonsterList.GetPosListZ(idx));
+		this.m_sGold.SetAngle(i, this.m_MonsterList.GetAngleList(idx));
+	}
+}
+
+void CBattleMode::CreateDirLight()
+{
+	this.m_aDirLight.Alloc(this.m_aDirLightInfo.Numof());
+	int n = 0;
+	for (n = 0; n < this.m_aDirLight.Numof(); ++n)
+	{
+		this.m_aDirLight[n].Create(this.m_Plugin.GetPlugin());
+		this.m_aDirLight[n].SetType(4);
+		this.SetDirLight(this.m_aDirLight[n], this.m_aDirLightInfo[n]);
+	}
+}
+
+void CBattleMode::CreateSpecularLight()
+{
+	this.m_aSpecularLight.Alloc(this.m_aSpecularLightInfo.Numof());
+	int n = 0;
+	for (n = 0; n < this.m_aSpecularLightInfo.Numof(); ++n)
+	{
+		this.m_aSpecularLight[n].Create(this.m_Plugin.GetPlugin());
+		this.m_aSpecularLight[n].SetType(6);
+		this.SetSpecularLight(this.m_aSpecularLight[n], this.m_aSpecularLightInfo[n]);
+	}
+}
+
+void CBattleMode::CreateLight()
+{
+	this.CreateLightInfo();
+	this.CreateDirLight();
+	this.CreateSpecularLight();
+}
+
+void CBattleMode::CreateLightInfo()
+{
+	this.m_aDirLightInfo.Alloc(1);
+	float fDirX = -0.699999988079071;
+	float fDirY = -1.29999995231628;
+	float fDirZ = 0.800000011920929;
+	this.m_aDirLightInfo[0].SetVector(fDirX, fDirY, fDirZ);
+	this.m_aDirLightInfo[0].SetDiffuse(1.0, 1.0, 1.0);
+	this.m_aDirLightInfo[0].SetAmbient(0.0, 0.0, 0.0);
+	this.m_aSpecularLightInfo.Free();
+	this.m_Plugin.SetGlobalAmbient(0.400000005960464, 0.400000005960464, 0.400000005960464);
+}
+
+void CBattleMode::SetDirLight(ref CInstance DirLight, ref SDirLight Info)
+{
+	DirLight.SetVector(Info.fVecX, Info.fVecY, Info.fVecZ);
+	DirLight.SetDiffuse(Info.Diffuse.fR, Info.Diffuse.fG, Info.Diffuse.fB);
+	DirLight.SetAmbient(Info.Ambient.fR, Info.Ambient.fG, Info.Ambient.fB);
+	DirLight.SetGlobeDiffuse(Info.GlobeDiffuse.fR, Info.GlobeDiffuse.fG, Info.GlobeDiffuse.fB);
+}
+
+void CBattleMode::SetPointLight(ref CInstance PointLight, ref SPointLight Info)
+{
+	PointLight.SetPos(Info.fX, Info.fY, Info.fZ);
+	PointLight.SetDiffuse(Info.Diffuse.fR, Info.Diffuse.fG, Info.Diffuse.fB);
+	PointLight.SetGlobeDiffuse(Info.GlobeDiffuse.fR, Info.GlobeDiffuse.fG, Info.GlobeDiffuse.fB);
+	PointLight.SetAttenuationNear(Info.fAttenuationNear);
+	PointLight.SetAttenuationFar(Info.fAttenuationFar);
+}
+
+void CBattleMode::SetSpecularLight(ref CInstance SpecularLight, ref SSpecularLight Info)
+{
+	SpecularLight.SetVector(Info.fVecX, Info.fVecY, Info.fVecZ);
+}
+
+void CBattleMode::SetDefaultLightScatteringParam()
+{
+	this.m_Plugin.SetFogType(2);
+	this.m_Plugin.SetFogNear(5.0);
+	this.m_Plugin.SetFogFar(40.0);
+	this.m_Plugin.SetFogColor(0.100000001490116, 0.100000001490116, 0.200000002980232);
+	this.m_Plugin.SetLSBetaR(0.649999976158142);
+	this.m_Plugin.SetLSBetaM(2.04999995231628);
+	this.m_Plugin.SetLSG(0.449999988079071);
+	this.m_Plugin.SetLSDistance(34.0);
+	this.m_Plugin.SetLSLightDir(0.0, 0.0, -1.0);
+	this.m_Plugin.SetLSLightColor(1.0, 1.0, 1.0);
+	this.m_Plugin.SetLSSunColor(0.100000001490116, 0.100000001490116, 0.200000002980232);
+}
+
+void CBattleMode::SetGlareParam()
+{
+	this.m_Plugin.SetGlareBrightnessParam(0, -0.100000001490116);
+	this.m_Plugin.SetGlareBrightnessParam(1, 0.300000011920929);
+	this.m_Plugin.SetGlareBrightnessParam(2, 0.0);
+	this.m_Plugin.SetGlareBrightnessParam(3, 0.449999988079071);
+}
+
+void CBattleMode::CreateFreeCamera()
+{
+	this.m_FreeCamera.Create(this.m_Plugin);
+	float fMoveRate = 0.5;
+	float fRotateRate = 0.5;
+	this.m_FreeCamera.SetMoveRate(fMoveRate);
+	this.m_FreeCamera.SetRotateRate(fRotateRate);
+}
+
+void CBattleMode::InitCamera()
+{
+	this.m_fCameraX = 0.0;
+	this.m_fCameraY = 0.699999988079071;
+	this.m_fCameraZ = -3.40000009536743;
+	this.m_fCameraAngleP = -4.80000019073486;
+	this.m_FreeCamera.SetPos(this.m_fCameraX, this.m_fCameraY, this.m_fCameraZ);
+	this.m_FreeCamera.SetAngle(0.0);
+	this.m_FreeCamera.SetAngleP(this.m_fCameraAngleP);
+}
+
+void CBattleMode::SetShadowParam()
+{
+	this.m_Plugin.SetShadowMapType(0);
+	this.m_Plugin.SetShadowMapLightDir(0.0, -1.0, 0.0);
+	this.m_Plugin.SetShadowBias(0, 0.00999999977648258);
+}
+
+void CBattleMode::SetSSAOParam()
+{
+	this.m_Plugin.SetSSAOParam(0, 0.150000005960464);
+	this.m_Plugin.SetSSAOParam(1, 1.0);
+	this.m_Plugin.SetSSAOParam(2, 0.0);
+}
+
+void CBattleMode::FadeInstanceAlpha(ref CInstance Instance, float fStartAlpha, float fEndAlpha, int nTotalTime)
+{
+	int nStartTime = system.GetTime();
+	for (; ; )
+	{
+		int nTime = system.GetTime() - nStartTime;
+		if (nTime >= nTotalTime)
+		{
+			break;
+		}
+		float fAlpha = fStartAlpha + ((fEndAlpha - fStartAlpha) * nTime) / nTotalTime;
+		Instance.SetAlpha(fAlpha);
+		UPDATE(true);
+	}
+	Instance.SetAlpha(fEndAlpha);
+	UPDATE(true);
+}
+
+string CBattleMode::MakeLightScatteringFileName(string MapName)
+{
+	return "Data\\PolyData\\BG\\" + MapName + "\\" + MapName + ".ls2";
+}
+
+void CBattleMode::WaitLoading(bool bThreadLoadingMode)
+{
+	int nPlugin = this.m_Plugin.GetPlugin();
+	if (nPlugin < 0)
+	{
+		return;
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, bThreadLoadingMode);
+	for (; ; )
+	{
+		UPDATE(true);
+		if (!this.m_Plugin.IsLoading())
+		{
+			break;
+		}
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, true);
+}
+
+void CBattleMode::RealtimeSettingUpdate()
+{
+	this.CreateLight();
+	this.m_Map.SetDrawParam(0, this.m_Plugin.GetDrawOption(0) >= 2 ? 1 : 0);
+}
+
+bool CBattleMode::StartMonsterMotion(int nMonsterIndex, int nMotionNo, int nTime)
+{
+	return this.m_MonsterList.StartMotion(nMonsterIndex, nMotionNo, nTime);
+}
+
+void CBattleMode::WaitMotionBlend(int nMonsterIndex)
+{
+	this.m_MonsterList.WaitMotionBlend(nMonsterIndex);
+}
+
+void CBattleMode::EndMotionBlend(int nMonsterIndex, int nMotionNo, bool bWait, bool bDead)
+{
+	if (bWait)
+	{
+		this.m_MonsterList.WaitMotionStop(nMonsterIndex, bDead);
+	}
+	if (!bDead)
+	{
+		if (nMotionNo >= 0)
+		{
+			this.StartMonsterMotion(nMonsterIndex, nMotionNo, -1);
+		}
+		else
+		{
+			this.SetMonsterDraw(nMonsterIndex, false);
+		}
+	}
+}
+
+void CBattleMode::WaitMotionFrame(int nMonsterIndex, int nPercent)
+{
+	this.m_MonsterList.WaitMotionFrame(nMonsterIndex, nPercent);
+}
+
+bool CBattleMode::StartMonsterMotionAll(ref array@int anNo, int nMotionNo, int nTime)
+{
+	return this.m_MonsterList.StartMotionAll(anNo, nMotionNo, nTime);
+}
+
+void CBattleMode::WaitMotionBlendAll(ref array@int anNo)
+{
+	this.m_MonsterList.WaitMotionBlendAll(anNo);
+}
+
+void CBattleMode::EndMotionBlendAll(ref array@int anNo, int nMotionNo, bool bWait, ref array@bool abDead)
+{
+	if (bWait)
+	{
+		this.m_MonsterList.WaitMotionStopAll(anNo, abDead);
+	}
+	int i = 0;
+	int cnt = this.m_MonsterList.GetNumof();
+	if (nMotionNo >= 0)
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			if (!abDead[i])
+			{
+				this.StartMonsterMotion(i, nMotionNo, -1);
+			}
+		}
+	}
+	else
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			this.SetMonsterDraw(i, false);
+		}
+	}
+}
+
+void CBattleMode::MoveCamera(float fCameraX, float fCameraY, float fCameraZ, int nTime)
+{
+	int nTime2 = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (nTime2 < nTime)
+	{
+		float fTime = nTime2 / nTime;
+		this.m_FreeCamera.SetPos(this.m_fCameraX + (fCameraX - this.m_fCameraX) * fTime, this.m_fCameraY + (fCameraY - this.m_fCameraY) * fTime, this.m_fCameraZ + (fCameraZ - this.m_fCameraZ) * fTime);
+		UPDATE(true);
+		nTime2 = sTimer.Get();
+	}
+	this.m_fCameraX = fCameraX;
+	this.m_fCameraY = fCameraY;
+	this.m_fCameraZ = fCameraZ;
+	this.m_FreeCamera.SetPos(this.m_fCameraX, this.m_fCameraY, this.m_fCameraZ);
+	UPDATE(true);
+}
+
+void CBattleMode::RemakeMonster(int nMonsterIndex, int nMonsterNo)
+{
+	this.m_MonsterList.Remake(this.m_Plugin, nMonsterIndex, nMonsterNo);
+}
+
+void CBattleMode::RedrawMonster(int nMonsterIndex, int nTotalTime)
+{
+	array@int anMonsterIndex[1];
+	anMonsterIndex[0] = nMonsterIndex;
+	this.m_MonsterList.Redraw(anMonsterIndex, nTotalTime);
+}
+
+void CBattleMode::RedrawMonsters(ref array@int anMonsterIndex, int nTotalTime)
+{
+	this.m_MonsterList.Redraw(anMonsterIndex, nTotalTime);
+}
+
+void CBattleMode::SetMonsterDraw(int nMonsterIndex, bool bDraw)
+{
+	ref CMonster rfMonster = this.m_MonsterList.GetMonster(nMonsterIndex);
+	if (rfMonster === NULL)
+	{
+		return;
+	}
+	rfMonster.SetDraw(bDraw);
+}
+
+void CBattleMode::SetGoldDraw(int nMonsterIndex, bool bDraw)
+{
+	this.m_sGold.SetDraw(nMonsterIndex, bDraw);
+}
+

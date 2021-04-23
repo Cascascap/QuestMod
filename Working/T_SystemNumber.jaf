@@ -1,0 +1,167 @@
+bool T_SystemNumber::animeStart(int nValue, int nTotalTime)
+{
+	return this.m_sValue.animeStart(nValue, nTotalTime, 25, -1) >= 0;
+}
+
+void T_SystemNumber::animeEnd()
+{
+	this.m_sValue.animeEnd();
+}
+
+int T_SystemNumber::anime(int nTime)
+{
+	return this.m_sValue.anime(nTime);
+}
+
+bool T_SystemNumber::isSuspend()
+{
+	return this.m_spSlash.isSuspend();
+}
+
+bool T_SystemNumber::isCreated()
+{
+	return this.m_spSlash.isCreated();
+}
+
+int T_SystemNumber::getValue()
+{
+	return this.m_sValue.getValue();
+}
+
+int T_SystemNumber::getMax()
+{
+	return this.m_sMax.getValue();
+}
+
+ref T_Number T_SystemNumber::getNumber()
+{
+	return this.m_sValue;
+}
+
+ref T_Number T_SystemNumber::getMaxNumber()
+{
+	return this.m_sMax;
+}
+
+T_SystemNumber::T_SystemNumber()
+{
+	this.clear();
+}
+
+T_SystemNumber::~T_SystemNumber()
+{
+	this.delete();
+}
+
+void T_SystemNumber::create(int nNumberCgNo, int nSlashCgNo, int nCount, int nWidth, int nHeight, int nValueMode, int nMaxMode)
+{
+	this.delete();
+	nValueMode = nValueMode < 0 ? 3 : nValueMode;
+	nMaxMode = nMaxMode < 0 ? nValueMode : nMaxMode;
+	this.m_sValue.create(nNumberCgNo, false, nCount, nValueMode, 0);
+	this.m_sMax.create(nNumberCgNo, false, nCount, nMaxMode, 0);
+	this.m_spSlash.setCg(nSlashCgNo);
+	this.m_nWidth = nWidth;
+	this.m_nHeight = nHeight;
+}
+
+void T_SystemNumber::delete()
+{
+	this.m_sValue.delete();
+	this.m_sMax.delete();
+	this.m_spSlash.delete();
+	this.clear();
+}
+
+void T_SystemNumber::clear()
+{
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nWidth = -1;
+	this.m_nHeight = -1;
+}
+
+void T_SystemNumber::update(int nValue, bool bAnime, int nTotalTime)
+{
+	if (!this.m_spSlash.isCreated())
+	{
+		return;
+	}
+	if (bAnime)
+	{
+		this.m_sValue.update(nValue, nTotalTime, 25);
+	}
+	else
+	{
+		this.m_sValue.setValue(nValue, 0, false);
+	}
+	this.setPos(this.m_nX, this.m_nY);
+}
+
+void T_SystemNumber::setValue(int nValue, int nMaxValue)
+{
+	this.m_sValue.setValue(nValue, 0, false);
+	if (nMaxValue >= 0)
+	{
+		this.m_sMax.setValue(nMaxValue, 0, false);
+	}
+	this.setPos(this.m_nX, this.m_nY);
+}
+
+void T_SystemNumber::setPos(int nX, int nY)
+{
+	if (this.m_nWidth <= 0 || this.m_nHeight <= 0)
+	{
+		return;
+	}
+	this.m_nX = nX;
+	this.m_nY = nY;
+	int nW2 = this.m_spSlash.getWidth();
+	if (nW2 <= 0)
+	{
+		return;
+	}
+	int nH2 = this.m_spSlash.getHeight();
+	int nW1 = this.m_sValue.getWidth();
+	int nH1 = this.m_sValue.getHeight();
+	int nW3 = this.m_sMax.getWidth();
+	int nH3 = this.m_sMax.getHeight();
+	int nX2 = nX + (this.m_nWidth - nW2) / 2;
+	int nY2 = nH2 > this.m_nHeight ? (nY + this.m_nHeight) - nH2 : nY + ((this.m_nHeight - nH2) + 1) / 2;
+	this.m_spSlash.setPos(nX2, nY2);
+	int nX1 = nX2 - nW1;
+	int nY1 = nH1 > this.m_nHeight ? (nY + this.m_nHeight) - nH1 : nY + ((this.m_nHeight - nH1) + 1) / 2;
+	this.m_sValue.setPos(nX1, nY1);
+	int nX3 = nX2 + nW2;
+	int nY3 = nH3 > this.m_nHeight ? (nY + this.m_nHeight) - nH3 : nY + ((this.m_nHeight - nH3) + 1) / 2;
+	this.m_sMax.setPos(nX3, nY3);
+}
+
+void T_SystemNumber::setZ(int nZ)
+{
+	this.m_sValue.setZ(nZ);
+	this.m_sMax.setZ(nZ);
+	this.m_spSlash.setZ(nZ);
+}
+
+void T_SystemNumber::setShow(bool bShow)
+{
+	this.m_sValue.setShow(bShow);
+	this.m_sMax.setShow(bShow);
+	this.m_spSlash.setShow(bShow);
+}
+
+bool T_SystemNumber::suspend()
+{
+	this.m_sValue.suspend();
+	this.m_sMax.suspend();
+	return this.m_spSlash.suspend();
+}
+
+bool T_SystemNumber::resume()
+{
+	this.m_sValue.resume();
+	this.m_sMax.resume();
+	return this.m_spSlash.resume();
+}
+

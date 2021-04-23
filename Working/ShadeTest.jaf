@@ -1,0 +1,33 @@
+void Ｓｈａｄｅテスト()
+{
+	shadecall("バベル／プロローグ");
+	shadecall("バベル／シャチョウ");
+	shadecall("バベル／シャチョウ／戦闘後");
+	shadecall("バベル／進撃の詰み手");
+	shadecall("バベル／進撃の詰み手／戦闘後");
+	shadecall("バベル／ダークランス");
+	shadecall("バベル／ダークランス／戦闘後");
+	shadecall("バベル／エンロン");
+	shadecall("バベル／エンロン／戦闘後");
+	shadecall("バベル／汚染パステル");
+	shadecall("バベル／汚染パステル／戦闘後");
+	shadecall("バベル／６０");
+	shadecall("バベル／アム");
+	shadecall2("バベル／アム／戦闘後");
+	shadecall2("ランス８エピローグＢ");
+}
+
+void shadecall(string name)
+{
+	音楽(0, -1, -1);
+	CB_Scenario c = name;
+	c();
+}
+
+void shadecall2(string name)
+{
+	音楽(0, -1, -1);
+	CB_Scenario2 c = name;
+	c(0);
+}
+

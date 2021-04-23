@@ -1,0 +1,269 @@
+void フロスト売店１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Oh, welcome, Boss."' A;
+	セリフ(2280, "");
+	'"Buyin\'?"' A;
+	セリフ(2000, "");
+	'"Like I\'d spend money on these knockoffs, dumbass."' A;
+	セリフ(2280, "");
+	'"All our products are top of the line."' A;
+	セリフ(2005, "");
+	'"I don\'t buy shitty mass-produced stuff."' A;
+	セリフ(2000, "");
+	'"Don\'t you have any rare items befitting a man of my quality?"' A;
+	セリフ(2280, "");
+	'"If you buy some of the stuff we\'ve got now, we can get in some rarer stock."' A;
+	'"And if you buy those rare things, we can get even better rare stuff."' A;
+	'"The system is this: the more you buy, the better our new stock is."' A;
+	'"It\'s a good one, isn\'t it?"' A;
+	セリフ(2005, "");
+	'"So no matter what, I\'ve gotta buy some of this crap?"' A;
+	セリフ(2280, "");
+	'"C\'mon, c\'mon!' R;
+	' If you want your rare stuff, buy, buy!"' A;
+	セリフ(2000, "");
+	'"I guess I can window shop, at least."' A;
+	ADVOFF();
+}
+
+void フロスト売店３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Whoa there, you\'re pretty early today."' A;
+	セリフ(2000, "");
+	'"What\'s up? You seem busy."' A;
+	セリフ(2280, "");
+	'"Yep, we just got a ton a\' new stock in."' A;
+	'"Plenty a\' new equipment for your new and improved party, Boss."' A;
+	セリフ(2000, "");
+	'"Mm, that\'s good."' A;
+	セリフ(2280, "");
+	'"Heh heh heh, I hope you\'ll keep patronizin\' this store, since we pay such close attention to our customers\' needs and such!"' A;
+	'"Go ahead and check out our new stuff!' R;
+	' It\'s nice and stronger now."' A;
+	セリフ(2000, "");
+	'"We\'ll see..."' A;
+	ADVOFF();
+}
+
+void フロスト売店４()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Oh, I was waitin\' for ya, Boss."' A;
+	セリフ(2000, "");
+	'"What\'s up?"' A;
+	セリフ(2280, "");
+	'"Your party\'s gotten stronger again, Boss, so we got s\'more strong items in stock!"' A;
+	セリフ(2000, "");
+	'"Oho, did you?"' A;
+	セリフ(2280, "");
+	'"I bet you\'re feelin\' like your current equipment\'s startin\' to get old, yeah?"' A;
+	'"It was a lotta work gettin\' this stuff in, inspectin\' it all, and puttin\' it on the shelves."' A;
+	セリフ(2000, "");
+	'"Mm. Good work."' A;
+	セリフ(2280, "");
+	'"I bet your high-leveled folks are gonna love this equipment!"' A;
+	'"Please, check it out!"' A;
+}
+
+void フロスト売店／たまの下着()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Welcome!"' A;
+	セリフ(2000, "");
+	'"Hey, Tama! What the hell\'s goin\' on here?!"' A;
+	セリフ(2280, "");
+	'"Huhwha?"' A;
+	セリフ(2000, "");
+	'"The item I bought here the other day called \'Tama\'s underwear.\'"' A;
+	'"It\'s seriously just your used panties?!"' A;
+	セリフ(2280, "");
+	'"Hey, it\'s used bloomers, man.' R;
+	' We\'re not picky how we make money here."' A;
+	セリフ(2005, "");
+	'"You\'re not even embarrassed about this...?"' A;
+	セリフ(2280, "");
+	'"Heh heh heh, it can only be a good thing if we can make money offa these old clothes."' A;
+	'"Huh? Do ya not know how to use ’em or somethin\'?"' A;
+	セリフ(2000, "");
+	'"What, can they be used as equipment?"' A;
+	セリフ(2280, "");
+	'"Nah, you imagine Tama and sniff ’em or put ’em on."' A;
+	セリフ(2002, "");
+	'"Who would do that?!"' A;
+	セリフ(2280, "");
+	'"Ya don\'t got enough imagination, Boss.' R;
+	' You\'ll never be a Master-bator at this rate."' A;
+	セリフ(2002, "");
+	'"Who would want to be one?!"' A;
+	セリフ(2005, "");
+	'"Goddammit... I wasted some money..."' A;
+	セリフ(2280, "");
+	'"Meow, meow, MEOW!"' A;
+	ADVOFF();
+}
+
+void フロスト売店／寄付について()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Hey, Boss, welcome!"' A;
+	'"Oh, did ya donate an item?' R;
+	' You know we\'ll buy stuff from ya if ya don\'t need it, right?"' A;
+	セリフ(2000, "");
+	'"Oh yeah?' R;
+	' So I should sell ’em here instead of donating ’em?"' A;
+	セリフ(2280, "");
+	'"H-Hmmm..."' A;
+	セリフ(2000, "");
+	'"What is it?"' A;
+	セリフ(2280, "");
+	'"Nah, sorry...' R;
+	' Actually the Arms Association just sent us a notice that we\'re not supposed to buy or sell used weapons."' A;
+	'"You know, since if used stuff circulates, new stuff doesn\'t sell and the market suffers.' R;
+	' We can\'t buy ’em back or sell ’em ourselves."' A;
+	'"So even if we bought stuff from ya, we\'d only be able to use it as kindling or sell it to developing countries, so we\'d have to buy everything at a flat 10 Gold rate."' A;
+	セリフ(2005, "");
+	'"That\'s cheap..."' A;
+	セリフ(2000, "");
+	'"Hmph, it\'s kind of a waste to sell stuff just for that."' A;
+	'"...Though donating stuff is pretty much just throwing it out, anyway..."' A;
+	セリフ(2280, "");
+	'"Then let\'s do this.' R;
+	' If you donate items to us, Boss, we\'ll get ahold of some rare stuff in exchange."' A;
+	セリフ(2000, "");
+	'"Oh, that sounds nice.' R;
+	' I can get rare items from you if I throw out shit I don\'t need here?"' A;
+	セリフ(2280, "");
+	'"I didn\'t say that.' R;
+	' I said we\'d get them in stock."' A;
+	セリフ(2000, "");
+	'"How stingy."' A;
+	セリフ(2280, "");
+	'"Let\'s see...' R;
+	' We\'ll get a rare item in stock for every 25 donations."' A;
+	'"It\'ll be stuff you don\'t come across so easily in dungeons."' A;
+	'"It\'s up to you whether you wanna sell us stuff for 10 Gold or donate in anticipation of our new stock, Boss."' A;
+	セリフ(2005, "");
+	'"Well, I\'ll decide when I\'ve got stuff I don\'t need, then."' A;
+	セリフ(2280, "");
+	'"Oh, when you wanna sell, come to our shop and open your vault, ’kay?' R;
+	' Then you\'ll be able to sell with us."' A;
+	セリフ(2000, "");
+	'"...What\'s that?"' A;
+	セリフ(2280, "");
+	'"Now, it\'s time to shop, time to shop!"' A;
+	ADVOFF();
+}
+
+void フロスト売店５／寄付溜まった／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Hey, Boss.' R;
+	' I see you\'re donatin\' your old equipment."' A;
+	'"In total, you\'ve donated ' NH(◆ＡＡ, 0, 0);
+	' items now."' A;
+	'"Thanks to that, we\'ve got in some new stock, the ' S(Ｉ名前(◆ＢＢ, ""));
+	'."' A;
+	'"Buy one!"' A;
+	ADVOFF();
+}
+
+void フロスト売店／捕獲ロープ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Oh, you\'re here, Boss.' R;
+	' I\'ve been waitin\' for ya today."' A;
+	ト書き();
+	'Tama slid up to him, hiding something behind her back.' A;
+	セリフ(2005, "");
+	'"What is it? You\'re acting kinda creepy."' A;
+	セリフ(2280, "");
+	'"We\'ve received an item that was basically designed for guys like you, Boss!"' A;
+	セリフ(2280, "");
+	'"Ba-baaam! The capture rooope!"' A;
+	セリフ(2005, "");
+	'"...Ah, capture ropes."' A;
+	セリフ(2280, "");
+	'"Oh? That\'s not much of a reaction."' A;
+	セリフ(2000, "");
+	'"It\'s an item for capturing gal monsters, right?"' A;
+	'"...But even if I catch ’em..."' A;
+	セリフ(2280, "");
+	'"Oh my, I wouldn\'ta expected to hear words like that comin\' from the Pervo Boss himself."' A;
+	'"You can do all sortsa sexy stuff when you capture gal monsters, ya know..."' A;
+	思考(2005, "");
+	'(Even if I catch ’em, I can\'t have sex, which is kinda the main point, isn\'t it...)' A;
+	セリフ(2280, "");
+	'"Well, there are plentya people who aren\'t 100% okay with doin\' it with gal monsters, I s\'pose."' A;
+	'"But they\'re nice and squishy and soft and fun to touch, aren\'t they?"' A;
+	セリフ(2005, "");
+	'"Hm...' R;
+	' Well, I guess I can do that."' A;
+	セリフ(2000, "");
+	'"Yeah, I can grope their boobs and stuff."' A;
+	セリフ(2280, "");
+	'"Yup, yup. Since we\'ve got ’em, it\'d be a waste not to buy ’em and try ’em out."' A;
+	'"Capture ropes, getting you some sexy stuff!' R;
+	' Capture ropes, get ’em now!"' A;
+	セリフ(2000, "");
+	'"Uh-huh."' A;
+	ADVOFF();
+}
+

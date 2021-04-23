@@ -1,0 +1,94 @@
+void Ａ＿メッセージウィンドウＺ座標設定(int Z)
+{
+	g_MessageWindowModelManager.SetZ(Z);
+}
+
+void Ａ＿メッセージウィンドウ座標設定(int メッセージウィンドウ番号, int X, int Y)
+{
+	SYS_ASSERTE_AREA_ID(メッセージウィンドウ番号);
+	g_MessageWindowModelManager.GetMessageWindow(メッセージウィンドウ番号).SetX(X);
+	g_MessageWindowModelManager.GetMessageWindow(メッセージウィンドウ番号).SetY(Y);
+}
+
+void Ａ＿メッセージウィンドウＣＧ設定(int メッセージウィンドウ番号, string ＣＧ名)
+{
+	SYS_ASSERTE_AREA_ID(メッセージウィンドウ番号);
+	SYS_ASSERTE_CG(ＣＧ名);
+	g_MessageWindowModelManager.GetMessageWindow(メッセージウィンドウ番号).SetCGName(ＣＧ名);
+}
+
+void Ａ＿メッセージウィンドウ非アクティブ乗算色設定(int メッセージウィンドウ番号, int 赤, int 緑, int 青)
+{
+	SYS_ASSERTE_AREA_ID(メッセージウィンドウ番号);
+	g_MessageWindowModelManager.GetMessageWindow(メッセージウィンドウ番号).SetInactiveMultipleColor(CF_CASColor(赤, 緑, 青, 255));
+}
+
+void メッセージエリア(int Ｍ番号, int Ｘ, int Ｙ, int Ｚ, string ＣＧ名)
+{
+	if (Ｚ != -2147483648)
+	{
+		SYS_ASSERTE_Z(Ｚ);
+	}
+	if (!ＣＧ名.Empty())
+	{
+		SYS_ASSERTE_CG(ＣＧ名);
+	}
+	if (Ｍ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｍ番号);
+		SYS_メッセージエリア(Ｍ番号, Ｘ, Ｙ, Ｚ, ＣＧ名);
+		return;
+	}
+	for (Ｍ番号 = 1; Ｍ番号 < 40; ++Ｍ番号)
+	{
+		SYS_メッセージエリア(Ｍ番号, Ｘ, Ｙ, Ｚ, ＣＧ名);
+	}
+}
+
+void メッセージエリア２(int Ｍ番号, int 幅, int 高, int 塗Ｒ, int 塗Ｇ, int 塗Ｂ, int 塗率, int 枠タイプ, int 枠Ｒ, int 枠Ｇ, int 枠Ｂ)
+{
+	return;
+}
+
+void Ａ＿メッセージウィンドウフラッシュ設定(int メッセージウィンドウ番号, string フラッシュファイル名)
+{
+	SYS_ASSERTE_AREA_ID(メッセージウィンドウ番号);
+	g_MessageWindowModelManager.GetMessageWindow(メッセージウィンドウ番号).SetFlashFileName(フラッシュファイル名);
+}
+
+void Ａ＿メッセージウィンドウフラッシュ待機フレーム番号設定(int メッセージウィンドウ番号, int フレーム番号)
+{
+	SYS_ASSERTE_AREA_ID(メッセージウィンドウ番号);
+	g_MessageWindowModelManager.GetMessageWindow(メッセージウィンドウ番号).m_FlashShowWaitFrameNumber = フレーム番号;
+}
+
+void メッセージエリア余白(int Ｍ番号, int t, int r, int b, int l)
+{
+	if (Ｍ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｍ番号);
+		SYS_メッセージエリア余白(Ｍ番号, t, r, b, l);
+		return;
+	}
+	for (Ｍ番号 = 1; Ｍ番号 < 40; ++Ｍ番号)
+	{
+		SYS_メッセージエリア余白(Ｍ番号, t, r, b, l);
+	}
+}
+
+void メッセージエリア画面トランジション設定(int Ｍ番号, int 効果番号, int 効果時間)
+{
+	if (Ｍ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｍ番号);
+		g_MessageWindowModelManager.GetMessageWindow(Ｍ番号).効果番号 = 効果番号;
+		g_MessageWindowModelManager.GetMessageWindow(Ｍ番号).効果時間 = 効果時間;
+		return;
+	}
+	for (Ｍ番号 = 1; Ｍ番号 < 40; ++Ｍ番号)
+	{
+		g_MessageWindowModelManager.GetMessageWindow(Ｍ番号).効果番号 = 効果番号;
+		g_MessageWindowModelManager.GetMessageWindow(Ｍ番号).効果時間 = 効果時間;
+	}
+}
+

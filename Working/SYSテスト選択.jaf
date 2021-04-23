@@ -1,0 +1,158 @@
+void SYS_テスト選択(ref SYS_選択_result_t result)
+{
+	result.fnc = NULL;
+	result.値 = 0;
+	if (_選択肢.Empty())
+	{
+		ERROR("選択肢が登録されていない", 0);
+		return;
+	}
+	array@選択肢_t SelectItemList;
+	SelectItemList.Alloc(_選択肢.Numof());
+	SelectItemList.Copy(0, _選択肢, 0, _選択肢.Numof());
+	_選択肢.Free();
+	int i = 0;
+	int max_len = 0;
+	for (i = 0; i < SelectItemList.Numof(); ++i)
+	{
+		if (SelectItemList[i].テキスト.LengthByte() > max_len)
+		{
+			max_len = SelectItemList[i].テキスト.LengthByte();
+		}
+	}
+	array@sact_text_metrics_t tm[2];
+	tm[0].nColorR = 255;
+	tm[0].nColorG = 255;
+	tm[0].nColorB = 255;
+	tm[1].nColorR = 0;
+	tm[1].nColorG = 0;
+	tm[1].nColorB = 0;
+	int cx = (max_len * tm[0].nSize) / 2;
+	int cy = tm[0].nSize;
+	int max_x = 0;
+	int max_y = 0;
+	int x0 = 2;
+	int y0 = 2;
+	int x = x0;
+	int y = y0;
+	int z = 18000;
+	array@CASTextSprite@2 item;
+	item.Alloc(SelectItemList.Numof(), 2);
+	array@CASRect ItemRectList;
+	ItemRectList.Alloc(SelectItemList.Numof());
+	CASCharSpriteProperty TextProperty;
+	TextProperty.SetColor(CF_CASColor(192, 192, 192, 255));
+	CASCharSpriteProperty SelectedTextProperty;
+	SelectedTextProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	for (i = 0; i < SelectItemList.Numof(); ++i)
+	{
+		if (x > max_x)
+		{
+			max_x = x;
+		}
+		if (y > max_y)
+		{
+			max_y = y;
+		}
+		item[i][0].SetText(SelectItemList[i].テキスト, TextProperty);
+		item[i][0].SetPos(x, y);
+		item[i][0].SetZ(z + 1);
+		item[i][1].SetText(SelectItemList[i].テキスト, SelectedTextProperty);
+		item[i][1].SetPos(x, y);
+		item[i][1].SetZ(z + 1);
+		ItemRectList[i].Set(x, y, cx, cy);
+		y += tm[0].nSize + 1;
+		if (y + tm[0].nSize > GetScreenHeight())
+		{
+			x += (max_len * tm[0].nSize) / 2 + 1;
+			y = y0;
+		}
+	}
+	int sp0 = GetUnuseSpriteNum(1000);
+	CreateSprite(sp0, max_x + cx, max_y + cy, 0, 64, 32, 255);
+	SetSpritePos(sp0, 1, 1);
+	SetSpriteZ(sp0, z);
+	array@CASClick ClickList;
+	ClickList.Alloc(SelectItemList.Numof());
+	for (i = 0; i < ClickList.Numof(); ++i)
+	{
+		if (SelectItemList[i].キーコード == 0)
+		{
+			continue;
+		}
+		ClickList[i].Init(SelectItemList[i].キーコード, true);
+	}
+	CASClick LButtonClick;
+	CASClick RButtonClick;
+	CASClick ReturnKeyClick;
+	CASClick EscapeKeyClick;
+	LButtonClick.Init(1, true);
+	RButtonClick.Init(2, true);
+	ReturnKeyClick.Init(13, true);
+	EscapeKeyClick.Init(27, true);
+	int sel = 0;
+	for (; ; )
+	{
+		_g_MouseCursorPos._Update();
+		_g_MouseWheel._Update(true);
+		int MouseX = _g_MouseCursorPos._GetX();
+		int MouseY = _g_MouseCursorPos._GetY();
+		int s = -1;
+		int i = 0;
+		for (i = 0; i < ItemRectList.Numof(); ++i)
+		{
+			if (ItemRectList[i].IsIn(MouseX, MouseY))
+			{
+				s = i;
+				break;
+			}
+		}
+		for (i = 0; i < item.Numof(); ++i)
+		{
+			item[i][0].SetShow(i != s);
+			item[i][1].SetShow(i == s);
+		}
+		for (i = 0; i < ClickList.Numof(); ++i)
+		{
+			if (ClickList[i].IsClick(-2147483648))
+			{
+				sel = i;
+				break;
+			}
+		}
+		if (i < ClickList.Numof() && sel != -1)
+		{
+			break;
+		}
+		sel = s;
+		if (LButtonClick.IsClick(sel) && sel != -1)
+		{
+			break;
+		}
+		if (ReturnKeyClick.IsClick(sel) && sel != -1)
+		{
+			break;
+		}
+		if (RButtonClick.IsClick(-2147483648))
+		{
+			DeleteSprite(sp0);
+			result.値 = -1;
+			return;
+		}
+		if (EscapeKeyClick.IsClick(-2147483648))
+		{
+			ChipmunkSpriteEngine.SP_SetShow(sp0, 0);
+			for (i = 0; i < item.Numof(); ++i)
+			{
+				item[i][0].SetShow(false);
+				item[i][1].SetShow(false);
+			}
+			Ｓ＿コンフィグ();
+			ChipmunkSpriteEngine.SP_SetShow(sp0, 1);
+		}
+		UpdateView(true);
+	}
+	DeleteSprite(sp0);
+	result.値 = SelectItemList[sel].番号;
+}
+

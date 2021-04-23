@@ -1,0 +1,177 @@
+void T_SkillButton::setNumber(int nValue, int nMax)
+{
+	this.m_sNumber.setValue(nValue, 0, false);
+	if (this.m_bLong && nMax > 0)
+	{
+		this.m_sMax.setValue(nMax, 0, false);
+	}
+}
+
+int T_SkillButton::getSkillNo()
+{
+	return this.m_nSkillNo;
+}
+
+ref T_TextSprite T_SkillButton::getSp()
+{
+	return this.m_spBase;
+}
+
+T_SkillButton::T_SkillButton()
+{
+	this.clear();
+}
+
+T_SkillButton::~T_SkillButton()
+{
+	this.delete();
+}
+
+bool T_SkillButton::create(int nType, int nSkillNo, int nRank)
+{
+	this.delete();
+	bool bRet = false;
+	switch (nType)
+	{
+		case 0:
+			bRet = スキルボタン_スプライト作成(nSkillNo, nRank, this.m_spBase);
+			break;
+		case 1:
+			if (スキル_行動(nSkillNo))
+			{
+				this.m_nSkillNo = nSkillNo;
+				return true;
+			}
+			bRet = スキルボタン_スプライト作成(nSkillNo, nRank, this.m_spBase);
+			if (bRet)
+			{
+				this.m_spBase.setBlendRate(76);
+			}
+			break;
+		case 2:
+		case 12:
+			if (スキル_パネル色(nSkillNo) != 104)
+			{
+				bRet = nSkillNo > 0;
+				this.m_bLong = nType == 12;
+			}
+			else
+			{
+				bRet = スキルボタン_スプライト作成(nSkillNo, nRank, this.m_spBase);
+			}
+			break;
+		case 10:
+			bRet = スキルボタン_スプライト作成_延長(nSkillNo, nRank, this.m_spBase);
+			this.m_bLong = true;
+			break;
+		default:
+			return false;
+	}
+	if (bRet)
+	{
+		if (スキル_行動(nSkillNo))
+		{
+			this.m_sNumber.create(10122, false, 2, 2, 0);
+			if (this.m_bLong)
+			{
+				this.m_sMax.create(10122, false, 2, 2, 0);
+			}
+		}
+		this.m_nSkillNo = nSkillNo;
+	}
+	else
+	{
+		this.m_nSkillNo = 0;
+	}
+	return true;
+}
+
+void T_SkillButton::delete()
+{
+	this.m_spBase.delete();
+	this.m_sNumber.delete();
+	this.m_sMax.delete();
+	this.clear();
+}
+
+void T_SkillButton::clear()
+{
+	this.m_nSkillNo = -1;
+	this.m_bLong = false;
+}
+
+bool T_SkillButton::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	int nDstX2 = nDstX + 120;
+	int nDstY2 = nDstY + 5;
+	if (this.m_bLong)
+	{
+		if (!this.m_spBase.copyToSprite(rfsDst, nDstX + -25, nDstY))
+		{
+			return false;
+		}
+		if (!this.m_sNumber.copyToSprite(rfsDst, nDstX2 + -25, nDstY2))
+		{
+			return false;
+		}
+		if (!this.m_sMax.copyToSprite(rfsDst, nDstX2, nDstY2))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		if (!this.m_spBase.copyToSprite(rfsDst, nDstX, nDstY))
+		{
+			return false;
+		}
+		if (!this.m_sNumber.copyToSprite(rfsDst, nDstX2, nDstY2))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+void T_SkillButton::setPos(int nX, int nY)
+{
+	int nX2 = nX + 120;
+	int nY2 = nY + 5;
+	if (this.m_bLong)
+	{
+		this.m_spBase.setPos(nX + -25, nY);
+		this.m_sNumber.setPos(nX2 + -25, nY2);
+		this.m_sMax.setPos(nX2, nY2);
+	}
+	else
+	{
+		this.m_spBase.setPos(nX, nY);
+		this.m_sNumber.setPos(nX2, nY2);
+	}
+}
+
+void T_SkillButton::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ + 3, -1);
+	this.m_sNumber.setZ(nZ + 6);
+	this.m_sMax.setZ(nZ + 6);
+}
+
+void T_SkillButton::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sNumber.setShow(bShow);
+	this.m_sMax.setShow(bShow);
+}
+
+void T_SkillButton::setBlendRate(int nBlendRate)
+{
+	this.m_spBase.setBlendRate(nBlendRate);
+	this.m_sNumber.setBlendRate(nBlendRate);
+	this.m_sMax.setBlendRate(nBlendRate);
+}
+

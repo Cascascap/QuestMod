@@ -1,0 +1,73 @@
+CASGameNetDataPack::CASGameNetDataPack()
+{
+	this.m_Error = false;
+}
+
+bool CASGameNetDataPack::IsError()
+{
+	return this.m_Error;
+}
+
+void CASGameNetDataPack::SetError()
+{
+	this.m_Error = true;
+}
+
+void CASGameNetDataPack::Clear()
+{
+	this.m_DataList.Free();
+}
+
+bool CASGameNetDataPack::Add(CASGameNetData Data)
+{
+	if (this.IsExist(Data.GetType()))
+	{
+		return false;
+	}
+	this.m_DataList.PushBack(Data);
+	return true;
+}
+
+bool CASGameNetDataPack::AddByParam(string Type, string Param)
+{
+	CASGameNetData NetData;
+	NetData.Set(Type, Param);
+	return this.Add(NetData);
+}
+
+int CASGameNetDataPack::GetNumof()
+{
+	return this.m_DataList.Numof();
+}
+
+bool CASGameNetDataPack::IsExist(string Type)
+{
+	int n = 0;
+	for (n = 0; n < this.m_DataList.Numof(); ++n)
+	{
+		if (this.m_DataList[n].GetType() == Type)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+ref CASGameNetData CASGameNetDataPack::GetByIndex(int Index)
+{
+	return this.m_DataList[Index];
+}
+
+ref CASGameNetData CASGameNetDataPack::Get(string Type)
+{
+	int n = 0;
+	for (n = 0; n < this.m_DataList.Numof(); ++n)
+	{
+		if (this.m_DataList[n].GetType() == Type)
+		{
+			return this.m_DataList[n];
+		}
+	}
+	return NULL;
+}
+

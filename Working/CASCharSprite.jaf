@@ -1,0 +1,52 @@
+CASCharSprite::CASCharSprite()
+{
+	this.m_nHandle = ChipmunkSpriteEngine.CharSpriteManager_CreateHandle();
+}
+
+CASCharSprite::~CASCharSprite()
+{
+	ChipmunkSpriteEngine.CharSpriteManager_ReleaseHandle(this.m_nHandle);
+}
+
+void CASCharSprite::Release()
+{
+	ChipmunkSpriteEngine.CharSprite_Release(this.m_nHandle);
+}
+
+void CASCharSprite::SetChar(string Char, ref CASCharSpriteProperty Property)
+{
+	ChipmunkSpriteEngine.CharSprite_SetChar(this.m_nHandle, Char, Property);
+}
+
+void CASCharSprite::SetPos(int nX, int nY)
+{
+	ChipmunkSpriteEngine.CharSprite_SetPos(this.m_nHandle, nX, nY);
+}
+
+void CASCharSprite::SetZ(int nZ)
+{
+	ChipmunkSpriteEngine.CharSprite_SetZ(this.m_nHandle, nZ);
+}
+
+void CASCharSprite::SetAlphaRate(int nAlphaRate)
+{
+	ChipmunkSpriteEngine.CharSprite_SetAlphaRate(this.m_nHandle, nAlphaRate);
+}
+
+void CASCharSprite::SetShow(bool bShow)
+{
+	ChipmunkSpriteEngine.CharSprite_SetShow(this.m_nHandle, bShow);
+}
+
+string CASCharSprite::GetChar()
+{
+	string Char = "";
+	ChipmunkSpriteEngine.CharSprite_GetChar(this.m_nHandle, Char);
+	return Char;
+}
+
+int CASCharSprite::GetAlphaRate()
+{
+	return ChipmunkSpriteEngine.CharSprite_GetAlphaRate(this.m_nHandle);
+}
+

@@ -1,0 +1,269 @@
+int テキスト_行作成(int nType, string szText, int nFontType, int nFontSize, int nColorR, int nColorG, int nColorB, int nWeight, int nEdgeR, int nEdgeG, int nEdgeB, int nEdgeWeight, int nTextSpace)
+{
+	int i = 0;
+	int cnt = szText.Length();
+	if (cnt <= 0)
+	{
+		return -1;
+	}
+	array@T_Sprite aspChar;
+	array@int anWidth;
+	array@int anHeight;
+	array@int anSize;
+	array@bool abHankaku;
+	aspChar.Alloc(cnt);
+	anWidth.Alloc(cnt);
+	anHeight.Alloc(cnt);
+	anSize.Alloc(cnt);
+	abHankaku.Alloc(cnt);
+	int nW = 0;
+	int nH = 0;
+	bool bExt = nFontType >= 256;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nSpNo = 0;
+		string szChar = szText.GetPart(i, 1);
+		ref T_Sprite rfsChar = aspChar[i];
+		ref int rfnWidth = anWidth[i];
+		ref int rfnHeight = anHeight[i];
+		ref int rfnSize = anSize[i];
+		ref bool rfbHankaku = abHankaku[i];
+		rfbHankaku = szChar.LengthByte() == 1;
+		rfnSize = rfbHankaku ? nFontSize / 2 : nFontSize;
+		if (bExt && rfbHankaku)
+		{
+			nSpNo = テキスト_文字作成(szChar, 258, nFontSize, nColorR, nColorG, nColorB, 太字確認(nFontType, nWeight) ? 40 : 0, nEdgeR, nEdgeG, nEdgeB, nEdgeWeight);
+			rfnSize = nTextSpace < 0 ? (nFontSize + nTextSpace) / 2 : rfnSize;
+			if (nType == 0)
+			{
+				rfnHeight = nFontType == 258 ? nFontSize : nFontSize - 2;
+			}
+			goto label0;
+		}
+		nSpNo = テキスト_文字作成(szChar, nFontType, nFontSize, nColorR, nColorG, nColorB, nWeight, nEdgeR, nEdgeG, nEdgeB, nEdgeWeight);
+	label0:
+		if (nSpNo <= 0)
+		{
+			continue;
+		}
+		rfsChar.attach(nSpNo);
+		rfnWidth = rfsChar.getWidth();
+		rfnHeight = rfnHeight > 0 ? rfnHeight : rfsChar.getHeight();
+		nW += nType == 1 ? rfnWidth : _max(rfnWidth, rfnSize);
+		nH = _max(nH, _max(nFontSize, rfnHeight));
+	}
+	if (nTextSpace > 0)
+	{
+		nW += nTextSpace * (cnt - 1);
+	}
+	nW = nW > 1024 ? 1024 : nW;
+	nH = nH > 768 ? 768 : nH;
+	T_Sprite spText;
+	spText.create(nW, nH, 0, 0, 0, 0);
+	int nX = 0;
+	bool bFirst = true;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsChar = aspChar[i];
+		ref int rfnWidth = anWidth[i];
+		ref int rfnHeight = anHeight[i];
+		ref int rfnSize = anSize[i];
+		ref bool rfbHankaku = abHankaku[i];
+		int nY = (nH - rfnHeight) / 2;
+		if (nType == 1)
+		{
+			nX += bFirst ? 0 : nTextSpace;
+			drawGraph_CopyUseAMapBorder(spText, nX, nY, rfsChar, 0, 0, rfnWidth, rfnHeight, 1);
+			drawGraph_AddDA_DAxSA(spText, nX, nY, rfsChar, 0, 0, rfnWidth, rfnHeight);
+			nX += rfnWidth;
+		}
+		else
+		{
+			if (!bFirst)
+			{
+				if (nTextSpace < 0)
+				{
+					if (!bExt || !rfbHankaku)
+					{
+						nX += nTextSpace;
+					}
+				}
+				else
+				{
+					nX += nTextSpace;
+				}
+			}
+			int nX2 = nX - (rfnWidth - rfnSize) / 2;
+			drawGraph_CopyUseAMapBorder(spText, nX2, nY, rfsChar, 0, 0, rfnWidth, rfnHeight, 1);
+			drawGraph_AddDA_DAxSA(spText, nX2, nY, rfsChar, 0, 0, rfnWidth, rfnHeight);
+			nX += rfnSize;
+			bFirst = false;
+		}
+		rfsChar.delete();
+	}
+	aspChar.Free();
+	anSize.Free();
+	return spText.detach();
+}
+
+int テキスト_文字作成(string szText, int nFontType, int nFontSize, int nColorR, int nColorG, int nColorB, int nWeight, int nEdgeR, int nEdgeG, int nEdgeB, int nEdgeWeight)
+{
+	if (szText.Empty())
+	{
+		return -1;
+	}
+	int nSpNo = スプライト_番号();
+	色_補正(nColorR, nColorG, nColorB);
+	色_補正(nEdgeR, nEdgeG, nEdgeB);
+	AFL_SetCharSprite(nSpNo, szText, nFontType, nFontSize, nColorR, nColorG, nColorB, 実数変換(nWeight), nEdgeR, nEdgeG, nEdgeB, 実数変換(nEdgeWeight));
+	T_Sprite spWork;
+	spWork.attach(nSpNo);
+	spWork.setShow(0);
+	spWork.detach();
+	return nSpNo;
+}
+
+bool テキスト描画_中央(ref T_Sprite rfsDst, int nType, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace, int nMode)
+{
+	if (!スプライト_有効(rfsDst))
+	{
+		return false;
+	}
+	T_DrawLine sLine;
+	if (!sLine.createFromTextMetrics(nType, szText, sTextMetrics, nTextSpace))
+	{
+		return false;
+	}
+	int nX = (rfsDst.getWidth() - sLine.getWidth()) / 2;
+	int nY = (rfsDst.getHeight() - sLine.getHeight()) / 2;
+	return sLine.copyToSprite(rfsDst, nX, nY, nMode);
+}
+
+string 数字_半角テキスト(int nValue, int nCount, int nMode)
+{
+	int cnt = 数値桁数(nValue);
+	switch (nMode)
+	{
+		case 1:
+			if (cnt > nCount)
+			{
+				if (g_nDrawTextMode == 1)
+				{
+					return 半角数字(nValue, -1, 0);
+				}
+				return 半角数字詰め(9, nCount);
+			}
+			return 半角数字(nValue, nCount, 0);
+		case 2:
+			if (cnt > nCount)
+			{
+				if (g_nDrawTextMode == 1)
+				{
+					return 半角数字(nValue, -1, 0);
+				}
+				return 半角数字詰め(9, nCount);
+			}
+			return 半角数字(nValue, nCount, 1);
+		case 3:
+			if (cnt > nCount)
+			{
+				if (g_nDrawTextMode == 1)
+				{
+					return 半角数字(nValue, -1, 0);
+				}
+				return 半角数字詰め(9, nCount);
+			}
+			return 半角数字(nValue, -1, 0);
+		case 0:
+		default:
+			break;
+	}
+	return 半角数字(nValue, -1, 0);
+}
+
+string 数字_全角テキスト(int nValue, int nCount, int nMode)
+{
+	int cnt = 数値桁数(nValue);
+	switch (nMode)
+	{
+		case 1:
+			if (cnt > nCount)
+			{
+				return 全角数字詰め(9, nCount);
+			}
+			return 全角数字(nValue, nCount, 0);
+		case 2:
+			if (cnt > nCount)
+			{
+				return 全角数字詰め(9, nCount);
+			}
+			return 全角数字(nValue, nCount, 1);
+		case 3:
+			if (cnt > nCount)
+			{
+				return 全角数字詰め(9, nCount);
+			}
+			return 全角数字(nValue, -1, 0);
+		case 0:
+		default:
+			break;
+	}
+	return 全角数字(nValue, -1, 0);
+}
+
+int 文字の太さ(bool bFontBold, int nFontType)
+{
+	switch (nFontType)
+	{
+		case 0:
+			return bFontBold ? 40 : 0;
+		case 1:
+			return bFontBold ? 70 : 40;
+		case 257:
+			return 0;
+		case 256:
+			return bFontBold ? 40 : 0;
+		case 258:
+			return bFontBold ? 40 : 0;
+		default:
+			break;
+	}
+	return bFontBold ? 40 : 0;
+}
+
+bool 太字確認(int nFontType, int nFontWeight)
+{
+	switch (nFontType)
+	{
+		case 0:
+			return nFontWeight >= 40;
+		case 1:
+			return nFontWeight >= 70;
+		case 257:
+			return true;
+		case 256:
+			return nFontWeight >= 40;
+		case 258:
+			return nFontWeight >= 40;
+		default:
+			break;
+	}
+	return nFontWeight >= 40;
+}
+
+int 数字表示モード＞テキスト描画モード(int nMode)
+{
+	switch (nMode)
+	{
+		case 1:
+		case 2:
+			return 2;
+		case 3:
+			return 1;
+		case 0:
+		default:
+			break;
+	}
+	return 0;
+}
+

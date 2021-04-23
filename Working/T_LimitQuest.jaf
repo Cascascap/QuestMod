@@ -1,0 +1,168 @@
+int T_LimitQuest::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_LimitQuest::checkKey(int nID)
+{
+	return this.m_sButton.checkKey();
+}
+
+void T_LimitQuest::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_LimitQuest::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_LimitQuest::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_LimitQuest::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+void T_LimitQuest::setShow(bool bShow)
+{
+	this.m_sButton.setShow(bShow);
+}
+
+int T_LimitQuest::getQuestType()
+{
+	return this.m_nQuestType;
+}
+
+bool T_LimitQuest::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_LimitQuest::getButtonKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_LimitQuest::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_LimitQuest::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_LimitQuest::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_LimitQuest::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_LimitQuest::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+int T_LimitQuest::getPrev(int nID)
+{
+	return this.m_sButton.getPrevButton(nID, false, false);
+}
+
+int T_LimitQuest::getNext(int nID)
+{
+	return this.m_sButton.getNextButton(nID, false, false);
+}
+
+int T_LimitQuest::getFirst()
+{
+	return this.m_sButton.getFirstButton(false);
+}
+
+int T_LimitQuest::getLast()
+{
+	return this.m_sButton.getLastButton(false);
+}
+
+T_LimitQuest::T_LimitQuest()
+{
+	this.clear();
+}
+
+T_LimitQuest::~T_LimitQuest()
+{
+	this.delete();
+}
+
+bool T_LimitQuest::create(int nZ, int nButtonID)
+{
+	this.delete();
+	int i = 0;
+	int cnt = 6;
+	this.m_sButton.create();
+	for (i = 1; i < cnt; ++i)
+	{
+		ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, nButtonID + i, 945, 154 + 34 * (i - 1), (11031 + i) - 1, -1, -1, -2147483648, -2147483648);
+	}
+	this.m_sButton.setZ(nZ);
+	this.m_nButtonID = nButtonID;
+	return true;
+}
+
+void T_LimitQuest::delete()
+{
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_LimitQuest::clear()
+{
+	this.m_nButtonID = 0;
+	this.m_nQuestType = 0;
+}
+
+bool T_LimitQuest::setQuestType(int nQuestType)
+{
+	if (nQuestType < 1 || nQuestType > this.m_sButton.getButtonCount())
+	{
+		return false;
+	}
+	if (nQuestType != this.m_nQuestType)
+	{
+		this.m_nQuestType = nQuestType;
+	}
+	else
+	{
+		this.m_nQuestType = 0;
+	}
+	return true;
+}
+
+void T_LimitQuest::setButtonActive()
+{
+	int i = 0;
+	int cnt = this.m_sButton.getButtonCount();
+	for (i = 1; i <= cnt; ++i)
+	{
+		this.m_sButton.setButtonStatus(this.m_nButtonID + i, this.checkQuestType(i) ? 0 : 2);
+	}
+}
+
+bool T_LimitQuest::checkQuestType(int nQuestType)
+{
+	if (nQuestType < 1 || nQuestType > this.m_sButton.getButtonCount())
+	{
+		return false;
+	}
+	return this.m_nQuestType > 0 ? nQuestType == this.m_nQuestType : 1;
+}
+

@@ -1,0 +1,279 @@
+void SYS_Message(int nMsgNum, int nNumofMsg, string szText)
+{
+	if (_Ｍ枠 == 0)
+	{
+		system.Output("【警告】字枠が設定されていないので字枠(1)を使用します。\n　　　　'%s'\n" % szText);
+		字枠セット(1, -2147483648);
+	}
+	g_MessageTextView.AddMessageText(nMsgNum, szText);
+	SYS_既読メッセージフラグ更新(nMsgNum);
+	SYS_Ｍ送モード更新();
+	if (SYS_デフォルトセーブコメント要更新())
+	{
+		SYS_デフォルトセーブコメント設定(szText);
+	}
+	SYS_メッセージテキスト登録(nMsgNum, nNumofMsg, szText);
+}
+
+void SYS_R()
+{
+	if (_Ｍ枠 == 0)
+	{
+		system.Output("【警告】R関数：字枠が設定されていないので字枠(1)を使用します。\n");
+		字枠セット(1, -2147483648);
+	}
+	g_MessageTextView.AddNewLine();
+	メッセージ要素_t t;
+	t.nType = 1;
+	SYS_メッセージ登録(t);
+}
+
+void SYS_A()
+{
+	while (g_MessageTextView.HasTextRemaining())
+	{
+		SYS_メッセージ表示();
+		SYS_最終音声番号バックシーン登録();
+		SYS_Ｍキー待ち(false);
+		SYS_メッセージスキップ待ち();
+		GOAT_EndMotionFociby();
+	}
+	SYS_バックシーン登録();
+	g_MessageTextView.SetMessageReadFlag();
+	SYS_Ｍ消去(_Ｍ枠);
+	AnteaterADVEngine.ADVLogList_AddNewPage();
+	SYS_StopVoiceByMessageClick();
+	_g_最終音声番号 = 0;
+}
+
+void SYS_AA()
+{
+	SYS_メッセージ表示();
+	SYS_最終音声番号バックシーン登録();
+	SYS_Ｍキー待ち(true);
+	GOAT_EndMotionFociby();
+	SYS_バックシーン登録();
+	g_MessageTextView.SetMessageReadFlag();
+	SYS_Ｍ消去(_Ｍ枠);
+	AnteaterADVEngine.ADVLogList_AddNewPage();
+	SYS_StopVoiceByMessageClick();
+	_g_最終音声番号 = 0;
+}
+
+void SYS_B()
+{
+	SYS_メッセージ表示();
+	SYS_最終音声番号バックシーン登録();
+	GOAT_EndMotionFociby();
+	g_MessageTextView.SetMessageReadFlag();
+	g_MessageTextView.AddC();
+	メッセージ要素_t t;
+	t.nType = 4;
+	SYS_メッセージ登録(t);
+	AnteaterADVEngine.ADVLogList_AddNewPage();
+	SYS_StopVoiceByMessageClick();
+	_g_最終音声番号 = 0;
+}
+
+void SYS_C()
+{
+	g_MessageTextView.AddC();
+	メッセージ要素_t t;
+	t.nType = 4;
+	SYS_メッセージ登録(t);
+}
+
+void SYS_D()
+{
+	SYS_メッセージ表示();
+	SYS_Ｍキー待ち(false);
+	SYS_メッセージスキップ待ち();
+	GOAT_EndMotionFociby();
+	SYS_バックシーン登録();
+	g_MessageTextView.SetMessageReadFlag();
+	g_MessageTextView.AddNewLine();
+	g_MessageTextView.AddNewLine();
+	メッセージ要素_t t;
+	t.nType = 1;
+	SYS_メッセージ登録(t);
+	SYS_メッセージ登録(t);
+}
+
+void SYS_字枠セット(int Ｍ番号, int 動作, bool ClearNewMessageWindowText)
+{
+	if (動作 == -2147483648)
+	{
+		動作 = _字枠デフォルト動作;
+	}
+	if (Ｍ番号 == 0)
+	{
+		_g_SystemButtonView._Clear();
+		_g_SystemButtonView._Update();
+		g_MessageWindowManager.ClearAll();
+		SYS_ResetCurrentMessageWindowNumber();
+		return;
+	}
+	if (動作 == 0)
+	{
+		_g_SystemButtonView._Clear();
+		_g_SystemButtonView._Update();
+	}
+	else if (!_g_バックシーン中)
+	{
+		_g_SystemButtonView._Set(Ｍ番号);
+		_g_SystemButtonView._Update();
+	}
+	switch (動作)
+	{
+		case 0:
+			g_MessageWindowManager.Clear(Ｍ番号);
+			break;
+		case 1:
+			SYS_字枠表示(Ｍ番号, false, ClearNewMessageWindowText);
+			SYS_Ｍ消去(Ｍ番号);
+			SYS_SetCurrentMessageWindowNumber(Ｍ番号);
+			break;
+		case 2:
+			SYS_字枠表示(Ｍ番号, true, ClearNewMessageWindowText);
+			SYS_Ｍ消去(Ｍ番号);
+			SYS_SetCurrentMessageWindowNumber(Ｍ番号);
+			break;
+		case 3:
+			SYS_字枠表示(Ｍ番号, false, ClearNewMessageWindowText);
+			SYS_SetCurrentMessageWindowNumber(Ｍ番号);
+			break;
+		default:
+			system.Error("未対応のメッセージウィンドウの切り替え設定がおこなわれました %d" % 動作);
+	}
+	SYS_Ｍ送モードＣＧ表示更新();
+}
+
+void SYS_字枠表示(int Ｍ番号, bool ClearPrevMessageWindow, bool ClearNewMessageWindowText)
+{
+	SYS_ASSERTE_AREA_ID(Ｍ番号);
+	if (_Ｍ枠 != Ｍ番号)
+	{
+		if (ClearPrevMessageWindow)
+		{
+			g_MessageWindowManager.Clear(_Ｍ枠);
+		}
+		g_MessageWindowManager.Create(Ｍ番号);
+		if (ClearNewMessageWindowText)
+		{
+			_メッセージ保管[Ｍ番号].要素.Free();
+			g_MessageTextView.ClearMessageTextAndSetHome(Ｍ番号);
+		}
+	}
+	g_MessageWindowManager.Show(Ｍ番号);
+	g_MessageWindowManager.UpdateZ(Ｍ番号);
+}
+
+void SYS_SetCurrentMessageWindowNumber(int MessageWindowNumber)
+{
+	_Ｍ枠 = MessageWindowNumber;
+}
+
+void SYS_ResetCurrentMessageWindowNumber()
+{
+	_Ｍ枠 = 0;
+}
+
+void SYS_メッセージウィンドウ非表示()
+{
+	g_MessageWindowManager.HideAll();
+	CASClick LButtonClick;
+	CASClick RButtonClick;
+	CASClick ReturnKeyClick;
+	CASClick ZKeyClick;
+	CASClick SpaceKeyClick;
+	LButtonClick.Init(1, true);
+	RButtonClick.Init(2, true);
+	ReturnKeyClick.Init(13, true);
+	ZKeyClick.Init(90, true);
+	SpaceKeyClick.Init(32, true);
+	CASJoyClick m_OKJoyClick;
+	CASJoyClick m_CancelJoyClick;
+	CASJoyClick m_HideMessageWindowJoyClick;
+	m_OKJoyClick.Init(AFL_Joystick_GetButtonAssignment(4), true);
+	m_CancelJoyClick.Init(AFL_Joystick_GetButtonAssignment(5), true);
+	m_HideMessageWindowJoyClick.Init(AFL_Joystick_GetButtonAssignment(6), true);
+	for (; ; )
+	{
+		if (LButtonClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (RButtonClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (ReturnKeyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (ZKeyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (SpaceKeyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (m_OKJoyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (m_CancelJoyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (m_HideMessageWindowJoyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+	g_MessageWindowManager.ShowAll();
+	UpdateView(true);
+	_g_MouseWheel._Clear();
+}
+
+void SYS_CallShowMessageWindowCallbackFuncList(bool bShow)
+{
+	int n = 0;
+	for (n = 0; n < g_ShowMessageWindowCallbackFuncList.Numof(); ++n)
+	{
+		g_ShowMessageWindowCallbackFuncList[n](bShow);
+	}
+}
+
+void SYS_Ｍ消去(int Ｍ番号)
+{
+	SYS_デフォルトセーブコメント更新フラグセット();
+	g_MessageTextView.ClearMessageTextAndSetHome(Ｍ番号);
+	_メッセージ保管[Ｍ番号].要素.Free();
+}
+
+void SYS_メッセージ表示()
+{
+	if (g_MessageTextView.HasNoTextDrawn())
+	{
+		WordWrapper3 wordWrapper;
+		wordWrapper.Init(g_MessageTextView);
+		wordWrapper.Run();
+	}
+	g_MessageTextView.Draw();
+}
+
+void SYS_メッセージ全表示()
+{
+	if (g_MessageTextView.HasNoTextDrawn())
+	{
+		WordWrapper3 wordWrapper;
+		wordWrapper.Init(g_MessageTextView);
+		wordWrapper.Run();
+	}
+	g_MessageTextView.DrawAll();
+	UpdateView(true);
+}
+

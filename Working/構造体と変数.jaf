@@ -1,0 +1,141 @@
+int ¡‚l^ã“_”cˆ¬(int ii, int aa, string ğŒ)
+{
+	if (ii > 500)
+	{
+		return 0;
+	}
+	if (aa == 0)
+	{
+		return ‚l^ã“_”cˆ¬[ii];
+	}
+	if (ğŒ == "‰ÁZ")
+	{
+		‚l^ã“_”cˆ¬[ii] += aa;
+		return 0;
+	}
+	‚l^ã“_”cˆ¬[ii] = aa;
+	return 0;
+}
+
+int ¡‚l^Œ‚”j”(int ii, int aa, string ğŒ)
+{
+	if (ii > 500)
+	{
+		return 0;
+	}
+	if (aa == 0)
+	{
+		return ‚l^Œ‚”j”[ii];
+	}
+	if (ğŒ == "‰ÁZ")
+	{
+		‚l^Œ‚”j”[ii] += aa;
+		return 0;
+	}
+	‚l^Œ‚”j”[ii] = aa;
+	return 0;
+}
+
+int ¡‚l^ƒtƒ‰ƒO‚`(int ii, int aa, string ğŒ)
+{
+	if (ii > 500)
+	{
+		return 0;
+	}
+	if (aa == 0)
+	{
+		return ‚l^ƒtƒ‰ƒO‚`[ii];
+	}
+	if (ğŒ == "‰ÁZ")
+	{
+		‚l^ƒtƒ‰ƒO‚`[ii] += aa;
+		return 0;
+	}
+	‚l^ƒtƒ‰ƒO‚`[ii] = aa;
+	return 0;
+}
+
+int ¡Ÿ‚Ì“]¶‚k‚u(int iic, int aa, string ğŒ)
+{
+	if (iic >= 201)
+	{
+		return 0;
+	}
+	if (aa == 0 && ğŒ == "")
+	{
+		return ‚b‚e‚`(iic, 29, -1);
+	}
+	if (ğŒ == "ÄŒvZ")
+	{
+		int £“]¶‚k‚u = 35;
+		if (‚b“]¶‰ñ”(iic, -1) == 0)
+		{
+			£“]¶‚k‚u = 35;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 1)
+		{
+			£“]¶‚k‚u = 35;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 2)
+		{
+			£“]¶‚k‚u = 38;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 3)
+		{
+			£“]¶‚k‚u = 41;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 4)
+		{
+			£“]¶‚k‚u = 44;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 5)
+		{
+			£“]¶‚k‚u = 55;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 6)
+		{
+			£“]¶‚k‚u = 65;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 7)
+		{
+			£“]¶‚k‚u = 75;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 8)
+		{
+			£“]¶‚k‚u = 85;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 9)
+		{
+			£“]¶‚k‚u = 95;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) == 10)
+		{
+			£“]¶‚k‚u = 105;
+		}
+		if (‚b“]¶‰ñ”(iic, -1) > 10)
+		{
+			£“]¶‚k‚u = 5 + ‚b“]¶‰ñ”(iic, -1) * 10;
+		}
+		‚b‚e‚`(iic, 29, £“]¶‚k‚u);
+		return 0;
+	}
+	‚b‚e‚`(iic, 29, aa);
+	return 0;
+}
+
+void ¡ƒ{ƒXŒ‚”j‹L˜^(int ii)
+{
+	if (FA[ii] == 0)
+	{
+		FA[ii] = 1;
+	}
+	if (FA[ii] < 2 && Ÿƒ[ƒ‹ƒh == 2)
+	{
+		FA[ii] = 2;
+	}
+	if (FA[ii] < 3 && Ÿƒ[ƒ‹ƒh == 3)
+	{
+		FA[ii] = 3;
+	}
+}
+

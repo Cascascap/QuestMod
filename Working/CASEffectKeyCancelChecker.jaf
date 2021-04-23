@@ -1,0 +1,72 @@
+CASEffectKeyCancelChecker::CASEffectKeyCancelChecker()
+{
+}
+
+bool CASEffectKeyCancelChecker::Init()
+{
+	this.m_KeyList.Alloc(12);
+	bool FirstKeyDownCancel = true;
+	if (SYS_IsClickModeCancel())
+	{
+		FirstKeyDownCancel = false;
+	}
+	this.m_KeyList[0].Init(1, FirstKeyDownCancel);
+	this.m_KeyList[1].Init(2, false);
+	this.m_KeyList[2].Init(4, false);
+	this.m_KeyList[3].Init(13, FirstKeyDownCancel);
+	this.m_KeyList[4].Init(27, false);
+	this.m_KeyList[5].Init(32, false);
+	this.m_KeyList[6].Init(65, false);
+	this.m_KeyList[7].Init(83, false);
+	this.m_KeyList[8].Init(90, false);
+	this.m_KeyList[9].Init(33, false);
+	this.m_KeyList[10].Init(8, false);
+	this.m_KeyList[11].Init(36, false);
+	this.m_ClickCanceled = false;
+	return true;
+}
+
+bool CASEffectKeyCancelChecker::IsCancel()
+{
+	if (!SYS_エフェクトキーキャンセル有効確認())
+	{
+		return false;
+	}
+	_g_MouseWheel._Update(true);
+	if (!SYS_オートモード中確認())
+	{
+		if (SYS_ホイールバック確認())
+		{
+			this.m_ClickCanceled = false;
+			return true;
+		}
+	}
+	if (SYS_ホイールフォア即確認())
+	{
+		this.m_ClickCanceled = false;
+		return true;
+	}
+	int n = 0;
+	for (n = 0; n < this.m_KeyList.Numof(); ++n)
+	{
+		if (this.m_KeyList[n].IsKeyDown())
+		{
+			if (this.m_KeyList[n].GetKey() == 1)
+			{
+				this.m_ClickCanceled = true;
+			}
+			else
+			{
+				this.m_ClickCanceled = false;
+			}
+			return true;
+		}
+	}
+	return false;
+}
+
+bool CASEffectKeyCancelChecker::IsClickCanceled()
+{
+	return this.m_ClickCanceled;
+}
+

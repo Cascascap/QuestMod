@@ -1,0 +1,281 @@
+void message(int nMsgNum, int nNumofMsg, string szText)
+{
+	string EventFuncName = system.GetFuncStackName(1);
+	g_MessageTextView.SetEventFuncName(EventFuncName);
+	if (g_MessageFunction != NULL)
+	{
+		g_MessageFunction(nMsgNum, nNumofMsg, szText);
+		return;
+	}
+	SYS_Message(nMsgNum, nNumofMsg, szText);
+}
+
+void R()
+{
+	if (g_MessageRFunction != NULL)
+	{
+		g_MessageRFunction();
+		return;
+	}
+	SYS_R();
+}
+
+void A()
+{
+	if (g_MessageAFunction != NULL)
+	{
+		g_MessageAFunction();
+		return;
+	}
+	SYS_A();
+}
+
+void AA()
+{
+	if (g_MessageAAFunction != NULL)
+	{
+		g_MessageAAFunction();
+		return;
+	}
+	SYS_AA();
+}
+
+void B()
+{
+	if (g_MessageBFunction != NULL)
+	{
+		g_MessageBFunction();
+		return;
+	}
+	SYS_B();
+}
+
+void C()
+{
+	if (g_MessageCFunction != NULL)
+	{
+		g_MessageCFunction();
+		return;
+	}
+	SYS_C();
+}
+
+void D()
+{
+	if (g_MessageDFunction != NULL)
+	{
+		g_MessageDFunction();
+		return;
+	}
+	SYS_D();
+}
+
+void N(int 値, int 桁, int 零埋)
+{
+	string s = "";
+	switch (桁)
+	{
+		case 2:
+			if (零埋)
+			{
+				s = "%02D" % 値;
+			}
+			else
+			{
+				s = "%2D" % 値;
+			}
+			break;
+		case 3:
+			if (零埋)
+			{
+				s = "%03D" % 値;
+			}
+			else
+			{
+				s = "%3D" % 値;
+			}
+			break;
+		case 4:
+			if (零埋)
+			{
+				s = "%04D" % 値;
+			}
+			else
+			{
+				s = "%4D" % 値;
+			}
+			break;
+		case 5:
+			if (零埋)
+			{
+				s = "%05D" % 値;
+			}
+			else
+			{
+				s = "%5D" % 値;
+			}
+			break;
+		case 6:
+			if (零埋)
+			{
+				s = "%06D" % 値;
+			}
+			else
+			{
+				s = "%6D" % 値;
+			}
+			break;
+		case 7:
+			if (零埋)
+			{
+				s = "%07D" % 値;
+			}
+			else
+			{
+				s = "%7D" % 値;
+			}
+			break;
+		case 8:
+			if (零埋)
+			{
+				s = "%08D" % 値;
+			}
+			else
+			{
+				s = "%8D" % 値;
+			}
+			break;
+		case 9:
+			if (零埋)
+			{
+				s = "%09D" % 値;
+			}
+			else
+			{
+				s = "%9D" % 値;
+			}
+			break;
+		case 10:
+			if (零埋)
+			{
+				s = "%10D" % 値;
+			}
+			else
+			{
+				s = "%10D" % 値;
+			}
+			break;
+		default:
+			s = "%D" % 値;
+			break;
+	}
+	S(s);
+}
+
+void NH(int 値, int 桁, int 零埋)
+{
+	string s = "";
+	switch (桁)
+	{
+		case 2:
+			if (零埋)
+			{
+				s = "%02d" % 値;
+			}
+			else
+			{
+				s = "%2d" % 値;
+			}
+			break;
+		case 3:
+			if (零埋)
+			{
+				s = "%03d" % 値;
+			}
+			else
+			{
+				s = "%3d" % 値;
+			}
+			break;
+		case 4:
+			if (零埋)
+			{
+				s = "%04d" % 値;
+			}
+			else
+			{
+				s = "%4d" % 値;
+			}
+			break;
+		case 5:
+			if (零埋)
+			{
+				s = "%05d" % 値;
+			}
+			else
+			{
+				s = "%5d" % 値;
+			}
+			break;
+		case 6:
+			if (零埋)
+			{
+				s = "%06d" % 値;
+			}
+			else
+			{
+				s = "%6d" % 値;
+			}
+			break;
+		case 7:
+			if (零埋)
+			{
+				s = "%07d" % 値;
+			}
+			else
+			{
+				s = "%7d" % 値;
+			}
+			break;
+		case 8:
+			if (零埋)
+			{
+				s = "%08d" % 値;
+			}
+			else
+			{
+				s = "%8d" % 値;
+			}
+			break;
+		case 9:
+			if (零埋)
+			{
+				s = "%09d" % 値;
+			}
+			else
+			{
+				s = "%9d" % 値;
+			}
+			break;
+		case 10:
+			if (零埋)
+			{
+				s = "%10d" % 値;
+			}
+			else
+			{
+				s = "%10d" % 値;
+			}
+			break;
+		default:
+			s = "%d" % 値;
+			break;
+	}
+	S(s);
+}
+
+void S(string テキスト)
+{
+	message(0, 0, テキスト);
+}
+

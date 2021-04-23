@@ -1,0 +1,20 @@
+bool AFL_MemoryMode_Save()
+{
+	return SYS_セーブ実行(-5, "", "");
+}
+
+void AFL_MemoryMode_DeleteSaveFile()
+{
+	SYS_セーブファイル削除(-5);
+}
+
+void AFL_MemoryMode_Begin()
+{
+	_g_回想中 = true;
+}
+
+void AFL_MemoryMode_End()
+{
+	_g_回想中 = false;
+}
+

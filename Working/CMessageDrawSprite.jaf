@@ -1,0 +1,103 @@
+CMessageDrawSprite::CMessageDrawSprite()
+{
+	this.m_nType = -1;
+	this.m_bFixed = false;
+}
+
+void CMessageDrawSprite::SetCharSprite(int nTime, int MessageWindowNumber)
+{
+	this.m_nType = 0;
+	this.m_MessageWindowNumber = MessageWindowNumber;
+	this.m_nTime = nTime;
+	this.m_bFixed = false;
+}
+
+void CMessageDrawSprite::SetConstructionSprite(int nTime, int MessageWindowNumber)
+{
+	this.m_nType = 1;
+	this.m_MessageWindowNumber = MessageWindowNumber;
+	this.m_nTime = nTime;
+	this.m_bFixed = false;
+}
+
+void CMessageDrawSprite::SetFixed()
+{
+	this.m_bFixed = true;
+	switch (this.m_nType)
+	{
+		case 0:
+			this.m_CharSprite.SetAlphaRate(255);
+			break;
+		case 1:
+			this.m_ConstructionSprite.SetAlpha(255);
+	}
+}
+
+int CMessageDrawSprite::GetType()
+{
+	return this.m_nType;
+}
+
+int CMessageDrawSprite::GetTime()
+{
+	return this.m_nTime;
+}
+
+int CMessageDrawSprite::GetMessageWindowNumber()
+{
+	return this.m_MessageWindowNumber;
+}
+
+ref CASCharSprite CMessageDrawSprite::GetCharSprite()
+{
+	return this.m_CharSprite;
+}
+
+ref CASConstructionSprite CMessageDrawSprite::GetConstructionSprite()
+{
+	return this.m_ConstructionSprite;
+}
+
+bool CMessageDrawSprite::IsFixed()
+{
+	return this.m_bFixed;
+}
+
+void CMessageDrawSprite::SetAlphaRate(int AlphaRate)
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			this.m_CharSprite.SetAlphaRate(AlphaRate);
+			break;
+		case 1:
+			this.m_ConstructionSprite.SetAlpha(AlphaRate);
+			break;
+	}
+}
+
+int CMessageDrawSprite::GetAlphaRate()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CharSprite.GetAlphaRate();
+		case 1:
+			return this.m_ConstructionSprite.GetAlpha();
+	}
+	return 255;
+}
+
+void CMessageDrawSprite::SetShow(bool Show)
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			this.m_CharSprite.SetShow(Show);
+			break;
+		case 1:
+			this.m_ConstructionSprite.SetShow(Show);
+			break;
+	}
+}
+

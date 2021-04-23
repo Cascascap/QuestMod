@@ -1,0 +1,94 @@
+T_BattleTime::T_BattleTime()
+{
+	this.clear();
+}
+
+T_BattleTime::~T_BattleTime()
+{
+	this.delete();
+}
+
+bool T_BattleTime::create(int nZ, bool bAdjust)
+{
+	this.delete();
+	this.m_sNumber.create(10103, -1, 2, 0, true);
+	this.m_sNumber.setPos(902, 608);
+	this.m_sNumber.setZ(nZ);
+	this.m_spMark.setCg(10104);
+	this.m_spMark.setPos(899, 608);
+	this.m_spMark.setZ(nZ);
+	if (bAdjust)
+	{
+		this.m_sNumber.setPos(941, 577);
+		this.m_spMark.setPos(938, 577);
+	}
+	return true;
+}
+
+void T_BattleTime::delete()
+{
+	this.m_sNumber.delete();
+	this.m_spMark.delete();
+	this.clear();
+}
+
+void T_BattleTime::clear()
+{
+	this.m_bInfinity = false;
+	this.m_bShow = false;
+}
+
+bool T_BattleTime::update()
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (this.m_sNumber.getMode() <= 0)
+	{
+		return false;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime >= 500)
+	{
+		this.m_sNumber.animeEnd();
+		return false;
+	}
+	this.m_sNumber.anime(nTime);
+	return true;
+}
+
+int T_BattleTime::set(int nValue, bool bAnime)
+{
+	this.m_bInfinity = nValue < 0;
+	if (!this.m_bInfinity)
+	{
+		if (bAnime)
+		{
+			if (this.m_sNumber.animeStart(nValue, 500, -1) > false)
+			{
+				this.m_sTimer.Reset();
+				return 1;
+			}
+		}
+		this.m_sNumber.setValue(nValue);
+	}
+	this.setShow(this.m_bShow);
+	return 0;
+}
+
+void T_BattleTime::setShow(bool bShow)
+{
+	if (this.m_bInfinity)
+	{
+		this.m_sNumber.setShow(false);
+		this.m_spMark.setShow(bShow);
+	}
+	else
+	{
+		this.m_sNumber.setShow(bShow);
+		this.m_spMark.setShow(0);
+	}
+	this.m_bShow = bShow;
+}
+

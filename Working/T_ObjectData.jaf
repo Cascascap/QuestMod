@@ -1,0 +1,433 @@
+T_ObjectData::T_ObjectData()
+{
+	this.clear();
+}
+
+void T_ObjectData::clear()
+{
+	this.m_anNo.Fill(0, 2500, 0);
+	this.m_anHoseiX.Fill(0, 2500, 0);
+	this.m_anHoseiY.Fill(0, 2500, 0);
+	this.m_anHoseiZ.Fill(0, 2500, 0);
+	this.m_anScale.Fill(0, 2500, 100);
+	this.m_anAngle.Fill(0, 2500, 0);
+	this.m_anEnterFlag.Fill(0, 2500, 0);
+}
+
+void T_ObjectData::copy(ref T_ObjectData rfData, int nIndex)
+{
+	if (rfData === NULL)
+	{
+		return;
+	}
+	if (nIndex < 0)
+	{
+		this.m_anNo.Copy(0, rfData.m_anNo, 0, 2500);
+		this.m_anHoseiX.Copy(0, rfData.m_anHoseiX, 0, 2500);
+		this.m_anHoseiY.Copy(0, rfData.m_anHoseiY, 0, 2500);
+		this.m_anHoseiZ.Copy(0, rfData.m_anHoseiZ, 0, 2500);
+		this.m_anScale.Copy(0, rfData.m_anScale, 0, 2500);
+		this.m_anAngle.Copy(0, rfData.m_anAngle, 0, 2500);
+		this.m_anEnterFlag.Copy(0, rfData.m_anEnterFlag, 0, 2500);
+		return;
+	}
+	if (!マップ位置_インデクス確認(nIndex))
+	{
+		return;
+	}
+	this.m_anNo[nIndex] = rfData.m_anNo[nIndex];
+	this.m_anHoseiX[nIndex] = rfData.m_anHoseiX[nIndex];
+	this.m_anHoseiY[nIndex] = rfData.m_anHoseiY[nIndex];
+	this.m_anHoseiZ[nIndex] = rfData.m_anHoseiZ[nIndex];
+	this.m_anScale[nIndex] = rfData.m_anScale[nIndex];
+	this.m_anAngle[nIndex] = rfData.m_anAngle[nIndex];
+	this.m_anEnterFlag[nIndex] = rfData.m_anEnterFlag[nIndex];
+}
+
+bool T_ObjectData::load(int nVersion)
+{
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		if (!File2.ReadInt(this.m_anNo[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anHoseiX[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anHoseiY[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anHoseiZ[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anScale[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anAngle[i]))
+		{
+			return false;
+		}
+		this.m_anEnterFlag[i] = 置物情報_移動フラグ(this.m_anNo[i]);
+	}
+	return true;
+}
+
+bool T_ObjectData::loadResize(int nVersion, int nMapSizeX, int nMapSizeY)
+{
+	int i = 0;
+	int cnt = nMapSizeX * nMapSizeY;
+	int nNo = 0;
+	int nHoseiX = 0;
+	int nHoseiY = 0;
+	int nHoseiZ = 0;
+	int nScale = 0;
+	int nAngle = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!File2.ReadInt(nNo))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHoseiX))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHoseiY))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHoseiZ))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nScale))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nAngle))
+		{
+			return false;
+		}
+		int idx = マップ位置_インデクス変換_サイズ変更(i, nMapSizeX, nMapSizeY);
+		if (idx >= 0)
+		{
+			this.m_anNo[idx] = nNo;
+			this.m_anHoseiX[idx] = nHoseiX;
+			this.m_anHoseiY[idx] = nHoseiY;
+			this.m_anHoseiZ[idx] = nHoseiZ;
+			this.m_anScale[idx] = nScale;
+			this.m_anAngle[idx] = nAngle;
+			this.m_anEnterFlag[idx] = 置物情報_移動フラグ(nNo);
+		}
+	}
+	return true;
+}
+
+bool T_ObjectData::loadOld()
+{
+	int i = 0;
+	int cnt = 0;
+	int nNo = 0;
+	int nHoseiX = 0;
+	int nHoseiY = 0;
+	int nHoseiZ = 0;
+	int nScale = 0;
+	int nAngle = 0;
+	if (!File2.ReadInt(cnt))
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!File2.ReadInt(nNo))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHoseiX))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHoseiY))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHoseiZ))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nScale))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nAngle))
+		{
+			return false;
+		}
+		int idx = マップ位置_インデクス変換_旧データ(i);
+		if (idx >= 0)
+		{
+			this.m_anNo[idx] = nNo;
+			this.m_anHoseiX[idx] = nHoseiX;
+			this.m_anHoseiY[idx] = nHoseiY;
+			this.m_anHoseiZ[idx] = nHoseiZ;
+			this.m_anScale[idx] = nScale;
+			this.m_anAngle[idx] = nAngle;
+			this.m_anEnterFlag[idx] = 置物情報_移動フラグ(nNo);
+		}
+	}
+	return true;
+}
+
+bool T_ObjectData::save()
+{
+	return true;
+}
+
+void T_ObjectDataManager::setUpdate(bool bUpdate)
+{
+	this.m_bUpdate = bUpdate;
+}
+
+bool T_ObjectDataManager::isUpdate()
+{
+	return this.m_bUpdate;
+}
+
+T_ObjectDataManager::T_ObjectDataManager()
+{
+	this.clear();
+}
+
+void T_ObjectDataManager::clear()
+{
+	this.m_sData.clear();
+	this.m_bUpdate = false;
+}
+
+bool T_ObjectDataManager::load(int nVersion)
+{
+	this.clear();
+	return this.m_sData.load(nVersion);
+}
+
+bool T_ObjectDataManager::loadResize(int nVersion, int nMapSizeX, int nMapSizeY)
+{
+	this.clear();
+	return this.m_sData.loadResize(nVersion, nMapSizeX, nMapSizeY);
+}
+
+bool T_ObjectDataManager::loadOld()
+{
+	this.clear();
+	return this.m_sData.loadOld();
+}
+
+void T_ObjectDataManager::unload()
+{
+	this.clear();
+}
+
+bool T_ObjectDataManager::save()
+{
+	this.m_bUpdate = false;
+	return true;
+}
+
+void T_ObjectDataManager::backup(ref T_ObjectData sData)
+{
+	if (sData === NULL)
+	{
+		return;
+	}
+	sData.copy(this.m_sData, -1);
+}
+
+void T_ObjectDataManager::restore(ref T_ObjectData sData)
+{
+	if (sData === NULL)
+	{
+		return;
+	}
+	this.m_sData.copy(sData, -1);
+}
+
+bool T_ObjectDataManager::set(int nMapX, int nMapY, int nObjectNo)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anNo[idx] = nObjectNo;
+	this.m_sData.m_anHoseiX[idx] = 0;
+	this.m_sData.m_anHoseiY[idx] = 0;
+	this.m_sData.m_anHoseiZ[idx] = 0;
+	this.m_sData.m_anScale[idx] = 100;
+	this.m_sData.m_anAngle[idx] = 0;
+	this.m_sData.m_anEnterFlag[idx] = 置物情報_移動フラグ(nObjectNo);
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_ObjectDataManager::setHosei(int nMapX, int nMapY, int nHoseiX, int nHoseiY, int nHoseiZ)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anHoseiX[idx] = nHoseiX;
+	this.m_sData.m_anHoseiY[idx] = nHoseiY;
+	this.m_sData.m_anHoseiZ[idx] = nHoseiZ;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_ObjectDataManager::setHoseiX(int nMapX, int nMapY, int nHoseiX)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anHoseiX[idx] = nHoseiX;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_ObjectDataManager::setHoseiY(int nMapX, int nMapY, int nHoseiY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anHoseiY[idx] = nHoseiY;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_ObjectDataManager::setHoseiZ(int nMapX, int nMapY, int nHoseiZ)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anHoseiZ[idx] = nHoseiZ;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_ObjectDataManager::setScale(int nMapX, int nMapY, int nScale)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anScale[idx] = nScale;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_ObjectDataManager::setAngle(int nMapX, int nMapY, int nAngle)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anAngle[idx] = nAngle;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_ObjectDataManager::setEnterFlag(int nMapX, int nMapY, int nEnterFlag)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anEnterFlag[idx] = nEnterFlag;
+	this.m_bUpdate = true;
+	return true;
+}
+
+int T_ObjectDataManager::getObjectNo(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anNo[idx];
+}
+
+int T_ObjectDataManager::getHoseiX(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anHoseiX[idx];
+}
+
+int T_ObjectDataManager::getHoseiY(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anHoseiY[idx];
+}
+
+int T_ObjectDataManager::getHoseiZ(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anHoseiZ[idx];
+}
+
+int T_ObjectDataManager::getScale(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anScale[idx];
+}
+
+int T_ObjectDataManager::getAngle(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anAngle[idx];
+}
+
+int T_ObjectDataManager::getEnterFlag(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anEnterFlag[idx];
+}
+

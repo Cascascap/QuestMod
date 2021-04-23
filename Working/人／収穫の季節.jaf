@@ -1,0 +1,224 @@
+void 収穫／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	地図点滅(29, "", 0, 0);
+	セット表示(5530, 5070, 0, 0);
+	ト書き();
+	'　' R;
+	'     Free City Zone   Strawzend' A;
+	'Strawzend is a small nation in the Free Cities born under the King of Straw, Strong Masai the First.' A;
+	'Though the independent state is but a small dot on the map, it\'s persisted to this day with no conflict from any other nation.' A;
+	'Its exports are rice and natto.' R;
+	'Its rice is far inferior to that of Nippon, but its natto is said to be the greatest in the world.' A;
+	'The natto is produced in a special way, fermented by the body of a girl wearing straw.' A;
+	'And among this natto was natto only made by royalty, wearing "kingstraw," that brought the country all of its wealth.' A;
+	'The time to harvest the natto had come again this year.' A;
+	音楽(85, -1, -1);
+	セリフ(2947, "");
+	'"...This is..."' A;
+	ト書き();
+	'Mahoko P. Masai.' R;
+	'The royal daughter succeeding the Masai family lineage.' A;
+	'She visited Strawzend in order to receive the soybeans with which she would make the natto that only she could make, and her new kingstraw.' A;
+	'But the country was facing ruin.' A;
+	'Soldiers, citizens, royalty, her very family, were all perishing.' R;
+	'The soil of her land was contaminated, covered in death.' A;
+	'A giant soil pollution strutted across the ground as if to say it all belonged to the creature.' A;
+	セリフ(2947, "");
+	'"It\'s all... because of that thing..."' A;
+	セリフ２(2903, "Grandpappy");
+	'"M... Milady..."' A;
+	セリフ(2947, "");
+	'"Ah, Grandpappy."' A;
+	ト書き();
+	'A man called out to her feebly, supporting himself on the rubble nearby.' A;
+	'He was Grandpappy, Mahoko\'s butler and the man most talented at raising soybeans in the land.' A;
+	セリフ(2903, "Grandpappy");
+	'"Ohh... Milady..."' A;
+	セリフ(2903, "Grandpappy");
+	'"It must be a gift from God... that I\'m able to see you like this... once more at the end..."' A;
+	セリフ(2947, "");
+	'"No, Grandpappy...?"' A;
+	ト書き();
+	'Grandpappy\'s breaths grew feeble.' R;
+	'Mahoko knew that he didn\'t have much time left.' A;
+	セリフ(2903, "Grandpappy");
+	'"Milady... This year\'s soybeans..."' A;
+	セリフ(2947, "");
+	'"Mm..."' A;
+	ト書き();
+	'Mahoko took the soybeans from him, understanding that she had come too late.' A;
+	セリフ(2903, "Grandpappy");
+	'"Ahh, I\'m so glad...' R;
+	' Now that I\'ve handed them to you, I..."' A;
+	セリフ(2947, "");
+	'"........."' A;
+	'"...How are they?"' A;
+	セリフ(2903, "Grandpappy");
+	'"They grew wonderfully... this year, as well..."' A;
+	セリフ(2947, "");
+	'"I see... Of course they did, with your care..."' A;
+	セリフ(2903, "Grandpappy");
+	'"I am unworthy of such words..."' A;
+	'"You truly..."' A;
+	'"You truly grew strong, didn\'t you..."' A;
+	ト書き();
+	'Grandpappy smiled, his wrinkled face creasing even more.' A;
+	セリフ(2947, "");
+	'"...Gh..."' A;
+	ト書き();
+	'And he calmly drew his last breath.' A;
+	音楽(0, 1, 2000);
+	セリフ(2947, "");
+	'"........."' A;
+	ト書き();
+	'The giant soil pollution strutted about the vast field.' A;
+	エフェクトセット表示(7002, g町全景, 5030, 0, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Macatt Bar' A;
+	セリフ(2947, "");
+	'"........."' A;
+	'"This is... something I must fix..."' A;
+	'"I must take revenge for this."' A;
+	'"Lend me your strength, everyone."' A;
+	'"I will repay you... with my very life."' A;
+}
+
+void 収穫／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	'The giant soil pollution appeared before their eyes.' A;
+	'It could consume several times more earth than the others, immediately digest it, and excrete it back out.' A;
+	'With one look, it was obvious to see that it would be a powerful foe.' A;
+	'The giant soil pollution attacked.' A;
+	ADVOFF();
+}
+
+void 収穫／エピローグ／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セット表示(5530, 5070, 0, 0);
+	セリフ(2947, "");
+	'"........."' A;
+	ト書き();
+	'The giant soil pollution slowly crumbled before Mahoko.' A;
+	セリフ(2947, "");
+	'"...It\'s been defeated."' A;
+	音楽(91, -1, -1);
+	'"But..."' A;
+	ト書き();
+	'Once contaminated, the earth would not recover easily.' R;
+	'And those who had perished would never return.' A;
+	セリフ(2947, "");
+	'"The curtains close on the history of Strawzend... today..."' A;
+	'"........."' A;
+	ト書き();
+	'Mahoko walked off without hesitation.' A;
+	セリフ(2020, "");
+	'"M-Miss Mahoko? Where are you...?"' A;
+	セリフ(2947, "");
+	'"I must bury my grandpappy..."' A;
+	エフェクトセット表示(7002, 5530, 5076, 0, 0, 0);
+	ト書き();
+	'Mahoko began digging a hole in silence.' R;
+	'Her work continued all through the night.' A;
+	'It was the evening of the next day when the grave was finally ready.' A;
+	セリフ(2947, "");
+	'"This should suffice..."' A;
+	セリフ(2020, "");
+	'"There really were... a lot of people who died, huh..."' A;
+	ト書き();
+	'Mahoko gave a faint smile at the sight of Sachiko tearfully offering flowers in honest sympathy and she responded:' A;
+	セリフ(2947, "");
+	'"...It\'s merely a winter..."' A;
+	'"If we endure this, spring will come again."' A;
+	ト書き();
+	'Turning her back to Sachiko, Mahoko picked up the bag her grandpappy had left to her.' A;
+	'She began sowing the soybeans in the ground.' A;
+	セリフ(2021, "");
+	'"...Umm, they won\'t grow with all this contamination, will they...?"' A;
+	セリフ(2947, "");
+	'"..."' A;
+	ト書き();
+	'She continued sowing the soybeans.' A;
+	'The contaminated land.' R;
+	'The setting sun.' R;
+	'The mass graves.' A;
+	'Soybeans flew through the orange light of the air.' A;
+	ト書き();
+	'Sprinkling down... sprinkling down...' A;
+	'Mahoko merely continued to sow them.' A;
+	セリフ(2947, "");
+	'"They will grow."' A;
+	セリフ(2020, "");
+	'"...Huh?"' A;
+	セリフ(2947, "");
+	'"The man with the greenest thumb in the world sleeps here."' A;
+	ト書き();
+	'Mahoko thought back to her grandpappy\'s face from her childhood.' A;
+	'A man who was always sweating away in the fields.' A;
+	'She pictured his smile.' A;
+	音楽(0, 1, 2000);
+	セリフ(2947, "");
+	'"So... I know they will grow."' A;
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	'Mahoko continued sowing the soybeans.' A;
+}
+
+void 収穫／マホコ死亡()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	音楽(85, -1, -1);
+	セリフ(2947, "");
+	'"Kh... so this is... as far as I go..."' A;
+	ト書き();
+	'Mahoko crumbled.' A;
+	セリフ(2947, "");
+	'"My one regret..."' A;
+	'"is failing..."' A;
+	'"to take... my revenge..."' A;
+	ト書き();
+	'Mahoko lay on the contaminated earth.' A;
+	セリフ(2947, "");
+	'"Ahh..."' A;
+	'"The sky is... yet so beautiful, isn\'t it..."' A;
+	ト書き();
+	'She was captivated by the cloudless sky.' A;
+	'Trails of clouds. The shining sun.' R;
+	'Mahoko\'s eyes narrowed as she looked up at them.' A;
+	セリフ(2947, "");
+	'"Everyone\'s there..."' A;
+	セリフ２(2947, "");
+	'"A-Ahh... I\'ve kept you waiting, haven\'t I..."' A;
+	'"........."' A;
+	ト書き();
+	'She took her last breath.' A;
+	音楽(0, 1, 1000);
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	'On that day, a single country was struck from the map.' A;
+}
+

@@ -1,0 +1,447 @@
+bool T_StoreItem::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 509991:
+			return this.execOpen();
+		case 509999:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		nRet = nID;
+		return true;
+	}
+	if (nID > 580000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 575000)
+	{
+		this.changeLock(nID - 575000);
+		return false;
+	}
+	if (nID > 574000)
+	{
+		this.changeItemEx(nID - 574000);
+		return false;
+	}
+	if (nID > 573000)
+	{
+		this.changeEquip(nID - 573000);
+		return false;
+	}
+	if (nID > 572000)
+	{
+		this.changeJob(nID - 572000);
+		return false;
+	}
+	if (nID > 571000)
+	{
+		this.changeItem(nID - 571000);
+		return false;
+	}
+	if (nID > 560000)
+	{
+		return this.execSort(nID);
+	}
+	if (nID > 555000)
+	{
+		return this.execStatus(nID, nRet);
+	}
+	if (nID > 554000)
+	{
+		this.unlock(nID);
+		return false;
+	}
+	if (nID > 553000)
+	{
+		this.lock(nID);
+		return false;
+	}
+	if (nID > 552000)
+	{
+		this.sell(nID);
+		return false;
+	}
+	if (nID > 551000)
+	{
+		this.donation(nID);
+		return false;
+	}
+	if (nID > 500000)
+	{
+		switch (this.m_nStoreType)
+		{
+			case 2:
+				return this.execList01(nID, nRet);
+			case 1:
+			case 3:
+				return this.execList02(nID, nRet);
+			default:
+				break;
+		}
+	}
+	return false;
+}
+
+bool T_StoreItem::execList01(int nID, ref int nRet)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execList01_01(nID, nRet);
+		case 1:
+			return this.execList01_02(nID, nRet);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_StoreItem::execList01_01(int nID, ref int nRet)
+{
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref T_StoreList rfsItem = this.m_sList.getItemFromIndex(idx);
+	if (rfsItem === NULL)
+	{
+		return false;
+	}
+	ref T_ItemIcon rfsIcon = rfsItem.getIcon();
+	int nItemNo = rfsIcon.getItemNo();
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_nItemIndex >= 0 && ステータス_アイテムインデクス(アイテム_種類(nItemNo)) != this.m_nItemIndex)
+	{
+		return false;
+	}
+	ステータス_パラメータ表示(this.m_sList.getItemType(), nItemNo);
+	if (ステータス_ドラッグ実行(9811, this.m_sList.getType(), rfsIcon))
+	{
+		nRet = nItemNo;
+	}
+	else
+	{
+		効果音_ドロップ();
+	}
+	ステータス_パラメータ消し();
+	return false;
+}
+
+bool T_StoreItem::execList01_02(int nID, ref int nRet)
+{
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nItemNo = this.getItemNo(idx);
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_nItemIndex >= 0 && ステータス_アイテムインデクス(アイテム_種類(nItemNo)) != this.m_nItemIndex)
+	{
+		return false;
+	}
+	nRet = nItemNo;
+	return false;
+}
+
+bool T_StoreItem::execList02(int nID, ref int nRet)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execList02_01(nID, nRet);
+		case 1:
+			return this.execList02_02(nID, nRet);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_StoreItem::execList02_01(int nID, ref int nRet)
+{
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref T_StoreList rfsItem = this.m_sList.getItemFromIndex(idx);
+	if (rfsItem === NULL)
+	{
+		return false;
+	}
+	ref T_ItemIcon rfsIcon = rfsItem.getIcon();
+	int nItemNo = rfsIcon.getItemNo();
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	int nCharaNo = 装備アイテム_ドラッグ実行(9811, this.m_sList.getType(), this.m_nSystemBarMode, rfsIcon);
+	if (nCharaNo > 0)
+	{
+		nRet = nItemNo;
+	}
+	return false;
+}
+
+bool T_StoreItem::execList02_02(int nID, ref int nRet)
+{
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nItemNo = this.getItemNo(idx);
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (!this.lockItem(nItemNo))
+	{
+		return false;
+	}
+	this.resetSelect();
+	int nCharaNo = 装備アイテム_選択実行(9811, this.m_sList.getType(), this.m_nSystemBarMode, nItemNo);
+	if (nCharaNo > 0)
+	{
+		nRet = nItemNo;
+	}
+	this.lockItem(-1);
+	return false;
+}
+
+bool T_StoreItem::execStatus(int nID, ref int nRet)
+{
+	int idx = this.getStatusIndex(nID);
+	if (this.m_nItemIndex >= 0 && idx == this.m_nItemIndex)
+	{
+		if (this.dragStatus())
+		{
+			nRet = nID;
+		}
+		else
+		{
+			効果音_ドロップ();
+		}
+		return false;
+	}
+	int nItemType = ステータス_アイテム種別(idx);
+	if (nItemType < 0)
+	{
+		return false;
+	}
+	this.changeItem(nItemType);
+	nRet = this.m_nItemIndex >= 0 ? nID : 0;
+	return false;
+}
+
+bool T_StoreItem::execSort(int nID)
+{
+	int nSortMode = 0;
+	switch (nID)
+	{
+		case 560001:
+			nSortMode = 1;
+			break;
+		case 560002:
+			nSortMode = アイテム倉庫_ソート選択();
+			break;
+		default:
+			break;
+	}
+	if (nSortMode > 0)
+	{
+		this.sortList(nSortMode);
+	}
+	return false;
+}
+
+bool T_StoreItem::execOpen()
+{
+	this.resetSelect();
+	this.setOpenFlag(true);
+	int nRet = アイテム保存庫_実行(this.m_sList.getZ() + 50, this.m_sList.getItemType(), this.m_sList.getJobType(), this.m_sList.getEquipType(), this.m_sList.getCharaNo(), this.m_sList.getItemTypeEx(), this.m_sList.getLockType());
+	this.setOpenFlag(false);
+	return nRet == 509999;
+}
+
+int T_StoreItem::changeItem(int nItemType)
+{
+	int nOld = this.m_sLimitItem.getItemType();
+	if (!this.m_sLimitItem.setItemType(nItemType))
+	{
+		return -1;
+	}
+	nItemType = this.m_sLimitItem.getItemType();
+	this.remake(-1, nItemType, -1, -1, -1, nOld != nItemType ? 0 : -1, -1);
+	if (this.m_nStoreType == 2)
+	{
+		this.m_nItemIndex = ステータス_アイテムインデクス(nItemType);
+		ステータス_アイテム説明表示(this.m_nItemIndex);
+	}
+	else
+	{
+		this.m_nItemIndex = -1;
+	}
+	return nItemType;
+}
+
+int T_StoreItem::changeItemEx(int nItemTypeEx)
+{
+	if (!this.m_sLimitItemEx.setItemTypeEx(nItemTypeEx))
+	{
+		return -1;
+	}
+	nItemTypeEx = this.m_sLimitItemEx.getItemTypeEx();
+	this.remake(-1, -1, -1, -1, -1, nItemTypeEx, -1);
+	return nItemTypeEx;
+}
+
+int T_StoreItem::changeJob(int nJobType)
+{
+	if (!this.m_sLimitJob.setJobType(nJobType))
+	{
+		return -1;
+	}
+	nJobType = this.m_sLimitJob.getJobType();
+	this.remake(-1, -1, nJobType, -1, -1, -1, -1);
+	return nJobType;
+}
+
+int T_StoreItem::changeEquip(int nEquipType)
+{
+	if (!this.m_sLimitEquip.setEquipType(nEquipType))
+	{
+		return -1;
+	}
+	nEquipType = this.m_sLimitEquip.getEquipType();
+	this.remake(-1, -1, -1, nEquipType, -1, -1, -1);
+	return nEquipType;
+}
+
+int T_StoreItem::changeLock(int nLockType)
+{
+	if (!this.m_sLimitLock.setLockType(nLockType))
+	{
+		return -1;
+	}
+	nLockType = this.m_sLimitLock.getLockType();
+	this.remake(-1, -1, -1, -1, -1, -1, nLockType);
+	return nLockType;
+}
+
+bool T_StoreItem::donation(int nID)
+{
+	int idx = this.getDonationIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	if (!アイテム_寄付(this.getItemNo(idx), true))
+	{
+		return false;
+	}
+	this.remake(-1, -1, -1, -1, -1, -1, -1);
+	システム情報_更新(0, -1);
+	UPDATE(true);
+	return true;
+}
+
+bool T_StoreItem::sell(int nID)
+{
+	int idx = this.getSellIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	if (!アイテム_売却(this.getItemNo(idx)))
+	{
+		return false;
+	}
+	this.remake(-1, -1, -1, -1, -1, -1, -1);
+	システムバー_更新(2, -1);
+	数値点滅_開始();
+	UPDATE(true);
+	return true;
+}
+
+bool T_StoreItem::lock(int nID)
+{
+	int idx = this.getLockIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nItemNo = this.getItemNo(idx);
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (!アイテム_ＬＯＣＫ(nItemNo))
+	{
+		return false;
+	}
+	this.m_sList.setLock(idx, true);
+	this.setButtonShow(true);
+	return true;
+}
+
+bool T_StoreItem::unlock(int nID)
+{
+	int idx = this.getUnlockIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nItemNo = this.getItemNo(idx);
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (!アイテム_ＵＮＬＯＣＫ(nItemNo))
+	{
+		return false;
+	}
+	this.m_sList.setLock(idx, false);
+	this.setButtonShow(true);
+	return true;
+}
+
+bool T_StoreItem::dragStatus()
+{
+	if (画面操作モード確認() == 1)
+	{
+		return false;
+	}
+	int nItemType = ステータス_アイテム種別(this.m_nItemIndex);
+	if (nItemType <= 0)
+	{
+		return false;
+	}
+	ref T_ItemIcon rfsIcon = ステータス_アイテムアイコン(this.m_nItemIndex);
+	if (rfsIcon.getItemNo() <= 0)
+	{
+		キー_離し待ち(キー_決定(), true);
+		return false;
+	}
+	this.resetSelect();
+	ステータス_パラメータ表示(nItemType, 0);
+	bool bRet = ステータス_ドラッグ実行(9811, 0, rfsIcon);
+	ステータス_パラメータ消し();
+	return bRet;
+}
+

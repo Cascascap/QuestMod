@@ -1,0 +1,25 @@
+int SP_GET_UNUSE_NUM()
+{
+	return GetUnuseSpriteNum(10000);
+}
+
+int SP_CREATE(int nSprite, int nWidth, int nHeight, int nR, int nG, int nB, int nA)
+{
+	return ChipmunkSpriteEngine.SP_Create(nSprite, nWidth, nHeight, nR, nG, nB, nA);
+}
+
+int SP_DEL(int nSprite)
+{
+	return ChipmunkSpriteEngine.SP_Delete(nSprite);
+}
+
+int SP_SET_POS(int nSprite, int nX, int nY)
+{
+	return ChipmunkSpriteEngine.SP_SetPos(nSprite, nX, nY);
+}
+
+int SP_SET_Z(int nSprite, int nZ)
+{
+	return ChipmunkSpriteEngine.SP_SetZ(nSprite, nZ);
+}
+

@@ -1,0 +1,744 @@
+int ”Ä—pƒGƒ(int iic)
+{
+	int no = ‚b”Ô†(iic, -1);
+	int ra = 0;
+	int £¶¬ƒLƒƒƒ‰ = 0;
+	if (‚b”Ô†(iic, -1) == 2)
+	{
+		£¶¬ƒLƒƒƒ‰ = 1;
+	}
+	if (‚b‚r—L–³(iic, 373, 0) != 0)
+	{
+		”Ä—pƒGƒ^“Y‚¢Q(iic);
+		return 0;
+	}
+	if (‚b«•Ê(iic, -1) != 2)
+	{
+		return ”Ä—pƒGƒ^’j(iic);
+	}
+	if (no == 56)
+	{
+		return ”Ä—pƒGƒ^’j(iic);
+	}
+	if (no == 39)
+	{
+		u’Ã^”Ä—pƒGƒ^“Áê();
+		return 0;
+	}
+	if (no == 15)
+	{
+		ƒ†ƒ‰ƒ“^é”Ä—p^ƒZƒbƒNƒX();
+		return 0;
+	}
+	if (no == 68)
+	{
+		ƒrƒXƒPƒbƒ^^é”Ä—p^ƒZƒbƒNƒX();
+		return 0;
+	}
+	if (‚b‚e‚`(iic, 13, -1) == 1)
+	{
+		”Ä—pƒGƒ^˜aŠ­(iic);
+	}
+	if (‚b‚e‚`(iic, 13, -1) == 2)
+	{
+		”Ä—pƒGƒ^‚²‚Ü‚©‚µ(iic);
+	}
+	if (‚b‚e‚`(iic, 13, -1) == 3)
+	{
+		”Ä—pƒGƒ^‹­Š­(iic);
+	}
+	return 0;
+}
+
+int ”Ä—pƒGƒ^’j(int iic)
+{
+	int no = ‚b”Ô†(iic, -1);
+	int ra = 0;
+	int £¶¬ƒLƒƒƒ‰ = 0;
+	ADVON();
+	ƒZƒbƒg•\¦(5511, 5250, 0, 0);
+	ƒg‘‚«();
+	'@' R;
+	'     Rance Castle   Rance\'s Bedroom' A;
+	if (‚b—§‚¿ŠG‚b‚f(iic, -1) != 0)
+	{
+		—§‚¿ŠG•\¦(‚b—§‚¿ŠG‚b‚f(iic, -1), 1, 200);
+	}
+	ƒZƒŠƒt(2003, "");
+	'"........."' A;
+	ƒZƒŠƒt^‘‡(iic);
+	'"........."' A;
+	ƒZƒŠƒt(2005, "");
+	'"Why... Why did this happen...?"' A;
+	ƒZƒŠƒt(2003, "");
+	'"Ack! The door won\'t open!"' A;
+	ƒg‘‚«();
+	'Due to the workings of a strange power, Rance was locked in a room with ' S(‚b–¼‘O(iic, ""));
+	'.' A;
+	ƒZƒŠƒt(2005, "");
+	'"Ngh..."' A;
+	vl(2000, "");
+	'(I have to spend the night with this freak...?!' R;
+	' What will our hero do?!)' B;
+	‘I‘ğ‰Šú();
+	‘I‘ğ_€–Ú’Ç‰Á(1, "Kick open the door and run", -1, -1, -1, "", -1);
+	‘I‘ğ_€–Ú’Ç‰Á(2, "Bear it", -1, -1, -1, "", -1);
+	int rr = ‘I‘ğ_Às(false, 0, 0, false);
+	if (rr == 1)
+	{
+		ƒZƒŠƒt(2002, "");
+		'"Like I could stay in heeere!"' A;
+		ƒg‘‚«();
+		'Rance burst out of the room and fled.' A;
+		return 1;
+	}
+	for (; ; )
+	{
+		if (no == 21)
+		{
+			”Ä—pƒGƒ^ƒƒbƒL[();
+			break;
+		}
+		if (no == 49)
+		{
+			”Ä—pƒGƒ^ƒAƒŒƒLƒTƒ“ƒ_[();
+			break;
+		}
+		if (no == 16)
+		{
+			”Ä—pƒGƒ^ƒo[ƒi[ƒh();
+			break;
+		}
+		if (no == 53)
+		{
+			”Ä—pƒGƒ^¼ƒNƒ}();
+			break;
+		}
+		”Ä—pƒGƒ^’j^”Ä—p(iic);
+		ƒZƒbƒg•\¦(5511, 5250, 0, 0);
+		”Ä—pƒ‚ƒ‹ƒ‹ƒ“‰e‹¿‚Ì•\‹L(0, iic);
+		FA[336]++;
+		break;
+	}
+	return 0;
+}
+
+void ”Ä—pƒGƒ^’j^”Ä—p(lint iic)
+{
+	ƒZƒŠƒt(2005, "");
+	'"Whatever. I\'m gonna sleep in the bed.' R;
+	' You can roll around under it or something.' R;
+	' I guess that\'ll be fine."' A;
+	ƒZƒŠƒt^‘‡(iic);
+	'"..."' A;
+	ƒg‘‚«();
+	'.........' A;
+	'...The night passed.' A;
+	'.........' A;
+	advoff();
+}
+
+void ”Ä—pƒGƒ^“Y‚¢Q(int iic)
+{
+	int no = ‚b”Ô†(iic, -1);
+	int ra = 0;
+	int £¶¬ƒLƒƒƒ‰ = 0;
+	”Ä—pƒGƒ^“Y‚¢Q^”Ä—p(iic);
+	ƒZƒbƒg•\¦(5511, 5250, 0, 0);
+	”Ä—pƒ‚ƒ‹ƒ‹ƒ“‰e‹¿‚Ì•\‹L(0, iic);
+}
+
+void ”Ä—pƒGƒ^“Y‚¢Q^”Ä—p(int iic)
+{
+	ADVON();
+	ƒZƒbƒg•\¦(5511, 5250, 0, 0);
+	ƒg‘‚«();
+	'@' R;
+	'     Rance Castle   Rance\'s Bedroom' A;
+	'Rance waited for ' S(‚b–¼‘O(iic, ""));
+	' to come to his room so he could sleep together with her.' A;
+	ƒZƒŠƒt(2015, "");
+	'"Ugh, if she was just a little more grown up, I could fuck her...' R;
+	' She\'s got the right level for my dick to get hard, but she\'s still way too young..."' A;
+	ƒZƒŠƒt(2010, "");
+	'"Well, there\'s no point worrying about it today."' A;
+	if (‚b—§‚¿ŠG‚b‚f(iic, -1) != 0)
+	{
+		—§‚¿ŠG•\¦(‚b—§‚¿ŠG‚b‚f(iic, -1), 1, 200);
+	}
+	ƒZƒŠƒt^‘‡(iic);
+	'"..."' A;
+	ƒg‘‚«();
+	S(‚b’Zk–¼‘O(iic, ""));
+	' entered the bed shyly, clutching her pillow.' A;
+	ƒZƒŠƒt(2010, "");
+	'"Well, g\'night!"' A;
+	ƒg‘‚«();
+	'.........' A;
+	'...The night passed.' A;
+	'.........' A;
+	ADVOFF();
+}
+
+void ”Ä—pƒGƒ^˜aŠ­(int iic)
+{
+	int no = ‚b”Ô†(iic, -1);
+	int ra = 0;
+	int £¶¬ƒLƒƒƒ‰ = 0;
+	ADVON();
+	ƒZƒbƒg•\¦(5511, 5250, 0, 0);
+	ƒg‘‚«();
+	'@' R;
+	'     Rance Castle   Rance\'s Bedroom' A;
+	'That night, Rance invited ' S(‚b’Zk–¼‘O(iic, ""));
+	' to his room, already painfully aroused.' A;
+	ƒZƒŠƒt(2010, "");
+	'"Well, ' S(‚b’Zk–¼‘O(iic, ""));
+	', you\'ve gotten yourself over level 35 just so I could fuck you.' R;
+	' I\'ve no choice but to honor your wish."' A;
+	if (‚b—§‚¿ŠG‚b‚f(iic, -1) != 0)
+	{
+		—§‚¿ŠG•\¦(‚b—§‚¿ŠG‚b‚f(iic, -1), 1, 200);
+	}
+	ƒZƒŠƒt^‘‡(iic);
+	for (; ; )
+	{
+		if (no == 19)
+		{
+			'"..."' A;
+		}
+		'".........!!"' A;
+		break;
+	}
+	int cg3 = 0;
+	int vv = 0;
+	if (no == 6 || no == 9 || no == 14 || no == 31 || no == 33 || no == 50 || no == 62)
+	{
+		vv = 10;
+	}
+	ra = RAND(10);
+	if (ra == 1)
+	{
+		cg3 = 4700 + vv;
+	}
+	if (ra == 2)
+	{
+		cg3 = 4701 + vv;
+	}
+	if (ra == 3)
+	{
+		cg3 = 4702 + vv;
+	}
+	if (ra == 4)
+	{
+		cg3 = 4703 + vv;
+	}
+	if (ra == 5)
+	{
+		cg3 = 4704 + vv;
+	}
+	if (ra == 6)
+	{
+		cg3 = 4705 + vv;
+	}
+	if (ra == 7)
+	{
+		cg3 = 4706 + vv;
+	}
+	if (ra == 8)
+	{
+		cg3 = 4707 + vv;
+	}
+	if (ra == 9)
+	{
+		cg3 = 4708 + vv;
+	}
+	if (ra == 10)
+	{
+		cg3 = 4709 + vv;
+	}
+	—§‚¿ŠG•\¦(0, 1, 200);
+	”Ä—pƒGƒ•\¦^‘‡(iic, cg3);
+	ra = RAND(7);
+	ra = 1;
+	if (ra == 1)
+	{
+		ƒg‘‚«();
+		'Reaching his limit, Rance suddenly lifted ' S(‚b’Zk–¼‘O(iic, ""));
+		' into the air.' A;
+		'He entered into her in the suspended congress position.' A;
+		'The position left her very exposed, but Rance didn\'t care and thrust forcefully.' A;
+		'He took his time ravishing ' S(‚b’Zk–¼‘O(iic, ""));
+		', and finally came powerfully inside her.' A;
+	}
+	if (ra == 2)
+	{
+		ƒg‘‚«();
+		'Today was boob day!' A;
+		'Rance sat ' S(‚b’Zk–¼‘O(iic, ""));
+		' on his knee and started groping her boobs from behind.' A;
+		'Her breathing getting rougher, ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s breasts were kneaded, fondled, sucked, and thoroughly abused.' A;
+		'Finally, Rance put his Hyper Weapon between ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s boobs and violently thrust it between them.' A;
+		'He spread lotion on her chest and the slippery feeling felt so good that he accidentally finished.' A;
+	}
+	if (ra == 3)
+	{
+		ƒg‘‚«();
+		'Rance wanted his fun to last a while, so he entered ' S(‚b’Zk–¼‘O(iic, ""));
+		' in a sitting position, fondling her upper body while keeping his hips still.' A;
+		'He moved his hands slowly over her skin as if sampling its texture, more patient than usual.' A;
+		'He spent a long time inside her, being careful not to stimulate the Hyper Weapon too much.' A;
+		'However, it got harder and harder to hold back and he finished with a harsh assault. When he finally came it was unusually intense.' A;
+	}
+	if (ra == 4)
+	{
+		ƒg‘‚«();
+		'Today, he\'d have fun with lotion.' A;
+		'He took ' S(‚b’Zk–¼‘O(iic, ""));
+		' to the bath and they covered each other in oil.' A;
+		'They embraced on a mat, rubbed against each other, spread more lotion around, rubbed the Hyper Weapon between her boobs, and had a lot of fun.' A;
+	}
+	if (ra == 5)
+	{
+		ƒg‘‚«();
+		'Today Rance was in the mood for fellatio.' A;
+		'He decided that ' S(‚b’Zk–¼‘O(iic, ""));
+		' would service him.' A;
+		'Like licking ice, ' S(‚b’Zk–¼‘O(iic, ""));
+		' ran her tongue over the Hyper Weapon.' A;
+		'Rance couldn\'t be satisfied with just that, and shoved himself into ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s mouth.' A;
+		'Rance moved forward and back, and ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s tongue tormented the Hyper Weapon, until finally Rance came into her mouth.' A;
+	}
+	if (ra == 6)
+	{
+		ƒg‘‚«();
+		'Today he wanted to do it in the bath.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' went to the bath with Rance and they crawled into the tub together.' A;
+		'Their legs were cramped in the narrow bath, but he managed to get inside of her, and he thrust into her, making the water splash.' A;
+		'Getting warmed up, Rance enjoyed her for some time before finishing.' A;
+	}
+	if (ra == 7)
+	{
+		ƒg‘‚«();
+		'Today, Rance decided he\'d enjoy ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s body.' A;
+		'He stripped her, then ran his hands down her form.' A;
+		'He had fun touching and smelling ' S(‚b’Zk–¼‘O(iic, ""));
+		' and thoroughly enjoyed her body.' A;
+		'He was already worn out, but he thrust into her to finish her off.' A;
+		'He spent a while enjoying her inside as well.' A;
+		'Rance thoroughly enjoyed her depths, her grip, and her wetness, trying to hold back a boiling feeling in his head until he finally came inside her.' A;
+	}
+	”Ä—pƒGƒ•\¦(0, 0, 1, 1000);
+	ƒZƒŠƒt(2016, "");
+	'"Good."' A;
+	”Ä—pƒ‚ƒ‹ƒ‹ƒ“‰e‹¿‚Ì•\‹L(0, iic);
+	ADVOFF();
+}
+
+void ”Ä—pƒGƒ^‚²‚Ü‚©‚µ(int iic)
+{
+	int no = ‚b”Ô†(iic, -1);
+	int ra = 0;
+	int £¶¬ƒLƒƒƒ‰ = 0;
+	ADVON();
+	ƒZƒbƒg•\¦(5511, 5250, 0, 0);
+	ƒg‘‚«();
+	'@' R;
+	'     Rance Castle   Rance\'s Bedroom' A;
+	ƒZƒŠƒt(2014, "");
+	'"' S(‚b’Zk–¼‘O(iic, ""));
+	' reached level 35, so I can have sex with her now.' R;
+	' The question is how..."' A;
+	ƒg‘‚«();
+	'Rance, never sparing any effort to sleep with girls, came up with a plan and invited ' S(‚b’Zk–¼‘O(iic, ""));
+	' to his room.' A;
+	if (‚b—§‚¿ŠG‚b‚f(iic, -1) != 0)
+	{
+		—§‚¿ŠG•\¦(‚b—§‚¿ŠG‚b‚f(iic, -1), 1, 200);
+	}
+	ƒZƒŠƒt^‘‡(iic);
+	for (; ; )
+	{
+		if (no == 19)
+		{
+			'"..."' A;
+		}
+		'".........!!"' A;
+		break;
+	}
+	int cg3 = 0;
+	int vv = 0;
+	if (no == 6 || no == 9 || no == 14 || no == 31 || no == 33 || no == 50 || no == 62)
+	{
+		vv = 10;
+	}
+	ra = RAND(10);
+	if (ra == 1)
+	{
+		cg3 = 4700 + vv;
+	}
+	if (ra == 2)
+	{
+		cg3 = 4701 + vv;
+	}
+	if (ra == 3)
+	{
+		cg3 = 4702 + vv;
+	}
+	if (ra == 4)
+	{
+		cg3 = 4703 + vv;
+	}
+	if (ra == 5)
+	{
+		cg3 = 4704 + vv;
+	}
+	if (ra == 6)
+	{
+		cg3 = 4705 + vv;
+	}
+	if (ra == 7)
+	{
+		cg3 = 4706 + vv;
+	}
+	if (ra == 8)
+	{
+		cg3 = 4707 + vv;
+	}
+	if (ra == 9)
+	{
+		cg3 = 4708 + vv;
+	}
+	if (ra == 10)
+	{
+		cg3 = 4709 + vv;
+	}
+	—§‚¿ŠG•\¦(0, 1, 200);
+	”Ä—pƒGƒ•\¦^‘‡(iic, cg3);
+	ra = RAND(11);
+	ra = 1;
+	if (ra == 1)
+	{
+		ƒg‘‚«();
+		'Today was a good day. The Hyper Weapon got a good workout.' A;
+		'Enjoying ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s reactions underneath him, Rance moved his hips slowly.' A;
+		'He could only cum once, so he made the most of it by thrusting all he liked.' A;
+		'Reaching his limit, Rance let his magma-hot sperm out on ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s boobs.' A;
+	}
+	if (ra == 2)
+	{
+		ƒg‘‚«();
+		'He decided on cowgirl today.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' mounted him and he pushed up into her.' A;
+		'Hands on her boobs, Rance thrust upwards.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' bounced up and down, making the bed creak noisily.' A;
+		'Their breathing grew rough, and when he was finally at his limit, Rance came inside her.' A;
+	}
+	if (ra == 3)
+	{
+		ƒg‘‚«();
+		'They did it doggy-style today.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' was pushed down and fondled from behind.' A;
+		'Staying put, ' S(‚b’Zk–¼‘O(iic, ""));
+		' let Rance do as he would with her.' A;
+		'Pushing deep, Rance took plenty of time thrusting at a leisurely pace.' A;
+		'Finally, he let out his hot semen all over ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s butt.' A;
+	}
+	if (ra == 4)
+	{
+		ƒg‘‚«();
+		'They did it sitting today.' A;
+		'Rance took ' S(‚b’Zk–¼‘O(iic, ""));
+		' onto his lap like a child and penetrated into her.' A;
+		'He held her legs from behind and moved as he liked.' A;
+		'Taking care not to cum, he stirred ' S(‚b’Zk–¼‘O(iic, ""));
+		' up inside, guiding her to climax.' A;
+		'When he finished, Rance exploded inside her.' A;
+	}
+	if (ra == 5)
+	{
+		ƒg‘‚«();
+		'He felt like sitting today.' A;
+		'The two faced each other, with ' S(‚b’Zk–¼‘O(iic, ""));
+		' resting on his lap.' A;
+		'Rance pushed himself roughly into her.' A;
+		'Moving his hips left and right, piercing her, Rance took his time enjoying being inside her, finally coming deep inside ' S(‚b’Zk–¼‘O(iic, ""));
+		'.' A;
+	}
+	if (ra == 6)
+	{
+		ƒg‘‚«();
+		'They took the seventh posture position.' A;
+		'Rance laid ' S(‚b’Zk–¼‘O(iic, ""));
+		' down on the bed, holding one of her legs and pushing into her.' A;
+		'He moved his hips forward and back, rubbing ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s walls.' A;
+		'More passionate than usual, Rance reached his limit and let it out all over ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s face.' A;
+	}
+	if (ra == 7)
+	{
+		ƒg‘‚«();
+		'About to reach his limit, Rance suddenly lifted ' S(‚b’Zk–¼‘O(iic, ""));
+		' up.' A;
+		'He thrust into her in the suspended congress position.' A;
+		'The position was a little embarrassing, but Rance paid that no mind and moved with energy.' A;
+		'He took his time ravishing ' S(‚b’Zk–¼‘O(iic, ""));
+		', finally coming powerfully inside her.' A;
+	}
+	if (ra == 8)
+	{
+		ƒg‘‚«();
+		'Today was boob day!' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' sat on Rance\'s knees and he started groping her boobs from behind.' A;
+		'Her breathing getting rougher, ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s boobs were kneaded, fondled, sucked, and thoroughly abused.' A;
+		'Finally, Rance put his Hyper Weapon between ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s breasts and vigorously thrust it back and forth.' A;
+		'He added lotion onto her boobs and the slippery feeling was so pleasant that he accidentally finished.' A;
+	}
+	if (ra == 9)
+	{
+		ƒg‘‚«();
+		'Today Rance was in the mood for fellatio.' A;
+		'He decided that ' S(‚b’Zk–¼‘O(iic, ""));
+		' would service him.' A;
+		'Like licking ice,' S(‚b’Zk–¼‘O(iic, ""));
+		' ran her tongue over the Hyper Weapon. ' A;
+		'Rance couldn\'t be satisfied with just that, and shoved himself into ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s mouth.' A;
+		'Rance moved forward and back, and ' S(‚b’Zk–¼‘O(iic, ""));
+		'fs tongue tormented the Hyper Weapon, until finally Rance came into her mouth.' A;
+	}
+	if (ra == 10)
+	{
+		ƒg‘‚«();
+		'Today he wanted to do it in the bath.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' went to the bath with Rance and they crawled into the tub together.' A;
+		'Their legs were cramped in the narrow bath, but he managed to get inside of her, and he thrust into her, making the water splash.' A;
+		'Getting warmed up, Rance enjoyed her for some time before finishing.' A;
+	}
+	if (ra == 11)
+	{
+		ƒg‘‚«();
+		'Today, Rance decided he\'d enjoy ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s body.' A;
+		'He stripped her, then ran his hands down her form.' A;
+		'He had fun touching and smelling ' S(‚b’Zk–¼‘O(iic, ""));
+		' and thoroughly enjoyed her body.' A;
+		'He was already worn out, but he thrust into her to finish her off.' A;
+		'He spent a while enjoying her inside as well.' A;
+		'Rance thoroughly enjoyed her depths, her grip, and her wetness, trying to hold back a boiling feeling in his head until he finally came inside her.' A;
+	}
+	”Ä—pƒGƒ•\¦(0, 0, 1, 1000);
+	ƒZƒŠƒt(2016, "");
+	'"Good."' A;
+	”Ä—pƒ‚ƒ‹ƒ‹ƒ“‰e‹¿‚Ì•\‹L(0, iic);
+	ADVOFF();
+}
+
+void ”Ä—pƒGƒ^‹­Š­(int iic)
+{
+	int no = ‚b”Ô†(iic, -1);
+	int ra = 0;
+	int £¶¬ƒLƒƒƒ‰ = 0;
+	ADVON();
+	ƒZƒbƒg•\¦(5511, 5250, 0, 0);
+	ƒg‘‚«();
+	'@' R;
+	'     Rance Castle   Rance\'s Bedroom' A;
+	ƒZƒŠƒt(2015, "");
+	'(Hmm, ' S(‚b’Zk–¼‘O(iic, ""));
+	'\'s reached level 35, so I want to have sex with her, but she\'s clearly avoiding me now...)' A;
+	ƒZƒŠƒt(2014, "");
+	'(...Oh well.)' A;
+	˜gÁ‹();
+	”wŒi•\¦(5071, 1, 500, "", false);
+	ƒg‘‚«();
+	'That night, Rance paid an unannounced visit to ' S(‚b’Zk–¼‘O(iic, ""));
+	', who was relaxing in her room.' R;
+	'He knocked her out, threw her over his shoulder, and took her to his room.' A;
+	”wŒiƒCƒ“(5250, 500, "", false);
+	if (‚b—§‚¿ŠG‚b‚f(iic, -1) != 0)
+	{
+		—§‚¿ŠG•\¦(‚b—§‚¿ŠG‚b‚f(iic, -1), 1, 200);
+	}
+	ƒZƒŠƒt(2011, "");
+	'"Gahahaha, struggle all you want!' R;
+	' I\'m gonna fuck you silly tonight!"' A;
+	ƒZƒŠƒt^‘‡(iic);
+	for (; ; )
+	{
+		if (no == 19)
+		{
+			'"Sachiko said that..."' A;
+		}
+		'".........!!"' A;
+		break;
+	}
+	int cg3 = 0;
+	int vv = 0;
+	if (no == 6 || no == 9 || no == 14 || no == 31 || no == 33 || no == 50 || no == 62)
+	{
+		vv = 10;
+	}
+	ra = RAND(10);
+	if (ra == 1)
+	{
+		cg3 = 4700 + vv;
+	}
+	if (ra == 2)
+	{
+		cg3 = 4701 + vv;
+	}
+	if (ra == 3)
+	{
+		cg3 = 4702 + vv;
+	}
+	if (ra == 4)
+	{
+		cg3 = 4703 + vv;
+	}
+	if (ra == 5)
+	{
+		cg3 = 4704 + vv;
+	}
+	if (ra == 6)
+	{
+		cg3 = 4705 + vv;
+	}
+	if (ra == 7)
+	{
+		cg3 = 4706 + vv;
+	}
+	if (ra == 8)
+	{
+		cg3 = 4707 + vv;
+	}
+	if (ra == 9)
+	{
+		cg3 = 4708 + vv;
+	}
+	if (ra == 10)
+	{
+		cg3 = 4709 + vv;
+	}
+	—§‚¿ŠG•\¦(0, 1, 200);
+	”Ä—pƒGƒ•\¦^‘‡(iic, cg3);
+	ra = RAND(8);
+	if (no == 35)
+	{
+		ra = 7;
+	}
+	ra = 1;
+	if (ra == 1)
+	{
+		ƒg‘‚«();
+		'About to reach his limit, Rance suddenly lifted ' S(‚b’Zk–¼‘O(iic, ""));
+		' into the air.' A;
+		'He inserted into her in the suspended congress position.' A;
+		'The position left her very exposed, but Rance didn\'t care and thrust forcefully.' A;
+		'He took his time ravishing ' S(‚b’Zk–¼‘O(iic, ""));
+		', and finally came powerfully inside her.' A;
+	}
+	if (ra == 2)
+	{
+		ƒg‘‚«();
+		'Deciding he wanted to try bondage today, Rance tied ' S(‚b’Zk–¼‘O(iic, ""));
+		' up and hung her from the ceiling.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' dangled, immobile, and Rance tormented every inch of her.' A;
+		'He forced open her trembling butt, pressed himself inside, and thrust into her, taking advantage of her inability to move.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' got stuffed with Rance\'s stuff.' A;
+	}
+	if (ra == 3)
+	{
+		ƒg‘‚«();
+		'Today was toy day!' A;
+		'Rance decided to bring out the egg vibrators.' A;
+		'Setting the vibration strength, Rance placed the eggs all over ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s body, giving special attention to her nipples.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' squirmed uncomfortably at first, but Rance turned the strength to the maximum and put one on her clitoris.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' moaned and arched her back.' A;
+		'Placing a vibrating egg inside ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s butt, Rance rubbed against her front and admired his work.' A;
+	}
+	if (ra == 4)
+	{
+		ƒg‘‚«();
+		'Then he couldn\'t take it anymore.' A;
+		'Rance pushed ' S(‚b’Zk–¼‘O(iic, ""));
+		' down and violently shoved the Hyper Weapon in without foreplay.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' raised her voice in pain and tried to resist, but Rance ignored her and stirred her up violently.' A;
+		'Rance felt sharp pain too, but he came in no time and let out even more than usual inside her.' A;
+	}
+	if (ra == 5)
+	{
+		ƒg‘‚«();
+		'Today Rance was in the mood for a blowjob.' A;
+		'He took his Hyper Weapon and shoved it into ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s mouth.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' resisted, but that wasn\'t about to stop Rance.' A;
+		'He pushed the Hyper Weapon into her and dragged the Hyper Weapon out of her.' A;
+		'Holding her head so that she couldn\'t resist, Rance violated her mouth, releasing a massive orgasm inside it.' A;
+	}
+	if (ra == 6)
+	{
+		ƒg‘‚«();
+		'Today Rance wanted to be mean.' A;
+		'He abruptly pushed ' S(‚b’Zk–¼‘O(iic, ""));
+		' down onto the bed.' A;
+		'She struggled, trying to get out from under him, but he pinned her arms down and shoved himself mercilessly into her.' A;
+		'She wasn\'t ready, so her face twisted in pain, but Rance ignored her and thrust wildly.' A;
+		'Their breathing grew rough and Rance came inside her like a beast.' A;
+	}
+	if (ra == 7)
+	{
+		ƒg‘‚«();
+		'Today was butt day!' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' had her face pushed down, her ass raised up, and her protests ignored while Rance got ready to put it in doggy-style.' A;
+		'Loosening ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s butt from behind, Rance prepared himself and jammed it right in.' A;
+		'He had a great time thrusting in and out of her.' A;
+		'Every time he did, ' S(‚b’Zk–¼‘O(iic, ""));
+		' gave a muffled groan, but Rance ignored her all the way to his climax.' A;
+	}
+	if (ra == 8)
+	{
+		'Today Rance decided to try date rape.' A;
+		S(‚b’Zk–¼‘O(iic, ""));
+		' was put to sleep with a drug.' A;
+		'Rance then tore her clothes off and laid her on the bed.' A;
+		'Rance played around with ' S(‚b’Zk–¼‘O(iic, ""));
+		'\'s body, groping her breasts while she slept.' A;
+		'She didn\'t even wake up when he stuck the Hyper Weapon in, so Rance had his way with her.' A;
+		'After waking up later, ' S(‚b’Zk–¼‘O(iic, ""));
+		' realized she had been raped and was deeply shocked. ' A;
+	}
+	”Ä—pƒGƒ•\¦(0, 0, 1, 1000);
+	ƒZƒŠƒt(2016, "");
+	'"Good."' A;
+	”Ä—pƒ‚ƒ‹ƒ‹ƒ“‰e‹¿‚Ì•\‹L(0, iic);
+	ADVOFF();
+}
+

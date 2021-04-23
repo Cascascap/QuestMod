@@ -1,0 +1,10 @@
+void カーソル_表示設定(bool bShow)
+{
+	SystemService.SetHideMouseCursorByGame(!bShow);
+}
+
+void カーソル_クリア()
+{
+	SystemService.SetHideMouseCursorByGame(false);
+}
+

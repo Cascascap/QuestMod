@@ -1,0 +1,817 @@
+int T_ResultItem::getItemID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 110000 + nIndex + 1;
+}
+
+int T_ResultItem::getItemIndex(int nID)
+{
+	int idx = nID + -110001;
+	return idx < 0 || idx >= 15 ? -1 : idx;
+}
+
+int T_ResultItem::getJudgeID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 120000 + nIndex + 1;
+}
+
+int T_ResultItem::getJudgeIndex(int nID)
+{
+	int idx = nID + -120001;
+	return idx < 0 || idx >= 15 ? -1 : idx;
+}
+
+int T_ResultItem::getDonationID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 130000 + nIndex + 1;
+}
+
+int T_ResultItem::getDonationIndex(int nID)
+{
+	int idx = nID + -130001;
+	return idx < 0 || idx >= 15 ? -1 : idx;
+}
+
+int T_ResultItem::getCancelID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 140000 + nIndex + 1;
+}
+
+int T_ResultItem::getCancelIndex(int nID)
+{
+	int idx = nID + -140001;
+	return idx < 0 || idx >= 15 ? -1 : idx;
+}
+
+T_ResultItem::T_ResultItem()
+{
+	this.clear();
+}
+
+T_ResultItem::~T_ResultItem()
+{
+	this.delete();
+}
+
+int T_ResultItem::run(int nZ)
+{
+	int nRet = 0;
+	クエスト_鑑定料初期化();
+	if (!this.create(nZ))
+	{
+		return -1;
+	}
+	_EFFECT(1, 500);
+	this.rankUp();
+	int nID = this.getFirstItem();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+		nID = nRet;
+	}
+	this.donation();
+	this.delete();
+	return nRet;
+}
+
+int T_ResultItem::moveUp(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+			return this.getLastItem();
+		case 100009:
+			return 100001;
+		default:
+			break;
+	}
+	if (nID > 140000)
+	{
+		return this._moveUp(this.getCancelIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this._moveUp(this.getDonationIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this._moveUp(this.getJudgeIndex(nID));
+	}
+	if (nID > 110000)
+	{
+		return this._moveUp(this.getItemIndex(nID));
+	}
+	return this.getFirstItem();
+}
+
+int T_ResultItem::moveDown(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+		case 100009:
+			return this.getFirstItem();
+		default:
+			break;
+	}
+	if (nID > 140000)
+	{
+		return this._moveDown(this.getCancelIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this._moveDown(this.getDonationIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this._moveDown(this.getJudgeIndex(nID));
+	}
+	if (nID > 110000)
+	{
+		return this._moveDown(this.getItemIndex(nID));
+	}
+	return this.getLastItem();
+}
+
+int T_ResultItem::moveLeft(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+		case 100009:
+			return this.getLastItem();
+		default:
+			break;
+	}
+	if (nID > 140000)
+	{
+		return this._moveLeft(this.getCancelIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this._moveLeft(this.getDonationIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this._moveLeft(this.getJudgeIndex(nID));
+	}
+	if (nID > 110000)
+	{
+		return this._moveLeft(this.getItemIndex(nID));
+	}
+	return this.getFirstItem();
+}
+
+int T_ResultItem::moveRight(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+		case 100009:
+			return this.getFirstItem();
+		default:
+			break;
+	}
+	if (nID > 140000)
+	{
+		return this._moveRight(this.getCancelIndex(nID));
+	}
+	if (nID > 130000)
+	{
+		return this._moveRight(this.getDonationIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this._moveRight(this.getJudgeIndex(nID));
+	}
+	if (nID > 110000)
+	{
+		return this._moveRight(this.getItemIndex(nID));
+	}
+	return this.getLastItem();
+}
+
+bool T_ResultItem::create(int nZ)
+{
+	this.delete();
+	if (!this.m_sIcon.create())
+	{
+		return false;
+	}
+	this.m_spBase.setCg(12101);
+	this.m_spBase.setPos(0, 0);
+	this.m_sNumber.create(65, 30, 5, 3, 1, true);
+	this.m_sNumber.setFontType(258);
+	this.m_sNumber.setFontSize(30);
+	this.m_sNumber.setFontColor(255, 255, 255);
+	this.m_sNumber.setFontBold(1);
+	this.m_sNumber.setPos(294, 150);
+	this.m_sCount.create(10321, false, 2, 3, 0);
+	this.m_sCount.setPos(122, 151);
+	this.m_sCount.setValue(1, 0, false);
+	this.m_sButton.create();
+	int i = 0;
+	int cnt = this.m_sIcon.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createIcon(i);
+	}
+	ボタン登録_ＣＧ(this.m_sButton, 100001, 633, 525, 12102, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100009, 749, 142, 10007, -1, -1, -2147483648, -2147483648);
+	this.setGold();
+	this.setZ(nZ);
+	this.setButtonActive();
+	this.setShow(true);
+	this.m_sInputKey.create(1, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&リザルト鑑定_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&リザルト鑑定_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&リザルト鑑定_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&リザルト鑑定_右矢印);
+	this.m_sInputKey.setSelectCallback(&リザルト鑑定_選択設定);
+	return true;
+}
+
+void T_ResultItem::delete()
+{
+	this.hideComment(-1);
+	this.m_spBase.delete();
+	this.m_sIcon.delete();
+	this.m_sNumber.delete();
+	this.m_sCount.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_ResultItem::clear()
+{
+	this.m_nCommentID = -1;
+}
+
+bool T_ResultItem::createIcon(int nIndex)
+{
+	int nX = this.m_sIcon.getPosX(nIndex);
+	int nY = this.m_sIcon.getPosY(nIndex);
+	if (nX < 0 || nY < 0)
+	{
+		return false;
+	}
+	int nID = this.getItemID(nIndex);
+	ボタン登録_矩形(this.m_sButton, nID, nX, nY, 100, 100, false);
+	this.m_sButton.setButtonActive(nID, false);
+	nX += 104;
+	nY += 4;
+	ボタン登録_ＣＧ(this.m_sButton, this.getJudgeID(nIndex), nX, nY, 12103, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, this.getDonationID(nIndex), nX, nY, 12104, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, this.getCancelID(nIndex), nX, nY, 12105, -1, -1, -2147483648, -2147483648);
+	return true;
+}
+
+void T_ResultItem::rankUp()
+{
+	int i = 0;
+	for (i = 1; i <= 3; ++i)
+	{
+		if (◆クエストボーナス有無[i] == 0)
+		{
+			continue;
+		}
+		if (◆クエストボーナス[i] < ◆クエストボーナス最大[i])
+		{
+			continue;
+		}
+		マップ部品_＋１玉消灯(i);
+		this.m_sIcon.rankUp(i);
+		UPDATE(true);
+	}
+}
+
+void T_ResultItem::donation()
+{
+	int i = 0;
+	int cnt = this.m_sIcon.getCount();
+	bool bUpdate = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nItemNo = this.m_sIcon.getItemNo(i);
+		if (nItemNo <= 0)
+		{
+			continue;
+		}
+		if (!this.m_sIcon.getDonation(i))
+		{
+			continue;
+		}
+		if (アイテム_寄付(nItemNo, false))
+		{
+			bUpdate = true;
+		}
+	}
+	if (bUpdate)
+	{
+		システムバー_更新(2, -1);
+		数値点滅_開始();
+		数値点滅_終了待ち(true);
+	}
+}
+
+bool T_ResultItem::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 100001:
+		case 100009:
+			return this.execEnd();
+		default:
+			break;
+	}
+	if (nID > 140000)
+	{
+		return this.execCancel(this.getCancelIndex(nID), nRet);
+	}
+	if (nID > 130000)
+	{
+		return this.execDonation(this.getDonationIndex(nID), nRet);
+	}
+	if (nID > 120000)
+	{
+		return this.execJudge(this.getJudgeIndex(nID), nRet);
+	}
+	if (nID > 110000)
+	{
+		nRet = nID;
+		return false;
+	}
+	return false;
+}
+
+bool T_ResultItem::execJudge(int nIndex, ref int nRet)
+{
+	if (nIndex < 0)
+	{
+		return false;
+	}
+	int nItemNo = this.m_sIcon.getItemNo(nIndex);
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	int nGold = クエスト_鑑定料();
+	int nGold2 = 所持金();
+	if (!選択_確認_拡張(30, "Appraisal Fee: " + テキスト_半角数値(nGold) + "@Appraise?@Funds: " + テキスト_半角数値(nGold2) + "Gold", 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	if (nGold2 < nGold)
+	{
+		選択_通知("Not enough funds.", "OK", false);
+		return false;
+	}
+	アイテム_鑑定(nItemNo);
+	所持金－(nGold);
+	クエスト_鑑定料ＵＰ(0);
+	this.m_sCount.setValue(this.m_sCount.getValue() + 1, 0, false);
+	this.m_sIcon.setJudge(nIndex, true);
+	this.setButtonActive();
+	this.setShow(this.m_spBase.getShow());
+	this.setGold();
+	UPDATE(true);
+	nRet = this.getItemID(nIndex);
+	return false;
+}
+
+bool T_ResultItem::execDonation(int nIndex, ref int nRet)
+{
+	if (nIndex < 0)
+	{
+		return false;
+	}
+	this.m_sIcon.setDonation(nIndex, true);
+	this.setButtonActive();
+	this.setShow(this.m_spBase.getShow());
+	UPDATE(true);
+	nRet = this.getItemID(nIndex);
+	return false;
+}
+
+bool T_ResultItem::execCancel(int nIndex, ref int nRet)
+{
+	if (nIndex < 0)
+	{
+		return false;
+	}
+	this.m_sIcon.setDonation(nIndex, false);
+	this.setButtonActive();
+	this.setShow(this.m_spBase.getShow());
+	UPDATE(true);
+	nRet = this.getItemID(nIndex);
+	return false;
+}
+
+bool T_ResultItem::execEnd()
+{
+	int i = 0;
+	int cnt = this.m_sIcon.getItemCount();
+	bool bFlag = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (アイテム_未確定(this.m_sIcon.getItemNo(i)))
+		{
+			bFlag = true;
+			break;
+		}
+	}
+	if (bFlag)
+	{
+		if (!選択_確認_拡張(32, "Unidentified items will be discarded.@Finish?", 1, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		int nItemNo = this.m_sIcon.getItemNo(i);
+		if (nItemNo <= 0)
+		{
+			continue;
+		}
+		if (アイテム_確定済(nItemNo))
+		{
+			アイテム_存在設定(nItemNo, 7);
+		}
+		else
+		{
+			アイテム_存在設定(nItemNo, 0);
+		}
+	}
+	return true;
+}
+
+int T_ResultItem::checkSelect(int nSelectID)
+{
+	int nRet = 0;
+	int nID = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nSelectID, true);
+	}
+	while (true)
+	{
+		int nRet2 = this.checkInput(nID);
+		if (nRet2 == 2)
+		{
+			nRet = nID;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			this.setCursor(100001);
+		}
+		if (nRet2 != 1)
+		{
+			int nID2 = this.checkKey(nID);
+			if (nID2 > 0)
+			{
+				nRet = nID2;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_ResultItem::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+	return 0;
+}
+
+int T_ResultItem::checkKey(int nID)
+{
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	int nID2 = this.checkKeyJudge(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.checkKeyDonation(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	return 0;
+}
+
+int T_ResultItem::checkKeyJudge(int nID)
+{
+	if (!キー_押下(74))
+	{
+		return 0;
+	}
+	int idx = -1;
+	if (nID > 140000)
+	{
+		goto label0;
+	}
+	if (nID > 130000)
+	{
+		goto label0;
+	}
+	if (nID > 120000)
+	{
+		idx = this.getJudgeIndex(nID);
+		goto label1;
+	}
+	if (nID > 110000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label1;
+	}
+label1:
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	if (アイテム_確定済(this.m_sIcon.getItemNo(idx)))
+	{
+		goto label0;
+	}
+	効果音_クリック();
+	キー_離し待ち(74, true);
+	return this.getJudgeID(idx);
+label0:
+	効果音_エラー();
+	キー_離し待ち(74, true);
+	return 0;
+}
+
+int T_ResultItem::checkKeyDonation(int nID)
+{
+	if (!キー_押下(68))
+	{
+		return 0;
+	}
+	int idx = -1;
+	if (nID > 140000)
+	{
+		idx = this.getCancelIndex(nID);
+		goto label0;
+	}
+	if (nID > 130000)
+	{
+		idx = this.getDonationIndex(nID);
+		goto label0;
+	}
+	if (nID > 120000)
+	{
+		goto label1;
+	}
+	if (nID > 110000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label0;
+	}
+label0:
+	if (idx < 0)
+	{
+		goto label1;
+	}
+	if (アイテム_未確定(this.m_sIcon.getItemNo(idx)))
+	{
+		goto label1;
+	}
+	効果音_クリック();
+	キー_離し待ち(68, true);
+	return this.m_sIcon.getDonation(idx) ? this.getCancelID(idx) : this.getDonationID(idx);
+label1:
+	効果音_エラー();
+	キー_離し待ち(68, true);
+	return 0;
+}
+
+void T_ResultItem::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	this.hideComment(-1);
+}
+
+void T_ResultItem::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+void T_ResultItem::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_ResultItem::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	int idx = this.getItemIndex(nID);
+	int nItemNo = this.m_sIcon.getItemNo(idx);
+	if (nItemNo <= 0)
+	{
+		this.hideComment(-1);
+		return;
+	}
+	if (アイテム説明_表示(nItemNo, this.m_sIcon.getJudge(idx), 500) >= 0)
+	{
+		int nX = this.m_sButton.getButtonPosX(nID);
+		int nY = this.m_sButton.getButtonPosY(nID);
+		int nW = アイテム説明_幅();
+		if (nX + 100 + nW > 1024)
+		{
+			アイテム説明_位置設定(nX - nW, nY);
+		}
+		else
+		{
+			アイテム説明_位置設定(nX + 100, nY);
+		}
+	}
+	this.m_nCommentID = nID;
+}
+
+void T_ResultItem::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		アイテム説明_消し();
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_ResultItem::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_sIcon.setZ(nZ + 1);
+	this.m_sNumber.setZ(nZ + 1);
+	this.m_sCount.setZ(nZ + 1);
+	this.m_sButton.setZ(nZ + 10);
+}
+
+void T_ResultItem::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_sIcon.getCount();
+	this.m_spBase.setShow(bShow);
+	this.m_sIcon.setShow(bShow);
+	this.m_sNumber.setShow(bShow);
+	this.m_sCount.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	for (i = 0; i < cnt; ++i)
+	{
+		int nID1 = this.getJudgeID(i);
+		int nItemNo = this.m_sIcon.getItemNo(i);
+		this.m_sButton.setButtonShow(nID1, this.m_sButton.getButtonActive(nID1) ? bShow : 0);
+		this.m_sButton.setButtonShow(this.getItemID(i), nItemNo > 0 ? bShow : 0);
+		int nID2 = this.getDonationID(i);
+		int nID3 = this.getCancelID(i);
+		if (nItemNo > 0)
+		{
+			if (!アイテム_未確定(nItemNo))
+			{
+				bool bDonation = this.m_sIcon.getDonation(i);
+				this.m_sButton.setButtonShow(nID2, !bDonation ? bShow : 0);
+				this.m_sButton.setButtonShow(nID3, bDonation ? bShow : 0);
+			}
+			else
+			{
+				this.m_sButton.setButtonShow(nID2, false);
+				this.m_sButton.setButtonShow(nID3, false);
+			}
+		}
+		else
+		{
+			this.m_sButton.setButtonShow(nID2, false);
+			this.m_sButton.setButtonShow(nID3, false);
+		}
+	}
+}
+
+void T_ResultItem::setButtonActive()
+{
+	int i = 0;
+	int cnt = this.m_sIcon.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nID1 = this.getJudgeID(i);
+		int nItemNo = this.m_sIcon.getItemNo(i);
+		int nID2 = this.getDonationID(i);
+		int nID3 = this.getCancelID(i);
+		if (nItemNo > 0)
+		{
+			bool bFlag = アイテム_未確定(nItemNo);
+			this.m_sButton.setButtonActive(nID1, bFlag);
+			if (!bFlag)
+			{
+				bool bDonation = this.m_sIcon.getDonation(i);
+				this.m_sButton.setButtonActive(nID2, アイテム_破棄可能(nItemNo) ? !bDonation : 0);
+				this.m_sButton.setButtonActive(nID3, bDonation);
+			}
+			else
+			{
+				this.m_sButton.setButtonActive(nID2, false);
+				this.m_sButton.setButtonActive(nID3, false);
+			}
+		}
+		else
+		{
+			this.m_sButton.setButtonActive(nID1, false);
+			this.m_sButton.setButtonActive(nID2, false);
+			this.m_sButton.setButtonActive(nID3, false);
+		}
+	}
+}
+
+void T_ResultItem::setGold()
+{
+	this.m_sNumber.setValue(クエスト_鑑定料(), false);
+	システムバー_更新(2, -1);
+	ミニステータス_ボタン表示設定(false);
+	数値点滅_開始();
+}
+
+int T_ResultItem::_moveUp(int nIndex)
+{
+	int idx = this.m_sIcon.moveUp(nIndex);
+	return idx < 0 ? this.getFirstItem() : this.getItemID(idx);
+}
+
+int T_ResultItem::_moveDown(int nIndex)
+{
+	int idx = this.m_sIcon.moveDown(nIndex);
+	return idx < 0 ? this.getLastItem() : this.getItemID(idx);
+}
+
+int T_ResultItem::_moveLeft(int nIndex)
+{
+	int idx = this.m_sIcon.moveLeft(nIndex);
+	return idx < 0 ? this.getFirstItem() : this.getItemID(idx);
+}
+
+int T_ResultItem::_moveRight(int nIndex)
+{
+	int idx = this.m_sIcon.moveRight(nIndex);
+	return idx < 0 ? this.getLastItem() : this.getItemID(idx);
+}
+
+int T_ResultItem::getFirstItem()
+{
+	int idx = this.m_sIcon.getFirstIndex();
+	return idx < 0 ? 100001 : this.getItemID(idx);
+}
+
+int T_ResultItem::getLastItem()
+{
+	int idx = this.m_sIcon.getLastIndex();
+	return idx < 0 ? 100001 : this.getItemID(idx);
+}
+

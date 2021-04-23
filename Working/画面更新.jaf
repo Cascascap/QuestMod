@@ -1,0 +1,200 @@
+void UPDATE(bool bSkip)
+{
+	if (g_nMapUpdate > 0)
+	{
+		g_sMap.update();
+	}
+	if (g_b3DMapUpdate)
+	{
+		g_sMapMode.Update();
+	}
+	if (g_bFPSUpdate)
+	{
+		g_sFPSInfo.Update();
+	}
+	if (g_bCommentUpdate)
+	{
+		g_sComment.update();
+	}
+	if (g_bBattleCharaUpdate)
+	{
+		g_sBattleChara.update();
+	}
+	if (g_bBattleMonsterUpdate)
+	{
+		g_sBattleMonster.update();
+	}
+	if (g_bBattleGirlUpdate)
+	{
+		g_sBattleGirl.update();
+	}
+	if (g_bBattleMessageUpdate)
+	{
+		g_sBattleMessage.update();
+	}
+	if (g_bBattleLogUpdate)
+	{
+		g_sBattleLog.update();
+	}
+	if (g_abBattleEffectUpdate.Find(0, g_abBattleEffectUpdate.Numof(), 1) >= 0)
+	{
+		g_sBattleEffect.update();
+	}
+	if (g_bBattleSequenceUpdate)
+	{
+		g_sBattleInfo.updateBattleCount();
+	}
+	if (g_bBattleTimeOverUpdate)
+	{
+		g_sBattleTimeOver.update();
+	}
+	if (g_b3DBattleUpdate)
+	{
+		g_sBattleMode.Update();
+	}
+	if (g_b3DAppreciationUpdate)
+	{
+		g_sAppreciationMode.Update();
+	}
+	if (g_bStatusBlink)
+	{
+		g_bStatusBlink = g_sStatus.blinkCard();
+	}
+	if (g_bMiniStatusBlink)
+	{
+		g_bMiniStatusBlink = g_sMiniStatus.blink();
+	}
+	if (g_bPartyUpdate)
+	{
+		g_bPartyUpdate = g_sParty.updateNumber();
+	}
+	if (g_bPartyBlink)
+	{
+		g_bPartyBlink = g_sParty.blinkList() || g_sParty.blinkChara();
+	}
+	if (g_bPartyStoreBlink)
+	{
+		g_bPartyStoreBlink = g_sParty.blinkList() || g_sPartyStore.blinkList();
+	}
+	if (g_bQuestUpdate)
+	{
+		g_sQuest.update();
+	}
+	if (g_bQuestStoreBlink)
+	{
+		g_bQuestStoreBlink = g_sQuest.blinkList() || g_sQuestStore.blinkList();
+	}
+	if (g_bStoreItemBlink)
+	{
+		g_bStoreItemBlink = g_sStoreItem.blinkList() || g_sStoreStock.blinkList();
+	}
+	if (g_bPartsFlashUpdate)
+	{
+		Ｆｌａｓｈ_更新();
+	}
+	if (g_bItemCommentUpdate)
+	{
+		g_sItemComment.update();
+	}
+	if (g_nBlinkNumberUpdate > 0)
+	{
+		g_nBlinkNumberUpdate = g_sBlinkNumber.update();
+	}
+	if (g_bNetworkServiceUpdate)
+	{
+		g_bNetworkServiceUpdate = g_sNetworkService.update();
+	}
+	if (g_bMusicModeUpdate)
+	{
+		g_bMusicModeUpdate = g_sMusicMode.update();
+	}
+	if (g_bConfigUpdate)
+	{
+		g_sConfig.update();
+	}
+	if (g_bButtonAnimeUpdate)
+	{
+		g_bButtonAnimeUpdate = g_sButtonAnime.update();
+	}
+	if (g_bMapMessageUpdate)
+	{
+		g_sMapMessage.update();
+	}
+	UpdateView(bSkip);
+}
+
+void _UPDATE(bool bSkip)
+{
+	UpdateView(bSkip);
+}
+
+void EFFECT(int nEffectNo, int nEffectTime)
+{
+	if (nEffectNo < 0)
+	{
+		nEffectNo = _全表示効果番号;
+	}
+	if (nEffectTime < 0)
+	{
+		nEffectTime = _全表示効果時間;
+	}
+	if (nEffectNo == 27)
+	{
+		_UPDATE(true);
+		画面揺らし(128, 128, nEffectTime);
+		return;
+	}
+	if (nEffectNo == 0 || nEffectTime <= 0)
+	{
+		UPDATE(true);
+		return;
+	}
+	if (効果キャンセル有効())
+	{
+		全表示(nEffectNo, nEffectTime);
+	}
+	else
+	{
+		_EFFECT(nEffectNo, nEffectTime);
+	}
+}
+
+void _EFFECT(int nEffectNo, int nEffectTime)
+{
+	if (nEffectNo == 0 || nEffectTime <= 0)
+	{
+		UPDATE(true);
+		return;
+	}
+	SYS_効果番号チェック(nEffectNo);
+	ChipmunkSpriteEngine.TRANS_Begin(nEffectNo);
+	CASTimer Timer;
+	Timer.Reset();
+	for (; ; )
+	{
+		int nTime = Timer.Get();
+		if (nTime >= nEffectTime)
+		{
+			break;
+		}
+		float fRate = nTime / nEffectTime;
+		TransitionUpdateView(fRate);
+	}
+	ChipmunkSpriteEngine.TRANS_End();
+	UPDATE(true);
+}
+
+void _W(int nTime)
+{
+	int nStartTime = GetTickCount();
+	UPDATE(true);
+	if (nTime < 1)
+	{
+		return;
+	}
+	while (GetTickCount() - nStartTime < nTime)
+	{
+		UPDATE(true);
+	}
+}
+

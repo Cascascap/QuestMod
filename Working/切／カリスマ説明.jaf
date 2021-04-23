@@ -1,0 +1,44 @@
+void カリスマ説明()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(93, -1, -1);
+	セット表示(g町全景, 5240, 0, 0);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Oh hey, come to think of it, my reputation went up during that last quest, didn\'t it?"' A;
+	セリフ(2030, "");
+	'"Yeah, looks like you\'ve got a point of charisma now.' R;
+	' Good job."' A;
+	セリフ(2020, "");
+	'"Umm, what exactly... is charisma?"' A;
+	セリフ(2030, "");
+	'"If you\'ve got charisma, you can switch around party members even while you\'re in the middle of a quest."' A;
+	'"With 1 charisma, you can switch party members once."' A;
+	セリフ(2020, "");
+	'"Huh... That sounds impressive...' R;
+	' Is it like popularity...?"' A;
+	セリフ(2001, "");
+	'"Gahahaha, exactly!"' A;
+	セリフ(2005, "");
+	'"...No, wait a second, shouldn\'t I have like 2,000,000 charisma?"' A;
+	セリフ(2023, "");
+	'"Huhh?! That much?!"' A;
+	セリフ(2033, "");
+	'"Oh, no way."' A;
+	セリフ(2021, "");
+	'"Oh, he doesn\'t? I was surprised..."' A;
+	セリフ(2000, "");
+	'"Mmmmm..."' A;
+	セリフ(2005, "");
+	'"Tch, fine, then.' R;
+	' I\'ll go raise my reputation up and up..."' A;
+	セリフ(2030, "");
+	'"Oui! And for that, we\'ve gotta go on adventures."' A;
+	ADVOFF();
+}
+

@@ -1,0 +1,304 @@
+bool T_EncountBar::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+int T_EncountBar::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_EncountBar::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_EncountBar::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+bool T_EncountBar::getShow()
+{
+	return this.m_bShow;
+}
+
+int T_EncountBar::getWalkCount()
+{
+	return this.m_nWalkCount;
+}
+
+int T_EncountBar::getBarSize()
+{
+	return this.m_nBarSize;
+}
+
+float T_EncountBar::getValue()
+{
+	return this.m_fValue;
+}
+
+float T_EncountBar::getMax()
+{
+	return this.m_fMax;
+}
+
+bool T_EncountBar::getEncount()
+{
+	return this.m_bEncount;
+}
+
+bool T_EncountBar::isCreated()
+{
+	return this.m_spBase.isCreated();
+}
+
+T_EncountBar::T_EncountBar()
+{
+	this.clear();
+}
+
+T_EncountBar::~T_EncountBar()
+{
+	this.delete();
+}
+
+bool T_EncountBar::create(int nZ, int nWalkCount)
+{
+	this.delete();
+	if (nWalkCount <= 0)
+	{
+		return false;
+	}
+	int nBarSize = 0;
+	if (nWalkCount < 60)
+	{
+		nBarSize = é¿êîåvéZ(618.0, nWalkCount, 60.0);
+	}
+	else
+	{
+		nBarSize = 618;
+	}
+	if (nBarSize <= 0)
+	{
+		return false;
+	}
+	this.createBase(nBarSize);
+	this.createBar(0, 11382, nBarSize);
+	this.createBar(1, 11383, nBarSize);
+	this.m_spLamp.setCg(11384);
+	this.m_nWalkCount = nWalkCount;
+	this.m_nBarSize = nBarSize;
+	this.m_fValue = 0.0;
+	this.m_fMax = nWalkCount * 4.0;
+	this.setPos(11, 9);
+	this.setZ(nZ);
+	return true;
+}
+
+void T_EncountBar::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspBar.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBar[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spLamp.delete();
+	this.clear();
+}
+
+void T_EncountBar::clear()
+{
+	this.m_nWalkCount = -1;
+	this.m_nBarSize = -1;
+	this.m_fValue = 0.0;
+	this.m_fMax = 0.0;
+	this.m_bEncount = false;
+	this.m_bShow = false;
+}
+
+bool T_EncountBar::blink()
+{
+	if (this.m_nWalkCount < 0)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (!this.m_bEncount)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 250)
+	{
+		return true;
+	}
+	this.m_spLamp.setShow(!this.m_spLamp.getShow());
+	this.m_sTimer.Reset();
+	return true;
+}
+
+void T_EncountBar::setValue(float fValue, int nWalkCount)
+{
+	if (this.m_nWalkCount < 0)
+	{
+		return;
+	}
+	if (nWalkCount > 0 && nWalkCount != this.m_nWalkCount)
+	{
+		bool bShow = this.m_spBase.getShow();
+		this.create(this.m_spBase.getZ(), nWalkCount);
+		this.setShow(bShow);
+	}
+	fValue = êîílÇe_ï‚ê≥(fValue, 0.0, this.m_fMax);
+	if (fValue == this.m_fValue)
+	{
+		return;
+	}
+	bool bShow = this.m_spBase.getShow();
+	ref T_Sprite rfBar1 = this.m_aspBar[0];
+	ref T_Sprite rfBar2 = this.m_aspBar[1];
+	int nW = é¿êîåvéZ(this.m_nBarSize, fValue, this.m_fMax);
+	rfBar1.setSurfaceArea(0, 0, nW, rfBar1.getHeight());
+	if (fValue < this.m_fMax)
+	{
+		rfBar1.setShow(bShow);
+		rfBar2.setShow(0);
+		this.m_bEncount = false;
+	}
+	else
+	{
+		rfBar1.setShow(0);
+		rfBar2.setShow(bShow);
+		this.m_bEncount = true;
+		this.m_sTimer.Reset();
+	}
+	this.m_fValue = fValue;
+}
+
+void T_EncountBar::setPos(int nX, int nY)
+{
+	int nX2 = nX + 1;
+	int nY2 = nY + 3;
+	int i = 0;
+	int cnt = this.m_aspBar.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBar[i].setPos(nX2, nY2);
+	}
+	this.m_spBase.setPos(nX, nY);
+	this.m_spLamp.setPos(nX2 + this.m_nBarSize, nY);
+}
+
+void T_EncountBar::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspBar.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBar[i].setZ(nZ + 1);
+	}
+	this.m_spBase.setZ(nZ);
+	this.m_spLamp.setZ(nZ + 1);
+}
+
+void T_EncountBar::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_aspBar[0].setShow(this.m_bEncount ? 0 : bShow);
+	this.m_aspBar[1].setShow(this.m_bEncount ? bShow : 0);
+	this.m_spLamp.setShow(0);
+	this.m_bShow = bShow;
+}
+
+void T_EncountBar::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_aspBar.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBar[i].setBlendRate(nBlendRate);
+	}
+	this.m_spBase.setBlendRate(nBlendRate);
+	this.m_spLamp.setBlendRate(nBlendRate);
+}
+
+bool T_EncountBar::suspend()
+{
+	int i = 0;
+	int cnt = this.m_aspBar.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBar[i].suspend();
+	}
+	this.m_spLamp.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_EncountBar::resume()
+{
+	int i = 0;
+	int cnt = this.m_aspBar.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBar[i].resume();
+	}
+	this.m_spLamp.resume();
+	return this.m_spBase.resume();
+}
+
+bool T_EncountBar::createBase(int nBarSize)
+{
+	if (nBarSize <= 0)
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	if (spWork.setCg(11381) < 0)
+	{
+		return false;
+	}
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	int nW1 = 1;
+	int nW2 = nBarSize + 62;
+	this.m_spBase.create(nW1 + nW2, nH, 0, 0, 0, 0);
+	this.m_spBase.copyCg(0, 0, spWork, 0, 0, nW1, nH);
+	this.m_spBase.copyCg(nW1, 0, spWork, nW - nW2, 0, nW2, nH);
+	return true;
+}
+
+bool T_EncountBar::createBar(int nIndex, int nCgNo, int nBarSize)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspBar.Numof())
+	{
+		return false;
+	}
+	if (nBarSize <= 0)
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	int nW1 = nBarSize / 2;
+	int nW2 = nBarSize - nW1;
+	ref T_Sprite rfBar = this.m_aspBar[nIndex];
+	rfBar.create(nW1 + nW2, nH, 0, 0, 0, 0);
+	rfBar.copyCg(0, 0, spWork, 0, 0, nW1, nH);
+	rfBar.copyCg(nW1, 0, spWork, nW - nW2, 0, nW2, nH);
+	if (nIndex == 0)
+	{
+		rfBar.setSurfaceArea(0, 0, 0, nH);
+	}
+	return true;
+}
+

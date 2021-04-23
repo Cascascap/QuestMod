@@ -1,0 +1,38 @@
+bool AFL_License_GetEncryptionCode(ref string EncryptionCode)
+{
+	EncryptionCode = "0";
+	string LicenseFileName = "InstallInfo\\License.dat";
+	if (!VSFile.OpenForRead(LicenseFileName))
+	{
+		return false;
+	}
+	string ID = "";
+	if (!VSFile.ReadString(ID))
+	{
+		return false;
+	}
+	if (ID != "LIC")
+	{
+		return false;
+	}
+	int Version = 0;
+	if (!VSFile.ReadInt(Version))
+	{
+		return false;
+	}
+	if (Version != 0)
+	{
+		return false;
+	}
+	if (!VSFile.ReadString(EncryptionCode))
+	{
+		return false;
+	}
+	if (!VSFile.Close())
+	{
+		EncryptionCode = "0";
+		return false;
+	}
+	return true;
+}
+

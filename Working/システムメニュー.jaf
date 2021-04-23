@@ -1,0 +1,221 @@
+bool システムメニュー_有効確認(int nMode, int nID)
+{
+	switch (nID)
+	{
+		case 910001:
+			return nMode == 10;
+		case 910002:
+			if (!自動セーブファイル_あり())
+			{
+				return false;
+			}
+			return nMode != 30;
+		case 910009:
+			return nMode == 20;
+		case 910012:
+		case 910013:
+			switch (nMode)
+			{
+				case 10:
+				case 11:
+				case 12:
+				case 13:
+				case 14:
+				case 40:
+					return true;
+				default:
+					break;
+			}
+			return false;
+		case 910091:
+			return nMode != 40;
+		case 910015:
+			switch (nMode)
+			{
+				case 15:
+				case 30:
+				case 40:
+					return false;
+				default:
+					break;
+			}
+			return true;
+		case 910014:
+			switch (nMode)
+			{
+				case 15:
+				case 30:
+					return false;
+				default:
+					break;
+			}
+			return true;
+		case 910011:
+		case 910092:
+		case 910099:
+			break;
+		default:
+			return false;
+	}
+	return true;
+}
+
+bool システムメニュー_処理(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 910001:
+			システムメニュー_セーブ();
+			break;
+		case 910002:
+			nRet = nID;
+			return true;
+		case 910009:
+			システムメニュー_中断();
+			break;
+		case 910011:
+			システムメニュー_環境設定();
+			break;
+		case 910012:
+		case 910013:
+			nRet = nID;
+			return true;
+		case 910014:
+			システムメニュー_Ｗｅｂ(true);
+			return true;
+		case 910015:
+			システムメニュー_バックログ();
+			return true;
+		case 910091:
+			システムメニュー_ゲーム再起動();
+			break;
+		case 910092:
+			システムメニュー_ゲーム終了();
+			break;
+		case 900001:
+			nRet = nID;
+			break;
+		default:
+			break;
+	}
+	return true;
+}
+
+void システムメニュー_セーブ()
+{
+	if (!選択_確認_拡張(2, "Save?", 1, "Yes", "No", -1, -1, false))
+	{
+		return;
+	}
+	自動セーブ(0);
+}
+
+void システムメニュー_ロード()
+{
+	if (!自動セーブファイル_あり())
+	{
+		選択_通知("There is no save data", "OK", false);
+		return;
+	}
+	if (!選択_確認_拡張(1, "Load?", 1, "Yes", "No", -1, -1, false))
+	{
+		return;
+	}
+	_システムメニュー_ロード前();
+	if (!自動セーブ_ロード())
+	{
+		return;
+	}
+	jump ゲーム_メイン;
+}
+
+void _システムメニュー_ロード前()
+{
+	マップ_終了処理(false);
+	戦闘_終了処理(false);
+	女の子モンスター部屋_終了処理(true);
+	街マップ_削除();
+}
+
+void システムメニュー_環境設定()
+{
+	環境設定_メニュー(0);
+}
+
+void システムメニュー_Ｗｅｂ(bool bEnableSendMessage)
+{
+	ネット情報_メニュー(bEnableSendMessage);
+}
+
+void システムメニュー_バックログ()
+{
+	Ｓ＿バックログ();
+}
+
+bool システムメニュー_ゲーム再起動()
+{
+	if (!system.MsgBoxOkCancel("Return to title screen?\n\n※All unsaved data will be lost."))
+	{
+		return false;
+	}
+	ゲーム_再起動();
+	return true;
+}
+
+bool システムメニュー_ゲーム終了()
+{
+	if (!system.MsgBoxOkCancel("Close %s?\n\n※All unsaved data will be lost." % ゲーム_名前()))
+	{
+		return false;
+	}
+	ゲーム_終了();
+	return true;
+}
+
+bool システムメニュー_中断()
+{
+	if (!選択_確認("Close %s? @※[Suspend Save]@data will be created." % ゲーム_名前(), 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	選択_通知("Selecting [Resume Game] the next time@you start the game will allow you@to play from where you left off.", "OK", false);
+	中断セーブ();
+	ゲーム_終了();
+	return true;
+}
+
+bool システムメニュー_ボタン作成(ref T_Button sButton, int nX, int nY, int nCgNo, int nX2, int nY2, int nCgNo2)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	sButton.createRect(160, 30, 160, 30, -1, -1);
+	ref T_TextSprite spWork = sButton.getSp(1);
+	システムメニュー_枠作成(spWork.getSp(), 0, 0, 0, 128);
+	spWork1.create(160, 30, 0, 0, 0, 0);
+	スプライト_ＣＧコピー(nCgNo, spWork1.getSp(), nX, nY, 160, 30);
+	システムメニュー_枠作成(spWork2.getSp(), 255, 0, 0, 128);
+	if (nCgNo2 > 0)
+	{
+		spWork1.blendCg(nX2, nY2, nCgNo2, 255);
+	}
+	sButton.createFrameSp(0, spWork1, 1);
+	sButton.createFrameSp(1, spWork2, 0);
+	return true;
+}
+
+bool システムメニュー_枠作成(ref T_Sprite spButton, int nR, int nG, int nB, int nRate)
+{
+	if (spButton === NULL)
+	{
+		return false;
+	}
+	spButton.create(160, 30, 0, 0, 0, 0);
+	spButton.fill(30, 3, 126, 25, nR, nG, nB, nRate);
+	return true;
+}
+

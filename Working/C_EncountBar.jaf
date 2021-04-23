@@ -1,0 +1,50 @@
+void エンカウントバー_作成(int nZ)
+{
+	g_sEncountBar.create(nZ, ランダムエンカウント_歩数());
+}
+
+void エンカウントバー_削除()
+{
+	g_sEncountBar.delete();
+}
+
+bool エンカウントバー_点滅()
+{
+	return g_sEncountBar.blink();
+}
+
+void エンカウントバー_更新()
+{
+	g_sEncountBar.setValue(キャラ_歩き距離(), ランダムエンカウント_歩数());
+}
+
+void エンカウントバー_数値設定(float fValue, int nWalkCount)
+{
+	g_sEncountBar.setValue(fValue, nWalkCount);
+}
+
+void エンカウントバー_表示設定(bool bShow)
+{
+	g_sEncountBar.setShow(ランダムエンカウント_あり() ? bShow : 0);
+}
+
+bool エンカウントバー_サスペンド()
+{
+	return g_sEncountBar.suspend();
+}
+
+bool エンカウントバー_レジューム()
+{
+	if (!g_sEncountBar.resume())
+	{
+		return false;
+	}
+	エンカウントバー_更新();
+	return true;
+}
+
+bool エンカウントバー_サスペンド状態()
+{
+	return g_sEncountBar.isSuspend();
+}
+

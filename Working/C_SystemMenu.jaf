@@ -1,0 +1,96 @@
+void システムメニュー_作成(int nZ, int nMode)
+{
+	g_sSystemMenu.create(nZ, nMode);
+}
+
+void システムメニュー_削除()
+{
+	g_sSystemMenu.delete();
+}
+
+bool システムメニュー_作成済()
+{
+	return g_sSystemMenu.isCreated();
+}
+
+void システムメニュー_ＯＰＥＮ(int nID)
+{
+	g_sSystemMenu.open();
+	システムバー_キー離し待ち(nID);
+	UPDATE(true);
+}
+
+void システムメニュー_ＣＬＯＳＥ()
+{
+	g_sSystemMenu.close();
+	UPDATE(true);
+}
+
+int システムメニュー_選択()
+{
+	return g_sSystemMenu.select();
+}
+
+int システムメニュー_モード()
+{
+	return g_sSystemMenu.getMode();
+}
+
+int システムメニュー_実行(int nID)
+{
+	int nRet = 0;
+	int nMode = システムメニュー_モード();
+	システムメニュー_実行前(nMode, nID);
+	while (true)
+	{
+		システムメニュー_ＯＰＥＮ(nID);
+		int nID2 = システムメニュー_選択();
+		システムメニュー_ＣＬＯＳＥ();
+		if (システムメニュー_処理(nID2, nRet))
+		{
+			break;
+		}
+	}
+	システムメニュー_実行後(nMode, nID, nRet);
+	return nRet != 900001 ? nRet : 0;
+}
+
+void システムメニュー_実行前(int nMode, int nID)
+{
+	bool bClear = true;
+	int nKey = システムバー_ショートカット(nID);
+	システムメニュー_実行クリア();
+	if (nKey > 0 && キー_押下(nKey))
+	{
+		bClear = false;
+	}
+	else
+	{
+		キー_クリア(true);
+	}
+	if (マップ_ロード中())
+	{
+		g_bシステムメニュー退避_主人公 = Ｒ８キャラ停止();
+	}
+	g_bシステムメニュー退避_選択枠 = 選択_枠消去();
+}
+
+void システムメニュー_実行後(int nMode, int nID, int nID2)
+{
+	if (nID > 0 && nID == nID2)
+	{
+		システムバー_キー離し待ち(nID);
+	}
+	if (g_bシステムメニュー退避_主人公)
+	{
+		Ｒ８キャラ停止解除();
+	}
+	システムメニュー_実行クリア();
+}
+
+void システムメニュー_実行クリア()
+{
+	g_bシステムメニュー退避_主人公 = false;
+	g_bシステムメニュー退避_選択枠 = false;
+}
+

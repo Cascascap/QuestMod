@@ -1,0 +1,482 @@
+CASGameNetService::CASGameNetService()
+{
+	this.m_UserIDFileID = 305410576;
+	this.m_ServerURL = "http://localhost/";
+}
+
+void CASGameNetService::SetServerURL(string ServerURL)
+{
+	this.m_ServerURL = ServerURL;
+}
+
+bool CASGameNetService::CheckUserID(int ServerVersion)
+{
+	string UserIDFileName = this.GetUserIDFileName();
+	if (!system.ExistFile(UserIDFileName))
+	{
+		return false;
+	}
+	string UserID = "";
+	int ServerVersionFromFile = 0;
+	if (!this.LoadUserIDFile(UserID, ServerVersionFromFile))
+	{
+		return false;
+	}
+	if (ServerVersionFromFile != ServerVersion)
+	{
+		return false;
+	}
+	this.SetUserID(UserID);
+	return true;
+}
+
+bool CASGameNetService::BeginCreateUserID()
+{
+	string URL = this.m_ServerURL + "createuser.php";
+	string Param = "";
+	if (!HTTPDownloader.Post(URL, Param))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CASGameNetService::IsEndCreateUserID()
+{
+	if (HTTPDownloader.IsRun())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CASGameNetService::EndCreateUserID(int ServerVersion)
+{
+	for (; ; )
+	{
+		if (!HTTPDownloader.IsRun())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+	int ReadSize = HTTPDownloader.GetReadSize();
+	if (ReadSize <= 0)
+	{
+		system.Output("EndCreateUserID HTTPDownloader.GetReadSize 0\n");
+		return false;
+	}
+	string ResultText = "";
+	if (!HTTPDownloader.ReadStringUTF8ToSJIS(ResultText))
+	{
+		system.Output("EndCreateUserID HTTPDownloader.ReadString error\n");
+		return false;
+	}
+	CASGameNetDataPack ResultDataPack;
+	if (!this.AnalyseResultCode(ResultText, ResultDataPack))
+	{
+		system.Output("EndCreateUserID AnalyseResultCode error\n");
+		return false;
+	}
+	if (ResultDataPack.IsError())
+	{
+		system.Output("EndCreateUserID ResultDataPack error [%s]\n" % ResultText);
+		return false;
+	}
+	ref CASGameNetData ResultData = ResultDataPack.Get("createduserid");
+	if (ResultData === NULL)
+	{
+		system.Output("EndCreateUserID createduserid error\n");
+		return false;
+	}
+	string UserID = ResultData.GetParam();
+	if (UserID.Empty())
+	{
+		system.Output("EndCreateUserID UserID error\n");
+		return false;
+	}
+	if (!this.SaveUserIDFile(UserID, ServerVersion))
+	{
+		system.Output("EndCreateUserID SaveUserIDFile error\n");
+		return false;
+	}
+	this.SetUserID(UserID);
+	return true;
+}
+
+string CASGameNetService::GetUserIDFileName()
+{
+	return system.GetSaveFolderName() + "\\" + "NetUserID.vsf";
+}
+
+bool CASGameNetService::LoadUserIDFile(ref string UserID, ref int ServerVersion)
+{
+	string UserIDFileName = this.GetUserIDFileName();
+	if (!VSFile.OpenForRead(UserIDFileName))
+	{
+		return false;
+	}
+	int ID = 0;
+	if (!VSFile.ReadInt(ID))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (ID != this.m_UserIDFileID)
+	{
+		VSFile.Close();
+		return false;
+	}
+	int Version = 0;
+	if (!VSFile.ReadInt(Version))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (Version != 0)
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (!VSFile.ReadString(UserID))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (!VSFile.ReadInt(ServerVersion))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (!VSFile.Close())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CASGameNetService::SaveUserIDFile(string UserID, int ServerVersion)
+{
+	string UserIDFileName = this.GetUserIDFileName();
+	if (!VSFile.OpenForWrite(UserIDFileName))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_UserIDFileID))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (!VSFile.WriteInt(0))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (!VSFile.WriteString(UserID))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (!VSFile.WriteInt(ServerVersion))
+	{
+		VSFile.Close();
+		return false;
+	}
+	if (!VSFile.Close())
+	{
+		return false;
+	}
+	return true;
+}
+
+void CASGameNetService::SetUserID(string UserID)
+{
+	this.m_UserID = UserID;
+}
+
+bool CASGameNetService::AnalyseResultCode(string ResultText, ref CASGameNetDataPack Result)
+{
+	if (ResultText.Empty())
+	{
+		return false;
+	}
+	int Index = 0;
+	this.SkipSpaceChara(ResultText, Index);
+	int ResultType = ResultText[Index];
+	if (ResultType == 82 || ResultType == 69)
+	{
+		++Index;
+		if (ResultText[Index] != '(')
+		{
+			return false;
+		}
+		++Index;
+		for (; ; )
+		{
+			if (ResultText[Index] == ')')
+			{
+				break;
+			}
+			string Type = "";
+			string Param = "";
+			if (!this.ParseResultParam(ResultText, Index, Type, Param))
+			{
+				return false;
+			}
+			CASGameNetData ResultData;
+			ResultData.Set(Type, Param);
+			if (!Result.Add(ResultData))
+			{
+				return false;
+			}
+			if (ResultText[Index] == ',')
+			{
+				++Index;
+			}
+			this.SkipSpaceChara(ResultText, Index);
+		}
+		if (ResultType == 69)
+		{
+			Result.SetError();
+		}
+	}
+	else
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CASGameNetService::ParseResultParam(ref string ResultText, ref int Index, ref string ResultType, ref string ResultParam)
+{
+	string Type = "";
+	for (; ; )
+	{
+		if (Index >= ResultText.Length())
+		{
+			break;
+		}
+		if (this.IsCharaAlpha(ResultText[Index]))
+		{
+			Type.PushBack(ResultText[Index]);
+		}
+		else if (this.IsCharaNumber(ResultText[Index]))
+		{
+			if (Type.Empty())
+			{
+				return false;
+			}
+			Type.PushBack(ResultText[Index]);
+		}
+		else if (ResultText[Index] == '=')
+		{
+			Index++;
+			break;
+		}
+		else
+		{
+			return false;
+		}
+		Index++;
+	}
+	if (Type.Empty())
+	{
+		return false;
+	}
+	string Param = "";
+	for (; ; )
+	{
+		if (Index >= ResultText.Length())
+		{
+			break;
+		}
+		if (this.IsCharaNumber(ResultText[Index]) || Param.Empty() && ResultText[Index] == '-')
+		{
+			Param.PushBack(ResultText[Index]);
+		}
+		else if (ResultText[Index] == ',' || ResultText[Index] == ')')
+		{
+			break;
+		}
+		else if (ResultText[Index] == '{')
+		{
+			Param.PushBack(ResultText[Index]);
+			Index++;
+			for (; ; )
+			{
+				if (Index >= ResultText.Length())
+				{
+					return false;
+				}
+				if (ResultText[Index] == '}')
+				{
+					Param.PushBack(ResultText[Index]);
+					break;
+				}
+				else
+				{
+					Param.PushBack(ResultText[Index]);
+				}
+				Index++;
+			}
+		}
+		else
+		{
+			return false;
+		}
+		Index++;
+	}
+	if (Param.Empty())
+	{
+		return false;
+	}
+	ResultType = Type;
+	ResultParam = Param;
+	return true;
+}
+
+void CASGameNetService::SkipSpaceChara(ref string Text, ref int Index)
+{
+	for (; ; )
+	{
+		if (Index >= Text.Length())
+		{
+			break;
+		}
+		if (Text[Index] > ' ')
+		{
+			break;
+		}
+		Index++;
+	}
+}
+
+bool CASGameNetService::IsCharaAlpha(int Chara)
+{
+	if (Chara >= 97 && Chara <= 122)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool CASGameNetService::IsCharaNumber(int Chara)
+{
+	if (Chara >= 48 && Chara <= 57)
+	{
+		return true;
+	}
+	return false;
+}
+
+string CASGameNetService::EncodeParamForPost(string Text)
+{
+	string Result = "";
+	int CheckSum = 0;
+	int n = 0;
+	for (n = 0; n < Text.Length(); )
+	{
+		if (Text[n] > 255)
+		{
+			Result.PushBack(48);
+			Result.PushBack(64);
+			++n;
+		}
+		else if (Text[n] >= '0' && Text[n] <= '9')
+		{
+			Result.PushBack(50);
+			int Number = Text[n] - '0';
+			int EncodedCode = 66 + Number * 2;
+			Result.PushBack(EncodedCode);
+			CheckSum += Text[n];
+			++n;
+		}
+		else if (Text[n] == '+' || Text[n] == '=' || Text[n] == '?' || Text[n] == '&' || Text[n] == '+' || Text[n] == '\'' || Text[n] == '"' || Text[n] == '%')
+		{
+			Result.PushBack(48);
+			Result.PushBack(64);
+			++n;
+		}
+		else
+		{
+			Result.PushBack(48);
+			Result.PushBack(Text[n]);
+			++n;
+		}
+	}
+	string VersionCode = "01";
+	return VersionCode + "%06d" % CheckSum + Result;
+}
+
+bool CASGameNetService::BeginSendDataPack(string Command, CASGameNetDataPack DataPack)
+{
+	string UserID = "";
+	if (this.m_UserID.Empty())
+	{
+		UserID = "0";
+	}
+	else
+	{
+		UserID = this.m_UserID;
+	}
+	string URL = this.m_ServerURL + Command + ".php";
+	string Param = "";
+	Param = "uid=%s&hash=%s" % this.EncodeParamForPost(UserID) % this.EncodeParamForPost(string(SystemService.GetGameVersion()));
+	int n = 0;
+	for (n = 0; n < DataPack.GetNumof(); ++n)
+	{
+		ref CASGameNetData Data = DataPack.GetByIndex(n);
+		Param += "&" + Data.GetType() + "=" + this.EncodeParamForPost(Data.GetParam());
+	}
+	if (!HTTPDownloader.Post(URL, Param))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CASGameNetService::IsEndSendDataPack()
+{
+	if (HTTPDownloader.IsRun())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CASGameNetService::EndSendDataPack(ref CASGameNetDataPack ResultDataPack)
+{
+	for (; ; )
+	{
+		if (!HTTPDownloader.IsRun())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+	int ReadSize = HTTPDownloader.GetReadSize();
+	if (ReadSize <= 0)
+	{
+		system.Output("HTTPDownloader.GetReadSize 0\n");
+		return false;
+	}
+	string ResultText = "";
+	if (!HTTPDownloader.ReadStringUTF8ToSJIS(ResultText))
+	{
+		system.Output("HTTPDownloader.ReadString error\n");
+		return false;
+	}
+	ResultDataPack.Clear();
+	if (!this.AnalyseResultCode(ResultText, ResultDataPack))
+	{
+		system.Output("AnalyseResultCode error [%s]\n" % ResultText);
+		return false;
+	}
+	if (ResultDataPack.IsError())
+	{
+		system.Output("DataPack error [%s]\n" % ResultText);
+		return false;
+	}
+	return true;
+}
+

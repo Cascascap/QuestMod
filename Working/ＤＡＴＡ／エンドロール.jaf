@@ -1,0 +1,1203 @@
+void ‚sƒGƒ“ƒhƒ[ƒ‹^‰Šú‰»()
+{
+	int loop = 0;
+	int loop2 = 0;
+	int iic = 0;
+	int no = 1;
+	int ra = 0;
+	int ccc = 0;
+	for (loop = 1; loop < 21; ++loop)
+	{
+		ŸƒLƒƒƒ‰‚»‚ÌŒã[loop] = 0;
+	}
+	if (PTA[1] != 0)
+	{
+		ŸƒLƒƒƒ‰‚»‚ÌŒã[no] = PTA[1];
+		++no;
+	}
+	if (PTA[2] != 0)
+	{
+		ŸƒLƒƒƒ‰‚»‚ÌŒã[no] = PTA[2];
+		++no;
+	}
+	if (PTA[3] != 0)
+	{
+		ŸƒLƒƒƒ‰‚»‚ÌŒã[no] = PTA[3];
+		++no;
+	}
+	if (PTA[4] != 0)
+	{
+		ŸƒLƒƒƒ‰‚»‚ÌŒã[no] = PTA[4];
+		++no;
+	}
+	if (PTA[5] != 0)
+	{
+		ŸƒLƒƒƒ‰‚»‚ÌŒã[no] = PTA[5];
+		++no;
+	}
+	for (; ; )
+	{
+		if (no > 20)
+		{
+			return;
+		}
+		if (ccc > 200)
+		{
+			return;
+		}
+		iic = ‚b”Ô†æ“¾^ƒ‰ƒ“ƒ_ƒ€();
+		for (loop = 1; loop < 21; ++loop)
+		{
+			if (iic == ŸƒLƒƒƒ‰‚»‚ÌŒã[loop])
+			{
+				iic = 0;
+			}
+		}
+		if (iic != 0)
+		{
+			ŸƒLƒƒƒ‰‚»‚ÌŒã[no] = iic;
+			++no;
+		}
+		++ccc;
+	}
+}
+
+void ‚sƒGƒ“ƒhƒ[ƒ‹(lint nox, ref string –¼‘O, ref lint Šç‚b‚f, ref string Šç‚b‚f–¼‘O, ref string •¶š—ñ‚P)
+{
+	if (nox >= 20)
+	{
+		return;
+	}
+	int iic = ŸƒLƒƒƒ‰‚»‚ÌŒã[nox];
+	int £¶¬ƒLƒƒƒ‰ = 0;
+	int no = ‚b”Ô†(iic, -1);
+	if (‚b”Ô†(iic, -1) == 2)
+	{
+		£¶¬ƒLƒƒƒ‰ = 1;
+	}
+	if (£¶¬ƒLƒƒƒ‰ == 0)
+	{
+		Šç‚b‚f = ‚bŠç‚b‚f(iic, -1);
+	}
+	if (£¶¬ƒLƒƒƒ‰ == 1)
+	{
+		Šç‚b‚f–¼‘O = ‚bŠç‚b‚f•¶š—ñ(iic, "");
+	}
+	–¼‘O = ‚b–¼‘O(iic, "");
+	LOG_TADA("‚sƒGƒ“ƒhƒ[ƒ‹@" + string(nox) + "@" + –¼‘O + "@" + string(Šç‚b‚f) + "@" + Šç‚b‚f–¼‘O + "\n");
+	•¶š—ñ‚P = "";
+	•¶š—ñ‚P += "..................";
+	•¶š—ñ‚P += "..................";
+	•¶š—ñ‚P += "..................";
+	•¶š—ñ‚P += "..................";
+	•¶š—ñ‚P += "..................";
+	•¶š—ñ‚P += "..................";
+	•¶š—ñ‚P = "";
+	int bx = 0;
+	if (no == 1 && FA[201] == 0)
+	{
+		•¶š—ñ‚P += "Our hero's road turns to the Empire of Helman. Rance sets out again with only two goals in his mind:$";
+		•¶š—ñ‚P += "EDo something about Sill's ice$";
+		•¶š—ñ‚P += "EDo the Helmanian princess, Sheila$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 1 && FA[201] == 1)
+	{
+		•¶š—ñ‚P += "Our hero defeated the Shepherds, but unfortunately, Sill is still trapped in ice. That's fine, though. If it can be done once, it can be done again. Rance has a new adventure ahead of him. Next target: the beauties of Helman!$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 4)
+	{
+		bx = 0;
+		if (‚bí“¬Q‰Á‰ñ”(iic, -1) > 50)
+		{
+			bx = 1;
+		}
+		if (bx == 0)
+		{
+			•¶š—ñ‚P += "Ashamed at her minor role and that Rance wasn't relying on her, Kenshin spent some time thinking about her strengths and weaknesses and decided to redouble her efforts.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "";
+			•¶š—ñ‚P += "";
+		}
+		if (bx == 1)
+		{
+			•¶š—ñ‚P += "If training is what it takes to stay by Rance's side and be of use to him, she'll train. No matter her already legendary skill, she sets out on a new journey.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "...with several hundred onigiri.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+	}
+	if (no == 3)
+	{
+		•¶š—ñ‚P += "Unwillingly entered into a beauty contest, she reluctantly participates. After she somehow wins first place, she becomes the face of a cosmetics company and gains a popular following. She doesn't hate it.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 5)
+	{
+		•¶š—ñ‚P += "After winning her final showdown(?) with Torako, she finally takes her place leading the Uesugi clan.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "Her days turn blissful after she marries (Torako's little brother). That is, as blissful as days can be when administrating a whole region.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 38)
+	{
+		•¶š—ñ‚P += "Katsuko may have taken the Uesugi headship, but Torako can take advantage of her position as Katsuko's step-sister (Katsuko married her brother) to do anything she wants. Of course, when Katsuko gets in trouble, Torako will be there to help her out, muttering things like, \"Oh, if I must.\" $";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "";
+	}
+	if (no == 6)
+	{
+		bx = 0;
+		if (‚bí“¬Q‰Á‰ñ”(iic, -1) > 50)
+		{
+			bx = 1;
+		}
+		if (bx == 0)
+		{
+			•¶š—ñ‚P += "After this adventure, she immediately returned to Leazas and challenged Captain Leila to a duel for the position of Captain of the Royal Guard.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "...But she lost again. She was down about it for a week, but quickly perked up after that.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+		if (bx == 1)
+		{
+			•¶š—ñ‚P += "She gained a lot of battle experience from this adventure, not to mention some more experience with men. With this new confidence, she becomes even stronger. It won't be long before she's Captain of Leazas's Royal Guard for real.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+	}
+	if (no == 7)
+	{
+		•¶š—ñ‚P += "She'll continue hunting monsters well into old age, remaining single all the while.$";
+		•¶š—ñ‚P += " Her Lifetime Results:$";
+		•¶š—ñ‚P += "   Boss monsters:\t\t7,365$";
+		•¶š—ñ‚P += "   Fiends:\t\t\t\t1$";
+		•¶š—ñ‚P += "   Legendary treasures:\t45$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 10)
+	{
+		•¶š—ñ‚P += "She devotes her life to protecting the people of Custom, taking its mayorship and never another lover. Corrupt politicians, backstabbing council members, and vile company presidents all make attempts on her, and they all mysteriously disappear. Under her watch, the city will never suffer again.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 11)
+	{
+		•¶š—ñ‚P += "As the leader of the mysterious organization Justice, she goes on to punish those the law can't. The organization is, of course, run by Gandhi. She eventually joins the Hero's party and helps in the fight to defeat the Archfiend.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 12)
+	{
+		•¶š—ñ‚P += "She becomes a fiend. Immune to all magic, her body releases erotic pheromones that break any normal human who approaches her. Her life is one of anxiety, constantly jumping at shadows.$";
+		•¶š—ñ‚P += "It's really, really bad.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 13)
+	{
+		•¶š—ñ‚P += "She gets wrapped up in way too many hanny-related incidents and has constant brushes with death. When she turns 27, she meets a fortune teller who advises her to change her name, and somehow, after taking that advice, she's able to live a normal life.$";
+		•¶š—ñ‚P += "Lived happily ever after.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 16)
+	{
+		•¶š—ñ‚P += "He loses his leg in a misadventure and starts showing up in bars from lunchtime on. He fondly tells stories of his past to anyone who'll listen. \"Rance? Oh, he's a close friend of mine. I always knew he'd do great things...\"$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 17)
+	{
+		•¶š—ñ‚P += "She returns to Masamune with many souvenirs from the continent.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "Souvenir 1: Sandwich recipe$";
+		•¶š—ñ‚P += "Souvenir 2: Glass vase$";
+		•¶š—ñ‚P += "Souvenir 3: Telescope$";
+		•¶š—ñ‚P += "Let's hope he likes them.$";
+	}
+	if (no == 18)
+	{
+		•¶š—ñ‚P += "She became an adventurer for a little while to search for the legendary mimic, but she never did find it. She had potential as an adventurer but found tending a store easier to do, so she returns to being an item shop clerk.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 14)
+	{
+		•¶š—ñ‚P += "She always used to drift off, but suddenly can't sleep at all after turning 20. Yes, she's built up an entire lifetime's worth of sleep. Now the poor thing works 24 hours a day.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 15 && EV("ƒ†ƒ‰ƒ“^Ø‚è‘Ö‚¦‚Q", -2147483648) == false)
+	{
+		•¶š—ñ‚P += "She became a talented competitor. For what? Anything with a worthwhile prize. $";
+		•¶š—ñ‚P += "She makes her life in the alleys, but when she gets wrapped up in the Great Fiend War, she does her part. She goes missing in the confusion of the conflict however, her fate unknown.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 15 && EV("ƒ†ƒ‰ƒ“^Ø‚è‘Ö‚¦‚Q", -2147483648) == true)
+	{
+		•¶š—ñ‚P += "After this battle, she gets scouted for the Royal Guards of Leazas and is formally granted a knighthood. She flourishes as one of their best.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 19 && EV("•ƒ‚©‚ç‚ÌƒvƒŒƒ[ƒ“ƒg", -2147483648) == false)
+	{
+		•¶š—ñ‚P += "She toils under the mistaken impression that her calling was to be a guard adventurer before... her beloved shield, Mr. Hiroshi, is destroyed. Her will to adventure collapses all at once and she marries Boy C from a bakery, giving birth to four children.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 19 && EV("•ƒ‚©‚ç‚ÌƒvƒŒƒ[ƒ“ƒg", -2147483648) == true)
+	{
+		•¶š—ñ‚P += "If she hadn't met Rance, she would have gone through life as a normal girl, but... She can't resist dangerous adventure and eventually makes a name for herself as a famous guard. Fortunately for her, she avoids injury almost entirely.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 20)
+	{
+		•¶š—ñ‚P += "When her journey ends and she returns to Nippon, she receives an entire night of lectures from 3G.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "Learning from her experience in the outside world, she gains strength and eventually obtains the Three Sacred Treasures, taking her place as Empress of Nippon.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 21)
+	{
+		•¶š—ñ‚P += "It comes out that he's only 16 years old and everyone is floored.$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 51)
+	{
+		•¶š—ñ‚P += "She's eventually recognized by a certain conservation group as a protected human subgroup.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "She isn't happy about it.$";
+	}
+	if (no == 9 && ‚b“]¶‰ñ”(iic, -1) == 0)
+	{
+		•¶š—ñ‚P += "Her journey on the continent ends and she returns to Nippon. $";
+		•¶š—ñ‚P += "As the inheritor of Motonari's fiery nature, there's no one better suited to managing Nippon's various thugs.$";
+		•¶š—ñ‚P += "As the chivalrous elder sister-type with a stern look to her at all times, she gains quite the following.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 9 && ‚b“]¶‰ñ”(iic, -1) != 0)
+	{
+		•¶š—ñ‚P += "Her journey on the continent ends and she returns to Nippon.$";
+		•¶š—ñ‚P += "As the head of the Mouri family and all of its thugs, she expands into the continent and becomes a major player in the underworld. ...Not to mention, her encounter with Rance leaves her pregnant. After an unusually long pregnancy, she safely gives birth to his child.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 22 && FA[5] == 0)
+	{
+		•¶š—ñ‚P += "It's the fate of a kunoichi to die young. Shortly after this adventure, Suzume finally heads to the afterlife.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 22 && FA[5] != 0)
+	{
+		•¶š—ñ‚P += "A week after this adventure ends, Suzume's ghost disappears. A letter is left on Rance's bed.$";
+		•¶š—ñ‚P += "\"It was a fun life. Thanks for everything.\"$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 23)
+	{
+		•¶š—ñ‚P += "She becomes a detective, intending to make the most of her talent. Only instead of the information she needs, she only overhears pure gossip. In the end, she leaves the business and conceals her identity by becoming a housekeeper. But suddenly she's finding trouble again... $";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 24 && FA[5] == 2)
+	{
+		•¶š—ñ‚P += "Thanks to the special training she received from Suzume, she's able to obtain the skills of a first-class ninja, ready for reconnaissance, diversions, assassinations, and intelligence. Unfortunately for her, her mission is still just to keep an eye on Rance.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 24 && FA[5] != 2)
+	{
+		•¶š—ñ‚P += "She knows every nook and cranny of the attic in Rance Castle. She is truly the master of the attic...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "...She's not happy about it.$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 25)
+	{
+		•¶š—ñ‚P += "She grows over the years into a beautiful young woman. She then battles with Rance, loses, and gets deflowered by him. She'd admired Rance since she was little, so it's not unexpected, but it was kind of a disappointing first time. Her admiration was all an illusion.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 26)
+	{
+		•¶š—ñ‚P += "She always had vague suspicions that she was being deceived, but if the deception ever truly came to light, it would mean her having to kill Reset's father. Instead, she chooses to remain deceived to protect the current peace.$";
+		•¶š—ñ‚P += "Now if only her deceiver were better at the job...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 32)
+	{
+		•¶š—ñ‚P += "She's rebuilding her kingdom, bit by bit...$";
+		•¶š—ñ‚P += " Current population: 50.$";
+		•¶š—ñ‚P += "Thanks to her character, people naturally gather to her.$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 27)
+	{
+		•¶š—ñ‚P += "After this, just once, for some unknown reason, she becomes the Clever Athena 2.0 that she was probably intended to be. An all-purpose servant that can perfectly carry out any command. Then after one day, she's back to her usual stupid self. What was that all about?$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 28)
+	{
+		•¶š—ñ‚P += "She was forced to take an extended vacation, but she spent it by exploring the world with Rance. It ended up being quite a productive trip. As soon as she returns to Zeth, she ends up being buried under complaints from Chizuko and is put to work developing anti-Anise strategies.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 29 && FA[201] == 0)
+	{
+		•¶š—ñ‚P += "Lately, she's into a certain new discovery. It's a miraculous substance called a nucleus and it can produce unlimited energy. She's working on it with a few colleagues. Truthfully, in the moments she isn't focused on it, she starts thinking about Rance, which is painful.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 29 && FA[201] == 1)
+	{
+		•¶š—ñ‚P += "She gets her memories back and immerses herself back into her research. This time, however, she avoids dangerous projects and tackles safe new energy instead. She's working hard on it with a few colleagues. Truthfully, if she isn't focused on it, she starts thinking about Rance, which is painful.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 30)
+	{
+		•¶š—ñ‚P += "On a quest for cute things, she invades a poppin cave.$";
+		•¶š—ñ‚P += "  Paradise: discovered.$";
+		•¶š—ñ‚P += "  Home: obtained.$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 31)
+	{
+		•¶š—ñ‚P += "She finds where Prima is living and forces her way into cohabitation. She even joins the same company where Prima works and is satisfied by her life as a temp there.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 59)
+	{
+		•¶š—ñ‚P += "She thinks she has it made when she joins a famous trading company, but unfortunately, it gets wrapped up in the Great War and collapses. She volunteers for a disaster relief organization instead.$";
+		•¶š—ñ‚P += "Her endlessly busy life keeps her from settling down like she wants to.$";
+		•¶š—ñ‚P += "...And Megadeth won't stop following her around.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 33 && FA[201] == 0)
+	{
+		•¶š—ñ‚P += "She's one of the four candidate bishops for the papacy.$";
+		•¶š—ñ‚P += "At Rance's side, she finds herself in a string of unique situations, and she always collects the Balance Breakers she finds there.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 33 && FA[201] == 1)
+	{
+		•¶š—ñ‚P += "Every day is a busy one for the pope.$";
+		•¶š—ñ‚P += "She's already given up on Alicism, but she continues to humor Alice's absurd demands as best as she can. That's what it takes to protect Rance and the people around her.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 35)
+	{
+		•¶š—ñ‚P += "She climbs to the rank of pastor and is put in charge of a moderately-sized church that gets constructed near Rance Castle. She passionately believes in reforming Rance, and will go down in history as a legendary figure who protected her virginity from him for her whole life.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 36)
+	{
+		•¶š—ñ‚P += "In search of a new continent, she spends three years building a huge ship with sixteen of her friends. She finally sets out on a tide that comes once every ten years.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "  She's never heard from again.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 41)
+	{
+		•¶š—ñ‚P += "She reaches the limits of the popularity that her lies allow, so:$";
+		•¶š—ñ‚P += "1. she forms a group and sells out$";
+		•¶š—ñ‚P += "2. she releases a risque photo set$";
+		•¶š—ñ‚P += "3. she becomes a porn mag model$";
+		•¶š—ñ‚P += "4. she publishes a tell-all book$";
+		•¶š—ñ‚P += "5. she goes missing <==now here$";
+	}
+	if (no == 40)
+	{
+		•¶š—ñ‚P += "She suddenly disappears from Rance Castle one day.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "She secluded herself in some underground dungeon again and is never ever going back into the outside world.$";
+		•¶š—ñ‚P += "That is, until a certain delivery company goes bankrupt.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 46)
+	{
+		•¶š—ñ‚P += "She continues her life as an adventurer. She excavates treasures from long-lost ruins, but somehow manages to encounter and get raped by Rance every time.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "It happens at least 16 times.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 43)
+	{
+		•¶š—ñ‚P += "She goes on to invent all sorts of sex-related drugs. Love potions, aphrodisiacs, mind-destroying drugs, you name it. Her fame grows until every person in the underworld has heard whispers of the Drug Witch Mill.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 39)
+	{
+		•¶š—ñ‚P += "Having lost her objective, she shouldn't be busy, but for some reason, she is. Every day she's on the run, dodging Rance trying to have sex with her. And also Nagi's attacks. Though it may be because of those two that she's finding the strength to live.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 44)
+	{
+		•¶š—ñ‚P += "She embarks on a get-rich-quick adventure, seeking to escape her life of debt, but fails. She invests in questionable deals and fails. She starts a lemonade stand, which fails. But she gets to know a civil servant and marries him. They live a lower middle class life, and she's happy.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 50 && ‚pó‘Ô(208, -1) != 2)
+	{
+		•¶š—ñ‚P += "She gets adopted by a kind Leazish noble. The noble puts in an incredible effort and provides innumerable tutors to make Dahlia (her name was changed) act like a proper human, but it ends up being useless. Instead, the noble goes bankrupt.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 50 && ‚pó‘Ô(208, -1) == 2)
+	{
+		•¶š—ñ‚P += "\"Stay! Stay, Kibako!\"$";
+		•¶š—ñ‚P += "\"Rr, rrrr... rrr....\"$";
+		•¶š—ñ‚P += " (Drooling, eyes spinning)$";
+		•¶š—ñ‚P += "\"Alright, good job. Good girl!\"$";
+		•¶š—ñ‚P += "\"Rr, *lick* *lick*\" (Happy)$";
+	}
+	if (no == 48)
+	{
+		•¶š—ñ‚P += "She gives birth to quintuplets. Tama's a mom now! Spot, Simba, Tigger, Blackie, and Felix. They're all cute. But watch out, Frostbyne will use them as subjects for her experiments if Tama doesn't protect them...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 47 && FA[201] == 0)
+	{
+		•¶š—ñ‚P += "Defeat Rance!$";
+		•¶š—ñ‚P += "She must have lacked training to be defeated by a villain like him!$";
+		•¶š—ñ‚P += "She also lacked training to be deceived by an evil sword!$";
+		•¶š—ñ‚P += "She'll do special Super Training until she's strong enough to become Super Matilda someday. Those are her days, standing under waterfalls.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 47 && FA[201] == 1)
+	{
+		•¶š—ñ‚P += "She'll become an ally of evil if that's what it takes to one day defeat it.$";
+		•¶š—ñ‚P += "That's right.$";
+		•¶š—ñ‚P += "She's just biding her time now!$";
+		•¶š—ñ‚P += "One day, she'll rise up with seven comrades in arms (friends), or at least, that's the delusion she's entertaining.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 52)
+	{
+		•¶š—ñ‚P += "She finished the mission she received from King Gandhi, to protect Magic, and returned to his side.$";
+		•¶š—ñ‚P += "With that done, she continues crushing the plots of Zeth's cast-down aristocracy.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 53 && EV("’¬•à‚«^¼ƒNƒ}", -2147483648) == false)
+	{
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "He sets out on a journey...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "in search of salmon.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 53 && EV("’¬•à‚«^¼ƒNƒ}", -2147483648) == true)
+	{
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "Lives with his wives...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "and 10 children.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 49)
+	{
+		•¶š—ñ‚P += "His fascination with pink girls may have started when he saw Sill in ice, but he soon meets a beautiful pink-haired girl and marries her. They're blessed with a daughter named Kumiko. But this time of marital bliss is short, and his days fill with nothing but training, eventually leading to him to be called the King of Fighters.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 57)
+	{
+		•¶š—ñ‚P += "She gets a job at a terminal care hospice. Thanks to her, hundreds of people are able to pass on in peace between her breasts. She truly becomes a Boob Goddess. Later, even after turning 40, her boobs are said to still be going strong.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 58)
+	{
+		•¶š—ñ‚P += "Half a year after Rance left Cidade, Atago's bar regains its original peace. Her regular customers return and with them, some of her old cheerfulness.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "However, there's this lingering anxiety... Her tranquil days are filled with apprehension.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 62)
+	{
+		•¶š—ñ‚P += "Her love for monsters turned to hate. They're just beasts, not like humans. They must be subjugated or destroyed.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "She forms a monster annihilation group and terrorizes the monsters of the Continent.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 56)
+	{
+		•¶š—ñ‚P += "The shop she opened in Cidade turns out to be wildly profitable (her customers were mostly Rance's party). She's able to amass all the research funds she'll ever need. Using high quality materials, she successfully creates the state-of-the-art Athena 4.0.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 54 && ‚b“]¶‰ñ”(iic, -1) != 0)
+	{
+		•¶š—ñ‚P += "A week-long celebration is held in Leazas. The queen is finally pregnant (with Rance's child, of course). Lia is over the moon.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 54 && ‚b“]¶‰ñ”(iic, -1) == 0)
+	{
+		•¶š—ñ‚P += "She returns to Leazas to resume her duties. She collects all the information about the Helmanian Empire that she can get her hands on, making sure she'll be able to help out Rance in any way she can.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 55 && ‚pó‘Ô(39, -1) == 2)
+	{
+		•¶š—ñ‚P += "Women are just getting started at 30. She's gonna hone her mature charm. Little girls aren't worth the time! She works hard every day.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "The 100 sextillion she needs to buy Rance is still far away...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 55 && ‚pó‘Ô(39, -1) != 2)
+	{
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "This is bad. Her 30th birthday is close.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "She's starting to think seriously about using her money to find a way to control time, like so many delusional wealthy people before her.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 60)
+	{
+		•¶š—ñ‚P += "Her participation in Rance's adventures allows her to enter some rare ruins. She may have nearly died, but she didn't, and she got to see unusual things, so she's happy.$";
+		•¶š—ñ‚P += " It's a good thing she lived.$";
+		•¶š—ñ‚P += " Tomorrow will be even better.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 61)
+	{
+		•¶š—ñ‚P += "She enlisted in the Black Army of Leazas with a referral from her new friend, Tilde.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "A few years later, she's one of Leazas's leading generals.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 42)
+	{
+		•¶š—ñ‚P += "There are even more girls around Rance now.$";
+		•¶š—ñ‚P += "He's got kids, too...$";
+		•¶š—ñ‚P += "Why oh why did she choose this man?$";
+		•¶š—ñ‚P += "Cursing her fate, she nevertheless continues to do her best.$";
+		•¶š—ñ‚P += "She's craving pickles and ice cream lately.$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 45)
+	{
+		•¶š—ñ‚P += "After the fall of Strawzend, Mahoko is one of few people who still make maiden natto. She receives order after order from rich customers, but no matter how much money she makes, she still sells her product at a reasonable price.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 68)
+	{
+		•¶š—ñ‚P += "She continues working at Rance Castle. She herself works without pause and gives precise orders to 15 maids under her without fail. It doesn't show in her expression or her attitude, but she's very happy about her position under Rance.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 84)
+	{
+		•¶š—ñ‚P = "She secluded herself in the abandoned Tower of Babel and called Rance to her. She planned to borrow the strength of her three ancestors and punish him, but... Her plan ended in disaster and all that happened was her getting taken over by her ancestors and raped by Rance again...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 72)
+	{
+		•¶š—ñ‚P += "The future Kalar Queen is taken to the Kalar Village and given special tutoring.$";
+		•¶š—ñ‚P += "But she's a rascal, so she escapes a lot.$";
+		•¶š—ñ‚P += "Somehow or another, she ends up adopting a huge tiger monster.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "";
+	}
+	if (no == 34)
+	{
+		•¶š—ñ‚P += "Everything is for Lia's happiness.$";
+		•¶š—ñ‚P += "That's her satisfaction.$";
+		•¶š—ñ‚P += "That's her bliss.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 67)
+	{
+		•¶š—ñ‚P += "Later... she causes an incident. She confines Rance and secludes herself in a hut with him. Leazas, Zeth, and the Alicist Church spend every effort to locate the hut and rescue Rance. Rance gets a little traumatized by the incident.$";
+		•¶š—ñ‚P += "She gets her memories erased and is sent off to a farm after that.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 70)
+	{
+		•¶š—ñ‚P += "She has a relapse of Greening Disease. Rance fucks her and she's cured. Then another relapse. Rance fucks her again and she's cured again. She spends her life by Rance's side, prepared for a relapse whenever it should happen.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 73)
+	{
+		•¶š—ñ‚P += "Things calmed down a bit, so she went to visit her old friends.$";
+		•¶š—ñ‚P += "Ho Laga, same as ever.$";
+		•¶š—ñ‚P += "British, good-bye, teenage crush.$";
+		•¶š—ñ‚P += "Nikkou, looked but couldn't find her.$";
+		•¶š—ñ‚P += "Chaos, still treating me like a kid.$";
+		•¶š—ñ‚P += "She's much happier now than when she was beautiful.$";
+	}
+	if (no == 71)
+	{
+		•¶š—ñ‚P += "She gathers a garrison of 54 to defend Rance Castle and becomes the captain of a squad of knights. She's overcome with emotion when she finally fulfills her dream, but she tries too hard and ends up failing a lot. There's even a time when they have the unfortunate nickname of the \"Shit Knight Squad\"...$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 80)
+	{
+		•¶š—ñ‚P += "Her father left behind an unfathomable quantity of card sorcery dead stock, but Copandon causes an artificial boom and sells them out in no time for an incredible profit. But, having been steeped in a meager lifestyle for so long, she still lives frugally.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 81)
+	{
+		•¶š—ñ‚P += "The effects of the plate still linger, but lately, she's been able to have some fun.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "";
+		•¶š—ñ‚P += "";
+		•¶š—ñ‚P += "";
+		•¶š—ñ‚P += "";
+	}
+	if (no == 85)
+	{
+		•¶š—ñ‚P += "Due to her immortality, she's worshiped as a living god of the Mouri family, though to many she is considered a god not of good but of evil. It's probably because she periodically needs to consume brains. But the mohawked subordinates of the Mouri family never fail to sacrifice themselves for this righteous cause.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "";
+	}
+	if (no == 86)
+	{
+		•¶š—ñ‚P += "She set out on a journey to find legendary ingredients and never returned. No one knows where she is, but lately they've been getting letters.$";
+		•¶š—ñ‚P += "\"I found the legendary ingredients!\"$";
+		•¶š—ñ‚P += "\"I'm having a lot of fun here!\"$";
+		•¶š—ñ‚P += "Guess she's doing okay.$";
+		•¶š—ñ‚P += "$";
+		•¶š—ñ‚P += "$";
+	}
+	if (no == 2)
+	{
+		int ra = RAND(10);
+		if (‚b«•Ê(iic, -1) == 2)
+		{
+			•¶š—ñ‚P = "After the adventure, she...$";
+			•¶š—ñ‚P += "experiences several life-or-death incidents but somehow manages to survive them all and live to a ripe old age.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+		if (‚b«•Ê(iic, -1) != 2)
+		{
+			•¶š—ñ‚P = "After the adventure, he...$";
+			•¶š—ñ‚P += "experiences several life-or-death incidents but somehow manages to survive them all and live to a ripe old age.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 1)
+		{
+			•¶š—ñ‚P = "Several years later... a freak meteor accident results in instant death.$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 2 && ‚b«•Ê(iic, -1) == 2)
+		{
+			•¶š—ñ‚P = "She meets the man of her dreams.$";
+			•¶š—ñ‚P += "She gets caught up in some sort of incident where they work together and overcome great odds. They marry and live a happy life together.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 3 && ‚b«•Ê(iic, -1) == 2 && ‚b“]¶‰ñ”(iic, -1) != 0 && ‚b‚e‚`(iic, 13, -1) == 3)
+		{
+			•¶š—ñ‚P = "She burns with hatred for Rance, but he keeps finding her over and over again and rapes her every time.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 3 && ‚b«•Ê(iic, -1) == 2 && ‚b“]¶‰ñ”(iic, -1) != 0 && ‚b‚e‚`(iic, 13, -1) != 3)
+		{
+			•¶š—ñ‚P = "She spends her days as Rance's mistress.$";
+		}
+		if (ra == 4)
+		{
+			•¶š—ñ‚P = "Later, gets dragged into a fight with a fiend and gets eaten.$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 5)
+		{
+			•¶š—ñ‚P = "Eventually joins the Hero's party. Turns out to be a crucial player in a devastating battle to protect the world.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 6 && ‚b«•Ê(iic, -1) == 1)
+		{
+			•¶š—ñ‚P = "Several months later... $";
+			•¶š—ñ‚P += "He sets out on a journey to Ho Laga's tower and never returns.$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 7 && ‚b‚e‚`(iic, 12, -1) == 2)
+		{
+			•¶š—ñ‚P = "Several years later...$";
+			•¶š—ñ‚P += "When she grows up into a beautiful woman, Rance shows right up and assaults her.$";
+			•¶š—ñ‚P += "$";
+		}
+		if (ra == 8)
+		{
+			•¶š—ñ‚P = "Flourishes as a freelance adventurer.$";
+			int ra2 = RAND(5);
+			if (ra2 == 1)
+			{
+				•¶š—ñ‚P += "Excavates ruins of the Holy Magic Sect.$";
+			}
+			if (ra2 == 2)
+			{
+				•¶š—ñ‚P += "Discovers a new species of rare monster.$";
+			}
+			if (ra2 == 3)
+			{
+				•¶š—ñ‚P += "Encounters Anise and gets instantly killed.$";
+			}
+			if (ra2 == 4)
+			{
+				•¶š—ñ‚P += "Retires after an accident and opens a bar.$";
+			}
+			if (ra2 == 5)
+			{
+				•¶š—ñ‚P += "But didn't achieve anything noteworthy.$";
+			}
+		}
+		if (ra == 9 && ‚b«•Ê(iic, -1) == 2)
+		{
+			•¶š—ñ‚P = "After this adventure, when she becomes a freelance adventurer, she meets a kind, refreshing young man on the road. She decides to accompany the young man. His name is Bird Lithfie. He's a shy man who doesn't really make moves on her even after they become lovers.$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+			•¶š—ñ‚P += "$";
+		}
+	}
+}
+
+void ‚sƒGƒsƒ[ƒOƒf[ƒ^¶¬()
+{
+	int iic = 0;
+	int loop = 0;
+	int aa = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		l‹CƒLƒƒƒ‰[loop] = 0;
+		l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[loop] = 0;
+	}
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (‚b“o˜^ó‘Ô(iic, -1) != 0)
+		{
+			aa = ‚bí“¬Q‰Á‰ñ”(iic, -1);
+			LOG_TADA("l‹Cƒ`ƒFƒbƒN@" + ‚b–¼‘O(iic, "") + "@" + string(aa) + "\n");
+			for (; ; )
+			{
+				if (l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[1] < aa)
+				{
+					l‹CƒLƒƒƒ‰[5] = l‹CƒLƒƒƒ‰[4];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[5] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4];
+					l‹CƒLƒƒƒ‰[4] = l‹CƒLƒƒƒ‰[3];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3];
+					l‹CƒLƒƒƒ‰[3] = l‹CƒLƒƒƒ‰[2];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2];
+					l‹CƒLƒƒƒ‰[2] = l‹CƒLƒƒƒ‰[1];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[1];
+					l‹CƒLƒƒƒ‰[1] = iic;
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[1] = aa;
+					break;
+				}
+				if (l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2] < aa)
+				{
+					l‹CƒLƒƒƒ‰[5] = l‹CƒLƒƒƒ‰[4];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[5] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4];
+					l‹CƒLƒƒƒ‰[4] = l‹CƒLƒƒƒ‰[3];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3];
+					l‹CƒLƒƒƒ‰[3] = l‹CƒLƒƒƒ‰[2];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2];
+					l‹CƒLƒƒƒ‰[2] = iic;
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2] = aa;
+					break;
+				}
+				if (l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] < aa)
+				{
+					l‹CƒLƒƒƒ‰[5] = l‹CƒLƒƒƒ‰[4];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[5] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4];
+					l‹CƒLƒƒƒ‰[4] = l‹CƒLƒƒƒ‰[3];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3];
+					l‹CƒLƒƒƒ‰[3] = iic;
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] = aa;
+					break;
+				}
+				if (l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4] < aa)
+				{
+					l‹CƒLƒƒƒ‰[5] = l‹CƒLƒƒƒ‰[4];
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[5] = l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4];
+					l‹CƒLƒƒƒ‰[4] = iic;
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[4] = aa;
+					break;
+				}
+				if (l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[5] < aa)
+				{
+					l‹CƒLƒƒƒ‰[5] = iic;
+					l‹CƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[5] = aa;
+					break;
+				}
+				break;
+			}
+		}
+	}
+	for (loop = 1; loop < 4; ++loop)
+	{
+		€–SƒLƒƒƒ‰[loop] = 0;
+		€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[loop] = 0;
+	}
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (‚b“o˜^ó‘Ô(iic, -1) != 0)
+		{
+			aa = ‚bí“¬€–S‰ñ”(iic, -1);
+			for (; ; )
+			{
+				if (€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[1] < aa)
+				{
+					€–SƒLƒƒƒ‰[3] = €–SƒLƒƒƒ‰[2];
+					€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] = €–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2];
+					€–SƒLƒƒƒ‰[2] = €–SƒLƒƒƒ‰[1];
+					€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2] = €–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[1];
+					€–SƒLƒƒƒ‰[1] = iic;
+					€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[1] = aa;
+					break;
+				}
+				if (€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2] < aa)
+				{
+					€–SƒLƒƒƒ‰[3] = €–SƒLƒƒƒ‰[2];
+					€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] = €–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2];
+					€–SƒLƒƒƒ‰[2] = iic;
+					€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[2] = aa;
+					break;
+				}
+				if (€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] < aa)
+				{
+					€–SƒLƒƒƒ‰[3] = iic;
+					€–SƒLƒƒƒ‰ƒ|ƒCƒ“ƒg[3] = aa;
+					break;
+				}
+				break;
+			}
+		}
+	}
+	for (loop = 1; loop < 9; ++loop)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[loop] = 0;
+	}
+	int bb = 1;
+	int mno = 0;
+	int ino = 0;
+	mno = 142;
+	ino = 227;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 153;
+	ino = 228;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 164;
+	ino = 229;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 197;
+	ino = 230;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 165;
+	ino = 231;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 168;
+	ino = 232;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 175;
+	ino = 233;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 187;
+	ino = 234;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 188;
+	ino = 235;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 198;
+	ino = 236;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 206;
+	ino = 237;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 231;
+	ino = 238;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 230;
+	ino = 239;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 239;
+	ino = 240;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 240;
+	ino = 241;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 220;
+	ino = 242;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 199;
+	ino = 243;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+	mno = 456;
+	ino = 244;
+	if (‚h—L–³(ino, 0, "") == 0 && bb < 9)
+	{
+		–¢•ßŠlƒ‚ƒ“ƒXƒ^[[bb] = mno;
+		++bb;
+	}
+}
+

@@ -1,0 +1,72 @@
+CConfigCommonViewCreater::CConfigCommonViewCreater()
+{
+	this.m_nTabHeight = 32;
+	this.m_nExitBarHeight = 32;
+}
+
+void CConfigCommonViewCreater::CreateTab(ref CConfigTabView ConfigTabView, int nZ, int nActiveTab, ref array@string TabNameList)
+{
+	array@_CCgInfo@2 TabCGInfoList;
+	g_ConfigModeDocument.GetTabCGInfoList(TabCGInfoList);
+	if (!TabCGInfoList[0][0]._GetCg().Empty())
+	{
+		ConfigTabView.SetCG(nZ, TabCGInfoList, nActiveTab);
+	}
+	else
+	{
+		int nScreenWidth = Math.Min(GetScreenWidth(), 1024);
+		int nTabWidth = nScreenWidth;
+		ConfigTabView.Create(nZ, nTabWidth, this.m_nTabHeight, nActiveTab, TabNameList);
+	}
+}
+
+void CConfigCommonViewCreater::CreateBaseSprite(ref CConfigBaseSprite BaseSprite, int nTabIndex, int nZ)
+{
+	ref _CCgInfo EachBackCGInfo = g_ConfigModeDocument.GetEachBackCGInfo(nTabIndex);
+	ref _CCgInfo BackCGInfo = g_ConfigModeDocument.GetBackCGInfo();
+	string CGName = EachBackCGInfo._GetCg();
+	int X = EachBackCGInfo._GetX();
+	int Y = EachBackCGInfo._GetY();
+	if (CGName.Empty())
+	{
+		CGName = BackCGInfo._GetCg();
+		X = BackCGInfo._GetX();
+		Y = BackCGInfo._GetY();
+	}
+	if (!CGName.Empty())
+	{
+		BaseSprite.SetCG(X, Y, nZ, CGName);
+	}
+	else
+	{
+		int nScreenWidth = Math.Min(GetScreenWidth(), 1024);
+		int ScreenHeight = Math.Min(GetScreenHeight(), 1024);
+		int nBaseSpriteX = 0;
+		int nBaseSpriteY = this.m_nTabHeight - 1;
+		int nBaseSpriteWidth = nScreenWidth;
+		int nBaseSpriteHeight = ((ScreenHeight - this.m_nTabHeight) + 1) - this.m_nExitBarHeight;
+		BaseSprite.Create(nBaseSpriteX, nBaseSpriteY, nZ, nBaseSpriteWidth, nBaseSpriteHeight);
+	}
+}
+
+void CConfigCommonViewCreater::CreateExitBar(ref CConfigExitBar ExitBar, int nZ)
+{
+	array@_CCgInfo CloseGameButtonInfo;
+	array@_CCgInfo ReturnToTitleButtonInfo;
+	array@_CCgInfo ExitButtonInfo;
+	g_ConfigModeDocument.GetCloseGameButtonCGInfo(CloseGameButtonInfo);
+	g_ConfigModeDocument.GetReturnToTitleButtonCGInfo(ReturnToTitleButtonInfo);
+	g_ConfigModeDocument.GetExitButtonCGInfo(ExitButtonInfo);
+	if (!CloseGameButtonInfo[0]._GetCg().Empty())
+	{
+		ExitBar.SetCG(nZ, CloseGameButtonInfo, ReturnToTitleButtonInfo, ExitButtonInfo);
+	}
+	else
+	{
+		int nScreenWidth = Math.Min(GetScreenWidth(), 1024);
+		int ScreenHeight = Math.Min(GetScreenHeight(), 1024);
+		int nBaseSpriteHeight = ((ScreenHeight - this.m_nTabHeight) + 1) - this.m_nExitBarHeight;
+		ExitBar.Create(0, (this.m_nTabHeight + nBaseSpriteHeight) - 1, nZ, nScreenWidth, this.m_nExitBarHeight);
+	}
+}
+

@@ -1,0 +1,368 @@
+void ０３Ｃ／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	地図点滅(3, "", 0, 0);
+	ADVON();
+	セット表示(5530, gＭ, 0, 0);
+	ト書き();
+	'　' R;
+	'     Helman   Shopping Mall Ruins' A;
+	'Rance\'s party had come to the former base of the organization known as Lion Mind.' A;
+	セリフ(2005, "");
+	'"........."' A;
+	ト書き();
+	'Rance glanced at his surroundings, not uttering a word.' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"........."' A;
+	ト書き();
+	'Crook was equally silent.' A;
+	'The two of them merely remained tense, cautious of their surroundings.' A;
+	セリフ(2060, "");
+	'"...This isn\'t good."' A;
+	セリフ(2000, "");
+	'"Whose fault is this? Sheesh."' A;
+	セリフ２(2925, "Rotten Corpse");
+	'"...Gah, gagah, gagagah..."' A;
+	'"Gwhoooa..."' A;
+	ト書き();
+	'Rance was now surrounded by a huge number of rotten corpses, which had sprung forth from the shopping mall.' A;
+	'The rotten corpses tottered about, searching for prey.' A;
+	セリフ(2005, "");
+	'"Shit, I just came with you ’cause you said you forgot something, and look at the trouble we\'re in now!"' A;
+	セリフ(2060, "");
+	'"Sorry."' A;
+	セリフ(2000, "");
+	'"So what did you forget, anyway?"' A;
+	セリフ(2060, "");
+	'"I just had to pick something up here."' A;
+	'"It\'s a mere necktie.' R;
+	' Don\'t even worry about it."' A;
+	ト書き();
+	'So saying, Crook carefully stowed the necktie in a pouch, then stuffed it deep into her bag.' A;
+	セリフ(2005, "");
+	'"Doesn\'t really look like a \'mere\' anything, but..."' A;
+	セリフ(2060, "");
+	'"........."' A;
+	セリフ２(2925, "Rotten Corpse");
+	'"...Hun... gry... for... fle... esh..."' A;
+	'"Gwhoooa..."' A;
+	セリフ(2000, "");
+	'"Tch, there\'s even more of these zombies.' R;
+	' We can talk later.' R;
+	' We should get out of here for now."' A;
+	セリフ(2060, "");
+	'"Agreed."' A;
+	'"We\'d be able to escape easily if you hadn\'t forgotten the return wood, but I suppose we have no choice today."' A;
+	セリフ(2005, "");
+	'"...Shut it."' A;
+	ADVOFF();
+}
+
+void ０３Ｃ／ゾンビソードの説明()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2060, "");
+	'"Come to think of it."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2060, "");
+	'"Have you heard this before?"' A;
+	'"I hear in places where a large amount of zombie monsters spawn, there\'s a sword called the Zombie Sword."' A;
+	'"It\'s apparently quite powerful against zombie monsters."' A;
+	'"And its stats change depending on how many zombies you\'ve defeated."' A;
+	セリフ(2000, "");
+	'"Which means..."' A;
+	'"It\'d be good if we found the sword after beating a bunch of zombies, huh?"' A;
+	セリフ(2060, "");
+	'"Right."' A;
+	'"Let\'s get out of here first, though."' A;
+	セリフ(2000, "");
+	'"Yeah, it stinks."' A;
+	ADVOFF();
+}
+
+void ０３Ｃ／る壺()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2060, "");
+	'"Oh? This is..."' A;
+	ミニイベント表示(4550, 1, 500);
+	セリフ２(2925, "Crucible");
+	'"........."' A;
+	ト書き();
+	'A conspicuous jar stood before Rance\'s party.' A;
+	セリフ(2003, "");
+	'"Yikes, this is one of those crucibles that endlessly spews monsters, isn\'t it?"' A;
+	ト書き();
+	'Glint!' R;
+	'The crucible\'s eyes shone mysteriously.' A;
+	'It spun around, spewing out smoke...' R;
+	'and a monster.' A;
+	セリフ(2060, "");
+	'"This must be..."' A;
+	セリフ２(2925, "Rotten Corpse");
+	'"...Gwhoooooa."' A;
+	セリフ(2000, "");
+	'"A zombie..."' A;
+	ト書き();
+	'The rotten corpse staggered away.' A;
+	セリフ(2060, "");
+	'"It appears to be a crucible specializing in zombies."' A;
+	セリフ(2000, "");
+	'"...So this thing is why there were so many zombies in here."' A;
+	セリフ(2060, "");
+	'"We should destroy it, then."' A;
+}
+
+void ０３Ｃ／る壺／破壊()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2000, "");
+	'"Mm, there\'s no forgiving a jar this rude."' A;
+	'"Here we go..."' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	ト書き();
+	'　' R;
+	' <craaaaash!>' A;
+	'Rance smashed the crucible with his sword.' A;
+	セリフ(2000, "");
+	'"Alright, now no more zombies will show up."' A;
+	セリフ(2060, "");
+	'"Now all we have to worry about are the rotten corpses already in the building."' A;
+	セリフ(2000, "");
+	'"Let\'s get out of here, then."' A;
+	セリフ(2060, "");
+	'"Right."' A;
+	ADVOFF();
+}
+
+void ０３Ｃ／る壺／見逃す()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2000, "");
+	'"Nah, let\'s not."' A;
+	セリフ(2060, "");
+	'"Why not?' R;
+	' I think this is something we should destroy."' A;
+	セリフ(2000, "");
+	'"We just shouldn\'t."' A;
+	'"My countless adventuring experiences are telling me not to."' A;
+	'"This is a flag for some future event.' R;
+	' And a good one, too."' A;
+	セリフ(2060, "");
+	'"Are you certain...?"' A;
+	'"It seems like nothing but a mistake to me."' A;
+	セリフ(2000, "");
+	'"I speak only the truth."' A;
+	セリフ(2060, "");
+	'"Is that so..."' A;
+	ADVOFF();
+}
+
+void ０３Ｃ／出口()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2001, "");
+	'"Woohoo, the exit, the exit!"' A;
+	'"Let\'s say goodbye to this smelly place!"' A;
+	ト書き();
+	'　' R;
+	' <clank, clank clank>' A;
+	セリフ(2005, "");
+	'"H-Huh?"' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"Is something wrong?"' A;
+	セリフ(2000, "");
+	'"The exit won\'t open...' R;
+	' It\'s shut tight..."' A;
+	セリフ(2060, "");
+	'"...Look behind you."' A;
+	ト書き();
+	'An enormous zombie stood where Crook was pointing.' A;
+	セリフ(2060, "");
+	'"Maybe we have to beat that boss-looking thing for the door to open."' A;
+	セリフ(2000, "");
+	'"Why?"' A;
+	セリフ(2060, "");
+	'"That\'s just how it\'s always been."' A;
+	セリフ(2005, "");
+	'"Mmmm..."' A;
+	'"But it looks really smelly..."' A;
+	セリフ(2060, "");
+	'"Want to run from it, then?"' A;
+	セリフ(2005, "");
+	'"Hmmmmmm..."' A;
+	ADVOFF();
+}
+
+void ０３Ｃ／出口／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"...The exit won\'t open, huh?"' A;
+	'"So we really have to beat that boss-like zombie..."' A;
+	ADVOFF();
+}
+
+void ０３Ｃ／エピローグＡ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Alright, we can get out from this exit."' A;
+	ト書き();
+	'Rance opened the door and flew outside.' A;
+	枠消去();
+	背景アウト(500);
+	背景イン(5090, 500, "", false);
+	音楽(72, -1, -1);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Ooh... The blue sky..."' A;
+	セリフ(2001, "");
+	'"Woohoo, out!"' A;
+	'"Deep breaths, deep breaths.' R;
+	' Phew, phew, phew, phaahh."' A;
+	セリフ(2000, "");
+	'"Ahh, the air tastes great.' R;
+	' I thought I might die in there from all that zombie stink."' A;
+	セリフ(2060, "");
+	'"Quite."' A;
+	ト書き();
+	'Rance glanced to the side and found Crook next to him in her underwear.' A;
+	セリフ(2000, "");
+	'"Whoa, you surprised me.' R;
+	' What the heck are you doing?"' A;
+	セリフ(2060, "");
+	'"The smell sunk into my clothes, so I thought I\'d change into my spare outfit."' A;
+	セリフ(2000, "");
+	'"Change when you get home!' R;
+	' That\'s indecent."' A;
+	セリフ(2060, "");
+	'"Hmm..."' A;
+	セリフ(2005, "");
+	'"...Hmm?"' A;
+	'"She was half-naked next to me and I didn\'t feel turned on at all..."' A;
+	'"...Why?"' A;
+	セリフ(2060, "");
+	'"Shall we head home?"' A;
+}
+
+void ０３Ｃ／エピローグＢ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Alright, we can get out from this exit."' A;
+	ト書き();
+	'Rance opened the door and flew outside.' A;
+	枠消去();
+	背景アウト(500);
+	背景イン(5090, 500, "", false);
+	音楽(72, -1, -1);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Ooh... The blue sky..."' A;
+	セリフ(2001, "");
+	'"Woohoo, out!"' A;
+	'"Deep breaths, deep breaths.' R;
+	' Phew, phew, phew, phaahh."' A;
+	セリフ(2000, "");
+	'"Ahh, the air tastes great.' R;
+	' I thought I might die in there from all that zombie stink."' A;
+	音楽(0, -1, -1);
+	セリフ(2060, "");
+	'"Look there, Rance."' A;
+	ト書き();
+	'Crook was pointing to the door the party had left from, from which rotten corpses were now streaming out.' A;
+	セリフ(2003, "");
+	'"Hey, what\'s going on?!"' A;
+	ト書き();
+	'The rotten corpses continued to pour outside, where they stumbled around.' A;
+	セリフ(2060, "");
+	'"It\'ll be dangerous to leave them like this..."' A;
+	'"We should return, shut the door, and eliminate the zombies."' A;
+	セリフ(2000, "");
+	'"I-I don\'t wanna."' A;
+	セリフ(2060, "");
+	'"But it\'s our fault."' A;
+	セリフ(2000, "");
+	'"I don\'t want to smell them anymore.' R;
+	' I\'m sure some guards or something will take care of them."' A;
+	セリフ(2060, "");
+	'"That\'s pretty irresponsible."' A;
+	セリフ(2002, "");
+	'"I don\'t care!' R;
+	' Let\'s go, Crook!"' A;
+	音楽(0, -1, -1);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance pulled Crook back to town.' A;
+	セリフ２(2925, "Rotten Corpse");
+	'"Want... meat..."' A;
+	'"Gwooo... gwooo..."' A;
+	'"Meat... raw... meat..."' A;
+	ト書き();
+	'The zombies left the shopping mall.' A;
+	'They filed out, freed from their tiny feeding ground.' A;
+	'They wandered about, following only their instincts and animal intelligence.' A;
+	'The actions they will take after this...' A;
+	'No one knows...' A;
+	セット表示(5540, 0, 0, 0);
+	セリフ２(2925, "Rotten Corpse");
+	'"...Hun... gry..."' A;
+	TOFF();
+}
+

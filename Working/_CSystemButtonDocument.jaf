@@ -1,0 +1,213 @@
+sys_btn_fnc_t _CSystemButtonDocument::_GetFunc(int _i, int _btn_index)
+{
+	return this._m_tbl[_i]._GetFunc(_btn_index);
+}
+
+void _CSystemButtonDocument::_Set(int _i, int _x, int _y, int _z, string _plain_cg, string _hilite_cg, sys_btn_fnc_t _fnc, bool PixelDecide)
+{
+	if (_i == 0)
+	{
+		if (this._m_tbl.Empty())
+		{
+			this._m_tbl.Alloc(40);
+		}
+		this._SetAll(_x, _y, _z, _plain_cg, _hilite_cg, _fnc, PixelDecide);
+	}
+	else
+	{
+		this._Set1(_i, _x, _y, _z, _plain_cg, _hilite_cg, _fnc, PixelDecide);
+	}
+}
+
+void _CSystemButtonDocument::_Clear(int _i)
+{
+	if (_i == 0)
+	{
+		this._ClearAll();
+	}
+	else
+	{
+		this._Clear1(_i);
+	}
+}
+
+void _CSystemButtonDocument::_SetAll(int _x, int _y, int _z, string _plain_cg, string _hilite_cg, sys_btn_fnc_t _fnc, bool PixelDecide)
+{
+	int _i = 0;
+	for (_i = 1; _i < this._m_tbl.Numof(); ++_i)
+	{
+		this._Set1(_i, _x, _y, _z, _plain_cg, _hilite_cg, _fnc, PixelDecide);
+	}
+}
+
+void _CSystemButtonDocument::_ClearAll()
+{
+	int _i = 0;
+	for (_i = 0; _i < this._m_tbl.Numof(); ++_i)
+	{
+		this._Clear1(_i);
+	}
+}
+
+void _CSystemButtonDocument::_Set1(int _i, int _x, int _y, int _z, string _plain_cg, string _hilite_cg, sys_btn_fnc_t _fnc, bool PixelDecide)
+{
+	this._EnlargeTblForIndex(_i);
+	this._m_tbl[_i]._Set(_x, _y, _z, _plain_cg, _hilite_cg, _fnc, PixelDecide);
+}
+
+void _CSystemButtonDocument::_SetForRem(int _i, sys_btn_fnc_t _fnc, string _cover_cg)
+{
+	if (_i == 0)
+	{
+		if (this._m_tbl.Empty())
+		{
+			this._m_tbl.Alloc(40);
+		}
+		for (_i = 1; _i < this._m_tbl.Numof(); ++_i)
+		{
+			this._SetForRem1(_i, _fnc, _cover_cg);
+		}
+	}
+	else
+	{
+		this._SetForRem1(_i, _fnc, _cover_cg);
+	}
+}
+
+void _CSystemButtonDocument::_SetForRem1(int _i, sys_btn_fnc_t _fnc, string _cover_cg)
+{
+	this._EnlargeTblForIndex(_i);
+	this._m_tbl[_i]._SetForRem(_fnc, _cover_cg);
+}
+
+void _CSystemButtonDocument::SetDisableCG(int nIndex, sys_btn_fnc_t CommandFunc, string CG)
+{
+	if (nIndex == 0)
+	{
+		if (this._m_tbl.Empty())
+		{
+			this._m_tbl.Alloc(40);
+		}
+		for (nIndex = 1; nIndex < this._m_tbl.Numof(); ++nIndex)
+		{
+			this._m_tbl[nIndex].SetDisableCG(CommandFunc, CG);
+		}
+	}
+	else
+	{
+		this._EnlargeTblForIndex(nIndex);
+		this._m_tbl[nIndex].SetDisableCG(CommandFunc, CG);
+	}
+}
+
+void _CSystemButtonDocument::SetIsEnableSystemButtonFunc(int nIndex, sys_btn_fnc_t CommandFunc, FTIsEnableSystemButton Func)
+{
+	if (nIndex == 0)
+	{
+		if (this._m_tbl.Empty())
+		{
+			this._m_tbl.Alloc(40);
+		}
+		for (nIndex = 1; nIndex < this._m_tbl.Numof(); ++nIndex)
+		{
+			this._m_tbl[nIndex].SetIsEnableSystemButtonFunc(CommandFunc, Func);
+		}
+	}
+	else
+	{
+		this._EnlargeTblForIndex(nIndex);
+		this._m_tbl[nIndex].SetIsEnableSystemButtonFunc(CommandFunc, Func);
+	}
+}
+
+void _CSystemButtonDocument::_Clear1(int _i)
+{
+	this._EnlargeTblForIndex(_i);
+	this._m_tbl[_i]._Clear();
+}
+
+void _CSystemButtonDocument::_EnlargeTblForIndex(int _i)
+{
+	if (_i < this._m_tbl.Numof())
+	{
+		return;
+	}
+	this._m_tbl.Realloc(_i + 1);
+}
+
+int _CSystemButtonDocument::_GetButtonCount(int _i)
+{
+	if (_i >= this._m_tbl.Numof())
+	{
+		return 0;
+	}
+	return this._m_tbl[_i]._GetButtonCount();
+}
+
+void _CSystemButtonDocument::_SetToSpriteCg(ref CASCGSprite _sp, int _i, int _btn_index, int _state)
+{
+	this._m_tbl[_i]._SetToSpriteCg(_sp, _btn_index, _state);
+}
+
+bool _CSystemButtonDocument::_IsEnable(int _i, int _btn_index)
+{
+	if (_i < 0 || _i >= this._m_tbl.Numof())
+	{
+		DebugErrorMB("_i=%d\n_m_tbl.Numof()=%d\n" % _i % this._m_tbl.Numof());
+		return false;
+	}
+	if (_btn_index < 0 || _btn_index >= this._m_tbl[_i]._GetButtonCount())
+	{
+		DebugErrorMB("_btn_index=%d\n_m_tbl[%d]._GetButtonCount()=%d" % _btn_index % _i % this._m_tbl[_i]._GetButtonCount());
+		return false;
+	}
+	return this._m_tbl[_i]._IsEnable(_btn_index);
+}
+
+int _CSystemButtonDocument::_GetFuncX(int _i, sys_btn_fnc_t _fnc)
+{
+	return this._m_tbl[_i]._GetFuncX(_fnc);
+}
+
+int _CSystemButtonDocument::_GetFuncY(int _i, sys_btn_fnc_t _fnc)
+{
+	return this._m_tbl[_i]._GetFuncY(_fnc);
+}
+
+void _CSystemButtonDocument::SetVisibleRect(int MessageWindowNumber, sys_btn_fnc_t CommandFunc, CASRect VisibleRect)
+{
+	if (MessageWindowNumber == 0)
+	{
+		if (this._m_tbl.Empty())
+		{
+			this._m_tbl.Alloc(40);
+		}
+		int n = 0;
+		for (n = 1; n < this._m_tbl.Numof(); ++n)
+		{
+			this.SetOneVisibleRect(n, CommandFunc, VisibleRect);
+		}
+	}
+	else
+	{
+		this.SetOneVisibleRect(MessageWindowNumber, CommandFunc, VisibleRect);
+	}
+}
+
+void _CSystemButtonDocument::SetOneVisibleRect(int MessageWindowNumber, sys_btn_fnc_t CommandFunc, CASRect VisibleRect)
+{
+	this._EnlargeTblForIndex(MessageWindowNumber);
+	ref CASRect Rect = this._m_tbl[MessageWindowNumber].GetVisibleRect(CommandFunc);
+	Rect = VisibleRect;
+}
+
+ref CASRect _CSystemButtonDocument::GetVisibleRectByIndex(int MessageWindowNumber, int Index)
+{
+	return this._m_tbl[MessageWindowNumber].GetVisibleRectByIndex(Index);
+}
+
+bool _CSystemButtonDocument::IsPixelDecide(int MessageWindowNumber, int ButtonIndex)
+{
+	return this._m_tbl[MessageWindowNumber].IsPixelDecide(ButtonIndex);
+}
+

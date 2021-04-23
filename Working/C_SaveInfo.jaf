@@ -1,0 +1,89 @@
+bool セーブ情報_保存(int nSaveNo, int nMode, string szComment)
+{
+	T_SaveInfo sInfo;
+	if (!sInfo.create(nSaveNo, nMode, szComment))
+	{
+		system.MsgBox("セーブ情報が保存できませんでした。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	if (!sInfo.save())
+	{
+		system.MsgBox("セーブ情報の保存に失敗しました。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	return true;
+}
+
+bool セーブ情報_読込(int nSaveNo, ref T_SaveInfo rfInfo)
+{
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	if (!セーブ_ファイルあり(nSaveNo))
+	{
+		return false;
+	}
+	if (!rfInfo.load(nSaveNo))
+	{
+		system.MsgBox("セーブ情報のロードに失敗しました。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	return true;
+}
+
+bool セーブ情報_削除(int nSaveNo)
+{
+	string szName = セーブ_情報ファイル名(nSaveNo);
+	if (system.DeleteSaveFile(szName) == 0)
+	{
+		system.MsgBox("セーブ情報の削除に失敗しました。" + szName);
+		return false;
+	}
+	return true;
+}
+
+bool セーブ情報_複写(int nSaveNo, ref T_SaveInfo rfInfo)
+{
+	T_SaveInfo sInfo;
+	if (!sInfo.copy(nSaveNo, rfInfo))
+	{
+		system.MsgBox("セーブ情報が複写できませんでした。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	if (!sInfo.save())
+	{
+		system.MsgBox("セーブ情報の複写に失敗しました。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	return true;
+}
+
+bool セーブ情報_交換(int nSaveNo1, int nSaveNo2)
+{
+	T_SaveInfo sInfo1;
+	T_SaveInfo sInfo2;
+	if (!セーブ情報_読込(nSaveNo1, sInfo1))
+	{
+		return false;
+	}
+	if (!セーブ情報_読込(nSaveNo2, sInfo2))
+	{
+		return false;
+	}
+	if (!セーブ情報_複写(nSaveNo1, sInfo2))
+	{
+		return false;
+	}
+	if (!セーブ情報_複写(nSaveNo2, sInfo1))
+	{
+		return false;
+	}
+	return true;
+}
+
+int セーブ情報_比較(ref T_SaveInfo rfInfo1, ref T_SaveInfo rfInfo2)
+{
+	return rfInfo1.comp(rfInfo2);
+}
+

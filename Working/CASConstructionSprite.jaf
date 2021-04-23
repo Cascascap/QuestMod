@@ -1,0 +1,145 @@
+CASConstructionSprite::CASConstructionSprite()
+{
+	this.m_nHandle = g_ASConstructionSpriteManager.CreateHandle();
+}
+
+CASConstructionSprite::~CASConstructionSprite()
+{
+	g_ASConstructionSpriteManager.ReleaseHandle(this.m_nHandle);
+}
+
+void CASConstructionSprite::Release()
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).Release();
+}
+
+void CASConstructionSprite::Clear()
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).Clear();
+}
+
+void CASConstructionSprite::AddCreate(int nWidth, int nHeight)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddCreate(nWidth, nHeight);
+}
+
+void CASConstructionSprite::AddCreatePixelOnly(int nWidth, int nHeight)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddCreatePixelOnly(nWidth, nHeight);
+}
+
+void CASConstructionSprite::AddFill(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddFill(nX, nY, nWidth, nHeight, nR, nG, nB);
+}
+
+void CASConstructionSprite::AddFillAlphaColor(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nA)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddFillAlphaColor(nX, nY, nWidth, nHeight, nR, nG, nB, nA);
+}
+
+void CASConstructionSprite::AddDrawText(int nX, int nY, string Text, sact_text_metrics_t tm, int CharSpace)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddDrawText(nX, nY, Text, tm, CharSpace);
+}
+
+void CASConstructionSprite::AddFillGradationHorizon(int nX, int nY, int nWidth, int nHeight, int nTopR, int nTopG, int nTopB, int nBottomR, int nBottomG, int nBottomB)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddFillGradationHorizon(nX, nY, nWidth, nHeight, nTopR, nTopG, nTopB, nBottomR, nBottomG, nBottomB);
+}
+
+void CASConstructionSprite::AddFillAMap(int nX, int nY, int nWidth, int nHeight, int nAlpha)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddFillAMap(nX, nY, nWidth, nHeight, nAlpha);
+}
+
+void CASConstructionSprite::AddFillWithAlpha(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nA)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddFillWithAlpha(nX, nY, nWidth, nHeight, nR, nG, nB, nA);
+}
+
+void CASConstructionSprite::AddDrawRect(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddDrawRect(nX, nY, nWidth, nHeight, nR, nG, nB);
+}
+
+void CASConstructionSprite::AddDrawLine(int nX0, int nY0, int nX1, int nY1, int nR, int nG, int nB)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddDrawLine(nX0, nY0, nX1, nY1, nR, nG, nB);
+}
+
+void CASConstructionSprite::AddCreateDashChar(int nWidth, int nHeight, CASCharSpriteProperty Property)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).AddCreateDashChar(nWidth, nHeight, Property);
+}
+
+void CASConstructionSprite::Build()
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).Build();
+}
+
+void CASConstructionSprite::SetPos(int nX, int nY)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).SetPos(nX, nY);
+}
+
+void CASConstructionSprite::SetZ(int nZ)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).SetZ(nZ);
+}
+
+void CASConstructionSprite::SetAlpha(int nAlpha)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).SetAlpha(nAlpha);
+}
+
+void CASConstructionSprite::SetShow(bool bShow)
+{
+	g_ASConstructionSpriteManager.GetObject(this.m_nHandle).SetShow(bShow);
+}
+
+bool CASConstructionSprite::GetShow()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).GetShow();
+}
+
+int CASConstructionSprite::GetX()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).GetX();
+}
+
+int CASConstructionSprite::GetY()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).GetY();
+}
+
+int CASConstructionSprite::GetZ()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).GetZ();
+}
+
+int CASConstructionSprite::GetAlpha()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).GetAlpha();
+}
+
+int CASConstructionSprite::GetWidth()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).GetWidth();
+}
+
+int CASConstructionSprite::GetHeight()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).GetHeight();
+}
+
+bool CASConstructionSprite::IsMouseCursorIn()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).IsMouseCursorIn();
+}
+
+bool CASConstructionSprite::IsMouseCursorInRect()
+{
+	return g_ASConstructionSpriteManager.GetObject(this.m_nHandle).IsMouseCursorInRect();
+}
+

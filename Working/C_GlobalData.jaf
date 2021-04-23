@@ -1,0 +1,432 @@
+void 共通変数_初期化()
+{
+	if (!system.ExistSaveFile("共有.asd"))
+	{
+		共通変数_クリア();
+		共通変数_セーブ();
+	}
+	bool bSave = false;
+	if (g_abCgMode.Numof() < 220)
+	{
+		g_abCgMode.Realloc(220);
+		bSave = true;
+	}
+	if (◆ＣＧモード／表示回数.Numof() < 221)
+	{
+		◆ＣＧモード／表示回数.Realloc(221);
+		bSave = true;
+	}
+	if (bSave)
+	{
+		共通変数_セーブ();
+	}
+}
+
+bool 共通変数_セーブ()
+{
+	return SYS_共有セーブ() > 0;
+}
+
+void 共通変数_クリア()
+{
+	g_anGlobalData.Fill(0, 100, 0);
+	g_abDialogFlag.Fill(0, 100, 0);
+	g_abCgMode.Fill(0, g_abCgMode.Numof(), 0);
+	◆ＣＧモード／表示回数.Fill(0, ◆ＣＧモード／表示回数.Numof(), 0);
+	◆音楽モード／再生回数.Fill(0, ◆音楽モード／再生回数.Numof(), 0);
+	g_anGlobalData[9] = 100;
+	g_anGlobalData[10] = 0;
+	g_anGlobalData[11] = 0;
+	g_anGlobalData[20] = 0;
+	g_anGlobalData[21] = 3500;
+	g_anGlobalData[22] = 1;
+	g_anGlobalData[23] = 0;
+	g_anGlobalData[30] = 1;
+	g_anGlobalData[31] = 1;
+	g_anGlobalData[32] = 1;
+}
+
+int 共通変数_取得(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 100)
+	{
+		return -1;
+	}
+	return g_anGlobalData[nIndex];
+}
+
+int 共通変数_設定(int nIndex, int nValue, bool bSave)
+{
+	if (nIndex < 0 || nIndex >= 100)
+	{
+		return -1;
+	}
+	ref int rfnData = g_anGlobalData[nIndex];
+	if (rfnData != nValue)
+	{
+		rfnData = nValue;
+		if (bSave)
+		{
+			共通変数_セーブ();
+		}
+	}
+	return nValue;
+}
+
+int 戦闘速度()
+{
+	return g_anGlobalData[10];
+}
+
+int 戦闘速度_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 0;
+	}
+	return 共通変数_設定(10, nValue, true);
+}
+
+int 戦闘行動全表示()
+{
+	return g_anGlobalData[11];
+}
+
+int 戦闘行動全表示_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 0;
+	}
+	return 共通変数_設定(11, nValue, true);
+}
+
+int ３Ｄ設定レベル()
+{
+	return g_anGlobalData[19];
+}
+
+int ３Ｄ設定レベル設定(int nValue)
+{
+	return 共通変数_設定(19, nValue, true);
+}
+
+int 移動速度()
+{
+	return g_anGlobalData[20];
+}
+
+void 移動速度_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 0;
+	}
+	共通変数_設定(20, nValue, true);
+}
+
+float カメラ距離()
+{
+	return 実数変換(g_anGlobalData[21]);
+}
+
+void カメラ距離_設定(float fValue)
+{
+	int nValue = fValue < 0.0 ? 3500 : 数値変換(fValue);
+	共通変数_設定(21, nValue, true);
+}
+
+int マップエリア表示()
+{
+	return g_anGlobalData[22];
+}
+
+void マップエリア表示_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 1;
+	}
+	共通変数_設定(22, nValue, true);
+}
+
+int マップ移動タイプ()
+{
+	return g_anGlobalData[23];
+}
+
+void マップ移動タイプ_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 0;
+	}
+	共通変数_設定(23, nValue, true);
+}
+
+int クエストソートモード()
+{
+	return g_anGlobalData[30];
+}
+
+void クエストソートモード_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 1;
+	}
+	共通変数_設定(30, nValue, true);
+}
+
+int パーティソートモード()
+{
+	return g_anGlobalData[31];
+}
+
+void パーティソートモード_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 1;
+	}
+	共通変数_設定(31, nValue, true);
+}
+
+int アイテムソートモード()
+{
+	return g_anGlobalData[32];
+}
+
+void アイテムソートモード_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 1;
+	}
+	共通変数_設定(32, nValue, true);
+}
+
+int パーティ画面レイアウト()
+{
+	return g_anGlobalData[98];
+}
+
+void パーティ画面レイアウト_設定(int nValue)
+{
+	if (nValue < 0)
+	{
+		nValue = 0;
+	}
+	共通変数_設定(98, nValue, true);
+}
+
+bool プロローグ見た()
+{
+	return g_anGlobalData[0] > 0;
+}
+
+void プロローグ見たＯＮ()
+{
+	if (回想モード_実行中())
+	{
+		return;
+	}
+	共通変数_設定(0, 1, true);
+}
+
+bool ＥＤ見た()
+{
+	return g_anGlobalData[1] > 0;
+}
+
+void ＥＤ見たＯＮ()
+{
+	if (回想モード_実行中())
+	{
+		return;
+	}
+	共通変数_設定(1, 1, true);
+}
+
+int セーブ回数()
+{
+	return g_anGlobalData[5];
+}
+
+int セーブ回数＋()
+{
+	return 共通変数_設定(5, 数値_加算(セーブ回数(), 1), true);
+}
+
+void セーブ回数クリア()
+{
+	共通変数_設定(5, 0, true);
+}
+
+int 起動回数()
+{
+	return g_anGlobalData[4];
+}
+
+int 起動回数＋()
+{
+	return 共通変数_設定(4, 数値_加算(起動回数(), 1), true);
+}
+
+void 起動回数クリア()
+{
+	共通変数_設定(4, 0, true);
+}
+
+int スキル装備モード()
+{
+	return g_anGlobalData[2];
+}
+
+int スキル装備モード設定(int nValue)
+{
+	return 共通変数_設定(2, nValue, true);
+}
+
+int 画面操作モード()
+{
+	return g_anGlobalData[3];
+}
+
+int 画面操作モード設定(int nValue)
+{
+	return 共通変数_設定(3, nValue, true);
+}
+
+int 画面操作モード確認()
+{
+	if (キー優先())
+	{
+		return 1;
+	}
+	return 画面操作モード();
+}
+
+int 音楽モード音量()
+{
+	return g_anGlobalData[9];
+}
+
+int 音楽モード音量設定(int nValue)
+{
+	return 共通変数_設定(9, 数値_補正(nValue, 0, 100), true);
+}
+
+int 音楽モード音量クリア()
+{
+	return 共通変数_設定(9, 100, true);
+}
+
+bool ネットワーク接続許可()
+{
+	return g_anGlobalData[7] >= 2;
+}
+
+int ネットワーク接続許可設定(bool bFlag)
+{
+	return 共通変数_設定(7, bFlag ? 2 : 0, true);
+}
+
+bool ユーザーログフラグ()
+{
+	return g_anGlobalData[6] > 0;
+}
+
+bool ユーザーログフラグ設定(bool bFlag)
+{
+	return 共通変数_設定(6, bFlag ? 1 : 0, true) > 0;
+}
+
+bool 音楽モードミュート()
+{
+	return g_anGlobalData[8] > 0;
+}
+
+bool 音楽モードミュート設定(bool bFlag)
+{
+	return 共通変数_設定(8, bFlag ? 1 : 0, true) > 0;
+}
+
+int 最終セーブ_ワールド()
+{
+	return g_anGlobalData[99];
+}
+
+int 最終セーブ_ワールド保存(int nValue)
+{
+	return 共通変数_設定(99, nValue, true);
+}
+
+bool ダイアログフラグ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 100)
+	{
+		return false;
+	}
+	return g_abDialogFlag[nIndex];
+}
+
+bool ダイアログフラグ_設定(int nIndex, bool bFlag, bool bSave)
+{
+	if (nIndex < 0 || nIndex >= 100)
+	{
+		return false;
+	}
+	ref bool rfbFlag = g_abDialogFlag[nIndex];
+	if (rfbFlag != bFlag)
+	{
+		rfbFlag = bFlag;
+		if (bSave)
+		{
+			共通変数_セーブ();
+		}
+	}
+	return bFlag;
+}
+
+void ダイアログフラグ_クリア()
+{
+	g_abDialogFlag.Fill(0, 100, 0);
+	共通変数_セーブ();
+}
+
+bool ＣＧモード見た(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= g_abCgMode.Numof())
+	{
+		return false;
+	}
+	return g_abCgMode[nIndex];
+}
+
+bool ＣＧモード見た_設定(int nIndex, bool bFlag, bool bSave)
+{
+	if (nIndex < 0 || nIndex >= g_abCgMode.Numof())
+	{
+		return false;
+	}
+	g_abCgMode[nIndex] = bFlag;
+	if (bSave)
+	{
+		共通変数_セーブ();
+	}
+	return bFlag;
+}
+
+bool マウスカーソル自動移動()
+{
+	return g_bMouseCursorAutoMove;
+}
+
+bool マウスカーソル自動移動_設定(bool bFlag)
+{
+	bool bOld = g_bMouseCursorAutoMove;
+	g_bMouseCursorAutoMove = bFlag;
+	return bOld;
+}
+

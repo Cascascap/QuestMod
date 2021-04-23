@@ -1,0 +1,108 @@
+void アリス／アンケート説明()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5080, 0, 0);
+	音楽(84, -1, -1);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Welcome! It\'s Alice."' A;
+	セリフ(2916, "");
+	'"Caw!"' A;
+	セリフ(2080, "");
+	'"Thank you so much for purchasing and playing this game."' A;
+	セリフ(2080, "");
+	'"If you have time, could you answer this survey?' R;
+	' There are kind of a lot of questions, but just casually answer them if you could."' A;
+	ト書き();
+	'This survey uses the internet and will be sent to us over the web.' A;
+	'If your opinion changes after sending it, please retake it as many times as you\'d like.' R;
+	'We\'ll receive and save the updated version.' A;
+	枠消去();
+}
+
+void アリス／アイテムオーバー()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5080, 0, 0);
+	音楽(84, -1, -1);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Hello, it\'s Alice."' A;
+	セリフ(2916, "");
+	'"Caw (And Yukichi)."' A;
+	セリフ(2080, "");
+	'"Ermm, so... sorry to butt in, but you have so many items, we\'ve got a little trouble."' A;
+	'"We\'re so sorry, but please reduce the number of items you have by throwing them away or donating them before you start another quest."' A;
+	セリフ(2916, "");
+	'"Caaaw caw (please)."' A;
+	ADVOFF();
+}
+
+void フロスト売店／寄付／その他()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"Oh, Boss!' R;
+	' Givin\' away some old junk?"' A;
+	'"Looks like you\'ve donated ' NH(◆ＡＡ, 0, 0);
+	' items so far."' A;
+	'"Thanks to that, seems ' S(◆一時文字列);
+	'."' A;
+	ADVOFF();
+}
+
+void アリス／新バージョン説明()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	advon();
+	セット表示(0, 5080, 0, 0);
+	音楽(84, -1, -1);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Hello, this is Alice.' R;
+	' Thank you for playing this version of Rance Quest."' A;
+	ト書き();
+	'You\'ll be able to use most of your save data, but some of it will have to change.' A;
+	'■Changes: Morurun-related' R;
+	'Absorbed items have been restricted to 5, so you\'ll lose any effects from items 6 or higher.' A;
+	'■Changes: Morurun-related' R;
+	'Absorbed items 6-10 will be returned to you.' R;
+	'Characters who have been Morurun\'d more than 5 times will have their talent caps raised.' A;
+	'■Changes: Parameters' R;
+	'The accuracy, evasion, stun, resistance, and critical parameters have changed, so statuses and item effects will also change.' A;
+	'■Changes: Special Effect' R;
+	'Effect: The cap at 1,000 broke the game\'s balance. It\'s been changed to a 5% ability boost.' A;
+	'■Changes: Skill-related' R;
+	'All skills have been revised, so all characters will be reverted to a skill-less state.' A;
+	'■Changes: Worlds' R;
+	'If you were playing on World 2 or higher, you have been returned to World 1.' A;
+	セリフ(2080, "");
+	'"Erm, a lot of things changed, huh?' R;
+	' It might have been a bit annoying, but thank you for putting up with it."' A;
+	'"That\'s all, please have fun."' A;
+	セリフ(2916, "");
+	'"Caw!"' A;
+	ADVOFF();
+}
+

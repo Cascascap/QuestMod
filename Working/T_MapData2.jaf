@@ -1,0 +1,377 @@
+int T_MapData2::setVersion(int nValue)
+{
+	return this.setInfo(0, nValue);
+}
+
+int T_MapData2::setStartX(int nValue)
+{
+	return this.setInfo(1, nValue);
+}
+
+int T_MapData2::setStartY(int nValue)
+{
+	return this.setInfo(2, nValue);
+}
+
+int T_MapData2::setStartDir(int nValue)
+{
+	return this.setInfo(3, nValue);
+}
+
+int T_MapData2::setNorthX(int nValue)
+{
+	return this.setInfo(10, nValue);
+}
+
+int T_MapData2::setNorthY(int nValue)
+{
+	return this.setInfo(11, nValue);
+}
+
+int T_MapData2::setSouthX(int nValue)
+{
+	return this.setInfo(12, nValue);
+}
+
+int T_MapData2::setSouthY(int nValue)
+{
+	return this.setInfo(13, nValue);
+}
+
+int T_MapData2::setEastX(int nValue)
+{
+	return this.setInfo(14, nValue);
+}
+
+int T_MapData2::setEastY(int nValue)
+{
+	return this.setInfo(15, nValue);
+}
+
+int T_MapData2::setWestX(int nValue)
+{
+	return this.setInfo(16, nValue);
+}
+
+int T_MapData2::setWestY(int nValue)
+{
+	return this.setInfo(17, nValue);
+}
+
+int T_MapData2::setOutBreakCount(int nValue)
+{
+	return this.setInfo(20, nValue);
+}
+
+int T_MapData2::setWideAreaCount(int nValue)
+{
+	return this.setInfo(21, nValue);
+}
+
+int T_MapData2::setMemoCount(int nValue)
+{
+	return this.setInfo(29, nValue);
+}
+
+int T_MapData2::getVersion()
+{
+	return this.getInfo(0);
+}
+
+int T_MapData2::getStartX()
+{
+	return this.getInfo(1);
+}
+
+int T_MapData2::getStartY()
+{
+	return this.getInfo(2);
+}
+
+int T_MapData2::getStartDir()
+{
+	return this.getInfo(3);
+}
+
+int T_MapData2::getNorthX()
+{
+	return this.getInfo(10);
+}
+
+int T_MapData2::getNorthY()
+{
+	return this.getInfo(11);
+}
+
+int T_MapData2::getSouthX()
+{
+	return this.getInfo(12);
+}
+
+int T_MapData2::getSouthY()
+{
+	return this.getInfo(13);
+}
+
+int T_MapData2::getEastX()
+{
+	return this.getInfo(14);
+}
+
+int T_MapData2::getEastY()
+{
+	return this.getInfo(15);
+}
+
+int T_MapData2::getWestX()
+{
+	return this.getInfo(16);
+}
+
+int T_MapData2::getWestY()
+{
+	return this.getInfo(17);
+}
+
+int T_MapData2::getOutBreakCount()
+{
+	return this.getInfo(20);
+}
+
+int T_MapData2::getWideAreaCount()
+{
+	return this.getInfo(21);
+}
+
+int T_MapData2::getMemoCount()
+{
+	return this.getInfo(29);
+}
+
+int T_MapData2::searchOutBreak(int nMapIndex)
+{
+	return nMapIndex >= 0 && nMapIndex < 2500 ? this.m_anOutBreak.Find(0, this.m_anOutBreak.Numof(), nMapIndex) : -1;
+}
+
+int T_MapData2::searchWideArea(int nMapIndex)
+{
+	return nMapIndex >= 0 && nMapIndex < 2500 ? this.m_anWideArea.Find(0, this.m_anWideArea.Numof(), nMapIndex) : -1;
+}
+
+int T_MapData2::searchMemo(int nMapIndex)
+{
+	return nMapIndex >= 0 && nMapIndex < 2500 ? this.m_anMemo.Find(0, this.m_anMemo.Numof(), nMapIndex) : -1;
+}
+
+int T_MapData2::getOutBreak(int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_anOutBreak.Numof() ? this.m_anOutBreak[nIndex] : -1;
+}
+
+int T_MapData2::getWideArea(int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_anWideArea.Numof() ? this.m_anWideArea[nIndex] : -1;
+}
+
+int T_MapData2::getMemo(int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_anMemo.Numof() ? this.m_anMemo[nIndex] : -1;
+}
+
+int T_MapData2::getOutBreakNumof()
+{
+	return this.m_anOutBreak.Numof();
+}
+
+int T_MapData2::getWideAreaNumof()
+{
+	return this.m_anWideArea.Numof();
+}
+
+int T_MapData2::getMemoNumof()
+{
+	return this.m_anMemo.Numof();
+}
+
+T_MapData2::T_MapData2()
+{
+	this.clear(false);
+}
+
+void T_MapData2::clear(bool bFree)
+{
+	this.m_nMapNo = 0;
+	this.m_bUpdate = false;
+	this.m_anInfo.Fill(0, 100, -1);
+	if (bFree)
+	{
+		if (!this.m_anOutBreak.Empty())
+		{
+			this.m_anOutBreak.Free();
+		}
+		if (!this.m_anWideArea.Empty())
+		{
+			this.m_anWideArea.Free();
+		}
+		if (!this.m_anMemo.Empty())
+		{
+			this.m_anMemo.Free();
+		}
+	}
+}
+
+bool T_MapData2::load(int nMapNo)
+{
+	return true;
+}
+
+bool T_MapData2::save()
+{
+	return true;
+}
+
+bool T_MapData2::conv(int nMapNo, ref T_MapData rfsData)
+{
+	return true;
+}
+
+void T_MapData2::checkUpdate()
+{
+	return;
+}
+
+int T_MapData2::addOutBreak(int nMapIndex)
+{
+	if (nMapIndex < 0 || nMapIndex >= 2500)
+	{
+		return -1;
+	}
+	int idx = this.searchOutBreak(nMapIndex);
+	if (idx >= 0)
+	{
+		return idx;
+	}
+	this.m_anOutBreak.PushBack(nMapIndex);
+	this.m_bUpdate = true;
+	return this.m_anOutBreak.Numof() - 1;
+}
+
+int T_MapData2::addWideArea(int nMapIndex)
+{
+	if (nMapIndex < 0 || nMapIndex >= 2500)
+	{
+		return -1;
+	}
+	int idx = this.searchWideArea(nMapIndex);
+	if (idx >= 0)
+	{
+		return idx;
+	}
+	this.m_anWideArea.PushBack(nMapIndex);
+	this.m_bUpdate = true;
+	return this.m_anWideArea.Numof() - 1;
+}
+
+int T_MapData2::addMemo(int nMapIndex)
+{
+	if (nMapIndex < 0 || nMapIndex >= 2500)
+	{
+		return -1;
+	}
+	int idx = this.searchMemo(nMapIndex);
+	if (idx >= 0)
+	{
+		return idx;
+	}
+	this.m_anMemo.PushBack(nMapIndex);
+	this.m_bUpdate = true;
+	return this.m_anMemo.Numof() - 1;
+}
+
+int T_MapData2::eraseOutBreak(int nMapIndex)
+{
+	if (nMapIndex < 0 || nMapIndex >= 2500)
+	{
+		return -1;
+	}
+	int idx = this.searchOutBreak(nMapIndex);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_anOutBreak.Erase(idx);
+	this.m_bUpdate = true;
+	return idx;
+}
+
+int T_MapData2::eraseWideArea(int nMapIndex)
+{
+	if (nMapIndex < 0 || nMapIndex >= 2500)
+	{
+		return -1;
+	}
+	int idx = this.searchWideArea(nMapIndex);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_anWideArea.Erase(idx);
+	this.m_bUpdate = true;
+	return idx;
+}
+
+int T_MapData2::eraseMemo(int nMapIndex)
+{
+	if (nMapIndex < 0 || nMapIndex >= 2500)
+	{
+		return -1;
+	}
+	int idx = this.searchMemo(nMapIndex);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_anMemo.Erase(idx);
+	this.m_bUpdate = true;
+	return idx;
+}
+
+bool T_MapData2::setInfo(int nIndex, int nValue)
+{
+	if (nIndex < 0 || nIndex >= 100)
+	{
+		return false;
+	}
+	this.m_anInfo[nIndex] = nValue;
+	this.m_bUpdate = true;
+	return true;
+}
+
+int T_MapData2::getInfo(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 100)
+	{
+		return 0;
+	}
+	return this.m_anInfo[nIndex];
+}
+
+bool T_MapData2::outputText(int nMapNo)
+{
+	return true;
+}
+
+string T_MapData2::getFileName(int nMapNo)
+{
+	if (nMapNo <= 0)
+	{
+		return "";
+	}
+	string szName = マップ_名前(nMapNo);
+	if (szName.Empty())
+	{
+		return "";
+	}
+	return "Data\\MapData2\\" + szName + ".dt2";
+}
+

@@ -1,0 +1,344 @@
+string T_NetworkService::getInfo()
+{
+	return this.m_szInfo;
+}
+
+int T_NetworkService::getStatus()
+{
+	return this.m_nStatus;
+}
+
+T_NetworkService::T_NetworkService()
+{
+	this.clear();
+}
+
+T_NetworkService::~T_NetworkService()
+{
+	this.delete();
+}
+
+void T_NetworkService::create()
+{
+	if (this.m_nStatus >= 0)
+	{
+		return;
+	}
+	this.delete();
+	this.m_sGameNetService.SetServerURL("http://stats.mangagamer.com/rance8/");
+	this.m_nStatus = 0;
+}
+
+void T_NetworkService::delete()
+{
+	this.clear();
+}
+
+void T_NetworkService::clear()
+{
+	this.m_nStatus = -1;
+	this.m_szInfo = "";
+	this.m_nServerVersion = -1;
+	this.m_szSendCommand = "";
+}
+
+bool T_NetworkService::start()
+{
+	if (this.m_nStatus < 0)
+	{
+		this.create();
+	}
+	switch (this.m_nStatus)
+	{
+		case 0:
+			return this.startGetServerVersion();
+		case 2:
+			return this.startCheckUserID();
+		case 4:
+			return this.startGetInfo();
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_NetworkService::update()
+{
+	bool bRet = false;
+	switch (this.m_nStatus)
+	{
+		case 1:
+			bRet = this.updateGetServerVersion();
+			break;
+		case 3:
+			bRet = this.updateCheckUserID();
+			break;
+		case 5:
+			bRet = this.updateGetInfo();
+			break;
+		case 11:
+			bRet = this.updateSendUserData();
+			break;
+		default:
+			break;
+	}
+	return bRet;
+}
+
+bool T_NetworkService::sendUserData(ref CASGameNetDataPack sDataPack)
+{
+	if (this.m_nStatus < 6)
+	{
+		return false;
+	}
+	if (this.m_nStatus == 11)
+	{
+		return true;
+	}
+	if (!this.beginSendData("senduserdata", sDataPack))
+	{
+		return false;
+	}
+	this.m_nStatus = 11;
+	return true;
+}
+
+bool T_NetworkService::getUserData(string szCommand, int nType, ref CASGameNetDataPack sResultDataPack)
+{
+	if (sResultDataPack === NULL)
+	{
+		return false;
+	}
+	if (this.m_nStatus < 6)
+	{
+		return false;
+	}
+	if (this.m_nStatus == 11)
+	{
+		return false;
+	}
+	int nOld = this.m_nStatus;
+	this.m_nStatus = 19;
+	CASGameNetDataPack sDataPack;
+	if (nType > 0)
+	{
+		sDataPack.AddByParam("type", "%d" % nType);
+	}
+	if (!this.beginSendData(szCommand, sDataPack))
+	{
+		return false;
+	}
+	int nKey = 0;
+	for (; ; )
+	{
+		if (this.m_sGameNetService.IsEndSendDataPack())
+		{
+			break;
+		}
+		if (キー_押下(27))
+		{
+			nKey = 27;
+			break;
+		}
+		UPDATE(true);
+	}
+	if (nKey > 0)
+	{
+		system.Output("SendDataPack(%s) canceled\n" % szCommand);
+		キー_離し待ち(nKey, true);
+	}
+	bool bRet = this.endSendData(sResultDataPack);
+	this.m_nStatus = nOld;
+	return bRet;
+}
+
+bool T_NetworkService::startGetServerVersion()
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	if (this.m_nStatus >= 1)
+	{
+		return false;
+	}
+	CASGameNetDataPack sDataPack;
+	if (!this.beginSendData("getserverversion", sDataPack))
+	{
+		return false;
+	}
+	this.m_nStatus = 1;
+	return true;
+}
+
+bool T_NetworkService::updateGetServerVersion()
+{
+	if (this.m_nStatus != 1)
+	{
+		return false;
+	}
+	if (!this.m_sGameNetService.IsEndSendDataPack())
+	{
+		return true;
+	}
+	CASGameNetDataPack sResultDataPack;
+	if (!this.endSendData(sResultDataPack))
+	{
+		goto label0;
+	}
+	int nServerVersion = _NET_GetParamInt("serverversion", sResultDataPack);
+	if (nServerVersion < 0)
+	{
+		goto label0;
+	}
+	this.m_nStatus = 2;
+	this.m_nServerVersion = nServerVersion;
+	return this.startCheckUserID();
+label0:
+	this.m_nStatus = 0;
+	this.m_szInfo = "Server failed to respond";
+	return false;
+}
+
+bool T_NetworkService::startCheckUserID()
+{
+	if (this.m_nStatus < 2 || this.m_nServerVersion < 0)
+	{
+		return false;
+	}
+	if (this.m_nStatus >= 3)
+	{
+		return false;
+	}
+	if (this.m_sGameNetService.CheckUserID(this.m_nServerVersion))
+	{
+		this.m_nStatus = 4;
+		return this.startGetInfo();
+	}
+	if (!this.m_sGameNetService.BeginCreateUserID())
+	{
+		system.MsgBox("Failed to generate User ID.");
+		return false;
+	}
+	this.m_nStatus = 3;
+	return true;
+}
+
+bool T_NetworkService::updateCheckUserID()
+{
+	if (this.m_nStatus != 3)
+	{
+		return false;
+	}
+	if (!this.m_sGameNetService.IsEndCreateUserID())
+	{
+		return true;
+	}
+	bool bRet = this.m_sGameNetService.EndCreateUserID(this.m_nServerVersion);
+	if (!bRet)
+	{
+		system.MsgBox("Failed to validate User ID.");
+		this.m_nStatus = 1;
+		this.m_szInfo = "Server failed to validate User ID";
+		return false;
+	}
+	this.m_nStatus = 4;
+	return this.startGetInfo();
+}
+
+bool T_NetworkService::startGetInfo()
+{
+	if (this.m_nStatus < 4)
+	{
+		return false;
+	}
+	if (this.m_nStatus >= 5)
+	{
+		return false;
+	}
+	CASGameNetDataPack sDataPack;
+	sDataPack.AddByParam("version", "%d" % 1000);
+	if (!this.beginSendData("getinfo", sDataPack))
+	{
+		return false;
+	}
+	this.m_nStatus = 5;
+	return true;
+}
+
+bool T_NetworkService::updateGetInfo()
+{
+	if (this.m_nStatus != 5)
+	{
+		return false;
+	}
+	if (!this.m_sGameNetService.IsEndSendDataPack())
+	{
+		return true;
+	}
+	CASGameNetDataPack sResultDataPack;
+	if (!this.endSendData(sResultDataPack))
+	{
+		this.m_nStatus = 4;
+		this.m_szInfo = "Failed to receive information from server";
+		return false;
+	}
+	string szInfo = _NET_GetParamText("info", sResultDataPack);
+	this.m_nStatus = 6;
+	this.m_szInfo = szInfo;
+	return true;
+}
+
+bool T_NetworkService::updateSendUserData()
+{
+	if (this.m_nStatus != 11)
+	{
+		return false;
+	}
+	if (!this.m_sGameNetService.IsEndSendDataPack())
+	{
+		return true;
+	}
+	CASGameNetDataPack sResultDataPack;
+	bool bRet = this.endSendData(sResultDataPack);
+	this.m_nStatus = 12;
+	return bRet;
+}
+
+bool T_NetworkService::beginSendData(string szCommand, ref CASGameNetDataPack sDataPack)
+{
+	if (sDataPack === NULL)
+	{
+		return false;
+	}
+	if (!this.m_sGameNetService.BeginSendDataPack(szCommand, sDataPack))
+	{
+		system.MsgBox("Failed to send data to server (%s)" % szCommand);
+		this.m_szSendCommand = "";
+		return false;
+	}
+	this.m_szSendCommand = szCommand;
+	return true;
+}
+
+bool T_NetworkService::endSendData(ref CASGameNetDataPack sResultDataPack)
+{
+	bool bRet = false;
+	if (sResultDataPack === NULL)
+	{
+		goto label0;
+	}
+	if (this.m_szSendCommand.Empty())
+	{
+		goto label0;
+	}
+	bRet = this.m_sGameNetService.EndSendDataPack(sResultDataPack);
+	if (!bRet)
+	{
+		system.MsgBox("Failed to send data to server (%s)" % this.m_szSendCommand);
+	}
+label0:
+	this.m_szSendCommand = "";
+	return bRet;
+}
+

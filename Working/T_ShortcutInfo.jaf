@@ -1,0 +1,201 @@
+bool T_ShortcutInfo::suspend()
+{
+	return this.m_spBase.suspend();
+}
+
+bool T_ShortcutInfo::resume()
+{
+	return this.m_spBase.resume();
+}
+
+bool T_ShortcutInfo::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+T_ShortcutInfo::T_ShortcutInfo()
+{
+	this.clear();
+}
+
+T_ShortcutInfo::~T_ShortcutInfo()
+{
+	this.delete();
+}
+
+bool T_ShortcutInfo::create(int nZ)
+{
+	this.delete();
+	this.m_nZ = nZ;
+	return true;
+}
+
+void T_ShortcutInfo::delete()
+{
+	this.m_spBase.delete();
+	this.clear();
+}
+
+void T_ShortcutInfo::clear()
+{
+	this.m_rfsButtonGroup1 <- NULL;
+	this.m_rfsButtonGroup2 <- NULL;
+	this.m_rfsButtonGroup3 <- NULL;
+	this.m_rfsButtonGroup4 <- NULL;
+	this.m_nZ = -1;
+	this.m_bShow = false;
+}
+
+bool T_ShortcutInfo::addAll(ref T_ButtonGroup sButtonGroup)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	if (this.m_rfsButtonGroup1 === NULL)
+	{
+		this.m_rfsButtonGroup1 <- sButtonGroup;
+		return true;
+	}
+	if (this.m_rfsButtonGroup2 === NULL)
+	{
+		this.m_rfsButtonGroup2 <- sButtonGroup;
+		return true;
+	}
+	if (this.m_rfsButtonGroup3 === NULL)
+	{
+		this.m_rfsButtonGroup3 <- sButtonGroup;
+		return true;
+	}
+	if (this.m_rfsButtonGroup4 === NULL)
+	{
+		this.m_rfsButtonGroup4 <- sButtonGroup;
+		return true;
+	}
+	return false;
+}
+
+int T_ShortcutInfo::check()
+{
+	if (this.m_nZ < 0)
+	{
+		return -1;
+	}
+	if (!キー_押下(72))
+	{
+		return -1;
+	}
+	キー_離し待ち(72, true);
+	this.setShow(!this.m_bShow);
+	return this.m_bShow;
+}
+
+void T_ShortcutInfo::setShow(bool bShow)
+{
+	if (this.m_nZ < 0)
+	{
+		return;
+	}
+	if (bShow)
+	{
+		if (!this.createBase())
+		{
+			return;
+		}
+		this.m_spBase.setShow(true);
+	}
+	else
+	{
+		this.m_spBase.delete();
+	}
+	this.m_bShow = bShow;
+}
+
+bool T_ShortcutInfo::createBase()
+{
+	this.m_spBase.delete();
+	this.m_spBase.create(1024, 768, 0, 0, 0, 153);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(this.m_nZ, -1);
+	bool bRet = false;
+	if (this.drawButtonGroup(this.m_rfsButtonGroup1))
+	{
+		bRet = true;
+	}
+	if (this.drawButtonGroup(this.m_rfsButtonGroup2))
+	{
+		bRet = true;
+	}
+	if (this.drawButtonGroup(this.m_rfsButtonGroup3))
+	{
+		bRet = true;
+	}
+	if (this.drawButtonGroup(this.m_rfsButtonGroup4))
+	{
+		bRet = true;
+	}
+	return bRet;
+}
+
+bool T_ShortcutInfo::drawButtonGroup(ref T_ButtonGroup sButtonGroup)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = sButtonGroup.getButtonCount();
+	bool bRet = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.draw(sButtonGroup.getButton(sButtonGroup.getButtonID(i))))
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_ShortcutInfo::draw(ref T_Button sButton)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	if (!sButton.getShow())
+	{
+		return false;
+	}
+	int nKey = sButton.getKey();
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	string szName = キー_名前(nKey);
+	ref T_Rect rcButton = sButton.getButtonSp(0).getBaseRect();
+	if (rcButton.empty())
+	{
+		return false;
+	}
+	int nX = rcButton.m_nSx;
+	int nY = rcButton.m_nSy;
+	int nW = rcButton.getWidth();
+	int nH = rcButton.getHeight();
+	this.m_spBase.drawRect(rcButton, 82, 255, 155, 255);
+	int nTx = nX + テキスト_Ｘ補正(nW, 20, szName, 0);
+	int nTy = nY + テキスト_Ｙ補正(nH, 20);
+	sact_text_metrics_t tmName;
+	tmName.nSize = 20;
+	tmName.nColorR = 82;
+	tmName.nColorG = 255;
+	tmName.nColorB = 155;
+	tmName.nWeight = 0;
+	tmName.nFace = 258;
+	this.m_spBase.textDrawPos(1, nTx, nTy, szName, tmName, 0, false);
+	return true;
+}
+

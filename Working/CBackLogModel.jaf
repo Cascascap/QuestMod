@@ -1,0 +1,362 @@
+CBackLogModel::CBackLogModel()
+{
+	this.m_BackCG = "";
+	this.m_nTextX = 0;
+	this.m_nTextY = 0;
+	this.m_nNumofTextColumn = -2147483648;
+	this.m_nNumofTextLine = -2147483648;
+	this.m_bUseTaskBar = true;
+	this.m_nFontSize = 20;
+	this.SetDefaultTextPropertyList();
+	this.m_nCharSpace = 0;
+	this.m_nLineSpace = 0;
+	this.m_ReturnButtonCG = "";
+	this.m_ReturnButtonUnderCursorCG = "";
+	this.m_nReturnButtonX = 740;
+	this.m_nReturnButtonY = 540;
+	this.m_ScrollBoxCG = "";
+	this.m_ScrollBoxUnderCursorCG = "";
+	this.m_nScrollBoxAreaX = 770;
+	this.m_nScrollBoxAreaY = 0;
+	this.m_nScrollBoxAreaWidth = 30;
+	this.m_nScrollBoxAreaHeight = 500;
+	this.m_UpButtonCG = "";
+	this.m_UpButtonUnderCursorCG = "";
+	this.m_nUpButtonX = 0;
+	this.m_nUpButtonY = 0;
+	this.m_DownButtonCG = "";
+	this.m_DownButtonUnderCursorCG = "";
+	this.m_nDownButtonX = 0;
+	this.m_nDownButtonY = 0;
+	this.m_nDecideSound = -2147483648;
+	this.m_nUnderCursorSound = -2147483648;
+	this.m_nCancelSound = -2147483648;
+}
+
+void CBackLogModel::SetDefaultTextPropertyList()
+{
+	this.m_TextPropertyList.Alloc(5);
+	this.m_TextPropertyList[0].SetType(0);
+	this.m_TextPropertyList[0].SetSize(this.m_nFontSize);
+	this.m_TextPropertyList[0].SetColor(CF_CASColor(0, 0, 0, 255));
+	this.m_TextPropertyList[0].SetBoldWeight(0.0);
+	this.m_TextPropertyList[0].SetEdgeWeight(2.0);
+	this.m_TextPropertyList[0].SetEdgeColor(CF_CASColor(255, 255, 255, 255));
+	this.m_TextPropertyList[1].SetType(0);
+	this.m_TextPropertyList[1].SetSize(this.m_nFontSize);
+	this.m_TextPropertyList[1].SetColor(CF_CASColor(0, 0, 240, 255));
+	this.m_TextPropertyList[1].SetBoldWeight(0.0);
+	this.m_TextPropertyList[1].SetEdgeWeight(2.0);
+	this.m_TextPropertyList[1].SetEdgeColor(CF_CASColor(255, 255, 255, 255));
+	this.m_TextPropertyList[2].SetType(0);
+	this.m_TextPropertyList[2].SetSize(this.m_nFontSize);
+	this.m_TextPropertyList[2].SetColor(CF_CASColor(255, 160, 160, 255));
+	this.m_TextPropertyList[2].SetBoldWeight(0.0);
+	this.m_TextPropertyList[2].SetEdgeWeight(2.0);
+	this.m_TextPropertyList[2].SetEdgeColor(CF_CASColor(255, 255, 255, 255));
+	this.m_TextPropertyList[3].SetType(0);
+	this.m_TextPropertyList[3].SetSize(this.m_nFontSize);
+	this.m_TextPropertyList[3].SetColor(CF_CASColor(240, 0, 0, 255));
+	this.m_TextPropertyList[3].SetBoldWeight(0.0);
+	this.m_TextPropertyList[3].SetEdgeWeight(2.0);
+	this.m_TextPropertyList[3].SetEdgeColor(CF_CASColor(255, 255, 255, 255));
+	this.m_TextPropertyList[4].SetType(0);
+	this.m_TextPropertyList[4].SetSize(this.m_nFontSize);
+	this.m_TextPropertyList[4].SetColor(CF_CASColor(128, 128, 128, 255));
+	this.m_TextPropertyList[4].SetBoldWeight(0.0);
+	this.m_TextPropertyList[4].SetEdgeWeight(2.0);
+	this.m_TextPropertyList[4].SetEdgeColor(CF_CASColor(255, 255, 255, 255));
+}
+
+void CBackLogModel::SetBackCG(string BackCG)
+{
+	this.m_BackCG = BackCG;
+}
+
+void CBackLogModel::SetTextPos(int nX, int nY)
+{
+	this.m_nTextX = nX;
+	this.m_nTextY = nY;
+}
+
+void CBackLogModel::SetNumofTextColumn(int nNumofTextColumn)
+{
+	this.m_nNumofTextColumn = nNumofTextColumn;
+}
+
+void CBackLogModel::SetNumofTextLine(int nNumofTextLine)
+{
+	this.m_nNumofTextLine = nNumofTextLine;
+}
+
+void CBackLogModel::SetUseTaskBar(bool bUseTaskBar)
+{
+	this.m_bUseTaskBar = bUseTaskBar;
+}
+
+void CBackLogModel::SetFontSize(int nFontSize)
+{
+	this.m_nFontSize = nFontSize;
+	int n = 0;
+	for (n = 0; n < this.m_TextPropertyList.Numof(); ++n)
+	{
+		this.m_TextPropertyList[n].SetSize(nFontSize);
+	}
+}
+
+void CBackLogModel::SetCharSpace(int nCharSpace)
+{
+	this.m_nCharSpace = nCharSpace;
+}
+
+void CBackLogModel::SetLineSpace(int nLineSpace)
+{
+	this.m_nLineSpace = nLineSpace;
+}
+
+void CBackLogModel::SetReturnButtonCG(string ReturnButtonCG)
+{
+	this.m_ReturnButtonCG = ReturnButtonCG;
+}
+
+void CBackLogModel::SetReturnButtonUnderCursorCG(string ReturnButtonUnderCursorCG)
+{
+	this.m_ReturnButtonUnderCursorCG = ReturnButtonUnderCursorCG;
+}
+
+void CBackLogModel::SetReturnButtonPos(int nX, int nY)
+{
+	this.m_nReturnButtonX = nX;
+	this.m_nReturnButtonY = nY;
+}
+
+void CBackLogModel::SetScrollBoxCG(string ScrollBoxCG)
+{
+	this.m_ScrollBoxCG = ScrollBoxCG;
+}
+
+void CBackLogModel::SetScrollBoxUnderCursorCG(string ScrollBoxUnderCursorCG)
+{
+	this.m_ScrollBoxUnderCursorCG = ScrollBoxUnderCursorCG;
+}
+
+void CBackLogModel::SetScrollBoxAreaRect(int nX, int nY, int nWidth, int nHeight)
+{
+	this.m_nScrollBoxAreaX = nX;
+	this.m_nScrollBoxAreaY = nY;
+	this.m_nScrollBoxAreaWidth = nWidth;
+	this.m_nScrollBoxAreaHeight = nHeight;
+}
+
+void CBackLogModel::SetUpButtonCG(string UpButtonCG)
+{
+	this.m_UpButtonCG = UpButtonCG;
+}
+
+void CBackLogModel::SetUpButtonUnderCursorCG(string UpButtonUnderCursorCG)
+{
+	this.m_UpButtonUnderCursorCG = UpButtonUnderCursorCG;
+}
+
+void CBackLogModel::SetUpButtonPos(int nX, int nY)
+{
+	this.m_nUpButtonX = nX;
+	this.m_nUpButtonY = nY;
+}
+
+void CBackLogModel::SetDownButtonCG(string DownButtonCG)
+{
+	this.m_DownButtonCG = DownButtonCG;
+}
+
+void CBackLogModel::SetDownButtonUnderCursorCG(string DownButtonUnderCursorCG)
+{
+	this.m_DownButtonUnderCursorCG = DownButtonUnderCursorCG;
+}
+
+void CBackLogModel::SetDownButtonPos(int nX, int nY)
+{
+	this.m_nDownButtonX = nX;
+	this.m_nDownButtonY = nY;
+}
+
+string CBackLogModel::GetBackCG()
+{
+	return this.m_BackCG;
+}
+
+int CBackLogModel::GetTextX()
+{
+	return this.m_nTextX;
+}
+
+int CBackLogModel::GetTextY()
+{
+	return this.m_nTextY;
+}
+
+int CBackLogModel::GetNumofTextColumn()
+{
+	return this.m_nNumofTextColumn;
+}
+
+int CBackLogModel::GetNumofTextLine()
+{
+	return this.m_nNumofTextLine;
+}
+
+bool CBackLogModel::GetUseTaskBar()
+{
+	return this.m_bUseTaskBar;
+}
+
+int CBackLogModel::GetFontSize()
+{
+	return this.m_nFontSize;
+}
+
+ref CASCharSpriteProperty CBackLogModel::GetTextProperty(int Type)
+{
+	return this.m_TextPropertyList[Type];
+}
+
+int CBackLogModel::GetCharSpace()
+{
+	return this.m_nCharSpace;
+}
+
+int CBackLogModel::GetLineSpace()
+{
+	return this.m_nLineSpace;
+}
+
+string CBackLogModel::GetReturnButtonCG()
+{
+	return this.m_ReturnButtonCG;
+}
+
+string CBackLogModel::GetReturnButtonUnderCursorCG()
+{
+	return this.m_ReturnButtonUnderCursorCG;
+}
+
+int CBackLogModel::GetReturnButtonX()
+{
+	return this.m_nReturnButtonX;
+}
+
+int CBackLogModel::GetReturnButtonY()
+{
+	return this.m_nReturnButtonY;
+}
+
+string CBackLogModel::GetScrollBoxCG()
+{
+	return this.m_ScrollBoxCG;
+}
+
+string CBackLogModel::GetScrollBoxUnderCursorCG()
+{
+	return this.m_ScrollBoxUnderCursorCG;
+}
+
+int CBackLogModel::GetScrollBoxAreaX()
+{
+	return this.m_nScrollBoxAreaX;
+}
+
+int CBackLogModel::GetScrollBoxAreaY()
+{
+	return this.m_nScrollBoxAreaY;
+}
+
+int CBackLogModel::GetScrollBoxAreaWidth()
+{
+	return this.m_nScrollBoxAreaWidth;
+}
+
+int CBackLogModel::GetScrollBoxAreaHeight()
+{
+	return this.m_nScrollBoxAreaHeight;
+}
+
+string CBackLogModel::GetUpButtonCG()
+{
+	return this.m_UpButtonCG;
+}
+
+string CBackLogModel::GetUpButtonUnderCursorCG()
+{
+	return this.m_UpButtonUnderCursorCG;
+}
+
+int CBackLogModel::GetUpButtonX()
+{
+	return this.m_nUpButtonX;
+}
+
+int CBackLogModel::GetUpButtonY()
+{
+	return this.m_nUpButtonY;
+}
+
+string CBackLogModel::GetDownButtonCG()
+{
+	return this.m_DownButtonCG;
+}
+
+string CBackLogModel::GetDownButtonUnderCursorCG()
+{
+	return this.m_DownButtonUnderCursorCG;
+}
+
+int CBackLogModel::GetDownButtonX()
+{
+	return this.m_nDownButtonX;
+}
+
+int CBackLogModel::GetDownButtonY()
+{
+	return this.m_nDownButtonY;
+}
+
+int CBackLogModel::GetFontHeight()
+{
+	int FontHeight = 0;
+	if (this.m_TextPropertyList.Numof() == 5)
+	{
+		FontHeight = this.m_TextPropertyList[0].GetPixelHeight() + this.m_nLineSpace + this.m_nTextY;
+	}
+	return FontHeight;
+}
+
+void CBackLogModel::SetDecideSound(int nSound)
+{
+	this.m_nDecideSound = nSound;
+}
+
+void CBackLogModel::SetUnderCursorSound(int nSound)
+{
+	this.m_nUnderCursorSound = nSound;
+}
+
+void CBackLogModel::SetCancelSound(int nSound)
+{
+	this.m_nCancelSound = nSound;
+}
+
+int CBackLogModel::GetDecideSound()
+{
+	return this.m_nDecideSound;
+}
+
+int CBackLogModel::GetUnderCursorSound()
+{
+	return this.m_nUnderCursorSound;
+}
+
+int CBackLogModel::GetCancelSound()
+{
+	return this.m_nCancelSound;
+}
+

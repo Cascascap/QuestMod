@@ -1,0 +1,162 @@
+bool システムバー_有効確認(int nMode, int nID)
+{
+	switch (nID)
+	{
+		case 900001:
+			switch (nMode)
+			{
+				case 10:
+				case 11:
+				case 12:
+				case 13:
+				case 14:
+				case 15:
+				case 18:
+				case 19:
+				case 20:
+				case 21:
+				case 30:
+				case 40:
+					return true;
+				default:
+					break;
+			}
+			break;
+		case 900002:
+			switch (nMode)
+			{
+				case 10:
+				case 11:
+				case 12:
+				case 13:
+				case 14:
+				case 18:
+				case 19:
+				case 20:
+				case 21:
+					return true;
+				case 15:
+				case 30:
+				case 40:
+					return false;
+				default:
+					break;
+			}
+			break;
+		case 900003:
+			switch (nMode)
+			{
+				case 10:
+				case 11:
+				case 12:
+				case 13:
+				case 14:
+				case 18:
+				case 19:
+				case 20:
+				case 21:
+					return まめ知識_あり();
+				case 15:
+				case 30:
+				case 40:
+					return false;
+				default:
+					break;
+			}
+			break;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool システムバー_処理(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (nID > 920000)
+	{
+		nRet = ミニステータス_実行(nID);
+		return false;
+	}
+	switch (nID)
+	{
+		case 900001:
+			nRet = システムバー_メニュー(nID);
+			switch (nRet)
+			{
+				case 910012:
+					return システムバー_ＣＧモード(0, nRet);
+				case 910013:
+					return システムバー_音楽モード(0, nRet);
+				default:
+					break;
+			}
+			return nRet > 0;
+		case 900002:
+			nRet = システムバー_倉庫(nID);
+			break;
+		case 900003:
+			nRet = システムバー_まめ知識(nID);
+			break;
+		case 900099:
+			ＥＶ表示();
+			break;
+		default:
+			return true;
+	}
+	return false;
+}
+
+int システムバー_メニュー(int nID)
+{
+	int nRet = 0;
+	システムバー音楽_復元();
+	システムバー_実行設定(nID, true);
+	システムメニュー_作成(9101, システムバー_モード());
+	nRet = システムメニュー_実行(nID);
+	システムメニュー_削除();
+	システムバー_実行設定(nID, false);
+	システムバー音楽_退避();
+	return nRet;
+}
+
+int システムバー_倉庫(int nID)
+{
+	システムバー_実行設定(nID, true);
+	int nID2 = Ｒ８アイテム倉庫();
+	システムバー_実行設定(nID, false);
+	return nID2 != nID ? nID2 : 0;
+}
+
+int システムバー_まめ知識(int nID)
+{
+	システムバー_実行設定(nID, true);
+	int nID2 = Ｒ８まめ知識();
+	システムバー_実行設定(nID, false);
+	return nID2 != nID ? nID2 : 0;
+}
+
+bool システムバー_ＣＧモード(int nMode, ref int nRet)
+{
+	int nID = ＣＧモード_実行(nMode);
+	if (nID > 0)
+	{
+		nRet = nID;
+		return false;
+	}
+	nRet = 0;
+	return true;
+}
+
+bool システムバー_音楽モード(int nMode, ref int nRet)
+{
+	int nID = 音楽モード_実行(nMode);
+	if (nID > 0)
+	{
+		nRet = nID;
+		return false;
+	}
+	nRet = 0;
+	return true;
+}
+

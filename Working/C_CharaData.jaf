@@ -1,0 +1,284 @@
+int キャラデータ一覧_更新()
+{
+	if (g_asCharaData.Empty())
+	{
+		return キャラデータ一覧_作成();
+	}
+	int i = 0;
+	int cnt = g_asCharaData.Numof();
+	i = 0;
+	while (i < cnt)
+	{
+		ref T_CharaData sData = g_asCharaData[i];
+		int nNo = キャラ_番号(sData.m_nCharaNo);
+		if (nNo <= 0 || sData.m_nOriginalNo != nNo)
+		{
+			g_asCharaData.Erase(i);
+			--cnt;
+		}
+		else
+		{
+			++i;
+		}
+	}
+	cnt = キャラ_数();
+	for (i = 20; i <= cnt; ++i)
+	{
+		if (!キャラ_登録済(i))
+		{
+			continue;
+		}
+		int nNo = キャラ_番号(i);
+		if (キャラデータ一覧_検索_番号(i, nNo) >= 0)
+		{
+			continue;
+		}
+		キャラデータ一覧_追加(i, nNo);
+	}
+	return g_asCharaData.Numof();
+}
+
+int キャラデータ一覧_作成()
+{
+	キャラデータ一覧_削除();
+	int i = 0;
+	int cnt = キャラ_数();
+	for (i = 20; i <= cnt; ++i)
+	{
+		if (キャラ_登録済(i))
+		{
+			キャラデータ一覧_追加(i, キャラ_番号(i));
+		}
+	}
+	return g_asCharaData.Numof();
+}
+
+void キャラデータ一覧_削除()
+{
+	if (!g_asCharaData.Empty())
+	{
+		g_asCharaData.Free();
+	}
+}
+
+bool キャラデータ一覧_追加(int nCharaNo, int nOriginalNo)
+{
+	if (nCharaNo <= 0 || nOriginalNo <= 0)
+	{
+		return false;
+	}
+	T_CharaData sData;
+	sData.m_nCharaNo = nCharaNo;
+	sData.m_nOriginalNo = nOriginalNo;
+	g_asCharaData.PushBack(sData);
+	return true;
+}
+
+bool キャラデータ一覧_消去(int nCharaNo, int nOriginalNo)
+{
+	int idx = キャラデータ一覧_検索_番号(nCharaNo, nOriginalNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	g_asCharaData.Erase(idx);
+	return true;
+}
+
+bool キャラデータ一覧_挿入(int nIndex, int nCharaNo, int nOriginalNo)
+{
+	if (nCharaNo <= 0 || nOriginalNo <= 0)
+	{
+		return false;
+	}
+	if (nIndex < 0 || nIndex >= g_asCharaData.Numof())
+	{
+		return false;
+	}
+	T_CharaData sData;
+	sData.m_nCharaNo = nCharaNo;
+	sData.m_nOriginalNo = nOriginalNo;
+	g_asCharaData.Insert(nIndex, sData);
+	return true;
+}
+
+bool キャラデータ一覧_並替(int nCharaNo1, int nOriginalNo1, int nCharaNo2, int nOriginalNo2)
+{
+	int idx1 = キャラデータ一覧_検索_番号(nCharaNo1, nOriginalNo1);
+	int idx2 = キャラデータ一覧_検索_番号(nCharaNo2, nOriginalNo2);
+	if (idx1 < 0 || idx2 < 0 || idx1 == idx2)
+	{
+		return false;
+	}
+	g_asCharaData[idx1] <=> g_asCharaData[idx2];
+	return true;
+}
+
+bool キャラデータ一覧_割込(int nCharaNo1, int nOriginalNo1, int nCharaNo2, int nOriginalNo2)
+{
+	if (!キャラデータ一覧_消去(nCharaNo1, nOriginalNo1))
+	{
+		return false;
+	}
+	int idx = キャラデータ一覧_検索_番号(nCharaNo2, nOriginalNo2);
+	if (idx < 0)
+	{
+		return キャラデータ一覧_追加(nCharaNo1, nOriginalNo1);
+	}
+	return キャラデータ一覧_挿入(idx, nCharaNo1, nOriginalNo1);
+}
+
+bool キャラデータ一覧_最後尾(int nCharaNo, int nOriginalNo)
+{
+	if (!キャラデータ一覧_消去(nCharaNo, nOriginalNo))
+	{
+		return false;
+	}
+	return キャラデータ一覧_追加(nCharaNo, nOriginalNo);
+}
+
+int キャラデータ一覧_検索(ref T_CharaData sData)
+{
+	if (sData === NULL)
+	{
+		return -1;
+	}
+	if (sData.empty())
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = g_asCharaData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (g_asCharaData[i].equal(sData))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int キャラデータ一覧_検索_番号(int nCharaNo, int nOriginalNo)
+{
+	if (nCharaNo <= 0 || nOriginalNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = g_asCharaData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (g_asCharaData[i].equalNo(nCharaNo, nOriginalNo))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int キャラデータ一覧_１軍(ref array@int anList, int nJobType)
+{
+	if (anList === NULL)
+	{
+		return -1;
+	}
+	if (!anList.Empty())
+	{
+		anList.Free();
+	}
+	int i = 0;
+	int cnt = キャラ_数();
+	for (i = 20; i <= cnt; ++i)
+	{
+		if (キャラ_番号(i) <= 0)
+		{
+			continue;
+		}
+		if (!キャラデータ一覧_職業確認(i, nJobType))
+		{
+			continue;
+		}
+		switch (キャラ_登録状態(i))
+		{
+			case 1:
+			case 2:
+			case 3:
+				anList.PushBack(i);
+				break;
+			case 4:
+			default:
+				break;
+		}
+	}
+	return anList.Numof();
+}
+
+int キャラデータ一覧_パーティ(ref array@int anList, int nJobType)
+{
+	if (anList === NULL)
+	{
+		return -1;
+	}
+	if (!anList.Empty())
+	{
+		anList.Free();
+	}
+	int i = 0;
+	for (i = 1; i <= 5; ++i)
+	{
+		int nCharaNo = 味方パーティ_番号(i);
+		if (nCharaNo > 0)
+		{
+			anList.PushBack(nCharaNo);
+		}
+	}
+	return anList.Numof();
+}
+
+int キャラデータ一覧_２軍(ref array@int anList, int nJobType)
+{
+	if (anList === NULL)
+	{
+		return -1;
+	}
+	if (!anList.Empty())
+	{
+		anList.Free();
+	}
+	int i = 0;
+	int cnt = キャラ_数();
+	for (i = 20; i <= cnt; ++i)
+	{
+		if (キャラ_番号(i) <= 0)
+		{
+			continue;
+		}
+		if (!キャラデータ一覧_職業確認(i, nJobType))
+		{
+			continue;
+		}
+		switch (キャラ_登録状態(i))
+		{
+			case 4:
+				anList.PushBack(i);
+				break;
+			case 1:
+			case 2:
+			case 3:
+			default:
+				break;
+		}
+	}
+	return anList.Numof();
+}
+
+bool キャラデータ一覧_職業確認(int nCharaNo, int nJobType)
+{
+	if (nJobType <= 0)
+	{
+		return true;
+	}
+	return キャラ_職業(nCharaNo) == nJobType;
+}
+

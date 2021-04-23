@@ -1,0 +1,49 @@
+void CSampleLoadView::Run()
+{
+	int NumofViewList = 20;
+	int ViewIndex = 0;
+	for (ViewIndex = 0; ViewIndex < NumofViewList; ++ViewIndex)
+	{
+		int SaveNumber = ViewIndex + 1;
+		string Title = "";
+		if (AFL_GameSave_IsExistFile(SaveNumber))
+		{
+			int Year = 0;
+			int Month = 0;
+			int Day = 0;
+			int Week = 0;
+			int Hour = 0;
+			int Min = 0;
+			int Sec = 0;
+			string TimeInGameText = "";
+			string UserComment = "";
+			int PlayMinuteTime = 0;
+			AFL_GameSave_GetFileInfo(SaveNumber, Year, Month, Day, Week, Hour, Min, Sec, TimeInGameText, UserComment, PlayMinuteTime);
+			array@string WeekTextList;
+			WeekTextList.PushBack("日");
+			WeekTextList.PushBack("月");
+			WeekTextList.PushBack("火");
+			WeekTextList.PushBack("水");
+			WeekTextList.PushBack("木");
+			WeekTextList.PushBack("金");
+			WeekTextList.PushBack("土");
+			Title = "%4d年%2d月%2d日(%s) %2d時%2d分%2d秒 [%s][%s] プレイ%d分" % Year % Month % Day % WeekTextList[Week] % Hour % Min % Sec % TimeInGameText % UserComment % PlayMinuteTime;
+		}
+		else
+		{
+			Title = "<empty>";
+		}
+		if (SaveNumber == SYS_最終セーブ番号取得())
+		{
+			Title += " NEW!";
+		}
+		選択肢(SaveNumber, Title, 0);
+	}
+	int Result = テスト選択();
+	if (Result >= 1 && Result < 1 + NumofViewList)
+	{
+		int SaveNumber = Result;
+		AFL_GameSave_Load(SaveNumber);
+	}
+}
+

@@ -1,0 +1,415 @@
+int T_Comment::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_Comment::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_Comment::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+int T_Comment::getWidth()
+{
+	return this.m_spBase.getWidth();
+}
+
+int T_Comment::getHeight()
+{
+	return this.m_spBase.getHeight();
+}
+
+int T_Comment::getID()
+{
+	return this.m_nID;
+}
+
+bool T_Comment::getShow()
+{
+	return this.m_bShow;
+}
+
+int T_Comment::getWaitTime()
+{
+	return this.m_nWaitTime;
+}
+
+int T_Comment::calcHeight(int nLineCount)
+{
+	return (this.fontSize + this.lineSpacing) * nLineCount - (0 ? this.lineSpacing : 0);
+}
+
+T_Comment::T_Comment()
+{
+	this.clear();
+}
+
+T_Comment::~T_Comment()
+{
+	this.delete();
+}
+
+bool T_Comment::create(int nType, string szHeader, string szText, string szSubText, int nWaitTime, bool tabStyle)
+{
+	this.delete();
+	if (szHeader.Empty() && szText.Empty() && szSubText.Empty())
+	{
+		return false;
+	}
+	this.setBorderColor(nType);
+	this.m_tabStyle = tabStyle;
+	array@string aszText;
+	array@string aszSubText;
+	array@float spacings;
+	PreprocessString(szText);
+	PreprocessString(szSubText);
+	WordWrapText(szText, aszText, spacings, 480, 1.0, 1.0);
+	WordWrapText(szSubText, aszSubText, spacings, 480, 1.0, 1.0);
+	int nZ = 9801;
+	int nW1 = this.createHeader(nZ + 1, nType, szHeader);
+	int nW2 = _max(this.getMaxSize(aszText), this.getMaxSize(aszSubText));
+	if (nW1 <= 0 && nW2 <= 0)
+	{
+		return false;
+	}
+	int cnt = aszText.Numof();
+	if (szText.Length() == 0)
+	{
+		cnt = 0;
+	}
+	int cnt2 = aszSubText.Numof();
+	if (szSubText.Length() == 0)
+	{
+		cnt2 = 0;
+	}
+	if (cnt + cnt2 > 20)
+	{
+		cnt = cnt > 20 ? 20 : cnt;
+		cnt2 = 20 - cnt;
+	}
+	int nW = _max(nW1, nW2) + 8;
+	int nH = 8;
+	int nH2 = 0;
+	int nH3 = 0;
+	int nTx = 4;
+	int nTy = 4;
+	if (cnt > 0)
+	{
+		nH2 = this.calcHeight(cnt);
+		nH += nH2;
+	}
+	if (cnt2 > 0)
+	{
+		nH3 = this.calcHeight(cnt2);
+		if (nH2 > 0)
+		{
+			nH2 += 3;
+			nH3 += 3;
+		}
+		nH += nH3;
+	}
+	if (nW1 > 0)
+	{
+		nH += this.headerFontSize + this.lineSpacing;
+		nTy += this.headerFontSize + this.lineSpacing;
+		if (nW1 > nW2)
+		{
+			nTx += (nW1 - nW2) / 2;
+		}
+	}
+	this.createBase(nZ, nType, nW, nH);
+	int nR = nType == 1 ? 240 : 64;
+	int nG = nType == 1 ? 160 : 64;
+	int nB = nType == 1 ? 160 : 64;
+	this.drawText(nTx, nTy, cnt, nR, nG, nB, aszText);
+	this.drawText(nTx, nTy + nH2, cnt2, 255, 0, 0, aszSubText);
+	this.setShow(true, nWaitTime);
+	return true;
+}
+
+void T_Comment::delete()
+{
+	this.m_spBase.delete();
+	this.m_spHeader.delete();
+	this.clear();
+}
+
+void T_Comment::clear()
+{
+	this.m_nID = -1;
+	this.m_bShow = false;
+	this.m_nWaitTime = -1;
+	g_bCommentUpdate = false;
+	this.m_tabStyle = false;
+	this.headerFontSize = 22;
+	this.headerFontFace = 258;
+	this.headerFixedWidthSpacing = -6;
+	this.headerSpacing = 0.949999988079071;
+	this.fontSize = 20;
+	this.fontFace = 258;
+	this.fixedWidthSpacing = -6;
+	this.spacing = 0.949999988079071;
+	this.lineSpacing = -2;
+}
+
+bool T_Comment::update()
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (this.m_nWaitTime < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < this.m_nWaitTime)
+	{
+		return false;
+	}
+	効果音_説明();
+	this.m_spBase.setShow(true);
+	this.m_spHeader.setShow(true);
+	this.m_nWaitTime = -1;
+	g_bCommentUpdate = false;
+	return true;
+}
+
+bool T_Comment::setPos(int nX, int nY)
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	int nMx = 0;
+	int nMy = 0;
+	if (nX < 0 || nY < 0)
+	{
+		if (!マウス_位置取得(nMx, nMy))
+		{
+			return false;
+		}
+		nX = nMx + 11;
+		nY = nMy + 20;
+	}
+	else
+	{
+		nMx = 1024;
+		nMy = nY;
+	}
+	int nW = this.m_spBase.getWidth();
+	int nH = this.m_spBase.getHeight();
+	if (nX + nW > 1024)
+	{
+		nX = nMx - nW;
+	}
+	if (nY + nH > 736)
+	{
+		nY = 736 - nH;
+	}
+	this.m_spBase.setPos(nX, nY);
+	this.m_spHeader.setPos(nX + 4, nY + 4);
+	return true;
+}
+
+void T_Comment::setID(int nID)
+{
+	this.m_nID = nID;
+}
+
+void T_Comment::setShow(bool bShow, int nWaitTime)
+{
+	if (bShow == this.m_bShow)
+	{
+		return;
+	}
+	this.m_spBase.setShow(false);
+	this.m_spHeader.setShow(false);
+	this.m_bShow = bShow;
+	if (bShow)
+	{
+		this.m_nWaitTime = nWaitTime > 0 ? nWaitTime : 0;
+		this.m_sTimer.Reset();
+		g_bCommentUpdate = true;
+	}
+	else
+	{
+		this.m_nWaitTime = -1;
+		g_bCommentUpdate = false;
+	}
+}
+
+int T_Comment::createHeader(int nZ, int nType, string szHeader)
+{
+	int len = szHeader.LengthByte();
+	if (len < 1)
+	{
+		return 0;
+	}
+	if (len > 30)
+	{
+		len = 30;
+	}
+	SelectFontNumber(this.headerFontFace);
+	SetFontSize(this.headerFontSize);
+	SetSpacing(this.headerSpacing);
+	SetFixedWidthSpacing(this.headerFixedWidthSpacing);
+	int nW = MeasureText(szHeader, true);
+	int nH = this.headerFontSize;
+	sact_text_metrics_t tmHeader;
+	tmHeader.nSize = this.headerFontSize;
+	tmHeader.nColorR = nType == 1 ? 255 : 0;
+	tmHeader.nColorG = nType == 1 ? 215 : 0;
+	tmHeader.nColorB = nType == 1 ? 215 : 0;
+	tmHeader.nWeight = 0;
+	tmHeader.nFace = this.headerFontFace;
+	this.m_spHeader.create(nW, nH, 0, 0, 0, 0);
+	this.m_spHeader.setZ(nZ, -1);
+	this.m_spHeader.textDrawPos2(1, 0, 0, szHeader, tmHeader, this.headerFixedWidthSpacing, this.headerSpacing, true, false);
+	return nW;
+}
+
+void T_Comment::createBase(int nZ, int nType, int nWidth, int nHeight)
+{
+	this.m_spBase.create(nWidth + 5, nHeight + 5, 0, 0, 0, 0);
+	this.m_spBase.setZ(nZ, -1);
+	drawGraph_FillAMap(this.m_spBase.getSp(), nWidth, 5, 5, nHeight, 128);
+	drawGraph_FillAMap(this.m_spBase.getSp(), 5, nHeight, nWidth, 5, 128);
+	int i = 0;
+	int cnt = this.anBorderColorR.Numof();
+	int nX = 0;
+	int nY = 0;
+	int nW = nWidth;
+	int nH = nHeight;
+	T_Sprite spWork;
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_spBase.fill(nX, nY, nW, nH, this.anBorderColorR[i], this.anBorderColorG[i], this.anBorderColorB[i], 255);
+		nX += 1;
+		nY += 1;
+		nW -= 2;
+		nH -= 2;
+	}
+	if (spWork.setCg(nType == 1 ? 10049 : 10050) > 0)
+	{
+		this.m_spBase.copyCg(nX, nY, spWork, 0, 0, nW, nH);
+	}
+	else
+	{
+		this.m_spBase.fill(nX, nY, nW, nH, 255, 255, 255, 255);
+	}
+}
+
+void T_Comment::drawText(int nX, int nY, int nLine, int nR, int nG, int nB, ref array@string aszText)
+{
+	sact_text_metrics_t tmText;
+	tmText.nSize = this.fontSize;
+	tmText.nColorR = nR;
+	tmText.nColorG = nG;
+	tmText.nColorB = nB;
+	tmText.nWeight = 0;
+	tmText.nFace = this.fontFace;
+	int i = 0;
+	int nSpNo = this.m_spBase.getSpNo();
+	array@string columns;
+	array@int tabStops;
+	GetTabStops(aszText, tabStops, this.fontSize, this.fontFace, this.spacing, this.fixedWidthSpacing);
+	int spaceWidth = 8;
+	for (i = 0; i < nLine; ++i)
+	{
+		string line = aszText[i];
+		if (SplitTabs(line, columns))
+		{
+			int x2 = nX;
+			int columnCount = columns.Numof();
+			int c = 0;
+			int tabStop = 0;
+			string text = "";
+			for (c = 0; c < columnCount - 1; ++c)
+			{
+				text = columns[c];
+				int textWidth = MeasureText(text, true);
+				tabStop = tabStops[c];
+				if (this.m_tabStyle == false)
+				{
+					x2 = (tabStop - textWidth) + nX;
+				}
+				this.m_spBase.textDrawPos2(1, x2, nY, text, tmText, this.fixedWidthSpacing, this.spacing, false, false);
+				if (this.m_tabStyle == true)
+				{
+					x2 += tabStop - textWidth;
+				}
+			}
+			text = columns[columnCount - 1];
+			if (tabStop > 0)
+			{
+				x2 = tabStop + nX + spaceWidth;
+			}
+			this.m_spBase.textDrawPos2(1, x2, nY, text, tmText, this.fixedWidthSpacing, this.spacing, false, false);
+		}
+		else
+		{
+			this.m_spBase.textDrawPos2(1, nX, nY, line, tmText, this.fixedWidthSpacing, this.spacing, false, false);
+		}
+		nY += this.fontSize + this.lineSpacing;
+	}
+}
+
+int T_Comment::getMaxSize(ref array@string aszText)
+{
+	array@int tabStops;
+	GetTabStops(aszText, tabStops, this.fontSize, this.fontFace, this.spacing, this.fixedWidthSpacing);
+	SetFontSize(this.fontSize);
+	SetSpacing(this.spacing);
+	SelectFontNumber(this.fontFace);
+	SetFixedWidthSpacing(this.fixedWidthSpacing);
+	int i = 0;
+	int maxWidth = 0;
+	array@string columns;
+	int spaceWidth = 8;
+	for (i = 0; i < aszText.Numof(); ++i)
+	{
+		int width = 0;
+		string line = aszText[i];
+		if (SplitTabs(line, columns))
+		{
+			line = columns[columns.Numof() - 1];
+			width = tabStops[columns.Numof() - 2];
+			width += spaceWidth;
+			width += MeasureText(line, true);
+		}
+		else
+		{
+			width = MeasureText(line, true);
+		}
+		if (width > maxWidth)
+		{
+			maxWidth = width;
+		}
+	}
+	return maxWidth + 10;
+}
+
+void T_Comment::setBorderColor(int nType)
+{
+	int cnt = this.anBorderColorR.Numof();
+	this.anBorderColorR[0] = nType == 1 ? 255 : 76;
+	this.anBorderColorG[0] = nType == 1 ? 120 : 232;
+	this.anBorderColorB[0] = nType == 1 ? 200 : 255;
+	if (cnt > 1)
+	{
+		this.anBorderColorR[1] = nType == 1 ? 0 : 0;
+		this.anBorderColorG[1] = nType == 1 ? 0 : 0;
+		this.anBorderColorB[1] = nType == 1 ? 0 : 0;
+	}
+	if (cnt > 2)
+	{
+		this.anBorderColorR[2] = nType == 1 ? 170 : 255;
+		this.anBorderColorG[2] = nType == 1 ? 0 : 255;
+		this.anBorderColorB[2] = nType == 1 ? 0 : 255;
+	}
+}
+

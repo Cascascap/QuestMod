@@ -1,0 +1,50 @@
+bool EV(string func_name, int flag)
+{
+	if (!func_name.Empty())
+	{
+	}
+	if (flag != -2147483648)
+	{
+		if (func_name.Empty())
+		{
+			ERROR("フラグ強制セットには関数名の指定が必要", 0);
+			return false;
+		}
+		bool old = false;
+		int i = _EV_TABLE.Find(0, _EV_TABLE.Numof(), func_name);
+		if (i == -1)
+		{
+			old = false;
+			if (flag == 1)
+			{
+				_EV_TABLE.PushBack(func_name);
+			}
+		}
+		else
+		{
+			old = true;
+			if (flag == 0)
+			{
+				_EV_TABLE.Erase(i);
+			}
+		}
+		return old;
+	}
+	if (!func_name.Empty())
+	{
+		return -1 != _EV_TABLE.Find(0, _EV_TABLE.Numof(), func_name);
+	}
+	func_name = system.GetFuncStackName(1);
+	if (-1 != _EV_TABLE.Find(0, _EV_TABLE.Numof(), func_name))
+	{
+		return true;
+	}
+	_EV_TABLE.PushBack(func_name);
+	return false;
+}
+
+void EV全クリア()
+{
+	_EV_TABLE.Free();
+}
+

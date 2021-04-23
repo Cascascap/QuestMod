@@ -1,0 +1,20 @@
+int 装備アイテム_ドラッグ実行(int nZ, int nType, int nSystemBarMode, ref T_ItemIcon rfsIcon)
+{
+	return g_sEquipDrag.run(nZ, nType, nSystemBarMode, rfsIcon);
+}
+
+int 装備アイテム_選択実行(int nZ, int nType, int nSystemBarMode, int nItemNo)
+{
+	return g_sEquipDrag.select(nZ, nType, nSystemBarMode, nItemNo);
+}
+
+void 装備アイテム_ドラッグ(int nX, int nY)
+{
+	g_sEquipDrag.execDrag(nX, nY);
+}
+
+bool 装備アイテム_ドロップ(int nX, int nY)
+{
+	return g_sEquipDrag.execDrop(nX, nY);
+}
+

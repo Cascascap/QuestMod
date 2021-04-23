@@ -1,0 +1,329 @@
+bool T_BattleLog::getEndMsg()
+{
+	return this.m_bEndMsg;
+}
+
+int T_BattleLog::getStatus()
+{
+	return this.m_nStatus;
+}
+
+T_BattleLog::T_BattleLog()
+{
+	this.clear();
+}
+
+T_BattleLog::~T_BattleLog()
+{
+	this.delete();
+}
+
+bool T_BattleLog::create(string szText, bool bEndMsg)
+{
+	this.delete();
+	if (szText.Empty())
+	{
+		return false;
+	}
+	this.m_szText = szText;
+	this.m_bEndMsg = bEndMsg;
+	this.m_nStatus = 0;
+	return true;
+}
+
+void T_BattleLog::delete()
+{
+	this.m_sText.delete();
+	this.clear();
+}
+
+void T_BattleLog::clear()
+{
+	this.m_szText = "";
+	this.m_nStatus = -1;
+	this.m_nStrX = -1;
+	this.m_nStrY = -1;
+	this.m_nEndX = -1;
+	this.m_nEndY = -1;
+	this.m_nTotalTime = -1;
+}
+
+bool T_BattleLog::update()
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	switch (this.m_nStatus)
+	{
+		case 1:
+			return this.moveIn();
+		case 2:
+			return this.wait();
+		case 3:
+			return this.moveOut();
+		case 4:
+			return true;
+		case 0:
+		case 9:
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_BattleLog::start(int nZ)
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	if (this.m_nStatus > 0)
+	{
+		return false;
+	}
+	sact_text_metrics_t tmLog;
+	tmLog.nSize = 20;
+	tmLog.nColorR = 250;
+	tmLog.nColorG = 230;
+	tmLog.nColorB = 170;
+	tmLog.nWeight = 40;
+	tmLog.nFace = 256;
+	tmLog.nShadowPixelL = 0;
+	tmLog.nShadowPixelR = 0;
+	tmLog.nShadowPixelU = 0;
+	tmLog.nShadowPixelD = 0;
+	tmLog.nShadowColorR = 0;
+	tmLog.nShadowColorG = 0;
+	tmLog.nShadowColorB = 0;
+	float spacing = 1.0;
+	this.m_sText.createFromTextMetrics2(2, this.m_szText, tmLog, -4, spacing);
+	this.m_sText.setPos(102, 762);
+	this.m_sText.setZ(nZ);
+	this.m_sText.setShow(true);
+	this.m_nStatus = 1;
+	this.m_nStrX = 102;
+	this.m_nStrY = 762;
+	this.m_nEndX = 102;
+	this.m_nEndY = 742;
+	this.m_nTotalTime = 300;
+	this.m_sTimer.Reset();
+	return true;
+}
+
+void T_BattleLog::end()
+{
+	this.m_sText.setShow(false);
+	this.m_sText.delete();
+	this.m_bEndMsg = false;
+	this.m_nStatus = 9;
+	this.m_nStrX = -1;
+	this.m_nStrY = -1;
+	this.m_nEndX = -1;
+	this.m_nEndY = -1;
+	this.m_nTotalTime = -1;
+}
+
+bool T_BattleLog::moveIn()
+{
+	if (this.m_nStatus != 1)
+	{
+		return false;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime > this.m_nTotalTime)
+	{
+		this.m_sText.setPos(this.m_nEndX, this.m_nEndY);
+		this.m_nStatus = this.m_bEndMsg ? 4 : 2;
+		this.m_nTotalTime = 1200;
+		this.m_sTimer.Reset();
+		return true;
+	}
+	else
+	{
+		int nX = this.m_nStrX + é¿êîåvéZ(this.m_nEndX - this.m_nStrX, nTime, this.m_nTotalTime);
+		int nY = this.m_nStrY + é¿êîåvéZ(this.m_nEndY - this.m_nStrY, nTime, this.m_nTotalTime);
+		this.m_sText.setPos(nX, nY);
+	}
+	return true;
+}
+
+bool T_BattleLog::wait()
+{
+	if (this.m_nStatus != 2)
+	{
+		return false;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime > this.m_nTotalTime)
+	{
+		this.m_nStatus = 3;
+		this.m_nStrX = this.m_sText.getPosX();
+		this.m_nStrY = this.m_sText.getPosY();
+		this.m_nEndX = 102;
+		this.m_nEndY = 722;
+		this.m_nTotalTime = 150;
+		this.m_sTimer.Reset();
+	}
+	return true;
+}
+
+bool T_BattleLog::moveOut()
+{
+	if (this.m_nStatus != 3)
+	{
+		return false;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime > this.m_nTotalTime)
+	{
+		this.end();
+		return false;
+	}
+	int nX = this.m_nStrX + é¿êîåvéZ(this.m_nEndX - this.m_nStrX, nTime, this.m_nTotalTime);
+	int nY = this.m_nStrY + é¿êîåvéZ(this.m_nEndY - this.m_nStrY, nTime, this.m_nTotalTime);
+	this.m_sText.setPos(nX, nY);
+	return true;
+}
+
+T_BattleLogManager::T_BattleLogManager()
+{
+	this.clear();
+}
+
+T_BattleLogManager::~T_BattleLogManager()
+{
+	this.delete();
+}
+
+bool T_BattleLogManager::create(int nZ)
+{
+	this.delete();
+	this.m_nZ = nZ;
+	this.m_bUpdate = false;
+	return true;
+}
+
+void T_BattleLogManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asLog.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLog[i].delete();
+	}
+	if (!this.m_asLog.Empty())
+	{
+		this.m_asLog.Free();
+	}
+	this.clear();
+}
+
+void T_BattleLogManager::clear()
+{
+	this.m_nZ = -1;
+	this.m_bUpdate = false;
+}
+
+bool T_BattleLogManager::add(string szText, bool bEndMsg)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	int cnt = this.m_asLog.Numof();
+	this.m_asLog.Realloc(cnt + 1);
+	if (!this.m_asLog[cnt].create(szText, bEndMsg))
+	{
+		return false;
+	}
+	g_bBattleLogUpdate = this.m_bUpdate;
+	return true;
+}
+
+bool T_BattleLogManager::update()
+{
+	if (!this.m_bUpdate)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asLog.Numof();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLog[i].update();
+	}
+	i = 0;
+	while (i < cnt)
+	{
+		ref T_BattleLog rfsLog = this.m_asLog[i];
+		if (rfsLog.getStatus() == 9)
+		{
+			this.m_asLog.Erase(i);
+			--cnt;
+		}
+		else
+		{
+			++i;
+		}
+	}
+	if (cnt <= 0)
+	{
+		g_bBattleLogUpdate = false;
+		return false;
+	}
+	int idx1 = -1;
+	int idx2 = -1;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleLog rfsLog = this.m_asLog[i];
+		switch (rfsLog.getStatus())
+		{
+			case 0:
+				if (idx1 < 0)
+				{
+					idx1 = i;
+				}
+				break;
+			case 1:
+			case 2:
+			case 3:
+				idx2 = i;
+				break;
+			case 4:
+			case 9:
+			default:
+				break;
+		}
+	}
+	if (idx2 < 0)
+	{
+		if (idx1 >= 0)
+		{
+			this.m_asLog[idx1].start(this.m_nZ);
+		}
+	}
+	else if (idx2 < cnt - 1)
+	{
+		if (this.m_asLog[idx2].getStatus() == 3)
+		{
+			this.m_asLog[idx2 + 1].start(this.m_nZ);
+		}
+	}
+	return true;
+}
+
+bool T_BattleLogManager::setUpdate(bool bUpdate)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	this.m_bUpdate = bUpdate;
+	return this.m_asLog.Numof() > 0 ? this.m_bUpdate : 0;
+}
+

@@ -1,0 +1,224 @@
+T_ResultChara::T_ResultChara()
+{
+	this.clear();
+}
+
+T_ResultChara::~T_ResultChara()
+{
+	this.delete();
+}
+
+bool T_ResultChara::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.createList();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	this.m_spBase.setCg(10361);
+	this.m_spBase.setZ(nZ);
+	this.m_spLabel.setCg(10362);
+	this.m_spLabel.setZ(nZ + 1);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createFace(i, this.m_anCharaNo[i], nZ + 10);
+	}
+	return true;
+}
+
+void T_ResultChara::delete()
+{
+	int i = 0;
+	int cnt = this.m_asFace.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asFace[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spLabel.delete();
+	this.clear();
+}
+
+void T_ResultChara::clear()
+{
+	this.m_nStrX = -1;
+	this.m_nStrY = -1;
+	this.m_nEndX = -1;
+	this.m_nEndY = -1;
+	this.m_nTotalTime = -1;
+	if (!this.m_anMoveTime.Empty())
+	{
+		this.m_anMoveTime.Free();
+	}
+	if (!this.m_anWaitTime.Empty())
+	{
+		this.m_anWaitTime.Free();
+	}
+	if (!this.m_anCharaNo.Empty())
+	{
+		this.m_anCharaNo.Free();
+	}
+}
+
+bool T_ResultChara::start(int nTotalTime)
+{
+	if (this.m_anCharaNo.Empty())
+	{
+		return false;
+	}
+	this.m_nStrX = 777;
+	this.m_nStrY = 768;
+	this.m_nEndX = 777;
+	this.m_nEndY = 0;
+	this.m_nTotalTime = nTotalTime;
+	int i = 0;
+	int cnt = this.m_anCharaNo.Numof() + 1;
+	this.m_anMoveTime.Alloc(cnt);
+	this.m_anWaitTime.Alloc(cnt);
+	int nMoveTime = (nTotalTime * 3) / 4;
+	int nInterval = nMoveTime / (cnt + 1);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_anMoveTime[i] = nMoveTime;
+		this.m_anWaitTime[i] = nTotalTime - nMoveTime;
+		nMoveTime -= nInterval;
+	}
+	this.setPos(this.m_nStrX, this.m_nStrY);
+	this.setShow(true);
+	return true;
+}
+
+void T_ResultChara::end()
+{
+	if (this.m_nTotalTime < 0)
+	{
+		return;
+	}
+	this.setPos(this.m_nEndX, this.m_nEndY);
+	this.m_nStrX = -1;
+	this.m_nStrY = -1;
+	this.m_nEndX = -1;
+	this.m_nEndY = -1;
+	this.m_nTotalTime = -1;
+}
+
+bool T_ResultChara::update(int nTime)
+{
+	if (this.m_nTotalTime < 0)
+	{
+		return false;
+	}
+	int nX1 = this.m_nStrX + é¿êîåvéZ(this.m_nEndX - this.m_nStrX, nTime, this.m_nTotalTime);
+	int nY1 = this.m_nStrY + é¿êîåvéZ(this.m_nEndY - this.m_nStrY, nTime, this.m_nTotalTime);
+	this.m_spBase.setPos(nX1, nY1);
+	int i = 0;
+	int cnt = this.m_anMoveTime.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nTime2 = nTime - this.m_anWaitTime[i];
+		if (nTime2 > 0)
+		{
+			ref int nMoveTime = this.m_anMoveTime[i];
+			int nX2 = this.m_nStrX + é¿êîåvéZ(this.m_nEndX - this.m_nStrX, nTime2, nMoveTime);
+			int nY2 = this.m_nStrY + é¿êîåvéZ(this.m_nEndY - this.m_nStrY, nTime2, nMoveTime);
+			this.setFacePos(i - 1, nX2, nY2);
+		}
+		else
+		{
+			this.setFacePos(i - 1, this.m_nStrX, this.m_nStrY);
+		}
+	}
+	return true;
+}
+
+int T_ResultChara::createList()
+{
+	int i = 0;
+	int cnt = ÅüÇmÇdÇvÉLÉÉÉâÉNÉ^Å[.Numof();
+	int nCount = 0;
+	for (i = 1; i < cnt; ++i)
+	{
+		int nCharaNo = ÅüÇmÇdÇvÉLÉÉÉâÉNÉ^Å[[i];
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		this.m_anCharaNo.PushBack(nCharaNo);
+		++nCount;
+		if (nCount >= 3)
+		{
+			break;
+		}
+	}
+	return nCount;
+}
+
+bool T_ResultChara::createFace(int nIndex, int nCharaNo, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_asFace.Numof())
+	{
+		return false;
+	}
+	T_CharaFace sFace;
+	if (!sFace.create(nCharaNo, 1))
+	{
+		return false;
+	}
+	ref T_Sprite rfSp = this.m_asFace[nIndex];
+	rfSp.setCg(10363);
+	sFace.getSp().copyToSprite(rfSp, 3, 3);
+	rfSp.setZ(nZ);
+	return true;
+}
+
+void T_ResultChara::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_anCharaNo.Numof();
+	int nHH = 31 + 247 * cnt;
+	int nYY = (768 - nHH) / 2;
+	int nX2 = nX + 24;
+	int nY2 = nY + nYY + 31;
+	this.m_spBase.setPos(nX, nY);
+	this.m_spLabel.setPos(nX + 17, nY + nYY);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asFace[i].setPos(nX2, nY2);
+		nY2 += 247;
+	}
+}
+
+void T_ResultChara::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_anCharaNo.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asFace[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_spLabel.setShow(bShow);
+}
+
+void T_ResultChara::setFacePos(int nIndex, int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_anCharaNo.Numof();
+	if (nIndex >= cnt)
+	{
+		return;
+	}
+	int nHH = 31 + 247 * cnt;
+	int nYY = (768 - nHH) / 2;
+	if (nIndex < 0)
+	{
+		this.m_spLabel.setPos(nX + 17, nY + nYY);
+		return;
+	}
+	int nX2 = nX + 24;
+	int nY2 = nY + nYY + 31 + 247 * nIndex;
+	this.m_asFace[nIndex].setPos(nX2, nY2);
+}
+

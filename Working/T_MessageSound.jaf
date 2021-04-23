@@ -1,0 +1,163 @@
+int T_MessageSound::getSoundNo(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anSoundNo.Numof() ? -1 : this.m_anSoundNo[nIndex];
+}
+
+int T_MessageSound::getWaitTime(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anWaitTime.Numof() ? -1 : this.m_anWaitTime[nIndex];
+}
+
+T_MessageSound::T_MessageSound()
+{
+	this.clear();
+}
+
+T_MessageSound::~T_MessageSound()
+{
+	this.delete();
+}
+
+bool T_MessageSound::create(int nSoundNo1, int nWaitTime1, int nSoundNo2, int nWaitTime2)
+{
+	this.delete();
+	if (nSoundNo1 <= 0 || nWaitTime1 < 0 || nSoundNo2 <= 0 || nWaitTime2 < 0)
+	{
+		return false;
+	}
+	this.m_anSoundNo[0] = nSoundNo1;
+	this.m_anSoundNo[1] = nSoundNo2;
+	this.m_anWaitTime[0] = nWaitTime1;
+	this.m_anWaitTime[1] = nWaitTime2;
+	return true;
+}
+
+void T_MessageSound::delete()
+{
+	this.clear();
+}
+
+void T_MessageSound::clear()
+{
+	this.m_anSoundNo.Fill(0, this.m_anSoundNo.Numof(), 0);
+	this.m_anWaitTime.Fill(0, this.m_anWaitTime.Numof(), -1);
+	this.m_nType = -1;
+	this.m_nCurrentIndex = -1;
+}
+
+bool T_MessageSound::play(string szText)
+{
+	if (AFL_Config_GetMessageSpeedRate() >= 1.0)
+	{
+		return false;
+	}
+	if (this.m_anSoundNo[0] <= 0)
+	{
+		return false;
+	}
+	if (!this.check(szText))
+	{
+		return false;
+	}
+	if (this.m_nCurrentIndex < 0)
+	{
+		this.m_nCurrentIndex = 0;
+		goto label0;
+	}
+	if (this.m_sTimer.Get() < this.m_anWaitTime[this.m_nCurrentIndex])
+	{
+		return false;
+	}
+	this.m_nCurrentIndex++;
+	if (this.m_nCurrentIndex >= this.m_anSoundNo.Numof())
+	{
+		this.m_nCurrentIndex = 0;
+	}
+label0:
+	効果音_再生(this.m_anSoundNo[this.m_nCurrentIndex]);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_MessageSound::check(string szText)
+{
+	switch (this.m_nType)
+	{
+		case 1:
+			if (szText == "」")
+			{
+				this.m_nType = 0;
+				return false;
+			}
+			return true;
+		case 2:
+			if (szText == "）")
+			{
+				this.m_nType = 0;
+				return false;
+			}
+			return true;
+		case 3:
+			if (szText == "』")
+			{
+				this.m_nType = 0;
+				return false;
+			}
+			return true;
+		case 4:
+			if (szText == "\"")
+			{
+				this.m_nType = 0;
+				return false;
+			}
+			return true;
+		case 5:
+			if (szText == ")")
+			{
+				this.m_nType = 0;
+				return false;
+			}
+			return true;
+		case 6:
+			if (szText == "”")
+			{
+				this.m_nType = 0;
+				return false;
+			}
+			return true;
+		default:
+			break;
+	}
+	if (szText == "「")
+	{
+		this.m_nType = 1;
+		return true;
+	}
+	if (szText == "（")
+	{
+		this.m_nType = 2;
+		return true;
+	}
+	if (szText == "『")
+	{
+		this.m_nType = 3;
+		return true;
+	}
+	if (szText == "\"")
+	{
+		this.m_nType = 4;
+		return true;
+	}
+	if (szText == "(")
+	{
+		this.m_nType = 5;
+		return true;
+	}
+	if (szText == "“")
+	{
+		this.m_nType = 6;
+		return true;
+	}
+	return this.m_nType > 0;
+}
+

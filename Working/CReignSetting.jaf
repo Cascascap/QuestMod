@@ -1,0 +1,517 @@
+CReignSetting::CReignSetting()
+{
+}
+
+bool CReignSetting::Load()
+{
+	int nRenderMode = 0;
+	int Edge = 0;
+	int nShadowMode = 0;
+	int nShadowMapResolutionLevel = 0;
+	int nBumpMode = 0;
+	int nBloomMode = 0;
+	int nGlareMode = 0;
+	int nFogMode = 0;
+	int nSpecularMode = 0;
+	int nLightMapMode = 0;
+	int nSoftFogEdgeMode = 0;
+	int nSSAOMode = 0;
+	int nVertexBlendMode = 0;
+	int nShaderPrecisionMode = 0;
+	int nTextureResolutionLevel = 0;
+	int nTextureFilterMode = 0;
+	float fFilterY = 0.0;
+	int nAntiAliasing = 0;
+	int nWaitVSync = 0;
+	bool bUsePower2Texture = false;
+	if (!VSFile.OpenForRead(this.GetSaveFileName()))
+	{
+		return false;
+	}
+	string ChunkName = "";
+	if (!VSFile.ReadString(ChunkName))
+	{
+		return false;
+	}
+	if (ChunkName != "RST")
+	{
+		return false;
+	}
+	int nVersion = 0;
+	if (!VSFile.ReadInt(nVersion))
+	{
+		return false;
+	}
+	if (nVersion < 0 || nVersion > 7)
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nRenderMode))
+	{
+		return false;
+	}
+	if (nVersion >= 7)
+	{
+		if (!VSFile.ReadInt(Edge))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		Edge = 1;
+	}
+	if (!VSFile.ReadInt(nShadowMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nShadowMapResolutionLevel))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nBumpMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nBloomMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nGlareMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nFogMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nSpecularMode))
+	{
+		return false;
+	}
+	if (nVersion >= 2)
+	{
+		if (!VSFile.ReadInt(nLightMapMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nLightMapMode = 1;
+	}
+	if (nVersion >= 3)
+	{
+		if (!VSFile.ReadInt(nSoftFogEdgeMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nSoftFogEdgeMode = 0;
+	}
+	if (nVersion >= 6)
+	{
+		if (!VSFile.ReadInt(nSSAOMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nSSAOMode = 0;
+	}
+	if (nVersion >= 4)
+	{
+		if (!VSFile.ReadInt(nVertexBlendMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nVertexBlendMode = 0;
+	}
+	if (nVersion >= 5)
+	{
+		if (!VSFile.ReadInt(nShaderPrecisionMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nShaderPrecisionMode = 0;
+	}
+	if (!VSFile.ReadInt(nTextureResolutionLevel))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nTextureFilterMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadFloat(fFilterY))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nAntiAliasing))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nWaitVSync))
+	{
+		return false;
+	}
+	if (nVersion >= 1)
+	{
+		int nUsePower2Texture = 0;
+		if (!VSFile.ReadInt(nUsePower2Texture))
+		{
+			return false;
+		}
+		bUsePower2Texture = nUsePower2Texture != 0;
+	}
+	else
+	{
+		bUsePower2Texture = false;
+	}
+	if (!VSFile.Close())
+	{
+		return false;
+	}
+	this.m_nRenderMode = nRenderMode;
+	this.m_Edge = Edge;
+	this.m_nShadowMode = nShadowMode;
+	this.m_nShadowMapResolutionLevel = nShadowMapResolutionLevel;
+	this.m_nBumpMode = nBumpMode;
+	this.m_nBloomMode = nBloomMode;
+	this.m_nGlareMode = nGlareMode;
+	this.m_nFogMode = nFogMode;
+	this.m_nSpecularMode = nSpecularMode;
+	this.m_nLightMapMode = nLightMapMode;
+	this.m_nSoftFogEdgeMode = nSoftFogEdgeMode;
+	this.m_nSSAOMode = nSSAOMode;
+	this.m_nVertexBlendMode = nVertexBlendMode;
+	this.m_nShaderPrecisionMode = nShaderPrecisionMode;
+	this.m_nTextureResolutionLevel = nTextureResolutionLevel;
+	this.m_nTextureFilterMode = nTextureFilterMode;
+	this.m_fFilterY = fFilterY;
+	this.m_nAntiAliasing = nAntiAliasing;
+	this.m_nWaitVSync = nWaitVSync;
+	this.m_bUsePower2Texture = bUsePower2Texture;
+	return true;
+}
+
+bool CReignSetting::Save()
+{
+	if (!VSFile.OpenForWrite(this.GetSaveFileName()))
+	{
+		return false;
+	}
+	if (!VSFile.WriteString("RST"))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(7))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nRenderMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_Edge))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nShadowMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nShadowMapResolutionLevel))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nBumpMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nBloomMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nGlareMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nFogMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nSpecularMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nLightMapMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nSoftFogEdgeMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nSSAOMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nVertexBlendMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nShaderPrecisionMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nTextureResolutionLevel))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nTextureFilterMode))
+	{
+		return false;
+	}
+	if (!VSFile.WriteFloat(this.m_fFilterY))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nAntiAliasing))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_nWaitVSync))
+	{
+		return false;
+	}
+	if (!VSFile.WriteInt(this.m_bUsePower2Texture ? 1 : 0))
+	{
+		return false;
+	}
+	if (!VSFile.Close())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignSetting::ExistReignSaveFile()
+{
+	return system.ExistFile(this.GetSaveFileName());
+}
+
+string CReignSetting::GetSaveFileName()
+{
+	return system.GetSaveFolderName() + "\\3DSetting.asd";
+}
+
+int CReignSetting::GetRenderMode()
+{
+	return this.m_nRenderMode;
+}
+
+int CReignSetting::GetEdge()
+{
+	return this.m_Edge;
+}
+
+int CReignSetting::GetShadowMode()
+{
+	return this.m_nShadowMode;
+}
+
+int CReignSetting::GetShadowMapResolutionLevel()
+{
+	return this.m_nShadowMapResolutionLevel;
+}
+
+int CReignSetting::GetBumpMode()
+{
+	return this.m_nBumpMode;
+}
+
+int CReignSetting::GetBloomMode()
+{
+	return this.m_nBloomMode;
+}
+
+int CReignSetting::GetGlareMode()
+{
+	return this.m_nGlareMode;
+}
+
+int CReignSetting::GetFogMode()
+{
+	return this.m_nFogMode;
+}
+
+int CReignSetting::GetSpecularMode()
+{
+	return this.m_nSpecularMode;
+}
+
+int CReignSetting::GetLightMapMode()
+{
+	return this.m_nLightMapMode;
+}
+
+int CReignSetting::GetSoftFogEdgeMode()
+{
+	return this.m_nSoftFogEdgeMode;
+}
+
+int CReignSetting::GetSSAOMode()
+{
+	return this.m_nSSAOMode;
+}
+
+int CReignSetting::GetVertexBlendMode()
+{
+	return this.m_nVertexBlendMode;
+}
+
+int CReignSetting::GetShaderPrecisionMode()
+{
+	return this.m_nShaderPrecisionMode;
+}
+
+int CReignSetting::GetTextureResolutionLevel()
+{
+	return this.m_nTextureResolutionLevel;
+}
+
+int CReignSetting::GetTextureFilterMode()
+{
+	return this.m_nTextureFilterMode;
+}
+
+float CReignSetting::GetFilterY()
+{
+	return this.m_fFilterY;
+}
+
+int CReignSetting::GetAntiAliasing()
+{
+	return this.m_nAntiAliasing;
+}
+
+int CReignSetting::GetWaitVSync()
+{
+	return this.m_nWaitVSync;
+}
+
+bool CReignSetting::GetUsePower2Texture()
+{
+	return this.m_bUsePower2Texture;
+}
+
+void CReignSetting::SetRenderMode(int nRenderMode)
+{
+	this.m_nRenderMode = nRenderMode;
+}
+
+void CReignSetting::SetEdge(int Edge)
+{
+	this.m_Edge = Edge;
+}
+
+void CReignSetting::SetShadowMode(int nShadowMode)
+{
+	this.m_nShadowMode = nShadowMode;
+}
+
+void CReignSetting::SetShadowMapResolutionLevel(int nShadowMapResolutionLevel)
+{
+	this.m_nShadowMapResolutionLevel = nShadowMapResolutionLevel;
+}
+
+void CReignSetting::SetBumpMode(int nBumpMode)
+{
+	this.m_nBumpMode = nBumpMode;
+}
+
+void CReignSetting::SetBloomMode(int nBloomMode)
+{
+	this.m_nBloomMode = nBloomMode;
+}
+
+void CReignSetting::SetGlareMode(int nGlareMode)
+{
+	this.m_nGlareMode = nGlareMode;
+}
+
+void CReignSetting::SetFogMode(int nFogMode)
+{
+	this.m_nFogMode = nFogMode;
+}
+
+void CReignSetting::SetSpecularMode(int nSpecularMode)
+{
+	this.m_nSpecularMode = nSpecularMode;
+}
+
+void CReignSetting::SetLightMapMode(int nLightMapMode)
+{
+	this.m_nLightMapMode = nLightMapMode;
+}
+
+void CReignSetting::SetSoftFogEdgeMode(int nSoftFogEdgeMode)
+{
+	this.m_nSoftFogEdgeMode = nSoftFogEdgeMode;
+}
+
+void CReignSetting::SetSSAOMode(int nSSAOMode)
+{
+	this.m_nSSAOMode = nSSAOMode;
+}
+
+void CReignSetting::SetVertexBlendMode(int nVertexBlendMode)
+{
+	this.m_nVertexBlendMode = nVertexBlendMode;
+}
+
+void CReignSetting::SetShaderPrecisionMode(int nShaderPrecisionMode)
+{
+	this.m_nShaderPrecisionMode = nShaderPrecisionMode;
+}
+
+void CReignSetting::SetTextureResolutionLevel(int nTextureResolutionLevel)
+{
+	this.m_nTextureResolutionLevel = nTextureResolutionLevel;
+}
+
+void CReignSetting::SetTextureFilterMode(int nTextureFilterMode)
+{
+	this.m_nTextureFilterMode = nTextureFilterMode;
+}
+
+void CReignSetting::SetFilterY(float fFilterY)
+{
+	this.m_fFilterY = fFilterY;
+}
+
+void CReignSetting::SetAntiAliasing(int nAntiAliasing)
+{
+	this.m_nAntiAliasing = nAntiAliasing;
+}
+
+void CReignSetting::SetWaitVSync(int nWaitVSync)
+{
+	this.m_nWaitVSync = nWaitVSync;
+}
+
+void CReignSetting::SetUsePower2Texture(bool bUsePower2Texture)
+{
+	this.m_bUsePower2Texture = bUsePower2Texture;
+}
+

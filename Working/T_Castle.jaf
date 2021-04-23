@@ -1,0 +1,482 @@
+T_Castle::T_Castle()
+{
+	this.clear();
+}
+
+T_Castle::~T_Castle()
+{
+	this.delete();
+}
+
+int T_Castle::run()
+{
+	int nRet = 0;
+	if (!this.create())
+	{
+		return -1;
+	}
+	_EFFECT(1, 100);
+	int nID = 110000 + this.m_sList.getFirstAreaNo();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+int T_Castle::moveUp(int nID)
+{
+	int nAreaNo = -1;
+	if (nID > 920000)
+	{
+		switch (ミニステータス_遷移インデクス(nID))
+		{
+			case 0:
+			case 1:
+				nAreaNo = this.m_sList.getBottomAreaNo(0);
+				break;
+			case 2:
+				nAreaNo = this.m_sList.getBottomAreaNo(1);
+				break;
+			case 3:
+			case 4:
+				nAreaNo = this.m_sList.getBottomAreaNo(2);
+				break;
+			default:
+				break;
+		}
+		goto label0;
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞ミニステータス(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ＞システムバー(nID);
+	}
+	if (nID > 100000)
+	{
+		nAreaNo = this.m_sList.moveUp(nID - 110000);
+		if (nAreaNo <= 0)
+		{
+			switch (this.m_sList.getCol(nID - 110000))
+			{
+				case 0:
+					return 600012;
+				case 1:
+					return 600013;
+				case 2:
+					return 600014;
+				default:
+					break;
+			}
+		}
+		goto label0;
+	}
+label0:
+	return 110000 + (nAreaNo > 0 ? nAreaNo : this.m_sList.getFirstAreaNo());
+}
+
+int T_Castle::moveDown(int nID)
+{
+	int nAreaNo = -1;
+	if (nID > 920000)
+	{
+		return カーソル移動_ミニステータス＞システムバー(nID);
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞街マップ(nID, this.m_sButton);
+	}
+	if (nID > 600000)
+	{
+		switch (nID)
+		{
+			case 600012:
+				nAreaNo = this.m_sList.getTopAreaNo(0);
+				break;
+			case 600013:
+				nAreaNo = this.m_sList.getTopAreaNo(1);
+				break;
+			case 600014:
+				nAreaNo = this.m_sList.getTopAreaNo(2);
+				break;
+			default:
+				break;
+		}
+		goto label0;
+	}
+	if (nID > 100000)
+	{
+		nAreaNo = this.m_sList.moveDown(nID - 110000);
+		if (nAreaNo <= 0)
+		{
+			switch (this.m_sList.getCol(nID - 110000))
+			{
+				case 0:
+					return ミニステータス_次ボタン_遷移(0);
+				case 1:
+					return ミニステータス_次ボタン_遷移(2);
+				case 2:
+					return ミニステータス_次ボタン_遷移(4);
+				default:
+					break;
+			}
+		}
+		goto label0;
+	}
+label0:
+	return 110000 + (nAreaNo > 0 ? nAreaNo : this.m_sList.getLastAreaNo());
+}
+
+int T_Castle::moveLeft(int nID)
+{
+	int nAreaNo = -1;
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ左(nID, this.m_sButton);
+	}
+	if (nID > 100000)
+	{
+		nAreaNo = this.m_sList.moveLeft(nID - 110000);
+		goto label0;
+	}
+label0:
+	return 110000 + (nAreaNo > 0 ? nAreaNo : this.m_sList.getFirstAreaNo());
+}
+
+int T_Castle::moveRight(int nID)
+{
+	int nAreaNo = -1;
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ右(nID, this.m_sButton);
+	}
+	if (nID > 100000)
+	{
+		nAreaNo = this.m_sList.moveRight(nID - 110000);
+		goto label0;
+	}
+label0:
+	return 110000 + (nAreaNo > 0 ? nAreaNo : this.m_sList.getLastAreaNo());
+}
+
+void T_Castle::setSelect(int nID, bool bSelect)
+{
+	if (nID > 900000)
+	{
+		システムバー_選択設定(nID, bSelect, true);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+	}
+}
+
+bool T_Castle::create()
+{
+	this.delete();
+	if (!this.m_sList.create(2))
+	{
+		return false;
+	}
+	システムバー_作成(14, -1, true);
+	this.m_spBase.attach(街マップ_土台作成(11151));
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(1);
+	if (ランス城_掃除中確認())
+	{
+		this.m_spBase.blendCg(167, 0, 11154, 255);
+	}
+	this.m_sButton.create();
+	int i = 0;
+	for (i = 0; i < 27; ++i)
+	{
+		this.createButton(i);
+	}
+	街マップ_タブ作成(this.m_sButton, 600011);
+	this.m_sButton.setZ(6);
+	this.setShow(true);
+	this.m_sShortcutInfo.create(9901);
+	this.m_sShortcutInfo.addAll(this.m_sButton);
+	this.m_sShortcutInfo.addAll(システムバー_ボタン群());
+	this.m_sInputKey.create(1, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&ランス城_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&ランス城_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&ランス城_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&ランス城_右矢印);
+	this.m_sInputKey.setSelectCallback(&ランス城_選択設定);
+	return true;
+}
+
+bool T_Castle::createButton(int nIndex)
+{
+	int nAreaNo = this.m_sList.getAreaNo(nIndex);
+	if (nAreaNo <= 0)
+	{
+		return false;
+	}
+	string szName = ランス城_エリア名(nAreaNo);
+	if (szName.Empty())
+	{
+		return false;
+	}
+	array@T_Sprite aspWork[2];
+	if (ＣＧ_分割_横(11153, aspWork) != aspWork.Numof())
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	spWork1.attachSp(aspWork[0].detach());
+	spWork2.attachSp(aspWork[1].detach());
+	int nW = spWork1.getWidth();
+	int nH = spWork1.getHeight();
+	int nTy = (nH + -21) / 2 - 1;
+	sact_text_metrics_t tmName;
+	tmName.nSize = 24;
+	tmName.nFace = 258;
+	tmName.nColorR = 25;
+	tmName.nColorG = 25;
+	tmName.nColorB = 25;
+	tmName.nShadowPixelL = 1;
+	tmName.nShadowPixelR = 1;
+	tmName.nShadowPixelU = 1;
+	tmName.nShadowPixelD = 1;
+	tmName.nShadowColorR = 144;
+	tmName.nShadowColorG = 144;
+	tmName.nShadowColorB = 136;
+	float spacing = 0.0;
+	SetFixedWidthSpacing(-4);
+	FitText2(szName, nW - 4, tmName.nFace, 24, 12, tmName.nSize, 0.949999988079071, 0.5, spacing);
+	spWork1.textDrawCenter2(1, szName, tmName, -4, spacing);
+	spWork2.textDrawCenter2(1, szName, tmName, -4, spacing);
+	int nID = 110000 + nAreaNo;
+	T_Button sButton;
+	sButton.createSp(spWork1, NULL, spWork2);
+	sButton.createFrame(0, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButton.createFrame(1, nW, nH, 255, 0, 0, 128, -2147483648, -2147483648, 0);
+	sButton.createFrame(2, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonPos(nID, this.m_sList.getPosX(nIndex) + 3, this.m_sList.getPosY(nIndex) + 3);
+	this.m_sButton.setButtonActive(nID, ランス城_エリア状態(nAreaNo) > 0);
+	return true;
+}
+
+void T_Castle::delete()
+{
+	this.m_spBase.delete();
+	this.m_sList.delete();
+	this.m_sButton.delete();
+	this.m_sShortcutInfo.delete();
+	this.m_sInputKey.delete();
+	システムバー_削除();
+	this.clear();
+}
+
+void T_Castle::clear()
+{
+	return;
+}
+
+bool T_Castle::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	this.m_sShortcutInfo.setShow(false);
+	switch (nID)
+	{
+		case 100009:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.execSystemBar(nID);
+	}
+	if (nID > 600000)
+	{
+		switch (nID)
+		{
+			case 600001:
+			case 600012:
+			case 600013:
+			case 600014:
+				nRet = nID;
+				return true;
+			default:
+				break;
+		}
+		return false;
+	}
+	if (nID > 110000)
+	{
+		return this.execList(nID, nRet);
+	}
+	return false;
+}
+
+bool T_Castle::execSystemBar(int nID)
+{
+	int nRet = システムバー_実行(nID);
+	if (nRet == 910002)
+	{
+		システムメニュー_ロード();
+	}
+	return false;
+}
+
+bool T_Castle::execList(int nID, ref int nRet)
+{
+	int nAreaNo = nID - 110000;
+	if (ランス城_エリア状態(nAreaNo) <= 0)
+	{
+		return false;
+	}
+	nRet = nAreaNo;
+	return true;
+}
+
+int T_Castle::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			nRet = 100009;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_Castle::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (システムバー_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sButton.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			システムバー_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label0:
+	this.m_sButton.setInputFlag(true);
+	システムバー_入力ＯＮ();
+	return 0;
+}
+
+int T_Castle::checkKey(int nID)
+{
+	int nID2 = システムバー_キー確認(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	this.m_sShortcutInfo.check();
+	return 0;
+}
+
+void T_Castle::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	システムバー_選択解除();
+}
+
+void T_Castle::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 900000)
+	{
+		システムバー_カーソル設定(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_Castle::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sList.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	システムバー_表示設定(bShow);
+}
+

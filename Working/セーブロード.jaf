@@ -1,0 +1,54 @@
+void Ｓ＿セーブ()
+{
+	CSampleSaveView SampleSaveView;
+	SampleSaveView.Run();
+}
+
+void Ｓ＿ロード()
+{
+	CSampleLoadView SampleLoadView;
+	SampleLoadView.Run();
+}
+
+void Ｓ＿簡易セーブ()
+{
+	if (AFL_GetConfigQuickSaveConfirm())
+	{
+	}
+	SYS_状態セーブ(-1, _ゲーム時間, "");
+}
+
+void Ｓ＿簡易ロード()
+{
+	if (AFL_GetConfigQuickSaveConfirm())
+	{
+	}
+	if (!ExistSaveFile(SYS_セーブファイル名(-1)))
+	{
+		ERROR("簡易セーブデータなし", 0);
+		return;
+	}
+	CASTimer Timer;
+	Timer.Reset();
+	while (Timer.Get() < 300)
+	{
+		UpdateView(true);
+	}
+	SYS_ロード実行(-1);
+}
+
+bool クイックセーブファイル存在確認()
+{
+	return g_bExistQuickSaveFile;
+}
+
+void 共有セーブ()
+{
+	SYS_共有セーブ();
+}
+
+void ゲーム時間(string ゲーム時間文字列)
+{
+	_ゲーム時間 = ゲーム時間文字列;
+}
+

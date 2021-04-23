@@ -1,0 +1,520 @@
+void T_TextSprite::setShadowRate(int nRate, int nIndex)
+{
+	this.m_sText.setShadowRate(nRate, nIndex);
+}
+
+int T_TextSprite::existAlpha()
+{
+	return this.m_spBase.existAlpha();
+}
+
+int T_TextSprite::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_TextSprite::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_TextSprite::getWidth()
+{
+	return this.m_spBase.getWidth();
+}
+
+int T_TextSprite::getHeight()
+{
+	return this.m_spBase.getHeight();
+}
+
+int T_TextSprite::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+bool T_TextSprite::getShow()
+{
+	return this.m_spBase.getShow();
+}
+
+int T_TextSprite::getBlendRate()
+{
+	return this.m_spBase.getBlendRate();
+}
+
+int T_TextSprite::getDrawMethod()
+{
+	return this.m_spBase.getDrawMethod();
+}
+
+int T_TextSprite::isPtIn(int nX, int nY)
+{
+	return this.m_spBase.isPtIn(nX, nY);
+}
+
+int T_TextSprite::isPtInRect(int nX, int nY)
+{
+	return this.m_spBase.isPtInRect(nX, nY);
+}
+
+bool T_TextSprite::stretchCg(int nCgNo, int nWidth, int nHeight)
+{
+	return this.m_spBase.stretchCg(nCgNo, nWidth, nHeight);
+}
+
+bool T_TextSprite::copySp(ref T_Sprite spSrc, bool bCopyState)
+{
+	return this.m_spBase.copy(spSrc, bCopyState);
+}
+
+void T_TextSprite::copyStretch(int nWidth, int nHeight, ref T_Sprite spSrc)
+{
+	this.m_spBase.copyStretch(nWidth, nHeight, spSrc);
+}
+
+void T_TextSprite::copyReverseLR(ref T_Sprite spSrc)
+{
+	this.m_spBase.copyReverseLR(spSrc);
+}
+
+void T_TextSprite::copyReverseUD(ref T_Sprite spSrc)
+{
+	this.m_spBase.copyReverseUD(spSrc);
+}
+
+void T_TextSprite::copyRotZoom(ref T_Sprite spSrc, float fRotate, float fMag)
+{
+	this.m_spBase.copyRotZoom(spSrc, fRotate, fMag);
+}
+
+void T_TextSprite::copyCg(int nDstX, int nDstY, ref T_Sprite spSrc, int nSrcX, int nSrcY, int nWidth, int nHeight)
+{
+	this.m_spBase.copyCg(nDstX, nDstY, spSrc, nSrcX, nSrcY, nWidth, nHeight);
+}
+
+bool T_TextSprite::blendCg(int nDstX, int nDstY, int nCgNo, int nAlpha)
+{
+	return this.m_spBase.blendCg(nDstX, nDstY, nCgNo, nAlpha);
+}
+
+bool T_TextSprite::blendCgWidthAMap(int nDstX, int nDstY, int nCgNo)
+{
+	return this.m_spBase.blendCgWidthAMap(nDstX, nDstY, nCgNo);
+}
+
+bool T_TextSprite::isCreated()
+{
+	return this.m_spBase.isCreated();
+}
+
+int T_TextSprite::mouseSetPosCenter()
+{
+	return this.m_spBase.mouseSetPosCenter();
+}
+
+int T_TextSprite::mouseSetPosRB()
+{
+	return this.m_spBase.mouseSetPosRB();
+}
+
+int T_TextSprite::mouseIn()
+{
+	return this.m_spBase.mouseIn();
+}
+
+int T_TextSprite::mouseInRect()
+{
+	return this.m_spBase.mouseInRect();
+}
+
+bool T_TextSprite::spriteInRect(ref T_Sprite rfsSp)
+{
+	return this.m_spBase.spriteInRect(rfsSp);
+}
+
+bool T_TextSprite::spriteOverlap(ref T_Sprite rfsSp)
+{
+	return this.m_spBase.spriteOverlap(rfsSp);
+}
+
+void T_TextSprite::blendBlack(int nRate)
+{
+	this.blendColor(0, 0, 0, nRate);
+}
+
+void T_TextSprite::blendWhite(int nRate)
+{
+	this.blendColor(255, 255, 255, nRate);
+}
+
+void T_TextSprite::blendColor(int nR, int nG, int nB, int nRate)
+{
+	this.m_spBase.blendColor(nR, nG, nB, nRate);
+}
+
+void T_TextSprite::blendColorWidthAMap(int nR, int nG, int nB, int nRate)
+{
+	this.m_spBase.blendColorWidthAMap(nR, nG, nB, nRate);
+}
+
+void T_TextSprite::coverColor3D(int nR, int nG, int nB, int nRate, bool bMask)
+{
+	this.m_spBase.coverColor3D(nR, nG, nB, nRate, bMask);
+	this.m_sText.coverColor3D(nR, nG, nB, nRate, true);
+}
+
+void T_TextSprite::fill(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nRate)
+{
+	this.m_spBase.fill(nX, nY, nWidth, nHeight, nR, nG, nB, nRate);
+}
+
+void T_TextSprite::drawRect(ref T_Rect rcDraw, int nR, int nG, int nB, int nRate)
+{
+	this.m_spBase.drawRect(rcDraw, nR, nG, nB, nRate);
+}
+
+void T_TextSprite::reverseLR()
+{
+	this.m_spBase.reverseLR();
+}
+
+void T_TextSprite::reverseUD()
+{
+	this.m_spBase.reverseUD();
+}
+
+bool T_TextSprite::suspend()
+{
+	this.m_sText.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_TextSprite::resume()
+{
+	this.m_sText.resume();
+	return this.m_spBase.resume();
+}
+
+bool T_TextSprite::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+void T_TextSprite::getColor(ref int nR, ref int nG, ref int nB)
+{
+	this.m_spBase.getColor(nR, nG, nB);
+}
+
+int T_TextSprite::getSpNo()
+{
+	return this.m_spBase.getSpNo();
+}
+
+int T_TextSprite::getCgNo()
+{
+	return this.m_spBase.getCgNo();
+}
+
+int T_TextSprite::getAlpha()
+{
+	return this.m_spBase.getAlpha();
+}
+
+ref T_Sprite T_TextSprite::getSp()
+{
+	return this.m_spBase;
+}
+
+ref T_DrawLineManager T_TextSprite::getText()
+{
+	return this.m_sText;
+}
+
+T_TextSprite::T_TextSprite()
+{
+}
+
+T_TextSprite::~T_TextSprite()
+{
+	this.delete();
+}
+
+int T_TextSprite::setCg(int nCgNo)
+{
+	this.delete();
+	return this.m_spBase.setCg(nCgNo);
+}
+
+int T_TextSprite::create(int nWidth, int nHeight, int nR, int nG, int nB, int nRate)
+{
+	this.delete();
+	return this.m_spBase.create(nWidth, nHeight, nR, nG, nB, nRate);
+}
+
+int T_TextSprite::createPixelOnly(int nWidth, int nHeight)
+{
+	this.delete();
+	return this.m_spBase.createPixelOnly(nWidth, nHeight);
+}
+
+int T_TextSprite::delete()
+{
+	this.m_sText.delete();
+	return this.m_spBase.delete();
+}
+
+void T_TextSprite::setPos(int nX, int nY)
+{
+	int nOldX = this.m_spBase.getPosX();
+	int nOldY = this.m_spBase.getPosY();
+	this.m_spBase.setPos(nX, nY);
+	int i = 0;
+	int cnt = this.m_sText.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nX2 = this.m_sText.getPosX(i);
+		int nY2 = this.m_sText.getPosY(i);
+		this.m_sText.setPos(i, (nX + nX2) - nOldX, (nY + nY2) - nOldY);
+	}
+}
+
+void T_TextSprite::setPosRB(int nX, int nY)
+{
+	this.setPos((nX - this.getWidth()) + 1, (nY - this.getHeight()) + 1);
+}
+
+void T_TextSprite::setPosCenter()
+{
+	this.setPos((1024 - this.getWidth()) / 2, (768 - this.getHeight()) / 2);
+}
+
+void T_TextSprite::setZ(int nZ, int nTextZ)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_sText.setZ(nTextZ < 0 ? this.m_spBase.getZ() + 1 : nTextZ, -1);
+}
+
+void T_TextSprite::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sText.setShow(bShow, -1);
+}
+
+void T_TextSprite::setBlendRate(int nBlendRate)
+{
+	this.m_spBase.setBlendRate(nBlendRate);
+	this.m_sText.setBlendRate(nBlendRate, -1);
+}
+
+void T_TextSprite::setDrawMethod(int nMethod)
+{
+	this.m_spBase.setDrawMethod(nMethod);
+}
+
+bool T_TextSprite::copy(ref T_TextSprite spSrc, bool bCopyState)
+{
+	if (spSrc === NULL)
+	{
+		return false;
+	}
+	if (!this.m_spBase.copy(spSrc.getSp(), bCopyState))
+	{
+		return false;
+	}
+	if (!this.m_sText.copy(spSrc.getText(), bCopyState))
+	{
+		return false;
+	}
+	int nSrcX = spSrc.getPosX();
+	int nSrcY = spSrc.getPosY();
+	int nX = this.m_spBase.getPosX();
+	int nY = this.m_spBase.getPosY();
+	ref T_DrawLineManager rfsText = spSrc.getText();
+	int i = 0;
+	int cnt = rfsText.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nX2 = rfsText.getPosX(i);
+		int nY2 = rfsText.getPosY(i);
+		this.m_sText.setPos(i, (nX + nX2) - nSrcX, (nY + nY2) - nSrcY);
+	}
+	return true;
+}
+
+bool T_TextSprite::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!this.m_spBase.copyToSprite(rfsDst, nDstX, nDstY, -1, -1, 0))
+	{
+		return false;
+	}
+	return this.m_sText.copyToSprite(rfsDst, nDstX - this.m_spBase.getPosX(), nDstY - this.m_spBase.getPosY(), 0);
+}
+
+int T_TextSprite::textDrawPos(int nType, int nX, int nY, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace, bool bClear)
+{
+	if (bClear)
+	{
+		this.textClear();
+	}
+	T_DrawLine sLine;
+	if (!sLine.createFromTextMetrics(nType, szText, sTextMetrics, nTextSpace))
+	{
+		return -1;
+	}
+	int nW = sLine.getWidth();
+	int idx = this.m_sText.add(sLine, -1);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_sText.setPos(idx, this.m_spBase.getPosX() + nX, this.m_spBase.getPosY() + nY);
+	return nW;
+}
+
+int T_TextSprite::textDrawPos2(int nType, int nX, int nY, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace, float spacing, bool bClear, bool rightAlign)
+{
+	if (bClear)
+	{
+		this.textClear();
+	}
+	T_DrawLine sLine;
+	if (!sLine.createFromTextMetrics2(nType, szText, sTextMetrics, nTextSpace, spacing))
+	{
+		return -1;
+	}
+	int nW = sLine.getWidth();
+	int idx = this.m_sText.add(sLine, -1);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	if (rightAlign)
+	{
+		this.m_sText.setPos(idx, (this.m_spBase.getPosX() + nX) - nW, this.m_spBase.getPosY() + nY);
+	}
+	else
+	{
+		this.m_sText.setPos(idx, this.m_spBase.getPosX() + nX, this.m_spBase.getPosY() + nY);
+	}
+	return nW;
+}
+
+int T_TextSprite::textDrawCenter(int nType, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace)
+{
+	this.textClear();
+	T_DrawLine sLine;
+	if (!sLine.createFromTextMetrics(nType, szText, sTextMetrics, nTextSpace))
+	{
+		return -1;
+	}
+	int nX = ((this.getWidth() - sLine.getWidth()) + 1) / 2;
+	int nY = (this.getHeight() - sLine.getHeight()) / 2;
+	int nW = sLine.getWidth();
+	int idx = this.m_sText.add(sLine, -1);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_sText.setPos(idx, this.m_spBase.getPosX() + nX, this.m_spBase.getPosY() + nY);
+	return nW;
+}
+
+int T_TextSprite::textDrawCenter2(int nType, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace, float spacing)
+{
+	this.textClear();
+	T_DrawLine sLine;
+	if (!sLine.createFromTextMetrics2(nType, szText, sTextMetrics, nTextSpace, spacing))
+	{
+		return -1;
+	}
+	int nX = ((this.getWidth() - sLine.getWidth()) + 1) / 2;
+	int nY = (this.getHeight() - sLine.getHeight()) / 2;
+	if (sTextMetrics.nFace == 258)
+	{
+		int fontSize = sTextMetrics.nSize;
+		int yCorrection = (sLine.getHeight() - fontSize) / 2;
+		nY = (this.getHeight() - (fontSize * 10) / 18) / 2 - (fontSize * 3) / 18 - yCorrection;
+	}
+	int nW = sLine.getWidth();
+	int idx = this.m_sText.add(sLine, -1);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_sText.setPos(idx, this.m_spBase.getPosX() + nX, this.m_spBase.getPosY() + nY);
+	return nW;
+}
+
+int T_TextSprite::textDrawWidthCenter(int nType, int nY, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace, bool bClear)
+{
+	if (bClear)
+	{
+		this.textClear();
+	}
+	T_DrawLine sLine;
+	if (!sLine.createFromTextMetrics(nType, szText, sTextMetrics, nTextSpace))
+	{
+		return -1;
+	}
+	int nX = ((this.getWidth() - sLine.getWidth()) + 1) / 2;
+	int idx = this.m_sText.add(sLine, -1);
+	int nW = sLine.getWidth();
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_sText.setPos(idx, this.m_spBase.getPosX() + nX, this.m_spBase.getPosY() + nY);
+	return nW;
+}
+
+int T_TextSprite::textDrawWidthCenter2(int nType, int nY, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace, bool bClear, float spacing)
+{
+	if (bClear)
+	{
+		this.textClear();
+	}
+	T_DrawLine sLine;
+	if (!sLine.createFromTextMetrics2(nType, szText, sTextMetrics, nTextSpace, spacing))
+	{
+		return -1;
+	}
+	int nX = ((this.getWidth() - sLine.getWidth()) + 1) / 2;
+	int idx = this.m_sText.add(sLine, -1);
+	int nW = sLine.getWidth();
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.m_sText.setPos(idx, this.m_spBase.getPosX() + nX, this.m_spBase.getPosY() + nY);
+	return nW;
+}
+
+void T_TextSprite::textClear()
+{
+	this.m_sText.eraseAll();
+}
+
+bool T_TextSprite::attachSp(int nSpNo)
+{
+	if (nSpNo < 1)
+	{
+		return false;
+	}
+	this.delete();
+	return this.m_spBase.attach(nSpNo);
+}
+
+int T_TextSprite::detachSp()
+{
+	if (!this.isCreated())
+	{
+		return 0;
+	}
+	return this.m_spBase.detach();
+}
+

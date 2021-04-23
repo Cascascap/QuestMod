@@ -1,0 +1,561 @@
+void １３Ａプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(2, -1, -1);
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade Vicinity   Highway' A;
+	'Rance\'s party was gathered on one of the main highways leading to the towns east of Cidade.' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"Tch, we sure took a dull quest this time."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ミニイベント表示(4210, 1, 500);
+	ト書き();
+	'Rance took the request form out from his pocket.' A;
+	ト書き_paper();
+	': Lately some violent Yankees have:' R;
+	': been appearing near the highway.:' A;
+	': The victims have mostly been:' R;
+	': travelers and peddlers.:' R;
+	': 15 people have already been killed.:' A;
+	': Adventurers, please exterminate    :' R;
+	': the Yankees.                       :' R;
+	':                                    :' R;
+	':       Cidade Administration Office :' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Let\'s hurry up and get it over with."' A;
+	セリフ(2005, "");
+	'"Hunh? The heck are you crying about?"' A;
+	セリフ(2022, "");
+	'"Sir, please... let me go home..."' A;
+	'"I\'m just... a normal student...' R;
+	' I can\'t do anything like exterminating yankees..."' A;
+	セリフ(2000, "");
+	'"Eh, today\'s quest is a pretty standard one you\'d get from a guild.' R;
+	' It\'s just fighting some monsters."' A;
+	'"It\'s like an elementary-level quest.' R;
+	' Super easy."' A;
+	セリフ(2022, "");
+	'"No way no way no way... I can\'t do it..."' A;
+	セリフ(2000, "");
+	'"Oh, come on, we\'re going."' A;
+	セリフ(2022, "");
+	'"Eeee..."' A;
+	ト書き();
+	'Rance dragged Sachiko off.' A;
+	セリフ(2030, "");
+	'"Nyohohoho."' A;
+	ADVOFF();
+}
+
+void １３Ａじいさん()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	セリフ(2903, "Elderly Traveler");
+	'"Ohh, young man!' R;
+	' Watch out for the yankees up ahead!"' A;
+	セリフ(2903, "Elderly Traveler");
+	'"They\'re really awful.' R;
+	' They\'re trash, garbage, the lowest of the low.' R;
+	' Savages with not a shred of decency."' A;
+	'"It gives me goosebumps just remembering them..."' A;
+	セリフ(2005, "");
+	'"Yankees, eh...?' R;
+	' Are they really that scary?"' A;
+	セリフ(2000, "");
+	'"So where were they?"' A;
+	セリフ(2903, "Elderly Traveler");
+	'"If you follow the road, you should find them.' R;
+	' They wait along the highway, jumping out to ambush us."' A;
+	'"Ohh, if only someone would wipe out the lot of them..."' A;
+	ADVOFF();
+}
+
+void １３Ａエロ漫画発見()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"Oh? What\'s this?"' A;
+	ト書き();
+	'Rance picked up a book by his feet.' A;
+	セリフ(2000, "");
+	'"Ack! It\'s moist!' R;
+	' And it\'s kinda grimy!"' A;
+	'"Wait, now that I look closer, it\'s a porn mag."' A;
+	セリフ(2005, "");
+	'"Hmph!"' A;
+	セリフ(2000, "");
+	'"Only a child would shout with delight at this discovery."' A;
+	'"An adult like myself isn\'t at all pleased by this..."' A;
+}
+
+void １３Ａエロ漫画／読む()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2000, "");
+	'"W-Well, I guess I could just read a little."' A;
+	'"Just a peek."' A;
+	'"I\'m not really interested, but just in case."' A;
+	ト書き();
+	'　' R;
+	' <flip>' A;
+	セリフ(2000, "");
+	'"Oh?"' A;
+	ト書き();
+	'　' R;
+	' <flip, flip>' A;
+	セリフ(2000, "");
+	'"Oho?"' A;
+	ト書き();
+	'　' R;
+	' <flip, flip, flip, flip, flip>' A;
+	セリフ(2000, "");
+	'"What?!"' A;
+	'"Hrrrmmm, this is very intriguing........."' C;
+	R();
+	'  ↑  Sitting down' A;
+	'"Hm, hm, hm, what an interesting article..."' C;
+	R();
+	'  ↑  Sinking his teeth in' A;
+	'"J-Just a little more... Just a bit more..."' C;
+	R();
+	'  ↑  Holding book up and peering at it' A;
+	セット表示(0, 0, 0, 0);
+	ト書き();
+	'............' C;
+	R();
+	'.........' C;
+	R();
+	'......' A;
+	画面更新(1, 500);
+	セット表示(5550, gＭ, 0, 0);
+	音楽(2, -1, -1);
+	セリフ(2000, "");
+	'"Pheeew, well, I\'m satisfied."' A;
+	セリフ(2000, "");
+	'"Whoa!! When did it get so late?!"' A;
+	'"Wow, I can\'t believe I read the whole dang thing."' A;
+	'"I was about to order that bracelet at the end that\'s supposed to make you rich."' A;
+	'"I\'m not getting anything like this ever again."' A;
+	'"Nooo thanks."' A;
+	ト書き();
+	'Rance tossed the porn mag aside and resumed his exploration.' A;
+	ADVOFF();
+}
+
+void １３Ａエロ漫画／読まない()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2000, "");
+	'"Nooo thanks."' A;
+	'"Mm, alright."' A;
+	'"Well then, where are those monsters?"' A;
+	ト書き();
+	'Rance calmly resumed his exploration.' A;
+	'*stroll* *stroll* *stroll*' R;
+	C();
+	R();
+	'→→→→→→→→→→→→' A;
+	'　' R;
+	' <--stop>' A;
+	'　' R;
+	'.........' A;
+	'*stroll* *stroll* *stroll*' R;
+	C();
+	R();
+	'←←←←←←←←←←←←' A;
+	セリフ(2000, "");
+	'"Hahaha, well, I should read it a little, just in case."' A;
+	'"M-Mm. It\'s not as if I WANT to read it, but just a little. Mm, mm."' A;
+	セリフ(2005, "");
+	'"Ah!"' A;
+	ト書き();
+	'Rance returned to the location only to find a hanny holding the porn mag.' A;
+	セリフ(2927, "");
+	'"Wagh!"' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2927, "");
+	'"........."' A;
+	'"Wanna read it together?"' A;
+	セリフ(2000, "");
+	'"Ugh, no, I\'m good... I don\'t need it."' A;
+	セリフ(2927, "");
+	'"Then I can have it?"' A;
+	セリフ(2000, "");
+	'"M-Mm. Take it."' A;
+	セリフ(2927, "");
+	'"Yaaay, I can go brag to everyone!"' A;
+	ト書き();
+	'The hanny hopped away into the bushes.' A;
+	セリフ(2005, "");
+	'"Tch..."' A;
+	'"I\'m kind of annoyed now."' A;
+	ADVOFF();
+}
+
+void １３Ａヤンキー集団／レイプ前()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	音楽(76, -1, -1);
+	セリフ２(2000, "Yankee A");
+	'"YEAH~~~!!"' A;
+	セリフ２(2000, "Yankee B");
+	'"YEEHAW~~!!"' A;
+	セリフ(2000, "");
+	'"Hm? What\'s all that?"' A;
+	ト書き();
+	'A number of yankees were surrounding some travelers.' A;
+	セリフ２(2000, "Yankee C");
+	'"HA~HAHAHAHA!' R;
+	' What, not running anymore?!"' A;
+	セリフ２(2000, "Yankee A");
+	'"Uhyahyahyahya! Come on, try us!"' A;
+	ト書き();
+	'The yankees prodded at the travelers with their bats, tormenting them.' A;
+	セリフ２(2020, "Travelers");
+	'"Nooooo!"' A;
+	セリフ２(2000, "Yankee B");
+	'"Heheh! Let\'s tear off their arms and legs, send ’em flyin\' with our bats, then make ’em go pick ’em up!"' A;
+	セリフ２(2000, "Yankee C");
+	'"Eeheeheehee! That\'s nice!' R;
+	' That\'s very nice!!"' A;
+	セリフ２(2000, "Yankee A");
+	'"Humans are great!' R;
+	' They scream and cry!"' A;
+	セリフ２(2000, "Yankee C");
+	'"Should we poke their eyes out while we\'re at it?!"' A;
+	セリフ２(2000, "Yankee B");
+	'"Wait, gimme the eyes!' R;
+	' I\'ll swallow ’em whole! No need to chew!"' A;
+	セリフ２(2000, "Yankee A");
+	'"I can take the tongues, right?!"' A;
+	セリフ２(2000, "Yankee C");
+	'"The women are better when they\'re pregnant!' R;
+	' Heeheehee, I like opening up their stomachs and scooping ’em out!"' A;
+	セリフ(2005, "");
+	'"Blegh, I feel sick..."' A;
+	セリフ(2000, "");
+	'"Hm? That one that looks like the boss has kind of an ominous aura coming from him..."' A;
+	セリフ２(2000, "Boss Yankee");
+	'"Come on! Die, die, die!"' A;
+	セリフ(2000, "");
+	'"It\'s got a black bracelet on.' R;
+	' That one must be the ringleader."' A;
+	セリフ２(2020, "Travelers");
+	'"Nooo! Someone, save us!"' A;
+	セリフ(2000, "");
+	'"Well, whatever.' R;
+	' There are girls among those travelers.' R;
+	' And those freaks are just too disgusting."' A;
+	ト書き();
+	'Rance drew his sword and plunged into the cluster of yankees.' A;
+	セリフ(2002, "");
+	'"Trash can diiiiie!"' A;
+	ADVOFF();
+}
+
+void １３Ａヤンキー集団／レイプ前／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	音楽(0, 1, 1000);
+	セリフ(2022, "");
+	'"Eeee... That was so scary..."' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"Hmph, what a revolting species."' A;
+	セリフ(2000, "");
+	'"Well, we\'ve completed our mission now."' A;
+	セリフ(2004, "");
+	'"Let\'s see, about those girls we just rescued...' R;
+	' Geheheheh..."' A;
+	セリフ(2005, "");
+	'"H-Huh?"' A;
+	ト書き();
+	'All that was left in the area was a single treasure chest sitting on its own.' A;
+	セリフ(2000, "");
+	'"What\'s this? There\'s a letter..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	ト書き_paper();
+	': Thank you so much for saving us.:' A;
+	': As thanks, we present you with:' R;
+	': the most valuable item we have.:' A;
+	': I\'m so sorry, but I\'ll be late to:' R;
+	': a friend\'s wedding, so I must be:' R;
+	': off.                               :' R;
+	': Peddler Flattie:' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"H-Hey now..."' A;
+	'"The only valuable thanks I\'ll accept is sex, you know!' R;
+	' She doesn\'t understand anything!"' A;
+	セリフ(2000, "");
+	'"Fuck... What\'s inside, anyway?"' A;
+	ト書き();
+	'Inside the treasure chest was a mysterious item called a "cowlick" that raises magic resistance.' A;
+	セリフ(2020, "");
+	'"Whoa, a cowlick, how nice..."' A;
+	'"........."' A;
+	セリフ(2024, "");
+	'"Think it\'d look good on me?"' A;
+	セリフ(2000, "");
+	'"You want it? Then I\'m not going to give it to you."' A;
+	セリフ(2021, "");
+	'"So mean..."' A;
+	セリフ(2030, "");
+	'"Rance~!' R;
+	' I took this offa the yankee who looked like he was the boss or somethin\'."' A;
+	セリフ(2000, "");
+	'"What is it?"' A;
+	セリフ(2021, "");
+	'"It\'s... a pitch black bracelet..."' A;
+	セリフ(2030, "");
+	'"Whaddya wanna do with it?"' A;
+	セリフ(2000, "");
+	'"Hmm... Well, I guess we\'ll take it."' A;
+	セリフ(2005, "");
+	'"Tch...' R;
+	' We didn\'t make much offa this quest, did we?"' A;
+	セリフ(2021, "");
+	'"Haah... I\'m just glad I survived..."' A;
+	ADVOFF();
+}
+
+void １３Ａヤンキー集団／レイプ後(int fg)
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"I think the yankees should be showing up sometime soon..."' A;
+	音楽(0, -1, -1);
+	'"Hm? What\'s this?' R;
+	' It kind of smells like blood."' A;
+	'"...Guess we should check it out."' A;
+	枠消去();
+	黒画面(0, 0);
+	イベントＣＧ表示(3410, 1, 1000);
+	音楽(76, -1, -1);
+	セリフＥ(2000, "Yankee A");
+	'"OHHH YEAAAH!"' A;
+	枠消去();
+	全画面揺れ(3, false);
+	ト書きＥ();
+	'　' R;
+	' <wham!!>' A;
+	ト書きＥ();
+	'With a heavy, thick sound, a yankee slammed his bat into a girl hanging from a tree.' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Koff! Koff, koff!"' A;
+	ト書きＥ();
+	'　' R;
+	' <splat! splat, splat!>' A;
+	'The girl coughed, her face twisted in pain after being struck in the stomach.' A;
+	'The girl silently writhed, unable to breathe from the pain of the bat wrenching into her.' A;
+	セリフＥ(2000, "Yankee A");
+	'"Geheeheeheehee! Good!' R;
+	' Very very very good!"' A;
+	セリフＥ(2000, "Yankee B");
+	'"Look, look! Heheheh!' R;
+	' The cum we filled her with earlier is comin\' back out!"' A;
+	セリフＥ(2000, "Yankee A");
+	'"Hyahya! Yeah, it is!"' A;
+	ト書きＥ();
+	'The white fluid flooding from the girl\'s crotch dripped all the way down to her ankles.' A;
+	セリフＥ(2000, "Yankee B");
+	'"Hey, hey, you sure you aren\'t getting excited remembering how we raped ya?!"' A;
+	セリフＥ(2000, "Yankee A");
+	'"Maybe we\'ll beat you some more, then... Like this!"' A;
+	枠消去();
+	全画面揺れ(3, false);
+	ト書きＥ();
+	'　' R;
+	' <wham!!>' A;
+	'The batter took another sharp swing at her stomach.' R;
+	'And he struck the same spot as last time.' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Koff! Koff koff!"' A;
+	ト書きＥ();
+	'The coughing girl\'s body was pitifully purpled, bruised in every spot.' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Ugh, kh... uugh..."' A;
+	ト書きＥ();
+	'The girl swayed from side to side as she writhed in pain.' A;
+	セリフＥ(2000, "Yankee A");
+	'"Heheheh, make sure you don\'t kill her."' A;
+	セリフＥ(2000, "Yankee B");
+	'"Sure thing, Boss.' R;
+	' Why don\'t you come help me out instead of playing with those corpses over there?"' A;
+	ト書きＥ();
+	'The yankee with the bat called over another nearby yankee playing around with a corpse.' A;
+	セリフＥ(2000, "Boss Yankee");
+	'"Mnch, crnch, heheheh, fingers are great! Eyeballs are great! Heheheheh!"' A;
+	セリフＥ(2000, "Yankee B");
+	'"Aw, he\'s a lost cause."' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Ka... hahh... ka... gah... ah..."' A;
+	ト書きＥ();
+	'The girl who\'d been struggling earlier now hung limp, convulsing with her face red.' A;
+	セリフＥ(2000, "Yankee A");
+	'"Hey, stop, stop.' R;
+	' She\'ll die if you keep it up. Take a break, buddy."' A;
+	セリフＥ(2000, "Yankee B");
+	'"Alright, buddy."' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Kahahh, hahh, koff, koff!"' A;
+	セリフＥ(2000, "Yankee A");
+	'"She\'s the last one out of all those travelers.' R;
+	' You have to play with her carefully. Heheheheh!"' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Just... stop... pl... ease...' R;
+	' Please..."' A;
+	セリフＥ(2000, "Yankee A");
+	'"What, are you crying?! Geheehee!' R;
+	' That\'s pretty cute of you!"' A;
+	セリフＥ(2000, "Yankee B");
+	'"Heheh! It\'s the end if you die, you know!' R;
+	' We\'re gonna have all the fun we can before then!"' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Nooo... uugh, aah..."' A;
+	ト書きＥ();
+	'Urine spilled slowly from the girl\'s crotch.' A;
+	セリフＥ(2000, "Yankee A");
+	'"Heheheheh, now she\'s wet herself from fear.' R;
+	' You want me to clog that peehole with my bat?"' A;
+	セリフＥ(2000, "Yankee B");
+	'"Oh, yeah, that\'d be great!' R;
+	' Tear right through that shit!"' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"Please... stop... Please don\'t hurt me... anymore..."' A;
+	セリフＥ(2120, "Peddler: Flattie");
+	'"NOOOOOOooooo! Someooone!"' A;
+	セリフＥ(2000, "");
+	'"HEEEEEEEEEEY!!"' A;
+	セリフＥ(2000, "Yankee A");
+	'"WHAT?!"' A;
+	セリフＥ(2000, "");
+	'"YANKEES, GO HOOOME!!"' A;
+	セリフＥ(2000, "Yankee A");
+	'"OH?!"' A;
+	ADVOFF();
+}
+
+void １３Ａヤンキー集団／レイプ後／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(0, 1, 1000);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2002, "");
+	'"Hahh, hahh, yeesh, what monsters."' A;
+	ト書き();
+	'Rance glanced at the pool of blood nearby.' A;
+	セリフ(2005, "");
+	'"Aww..."' A;
+	ト書き();
+	'The things that had been human once, whether they\'d been travelers or peddlers, had been reduced to a pitiful state.' A;
+	セリフ(2000, "");
+	'"How many did they kill?"' A;
+	セリフ(2000, "");
+	'"Four... five... no, was it six?"' A;
+	セリフ(2005, "");
+	'"It\'s no good.' R;
+	' They\'re in too many pieces to tell.' R;
+	' They sure had their fun..."' A;
+	ト書き();
+	'Rance took the girl down from the tree.' A;
+	セリフ(2000, "");
+	'"Hey, it\'s okay now. I bet that was scary.' R;
+	' Don\'t worry. I\'m here now."' A;
+	セリフ２(2120, "Peddler: Flattie");
+	'"Hee, ee... heheheheh..."' A;
+	セリフ(2000, "");
+	'"Huh?"' A;
+	セリフ２(2120, "Peddler: Flattie");
+	'"Heheh, eheheheheheheh...' R;
+	' *hic*, waah, aahahahaha..."' A;
+	ト書き();
+	'The girl stared at nothing, laughing as she cried.' A;
+	セリフ(2000, "");
+	'"Hey, look at me. Can you see me?"' A;
+	セリフ２(2120, "Peddler: Flattie");
+	'"Aaaaah... ahaha, aha..."' A;
+	セリフ(2005, "");
+	'"...Nope. She\'s gone mad from the shock."' A;
+	セリフ２(2120, "Peddler: Flattie");
+	'"Ahahahahahahahahahahaha..."' A;
+	セリフ(2005, "");
+	'"Shit, she\'s pretty cute, too..."' A;
+	セリフ(2030, "");
+	'"Rance, I found something weird."' A;
+	'"The enemy boss was wearing this bracelet.' R;
+	' Whaddya wanna do with it?"' A;
+	セリフ(2000, "");
+	'"We\'ll keep it, I guess.' R;
+	' And run this girl to a hospital, would you?"' A;
+	セリフ(2030, "");
+	'"Leave it to me."' A;
+	セリフ(2005, "");
+	'"Haahh... Guess I\'ll go home, too."' A;
+}
+

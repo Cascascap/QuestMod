@@ -1,0 +1,82 @@
+void •¶š“ü—ÍƒGƒŠƒA(int ‚h”Ô†, int ‚w, int ‚x, int ‚y, string ‚b‚f–¼)
+{
+	if (‚h”Ô† != 0)
+	{
+		SYS_ASSERTE_AREA_ID(‚h”Ô†);
+		SYS_•¶š“ü—ÍƒGƒŠƒA(‚h”Ô†, ‚w, ‚x, ‚y, ‚b‚f–¼);
+		return;
+	}
+	for (‚h”Ô† = 1; ‚h”Ô† < 40; ++‚h”Ô†)
+	{
+		SYS_•¶š“ü—ÍƒGƒŠƒA(‚h”Ô†, ‚w, ‚x, ‚y, ‚b‚f–¼);
+	}
+}
+
+void •¶š“ü—ÍƒGƒŠƒA‚Q(int ‚h”Ô†, int •, int ‚, int “h‚q, int “h‚f, int “h‚a, int “h—¦, int ˜gƒ^ƒCƒv, int ˜g‚q, int ˜g‚f, int ˜g‚a)
+{
+	if (• != -2147483648 && ‚ != -2147483648)
+	{
+		SYS_ASSERTE_SIZE(•, ‚);
+	}
+	if (‚h”Ô† != 0)
+	{
+		SYS_ASSERTE_AREA_ID(‚h”Ô†);
+		SYS_•¶š“ü—ÍƒGƒŠƒA‚Q(‚h”Ô†, •, ‚, “h‚q, “h‚f, “h‚a, “h—¦, ˜gƒ^ƒCƒv, ˜g‚q, ˜g‚f, ˜g‚a);
+		return;
+	}
+	for (‚h”Ô† = 1; ‚h”Ô† < 40; ++‚h”Ô†)
+	{
+		SYS_•¶š“ü—ÍƒGƒŠƒA‚Q(‚h”Ô†, •, ‚, “h‚q, “h‚f, “h‚a, “h—¦, ˜gƒ^ƒCƒv, ˜g‚q, ˜g‚f, ˜g‚a);
+	}
+}
+
+void •¶š“ü—ÍƒGƒŠƒA•¶š(int ‚h”Ô†, int ƒTƒCƒY, int ƒtƒHƒ“ƒg, int ‚q, int ‚f, int ‚a, int ‚w, int ‚x)
+{
+	if (‚h”Ô† != 0)
+	{
+		SYS_ASSERTE_AREA_ID(‚h”Ô†);
+		SYS_•¶š“ü—ÍƒGƒŠƒA•¶š(‚h”Ô†, ƒTƒCƒY, ƒtƒHƒ“ƒg, ‚q, ‚f, ‚a, ‚w, ‚x);
+		return;
+	}
+	for (‚h”Ô† = 1; ‚h”Ô† < 40; ++‚h”Ô†)
+	{
+		SYS_•¶š“ü—ÍƒGƒŠƒA•¶š(‚h”Ô†, ƒTƒCƒY, ƒtƒHƒ“ƒg, ‚q, ‚f, ‚a, ‚w, ‚x);
+	}
+}
+
+void •¶š“ü—ÍƒGƒŠƒA•¶šü‚è(int ‚h”Ô†, int ã‘¾‚³, int ‰E‘¾‚³, int ‰º‘¾‚³, int ¶‘¾‚³, int ‚q, int ‚f, int ‚a)
+{
+	if (‚h”Ô† != 0)
+	{
+		SYS_ASSERTE_AREA_ID(‚h”Ô†);
+		SYS_•¶š“ü—ÍƒGƒŠƒA•¶šü‚è(‚h”Ô†, ã‘¾‚³, ‰E‘¾‚³, ‰º‘¾‚³, ¶‘¾‚³, ‚q, ‚f, ‚a);
+		return;
+	}
+	for (‚h”Ô† = 1; ‚h”Ô† < 40; ++‚h”Ô†)
+	{
+		SYS_•¶š“ü—ÍƒGƒŠƒA•¶šü‚è(‚h”Ô†, ã‘¾‚³, ‰E‘¾‚³, ‰º‘¾‚³, ¶‘¾‚³, ‚q, ‚f, ‚a);
+	}
+}
+
+void •¶š“ü—ÍƒGƒŠƒAƒNƒŠƒbƒsƒ“ƒO•¶š”İ’è(int nIndex, int nMaxLengthSJIS)
+{
+	if (nIndex != 0)
+	{
+		SYS_ASSERTE_AREA_ID(nIndex);
+		SYS_•¶š“ü—ÍƒGƒŠƒAƒNƒŠƒbƒsƒ“ƒO•¶š”İ’è(nIndex, nMaxLengthSJIS);
+	}
+	else
+	{
+		for (nIndex = 1; nIndex < 40; ++nIndex)
+		{
+			SYS_•¶š“ü—ÍƒGƒŠƒAƒNƒŠƒbƒsƒ“ƒO•¶š”İ’è(nIndex, nMaxLengthSJIS);
+		}
+	}
+}
+
+void •¶š“ü—Í(int ‚h”Ô†, ref string tx)
+{
+	SYS_ASSERTE_AREA_ID(‚h”Ô†);
+	SYS_•¶š“ü—Í(_•¶š“ü—ÍƒGƒŠƒA[‚h”Ô†], tx);
+}
+

@@ -1,0 +1,737 @@
+int T_ScrollBar::getValue()
+{
+	return this.m_nValue;
+}
+
+int T_ScrollBar::getMax()
+{
+	return this.m_nMax;
+}
+
+bool T_ScrollBar::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_ScrollBar::getButtonKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_ScrollBar::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_ScrollBar::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_ScrollBar::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_ScrollBar::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_ScrollBar::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+bool T_ScrollBar::isSuspend()
+{
+	return this.m_sButton.isSuspend();
+}
+
+int T_ScrollBar::getPageSize()
+{
+	return this.m_nPage > 0 ? this.m_nPage : 10;
+}
+
+int T_ScrollBar::getMaxValue(int nMax, int nPage)
+{
+	return nMax > nPage ? nMax - nPage : 0;
+}
+
+T_ScrollBar::T_ScrollBar()
+{
+	this.clear();
+}
+
+T_ScrollBar::~T_ScrollBar()
+{
+	this.delete();
+}
+
+void T_ScrollBar::create(int nType, int nMaxSize, int nButtonID, int nArrowUpCgNo, int nArrowDownCgNo)
+{
+	this.delete();
+	bool bVertical = nType == 2;
+	T_Sprite spWork;
+	spWork.setCg(bVertical ? 10005 : 10006);
+	int nBarW = spWork.getWidth();
+	int nBarH = spWork.getHeight();
+	int nBarW2 = bVertical ? nBarW : nMaxSize - 2;
+	int nBarH2 = bVertical ? nMaxSize - 2 : nBarH;
+	int nBarW3 = bVertical ? nBarW : 2;
+	int nBarH3 = bVertical ? 2 : nBarH;
+	int nDx = bVertical ? 0 : nBarW2;
+	int nDy = bVertical ? nBarH2 : 0;
+	int nSx = bVertical ? 0 : nBarW - nBarW3;
+	int nSy = bVertical ? nBarH - nBarH3 : 0;
+	if (this.m_spBar.existAlpha())
+	{
+		this.m_spBar.create(nBarW2, nBarH2, 0, 0, 0, 0);
+		this.m_spEdge.create(nBarW3, nBarH3, 0, 0, 0, 0);
+	}
+	else
+	{
+		this.m_spBar.createPixelOnly(nBarW2, nBarH2);
+		this.m_spEdge.createPixelOnly(nBarW3, nBarH3);
+	}
+	this.m_spBar.copyCg(0, 0, spWork, 0, 0, nBarW2, nBarH2);
+	this.m_spEdge.copyCg(nDx, nDy, spWork, nSx, nSy, nBarW3, nBarH3);
+	T_Button sButton;
+	int nID = 0;
+	this.m_sButton.create();
+	nArrowUpCgNo = nArrowUpCgNo > 0 ? nArrowUpCgNo : (bVertical ? 10001 : 10003);
+	ＣＧ_システムボタン作成(nArrowUpCgNo, 2, sButton, -1, -1, -2147483648, -2147483648);
+	nID = nButtonID + 1;
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonKey(nID, 33);
+	nArrowDownCgNo = nArrowDownCgNo > 0 ? nArrowDownCgNo : (bVertical ? 10002 : 10004);
+	ＣＧ_システムボタン作成(nArrowDownCgNo, 2, sButton, -1, -1, -2147483648, -2147483648);
+	nID = nButtonID + 2;
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonKey(nID, 34);
+	int nW = bVertical ? nBarW : nMaxSize;
+	int nH = bVertical ? nMaxSize : nBarH;
+	this.m_sButton.addButtonRect(nButtonID + 4, nW, nH, -1, -1, -1, -1);
+	this.m_sButton.addButtonRect(nButtonID + 5, nW, nH, -1, -1, -1, -1);
+	this.m_nType = nType;
+	this.m_nMaxSize = nMaxSize;
+	this.m_nWheelSize = 1;
+	this.m_nButtonID = nButtonID;
+	this.m_rcDrag.set(0, 0, nW, nH);
+}
+
+void T_ScrollBar::delete()
+{
+	this.m_sButton.delete();
+	this.m_spBar.delete();
+	this.m_spEdge.delete();
+	this.clear();
+}
+
+void T_ScrollBar::clear()
+{
+	this.m_nType = 0;
+	this.m_nValue = 0;
+	this.m_nMax = 0;
+	this.m_nPage = 0;
+	this.m_nBarPos = -1;
+	this.m_nBarSize = 0;
+	this.m_nMaxSize = 0;
+	this.m_nWheelSize = 0;
+	this.m_bShow = false;
+	this.m_bActive = false;
+	this.m_nButtonID = 0;
+	this.m_bScrollFlag = 0;
+	this.m_pScroll = NULL;
+	this.m_pWheel = NULL;
+	this.m_nDragPos = -1;
+	this.m_nDragX = -1;
+	this.m_nDragY = -1;
+	this.m_nDragValue = -1;
+	this.m_rcDrag.clear();
+}
+
+void T_ScrollBar::addShortcutInfo(ref T_ShortcutInfo sShortcutInfo)
+{
+	if (sShortcutInfo === NULL)
+	{
+		return;
+	}
+	sShortcutInfo.addAll(this.m_sButton);
+}
+
+bool T_ScrollBar::exec(int nID)
+{
+	switch (nID - this.m_nButtonID)
+	{
+		case 1:
+			return this.scrollUp(1, 1);
+		case 2:
+			return this.scrollDown(1, 1);
+		case 3:
+			return this.dragBar();
+		case 4:
+			return this.scrollUp(1, this.getPageSize());
+		case 5:
+			return this.scrollDown(1, this.getPageSize());
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_ScrollBar::scroll(int nValue)
+{
+	if (this.m_nType <= 0)
+	{
+		return false;
+	}
+	this.m_bScrollFlag = 0;
+	nValue = 数値_補正(nValue, 0, this.getMaxValue(this.m_nMax, this.m_nPage));
+	if (nValue == this.m_nValue)
+	{
+		return false;
+	}
+	this.m_sScrollTimer.Reset();
+	this.m_bScrollFlag = 1;
+	this.setValue(nValue, -1, -1);
+	if (this.m_pScroll != NULL)
+	{
+		this.m_pScroll(this.m_nValue);
+	}
+	return true;
+}
+
+int T_ScrollBar::checkInput(ref int nSelectID)
+{
+	int nRet = this.m_sButton.checkInput(nSelectID);
+	switch (nRet)
+	{
+		case 1:
+			return 2;
+		case 0:
+		case 2:
+		default:
+			break;
+	}
+	return nRet;
+}
+
+bool T_ScrollBar::checkKey()
+{
+	if (!this.m_bActive)
+	{
+		return false;
+	}
+	int nKey = 0;
+	nKey = this.m_sButton.getButtonKey(this.m_nButtonID + 1);
+	if (キー_押下(nKey))
+	{
+		return this.scrollUp(nKey, this.m_nWheelSize);
+	}
+	nKey = this.m_sButton.getButtonKey(this.m_nButtonID + 2);
+	if (キー_押下(nKey))
+	{
+		return this.scrollDown(nKey, this.m_nWheelSize);
+	}
+	if (キー_押下(36))
+	{
+		return this.scrollTop(36);
+	}
+	if (キー_押下(35))
+	{
+		return this.scrollBottom(35);
+	}
+	return false;
+}
+
+bool T_ScrollBar::checkWheel()
+{
+	if (!this.m_bActive)
+	{
+		ホイール_クリア();
+		return false;
+	}
+	bool bRet = false;
+	int nWheel = 0;
+	while (true)
+	{
+		nWheel = ホイール_確認(true);
+		if (nWheel <= 0)
+		{
+			break;
+		}
+		if (this.m_pWheel != NULL)
+		{
+			this.m_pWheel(nWheel);
+		}
+		if (nWheel == 9991)
+		{
+			if (this.scroll(this.m_nValue - this.m_nWheelSize))
+			{
+				bRet = true;
+			}
+		}
+		if (nWheel == 9992)
+		{
+			if (this.scroll(this.m_nValue + this.m_nWheelSize))
+			{
+				bRet = true;
+			}
+		}
+		UPDATE(true);
+	}
+	ホイール_クリア();
+	return bRet;
+}
+
+int T_ScrollBar::setValue(int nValue, int nMax, int nPage)
+{
+	nMax = nMax < 0 ? this.m_nMax : nMax;
+	nPage = nPage < 0 ? this.m_nPage : nPage;
+	nValue = 数値_補正(nValue, 0, this.getMaxValue(nMax, nPage));
+	int nPos = 0;
+	int nSize = 0;
+	if (nMax > 0)
+	{
+		nSize = nPage > 0 ? 実数計算(this.m_nMaxSize, nPage, nMax) : 10.0;
+		nPos = nValue < this.getMaxValue(nMax, nPage) ? 実数計算(this.m_nMaxSize, nValue, nMax) : this.m_nMaxSize - nSize;
+	}
+	else
+	{
+		nPos = 0;
+		nSize = this.m_nMaxSize;
+	}
+	this.m_nValue = nValue;
+	this.m_nMax = nMax;
+	this.m_nPage = nPage;
+	this.setBar(nPos, nSize);
+	this.setButtonActive();
+	return nValue;
+}
+
+int T_ScrollBar::setWheelSize(int nWheelSize)
+{
+	this.m_nWheelSize = 数値_補正(nWheelSize, 1, this.getPageSize());
+	return this.m_nWheelSize;
+}
+
+void T_ScrollBar::setCallback(ftScrollCallback sFunc)
+{
+	this.m_pScroll = sFunc;
+}
+
+void T_ScrollBar::setCallbackWheel(ftWheelCallback sFunc)
+{
+	this.m_pWheel = sFunc;
+}
+
+void T_ScrollBar::setPos(int nX, int nY)
+{
+	int nBarX = this.m_nType == 2 ? nX : nX + 40;
+	int nBarY = this.m_nType == 2 ? nY + 40 : nY;
+	int nDownX = this.m_nType == 2 ? nX : nBarX + this.m_nMaxSize;
+	int nDownY = this.m_nType == 2 ? nBarY + this.m_nMaxSize : nY;
+	this.m_sButton.setButtonPos(this.m_nButtonID + 1, nX, nY);
+	this.m_sButton.setButtonPos(this.m_nButtonID + 2, nDownX, nDownY);
+	this.m_sButton.setButtonPos(this.m_nButtonID + 3, nBarX, nBarY);
+	this.m_rcDrag.set(nBarX, nBarY, this.m_rcDrag.getWidth(), this.m_rcDrag.getHeight());
+	if (this.m_nBarPos >= 0)
+	{
+		this.setBarPos(this.m_nBarPos);
+		this.setPageUp();
+		this.setPageDown();
+	}
+}
+
+void T_ScrollBar::setZ(int nZ)
+{
+	this.m_sButton.setZ(nZ + 5);
+	this.m_spBar.setZ(nZ);
+	this.m_spEdge.setZ(nZ);
+}
+
+void T_ScrollBar::setShow(bool bShow)
+{
+	this.m_sButton.setShow(bShow);
+	this.m_spBar.setShow(this.m_nBarSize > 0 ? bShow : 0);
+	this.m_spEdge.setShow(this.m_nBarSize > 0 ? bShow : 0);
+	this.m_bShow = bShow;
+}
+
+void T_ScrollBar::setActive(int nID, bool bActive)
+{
+	if (nID > 0)
+	{
+		this.m_sButton.setButtonActive(nID, bActive);
+		return;
+	}
+	this.m_bActive = bActive;
+	this.setButtonActive();
+}
+
+void T_ScrollBar::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+void T_ScrollBar::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_ScrollBar::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_ScrollBar::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID > 0 ? nID : this.m_nButtonID + 3);
+}
+
+bool T_ScrollBar::isActive(int nID)
+{
+	if (!this.m_bActive)
+	{
+		return false;
+	}
+	return this.m_sButton.getButtonActive(nID);
+}
+
+bool T_ScrollBar::suspend()
+{
+	this.m_spBar.suspend();
+	return this.m_sButton.suspend();
+}
+
+bool T_ScrollBar::resume()
+{
+	this.m_spBar.resume();
+	return this.m_sButton.resume();
+}
+
+bool T_ScrollBar::scrollUp(int nKey, int nSize)
+{
+	nSize = 数値_補正(nSize, 1, this.getPageSize());
+	if (!this.scroll(this.m_nValue - nSize))
+	{
+		goto label0;
+	}
+	UPDATE(true);
+	if (!this.wait(nKey, 250))
+	{
+		goto label0;
+	}
+	while (true)
+	{
+		if (!this.scroll(this.m_nValue - nSize))
+		{
+			break;
+		}
+		UPDATE(true);
+		if (!this.wait(nKey, 10))
+		{
+			break;
+		}
+	}
+label0:
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_ScrollBar::scrollDown(int nKey, int nSize)
+{
+	nSize = 数値_補正(nSize, 1, this.getPageSize());
+	if (!this.scroll(this.m_nValue + nSize))
+	{
+		goto label0;
+	}
+	UPDATE(true);
+	if (!this.wait(nKey, 250))
+	{
+		goto label0;
+	}
+	while (true)
+	{
+		if (!this.scroll(this.m_nValue + nSize))
+		{
+			break;
+		}
+		UPDATE(true);
+		if (!this.wait(nKey, 10))
+		{
+			break;
+		}
+	}
+label0:
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_ScrollBar::scrollTop(int nKey)
+{
+	this.scroll(0);
+	UPDATE(true);
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_ScrollBar::scrollBottom(int nKey)
+{
+	this.scroll(this.m_nMax);
+	UPDATE(true);
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_ScrollBar::dragBar()
+{
+	int nValue = 0;
+	if (!this.dragStart())
+	{
+		return false;
+	}
+	while (true)
+	{
+		nValue = this.drag();
+		if (nValue < 0)
+		{
+			break;
+		}
+		this.scroll(nValue);
+		UPDATE(true);
+	}
+	this.dragEnd();
+	return true;
+}
+
+bool T_ScrollBar::wait(int nKey, int nWaitTime)
+{
+	if (this.m_bScrollFlag)
+	{
+		nWaitTime -= this.m_sScrollTimer.Get();
+	}
+	this.m_bScrollFlag = 0;
+	if (キー_押下(nKey))
+	{
+		return キー_離し待ち_タイマ(nWaitTime, nKey, true);
+	}
+	return false;
+}
+
+bool T_ScrollBar::dragStart()
+{
+	int nMx = 0;
+	int nMy = 0;
+	if (!this.isActive(this.m_nButtonID + 3))
+	{
+		return false;
+	}
+	if (this.m_nDragPos >= 0)
+	{
+		return false;
+	}
+	if (!マウス_位置取得(nMx, nMy))
+	{
+		return false;
+	}
+	if (!キー_押下(1))
+	{
+		return false;
+	}
+	効果音_ドラッグ();
+	this.m_nDragPos = this.m_nBarPos;
+	this.m_nDragX = nMx;
+	this.m_nDragY = nMy;
+	this.m_nDragValue = this.m_nValue;
+	return true;
+}
+
+void T_ScrollBar::dragEnd()
+{
+	if (this.m_nDragPos >= 0)
+	{
+		効果音_ドロップ();
+	}
+	this.setButtonActive();
+	this.m_nDragPos = -1;
+	this.m_nDragX = -1;
+	this.m_nDragY = -1;
+	this.m_nDragValue = -1;
+}
+
+int T_ScrollBar::drag()
+{
+	int nMx = 0;
+	int nMy = 0;
+	if (this.m_nDragPos < 0)
+	{
+		return -1;
+	}
+	if (!マウス_位置取得(nMx, nMy))
+	{
+		return -1;
+	}
+	if (!キー_押下(1))
+	{
+		return -1;
+	}
+	if (!this.m_rcDrag.ptInRect(nMx, nMy))
+	{
+		nMx = 数値_補正(nMx, this.m_rcDrag.m_nSx, this.m_rcDrag.m_nEx);
+		nMy = 数値_補正(nMy, this.m_rcDrag.m_nSy, this.m_rcDrag.m_nEy);
+		マウス_位置設定_強制(nMx, nMy);
+		AFL_Mouse_GetPos(nMx, nMy);
+	}
+	int nPos = 0;
+	if (this.m_nType == 2)
+	{
+		if (nMy == this.m_nDragY)
+		{
+			return this.m_nDragValue;
+		}
+		nPos = (this.m_nDragPos + nMy) - this.m_nDragY;
+	}
+	else
+	{
+		if (nMx == this.m_nDragX)
+		{
+			return this.m_nDragValue;
+		}
+		nPos = (this.m_nDragPos + nMx) - this.m_nDragX;
+	}
+	if (nPos >= this.m_nMaxSize - this.m_nBarSize)
+	{
+		return this.m_nMax;
+	}
+	if (nPos <= 0)
+	{
+		return 0;
+	}
+	return 実数計算(nPos, this.m_nMax, this.m_nMaxSize);
+}
+
+void T_ScrollBar::setBar(int nPos, int nSize)
+{
+	if (this.m_nType <= 0)
+	{
+		return;
+	}
+	nSize = 数値_補正(nSize < 0 ? this.m_nBarSize : nSize, 10, this.m_nMaxSize);
+	nPos = 数値_補正(nPos, 0, this.m_nMaxSize - nSize);
+	this.createBar(nSize);
+	this.setBarPos(nPos);
+	this.setShow(this.m_bShow);
+}
+
+void T_ScrollBar::createBar(int nSize)
+{
+	if (nSize == this.m_nBarSize)
+	{
+		return;
+	}
+	if (!this.m_spBar.isCreated())
+	{
+		return;
+	}
+	bool bVertical = this.m_nType == 2;
+	int nW = bVertical ? this.m_rcDrag.getWidth() : nSize;
+	int nH = bVertical ? nSize : this.m_rcDrag.getHeight();
+	int nID = this.m_nButtonID + 3;
+	T_Button sButton;
+	矩形_ボタン作成(nW, nH, true, sButton, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.eraseButton(nID);
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonSoundClick(nID, 0);
+	this.m_sButton.setButtonZ(nID, this.m_spBar.getZ() + 5);
+	this.m_spBar.setSurfaceArea(0, 0, bVertical ? nW : nSize - 2, bVertical ? nSize - 2 : nH);
+	this.m_nBarSize = nSize;
+}
+
+void T_ScrollBar::setBarPos(int nPos)
+{
+	int nX = this.m_rcDrag.m_nSx + (this.m_nType == 2 ? 0 : nPos);
+	int nY = this.m_rcDrag.m_nSy + (this.m_nType == 2 ? nPos : 0);
+	this.m_spBar.setPos(nX, nY);
+	this.m_spEdge.setPos(nX + (this.m_nType == 2 ? 0 : this.m_nBarSize - 2), nY + (this.m_nType == 2 ? this.m_nBarSize - 2 : 0));
+	this.m_sButton.setButtonPos(this.m_nButtonID + 3, nX, nY);
+	this.m_nBarPos = nPos;
+}
+
+void T_ScrollBar::setButtonActive()
+{
+	bool bActive = false;
+	if (this.m_nValue > 0)
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 1, this.m_bActive);
+	}
+	else
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 1, false);
+	}
+	if (this.m_nValue < this.getMaxValue(this.m_nMax, this.m_nPage))
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 2, this.m_bActive);
+	}
+	else
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 2, false);
+	}
+	if (this.setPageUp())
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 4, this.m_bActive);
+		bActive = this.m_bActive;
+	}
+	else
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 4, false);
+	}
+	if (this.setPageDown())
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 5, this.m_bActive);
+		bActive = this.m_bActive;
+	}
+	else
+	{
+		this.m_sButton.setButtonActive(this.m_nButtonID + 5, false);
+	}
+	this.m_sButton.setButtonActive(this.m_nButtonID + 3, bActive);
+}
+
+bool T_ScrollBar::setPageUp()
+{
+	ref T_ButtonSprite rfButton = this.m_sButton.getButtonSp(this.m_nButtonID + 4, 0);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	ref T_Rect rfRect = rfButton.getBaseRect();
+	if (this.m_nBarPos <= 0)
+	{
+		rfRect.clear();
+		return false;
+	}
+	rfRect.set(this.m_rcDrag.m_nSx, this.m_rcDrag.m_nSy, this.m_nType == 2 ? 20 : this.m_nBarPos, this.m_nType == 2 ? this.m_nBarPos : 20);
+	return true;
+}
+
+bool T_ScrollBar::setPageDown()
+{
+	ref T_ButtonSprite rfButton = this.m_sButton.getButtonSp(this.m_nButtonID + 5, 0);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	int nPos = this.m_nBarPos + this.m_nBarSize;
+	int nSize = this.m_nMaxSize - nPos;
+	ref T_Rect rfRect = rfButton.getBaseRect();
+	if (nSize <= 0)
+	{
+		rfRect.clear();
+		return false;
+	}
+	rfRect.set(this.m_nType == 2 ? this.m_rcDrag.m_nSx : this.m_rcDrag.m_nSx + nPos, this.m_nType == 2 ? this.m_rcDrag.m_nSy + nPos : this.m_rcDrag.m_nSy, this.m_nType == 2 ? 20 : nSize, this.m_nType == 2 ? nSize : 20);
+	return true;
+}
+

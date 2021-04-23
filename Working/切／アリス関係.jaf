@@ -1,0 +1,416 @@
+void アリス／始めて()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5080, 0, 0);
+	音楽(84, -1, -1);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Oh, welcome.' R;
+	' Hello, I\'m Alice."' A;
+	'"Thank you so much for purchasing Rance Quest."' A;
+	'"Yukichi and I are able to eat because of all of you."' A;
+	'"In this corner we relay messages to you."' A;
+	セリフ(2916, "");
+	'"Caw, caw!"' A;
+	セリフ(2080, "");
+	'"Oh, have you brought me a letter, Yukichi?' R;
+	' You\'re like a carrier pigeon."' A;
+	'"Oh, it\'s from Mr. TADA the haniwa.' R;
+	' Erm, let\'s see here..."' A;
+	'"Haniho! It\'s TADA."' A;
+	'"Please play Rance 01 and Rance 5D and Rance 6 and Sengoku Rance and Rance 9, toooo!"' A;
+	'"Well, enjoy the game! Haniho!"' A;
+	'"..."' A;
+	'"So he says."' A;
+	'"If you haven\'t been to the website since you purchased the game, please check it out."' A;
+	'"Well then, please continue enjoying the game."' A;
+	セリフ(2916, "");
+	'"Caw, caw!"' A;
+}
+
+void アリス／意味無し()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5080, 0, 0);
+	音楽(84, -1, -1);
+	ト書き();
+	'　' R;
+	'     Alice\'s Mansion' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Oh, welcome."' A;
+	'"Do you need something?' R;
+	' I don\'t really have any news right now..."' A;
+	'"Hmm..."' A;
+	'"Would you like to play Sevens?"' A;
+	'"Or Old Maid?"' A;
+	セリフ(2916, "");
+	'"Caw, caaaw!"' A;
+	セリフ(2080, "");
+	'"Oh, you\'re right.' R;
+	' You do have plenty of adventuring to do."' A;
+	'"I\'m sorry for keeping you here.' R;
+	' Please keep enjoying the game, okay?"' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+}
+
+void キャラ生成()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(84, -1, -1);
+	セット表示(0, 5080, 0, 0);
+	ト書き();
+	'　' R;
+	'     Alice\'s Mansion' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Welcome! It\'s Alice."' A;
+	セリフ(2916, "");
+	'"Caw!"' A;
+	セリフ(2080, "");
+	'"This is Yukichi."' A;
+	'"In this quest, you can create any kind of character that you\'d like."' A;
+	'"You can use a graphic you like to represent a character."' A;
+	'"Incidentally, they\'ll have no effect on the story of the game."' A;
+	'"You can bring a female character you like on your adventures, too."' A;
+	'"Oh, however, umm..."' A;
+	'"It will be an adventure with Rance, so..."' A;
+	'"W-Well, just something to consider."' A;
+}
+
+void キャラ生成／ＹＥＳ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"Alright, then we\'ll enter character creation mode."' A;
+	'"Okay, it\'s this switch here... There...' R;
+	' Connect these two wires... Okay..."' A;
+	'"Oh, I did it."' A;
+	'"Good luck creating that character!"' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+}
+
+void キャラ生成／ＮＯ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"Not going to make one, then?' R;
+	' Yes, that\'s fine, too."' A;
+	'"There are already enough characters in the game that you probably won\'t be able to use all of them."' A;
+	'"Well then, please continue enjoying Rance Quest."' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+}
+
+void アリス／ワールド戻し()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5080, 0, 0);
+	音楽(84, -1, -1);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Welcome. It\'s Alice."' A;
+	'"I see that you\'re currently playing through World ' NH(◆ワールド, 0, 0);
+	'."' A;
+	'"Please tell me if it\'s too hard, however."' A;
+	'"I\'ll return you to the difficulty of your previous world with your quest progress intact."' A;
+	'"But if you want to raise your world rank again, you\'ll have to defeat the fiend Masuzoe once more."' A;
+	'"Do you want to lower your world rank?"' A;
+}
+
+void アリス／ワールド戻し／実行()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"Very well. I understand."' A;
+	'"Yah! Magic sparkle!"' A;
+	'"........."' A;
+	'"Welcome to World ' NH(◆ワールド, 0, 0);
+	'."' A;
+	'"Please continue enjoying the world of Rance Quest."' A;
+}
+
+void アリス／ワールド戻し／そのまま()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"You\'ll play on this level, then."' A;
+	'"That\'s pretty impressive. Good luck."' A;
+	'"But come back if it ever gets too tough, alright?"' A;
+	'"Please continue enjoying the world of Rance Quest."' A;
+}
+
+void アリス／ワールド切り替え説明／初()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5080, 0, 0);
+	音楽(84, -1, -1);
+	ト書き();
+	'　' R;
+	'     Alice\'s Mansion' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Welcome."' A;
+	セリフ(2080, "");
+	'"Wow, amazing!' R;
+	' You defeated the fiend Masuzoe, I see."' A;
+	'"You\'ve cleared the main story of the game, too."' A;
+	'"Huh? You haven\'t had enough?' R;
+	' You want to fight stronger enemies?"' A;
+	'"Hmm...' R;
+	' But your Rance and everyone are basically the strongest people in the world."' A;
+	'"You want to fight even stronger enemies...?"' A;
+	'"Would you like to go to a different world, then?"' A;
+	'"The other world is the same as this one, but the enemies there will be much stronger."' A;
+	'"All of the quests will be reset, so you\'ll have to start them over from the beginning as well."' A;
+	'"Oh, but don\'t worry.' R;
+	' You\'ll be able to take all the companions and items you\'ve collected with you."' A;
+	'"You might also find better items than those in the regular world."' A;
+	'"...There might be some odd things about it, but it\'s a mysterious world, so please understand that."' A;
+	'"Would you like to advance to this mysterious other world?"' A;
+	'"Incidentally, if you decide to go, the story will all be reset, so if you have anything you\'d rather finish beforehand, you should probably do that now."' A;
+	'"If the new world is too tough for you and you\'d like to return to the old one, please use the quest Alice Support Center."' A;
+	'"I\'ll return you back just like that."' A;
+	'"But if you return from the new world, you won\'t gain back the data that was reset."' A;
+	'"Please consider carefully before changing worlds."' A;
+	'"What would you like to do?"' A;
+}
+
+void アリス／ワールド切り替え説明／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5080, 0, 0);
+	音楽(84, -1, -1);
+	ト書き();
+	'　' R;
+	'     Alice\'s Mansion' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"W-Wow...' R;
+	' I didn\'t think you\'d clear ' NH(◆ワールド, 0, 0);
+	' worlds..."' A;
+	'"Huh? They were no sweat...?' R;
+	' That\'s amazing..."' A;
+	'"The Alicesoft staff all said it was impossible, that no one would ever clear it..."' A;
+	'"Oh, incidentally, you can go to an even more amazing world, you know."' A;
+	'"What would you like to do?"' A;
+}
+
+void アリス／ワールド切り替え／もう無し()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5080, 0, 0);
+	音楽(84, -1, -1);
+	ト書き();
+	'　' R;
+	'     Alice\'s Mansion' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"I-I\'m sorry!"' A;
+	'"I just thought it was completely impossible.' R;
+	' I never thought someone would actually clear it..."' A;
+	'"...You\'re really amazing..."' A;
+	'"Oh, umm, so..."' A;
+	'"The Alicesoft staff thought no one would ever get here no matter how hard they tried, so they thought they wouldn\'t need more data than this..."' A;
+	'"World 5 is the end.' R;
+	' There\'s nothing more than this.' R;
+	' Sorry..."' A;
+	'"Thank you so much for playing Rance Quest this much. I\'m happy, too."' A;
+	'"Umm, if you have the time, would you mind sending Alicesoft an e-mail about how you got here, and if you have any tips?"' A;
+	'"The staff will use it as a reference to create an even more amazing world."' A;
+	'"Good work coming all this way."' A;
+	'"But really...' R;
+	' It really is amazing that you got this far."' A;
+	'"Congratulations! *clap clap clap*!"' A;
+	セリフ(2916, "");
+	'"Caaaw! Caaaw!"' A;
+	セリフ(2080, "");
+	'"Let\'s meet again, then."' A;
+	セリフ(2916, "");
+	'"Caaaaaw!"' A;
+	セリフ(2080, "");
+	'"Bye-bye!"' A;
+}
+
+void アリス／ワールド切り替え／実行()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"Very well. Wait just a moment, then."' A;
+	'"Honya honya, fuwa fuwa, poya poya!"' R;
+	'  ↑  Spell' A;
+	'"Yah, magic twinkle!"' A;
+	'"........."' A;
+	セリフ(2080, "");
+	'"There you go. It\'s done."' A;
+	'"Huh? It looks like nothing\'s changed?"' A;
+	'"That\'s not true.' R;
+	' Try heading back outside."' A;
+	'"Good luck!"' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+}
+
+void アリス／ワールド切り替え／しない()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"Staying here, then?"' A;
+	'"That\'s good too, I think."' A;
+	'"Go ahead and let me know if you feel like changing it someday."' A;
+	'"Well, see you."' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+	ADVOFF();
+}
+
+void アリス／アイテムいっぱい()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"O-Oh?"' A;
+	'"I\'m sorry, but you can\'t switch worlds like this..."' A;
+	'"When you switch worlds, your characters\' equipment will be removed and stored in the vault..."' A;
+	'"So if there are too many items in your vault, some of them may disappear when the equipment is moved."' A;
+	'"I\'m terribly sorry, but please come back after clearing some space in your vault by either donating or selling items."' A;
+	'"We\'ll be waiting.' R;
+	' Bye-bye!"' A;
+	セリフ(2916, "");
+	'"Caaaaaw!"' A;
+}
+
+void アリス／クリア後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セット表示(5530, 5080, 0, 0);
+	音楽(84, -1, -1);
+	ト書き();
+	'　' R;
+	'     Alice\'s Mansion' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Congratulations on clearing Rance Quest!"' A;
+	セリフ(2916, "");
+	'"Caaaaaw! Caaaaaw!"' A;
+	セリフ(2080, "");
+	'"We appreciate all this.' R;
+	' Did you have fun?"' A;
+	セリフ(2916, "");
+	'"Caaaaaw!"' A;
+	セリフ(2080, "");
+	'"Oh? You\'ve brought me a letter, Yukichi?' R;
+	' You\'re like a carrier pigeon."' A;
+	'"Oh, it says it\'s a message from the Rance Development Team."' A;
+	'"Let me read it, then.' R;
+	' Let\'s see..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	セリフ２(2000, "Rance Dev. Team");
+	'"Haniho!"' A;
+	'"Congratulations on clearing the game!"' A;
+	'"Thank you so much for playing up to this point."' A;
+	'"On the development side of things, we definitely tried to make a game people would play through to the end..."' A;
+	'"And it looks like you\'ve done that, so we\'re very happy."' A;
+	'"--Oh, that\'s right."' A;
+	'"That\'s it for the main story of Rance Quest, but you can play again whenever you feel like it."' A;
+	'"You could play quests you haven\'t played yet, or search for characters you haven\'t recruited yet."' A;
+	'"Please try it out if you feel like you haven\'t finished playing."' A;
+	'"Incidentally, this is a little complicated, but if you continue playing, it\'ll basically be in an \'IF\' route where you didn\'t clear \'Queen Pastel.\'"' A;
+	'"If you feel like you\'re done here, then once again, thank you so much for playing this far."' A;
+	'"We\'ll be pleased if playing this game was a fun experience for you."' A;
+	'"(Bow)"' A;
+	'"Well, let\'s meet again in Rance 9 -The Helman One-."' A;
+	'"See you!"' A;
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Good work getting this far."' A;
+	'"Whether you\'ll continue your adventure for a little while longer or if you\'re ending things here, I hope we\'ll meet again somewhere."' A;
+	'"Bye-bye!"' A;
+	セリフ(2916, "");
+	'"Caaaaaw!"' A;
+}
+

@@ -1,0 +1,270 @@
+int MeasureText(string text, bool excludeTrailingSpacing)
+{
+	int length = text.Length();
+	if (length == 0)
+	{
+		return 0;
+	}
+	int x = 0;
+	int i = 0;
+	int c = 32;
+	int nextChar = 32;
+	int tableIndex = 0;
+	float advance = 0.0;
+	c = GetCharFromText(text, 0);
+	if (c >= 32 && c < 127)
+	{
+		tableIndex = 95 + (c - 32) * 96;
+		advance = Advances[tableIndex];
+		x -= advance * currentScale + 0.0;
+	}
+	for (i = 0; i < length; ++i)
+	{
+		if (i + 1 < length)
+		{
+			nextChar = GetCharFromText(text, i + 1);
+		}
+		else
+		{
+			nextChar = 32;
+		}
+		if (c >= 32 && c <= 127)
+		{
+			if (nextChar >= 32 && nextChar < 127)
+			{
+				tableIndex = (c - 32) + (nextChar - 32) * 96;
+			}
+			else
+			{
+				tableIndex = c - 32;
+			}
+			advance = Advances[tableIndex];
+			advance += scaledSpacing;
+			if (i + 1 >= length && excludeTrailingSpacing)
+			{
+				advance -= scaledSpacing;
+			}
+			x += advance * currentScale + 0.5;
+		}
+		else if (c < 32)
+		{
+			if (c == 9)
+			{
+				x = (x / currentTabWidth + 1) * currentTabWidth;
+			}
+		}
+		else
+		{
+			if (c >= 161 && c <= 223)
+			{
+				x += currentFontSize / 2 + currentFixedWidthSpacing;
+			}
+			else
+			{
+				x += currentFontSize + currentFixedWidthSpacing;
+			}
+			if (i + 1 >= length && excludeTrailingSpacing)
+			{
+				x += (currentFixedWidthSpacing * 7) / 10;
+			}
+		}
+		c = nextChar;
+	}
+	return x;
+}
+
+int MeasureTextUntilPixel(string text, ref int x, int maxWidth)
+{
+	int length = text.Length();
+	if (length == 0)
+	{
+		return 0;
+	}
+	x = 0;
+	int i = 0;
+	int c = 32;
+	int nextChar = 32;
+	int tableIndex = 0;
+	int intAdvance = 0;
+	float advance = 0.0;
+	c = GetCharFromText(text, 0);
+	if (c >= 32 && c < 127)
+	{
+		tableIndex = 95 + (c - 32) * 96;
+		advance = Advances[tableIndex];
+		x -= advance * currentScale + 0.0;
+	}
+	for (i = 0; i < length; ++i)
+	{
+		if (i + 1 < length)
+		{
+			nextChar = GetCharFromText(text, i + 1);
+		}
+		else
+		{
+			nextChar = 32;
+		}
+		if (c >= 32 && c <= 127)
+		{
+			if (nextChar >= 32 && nextChar < 127)
+			{
+				tableIndex = (c - 32) + (nextChar - 32) * 96;
+			}
+			else
+			{
+				tableIndex = c - 32;
+			}
+			advance = Advances[tableIndex];
+			advance += scaledSpacing;
+			if (i + 1 >= length)
+			{
+				advance -= scaledSpacing;
+			}
+			intAdvance = advance * currentScale + 0.5;
+			if (x + intAdvance > maxWidth)
+			{
+				return i;
+			}
+			x += intAdvance;
+		}
+		else if (c < 32)
+		{
+			if (c == 9)
+			{
+				int nextX = (x / currentTabWidth + 1) * currentTabWidth;
+				intAdvance = nextX - x;
+				if (x + intAdvance > maxWidth)
+				{
+					return i;
+				}
+				x += intAdvance;
+			}
+		}
+		else
+		{
+			if (c >= 161 && c <= 223)
+			{
+				intAdvance = currentFontSize / 2 + currentFixedWidthSpacing;
+			}
+			else
+			{
+				intAdvance = currentFontSize + currentFixedWidthSpacing;
+			}
+			if (x + intAdvance > maxWidth)
+			{
+				return i;
+			}
+			x += intAdvance;
+		}
+		c = nextChar;
+	}
+	return i;
+}
+
+int MeasureFont2(ref sact_text_metrics_t font, string szText, int nTextSpace)
+{
+	int width = 0;
+	int nEdgeWeight = _max(font.nShadowPixelL, _max(font.nShadowPixelR, _max(font.nShadowPixelU, font.nShadowPixelD))) * 100;
+	int textLength = szText.Length();
+	int charWidth = 0;
+	int i = 0;
+	for (i = 0; i < textLength; ++i)
+	{
+		string character = szText.GetPart(i, 1);
+		int spriteNumber = テキスト_文字作成(character, font.nFace, font.nSize, 255, 255, 255, font.nWeight, 255, 255, 255, nEdgeWeight);
+		T_Sprite spWork;
+		spWork.attach(spriteNumber);
+		charWidth = spWork.getWidth();
+		spWork.delete();
+		width += charWidth;
+	}
+	if (nTextSpace != 0)
+	{
+		width += nTextSpace * (textLength - 1);
+	}
+	return width;
+}
+
+int GetCharWidth(string character, int fontFace, int fontSize, int fontWeight, int edgeWeight)
+{
+	int spriteNumber = テキスト_文字作成(character, fontFace, fontSize, 255, 255, 255, fontWeight, 255, 255, 255, edgeWeight);
+	T_Sprite spWork;
+	spWork.attach(spriteNumber);
+	int charWidth = spWork.getWidth();
+	spWork.delete();
+	return charWidth;
+}
+
+int MeasureText2(ref sact_text_metrics_t font, string text, float fontSpacing, int fontTextSpace)
+{
+	int length = text.Length();
+	if (length == 0)
+	{
+		return 0;
+	}
+	SelectFontNumber(font.nFace);
+	float spacing = fontSpacing * DefaultSpacing;
+	float scale = font.nSize / DefaultFontSize;
+	int x = 0;
+	int i = 0;
+	int tableIndex = 0;
+	float advance = 0.0;
+	int c = 32;
+	int nextChar = 32;
+	c = GetCharFromText(text, 0);
+	if (c >= 32 && c < 127)
+	{
+		tableIndex = 95 + (c - 32) * 96;
+		advance = Advances[tableIndex];
+		x -= advance * scale + 0.0;
+	}
+	for (i = 0; i < length; ++i)
+	{
+		if (i + 1 < length)
+		{
+			nextChar = GetCharFromText(text, i + 1);
+		}
+		else
+		{
+			nextChar = 32;
+		}
+		if (c >= 32 && c <= 127)
+		{
+			if (nextChar >= 32 && nextChar < 127)
+			{
+				tableIndex = (c - 32) + (nextChar - 32) * 96;
+			}
+			else
+			{
+				tableIndex = c - 32;
+			}
+			advance = Advances[tableIndex];
+			x += (advance + spacing) * scale + 0.5;
+		}
+		else if (c < 32)
+		{
+			if (c == 9)
+			{
+				int tabWidth = (font.nSize + fontTextSpace) * 2;
+				x = (x / tabWidth + 1) * tabWidth;
+			}
+		}
+		else
+		{
+			x += font.nSize + fontTextSpace;
+		}
+		c = nextChar;
+	}
+	return x;
+}
+
+int GetCharFromText(string text, int index)
+{
+	int c = text[index];
+	if (c == 165)
+	{
+		return 101;
+	}
+	return c;
+}
+

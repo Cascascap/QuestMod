@@ -1,0 +1,140 @@
+T_BattleSkillManager::T_BattleSkillManager()
+{
+	this.clear();
+}
+
+T_BattleSkillManager::~T_BattleSkillManager()
+{
+	this.delete();
+}
+
+bool T_BattleSkillManager::create(int nZ)
+{
+	this.delete();
+	戦闘選択枠_作成(nZ + 25);
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		ref T_BattleSkill rfsSkill = this.m_asSkill[i];
+		if (rfsSkill.create(戦闘番号_味方(i)))
+		{
+			rfsSkill.setZ(nZ + 10);
+		}
+	}
+	return true;
+}
+
+void T_BattleSkillManager::delete()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_asSkill[i].delete();
+	}
+	戦闘選択枠_削除();
+	this.clear();
+}
+
+void T_BattleSkillManager::clear()
+{
+	return;
+}
+
+bool T_BattleSkillManager::erase(int nNo)
+{
+	ref T_BattleSkill rfsSkill = this.get(nNo);
+	if (rfsSkill === NULL)
+	{
+		return false;
+	}
+	rfsSkill.delete();
+	return true;
+}
+
+void T_BattleSkillManager::resetSelect()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_asSkill[i].resetSelect();
+	}
+}
+
+bool T_BattleSkillManager::updateCount(int nNo, int nSkillNo)
+{
+	ref T_BattleSkill rfsSkill = this.get(nNo);
+	if (rfsSkill === NULL)
+	{
+		return false;
+	}
+	return rfsSkill.updateCount(nSkillNo);
+}
+
+void T_BattleSkillManager::changePos()
+{
+	戦闘選択枠_位置変更();
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_asSkill[i].changePos();
+	}
+}
+
+void T_BattleSkillManager::setShow(bool bShow)
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_asSkill[i].setShow(bShow);
+	}
+}
+
+void T_BattleSkillManager::setSkillShow(int nNo, bool bShow)
+{
+	ref T_BattleSkill rfsSkill = this.get(nNo);
+	if (rfsSkill === NULL)
+	{
+		return;
+	}
+	rfsSkill.setShow(bShow);
+}
+
+void T_BattleSkillManager::setTargetShow(int nNo, int nTargetNo, int nSkillNo)
+{
+	ref T_BattleSkill rfsSkill = this.get(nNo);
+	if (rfsSkill === NULL)
+	{
+		return;
+	}
+	rfsSkill.setTargetShow(nTargetNo, nSkillNo);
+}
+
+void T_BattleSkillManager::setButtonActive()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_asSkill[i].setButtonActive();
+	}
+}
+
+int T_BattleSkillManager::getActiveCount(int nNo)
+{
+	ref T_BattleSkill rfsSkill = this.get(nNo);
+	if (rfsSkill === NULL)
+	{
+		return -1;
+	}
+	return rfsSkill.getActiveSkillCount();
+}
+
+ref T_BattleSkill T_BattleSkillManager::get(int nNo)
+{
+	int idx = 戦闘番号_味方インデクス(nNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asSkill[idx];
+}
+

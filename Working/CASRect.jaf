@@ -1,0 +1,56 @@
+CASRect CF_CASRect(int nX, int nY, int nWidth, int nHeight)
+{
+	CASRect Rect;
+	Rect.Set(nX, nY, nWidth, nHeight);
+	return Rect;
+}
+
+void CASRect::Set(int nX, int nY, int nWidth, int nHeight)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+	this.m_nWidth = nWidth;
+	this.m_nHeight = nHeight;
+}
+
+int CASRect::GetX()
+{
+	return this.m_nX;
+}
+
+int CASRect::GetY()
+{
+	return this.m_nY;
+}
+
+int CASRect::GetWidth()
+{
+	return this.m_nWidth;
+}
+
+int CASRect::GetHeight()
+{
+	return this.m_nHeight;
+}
+
+bool CASRect::IsIn(int nX, int nY)
+{
+	if (nX < this.m_nX)
+	{
+		return false;
+	}
+	if (nX >= this.m_nX + this.m_nWidth)
+	{
+		return false;
+	}
+	if (nY < this.m_nY)
+	{
+		return false;
+	}
+	if (nY >= this.m_nY + this.m_nHeight)
+	{
+		return false;
+	}
+	return true;
+}
+

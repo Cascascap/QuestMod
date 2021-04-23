@@ -1,0 +1,56 @@
+CASColor CF_CASColor(int nR, int nG, int nB, int nA)
+{
+	CASColor Color;
+	Color.Set(nR, nG, nB, nA);
+	return Color;
+}
+
+void CASColor::Set(int nR, int nG, int nB, int nA)
+{
+	this.m_nR = nR;
+	this.m_nG = nG;
+	this.m_nB = nB;
+	this.m_nA = nA;
+}
+
+int CASColor::GetR()
+{
+	return this.m_nR;
+}
+
+int CASColor::GetG()
+{
+	return this.m_nG;
+}
+
+int CASColor::GetB()
+{
+	return this.m_nB;
+}
+
+int CASColor::GetA()
+{
+	return this.m_nA;
+}
+
+bool CASColor::Equal(ref CASColor Obj)
+{
+	if (this.m_nR != Obj.m_nR)
+	{
+		return false;
+	}
+	if (this.m_nG != Obj.m_nG)
+	{
+		return false;
+	}
+	if (this.m_nB != Obj.m_nB)
+	{
+		return false;
+	}
+	if (this.m_nA != Obj.m_nA)
+	{
+		return false;
+	}
+	return true;
+}
+

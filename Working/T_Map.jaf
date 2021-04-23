@@ -1,0 +1,562 @@
+void T_Map::setStatus(int nStatus)
+{
+	this.m_nStatus = nStatus;
+}
+
+int T_Map::getStatus()
+{
+	return this.m_nStatus;
+}
+
+void T_Map::setPlayerShow(bool bPlayerShow)
+{
+	this.m_bPlayerShow = bPlayerShow;
+}
+
+int T_Map::getPlayerShow()
+{
+	return this.m_bPlayerShow;
+}
+
+bool T_Map::isSuspend()
+{
+	return this.m_spColor.isSuspend();
+}
+
+T_Map::T_Map()
+{
+	this.clear();
+}
+
+T_Map::~T_Map()
+{
+	this.delete();
+}
+
+void T_Map::create(int nMapNo, int nWalkNo)
+{
+	this.delete();
+	T_ColorInfo sInfo;
+	if (マップデータ_色情報(sInfo))
+	{
+		this.setColor(sInfo);
+	}
+	マップ部品_作成(121, nMapNo, nWalkNo, true);
+}
+
+void T_Map::delete()
+{
+	this.m_spColor.delete();
+	マップ部品_削除();
+	this.clear();
+}
+
+void T_Map::clear()
+{
+	this.m_nStatus = -1;
+	this.m_bShow = false;
+	this.m_bPlayerShow = false;
+	this.m_bSpace = false;
+}
+
+bool T_Map::update()
+{
+	マップ部品_更新();
+	return true;
+}
+
+int T_Map::run(ref int nValue)
+{
+	int nID = 0;
+	int nRet = 0;
+	this.m_bSpace = false;
+	キャラ_フラグクリア();
+	while (true)
+	{
+		nID = this.checkSelect();
+		if (nID < 0)
+		{
+			if (デバッグモード())
+			{
+				nRet = -1;
+				break;
+			}
+		}
+		nRet = this.exec(nID, nValue);
+		if (nRet > 0)
+		{
+			break;
+		}
+	}
+	説明_消し(-1);
+	return nRet;
+}
+
+int T_Map::moveUp(int nID)
+{
+	if (nID > 920000)
+	{
+		switch (ミニステータス_遷移インデクス(nID))
+		{
+			case 0:
+				return 900001;
+			case 1:
+				return 900002;
+			case 2:
+				return 900003;
+			case 3:
+			case 4:
+				return マップ部品_最終ＩＤ();
+			default:
+				break;
+		}
+		goto label0;
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞ミニステータス(nID);
+	}
+	if (nID > 800000)
+	{
+		goto label0;
+	}
+	if (nID > 700000)
+	{
+		int nID2 = マップ部品_上矢印(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		goto label0;
+	}
+label0:
+	return マップ部品_先頭ＩＤ();
+	return 0;
+}
+
+int T_Map::moveDown(int nID)
+{
+	if (nID > 920000)
+	{
+		switch (ミニステータス_遷移インデクス(nID))
+		{
+			case 0:
+				return 900001;
+			case 1:
+				return 900002;
+			case 2:
+				return 900003;
+			case 3:
+			case 4:
+				return マップ部品_先頭ＩＤ();
+			default:
+				break;
+		}
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞ミニステータス(nID);
+	}
+	if (nID > 800000)
+	{
+		goto label0;
+	}
+	if (nID > 700000)
+	{
+		int nID2 = マップ部品_下矢印(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		goto label0;
+	}
+label0:
+	return マップ部品_最終ＩＤ();
+	return 0;
+}
+
+int T_Map::moveLeft(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 800000)
+	{
+		goto label0;
+	}
+	if (nID > 700000)
+	{
+		int nID2 = マップ部品_左矢印(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		goto label0;
+	}
+label0:
+	return ミニステータス_先頭ボタン();
+	return 0;
+}
+
+int T_Map::moveRight(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 800000)
+	{
+		goto label0;
+	}
+	if (nID > 700000)
+	{
+		int nID2 = マップ部品_右矢印(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		goto label0;
+	}
+label0:
+	return ミニステータス_最終ボタン();
+	return 0;
+}
+
+void T_Map::setColor(ref T_ColorInfo rfsInfo)
+{
+	if (rfsInfo === NULL)
+	{
+		this.m_spColor.delete();
+		return;
+	}
+	this.m_spColor.createPixelOnly(800, 600);
+	this.m_spColor.fill(0, 0, 800, 600, rfsInfo.m_nPixelColorR, rfsInfo.m_nPixelColorG, rfsInfo.m_nPixelColorB, 255);
+	this.m_spColor.setBlendRate(rfsInfo.m_nDrawFilter == 0 ? rfsInfo.m_nAlpha : 255);
+	this.m_spColor.setPos(8, 8);
+	this.m_spColor.setZ(111);
+	this.m_spColor.setShow(this.m_bShow);
+	AFL_Sprite_SetDrawFilter(this.m_spColor.getSpNo(), rfsInfo.m_nDrawFilter);
+}
+
+void T_Map::setShow(bool bShow)
+{
+	this.m_spColor.setShow(bShow);
+	this.m_bShow = bShow;
+	マップ部品_表示設定(bShow);
+}
+
+void T_Map::setSelect(int nID, bool bSelect)
+{
+	if (nID > 900000)
+	{
+		システムバー_選択設定(nID, bSelect, true);
+		return;
+	}
+	if (nID > 800000)
+	{
+		return;
+	}
+	if (nID > 700000)
+	{
+		マップ部品_選択設定(nID, bSelect);
+		return;
+	}
+}
+
+bool T_Map::suspend()
+{
+	システムバー_削除();
+	if (!マップ部品_サスペンド())
+	{
+		return false;
+	}
+	return this.m_spColor.suspend();
+}
+
+bool T_Map::resume()
+{
+	if (!this.m_spColor.isSuspend())
+	{
+		return false;
+	}
+	if (!this.m_spColor.resume())
+	{
+		return false;
+	}
+	if (!マップ部品_レジューム())
+	{
+		return false;
+	}
+	システムバー_作成(20, マップ_番号(), false);
+	return true;
+}
+
+int T_Map::checkSelect()
+{
+	int nRet = 0;
+	int nID = 0;
+	this.resetSelect();
+	UPDATE(true);
+	迷宮台詞_タイマリセット();
+	while (true)
+	{
+		int nRet2 = this.checkInput(nID);
+		if (nRet2 == 2)
+		{
+			nRet = nID;
+			break;
+		}
+		マップ部品_ホイール確認();
+		if (nRet2 != 1)
+		{
+			int nID2 = this.checkKey(nID);
+			if (nID2 > 0)
+			{
+				nRet = nID2;
+				break;
+			}
+			if (this.checkDebugKey())
+			{
+				nRet = -1;
+				break;
+			}
+		}
+		UPDATE(true);
+		if (キャラ_当たりフラグ())
+		{
+			nRet = 2;
+			break;
+		}
+		if (キャラ_エンカウントフラグ())
+		{
+			nRet = 3;
+			break;
+		}
+		if (g_bMapMessageCheck)
+		{
+			迷宮台詞_割り込み確認();
+		}
+	}
+	if (g_bMapMessageUpdate)
+	{
+		迷宮台詞_消去();
+	}
+	return nRet;
+}
+
+int T_Map::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (システムバー_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			マップ部品_入力ＯＦＦ();
+			キャラ_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (マップ部品_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			システムバー_入力ＯＦＦ();
+			キャラ_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (キャラ_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				break;
+			}
+			break;
+		case 1:
+			システムバー_入力ＯＦＦ();
+			マップ部品_入力ＯＦＦ();
+			マップ部品_ショートカット情報消去();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label0:
+	システムバー_入力ＯＮ();
+	マップ部品_入力ＯＮ();
+	キャラ_入力ＯＮ();
+	return 0;
+}
+
+int T_Map::checkKey(int nID)
+{
+	if (マップ部品_キー操作有効())
+	{
+		int nID2 = 0;
+		nID2 = マップ部品_キー確認(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		nID2 = システムバー_キー確認(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+	}
+	マップ部品_キー操作切り替え確認();
+	return 0;
+}
+
+bool T_Map::checkDebugKey()
+{
+	int nKey = キー_コンフィグ();
+	if (nKey <= 0)
+	{
+		this.m_bSpace = false;
+		return false;
+	}
+	if (デバッグモード())
+	{
+		キー_離し待ち(nKey, true);
+		this.m_bSpace = false;
+		return true;
+	}
+	return false;
+}
+
+void T_Map::resetSelect()
+{
+	マップ部品_選択解除();
+	説明_消し(-1);
+}
+
+void T_Map::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 900000)
+	{
+		システムバー_カーソル設定(nID);
+		return;
+	}
+	if (nID > 800000)
+	{
+		return;
+	}
+	if (nID > 700000)
+	{
+		マップ部品_カーソル設定(nID);
+		return;
+	}
+}
+
+int T_Map::exec(int nID, ref int nValue)
+{
+	nValue = 0;
+	マップ部品_ショートカット情報消去();
+	if (nID > 900000)
+	{
+		return this.systemBar(nID, nValue);
+	}
+	if (nID > 800000)
+	{
+		return 0;
+	}
+	if (nID > 700000)
+	{
+		int nRet = マップ部品_実行(nID, nValue);
+		if (nRet > 0)
+		{
+			return nRet;
+		}
+		return 0;
+	}
+	switch (nID)
+	{
+		case 2:
+			return this.execHit(nValue);
+		case 3:
+			return 19;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int T_Map::execHit(ref int nValue)
+{
+	int nHitFlag = キャラ_当たりフラグ();
+	if (nHitFlag < 1)
+	{
+		return 0;
+	}
+	int nRet = 0;
+	if (nHitFlag == 99999)
+	{
+		nRet = 11;
+		goto label0;
+	}
+	int nX = キャラ_当たりＸ();
+	int nY = キャラ_当たりＹ();
+	if (nHitFlag < 20001)
+	{
+		nRet = 置物データ_移動フラグ(nX, nY) > 0 ? 12 : 11;
+		goto label0;
+	}
+	if (nHitFlag < 30000)
+	{
+		nRet = ＢＢデータ_移動フラグ(nX, nY) > 0 ? 12 : 11;
+		goto label0;
+	}
+	return 0;
+label0:
+	return nRet;
+}
+
+int T_Map::systemBar(int nID, ref int nValue)
+{
+	int nRet = システムバー_実行(nID);
+	if (nRet == 910002)
+	{
+		システムメニュー_ロード();
+	}
+	return 0;
+}
+
+bool T_Map::getActive(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_ボタン有効(nID);
+	}
+	if (nID > 700000)
+	{
+		return マップ部品_ボタン有効(nID);
+	}
+	return false;
+}
+

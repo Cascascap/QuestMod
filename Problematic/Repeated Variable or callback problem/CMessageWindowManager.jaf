@@ -1,0 +1,240 @@
+CMessageWindowManager::CMessageWindowManager()
+{
+	this.m_HideAll = false;
+	this.m_PrevShowSystemButton = false;
+	this.m_PrevShowKeyWaitAnime = false;
+}
+
+CMessageWindowManager::~CMessageWindowManager()
+{
+	return;
+}
+
+int CMessageWindowManager::FindMessageWindow(int MessageWindowNumber)
+{
+	int Index = 0;
+	for (Index = 0; Index < this.m_MessageWindowList.Numof(); ++Index)
+	{
+		if (this.m_MessageWindowList[Index].GetMessageWindowNumber() == MessageWindowNumber)
+		{
+			return Index;
+		}
+	}
+	return -1;
+}
+
+void CMessageWindowManager::Create(int MessageWindowNumber)
+{
+	this.GC();
+	int FindIndex = this.FindMessageWindow(MessageWindowNumber);
+	if (FindIndex != -1)
+	{
+		if (this.m_MessageWindowList[FindIndex].IsFlash())
+		{
+			this.m_MessageWindowList[FindIndex].BackFlashBeginFrame();
+		}
+	}
+	else
+	{
+		this.m_MessageWindowList.Realloc(this.m_MessageWindowList.Numof() + 1);
+		ref CMessageWindow MessageWindow = this.m_MessageWindowList[this.m_MessageWindowList.Numof() - 1];
+		MessageWindow.Create(MessageWindowNumber);
+	}
+}
+
+void CMessageWindowManager::Show(int MessageWindowNumber)
+{
+	int FindIndex = this.FindMessageWindow(MessageWindowNumber);
+	if (FindIndex == -1)
+	{
+		return;
+	}
+	this.m_MessageWindowList[FindIndex].SetShow(true);
+}
+
+void CMessageWindowManager::HideAll()
+{
+	if (this.m_HideAll)
+	{
+		return;
+	}
+	g_MessageTextView.SetShow(false);
+	this.m_PrevShowSystemButton = _g_SystemButtonView._IsShow();
+	_g_SystemButtonView._Hide();
+	SYS_‚l‘—ƒ‚[ƒh‚b‚f•\Ž¦XV();
+	this.m_PrevShowKeyWaitAnime = _g_MsgKeyWaitAnime.IsShow();
+	_g_MsgKeyWaitAnime._SetShow(false, SYS_‚l‘—ƒ‚[ƒhŽæ“¾());
+	SYS_ƒI[ƒgƒ‚[ƒh‚b‚f”ñ•\Ž¦();
+	SYS_Šù“ÇƒXƒLƒbƒvƒ‚[ƒh‚b‚f”ñ•\Ž¦();
+	SYS_CallShowMessageWindowCallbackFuncList(false);
+	this.m_HideAll = true;
+}
+
+void CMessageWindowManager::ShowAll()
+{
+	if (!this.m_HideAll)
+	{
+		return;
+	}
+	SYS_CallShowMessageWindowCallbackFuncList(true);
+	g_MessageTextView.SetShow(true);
+	SYS_‚l‘—ƒ‚[ƒh‚b‚f•\Ž¦XV();
+	if (this.m_PrevShowKeyWaitAnime)
+	{
+		_g_MsgKeyWaitAnime._SetShow(true, SYS_‚l‘—ƒ‚[ƒhŽæ“¾());
+	}
+	if (this.m_PrevShowSystemButton)
+	{
+		_g_SystemButtonView._Show();
+	}
+	this.m_PrevShowSystemButton = false;
+	this.m_PrevShowKeyWaitAnime = false;
+	this.m_HideAll = false;
+}
+
+bool CMessageWindowManager::IsShowAll()
+{
+	return !this.m_HideAll;
+}
+
+void CMessageWindowManager::Clear(int MessageWindowNumber)
+{
+	int FindIndex = this.FindMessageWindow(MessageWindowNumber);
+	if (FindIndex == -1)
+	{
+		return;
+	}
+	SYS_‚lÁ‹Ž(MessageWindowNumber);
+	this.m_MessageWindowList[FindIndex].SetShow(false);
+}
+
+void CMessageWindowManager::ClearAll()
+{
+	this.m_MessageWindowList.Free();
+}
+
+void CMessageWindowManager::UpdateZ(int MessageWindowNumber)
+{
+	int MaxOffsetZ = this.GetShowingMaxOffsetZ();
+	this.m_MessageWindowList[this.FindMessageWindow(MessageWindowNumber)].SetOffsetZ(MaxOffsetZ + 1);
+	int MinOffsetZ = this.GetShowingMinOffsetZ();
+	int Index = 0;
+	for (Index = 0; Index < this.m_MessageWindowList.Numof(); ++Index)
+	{
+		if (!this.m_MessageWindowList[Index].IsShow())
+		{
+			continue;
+		}
+		this.m_MessageWindowList[Index].SetOffsetZ(this.m_MessageWindowList[Index].GetOffsetZ() - MinOffsetZ);
+		this.m_MessageWindowList[Index].UpdateZ();
+	}
+	this.UpdateActiveState(MessageWindowNumber);
+}
+
+int CMessageWindowManager::GetShowingMinOffsetZ()
+{
+	int ResultOffsetZ = 2147483647;
+	int Index = 0;
+	for (Index = 0; Index < this.m_MessageWindowList.Numof(); ++Index)
+	{
+		if (!this.m_MessageWindowList[Index].IsShow())
+		{
+			continue;
+		}
+		int OffsetZ = this.m_MessageWindowList[Index].GetOffsetZ();
+		if (OffsetZ < ResultOffsetZ)
+		{
+			ResultOffsetZ = OffsetZ;
+		}
+	}
+	if (ResultOffsetZ == 2147483647)
+	{
+		return 0;
+	}
+	return ResultOffsetZ;
+}
+
+int CMessageWindowManager::GetShowingMaxOffsetZ()
+{
+	int ResultOffsetZ = 0;
+	int Index = 0;
+	for (Index = 0; Index < this.m_MessageWindowList.Numof(); ++Index)
+	{
+		if (!this.m_MessageWindowList[Index].IsShow())
+		{
+			continue;
+		}
+		int OffsetZ = this.m_MessageWindowList[Index].GetOffsetZ();
+		if (OffsetZ > ResultOffsetZ)
+		{
+			ResultOffsetZ = OffsetZ;
+		}
+	}
+	return ResultOffsetZ;
+}
+
+void CMessageWindowManager::UpdateActiveState(int ActiveMessageWindowNumber)
+{
+	int Index = 0;
+	for (Index = 0; Index < this.m_MessageWindowList.Numof(); ++Index)
+	{
+		this.m_MessageWindowList[Index].UpdateActiveState(this.m_MessageWindowList[Index].GetMessageWindowNumber() == ActiveMessageWindowNumber);
+	}
+}
+
+void CMessageWindowManager::GC()
+{
+	if (this.m_MessageWindowList.Numof() < 10)
+	{
+		return;
+	}
+	if (this.m_HideAll)
+	{
+		return;
+	}
+	int Index = 0;
+	for (Index = 0; Index < this.m_MessageWindowList.Numof(); )
+	{
+		if (this.m_MessageWindowList[Index].IsShow())
+		{
+			++Index;
+			continue;
+		}
+		this.m_MessageWindowList.Erase(Index);
+	}
+}
+
+void CMessageWindowManager::WaitShowFlash()
+{
+	for (; ; )
+	{
+		int Index = 0;
+		for (Index = 0; Index < this.m_MessageWindowList.Numof(); ++Index)
+		{
+			ref CMessageWindow MessageWindow = this.m_MessageWindowList[Index];
+			if (!MessageWindow.IsOverFlashWaitFrame())
+			{
+				break;
+			}
+		}
+		if (Index >= this.m_MessageWindowList.Numof())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+
+void CMessageWindowManager::StepAllFlashFinalFrame()
+{
+	int Index = 0;
+	for (Index = 0; Index < this.m_MessageWindowList.Numof(); ++Index)
+	{
+		if (!this.m_MessageWindowList[Index].IsFlash())
+		{
+			continue;
+		}
+		this.m_MessageWindowList[Index].StepFlashFinalFrame();
+	}
+}
+

@@ -1,0 +1,208 @@
+void Ｒ８キャラランキング()
+{
+	int iic = 0;
+	array@int anCharaNo;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) == 0)
+		{
+			continue;
+		}
+		if (キャラ_戦闘参加回数(iic) > 0)
+		{
+			anCharaNo.PushBack(iic);
+		}
+	}
+	int cnt2 = anCharaNo.Numof();
+	if (cnt2 <= 0)
+	{
+		return;
+	}
+	anCharaNo.Sort(&キャラ比較_戦闘参加回数);
+	int i = 0;
+	int cnt = FB_C.Numof();
+	int idx = 0;
+	for (i = 1; i < cnt; ++i)
+	{
+		if (idx >= cnt2)
+		{
+			break;
+		}
+		ref int nCharaNo = anCharaNo[idx];
+		FB_C[i] = キャラ_番号(nCharaNo);
+		FB_C2[i] = キャラ_戦闘参加回数(nCharaNo);
+		++idx;
+	}
+}
+
+void Ｒ８クエストランキング()
+{
+	int iiq = 0;
+	array@int anQuestNo;
+	for (iiq = 1; iiq < 302; ++iiq)
+	{
+		if (iiq == 16)
+		{
+			continue;
+		}
+		if (iiq == 13)
+		{
+			continue;
+		}
+		if (iiq == 134)
+		{
+			continue;
+		}
+		if (Ｑクリア回数(iiq, -1) != 0)
+		{
+			anQuestNo.PushBack(iiq);
+		}
+	}
+	int cnt2 = anQuestNo.Numof();
+	if (cnt2 <= 0)
+	{
+		return;
+	}
+	anQuestNo.Sort(&クエスト比較_参加回数);
+	int i = 0;
+	int cnt = FB_Q.Numof();
+	int idx = 0;
+	for (i = 1; i < cnt; ++i)
+	{
+		if (idx >= cnt2)
+		{
+			break;
+		}
+		ref int nQuestNo = anQuestNo[idx];
+		FB_Q[i] = nQuestNo;
+		FB_Q2[i] = クエスト_参加回数(nQuestNo);
+		++idx;
+	}
+}
+
+void Ｒ８ＣＧランキング()
+{
+	int i = 0;
+	int cnt2 = ◆ＣＧモード／表示回数.Numof() - 1;
+	array@int anNo;
+	for (i = 1; i < cnt2; ++i)
+	{
+		if (ＣＧモード_表示回数(i) > 1)
+		{
+			anNo.PushBack(i);
+		}
+	}
+	int cnt3 = anNo.Numof();
+	if (cnt3 <= 0)
+	{
+		return;
+	}
+	anNo.Sort(&ＣＧモード比較_表示回数);
+	int cnt = FB_H.Numof();
+	int idx = 0;
+	for (i = 1; i < cnt; ++i)
+	{
+		if (idx >= cnt3)
+		{
+			break;
+		}
+		ref int nNo = anNo[idx];
+		FB_H[i] = nNo;
+		FB_H2[i] = ＣＧモード_表示回数(nNo);
+		++idx;
+	}
+}
+
+void Ｒ８ＢＧＭランキング()
+{
+	int i = 0;
+	int cnt2 = ◆音楽モード／再生回数.Numof() - 1;
+	array@int anMusicNo;
+	for (i = 1; i < cnt2; ++i)
+	{
+		if (音楽モード_再生回数(i) > 1)
+		{
+			anMusicNo.PushBack(i);
+		}
+	}
+	int cnt3 = anMusicNo.Numof();
+	if (cnt3 <= 0)
+	{
+		return;
+	}
+	anMusicNo.Sort(&音楽モード比較_再生回数);
+	int cnt = FB_B.Numof();
+	int idx = 0;
+	for (i = 1; i < cnt; ++i)
+	{
+		if (idx >= cnt3)
+		{
+			break;
+		}
+		ref int nNo = anMusicNo[idx];
+		FB_B[i] = nNo;
+		FB_B2[i] = 音楽モード_再生回数(nNo);
+		++idx;
+	}
+}
+
+int キャラ比較_戦闘参加回数(int nCharaNo1, int nCharaNo2)
+{
+	int nValue1 = キャラ_戦闘参加回数(nCharaNo1);
+	int nValue2 = キャラ_戦闘参加回数(nCharaNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return compChara_No(nCharaNo1, nCharaNo2);
+}
+
+int クエスト比較_参加回数(int nQuestNo1, int nQuestNo2)
+{
+	int nValue1 = クエスト_参加回数(nQuestNo1);
+	int nValue2 = クエスト_参加回数(nQuestNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int ＣＧモード比較_表示回数(int nNo1, int nNo2)
+{
+	int nValue1 = ＣＧモード_表示回数(nNo1);
+	int nValue2 = ＣＧモード_表示回数(nNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int 音楽モード比較_再生回数(int nNo1, int nNo2)
+{
+	int nValue1 = 音楽モード_再生回数(nNo1);
+	int nValue2 = 音楽モード_再生回数(nNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+

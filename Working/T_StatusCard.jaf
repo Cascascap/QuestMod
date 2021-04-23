@@ -1,0 +1,841 @@
+int T_StatusCard::getCharaNo()
+{
+	return this.m_sEquipSkill.getCharaNo();
+}
+
+int T_StatusCard::getEquipSkillNo(int nIndex)
+{
+	return this.m_sEquipSkill.getSkillNo(nIndex);
+}
+
+int T_StatusCard::getEquipSkillIndex(int nSkillNo)
+{
+	return this.m_sEquipSkill.getSkillIndex(nSkillNo);
+}
+
+int T_StatusCard::getHoldSkillNo(int nIndex)
+{
+	return this.m_sHoldSkill.getSkillNo(nIndex);
+}
+
+int T_StatusCard::getHoldSkillIndex(int nSkillNo)
+{
+	return this.m_sHoldSkill.getSkillIndex(nSkillNo);
+}
+
+int T_StatusCard::getItemNo(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asItem.Numof() ? -1 : this.m_asItem[nIndex].getItemNo();
+}
+
+int T_StatusCard::getItemX(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asItem.Numof() ? -1 : this.m_asItem[nIndex].getPosX();
+}
+
+int T_StatusCard::getItemY(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asItem.Numof() ? -1 : this.m_asItem[nIndex].getPosY();
+}
+
+int T_StatusCard::getLockMode()
+{
+	return this.m_nLockMode;
+}
+
+int T_StatusCard::getLockSkillIndex()
+{
+	return this.m_nLockSkillIndex;
+}
+
+string T_StatusCard::getFaceFileName()
+{
+	return ÉLÉÉÉâ_äÁÇbÇfï∂éöóÒ(this.getCharaNo());
+}
+
+bool T_StatusCard::isCreated()
+{
+	return this.getCharaNo() > 0;
+}
+
+ref T_CharaSkill T_StatusCard::getEquipSkill()
+{
+	return this.m_sEquipSkill;
+}
+
+ref T_StatusSkill T_StatusCard::getHoldSkill()
+{
+	return this.m_sHoldSkill;
+}
+
+ref T_ItemIcon T_StatusCard::getItemIcon(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asItem.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asItem[nIndex];
+}
+
+T_StatusCard::T_StatusCard()
+{
+	this.m_arcParam[0].set2(126, 92, 185, 111);
+	this.m_arcParam[1].set2(200, 92, 259, 111);
+	this.m_arcParam[2].set2(318, 92, 417, 111);
+	this.m_arcParam[3].set2(432, 92, 531, 111);
+	this.m_arcParam[4].set2(96, 368, 165, 387);
+	this.m_arcParam[5].set2(180, 368, 249, 387);
+	this.m_arcParam[6].set2(132, 603, 201, 622);
+	this.m_arcParam[8].set2(132, 627, 201, 646);
+	this.m_arcParam[10].set2(132, 651, 201, 670);
+	this.m_arcParam[12].set2(132, 675, 201, 694);
+	this.m_arcParam[14].set2(132, 699, 201, 718);
+	this.m_arcParam[7].set2(297, 603, 366, 622);
+	this.m_arcParam[9].set2(297, 627, 366, 646);
+	this.m_arcParam[11].set2(297, 651, 366, 670);
+	this.m_arcParam[13].set2(297, 675, 366, 694);
+	this.m_arcParam[15].set2(297, 699, 366, 718);
+	this.clear();
+}
+
+T_StatusCard::~T_StatusCard()
+{
+	this.delete();
+}
+
+bool T_StatusCard::create(int nZ, bool bLongSkill, ref T_Sprite spBase)
+{
+	this.delete();
+	if (!ÉXÉvÉâÉCÉg_óLå¯(spBase))
+	{
+		return false;
+	}
+	this.m_sName.create(240, 24, -1, 0, 0, 1);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setFontType(258);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setSpacing(0.949999988079071);
+	this.m_sName.setFontSize(24);
+	this.m_sName.setFontColor(255, 245, 100);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setPos(245, 63);
+	this.m_sName.setZ(nZ + 1);
+	this.m_sJobName.create(144, 24, -1, 0, 0, 1);
+	this.m_sJobName.setTextSpace(-4);
+	this.m_sJobName.setFontType(258);
+	this.m_sJobName.setDrawType(2);
+	this.m_sJobName.setSpacing(0.949999988079071);
+	this.m_sJobName.setFontSize(24);
+	this.m_sJobName.setFontColor(255, 245, 100);
+	this.m_sJobName.setFontBold(0);
+	this.m_sJobName.setPos(81, 64);
+	this.m_sJobName.setZ(nZ + 1);
+	this.m_sHpBar.createCg(1, 10125, 0, 0);
+	this.m_sHpBar.setPos(74, 394);
+	this.m_sHpBar.setZ(nZ + 1);
+	this.m_sPoint.create(10321, false, 3, 3, 0);
+	this.m_sPoint.setPos(427, 688);
+	this.m_sPoint.setZ(nZ + 1);
+	this.m_spFrame.create(142, 24, 0, 255, 255, 128);
+	this.m_spFrame.setZ(nZ + 20);
+	this.m_spInfinity.setCg(11499);
+	this.m_spInfinity.setPos(236, 97);
+	this.m_spInfinity.setZ(nZ + 1);
+	this.createParam(0, -4, nZ + 1);
+	this.createParam(1, -4, nZ + 1);
+	this.createParam(2, -2, nZ + 1);
+	this.createParam(3, -2, nZ + 1);
+	this.createParam(4, -2, nZ + 1);
+	this.createParam(5, -2, nZ + 1);
+	this.createParam(6, -2, nZ + 1);
+	this.createParam(7, -2, nZ + 1);
+	this.createParam(8, -2, nZ + 1);
+	this.createParam(9, -2, nZ + 1);
+	this.createParam(10, -2, nZ + 1);
+	this.createParam(11, -2, nZ + 1);
+	this.createParam(12, -2, nZ + 1);
+	this.createParam(13, -2, nZ + 1);
+	this.createParam(14, -2, nZ + 1);
+	this.createParam(15, -2, nZ + 1);
+	int i = 0;
+	int cnt = this.m_aspBack.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nX = 108;
+		int nY = 432 + 26 * i;
+		ref T_Sprite rfsBack = this.m_aspBack[i];
+		rfsBack.create(142, 24, 0, 0, 0, 0);
+		rfsBack.copyCg(0, 0, spBase, nX - 0, nY - 0, 142, 24);
+		_ÉXÉLÉãÉ{É^Éì_îwåiçÏê¨(0, 0, 10121, ëSäpêîéö(i + 1, -1, 0), rfsBack);
+		rfsBack.setPos(nX, nY);
+		rfsBack.setZ(nZ + 1);
+	}
+	this.m_nZ = nZ;
+	this.m_nSkillCount = 0;
+	this.m_bLongSkill = bLongSkill;
+	return true;
+}
+
+void T_StatusCard::delete()
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].delete();
+	}
+	cnt = this.m_asParam.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asParam[i].delete();
+		this.m_aspParamUp[i].delete();
+		this.m_aspParamDown[i].delete();
+	}
+	cnt = this.m_aspBack.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBack[i].delete();
+	}
+	this.m_sFace.delete();
+	this.m_sName.delete();
+	this.m_sJobIcon.delete();
+	this.m_sJobName.delete();
+	this.m_sHpBar.delete();
+	this.m_sEquipSkill.delete();
+	this.m_sHoldSkill.delete();
+	this.m_sPoint.delete();
+	this.m_spFrame.delete();
+	this.m_spInfinity.delete();
+	this.clear();
+}
+
+void T_StatusCard::clear()
+{
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_bInfinity = false;
+	this.m_nSkillCount = -1;
+	this.m_bLongSkill = false;
+	this.m_nLockMode = 0;
+	this.m_nLockSkillIndex = -1;
+}
+
+bool T_StatusCard::showParam(int nItemType, int nItemNo)
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	ref sÇb rfsOld = ÉLÉÉÉâ_ÉfÅ[É^éQè∆(nCharaNo);
+	if (rfsOld === NULL)
+	{
+		return false;
+	}
+	int nOldLevelMax = ÉLÉÉÉâ_ÉåÉxÉãç≈ëÂ(nCharaNo);
+	sÇb sNew;
+	int nLevelMax = ÉLÉÉÉâ_âºëïîı(nCharaNo, nItemType, nItemNo, sNew);
+	if (nLevelMax > 0)
+	{
+		this.setParam(nCharaNo, sNew);
+		this.setColor(0, sNew.ÇkÇu, rfsOld.ÇkÇu);
+		this.setColor(1, nLevelMax, nOldLevelMax);
+		this.setColor(2, sNew.ÇdÇwÇo, rfsOld.ÇdÇwÇo);
+		this.setColor(3, sNew.ÇdÇwÇoç≈ëÂ, rfsOld.ÇdÇwÇoç≈ëÂ);
+		this.setColor(4, sNew.ëÃóÕ, rfsOld.ëÃóÕ);
+		this.setColor(5, sNew.ëÃóÕç≈ëÂ, rfsOld.ëÃóÕç≈ëÂ);
+		this.setColor(6, sNew.çUåÇóÕ, rfsOld.çUåÇóÕ);
+		this.setColor(7, sNew.ñhå‰óÕ, rfsOld.ñhå‰óÕ);
+		this.setColor(8, sNew.ñÇñ@óÕ, rfsOld.ñÇñ@óÕ);
+		this.setColor(9, sNew.ñÇíÔóÕ, rfsOld.ñÇíÔóÕ);
+		this.setColor(10, sNew.ñΩíÜó¶, rfsOld.ñΩíÜó¶);
+		this.setColor(11, sNew.âÒîó¶, rfsOld.âÒîó¶);
+		this.setColor(12, sNew.è’åÇó¶, rfsOld.è’åÇó¶);
+		this.setColor(13, sNew.ëœê´ó¶, rfsOld.ëœê´ó¶);
+		this.setColor(14, sNew.ïKéEó¶, rfsOld.ïKéEó¶);
+		this.setColor(15, sNew.ëfëÅÇ≥, rfsOld.ëfëÅÇ≥);
+	}
+	else
+	{
+		this.setParam(nCharaNo, rfsOld);
+		this.clearColor();
+	}
+	return true;
+}
+
+bool T_StatusCard::lockSkill(int nMode, int nSkillIndex)
+{
+	int nX = 0;
+	int nY = 0;
+	ref T_SkillButton rfsSkill = NULL;
+	switch (nMode)
+	{
+		case 1:
+			nX = ÉXÉeÅ[É^ÉX_é¿ëïÉXÉLÉãÇw(nSkillIndex);
+			nY = ÉXÉeÅ[É^ÉX_é¿ëïÉXÉLÉãÇx(nSkillIndex);
+			rfsSkill <- this.m_sEquipSkill.getFromIndex(nSkillIndex);
+			break;
+		case 2:
+			nX = ÉXÉeÅ[É^ÉX_ï€óLÉXÉLÉãÇw(nSkillIndex);
+			nY = ÉXÉeÅ[É^ÉX_ï€óLÉXÉLÉãÇx(nSkillIndex);
+			rfsSkill <- this.m_sHoldSkill.getFromIndex(nSkillIndex);
+			break;
+		default:
+			goto label0;
+	}
+	if (rfsSkill === NULL)
+	{
+		goto label0;
+	}
+	int nSkillNo = rfsSkill.getSkillNo();
+	if (nSkillNo <= 0)
+	{
+		goto label0;
+	}
+	this.m_spFrame.setPos(nX, nY);
+	this.m_spFrame.setShow(1);
+	this.m_nLockMode = nMode;
+	this.m_nLockSkillIndex = nSkillIndex;
+	g_bStatusBlink = true;
+	this.m_sTimer.Reset();
+	return true;
+label0:
+	this.m_spFrame.setShow(0);
+	this.m_nLockMode = 0;
+	this.m_nLockSkillIndex = -1;
+	g_bStatusBlink = false;
+	return false;
+}
+
+bool T_StatusCard::blinkSkill()
+{
+	if (this.m_nLockSkillIndex < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 350)
+	{
+		return true;
+	}
+	bool bShow = this.m_spFrame.getShow();
+	this.m_spFrame.setShow(!bShow);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_StatusCard::set(int nCharaNo, int nType)
+{
+	ref sÇb rfsData = ÉLÉÉÉâ_ÉfÅ[É^éQè∆(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	if (nCharaNo != this.getCharaNo())
+	{
+		if (!this.createFace(nCharaNo))
+		{
+			return false;
+		}
+		this.m_sName.setText(rfsData.ñºëO, false);
+		this.createJobIcon(rfsData.êEã∆);
+	}
+	this.m_sHpBar.setValue(rfsData.ëÃóÕ, rfsData.ëÃóÕç≈ëÂ);
+	this.m_sEquipSkill.create(nCharaNo, 0, false);
+	this.m_sEquipSkill.setPos(108, 432);
+	this.m_sEquipSkill.setZ(this.m_nZ + 5);
+	this.m_sEquipSkill.setBlendRate(nType == 2 ? 128 : 255);
+	this.m_sHoldSkill.create(nCharaNo, nType, this.m_bLongSkill);
+	this.m_sHoldSkill.setPos(271, 127);
+	this.m_sHoldSkill.setZ(this.m_nZ + 1);
+	this.m_sPoint.setValue(rfsData.ÉXÉLÉãÉ|ÉCÉìÉg, 0, false);
+	this.m_asItem[0].create(rfsData.ÉIÉvÉVÉáÉì, true);
+	this.m_asItem[1].create(rfsData.ïêäÌ, true);
+	this.m_asItem[2].create(rfsData.ñhãÔ, true);
+	this.m_asItem[3].create(rfsData.éùÇøï®, true);
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_ItemIcon rfsItem = this.m_asItem[i];
+		rfsItem.setPos(ÉXÉeÅ[É^ÉX_ÉAÉCÉeÉÄÇw(i), ÉXÉeÅ[É^ÉX_ÉAÉCÉeÉÄÇx(i));
+		rfsItem.setZ(this.m_nZ + 1);
+	}
+	this.setParam(nCharaNo, rfsData);
+	this.m_nSkillCount = ÉLÉÉÉâ_ÉXÉLÉãògç≈ëÂ(nCharaNo);
+	return true;
+}
+
+bool T_StatusCard::setName(string szName)
+{
+	if (szName.Empty())
+	{
+		return false;
+	}
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (ÉLÉÉÉâ_ñºëOê›íË(nCharaNo, szName) == "")
+	{
+		return false;
+	}
+	this.m_sName.setText(szName, false);
+	this.setShow(this.m_bShow);
+	return true;
+}
+
+bool T_StatusCard::setFaceFileName(string szFileName)
+{
+	if (szFileName.Empty())
+	{
+		return false;
+	}
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (ÉLÉÉÉâ_äÁÇbÇfï∂éöóÒê›íË(nCharaNo, szFileName) == "")
+	{
+		return false;
+	}
+	if (!this.createFace(nCharaNo))
+	{
+		return false;
+	}
+	this.setShow(this.m_bShow);
+	return true;
+}
+
+bool T_StatusCard::setSex(int nSex)
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (ÉLÉÉÉâ_ê´ï ê›íË(nCharaNo, nSex) <= 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_StatusCard::setJob(int nJobType)
+{
+	int nCharaNo = this.getCharaNo();
+	int nOld = ÉLÉÉÉâ_êEã∆(nCharaNo);
+	if (ÉLÉÉÉâ_êEã∆ê›íË(nCharaNo, nJobType) <= 0)
+	{
+		return false;
+	}
+	ÇbÇrêEã∆ï äÓñ{ÉXÉLÉãìoò^(nCharaNo, nJobType, nOld);
+	ÉLÉÉÉâ_çƒåvéZ(nCharaNo, true);
+	this.createJobIcon(nJobType);
+	this.set(nCharaNo, 0);
+	this.setShow(this.m_bShow);
+	return true;
+}
+
+void T_StatusCard::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setShow(bShow);
+	}
+	cnt = this.m_asParam.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asParam[i].setShow(bShow);
+		this.m_aspParamUp[i].setShow(0);
+		this.m_aspParamDown[i].setShow(0);
+	}
+	cnt = this.m_aspBack.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBack[i].setShow(i < this.m_nSkillCount ? bShow : 0);
+	}
+	this.m_sFace.setShow(bShow);
+	this.m_sName.setShow(bShow);
+	this.m_sJobIcon.setShow(bShow);
+	this.m_sJobName.setShow(bShow);
+	this.m_sHpBar.setShow(bShow, -1);
+	this.m_sEquipSkill.setShow(bShow);
+	this.m_sHoldSkill.setShow(bShow);
+	this.m_sPoint.setShow(bShow);
+	this.m_spFrame.setShow(0);
+	if (this.m_bInfinity)
+	{
+		this.m_asParam[1].setShow(false);
+		this.m_spInfinity.setShow(bShow);
+	}
+	else
+	{
+		this.m_asParam[1].setShow(bShow);
+		this.m_spInfinity.setShow(0);
+	}
+	this.m_bShow = bShow;
+}
+
+int T_StatusCard::moveToEquip(int nIndex)
+{
+	int i = 0;
+	int cnt = this.m_sEquipSkill.getSkillCount();
+	if (nIndex < 0 || nIndex >= cnt)
+	{
+		return this.getFirstEquip();
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_sEquipSkill.getSkillNo(nIndex - i) > 0)
+		{
+			return nIndex - i;
+		}
+		if (this.m_sEquipSkill.getSkillNo(nIndex + i) > 0)
+		{
+			return nIndex + i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::moveToHold(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 18)
+	{
+		return this.getFirstHold();
+	}
+	int i = 0;
+	for (i = 0; i < 18; ++i)
+	{
+		if (this.m_sHoldSkill.getSkillNo(nIndex - i) > 0)
+		{
+			return nIndex - i;
+		}
+		if (this.m_sHoldSkill.getSkillNo(nIndex + i) > 0)
+		{
+			return nIndex + i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getPrevEquip(int nIndex)
+{
+	int i = 0;
+	int cnt = this.m_sEquipSkill.getSkillCount();
+	if (nIndex < 0 || nIndex >= cnt)
+	{
+		return this.getFirstEquip();
+	}
+	switch (this.m_nLockMode)
+	{
+		case 1:
+			for (i = nIndex - 1; i >= 0; --i)
+			{
+				if (i != this.m_nLockSkillIndex)
+				{
+					return i;
+				}
+			}
+			return this.getLastEquip();
+		case 2:
+			return nIndex > 0 ? nIndex - 1 : cnt - 1;
+		default:
+			break;
+	}
+	for (i = nIndex - 1; i >= 0; --i)
+	{
+		if (this.m_sEquipSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getNextEquip(int nIndex)
+{
+	int i = 0;
+	int cnt = this.m_sEquipSkill.getSkillCount();
+	if (nIndex < 0 || nIndex >= cnt)
+	{
+		return this.getLastEquip();
+	}
+	switch (this.m_nLockMode)
+	{
+		case 1:
+			for (i = nIndex + 1; i < cnt; ++i)
+			{
+				if (i != this.m_nLockSkillIndex)
+				{
+					return i;
+				}
+			}
+			return this.getFirstEquip();
+		case 2:
+			return nIndex < cnt - 1 ? nIndex + 1 : 0;
+		default:
+			break;
+	}
+	for (i = nIndex + 1; i < cnt; ++i)
+	{
+		if (this.m_sEquipSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getFirstEquip()
+{
+	int i = 0;
+	int cnt = this.m_sEquipSkill.getSkillCount();
+	switch (this.m_nLockMode)
+	{
+		case 1:
+			for (i = 0; i < cnt; ++i)
+			{
+				if (i != this.m_nLockSkillIndex)
+				{
+					return i;
+				}
+			}
+			return -1;
+		case 2:
+			return cnt > 0 ? 0 : -1;
+		default:
+			break;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_sEquipSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getLastEquip()
+{
+	int i = 0;
+	int cnt = this.m_sEquipSkill.getSkillCount();
+	switch (this.m_nLockMode)
+	{
+		case 1:
+			for (i = cnt - 1; i >= 0; --i)
+			{
+				if (i != this.m_nLockSkillIndex)
+				{
+					return i;
+				}
+			}
+			return -1;
+		case 2:
+			return cnt > 0 ? cnt - 1 : -1;
+		default:
+			break;
+	}
+	for (i = cnt - 1; i >= 0; --i)
+	{
+		if (this.m_sEquipSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getPrevHold(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 18)
+	{
+		return this.getFirstHold();
+	}
+	int i = 0;
+	for (i = nIndex - 1; i >= 0; --i)
+	{
+		if (this.m_sHoldSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getNextHold(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 18)
+	{
+		return this.getLastHold();
+	}
+	int i = 0;
+	for (i = nIndex + 1; i < 18; ++i)
+	{
+		if (this.m_sHoldSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getFirstHold()
+{
+	int i = 0;
+	for (i = 0; i < 18; ++i)
+	{
+		if (this.m_sHoldSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_StatusCard::getLastHold()
+{
+	int i = 0;
+	for (i = 17; i >= 0; --i)
+	{
+		if (this.m_sHoldSkill.getSkillNo(i) > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool T_StatusCard::createFace(int nCharaNo)
+{
+	if (!this.m_sFace.create(nCharaNo, 1))
+	{
+		return false;
+	}
+	this.m_sFace.setPos(60, 130);
+	this.m_sFace.setZ(this.m_nZ + 1);
+	return true;
+}
+
+void T_StatusCard::createJobIcon(int nJobType)
+{
+	this.m_sJobIcon.create(nJobType, true);
+	this.m_sJobIcon.setPos(47, 63);
+	this.m_sJobIcon.setZ(this.m_nZ + 1);
+	this.m_sJobName.setText(êEã∆_ñºëO(nJobType), false);
+}
+
+bool T_StatusCard::createParam(int nIndex, int nHoseiX, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_asParam.Numof())
+	{
+		return false;
+	}
+	ref T_DrawNumber rfsParam = this.m_asParam[nIndex];
+	ref T_Sprite rfsParamUp = this.m_aspParamUp[nIndex];
+	ref T_Sprite rfsParamDown = this.m_aspParamDown[nIndex];
+	ref T_Rect rfsRect = this.m_arcParam[nIndex];
+	int nW = rfsRect.getWidth();
+	int nH = rfsRect.getHeight();
+	int nX = rfsRect.m_nSx + nHoseiX;
+	int nY = rfsRect.m_nSy;
+	int nCount = nW / 12;
+	rfsParam.create(nW, nH, nCount, 1, 1, true);
+	rfsParam.setFontType(258);
+	rfsParam.setFontSize(24);
+	rfsParam.setFontColor(255, 255, 255);
+	rfsParam.setFontBold(1);
+	rfsParam.setPos(nX, nY);
+	rfsParam.setZ(nZ);
+	if (É}ÉbÉv_ñ¢ÉçÅ[Éh())
+	{
+		rfsParamUp.create(nW + 2, nH + 2, 0, 240, 248, 255);
+		rfsParamUp.setPos(rfsRect.m_nSx - 1, rfsRect.m_nSy - 1);
+		rfsParamUp.setZ(nZ + 5);
+		drawGraph_FillAMap(rfsParamUp, 1, 1, nW, nH, 102);
+		rfsParamDown.create(nW + 2, nH + 2, 255, 30, 70, 255);
+		rfsParamDown.setPos(rfsRect.m_nSx - 1, rfsRect.m_nSy - 1);
+		rfsParamDown.setZ(nZ + 5);
+		drawGraph_FillAMap(rfsParamDown, 1, 1, nW, nH, 102);
+	}
+	return true;
+}
+
+void T_StatusCard::setParam(int nCharaNo, ref sÇb rfsData)
+{
+	this.clearColor();
+	if (rfsData === NULL)
+	{
+		return;
+	}
+	int nLevelMax = ÉLÉÉÉâ_ÉåÉxÉãè„å¿Ç»Çµ(rfsData.î‘çÜ) ? 2147483647 : rfsData.ÇkÇuç≈ëÂ;
+	ref T_DrawNumber rfsParam = this.m_asParam[0];
+	if (rfsData.ÇkÇu < nLevelMax)
+	{
+		rfsParam.setFontColor(255, 255, 255);
+	}
+	else
+	{
+		rfsParam.setFontColor(255, 60, 80);
+	}
+	rfsParam.setValue(rfsData.ÇkÇu, true);
+	this.m_bInfinity = nLevelMax == 2147483647;
+	this.m_asParam[1].setValue(this.m_bInfinity ? 0 : nLevelMax, false);
+	this.m_asParam[2].setValue(rfsData.ÇdÇwÇo, false);
+	this.m_asParam[3].setValue(rfsData.ÇdÇwÇoç≈ëÂ, false);
+	this.m_asParam[4].setValue(rfsData.ëÃóÕ, false);
+	this.m_asParam[5].setValue(rfsData.ëÃóÕç≈ëÂ, false);
+	this.m_asParam[6].setValue(rfsData.çUåÇóÕ, false);
+	this.m_asParam[7].setValue(rfsData.ñhå‰óÕ, false);
+	this.m_asParam[8].setValue(rfsData.ñÇñ@óÕ, false);
+	this.m_asParam[9].setValue(rfsData.ñÇíÔóÕ, false);
+	this.m_asParam[10].setValue(rfsData.ñΩíÜó¶, false);
+	this.m_asParam[11].setValue(rfsData.âÒîó¶, false);
+	this.m_asParam[12].setValue(rfsData.è’åÇó¶, false);
+	this.m_asParam[13].setValue(rfsData.ëœê´ó¶, false);
+	this.m_asParam[14].setValue(rfsData.ïKéEó¶, false);
+	this.m_asParam[15].setValue(rfsData.ëfëÅÇ≥, false);
+}
+
+bool T_StatusCard::setColor(int nIndex, int nNewValue, int nOldValue)
+{
+	if (nIndex < 0 || nIndex >= this.m_asParam.Numof())
+	{
+		return false;
+	}
+	ref T_Sprite rfsParamUp = this.m_aspParamUp[nIndex];
+	ref T_Sprite rfsParamDown = this.m_aspParamDown[nIndex];
+	if (nNewValue > nOldValue)
+	{
+		rfsParamUp.setShow(1);
+		rfsParamDown.setShow(0);
+	}
+	else if (nNewValue < nOldValue)
+	{
+		rfsParamUp.setShow(0);
+		rfsParamDown.setShow(1);
+	}
+	else
+	{
+		rfsParamUp.setShow(0);
+		rfsParamDown.setShow(0);
+	}
+	return true;
+}
+
+void T_StatusCard::clearColor()
+{
+	int i = 0;
+	int cnt = this.m_asParam.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspParamUp[i].setShow(0);
+		this.m_aspParamDown[i].setShow(0);
+	}
+}
+

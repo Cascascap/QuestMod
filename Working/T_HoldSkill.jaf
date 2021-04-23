@@ -1,0 +1,198 @@
+int T_HoldSkillManager::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_HoldSkillManager::checkKey()
+{
+	return this.m_sButton.checkKey();
+}
+
+void T_HoldSkillManager::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_HoldSkillManager::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_HoldSkillManager::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_HoldSkillManager::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+int T_HoldSkillManager::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_HoldSkillManager::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_HoldSkillManager::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_HoldSkillManager::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_HoldSkillManager::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+int T_HoldSkillManager::getPrev(int nID)
+{
+	return this.m_sButton.getPrevButton(nID, false, true);
+}
+
+int T_HoldSkillManager::getNext(int nID)
+{
+	return this.m_sButton.getNextButton(nID, false, true);
+}
+
+int T_HoldSkillManager::getFirst()
+{
+	return this.m_sButton.getFirstButton(false);
+}
+
+int T_HoldSkillManager::getLast()
+{
+	return this.m_sButton.getLastButton(false);
+}
+
+int T_HoldSkillManager::getSkillNo(int nID)
+{
+	return this.getSkillNoFromIndex(this.getButtonIndex(nID));
+}
+
+int T_HoldSkillManager::getCost(int nID)
+{
+	return this.getCostFromIndex(this.getButtonIndex(nID));
+}
+
+int T_HoldSkillManager::getCharaNo()
+{
+	return this.m_rfsList !== NULL ? this.m_rfsList.getCharaNo() : -1;
+}
+
+int T_HoldSkillManager::getSkillIndex(int nSkillNo)
+{
+	return this.m_rfsList !== NULL ? this.m_rfsList.getIndex(nSkillNo) : -1;
+}
+
+int T_HoldSkillManager::getSkillNoFromIndex(int nIndex)
+{
+	return this.m_rfsList !== NULL ? this.m_rfsList.get(nIndex) : -1;
+}
+
+int T_HoldSkillManager::getCostFromIndex(int nIndex)
+{
+	return this.m_sCost.getCost(nIndex);
+}
+
+int T_HoldSkillManager::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 17 ? -1 : 300000 + nIndex + 1;
+}
+
+int T_HoldSkillManager::getButtonIndex(int nID)
+{
+	int idx = nID + -300001;
+	return idx < 0 || idx >= 17 ? -1 : idx;
+}
+
+T_HoldSkillManager::T_HoldSkillManager()
+{
+	this.clear();
+}
+
+T_HoldSkillManager::~T_HoldSkillManager()
+{
+	this.delete();
+}
+
+bool T_HoldSkillManager::create(bool bLongSkill, ref T_StatusSkill rfsStatusSkill)
+{
+	this.delete();
+	if (rfsStatusSkill === NULL)
+	{
+		return false;
+	}
+	int nCharaNo = rfsStatusSkill.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	this.m_rfsList <- rfsStatusSkill.getList();
+	this.m_sCost.create(0, 17);
+	this.m_sButton.create();
+	int i = 0;
+	int nMax = キャラ_スキルポイント(nCharaNo);
+	for (i = 0; i < 17; ++i)
+	{
+		int nSkillNo = this.m_rfsList.get(i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		int nCost = キャラスキル_コスト(nCharaNo, nSkillNo);
+		int nX = ステータス_保有スキルＸ(i);
+		int nY = ステータス_保有スキルＹ(i);
+		bool bActive = nCost > 0 && nCost <= nMax;
+		スキルボタン_登録(this.m_sButton, this.getButtonID(i), nX, nY, bLongSkill, nCharaNo, nSkillNo, bActive);
+		this.m_sCost.setCost(i, nCost < 0 ? 2147483647 : nCost, bActive);
+		this.m_sCost.setPos(i, nX + 159, nY + 2);
+	}
+	return true;
+}
+
+void T_HoldSkillManager::delete()
+{
+	this.m_sButton.delete();
+	this.m_sCost.delete();
+	this.clear();
+}
+
+void T_HoldSkillManager::clear()
+{
+	this.m_rfsList <- NULL;
+}
+
+int T_HoldSkillManager::moveFromNew(int nIndex)
+{
+	if (this.m_rfsList === NULL)
+	{
+		return -1;
+	}
+	if (this.m_rfsList.get(nIndex) > 0)
+	{
+		return this.getButtonID(nIndex);
+	}
+	return this.getLast();
+}
+
+void T_HoldSkillManager::setZ(int nZ)
+{
+	this.m_sButton.setZ(nZ);
+	this.m_sCost.setZ(nZ);
+}
+
+void T_HoldSkillManager::setShow(bool bShow)
+{
+	this.m_sButton.setShow(bShow);
+	this.m_sCost.setShow(bShow);
+}
+

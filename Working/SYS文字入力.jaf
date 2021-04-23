@@ -1,0 +1,237 @@
+void SYS_•¶Žš“ü—Í(ref •¶Žš“ü—ÍƒGƒŠƒA_t a, ref string tx)
+{
+	string cg = a.‚b‚f–¼;
+	SYS_ASSERTE_CG(cg);
+	int nBaseSprite = GetUnuseSpriteNum(1000);
+	if (!cg.Empty())
+	{
+		SetSpriteCg(nBaseSprite, cg);
+	}
+	else
+	{
+		SYS_˜g•`‰æ(a.˜gƒ^ƒCƒv, nBaseSprite, a.•, a.‚, a.“h‚q, a.“h‚f, a.“h‚a, a.“h—¦, a.˜g‚q, a.˜g‚f, a.˜g‚a);
+	}
+	SetSpritePos(nBaseSprite, a.‚w, a.‚x);
+	SetSpriteZ(nBaseSprite, a.‚y);
+	ShowSprite(nBaseSprite, true);
+	SYS_•¶Žš“ü—ÍŽÀs(a, tx);
+	DeleteSprite(nBaseSprite);
+	AFL_MouseWheel_ClearCount();
+}
+
+void SYS_•¶Žš“ü—ÍŽÀs(ref •¶Žš“ü—ÍƒGƒŠƒA_t a, ref string tx)
+{
+	string font_name = "";
+	switch (a.ƒtƒHƒ“ƒg)
+	{
+		case 0:
+			font_name = "‚l‚r ƒSƒVƒbƒN";
+			break;
+		case 1:
+			font_name = "‚l‚r –¾’©";
+			break;
+		default:
+			font_name = "‚l‚r ƒSƒVƒbƒN";
+			break;
+	}
+	InputString.SetFont(a.•¶ŽšƒTƒCƒY, font_name, 0);
+	InputString.SetPos(a.‚w + a.•¶Žš‚w, a.‚x + a.•¶Žš‚x);
+	sact_text_metrics_t tm;
+	tm.nColorR = a.•¶Žš‚q;
+	tm.nColorG = a.•¶Žš‚f;
+	tm.nColorB = a.•¶Žš‚a;
+	tm.nSize = a.•¶ŽšƒTƒCƒY;
+	tm.nWeight = 0;
+	tm.nFace = a.ƒtƒHƒ“ƒg;
+	tm.nShadowPixelL = a.•¶Žšü¶;
+	tm.nShadowPixelU = a.•¶Žšüã;
+	tm.nShadowPixelR = a.•¶Žšü‰E;
+	tm.nShadowPixelD = a.•¶Žšü‰º;
+	tm.nShadowColorR = a.•¶Žšü‚q;
+	tm.nShadowColorG = a.•¶Žšü‚f;
+	tm.nShadowColorB = a.•¶Žšü‚a;
+	CASCharSpriteProperty CharProperty;
+	CharProperty = SYS_TransCharSpriteProperty(tm);
+	CASTextSprite PrevTextSprite;
+	CASTextSprite NextTextSprite;
+	PrevTextSprite.SetPos(a.‚w + a.•¶Žš‚w, a.‚x + a.•¶Žš‚x);
+	PrevTextSprite.SetZ(a.‚y + 1);
+	NextTextSprite.SetPos(PrevTextSprite.GetX() + PrevTextSprite.GetWidth(), PrevTextSprite.GetY());
+	NextTextSprite.SetZ(a.‚y + 1);
+	int crsr = GetUnuseSpriteNum(1000);
+	SYS_•¶Žš“ü—Í_“ü—ÍˆÊ’uXV(a, crsr, a.•¶Žš‚w, a.•¶Žš‚x);
+	CreateSpritePixelMapOnly(crsr, 3, a.•¶ŽšƒTƒCƒY);
+	if (a.•¶Žšüã > 0 || a.•¶Žšü‰E > 0 || a.•¶Žšü‰º > 0 || a.•¶Žšü¶ > 0)
+	{
+		FillPixelMap(crsr, 0, 0, 3, a.•¶ŽšƒTƒCƒY, a.•¶Žšü‚q, a.•¶Žšü‚f, a.•¶Žšü‚a);
+		FillPixelMap(crsr, 1, 1, 1, a.•¶ŽšƒTƒCƒY - 2, a.•¶Žš‚q, a.•¶Žš‚f, a.•¶Žš‚a);
+	}
+	else
+	{
+		FillPixelMap(crsr, 0, 0, 3, a.•¶ŽšƒTƒCƒY, a.•¶Žš‚q, a.•¶Žš‚f, a.•¶Žš‚a);
+	}
+	SetSpriteZ(crsr, a.‚y + 2);
+	InputString.Begin();
+	InputString.OpenIME();
+	string Dummy = "";
+	SYS_•¶Žš“ü—Í_•¶Žš”ƒNƒŠƒbƒsƒ“ƒO(a, tx, Dummy);
+	string PrevText = tx;
+	string NextText = "";
+	string OldPrevText = "";
+	string OldNextText = "";
+	CASClick LeftKeyClick;
+	CASClick RightKeyClick;
+	CASClick EnterKeyClick;
+	CASClick EscapeKeyClick;
+	CASClick RButtonClick;
+	CASClick HomeKeyClick;
+	CASClick EndKeyClick;
+	LeftKeyClick.Init(37, true);
+	RightKeyClick.Init(39, true);
+	EnterKeyClick.Init(13, true);
+	EscapeKeyClick.Init(27, true);
+	RButtonClick.Init(2, true);
+	HomeKeyClick.Init(36, true);
+	EndKeyClick.Init(35, true);
+	CASKeyRepeat BackSpaceKeyRepeat;
+	CASKeyRepeat DeleteKeyRepeat;
+	CASKeyRepeat LeftKeyRepeat;
+	CASKeyRepeat RightKeyRepeat;
+	BackSpaceKeyRepeat.Init(8, true);
+	DeleteKeyRepeat.Init(46, true);
+	LeftKeyRepeat.Init(37, true);
+	RightKeyRepeat.Init(39, true);
+	int Index = PrevText.Length();
+	bool MoceCursor = false;
+	bool Converts = false;
+	bool Inputs = false;
+	for (; ; )
+	{
+		if (EnterKeyClick.IsClick(-2147483648))
+		{
+			tx = PrevText + NextText;
+			break;
+		}
+		if (EscapeKeyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (RButtonClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (!Inputs && !Converts)
+		{
+			if (LeftKeyRepeat.IsKeyDown())
+			{
+				MoceCursor = SYS_Move_LastChar_ToTop(PrevText, NextText);
+			}
+			else if (RightKeyRepeat.IsKeyDown())
+			{
+				MoceCursor = SYS_Move_TopChar_ToLast(NextText, PrevText);
+			}
+			else if (HomeKeyClick.IsKeyDown())
+			{
+				while (SYS_Move_LastChar_ToTop(PrevText, NextText))
+				{
+					UpdateView(true);
+				}
+			}
+			else if (EndKeyClick.IsKeyDown())
+			{
+				while (SYS_Move_TopChar_ToLast(NextText, PrevText))
+				{
+					UpdateView(true);
+				}
+			}
+			if (LeftKeyClick.IsClick(-2147483648) || RightKeyClick.IsClick(-2147483648))
+			{
+				MoceCursor = false;
+			}
+			if (BackSpaceKeyRepeat.IsKeyDown())
+			{
+				PrevText.PopBack();
+			}
+			else if (DeleteKeyRepeat.IsKeyDown())
+			{
+				NextText.Erase(0);
+			}
+		}
+		else
+		{
+			BackSpaceKeyRepeat.Reset(true);
+			DeleteKeyRepeat.Reset(true);
+			EnterKeyClick.Reset(true);
+		}
+		PrevText += InputString.GetResultString();
+		InputString.ClearResultString();
+		if (OldPrevText != PrevText || OldNextText != NextText)
+		{
+			SYS_•¶Žš“ü—Í_•¶Žš”ƒNƒŠƒbƒsƒ“ƒO(a, PrevText, NextText);
+			PrevTextSprite.SetText(PrevText, CharProperty);
+			NextTextSprite.SetText(NextText, CharProperty);
+			NextTextSprite.SetPos(PrevTextSprite.GetX() + PrevTextSprite.GetWidth(), PrevTextSprite.GetY());
+			SYS_•¶Žš“ü—Í_“ü—ÍˆÊ’uXV(a, crsr, a.•¶Žš‚w + PrevTextSprite.GetWidth(), a.•¶Žš‚x);
+			OldPrevText = PrevText;
+			OldNextText = NextText;
+		}
+		Converts = InputString.Converts();
+		Inputs = InputString.Inputs();
+		ShowSprite(crsr, MoceCursor | (GetTickCount() / 500) % 2);
+		UpdateView(true);
+	}
+	DeleteSprite(crsr);
+	InputString.CloseIME();
+	InputString.End();
+}
+
+void SYS_•¶Žš“ü—Í_“ü—ÍˆÊ’uXV(ref •¶Žš“ü—ÍƒGƒŠƒA_t a, int crsr_sp, int OffsetX, int OffsetY)
+{
+	int x = a.‚w + OffsetX;
+	int y = a.‚x + OffsetY;
+	InputString.SetPos(x, y);
+	SetSpritePos(crsr_sp, x + 1, y);
+}
+
+void SYS_•¶Žš“ü—Í_•¶Žš”ƒNƒŠƒbƒsƒ“ƒO(ref •¶Žš“ü—ÍƒGƒŠƒA_t InputStringArea, ref string PrevText, ref string NextText)
+{
+	if (InputStringArea.m_nMaxTextLengthSJIS == -1)
+	{
+		return;
+	}
+	while (PrevText.LengthByte() + NextText.LengthByte() > InputStringArea.m_nMaxTextLengthSJIS * 2)
+	{
+		NextText.PopBack();
+		if (NextText.LengthByte() == 0)
+		{
+			break;
+		}
+	}
+	while (PrevText.LengthByte() > InputStringArea.m_nMaxTextLengthSJIS * 2)
+	{
+		PrevText.PopBack();
+	}
+}
+
+bool SYS_Move_LastChar_ToTop(ref string SrcText, ref string DestText)
+{
+	if (SrcText.Empty())
+	{
+		return false;
+	}
+	DestText = SrcText.GetPart(SrcText.Length() - 1, 1) + DestText;
+	SrcText.PopBack();
+	return true;
+}
+
+bool SYS_Move_TopChar_ToLast(ref string SrcText, ref string DestText)
+{
+	if (SrcText.Empty())
+	{
+		return false;
+	}
+	DestText += SrcText.GetPart(0, 1);
+	SrcText.Erase(0);
+	return true;
+}
+

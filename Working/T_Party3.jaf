@@ -1,0 +1,949 @@
+int T_Party::moveUpLock(int nID)
+{
+	switch (nID)
+	{
+		case 100021:
+			if (this.m_sList.isNormal())
+			{
+				return 100022;
+			}
+			return this._moveCharaLock(4, 3, -1, -1, -1);
+		case 100022:
+			return this._moveCharaLock(2, 1, 0, -1, -1);
+		default:
+			break;
+	}
+	if (nID > 130000)
+	{
+		return this.moveUpCharaLock(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveUpListLock(this.getListIndex(nID));
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::moveDownLock(int nID)
+{
+	switch (nID)
+	{
+		case 100021:
+			return this._moveCharaLock(0, 1, 2, -1, -1);
+		case 100022:
+			if (this.m_nLockMode == 2)
+			{
+				return 100021;
+			}
+			if (this.m_sList.isCustom())
+			{
+				if (this.m_sList.getLayout() == 1)
+				{
+					return this._moveDownListLock(-1, 5);
+				}
+				return this._moveDownListLock(-1, 4);
+			}
+			return this._moveCharaLock(2, 1, 0, -1, -1);
+		default:
+			break;
+	}
+	if (nID > 130000)
+	{
+		return this.moveDownCharaLock(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveDownListLock(this.getListIndex(nID));
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::moveLeftLock(int nID)
+{
+	switch (nID)
+	{
+		case 100021:
+			return 100021;
+		case 100022:
+			return this._moveCharaLock(4, 3, -1, -1, -1);
+		default:
+			break;
+	}
+	if (nID > 130000)
+	{
+		return this.moveLeftCharaLock(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveLeftListLock(this.getListIndex(nID));
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::moveRightLock(int nID)
+{
+	switch (nID)
+	{
+		case 100021:
+			return 100021;
+		case 100022:
+			return this._moveCharaLock(3, 4, -1, -1, -1);
+		default:
+			break;
+	}
+	if (nID > 130000)
+	{
+		return this.moveRightCharaLock(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveRightListLock(this.getListIndex(nID));
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::moveUpCharaLock(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+		case 2:
+			break;
+		case 3:
+			return this._moveUpCharaLock(nIndex, 0, 1, 2, -1, -1);
+		case 4:
+			return this._moveUpCharaLock(nIndex, 1, 2, 0, -1, -1);
+		default:
+			break;
+	}
+	return this._moveUpCharaLock(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::moveDownCharaLock(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return this._moveDownCharaLock(nIndex, 3, 4, -1, -1, -1);
+		case 1:
+			return this._moveDownCharaLock(nIndex, 4, 3, -1, -1, -1);
+		case 2:
+			if (this.m_sList.isNormal())
+			{
+				return 100022;
+			}
+			return this._moveDownCharaLock(nIndex, 4, 3, -1, -1, -1);
+		case 3:
+		case 4:
+		default:
+			break;
+	}
+	return this._moveDownCharaLock(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::moveLeftCharaLock(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return this._moveLeftCharaLock(nIndex, 2, 1, 0, -1, -1);
+		case 1:
+			return this._moveLeftCharaLock(nIndex, 0, 2, 1, -1, -1);
+		case 2:
+			return this._moveLeftCharaLock(nIndex, 1, 0, 2, -1, -1);
+		case 3:
+			if (this.m_sList.isNormal())
+			{
+				return 100022;
+			}
+			return this._moveLeftCharaLock(nIndex, 4, -1, -1, -1, -1);
+		case 4:
+			return this._moveLeftCharaLock(nIndex, 3, -1, -1, -1, -1);
+		default:
+			break;
+	}
+	return this._moveLeftCharaLock(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::moveRightCharaLock(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return this._moveRightCharaLock(nIndex, 1, 2, 0, -1, -1);
+		case 1:
+			return this._moveRightCharaLock(nIndex, 2, 1, 0, -1, -1);
+		case 2:
+			return this._moveRightCharaLock(nIndex, 0, 1, 2, -1, -1);
+		case 3:
+			return this._moveRightCharaLock(nIndex, 4, -1, -1, -1, -1);
+		case 4:
+			if (this.m_sList.isNormal())
+			{
+				return 100022;
+			}
+			return this._moveRightCharaLock(nIndex, 3, -1, -1, -1, -1);
+		default:
+			break;
+	}
+	return this._moveRightCharaLock(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::_moveUpCharaLock(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveCharaLock(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	if (this.m_nLockMode == 2)
+	{
+		return 100021;
+	}
+	if (this.m_sList.isCustom())
+	{
+		int nLayout = this.m_sList.getLayout();
+		switch (nIndex)
+		{
+			case 0:
+			case 3:
+				if (nLayout == 1)
+				{
+					return this._moveUpListLock(4, 0);
+				}
+				return this._moveUpListLock(2, 0);
+			case 1:
+			case 4:
+				if (nLayout == 1)
+				{
+					return this._moveUpListLock(4, 2);
+				}
+				return this._moveUpListLock(2, 2);
+			case 2:
+				if (nLayout == 1)
+				{
+					return this._moveUpListLock(4, 5);
+				}
+				return this._moveUpListLock(2, 4);
+			default:
+				break;
+		}
+		return this.getLastListLock();
+	}
+	switch (nIndex)
+	{
+		case 0:
+			nID = this._moveCharaLock(3, 4, nIndex, -1, -1);
+			break;
+		case 1:
+			nID = this._moveCharaLock(4, 3, nIndex, -1, -1);
+			break;
+		case 2:
+			if (this.m_sList.isNormal())
+			{
+				return 100022;
+			}
+			nID = this._moveCharaLock(4, 3, nIndex, -1, -1);
+			break;
+		case 3:
+			nID = this._moveCharaLock(0, 1, 2, nIndex, -1);
+			break;
+		case 4:
+			nID = this._moveCharaLock(1, 2, 0, nIndex, -1);
+			break;
+		default:
+			break;
+	}
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::_moveDownCharaLock(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveCharaLock(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	if (this.m_nLockMode == 2)
+	{
+		return 100021;
+	}
+	if (this.m_sList.isCustom())
+	{
+		int nLayout = this.m_sList.getLayout();
+		switch (nIndex)
+		{
+			case 0:
+			case 3:
+				if (nLayout == 1)
+				{
+					return this._moveDownListLock(-1, 0);
+				}
+				return this._moveDownListLock(-1, 0);
+			case 1:
+			case 4:
+				if (nLayout == 1)
+				{
+					return this._moveDownListLock(-1, 2);
+				}
+				return this._moveDownListLock(-1, 2);
+			case 2:
+				if (nLayout == 1)
+				{
+					return this._moveDownListLock(-1, 5);
+				}
+				return this._moveDownListLock(-1, 4);
+			default:
+				break;
+		}
+		return this.getFirstListLock();
+	}
+	switch (nIndex)
+	{
+		case 0:
+			nID = this._moveCharaLock(3, 4, nIndex, -1, -1);
+			break;
+		case 1:
+			nID = this._moveCharaLock(4, 3, nIndex, -1, -1);
+			break;
+		case 2:
+			if (this.m_sList.isNormal())
+			{
+				return 100022;
+			}
+			nID = this._moveCharaLock(4, 3, nIndex, -1, -1);
+			break;
+		case 3:
+			nID = this._moveCharaLock(0, 1, 2, nIndex, -1);
+			break;
+		case 4:
+			nID = this._moveCharaLock(1, 2, 0, nIndex, -1);
+			break;
+		default:
+			break;
+	}
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::_moveLeftCharaLock(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveCharaLock(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.m_sList.isNormal() ? 100022 : this.getFirstLock();
+}
+
+int T_Party::_moveRightCharaLock(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveCharaLock(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.m_sList.isNormal() ? 100022 : this.getFirstLock();
+}
+
+int T_Party::_moveCharaLock(int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = 0;
+	if (nIndex0 < 0)
+	{
+		return -1;
+	}
+	nID = this.getCharaID(nIndex0);
+	if (this.m_sButtonLock.getButtonShow(nID))
+	{
+		return nID;
+	}
+	if (nIndex1 < 0)
+	{
+		return -1;
+	}
+	nID = this.getCharaID(nIndex1);
+	if (this.m_sButtonLock.getButtonShow(nID))
+	{
+		return nID;
+	}
+	if (nIndex2 < 0)
+	{
+		return -1;
+	}
+	nID = this.getCharaID(nIndex2);
+	if (this.m_sButtonLock.getButtonShow(nID))
+	{
+		return nID;
+	}
+	if (nIndex3 < 0)
+	{
+		return -1;
+	}
+	nID = this.getCharaID(nIndex3);
+	if (this.m_sButtonLock.getButtonShow(nID))
+	{
+		return nID;
+	}
+	if (nIndex4 < 0)
+	{
+		return -1;
+	}
+	nID = this.getCharaID(nIndex4);
+	if (this.m_sButtonLock.getButtonShow(nID))
+	{
+		return nID;
+	}
+	return 0;
+}
+
+int T_Party::moveUpListLock(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getFirstListLock();
+	}
+	return this._moveUpListLock(nRow, nCol);
+}
+
+int T_Party::moveDownListLock(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getLastListLock();
+	}
+	return this._moveDownListLock(nRow, nCol);
+}
+
+int T_Party::moveLeftListLock(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getFirstListLock();
+	}
+	return this._moveLeftListLock(nRow, nCol);
+}
+
+int T_Party::moveRightListLock(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getLastListLock();
+	}
+	return this._moveRightListLock(nRow, nCol);
+}
+
+int T_Party::_moveUpListLock(int nRow, int nCol)
+{
+	if (this.m_sList.isCustom())
+	{
+		int idx = this.m_sList.moveUp(1, nRow, nCol);
+		if (idx >= 0)
+		{
+			return this.getListID(idx);
+		}
+	}
+	if (this.m_sList.getLayout() == 1)
+	{
+		switch (nCol)
+		{
+			case 0:
+			case 1:
+				return this._moveUpCharaLock(3, 3, 0, 1, 4, 2);
+			case 2:
+			case 3:
+				return this._moveUpCharaLock(3, 3, 1, 0, 4, 2);
+			case 4:
+			case 5:
+			case 6:
+				return this._moveUpCharaLock(4, 4, 1, 2, 3, 0);
+			case 7:
+				if (this.m_sList.isNormal())
+				{
+					return 100022;
+				}
+				return this._moveUpCharaLock(4, 4, 2, 1, 3, 0);
+			default:
+				break;
+		}
+	}
+	else
+	{
+		switch (nCol)
+		{
+			case 0:
+				return this._moveUpCharaLock(3, 3, 0, 1, 4, 2);
+			case 1:
+				return this._moveUpCharaLock(3, 3, 1, 0, 4, 2);
+			case 2:
+			case 3:
+				return this._moveUpCharaLock(4, 4, 1, 2, 3, 0);
+			case 4:
+				if (this.m_sList.isNormal())
+				{
+					return 100022;
+				}
+				return this._moveUpCharaLock(4, 4, 2, 1, 3, 0);
+			default:
+				break;
+		}
+	}
+	return this.m_sList.isNormal() ? 100022 : this.getFirstLock();
+}
+
+int T_Party::_moveDownListLock(int nRow, int nCol)
+{
+	if (this.m_sList.isCustom())
+	{
+		int idx = this.m_sList.moveDown(1, nRow, nCol);
+		if (idx >= 0)
+		{
+			return this.getListID(idx);
+		}
+	}
+	if (this.m_sList.getLayout() == 1)
+	{
+		switch (nCol)
+		{
+			case 0:
+			case 1:
+				return this._moveDownCharaLock(0, 0, 3, 1, 4, 2);
+			case 2:
+			case 3:
+			case 4:
+				return this._moveDownCharaLock(1, 1, 0, 3, 2, 4);
+			case 5:
+			case 6:
+				return this._moveDownCharaLock(2, 2, 1, 4, 3, 0);
+			case 7:
+				return this._moveDownCharaLock(2, 2, 4, 1, 3, 0);
+			default:
+				break;
+		}
+	}
+	else
+	{
+		switch (nCol)
+		{
+			case 0:
+				return this._moveDownCharaLock(0, 0, 3, 1, 4, 2);
+			case 1:
+			case 2:
+				return this._moveDownCharaLock(1, 1, 0, 3, 2, 4);
+			case 3:
+				return this._moveDownCharaLock(2, 2, 1, 4, 3, 0);
+			case 4:
+				return this._moveDownCharaLock(2, 2, 4, 1, 3, 0);
+			default:
+				break;
+		}
+	}
+	return this.m_sList.isNormal() ? 100022 : this.getFirstLock();
+}
+
+int T_Party::_moveLeftListLock(int nRow, int nCol)
+{
+	if (this.m_sList.isCustom())
+	{
+		int idx = this.m_sList.moveLeft(1, nRow, nCol);
+		if (idx >= 0)
+		{
+			return this.getListID(idx);
+		}
+		return this.getFirstListLock();
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::_moveRightListLock(int nRow, int nCol)
+{
+	if (this.m_sList.isCustom())
+	{
+		int idx = this.m_sList.moveRight(1, nRow, nCol);
+		if (idx >= 0)
+		{
+			return this.getListID(idx);
+		}
+		return this.getLastListLock();
+	}
+	return this.getFirstLock();
+}
+
+int T_Party::getFirstListLock()
+{
+	int idx = this.m_sList.getFirst(1);
+	if (idx < 0)
+	{
+		return this.getFirstLock();
+	}
+	return this.getListID(idx);
+}
+
+int T_Party::getLastListLock()
+{
+	int idx = this.m_sList.getLast(1);
+	if (idx < 0)
+	{
+		return this.getFirstLock();
+	}
+	return this.getListID(idx);
+}
+
+bool T_Party::moveLockChara(int nMode, bool bCustom, int nCharaNo)
+{
+	if (!this.lockChara(nMode, nCharaNo))
+	{
+		return false;
+	}
+	this.resetSelect();
+	this.createLockButton(nMode, bCustom, nCharaNo);
+	int nRet = -1;
+	int nID = this.getFirstLock();
+	while (true)
+	{
+		nID = this.checkSelectLock(nID);
+		if (this.execLock(nID, nRet))
+		{
+			break;
+		}
+	}
+	if (nRet > 0)
+	{
+		this.update(2147483647, true);
+	}
+	this.deleteLockButton();
+	this.lockChara(0, -1);
+	this.setButtonActive();
+	this.setButtonShow(true);
+	return false;
+}
+
+void T_Party::createLockButton(int nMode, bool bCustom, int nCharaNo)
+{
+	this.deleteLockButton();
+	this.m_sButtonLock.create();
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	if (bCustom)
+	{
+		int nW = パーティ一覧_幅(-1);
+		int nH = パーティ一覧_高(-1);
+		for (i = 0; i < cnt; ++i)
+		{
+			int nX = パーティ一覧_キャラＸ(i, false, -1);
+			int nY = パーティ一覧_キャラＹ(i, false, -1);
+			ボタン登録_矩形(this.m_sButtonLock, this.getListID(i), nX, nY, nW, nH, false);
+		}
+	}
+	int idx = nMode == 2 ? this.m_sChara.getIndex(nCharaNo) : -1;
+	for (i = 0; i < 5; ++i)
+	{
+		if (i == idx)
+		{
+			continue;
+		}
+		int nX = 戦闘味方_位置Ｘ(i);
+		int nY = 戦闘味方_位置Ｙ(i);
+		ボタン登録_矩形(this.m_sButtonLock, this.getCharaID(i), nX, nY, 334, 170, true);
+	}
+	if (this.m_sList.isNormal())
+	{
+		ボタン登録_矩形(this.m_sButtonLock, 100022, 936, 638, 80, 80, true);
+	}
+	if (nMode != 1)
+	{
+		ボタン登録_矩形(this.m_sButtonLock, 100021, 0, 115, 1024, 263, true);
+	}
+	this.m_sButtonLock.setZ(this.m_spBase.getZ() + 20);
+	this.m_sButtonLock.setShow(true);
+	this.m_sInputKeyLock.create(1, this.m_sButtonLock);
+	this.m_sInputKeyLock.setArrowUpCallback(&パーティ_上矢印_ロック);
+	this.m_sInputKeyLock.setArrowDownCallback(&パーティ_下矢印_ロック);
+	this.m_sInputKeyLock.setArrowLeftCallback(&パーティ_左矢印_ロック);
+	this.m_sInputKeyLock.setArrowRightCallback(&パーティ_右矢印_ロック);
+	this.m_sInputKeyLock.setSelectCallback(&パーティ_選択設定_ロック);
+}
+
+void T_Party::deleteLockButton()
+{
+	this.m_sButtonLock.delete();
+	this.m_sInputKeyLock.delete();
+}
+
+bool T_Party::execLock(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 100021:
+			this.m_sChara.erase(this.m_nLockChara, 2);
+			効果音_パーティー変更();
+			nRet = 1;
+			return true;
+		case 100022:
+			if (パーティ一覧_キャラ削除確認(this.m_sList.getMode(), this.m_nLockChara))
+			{
+				if (this.eraseChara(this.m_nLockChara))
+				{
+					効果音_パーティー変更();
+				}
+				else
+				{
+					効果音_ドロップ();
+				}
+			}
+			return true;
+		default:
+			break;
+	}
+	if (nID > 190000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 130000)
+	{
+		nRet = this.execCharaLock(nID);
+		return true;
+	}
+	if (nID > 120000)
+	{
+		nRet = this.execListLock(nID);
+		return true;
+	}
+	return true;
+}
+
+int T_Party::execListLock(int nID)
+{
+	int idx = this.getListIndex(nID);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	if (!this.m_sList.drop(idx, this.m_nLockChara))
+	{
+		return 0;
+	}
+	効果音_ドロップ();
+	return 1;
+}
+
+int T_Party::execCharaLock(int nID)
+{
+	int idx = this.getCharaIndex(nID);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	if (!this.m_sChara.checkDrop(idx, this.m_nLockChara))
+	{
+		return 0;
+	}
+	if (!this.m_sChara.drop(idx, this.m_nLockChara))
+	{
+		return 0;
+	}
+	効果音_パーティー変更();
+	return 1;
+}
+
+int T_Party::checkSelectLock(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelectLock();
+	this.setCursorLock(nID);
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInputLock(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheelLock();
+		if (キャンセル_確認())
+		{
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKeyLock(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_Party::checkInputLock(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (this.m_sScroll.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButtonLock.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+label0:
+	this.m_sScroll.setInputFlag(true);
+	this.m_sButtonLock.setInputFlag(true);
+	return 0;
+}
+
+int T_Party::checkKeyLock(int nID)
+{
+	if (this.m_sScroll.checkKey())
+	{
+		return 0;
+	}
+	int nID2 = this.m_sButtonLock.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	this.m_sInputKeyLock.check(nID);
+	return 0;
+}
+
+bool T_Party::checkWheelLock()
+{
+	if (this.m_sScroll.checkWheel())
+	{
+		return true;
+	}
+	ホイール_クリア();
+	return false;
+}
+
+void T_Party::resetSelectLock()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sButtonLock.resetSelect();
+	this.hideComment(-1);
+}
+
+void T_Party::setCursorLock(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelectLock();
+		this.setSelectLock(nID, true);
+		return;
+	}
+	if (nID > 190000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButtonLock.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_Party::setButtonShowLock(bool bShow)
+{
+	return;
+}
+
+void T_Party::setButtonActiveLock()
+{
+	return;
+}
+
+bool T_Party::lockChara(int nMode, int nCharaNo)
+{
+	bool bRet = false;
+	this.m_sList.lock(-1);
+	this.m_sChara.lock(-1);
+	switch (nMode)
+	{
+		case 1:
+			bRet = this.m_sList.lock(nCharaNo);
+			break;
+		case 2:
+			bRet = this.m_sChara.lock(nCharaNo);
+			break;
+		default:
+			break;
+	}
+	this.m_nLockMode = bRet ? nMode : 0;
+	this.m_nLockChara = bRet ? nCharaNo : 0;
+	g_bPartyBlink = bRet;
+	return bRet;
+}
+
+int T_Party::getFirstLock()
+{
+	switch (this.m_nLockMode)
+	{
+		case 1:
+			int i = 0;
+			for (i = 0; i < 5; ++i)
+			{
+				if (this.getPartyChara(i) != this.m_nLockChara)
+				{
+					return this.getCharaID(i);
+				}
+			}
+			break;
+		case 2:
+			return 100021;
+		default:
+			break;
+	}
+	return 0;
+}
+

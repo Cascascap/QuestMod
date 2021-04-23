@@ -1,0 +1,54 @@
+void W(int 時間)
+{
+	UpdateView(true);
+	if (時間 < 1)
+	{
+		return;
+	}
+	CASClick LButtonClick;
+	CASClick RButtonClick;
+	CASClick SpaceKeyClick;
+	CASClick ReturnKeyClick;
+	LButtonClick.Init(1, !SYS_IsClickModeCancel());
+	RButtonClick.Init(2, true);
+	SpaceKeyClick.Init(32, true);
+	ReturnKeyClick.Init(13, !SYS_IsClickModeCancel());
+	int t = GetTickCount();
+	while (GetTickCount() - t < 時間)
+	{
+		if (SYS_未読スキップ中確認())
+		{
+			break;
+		}
+		if (SYS_既読スキップ中確認())
+		{
+			break;
+		}
+		if (LButtonClick.IsClick(-2147483648) || ReturnKeyClick.IsClick(-2147483648))
+		{
+			SYS_ReleaseModeByClickCancel();
+			break;
+		}
+		if (RButtonClick.IsClick(-2147483648) || SpaceKeyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+
+void W強制待ち(int 時間)
+{
+	int t = GetTickCount();
+	UpdateView(true);
+	if (時間 < 1)
+	{
+		return;
+	}
+	SYS_バックシーン登録();
+	while (GetTickCount() - t < 時間)
+	{
+		UpdateView(true);
+	}
+}
+

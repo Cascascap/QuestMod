@@ -1,0 +1,41 @@
+CASFreeSpriteImp::CASFreeSpriteImp()
+{
+	this.m_nSpriteNum = -1;
+}
+
+CASFreeSpriteImp::~CASFreeSpriteImp()
+{
+	this.Release();
+}
+
+void CASFreeSpriteImp::Create()
+{
+	this.Release();
+	this.m_nSpriteNum = GetUnuseSpriteNum(5000);
+	ChipmunkSpriteEngine.SP_SetShow(this.m_nSpriteNum, 1);
+}
+
+void CASFreeSpriteImp::Release()
+{
+	this.ReleaseSprite();
+}
+
+int CASFreeSpriteImp::GetSpriteNum()
+{
+	return this.m_nSpriteNum;
+}
+
+void CASFreeSpriteImp::ReleaseSprite()
+{
+	if (this.m_nSpriteNum != -1)
+	{
+		DeleteSprite(this.m_nSpriteNum);
+		this.m_nSpriteNum = -1;
+	}
+}
+
+void CASFreeSpriteImp::Rebuild()
+{
+	this.m_nSpriteNum = -1;
+}
+

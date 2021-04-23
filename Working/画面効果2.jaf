@@ -1,0 +1,92 @@
+void Ｒ８画面エフェクト(int nType, int nTime)
+{
+	switch (nType)
+	{
+		case 1:
+			EFFECT(60, nTime < 0 ? 1000 : nTime);
+			break;
+		case 7001:
+			スプライトズーム_縮小(7001, nTime < 0 ? 500 : nTime);
+			break;
+		case 7002:
+		default:
+			スプライトズーム_縮小(7002, nTime < 0 ? 500 : nTime);
+			break;
+	}
+}
+
+void 効果_絶頂(int nCgNo)
+{
+	画面フラッシュ(1700);
+	イベントＣＧ準備(nCgNo);
+	画面フラッシュ(2400);
+}
+
+void 効果_マップ転移()
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	_白画面(1, 1000);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+
+void 効果_戦闘準備(int nCgNo)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	if (nCgNo == 99991)
+	{
+		_白画面(1, 500);
+	}
+	else
+	{
+		_黒画面(1, 500);
+	}
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+
+void 効果_フラッシュ(string szName, int nX, int nY, int nZ)
+{
+	Ｆｌａｓｈ_通知クリア();
+	Ｆｌａｓｈ_作成(nX, nY, nZ);
+	Ｆｌａｓｈ_再生(Ｆｌａｓｈファイル名(szName), false, false);
+}
+
+void 効果_フラッシュ_待ちあり(string szName, int nX, int nY, int nZ)
+{
+	Ｆｌａｓｈ_通知クリア();
+	Ｆｌａｓｈ_作成(nX, nY, nZ);
+	Ｆｌａｓｈ_再生(Ｆｌａｓｈファイル名(szName), true, false);
+	Ｆｌａｓｈ_削除();
+}
+
+void 効果_点滅(int nX, int nY, int nWidth, int nHeight, int nCount, int nTime, int nR, int nG, int nB, int nRate, int nZ)
+{
+	T_Sprite spWork;
+	nR = nR < 0 ? 216 : nR;
+	nG = nG < 0 ? 255 : nG;
+	nB = nB < 0 ? 0 : nB;
+	nRate = nRate < 0 ? 102 : nRate;
+	spWork.create(nWidth, nHeight, nR, nG, nB, nRate);
+	spWork.setPos(nX, nY);
+	spWork.setZ(nZ);
+	int i = 0;
+	CASTimer sTimer;
+	for (i = 0; i < nCount; ++i)
+	{
+		sTimer.Reset();
+		spWork.setShow(i % 2 == 0);
+		UPDATE(true);
+		while (sTimer.Get() < nTime)
+		{
+			UPDATE(true);
+		}
+	}
+	spWork.delete();
+	UPDATE(true);
+}
+

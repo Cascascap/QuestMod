@@ -1,0 +1,199 @@
+void イージス／切り替え１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, 5000, 0, 0);
+	セリフ(2000, "");
+	'"Come to think of it, Aegis..."' A;
+	枠消去();
+	立ち絵表示(1050, 1, 200);
+	セリフ(2050, "");
+	'"Hm? What is it?"' A;
+	セリフ(2000, "");
+	'"You lost five years of memories, right?' R;
+	' What were you doing five years ago?"' A;
+	セリフ(2050, "");
+	'"Five years ago..."' A;
+	'"...Well..."' A;
+	'"What I last remember is when I was in the Village Guard."' A;
+	'"I wasn\'t the captain then and the queen was the current queen\'s mother."' A;
+	セリフ(2000, "");
+	'"Hmmm."' A;
+	セリフ(2050, "");
+	'"And back then... I despised human males and was repulsed by the conception ceremony that we have in the village."' A;
+	セリフ(2000, "");
+	'"Oho? You were right to be.' R;
+	' The sperm of every guy but me is trash, after all."' A;
+	セリフ(2050, "");
+	'"I see."' A;
+	'"Well, whether or not that\'s true, I just couldn\'t stand the idea of something like that being inside my body."' A;
+	セリフ(2000, "");
+	'"You really hate men, huh?"' A;
+	'"What about me, then? Do you hate me?"' A;
+	セリフ(2050, "");
+	'"...Come to think of it..."' A;
+	'"Curiously, I don\'t seem to hate you, Rance."' A;
+	セリフ(2000, "");
+	'"That must just be how handsome I am.' R;
+	' Heh heh heh."' A;
+	思考(2050, "");
+	'(No, it\'s just because you\'re more like an animal than a human man...)' A;
+	'(...But I won\'t tell him that.)' A;
+	セリフ(2001, "");
+	'"Gahahaha!"' A;
+	ADVOFF();
+}
+
+void イージス／切り替え２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5000, 0, 0);
+	ト書き();
+	'Rance\'s party was eating in camp.' A;
+	音楽(93, -1, -1);
+	セリフ(2000, "");
+	'"Mmm, you\'re good at cooking, Aegis."' A;
+	枠消去();
+	立ち絵表示(1050, 1, 200);
+	セリフ(2050, "");
+	'"Hm? You think so? I\'m glad you like it."' A;
+	セリフ(2000, "");
+	'"Mm, I do. It\'s tasty!"' A;
+	'"Oh, I know! Do, \'say ah\'!"' A;
+	セリフ(2050, "");
+	'"\'Say ah\'...?"' A;
+	'"You mean... you want me to feed you?"' A;
+	'"You\'re not ill or anything, are you...?' R;
+	' Why?"' A;
+	セリフ(2000, "");
+	'"When we were lovers, you did that every time we ate."' A;
+	セリフ(2050, "");
+	'"...Really?"' A;
+	セリフ(2000, "");
+	'"Really."' A;
+	セリフ(2050, "");
+	'"Hrmm..."' A;
+	ト書き();
+	'Picking up her spoon, Aegis proffered some food from her own bowl.' A;
+	セリフ(2050, "");
+	'"Here."' A;
+	セリフ(2001, "");
+	'"*munch*, *munch*"' A;
+	'"Gahahaha, it\'s good!' R;
+	' It\'s nice and easy, too, since I don\'t need to use my hands!"' A;
+	セリフ(2050, "");
+	'"Well, I\'m glad you enjoyed it."' A;
+	セリフ(2000, "");
+	'"Oh, gimme that part with the cheese on it."' A;
+	セリフ(2050, "");
+	'"Here."' A;
+	セリフ(2000, "");
+	'"The crispy part is the best.' R;
+	' Gimme that, too."' A;
+	セリフ(2050, "");
+	'"Here."' A;
+	セリフ(2000, "");
+	'"You\'ve got one big piece of meat left there.' R;
+	' Hand that over, too."' A;
+	'"You did that, you know.' R;
+	' You always gave me the big pieces of meat."' A;
+	セリフ(2050, "");
+	'"........."' A;
+	'"Really?"' R;
+	'  ↑  Staring closely' A;
+	セリフ(2005, "");
+	'"...Err..."' A;
+	'"...Err... hrmm..."' A;
+	'"It... is... true...?"' A;
+	セリフ(2050, "");
+	'"........."' R;
+	'  ↑  Staaare' A;
+	セリフ(2005, "");
+	'"...It\'s just a little bit false."' A;
+	ト書き();
+	'　' R;
+	' <...smack!>' A;
+	セリフ(2002, "");
+	'"Oww!"' A;
+	'"You chopped me!' R;
+	' You gave me a chop!"' A;
+	セリフ(2050, "");
+	'"Rance, stop with these pointless lies."' A;
+	セリフ(2005, "");
+	'"Hmph..."' A;
+	セリフ(2050, "");
+	'"...Really..."' A;
+	ト書き();
+	'Aegis took the large piece of meat and placed it in Rance\'s bowl.' A;
+	ADVOFF();
+}
+
+void イージス／切り替え３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, 5230, 0, 0);
+	セリフ(2050, "");
+	'"........."' A;
+	思考(2000, "");
+	'(Oh, Aegis is cooking.)' A;
+	セリフ(2000, "");
+	'"...Hmmm."' A;
+	ト書き();
+	'Rance slowly approached Aegis\'s defenseless back...' A;
+	セリフ(2001, "");
+	'"Toooh! Boob touch!"' A;
+	ト書き();
+	'...and started groping her breasts from behind.' A;
+	セリフ(2001, "");
+	'"Gahahaha! Well? Did I surprise you?"' A;
+	ト書き();
+	'Aegis slowly turned around.' A;
+	セリフ(2050, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"Err, no, uh..."' A;
+	セリフ(2050, "");
+	'"........."' R;
+	'  ↑  Blank' A;
+	セリフ(2000, "");
+	'"S-Stop that.' R;
+	' Don\'t tilt your head at me with such genuine curiosity."' A;
+	セリフ(2050, "");
+	'"Ahh... Come to think of it, men are fond of women\'s breasts, aren\'t they?"' A;
+	'"I understand. You wanted me to be flustered by your sudden advances."' A;
+	'"What an awfully childish thing to do."' A;
+	セリフ(2005, "");
+	'"Hey, stop that! Don\'t analyze me so coolly!"' A;
+	'"...You weren\'t bothered at all?"' A;
+	セリフ(2050, "");
+	'"There are no male kalars, after all."' A;
+	'"I have no experience with interactions like this."' A;
+	セリフ(2000, "");
+	'"Hrmph."' A;
+	'"Tch, you\'re no fun. Fine."' A;
+	ト書き();
+	'Rance began to wander away.' A;
+	セリフ(2050, "");
+	'"What a troublesome lover you are.' R;
+	' I understand. I\'ll try to be as bothered as I can next time."' A;
+	セリフ(2000, "");
+	'"Uh, no, you don\'t have to..."' A;
+	ADVOFF();
+}
+

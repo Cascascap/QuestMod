@@ -1,0 +1,171 @@
+T_EquipDrag::T_EquipDrag()
+{
+	this.clear();
+}
+
+T_EquipDrag::~T_EquipDrag()
+{
+	this.delete();
+}
+
+int T_EquipDrag::run(int nZ, int nType, int nSystemBarMode, ref T_ItemIcon rfsIcon)
+{
+	int nRet = -1;
+	if (!this.create(nZ, nType, nSystemBarMode, rfsIcon))
+	{
+		return -1;
+	}
+	rfsIcon.setShow(false);
+	if (this.exec())
+	{
+		if (this.m_sEquip.setItem(this.m_nTargetIndex, rfsIcon.getItemNo()))
+		{
+			nRet = this.m_nTargetIndex != 999 ? this.m_sEquip.getCharaNo(this.m_nTargetIndex) : 2147483647;
+		}
+	}
+	rfsIcon.setShow(true);
+	this.delete();
+	return nRet;
+}
+
+int T_EquipDrag::select(int nZ, int nType, int nSystemBarMode, int nItemNo)
+{
+	int nRet = -1;
+	if (!this.createEquip(nZ, nType, nSystemBarMode, nItemNo))
+	{
+		return -1;
+	}
+	int nIndex = this.m_sEquip.checkSelect();
+	if (this.m_sEquip.setItem(nIndex, nItemNo))
+	{
+		nRet = nIndex != 999 ? this.m_sEquip.getCharaNo(nIndex) : 2147483647;
+	}
+	this.delete();
+	return nRet;
+}
+
+bool T_EquipDrag::create(int nZ, int nType, int nSystemBarMode, ref T_ItemIcon rfsIcon)
+{
+	this.delete();
+	if (rfsIcon === NULL)
+	{
+		return false;
+	}
+	if (!this.createEquip(nZ, nType, nSystemBarMode, rfsIcon.getItemNo()))
+	{
+		return false;
+	}
+	if (!this.m_sIcon.copy(rfsIcon.getSp(), false))
+	{
+		return false;
+	}
+	this.m_sIcon.setPos(rfsIcon.getPosX(), rfsIcon.getPosY());
+	this.m_sIcon.setZ(nZ + 30, -1);
+	this.m_sIcon.setShow(true);
+	return true;
+}
+
+bool T_EquipDrag::createEquip(int nZ, int nType, int nSystemBarMode, int nItemNo)
+{
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	array@int anCharaNo[5];
+	if (nSystemBarMode == 13)
+	{
+		for (i = 0; i < 5; ++i)
+		{
+			anCharaNo[i] = パーティ_配置キャラ番号(i);
+		}
+	}
+	else
+	{
+		for (i = 0; i < 5; ++i)
+		{
+			anCharaNo[i] = 味方パーティ_番号(i + 1);
+		}
+	}
+	if (!this.m_sEquip.create(nZ, nType, アイテム_種類(nItemNo), anCharaNo))
+	{
+		return false;
+	}
+	this.m_sEquip.setActive(nItemNo);
+	this.m_sEquip.setShow(true);
+	return true;
+}
+
+void T_EquipDrag::delete()
+{
+	this.m_sIcon.delete();
+	this.m_sEquip.delete();
+	this.clear();
+}
+
+void T_EquipDrag::clear()
+{
+	this.m_nSelectIndex = -1;
+	this.m_nTargetIndex = -1;
+}
+
+bool T_EquipDrag::exec()
+{
+	bool bRet = false;
+	T_Rect sRect;
+	T_DragMouse sDrag;
+	sRect.set2(39, 0, 919, 768);
+	sDrag.create2(this.m_sIcon, sRect);
+	sDrag.setSoundDrop(0);
+	sDrag.setSoundError(1006);
+	sDrag.setDragCallback(&装備アイテム_ドラッグ);
+	sDrag.setDropCallback(&装備アイテム_ドロップ);
+	if (キー_押下(1))
+	{
+		bRet = sDrag.run(0);
+	}
+	else
+	{
+		bRet = sDrag.runJoypad(0);
+	}
+	sDrag.delete();
+	return bRet;
+}
+
+void T_EquipDrag::execDrag(int nX, int nY)
+{
+	if (!this.m_sIcon.isCreated())
+	{
+		return;
+	}
+	this.m_sIcon.setPos(nX, nY);
+	this.m_nSelectIndex = this.m_sEquip.check(this.m_sIcon.getSp());
+}
+
+bool T_EquipDrag::execDrop(int nX, int nY)
+{
+	if (!this.m_sIcon.isCreated())
+	{
+		return false;
+	}
+	this.m_sIcon.setPos(nX, nY);
+	bool bRet = false;
+	int a = 0;
+	int b = 0;
+	if (!マウス_位置取得(a, b))
+	{
+		this.m_nSelectIndex = -1;
+	}
+	if (this.m_nSelectIndex < 0)
+	{
+		goto label0;
+	}
+	bRet = true;
+	this.m_nTargetIndex = this.m_nSelectIndex;
+label0:
+	this.m_sEquip.setSelect(-1);
+	this.m_nSelectIndex = -1;
+	this.m_sIcon.setShow(false);
+	return bRet;
+}
+

@@ -1,0 +1,185 @@
+T_BattleEffectData::T_BattleEffectData()
+{
+	this.clear();
+}
+
+void T_BattleEffectData::clear()
+{
+	this.m_nMonsterNo = 0;
+	this.m_aszName.Fill(0, this.m_aszName.Numof(), "");
+	this.m_anType.Fill(0, this.m_anType.Numof(), -1);
+}
+
+string T_BattleEffectData::getName(int nMotionNo)
+{
+	return nMotionNo < 1 || nMotionNo > this.m_aszName.Numof() ? "" : this.m_aszName[nMotionNo - 1];
+}
+
+int T_BattleEffectData::getType(int nMotionNo)
+{
+	return nMotionNo < 1 || nMotionNo > this.m_anType.Numof() ? -1 : this.m_anType[nMotionNo - 1];
+}
+
+int T_BattleEffectDataManager::getCount()
+{
+	return this.m_asData.Numof();
+}
+
+int T_BattleEffectDataManager::getIndex(int nMonsterNo)
+{
+	return this.search(nMonsterNo);
+}
+
+ref T_BattleEffectData T_BattleEffectDataManager::get(int nMonsterNo)
+{
+	return this.getFromIndex(this.search(nMonsterNo));
+}
+
+ref T_BattleEffectData T_BattleEffectDataManager::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asData.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asData[nIndex];
+}
+
+T_BattleEffectDataManager::T_BattleEffectDataManager()
+{
+	this.add(100002, "メイドさん", 0, "", 0, "", 0, "", 0);
+	this.add(100003, "きゃんきゃん", 0, "", 0, "", 0, "", 0);
+	this.add(100004, "マジスコ", 0, "", 0, "", 0, "", 0);
+	this.add(100005, "ちゃぷちゃぷ", 0, "", 0, "", 0, "", 0);
+	this.add(100024, "クマ", 0, "", 0, "", 0, "", 0);
+	this.add(100045, "雷魚", 0, "", 0, "", 0, "", 0);
+	this.add(100048, "ハニー砲", 0, "", 0, "", 0, "", 0);
+	this.add(100049, "鐘トーチカ", 0, "", 0, "", 0, "", 0);
+	this.add(100057, "兵器メタル", 0, "", 0, "", 0, "", 0);
+	this.add(100056, "兵器タンク", 0, "", 0, "", 0, "", 0);
+	this.add(100063, "いやな奴", 0, "いやな奴・大", 0, "", 0, "", 0);
+	this.add(100075, "チハ", 0, "チハ・大", 0, "", 0, "", 0);
+	this.add(100085, "ソーサラー", 0, "", 0, "", 0, "", 0);
+	this.add(100090, "蝙蝠のおばちゃま", 0, "", 0, "", 0, "", 0);
+	this.add(100092, "Ｄシールド", 0, "", 0, "", 0, "", 0);
+	this.add(100097, "つぼ", 0, "", 0, "", 0, "", 0);
+	this.add(100106, "うっぴー", 0, "", 0, "", 0, "", 0);
+	this.add(100107, "はっぴー", 0, "", 0, "", 0, "", 0);
+	this.add(100116, "にょ～", 0, "", 0, "", 0, "", 0);
+	this.add(100117, "角くじら", 0, "", 0, "", 0, "", 0);
+	this.add(100118, "まだ角くじら", 0, "", 0, "", 0, "", 0);
+	this.add(100127, "さけび男", 0, "", 0, "", 0, "", 0);
+	this.add(100128, "ほほえみ男", 0, "", 0, "", 0, "", 0);
+	this.add(100141, "ローパー", 0, "", 0, "", 0, "", 0);
+	this.add(100144, "", 0, "ヤンキー", 0, "", 0, "", 0);
+	this.add(100188, "", 0, "ヤンキー", 0, "", 0, "", 0);
+	this.add(100156, "ルスト", 0, "", 0, "", 0, "", 0);
+	this.add(100157, "ロンメル", 0, "", 0, "", 0, "", 0);
+	this.add(100158, "ゲーリング", 0, "", 0, "", 0, "", 0);
+	this.add(100159, "クレッチマー", 0, "", 0, "", 0, "", 0);
+	this.add(100160, "ガーランド", 0, "", 0, "", 0, "", 0);
+	this.add(100161, "ヒムラー", 0, "", 0, "", 0, "", 0);
+	this.add(100162, "ゲッペルス", 0, "", 0, "", 0, "", 0);
+	this.add(100163, "ヒトラー", 0, "", 0, "", 0, "", 0);
+	this.add(100178, "幸福きゃんきゃん", 0, "", 0, "", 0, "", 0);
+	this.add(100155, "マソギンチャク", 0, "マソギンチャク・大", 0, "", 0, "", 0);
+	this.add(100154, "まじしゃん", 0, "", 0, "", 0, "", 0);
+	this.add(100054, "ボスボーン", 0, "", 0, "", 0, "", 0);
+	this.add(100006, "", 0, "ねこまたまた・大", 0, "", 0, "", 0);
+	this.add(100194, "", 0, "ＡＬ騎士・大", 0, "", 0, "", 0);
+	this.add(100009, "ちょーちん", 0, "", 0, "", 0, "", 0);
+	this.add(100093, "ダイコンデコン", 0, "", 0, "", 0, "", 0);
+	this.add(100177, "ダイコンデコン", 0, "", 0, "", 0, "", 0);
+	this.add(100112, "シロメ", 0, "", 0, "", 0, "", 0);
+	this.add(100094, "", 0, "ゴースト・大", 0, "", 0, "", 0);
+	this.add(100176, "蝙蝠のおじさま", 0, "", 0, "", 0, "", 0);
+	this.add(100111, "クロメ", 0, "", 0, "", 0, "", 0);
+	this.add(100060, "", 0, "キャプテンバニラ・大", 0, "", 0, "", 0);
+	this.add(100191, "", 0, "カラー隊長・大", 0, "カラー隊長・大付与", 0, "", 0);
+	this.add(100192, "", 0, "カラー一般兵・大", 0, "", 0, "", 0);
+	this.add(100010, "かえる女", 0, "", 0, "", 0, "", 0);
+	this.add(100073, "", 0, "イージス・大", 0, "", 0, "", 0);
+	this.add(100110, "アカメ", 0, "", 0, "", 0, "", 0);
+	this.add(100088, "ゲイツ９５", 0, "ゲイツ９５・大", 0, "", 0, "", 0);
+	this.add(100187, "雪山にほん兵", 0, "", 0, "", 0, "", 0);
+	this.add(100031, "にほん兵", 0, "", 0, "", 0, "", 0);
+	this.add(100220, "", 0, "ますぞえ・大", 0, "ますぞえ・大差押", 0, "", 0);
+	this.add(100014, "ノーススラッグ", 0, "", 0, "", 0, "", 0);
+	this.add(100026, "", 0, "カニちゃん・大", 0, "", 0, "", 0);
+	this.add(100195, "パステル", 0, "パステル・大", 0, "", 0, "", 0);
+	this.add(100196, "パステルモダン", 0, "パステルモダン・大", 0, "", 0, "", 0);
+	this.add(100197, "パステルビビッド", 0, "", 0, "", 0, "", 0);
+	this.add(100198, "パステルフル", 0, "パステルフル・大Ｆ", 0, "パステルフル・大雷", 0, "", 0);
+	this.add(100225, "精霊回復", 0, "", 0, "", 0, "", 0);
+	this.add(100226, "精霊魔法", 0, "", 0, "", 0, "", 0);
+	this.add(100143, "", 0, "アンモス・大", 1, "", 0, "", 0);
+	this.add(100175, "", 0, "レッサードラゴン・大", 1, "", 0, "", 0);
+	this.add(100193, "", 0, "ＧＲドラゴン・大", 1, "", 0, "", 0);
+	this.add(100100, "", 0, "ハニー", 0, "", 0, "", 0);
+	this.add(100101, "", 0, "グリーンハニー", 0, "", 0, "", 0);
+	this.add(100102, "", 0, "ブルーハニー", 0, "", 0, "", 0);
+	this.add(100103, "", 0, "レッドハニー", 0, "", 0, "", 0);
+	this.add(100104, "", 0, "ブラックハニー", 0, "", 0, "", 0);
+	this.add(100105, "", 0, "スーパーハニー", 0, "", 0, "", 0);
+	this.add(100227, "ハニーキング", 0, "", 0, "", 0, "", 0);
+	this.add(100279, "角くじら", 0, "", 0, "", 0, "", 0);
+	this.add(100284, "うっぴー", 0, "", 0, "", 0, "", 0);
+	this.add(100235, "パステル", 0, "パステル・大", 0, "", 0, "", 0);
+	this.add(100233, "ソーサラー", 0, "", 0, "", 0, "", 0);
+	this.add(100269, "", 0, "ＲＤドラゴン・大", 1, "", 0, "", 0);
+	this.add(100268, "", 0, "ＢＬドラゴン・大", 1, "", 0, "", 0);
+	this.add(100267, "", 0, "ＢＫドラゴン・大", 1, "", 0, "", 0);
+	this.add(100239, "イヤシンスＬ", 0, "", 0, "", 0, "", 0);
+	this.add(100240, "イヤシンスＲ", 0, "", 0, "", 0, "", 0);
+	this.add(100134, "のーてんフラワー", 0, "", 0, "", 0, "", 0);
+	this.add(100273, "", 0, "エンジェルナイトＣ・大", 0, "", 0, "", 0);
+	this.add(100276, "器兵タンク改", 0, "", 0, "", 0, "", 0);
+	this.add(100275, "器兵メタル改", 0, "", 0, "", 0, "", 0);
+	this.add(100138, "Ｅシールド", 0, "", 0, "", 0, "", 0);
+	this.add(100139, "うっぴー", 0, "", 0, "", 0, "", 0);
+	this.add(100147, "はっぴー", 0, "", 0, "", 0, "", 0);
+	this.add(100236, "ゲイツ９５", 0, "ゲイツ９５・大", 0, "", 0, "", 0);
+	this.add(100229, "", 0, "バッティングセンターズ・大・回復", 0, "", 0, "", 0);
+}
+
+bool T_BattleEffectDataManager::add(int nMonsterNo, string szEffectName01, int nType01, string szEffectName02, int nType02, string szEffectName03, int nType03, string szEffectName04, int nType04)
+{
+	if (nMonsterNo <= 0)
+	{
+		return false;
+	}
+	if (this.search(nMonsterNo) >= 0)
+	{
+		return false;
+	}
+	T_BattleEffectData sData;
+	sData.m_nMonsterNo = nMonsterNo;
+	sData.m_aszName[0] = szEffectName01;
+	sData.m_aszName[1] = szEffectName02;
+	sData.m_aszName[2] = szEffectName03;
+	sData.m_aszName[3] = szEffectName04;
+	sData.m_anType[0] = nType01;
+	sData.m_anType[1] = nType02;
+	sData.m_anType[2] = nType03;
+	sData.m_anType[3] = nType04;
+	this.m_asData.PushBack(sData);
+	return true;
+}
+
+int T_BattleEffectDataManager::search(int nMonsterNo)
+{
+	if (nMonsterNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].m_nMonsterNo == nMonsterNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

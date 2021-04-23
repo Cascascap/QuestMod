@@ -1,0 +1,122 @@
+int T_PartsAnime::getPosX()
+{
+	return this.m_nNo > 0 ? ‚oQ‚wÀ•Wæ“¾(this.m_nNo) : -1;
+}
+
+int T_PartsAnime::getPosY()
+{
+	return this.m_nNo > 0 ? ‚oQ‚xÀ•Wæ“¾(this.m_nNo) : -1;
+}
+
+int T_PartsAnime::getZ()
+{
+	return this.m_nNo > 0 ? ‚oQ‚yÀ•Wæ“¾(this.m_nNo) : -1;
+}
+
+bool T_PartsAnime::getShow()
+{
+	return this.m_nNo > 0 ? ‚oQ•\¦İ’èæ“¾(this.m_nNo) : true;
+}
+
+int T_PartsAnime::getNo()
+{
+	return this.m_nNo;
+}
+
+bool T_PartsAnime::isCreated()
+{
+	return this.m_nNo > 0;
+}
+
+T_PartsAnime::T_PartsAnime()
+{
+	this.clear();
+}
+
+T_PartsAnime::~T_PartsAnime()
+{
+	this.delete();
+}
+
+bool T_PartsAnime::create(int nNo)
+{
+	this.delete();
+	nNo = ƒp[ƒc”Ô†_æ“¾(nNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	this.m_nNo = nNo;
+	return true;
+}
+
+void T_PartsAnime::delete()
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	‚oQíœ(this.m_nNo);
+	ƒp[ƒc”Ô†_‰ğ•ú(this.m_nNo);
+	this.clear();
+}
+
+void T_PartsAnime::clear()
+{
+	this.m_nNo = -1;
+}
+
+bool T_PartsAnime::setLoopCg(string szCgName, int nStartNo, int nCgCount, int nTime)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	if (szCgName.Empty())
+	{
+		return false;
+	}
+	if (nStartNo < 0 || nCgCount <= 0 || nTime <= 0)
+	{
+		return false;
+	}
+	‚oQƒ‹[ƒv‚b‚fİ’è(this.m_nNo, szCgName, nStartNo, nCgCount, nTime, 1);
+	return true;
+}
+
+void T_PartsAnime::setPos(int nX, int nY)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	‚oQÀ•Wİ’è(this.m_nNo, nX, nY);
+}
+
+void T_PartsAnime::setZ(int nZ)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	‚oQ‚yÀ•Wİ’è(this.m_nNo, nZ);
+}
+
+void T_PartsAnime::setOrigin(int nOrigin)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	‚oQŒ´“_À•Wİ’è(this.m_nNo, nOrigin);
+}
+
+void T_PartsAnime::setShow(bool bShow)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	‚oQ•\¦İ’è(this.m_nNo, bShow);
+}
+

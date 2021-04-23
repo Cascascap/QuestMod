@@ -1,0 +1,20 @@
+void AFL_SetRandSeed(int Seed)
+{
+	Math.SetSeed(Seed);
+}
+
+void AFL_SetRandSeedByCurrentTime()
+{
+	Math.SetSeedByCurrentTime();
+}
+
+int AFL_Rand()
+{
+	return Math.Rand();
+}
+
+float AFL_RandF()
+{
+	return Math.RandF();
+}
+

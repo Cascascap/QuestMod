@@ -1,0 +1,628 @@
+bool CAppreciationMode::IsCreated()
+{
+	return this.m_Plugin.GetPlugin() >= 0;
+}
+
+int CAppreciationMode::GetViewX()
+{
+	return this.m_nViewX;
+}
+
+int CAppreciationMode::GetViewY()
+{
+	return this.m_nViewY;
+}
+
+int CAppreciationMode::GetViewWidth()
+{
+	return this.m_nViewWidth;
+}
+
+int CAppreciationMode::GetViewHeight()
+{
+	return this.m_nViewHeight;
+}
+
+string CAppreciationMode::GetMapName()
+{
+	return this.m_MapName;
+}
+
+float CAppreciationMode::GetCameraX()
+{
+	return this.m_CenterCamera.GetCenterX();
+}
+
+float CAppreciationMode::GetCameraY()
+{
+	return this.m_CenterCamera.GetCenterY();
+}
+
+float CAppreciationMode::GetCameraZ()
+{
+	return this.m_CenterCamera.GetCenterZ();
+}
+
+float CAppreciationMode::GetCameraAngle()
+{
+	return this.m_CenterCamera.GetAngle();
+}
+
+float CAppreciationMode::GetCameraAngleP()
+{
+	return this.m_CenterCamera.GetAngleP();
+}
+
+float CAppreciationMode::GetCameraLength()
+{
+	return this.m_CenterCamera.GetLength();
+}
+
+ref CReignPlugin CAppreciationMode::GetPlugin()
+{
+	return this.m_Plugin;
+}
+
+ref CMonsterList CAppreciationMode::GetMonsterList()
+{
+	return this.m_MonsterList;
+}
+
+CAppreciationMode::CAppreciationMode()
+{
+	this.m_nViewX = 11;
+	this.m_nViewY = 18;
+	this.m_nViewWidth = 700;
+	this.m_nViewHeight = 700;
+	this.Clear();
+}
+
+CAppreciationMode::~CAppreciationMode()
+{
+	this.Release();
+}
+
+bool CAppreciationMode::Create(int nMonsterNo, string szBackName)
+{
+	this.Release();
+	this.m_Plugin.Create(101, this.m_nViewWidth, this.m_nViewHeight);
+	this.m_Plugin.Bind();
+	LoadReignSetting(this.m_Plugin);
+	this.CreateLight();
+	this.SetGlareParam();
+	this.CreateCamera();
+	this.InitCamera();
+	this.m_Plugin.SetViewport(this.m_nViewX, this.m_nViewY, this.m_nViewWidth, this.m_nViewHeight);
+	this.InitProjection(this.m_nViewWidth, this.m_nViewHeight);
+	this.m_Plugin.SetProjection(this.m_Projection.fWidth, this.m_Projection.fHeight, this.m_Projection.fNear, this.m_Projection.fFar, this.m_Projection.fDeg);
+	this.SetShadowParam();
+	this.SetSSAOParam();
+	this.CreateMap();
+	this.SetMap(szBackName);
+	this.CreateMonsterList(nMonsterNo);
+	this.m_nPrevTime = system.GetTime();
+	return true;
+}
+
+void CAppreciationMode::Release()
+{
+	this.m_MonsterList.Release();
+	this.m_aDirLight.Free();
+	this.m_CenterCamera.Release();
+	this.m_Map.Release();
+	this.m_Plugin.Unbind();
+	this.m_Plugin.Release();
+	this.Clear();
+}
+
+void CAppreciationMode::Clear()
+{
+	this.m_nMotionNo = -1;
+	this.m_LButtonDown = false;
+	this.m_MButtonDown = false;
+	this.m_RButtonDown = false;
+	this.m_PrevMouseX = -1;
+	this.m_PrevMouseY = -1;
+}
+
+void CAppreciationMode::InitProjection(int nViewWidth, int nViewHeight)
+{
+	float fNear = 0.0500000007450581;
+	float fFar = 30.0;
+	float fDeg = 35.0;
+	this.m_Projection.Set(nViewWidth, nViewHeight, fNear, fFar, fDeg);
+}
+
+bool CAppreciationMode::Suspend()
+{
+	if (!this.IsCreated())
+	{
+		return false;
+	}
+	this.m_MonsterList.Release();
+	this.WaitLoading(false);
+	if (!this.m_Plugin.Suspend())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CAppreciationMode::Resume(int nMonsterNo)
+{
+	if (!this.IsCreated())
+	{
+		return false;
+	}
+	if (!this.m_Plugin.IsSuspend())
+	{
+		return false;
+	}
+	if (!this.m_Plugin.Resume())
+	{
+		return false;
+	}
+	LoadReignSetting(this.m_Plugin);
+	this.CreateMonsterList(nMonsterNo);
+	this.m_Map.SetDraw(true);
+	this.m_MonsterList.SetDraw(true);
+	return true;
+}
+
+void CAppreciationMode::Update()
+{
+	if (!this.IsCreated())
+	{
+		return;
+	}
+	this.m_CenterCamera.Update();
+	this.UpdateMapShow();
+	this.UpdateMonster();
+}
+
+void CAppreciationMode::UpdateCamera(bool LButtonDown, bool MButtonDown, bool RButtonDown)
+{
+	int PrevMouseX = this.m_PrevMouseX;
+	int PrevMouseY = this.m_PrevMouseY;
+	int MouseX = 0;
+	int MouseY = 0;
+	if (!AFL_Mouse_GetPos(MouseX, MouseY))
+	{
+		MouseX = PrevMouseX;
+		MouseY = PrevMouseY;
+	}
+	if (LButtonDown)
+	{
+		if (!this.m_LButtonDown)
+		{
+			this.m_LButtonDown = true;
+		}
+		else
+		{
+			this.m_CenterCamera.SetAngle(this.m_CenterCamera.GetAngle() + (MouseX - PrevMouseX));
+			this.m_CenterCamera.SetAngleP(this.m_CenterCamera.GetAngleP() + (MouseY - PrevMouseY));
+			マウス_位置設定_強制(PrevMouseX, PrevMouseY);
+			AFL_Mouse_GetPos(MouseX, MouseY);
+		}
+	}
+	else
+	{
+		this.m_LButtonDown = false;
+	}
+	if (RButtonDown)
+	{
+		if (!this.m_RButtonDown)
+		{
+			this.m_RButtonDown = true;
+		}
+		else
+		{
+			float fLength = this.m_CenterCamera.GetLength() + (MouseY - PrevMouseY) * 0.0500000007450581;
+			this.m_CenterCamera.SetLength(数値Ｆ_補正(fLength, 0.600000023841858, 2.79999995231628));
+			マウス_位置設定_強制(PrevMouseX, PrevMouseY);
+			AFL_Mouse_GetPos(MouseX, MouseY);
+		}
+	}
+	else
+	{
+		this.m_RButtonDown = false;
+	}
+	if (MButtonDown)
+	{
+		if (!this.m_MButtonDown)
+		{
+			this.m_MButtonDown = true;
+		}
+		else
+		{
+			S3D XVector;
+			XVector = this.m_CenterCamera.TransVector(1.0, 0.0, 0.0);
+			S3D YVector;
+			YVector = this.m_CenterCamera.TransVector(0.0, 1.0, 0.0);
+			float MoveX = -(MouseX - PrevMouseX) * 0.00999999977648258;
+			float MoveY = (MouseY - PrevMouseY) * 0.00999999977648258;
+			float NewX = this.m_CenterCamera.GetCenterX();
+			float NewY = this.m_CenterCamera.GetCenterY();
+			float NewZ = this.m_CenterCamera.GetCenterZ();
+			NewX += XVector.fX * MoveX;
+			NewY += XVector.fY * MoveX;
+			NewZ += XVector.fZ * MoveX;
+			NewX += YVector.fX * MoveY;
+			NewY += YVector.fY * MoveY;
+			NewZ += YVector.fZ * MoveY;
+			NewX = 数値Ｆ_補正(NewX, -0.5, 0.5);
+			NewY = 数値Ｆ_補正(NewY, 0.0, 1.0);
+			NewZ = 数値Ｆ_補正(NewZ, -0.5, 0.5);
+			this.m_CenterCamera.SetCenterPos(NewX, NewY, NewZ);
+			マウス_位置設定_強制(PrevMouseX, PrevMouseY);
+			AFL_Mouse_GetPos(MouseX, MouseY);
+		}
+	}
+	else
+	{
+		this.m_MButtonDown = false;
+	}
+	this.m_PrevMouseX = MouseX;
+	this.m_PrevMouseY = MouseY;
+}
+
+float CAppreciationMode::DotProduct(S3D Vec1, S3D Vec2)
+{
+	return Vec1.fX * Vec2.fX + Vec1.fY * Vec2.fY + Vec1.fZ * Vec2.fZ;
+}
+
+void CAppreciationMode::UpdateMapShow()
+{
+	S3D CameraVector;
+	CameraVector = this.m_CenterCamera.GetVector();
+	S3D EastVector;
+	EastVector.Set(-1.0, 0.0, 0.0);
+	bool EastShow = this.DotProduct(CameraVector, EastVector) < 0.25;
+	this.m_Map.SetMeshShow("omr01_kabe03", EastShow);
+	this.m_Map.SetMeshShow("omr01_hashira02", EastShow);
+	this.m_Map.SetMeshShow("omr01_window01", EastShow);
+	this.m_Map.SetMeshShow("omr01_hashira08", EastShow);
+	S3D WestVector;
+	WestVector.Set(1.0, 0.0, 0.0);
+	bool WestShow = this.DotProduct(CameraVector, WestVector) < 0.25;
+	this.m_Map.SetMeshShow("omr01_kabe02", WestShow);
+	this.m_Map.SetMeshShow("omr01_hashira03", WestShow);
+	this.m_Map.SetMeshShow("omr01_hashira07", WestShow);
+	S3D SouthVector;
+	SouthVector.Set(0.0, 0.0, 1.0);
+	bool SouthShow = this.DotProduct(CameraVector, SouthVector) < 0.25;
+	this.m_Map.SetMeshShow("omr01_kabe01", SouthShow);
+	this.m_Map.SetMeshShow("omr01_hashira01", SouthShow);
+	this.m_Map.SetMeshShow("omr01_hashira05", SouthShow);
+	S3D NorthVector;
+	NorthVector.Set(0.0, 0.0, -1.0);
+	bool NorthShow = this.DotProduct(CameraVector, NorthVector) < 0.25;
+	this.m_Map.SetMeshShow("omr01_kabe04", NorthShow);
+	this.m_Map.SetMeshShow("omr01_hashira04", NorthShow);
+	this.m_Map.SetMeshShow("omr01_hashira06", NorthShow);
+}
+
+void CAppreciationMode::UpdateMonster()
+{
+	this.m_MonsterList.Update();
+	if (this.m_nMotionNo > 0)
+	{
+		if (this.m_MonsterList.IsMotionStop(0))
+		{
+			this.m_MonsterList.StartMotion(0, 0, -1);
+			this.m_nMotionNo = -1;
+		}
+	}
+}
+
+void CAppreciationMode::CreateMap()
+{
+	this.m_Map.Create(this.m_Plugin.GetPlugin());
+	this.m_Map.SetType(1);
+	this.m_Map.SetDrawShadow(true);
+	this.m_Map.SetDrawBackShadow(false);
+	this.m_Map.SetDrawMakeShadow(false);
+	this.m_Map.SetAmbient(0.0, 0.0, 0.0);
+}
+
+void CAppreciationMode::SetMap(string Name)
+{
+	this.m_MapName = Name;
+	this.m_Map.SetDraw(false);
+	if (Name.Empty())
+	{
+		this.m_Map.Load("");
+	}
+	else
+	{
+		this.m_Map.Load("Data\\PolyData\\BG\\" + this.m_MapName);
+	}
+	this.WaitLoading(false);
+	this.m_Map.SetDraw(true);
+	this.m_Map.SetSpecularReflectRate(0.25);
+	this.m_Map.SetFresnelReflectRate(0.25);
+	this.m_Map.SetDrawBump(true);
+	this.m_Map.SetDrawParam(0, this.m_Plugin.GetDrawOption(0) >= 2 ? 1 : 0);
+}
+
+void CAppreciationMode::CreateMonsterList(int nMonsterNo)
+{
+	array@int anMonsterNo[1];
+	anMonsterNo[0] = nMonsterNo;
+	this.m_MonsterList.Create(this.m_Plugin, anMonsterNo);
+	this.AlignMonsters();
+	this.m_MonsterList.SetDraw(true);
+	this.m_nMotionNo = -1;
+}
+
+void CAppreciationMode::SetMonster(int nMonsterNo)
+{
+	if (nMonsterNo > 0)
+	{
+		this.m_MonsterList.SetMonster(0, nMonsterNo - 100000);
+	}
+	else
+	{
+		this.m_MonsterList.SetMonster(0, -1);
+	}
+}
+
+void CAppreciationMode::SetMonsterMotion(int nMotionNo, int nMotionState)
+{
+	this.m_MonsterList.SetMotion(0, nMotionNo, nMotionState);
+}
+
+void CAppreciationMode::AlignMonsters()
+{
+	this.InitCamera();
+	ref CMonster Monster = this.m_MonsterList.GetMonster(0);
+	Monster.GetInstance().SetPos(0.0 + Monster.GetOffsetX(), 0.0 + Monster.GetOffsetY() + 0.00400000018998981, 0.0 + Monster.GetOffsetZ());
+}
+
+void CAppreciationMode::CreateDirLight()
+{
+	this.m_aDirLight.Alloc(this.m_aDirLightInfo.Numof());
+	int n = 0;
+	for (n = 0; n < this.m_aDirLight.Numof(); ++n)
+	{
+		this.m_aDirLight[n].Create(this.m_Plugin.GetPlugin());
+		this.m_aDirLight[n].SetType(4);
+		this.SetDirLight(this.m_aDirLight[n], this.m_aDirLightInfo[n]);
+	}
+}
+
+void CAppreciationMode::CreateSpecularLight()
+{
+	this.m_aSpecularLight.Alloc(this.m_aSpecularLightInfo.Numof());
+	int n = 0;
+	for (n = 0; n < this.m_aSpecularLightInfo.Numof(); ++n)
+	{
+		this.m_aSpecularLight[n].Create(this.m_Plugin.GetPlugin());
+		this.m_aSpecularLight[n].SetType(6);
+		this.SetSpecularLight(this.m_aSpecularLight[n], this.m_aSpecularLightInfo[n]);
+	}
+}
+
+void CAppreciationMode::CreateLight()
+{
+	this.CreateLightInfo();
+	this.CreateDirLight();
+	this.CreateSpecularLight();
+}
+
+void CAppreciationMode::CreateLightInfo()
+{
+	this.m_aDirLightInfo.Alloc(1);
+	float fDirX = -0.699999988079071;
+	float fDirY = -1.29999995231628;
+	float fDirZ = 0.800000011920929;
+	this.m_aDirLightInfo[0].SetVector(fDirX, fDirY, fDirZ);
+	this.m_aDirLightInfo[0].SetDiffuse(1.0, 1.0, 1.0);
+	this.m_aDirLightInfo[0].SetAmbient(0.0, 0.0, 0.0);
+	this.m_aSpecularLightInfo.Free();
+	this.m_Plugin.SetGlobalAmbient(0.400000005960464, 0.400000005960464, 0.400000005960464);
+}
+
+void CAppreciationMode::SetDirLight(ref CInstance DirLight, ref SDirLight Info)
+{
+	DirLight.SetVector(Info.fVecX, Info.fVecY, Info.fVecZ);
+	DirLight.SetDiffuse(Info.Diffuse.fR, Info.Diffuse.fG, Info.Diffuse.fB);
+	DirLight.SetAmbient(Info.Ambient.fR, Info.Ambient.fG, Info.Ambient.fB);
+	DirLight.SetGlobeDiffuse(Info.GlobeDiffuse.fR, Info.GlobeDiffuse.fG, Info.GlobeDiffuse.fB);
+}
+
+void CAppreciationMode::SetPointLight(ref CInstance PointLight, ref SPointLight Info)
+{
+	PointLight.SetPos(Info.fX, Info.fY, Info.fZ);
+	PointLight.SetDiffuse(Info.Diffuse.fR, Info.Diffuse.fG, Info.Diffuse.fB);
+	PointLight.SetGlobeDiffuse(Info.GlobeDiffuse.fR, Info.GlobeDiffuse.fG, Info.GlobeDiffuse.fB);
+	PointLight.SetAttenuationNear(Info.fAttenuationNear);
+	PointLight.SetAttenuationFar(Info.fAttenuationFar);
+}
+
+void CAppreciationMode::SetSpecularLight(ref CInstance SpecularLight, ref SSpecularLight Info)
+{
+	SpecularLight.SetVector(Info.fVecX, Info.fVecY, Info.fVecZ);
+}
+
+void CAppreciationMode::SetDefaultLightScatteringParam()
+{
+	this.m_Plugin.SetFogType(2);
+	this.m_Plugin.SetFogNear(5.0);
+	this.m_Plugin.SetFogFar(40.0);
+	this.m_Plugin.SetFogColor(0.100000001490116, 0.100000001490116, 0.200000002980232);
+	this.m_Plugin.SetLSBetaR(0.649999976158142);
+	this.m_Plugin.SetLSBetaM(2.04999995231628);
+	this.m_Plugin.SetLSG(0.449999988079071);
+	this.m_Plugin.SetLSDistance(34.0);
+	this.m_Plugin.SetLSLightDir(0.0, 0.0, -1.0);
+	this.m_Plugin.SetLSLightColor(1.0, 1.0, 1.0);
+	this.m_Plugin.SetLSSunColor(0.100000001490116, 0.100000001490116, 0.200000002980232);
+}
+
+void CAppreciationMode::SetGlareParam()
+{
+	this.m_Plugin.SetGlareBrightnessParam(0, -0.100000001490116);
+	this.m_Plugin.SetGlareBrightnessParam(1, 0.300000011920929);
+	this.m_Plugin.SetGlareBrightnessParam(2, 0.0);
+	this.m_Plugin.SetGlareBrightnessParam(3, 0.449999988079071);
+}
+
+void CAppreciationMode::CreateCamera()
+{
+	this.m_CenterCamera.Create(this.m_Plugin);
+}
+
+void CAppreciationMode::InitCamera()
+{
+	this.m_CenterCamera.SetCenterPos(0.0, 0.5, 0.0);
+	this.m_CenterCamera.SetAngle(0.0);
+	this.m_CenterCamera.SetAngleP(0.0);
+	this.m_CenterCamera.SetLength(2.0);
+}
+
+void CAppreciationMode::SetShadowParam()
+{
+	this.m_Plugin.SetShadowMapType(0);
+	this.m_Plugin.SetShadowMapLightDir(0.0, -1.0, 0.0);
+	this.m_Plugin.SetShadowBias(0, 0.00999999977648258);
+}
+
+void CAppreciationMode::SetSSAOParam()
+{
+	this.m_Plugin.SetSSAOParam(0, 0.150000005960464);
+	this.m_Plugin.SetSSAOParam(1, 1.0);
+	this.m_Plugin.SetSSAOParam(2, 0.0);
+}
+
+void CAppreciationMode::FadeInstanceAlpha(ref CInstance Instance, float fStartAlpha, float fEndAlpha, int nTotalTime)
+{
+	int nStartTime = system.GetTime();
+	for (; ; )
+	{
+		int nTime = system.GetTime() - nStartTime;
+		if (nTime >= nTotalTime)
+		{
+			break;
+		}
+		float fAlpha = fStartAlpha + ((fEndAlpha - fStartAlpha) * nTime) / nTotalTime;
+		Instance.SetAlpha(fAlpha);
+		UPDATE(true);
+	}
+	Instance.SetAlpha(fEndAlpha);
+	UPDATE(true);
+}
+
+string CAppreciationMode::MakeLightScatteringFileName(string MapName)
+{
+	return "Data\\PolyData\\BG\\" + MapName + "\\" + MapName + ".ls2";
+}
+
+void CAppreciationMode::RealtimeSettingUpdate()
+{
+	this.CreateLight();
+	this.m_Map.SetDrawParam(0, this.m_Plugin.GetDrawOption(0) >= 2 ? 1 : 0);
+}
+
+void CAppreciationMode::WaitLoading(bool bThreadLoadingMode)
+{
+	int nPlugin = this.m_Plugin.GetPlugin();
+	if (nPlugin < 0)
+	{
+		return;
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, bThreadLoadingMode);
+	for (; ; )
+	{
+		UPDATE(true);
+		if (!this.m_Plugin.IsLoading())
+		{
+			break;
+		}
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, true);
+}
+
+void CAppreciationMode::ChangeMonster(int nMonsterNo)
+{
+	this.CreateMonsterList(nMonsterNo);
+}
+
+void CAppreciationMode::ChangeMonsterMotion(int nMotionNo)
+{
+	this.SetMonsterMotion(nMotionNo, 2);
+	this.ResetCamera();
+}
+
+void CAppreciationMode::StartMonsterMotion(int nMotionNo)
+{
+	if (this.m_MonsterList.StartMotion(0, nMotionNo, -1) < false)
+	{
+		return;
+	}
+	this.m_MonsterList.WaitMotionBlend(0);
+	this.m_nMotionNo = nMotionNo;
+}
+
+void CAppreciationMode::WaitMonsterMotion()
+{
+	if (this.m_nMotionNo <= 0)
+	{
+		return;
+	}
+	this.m_MonsterList.WaitMotionStop(0, false);
+	this.StartMonsterMotion(0);
+}
+
+void CAppreciationMode::RotateView()
+{
+	カーソル_表示設定(false);
+	while (キー_押下(1))
+	{
+		this.UpdateCamera(true, false, false);
+		UPDATE(true);
+	}
+	カーソル_表示設定(true);
+}
+
+void CAppreciationMode::ZoomView()
+{
+	カーソル_表示設定(false);
+	while (キー_押下(2))
+	{
+		this.UpdateCamera(false, false, true);
+		UPDATE(true);
+	}
+	カーソル_表示設定(true);
+}
+
+void CAppreciationMode::MoveView()
+{
+	カーソル_表示設定(false);
+	while (キー_押下(4))
+	{
+		this.UpdateCamera(false, true, false);
+		UPDATE(true);
+	}
+	カーソル_表示設定(true);
+}
+
+void CAppreciationMode::ClearMouse()
+{
+	this.m_LButtonDown = false;
+	this.m_MButtonDown = false;
+	this.m_RButtonDown = false;
+}
+
+void CAppreciationMode::SetCameraLength(float fLength)
+{
+	this.m_CenterCamera.SetLength(数値Ｆ_補正(fLength, 0.600000023841858, 2.79999995231628));
+	this.m_CenterCamera.Update();
+}
+
+void CAppreciationMode::ResetCamera()
+{
+	this.InitCamera();
+	this.m_CenterCamera.Update();
+}
+

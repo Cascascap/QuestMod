@@ -1,0 +1,81 @@
+CConfigExitBar::CConfigExitBar()
+{
+}
+
+void CConfigExitBar::Release()
+{
+	this.m_ExitButtonSprite.Release();
+	this.m_ReturnToTitleButtonSprite.Release();
+	this.m_CloseGameButtonSprite.Release();
+	this.m_BaseSprite.Release();
+}
+
+void CConfigExitBar::Create(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.CreateBaseSprite(nX, nY, nZ, nWidth, nHeight);
+	nY += 1;
+	nHeight -= 2;
+	int nButtonSpaceWidth = 4;
+	nX = nWidth - 540 - nButtonSpaceWidth * 2;
+	int nCloseGameButtonWidth = 180;
+	this.m_CloseGameButtonSprite.CreateTextButton(nCloseGameButtonWidth, nHeight, "ゲームを終了する", 0);
+	this.m_CloseGameButtonSprite.SetPos(nX, nY);
+	this.m_CloseGameButtonSprite.SetZ(nZ + 1);
+	nX += nCloseGameButtonWidth + nButtonSpaceWidth;
+	int nReturnToTitleButtonWidth = 180;
+	this.m_ReturnToTitleButtonSprite.CreateTextButton(nReturnToTitleButtonWidth, nHeight, "タイトルに戻る", 0);
+	this.m_ReturnToTitleButtonSprite.SetPos(nX, nY);
+	this.m_ReturnToTitleButtonSprite.SetZ(nZ + 1);
+	nX += nReturnToTitleButtonWidth + nButtonSpaceWidth;
+	int nExitButtonSprite = 180;
+	this.m_ExitButtonSprite.CreateTextButton(nExitButtonSprite, nHeight, "ゲームに戻る", 0);
+	this.m_ExitButtonSprite.SetPos(nX, nY);
+	this.m_ExitButtonSprite.SetZ(nZ + 1);
+}
+
+void CConfigExitBar::SetCG(int nZ, ref array@_CCgInfo CloseGameButton, ref array@_CCgInfo ReturnToTitleButton, ref array@_CCgInfo ExitButton)
+{
+	this.m_CloseGameButtonSprite.CreateCGButton(CloseGameButton[0]._GetCg(), CloseGameButton[0]._GetCg(), CloseGameButton[1]._GetCg(), CloseGameButton[1]._GetCg(), "");
+	this.m_CloseGameButtonSprite.SetPos(CloseGameButton[0]._GetX(), CloseGameButton[0]._GetY());
+	this.m_CloseGameButtonSprite.SetZ(nZ + 1);
+	this.m_ReturnToTitleButtonSprite.CreateCGButton(ReturnToTitleButton[0]._GetCg(), ReturnToTitleButton[0]._GetCg(), ReturnToTitleButton[1]._GetCg(), ReturnToTitleButton[1]._GetCg(), "");
+	this.m_ReturnToTitleButtonSprite.SetPos(ReturnToTitleButton[0]._GetX(), ReturnToTitleButton[0]._GetY());
+	this.m_ReturnToTitleButtonSprite.SetZ(nZ + 1);
+	this.m_ExitButtonSprite.CreateCGButton(ExitButton[0]._GetCg(), ExitButton[0]._GetCg(), ExitButton[1]._GetCg(), ExitButton[1]._GetCg(), "");
+	this.m_ExitButtonSprite.SetPos(ExitButton[0]._GetX(), ExitButton[0]._GetY());
+	this.m_ExitButtonSprite.SetZ(nZ + 1);
+}
+
+void CConfigExitBar::CreateBaseSprite(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.m_BaseSprite.AddCreatePixelOnly(nWidth, nHeight);
+	this.m_BaseSprite.AddFill(0, 0, nWidth, nHeight, 128, 128, 128);
+	this.m_BaseSprite.Build();
+	this.m_BaseSprite.SetPos(nX, nY);
+	this.m_BaseSprite.SetZ(nZ);
+}
+
+void CConfigExitBar::Update()
+{
+	this.m_CloseGameButtonSprite.UpdateState();
+	this.m_ReturnToTitleButtonSprite.UpdateState();
+	this.m_ExitButtonSprite.UpdateState();
+}
+
+int CConfigExitBar::GetOnMouseCursorObject()
+{
+	if (this.m_CloseGameButtonSprite.IsMouseCursorInRect())
+	{
+		return 0;
+	}
+	if (this.m_ReturnToTitleButtonSprite.IsMouseCursorInRect())
+	{
+		return 1;
+	}
+	if (this.m_ExitButtonSprite.IsMouseCursorInRect())
+	{
+		return 2;
+	}
+	return -1;
+}
+

@@ -1,0 +1,922 @@
+int T_ButtonGroup::getButtonCount()
+{
+	return this.m_asButton.Numof();
+}
+
+bool T_ButtonGroup::isKeyDown()
+{
+	return this.getKeyDownID() > 0;
+}
+
+bool T_ButtonGroup::isClick()
+{
+	return this.getClickID() > 0;
+}
+
+T_ButtonGroup::T_ButtonGroup()
+{
+}
+
+T_ButtonGroup::~T_ButtonGroup()
+{
+	this.delete();
+}
+
+void T_ButtonGroup::create()
+{
+	this.delete();
+}
+
+void T_ButtonGroup::delete()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asButton[i].delete();
+	}
+	if (!this.m_asButton.Empty())
+	{
+		this.m_asButton.Free();
+	}
+}
+
+int T_ButtonGroup::addButton(int nID, ref T_Button rfButton)
+{
+	int cnt = this.m_asButton.Numof();
+	this.m_asButton.Realloc(cnt + 1);
+	ref T_Button rfButton2 = this.m_asButton[cnt];
+	rfButton2.create(rfButton);
+	rfButton2.setID(nID);
+	return cnt + 1;
+}
+
+int T_ButtonGroup::addButtonSp(int nID, ref T_TextSprite rfSp1, ref T_TextSprite rfSp2, ref T_TextSprite rfSp3)
+{
+	int cnt = this.m_asButton.Numof();
+	this.m_asButton.Realloc(cnt + 1);
+	ref T_Button rfButton2 = this.m_asButton[cnt];
+	rfButton2.createSp(rfSp1, rfSp2, rfSp3);
+	rfButton2.setID(nID);
+	return cnt + 1;
+}
+
+int T_ButtonGroup::addButtonRect(int nID, int nWidth, int nHeight, int nWidth2, int nHeight2, int nWidth3, int nHeight3)
+{
+	int cnt = this.m_asButton.Numof();
+	this.m_asButton.Realloc(cnt + 1);
+	ref T_Button rfButton2 = this.m_asButton[cnt];
+	rfButton2.createRect(nWidth, nHeight, nWidth2, nHeight2, nWidth3, nHeight3);
+	rfButton2.setID(nID);
+	return cnt + 1;
+}
+
+bool T_ButtonGroup::eraseButton(int nID)
+{
+	int idx = this.search(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_asButton[idx].delete();
+	this.m_asButton.Erase(idx);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonFrame(int nID, int nIndex, int nWidth, int nHeight, int nR, int nG, int nB, int nRate, int nX, int nY, int nMode)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrame(nIndex, nWidth, nHeight, nR, nG, nB, nRate, nX, nY, nMode);
+}
+
+bool T_ButtonGroup::setButtonFrameSp(int nID, int nIndex, ref T_TextSprite rfSp, int nMode)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrameSp(nIndex, rfSp, nMode);
+}
+
+bool T_ButtonGroup::setButtonFrameCg(int nID, int nIndex, int nCgNo, int nX, int nY, int nMode)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrameCg(nIndex, nCgNo, nX, nY, nMode);
+}
+
+bool T_ButtonGroup::setButtonFrameColor(int nID, int nIndex, int nR, int nG, int nB, int nRate)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrameColor(nIndex, nR, nG, nB, nRate);
+}
+
+bool T_ButtonGroup::blinkButton(int nID, int nCount, int nTime)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.blink(nCount, nTime);
+	return true;
+}
+
+bool T_ButtonGroup::clickButton(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.click();
+	return true;
+}
+
+int T_ButtonGroup::checkInput(ref int nSelectID)
+{
+	int nRet = -1;
+	int nID = 0;
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	int idx = -1;
+	ref T_Button rfButton;
+	for (i = 0; i < cnt; ++i)
+	{
+		rfButton <- this.m_asButton[i];
+		switch (rfButton.checkInput(nID))
+		{
+			case 2:
+				nID = rfButton.getID();
+				idx = -1;
+				nRet = 2;
+				goto label0;
+			case 1:
+				nID = rfButton.getID();
+				idx = i;
+				nRet = 1;
+				goto label0;
+			case 0:
+				if (rfButton.getSelect())
+				{
+					nID = rfButton.getID();
+				}
+				nRet = 0;
+				break;
+			default:
+				break;
+		}
+	}
+label0:
+	if (idx >= 0)
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			if (i != idx)
+			{
+				this.m_asButton[i].setInputFlag(false);
+			}
+		}
+	}
+	else
+	{
+		this.setInputFlag(true);
+	}
+	nSelectID = nID;
+	return nRet;
+}
+
+int T_ButtonGroup::checkMouse()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	int nID = 0;
+	ref T_Button rfButton;
+	for (i = 0; i < cnt; ++i)
+	{
+		rfButton <- this.m_asButton[i];
+		if (rfButton.checkMouse())
+		{
+			rfButton.setSelect(true, true);
+			nID = rfButton.getID();
+		}
+		else
+		{
+			rfButton.setSelect(false, true);
+		}
+	}
+	return nID;
+}
+
+int T_ButtonGroup::checkKey()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	int nID = 0;
+	int nKey = 0;
+	ref T_Button rfButton;
+	for (i = 0; i < cnt; ++i)
+	{
+		rfButton <- this.m_asButton[i];
+		if (rfButton.checkKey())
+		{
+			nKey = rfButton.getKey();
+			break;
+		}
+	}
+	if (nKey <= 0)
+	{
+		return 0;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		rfButton <- this.m_asButton[i];
+		if (rfButton.getKey() == nKey)
+		{
+			if (rfButton.isActive())
+			{
+				nID = rfButton.getID();
+				break;
+			}
+		}
+	}
+	if (nID > 0)
+	{
+		効果音_クリック();
+	}
+	else
+	{
+		効果音_エラー();
+	}
+	キー_離し待ち(nKey, true);
+	return nID > 0 ? nID : 0;
+}
+
+int T_ButtonGroup::checkIntersect(ref T_Sprite rfsSp)
+{
+	if (!スプライト_有効(rfsSp))
+	{
+		return 0;
+	}
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	int idx = -1;
+	int nMax = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		int nSize = rfButton.spriteIntersect(rfsSp);
+		if (nSize > nMax)
+		{
+			idx = i;
+			nMax = nSize;
+		}
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asButton[i].setSelect(i == idx, false);
+	}
+	return idx < 0 ? 0 : this.m_asButton[idx].getID();
+}
+
+void T_ButtonGroup::resetSelect()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asButton[i].resetSelect();
+	}
+}
+
+void T_ButtonGroup::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asButton[i].setZ(nZ);
+	}
+}
+
+void T_ButtonGroup::setBlendRate(int nRate)
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asButton[i].setBlendRate(nRate);
+	}
+}
+
+void T_ButtonGroup::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asButton[i].setShow(bShow);
+	}
+}
+
+void T_ButtonGroup::setInputFlag(bool bInputFlag)
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asButton[i].setInputFlag(bInputFlag);
+	}
+}
+
+bool T_ButtonGroup::checkButtonKey(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	if (!rfButton.checkKey())
+	{
+		return false;
+	}
+	bool bRet = rfButton.isActive();
+	if (bRet)
+	{
+		効果音_クリック();
+	}
+	else
+	{
+		効果音_エラー();
+	}
+	キー_離し待ち(rfButton.getKey(), true);
+	return bRet;
+}
+
+bool T_ButtonGroup::setButtonPos(int nID, int nX, int nY)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setPos(nX, nY);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonZ(int nID, int nZ)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setZ(nZ);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonBlendRate(int nID, int nRate)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setBlendRate(nRate);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonShow(int nID, bool bShow)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setShow(bShow);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonSelect(int nID, bool bSelect, bool bSound)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setSelect(bSelect, bSound);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonKey(int nID, int nKey)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setKey(nKey);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonStatus(int nID, int nStatus)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setStatus(nStatus);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonCheckClickPos(int nID, bool bCheckClickPos)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setCheckClickPos(bCheckClickPos);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonInputFlag(int nID, bool bInputFlag)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setInputFlag(bInputFlag);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonExec(int nID, bool bDown)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setExec(bDown);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonCursor(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setCursor();
+	return true;
+}
+
+bool T_ButtonGroup::setButtonActive(int nID, bool bActive)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setStatus(bActive ? 0 : 1);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonSelectArea(int nID, int nX, int nY, int nWidth, int nHeight)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setSelectArea(nX, nY, nWidth, nHeight);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonSelectArea2(int nID, int nSx, int nSy, int nEx, int nEy)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setSelectArea2(nSx, nSy, nEx, nEy);
+	return true;
+}
+
+bool T_ButtonGroup::clearButtonSelectArea(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.clearSelectArea();
+	return true;
+}
+
+bool T_ButtonGroup::setButtonSoundSelect(int nID, int nSoundNo)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setSoundSelect(nSoundNo);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonSoundClick(int nID, int nSoundNo)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setSoundClick(nSoundNo);
+	return true;
+}
+
+bool T_ButtonGroup::setButtonSoundError(int nID, int nSoundNo)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	rfButton.setSoundError(nSoundNo);
+	return true;
+}
+
+int T_ButtonGroup::getActiveCount()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asButton[i].isActive())
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int T_ButtonGroup::getSelectID()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.getSelect())
+		{
+			return rfButton.getID();
+		}
+	}
+	return 0;
+}
+
+int T_ButtonGroup::getKeyDownID()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.isKeyDown())
+		{
+			return rfButton.getID();
+		}
+	}
+	return 0;
+}
+
+int T_ButtonGroup::getClickID()
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.isClick())
+		{
+			return rfButton.getID();
+		}
+	}
+	return 0;
+}
+
+int T_ButtonGroup::getButtonIndex(int nID)
+{
+	return this.search(nID);
+}
+
+int T_ButtonGroup::getButtonID(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asButton.Numof())
+	{
+		return -1;
+	}
+	return this.m_asButton[nIndex].getID();
+}
+
+ref T_Button T_ButtonGroup::getButton(int nID)
+{
+	int idx = this.search(nID);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asButton[idx];
+}
+
+ref T_ButtonSprite T_ButtonGroup::getButtonSp(int nID, int nIndex)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return NULL;
+	}
+	return rfButton.getButtonSp(nIndex);
+}
+
+int T_ButtonGroup::getButtonPosX(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return -1;
+	}
+	return rfButton.getPosX();
+}
+
+int T_ButtonGroup::getButtonPosY(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return -1;
+	}
+	return rfButton.getPosY();
+}
+
+int T_ButtonGroup::getButtonZ(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return -1;
+	}
+	return rfButton.getZ();
+}
+
+int T_ButtonGroup::getButtonWidth(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return -1;
+	}
+	return rfButton.getWidth();
+}
+
+int T_ButtonGroup::getButtonHeight(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return -1;
+	}
+	return rfButton.getHeight();
+}
+
+bool T_ButtonGroup::getButtonShow(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.getShow();
+}
+
+bool T_ButtonGroup::getButtonSelect(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.getSelect();
+}
+
+int T_ButtonGroup::getButtonKey(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return -1;
+	}
+	return rfButton.getKey();
+}
+
+int T_ButtonGroup::getButtonStatus(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return -1;
+	}
+	return rfButton.getStatus();
+}
+
+bool T_ButtonGroup::getButtonExec(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.isExec();
+}
+
+bool T_ButtonGroup::getButtonActive(int nID)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.isActive();
+}
+
+bool T_ButtonGroup::getButtonSelectArea(int nID, ref T_Rect rcSelect)
+{
+	ref T_Button rfButton = this.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.getSelectArea(rcSelect);
+}
+
+int T_ButtonGroup::getPrevButton(int nID, bool bDeactiveSkip, bool bLoop)
+{
+	int idx = this.search(nID);
+	if (idx < 0)
+	{
+		return this.getLastButton(false);
+	}
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = idx - 1; i >= 0; --i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.enableInput(bDeactiveSkip))
+		{
+			return rfButton.getID();
+		}
+	}
+	if (!bLoop)
+	{
+		return 0;
+	}
+	for (i = cnt - 1; i > idx; --i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.enableInput(bDeactiveSkip))
+		{
+			return rfButton.getID();
+		}
+	}
+	return nID;
+}
+
+int T_ButtonGroup::getNextButton(int nID, bool bDeactiveSkip, bool bLoop)
+{
+	int idx = this.search(nID);
+	if (idx < 0)
+	{
+		return this.getFirstButton(false);
+	}
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = idx + 1; i < cnt; ++i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.enableInput(bDeactiveSkip))
+		{
+			return rfButton.getID();
+		}
+	}
+	if (!bLoop)
+	{
+		return 0;
+	}
+	for (i = 0; i < idx; ++i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.enableInput(bDeactiveSkip))
+		{
+			return rfButton.getID();
+		}
+	}
+	return nID;
+}
+
+int T_ButtonGroup::getFirstButton(bool bDeactiveSkip)
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.enableInput(bDeactiveSkip))
+		{
+			return rfButton.getID();
+		}
+	}
+	return 0;
+}
+
+int T_ButtonGroup::getLastButton(bool bDeactiveSkip)
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = cnt - 1; i >= 0; --i)
+	{
+		ref T_Button rfButton = this.m_asButton[i];
+		if (rfButton.enableInput(bDeactiveSkip))
+		{
+			return rfButton.getID();
+		}
+	}
+	return 0;
+}
+
+bool T_ButtonGroup::suspend()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asButton[i].suspend())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_ButtonGroup::resume()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asButton[i].resume())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_ButtonGroup::isSuspend()
+{
+	return this.m_asButton.Numof() > 0 ? this.m_asButton[0].isSuspend() : 0;
+}
+
+int T_ButtonGroup::search(int nID)
+{
+	int i = 0;
+	int cnt = this.m_asButton.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asButton[i].getID() == nID)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

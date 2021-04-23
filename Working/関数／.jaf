@@ -1,0 +1,6930 @@
+void LOG_TADA(string szText)
+{
+	if (◆ＤＢ／ログ == 0)
+	{
+		return;
+	}
+	if (g_nLogTadaHandle < 0)
+	{
+		g_nLogTadaHandle = OutputLog.Create("多田");
+	}
+	OutputLog.Output(g_nLogTadaHandle, szText);
+}
+
+bool イベント(lint フラグ)
+{
+	LOG_TADA("＞＞【" + system.GetFuncStackName(1) + "】　\n");
+	LOG("・Event\n");
+	if (◆イベント表示無し == 1)
+	{
+		ADVON();
+		字速度(0);
+		セット表示(0, 0, 0, 0);
+		セリフ(2080, "");
+		'"This event will be automatically skipped.' R;
+		' Skip skip skip through!"' AA;
+		ADVOFF();
+		字速度(-1);
+		return true;
+	}
+	return false;
+}
+
+void advon()
+{
+	ADVON();
+}
+
+void ADVON()
+{
+	TESOFF();
+}
+
+void advoff()
+{
+	ADVOFF();
+}
+
+void ADVOFF()
+{
+	画面消去();
+}
+
+void TESON()
+{
+	if (仮字枠表示確認() == false)
+	{
+		仮字枠再表示();
+	}
+}
+
+void TESOFF()
+{
+	if (仮字枠表示確認() == true)
+	{
+		仮字枠非表示();
+	}
+}
+
+void TON()
+{
+	if (仮字枠表示確認() == false)
+	{
+		仮字枠再表示();
+	}
+}
+
+void TOFF()
+{
+	if (仮字枠表示確認() == true)
+	{
+		Ｌ(4);
+		R();
+		仮字枠非表示();
+	}
+}
+
+void ＳＡＤＶ(string 文字列１, string 文字列２, string 文字列３)
+{
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	S(文字列１);
+	R();
+	S(文字列２);
+	R();
+	S(文字列３);
+	A();
+	ADVOFF();
+}
+
+void ＳＡＤＶ／背景無し(string 文字列１, string 文字列２, string 文字列３)
+{
+	ADVON();
+	セット表示(0, 0, 0, 0);
+	ト書き();
+	S(文字列１);
+	R();
+	S(文字列２);
+	R();
+	S(文字列３);
+	A();
+	ADVOFF();
+}
+
+void ＳＡＤＶ／画面無し(string 文字列１, string 文字列２, string 文字列３)
+{
+	ト書き();
+	S(文字列１);
+	R();
+	S(文字列２);
+	R();
+	S(文字列３);
+	A();
+}
+
+lint Ｓ選択(string 文字列１, string 文字列２, string 文字列３)
+{
+	ADVON();
+	セット表示(0, 5080, 0, 0);
+	ト書き();
+	S(文字列１);
+	R();
+	S(文字列２);
+	R();
+	S(文字列３);
+	B();
+	選択初期();
+	選択_項目追加(1, "Confirm", -1, -1, -1, "", -1);
+	選択_項目追加(2, "Cancel", -1, -1, -1, "", -1);
+	lint rr = 選択_実行(false, 0, 0, false);
+	if (rr == 1)
+	{
+		セリフ(2080, "");
+		'"The flag has been changed!"' A;
+		ADVOFF();
+		return 1;
+	}
+	ADVOFF();
+	return 0;
+}
+
+void 選択初期()
+{
+	選択_位置設定(300, 360);
+}
+
+lint ＹＥＳ／ＮＯ処理()
+{
+	選択初期();
+	選択_項目追加(1, "Yes", -1, -1, -1, "", -1);
+	選択_項目追加(2, "No", -1, -1, -1, "", -1);
+	int rr = 選択_実行(false, 0, 0, false);
+	if (rr == 1)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+lint Ｅ(lint ff, lint no, string 文字列)
+{
+	if (ff == 0)
+	{
+		選択肢(no, 文字列, 0);
+	}
+	if (ff == no)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void セット表示(int 壁紙, int 背景, int 立ち絵, int ミニイベント)
+{
+	イベントＣＧ準備(0);
+	メッセージ_枠消去();
+	顔クリア();
+	壁紙準備(壁紙);
+	マスク壁紙準備(5550);
+	背景準備(背景, "", false);
+	立ち絵準備(立ち絵);
+	ミニイベント準備(ミニイベント);
+	画面更新(1, 500);
+}
+
+void エフェクトセット表示(int ef, int 壁紙, int 背景, int 立ち絵, int ミニイベント, int イベントＣＧ)
+{
+	イベントＣＧ表示(0, 0, 0);
+	枠消去();
+	if (ef == 1)
+	{
+		壁紙準備(壁紙);
+		マスク壁紙準備(5550);
+		背景準備(背景, "", false);
+		立ち絵準備(立ち絵);
+		ミニイベント準備(ミニイベント);
+		イベントＣＧ準備(イベントＣＧ);
+		Ｒ８ジングル(408, false);
+		Ｒ８画面エフェクト(1, -1);
+		return;
+	}
+	Ｒ８ジングル(408, false);
+	Ｒ８画面エフェクト(ef, -1);
+	壁紙準備(壁紙);
+	マスク壁紙準備(5550);
+	背景準備(背景, "", false);
+	立ち絵準備(立ち絵);
+	ミニイベント準備(ミニイベント);
+	イベントＣＧ準備(イベントＣＧ);
+	画面更新(1, 500);
+}
+
+void 大陸位置(lint no)
+{
+	地図点滅(no, "", 0, 0);
+}
+
+void 地図点滅(int no, string 文字列, int xx, int yy)
+{
+	if (no != 0)
+	{
+		世界地図データ取得(no, 文字列, xx, yy);
+	}
+	LOG_TADA("　地図点滅　" + 文字列 + "　Ｘ（" + string(xx) + "）　Ｙ（" + string(yy) + "）\n");
+	Ｒ８ジングル(407, false);
+	Ｒ８世界地図(xx, yy, 文字列);
+}
+
+void 世界地図データ取得(int no, ref string 文字列, ref int xx, ref int yy)
+{
+	文字列 = "No data";
+	xx = 999;
+	yy = 999;
+	if (no == 1)
+	{
+		文字列 = "Cidade";
+		xx = 620;
+		yy = 340;
+	}
+	if (no == 2)
+	{
+		文字列 = "Epiphany Cave";
+		xx = 715;
+		yy = 395;
+	}
+	if (no == 8)
+	{
+		文字列 = "Vineyard";
+		xx = 555;
+		yy = 420;
+	}
+	if (no == 28)
+	{
+		文字列 = "Kalar Forest";
+		xx = 175;
+		yy = 165;
+	}
+	if (no == 10)
+	{
+		文字列 = "Kalar Village";
+		xx = 155;
+		yy = 230;
+	}
+	if (no == 3)
+	{
+		文字列 = "Mall Ruins";
+		xx = 565;
+		yy = 55;
+	}
+	if (no == 4)
+	{
+		文字列 = "Helmanian Outpost";
+		xx = 545;
+		yy = 120;
+	}
+	if (no == 5)
+	{
+		文字列 = "Oda Castle";
+		xx = 985;
+		yy = 535;
+	}
+	if (no == 6)
+	{
+		文字列 = "Leazas Castle";
+		xx = 875;
+		yy = 255;
+	}
+	if (no == 7)
+	{
+		文字列 = "Kawanakajima Canal";
+		xx = 520;
+		yy = 515;
+	}
+	if (no == 9)
+	{
+		文字列 = "Ralga's Cave";
+		xx = 535;
+		yy = 315;
+	}
+	if (no == 12)
+	{
+		文字列 = "Meg's Ranch";
+		xx = 155;
+		yy = 430;
+	}
+	if (no == 13)
+	{
+		文字列 = "Rance's House";
+		xx = 605;
+		yy = 415;
+	}
+	if (no == 14)
+	{
+		文字列 = "Magic's Tower";
+		xx = 205;
+		yy = 500;
+	}
+	if (no == 15)
+	{
+		文字列 = "Magic Museum";
+		xx = 175;
+		yy = 470;
+	}
+	if (no == 16)
+	{
+		文字列 = "Rising Dragon Mountain";
+		xx = 105;
+		yy = 255;
+	}
+	if (no == 11)
+	{
+		文字列 = "Underwater Shrine";
+		xx = 210;
+		yy = 320;
+	}
+	if (no == 22)
+	{
+		文字列 = "Bolbod Castle";
+		xx = 770;
+		yy = 115;
+	}
+	if (no == 17)
+	{
+		文字列 = "Squidsquidsquid Cave";
+		xx = 805;
+		yy = 530;
+	}
+	if (no == 18)
+	{
+		文字列 = "Continent-side Harbor";
+		xx = 565;
+		yy = 450;
+	}
+	if (no == 19)
+	{
+		文字列 = "Kawanakajima-side Harbor";
+		xx = 555;
+		yy = 530;
+	}
+	if (no == 20)
+	{
+		文字列 = "Kaiz";
+		xx = 530;
+		yy = 535;
+	}
+	if (no == 21)
+	{
+		文字列 = "Abandoned Church Mountain";
+		xx = 300;
+		yy = 610;
+	}
+	if (no == 23)
+	{
+		文字列 = "Sachiko's School";
+		xx = 855;
+		yy = 415;
+	}
+	if (no == 24)
+	{
+		文字列 = "Italia Region";
+		xx = 390;
+		yy = 415;
+	}
+	if (no == 25)
+	{
+		文字列 = "Softserve Dungeon";
+		xx = 620;
+		yy = 245;
+	}
+	if (no == 26)
+	{
+		文字列 = "Malgrid Dungeon";
+		xx = 500;
+		yy = 95;
+	}
+	if (no == 29)
+	{
+		文字列 = "Strawzend";
+		xx = 870;
+		yy = 460;
+	}
+	if (no == 27)
+	{
+		文字列 = "Despair Group Cave";
+		xx = 434;
+		yy = 532;
+	}
+	if (no == 32)
+	{
+		文字列 = "Snicker Limestone Cave";
+		xx = 206;
+		yy = 598;
+	}
+	if (no == 33)
+	{
+		文字列 = "Shepherds' Base";
+		xx = 828;
+		yy = 145;
+	}
+	if (no == 31)
+	{
+		文字列 = "Green Village";
+		xx = 58;
+		yy = 368;
+	}
+	if (no == 30)
+	{
+		文字列 = "Nearby Mine Mountain";
+		xx = 572;
+		yy = 260;
+	}
+	if (no == 34)
+	{
+		文字列 = "Zuka Village";
+		xx = 667;
+		yy = 465;
+	}
+	if (no == 35)
+	{
+		文字列 = "Hyper Building";
+		xx = 784;
+		yy = 526;
+	}
+	if (no == 36)
+	{
+		文字列 = "Tringer Castle";
+		xx = 866;
+		yy = 115;
+	}
+	if (no == 37)
+	{
+		文字列 = "Nabata Mountain Range";
+		xx = 340;
+		yy = 20;
+	}
+	if (no == 39)
+	{
+		文字列 = "Custom";
+		xx = 775;
+		yy = 515;
+	}
+	if (no == 38)
+	{
+		文字列 = "A Certain Town in Zeth";
+		xx = 260;
+		yy = 390;
+	}
+	if (no == 40)
+	{
+		文字列 = "Yomotsu Hirasaka";
+		xx = 992;
+		yy = 545;
+	}
+}
+
+void マメ知識表示選択(lint no)
+{
+	if (MM[no] == 1)
+	{
+		return;
+	}
+	MM[no] = 1;
+	ト書き();
+	'■ Trivia "' S(MM文字[no]);
+	'"' R;
+	'　 has been added. View now?' R;
+	'■ You can also view it later using the' R;
+	'　 "Trivia" button.' B;
+	選択初期();
+	選択_項目追加(1, "Look at \"" + MM文字[no] + "\" now", -1, -1, -1, "", -1);
+	選択_項目追加(2, "Not now", -1, -1, -1, "", -1);
+	lint rr = 選択_実行(false, 0, 0, false);
+	if (rr == 1)
+	{
+		Ｒ８マメ知識表示(no);
+	}
+	return;
+}
+
+void Ｔ音楽が登録されました(int no)
+{
+	if (FA[320] == 0)
+	{
+		return;
+	}
+	if (◆前回表示したＢＧＭ == no)
+	{
+		return;
+	}
+	if (no == 0)
+	{
+		return;
+	}
+	◆前回表示したＢＧＭ = no;
+	string ▲曲名 = 音楽の名前(no);
+	if (▲曲名 != "")
+	{
+		LOG("・♪Current BGM: " + 音楽の名前(no) + "\n");
+	}
+}
+
+int モルルン算出表示(int fg, string 条件)
+{
+	int iic = 0;
+	int cn = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) != 0)
+		{
+			if (条件 == "" && Ｃ転生回数(iic, -1) != 0)
+			{
+				++cn;
+				if (fg == 1)
+				{
+					LOG("　%s：%s\n" % string3(Ｃ転生回数(iic, -1)) % Ｃ名前(iic, ""));
+				}
+			}
+			if (条件 == "無し" && Ｃ転生回数(iic, -1) == 0)
+			{
+				++cn;
+				if (fg == 1)
+				{
+					LOG("　%s：%s\n" % string3(Ｃ転生回数(iic, -1)) % Ｃ名前(iic, ""));
+				}
+			}
+			if (条件 == "４以下" && Ｃ転生回数(iic, -1) != 0 && Ｃ転生回数(iic, -1) < 5)
+			{
+				++cn;
+				if (fg == 1)
+				{
+					LOG("　%s：%s\n" % string3(Ｃ転生回数(iic, -1)) % Ｃ名前(iic, ""));
+				}
+			}
+			if (条件 == "９以下" && Ｃ転生回数(iic, -1) > 4 && Ｃ転生回数(iic, -1) < 10)
+			{
+				++cn;
+				if (fg == 1)
+				{
+					LOG("　%s：%s\n" % string3(Ｃ転生回数(iic, -1)) % Ｃ名前(iic, ""));
+				}
+			}
+			if (条件 == "１０以上" && Ｃ転生回数(iic, -1) > 9)
+			{
+				++cn;
+				if (fg == 1)
+				{
+					LOG("　%s：%s\n" % string3(Ｃ転生回数(iic, -1)) % Ｃ名前(iic, ""));
+				}
+			}
+		}
+	}
+	return cn;
+}
+
+void レベルアップ処理／全員(lint fg)
+{
+	lint iic = 0;
+	for (iic = 20; iic < 201; iic++)
+	{
+		if (Ｃ登録状態(iic, -1) != 0 && ＣＬＶ(iic, -1) < fg)
+		{
+			レベルアップ処理(iic);
+			LOG("   Level Up  %s\n" % Ｃ名前(iic, ""));
+		}
+	}
+}
+
+void レベルアップ処理(lint iic)
+{
+	lint vva = 0;
+	if (Ｃ番号(iic, -1) == 27)
+	{
+		ＣＥＸＰ(iic, 0);
+		ＣＬＶ(iic, 1);
+		return;
+	}
+	if (ＣＬＶ(iic, -1) < ＣＬＶ最大(iic, -1))
+	{
+		ＣＬＶ(iic, ＣＬＶ(iic, -1) + 1);
+		ＣＥＸＰ(iic, 0);
+		vva = Ｔ戦闘後の取得スキルポイント算出(iic);
+		Ｃスキルポイント(iic, Ｃスキルポイント(iic, -1) + vva);
+		Ｃ再計算(iic);
+	}
+}
+
+int Ｔ戦闘後の取得スキルポイント算出(int iic)
+{
+	int ▲ＵＰ値 = 1;
+	if (ＣＦＡ(iic, 33, -1) != 0)
+	{
+		ＣＦＡ(iic, 33, ＣＦＡ(iic, 33, -1) - 1);
+		return 0;
+	}
+	return ▲ＵＰ値;
+}
+
+lint Ｃランダム取得(string 文字列)
+{
+	int loop = 0;
+	int iic = 0;
+	for (loop = 1; loop < 200; ++loop)
+	{
+		iic = RAND(◆Ｃ構造体最大使用位置 - 20) + 20;
+		if (Ｃ登録状態(iic, -1) != 0)
+		{
+			if (文字列 == "")
+			{
+				return iic;
+			}
+			if (文字列 == "女" && Ｃ性別(iic, -1) == 2)
+			{
+				return iic;
+			}
+			if (文字列 == "男／ランス以外" && Ｃ性別(iic, -1) == 1 && Ｃ番号(iic, -1) != 1)
+			{
+				return iic;
+			}
+		}
+		if (Ｃ登録状態(iic, -1) == 2)
+		{
+			if (文字列 == "１軍")
+			{
+				return iic;
+			}
+		}
+	}
+	LOG_TADA("ＥＲＲＯＲ　【" + system.GetFuncStackName(0) + "】   \n");
+	return 0;
+}
+
+void Ｃ全員復帰()
+{
+	int iic = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) == 3)
+		{
+			Ｃ登録状態(iic, 2);
+		}
+		Ｃ補給(iic);
+	}
+}
+
+void Ｃ全員補給()
+{
+	int iic = 0;
+	LOG_TADA("\n＞Ｃ全員補給\n");
+	for (iic = 20; iic < 201; ++iic)
+	{
+		Ｃ補給(iic);
+	}
+}
+
+void Ｃ全員５０％の確率で使用済み()
+{
+	int iic = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ登録状態(iic, -1) == 2 && RAND(2) == 1)
+		{
+			Ｃ登録状態(iic, 3);
+		}
+	}
+}
+
+void Ｃ経験値追加(int iic, int aa)
+{
+	if (aa == 0)
+	{
+		return;
+	}
+	if (ＣＬＶ(iic, -1) >= ＣＬＶ最大(iic, -1))
+	{
+		return;
+	}
+	ＣＥＸＰ(iic, ＣＥＸＰ(iic, -1) + aa);
+	if (ＣＥＸＰ(iic, -1) >= ＣＥＸＰ最大(iic, -1))
+	{
+		ＣＥＸＰ(iic, ＣＥＸＰ最大(iic, -1));
+	}
+}
+
+void Ｃキャラ生成／セリフ初期化(int iic)
+{
+	if (Ｃ性別(iic, -1) == 1)
+	{
+		Ｃ台詞(iic, 1, "My turn?$Leave it to me.");
+		Ｃ台詞(iic, 2, "I'll wait until my turn.");
+		Ｃ台詞(iic, 3, "Here I go!");
+		Ｃ台詞(iic, 4, "I'm ending you!$Die!");
+		Ｃ台詞(iic, 5, "Okay, let's all do our$best.");
+	}
+	if (Ｃ性別(iic, -1) == 2)
+	{
+		Ｃ台詞(iic, 1, "It's my turn.$What should I do?");
+		Ｃ台詞(iic, 2, "So this is a real$fight...$I'm nervous.");
+		Ｃ台詞(iic, 3, "Here I go.$Please hit!");
+		Ｃ台詞(iic, 4, "Now's my chance!$Suuure kiiill!");
+		Ｃ台詞(iic, 5, "Lalala...");
+	}
+	if (Ｃ性別(iic, -1) == 9)
+	{
+		Ｃ台詞(iic, 1, "Ugigigi...");
+		Ｃ台詞(iic, 2, "Bogegege...");
+		Ｃ台詞(iic, 3, "Nihao...");
+		Ｃ台詞(iic, 4, "Konnichiwa...");
+		Ｃ台詞(iic, 5, "Spin, spin...");
+	}
+}
+
+void 顔表示／総合(int iic)
+{
+	int ▲生成キャラ = 0;
+	if (Ｃ番号(iic, -1) == 2)
+	{
+		▲生成キャラ = 1;
+	}
+	if (▲生成キャラ == 0)
+	{
+		顔表示(Ｃ顔ＣＧ(iic, -1), 1, 100);
+	}
+	else
+	{
+		顔表示Ｆ(iic, 1, 100);
+	}
+}
+
+void 立ち絵表示／総合(int iic)
+{
+	立ち絵表示(Ｃ立ち絵ＣＧ(iic, -1), 1, 200);
+}
+
+void セリフ／総合(int iic)
+{
+	int ▲生成キャラ = 0;
+	if (Ｃ番号(iic, -1) == 2)
+	{
+		▲生成キャラ = 1;
+	}
+	if (▲生成キャラ == 0)
+	{
+		セリフ(Ｃ顔ＣＧ(iic, -1), "");
+	}
+	else
+	{
+		セリフＦ(iic, "");
+	}
+}
+
+void 汎用エロ表示／総合(int iic, int cg)
+{
+	int ▲生成キャラ = 0;
+	if (Ｃ番号(iic, -1) == 2)
+	{
+		▲生成キャラ = 1;
+	}
+	if (▲生成キャラ == 0)
+	{
+		汎用エロ表示(Ｃ顔ＣＧ(iic, -1), cg, 1, 1000);
+	}
+	else
+	{
+		汎用エロ表示Ｆ(iic, cg, 1, 1000);
+	}
+}
+
+void Ｃ登録スキル全解除(int iic)
+{
+	int loop = 0;
+	for (loop = 0; loop < 6; ++loop)
+	{
+		Ｃ[iic].登録スキル[loop] = 0;
+	}
+}
+
+int ＣＳ残行動回数取得(int iic, string 条件)
+{
+	int iic_s = 0;
+	int iis = 0;
+	int aa = 0;
+	for (iic_s = 1; iic_s < 21; ++iic_s)
+	{
+		iis = ＣＳ番号(iic, iic_s, -1);
+		if (iis != 0 && Ｓタイプ(iis, -1) == 10 && ＣＳ使用禁止(iic, iic_s, -1) == 0 && ＣＳ実装中(iic, iic_s, -1) != 0 && ＣＳ使用回数(iic, iic_s, -1) != 0)
+		{
+			if (条件 == "")
+			{
+				aa = 1;
+			}
+			if (条件 == "後列" && Ｓ対象(iis, -1) != 1)
+			{
+				aa = 1;
+			}
+		}
+	}
+	LOG_TADA("　残行動回数　" + Ｃ名前(iic, "") + "　＝＝" + string(aa) + "\n");
+	return aa;
+}
+
+lint Ｃ体内特殊アイテムの取得枠の有無(lint iic)
+{
+	if (ＣＦＡ(iic, 17, -1) == 0)
+	{
+		return 1;
+	}
+	if (ＣＦＡ(iic, 18, -1) == 0)
+	{
+		return 1;
+	}
+	if (ＣＦＡ(iic, 19, -1) == 0)
+	{
+		return 1;
+	}
+	if (ＣＦＡ(iic, 20, -1) == 0)
+	{
+		return 1;
+	}
+	if (ＣＦＡ(iic, 21, -1) == 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int Ｃ体内特殊アイテムの取得処理(lint iic, lint ii)
+{
+	if (Ｉ種類(ii, -1) != 21)
+	{
+		return 0;
+	}
+	lint ▲ランク = Ｉ種類ランク(ii, -1);
+	lint ▲no = Ｉ固有番号(ii, -1);
+	if (▲no == 304 || ▲no == 305 || ▲no == 306 || ▲no == 307 || ▲no == 309 || ▲no == 310)
+	{
+		return 0;
+	}
+	if (ＣＦＡ(iic, 17, -1) == 0)
+	{
+		ＣＦＡ(iic, 17, ▲no);
+		return 1;
+	}
+	if (ＣＦＡ(iic, 18, -1) == 0)
+	{
+		ＣＦＡ(iic, 18, ▲no);
+		return 1;
+	}
+	if (ＣＦＡ(iic, 19, -1) == 0)
+	{
+		ＣＦＡ(iic, 19, ▲no);
+		return 1;
+	}
+	if (ＣＦＡ(iic, 20, -1) == 0)
+	{
+		ＣＦＡ(iic, 20, ▲no);
+		return 1;
+	}
+	if (ＣＦＡ(iic, 21, -1) == 0)
+	{
+		ＣＦＡ(iic, 21, ▲no);
+		return 1;
+	}
+	if (▲ランク == 1)
+	{
+		return 0;
+	}
+	lint 転成１ランク = 0;
+	lint 転成２ランク = 0;
+	lint 転成３ランク = 0;
+	lint 転成４ランク = 0;
+	lint 転成５ランク = 0;
+	転成１ランク = Ｉ固有種類ランク(ＣＦＡ(iic, 17, -1));
+	転成２ランク = Ｉ固有種類ランク(ＣＦＡ(iic, 18, -1));
+	転成３ランク = Ｉ固有種類ランク(ＣＦＡ(iic, 19, -1));
+	転成４ランク = Ｉ固有種類ランク(ＣＦＡ(iic, 20, -1));
+	転成５ランク = Ｉ固有種類ランク(ＣＦＡ(iic, 21, -1));
+	if (転成１ランク == 1)
+	{
+		ＣＦＡ(iic, 17, ▲no);
+		return 1;
+	}
+	if (転成２ランク == 1)
+	{
+		ＣＦＡ(iic, 18, ▲no);
+		return 1;
+	}
+	if (転成３ランク == 1)
+	{
+		ＣＦＡ(iic, 19, ▲no);
+		return 1;
+	}
+	if (転成４ランク == 1)
+	{
+		ＣＦＡ(iic, 20, ▲no);
+		return 1;
+	}
+	if (転成５ランク == 1)
+	{
+		ＣＦＡ(iic, 21, ▲no);
+		return 1;
+	}
+	if (▲ランク == 2)
+	{
+		return 0;
+	}
+	if (転成１ランク == 2)
+	{
+		ＣＦＡ(iic, 17, ▲no);
+		return 1;
+	}
+	if (転成２ランク == 2)
+	{
+		ＣＦＡ(iic, 18, ▲no);
+		return 1;
+	}
+	if (転成３ランク == 2)
+	{
+		ＣＦＡ(iic, 19, ▲no);
+		return 1;
+	}
+	if (転成４ランク == 2)
+	{
+		ＣＦＡ(iic, 20, ▲no);
+		return 1;
+	}
+	if (転成５ランク == 2)
+	{
+		ＣＦＡ(iic, 21, ▲no);
+		return 1;
+	}
+	if (▲ランク == 3)
+	{
+		return 0;
+	}
+	if (転成１ランク == 3)
+	{
+		ＣＦＡ(iic, 17, ▲no);
+		return 1;
+	}
+	if (転成２ランク == 3)
+	{
+		ＣＦＡ(iic, 18, ▲no);
+		return 1;
+	}
+	if (転成３ランク == 3)
+	{
+		ＣＦＡ(iic, 19, ▲no);
+		return 1;
+	}
+	if (転成４ランク == 3)
+	{
+		ＣＦＡ(iic, 20, ▲no);
+		return 1;
+	}
+	if (転成５ランク == 3)
+	{
+		ＣＦＡ(iic, 21, ▲no);
+		return 1;
+	}
+	return 0;
+}
+
+void Ｃ体内特殊アイテムの効果計算(lint iic)
+{
+	◆特殊／体力 = 0;
+	◆特殊／攻撃力 = 0;
+	◆特殊／防御力 = 0;
+	◆特殊／魔法力 = 0;
+	◆特殊／魔抵力 = 0;
+	◆特殊／命中率 = 0;
+	◆特殊／回避率 = 0;
+	◆特殊／衝撃率 = 0;
+	◆特殊／耐性率 = 0;
+	◆特殊／必殺率 = 0;
+	◆特殊／素早さ = 0;
+	if (ＣＦＡ(iic, 17, -1) != 0)
+	{
+		Ｃ体内特殊／単発計算(iic, ＣＦＡ(iic, 17, -1));
+	}
+	if (ＣＦＡ(iic, 18, -1) != 0)
+	{
+		Ｃ体内特殊／単発計算(iic, ＣＦＡ(iic, 18, -1));
+	}
+	if (ＣＦＡ(iic, 19, -1) != 0)
+	{
+		Ｃ体内特殊／単発計算(iic, ＣＦＡ(iic, 19, -1));
+	}
+	if (ＣＦＡ(iic, 20, -1) != 0)
+	{
+		Ｃ体内特殊／単発計算(iic, ＣＦＡ(iic, 20, -1));
+	}
+	if (ＣＦＡ(iic, 21, -1) != 0)
+	{
+		Ｃ体内特殊／単発計算(iic, ＣＦＡ(iic, 21, -1));
+	}
+	if (◆特殊／体力 != 0)
+	{
+		Ｃ体力最大(iic, Ｃ体力最大(iic, -1) + ◆特殊／体力);
+	}
+	if (◆特殊／攻撃力 != 0)
+	{
+		Ｃ攻撃力(iic, Ｃ攻撃力(iic, -1) + ◆特殊／攻撃力);
+	}
+	if (◆特殊／防御力 != 0)
+	{
+		Ｃ防御力(iic, Ｃ防御力(iic, -1) + ◆特殊／防御力);
+	}
+	if (◆特殊／魔法力 != 0)
+	{
+		Ｃ魔法力(iic, Ｃ魔法力(iic, -1) + ◆特殊／魔法力);
+	}
+	if (◆特殊／魔抵力 != 0)
+	{
+		Ｃ魔抵力(iic, Ｃ魔抵力(iic, -1) + ◆特殊／魔抵力);
+	}
+	if (◆特殊／命中率 != 0)
+	{
+		Ｃ命中率(iic, Ｃ命中率(iic, -1) + ◆特殊／命中率);
+	}
+	if (◆特殊／回避率 != 0)
+	{
+		Ｃ回避率(iic, Ｃ回避率(iic, -1) + ◆特殊／回避率);
+	}
+	if (◆特殊／衝撃率 != 0)
+	{
+		Ｃ衝撃率(iic, Ｃ衝撃率(iic, -1) + ◆特殊／衝撃率);
+	}
+	if (◆特殊／耐性率 != 0)
+	{
+		Ｃ耐性率(iic, Ｃ耐性率(iic, -1) + ◆特殊／耐性率);
+	}
+	if (◆特殊／必殺率 != 0)
+	{
+		Ｃ必殺率(iic, Ｃ必殺率(iic, -1) + ◆特殊／必殺率);
+	}
+	if (◆特殊／素早さ != 0)
+	{
+		Ｃ素早さ(iic, Ｃ素早さ(iic, -1) + ◆特殊／素早さ);
+	}
+}
+
+void Ｃ体内特殊／単発計算(lint iic, lint ▲アイテム固有番号)
+{
+	if (▲アイテム固有番号 == 269)
+	{
+		◆特殊／体力 += 100;
+	}
+	if (▲アイテム固有番号 == 270)
+	{
+		◆特殊／体力 += 200;
+	}
+	if (▲アイテム固有番号 == 271)
+	{
+		◆特殊／体力 += 300;
+	}
+	if (▲アイテム固有番号 == 323)
+	{
+		◆特殊／体力 += 400;
+	}
+	if (▲アイテム固有番号 == 272)
+	{
+		◆特殊／攻撃力 += 50;
+	}
+	if (▲アイテム固有番号 == 273)
+	{
+		◆特殊／攻撃力 += 70;
+	}
+	if (▲アイテム固有番号 == 274)
+	{
+		◆特殊／攻撃力 += 100;
+	}
+	if (▲アイテム固有番号 == 324)
+	{
+		◆特殊／攻撃力 += 120;
+	}
+	if (▲アイテム固有番号 == 275)
+	{
+		◆特殊／防御力 += 20;
+	}
+	if (▲アイテム固有番号 == 276)
+	{
+		◆特殊／防御力 += 35;
+	}
+	if (▲アイテム固有番号 == 277)
+	{
+		◆特殊／防御力 += 50;
+	}
+	if (▲アイテム固有番号 == 325)
+	{
+		◆特殊／防御力 += 70;
+	}
+	if (▲アイテム固有番号 == 278)
+	{
+		◆特殊／魔法力 += 50;
+	}
+	if (▲アイテム固有番号 == 279)
+	{
+		◆特殊／魔法力 += 70;
+	}
+	if (▲アイテム固有番号 == 280)
+	{
+		◆特殊／魔法力 += 100;
+	}
+	if (▲アイテム固有番号 == 326)
+	{
+		◆特殊／魔法力 += 120;
+	}
+	if (▲アイテム固有番号 == 281)
+	{
+		◆特殊／魔抵力 += 20;
+	}
+	if (▲アイテム固有番号 == 282)
+	{
+		◆特殊／魔抵力 += 35;
+	}
+	if (▲アイテム固有番号 == 283)
+	{
+		◆特殊／魔抵力 += 50;
+	}
+	if (▲アイテム固有番号 == 327)
+	{
+		◆特殊／魔抵力 += 70;
+	}
+	if (▲アイテム固有番号 == 290)
+	{
+		◆特殊／素早さ += 3;
+	}
+	if (▲アイテム固有番号 == 291)
+	{
+		◆特殊／素早さ += 4;
+	}
+	if (▲アイテム固有番号 == 292)
+	{
+		◆特殊／素早さ += 5;
+	}
+	if (▲アイテム固有番号 == 330)
+	{
+		◆特殊／素早さ += 6;
+	}
+	if (▲アイテム固有番号 == 287)
+	{
+		◆特殊／命中率 += 4;
+	}
+	if (▲アイテム固有番号 == 288)
+	{
+		◆特殊／命中率 += 7;
+	}
+	if (▲アイテム固有番号 == 289)
+	{
+		◆特殊／命中率 += 10;
+	}
+	if (▲アイテム固有番号 == 329)
+	{
+		◆特殊／命中率 += 12;
+	}
+	if (▲アイテム固有番号 == 284)
+	{
+		◆特殊／回避率 += 4;
+	}
+	if (▲アイテム固有番号 == 285)
+	{
+		◆特殊／回避率 += 7;
+	}
+	if (▲アイテム固有番号 == 286)
+	{
+		◆特殊／回避率 += 10;
+	}
+	if (▲アイテム固有番号 == 328)
+	{
+		◆特殊／回避率 += 12;
+	}
+	if (▲アイテム固有番号 == 293)
+	{
+		◆特殊／必殺率 += 4;
+	}
+	if (▲アイテム固有番号 == 294)
+	{
+		◆特殊／必殺率 += 7;
+	}
+	if (▲アイテム固有番号 == 295)
+	{
+		◆特殊／必殺率 += 10;
+	}
+	if (▲アイテム固有番号 == 331)
+	{
+		◆特殊／必殺率 += 12;
+	}
+	if (▲アイテム固有番号 == 296)
+	{
+		◆特殊／衝撃率 += 4;
+	}
+	if (▲アイテム固有番号 == 297)
+	{
+		◆特殊／衝撃率 += 7;
+	}
+	if (▲アイテム固有番号 == 298)
+	{
+		◆特殊／衝撃率 += 10;
+	}
+	if (▲アイテム固有番号 == 332)
+	{
+		◆特殊／衝撃率 += 12;
+	}
+	if (▲アイテム固有番号 == 299)
+	{
+		◆特殊／耐性率 += 4;
+	}
+	if (▲アイテム固有番号 == 300)
+	{
+		◆特殊／耐性率 += 7;
+	}
+	if (▲アイテム固有番号 == 301)
+	{
+		◆特殊／耐性率 += 10;
+	}
+	if (▲アイテム固有番号 == 333)
+	{
+		◆特殊／耐性率 += 12;
+	}
+}
+
+lint 体内吸収可能な特殊の保持を確認(lint iic)
+{
+	if (Ｃオプション(iic, -1) == 0)
+	{
+		return 0;
+	}
+	lint ii = Ｃオプション(iic, -1);
+	if (Ｉ固有番号(ii, -1) == 269 || Ｉ固有番号(ii, -1) == 270 || Ｉ固有番号(ii, -1) == 271 || Ｉ固有番号(ii, -1) == 323)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 272 || Ｉ固有番号(ii, -1) == 273 || Ｉ固有番号(ii, -1) == 274 || Ｉ固有番号(ii, -1) == 324)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 275 || Ｉ固有番号(ii, -1) == 276 || Ｉ固有番号(ii, -1) == 277 || Ｉ固有番号(ii, -1) == 325)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 278 || Ｉ固有番号(ii, -1) == 279 || Ｉ固有番号(ii, -1) == 280 || Ｉ固有番号(ii, -1) == 326)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 281 || Ｉ固有番号(ii, -1) == 282 || Ｉ固有番号(ii, -1) == 283 || Ｉ固有番号(ii, -1) == 327)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 284 || Ｉ固有番号(ii, -1) == 285 || Ｉ固有番号(ii, -1) == 286 || Ｉ固有番号(ii, -1) == 328)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 287 || Ｉ固有番号(ii, -1) == 288 || Ｉ固有番号(ii, -1) == 289 || Ｉ固有番号(ii, -1) == 329)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 290 || Ｉ固有番号(ii, -1) == 291 || Ｉ固有番号(ii, -1) == 292 || Ｉ固有番号(ii, -1) == 330)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 293 || Ｉ固有番号(ii, -1) == 294 || Ｉ固有番号(ii, -1) == 295 || Ｉ固有番号(ii, -1) == 331)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 296 || Ｉ固有番号(ii, -1) == 297 || Ｉ固有番号(ii, -1) == 298 || Ｉ固有番号(ii, -1) == 332)
+	{
+		return 1;
+	}
+	if (Ｉ固有番号(ii, -1) == 299 || Ｉ固有番号(ii, -1) == 300 || Ｉ固有番号(ii, -1) == 301 || Ｉ固有番号(ii, -1) == 333)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void Ｃログ情報(int iic)
+{
+	if (ユーザーログフラグ() == false)
+	{
+		return;
+	}
+	int aa = 0;
+	int no = Ｃ番号(iic, -1);
+	string イベント名 = "";
+	string ▲文字 = "";
+	Ｃ再計算(iic);
+	LOG("\n");
+	LOG("■%s   Inside Info\n" % Ｃ名前(iic, ""));
+	LOG("　－－－－－－－－－－－－－－－－－－－－－－－－－－－\n");
+	if (◆疾風突き != 0)
+	{
+		LOG("   【Accumulated effects due to Gale Thrust (Attack +%s%) (Speed +%s)】\n" % string3(◆疾風突き * 5) % string3(◆疾風突き * 5));
+	}
+	if (ＣＳ有無(iic, 361, 0) != 0)
+	{
+		int iic2 = Ｃ番号取得(22);
+		LOG("   【Suzume Possession (Attack +%s)】\n" % string3(Ｃ攻撃力(iic2, -1) / 4));
+		LOG("   【↑ Effect only present while in battle, following stats are before adding this effect】\n");
+	}
+	LOG(" LV: %s " % string3(ＣＬＶ(iic, -1)));
+	LOG("(Talent cap: %s) " % string3(ＣＬＶ最大(iic, -1)));
+	if (ＣＦＡ(iic, 32, -1) >= ＣＬＶ(iic, -1))
+	{
+		LOG("(Record level: %s)" % string3(ＣＦＡ(iic, 32, -1)));
+	}
+	LOG("\n");
+	LOG(" HP: %s " % string3(Ｃ体力最大(iic, -1)));
+	if (Ｃ初期／体力最大(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／体力最大(iic, -1)));
+	}
+	if (◆特殊／体力 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／体力));
+	}
+	if (◆適応／体力 != 0)
+	{
+		LOG("(From equip: %s) " % string3(◆適応／体力));
+	}
+	if (クリア確認(186) == 1)
+	{
+		LOG("(Erotech Hermit: +20)");
+	}
+	LOG("\n");
+	LOG(" Attack: %s " % string3(Ｃ攻撃力(iic, -1)));
+	if (Ｃ初期／攻撃力(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／攻撃力(iic, -1)));
+	}
+	if (◆特殊／攻撃力 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／攻撃力));
+	}
+	if (◆適応／攻撃力 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／攻撃力));
+	}
+	LOG("\n");
+	LOG(" Magic: %s " % string3(Ｃ魔法力(iic, -1)));
+	if (Ｃ初期／魔法力(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／魔法力(iic, -1)));
+	}
+	if (◆特殊／魔法力 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／魔法力));
+	}
+	if (◆適応／魔法力 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／魔法力));
+	}
+	LOG("\n");
+	LOG(" Defense: %s " % string3(Ｃ防御力(iic, -1)));
+	if (Ｃ初期／防御力(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／防御力(iic, -1)));
+	}
+	if (◆特殊／防御力 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／防御力));
+	}
+	if (◆適応／防御力 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／防御力));
+	}
+	LOG("\n");
+	LOG(" Resistance: %s " % string3(Ｃ魔抵力(iic, -1)));
+	if (Ｃ初期／魔抵力(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／魔抵力(iic, -1)));
+	}
+	if (◆特殊／魔抵力 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／魔抵力));
+	}
+	if (◆適応／魔抵力 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／魔抵力));
+	}
+	LOG("\n");
+	LOG(" Accuracy: %s " % string3(Ｃ命中率(iic, -1)));
+	if (Ｃ初期／命中率(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／命中率(iic, -1)));
+	}
+	if (◆特殊／命中率 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／命中率));
+	}
+	if (◆適応／命中率 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／命中率));
+	}
+	LOG("\n");
+	LOG(" Evasion: %s " % string3(Ｃ回避率(iic, -1)));
+	if (Ｃ初期／回避率(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／回避率(iic, -1)));
+	}
+	if (◆特殊／回避率 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／回避率));
+	}
+	if (◆適応／回避率 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／回避率));
+	}
+	LOG("\n");
+	LOG(" Stun: %s " % string3(Ｃ衝撃率(iic, -1)));
+	if (Ｃ初期／衝撃率(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／衝撃率(iic, -1)));
+	}
+	if (◆特殊／衝撃率 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／衝撃率));
+	}
+	if (◆適応／衝撃率 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／衝撃率));
+	}
+	LOG("\n");
+	LOG(" Resilience: %s " % string3(Ｃ耐性率(iic, -1)));
+	if (Ｃ初期／耐性率(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／耐性率(iic, -1)));
+	}
+	if (◆特殊／耐性率 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／耐性率));
+	}
+	if (◆適応／耐性率 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／耐性率));
+	}
+	LOG("\n");
+	LOG(" Critical: %s " % string3(Ｃ必殺率(iic, -1)));
+	if (Ｃ初期／必殺率(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／必殺率(iic, -1)));
+	}
+	if (◆特殊／必殺率 != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／必殺率));
+	}
+	if (◆適応／必殺率 != 0)
+	{
+		LOG("(From equip: %s)" % string3(◆適応／必殺率));
+	}
+	LOG("\n");
+	LOG(" Speed: %s " % string3(Ｃ素早さ(iic, -1)));
+	if (Ｃ初期／素早さ(iic, -1) != 0)
+	{
+		LOG("(Talent: %s%) " % string3(Ｃ初期／素早さ(iic, -1)));
+	}
+	if (◆特殊／素早さ != 0)
+	{
+		LOG("(Absorbed: %s) " % string3(◆特殊／素早さ));
+	}
+	if (◆適応／素早さ != 0)
+	{
+		LOG("(From equip: %s) " % string3(◆適応／素早さ));
+	}
+	if (Ｃ番号(iic, -1) == 6 && FA[23] != 0)
+	{
+		LOG("(Hermit effect: %s) " % string3(FA[23]));
+	}
+	if (Ｃ番号(iic, -1) == 1 && FA[24] != 0)
+	{
+		LOG("(Hermit effect: %s) " % string3(FA[24]));
+	}
+	LOG("\n");
+	aa = ＣＳ有無／ランク別効果(iic, 495, 0);
+	if (ＣＩ武器機能の有無と効果(iic, 86) != 0 || ＣＩ防具機能の有無と効果(iic, 86) != 0 || ＣＩ防具機能の有無と効果(iic, 90) != 0)
+	{
+		aa += 20;
+	}
+	if (aa != 0)
+	{
+		LOG("   Physical damage reduction: %s%\n" % string3(aa));
+	}
+	aa = ＣＳ有無／ランク別効果(iic, 496, 0);
+	if (ＣＩ武器機能の有無と効果(iic, 87) != 0 || ＣＩ防具機能の有無と効果(iic, 87) != 0 || ＣＩ防具機能の有無と効果(iic, 90) != 0)
+	{
+		aa += 20;
+	}
+	if (Ｃ番号(iic, -1) == 12)
+	{
+		aa = 100;
+	}
+	if (aa != 0)
+	{
+		LOG("   Magic damage reduction: %s%\n" % string3(aa));
+	}
+	if (Ｃ炎耐性(iic, -1) != 0)
+	{
+		LOG("   Fire damage reduction: %s%\n" % string3(Ｃ炎耐性(iic, -1)));
+	}
+	if (Ｃ氷耐性(iic, -1) != 0)
+	{
+		LOG("   Ice damage reduction: %s%\n" % string3(Ｃ氷耐性(iic, -1)));
+	}
+	if (Ｃ雷耐性(iic, -1) != 0)
+	{
+		LOG("   Electric damage reduction: %s%\n" % string3(Ｃ雷耐性(iic, -1)));
+	}
+	if (Ｃ光耐性(iic, -1) != 0)
+	{
+		LOG("   Light damage reduction: %s%\n" % string3(Ｃ光耐性(iic, -1)));
+	}
+	if (Ｃ闇耐性(iic, -1) != 0)
+	{
+		LOG("   Dark damage reduction: %s%\n" % string3(Ｃ闇耐性(iic, -1)));
+	}
+	if (◆身体ブースト != 100)
+	{
+		LOG("　－－－－－－－－－－－－－－－－－－－－－－－－－－－\n");
+		LOG(" Body boost %s% Activated→Attack, Defense, Magic, Resistance affected\n" % string3(◆身体ブースト));
+		if (ＣＳ有無(iic, 311, 1) != 0)
+		{
+			LOG("   →+10% from Alice's Protection\n");
+		}
+		if (Ｉ機能取得(Ｃ武器(iic, -1), 84) != 0)
+		{
+			LOG("   →+10% from weapon effect\n");
+		}
+		if (Ｉ機能取得(Ｃ防具(iic, -1), 84) != 0)
+		{
+			LOG("   →+10% from armor effect\n");
+		}
+		if (Ｉ機能取得(Ｃ武器(iic, -1), 91) != 0)
+		{
+			LOG("   →+5% from weapon effect\n");
+		}
+		if (Ｉ機能取得(Ｃ防具(iic, -1), 91) != 0)
+		{
+			LOG("   →+5% from armor effect\n");
+		}
+		if (no != 1)
+		{
+			lint ▲転生回数 = Ｃ転生回数(iic, -1);
+			if (▲転生回数 >= 10 && ◆ワールド != 3)
+			{
+				▲転生回数 = 10;
+			}
+			LOG("   →+%s% from Morurun\n" % string3(▲転生回数 * 2));
+		}
+		if (no == 1 && (FA[327] == 1 || FA[188] >= 4))
+		{
+			int aa = 0;
+			aa = モルルン算出表示(0, "９以下") + モルルン算出表示(0, "１０以上");
+			if (aa > 10)
+			{
+				aa = 10;
+			}
+			LOG("   →+%s% from Rance special effect\n" % string3(aa * 2));
+			LOG("     If the Morurun affects one person five times or more,\n");
+			LOG("     Rance's own body boost goes up 2% for some reason (※For up to ten people)\n");
+		}
+	}
+	LOG("　－－－－－－－－－－－－－－－－－－－－－－－－－－－\n");
+	LOG("  Number of battles fought (%s)   Number of times KOed (%s)\n" % string3(Ｃ戦闘参加回数(iic, -1)) % string3(Ｃ戦闘死亡回数(iic, -1)));
+	if (ＣＦＡ(iic, 33, -1) != 0)
+	{
+		LOG("   Skill points for up to LV %s already received\n" % string3(ＣＬＶ(iic, -1) + ＣＦＡ(iic, 33, -1)));
+		LOG("   ↑Skills aren't reset on level down due to Skill Fix\n");
+	}
+	aa = 0;
+	if (Ｃ性別(iic, -1) != 2)
+	{
+		aa = 1;
+	}
+	if (Ｃ番号(iic, -1) == 56)
+	{
+		aa = 1;
+	}
+	if (aa == 0 && ＣＳ有無(iic, 373, 0) == 0)
+	{
+		LOG("   Sex with Rance count (%s/10)   Available next at: (LV %s)\n" % string3(Ｃ転生回数(iic, -1)) % string3(■次の転生ＬＶ(iic, 0, "")));
+	}
+	if (aa == 0 && ＣＳ有無(iic, 373, 0) != 0)
+	{
+		LOG("   Cuddle with Rance count (%s/10)   Available next at: (LV %s)\n" % string3(Ｃ転生回数(iic, -1)) % string3(■次の転生ＬＶ(iic, 0, "")));
+	}
+	if (aa == 1)
+	{
+		LOG("   Spend the night with Rance count (%s/10)   Available next at: (LV %s)\n" % string3(Ｃ転生回数(iic, -1)) % string3(■次の転生ＬＶ(iic, 0, "")));
+	}
+	for (; ; )
+	{
+		if (Ｃ転生回数(iic, -1) == 10)
+		{
+			LOG("   >>Already done it 10 times so you can't do it<<\n");
+			break;
+		}
+		if (■次の転生ＬＶ(iic, 0, "") > ＣＬＶ最大(iic, -1))
+		{
+			LOG("   >>Can't do it until you raise the talent cap<<\n");
+			break;
+		}
+		if (◆ワールド == 3)
+		{
+			break;
+		}
+		if ((Ｃ番号(iic, -1) == 31 || Ｃ番号(iic, -1) == 59 || Ｃ番号(iic, -1) == 14) && クリア確認(150) == 0)
+		{
+			LOG("   >>Can't do it until you clear a required quest<<\n");
+			break;
+		}
+		if (Ｃ番号(iic, -1) == 51 && クリア確認(185) == 0)
+		{
+			LOG("   >>Can't do it until you clear a required quest<<\n");
+			break;
+		}
+		if (Ｃ番号(iic, -1) == 68 && クリア確認(24) == 0)
+		{
+			LOG("   >>Can't do it until you clear a required quest<<\n");
+			break;
+		}
+		if (Ｃ番号(iic, -1) == 73 || Ｃ番号(iic, -1) == 22 || Ｃ番号(iic, -1) == 84)
+		{
+			LOG("   >>Can't do it with this character unless you're in World 3<<\n");
+			break;
+		}
+		break;
+	}
+	if (Ｃ城ボーナス回数(iic, -1) != 0 || ＣＦＡ(iic, 37, -1) != 0)
+	{
+		lint aa = 0;
+		aa = Ｃ城ボーナス回数(iic, -1);
+		if (ＣＦＡ(iic, 37, -1) == 1)
+		{
+			aa++;
+		}
+		LOG("   Skill points from flute (%s/4)\n" % string3(aa));
+	}
+	if (ＣＦＡ(iic, 36, -1) == 7)
+	{
+		LOG("   Skill points from Rock On (10)\n");
+	}
+	if (Ｃ転生回数(iic, -1) != 0)
+	{
+		lint aa = 0;
+		aa = Ｃ転生回数(iic, -1);
+		if (aa >= 5)
+		{
+			aa = 5;
+		}
+		aa = aa * 2;
+		LOG("   Skill points from Morurun damage (%s/10)\n" % string3(aa));
+	}
+	LOG("　－－－－－－－－－－－－－－－－－－－－－－－－－－－\n");
+	LOG("          ● = obtained     ・ = not obtained \n");
+	▲文字 = "・";
+	if (Ｃ転生回数(iic, -1) == 10)
+	{
+		▲文字 = "●";
+	}
+	LOG("　　　" + ▲文字 + "Morurun damage #10\n");
+	▲文字 = "・";
+	if (◆身体ブースト == 150)
+	{
+		▲文字 = "●";
+	}
+	LOG("　　　" + ▲文字 + "Body Boost 150%\n");
+	▲文字 = "・";
+	if (ＣＦＡ(iic, 36, -1) == 7)
+	{
+		▲文字 = "●";
+	}
+	LOG("　　　" + ▲文字 + "Rock On (+10 skill points)\n");
+	▲文字 = "・";
+	if (ＣＳ有無(iic, 311, 0) != 0)
+	{
+		▲文字 = "●";
+	}
+	LOG("　　　" + ▲文字 + "Alice's Protection (Body Boost 10% when active)\n");
+	if (ＣＦＡ(iic, 38, -1) != 0)
+	{
+		LOG("     ●Stamina Boost B     (HP +800)\n");
+	}
+	if (ＣＦＡ(iic, 38, -1) == 2)
+	{
+		LOG("     ●Stamina Boost B     (HP +800)\n");
+	}
+	if (ＣＦＡ(iic, 39, -1) != 0)
+	{
+		LOG("     ●Attack Boost B     (Attack +300)\n");
+	}
+	if (ＣＦＡ(iic, 39, -1) == 2)
+	{
+		LOG("     ●Attack Boost B     (Attack +300)\n");
+	}
+	if (ＣＦＡ(iic, 40, -1) != 0)
+	{
+		LOG("     ●Magic Boost B     (Magic +300)\n");
+	}
+	if (ＣＦＡ(iic, 40, -1) == 2)
+	{
+		LOG("     ●Magic Boost B     (Magic +300)\n");
+	}
+	if (ＣＦＡ(iic, 41, -1) == 1)
+	{
+		LOG("     ●Accuracy Boost B     (Accuracy +50)\n");
+	}
+	if (ＣＦＡ(iic, 42, -1) == 1)
+	{
+		LOG("     ●Evasion Boost B     (Evasion +50)\n");
+	}
+	if (ＣＦＡ(iic, 43, -1) == 1)
+	{
+		LOG("     ●Critical Boost B     (Critical +50)\n");
+	}
+	if (ＣＦＡ(iic, 44, -1) == 1)
+	{
+		LOG("     ●Resilience Boost B     (Resilience +50)\n");
+	}
+	if (ＣＦＡ(iic, 45, -1) == 1)
+	{
+		LOG("     ●Stun Boost B     (Stun +50)\n");
+	}
+	▲文字 = "・";
+	if (ＣＦＡ(iic, 21, -1) != 0)
+	{
+		▲文字 = "●";
+	}
+	LOG("　　　" + ▲文字 + "5 absorbed items\n");
+	体内アイテム表示(ＣＦＡ(iic, 17, -1));
+	体内アイテム表示(ＣＦＡ(iic, 18, -1));
+	体内アイテム表示(ＣＦＡ(iic, 19, -1));
+	体内アイテム表示(ＣＦＡ(iic, 20, -1));
+	体内アイテム表示(ＣＦＡ(iic, 21, -1));
+	LOG("　－－－－－－－－－－－－－－－－－－－－－－－－－－－\n");
+	if (Ｉ種類詳細(Ｃ持ち物(iic, -1), -1) == 20)
+	{
+		lint ▲従魔番号 = Ｉ効果(Ｃ持ち物(iic, -1), 1, -1);
+		Ｃ敵登録(10, ▲従魔番号);
+		LOG("   Familiar (%s) " % Ｃ名前(10, ""));
+		lint ▲知識ランク = ＣＳ有無／ランク(iic, 321, 0);
+		lint ▲従魔クラス = Ｉ効果(Ｃ持ち物(iic, -1), 2, -1);
+		lint ▲確率 = 0;
+		if (▲知識ランク != 0)
+		{
+			if (▲従魔クラス == 1)
+			{
+				▲確率 = 100;
+			}
+			if (▲従魔クラス == 2)
+			{
+				if (▲知識ランク == 1)
+				{
+					▲確率 = 50;
+				}
+				if (▲知識ランク == 2)
+				{
+					▲確率 = 80;
+				}
+				if (▲知識ランク == 3)
+				{
+					▲確率 = 100;
+				}
+				if (▲知識ランク == 4)
+				{
+					▲確率 = 100;
+				}
+			}
+			if (▲従魔クラス == 3)
+			{
+				if (▲知識ランク == 1)
+				{
+					▲確率 = 20;
+				}
+				if (▲知識ランク == 2)
+				{
+					▲確率 = 50;
+				}
+				if (▲知識ランク == 3)
+				{
+					▲確率 = 75;
+				}
+				if (▲知識ランク == 4)
+				{
+					▲確率 = 90;
+				}
+			}
+			if (▲従魔クラス == 4)
+			{
+				if (▲知識ランク == 1)
+				{
+					▲確率 = 0;
+				}
+				if (▲知識ランク == 2)
+				{
+					▲確率 = 10;
+				}
+				if (▲知識ランク == 3)
+				{
+					▲確率 = 40;
+				}
+				if (▲知識ランク == 4)
+				{
+					▲確率 = 60;
+				}
+			}
+		}
+		if (ＣＳ有無(iic, 493, 0) != 0)
+		{
+			▲確率 += 5;
+		}
+		if (ＣＳ有無(iic, 494, 0) != 0)
+		{
+			▲確率 += 5;
+		}
+		LOG("Battle participation rate: %s%\n" % string3(▲確率));
+	}
+	if (FA[344] == 1)
+	{
+		LOG("－－Equipped Item(s)－－－－－－－－－－－－－－－－－－－－－\n");
+		if (Ｃ武器(iic, -1) != 0)
+		{
+			Ｃログ情報／アイテム(Ｃ武器(iic, -1));
+		}
+		if (Ｃ防具(iic, -1) != 0)
+		{
+			Ｃログ情報／アイテム(Ｃ防具(iic, -1));
+		}
+		if (Ｃオプション(iic, -1) != 0)
+		{
+			Ｃログ情報／アイテム(Ｃオプション(iic, -1));
+		}
+		if (Ｃ持ち物(iic, -1) != 0)
+		{
+			Ｃログ情報／アイテム(Ｃ持ち物(iic, -1));
+		}
+	}
+	LOG("－－Personal Event－－－－－－－－－－－－－－－－－－－－－－\n");
+	if (no == 1)
+	{
+		ＥＶＣ("ランス／城１", "城", "Checking Out My New Castle");
+		ＥＶＣ("ランス／城２", "城", "I Want a Normal Room Too");
+		ＥＶＣ("ランス／城汎用", "Castle", "");
+		ＥＶＣ("シィル／城１", "Sill at Rance Castle", "");
+		ＥＶＣ("シィル／城２", "Sill at Rance Castle", "");
+		ＥＶＣ("シィル／城３", "Sill at Rance Castle", "");
+		ＥＶＣ("シィル／城／汎用", "Sill at Rance Castle", "");
+	}
+	if (no == 19)
+	{
+		ＥＶＣ("サチコ／切り替え１", "エリア", "Family");
+		ＥＶＣ("サチコ／切り替え２", "エリア", "Bathroom");
+		ＥＶＣ("サチコ／切り替え３", "エリア", "Price of a Sachiko");
+		ＥＶＣ("サチコ／切り替え４", "エリア", "Mr. Hiroshi");
+		ＥＶＣ("サチコ／切り替え／父からの手紙", "エリア", "Letter from Dad");
+		ＥＶＣ("サチコ／城１", "城", "New School");
+		ＥＶＣ("サチコ／城汎用", "城", "Rance the Classmate");
+		ＥＶＣ("サチコ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／サチコ", "町歩き", "");
+		ＥＶＣ("サチコ／ＬＶ２０", "Quest: Sachiko's Spring Break", "");
+		ＥＶＣ("１４Ａ／エピローグ", "Quest: Master Author in Tow", "");
+		ＥＶＣ("親心／センターズ／合格", "Quest: Parental Love Invasion", "");
+		ＥＶＣ("父からのプレゼント", "Quest: The Father's Present", "");
+	}
+	if (no == 26)
+	{
+		ＥＶＣ("イージス／切り替え１", "エリア", "Memories from Five Years Ago");
+		ＥＶＣ("イージス／切り替え２", "エリア", "Good at Cooking");
+		ＥＶＣ("イージス／切り替え３", "エリア", "Childlike Lover");
+		ＥＶＣ("イージス／城１", "城", "Forest Room");
+		ＥＶＣ("イージス／城汎用", "城", "Archery Training");
+		ＥＶＣ("イージス／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／イージス", "町歩き", "");
+		ＥＶＣ("イージス／記憶喪失", "Quest: Amnesiac Girl", "");
+		ＥＶＣ("イージス／エロ", "Quest: Doing Aegis", "");
+	}
+	if (no == 3)
+	{
+		ＥＶＣ("アルカネーゼ／切り替え１", "エリア", "Met a Mysterious Woman");
+		ＥＶＣ("アルカネーゼ／切り替え２", "エリア", "Running");
+		ＥＶＣ("アルカネーゼ／切り替え３", "エリア", "With Sachiko");
+		ＥＶＣ("アルカネーゼ／切り替え４", "エリア", "Comparing Heights");
+		ＥＶＣ("アルカネーゼ／城１", "城", "Basketball");
+		ＥＶＣ("アルカネーゼ／城汎用", "城", "High Jump");
+		ＥＶＣ("アルカネーゼ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／アルカネーゼ", "町歩き", "");
+	}
+	if (no == 23)
+	{
+		ＥＶＣ("クレイン／切り替え１", "エリア", "Rumors of the Menacing Crane");
+		ＥＶＣ("クレイン／切り替え２", "エリア", "Stay By My Side");
+		if (◆ワールド == 3)
+		{
+			ＥＶＣ("クレイン／アンデル情報", "エリア", "Andelmille Info");
+			ＥＶＣ("クレイン／志津香情報", "エリア", "Shizuka Info");
+			ＥＶＣ("クレイン／マリア情報", "エリア", "Maria Info");
+			ＥＶＣ("クレイン／エレノア情報", "エリア", "Elenoa Info");
+			ＥＶＣ("クレイン／ミル情報", "エリア", "Mill Info");
+			ＥＶＣ("クレイン／ノワール情報", "エリア", "Noir Info");
+			ＥＶＣ("クレイン／柚美情報", "エリア", "Yuzumi Info");
+			ＥＶＣ("クレイン／カオル情報", "エリア", "Kaoru Info");
+			ＥＶＣ("クレイン／ウルザ情報", "エリア", "Urza Info");
+			ＥＶＣ("クレイン／カロリア情報", "エリア", "Caloria Info");
+			ＥＶＣ("クレイン／汚染人間情報", "エリア", "Contaminated Info");
+		}
+		ＥＶＣ("クレイン／城１", "城", "Don't Disappear");
+		ＥＶＣ("クレイン／城２", "城", "Students' Secrets");
+		ＥＶＣ("クレイン／城汎用", "城", "The Mystery of the Suit");
+		ＥＶＣ("クレイン／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／クレイン", "町歩き", "");
+		ＥＶＣ("強制恩返し", "Quest: Crane Pays Her Dues", "");
+	}
+	if (no == 31)
+	{
+		ＥＶＣ("メガデス／切り替え１", "エリア", "Underwear");
+		ＥＶＣ("町歩き／メガデス", "町歩き", "");
+		ＥＶＣ("アイスフレーム３人娘", "Quest: The Three Ice Flame Girls", "");
+	}
+	if (no == 14)
+	{
+		ＥＶＣ("セスナ／切り替え１", "エリア", "Good Night");
+		ＥＶＣ("町歩き／セスナ", "町歩き", "");
+		ＥＶＣ("アイスフレーム３人娘", "Quest: The Three Ice Flame Girls", "");
+	}
+	if (no == 59)
+	{
+		ＥＶＣ("プリマ／切り替え１", "エリア", "First Aid Kit");
+		ＥＶＣ("町歩き／プリマ", "町歩き", "");
+		ＥＶＣ("アイスフレーム３人娘", "Quest: The Three Ice Flame Girls", "");
+	}
+	if (no == 55)
+	{
+		ＥＶＣ("コパンドン／切り替え１", "エリア", "Before Birthday: Business Idea");
+		ＥＶＣ("コパンドン／切り替え２", "エリア", "Before Birthday: Number of Kids");
+		ＥＶＣ("コパンドン／城１", "城", "CEO Work");
+		ＥＶＣ("コパンドン／城汎用", "城", "Nap");
+		ＥＶＣ("コパンドン／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／コパンドン", "町歩き", "");
+		ＥＶＣ("コパンドン／エロ", "Quest: Copandon's Birthday", "");
+	}
+	if (no == 33)
+	{
+		ＥＶＣ("０２Ａクルックー初", "Quest: Love Letter for a Kalar (Meeting)", "");
+		ＥＶＣ("０３Ａクルックー遭遇", "Quest: Lion Mind (Meeting)", "");
+		ＥＶＣ("クルックー／切り替え１", "エリア", "Balance Breaker");
+		ＥＶＣ("クルックー／切り替え２", "エリア", "Bible Reading");
+		ＥＶＣ("クルックー／切り替え３", "エリア", "Axe Shell");
+		ＥＶＣ("クルックー／切り替え４", "エリア", "Exorcism");
+		ＥＶＣ("クルックー２／切り替え１", "エリア", "Pope: Happiness");
+		ＥＶＣ("クルックー／城１", "城", "Newspapers are Enough");
+		ＥＶＣ("クルックー／城２", "城", "Let Us Pray");
+		ＥＶＣ("クルックー／城３", "城", "A Day in the Life");
+		ＥＶＣ("クルックー２／城１", "城", "Pope: Shell Collection");
+		ＥＶＣ("クルックー／城汎用／エロ前", "城", "Before Sex: Cleaning");
+		ＥＶＣ("クルックー／城汎用／エロ後", "城", "After Sex: Can't Now");
+		ＥＶＣ("クルックー／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("クルックー２／城汎用／エロ", "城エロ", "Pope");
+		ＥＶＣ("町歩き／クルックー", "町歩き", "");
+		ＥＶＣ("脱衣室の穴", "Quest: Changing Room View", "");
+		if (FA[268] == 1)
+		{
+			ＥＶＣ("法王折檻", "Quest: Punishing the Pope", "");
+		}
+	}
+	if (no == 54)
+	{
+		ＥＶＣ("リア／切り替え１", "エリア", "Business Back Home");
+		ＥＶＣ("リア／切り替え２", "エリア", "Harumaki");
+		ＥＶＣ("リア／切り替え３", "エリア", "Changing in the Dungeon");
+		ＥＶＣ("リア／城１", "城", "A Big Embassy");
+		ＥＶＣ("リア／城２", "城", "Lia's Work");
+		ＥＶＣ("リア／城汎用", "城", "Busy");
+		ＥＶＣ("リア／城汎用／リア付き", "城", "Play");
+		ＥＶＣ("リア／城／セックス", "城エロ", "First");
+		ＥＶＣ("リア／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／リア", "町歩き", "");
+		ＥＶＣ("リアの贖罪／エピローグ", "Quest: Lia's Atonement", "");
+	}
+	if (no == 34)
+	{
+		ＥＶＣ("マリス／切り替え１", "エリア", "Sneeze");
+		ＥＶＣ("マリス／切り替え２", "エリア", "Performance Evaluation");
+		ＥＶＣ("マリス／城１", "城", "The Power Behind the Throne");
+		ＥＶＣ("マリス／城汎用", "城", "Something Erotic?");
+		ＥＶＣ("マリス／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／マリス", "町歩き", "");
+	}
+	if (no == 6)
+	{
+		ＥＶＣ("チルディ／切り替え１", "エリア", "Leila");
+		ＥＶＣ("チルディ／切り替え２", "エリア", "Letter from Home");
+		ＥＶＣ("チルディ／切り替え４", "エリア", "Milk");
+		ＥＶＣ("チルディ／切り替え／謙信", "エリア", "Kenshin: Triggers with Close Levels");
+		ＥＶＣ("チルディ／城１", "城", "Training");
+		ＥＶＣ("チルディ／城汎用", "城", "Training");
+		ＥＶＣ("チルディ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／チルディ", "町歩き", "");
+		ＥＶＣ("１８Ｃ仙人戦闘／終了", "Quest: Speed Hermit     Clear", "");
+		ＥＶＣ("１８Ｃ仙人戦闘／敗北", "Quest: Speed Hermit     Defeat", "");
+	}
+	if (no == 24)
+	{
+		ＥＶＣ("かなみ／切り替え１", "エリア", "Not Weak!");
+		ＥＶＣ("かなみ／切り替え２", "エリア", "Not Weak! 2");
+		ＥＶＣ("かなみ／城１", "城", "Attic Life");
+		ＥＶＣ("かなみ／城２", "城", "Attic Life 2");
+		ＥＶＣ("かなみ／城３", "城", "Balance Ball");
+		ＥＶＣ("かなみ／城汎用", "城", "Card Tower");
+		ＥＶＣ("町歩き／かなみ", "町歩き", "");
+		ＥＶＣ("忍者食べ頃", "Quest: Ninja Season", "");
+		ＥＶＣ("首切り刀／成功", "Quest: Let's Use the Decapitation Blade!", "");
+		ＥＶＣ("鎧ラソウコウで遊ぶ", "Quest: Let's Play with the Emperor's Armor", "");
+	}
+	if (no == 39)
+	{
+		ＥＶＣ("志津香／出会い", "Dungeon Meeting", "");
+		ＥＶＣ("志津香／切り替え１", "エリア", "Apple");
+		ＥＶＣ("志津香／切り替え２", "エリア", "Nap");
+		ＥＶＣ("志津香／城１", "城", "Cold Shoulder");
+		ＥＶＣ("志津香／城２", "城", "Under the Bed");
+		ＥＶＣ("志津香／城／汎用", "城", "Chased Out");
+		ＥＶＣ("志津香／汎用エロ／特殊", "城エロ", "");
+		ＥＶＣ("町歩き／志津香", "町歩き", "");
+		ＥＶＣ("恋人仙人／エピローグ", "Quest: Love Hermit", "");
+		ＥＶＣ("クリスタルロッド／成功", "Quest: The Crystal Rod", "");
+		ＥＶＣ("鎧オルガリズムで遊ぶ", "Quest: Let's Play with the Orgarhythm", "");
+	}
+	if (no == 29)
+	{
+		ＥＶＣ("マリア／切り替え１", "エリア", "New Clothes");
+		ＥＶＣ("マリア／城１", "城", "No Sex");
+		ＥＶＣ("マリア／城２", "城", "Strange Research");
+		ＥＶＣ("マリア／城／汎用", "城", "Cookies and Tea");
+		ＥＶＣ("マリア／城／記憶無し", "城", "After Change 1");
+		ＥＶＣ("マリア／城／記憶無し／汎用", "城", "After Change 2");
+		ＥＶＣ("マリア／汎用セックス", "城エロ", "");
+		ＥＶＣ("マリア／汎用セックス／記憶無し", "城エロ", "After Change");
+		ＥＶＣ("町歩き／マリア", "町歩き", "");
+		ＥＶＣ("見合い／観光地２", "Quest: Maria's Marriage Meeting", "");
+	}
+	if (no == 43)
+	{
+		ＥＶＣ("ミル／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("ミル／夜這いエロ", "Quest: Late Night with Mill Yorks", "");
+		ＥＶＣ("町歩き／ミル", "町歩き", "");
+	}
+	if (no == 10)
+	{
+		ＥＶＣ("エレノア／切り替え１", "エリア", "A Life's Worth of Sin");
+		ＥＶＣ("エレノア／切り替え２", "エリア", "Boobs");
+		ＥＶＣ("エレノア／汎用セックス", "城エロ", "");
+		ＥＶＣ("町歩き／エレノア", "町歩き", "");
+		ＥＶＣ("エレノア／エロ", "Quest: Her Reason to Live", "");
+	}
+	if (no == 20)
+	{
+		ＥＶＣ("香姫／切り替え１", "エリア", "Hurry and Grooow");
+		ＥＶＣ("香姫／切り替え２", "エリア", "First Aid");
+		ＥＶＣ("香姫／城１", "城", "Kou's Room");
+		ＥＶＣ("香姫／城２／アルカネーゼとコパンドン", "城", "Alkanese, Copandon");
+		ＥＶＣ("香姫／城３／クレインとチルディ", "城", "Crane, Tilde");
+		ＥＶＣ("香姫／城４／キバ子とあてな", "城", "Kibako, Athena");
+		ＥＶＣ("香姫／城５／アタゴとマジック", "城", "Magic, Atago");
+		ＥＶＣ("香姫／城汎用", "城", "Red Bean Soup");
+		ＥＶＣ("汎用エロ／香姫", "城添い寝", "");
+		ＥＶＣ("町歩き／香姫", "町歩き", "");
+		ＥＶＣ("香姫の食事会／前半", "Quest: Kouhime's Tea Party", "");
+	}
+	if (no == 27)
+	{
+		ＥＶＣ("あてな／切り替え１", "エリア", "Personality Changer");
+		ＥＶＣ("あてな／切り替え２", "エリア", "Skin Warmer");
+		ＥＶＣ("あてな／城１", "城", "Pocket Tissues");
+		ＥＶＣ("あてな／城汎用", "城", "Cards");
+		ＥＶＣ("町歩き／あてな２号", "町歩き", "");
+	}
+	if (no == 72)
+	{
+		ＥＶＣ("リセット／切り替え２", "エリア", "With Shizuka");
+		ＥＶＣ("リセット／切り替え３", "エリア", "Arithmetic");
+		ＥＶＣ("リセット／城１", "城", "Here to Play");
+		ＥＶＣ("リセット／城２０", "城", "Origami");
+		ＥＶＣ("リセット／城２", "城", "Pancakes");
+		ＥＶＣ("リセット／城汎用", "城", "Nap Together");
+		ＥＶＣ("汎用エロ／リセット", "城添い寝", "");
+		ＥＶＣ("町歩き／リセット", "町歩き", "");
+	}
+	if (no == 22)
+	{
+		ＥＶＣ("鈴女／切り替え１", "エリア", "Something Sweet");
+		ＥＶＣ("鈴女／切り替え２", "エリア", "Five-tiered Shell");
+		ＥＶＣ("鈴女／切り替え３", "エリア", "Massage");
+		ＥＶＣ("鈴女／切り替え１１", "エリア", "Ghost: No Legs");
+		ＥＶＣ("鈴女／切り替え１２", "エリア", "Ghost: Crook's Exorcism");
+		ＥＶＣ("鈴女／城１", "城", "Ghost: No Sex");
+		ＥＶＣ("鈴女／城汎用", "城", "Ghost: Strange Sense of Time");
+		ＥＶＣ("町歩き／鈴女", "町歩き", "");
+		ＥＶＣ("鈴女／忍法不能治療", "Quest: Ninja Art: Dysfunction Treatment", "");
+		if (FA[268] == 1)
+		{
+			ＥＶＣ("鈴女／ラストエロ", "Quest: The Life Span of a Kunoichi", "");
+			ＥＶＣ("かなみと鈴女", "Quest: The Reason Suzume Lingers", "");
+		}
+	}
+	if (no == 4)
+	{
+		ＥＶＣ("謙信／切り替え１", "エリア", "Gum");
+		ＥＶＣ("謙信／切り替え２", "エリア", "Letter from Ai");
+		ＥＶＣ("謙信／城１", "城", "Cat's Cradle");
+		ＥＶＣ("謙信／城２", "城", "KatsuTora");
+		ＥＶＣ("謙信／城汎用", "城", "Home-cooked by Kenshin");
+		ＥＶＣ("謙信／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／謙信", "町歩き", "");
+		ＥＶＣ("謙信の献身", "Quest: Kenshin's Devotion", "");
+	}
+	if (no == 5)
+	{
+		ＥＶＣ("勝子／切り替え１", "エリア", "In a Hurry");
+		ＥＶＣ("勝虎／切り替え１", "Dungeon Area Switch (KatsuTora Set)", "");
+		ＥＶＣ("勝子／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／勝子", "町歩き", "");
+		ＥＶＣ("御館の乱", "Quest: Siege of Otate", "");
+	}
+	if (no == 38)
+	{
+		ＥＶＣ("虎子／切り替え１", "エリア", "Won Over with Food");
+		ＥＶＣ("勝虎／切り替え１", "Dungeon Area Switch (KatsuTora Set)", "");
+		ＥＶＣ("虎子／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／虎子", "町歩き", "");
+		ＥＶＣ("御館の乱", "Quest: Siege of Otate", "");
+	}
+	if (no == 42)
+	{
+		ＥＶＣ("マジック／切り替え１", "エリア", "Irritated");
+		ＥＶＣ("マジック／切り替え２", "エリア", "Jerky?");
+		ＥＶＣ("マジック／城１", "城", "Magic's Room");
+		ＥＶＣ("マジック／城汎用", "城", "Warm Kotatsu");
+		ＥＶＣ("マジック／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／マジック", "町歩き", "");
+	}
+	if (no == 12)
+	{
+		ＥＶＣ("リズナ／切り替え１", "エリア", "Dirty Body");
+		ＥＶＣ("リズナ／切り替え２", "エリア", "Mill's Envy");
+		ＥＶＣ("リズナ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／リズナ", "町歩き", "");
+		ＥＶＣ("エロテク／Ｃ／エピローグ", "Quest: Erotech Hermit", "");
+	}
+	if (no == 28)
+	{
+		ＥＶＣ("ウルザ／切り替え１", "エリア", "Travel Journal");
+		ＥＶＣ("ウルザ／切り替え２", "エリア", "Matilda's Admiration");
+		ＥＶＣ("ウルザ／城１", "城", "Life with a Kotatsu");
+		ＥＶＣ("ウルザ／初エッチ", "城エロ", "");
+		ＥＶＣ("町歩き／ウルザ", "町歩き", "");
+	}
+	if (no == 67)
+	{
+		ＥＶＣ("ヒカリ／切り替え１", "エリア", "My Prince");
+		ＥＶＣ("ヒカリ／城１", "城", "Cooking?");
+		ＥＶＣ("ヒカリ／城汎用", "城", "Frightening Gaze");
+		ＥＶＣ("ヒカリ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／ヒカリ", "町歩き", "");
+	}
+	if (no == 45)
+	{
+		ＥＶＣ("マホコ／切り替え１", "エリア", "Rice and Natto");
+		ＥＶＣ("マホコ／切り替え２", "エリア", "Sachiko and Natto");
+		ＥＶＣ("マホコ／城１", "城", "Soybean Forest");
+		ＥＶＣ("マホコ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／マホコ", "町歩き", "");
+		ＥＶＣ("収穫／エピローグ／戦闘後", "Quest: Harvesting Season", "");
+		ＥＶＣ("納豆女体盛り", "Quest: Body Natto", "");
+	}
+	if (no == 68)
+	{
+		ＥＶＣ("ビスケッタ／切り替え１", "エリア", "Perfect Maid");
+		ＥＶＣ("ビスケッタ／切り替え２", "エリア", "Different Clothes");
+		ＥＶＣ("ビスケッタ／切り替え３", "エリア", "After Sex 3 Times");
+		ＥＶＣ("ビスケッタ／進入禁止／倉庫", "Too Many Items in Rance Castle Vault", "");
+		ＥＶＣ("ビスケッタ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／ビスケッタ", "町歩き", "");
+		ＥＶＣ("ビスケッタ／迷宮清掃", "Dungeon Cleaning", "");
+		ＥＶＣ("ビスケッタサービス２", "Quest: The Head Maid's School Uniform", "");
+	}
+	if (no == 62)
+	{
+		ＥＶＣ("オノハ／切り替え１", "エリア", "Frightened");
+		ＥＶＣ("オノハ／切り替え２", "エリア", "Getting Used to It?");
+		ＥＶＣ("オノハ／切り替え３", "エリア", "Can Can");
+		ＥＶＣ("オノハ／切り替え４", "エリア", "Of Course She's Going to Cry");
+		ＥＶＣ("汎用エロ／オノハ", "城添い寝", "");
+		ＥＶＣ("町歩き／オノハ", "町歩き", "");
+		ＥＶＣ("狩り場／エピローグ", "Quest: Monster Hunting Ground", "");
+	}
+	if (no == 51)
+	{
+		ＥＶＣ("カロリア／切り替え１", "エリア", "Food");
+		ＥＶＣ("カロリア／城汎用／セックス／貧乳", "城エロ", "Small Boobs");
+		ＥＶＣ("カロリア／城汎用／セックス／巨乳", "城エロ", "Huge Boobs");
+		ＥＶＣ("町歩き／カロリア", "町歩き", "");
+		ＥＶＣ("光るチンコ", "Quest: Shining Cock", "");
+		ＥＶＣ("光るチンコ／乳", "Quest: Shining Cock (Boobs)", "");
+	}
+	if (no == 15)
+	{
+		ＥＶＣ("ユラン／切り替え１", "エリア", "Tilde's Challenge");
+		ＥＶＣ("ユラン／切り替え２", "エリア", "New Life");
+		ＥＶＣ("ユラン／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／ユラン", "町歩き", "");
+	}
+	if (no == 73)
+	{
+		ＥＶＣ("カフェ／切り替え１", "エリア", "Discussing Chaos");
+		ＥＶＣ("カフェ／城１", "城", "Overprotective Chaos");
+		ＥＶＣ("カフェ／城／汎用", "城", "Game");
+		ＥＶＣ("町歩き／カフェ", "町歩き", "");
+	}
+	if (no == 41)
+	{
+		ＥＶＣ("カパーラ／切り替え１", "エリア", "Boyfriend");
+		ＥＶＣ("カパーラ／切り替え２", "エリア", "Selfish");
+		ＥＶＣ("カパーラ／城１", "城", "I'm an Idol");
+		ＥＶＣ("カパーラ／城２", "城", "I Got Confessed To");
+		ＥＶＣ("カパーラ／城／汎用", "城", "High Five");
+		ＥＶＣ("カパーラ／汎用セックス", "城エロ", "");
+		ＥＶＣ("町歩き／カパーラ", "町歩き", "");
+	}
+	if (no == 57)
+	{
+		ＥＶＣ("メグ／切り替え１", "エリア", "Milkcake");
+		ＥＶＣ("メグ／切り替え２", "エリア", "The Terror of Meg Space-Time");
+		ＥＶＣ("メグ／切り替え３", "エリア", "Balance Breaker");
+		ＥＶＣ("メグ／初エッチ", "城エロ", "First");
+		ＥＶＣ("メグ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／メグ", "町歩き", "");
+		ＥＶＣ("リラックスバスト／エピローグ", "Quest: Relaxing Bust", "");
+	}
+	if (no == 70)
+	{
+		ＥＶＣ("キャロリ／切り替え１", "エリア", "Foraging");
+		ＥＶＣ("キャロリ／城１", "城", "Discussing Kaito");
+		ＥＶＣ("キャロリ／城汎用", "城", "Ero Talk");
+		ＥＶＣ("キャロリ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／キャロリ", "町歩き", "");
+	}
+	if (no == 50)
+	{
+		ＥＶＣ("キバ子／切り替え", "エリア", "Food Present");
+		ＥＶＣ("キバ子／切り替え２", "エリア", "Beautiful Present");
+		ＥＶＣ("キバ子／切り替え３", "エリア", "Stay");
+		ＥＶＣ("キバ子／城１", "城", "All Kinds of Presents");
+		ＥＶＣ("キバ子／城／汎用", "城", "Sunbathing");
+		ＥＶＣ("キバ子／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／キバ子", "町歩き", "");
+		ＥＶＣ("暴れん坊／ボス／戦闘後", "Quest: Wild Child of Ifo", "");
+		ＥＶＣ("危険なフェラチオ", "Quest: Dangerous Fellatio", "");
+	}
+	if (no == 58)
+	{
+		ＥＶＣ("アタゴ／切り替え１", "エリア", "With Kibako");
+		ＥＶＣ("アタゴ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／アタゴ", "町歩き", "");
+		ＥＶＣ("マカット酒場", "Quest: Days at the Macatt Bar", "");
+	}
+	if (no == 7)
+	{
+		ＥＶＣ("アームズ／切り替え１", "エリア", "Your Type");
+		ＥＶＣ("アームズ／切り替え２", "エリア", "Target");
+		ＥＶＣ("アームズ／城１", "城", "Arm Wrestling");
+		ＥＶＣ("アームズ／城汎用", "城", "Peace");
+		ＥＶＣ("アームズ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／アームズ", "町歩き", "");
+	}
+	if (no == 32)
+	{
+		ＥＶＣ("ジーマ／切り替え１", "エリア", "Ego");
+		ＥＶＣ("ジーマ／切り替え２", "エリア", "Squishy");
+		ＥＶＣ("ジーマ／城１", "城", "Recruitment Posters");
+		ＥＶＣ("ジーマ／城汎用", "城", "I Want a Maid");
+		ＥＶＣ("ジーマ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／ジーマ", "町歩き", "");
+	}
+	if (no == 40)
+	{
+		ＥＶＣ("アテン／切り替え１", "エリア", "No Motivation");
+		ＥＶＣ("アテン／切り替え２", "エリア", "Manga");
+		ＥＶＣ("アテン／城１", "城", "Storage Room Request");
+		ＥＶＣ("アテン／城汎用", "城", "Manga, Manga");
+		ＥＶＣ("アテン／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／アテン", "町歩き", "");
+	}
+	if (no == 48)
+	{
+		ＥＶＣ("たま／切り替え１", "エリア", "Stripped");
+		ＥＶＣ("たま／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／たま", "町歩き", "");
+	}
+	if (no == 56)
+	{
+		ＥＶＣ("フロストバイン／切り替え１", "エリア", "Old Lady Flag");
+		ＥＶＣ("町歩き／フロストバイン", "町歩き", "");
+	}
+	if (no == 71)
+	{
+		ＥＶＣ("サーナキア／切り替え１", "エリア", "Hard Armor");
+		ＥＶＣ("サーナキア／切り替え２", "エリア", "Knight & Sweets");
+		ＥＶＣ("サーナキア／切り替え３", "エリア", "Kenshin");
+		ＥＶＣ("サーナキア／城１", "城", "Gate Guard");
+		ＥＶＣ("サーナキア／城２", "城", "Garrison Recruits");
+		ＥＶＣ("サーナキア／城汎用", "城", "Kiss");
+		ＥＶＣ("サーナキア／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／サーナキア", "町歩き", "");
+	}
+	if (no == 47)
+	{
+		ＥＶＣ("マチルダ／切り替え１", "エリア", "Operation Food Stealing");
+		ＥＶＣ("マチルダ／切り替え２", "エリア", "Shizuka, an Ally");
+		ＥＶＣ("マチルダ／切り替え３", "エリア", "Souvenir");
+		ＥＶＣ("マチルダ／城１", "城", "Occupied Gym");
+		ＥＶＣ("マチルダ／城２", "城", "Red Akaider");
+		ＥＶＣ("マチルダ／城汎用", "城", "Entrance Scene");
+		ＥＶＣ("マチルダ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／マチルダ", "町歩き", "");
+	}
+	if (no == 80)
+	{
+		ＥＶＣ("キサラ／エリア切り替え１", "エリア", "Economics Book");
+		ＥＶＣ("キサラ／エリア切り替え２", "エリア", "Card Sorcery");
+		ＥＶＣ("キサラ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／キサラ", "町歩き", "");
+	}
+	if (no == 81)
+	{
+		ＥＶＣ("レベッカ／エリア切り替え１", "エリア", "Roasted Tea");
+		ＥＶＣ("レベッカ／エリア切り替え２", "エリア", "With Athena");
+		ＥＶＣ("レベッカ／城汎用／セックス", "城エロ", "");
+		ＥＶＣ("町歩き／レベッカ", "町歩き", "");
+	}
+	if (no == 21)
+	{
+		ＥＶＣ("ロッキー／切り替え１", "エリア", "Caretaker");
+		ＥＶＣ("汎用エロ／ロッキー", "城添い寝", "");
+		ＥＶＣ("町歩き／ロッキー", "町歩き", "");
+	}
+	if (no == 16)
+	{
+		ＥＶＣ("汎用エロ／バーナード", "城添い寝", "");
+		ＥＶＣ("町歩き／バーナード", "町歩き", "");
+		ＥＶＣ("双焔あばれ旅／エピローグ", "Quest: Two Flames' Blazing Journey", "");
+	}
+	if (no == 49)
+	{
+		ＥＶＣ("汎用エロ／アレキサンダー", "城添い寝", "");
+		ＥＶＣ("町歩き／アレキサンダー", "町歩き", "");
+		ＥＶＣ("双焔あばれ旅／エピローグ", "Quest: Two Flames' Blazing Journey", "");
+	}
+	if (no == 11)
+	{
+		ＥＶＣ("ウィチタ／切り替え１", "エリア", "Discussing Gandhi");
+		ＥＶＣ("町歩き／ウィチタ", "町歩き", "");
+	}
+	if (no == 13)
+	{
+		ＥＶＣ("町歩き／のぞみ", "町歩き", "");
+	}
+	if (no == 46)
+	{
+		ＥＶＣ("町歩き／シトモネ", "町歩き", "");
+	}
+	if (no == 25)
+	{
+		ＥＶＣ("汎用エロ／カーマ", "城添い寝", "");
+		ＥＶＣ("町歩き／カーマ", "町歩き", "");
+	}
+	if (no == 17)
+	{
+		ＥＶＣ("町歩き／ノワール", "町歩き", "");
+	}
+	if (no == 18)
+	{
+		ＥＶＣ("町歩き／トマト", "町歩き", "");
+	}
+	if (no == 35)
+	{
+		ＥＶＣ("町歩き／セル", "町歩き", "");
+		ＥＶＣ("聖職者として", "Quest: As a Priestess...", "");
+	}
+	if (no == 36)
+	{
+		ＥＶＣ("町歩き／ノア", "町歩き", "");
+	}
+	if (no == 9)
+	{
+		ＥＶＣ("てる／切り替え１", "エリア", "How You Fight");
+		ＥＶＣ("町歩き／てる", "町歩き", "");
+		ＥＶＣ("てる／城汎用／セックス", "城エロ", "");
+	}
+	if (no == 85)
+	{
+		ＥＶＣ("ちぬ／切り替え１", "エリア", "With Kibako");
+		ＥＶＣ("ちぬ／城１", "城", "Hooo");
+		ＥＶＣ("ちぬ／城汎用", "城", "Niii");
+		ＥＶＣ("ちぬ／城汎用／セックス", "城エロ", "");
+	}
+	if (no == 86)
+	{
+		ＥＶＣ("きく／切り替え１", "エリア", "");
+		ＥＶＣ("きく／城汎用／セックス", "城エロ", "");
+	}
+	if (no == 44)
+	{
+		ＥＶＣ("町歩き／エミ", "町歩き", "");
+	}
+	if (no == 53)
+	{
+		ＥＶＣ("クマ／切り替え１", "エリア", "Get Down");
+		ＥＶＣ("クマ／切り替え２", "エリア", "Bear Soup");
+		ＥＶＣ("汎用エロ／松クマ", "城添い寝", "");
+		ＥＶＣ("町歩き／松クマ", "町歩き", "");
+		ＥＶＣ("くま殺合／戦闘後", "Quest: Bear Death Match", "");
+		ＥＶＣ("続・くま殺合／戦闘後", "Quest: Bear Death Match Cont.", "");
+	}
+	if (no == 30)
+	{
+		ＥＶＣ("柚美／切り替え１", "エリア", "Comet");
+		ＥＶＣ("町歩き／柚美", "町歩き", "");
+	}
+	if (no == 60)
+	{
+		ＥＶＣ("町歩き／メリム", "町歩き", "");
+	}
+	if (no == 61)
+	{
+		ＥＶＣ("アールコート／切り替え１", "エリア", "Screwing Up");
+		ＥＶＣ("町歩き／アールコート", "町歩き", "");
+		ＥＶＣ("マルグリッド９／エロポピンズ３／戦闘後", "Quest: Malgrid Dungeon 9th Stratum", "");
+	}
+	if (no == 52)
+	{
+		ＥＶＣ("カオル／切り替え１", "エリア", "Jujutsu");
+		ＥＶＣ("町歩き／カオル", "町歩き", "");
+	}
+	LOG("\n");
+}
+
+void ＥＶＣ(string イベント名, string 表記名, string 補足名)
+{
+	if (FA[268] == 0)
+	{
+		補足名 = "";
+	}
+	if (補足名 != "")
+	{
+		補足名 = "／" + 補足名;
+	}
+	if (表記名 == "エリア")
+	{
+		表記名 = "Dungeon Event" + 補足名;
+	}
+	if (表記名 == "城")
+	{
+		表記名 = "Castle Event" + 補足名;
+	}
+	if (表記名 == "城エロ")
+	{
+		表記名 = "Castle Ero" + 補足名;
+	}
+	if (表記名 == "城添い寝")
+	{
+		表記名 = "Castle Cuddles" + 補足名;
+	}
+	if (表記名 == "町歩き")
+	{
+		表記名 = "A Day in Cidade" + 補足名;
+	}
+	if (EV(イベント名, -2147483648) == true)
+	{
+		LOG("　　●" + 表記名 + "\n");
+		return;
+	}
+	LOG("　　○" + 表記名 + "\n");
+}
+
+void Ｃログ情報／アイテム(int ii)
+{
+	int loop = 0;
+	int a1 = 0;
+	int a2 = 0;
+	string ▲文字列 = "";
+	LOG("　［" + Ｉ名前(ii, "") + "］\n");
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (Ｉ機能(ii, loop, -1) != 0)
+		{
+			a1 = Ｉ機能(ii, loop, -1);
+			a2 = Ｉ効果(ii, loop, -1);
+			if (機能文字列(a1, a2) != "")
+			{
+				if (loop == 1)
+				{
+					▲文字列 = "1";
+				}
+				if (loop == 2)
+				{
+					▲文字列 = "2";
+				}
+				if (loop == 3)
+				{
+					▲文字列 = "3";
+				}
+				if (loop == 4)
+				{
+					▲文字列 = "4";
+				}
+				if (loop == 5)
+				{
+					▲文字列 = "5";
+				}
+				LOG("　　　%s：%s\n" % ▲文字列 % 機能文字列(a1, a2));
+			}
+		}
+	}
+}
+
+void 体内アイテム表示(lint no)
+{
+	if (no == 0)
+	{
+		return;
+	}
+	LOG("          →Absorbed Item ");
+	if (no == 269)
+	{
+		LOG("Manga Meat Bone (HP rank C)\n");
+	}
+	if (no == 270)
+	{
+		LOG("Manga Meat (HP rank B)\n");
+	}
+	if (no == 271)
+	{
+		LOG("Rabbit Stew (HP rank A)\n");
+	}
+	if (no == 323)
+	{
+		LOG("Health Up Set (HP rank S)\n");
+	}
+	if (no == 272)
+	{
+		LOG("Wooden Bear (ATK rank C)\n");
+	}
+	if (no == 273)
+	{
+		LOG("Steel Bear (ATK rank B)\n");
+	}
+	if (no == 274)
+	{
+		LOG("Solid Gold Bear (ATK rank A)\n");
+	}
+	if (no == 324)
+	{
+		LOG("Attack Up Set (ATK rank S)\n");
+	}
+	if (no == 278)
+	{
+		LOG("Well-Boned Fish (MAG rank C)\n");
+	}
+	if (no == 279)
+	{
+		LOG("Dora Cat's Bell (MAG rank B)\n");
+	}
+	if (no == 280)
+	{
+		LOG("Common Seahorse (MAG rank A)\n");
+	}
+	if (no == 326)
+	{
+		LOG("Magic Up Set (MAG rank S)\n");
+	}
+	if (no == 275)
+	{
+		LOG("Shiitake (DEF rank C)\n");
+	}
+	if (no == 276)
+	{
+		LOG("Protective Marimo (DEF rank B)\n");
+	}
+	if (no == 277)
+	{
+		LOG("Protective God (DEF rank A)\n");
+	}
+	if (no == 325)
+	{
+		LOG("Defense Up Set (DEF rank S)\n");
+	}
+	if (no == 281)
+	{
+		LOG("Stomachache Spirit (RES rank C)\n");
+	}
+	if (no == 282)
+	{
+		LOG("Cowlick (RES rank B)\n");
+	}
+	if (no == 283)
+	{
+		LOG("Love Pet (RES rank A)\n");
+	}
+	if (no == 327)
+	{
+		LOG("Resistance Up Set (RES rank S)\n");
+	}
+	if (no == 290)
+	{
+		LOG("Inadequate Clock (SPD rank C)\n");
+	}
+	if (no == 291)
+	{
+		LOG("Quick, Strange Bug (SPD rank B)\n");
+	}
+	if (no == 292)
+	{
+		LOG("Rocket Engine (SPD rank A)\n");
+	}
+	if (no == 330)
+	{
+		LOG("Speed Up Set (SPD rank S)\n");
+	}
+	if (no == 287)
+	{
+		LOG("Ritchie Rod (ACC rank C)\n");
+	}
+	if (no == 288)
+	{
+		LOG("Piggyback Pal (ACC rank B)\n");
+	}
+	if (no == 289)
+	{
+		LOG("Moja Doll (ACC rank A)\n");
+	}
+	if (no == 329)
+	{
+		LOG("Accuracy Up Set (ACC rank S)\n");
+	}
+	if (no == 284)
+	{
+		LOG("Miss Stake (EVA rank C)\n");
+	}
+	if (no == 285)
+	{
+		LOG("Nimble Feather (EVA rank B)\n");
+	}
+	if (no == 286)
+	{
+		LOG("Dodgy Soup (EVA rank A)\n");
+	}
+	if (no == 328)
+	{
+		LOG("Evasion Up Set (EVA rank S)\n");
+	}
+	if (no == 293)
+	{
+		LOG("Scratched-Up CD (CRT rank C)\n");
+	}
+	if (no == 294)
+	{
+		LOG("Totally Broken Radio (CRT rank B)\n");
+	}
+	if (no == 295)
+	{
+		LOG("Watch & Game (CRT rank A)\n");
+	}
+	if (no == 331)
+	{
+		LOG("Critical Up Set (CRT rank S)\n");
+	}
+	if (no == 296)
+	{
+		LOG("Melting Ice (STN rank C)\n");
+	}
+	if (no == 297)
+	{
+		LOG("Prizeless Snack (STN rank B)\n");
+	}
+	if (no == 298)
+	{
+		LOG("Shockwave Alberto Belt (STN rank A)\n");
+	}
+	if (no == 332)
+	{
+		LOG("Stun Up Set (STN rank S)\n");
+	}
+	if (no == 299)
+	{
+		LOG("Stretchy Noodles (RSL rank C)\n");
+	}
+	if (no == 300)
+	{
+		LOG("Canned Air (RSL rank B)\n");
+	}
+	if (no == 301)
+	{
+		LOG("Defiance Crown (RSL rank A)\n");
+	}
+	if (no == 333)
+	{
+		LOG("Resilience Up Set (RSL rank S)\n");
+	}
+}
+
+lint メイクキャラ台詞配列番号取得(int iic)
+{
+	int loop = 0;
+	for (loop = 1; loop < 20; ++loop)
+	{
+		if (◆台詞対象者[loop] == iic)
+		{
+			return loop;
+		}
+	}
+	for (loop = 1; loop < 20; ++loop)
+	{
+		if (◆台詞対象者[loop] == 0)
+		{
+			◆台詞対象者[loop] = iic;
+			return loop;
+		}
+	}
+	for (loop = 1; loop < 20; ++loop)
+	{
+		if (Ｃ番号(◆台詞対象者[loop], -1) != 2)
+		{
+			◆台詞対象者[loop] = 0;
+		}
+	}
+	for (loop = 1; loop < 20; ++loop)
+	{
+		if (◆台詞対象者[loop] == 0)
+		{
+			◆台詞対象者[loop] = iic;
+			return loop;
+		}
+	}
+	return 0;
+}
+
+lint Ｃかっこよさ(int iic)
+{
+	int aa = 0;
+	aa += Ｉ機能取得(Ｃ武器(iic, -1), 42);
+	aa += Ｉ機能取得(Ｃ防具(iic, -1), 42);
+	aa += Ｉ機能取得(Ｃ持ち物(iic, -1), 42);
+	return aa;
+}
+
+void イベントでモルルン発動(int no)
+{
+	int iic = Ｃ番号取得(no);
+	if (Ｑ状態(◆iiq, -1) == 2)
+	{
+		汎用モルルン影響の表記／クリア済み(iic);
+		return;
+	}
+	if (FA[327] == 1)
+	{
+		汎用モルルン影響の表記／ワールド違い(iic);
+		return;
+	}
+	if (◆ワールド > 1)
+	{
+		汎用モルルン影響の表記／ワールド違い(iic);
+		return;
+	}
+	if (Ｃ転生回数(iic, -1) == 10)
+	{
+		汎用モルルン影響の表記／影響無し(iic);
+		return;
+	}
+	if (Ｑ状態(◆iiq, -1) != 2)
+	{
+		汎用モルルン影響の表記(no, 0);
+		Ｃレベルドレイン(iic, 0);
+		if (no == 22)
+		{
+			Ｃスキル枠キープ数(iic, 0);
+			ＣＳ追加(iic, 366, 1);
+		}
+	}
+}
+
+void 汎用モルルン影響の表記(int no, int iic)
+{
+	if (no != 0)
+	{
+		iic = Ｃ番号取得(no);
+	}
+	if (no == 0)
+	{
+		no = Ｃ番号(iic, -1);
+	}
+	int ▲生成キャラ = 0;
+	if (Ｃ番号(iic, -1) == 2)
+	{
+		▲生成キャラ = 1;
+	}
+	if (Ｃ転生回数(iic, -1) >= 10 && ◆ワールド != 3)
+	{
+		セリフ／総合(iic);
+		'Rance\'s Abstinence Morurun curse activates.' A;
+		'However, ' S(Ｃ短縮名前(iic, ""));
+		' has already been repeatedly exposed to it.' R;
+		'No effect due to developed immunity.' AA;
+		return;
+	}
+	if (Ｃ転生回数(iic, -1) == 0)
+	{
+		セリフ／総合(iic);
+		'Rance\'s Abstinence Morurun curse activates.' R;
+		S(Ｃ短縮名前(iic, ""));
+		' dropped to LV 1.' R;
+		'Initial skill points +2.' AA;
+		if (Ｃオプション(iic, -1) != 0)
+		{
+			セリフ／総合(iic);
+			S(Ｃ短縮名前(iic, ""));
+			'\'s equipped ' S(Ｉ名前(Ｃオプション(iic, -1), ""));
+			' disappeared and its effect was absorbed.' AA;
+			if (Ｃ体内特殊アイテムの取得枠の有無(iic) == 0)
+			{
+				'■Special items' R;
+				'5 special items have already been absorbed.' R;
+				'If the next item is of a higher rank, it will replace a previously absorbed item\'s effect.' AA;
+			}
+		}
+		顔表示(0, 1, 100);
+	}
+	if (Ｃ転生回数(iic, -1) >= 1)
+	{
+		セリフ／総合(iic);
+		'Rance\'s Abstinence Morurun curse activates.' R;
+		if (Ｃ初期／スキルポイント(iic, -1) <= 8)
+		{
+			'Initial skill points +2.';
+		}
+		AA();
+		S(Ｃ短縮名前(iic, ""));
+		' has gained resistance to the curse and will need a higher level to fool around with Rance again.' A;
+		if (Ｃオプション(iic, -1) != 0)
+		{
+			セリフ／総合(iic);
+			S(Ｃ短縮名前(iic, ""));
+			'\'s equipped ' S(Ｉ名前(Ｃオプション(iic, -1), ""));
+			' disappeared and its effect was absorbed.' AA;
+			if (Ｃ体内特殊アイテムの取得枠の有無(iic) == 0)
+			{
+				'■Special items' R;
+				'5 special items have already been absorbed.' R;
+				'If the next item is of a higher rank, it will replace a previously absorbed item\'s effect.' AA;
+			}
+		}
+		顔表示(0, 1, 100);
+	}
+	MM[37] = 1;
+}
+
+void 汎用モルルン影響の表記／クリア済み(lint iic)
+{
+	ＳＡＤＶ("■This quest is already cleared.", "■So despite what the text says,", "■" + Ｃ短縮名前(iic, "") + " will not be affected by the Morurun curse.");
+}
+
+void 汎用モルルン影響の表記／ワールド違い(lint iic)
+{
+	ＳＡＤＶ("■After changing worlds,", "■despite what the text says,", "■" + Ｃ短縮名前(iic, "") + " will not be affected by the Morurun curse.");
+}
+
+void 汎用モルルン影響の表記／影響無し(lint iic)
+{
+	ＳＡＤＶ("■This character has a resistance to the Morurun curse.", "■Despite what the text says,", "■" + Ｃ短縮名前(iic, "") + " will not be affected by the Morurun curse.");
+}
+
+void Ｃレベルドレイン(int iic, int fg)
+{
+	lint loop = 0;
+	lint aa = 0;
+	lint iino = 0;
+	lint ii = 0;
+	lint re = 0;
+	lint no = Ｃ番号(iic, -1);
+	LOG_TADA("■レベルドレイン　" + Ｃ名前(iic, "") + "\n");
+	if (fg == 0)
+	{
+		if (Ｃ性別(iic, -1) == 2 && ＣＳ有無(iic, 373, 0) == 0 && ＣＳ有無(iic, 442, 0) == 0)
+		{
+			FA[96]++;
+		}
+		Ｃ転生回数(iic, Ｃ転生回数(iic, -1) + 1);
+		Ｃ初期／スキルポイント(iic, Ｃ初期／スキルポイント(iic, -1) + 2);
+		string 文字列 = "";
+		for (; ; )
+		{
+			if (ＣＳ有無(iic, 373, 0) != 0)
+			{
+				文字列 = "cuddled with Rance for the " + Numbereth(Ｃ転生回数(iic, -1)) + " time";
+				break;
+			}
+			if (ＣＳ有無(iic, 442, 0) != 0)
+			{
+				文字列 = "spent the night with Rance for the " + Numbereth(Ｃ転生回数(iic, -1)) + " time";
+				break;
+			}
+			if (Ｃ性別(iic, -1) != 2)
+			{
+				文字列 = "spent the night with Rance for the " + Numbereth(Ｃ転生回数(iic, -1)) + " time";
+				break;
+			}
+			文字列 = "had sex with Rance for the " + Numbereth(Ｃ転生回数(iic, -1)) + " time";
+			break;
+		}
+		if (Ｃ性別(iic, -1) == 2 && Ｃ転生回数(iic, -1) == 1)
+		{
+			if (no == 19)
+			{
+				文字列 = "had her virginity taken";
+			}
+		}
+		LOG("\n");
+		LOG("・%s %s\n" % Ｃ名前(iic, "") % 文字列);
+		if (ＣＬＶ(iic, -1) == ＣＬＶ最大(iic, -1))
+		{
+			aa = 3;
+			if (Ｃ転生回数(iic, -1) >= 5)
+			{
+				aa = 10;
+			}
+			ＣＬＶ最大(iic, ＣＬＶ最大(iic, -1) + aa);
+			LOG("    Talent cap +%s (Sex with Rance effect)\n" % string3(aa));
+		}
+		if (Ｃオプション(iic, -1) != 0)
+		{
+			ii = Ｃオプション(iic, -1);
+			re = Ｃ体内特殊アイテムの取得処理(iic, ii);
+			if (re == 1)
+			{
+				LOG("    Absorbed Item: %s\n" % Ｉ名前(ii, ""));
+			}
+			ii = Ｃアイテム外す(iic, 21);
+			Ｉ初期化(ii);
+		}
+		if (Ｃ転生回数(iic, -1) == 1)
+		{
+			■次の転生ＬＶ(iic, 0, "再計算");
+			ＣＬＶ(iic, 1);
+			ＣＥＸＰ(iic, 0);
+			LOG("    Went down to LV 1\n");
+			Ｃスキルドレイン(iic);
+			LOG("    Skills were reset\n");
+		}
+		if (Ｃ転生回数(iic, -1) >= 2)
+		{
+			■次の転生ＬＶ(iic, 0, "再計算");
+			ＣＬＶ(iic, ＣＬＶ(iic, -1) - 5);
+			ＣＥＸＰ(iic, 0);
+			LOG("    Lost a few levels (Current LV: %s)\n" % string3(ＣＬＶ(iic, -1)));
+			if (ＣＳ有無(iic, 487, 0) != 0)
+			{
+				if (Ｃ転生回数(iic, -1) < 6)
+				{
+					Ｃスキルポイント(iic, Ｃスキルポイント(iic, -1) + 2);
+					LOG("    2 skill points\n");
+				}
+				ＣＦＡ(iic, 33, ＣＦＡ(iic, 33, -1) + 5);
+				LOG("    Skill points won't increase until LV %s\n" % string3(ＣＬＶ(iic, -1) + 5));
+				スキル／モルルン被害者追加(iic);
+				Ｃ再計算(iic);
+			}
+			if (ＣＳ有無(iic, 487, 0) == 0)
+			{
+				Ｃスキルドレイン(iic);
+				LOG("    Skills were reset\n");
+			}
+		}
+	}
+	if (fg == 1)
+	{
+		ＣＬＶ(iic, 1);
+		ＣＥＸＰ(iic, 0);
+		Ｃスキルドレイン(iic);
+	}
+}
+
+void Ｃスキルドレイン(int iic)
+{
+	int loop = 0;
+	int aa = 0;
+	int iino = 0;
+	int ii = 0;
+	ＣＦＡ(iic, 38, 0);
+	ＣＦＡ(iic, 39, 0);
+	ＣＦＡ(iic, 40, 0);
+	ＣＦＡ(iic, 41, 0);
+	ＣＦＡ(iic, 42, 0);
+	ＣＦＡ(iic, 43, 0);
+	ＣＦＡ(iic, 44, 0);
+	ＣＦＡ(iic, 45, 0);
+	aa = Ｃ最大スキルポイント取得(iic);
+	Ｃスキルポイント(iic, aa);
+	Ｃ[iic].最終取得スキル番号 = 0;
+	Ｃ[iic].最終取得スキル番号に使ったスキルポイント = 0;
+	int ▲従魔スキル = 0;
+	for (loop = 1; loop < 21; ++loop)
+	{
+		if (ＣＳ番号(iic, loop, -1) == 321)
+		{
+			▲従魔スキル = 1;
+		}
+	}
+	Ｃ生成／キャラデータ(iic, 0, "スキル");
+	if (▲従魔スキル == 1)
+	{
+		ＣＳ追加(iic, 321, 1);
+	}
+	if (ＣＦＡ(iic, 4, -1) == 2)
+	{
+		ＣＳ追加(iic, 357, 0);
+	}
+	if (ＣＦＡ(iic, 4, -1) == 3)
+	{
+		ＣＳ追加(iic, 358, 0);
+	}
+	if (ＣＦＡ(iic, 4, -1) == 4)
+	{
+		ＣＳ追加(iic, 359, 0);
+	}
+	if (ＣＦＡ(iic, 4, -1) == 5)
+	{
+		ＣＳ追加(iic, 360, 0);
+	}
+	if (ＣＦＡ(iic, 5, -1) == 1)
+	{
+		ＣＳ追加(iic, 311, 0);
+	}
+	if (ＣＦＡ(iic, 36, -1) == 7)
+	{
+		ＣＳ追加(iic, 312, 0);
+	}
+	if (ＣＦＡ(iic, 15, -1) != 0)
+	{
+		ＣＳ追加(iic, ＣＦＡ(iic, 15, -1), 0);
+	}
+	スキル／モルルン被害者追加(iic);
+	Ｃ登録スキル全解除(iic);
+	Ｃ再計算(iic);
+	Ｃ補給(iic);
+}
+
+void スキル／モルルン被害者追加(int iic)
+{
+	int iis = 0;
+	if (Ｃ番号(iic, -1) == 1)
+	{
+		return;
+	}
+	if (◆ワールド != 3 && Ｃ転生回数(iic, -1) > 10)
+	{
+		Ｃ転生回数(iic, 10);
+		ＣＳ削除(iic, 566);
+	}
+	if (Ｃ転生回数(iic, -1) == 1)
+	{
+		ＣＳ追加(iic, 376, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 2)
+	{
+		ＣＳ削除(iic, 376);
+		ＣＳ追加(iic, 377, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 3)
+	{
+		ＣＳ削除(iic, 377);
+		ＣＳ追加(iic, 378, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 4)
+	{
+		ＣＳ削除(iic, 378);
+		ＣＳ追加(iic, 379, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 5)
+	{
+		ＣＳ削除(iic, 379);
+		ＣＳ追加(iic, 380, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 6)
+	{
+		ＣＳ削除(iic, 380);
+		ＣＳ追加(iic, 381, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 7)
+	{
+		ＣＳ削除(iic, 381);
+		ＣＳ追加(iic, 483, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 8)
+	{
+		ＣＳ削除(iic, 483);
+		ＣＳ追加(iic, 484, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 9)
+	{
+		ＣＳ削除(iic, 484);
+		ＣＳ追加(iic, 485, 0);
+	}
+	if (Ｃ転生回数(iic, -1) == 10)
+	{
+		ＣＳ削除(iic, 485);
+		ＣＳ追加(iic, 486, 0);
+	}
+	if (Ｃ転生回数(iic, -1) > 10)
+	{
+		ＣＳ削除(iic, 486);
+		ＣＳ追加(iic, 566, 0);
+	}
+}
+
+lint Ｃ最大スキルポイント取得(lint iic)
+{
+	lint vva = 0;
+	lint aa = 0;
+	vva = ＣＬＶ(iic, -1) - 1;
+	aa = Ｃ転生回数(iic, -1);
+	if (aa > 5)
+	{
+		aa = 5;
+	}
+	vva += aa * 2;
+	aa = Ｃ城ボーナス回数(iic, -1);
+	if (aa > 3)
+	{
+		aa = 3;
+	}
+	vva += aa;
+	if (ＣＦＡ(iic, 37, -1) == 1)
+	{
+		vva++;
+	}
+	if (ＣＦＡ(iic, 36, -1) == 7)
+	{
+		vva += 10;
+		ＣＦＡ(iic, 7, 1);
+	}
+	if (ＣＳ有無(iic, 351, 0) != 0)
+	{
+		vva += 10;
+	}
+	ＣＦＡ(iic, 33, 0);
+	return vva;
+}
+
+lint 漫遊キャラ取得()
+{
+	int no = 0;
+	int aa = 0;
+	no = 84;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／パステル", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 27;
+	if (Ｃ有無(no) != 0 && EV("町歩き／あてな２号", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 60;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／メリム", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 72;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／リセット", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 42;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／マジック", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 3;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／アルカネーゼ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 10;
+	aa = 0;
+	if (◆プラスキット == 0 && ◆ワールド == 3)
+	{
+		aa = 1;
+	}
+	if (クリア確認(149) == 1)
+	{
+		aa = 1;
+	}
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && aa == 1 && EV("町歩き／エレノア", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 24;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && FA[76] == 0 && EV("町歩き／かなみ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 23;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／クレイン", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 33;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／クルックー", -2147483648) == false && クリア確認(49) == 1)
+	{
+		return no;
+	}
+	no = 68;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ビスケッタ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 4;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／謙信", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 55;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／コパンドン", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 22;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／鈴女", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 19;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／サチコ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 54;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／リア", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 26;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／イージス", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 47;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／マチルダ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 20;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／香姫", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 17;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ノワール", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 15;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ユラン", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 13;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／のぞみ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 12;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／リズナ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 11;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ウィチタ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 40;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／アテン", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 43;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ミル", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 39;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／志津香", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 29;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／マリア", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 14;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／セスナ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 9;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／てる", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 7;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／アームズ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 6;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／チルディ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 38;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／虎子", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 5;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／勝子", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 30;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／柚美", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 28;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ウルザ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 25;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／カーマ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 18;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／トマト", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 48;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／たま", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 46;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／シトモネ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 45;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／マホコ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 44;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／エミ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 41;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／カパーラ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 36;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ノア", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 35;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／セル", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 34;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／マリス", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 32;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ジーマ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 31;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／メガデス", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 53;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／松クマ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 49;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／アレキサンダー", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 21;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ロッキー", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 16;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／バーナード", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 81;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／レベッカ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 80;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／キサラ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 73;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／カフェ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 71;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／サーナキア", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 70;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／キャロリ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 67;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／ヒカリ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 62;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／オノハ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 61;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／アールコート", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 59;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／プリマ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 58;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／アタゴ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 57;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／メグ", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 56;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／フロストバイン", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 52;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／カオル", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 51;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／カロリア", -2147483648) == false)
+	{
+		return no;
+	}
+	no = 50;
+	if (Ｃ有無(no) != 0 && ＣＬＶ(Ｃ番号取得(no), -1) >= 30 && EV("町歩き／キバ子", -2147483648) == false)
+	{
+		return no;
+	}
+	return 0;
+}
+
+void ニーパッパ／漫遊(lint iic, string 情報, lint item_no)
+{
+	lint cno = Ｃ番号(iic, -1);
+	if (ＣＦＡ(iic, 34, -1) == 0)
+	{
+		ＣＦＡ(iic, 34, 1);
+		ADVON();
+		セット表示(5511, 5071, 0, 0);
+		if (item_no != 0)
+		{
+			Ｒ８アイテム取得(item_no, 0);
+		}
+		if (cno == 68)
+		{
+			ＳＡＤＶ／画面無し("■Biscuitta   Skill acquired", "■", "■Skill: Stone Splitter");
+			ＣＳ追加(iic, 540, 0);
+		}
+		if (cno == 53)
+		{
+			ＳＡＤＶ／画面無し("■Bear   Skill acquired", "■", "■Skill: My Waifu");
+			ＣＳ追加(iic, 541, 0);
+		}
+		if (cno == 11)
+		{
+			ＳＡＤＶ／画面無し("■Wichita   Skill acquired", "■", "■Skill: Low Blow");
+			ＣＳ追加(iic, 549, 0);
+		}
+		if (cno == 31)
+		{
+			ＳＡＤＶ／画面無し("■Megadeth   Skill acquired", "■", "■Skill: Volley");
+			ＣＳ追加(iic, 137, 0);
+		}
+		if (cno == 15)
+		{
+			ＳＡＤＶ／画面無し("■Yulan   Skill acquired", "■", "■Skill: Lemon Attack");
+			ＣＳ追加(iic, 552, 0);
+		}
+		if (cno == 36)
+		{
+			MM[50] = 1;
+			マメ知識表示選択(50);
+		}
+		if (情報 == "金１０００")
+		{
+			ＳＡＤＶ／画面無し("■Acquired 1,000 G", "", "");
+			お金増えた(1000, "");
+		}
+		if (情報 == "金５００")
+		{
+			ＳＡＤＶ／画面無し("■Acquired 500 G", "", "");
+			お金増えた(500, "");
+		}
+		if (情報 == "経験値")
+		{
+			lint ▲ｅｘｐ = 0;
+			if (ＣＬＶ(iic, -1) < ＣＬＶ最大(iic, -1))
+			{
+				▲ｅｘｐ = ＣＥＸＰ最大(iic, -1) - ＣＥＸＰ(iic, -1);
+				if (▲ｅｘｐ > 30000)
+				{
+					▲ｅｘｐ = 30000;
+				}
+				ＣＥＸＰ(iic, ＣＥＸＰ(iic, -1) + ▲ｅｘｐ);
+			}
+			if (▲ｅｘｐ != 0)
+			{
+				ＳＡＤＶ／画面無し("■" + Ｃ名前(iic, ""), "■", "■" + string2(▲ｅｘｐ, 0) + " EXP acquired");
+			}
+		}
+		if (ＣＦＡ(iic, 37, -1) == 0)
+		{
+			ＣＦＡ(iic, 37, 1);
+			Ｃスキルポイント(iic, Ｃスキルポイント(iic, -1) + 1);
+			ト書き();
+			'That night, the sound of a mysterious flute could be heard.' R;
+			S(Ｃ短縮名前(iic, ""));
+			' gained 1 skill point.' R;
+			'Current skill points: ' NH(Ｃスキルポイント(iic, -1), 0, 0);
+			'.' B;
+			Ｒ８ジングル(457, false);
+			AA();
+		}
+		ADVOFF();
+	}
+}
+
+int ＰＴＡ空き番号取得()
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] == 0)
+		{
+			return loop;
+		}
+	}
+	return 0;
+}
+
+int ＰＴＡ番号取得(int iic)
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] == iic)
+		{
+			return loop;
+		}
+	}
+	return 0;
+}
+
+int ＰＴＡ番号有無(int aa)
+{
+	if (aa >= 6)
+	{
+		return 0;
+	}
+	if (PTA[aa] != 0 && Ｃ状態変化(PTA[aa], -1) != 3)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int ＰＴＡ登録(int iic, int no)
+{
+	if (no == 0)
+	{
+		no = ＰＴＡ空き番号取得();
+		if (no == 0)
+		{
+			return -1;
+		}
+	}
+	if (no >= 6)
+	{
+		return -1;
+	}
+	if (PTA[no] != 0)
+	{
+		return -1;
+	}
+	PTA[no] = iic;
+	Ｃ登録状態(iic, 1);
+	return 1;
+}
+
+void ＰＴＡ全登録(int c1, int c2, int c3, int c4, int c5)
+{
+	ＰＴＡ全解除();
+	int no = 0;
+	int iic = 0;
+	no = 1;
+	if (c1 != 0)
+	{
+		iic = Ｃ番号取得(c1);
+		if (iic == 0)
+		{
+			iic = Ｃ生成(c1);
+			Ｃゲスト(iic, 1);
+		}
+		ＰＴＡ登録(iic, no);
+	}
+	no = 2;
+	if (c2 != 0)
+	{
+		iic = Ｃ番号取得(c2);
+		if (iic == 0)
+		{
+			iic = Ｃ生成(c2);
+			Ｃゲスト(iic, 1);
+		}
+		ＰＴＡ登録(iic, no);
+	}
+	no = 3;
+	if (c3 != 0)
+	{
+		iic = Ｃ番号取得(c3);
+		if (iic == 0)
+		{
+			iic = Ｃ生成(c3);
+			Ｃゲスト(iic, 1);
+		}
+		ＰＴＡ登録(iic, no);
+	}
+	no = 4;
+	if (c4 != 0)
+	{
+		iic = Ｃ番号取得(c4);
+		if (iic == 0)
+		{
+			iic = Ｃ生成(c4);
+			Ｃゲスト(iic, 1);
+		}
+		ＰＴＡ登録(iic, no);
+	}
+	no = 5;
+	if (c5 != 0)
+	{
+		iic = Ｃ番号取得(c5);
+		if (iic == 0)
+		{
+			iic = Ｃ生成(c5);
+			Ｃゲスト(iic, 1);
+		}
+		ＰＴＡ登録(iic, no);
+	}
+}
+
+int ＰＴＡ解除(int iic)
+{
+	lint no = 0;
+	if (PTA[1] == iic)
+	{
+		no = 1;
+	}
+	if (PTA[2] == iic)
+	{
+		no = 2;
+	}
+	if (PTA[3] == iic)
+	{
+		no = 3;
+	}
+	if (PTA[4] == iic)
+	{
+		no = 4;
+	}
+	if (PTA[5] == iic)
+	{
+		no = 5;
+	}
+	if (no == 0)
+	{
+		return -1;
+	}
+	PTA[no] = 0;
+	Ｃ登録状態(iic, 3);
+	Ｃ状態変化(iic, 0);
+	if (Ｃ体力(iic, -1) == 0)
+	{
+		Ｃ体力(iic, 1);
+	}
+	return 0;
+}
+
+void ＰＴＡ全解除()
+{
+	int loop = 0;
+	int iic = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0)
+		{
+			ＰＴＡ解除(PTA[loop]);
+		}
+	}
+}
+
+int ＰＴＡランダム(int fg, int iic1)
+{
+	array@int AAX[6];
+	int loop = 0;
+	int max = 0;
+	int aa = 0;
+	int bb = 0;
+	int iic = 0;
+	int 狙われiic = 0;
+	if (Ｃ番号(iic1, -1) == 186)
+	{
+		狙われiic = ＰＴＡ最弱キャラ取得();
+	}
+	if (◆戦闘タゲ取り != 0)
+	{
+		狙われiic = ◆戦闘タゲ取り;
+	}
+	if (fg != 0 && FA[326] >= 5)
+	{
+		LOG_TADA("★ＤＢ　狙われ属性は５回計算されたので、今は無効です\n");
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3 && FA[326] < 5)
+		{
+			if (fg != 0 && ＣＳ有無(PTA[loop], 300, 0) != 0)
+			{
+				狙われiic = PTA[loop];
+				FA[326]++;
+			}
+			if (fg != 0 && Ｉ固有番号(Ｃ防具(PTA[loop], -1), -1) == 56 && RAND(3) == 1)
+			{
+				狙われiic = PTA[loop];
+				FA[326]++;
+			}
+		}
+	}
+	if (fg == 0)
+	{
+		狙われiic = 0;
+	}
+	max = 6;
+	if (fg == 1)
+	{
+		max = 4;
+	}
+	if (fg == 2)
+	{
+		for (loop = 1; loop < 6; ++loop)
+		{
+			if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) == 3)
+			{
+				return PTA[loop];
+			}
+		}
+	}
+	for (loop = 1; loop < max; ++loop)
+	{
+		bb = 0;
+		if (Ｃ隠密率(PTA[loop], -1) != 0)
+		{
+			bb = 1;
+		}
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3 && bb == 0)
+		{
+			++aa;
+			AAX[aa] = PTA[loop];
+			if (PTA[loop] == 狙われiic)
+			{
+				return PTA[loop];
+			}
+		}
+		if (loop == 3 && aa == 0)
+		{
+			max = 6;
+		}
+	}
+	if (aa == 0 && ◆ＤＢ／戦闘ログ == 1)
+	{
+		LOG_TADA("＞ＰＴＡ対象無し\n");
+		return 0;
+	}
+	return AAX[RAND(aa)];
+}
+
+int ＰＴＢランダム(int fg, int iic)
+{
+	array@int ▲対象iic[6];
+	int loop = 0;
+	int max = 0;
+	int ▲対象個数 = 0;
+	max = 6;
+	if (fg == 1)
+	{
+		max = 4;
+	}
+	if (fg == 2)
+	{
+		for (loop = 1; loop < 6; ++loop)
+		{
+			if (PTB[loop] != 0 && Ｃ状態変化(PTB[loop], -1) == 3)
+			{
+				return PTB[loop];
+			}
+		}
+	}
+	for (loop = 1; loop < max; ++loop)
+	{
+		if (PTB[loop] != 0 && Ｃ状態変化(PTB[loop], -1) != 3)
+		{
+			++▲対象個数;
+			▲対象iic[▲対象個数] = PTB[loop];
+		}
+		if (loop == 3 && ▲対象個数 == 0)
+		{
+			max = 6;
+		}
+	}
+	if (▲対象個数 == 0)
+	{
+		if (◆ＤＢ／戦闘ログ == 1)
+		{
+			LOG_TADA("＞ＰＴＢ対象無し\n");
+		}
+		return 0;
+	}
+	return ▲対象iic[RAND(▲対象個数)];
+}
+
+int ＰＴＡ誰か強制追加()
+{
+	if (ＰＴＡ総数() != 0)
+	{
+		return 1;
+	}
+	int iic = Ｃランダム取得("１軍");
+	if (iic == 0)
+	{
+		return 0;
+	}
+	ＰＴＡ登録(iic, 0);
+	return 1;
+}
+
+void ＰＴＡレベル合わせ(int iic)
+{
+	int lv = ＣＬＶ(Ｃ番号取得(iic), -1);
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0)
+		{
+			iic = PTA[loop];
+			ＣＬＶ(iic, lv);
+			if (lv > ＣＬＶ最大(iic, -1))
+			{
+				ＣＬＶ(iic, ＣＬＶ最大(iic, -1));
+			}
+			Ｃ再計算(iic);
+		}
+	}
+}
+
+int Ｃ１軍登録(int iic, int no)
+{
+	Ｃ登録状態(iic, 2);
+	return 1;
+}
+
+void 全キャラを使用済みにする(string 条件)
+{
+	lint iic = 0;
+	lint aa = 0;
+	for (iic = 20; iic < 201; iic++)
+	{
+		aa = 0;
+		if (Ｃ登録状態(iic, -1) != 0 && Ｃ登録状態(iic, -1) != 4)
+		{
+			if (条件 == "ＬＶ４０以下" && ＣＬＶ(iic, -1) <= 40)
+			{
+				aa = 1;
+			}
+			if (条件 == "ＬＶ４５以下" && ＣＬＶ(iic, -1) <= 45)
+			{
+				aa = 1;
+			}
+			if (条件 == "ＬＶ５０以下" && ＣＬＶ(iic, -1) <= 50)
+			{
+				aa = 1;
+			}
+			if (条件 == "ＬＶ５５以下" && ＣＬＶ(iic, -1) <= 55)
+			{
+				aa = 1;
+			}
+			if (条件 == "クルックー以外の女子" && Ｃ番号(iic, -1) != 33 && Ｃ性別(iic, -1) == 2)
+			{
+				aa = 1;
+			}
+			if (条件 == "ファイター" && Ｃ職業(iic, -1) == 1)
+			{
+				aa = 1;
+			}
+			if (条件 == "ガード" && Ｃ職業(iic, -1) == 2)
+			{
+				aa = 1;
+			}
+			if (条件 == "スパルタ" && Ｃ職業(iic, -1) == 7)
+			{
+				aa = 1;
+			}
+			if (条件 == "レンジャー" && Ｃ職業(iic, -1) == 6)
+			{
+				aa = 1;
+			}
+			if (条件 == "ソーサラー" && Ｃ職業(iic, -1) == 4)
+			{
+				aa = 1;
+			}
+			if (条件 == "ヒーラー" && Ｃ職業(iic, -1) == 5)
+			{
+				aa = 1;
+			}
+			if (条件 == "シビリアン" && Ｃ職業(iic, -1) == 8)
+			{
+				aa = 1;
+			}
+			if (条件 == "ガンナー" && Ｃ職業(iic, -1) == 3)
+			{
+				aa = 1;
+			}
+			if (条件 == "クマと同レベル以外")
+			{
+				lint iic2 = Ｃ番号取得(53);
+				if (ＣＬＶ(iic, -1) != ＣＬＶ(iic2, -1))
+				{
+					aa = 1;
+				}
+			}
+			if (条件 == "")
+			{
+				aa = 1;
+			}
+		}
+		if (aa == 1)
+		{
+			Ｃ使用済み状態にする(iic);
+		}
+	}
+}
+
+void Ｃ使用済み状態にする(int iic)
+{
+	if (Ｃ登録状態(iic, -1) == 1)
+	{
+		ＰＴＡ解除(iic);
+		return;
+	}
+	if (Ｃ登録状態(iic, -1) == 4)
+	{
+		return;
+	}
+	Ｃ登録状態(iic, 3);
+	Ｃ状態変化(iic, 0);
+	if (Ｃ体力(iic, -1) == 0)
+	{
+		Ｃ体力(iic, 1);
+	}
+}
+
+void ＰＴＡ待避()
+{
+	LOG_TADA("ＰＴＡ待避\n");
+	int loop = 0;
+	◆クエストＰＴＡ復帰が必要 = 1;
+	PTA_BAK.Fill(1, 5, 0);
+	for (loop = 1; loop < 6; ++loop)
+	{
+		PTA_BAK[loop] = PTA[loop];
+	}
+	ＰＴＡ全解除();
+	for (loop = 1; loop < 6; ++loop)
+	{
+		LOG_TADA("　" + string(PTA_BAK[loop]) + " " + Ｃ名前(PTA_BAK[loop], "") + "\n");
+	}
+}
+
+void ＰＴＡ復帰()
+{
+	LOG_TADA("ＰＴＡ復帰\n");
+	ＰＴＡ全解除();
+	int loop = 0;
+	◆クエストＰＴＡ復帰が必要 = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		ＰＴＡ登録(PTA_BAK[loop], loop);
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		LOG_TADA("　" + string(PTA_BAK[loop]) + " " + Ｃ名前(PTA_BAK[loop], "") + "\n");
+	}
+}
+
+lint ＰＴＡ総数()
+{
+	int loop = 0;
+	int aa = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3)
+		{
+			++aa;
+		}
+	}
+	return aa;
+}
+
+lint ＰＴＢ総数(string 条件)
+{
+	int loop = 0;
+	int aa = 0;
+	if (条件 == "悪口対象")
+	{
+		for (loop = 1; loop < 6; ++loop)
+		{
+			if (PTB[loop] != 0 && Ｃ状態変化(PTB[loop], -1) != 3 && Ｃ悪口耐性(PTB[loop], -1) != 0)
+			{
+				++aa;
+			}
+		}
+		return aa;
+	}
+	if (条件 == "前列")
+	{
+		lint aa1 = 0;
+		lint aa2 = 0;
+		if (PTB[1] != 0 && Ｃ状態変化(PTB[1], -1) != 3)
+		{
+			aa1++;
+		}
+		if (PTB[2] != 0 && Ｃ状態変化(PTB[2], -1) != 3)
+		{
+			aa1++;
+		}
+		if (PTB[3] != 0 && Ｃ状態変化(PTB[3], -1) != 3)
+		{
+			aa1++;
+		}
+		if (PTB[4] != 0 && Ｃ状態変化(PTB[4], -1) != 3)
+		{
+			aa2++;
+		}
+		if (PTB[5] != 0 && Ｃ状態変化(PTB[5], -1) != 3)
+		{
+			aa2++;
+		}
+		if (aa1 != 0)
+		{
+			return aa1;
+		}
+		return aa2;
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTB[loop] != 0 && Ｃ状態変化(PTB[loop], -1) != 3)
+		{
+			++aa;
+		}
+	}
+	return aa;
+}
+
+lint ＰＴＡ平均レベル()
+{
+	int loop = 0;
+	int aa = 0;
+	int bb = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0)
+		{
+			++aa;
+			bb += ＣＬＶ(PTA[loop], -1);
+		}
+	}
+	if (aa == 5)
+	{
+		bb = bb / 5;
+	}
+	if (aa == 4)
+	{
+		bb = bb / 4;
+	}
+	if (aa == 3)
+	{
+		bb = bb / 3;
+	}
+	if (aa == 2)
+	{
+		bb = bb / 2;
+	}
+	if (aa == 1)
+	{
+		bb = bb;
+	}
+	if (aa == 0)
+	{
+		bb = 1;
+	}
+	return bb;
+}
+
+lint ＰＴＡ最大レベル()
+{
+	int loop = 0;
+	int aa = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && aa < ＣＬＶ(PTA[loop], -1))
+		{
+			aa = ＣＬＶ(PTA[loop], -1);
+		}
+	}
+	return aa;
+}
+
+lint ＰＴＡ体力５０％減キャラ取得()
+{
+	int loop = 0;
+	int iic = 0;
+	int PTA_LV = 1;
+	int iicx = 0;
+	int ▲最小 = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		iic = PTA[loop];
+		if (iic != 0 && Ｃ状態変化(iic, -1) != 3 && Ｃ体力(iic, -1) < Ｃ体力最大(iic, -1) / 2)
+		{
+			int ▲体力率 = ％計算関数(Ｃ体力(iic, -1), Ｃ体力最大(iic, -1));
+			if (▲最小 < ▲体力率)
+			{
+				▲最小 = ▲体力率;
+				iicx = iic;
+			}
+		}
+	}
+	return iicx;
+}
+
+lint ＰＴＡ体力減キャラ取得()
+{
+	int loop = 0;
+	int iic = 0;
+	int PTA_LV = 1;
+	int iicx = 0;
+	int ▲最小 = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		iic = PTA[loop];
+		if (iic != 0 && Ｃ状態変化(iic, -1) != 3 && Ｃ体力(iic, -1) < Ｃ体力最大(iic, -1))
+		{
+			int ▲体力率 = 100 - ％計算関数(Ｃ体力(iic, -1), Ｃ体力最大(iic, -1));
+			調整(▲体力率, 0);
+			LOG_TADA("　　確認　" + Ｃ名前(iic, "") + "　体力率＝" + string(▲体力率) + "\n");
+			if (▲最小 < ▲体力率)
+			{
+				▲最小 = ▲体力率;
+				iicx = iic;
+			}
+		}
+	}
+	LOG_TADA("　　堪忍　＞＞　最終　" + Ｃ名前(iicx, "") + "　\n");
+	return iicx;
+}
+
+lint ＰＴＡ異常状態キャラ取得()
+{
+	int loop = 0;
+	int iic = 0;
+	int aa = 1;
+	int iicx = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		iic = PTA[loop];
+		if (iic != 0 && Ｃ状態変化(iic, -1) != 3)
+		{
+			aa = 0;
+			if (Ｃ状態変化(iic, -1) == 1)
+			{
+				aa = 1;
+			}
+			if (Ｃ状態変化(iic, -1) == 2)
+			{
+				aa = 1;
+			}
+			if (Ｃ攻撃付与(iic, -1) == 2)
+			{
+				aa = 1;
+			}
+			if (Ｃ防御付与(iic, -1) == 2)
+			{
+				aa = 1;
+			}
+			if (aa == 1)
+			{
+				iicx = iic;
+			}
+		}
+	}
+	return iicx;
+}
+
+lint ＰＴＡ最強キャラ取得()
+{
+	int loop = 0;
+	int iic = 0;
+	int PTA_LV = 1;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3 && ＣＬＶ(PTA[loop], -1) > PTA_LV)
+		{
+			iic = PTA[loop];
+			PTA_LV = ＣＬＶ(PTA[loop], -1);
+		}
+	}
+	return iic;
+}
+
+lint ＰＴＡ最弱キャラ取得()
+{
+	int loop = 0;
+	int iic = 0;
+	int PTA_LV = 999;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3 && ＣＬＶ(PTA[loop], -1) < PTA_LV)
+		{
+			iic = PTA[loop];
+			PTA_LV = ＣＬＶ(PTA[loop], -1);
+		}
+	}
+	return iic;
+}
+
+lint ＰＴＢ瀕死キャラ取得()
+{
+	int loop = 0;
+	int iic = 0;
+	int PTB_HP = 999999;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTB[loop] != 0 && Ｃ状態変化(PTB[loop], -1) != 3 && Ｃ体力(PTB[loop], -1) < PTB_HP)
+		{
+			iic = PTB[loop];
+			PTB_HP = Ｃ体力(PTB[loop], -1);
+		}
+	}
+	return iic;
+}
+
+lint ＰＴＡ条件確認(string 条件文字列)
+{
+	lint loop = 0;
+	lint aa = 1;
+	lint bb = 0;
+	for (loop = 1; loop < 6; loop++)
+	{
+		if (PTA[loop] != 0)
+		{
+			if (条件文字列 == "レンジャーのみ" && Ｃ職業(PTA[loop], -1) != 6)
+			{
+				aa = 0;
+			}
+			if (条件文字列 == "ソーサラーのみ" && Ｃ職業(PTA[loop], -1) != 4)
+			{
+				aa = 0;
+			}
+			if (条件文字列 == "ヒーラーのみ" && Ｃ職業(PTA[loop], -1) != 5)
+			{
+				aa = 0;
+			}
+			if (条件文字列 == "少女のみ" && ＣＳ有無(PTA[loop], 373, 0) == 0 && Ｃ番号(PTA[loop], -1) != 43)
+			{
+				aa = 0;
+			}
+			if (条件文字列 == "少女が居る" && ＣＳ有無(PTA[loop], 373, 0) != 0)
+			{
+				bb = 1;
+			}
+		}
+	}
+	if (条件文字列 == "少女が居る")
+	{
+		if (bb == 1)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	return aa;
+}
+
+lint ＰＴＡ男有無()
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ性別(PTA[loop], -1) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+lint ＰＴＡ２５以上有無()
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && ＣＬＶ(PTA[loop], -1) >= 25)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+lint ＰＴＡ５割有無()
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && ＣＬＶ(PTA[loop], -1) % 5 != 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+lint ＰＴＡ職業有無(int ▲職業)
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ職業(PTA[loop], -1) == ▲職業)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+void ＰＴＡ体力回復(string 条件)
+{
+	int iic = 0;
+	int loop = 0;
+	LOG_TADA("＞ＰＴＡ体力回復\n");
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3)
+		{
+			Ｃ補給／体力(PTA[loop], 条件);
+		}
+	}
+}
+
+void ＰＴＡスキル回復(string 条件)
+{
+	int iic = 0;
+	int loop = 0;
+	LOG_TADA("＞ＰＴＡスキル回復\n");
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3)
+		{
+			Ｃ補給／スキル(PTA[loop], 条件);
+		}
+	}
+}
+
+void ＰＴＡダメージ(string 条件)
+{
+	int iic = 0;
+	int loop = 0;
+	int aa = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (PTA[loop] != 0 && Ｃ状態変化(PTA[loop], -1) != 3)
+		{
+			if (条件 == "体力半減")
+			{
+				Ｃ体力(PTA[loop], Ｃ体力(PTA[loop], -1) / 2);
+			}
+			if (条件 == "２５％減")
+			{
+				aa = Ｃ体力最大(PTA[loop], -1) / 4;
+				Ｃ体力(PTA[loop], Ｃ体力(PTA[loop], -1) - aa);
+			}
+			if (条件 == "１２％減")
+			{
+				aa = Ｃ体力最大(PTA[loop], -1) / 8;
+				Ｃ体力(PTA[loop], Ｃ体力(PTA[loop], -1) - aa);
+			}
+			if (Ｃ体力(PTA[loop], -1) == 0)
+			{
+				Ｃ体力(PTA[loop], 1);
+			}
+		}
+	}
+}
+
+lint ＰＴＡ有無(lint iic)
+{
+	lint loop = 0;
+	if (iic == 0)
+	{
+		return 0;
+	}
+	for (loop = 1; loop < 6; loop++)
+	{
+		if (PTA[loop] == iic && Ｃ状態変化(PTA[loop], -1) != 3)
+		{
+			return loop;
+		}
+	}
+	return 0;
+}
+
+lint ＰＴＡ有無／固有(int no)
+{
+	lint loop = 0;
+	lint iic = Ｃ番号取得(no);
+	if (iic == 0)
+	{
+		return 0;
+	}
+	for (loop = 1; loop < 6; loop++)
+	{
+		if (PTA[loop] == iic && Ｃ状態変化(PTA[loop], -1) != 3)
+		{
+			return loop;
+		}
+	}
+	return 0;
+}
+
+lint ＰＴＢ有無／固有(int no, string 条件文字列)
+{
+	lint loop = 0;
+	if (no != 0)
+	{
+		for (loop = 1; loop < 6; loop++)
+		{
+			if (Ｃ番号(PTB[loop], -1) == no && Ｃ状態変化(PTB[loop], -1) != 3)
+			{
+				return loop;
+			}
+		}
+	}
+	if (条件文字列 != "")
+	{
+		for (loop = 1; loop < 6; loop++)
+		{
+			if (条件文字列 == "女Ｍ" && Ｃ種族(PTB[loop], -1) == 3 && Ｃ状態変化(PTB[loop], -1) != 3)
+			{
+				return loop;
+			}
+		}
+	}
+	return 0;
+}
+
+lint ＰＴＢ有無／種族(int no)
+{
+	lint loop = 0;
+	for (loop = 1; loop < 6; loop++)
+	{
+		if (Ｃ状態変化(PTB[loop], -1) != 3 && Ｃ種族(PTB[loop], -1) == no)
+		{
+			return loop;
+		}
+	}
+	return 0;
+}
+
+void ゲスト追加(int iic_no)
+{
+	int iic = Ｃ生成(iic_no);
+	if (iic == 0)
+	{
+		if (Ｃ番号取得(iic) != 0)
+		{
+			LOG_TADA("ゲスト追加ですが、すでにそのキャラは存在しているので追加しません\n");
+			return;
+		}
+		LOG_TADA("ＥＲＲＯＲ　【" + system.GetFuncStackName(0) + "】  新しいキャラ番号が取れません\n");
+		return;
+	}
+	Ｃ再計算(iic);
+	Ｃゲスト(iic, 1);
+	int no = ＰＴＡ空き番号取得();
+	if (no == 0)
+	{
+		Ｃ１軍登録(iic, 0);
+	}
+	if (no != 0)
+	{
+		ＰＴＡ登録(iic, 0);
+	}
+	ADVON();
+	ト書き();
+	'  ' S(Ｃ名前(iic, ""));
+	' temporarily joined the party.' A;
+	ADVOFF();
+}
+
+void 守るゲスト追加(int iic_no)
+{
+	int iic = Ｃ生成(iic_no);
+	if (iic == 0)
+	{
+		if (Ｃ番号取得(iic) != 0)
+		{
+			LOG_TADA("ゲスト追加ですが、すでにそのキャラは存在しているので追加しません\n");
+			return;
+		}
+		LOG_TADA("ＥＲＲＯＲ　【" + system.GetFuncStackName(0) + "】  新しいキャラ番号が取れません\n");
+		return;
+	}
+	Ｃ再計算(iic);
+	Ｃゲスト(iic, 2);
+	int no = ＰＴＡ空き番号取得();
+	if (no != 0)
+	{
+		ＰＴＡ登録(iic, 0);
+	}
+	if (no == 0)
+	{
+		LOG_TADA("ＥＲＲＯＲ　スタメンゲスト追加　　スタメン枠がありません\n");
+	}
+}
+
+void ゲスト全削除()
+{
+	int iic = 0;
+	int no = 0;
+	int PTA_NO = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃゲスト(iic, -1) != 0)
+		{
+			LOG_TADA("　ゲストキャラ　" + Ｃ名前(iic, "") + "　を削除しました\n");
+			ＰＴＡ解除(iic);
+			Ｃ装備しているアイテムを消す(iic);
+			Ｃ初期化(iic);
+		}
+	}
+}
+
+void Ｃ装備しているアイテムを消す(int iic)
+{
+	LOG_TADA("　ゲストが装備しているアイテムを消しました\n");
+	if (Ｃ武器(iic, -1) != 0)
+	{
+		Ｉ削除(Ｃ武器(iic, -1));
+	}
+	if (Ｃ防具(iic, -1) != 0)
+	{
+		Ｉ削除(Ｃ防具(iic, -1));
+	}
+	if (Ｃ持ち物(iic, -1) != 0)
+	{
+		Ｉ削除(Ｃ持ち物(iic, -1));
+	}
+	if (Ｃオプション(iic, -1) != 0)
+	{
+		Ｉ削除(Ｃオプション(iic, -1));
+	}
+}
+
+void Ｔ寄付した物(lint ii)
+{
+	if (Ｉ種類(ii, -1) == 21 && Ｉ種類ランク(ii, -1) == 1)
+	{
+		FA[183]++;
+	}
+	if (Ｉ種類(ii, -1) == 21 && Ｉ種類ランク(ii, -1) == 2)
+	{
+		FA[184]++;
+	}
+	if (Ｉ種類(ii, -1) == 21 && Ｉ種類ランク(ii, -1) == 3)
+	{
+		FA[185]++;
+	}
+}
+
+void アイテム総数確認(ref lint item1, ref lint item2, ref lint item3, ref lint item4)
+{
+	item1 = 0;
+	item2 = 0;
+	item3 = 0;
+	item4 = 0;
+	lint loop = 0;
+	for (loop = 1; loop < 3001; loop++)
+	{
+		if (Ｉ存在(loop, -1) >= 20)
+		{
+			item1++;
+		}
+		if (Ｉ存在(loop, -1) == 7)
+		{
+			item2++;
+		}
+		if (Ｉ存在(loop, -1) == 11)
+		{
+			item2++;
+		}
+		if (Ｉ存在(loop, -1) == 6)
+		{
+			item3++;
+		}
+		if (Ｉ存在(loop, -1) == 8)
+		{
+			item4++;
+		}
+	}
+}
+
+void Ｍ初期化(int no)
+{
+	sＭ Ｍ初期データ;
+	Ｍ[no] = Ｍ初期データ;
+}
+
+void クエスト再発生(int iiq)
+{
+	if (Ｑ状態(iiq, -1) == 0)
+	{
+		return;
+	}
+	Ｑ[iiq].状態 = 1;
+	Ｑ[iiq].クリア回数 = 0;
+}
+
+void クエスト消去(int iiq)
+{
+	Ｑ[iiq].状態 = 0;
+}
+
+lint クリア確認(lint iiq)
+{
+	if (Ｑ状態(iiq, -1) == 2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+lint 発生確認(lint iiq)
+{
+	if (Ｑ状態(iiq, -1) != 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void お金増えた(lint aa, string 条件)
+{
+	if (条件 == "フラグのみ")
+	{
+		FA[228] += aa;
+		return;
+	}
+	◆金 += aa;
+	FA[228] += aa;
+}
+
+void お金減った(lint aa)
+{
+	◆金 -= aa;
+	FA[229] += aa;
+}
+
+lint Ｔマグナム設置処理(lint iiq, lint fg)
+{
+	◆マグナム = 0;
+	◆マグナム最大 = 0;
+	◆マグナムの宝物 = 0;
+	lint ii = 0;
+	lint ▲中身固定 = 0;
+	lint ▲ＢＰ = 0;
+	if (iiq == 121)
+	{
+		◆マグナム最大 = 7;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 70)
+	{
+		◆マグナム最大 = 7;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 62)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 344;
+		▲ＢＰ = 6;
+	}
+	if (iiq == 61)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 344;
+		▲ＢＰ = 5;
+	}
+	if (iiq == 122)
+	{
+		◆マグナム最大 = 8;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 40)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 50)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 306;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 88)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 92)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 123)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 344;
+		▲ＢＰ = 5;
+	}
+	if (iiq == 71)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 97)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 48)
+	{
+		◆マグナム最大 = 20;
+		▲中身固定 = 344;
+		▲ＢＰ = 4;
+	}
+	if (iiq == 64)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 344;
+		▲ＢＰ = 5;
+	}
+	if (iiq == 124)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 344;
+		▲ＢＰ = 7;
+	}
+	if (iiq == 72)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 292;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 125)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 289;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 93)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 277;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 94)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 274;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 76)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 271;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 126)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 298;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 77)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 344;
+		▲ＢＰ = 5;
+	}
+	if (iiq == 164)
+	{
+		◆マグナム最大 = 20;
+		▲中身固定 = 328;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 169)
+	{
+		◆マグナム最大 = 20;
+		▲中身固定 = 326;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 171)
+	{
+		◆マグナム最大 = 20;
+		if (Ｉ有無(64, 0, "") == 0 && FA[211] == 0)
+		{
+			▲中身固定 = 64;
+		}
+		else
+		{
+			▲中身固定 = 298;
+		}
+		▲ＢＰ = 0;
+	}
+	if (iiq == 174)
+	{
+		◆マグナム最大 = 20;
+		▲中身固定 = 331;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 175)
+	{
+		◆マグナム最大 = 20;
+		▲中身固定 = 333;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 176)
+	{
+		◆マグナム最大 = 20;
+		▲中身固定 = 324;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 127)
+	{
+		◆マグナム最大 = 15;
+		if (Ｉ有無(24, 0, "") == 0 && FA[242] == 0)
+		{
+			▲中身固定 = 24;
+		}
+		else
+		{
+			▲中身固定 = 298;
+		}
+		▲ＢＰ = 0;
+	}
+	if (iiq == 128)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 323;
+		▲ＢＰ = 0;
+	}
+	if (iiq == 145)
+	{
+		◆マグナム最大 = 15;
+		▲中身固定 = 344;
+		if (Ｉ有無(54, 0, "") == 0 && FA[244] == 0)
+		{
+			▲中身固定 = 54;
+		}
+		else
+		{
+			▲中身固定 = 298;
+		}
+		▲ＢＰ = 0;
+	}
+	if (iiq == 146)
+	{
+		◆マグナム最大 = 10;
+		▲中身固定 = 324;
+		▲ＢＰ = 0;
+	}
+	if (■Ｍ／フラグＡ(iiq, 0, "") == 1)
+	{
+		▲中身固定 = 0;
+		▲ＢＰ = 0;
+	}
+	if (fg == 1 && ◆マグナム最大 != 0)
+	{
+		if (▲中身固定 != 344)
+		{
+			ii = 宝箱の中身生成(3, ▲中身固定, ▲ＢＰ);
+		}
+		if (▲中身固定 == 344)
+		{
+			ii = Ｉ生成カスタム("マグナム用");
+		}
+		if (ii != 0)
+		{
+			◆マグナム = 0;
+			◆マグナム最大 = ◆マグナム最大 + Ｑクリア回数(iiq, -1);
+			if (◆マグナム最大 >= 30)
+			{
+				◆マグナム最大 = 30;
+			}
+			◆マグナムの宝物 = ii;
+			Ｉ存在(ii, 9);
+			LOG_TADA("　マグナム宝＝" + Ｉ名前(ii, "") + "（" + string(ii) + "）\n");
+		}
+	}
+	if (■Ｍ／フラグＡ(iiq, 0, "") == 1)
+	{
+		return 2;
+	}
+	if (◆マグナム最大 != 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void Ｔクエスト()
+{
+	LOG_TADA("\n■Ｔクエスト\n");
+	lint loop = 0;
+	for (loop = 1; loop < 21; loop++)
+	{
+		QD[loop] = 0;
+	}
+	for (loop = 1; loop < 7; loop++)
+	{
+		◆トラップ発生確率[loop] = 0;
+	}
+}
+
+void クエスト進行率書き換え(int aa)
+{
+	累積フラグ関数(◆クエスト進行率, aa);
+}
+
+void Ｔ名声最大書き換え()
+{
+	◆名声最大 = 30;
+	if (◆名声ランク == 2)
+	{
+		◆名声最大 = 50;
+	}
+	if (◆名声ランク == 3)
+	{
+		◆名声最大 = 100;
+	}
+	if (◆名声ランク == 4)
+	{
+		◆名声最大 = 120;
+	}
+	if (◆名声ランク == 5)
+	{
+		◆名声最大 = 150;
+	}
+	if (◆名声ランク > 5)
+	{
+		◆名声最大 = 200;
+	}
+	if (◆名声ランク > 9)
+	{
+		◆名声最大 = 400;
+	}
+}
+
+lint 城の女の子モンスターの有無()
+{
+	lint iino = 0;
+	for (iino = 227; iino < 246; iino++)
+	{
+		if (Ｉ有無(iino, 0, "") != 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+lint 全員棍棒ですか？()
+{
+	lint loop = 0;
+	lint ▲棍棒だよ = 0;
+	for (loop = 1; loop < 6; loop++)
+	{
+		if (PTA[loop] != 0)
+		{
+			▲棍棒だよ = 0;
+			if (Ｃ武器(PTA[loop], -1) == 0)
+			{
+				▲棍棒だよ = 1;
+			}
+			if (Ｉ固有番号(Ｃ武器(PTA[loop], -1), -1) == 68)
+			{
+				▲棍棒だよ = 1;
+			}
+			if (Ｉ固有番号(Ｃ武器(PTA[loop], -1), -1) == 160)
+			{
+				▲棍棒だよ = 1;
+			}
+			if (▲棍棒だよ == 0)
+			{
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
+void ＡＬ教の景品()
+{
+	int ii = 0;
+	int aa = 0;
+	int bb = 0;
+	枠消去();
+	for (ii = 1; ii < 3001; ++ii)
+	{
+		if (Ｉ存在(ii, -1) == 7 && Ｉ固有番号(ii, -1) == 209)
+		{
+			if (bb < 15)
+			{
+				++bb;
+				Ｉ削除(ii);
+				Ｒ８アイテム取得(309, 0);
+				FA[42]++;
+			}
+		}
+	}
+	gＭ = 5330;
+	ＳＡＤＶ("■Alicist Church Prize Exchange Results", "■Exchanged " + string2(bb, 0) + " Soul Shackles", "■for " + string2(bb, 0) + " Alice coins");
+}
+
+void ランスだけ全回復処理()
+{
+	if (ＰＴＡ有無／固有(1) != 0)
+	{
+		int iic = Ｃ番号取得(1);
+		Ｃ補給(iic);
+	}
+}
+
+void 素早さ仙人／初期化()
+{
+	int aa = 0;
+	int iic = 0;
+	if (FA[23] != 0)
+	{
+		aa = FA[23];
+		FA[23] = 0;
+		iic = Ｃ番号取得(6);
+		Ｃ初期／素早さ(iic, Ｃ初期／素早さ(iic, -1) - aa);
+		Ｃ再計算(iic);
+	}
+	if (FA[24] != 0)
+	{
+		aa = FA[24];
+		FA[24] = 0;
+		iic = Ｃ番号取得(1);
+		Ｃ初期／素早さ(iic, Ｃ初期／素早さ(iic, -1) - aa);
+		Ｃ再計算(iic);
+	}
+}
+
+void カラーの呪いで男のみ死亡表示()
+{
+	int aa = 0;
+	int iic = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ性別(iic, -1) == 1 && Ｃ番号(iic, -1) != 1 && (Ｃ登録状態(iic, -1) == 1 || Ｃ登録状態(iic, -1) == 2 || Ｃ登録状態(iic, -1) == 3))
+		{
+			ト書き();
+			顔表示／総合(iic);
+			'Afflicted by the Massive Morurun B curse,' R;
+			S(Ｃ名前(iic, ""));
+			' is on the verge of death (safe, barely).' A;
+		}
+	}
+	顔表示(0, 1, 100);
+}
+
+void エンカウント再計算(string 条件)
+{
+	lint aa = 0;
+	lint bb = 0;
+	lint iic = 0;
+	◆ランダムエンカウント歩数 = 20 + ◆クエスト戦闘回数／ＭＡＰ内 * 10;
+	if (◆iiq == 120)
+	{
+		◆ランダムエンカウント歩数 = 20;
+	}
+	if (◆iiq == 95)
+	{
+		◆ランダムエンカウント歩数 = 20;
+	}
+	LOG_TADA("■エンカウント再計算　　（" + string2(◆ランダムエンカウント歩数, 0) + "歩後）　戦闘回数＝" + string(◆クエスト戦闘回数／ＭＡＰ内) + "\n");
+	aa = ＣＳ有無／ランク別効果／スタメン(iic, 267, 1);
+	if (aa != 0)
+	{
+		if (aa >= 20)
+		{
+			aa = 20;
+		}
+		◆ランダムエンカウント歩数 += aa;
+		LOG_TADA("　" + Ｃ名前(iic, "") + "の隠密移動により　" + string(◆ランダムエンカウント歩数) + "歩後\n");
+	}
+	aa = ＣＳ有無／ランク別効果／スタメン(iic, 258, 1);
+	if (aa != 0)
+	{
+		if (aa >= 12)
+		{
+			aa = 12;
+		}
+		◆ランダムエンカウント歩数 -= aa;
+		LOG_TADA("　" + Ｃ名前(iic, "") + "の狩人により　" + string(aa) + "歩後\n");
+	}
+	if (ＰＴＡ有無／固有(91) != 0)
+	{
+		◆ランダムエンカウント歩数 -= 10;
+		LOG_TADA("　" + Ｃ名前(iic, "") + "の七難八苦発動　\n");
+	}
+	aa = ＰＴＡ＿Ｉ個数(5);
+	if (aa != 0)
+	{
+		bb = RAND(aa * 10);
+		◆ランダムエンカウント歩数 += bb;
+		LOG_TADA("　　Ｔシャツ" + string(aa) + "枚により " + string(bb) + "歩追加\n");
+	}
+	if (◆iiq == 175 && ◆ランダムエンカウント歩数 >= 35)
+	{
+		◆ランダムエンカウント歩数 = 35;
+	}
+	if (◆ランダムエンカウント歩数 >= 60)
+	{
+		◆ランダムエンカウント歩数 = 60;
+	}
+	if (◆ランダムエンカウント歩数 <= 10)
+	{
+		◆ランダムエンカウント歩数 = 10;
+	}
+	if (条件 == "エリア切り替え")
+	{
+		return;
+	}
+	Ｒ８エンカウント進行(-99);
+	LOG_TADA("　次のエンカウントは" + string2(◆ランダムエンカウント歩数, 0) + "歩後\n");
+}
+
+void 壁紙ポスタールーム表示()
+{
+	Ｒ８ポスター部屋表示();
+}
+
+lint ポスター総数取得()
+{
+	lint aa = 0;
+	if (FA[155] == 1)
+	{
+		aa++;
+	}
+	if (FA[156] == 1)
+	{
+		aa++;
+	}
+	if (FA[157] == 1)
+	{
+		aa++;
+	}
+	if (FA[158] == 1)
+	{
+		aa++;
+	}
+	if (FA[159] == 1)
+	{
+		aa++;
+	}
+	if (FA[160] == 1)
+	{
+		aa++;
+	}
+	if (FA[161] == 1)
+	{
+		aa++;
+	}
+	if (FA[162] == 1)
+	{
+		aa++;
+	}
+	if (FA[163] == 1)
+	{
+		aa++;
+	}
+	if (FA[164] == 1)
+	{
+		aa++;
+	}
+	if (FA[165] == 1)
+	{
+		aa++;
+	}
+	if (FA[166] == 1)
+	{
+		aa++;
+	}
+	if (FA[167] == 1)
+	{
+		aa++;
+	}
+	if (FA[168] == 1)
+	{
+		aa++;
+	}
+	if (FA[169] == 1)
+	{
+		aa++;
+	}
+	if (FA[170] == 1)
+	{
+		aa++;
+	}
+	if (FA[171] == 1)
+	{
+		aa++;
+	}
+	if (FA[172] == 1)
+	{
+		aa++;
+	}
+	if (FA[173] == 1)
+	{
+		aa++;
+	}
+	if (FA[174] == 1)
+	{
+		aa++;
+	}
+	return aa;
+}
+
+lint エリア切り替え／強制無気力キノコ()
+{
+	if (ＰＴＡ総数() < 2)
+	{
+		return 0;
+	}
+	ADVON();
+	セット表示(0, 0, 0, 0);
+	字速度(0);
+	ト書き();
+	'    A deadly trap!　' R;
+	'　　　' ミニイベント表示(4310, 1, 500);
+	'Sloth shrooms are growing underfoot.' AA;
+	'Countless sloth shrooms are growing nearby.' R;
+	'The ground is practically made of them.' R;
+	'Even trap evasion can\'t avoid this.' R;
+	'It\'s no use... There\'s no escape!' AA;
+	Ｒ８ジングル(454, false);
+	ミニイベント表示(4320, 1, 500);
+	lint iic = ＰＴＡランダム(0, 0);
+	ＰＴＡ解除(iic);
+	Ｒ８システム情報更新(2);
+	ト書き();
+	顔表示／総合(iic);
+	'  Sloth shrooms explode.' R;
+	'  ' S(Ｃ短縮名前(iic, ""));
+	' was incapacitated.' AA;
+	字速度(-1);
+	return iic;
+}
+
+lint エロテク対象者決定(lint no)
+{
+	LOG_TADA("　エロテク　１：" + Ｃ名前(QD[2], "") + "\n");
+	LOG_TADA("　エロテク　２：" + Ｃ名前(QD[3], "") + "\n");
+	LOG_TADA("　エロテク　３：" + Ｃ名前(QD[4], "") + "\n");
+	lint loop = 0;
+	lint iic = 0;
+	if (no == 1)
+	{
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (iic != 0 && Ｃ性別(iic, -1) == 2 && ＣＳ有無(iic, 373, 0) == 0 && ＣＦＡ(iic, 13, -1) == 1 && Ｃ番号(iic, -1) != 12)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (Ｃ番号(iic, -1) == 12)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (iic != 0 && Ｃ性別(iic, -1) == 2 && ＣＳ有無(iic, 373, 0) == 0)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (iic != 0)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		return 0;
+	}
+	if (no == 2)
+	{
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			no = Ｃ番号(iic, -1);
+			if (iic != 0 && (no == 29 || no == 22 || no == 27 || no == 42 || no == 54 || no == 55))
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			no = Ｃ番号(iic, -1);
+			if (iic != 0 && no == 12)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (iic != 0 && Ｃ性別(iic, -1) == 2 && ＣＳ有無(iic, 373, 0) == 0)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (iic != 0)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		return 0;
+	}
+	if (no == 3)
+	{
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			no = Ｃ番号(iic, -1);
+			if (iic != 0 && no == 12)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (iic != 0 && Ｃ性別(iic, -1) == 2 && ＣＳ有無(iic, 373, 0) == 0)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		for (loop = 2; loop < 5; loop++)
+		{
+			iic = QD[loop];
+			if (iic != 0)
+			{
+				QD[loop] = 0;
+				return iic;
+			}
+		}
+		return 0;
+	}
+	return 0;
+}
+
+lint 汚染人間発生確認()
+{
+	LOG_TADA("汚染人間発生確認\n");
+	if (Ｑ状態(165, -1) != 2)
+	{
+		return 0;
+	}
+	if (FA[39] == 1)
+	{
+		return 0;
+	}
+	if (FA[190] == ◆iiq && RAND(20) != 1)
+	{
+		return 0;
+	}
+	if (FA[191] == ◆iiq && RAND(20) != 1)
+	{
+		return 0;
+	}
+	if (FA[192] == ◆iiq && RAND(20) != 1)
+	{
+		return 0;
+	}
+	if (FA[193] == ◆iiq && RAND(20) != 1)
+	{
+		return 0;
+	}
+	if (FA[194] == ◆iiq && RAND(20) != 1)
+	{
+		return 0;
+	}
+	FA[189]++;
+	if (FA[189] >= 6)
+	{
+		FA[189] = 1;
+	}
+	if (FA[189] == 1)
+	{
+		FA[190] = ◆iiq;
+	}
+	if (FA[189] == 2)
+	{
+		FA[191] = ◆iiq;
+	}
+	if (FA[189] == 3)
+	{
+		FA[192] = ◆iiq;
+	}
+	if (FA[189] == 4)
+	{
+		FA[193] = ◆iiq;
+	}
+	if (FA[189] == 5)
+	{
+		FA[194] = ◆iiq;
+	}
+	return 1;
+}
+
+void 恋人仙人／スキル禁止処理()
+{
+	lint iic = 0;
+	lint cs = 0;
+	lint no = 0;
+	iic = Ｃ番号取得(1);
+	for (cs = 1; cs < 21; cs++)
+	{
+		no = ＣＳ番号(iic, cs, -1);
+		if (no != 0 && ＣＳ使用回数(iic, cs, -1) != 0 && Ｓ行動種類(no, -1) == 1)
+		{
+			if (no != 100)
+			{
+				ＣＳ使用回数(iic, cs, 0);
+			}
+		}
+	}
+	iic = Ｃ番号取得(39);
+	for (cs = 1; cs < 21; cs++)
+	{
+		no = ＣＳ番号(iic, cs, -1);
+		if (no != 0 && ＣＳ使用回数(iic, cs, -1) != 0 && Ｓ行動種類(no, -1) == 2)
+		{
+			if (no != 168 && no != 187 && no != 194)
+			{
+				ＣＳ使用回数(iic, cs, 0);
+			}
+		}
+	}
+}
+
+void クエストボーナス／冒険功績／加算()
+{
+	if (◆クエストボーナス有無[1] == 1)
+	{
+		◆クエストボーナス[1]++;
+		if (◆クエストボーナス[1] > ◆クエストボーナス最大[1])
+		{
+			◆クエストボーナス[1] = ◆クエストボーナス最大[1];
+		}
+	}
+}
+
+void クエストボーナス／ＬＶＵＰ／加算()
+{
+	if (◆クエストボーナス有無[2] == 1)
+	{
+		◆クエストボーナス[2]++;
+		if (◆クエストボーナス[2] > ◆クエストボーナス最大[2])
+		{
+			◆クエストボーナス[2] = ◆クエストボーナス最大[2];
+		}
+		◆ＥＦ発生／ボーナスＬＶＵＰ = 1;
+		if (◆クエストボーナス[2] == ◆クエストボーナス最大[2])
+		{
+			◆ＥＦ発生／ボーナスＬＶＵＰ = 2;
+		}
+	}
+}
+
+void クエストボーナス／配置敵／加算(int bre)
+{
+	if (◆クエストボーナス有無[3] == 1 && bre == 1)
+	{
+		◆クエストボーナス[3]++;
+		if (◆クエストボーナス[3] > ◆クエストボーナス最大[3])
+		{
+			◆クエストボーナス[3] = ◆クエストボーナス最大[3];
+		}
+		◆ＥＦ発生／ボーナス配置敵 = 1;
+		if (◆クエストボーナス[3] == ◆クエストボーナス最大[3])
+		{
+			◆ＥＦ発生／ボーナス配置敵 = 2;
+		}
+	}
+}
+
+int 幸福きゃんきゃんの経験値取得()
+{
+	int exp = 0;
+	exp = 333000;
+	if (FA[272] != 0)
+	{
+		exp += FA[272] * 10000;
+	}
+	if (exp >= 999000)
+	{
+		exp = 999000;
+	}
+	return exp;
+}
+
+void 子鹿物語()
+{
+	int ra = RAND(9);
+	if (ra == 1)
+	{
+		LOG("・Kojika Yamanaka's actually 21\n");
+	}
+	if (ra == 2)
+	{
+		LOG("・Kojika Yamanaka has gone through seven misfortunes and eight pains\n");
+	}
+	if (ra == 3)
+	{
+		LOG("・Kojika Yamanaka still dreams of the success of the Amago clan\n");
+	}
+	if (ra == 4)
+	{
+		LOG("・Kojika Yamanaka's favorite food is deer crackers\n");
+	}
+	if (ra == 5)
+	{
+		LOG("・Kojika Yamanaka actually has lots of experience with men (it's all rape)\n");
+	}
+	if (ra == 6)
+	{
+		LOG("・Kojika Yamanaka is still with you\n");
+	}
+	if (ra == 7)
+	{
+		LOG("・Kojika Yamanaka is popular among those with certain tastes\n");
+	}
+	if (ra == 8)
+	{
+		LOG("・Kojika Yamanaka hates Motonari Mouri\n");
+	}
+	if (ra == 9)
+	{
+		LOG("・Kojika Yamanaka is having a rough time of it lately\n");
+	}
+}
+
+void ＭＡＰ基礎型登録(int no)
+{
+	◆ＭＡＰ基礎型 = no;
+	◆戦闘背景番号 = 81;
+	if (no == 1)
+	{
+		◆戦闘背景番号 = 1;
+		gＭ = 5610;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5611;
+		}
+	}
+	if (no == 2)
+	{
+		◆戦闘背景番号 = 2;
+		gＭ = 5620;
+		if (◆iiq == 66 || ◆iiq == 70 || ◆iiq == 72 || ◆iiq == 56 || ◆iiq == 57)
+		{
+			◆戦闘背景番号 = 51;
+			gＭ = 5621;
+		}
+	}
+	if (no == 3)
+	{
+		◆戦闘背景番号 = 3;
+		gＭ = 5630;
+	}
+	if (no == 4)
+	{
+		◆戦闘背景番号 = 4;
+		gＭ = 5640;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5641;
+		}
+	}
+	if (no == 5)
+	{
+		◆戦闘背景番号 = 5;
+		gＭ = 5650;
+		if (◆iiq == 73)
+		{
+			◆戦闘背景番号 = 52;
+			gＭ = 5655;
+		}
+	}
+	if (no == 6)
+	{
+		◆戦闘背景番号 = 6;
+		gＭ = 5660;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5661;
+		}
+	}
+	if (no == 7)
+	{
+		◆戦闘背景番号 = 7;
+		gＭ = 5670;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5671;
+		}
+	}
+	if (no == 8)
+	{
+		◆戦闘背景番号 = 8;
+		gＭ = 5680;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5681;
+		}
+	}
+	if (no == 9)
+	{
+		◆戦闘背景番号 = 10;
+		gＭ = 5701;
+	}
+	if (no == 10)
+	{
+		◆戦闘背景番号 = 11;
+		gＭ = 5710;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5711;
+		}
+	}
+	if (no == 11)
+	{
+		◆戦闘背景番号 = 56;
+		gＭ = 5720;
+	}
+	if (no == 12)
+	{
+		◆戦闘背景番号 = 13;
+		gＭ = 5730;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5731;
+		}
+	}
+	if (no == 13)
+	{
+		◆戦闘背景番号 = 14;
+		gＭ = 5740;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5741;
+		}
+	}
+	if (no == 14)
+	{
+		◆戦闘背景番号 = 15;
+		gＭ = 5750;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5751;
+		}
+	}
+	if (no == 15)
+	{
+		◆戦闘背景番号 = 16;
+		gＭ = 5760;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5761;
+		}
+	}
+	if (no == 16)
+	{
+		◆戦闘背景番号 = 18;
+		gＭ = 5780;
+		if (RAND(2) == 1)
+		{
+			gＭ = 5781;
+		}
+	}
+	if (no == 17)
+	{
+		◆戦闘背景番号 = 21;
+		gＭ = 5340;
+	}
+	if (no == 18)
+	{
+		◆戦闘背景番号 = 20;
+		gＭ = 5791;
+	}
+	if (no == 19)
+	{
+		◆戦闘背景番号 = 22;
+		gＭ = 5792;
+	}
+	if (no == 20)
+	{
+		◆戦闘背景番号 = 63;
+		gＭ = 5793;
+	}
+	if (no == 21)
+	{
+		◆戦闘背景番号 = 64;
+		gＭ = 5794;
+	}
+	if (no == 22)
+	{
+		◆戦闘背景番号 = 65;
+		gＭ = 5795;
+	}
+}
+
+void Ｔ通信情報生成()
+{
+	LOG_TADA("Ｔ通信情報生成中………\n");
+	int aa = 0;
+	int loop = 0;
+	for (loop = 1; loop < 10; ++loop)
+	{
+		FB_C[loop] = 0;
+		FB_C2[loop] = 0;
+		FB_Q[loop] = 0;
+		FB_Q2[loop] = 0;
+		FB_H[loop] = 0;
+		FB_H2[loop] = 0;
+		FB_B[loop] = 0;
+		FB_B2[loop] = 0;
+	}
+	FB[1] = FA[101];
+	if (◆追加キット == 0)
+	{
+		FB[2] = 1;
+		if (Ｑ状態(60, -1) == 2)
+		{
+			FB[2] = 2;
+		}
+		if (Ｑ状態(72, -1) == 2)
+		{
+			FB[2] = 3;
+		}
+		if (Ｑ状態(77, -1) == 2)
+		{
+			FB[2] = 4;
+		}
+		if (◆ワールド == 2)
+		{
+			FB[2] = 5;
+		}
+		if (◆ワールド == 3)
+		{
+			FB[2] = 6;
+		}
+		if (◆ワールド == 4)
+		{
+			FB[2] = 7;
+		}
+		if (◆ワールド == 5)
+		{
+			FB[2] = 8;
+		}
+		if (FA[116] == 5)
+		{
+			FB[2] = 0;
+		}
+	}
+	if (◆追加キット == 1)
+	{
+		FB[2] = 21;
+		if (FA[263] == 1)
+		{
+			FB[2] = 23;
+		}
+		if (FA[201] == 1)
+		{
+			FB[2] = 24;
+		}
+		if (◆ワールド == 2)
+		{
+			FB[2] = 25;
+		}
+		if (◆ワールド == 3)
+		{
+			FB[2] = 26;
+		}
+		if (◆ｅａｓｙモード == 1)
+		{
+			FB[2] = 29;
+		}
+		if (FA[116] == 5)
+		{
+			FB[2] = 20;
+		}
+	}
+	Ｒ８キャラランキング();
+	for (loop = 1; loop < 10; ++loop)
+	{
+		LOG_TADA("キャラ" + string(loop) + "：" + Ｃ名前(Ｃ番号取得(FB_C[loop]), "") + "（" + string(FB_C2[loop]) + "）\n");
+	}
+	Ｒ８クエストランキング();
+	for (loop = 1; loop < 10; ++loop)
+	{
+		LOG_TADA("クエスト" + string(loop) + "：" + Ｑ名前(FB_Q[loop], "") + "（" + string(FB_Q2[loop]) + "）　　" + string(Ｑ参加回数(FB_Q[loop], -1)) + "\n");
+	}
+	Ｒ８ＣＧランキング();
+	for (loop = 1; loop < 10; ++loop)
+	{
+		LOG_TADA("ＣＧ" + string(loop) + "：" + string(FB_H[loop]) + "（" + string(FB_H2[loop]) + "）\n");
+	}
+	Ｒ８ＢＧＭランキング();
+	for (loop = 1; loop < 10; ++loop)
+	{
+		LOG_TADA("音楽" + string(loop) + "：" + string(FB_H[loop]) + "（" + string(FB_H2[loop]) + "）\n");
+	}
+	FB[5] = FA[103];
+	FB[6] = FA[104];
+	FB[7] = FA[105];
+	FB[8] = FA[96];
+	FB[11] = FA[111];
+	FB[12] = FA[114];
+	FB[13] = FA[115];
+	FB[14] = ＣＬＶ(Ｃ番号取得(1), -1);
+	int iic = 0;
+	int ▲転生 = 0;
+	int ▲攻撃 = 0;
+	for (iic = 20; iic < 201; ++iic)
+	{
+		if (Ｃ転生回数(iic, -1) >= ▲転生)
+		{
+			▲転生 = Ｃ転生回数(iic, -1);
+		}
+		if (Ｃ攻撃力(iic, -1) >= ▲攻撃)
+		{
+			▲攻撃 = Ｃ攻撃力(iic, -1);
+		}
+	}
+	FB[15] = ▲転生;
+	FB[16] = ▲攻撃;
+	LOG_TADA("　ヤンキー殺された数　" + string(FB[5]) + "\n");
+	LOG_TADA("　パステルが犯された回数　" + string(FB[6]) + "\n");
+	LOG_TADA("　サチコが死んだ回数　" + string(FB[7]) + "\n");
+	LOG_TADA("　総セックス回数　" + string(FB[8]) + "\n");
+	LOG_TADA("　ますぞえ撃破　" + string(FB[9]) + "\n");
+	LOG_TADA("　ハニーキング撃破　" + string(FB[10]) + "\n");
+	LOG_TADA("　ランスアタック使用回数　" + string(FB[11]) + "\n");
+	LOG_TADA("　ハニー殺し回数　" + string(FB[12]) + "\n");
+	LOG_TADA("　ひきこもり回数　" + string(FB[13]) + "\n");
+	LOG_TADA("　ランスのレベル　" + string(FB[14]) + "\n");
+	LOG_TADA("　最大転生回数　" + string(FB[15]) + "\n");
+	LOG_TADA("　最大攻撃力　" + string(FB[16]) + "\n");
+	iic = Ｃ番号取得(1);
+	FB[17] = 1;
+	if (ＣＬＶ(iic, -1) >= 40)
+	{
+		FB[17] = 2;
+	}
+	if (ＣＬＶ(iic, -1) >= 50)
+	{
+		FB[17] = 3;
+	}
+	if (ＣＬＶ(iic, -1) >= 80)
+	{
+		FB[17] = 4;
+	}
+	if (ＣＬＶ(iic, -1) >= 100)
+	{
+		FB[17] = 5;
+	}
+	if (ＣＬＶ(iic, -1) >= 200)
+	{
+		FB[17] = 6;
+	}
+	if (ＣＬＶ(iic, -1) >= 300)
+	{
+		FB[17] = 7;
+	}
+	if (マメ／クエスト一覧(0) == 175)
+	{
+		FB[18] = 1;
+	}
+	if (マメ／キャラ一覧(0) == 68)
+	{
+		FB[19] = 1;
+	}
+	if (マメ／レアアイテムＢの数() == 13)
+	{
+		FB[20] = 1;
+	}
+	if (マメ／女の子モンスター一覧(0) == 18)
+	{
+		FB[21] = 1;
+	}
+	if (FA[14] != 0)
+	{
+		FB[22] = 1;
+	}
+	if (FA[108] != 0)
+	{
+		FB[23] = 1;
+	}
+	if (FA[256] != 0)
+	{
+		FB[24] = 1;
+	}
+	if (FA[18] != 0)
+	{
+		FB[25] = 1;
+	}
+	FB[26] = FA[277];
+	FB[27] = FA[278];
+	FB[28] = FA[279];
+	FB[29] = FA[280];
+	FB[30] = FA[281];
+	FB[31] = FA[282];
+	FB[32] = FA[283];
+	FB[33] = FA[284];
+	FB[34] = FA[285];
+	FB[35] = FA[286];
+	FB[36] = FA[287];
+	FB[37] = FA[288];
+	FB[38] = FA[289];
+	FB[39] = FA[290];
+	FB[40] = FA[291];
+	FB[41] = FA[292];
+	FB[42] = FA[293];
+	FB[43] = FA[294];
+	FB[44] = FA[295];
+	FB[45] = FA[296];
+	FB[46] = FA[297];
+	FB[47] = FA[298];
+	FB[48] = FA[299];
+	FB[49] = FA[300];
+}
+
+void ログ表示／アンケ(int no)
+{
+	if (no == 277)
+	{
+		LOG("■年齢　　　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("２０歳未満\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("２０～２４歳\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("２５～２９歳\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("３０～３４歳\n");
+		}
+		if (FA[no] == 5)
+		{
+			LOG("３５～３９歳\n");
+		}
+		if (FA[no] == 6)
+		{
+			LOG("４０歳代以上\n");
+		}
+	}
+	if (no == 278)
+	{
+		LOG("■性別　　　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("男性\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("女性\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("どちらでもない\n");
+		}
+	}
+	if (no == 279)
+	{
+		LOG("■エロゲ歴　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("１年未満\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("１～２年\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("３～４年\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("５年～９年\n");
+		}
+		if (FA[no] == 5)
+		{
+			LOG("１０年以上\n");
+		}
+		if (FA[no] == 6)
+		{
+			LOG("２０年以上\n");
+		}
+	}
+	if (no == 280)
+	{
+		LOG("■カルビ　　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("塩\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("タレ\n");
+		}
+	}
+	if (no == 281)
+	{
+		LOG("■本商品の満足度　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("最高、非常に満足している\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("充分、楽しめた\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("まぁまぁだった\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("少し期待はずれ\n");
+		}
+		if (FA[no] == 5)
+		{
+			LOG("全然駄目、つまらん\n");
+		}
+	}
+	if (no == 282)
+	{
+		LOG("■本商品の難易度　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("まだクリアできていない\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("クリアしたが、きつすぎる\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("ちょうどいい難易度だった\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("ぬるかった。もっと難しくていい\n");
+		}
+	}
+	if (no == 283)
+	{
+		LOG("■本商品の価格について　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("高い\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("普通\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("安い\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("こういう追加販売は嫌\n");
+		}
+	}
+	if (no == 284)
+	{
+		LOG("■本商品のどこに興味？　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("ver.1.6が面白かったので\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("新キャラクターが気になったから\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("新しいクエストが気になったから\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("新アイテムが気になったから\n");
+		}
+		if (FA[no] == 5)
+		{
+			LOG("新システムが気になったから\n");
+		}
+		if (FA[no] == 6)
+		{
+			LOG("特になし\n");
+		}
+	}
+	if (no == 285)
+	{
+		LOG("■ＲＱをプレイしていた？　　　");
+		if (FA[no] == 1)
+		{
+			LOG("プレイしていた\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("「マグナム」と同時に購入した\n");
+		}
+	}
+	if (no == 286)
+	{
+		LOG("■神は　　　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("信じています\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("信じていません\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("がっかりました\n");
+		}
+	}
+	if (no == 287)
+	{
+		LOG("■原画評価　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("非常に気に入った\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("問題ない\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("もう少しがんばってほしい\n");
+		}
+	}
+	if (no == 288)
+	{
+		LOG("■ＣＧ評価　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("非常に気に入った\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("問題ない\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("もう少しがんばってほしい\n");
+		}
+	}
+	if (no == 289)
+	{
+		LOG("■システム評価　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("非常に気に入った\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("問題ない\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("もう少しがんばってほしい\n");
+		}
+	}
+	if (no == 290)
+	{
+		LOG("■操作性評価　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("非常に気に入った\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("問題ない\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("もう少しがんばってほしい\n");
+		}
+	}
+	if (no == 291)
+	{
+		LOG("■キャラ評価　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("非常に気に入った\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("問題ない\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("もう少しがんばってほしい\n");
+		}
+	}
+	if (no == 292)
+	{
+		LOG("■エロ評価　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("非常に気に入った\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("問題ない\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("もう少しがんばってほしい\n");
+		}
+	}
+	if (no == 293)
+	{
+		LOG("■ポリゴン評価　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("非常に気に入った\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("問題ない\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("もう少しがんばってほしい\n");
+		}
+	}
+	if (no == 294)
+	{
+		LOG("■音楽評価　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("ライブにも興味あるし、オリジナルのＣＤも欲しい\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("ライブには行けないが、オリジナルのＣＤが欲しい\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("アリボー３がほしい\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("ゲームの音楽ＣＤで十分です\n");
+		}
+		if (FA[no] == 5)
+		{
+			LOG("「ASTLYRE」を知らない\n");
+		}
+	}
+	if (no == 295)
+	{
+		LOG("■ＡＳＴＬＴＲＥ　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("はい\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("いいえ\n");
+		}
+	}
+	if (no == 296)
+	{
+		LOG("■ツイッターは　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("はい\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("いいえ\n");
+		}
+	}
+	if (no == 298)
+	{
+		LOG("■同システム　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("プレイしてみたい\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("ランスならプレイしてみたい\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("別作品でも内容によってはプレイしたい\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("他のゲームシステムがいい\n");
+		}
+	}
+	if (no == 299)
+	{
+		LOG("■母娘乱館　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("知っている。買おうと思っている\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("名前だけしっている\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("知らない\n");
+		}
+	}
+	if (no == 300)
+	{
+		LOG("■ぱすちゃ３　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("知っている。買おうと思っている\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("名前だけしっている\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("知らない\n");
+		}
+	}
+	if (no == 297)
+	{
+		LOG("■どうする　　　　　　　　　　");
+		if (FA[no] == 1)
+		{
+			LOG("連合艦隊\n");
+		}
+		if (FA[no] == 2)
+		{
+			LOG("格闘だー、自分で殴る\n");
+		}
+		if (FA[no] == 3)
+		{
+			LOG("剣で戦う\n");
+		}
+		if (FA[no] == 4)
+		{
+			LOG("何かを召還する\n");
+		}
+		if (FA[no] == 5)
+		{
+			LOG("愛を語る\n");
+		}
+	}
+}
+
+lint 全クエストクリア確認()
+{
+	return 1;
+}
+
+lint 全キャラクリア確認()
+{
+	return 1;
+}
+
+lint 全レアクリア確認()
+{
+	return 1;
+}
+
+lint 全女Ｍクリア確認()
+{
+	return 1;
+}
+
+void ログ登録Ａ(int fg)
+{
+	◆ログ番号++;
+	if (◆ログ番号 >= 3000)
+	{
+		return;
+	}
+	◆ログ／種類[◆ログ番号] = fg;
+	◆ログ／クエスト[◆ログ番号] = ◆iiq;
+}
+
+void ログ登録Ｂ(int fg)
+{
+	if (◆ログ番号 >= 3000)
+	{
+		return;
+	}
+	if (fg == 1)
+	{
+		◆ログ／結果[◆ログ番号] = 1;
+	}
+	if (fg != 1)
+	{
+		◆ログ／結果[◆ログ番号] = 2;
+	}
+	◆ログ／回数[◆ログ番号] = Ｑクリア回数(◆iiq, -1);
+	int iic = Ｃ番号取得(1);
+	◆ログ／ＬＶ[◆ログ番号] = ＣＬＶ(iic, -1);
+	◆ログ／死亡[◆ログ番号] = FA[110];
+}
+
+int シナリオコール(string ラベル名)
+{
+	シナリオ型 tmpラベル = ラベル名;
+	if (tmpラベル == NULL)
+	{
+		シナリオ型_n1 tmpラベル_n1 = ラベル名;
+		if (tmpラベル_n1 == NULL)
+		{
+			return 0;
+		}
+		tmpラベル_n1(0);
+		return 1;
+	}
+	tmpラベル();
+	return 1;
+}
+
+bool 確率演算(lint aa)
+{
+	if (aa >= 100)
+	{
+		return true;
+	}
+	if (aa == 0)
+	{
+		return false;
+	}
+	if (aa >= RAND(100))
+	{
+		return true;
+	}
+	return false;
+}
+
+lint 近い数値検査(lint a, lint b, lint c)
+{
+	LOG_TADA("近い数字検査　" + string(a) + " " + string(b) + " " + string(c) + "\n");
+	if (a == b)
+	{
+		return 1;
+	}
+	if (a > b && a < b + c + 1)
+	{
+		return 1;
+	}
+	if (b > a && b < a + c + 1)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+lint ゆらぎ関数(lint 元値, lint 幅)
+{
+	if (幅 == 0 || 幅 >= 100)
+	{
+		return 元値;
+	}
+	if (元値 == 0)
+	{
+		return 元値;
+	}
+	lint aa = 倍率計算関数(元値, 幅);
+	if (aa != 0)
+	{
+		aa = RAND(aa);
+	}
+	lint bb = RAND(3);
+	if (bb == 1)
+	{
+		元値 += aa;
+	}
+	if (bb == 2)
+	{
+		元値 -= aa;
+	}
+	return 元値;
+}
+
+void 累積フラグ関数(ref lint aa, lint bb)
+{
+	if (aa <= bb)
+	{
+		aa = bb;
+	}
+}
+
+void 加減関数(ref lint 元値, int 加減値)
+{
+	int fg = 0;
+	if (加減値 <= 0)
+	{
+		fg = 1;
+		加減値 = -加減値;
+	}
+	if (fg == 0)
+	{
+		元値 += 加減値;
+	}
+	if (fg == 1)
+	{
+		元値 -= 加減値;
+	}
+}
+
+void 整数調整関数(ref lint 元値, lint 上限, lint 下限)
+{
+	if (元値 > 上限)
+	{
+		元値 = 上限;
+	}
+	if (元値 < 下限)
+	{
+		元値 = 下限;
+	}
+	return;
+}
+
+void 調整(ref int 元値, int 最大)
+{
+	if (元値 < 0)
+	{
+		元値 = 0;
+	}
+	if (元値 != 0 && 最大 != 0 && 元値 < 最大)
+	{
+		元値 = 最大;
+	}
+	return;
+}
+
+lint 倍率計算関数(lint s数値, lint s倍率)
+{
+	float aa = 0.0;
+	float 数値 = 0.0;
+	float 倍率 = 0.0;
+	lint err = 0;
+	数値 = s数値;
+	倍率 = s倍率;
+	if (数値 < 0.0)
+	{
+		err = 1;
+	}
+	if (倍率 < 0.0)
+	{
+		err = 1;
+	}
+	if (err == 1)
+	{
+		return 0;
+	}
+	if (s倍率 == 100)
+	{
+		return s数値;
+	}
+	aa = 数値;
+	aa = aa * (倍率 / 100.0);
+	return aa;
+}
+
+int ％計算関数(int s数値, int s対象値)
+{
+	return (s数値 * 100) / s対象値;
+}
+
+string 固定文字列(string 文字列, int 長さ)
+{
+	文字列 = 文字列 + "　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　";
+	return 文字列.GetPart(0, 長さ);
+}
+
+string 字数制限(string 文字列, int 長さ)
+{
+	return 文字列.GetPart(0, 長さ);
+}
+
+string string全角(int aa)
+{
+	return "%D" % aa;
+}
+
+string string2(int aa, int bb)
+{
+	lint cc = 0;
+	string 文字列 = string全角(aa);
+	if (bb != 0)
+	{
+		for (; ; )
+		{
+			cc = 文字列.Length();
+			if (cc >= bb)
+			{
+				return 文字列;
+			}
+			文字列 = "　" + 文字列;
+		}
+	}
+	return 文字列;
+}
+
+string string3(int aa)
+{
+	if (aa < 1000)
+	{
+		return "%d" % aa;
+	}
+	string comma_separated_int = "%03d" % (aa % 1000);
+label0:
+	if (aa >= 1000)
+	{
+		aa /= 1000;
+		if (aa >= 1000)
+		{
+			comma_separated_int = "%03d," % (aa % 1000) + comma_separated_int;
+		}
+		else
+		{
+			comma_separated_int = "%d," % aa + comma_separated_int;
+		}
+		goto label0;
+	}
+	return comma_separated_int;
+}
+
+string string4(int aa, int bb)
+{
+	lint cc = 0;
+	string 文字列 = string全角(aa);
+	for (; ; )
+	{
+		cc = 文字列.Length();
+		if (cc >= bb)
+		{
+			return 文字列;
+		}
+		文字列 = "０" + 文字列;
+	}
+	return 文字列;
+}
+
+string stringD(int aa, int bb)
+{
+	lint cc = 0;
+	string 文字列 = string(aa);
+	for (; ; )
+	{
+		cc = 文字列.Length();
+		if (cc >= bb)
+		{
+			return 文字列;
+		}
+		文字列 = "_" + 文字列;
+	}
+	return 文字列;
+}
+
+string string3b(int aa, int bb)
+{
+	lint cc = 0;
+	lint cca = 0;
+	string 文字列 = string全角(aa);
+	for (; ; )
+	{
+		cc = 文字列.Length();
+		if (cc >= bb)
+		{
+			return 文字列;
+		}
+		if (cca == 0)
+		{
+			cca = 1;
+			文字列 = "－" + 文字列;
+		}
+		else
+		{
+			文字列 = "　" + 文字列;
+		}
+	}
+	return 文字列;
+}
+
+void 迷宮プレイ()
+{
+	return;
+}
+
+void 思い出エフェクト(int 壁紙, int 背景, int 立ち絵, int ミニイベント)
+{
+	黒画面(0, 0);
+	イベントＣＧ準備(0);
+	枠消去();
+	int aa = 1;
+	if ((壁紙 == g町全景 || 壁紙 == g町全景／夜 || 壁紙 == 5510 || 壁紙 == 5520 || 壁紙 == 5530 || 壁紙 == 5540) && 背景 == 0)
+	{
+		aa = 0;
+	}
+	壁紙準備(壁紙);
+	if (aa == 1)
+	{
+		マスク壁紙準備(5550);
+	}
+	背景準備(背景, "", false);
+	立ち絵準備(立ち絵);
+	ミニイベント準備(ミニイベント);
+	Ｒ８ジングル(408, false);
+	Ｒ８画面エフェクト(1, -1);
+}
+
+void 切り替えエフェクト(int 壁紙, int 背景, int 立ち絵, int ミニイベント)
+{
+	Ｒ８ジングル(408, false);
+	Ｒ８画面エフェクト(7001, -1);
+	黒画面(0, 0);
+	イベントＣＧ準備(0);
+	枠消去();
+	int aa = 1;
+	if ((壁紙 == g町全景 || 壁紙 == g町全景／夜 || 壁紙 == 5510 || 壁紙 == 5520 || 壁紙 == 5530 || 壁紙 == 5540) && 背景 == 0)
+	{
+		aa = 0;
+	}
+	壁紙準備(壁紙);
+	if (aa == 1)
+	{
+		マスク壁紙準備(5550);
+	}
+	背景準備(背景, "", false);
+	立ち絵準備(立ち絵);
+	ミニイベント準備(ミニイベント);
+	画面更新(1, 500);
+}
+

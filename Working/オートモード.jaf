@@ -1,0 +1,72 @@
+void Ｓ＿オート()
+{
+	SYS_オート設定(_g_Ｍオート ? 0 : 1, true);
+}
+
+void オートモード解除()
+{
+	SYS_オート設定(false, true);
+}
+
+bool オートモード選択肢解除確認()
+{
+	return g_ReleaseAutoModeInSelectMenu;
+}
+
+void オートモードＣＧ(int Ｍ番号, int インデックス番号, string ＣＧ名)
+{
+	if (!ＣＧ名.Empty())
+	{
+		SYS_ASSERTE_CG(ＣＧ名);
+	}
+	if (Ｍ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｍ番号);
+		SYS_オートモードＣＧ(Ｍ番号, インデックス番号, ＣＧ名);
+		return;
+	}
+	for (Ｍ番号 = 1; Ｍ番号 < 40; ++Ｍ番号)
+	{
+		SYS_オートモードＣＧ(Ｍ番号, インデックス番号, ＣＧ名);
+	}
+}
+
+void オートモードＣＧ位置(int Ｍ番号, int インデックス番号, int Ｘ, int Ｙ, int Ｚ)
+{
+	if (Ｍ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｍ番号);
+		SYS_オートモードＣＧ位置(Ｍ番号, インデックス番号, Ｘ, Ｙ, Ｚ);
+		return;
+	}
+	for (Ｍ番号 = 1; Ｍ番号 < 40; ++Ｍ番号)
+	{
+		SYS_オートモードＣＧ位置(Ｍ番号, インデックス番号, Ｘ, Ｙ, Ｚ);
+	}
+}
+
+void オートモードＣＧアニメーション時間(int Ｍ番号, int 時間)
+{
+	if (Ｍ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｍ番号);
+		SYS_オートモードＣＧアニメーション時間(Ｍ番号, 時間);
+		return;
+	}
+	for (Ｍ番号 = 1; Ｍ番号 < 40; ++Ｍ番号)
+	{
+		SYS_オートモードＣＧアニメーション時間(Ｍ番号, 時間);
+	}
+}
+
+void オートモードＣＧ表示許可設定(bool bShow)
+{
+	g_bオートモードＣＧ表示許可 = bShow;
+	SYS_Ｍ送モードＣＧ表示更新();
+}
+
+void オートモード音声あり待ち時間(int nTime)
+{
+	g_nAutoModeWaitTimeExistVoice = nTime;
+}
+

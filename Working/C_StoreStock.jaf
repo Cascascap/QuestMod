@@ -1,0 +1,65 @@
+void scrollStoreStok(int nValue)
+{
+	g_sStoreStock.scroll(nValue);
+}
+
+int アイテム保存庫_上矢印(int nID)
+{
+	return g_sStoreStock.moveUp(nID);
+}
+
+int アイテム保存庫_下矢印(int nID)
+{
+	return g_sStoreStock.moveDown(nID);
+}
+
+int アイテム保存庫_左矢印(int nID)
+{
+	return g_sStoreStock.moveLeft(nID);
+}
+
+int アイテム保存庫_右矢印(int nID)
+{
+	return g_sStoreStock.moveRight(nID);
+}
+
+void アイテム保存庫_選択設定(int nID, bool bSelect)
+{
+	g_sStoreStock.setSelect(nID, bSelect);
+}
+
+int アイテム保存庫_実行(int nZ, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	return g_sStoreStock.run(nZ, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType);
+}
+
+void アイテム保存庫_ドラッグ(int nX, int nY)
+{
+	g_sStoreStock.execDrag(nX, nY);
+}
+
+bool アイテム保存庫_ドロップ(int nX, int nY)
+{
+	return g_sStoreStock.execDrop(nX, nY);
+}
+
+int アイテム保存庫_ボタンＩＤ(int nIndex)
+{
+	return g_sStoreStock.getButtonID(nIndex);
+}
+
+int アイテム保存庫_インデクス(int nID)
+{
+	return g_sStoreStock.getItemIndex(nID);
+}
+
+int アイテム保存庫_先頭アイテム()
+{
+	return g_sStoreStock.getFirstItem();
+}
+
+int アイテム保存庫_最終アイテム()
+{
+	return g_sStoreStock.getFirstItem();
+}
+

@@ -1,0 +1,35 @@
+int AFL_Parts_WaitForClick(FTGOAT_WaitForClickCallback Func, bool キーキャンセル)
+{
+	return GOAT_WaitForClick(Func, キーキャンセル);
+}
+
+bool AFL_Parts_SetPartsFlashAndStop(int PartsNumber, string pIFlashFileName, int State)
+{
+	if (!GoatGUIEngine.SetPartsFlashAndStop(PartsNumber, pIFlashFileName, State))
+	{
+		GOAT_Warning("AFL_Parts_SetPartsFlashAndStop(パーツ番号 = %d, フラッシュファイル名 = \"%s\", 状態 = %d\n" % PartsNumber % pIFlashFileName % State);
+		return false;
+	}
+	return true;
+}
+
+bool AFL_Parts_StopPartsFlash(int PartsNumber, int State)
+{
+	return GoatGUIEngine.StopPartsFlash(PartsNumber, State);
+}
+
+bool AFL_Parts_StartPartsFlash(int PartsNumber, int State)
+{
+	return GoatGUIEngine.StartPartsFlash(PartsNumber, State);
+}
+
+bool AFL_Parts_GoFramePartsFlash(int PartsNumber, int FrameNumber, int State)
+{
+	return GoatGUIEngine.GoFramePartsFlash(PartsNumber, FrameNumber, State);
+}
+
+int AFL_Parts_GetPartsFlashEndFrameNumber(int PartsNumber, int State)
+{
+	return GoatGUIEngine.GetPartsFlashEndFrame(PartsNumber, State);
+}
+

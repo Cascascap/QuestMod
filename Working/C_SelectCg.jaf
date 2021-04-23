@@ -1,0 +1,273 @@
+bool ‘I‘ğ‚b‚f_“y‘äì¬(int nW, int nH, ref T_Sprite spBase)
+{
+	if (spBase === NULL)
+	{
+		return false;
+	}
+	int nH2 = nH + 2;
+	nW += 4;
+	nH2 += 4;
+	spBase.create(nW, nH2, 0, 0, 0, 0);
+	T_Sprite spWork;
+	spWork.setCg(10021);
+	spBase.copyCg(0, 0, spWork, 0, 0, nW, nH);
+	spBase.copyCg(0, nH, spWork, 0, 762, nW, nH2 - nH);
+	spWork.delete();
+	return true;
+}
+
+bool ‘I‘ğ‚b‚f_ƒ{ƒ^ƒ“ì¬(ref T_SelectData rfData, ref T_Button sButton)
+{
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	int nR = rfData.m_nR < 0 ? 196 : rfData.m_nR;
+	int nG = rfData.m_nG < 0 ? 196 : rfData.m_nG;
+	int nB = rfData.m_nB < 0 ? 196 : rfData.m_nB;
+	F_•â³(nR, nG, nB);
+	sact_text_metrics_t tmButton;
+	tmButton.nSize = 20;
+	tmButton.nColorR = nR;
+	tmButton.nColorG = nG;
+	tmButton.nColorB = nB;
+	tmButton.nWeight = 0;
+	tmButton.nFace = 258;
+	return _‘I‘ğ‚b‚f_ƒ{ƒ^ƒ“ì¬(10022, 340, 27, 2, rfData.m_szText, rfData.m_nSoundClick, tmButton, sButton);
+}
+
+bool ‘I‘ğ‚b‚f_‚Å‚©ƒ{ƒ^ƒ“ì¬(ref T_SelectData rfData, ref T_Button sButton)
+{
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	int nR = rfData.m_nR < 0 ? 196 : rfData.m_nR;
+	int nG = rfData.m_nG < 0 ? 196 : rfData.m_nG;
+	int nB = rfData.m_nB < 0 ? 196 : rfData.m_nB;
+	F_•â³(nR, nG, nB);
+	sact_text_metrics_t tmButton;
+	tmButton.nSize = 24;
+	tmButton.nColorR = nR;
+	tmButton.nColorG = nG;
+	tmButton.nColorB = nB;
+	tmButton.nWeight = 0;
+	tmButton.nFace = 258;
+	return _‘I‘ğ‚b‚f_ƒ{ƒ^ƒ“ì¬(10029, 340, 60, 2, rfData.m_szText, rfData.m_nSoundClick, tmButton, sButton);
+}
+
+bool ‘I‘ğ‚b‚f_ƒeƒLƒXƒgì¬(ref T_SelectData rfData, ref T_TextSprite spText)
+{
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	if (spText === NULL)
+	{
+		return false;
+	}
+	int nR = rfData.m_nR < 0 ? 0 : rfData.m_nR;
+	int nG = rfData.m_nG < 0 ? 0 : rfData.m_nG;
+	int nB = rfData.m_nB < 0 ? 0 : rfData.m_nB;
+	F_•â³(nR, nG, nB);
+	sact_text_metrics_t tmText;
+	tmText.nSize = 24;
+	tmText.nColorR = nR;
+	tmText.nColorG = nG;
+	tmText.nColorB = nB;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	tmText.nShadowPixelL = 0;
+	tmText.nShadowPixelR = 1;
+	tmText.nShadowPixelU = 0;
+	tmText.nShadowPixelD = 1;
+	tmText.nShadowColorR = 255;
+	tmText.nShadowColorG = 255;
+	tmText.nShadowColorB = 255;
+	int i = 0;
+	int cnt = 0;
+	array@string aszText;
+	array@float spacings;
+	SelectFontNumber(tmText.nFace);
+	SetFontSize(tmText.nSize);
+	SetFixedWidthSpacing(-4);
+	WordWrapText(rfData.m_szText, aszText, spacings, 346, 0.949999988079071, 0.469999998807907);
+	cnt = aszText.Numof();
+	if (cnt > 3)
+	{
+		cnt = 3;
+	}
+	switch (cnt)
+	{
+		case 1:
+			spText.setCg(10024);
+			break;
+		case 2:
+			spText.setCg(10025);
+			break;
+		case 3:
+			spText.setCg(10026);
+			break;
+		default:
+			return false;
+	}
+	int nTy = 7;
+	for (i = 0; i < cnt; ++i)
+	{
+		float spacing = spacings[i];
+		SetSpacing(spacing);
+		int textWidth = MeasureText(aszText[i], true);
+		int nTx = (362 - textWidth) / 2;
+		spText.textDrawPos2(1, nTx, nTy, aszText[i], tmText, -4, spacing, false, false);
+		nTy += 25;
+	}
+	spText.setShadowRate(128, -1);
+	return true;
+}
+
+bool ‘I‘ğ‚b‚f_•â•ƒeƒLƒXƒgì¬(ref T_SelectData rfData, ref T_TextSprite spText)
+{
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	if (spText === NULL)
+	{
+		return false;
+	}
+	int nR = rfData.m_nR < 0 ? 140 : rfData.m_nR;
+	int nG = rfData.m_nG < 0 ? 190 : rfData.m_nG;
+	int nB = rfData.m_nB < 0 ? 90 : rfData.m_nB;
+	F_•â³(nR, nG, nB);
+	sact_text_metrics_t tmText;
+	tmText.nSize = 14;
+	tmText.nColorR = nR;
+	tmText.nColorG = nG;
+	tmText.nColorB = nB;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	int i = 0;
+	int cnt = 0;
+	array@string aszText;
+	array@float spacings;
+	SelectFontNumber(tmText.nFace);
+	SetFontSize(tmText.nSize);
+	SetFixedWidthSpacing(-2);
+	WordWrapText(rfData.m_szText, aszText, spacings, 362, 0.949999988079071, 0.5);
+	cnt = aszText.Numof();
+	if (cnt < 1)
+	{
+		return false;
+	}
+	spText.create(362, 14 * cnt, 0, 0, 0, 0);
+	int nTy = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		float spacing = spacings[i];
+		SetSpacing(spacing);
+		int textWidth = MeasureText(aszText[i], true);
+		int nTx = (362 - textWidth) / 2;
+		spText.textDrawPos2(1, nTx, nTy, aszText[i], tmText, -2, spacing, false, false);
+		nTy += 14;
+	}
+	return true;
+}
+
+bool ‘I‘ğ‚b‚f_‹æØ‚èì¬(ref T_TextSprite spSeparator)
+{
+	if (spSeparator === NULL)
+	{
+		return false;
+	}
+	spSeparator.setCg(10023);
+	return true;
+}
+
+bool _‘I‘ğ‚b‚f_ƒ{ƒ^ƒ“ì¬(int nCgNo, int nWidth, int nHeight, int nEdge, string szText, int nSoundClick, ref sact_text_metrics_t tmButton, ref T_Button sButton)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	array@T_Sprite aspWork[2];
+	if (!‚b‚f_•ªŠ„_‰¡(nCgNo, aspWork))
+	{
+		return false;
+	}
+	int nW2 = nWidth - nEdge * 2;
+	int nH2 = nHeight - nEdge * 2;
+	T_TextSprite spButton1;
+	T_TextSprite spSelect1;
+	T_TextSprite spButton2;
+	T_TextSprite spSelect2;
+	T_TextSprite spButton3;
+	T_TextSprite spSelect3;
+	float spacing = 0.0;
+	SetFixedWidthSpacing(-4);
+	FitText2(szText, nW2, tmButton.nFace, tmButton.nSize, 12, tmButton.nSize, 0.949999988079071, 0.5, spacing);
+	spButton1.getSp().attach(aspWork[0].detach());
+	spButton1.textDrawCenter2(1, szText, tmButton, -4, spacing);
+	spButton2.copy(spButton1, false);
+	spButton2.blendColor(0, 0, 0, 128);
+	spButton3.getSp().attach(aspWork[1].detach());
+	spButton3.textDrawCenter2(1, szText, tmButton, -4, spacing);
+	sButton.createSp(spButton1, spButton2, spButton3);
+	sButton.createFrame(0, nW2, nH2, 216, 255, 0, 102, nEdge, nEdge, 0);
+	sButton.createFrame(1, nW2, nH2, 255, 0, 0, 128, nEdge, nEdge, 0);
+	sButton.createFrame(2, nW2, nH2, 216, 255, 0, 102, nEdge, nEdge, 0);
+	sButton.setSoundClick(nSoundClick);
+	int i = 0;
+	int cnt = aspWork.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		aspWork[i].delete();
+	}
+	spButton1.delete();
+	spButton2.delete();
+	spButton3.delete();
+	spSelect1.delete();
+	spSelect2.delete();
+	spSelect3.delete();
+	return true;
+}
+
+bool ‘I‘ğƒ{ƒ^ƒ““o˜^_¬(ref T_ButtonGroup sButtonGroup, int nID, string szText, int nX, int nY, bool bActive)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Button sButton;
+	T_SelectData sData;
+	sData.m_nID = nID;
+	sData.m_szText = szText;
+	if (!‘I‘ğ‚b‚f_ƒ{ƒ^ƒ“ì¬(sData, sButton))
+	{
+		return false;
+	}
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	sButtonGroup.setButtonActive(nID, bActive);
+	return true;
+}
+
+bool ‘I‘ğƒ{ƒ^ƒ““o˜^_‘å(ref T_ButtonGroup sButtonGroup, int nID, string szText, int nX, int nY, bool bActive)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Button sButton;
+	T_SelectData sData;
+	sData.m_nID = nID;
+	sData.m_szText = szText;
+	if (!‘I‘ğ‚b‚f_‚Å‚©ƒ{ƒ^ƒ“ì¬(sData, sButton))
+	{
+		return false;
+	}
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	sButtonGroup.setButtonActive(nID, bActive);
+	return true;
+}
+

@@ -1,0 +1,122 @@
+void CASCheckBoxSprite::Create(int nX, int nY, int nZ, string BaseCG, string CheckMarkCG, string CursorCG)
+{
+	this.m_BaseSprite.SetType(0);
+	ref CASCGSprite BaseCGSprite = this.m_BaseSprite.GetCGSprite();
+	BaseCGSprite.SetCG(BaseCG);
+	this.m_BaseSprite.SetPos(nX, nY);
+	this.m_BaseSprite.SetZ(nZ);
+	this.m_BaseSprite.SetShow(true);
+	this.m_CheckMarkSprite.SetType(0);
+	ref CASCGSprite CheckMarkCGSprite = this.m_CheckMarkSprite.GetCGSprite();
+	CheckMarkCGSprite.SetCG(CheckMarkCG);
+	this.m_CheckMarkSprite.SetPos(nX, nY);
+	this.m_CheckMarkSprite.SetZ(nZ + 1);
+	this.m_CheckMarkSprite.SetShow(false);
+	this.m_CursorSprite.SetType(0);
+	ref CASCGSprite CursorCGSprite = this.m_CursorSprite.GetCGSprite();
+	CursorCGSprite.SetCG(CursorCG);
+	this.m_CursorSprite.SetPos(nX, nY);
+	this.m_CursorSprite.SetZ(nZ + 2);
+	this.m_CursorSprite.SetShow(false);
+}
+
+void CASCheckBoxSprite::CreateSampleSprite(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.CreateBaseSprite(nX, nY, nZ, nWidth, nHeight);
+	this.CreateCheckMarkSprite(nX, nY, nZ, nWidth, nHeight);
+	this.CreateCursorSprite(nX, nY, nZ, nWidth, nHeight);
+	this.CalcDetectionRect();
+}
+
+void CASCheckBoxSprite::Release()
+{
+	this.m_TextSprite.Release();
+	this.m_CursorSprite.Release();
+	this.m_CheckMarkSprite.Release();
+	this.m_BaseSprite.Release();
+}
+
+void CASCheckBoxSprite::CalcDetectionRect()
+{
+	this.m_DetectionRect.Set(this.m_BaseSprite.GetX(), this.m_BaseSprite.GetY(), this.m_BaseSprite.GetWidth() + 8 + this.m_TextSprite.GetWidth(), this.m_BaseSprite.GetHeight());
+}
+
+void CASCheckBoxSprite::SetTextCharSpace(int nCharSpace)
+{
+	this.m_TextSprite.SetCharSpace(nCharSpace);
+}
+
+void CASCheckBoxSprite::SetText(string Text, ref CASCharSpriteProperty CharProperty)
+{
+	this.m_TextSprite.SetText(Text, CharProperty);
+	this.m_TextSprite.SetPos(this.m_BaseSprite.GetX() + this.m_BaseSprite.GetWidth() + 8, this.m_BaseSprite.GetY());
+	this.m_TextSprite.SetZ(this.m_BaseSprite.GetZ());
+	this.CalcDetectionRect();
+}
+
+void CASCheckBoxSprite::CreateBaseSprite(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.m_BaseSprite.SetType(1);
+	ref CASConstructionSprite ConstructionSprite = this.m_BaseSprite.GetConstructionSprite();
+	ConstructionSprite.Clear();
+	ConstructionSprite.AddCreate(nWidth, nHeight);
+	ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 255, 255, 255, 255);
+	ConstructionSprite.AddDrawRect(0, 0, nWidth, nHeight, 0, 0, 0);
+	ConstructionSprite.Build();
+	this.m_BaseSprite.SetPos(nX, nY);
+	this.m_BaseSprite.SetZ(nZ);
+	this.m_BaseSprite.SetShow(true);
+}
+
+void CASCheckBoxSprite::CreateCheckMarkSprite(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.m_CheckMarkSprite.SetType(1);
+	ref CASConstructionSprite ConstructionSprite = this.m_CheckMarkSprite.GetConstructionSprite();
+	ConstructionSprite.Clear();
+	ConstructionSprite.AddCreate(nWidth, nHeight);
+	ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 255, 255, 255, 255);
+	ConstructionSprite.AddDrawRect(0, 0, nWidth, nHeight, 0, 0, 0);
+	ConstructionSprite.AddDrawLine(3, nHeight / 2, nWidth / 4, (nHeight * 3) / 4, 0, 0, 0);
+	ConstructionSprite.AddDrawLine(nWidth / 4, (nHeight * 3) / 4, (nWidth * 3) / 4, nHeight / 4, 0, 0, 0);
+	ConstructionSprite.AddDrawLine(4, nHeight / 2, nWidth / 4 + 1, (nHeight * 3) / 4, 0, 0, 0);
+	ConstructionSprite.AddDrawLine(nWidth / 4 + 1, (nHeight * 3) / 4, (nWidth * 3) / 4 + 1, nHeight / 4, 0, 0, 0);
+	ConstructionSprite.Build();
+	this.m_CheckMarkSprite.SetPos(nX, nY);
+	this.m_CheckMarkSprite.SetZ(nZ + 1);
+	this.m_CheckMarkSprite.SetShow(false);
+}
+
+void CASCheckBoxSprite::CreateCursorSprite(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.m_CursorSprite.SetType(1);
+	ref CASConstructionSprite ConstructionSprite = this.m_CursorSprite.GetConstructionSprite();
+	ConstructionSprite.Clear();
+	ConstructionSprite.AddCreate(nWidth, nHeight);
+	ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 0, 255, 255, 128);
+	ConstructionSprite.Build();
+	this.m_CursorSprite.SetPos(nX, nY);
+	this.m_CursorSprite.SetZ(nZ + 2);
+	this.m_CursorSprite.SetShow(false);
+}
+
+void CASCheckBoxSprite::SetShowCheckMark(bool bShow)
+{
+	this.m_CheckMarkSprite.SetShow(bShow);
+}
+
+void CASCheckBoxSprite::SetShowCursor(bool bShow)
+{
+	this.m_CursorSprite.SetShow(bShow);
+}
+
+bool CASCheckBoxSprite::IsMouseCursorInRect()
+{
+	int nX = 0;
+	int nY = 0;
+	if (!AFL_Mouse_GetPos(nX, nY))
+	{
+		return false;
+	}
+	return this.m_DetectionRect.IsIn(nX, nY);
+}
+

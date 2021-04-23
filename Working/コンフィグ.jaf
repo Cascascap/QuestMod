@@ -1,0 +1,159 @@
+void Ｓ＿コンフィグ()
+{
+	if (g_ConfigViewFunction != NULL)
+	{
+		g_ConfigViewFunction();
+		SYS_システム共通セーブ();
+		_g_MouseWheel._Clear();
+	}
+	else
+	{
+		AFL_OpenConfig();
+	}
+}
+
+void Ｓ＿コンフィグ＿関数登録(FTConfigView ConfigViewFunction)
+{
+	g_ConfigViewFunction = ConfigViewFunction;
+}
+
+void Ｓ＿コンフィグ＿タイトルに戻るボタン表示設定(bool bShow)
+{
+	g_ConfigModeDocument.SetShowReturnTitleButton(bShow);
+}
+
+void Ｓ＿コンフィグ画面＿背景(string ＣＧ名, int Ｘ, int Ｙ)
+{
+	g_ConfigModeDocument._SetBackground(Ｘ, Ｙ, -2147483648, ＣＧ名);
+}
+
+void Ｓ＿コンフィグ画面＿メッセージ背景(string ＣＧ名, int X, int Y)
+{
+	g_ConfigModeDocument.SetEachBackCG(0, X, Y, ＣＧ名);
+}
+
+void Ｓ＿コンフィグ画面＿メッセージ背景2(string ＣＧ名, int X, int Y)
+{
+	g_ConfigModeDocument.SetEachBackCG(1, X, Y, ＣＧ名);
+}
+
+void Ｓ＿コンフィグ画面＿サウンド背景(string ＣＧ名, int X, int Y)
+{
+	g_ConfigModeDocument.SetEachBackCG(2, X, Y, ＣＧ名);
+}
+
+void Ｓ＿コンフィグ画面＿入力背景(string ＣＧ名, int X, int Y)
+{
+	g_ConfigModeDocument.SetEachBackCG(3, X, Y, ＣＧ名);
+}
+
+void Ｓ＿コンフィグ画面＿ウィンドウ背景(string ＣＧ名, int X, int Y)
+{
+	g_ConfigModeDocument.SetEachBackCG(4, X, Y, ＣＧ名);
+}
+
+void Ｓ＿コンフィグ画面＿メッセージタブ(int nX, int nY, string ActiveCG, string DisableCG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetTabCGInfo(0, nX, nY, ActiveCG, DisableCG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿メッセージ２タブ(int nX, int nY, string ActiveCG, string DisableCG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetTabCGInfo(1, nX, nY, ActiveCG, DisableCG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿サウンドタブ(int nX, int nY, string ActiveCG, string DisableCG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetTabCGInfo(2, nX, nY, ActiveCG, DisableCG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿入力タブ(int nX, int nY, string ActiveCG, string DisableCG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetTabCGInfo(3, nX, nY, ActiveCG, DisableCG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿ウィンドウタブ(int nX, int nY, string ActiveCG, string DisableCG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetTabCGInfo(4, nX, nY, ActiveCG, DisableCG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿ウィンドウ解説テキスト位置設定(int nX, int nY)
+{
+	g_ConfigModeDocument.SetWindowManualTextPos(nX, nY);
+}
+
+void Ｓ＿コンフィグ画面＿チェックボックスＣＧ設定(string BaseCGName, string MarkCGName, string CursorCGName)
+{
+	g_ConfigModeDocument.SetCheckBoxCG(BaseCGName, MarkCGName, CursorCGName);
+}
+
+void Ｓ＿コンフィグ画面＿ゲーム終了ボタン(int nX, int nY, string CG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetCloseGameButtonCGInfo(nX, nY, CG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿タイトルに戻るボタン(int nX, int nY, string CG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetReturnToTitleButtonCGInfo(nX, nY, CG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿ゲームに戻るボタン(int nX, int nY, string CG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetExitButtonCGInfo(nX, nY, CG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿決定音(int nSound)
+{
+	g_ConfigModeDocument.SetSoundDecide(nSound);
+}
+
+void Ｓ＿コンフィグ画面＿カーソル音(int nSound)
+{
+	g_ConfigModeDocument.SetSoundUnderCursor(nSound);
+}
+
+void Ｓ＿コンフィグ画面＿キャンセル音(int nSound)
+{
+	g_ConfigModeDocument.SetSoundCancel(nSound);
+}
+
+void Ｓ＿コンフィグ画面＿メッセージ速度スライダーＣＧ(string CG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetMessageSpeedSliderCG(CG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿メッセージ速度スライダー矩形(int nX, int nY, int nWidth, int nHeight)
+{
+	g_ConfigModeDocument.SetMessageSpeedSliderRect(CF_CASRect(nX, nY, nWidth, nHeight));
+}
+
+void Ｓ＿コンフィグ画面＿オートモード待ち時間スライダーＣＧ(string CG, string OnCursorCG)
+{
+	g_ConfigModeDocument.SetAutoModeWaitTimeSliderCG(CG, OnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿オートモード待ち時間スライダー矩形(int nX, int nY, int nWidth, int nHeight)
+{
+	g_ConfigModeDocument.SetAutoModeWaitTimeSliderRect(CF_CASRect(nX, nY, nWidth, nHeight));
+}
+
+void Ｓ＿コンフィグ画面＿メッセージ速度リセットボタンＣＧ設定(string KeyUpCG, string KeyDownCG, string KeyUpOnCursorCG, string KeyDownOnCursorCG)
+{
+	g_ConfigModeDocument.SetMessageSpeedResetButtonCG(KeyUpCG, KeyDownCG, KeyUpOnCursorCG, KeyDownOnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿メッセージ速度リセットボタン位置設定(int nX, int nY)
+{
+	g_ConfigModeDocument.SetMessageSpeedResetButtonPos(CF_CASPos(nX, nY));
+}
+
+void Ｓ＿コンフィグ画面＿オートモード待ち時間リセットボタンＣＧ設定(string KeyUpCG, string KeyDownCG, string KeyUpOnCursorCG, string KeyDownOnCursorCG)
+{
+	g_ConfigModeDocument.SetAutoModeWaitTimeResetButtonCG(KeyUpCG, KeyDownCG, KeyUpOnCursorCG, KeyDownOnCursorCG);
+}
+
+void Ｓ＿コンフィグ画面＿オートモード待ち時間リセットボタン位置設定(int nX, int nY)
+{
+	g_ConfigModeDocument.SetAutoModeWaitTimeResetButtonPos(CF_CASPos(nX, nY));
+}
+

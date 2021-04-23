@@ -1,0 +1,15 @@
+bool AFL_Mouse_GetPos(ref int X, ref int Y)
+{
+	return IbisInputEngine.Mouse_GetPos(X, Y);
+}
+
+void AFL_MouseWheel_ClearCount()
+{
+	IbisInputEngine.MouseWheel_ClearCount();
+}
+
+void AFL_MouseWheel_GetCount(ref int Forward, ref int Back)
+{
+	IbisInputEngine.MouseWheel_GetCount(Forward, Back);
+}
+

@@ -1,0 +1,95 @@
+bool AFL_GameSave_IsExistFile(int SaveNumber)
+{
+	return SYS_セーブファイル存在(SaveNumber);
+}
+
+bool AFL_GameSave_GetFileInfo(int SaveNumber, ref int Year, ref int Month, ref int Day, ref int Week, ref int Hour, ref int Min, ref int Sec, ref string TimeInGameText, ref string UserComment, ref int PlayMinuteTime)
+{
+	セーブ２_t Info;
+	if (!SYS_追加ロード(SaveNumber, Info))
+	{
+		return false;
+	}
+	Year = Info.sys年;
+	Month = Info.sys月;
+	Day = Info.sys日;
+	Week = Info.sys曜;
+	Hour = Info.sys時;
+	Min = Info.sys分;
+	Sec = Info.sys秒;
+	TimeInGameText = Info.ゲーム時間文字列;
+	UserComment = Info.コメント;
+	PlayMinuteTime = Info.PlayMinuteTime;
+	return true;
+}
+
+int AFL_GameSave_GetLatestSaveNumber()
+{
+	return SYS_最終セーブ番号取得();
+}
+
+bool AFL_GameSave_Save(int SaveNumber, string UserComment)
+{
+	return SYS_ゲームセーブ(SaveNumber, _ゲーム時間, UserComment);
+}
+
+void AFL_GameSave_Load(int SaveNumber)
+{
+	SYS_ロード実行(SaveNumber);
+}
+
+bool AFL_GameSave_SaveThumbnail(int SaveNumber, int ReductionSize)
+{
+	if (ReductionSize < 1)
+	{
+		ReductionSize = 1;
+	}
+	int ViewWidth = ChipmunkSpriteEngine.GetScreenWidth();
+	int ViewHeight = ChipmunkSpriteEngine.GetScreenHeight();
+	int ViewSprite = GetUnuseSpriteNum(1000);
+	CreateSpritePixelMapOnly(ViewSprite, ViewWidth, ViewHeight);
+	ShowSprite(ViewSprite, false);
+	GOAT_SetThumbnailReductionSize(ReductionSize);
+	GOAT_SetThumbnailMode(true);
+	GOAT_Update(false);
+	AFL_Sprite_RenderView(ViewSprite);
+	GOAT_SetThumbnailMode(false);
+	GOAT_Update(false);
+	int ThumbnailWidth = ViewWidth / ReductionSize;
+	int ThumbnailHeight = ViewHeight / ReductionSize;
+	int ThumbnailSprite = GetUnuseSpriteNum(1000);
+	CreateSpritePixelMapOnly(ThumbnailSprite, ThumbnailWidth, ThumbnailHeight);
+	DrawGraph.CopyReduce(ThumbnailSprite, 0, 0, ThumbnailWidth, ThumbnailHeight, ViewSprite, 0, 0, ViewWidth, ViewHeight);
+	string SaveFileName = AFL_GameSave_GetFullPathThumbnailFileName(SaveNumber);
+	ChipmunkSpriteEngine.SP_SaveCG(ThumbnailSprite, SaveFileName);
+	DeleteSprite(ThumbnailSprite);
+	DeleteSprite(ViewSprite);
+	return true;
+}
+
+bool AFL_GameSave_CopyThumbnail(int DestSaveNumber, int SrcSaveNumber)
+{
+	if (!AFL_GameSave_IsExistThumbnail(SrcSaveNumber))
+	{
+		return false;
+	}
+	string DestFileName = SYS_GameSave_GetThumbnailFileName(DestSaveNumber);
+	string SrcFileName = SYS_GameSave_GetThumbnailFileName(SrcSaveNumber);
+	if (system.CopySaveFile(DestFileName, SrcFileName) != 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+string AFL_GameSave_GetFullPathThumbnailFileName(int SaveNumber)
+{
+	return system.GetSaveFolderName() + "\\" + SYS_GameSave_GetThumbnailFileName(SaveNumber);
+}
+
+bool AFL_GameSave_IsExistThumbnail(int SaveNumber)
+{
+	string SaveFileName = SYS_GameSave_GetThumbnailFileName(SaveNumber);
+	return system.ExistSaveFile(SaveFileName);
+}
+

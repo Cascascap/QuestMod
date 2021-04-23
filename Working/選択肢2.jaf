@@ -1,0 +1,242 @@
+void 選択_項目追加(int nID, string szText, int nR, int nG, int nB, string szComment, int nSoundClick)
+{
+	選択データ_登録(nID, szText, nR, nG, nB, szComment, 0, nSoundClick);
+}
+
+void 選択_テキスト追加(string szText, int nR, int nG, int nB)
+{
+	選択データ_登録(0, szText, nR, nG, nB, "", -1, -1);
+}
+
+void 選択_区切り追加()
+{
+	選択データ_登録(-1, "", -1, -1, -1, "", -1, -1);
+}
+
+void 選択_拡張項目追加(int nID, int nCgNo, string szComment)
+{
+	選択データ_登録(nID, "", -1, -1, -1, szComment, nCgNo, -1);
+}
+
+void 選択_補助テキスト追加(string szText, int nR, int nG, int nB)
+{
+	選択データ_登録(0, "", nR, nG, nB, szText, -1, -1);
+}
+
+void 選択_位置設定(int nX, int nY)
+{
+	選択データ_位置設定(nX, nY);
+}
+
+void 選択_カーソル設定(int nID)
+{
+	選択データ_カーソル設定(nID);
+}
+
+int 選択_実行(bool bCancel, int nEffectNo, int nSpeed, bool bAuto)
+{
+	if (選択データ_カーソル() <= 0)
+	{
+		if (既読スキップ選択肢解除確認())
+		{
+			既読スキップモード解除();
+		}
+		if (オートモード選択肢解除確認())
+		{
+			オートモード解除();
+		}
+	}
+	return 選択_ＯＰＥＮ(bCancel, nEffectNo, nSpeed, bAuto);
+}
+
+int 選択_２択(string szText1, string szText2)
+{
+	選択_項目追加(1, szText1, -1, -1, -1, "", -1);
+	選択_項目追加(2, szText2, -1, -1, -1, "", -1);
+	return 選択_実行(false, 0, 0, false);
+}
+
+int 選択_３択(string szText1, string szText2, string szText3)
+{
+	選択_項目追加(1, szText1, -1, -1, -1, "", -1);
+	選択_項目追加(2, szText2, -1, -1, -1, "", -1);
+	選択_項目追加(3, szText3, -1, -1, -1, "", -1);
+	return 選択_実行(false, 0, 0, false);
+}
+
+int 選択_４択(string szText1, string szText2, string szText3, string szText4)
+{
+	選択_項目追加(1, szText1, -1, -1, -1, "", -1);
+	選択_項目追加(2, szText2, -1, -1, -1, "", -1);
+	選択_項目追加(3, szText3, -1, -1, -1, "", -1);
+	選択_項目追加(4, szText4, -1, -1, -1, "", -1);
+	return 選択_実行(false, 0, 0, false);
+}
+
+bool 選択_確認(string szMessage, int nSelectNo, string szYes, string szNo, int nSoundClickYes, int nSoundClickNo, bool bAuto)
+{
+	ダイアログ_メッセージ追加(szMessage);
+	選択_区切り追加();
+	選択_項目追加(1, szYes, -1, -1, -1, "", nSoundClickYes);
+	選択_項目追加(2, szNo, -1, -1, -1, "", nSoundClickNo);
+	選択_カーソル設定(数値_補正(nSelectNo, 1, 2));
+	return 選択_実行(false, 0, 0, bAuto) == 1;
+}
+
+void 選択_通知(string szMessage, string szOK, bool bAuto)
+{
+	ダイアログ_メッセージ追加(szMessage);
+	選択_区切り追加();
+	選択_項目追加(1, szOK, -1, -1, -1, "", -1);
+	選択_カーソル設定(1);
+	選択_実行(false, 0, 0, bAuto);
+}
+
+bool 選択_確認_拡張(int nID, string szMessage, int nSelectNo, string szYes, string szNo, int nSoundClickYes, int nSoundClickNo, bool bAuto)
+{
+	if (nID <= 0)
+	{
+		return 選択_確認(szMessage, nSelectNo, szYes, szNo, -1, -1, false);
+	}
+	bool bFlag = 確認なし(nID);
+	if (bFlag)
+	{
+		return true;
+	}
+	while (true)
+	{
+		ダイアログ_メッセージ追加(szMessage);
+		選択_区切り追加();
+		選択_項目追加(1, szYes, -1, -1, -1, "", nSoundClickYes);
+		選択_項目追加(2, szNo, -1, -1, -1, "", nSoundClickNo);
+		選択_区切り追加();
+		if (!bFlag)
+		{
+			選択_拡張項目追加(11, 10027, "");
+			選択_補助テキスト追加("※Use system config to return to [On]", -1, -1, -1);
+		}
+		else
+		{
+			選択_拡張項目追加(12, 10028, "");
+		}
+		選択_カーソル設定(数値_補正(nSelectNo, 1, 2));
+		switch (選択_実行(false, 0, 0, bAuto))
+		{
+			case 1:
+				return true;
+			case 11:
+				確認なし_ＯＮ(nID);
+				bFlag = true;
+				break;
+			case 12:
+				確認なし_ＯＦＦ(nID);
+				bFlag = false;
+				break;
+			case 2:
+			default:
+				return false;
+		}
+	}
+	return false;
+}
+
+bool 確認なし(int nID)
+{
+	int idx = 確認なし_インデクス(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return ダイアログフラグ(idx);
+}
+
+void 確認なし_ＯＮ(int nID)
+{
+	int idx = 確認なし_インデクス(nID);
+	if (idx < 0)
+	{
+		return;
+	}
+	ダイアログフラグ_設定(idx, true, true);
+}
+
+void 確認なし_ＯＦＦ(int nID)
+{
+	int idx = 確認なし_インデクス(nID);
+	if (idx < 0)
+	{
+		return;
+	}
+	ダイアログフラグ_設定(idx, false, true);
+}
+
+void 確認なし_反転(int nID)
+{
+	int idx = 確認なし_インデクス(nID);
+	if (idx < 0)
+	{
+		return;
+	}
+	ダイアログフラグ_設定(idx, !ダイアログフラグ(idx), true);
+}
+
+int 確認なし_インデクス(int nID)
+{
+	if (nID <= 0 || nID >= 100)
+	{
+		return -1;
+	}
+	return nID - 1;
+}
+
+void 確認なし_環境設定()
+{
+	while (true)
+	{
+		選択_テキスト追加("Confirmations", -1, -1, -1);
+		確認なし_項目追加(1, "Loading");
+		確認なし_項目追加(2, "Saving");
+		確認なし_項目追加(10, "Purchasing an item");
+		確認なし_項目追加(11, "Beginning a quest");
+		確認なし_項目追加(12, "Switching party members");
+		確認なし_項目追加(13, "Removing characters");
+		確認なし_項目追加(14, "Selling items");
+		確認なし_項目追加(31, "Donating items");
+		確認なし_項目追加(20, "Acquiring skills");
+		確認なし_項目追加(21, "Adding skill uses");
+		確認なし_項目追加(22, "Improving skills");
+		確認なし_項目追加(30, "Appraising items");
+		確認なし_項目追加(32, "Finishing item appraisal");
+		選択_区切り追加();
+		選択_項目追加(900, "Resetting", -1, -1, -1, "", -1);
+		選択_区切り追加();
+		選択_項目追加(999, "Return", -1, -1, -1, "", -1);
+		選択_カーソル設定(1);
+		int nNo = 選択_実行(true, 0, 0, false);
+		if (nNo <= 0 || nNo == 999)
+		{
+			break;
+		}
+		if (nNo == 900)
+		{
+			if (選択_確認("Return all confirmations@to [On]?", 1, "Yes", "No", -1, -1, false))
+			{
+				ダイアログフラグ_クリア();
+			}
+		}
+		else
+		{
+			確認なし_反転(nNo);
+		}
+	}
+}
+
+void 確認なし_項目追加(int nID, string szText)
+{
+	if (nID <= 0 || nID >= 100)
+	{
+		return;
+	}
+	選択_項目追加(nID, szText + (確認なし(nID) ? ":Return to [On]" : ":Turn [Off]"), -1, -1, -1, "", -1);
+}
+

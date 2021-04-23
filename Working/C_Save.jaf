@@ -1,0 +1,451 @@
+bool 自動セーブ(int nMode)
+{
+	セーブデータ_バックアップ();
+	マップ_退避クリア();
+	ＥＶバックアップ();
+	Ｔセーブ直前処理();
+	セーブメッセージ_表示(nMode);
+	bool bRet = セーブファイル_保存(30, 1, "");
+	セーブメッセージ_削除();
+	return bRet;
+}
+
+bool 中断セーブ()
+{
+	マップ_退避();
+	ＥＶバックアップ();
+	Ｔセーブ直前処理();
+	return セーブファイル_保存(930, 9, "");
+}
+
+bool セーブデータ_送信()
+{
+	if (!ネットワーク接続許可())
+	{
+		return false;
+	}
+	Ｔ通信情報生成();
+	ネットサービス_ユーザデータ送信();
+	return true;
+}
+
+bool 自動セーブ_ロード()
+{
+	int nSaveNo = 0;
+	if (セーブ_ファイルあり(30))
+	{
+		if (!セーブファイル_読込("RANCE8MAGNUM", 30, true))
+		{
+			return false;
+		}
+		nSaveNo = 30;
+	}
+	else
+	{
+		return false;
+	}
+	if (マップ_退避中())
+	{
+		system.MsgBox("不正なセーブデータです。\nゲームを再起動します。\nセーブ番号 = %d" % nSaveNo);
+		ゲーム_再起動();
+		return false;
+	}
+	ＥＶ復元();
+	Ｔロード直後処理(0);
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	効果音_ロード();
+	_黒画面(1, 1000);
+	画面_クリア(true, true);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	return true;
+}
+
+int 中断セーブ_ロード()
+{
+	if (セーブ_ファイルあり(930))
+	{
+		if (!セーブファイル_読込("RANCE8MAGNUM", 930, true))
+		{
+			return 0;
+		}
+	}
+	else
+	{
+		return 0;
+	}
+	ＥＶ復元();
+	Ｔロード直後処理(1);
+	if (マップ制御_復元())
+	{
+		効果音_ロード();
+		return 1;
+	}
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	効果音_ロード();
+	_黒画面(1, 1000);
+	画面_クリア(true, true);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	return 0;
+}
+
+bool 自動セーブファイル_削除()
+{
+	bool bRet = false;
+	if (セーブ_ファイルあり(30))
+	{
+		bRet = セーブファイル_削除(30);
+	}
+	return bRet;
+}
+
+bool 中断セーブファイル_削除(bool bInitialize)
+{
+	bool bRet = false;
+	if (セーブ_ファイルあり(930))
+	{
+		bRet = セーブファイル_削除(930);
+	}
+	if (bInitialize)
+	{
+		if (セーブ_ファイルあり(999))
+		{
+			セーブファイル_削除(999);
+		}
+		if (セーブ_ファイルあり(920))
+		{
+			セーブファイル_削除(920);
+		}
+	}
+	return bRet;
+}
+
+bool 自動セーブファイル_あり()
+{
+	if (セーブ_ファイルあり(30))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool 中断セーブファイル_あり()
+{
+	if (セーブ_ファイルあり(930))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool セーブファイル_保存(int nSaveNo, int nMode, string szComment)
+{
+	if (!セーブ番号_確認(nSaveNo))
+	{
+		system.MsgBox("セーブできませんでした。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	if (!セーブデータ_保存(nSaveNo))
+	{
+		system.MsgBox("セーブに失敗しました。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	セーブ情報_保存(nSaveNo, nMode, szComment);
+	最終セーブ_ワールド保存(◆ワールド);
+	return true;
+}
+
+bool セーブファイル_読込(string szKey, int nSaveNo, bool bMusicStop)
+{
+	if (!セーブ番号_確認(nSaveNo))
+	{
+		system.MsgBox("ロードできませんでした。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	ログ窓_終了処理();
+	説明_終了処理();
+	選択_終了処理();
+	画面_終了処理();
+	if (bMusicStop)
+	{
+		音_終了処理();
+	}
+	セーブデータ_初期化();
+	if (!セーブデータ_読み込み(szKey, nSaveNo))
+	{
+		system.MsgBox("ロードに失敗しました。\nゲームを再起動します。\nセーブ番号 = %d" % nSaveNo);
+		ゲーム_再起動();
+		return false;
+	}
+	if (bMusicStop)
+	{
+		音_初期化(1);
+	}
+	画面_初期化(1);
+	選択_初期化();
+	説明_初期化();
+	ログ窓_初期化();
+	return true;
+}
+
+bool セーブファイル_削除(int nSaveNo)
+{
+	if (!セーブ番号_確認(nSaveNo))
+	{
+		system.MsgBox("削除できませんでした。\nセーブ番号 = %d" % nSaveNo);
+		return false;
+	}
+	string szName = セーブ_ファイル名(nSaveNo);
+	if (!セーブ_ファイルあり(nSaveNo))
+	{
+		return false;
+	}
+	if (!＿セーブファイル削除(szName, セーブ_データファイル名(nSaveNo)))
+	{
+		return false;
+	}
+	return セーブ情報_削除(nSaveNo);
+}
+
+int セーブファイル_複写(int nDstSaveNo, ref T_SaveInfo rfInfo)
+{
+	if (nDstSaveNo <= 0)
+	{
+		return -1;
+	}
+	if (rfInfo === NULL)
+	{
+		return -1;
+	}
+	int nSrcSaveNo = rfInfo.getSaveNo();
+	if (!セーブ番号_確認(nSrcSaveNo))
+	{
+		system.MsgBox("コピーできませんでした。\nセーブ番号 = %d" % nSrcSaveNo);
+		return -1;
+	}
+	string szSrcName = セーブ_ファイル名(nSrcSaveNo);
+	if (!セーブ_ファイルあり(nSrcSaveNo))
+	{
+		return -1;
+	}
+	if (!＿セーブファイルコピー(セーブ_ファイル名(nDstSaveNo), szSrcName, セーブ_データファイル名(nDstSaveNo), セーブ_データファイル名(nSrcSaveNo)))
+	{
+		return -1;
+	}
+	if (!セーブ情報_複写(nDstSaveNo, rfInfo))
+	{
+		return -1;
+	}
+	return nDstSaveNo;
+}
+
+bool セーブデータ_交換(int nSaveNo1, int nSaveNo2)
+{
+	string szFileName1 = セーブ_ファイル名(nSaveNo1);
+	string szFileName2 = セーブ_ファイル名(nSaveNo2);
+	string szTempFile = セーブ_ファイル名(-1);
+	string szDataName1 = セーブ_データファイル名(nSaveNo1);
+	string szDataName2 = セーブ_データファイル名(nSaveNo2);
+	string szTempData = セーブ_データファイル名(-1);
+	if (!＿セーブファイルコピー(szTempFile, szFileName1, szTempData, szDataName1))
+	{
+		return false;
+	}
+	if (!＿セーブファイルコピー(szFileName1, szFileName2, szDataName1, szDataName2))
+	{
+		return false;
+	}
+	if (!＿セーブファイルコピー(szFileName2, szTempFile, szDataName2, szTempData))
+	{
+		return false;
+	}
+	＿セーブファイル削除(szTempFile, szTempData);
+	return セーブ情報_交換(nSaveNo1, nSaveNo2);
+}
+
+bool セーブ番号_確認(int nSaveNo)
+{
+	if (nSaveNo == 30 || nSaveNo == 930)
+	{
+		return true;
+	}
+	return false;
+}
+
+string セーブ_ファイル名(int nSaveNo)
+{
+	return セーブファイル名_取得(nSaveNo, ".ASD");
+}
+
+string セーブ_データファイル名(int nSaveNo)
+{
+	return セーブファイル名_取得(nSaveNo, "_DAT.ASD");
+}
+
+string セーブ_情報ファイル名(int nSaveNo)
+{
+	return セーブファイル名_取得(nSaveNo, "_INF.ASD");
+}
+
+string セーブファイル名_取得(int nSaveNo, string szExt)
+{
+	if (!セーブ番号_確認(nSaveNo))
+	{
+		return "ランス・クエスト" + "_XXX" + szExt;
+	}
+	return "ランス・クエスト" + "_%03d" % nSaveNo + szExt;
+}
+
+string セーブ_フォルダ名()
+{
+	return system.GetSaveFolderName();
+}
+
+bool セーブ_ファイルあり(int nSaveNo)
+{
+	if (!セーブ番号_確認(nSaveNo))
+	{
+		return false;
+	}
+	if (!system.ExistSaveFile(セーブ_ファイル名(nSaveNo)))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool ＿セーブファイルコピー(string szDstFileName, string szSrcFileName, string szDstDataName, string szSrcDataName)
+{
+	if (system.CopySaveFile(szDstFileName, szSrcFileName) == 0)
+	{
+		system.MsgBox("セーブデータのコピーに失敗しました。" + szSrcFileName);
+		return false;
+	}
+	if (system.CopySaveFile(szDstDataName, szSrcDataName) == 0)
+	{
+		system.MsgBox("セーブデータのコピーに失敗しました。" + szSrcDataName);
+		return false;
+	}
+	return true;
+}
+
+bool ＿セーブファイル削除(string szFileName, string szDataName)
+{
+	if (system.DeleteSaveFile(szFileName) == 0)
+	{
+		system.MsgBox("セーブデータの削除に失敗しました。" + szFileName);
+		return false;
+	}
+	if (system.DeleteSaveFile(szDataName) == 0)
+	{
+		system.MsgBox("セーブデータの削除に失敗しました。" + szDataName);
+		return false;
+	}
+	return true;
+}
+
+bool オブジェクトグループ_読込(string szKey, string szFileName, string szGroup)
+{
+	int nNumofLoad = 0;
+	if (system.GroupLoad(szKey, szFileName, szGroup, nNumofLoad) != 1)
+	{
+		ERROR("system.GroupLoad 失敗：key= %s szFileName= %s szGroup= %s nNumofLoad= %d" % szKey % szFileName % szGroup % nNumofLoad, 0);
+		return false;
+	}
+	return true;
+}
+
+bool オブジェクトグループ_保存(string szKey, string szFileName, string szGroup)
+{
+	int nNumofSave = 0;
+	if (system.GroupSave(szKey, szFileName, szGroup, nNumofSave) != 1)
+	{
+		ERROR("system.GroupSave失敗 key= %s szFileName= %s szGroup= %s nNumofSave= %d" % szKey % szFileName % szGroup % nNumofSave, 0);
+		return false;
+	}
+	return true;
+}
+
+int セーブデータ_バックアップ()
+{
+	int nSaveNo = 0;
+	if (セーブ_ファイルあり(30))
+	{
+		nSaveNo = 30;
+	}
+	else
+	{
+		return -1;
+	}
+	string szFolderName = バックアップフォルダ名(nSaveNo);
+	if (FileOperation.ExistFolder(szFolderName))
+	{
+		return 0;
+	}
+	バックアップフォルダ数確認();
+	if (!FileOperation.CreateFolder(szFolderName))
+	{
+		system.MsgBox("バックアップフォルダーの作成に失敗しました。\n%s" % szFolderName);
+		return -1;
+	}
+	if (!_セーブデータ_バックアップ(szFolderName, セーブ_ファイル名(nSaveNo)))
+	{
+		return -1;
+	}
+	if (!_セーブデータ_バックアップ(szFolderName, セーブ_データファイル名(nSaveNo)))
+	{
+		return -1;
+	}
+	if (!_セーブデータ_バックアップ(szFolderName, セーブ_情報ファイル名(nSaveNo)))
+	{
+		return -1;
+	}
+	return 1;
+}
+
+bool _セーブデータ_バックアップ(string szFolderName, string szFileName)
+{
+	string szDstFileName = szFolderName + "\\" + szFileName;
+	string szSrcFileName = セーブ_フォルダ名() + "\\" + szFileName;
+	if (FileOperation.CopyFile(szDstFileName, szSrcFileName) == false)
+	{
+		system.MsgBox("セーブデータのバックアップに失敗しました。\n%s" % szFileName);
+		return false;
+	}
+	return true;
+}
+
+void バックアップフォルダ数確認()
+{
+	string szFolderName = セーブ_フォルダ名() + "\\" + "Backup";
+	array@string aszName;
+	if (!FileOperation.GetFolderList(szFolderName, aszName))
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = aszName.Numof() + -4;
+	if (cnt <= 0)
+	{
+		return;
+	}
+	aszName.Sort(NULL);
+	for (i = 0; i < cnt; ++i)
+	{
+		string szFileName = szFolderName + "\\" + aszName[i];
+		FileOperation.DeleteFolder(szFileName);
+	}
+}
+
+string バックアップフォルダ名(int nSaveNo)
+{
+	T_SaveDate sDate;
+	sDate.set();
+	return セーブ_フォルダ名() + "\\" + "Backup" + "\\%04d%02d%02d" % sDate.m_nYear % sDate.m_nMonth % sDate.m_nDay;
+}
+

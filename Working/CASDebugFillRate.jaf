@@ -1,0 +1,78 @@
+CASDebugFillRate::CASDebugFillRate()
+{
+	this.m_Show = false;
+	this.m_AllowedFillRate = 16000;
+	this.m_CurrentFillRate = 0;
+	this.m_MaxFillRate = 0;
+}
+
+void CASDebugFillRate::SetShow(bool Show)
+{
+	if (this.m_Show == Show)
+	{
+		return;
+	}
+	if (Show)
+	{
+		this.m_TextProperty.SetSize(12);
+		this.m_TextProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+		this.m_TextProperty.SetEdgeWeight(1.0);
+		this.m_TextProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+		this.m_TextSprite.SetPos(0, 30);
+		this.m_TextSprite.SetZ(18001);
+		this.m_TextSprite.SetShow(true);
+	}
+	else
+	{
+		this.m_TextSprite.Release();
+		this.m_CurrentFillRate = 0;
+		this.m_MaxFillRate = 0;
+	}
+	this.m_Show = Show;
+}
+
+bool CASDebugFillRate::GetShow()
+{
+	return this.m_Show;
+}
+
+void CASDebugFillRate::Update()
+{
+	int PrevFillRate = this.m_CurrentFillRate;
+	int MaxFillRate = this.m_MaxFillRate;
+	this.m_CurrentFillRate = ChipmunkSpriteEngine.Debug_GetFillRate();
+	if (MaxFillRate < this.m_CurrentFillRate)
+	{
+		MaxFillRate = this.m_CurrentFillRate;
+	}
+	if (this.IsCompulsorilyShow())
+	{
+		this.SetShow(true);
+	}
+	if (!this.m_Show)
+	{
+		this.m_MaxFillRate = MaxFillRate;
+		return;
+	}
+	this.m_TextSprite.SetPos(this.IsShowLeft() ? 0 : ChipmunkSpriteEngine.GetScreenWidth() - this.m_TextSprite.GetWidth(), 30);
+	if (this.m_CurrentFillRate == PrevFillRate && this.m_MaxFillRate == MaxFillRate)
+	{
+		return;
+	}
+	this.m_TextSprite.SetText("F:%4d/%4d" % (this.m_CurrentFillRate / 1024) % (MaxFillRate / 1024), this.m_TextProperty);
+	this.m_MaxFillRate = MaxFillRate;
+}
+
+bool CASDebugFillRate::IsShowLeft()
+{
+	int MouseX = -1;
+	int MouseY = -1;
+	AFL_Mouse_GetPos(MouseX, MouseY);
+	return MouseX >= ChipmunkSpriteEngine.GetScreenWidth() / 2;
+}
+
+bool CASDebugFillRate::IsCompulsorilyShow()
+{
+	return this.m_CurrentFillRate >= this.m_AllowedFillRate;
+}
+

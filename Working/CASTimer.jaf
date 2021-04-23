@@ -1,0 +1,25 @@
+CASTimer::CASTimer()
+{
+	this.m_nHandle = g_ASTimerManager.CreateHandle();
+}
+
+CASTimer::~CASTimer()
+{
+	g_ASTimerManager.ReleaseHandle(this.m_nHandle);
+}
+
+void CASTimer::Reset()
+{
+	g_ASTimerManager.GetObject(this.m_nHandle).Reset();
+}
+
+int CASTimer::Get()
+{
+	return g_ASTimerManager.GetObject(this.m_nHandle).Get();
+}
+
+void CASTimer::SetPassTime(int PassTime)
+{
+	g_ASTimerManager.GetObject(this.m_nHandle).SetPassTime(PassTime);
+}
+

@@ -1,0 +1,346 @@
+void サチコ／切り替え１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5230, 0, 0);
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"Come to think of it..."' A;
+	枠消去();
+	立ち絵表示(1020, 1, 200);
+	セリフ(2020, "");
+	'"Yes?"' A;
+	ト書き();
+	'Sachiko turned around in the rest area.' A;
+	セリフ(2000, "");
+	'"What\'s your family up to these days?"' A;
+	セリフ(2020, "");
+	'"Huh? I think they\'re living normally at home..."' A;
+	セリフ(2000, "");
+	'"Normally...?"' A;
+	セリフ(2020, "");
+	'"Yes, my father does his job, my mother does housework, and my little brother goes to school."' A;
+	セリフ(2005, "");
+	'"Job... school..."' A;
+	'"There\'s like... a culture gap here..."' A;
+	セリフ(2020, "");
+	'"You think so...?"' A;
+	セリフ(2000, "");
+	'"Yeah, it\'s kinda weird..."' A;
+	'"Well, the world\'s pretty big.' R;
+	' Guess it makes sense some people would have nothing to do with adventures or war."' A;
+	セリフ(2020, "");
+	'"Uh huh..."' A;
+	セリフ(2000, "");
+	'"What\'s your dad do?"' A;
+	セリフ(2020, "");
+	'"Oh, my father works for the Alicist Church."' A;
+	'"Actually, he goes on business trips a lot, so he\'s not at home very often."' A;
+	セリフ(2000, "");
+	'"Hmm...?"' A;
+	'"And you go to school every day..."' A;
+	セリフ(2020, "");
+	'"Yep."' A;
+	セリフ(2000, "");
+	'"And study."' A;
+	セリフ(2020, "");
+	'"Right."' A;
+	セリフ(2000, "");
+	'"That\'s kind of amazing."' A;
+	セリフ(2021, "");
+	'"Is it...?"' A;
+	セリフ(2023, "");
+	'"Oh, I just remembered because of this, but what am I going to do about my tests?' R;
+	' I haven\'t studied at all..."' A;
+	セリフ(2005, "");
+	'"...Yeah, there\'s a culture gap here, alright..."' A;
+	ADVOFF();
+}
+
+void サチコ／切り替え２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(71, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1020, 1, 200);
+	セリフ(2020, "");
+	'"Agh..."' A;
+	セリフ(2000, "");
+	'"Hunh?"' A;
+	セリフ(2020, "");
+	'"Agh, agh, aghhh..."' A;
+	セリフ(2005, "");
+	'"What is it, Sachiko?' R;
+	' You\'re making a lot of noises."' A;
+	セリフ(2020, "");
+	'"W-Well... umm..."' A;
+	セリフ(2005, "");
+	'"Spit it out."' A;
+	セリフ(2020, "");
+	'"Umm..."' A;
+	'"...B..."' A;
+	セリフ(2022, "");
+	'".........Bathroom."' A;
+	セリフ(2005, "");
+	'"Huh?"' A;
+	セリフ(2022, "");
+	'"...I-I need to go to the bathroom."' A;
+	セリフ(2000, "");
+	'"Yeah?' R;
+	' Go ahead and go over there or something?"' A;
+	セリフ(2023, "");
+	'"Huh? Huhh? Huhh?"' A;
+	セリフ(2000, "");
+	'"It\'s what you do on an adventure, right?' R;
+	' It\'s not like there are reststops everywhere."' A;
+	セリフ(2021, "");
+	'"N-No... I can\'t believe this..."' A;
+	'"But, I\'ve...' R;
+	' never gone outside or anything..."' A;
+	セリフ(2000, "");
+	'"Why should I care?' R;
+	' You\'re just gonna pee your pants if you don\'t go, right?"' A;
+	セリフ(2020, "");
+	'"I\'ll hold it."' A;
+	セリフ(2005, "");
+	'"Hold it... I don\'t think that\'s really wise."' A;
+	セリフ(2021, "");
+	'"I-I\'ll hold it..."' A;
+	セリフ(2022, "");
+	'"Hgh, i-it\'s getting worse..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Thirty minutes later, Sachiko ran off to an isolated area.' A;
+	セリフ(2022, "");
+	'"*sob* *sob*"' A;
+	'"I\'m dirty... I\'ve been dirtied..."' A;
+	セリフ(2005, "");
+	'"What the heck... Don\'t come over here whining about how dirty you are after peeing."' A;
+	セリフ(2022, "");
+	'"I\'ve been dirtied as a person..."' A;
+	'"I\'ll never be able to marry..."' A;
+	ADVOFF();
+}
+
+void サチコ／切り替え３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	壁紙表示(5550, 1, 500);
+	背景表示(5000, 1, 500, "", false);
+	音楽(71, -1, -1);
+	立ち絵表示(1020, 1, 200);
+	セリフ(2020, "");
+	'"Huh? What are you looking at?"' A;
+	セリフ(2000, "");
+	'"Something I got from Pluepet a little while ago.' R;
+	' It\'s a price chart."' A;
+	セリフ(2020, "");
+	'"...Uh huh."' A;
+	セリフ(2000, "");
+	'"Poison weasel hide: 500 Gold.' R;
+	' Mangorogoro flower: 1,200 Gold.' R;
+	' Dragon snot: 1,500 Gold."' A;
+	セリフ(2021, "");
+	'"Sounds very fantasy..."' A;
+	セリフ(2000, "");
+	'"If we find any of these things and sell ’em to him, we could make a pretty penny."' A;
+	セリフ(2021, "");
+	'"Huh, he really buys some odd things, doesn\'t he..."' A;
+	セリフ(2000, "");
+	'"He buys people sometimes, too."' A;
+	'"Mages go for 12,000 Gold.' R;
+	' If they\'re female, 13,000, and if they\'re virgins, 15,000."' A;
+	セリフ(2004, "");
+	'"And the price can jump up with all sorts of other things, like \'pretty,\' \'big tits,\' or \'lewd\'..."' A;
+	'"Though if I found girls like that, it\'d be a waste to sell ’em."' A;
+	セリフ(2023, "");
+	'"I-Isn\'t that human trafficking?"' A;
+	セリフ(2000, "");
+	'"Yep, it is."' A;
+	セリフ(2021, "");
+	'"W-Well, erm..."' A;
+	セリフ(2000, "");
+	'"Incidentally, you\'d go for, umm...' R;
+	' Let\'s see here..."' A;
+	'"About 5,000 Gold, looks like."' A;
+	セリフ(2023, "");
+	'"I\'m so cheap!"' A;
+	セリフ(2000, "");
+	'"Tch, not a big sum, huh?"' A;
+	セリフ(2020, "");
+	'"S-Sir, you wouldn\'t..."' A;
+	セリフ(2000, "");
+	'"Well, if I\'m ever really in trouble, it\'s an option..."' A;
+	セリフ(2000, "");
+	'"Oh, your shield\'s on here."' A;
+	セリフ(2020, "");
+	'"Huhh? Mr. Hiroshi is?"' A;
+	セリフ(2000, "");
+	'"Cursed shields--6,000 Gold."' A;
+	セリフ(2001, "");
+	'"Gahahaha, you\'re worth even less than your shield!"' A;
+	セリフ(2024, "");
+	'"Awwww..."' A;
+	ADVOFF();
+}
+
+void サチコ／切り替え４()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"...Hmm?"' A;
+	セリフ(2005, "");
+	'"...Huh?' R;
+	' Where\'s Sachiko?"' A;
+	枠消去();
+	立ち絵表示(1020, 1, 200);
+	セリフ(2022, "");
+	'"...Haahh, haahh...' R;
+	' huff... phew... phew..."' A;
+	セリフ(2002, "");
+	'"Hey! What are you doing, Sachiko?!' R;
+	' You\'re falling behind!"' A;
+	セリフ(2022, "");
+	'"I-I\'m sorry...' R;
+	' Mr. Hiroshi\'s just so heavy..."' A;
+	セリフ(2005, "");
+	'"Mr. Hiroshi...?' R;
+	' Oh, your shield."' A;
+	セリフ(2000, "");
+	'"Hurry up and get used to that thing, already!"' A;
+	セリフ(2022, "");
+	'"Sh-Shields are pretty heavy, you know?"' A;
+	'"Huff, huff..."' A;
+	セリフ(2005, "");
+	'"You\'re so pathetic..."' A;
+	セリフ(2021, "");
+	'"Haahh... It\'d be so nice if Mr. Hiroshi had legs and could walk by himself..."' A;
+	セリフ(2024, "");
+	'"Oh, and if he could protect everyone by himself, too, that\'d be so much easier, wouldn\'t it?"' A;
+	セリフ(2000, "");
+	'"If he could do that, we wouldn\'t need you anymore."' A;
+	セリフ(2023, "");
+	'"Oh, darn."' A;
+	セリフ(2021, "");
+	'"...Well, I guess I\'d be okay with that..."' A;
+	セリフ(2000, "");
+	'"Shut up. Keep up the pace!"' A;
+	セリフ(2022, "");
+	'"Aah, please wait, sir...' R;
+	' Huff, huff..."' A;
+	ADVOFF();
+}
+
+void サチコ／切り替え／父からの手紙()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5000, 0, 0);
+	音楽(71, -1, -1);
+	セリフ(2809, "");
+	'"Hello!' R;
+	' Sorry for bothering youuu."' A;
+	枠消去();
+	立ち絵表示(1020, 1, 200);
+	セリフ(2023, "");
+	'"Aah! Wh-Who are you?!"' A;
+	セリフ(2809, "");
+	'"Just your dreamy mailwoman, Ryouko Todoroki!' R;
+	' I have a letter for you, Miss Sachiko."' A;
+	セリフ(2021, "");
+	'"Oh, well, thank you."' A;
+	セリフ(2809, "");
+	'"Well then, I thank you for future business!"' A;
+	セリフ(2020, "");
+	'"H-Huh?' R;
+	' It\'s from Dad? How unusual..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Sachiko opened the envelope and pulled out the letter.' A;
+	ミニイベント表示(4210, 1, 500);
+	ト書き();
+	'"What are you doing skipping school?!"' A;
+	セリフ(2023, "");
+	'"Whoa, he\'s already yelling!"' A;
+	ト書き();
+	'"I hear you\'ve recently been associating with uncivilized adventurer types."' A;
+	'"What would your mother think if she knew you were fooling around like this?"' A;
+	'"And where have you been living all this time?' R;
+	' Don\'t tell me you\'re staying with those adventurers!"' A;
+	'"I don\'t remember raising you to be so impetuous.' R;
+	' Come back home at once!"' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	立ち絵表示(1020, 1, 200);
+	セリフ(2023, "");
+	'"Wah, wah, wawah!"' A;
+	'"Wh-What do I do? What do I do?' R;
+	' He\'s really mad..."' A;
+	'"He\'s gonna get even madder if I don\'t go back home right now."' A;
+	セリフ(2000, "");
+	'"Hrm, I\'ve heard your worries."' A;
+	セリフ(2020, "");
+	'"S-Sir..."' A;
+	ト書き();
+	'Rance snatched the letter from Sachiko.' A;
+	セリフ(2000, "");
+	'"Hyah!"' A;
+	ト書き();
+	'Rance ripped the letter to shreds.' A;
+	セリフ(2023, "");
+	'"Hyagh?! What are you doing?!"' A;
+	セリフ(2000, "");
+	'"Hmph, if you go back now, you\'ll just get yelled at, won\'t you?"' A;
+	セリフ(2021, "");
+	'"B-But if I go back later..."' A;
+	セリフ(2000, "");
+	'"You\'ll get yelled at then, too.' R;
+	' So it\'s the same whether you do it now or later."' A;
+	セリフ(2020, "");
+	'"I-I don\'t want either of those..."' A;
+	セリフ(2000, "");
+	'"I don\'t care what you want."' A;
+	'"But don\'t just run off on your own now.' R;
+	' I\'ll follow you home."' A;
+	セリフ(2023, "");
+	'"Wawah! That\'d be worse!"' A;
+	セリフ(2000, "");
+	'"Then keep quiet and keep being my slave."' A;
+	セリフ(2021, "");
+	'"Y-You\'re awful..."' A;
+	セリフ(2000, "");
+	'"And that settles that!"' A;
+	思考(2020, "");
+	'(Haahh... Really though, what should I do...? Dad sounds so mad...)' A;
+	'(Huh?' R;
+	' Come to think of it, how did he find out I\'m adventuring...?)' A;
+	ADVOFF();
+}
+

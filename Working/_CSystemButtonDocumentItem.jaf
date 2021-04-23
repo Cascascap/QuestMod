@@ -1,0 +1,126 @@
+int _CSystemButtonDocumentItem::_GetButtonCount()
+{
+	return this._m_tbl.Numof();
+}
+
+void _CSystemButtonDocumentItem::_Set(int _x, int _y, int _z, string _plain_cg, string _hilite_cg, sys_btn_fnc_t _fnc, bool PixelDecide)
+{
+	this._m_tbl[this._FindOrNewIndex(_fnc)]._Set(_x, _y, _z, _plain_cg, _hilite_cg, _fnc, PixelDecide);
+}
+
+void _CSystemButtonDocumentItem::_SetForRem(sys_btn_fnc_t _fnc, string _cover_cg)
+{
+	this._m_tbl[this._FindOrNewIndex(_fnc)]._SetForRem(_cover_cg);
+}
+
+void _CSystemButtonDocumentItem::SetDisableCG(sys_btn_fnc_t CommandFunc, string CG)
+{
+	this._m_tbl[this._FindOrNewIndex(CommandFunc)].SetDisableCG(CG);
+}
+
+void _CSystemButtonDocumentItem::SetIsEnableSystemButtonFunc(sys_btn_fnc_t CommandFunc, FTIsEnableSystemButton Func)
+{
+	this._m_tbl[this._FindOrNewIndex(CommandFunc)].SetIsEnableSystemButtonFunc(Func);
+}
+
+void _CSystemButtonDocumentItem::_Clear()
+{
+	this._m_tbl.Free();
+}
+
+void _CSystemButtonDocumentItem::_SetToSpriteCg(ref CASCGSprite _sp, int _btn_index, int _state)
+{
+	if (!this._asserte_btn_index(_btn_index))
+	{
+		return;
+	}
+	this._m_tbl[_btn_index]._SetToSpriteCg(_sp, _state);
+}
+
+int _CSystemButtonDocumentItem::_FindOrNewIndex(sys_btn_fnc_t _fnc)
+{
+	int _i = this._FindFunc(_fnc);
+	if (_i != -2147483648)
+	{
+		return _i;
+	}
+	this._m_tbl.Realloc(this._m_tbl.Numof() + 1);
+	return this._m_tbl.Numof() - 1;
+}
+
+int _CSystemButtonDocumentItem::_FindFunc(sys_btn_fnc_t _fnc)
+{
+	int _i = 0;
+	for (_i = 0; _i < this._m_tbl.Numof(); ++_i)
+	{
+		if (this._m_tbl[_i]._Is(_fnc))
+		{
+			return _i;
+		}
+	}
+	return -2147483648;
+}
+
+bool _CSystemButtonDocumentItem::_IsEnable(int _btn_index)
+{
+	if (!this._asserte_btn_index(_btn_index))
+	{
+		return false;
+	}
+	return this._m_tbl[_btn_index]._IsEnable();
+}
+
+sys_btn_fnc_t _CSystemButtonDocumentItem::_GetFunc(int _btn_index)
+{
+	if (!this._asserte_btn_index(_btn_index))
+	{
+		return NULL;
+	}
+	return this._m_tbl[_btn_index]._GetFunc();
+}
+
+bool _CSystemButtonDocumentItem::_asserte_btn_index(int _btn_index)
+{
+	if (_btn_index >= 0 && _btn_index < this._m_tbl.Numof())
+	{
+		return true;
+	}
+	DebugErrorMB("_btn_index=%d\n_m_btn.Numof()=%d\n" % _btn_index % this._m_tbl.Numof());
+	return false;
+}
+
+int _CSystemButtonDocumentItem::_GetFuncX(sys_btn_fnc_t _fnc)
+{
+	int _i = this._FindFunc(_fnc);
+	if (_i == -2147483648)
+	{
+		return -2147483648;
+	}
+	return this._m_tbl[_i]._GetX();
+}
+
+int _CSystemButtonDocumentItem::_GetFuncY(sys_btn_fnc_t _fnc)
+{
+	int _i = this._FindFunc(_fnc);
+	if (_i == -2147483648)
+	{
+		return -2147483648;
+	}
+	return this._m_tbl[_i]._GetY();
+}
+
+ref CASRect _CSystemButtonDocumentItem::GetVisibleRect(sys_btn_fnc_t CommandFunc)
+{
+	return this._m_tbl[this._FindOrNewIndex(CommandFunc)].GetVisibleRect();
+}
+
+ref CASRect _CSystemButtonDocumentItem::GetVisibleRectByIndex(int Index)
+{
+	return this._m_tbl[Index].GetVisibleRect();
+}
+
+bool _CSystemButtonDocumentItem::IsPixelDecide(int ButtonIndex)
+{
+	return this._m_tbl[ButtonIndex].IsPixelDecide();
+}
+

@@ -1,0 +1,138 @@
+float CCenterCamera::GetLength()
+{
+	return this.m_fLength;
+}
+
+float CCenterCamera::GetAngle()
+{
+	return this.m_fAngle;
+}
+
+float CCenterCamera::GetAngleP()
+{
+	return this.m_fAngleP;
+}
+
+float CCenterCamera::GetCenterX()
+{
+	return this.m_fCenterX;
+}
+
+float CCenterCamera::GetCenterY()
+{
+	return this.m_fCenterY;
+}
+
+float CCenterCamera::GetCenterZ()
+{
+	return this.m_fCenterZ;
+}
+
+CCenterCamera::CCenterCamera()
+{
+}
+
+CCenterCamera::~CCenterCamera()
+{
+	this.Release();
+}
+
+bool CCenterCamera::Create(ref CReignPlugin rPlugin)
+{
+	this.Release();
+	this.m_rPlugin <- rPlugin;
+	return true;
+}
+
+void CCenterCamera::Release()
+{
+	this.m_rPlugin <- NULL;
+}
+
+void CCenterCamera::Update()
+{
+	float fX = 0.0;
+	float fY = 0.0;
+	float fZ = -this.m_fLength;
+	this.CalcRotP(fX, fY, fZ, this.m_fAngleP);
+	this.CalcRotH(fX, fY, fZ, this.m_fAngle);
+	fX += this.m_fCenterX;
+	fY += this.m_fCenterY;
+	fZ += this.m_fCenterZ;
+	this.m_rPlugin.SetCameraPos(fX, fY, fZ);
+	this.m_rPlugin.SetCameraAngle(-this.m_fAngle);
+	this.m_rPlugin.SetCameraAngleP(-this.m_fAngleP);
+	this.m_rPlugin.SetCameraAngleB(0.0);
+}
+
+S3D CCenterCamera::GetVector()
+{
+	float X = 0.0;
+	float Y = 0.0;
+	float Z = 1.0;
+	this.CalcRotH(X, Y, Z, this.m_fAngle);
+	this.CalcRotP(X, Y, Z, this.m_fAngleP);
+	S3D Pos;
+	Pos.fX = X;
+	Pos.fY = Y;
+	Pos.fZ = Z;
+	return Pos;
+}
+
+S3D CCenterCamera::TransVector(float X, float Y, float Z)
+{
+	this.CalcRotP(X, Y, Z, this.m_fAngleP);
+	this.CalcRotH(X, Y, Z, this.m_fAngle);
+	S3D Pos;
+	Pos.fX = X;
+	Pos.fY = Y;
+	Pos.fZ = Z;
+	return Pos;
+}
+
+void CCenterCamera::SetCenterPos(float fX, float fY, float fZ)
+{
+	this.m_fCenterX = fX;
+	this.m_fCenterY = fY;
+	this.m_fCenterZ = fZ;
+}
+
+void CCenterCamera::SetLength(float fLength)
+{
+	this.m_fLength = fLength;
+}
+
+void CCenterCamera::SetAngle(float fAngle)
+{
+	this.m_fAngle = fAngle;
+}
+
+void CCenterCamera::SetAngleP(float fAngleP)
+{
+	this.m_fAngleP = fAngleP;
+}
+
+void CCenterCamera::CalcRotH(ref float fX, ref float fY, ref float fZ, float fAngle)
+{
+	float fCos = Math.Cos(fAngle);
+	float fSin = Math.Sin(fAngle);
+	float fNewX = fX * fCos + fZ * fSin;
+	float fNewY = fY;
+	float fNewZ = fX * -fSin + fZ * fCos;
+	fX = fNewX;
+	fY = fNewY;
+	fZ = fNewZ;
+}
+
+void CCenterCamera::CalcRotP(ref float fX, ref float fY, ref float fZ, float fAngle)
+{
+	float fCos = Math.Cos(fAngle);
+	float fSin = Math.Sin(fAngle);
+	float fNewX = fX;
+	float fNewY = fY * fCos + fZ * -fSin;
+	float fNewZ = fY * fSin + fZ * fCos;
+	fX = fNewX;
+	fY = fNewY;
+	fZ = fNewZ;
+}
+

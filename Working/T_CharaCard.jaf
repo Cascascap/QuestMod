@@ -1,0 +1,290 @@
+void T_CharaCard::moveFace(int nMoveX, int nMoveY, int nMoveZ, int nMoveTime)
+{
+	this.m_sFace.move(nMoveX, nMoveY, nMoveZ, nMoveTime);
+}
+
+void T_CharaCard::setDeadShow(bool bDeadShow)
+{
+	this.m_bDeadShow = bDeadShow;
+}
+
+int T_CharaCard::spriteIntersect(ref T_Sprite rfsSp)
+{
+	T_Rect rcWork;
+	rcWork = this.getBaseRect();
+	return rcWork.spriteIntersect(rfsSp);
+}
+
+void T_CharaCard::coverColorFace(int nR, int nG, int nB, int nRate, bool bMask)
+{
+	this.m_sFace.coverColor3D(nR, nG, nB, nRate, bMask);
+}
+
+int T_CharaCard::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_CharaCard::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_CharaCard::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+int T_CharaCard::getFaceX()
+{
+	return this.m_sFace.getPosX();
+}
+
+int T_CharaCard::getFaceY()
+{
+	return this.m_sFace.getPosY();
+}
+
+int T_CharaCard::getFaceZ()
+{
+	return this.m_sFace.getZ();
+}
+
+int T_CharaCard::getFaceMoveX()
+{
+	return this.m_sFace.getMoveX();
+}
+
+int T_CharaCard::getFaceMoveY()
+{
+	return this.m_sFace.getMoveY();
+}
+
+int T_CharaCard::getFaceMoveZ()
+{
+	return this.m_sFace.getMoveZ();
+}
+
+bool T_CharaCard::getShow()
+{
+	return this.m_spBase.getShow();
+}
+
+int T_CharaCard::getFaceWidth()
+{
+	return this.m_sFace.getWidth();
+}
+
+int T_CharaCard::getFaceHeight()
+{
+	return this.m_sFace.getHeight();
+}
+
+int T_CharaCard::getCharaNo()
+{
+	return this.m_sSkill.getCharaNo();
+}
+
+T_Rect T_CharaCard::getBaseRect()
+{
+	return this.m_spBase.getRect();
+}
+
+ref T_Sprite T_CharaCard::getBase()
+{
+	return this.m_spBase;
+}
+
+ref T_Sprite T_CharaCard::getNonSkill()
+{
+	return this.m_spNonSkill;
+}
+
+ref T_Sprite T_CharaCard::getDead()
+{
+	return this.m_spDead;
+}
+
+ref T_BattleBar T_CharaCard::getHpBar()
+{
+	return this.m_sHpBar;
+}
+
+ref T_JobIcon T_CharaCard::getJob()
+{
+	return this.m_sJob.getIcon();
+}
+
+ref T_CharaSkill T_CharaCard::getSkill()
+{
+	return this.m_sSkill;
+}
+
+ref T_CharaFace T_CharaCard::getFace()
+{
+	return this.m_sFace;
+}
+
+T_CharaCard::T_CharaCard()
+{
+	this.clear();
+}
+
+T_CharaCard::~T_CharaCard()
+{
+	this.delete();
+}
+
+bool T_CharaCard::create(int nCharaNo, int nSkillType)
+{
+	this.delete();
+	if (!this.m_sFace.create(nCharaNo, 2))
+	{
+		return false;
+	}
+	this.m_spBase.setCg(10110);
+	this.m_spNonSkill.setCg(10133);
+	this.m_spDead.setCg(10105);
+	this.m_sHpBar.createCg(10125, 0, 0, 0);
+	this.m_sName.create(200, 20, -1, 0, 0, 1);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setFontType(258);
+	this.m_sName.setFontSize(20);
+	this.m_sName.setFontColor(255, 245, 100);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setSpacing(0.949999988079071);
+	this.m_sJob.create(キャラ_職業(nCharaNo), 0);
+	this.m_sSkill.create(nCharaNo, nSkillType, false);
+	this.m_sSkill.drawBack(184, 8, this.m_spBase);
+	this.update();
+	return true;
+}
+
+void T_CharaCard::delete()
+{
+	this.m_spBase.delete();
+	this.m_spNonSkill.delete();
+	this.m_spDead.delete();
+	this.m_sHpBar.delete();
+	this.m_sName.delete();
+	this.m_sJob.delete();
+	this.m_sSkill.delete();
+	this.m_sFace.delete();
+	this.clear();
+}
+
+void T_CharaCard::clear()
+{
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_bDeadShow = false;
+}
+
+bool T_CharaCard::update()
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	this.m_sHpBar.setValue(キャラ_体力(nCharaNo), キャラ_体力最大(nCharaNo), 0);
+	this.m_sName.setText(キャラ_名前(nCharaNo), false);
+	this.m_sJob.setLevel(キャラ_レベル(nCharaNo), キャラ_レベル最大(nCharaNo));
+	return true;
+}
+
+bool T_CharaCard::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	this.m_sSkill.drawBack(nDstX + 184, nDstY + 8, rfsDst);
+	if (!this.m_sHpBar.copyToSprite(rfsDst, nDstX + 10, nDstY + 156))
+	{
+		return false;
+	}
+	if (!this.m_sName.copyToSprite(rfsDst, nDstX + 9, nDstY + 4))
+	{
+		return false;
+	}
+	if (!this.m_sJob.copyToSprite(rfsDst, nDstX + 111, nDstY + 25))
+	{
+		return false;
+	}
+	if (!this.m_sSkill.copyToSprite(rfsDst, nDstX + 184, nDstY + 8))
+	{
+		return false;
+	}
+	if (!this.m_sFace.copyToSprite(rfsDst, nDstX + 9, nDstY + 25))
+	{
+		return false;
+	}
+	if (this.m_bDeadShow)
+	{
+		if (!this.m_spDead.copyToSprite(rfsDst, nDstX + 2, nDstY + 2, -1, -1, 0))
+		{
+			return false;
+		}
+	}
+	if (this.m_sSkill.getActiveCount() <= 0)
+	{
+		if (!this.m_spNonSkill.copyToSprite(rfsDst, nDstX + 185, nDstY + 2, -1, -1, 0))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+void T_CharaCard::setPos(int nX, int nY)
+{
+	this.m_spBase.setPos(nX, nY);
+	this.m_spNonSkill.setPos(nX + 185, nY + 2);
+	this.m_spDead.setPos(nX + 2, nY + 2);
+	this.m_sHpBar.setPos(nX + 10, nY + 156);
+	this.m_sName.setPos(nX + 9, nY + 5);
+	this.m_sJob.setPos(nX + 111, nY + 25);
+	this.m_sSkill.setPos(nX + 184, nY + 8);
+	this.m_sFace.setPos(nX + 9, nY + 25);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_CharaCard::setZ(int nZ, bool bBattleFlag)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_sHpBar.setZ(nZ + 1);
+	this.m_sName.setZ(nZ + 1);
+	this.m_sJob.setZ(nZ + 1);
+	this.m_sSkill.setZ(nZ + 1);
+	this.m_sFace.setZ(nZ + 1);
+	this.m_spNonSkill.setZ(bBattleFlag ? nZ + 50 : nZ + 8);
+	this.m_spDead.setZ(bBattleFlag ? nZ + 40 : nZ + 7);
+}
+
+void T_CharaCard::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sHpBar.setShow(bShow);
+	this.m_sName.setShow(bShow);
+	this.m_sJob.setShow(bShow);
+	this.m_sSkill.setShow(bShow);
+	this.m_sFace.setShow(bShow);
+	this.m_spNonSkill.setShow(this.m_sSkill.getActiveCount() > 0 ? 0 : bShow);
+	this.m_spDead.setShow(bShow && this.m_bDeadShow);
+}
+
+void T_CharaCard::setBlendRate(int nBlendRate)
+{
+	this.m_spBase.setBlendRate(nBlendRate);
+	this.m_spNonSkill.setBlendRate(nBlendRate);
+	this.m_spDead.setBlendRate(nBlendRate);
+	this.m_sHpBar.setBlendRate(nBlendRate);
+	this.m_sName.setBlendRate(nBlendRate);
+	this.m_sJob.setBlendRate(nBlendRate);
+	this.m_sSkill.setBlendRate(nBlendRate);
+	this.m_sFace.setBlendRate(nBlendRate);
+}
+

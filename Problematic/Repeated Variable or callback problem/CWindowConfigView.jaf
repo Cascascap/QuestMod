@@ -1,0 +1,576 @@
+CWindowConfigView::CWindowConfigView()
+{
+	this.m_nBaseZ = 15000;
+	this.m_nTabHeight = 32;
+	this.m_nExitBarHeight = 32;
+	this.m_nOnCursorObject = -1;
+	this.m_ManualTextList.Alloc(12);
+	this.m_ManualTextList[4] = AFL_Config_GetHelpText(0, true);
+	this.m_ManualTextList[5] = AFL_Config_GetHelpText(1, true);
+	this.m_ManualTextList[6] = AFL_Config_GetHelpText(2, true);
+	this.m_ManualTextList[7] = AFL_Config_GetHelpText(3, true);
+	this.m_ManualTextList[9] = AFL_Config_GetHelpText(4, true);
+	this.m_ManualTextList[11] = AFL_Config_GetHelpText(5, true);
+}
+
+int CWindowConfigView::Run(ref array@string TabNameList)
+{
+	this.Create(TabNameList);
+	SYS_画面更新(1, 100, 0, 0);
+	this.m_nExitCode = -1;
+	this.RunLoop();
+	this.Release();
+	return this.m_nExitCode;
+}
+
+void CWindowConfigView::Create(ref array@string TabNameList)
+{
+	CConfigCommonViewCreater ConfigCommonViewCreater;
+	ConfigCommonViewCreater.CreateTab(this.m_ConfigTabView, this.m_nBaseZ + 1, 4, TabNameList);
+	ConfigCommonViewCreater.CreateBaseSprite(this.m_BaseSprite, 4, this.m_nBaseZ);
+	ConfigCommonViewCreater.CreateExitBar(this.m_ExitBar, this.m_nBaseZ + 1);
+	this.CreateChangeWindowModeCheckBox();
+	this.CreateAspectCheckBox();
+	this.CreateScalingCheckBox();
+	this.CreateWaitVSyncCheckBox();
+	this.CreateRecordPosSizeCheckBox();
+	this.CreateMinimizeByFullScreenInactiveCheckBox();
+	this.CreateSleepByInactiveCheckBox();
+	this.CreateOverFrameRateSleepCheckBox();
+	this.CreateManualBaseSprite();
+	this.CreateManualTextSprite();
+	this.CreateInitPosAndSizeButtonSprite();
+	this.m_SpaceKeyClick.Init(32, true);
+	this.m_LButtonClick.Init(1, true);
+	this.m_RButtonClick.Init(2, true);
+	this.m_EscapeKeyClick.Init(27, true);
+}
+
+void CWindowConfigView::Release()
+{
+	this.m_ManualTextSprite.Release();
+	this.m_ManualBaseSprite.Release();
+	this.m_InitPosAndSizeButtonSprite.Release();
+	this.m_OverFrameRateSleepCheckBoxSprite.Release();
+	this.m_SleepByInactiveCheckBoxSprite.Release();
+	this.m_MinimizeByFullScreenInactiveCheckBoxSprite.Release();
+	this.m_RecordPosSizeCheckBoxSprite.Release();
+	this.m_WaitVSyncCheckBoxSprite.Release();
+	this.m_Scaling1CheckBoxSprite.Release();
+	this.m_Scaling0CheckBoxSprite.Release();
+	this.m_ScalingTextSprite.Release();
+	this.m_Aspect1CheckBoxSprite.Release();
+	this.m_Aspect0CheckBoxSprite.Release();
+	this.m_AspectTextSprite.Release();
+	this.m_FullScreenCheckBoxSprite.Release();
+	this.m_WindowCheckBoxSprite.Release();
+	this.m_ExitBar.Release();
+	this.m_BaseSprite.Release();
+	this.m_ConfigTabView.Release();
+}
+
+void CWindowConfigView::CreateChangeWindowModeCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_WindowCheckBoxSprite.CreateSampleSprite(20, 50, this.m_nBaseZ + 1, 20, 20);
+	this.m_WindowCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_WindowCheckBoxSprite.SetText("ウィンドウ", CharProperty);
+	this.m_FullScreenCheckBoxSprite.CreateSampleSprite(20, 78, this.m_nBaseZ + 1, 20, 20);
+	this.m_FullScreenCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_FullScreenCheckBoxSprite.SetText("フルスクリーン", CharProperty);
+	this.m_WindowCheckBoxSprite.SetShowCheckMark(!SystemService.IsFullScreen());
+	this.m_FullScreenCheckBoxSprite.SetShowCheckMark(SystemService.IsFullScreen());
+}
+
+void CWindowConfigView::CreateAspectCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(18);
+	CharProperty.SetColor(CF_CASColor(255, 128, 128, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_AspectTextSprite.SetText("フルスクリーン時の画面比率", CharProperty);
+	this.m_AspectTextSprite.SetPos(20, 130);
+	this.m_AspectTextSprite.SetZ(this.m_nBaseZ + 1);
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_Aspect0CheckBoxSprite.CreateSampleSprite(20, 160, this.m_nBaseZ + 1, 20, 20);
+	this.m_Aspect0CheckBoxSprite.SetTextCharSpace(-4);
+	this.m_Aspect0CheckBoxSprite.SetText("標準", CharProperty);
+	this.m_Aspect1CheckBoxSprite.CreateSampleSprite(20, 188, this.m_nBaseZ + 1, 20, 20);
+	this.m_Aspect1CheckBoxSprite.SetTextCharSpace(-4);
+	this.m_Aspect1CheckBoxSprite.SetText("固定", CharProperty);
+	int nAspectRatio = 0;
+	SystemService.GetWindowSetting(0, nAspectRatio);
+	this.m_Aspect0CheckBoxSprite.SetShowCheckMark(nAspectRatio == 0);
+	this.m_Aspect1CheckBoxSprite.SetShowCheckMark(nAspectRatio != 0);
+}
+
+void CWindowConfigView::CreateScalingCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(18);
+	CharProperty.SetColor(CF_CASColor(255, 128, 128, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_ScalingTextSprite.SetText("拡大方法", CharProperty);
+	this.m_ScalingTextSprite.SetPos(20, 240);
+	this.m_ScalingTextSprite.SetZ(this.m_nBaseZ + 1);
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_Scaling0CheckBoxSprite.CreateSampleSprite(20, 270, this.m_nBaseZ + 1, 20, 20);
+	this.m_Scaling0CheckBoxSprite.SetTextCharSpace(-4);
+	this.m_Scaling0CheckBoxSprite.SetText("標準", CharProperty);
+	this.m_Scaling1CheckBoxSprite.CreateSampleSprite(20, 298, this.m_nBaseZ + 1, 20, 20);
+	this.m_Scaling1CheckBoxSprite.SetTextCharSpace(-4);
+	this.m_Scaling1CheckBoxSprite.SetText("バイキュービック", CharProperty);
+	int nScalingMode = 0;
+	SystemService.GetWindowSetting(1, nScalingMode);
+	this.m_Scaling0CheckBoxSprite.SetShowCheckMark(nScalingMode == 0);
+	this.m_Scaling1CheckBoxSprite.SetShowCheckMark(nScalingMode != 0);
+}
+
+void CWindowConfigView::CreateWaitVSyncCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_WaitVSyncCheckBoxSprite.CreateSampleSprite(20, 350, this.m_nBaseZ + 1, 20, 20);
+	this.m_WaitVSyncCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_WaitVSyncCheckBoxSprite.SetText("垂直同期を待ち、ちらつきを抑える", CharProperty);
+	int nWaitVSync = 0;
+	SystemService.GetWindowSetting(2, nWaitVSync);
+	this.m_WaitVSyncCheckBoxSprite.SetShowCheckMark(nWaitVSync != 0);
+}
+
+void CWindowConfigView::CreateRecordPosSizeCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_RecordPosSizeCheckBoxSprite.CreateSampleSprite(20, 380, this.m_nBaseZ + 1, 20, 20);
+	this.m_RecordPosSizeCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_RecordPosSizeCheckBoxSprite.SetText("ウィンドウの位置とサイズを、次回起動時に復元する", CharProperty);
+	int nRecordPosSize = 0;
+	SystemService.GetWindowSetting(3, nRecordPosSize);
+	this.m_RecordPosSizeCheckBoxSprite.SetShowCheckMark(nRecordPosSize != 0);
+}
+
+void CWindowConfigView::CreateMinimizeByFullScreenInactiveCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_MinimizeByFullScreenInactiveCheckBoxSprite.CreateSampleSprite(20, 410, this.m_nBaseZ + 1, 20, 20);
+	this.m_MinimizeByFullScreenInactiveCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_MinimizeByFullScreenInactiveCheckBoxSprite.SetText("フルスクリーン時に非アクティブで最小化する", CharProperty);
+	int nMinimizeByFullScreenInactive = 0;
+	SystemService.GetWindowSetting(4, nMinimizeByFullScreenInactive);
+	this.m_MinimizeByFullScreenInactiveCheckBoxSprite.SetShowCheckMark(nMinimizeByFullScreenInactive != 0);
+}
+
+void CWindowConfigView::CreateSleepByInactiveCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_SleepByInactiveCheckBoxSprite.CreateSampleSprite(20, 440, this.m_nBaseZ + 1, 20, 20);
+	this.m_SleepByInactiveCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_SleepByInactiveCheckBoxSprite.SetText("非アクティブ時にＣＰＵ使用率を下げる", CharProperty);
+	bool bSleepByInactive = ChipmunkSpriteEngine.SYSTEM_GetConfigSleepByInactiveWindow();
+	this.m_SleepByInactiveCheckBoxSprite.SetShowCheckMark(bSleepByInactive);
+}
+
+void CWindowConfigView::CreateOverFrameRateSleepCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_OverFrameRateSleepCheckBoxSprite.CreateSampleSprite(20, 470, this.m_nBaseZ + 1, 20, 20);
+	this.m_OverFrameRateSleepCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_OverFrameRateSleepCheckBoxSprite.SetText("過剰な画面描画を抑えＣＰＵ使用率を下げる", CharProperty);
+	bool bOverFrameRateSleep = ChipmunkSpriteEngine.SYSTEM_GetConfigOverFrameRateSleep();
+	this.m_OverFrameRateSleepCheckBoxSprite.SetShowCheckMark(bOverFrameRateSleep);
+}
+
+void CWindowConfigView::CreateManualBaseSprite()
+{
+	ref _CCgInfo EachBackCGInfo = g_ConfigModeDocument.GetEachBackCGInfo(4);
+	ref _CCgInfo BackCGInfo = g_ConfigModeDocument.GetBackCGInfo();
+	if (!EachBackCGInfo._GetCg().Empty() || !BackCGInfo._GetCg().Empty())
+	{
+		return;
+	}
+	int nX = 350;
+	int nY = 50;
+	int nWidth = 400;
+	int nHeight = 300;
+	this.m_ManualBaseSprite.AddCreatePixelOnly(nWidth, nHeight);
+	this.m_ManualBaseSprite.AddFill(0, 0, nWidth, nHeight, 96, 96, 96);
+	int nLightR = 192;
+	int nLightG = 192;
+	int nLightB = 192;
+	int nDarkR = 128;
+	int nDarkG = 128;
+	int nDarkB = 128;
+	this.m_ManualBaseSprite.AddFill(0, 0, nWidth, 1, nDarkR, nDarkG, nDarkB);
+	this.m_ManualBaseSprite.AddFill(0, 0, 1, nHeight, nDarkR, nDarkG, nDarkB);
+	this.m_ManualBaseSprite.AddFill(nWidth - 1, 0, 1, nHeight, nLightR, nLightG, nLightB);
+	this.m_ManualBaseSprite.AddFill(1, nHeight - 1, nWidth - 1, 1, nLightR, nLightG, nLightB);
+	this.m_ManualBaseSprite.Build();
+	this.m_ManualBaseSprite.SetPos(nX, nY);
+	this.m_ManualBaseSprite.SetZ(this.m_nBaseZ + 1);
+}
+
+void CWindowConfigView::CreateManualTextSprite()
+{
+	this.m_ManualTextCharSpriteProperty.SetSize(16);
+	this.m_ManualTextCharSpriteProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	this.m_ManualTextCharSpriteProperty.SetEdgeWeight(0.75);
+	this.m_ManualTextCharSpriteProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	CASPos Pos;
+	Pos = g_ConfigModeDocument.GetWindowManualTextPos();
+	this.m_ManualTextSprite.SetPos(Pos.GetX(), Pos.GetY());
+	this.m_ManualTextSprite.SetZ(this.m_nBaseZ + 2);
+	this.m_ManualTextSprite.SetCharSpace(-6);
+}
+
+void CWindowConfigView::CreateInitPosAndSizeButtonSprite()
+{
+	this.m_InitPosAndSizeButtonSprite.CreateTextButton(280, 28, "ウィンドウの位置とサイズを初期化", -2);
+	this.m_InitPosAndSizeButtonSprite.SetPos(30, 520);
+	this.m_InitPosAndSizeButtonSprite.SetZ(this.m_nBaseZ + 2);
+}
+
+void CWindowConfigView::RunLoop()
+{
+	for (; ; )
+	{
+		if (!this.CheckInput())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+
+bool CWindowConfigView::CheckInput()
+{
+	int nPrevOnCursorObject = this.m_nOnCursorObject;
+	this.m_nOnCursorObject = -1;
+	this.m_ConfigTabView.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ConfigTabView.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 20 + nObject;
+		}
+	}
+	this.m_ExitBar.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ExitBar.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 30 + nObject;
+		}
+	}
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_WindowCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 1;
+		}
+	}
+	this.m_WindowCheckBoxSprite.SetShowCursor(this.m_WindowCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_FullScreenCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 2;
+		}
+	}
+	this.m_FullScreenCheckBoxSprite.SetShowCursor(this.m_FullScreenCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_Aspect0CheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 3;
+		}
+	}
+	this.m_Aspect0CheckBoxSprite.SetShowCursor(this.m_Aspect0CheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_Aspect1CheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 4;
+		}
+	}
+	this.m_Aspect1CheckBoxSprite.SetShowCursor(this.m_Aspect1CheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_Scaling0CheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 5;
+		}
+	}
+	this.m_Scaling0CheckBoxSprite.SetShowCursor(this.m_Scaling0CheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_Scaling1CheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 6;
+		}
+	}
+	this.m_Scaling1CheckBoxSprite.SetShowCursor(this.m_Scaling1CheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_WaitVSyncCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 7;
+		}
+	}
+	this.m_WaitVSyncCheckBoxSprite.SetShowCursor(this.m_WaitVSyncCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_RecordPosSizeCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 8;
+		}
+	}
+	this.m_RecordPosSizeCheckBoxSprite.SetShowCursor(this.m_RecordPosSizeCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_MinimizeByFullScreenInactiveCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 9;
+		}
+	}
+	this.m_MinimizeByFullScreenInactiveCheckBoxSprite.SetShowCursor(this.m_MinimizeByFullScreenInactiveCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_SleepByInactiveCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 10;
+		}
+	}
+	this.m_SleepByInactiveCheckBoxSprite.SetShowCursor(this.m_SleepByInactiveCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_OverFrameRateSleepCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 11;
+		}
+	}
+	this.m_OverFrameRateSleepCheckBoxSprite.SetShowCursor(this.m_OverFrameRateSleepCheckBoxSprite.IsMouseCursorInRect());
+	this.m_InitPosAndSizeButtonSprite.UpdateState();
+	if (this.m_nOnCursorObject == -1 && this.m_InitPosAndSizeButtonSprite.IsMouseCursorInRect())
+	{
+		this.m_nOnCursorObject = 12;
+	}
+	if (this.m_nOnCursorObject != -1 && nPrevOnCursorObject != this.m_nOnCursorObject)
+	{
+		this.PlaySoundUnderCursor();
+	}
+	if (this.m_SpaceKeyClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_RButtonClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_EscapeKeyClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_LButtonClick.IsClick(this.m_nOnCursorObject) && this.m_nOnCursorObject != -1)
+	{
+		if (this.m_nOnCursorObject == 1)
+		{
+			if (SystemService.IsFullScreen())
+			{
+				this.PlaySoundDecide();
+				this.m_WindowCheckBoxSprite.SetShowCheckMark(true);
+				this.m_FullScreenCheckBoxSprite.SetShowCheckMark(false);
+				SystemService.ChangeNormalScreen();
+			}
+		}
+		else if (this.m_nOnCursorObject == 2)
+		{
+			if (!SystemService.IsFullScreen())
+			{
+				this.PlaySoundDecide();
+				this.m_WindowCheckBoxSprite.SetShowCheckMark(false);
+				this.m_FullScreenCheckBoxSprite.SetShowCheckMark(true);
+				SystemService.ChangeFullScreen();
+			}
+		}
+		else if (this.m_nOnCursorObject == 3)
+		{
+			this.PlaySoundDecide();
+			SystemService.SetWindowSetting(0, 0);
+			this.m_Aspect0CheckBoxSprite.SetShowCheckMark(true);
+			this.m_Aspect1CheckBoxSprite.SetShowCheckMark(false);
+		}
+		else if (this.m_nOnCursorObject == 4)
+		{
+			this.PlaySoundDecide();
+			SystemService.SetWindowSetting(0, 1);
+			this.m_Aspect0CheckBoxSprite.SetShowCheckMark(false);
+			this.m_Aspect1CheckBoxSprite.SetShowCheckMark(true);
+		}
+		else if (this.m_nOnCursorObject == 5)
+		{
+			this.PlaySoundDecide();
+			SystemService.SetWindowSetting(1, 0);
+			this.m_Scaling0CheckBoxSprite.SetShowCheckMark(true);
+			this.m_Scaling1CheckBoxSprite.SetShowCheckMark(false);
+		}
+		else if (this.m_nOnCursorObject == 6)
+		{
+			this.PlaySoundDecide();
+			SystemService.SetWindowSetting(1, 1);
+			this.m_Scaling0CheckBoxSprite.SetShowCheckMark(false);
+			this.m_Scaling1CheckBoxSprite.SetShowCheckMark(true);
+		}
+		else if (this.m_nOnCursorObject == 7)
+		{
+			this.PlaySoundDecide();
+			int nWaitVSync = 0;
+			SystemService.GetWindowSetting(2, nWaitVSync);
+			nWaitVSync = nWaitVSync != 0 ? 0 : 1;
+			SystemService.SetWindowSetting(2, nWaitVSync);
+			this.m_WaitVSyncCheckBoxSprite.SetShowCheckMark(nWaitVSync != 0);
+		}
+		else if (this.m_nOnCursorObject == 8)
+		{
+			this.PlaySoundDecide();
+			int nRecordPosSize = 0;
+			SystemService.GetWindowSetting(3, nRecordPosSize);
+			nRecordPosSize = nRecordPosSize != 0 ? 0 : 1;
+			SystemService.SetWindowSetting(3, nRecordPosSize);
+			this.m_RecordPosSizeCheckBoxSprite.SetShowCheckMark(nRecordPosSize != 0);
+		}
+		else if (this.m_nOnCursorObject == 9)
+		{
+			this.PlaySoundDecide();
+			int nMinimizeByFullScreenInactive = 0;
+			SystemService.GetWindowSetting(4, nMinimizeByFullScreenInactive);
+			nMinimizeByFullScreenInactive = nMinimizeByFullScreenInactive != 0 ? 0 : 1;
+			SystemService.SetWindowSetting(4, nMinimizeByFullScreenInactive);
+			this.m_MinimizeByFullScreenInactiveCheckBoxSprite.SetShowCheckMark(nMinimizeByFullScreenInactive != 0);
+		}
+		else if (this.m_nOnCursorObject == 10)
+		{
+			this.PlaySoundDecide();
+			bool bSleepByInactive = ChipmunkSpriteEngine.SYSTEM_GetConfigSleepByInactiveWindow();
+			bSleepByInactive = !bSleepByInactive;
+			ChipmunkSpriteEngine.SYSTEM_SetConfigSleepByInactiveWindow(bSleepByInactive);
+			this.m_SleepByInactiveCheckBoxSprite.SetShowCheckMark(bSleepByInactive);
+			g_bSleepByInactiveWindow = bSleepByInactive;
+		}
+		else if (this.m_nOnCursorObject == 11)
+		{
+			this.PlaySoundDecide();
+			bool bOverFrameRateSleep = ChipmunkSpriteEngine.SYSTEM_GetConfigOverFrameRateSleep();
+			bOverFrameRateSleep = !bOverFrameRateSleep;
+			ChipmunkSpriteEngine.SYSTEM_SetConfigOverFrameRateSleep(bOverFrameRateSleep);
+			this.m_OverFrameRateSleepCheckBoxSprite.SetShowCheckMark(bOverFrameRateSleep);
+			g_bConfigOverFrameRateSleep = bOverFrameRateSleep;
+		}
+		else if (this.m_nOnCursorObject == 12)
+		{
+			this.PlaySoundDecide();
+			SystemService.InitMainWindowPosAndSize();
+		}
+		else if (this.m_nOnCursorObject == 30 + 0)
+		{
+			this.PlaySoundDecide();
+			ゲーム終了();
+		}
+		else if (this.m_nOnCursorObject == 30 + 1)
+		{
+			this.PlaySoundDecide();
+			タイトルに戻る();
+		}
+		else if (this.m_nOnCursorObject == 30 + 2)
+		{
+			this.PlaySoundDecide();
+			return false;
+		}
+		else if (this.m_nOnCursorObject >= 20 && this.m_nOnCursorObject < 26 && this.m_nOnCursorObject - 20 != 4)
+		{
+			this.PlaySoundDecide();
+			this.m_nExitCode = this.m_nOnCursorObject - 20;
+			return false;
+		}
+	}
+	this.UpdateManualText();
+	this.m_WindowCheckBoxSprite.SetShowCheckMark(!SystemService.IsFullScreen());
+	this.m_FullScreenCheckBoxSprite.SetShowCheckMark(SystemService.IsFullScreen());
+	return true;
+}
+
+void CWindowConfigView::UpdateManualText()
+{
+	if (this.m_nOnCursorObject < 0 || this.m_nOnCursorObject >= this.m_ManualTextList.Numof())
+	{
+		this.m_ManualTextSprite.SetShow(false);
+		return;
+	}
+	this.m_ManualTextSprite.SetText(this.m_ManualTextList[this.m_nOnCursorObject], this.m_ManualTextCharSpriteProperty);
+	this.m_ManualTextSprite.SetShow(true);
+}
+
+void CWindowConfigView::PlaySoundDecide()
+{
+	if (g_ConfigModeDocument.GetSoundDecide() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundDecide());
+}
+
+void CWindowConfigView::PlaySoundUnderCursor()
+{
+	if (g_ConfigModeDocument.GetSoundUnderCursor() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundUnderCursor());
+}
+
+void CWindowConfigView::PlaySoundCancel()
+{
+	if (g_ConfigModeDocument.GetSoundCancel() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundCancel());
+}
+

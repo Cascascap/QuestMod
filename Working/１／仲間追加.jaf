@@ -1,0 +1,228 @@
+void 仲間追加／初()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5030, 0, 0);
+	音楽(0, 1, 1000);
+	ト書き();
+	'　' R;
+	'     Cidade   Macatt Bar' A;
+	音楽(71, -1, -1);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Yo, Atago! I came to see you!' R;
+	' Gimme something good to eat!"' A;
+	セリフ(2040, "");
+	'"Ugh..."' A;
+	セリフ(2000, "");
+	'"Hm? What\'s up, sweetie?' R;
+	' What are you holding your head like that for?"' A;
+	セリフ(2040, "");
+	'"Urgh..."' A;
+	'"Ah... I\'m just in a little trouble, seeing how I don\'t get any customers anymore because of you."' A;
+	セリフ(2000, "");
+	'"No customers?"' A;
+	ト書き();
+	'Rance looked around the bar and found that it was just him and Atago.' A;
+	セリフ(2000, "");
+	'"Isn\'t this how it always was?"' A;
+	セリフ(2040, "");
+	'"...Of course it wasn\'t."' A;
+	'"Until a little while ago, it was packed with adventurers finding companions and trading information..."' A;
+	セリフ(2000, "");
+	'"Oh? There\'s no sign of that now."' A;
+	セリフ(2040, "");
+	'"Yeah, because people stopped coming in here now that you\'re constantly making a scene..."' A;
+	セリフ(2040, "");
+	'"Haahh... Will I have to close...?"' A;
+	セリフ(2000, "");
+	'"Hm? So then where did those guys go?"' A;
+	セリフ(2040, "");
+	'"The Final Brutus Bar a few streets over."' A;
+	セリフ(2000, "");
+	'"It\'s a pretty popular place for its good food and reasonable prices, huh?"' A;
+	セリフ(2040, "");
+	'"Yep! It is! So why don\'t you go over there!"' A;
+	セリフ(2000, "");
+	'"Nah.' R;
+	' The owner\'s an old dude and all the waiters are guys.' R;
+	' It\'s too gay in there."' A;
+	'"That\'s why I put up with your shabby cooking, Atago."' A;
+	セリフ(2001, "");
+	'"And if I left, then you\'d really have no customers at all."' A;
+	セリフ(2040, "");
+	'"No, I\'m telling you, it\'s only because of you that..."' A;
+	'"Ah, geez..."' A;
+	'"Oh, come to think of it, I just remembered.' R;
+	' Somebody came to see you."' A;
+	セリフ(2000, "");
+	'"What?"' A;
+	セリフ(2040, "");
+	'"Somebody looking for an adventuring party or something."' A;
+	セリフ(2004, "");
+	'"Oho, I bet it\'s a peerless beauty."' A;
+	セリフ(2000, "");
+	'"Alright, bring her in."' A;
+	ト書き();
+	'......' R;
+	'     ......' R;
+	'          ......' A;
+}
+
+void 仲間追加／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5030, 0, 0);
+	音楽(0, 1, 1000);
+	ト書き();
+	'　' R;
+	'     Cidade   Bar' A;
+	音楽(71, -1, -1);
+	セリフ(2040, "");
+	'"Ah... Rance, c\'mere.' R;
+	' There\'s another person here to see you."' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2004, "");
+	'"Oho, a woman? It\'s a woman, right?"' A;
+	セリフ(2000, "");
+	'"Alright, bring her in."' A;
+	ト書き();
+	'......' R;
+	'     ......' R;
+	'          ......' A;
+}
+
+void 仲間追加／プリマ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2944, "");
+	'"It\'s been a while."' A;
+	セリフ(2000, "");
+	'"Ooh, it\'s Prima!"' A;
+	セリフ(2944, "");
+	'"Prima Hononoman, reporting for duty as a medic."' A;
+	'"It may only be for a while, but I\'m happy to be working with you."' A;
+	セリフ(2004, "");
+	'"Mm, I\'m sure we\'ll be doing a lot of \'work\' together!"' A;
+	セリフ(2944, "");
+	'"That won\'t be necessary."' A;
+}
+
+void 仲間追加／マホコ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2947, "");
+	'"I have a goal I must achieve."' A;
+	セリフ(2000, "");
+	'"Heh?"' A;
+	セリフ(2947, "");
+	'"Lend me your strength, and I will lend you mine in return."' A;
+	'"...I am in your debt."' A;
+	セリフ(2005, "");
+	'"What? Who even...?"' A;
+}
+
+void 仲間追加／セスナ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2943, "");
+	'"I\'ve come...' C;
+	' to work...' C;
+	R();
+	' Happy to...' C;
+	' be here..."' A;
+	'"...Oh... I\'m t...' C;
+	R();
+	' .........Oh, I\'m tired."' A;
+	セリフ(2975, "");
+	'".........Zzz."' R;
+	'  ↑  Fell asleep' A;
+	セリフ(2002, "");
+	'"HEEEEEEEEEEY!"' A;
+	セリフ(2943, "");
+	'".........Ohh!"' R;
+	'  ↑  Woke up' A;
+}
+
+void 仲間追加／セル()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2949, "");
+	'"It\'s been a while, Rance.' R;
+	' May I impose on you for a while?"' A;
+	セリフ(2000, "");
+	'"You\'re totally welcome, Sel.' R;
+	' Your healing magic is really useful."' A;
+	セリフ(2949, "");
+	'"Yes, I\'ll do everything I can."' A;
+	セリフ(2004, "");
+	'"Mm, I\'d like you to take that enthusiasm and do what you can at night, too."' A;
+	セリフ(2949, "");
+	'"...Rance."' A;
+	思考(2005, "");
+	'(Shit... I\'ve done it now...)' A;
+	セリフ(2949, "");
+	'"You\'re still looking at women as objects of lust? We\'ve talked about this before. God will not forgive you for......"' A;
+	セリフ(2005, "");
+	'"Urgh..."' A;
+	ト書き();
+	'Rance got a lengthy lecture.' A;
+}
+
+void 仲間追加／メガデス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2945, "");
+	'"Heya☆!"' A;
+	'"Moromi came to join your party!"' A;
+	'"I\'ll be in the back, so come call me if you\'re ever in trouble☆!"' A;
+	セリフ(2000, "");
+	'"Yeesh, she didn\'t even ask."' A;
+}
+
+void 仲間追加／アレキサンダー()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2946, "");
+	'"The world\'s strongest martial artist."' A;
+	'"........."' A;
+	'"...Is what I\'m training to become.' R;
+	' I\'m Alexander. It\'s nice to meet you."' A;
+	セリフ(2002, "");
+	'"MEN?! NO THANK YOU!!!"' A;
+}
+

@@ -1,0 +1,121 @@
+void パーツ管理_初期化()
+{
+	Ｆｌａｓｈ_通知クリア();
+	g_sPartsNo.clear();
+}
+
+void パーツ管理_終了処理()
+{
+	Ｆｌａｓｈ_削除();
+	Ｆｌａｓｈ_通知クリア();
+	g_sPartsNo.clear();
+}
+
+void Ｆｌａｓｈ_作成(int nX, int nY, int nZ)
+{
+	g_bPartsFlashUpdate = false;
+	g_sPartsFlash.create(-1);
+	g_sPartsFlash.setPos(nX, nY);
+	g_sPartsFlash.setZ(nZ);
+}
+
+void Ｆｌａｓｈ_削除()
+{
+	g_sPartsFlash.delete();
+	g_bPartsFlashUpdate = false;
+}
+
+void Ｆｌａｓｈ_更新()
+{
+	if (!g_bPartsFlashUpdate)
+	{
+		return;
+	}
+	if (g_sPartsFlash.update() >= 0)
+	{
+		return;
+	}
+	Ｆｌａｓｈ_削除();
+	Ｆｌａｓｈ_終了通知();
+}
+
+void Ｆｌａｓｈ_再生(string szFileName, bool bWait, bool bEndShow)
+{
+	g_sPartsFlash.playFromFileName(szFileName, bWait, bEndShow);
+	g_bPartsFlashUpdate = !bWait;
+}
+
+void Ｆｌａｓｈ_再生待ち()
+{
+	g_bPartsFlashUpdate = false;
+	g_sPartsFlash.wait();
+	g_sPartsFlash.delete();
+}
+
+void Ｆｌａｓｈ_停止()
+{
+	g_bPartsFlashUpdate = false;
+	g_sPartsFlash.stop(false);
+}
+
+string Ｆｌａｓｈファイル名(string szName)
+{
+	return !szName.Empty() ? "Data/Flash/System/" + szName + ".swf" : "";
+}
+
+void Ｆｌａｓｈ_通知登録(ftFlashCallback sFunc)
+{
+	Ｆｌａｓｈ_通知クリア();
+	if (sFunc == NULL)
+	{
+		return;
+	}
+	if (!g_bPartsFlashUpdate)
+	{
+		sFunc(true);
+	}
+	else
+	{
+		g_pFlashCallback = sFunc;
+	}
+}
+
+bool Ｆｌａｓｈ_終了通知()
+{
+	if (g_pFlashCallback == NULL)
+	{
+		return false;
+	}
+	ftFlashCallback sFunc = g_pFlashCallback;
+	g_pFlashCallback = NULL;
+	sFunc(true);
+	return true;
+}
+
+void Ｆｌａｓｈ_通知クリア()
+{
+	if (g_pFlashCallback != NULL)
+	{
+		g_pFlashCallback(false);
+	}
+	g_pFlashCallback = NULL;
+}
+
+int パーツ番号_取得(int nNo)
+{
+	if (nNo < 0)
+	{
+		return g_sPartsNo.get();
+	}
+	if (!g_sPartsNo.add(nNo))
+	{
+		return -1;
+	}
+	return nNo;
+}
+
+bool パーツ番号_解放(int nNo)
+{
+	return g_sPartsNo.erase(nNo);
+}
+

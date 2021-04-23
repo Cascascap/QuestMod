@@ -1,0 +1,600 @@
+string 全角数字(int nValue, int nFigures, int nfZeroPadding)
+{
+	string szNum = "";
+	ChipmunkSpriteEngine.IntToZenkaku(szNum, nValue, nFigures, nfZeroPadding);
+	return szNum;
+}
+
+string 半角数字(int nValue, int nFigures, int nfZeroPadding)
+{
+	string szNum = "";
+	ChipmunkSpriteEngine.IntToHankaku(szNum, nValue, nFigures, nfZeroPadding);
+	return szNum;
+}
+
+string 実数字(int nValue)
+{
+	return "%.2f" % 実数変換(nValue);
+}
+
+int 文字列_数値_変換(string szText)
+{
+	szText = 空白削除(szText);
+	if (szText.Empty())
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int len = szText.Length();
+	int nValue = 0;
+	bool bFlag = false;
+	switch (szText.GetPart(0, 1))
+	{
+		case "-":
+		case "－":
+		case "ー":
+			bFlag = true;
+			++i;
+			break;
+		default:
+			break;
+	}
+	for (i = bFlag ? 1 : 0; i < len; ++i)
+	{
+		switch (szText.GetPart(i, 1))
+		{
+			case "0":
+			case "０":
+				nValue = nValue * 10 + 0;
+				break;
+			case "1":
+			case "１":
+				nValue = nValue * 10 + 1;
+				break;
+			case "2":
+			case "２":
+				nValue = nValue * 10 + 2;
+				break;
+			case "3":
+			case "３":
+				nValue = nValue * 10 + 3;
+				break;
+			case "4":
+			case "４":
+				nValue = nValue * 10 + 4;
+				break;
+			case "5":
+			case "５":
+				nValue = nValue * 10 + 5;
+				break;
+			case "6":
+			case "６":
+				nValue = nValue * 10 + 6;
+				break;
+			case "7":
+			case "７":
+				nValue = nValue * 10 + 7;
+				break;
+			case "8":
+			case "８":
+				nValue = nValue * 10 + 8;
+				break;
+			case "9":
+			case "９":
+				nValue = nValue * 10 + 9;
+				break;
+			default:
+				return -2147483648;
+		}
+	}
+	return nValue;
+}
+
+int 文字_数値_変換(int cc)
+{
+	if (cc < 48 || cc > 57)
+	{
+		return -1;
+	}
+	return cc - 48;
+}
+
+int 数値_文字_変換(int nNum)
+{
+	if (nNum < 0 || nNum > 9)
+	{
+		return 32;
+	}
+	return 48 + nNum;
+}
+
+string 空白削除(string szText)
+{
+	int i = 0;
+	int str = 0;
+	int len = 0;
+	int len2 = 0;
+	string szText2 = "";
+	string szPart = "";
+	len = szText.Length();
+	str = -1;
+	for (i = 0; i < len; ++i)
+	{
+		szPart = szText.GetPart(i, 1);
+		if (szPart != " " && szPart != "　")
+		{
+			str = i;
+			break;
+		}
+	}
+	if (str < 0)
+	{
+		return "";
+	}
+	szText2 = szText.GetPart(str, len - str);
+	len = szText2.Length();
+	len2 = len;
+	for (i = len - 1; i >= 0; --i)
+	{
+		szPart = szText2.GetPart(i, 1);
+		if (szPart != " " && szPart != "　")
+		{
+			break;
+		}
+		--len2;
+	}
+	return szText2.GetPart(0, len2);
+}
+
+bool 空白確認(string szText)
+{
+	int i = 0;
+	int len = szText.Length();
+	for (i = 0; i < len; ++i)
+	{
+		string szPart = szText.GetPart(i, 1);
+		if (szPart != " " && szPart != "　")
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+string テキスト改行変換(string szText, string szNewLine)
+{
+	array@string aszText;
+	int cnt = _テキスト分割_強制改行(szText, szNewLine, -1, aszText);
+	if (cnt <= 0)
+	{
+		return "";
+	}
+	return テキスト統合_改行あり(aszText, -1);
+}
+
+int テキスト分割(string szText, int nCount, ref array@string aszText)
+{
+	if (!aszText.Empty())
+	{
+		aszText.Free();
+	}
+	nCount *= 2;
+	int i = 0;
+	int cnt = szText.Length();
+	int len1 = 0;
+	int len2 = 0;
+	string text1 = "";
+	string text2 = "";
+	len1 = 0;
+	text1 = "";
+	for (i = 0; i < cnt; ++i)
+	{
+		text2 = szText.GetPart(i, 1);
+		len2 = text2.LengthByte();
+		if (len1 + len2 > nCount)
+		{
+			aszText.PushBack(text1);
+			len1 = len2;
+			text1 = text2;
+		}
+		else
+		{
+			len1 += len2;
+			text1 += text2;
+		}
+	}
+	if (len1 > 0)
+	{
+		aszText.PushBack(text1);
+	}
+	return aszText.Numof();
+}
+
+int テキスト分割_強制改行(string szText, int nCount, ref array@string aszText)
+{
+	return _テキスト分割_強制改行(szText, "@", nCount, aszText);
+}
+
+int _テキスト分割_強制改行(string szText, string szNewLine, int nCount, ref array@string aszText)
+{
+	if (aszText === NULL)
+	{
+		return -1;
+	}
+	if (!aszText.Empty())
+	{
+		aszText.Free();
+	}
+	int len = szText.Length();
+	int idx = 0;
+	array@string aszText1;
+	array@string aszText2;
+	while (len > 0)
+	{
+		idx = szText.Find(szNewLine);
+		if (idx < 0)
+		{
+			break;
+		}
+		aszText1.PushBack(szText.GetPart(0, idx));
+		len = len - (idx + 1);
+		if (len > 0)
+		{
+			szText = szText.GetPart(idx + 1, len);
+		}
+		else
+		{
+			szText = "";
+		}
+	}
+	if (len > 0)
+	{
+		aszText1.PushBack(szText);
+	}
+	if (nCount <= 0)
+	{
+		int cnt = aszText1.Numof();
+		aszText.Alloc(cnt);
+		aszText.Copy(0, aszText1, 0, cnt);
+		return cnt;
+	}
+	int i = 0;
+	int cnt1 = aszText1.Numof();
+	for (i = 0; i < cnt1; ++i)
+	{
+		ref string szText = aszText1[i];
+		if (szText.Empty())
+		{
+			aszText.PushBack("");
+			continue;
+		}
+		int j = 0;
+		int cnt2 = テキスト分割(szText, nCount, aszText2);
+		for (j = 0; j < cnt2; ++j)
+		{
+			aszText.PushBack(aszText2[j]);
+		}
+	}
+	return aszText.Numof();
+}
+
+string テキスト統合(ref array@string aszText)
+{
+	int i = 0;
+	int cnt = aszText.Numof();
+	string szText = "";
+	for (i = 0; i < cnt; ++i)
+	{
+		szText += aszText[i];
+	}
+	return szText;
+}
+
+string テキスト統合_改行あり(ref array@string aszText, int nCount)
+{
+	return _テキスト統合_改行あり(aszText, "@", nCount);
+}
+
+string _テキスト統合_改行あり(ref array@string aszText, string szNewLine, int nCount)
+{
+	int i = 0;
+	int cnt = aszText.Numof();
+	string szText = "";
+	if (nCount >= 0)
+	{
+		cnt = nCount < cnt ? nCount : cnt;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (i > 0)
+		{
+			szText += szNewLine;
+		}
+		szText += aszText[i];
+	}
+	return szText;
+}
+
+string テキスト連結(string szText1, string szText2)
+{
+	if (szText1.Empty())
+	{
+		return szText2;
+	}
+	if (szText2.Empty())
+	{
+		return szText1;
+	}
+	return szText1 + "@" + szText2;
+}
+
+string テキスト置換(string szText, string szWord1, string szWord2)
+{
+	if (szWord1.Empty())
+	{
+		return szText;
+	}
+	int idx = szText.Find(szWord1);
+	if (idx < 0)
+	{
+		return szText;
+	}
+	string szText1 = szText.GetPart(0, idx);
+	string szText2 = szText.GetPart(idx + szWord1.Length(), szText.Length());
+	return szText1 + szWord2 + szText2;
+}
+
+int テキスト最大長(ref array@string aszText)
+{
+	int i = 0;
+	int cnt = aszText.Numof();
+	int nMax = 0;
+	nMax = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		int len = aszText[i].LengthByte();
+		if (len > nMax)
+		{
+			nMax = len;
+		}
+	}
+	return nMax;
+}
+
+string 全角空白(int nSize)
+{
+	return 文字詰め("　", nSize);
+}
+
+string 半角空白(int nSize)
+{
+	return 文字詰め(" ", nSize);
+}
+
+string 全角区切り(int nSize)
+{
+	return 文字詰め("━", nSize);
+}
+
+string 半角区切り(int nSize)
+{
+	return 文字詰め("-", nSize);
+}
+
+string 全角数字詰め(int nNumber, int nSize)
+{
+	return 文字詰め(全角数字(数値_補正(nNumber, 0, 9), -1, 0), nSize);
+}
+
+string 半角数字詰め(int nNumber, int nSize)
+{
+	return 文字詰め(半角数字(数値_補正(nNumber, 0, 9), -1, 0), nSize);
+}
+
+string 文字詰め(string szChar, int nSize)
+{
+	int i = 0;
+	string szText = "";
+	szText = "";
+	for (i = 0; i < nSize; ++i)
+	{
+		szText += szChar;
+	}
+	return szText;
+}
+
+string テキスト_サイズ調整(string szText, int nSize)
+{
+	int nLen = nSize * 2 - szText.LengthByte();
+	if (nLen <= 0)
+	{
+		return szText;
+	}
+	return szText + 全角空白((nLen + 1) / 2);
+}
+
+string テキスト切詰(string szText, int nSize)
+{
+	int nMax = nSize * 2;
+	int nLen = szText.LengthByte();
+	if (nLen <= nMax)
+	{
+		return szText;
+	}
+	int len = 0;
+	int len2 = 0;
+	while (true)
+	{
+		len2 = len;
+		++len;
+		string szText2 = szText.GetPart(0, len);
+		if (szText2.LengthByte() > nMax)
+		{
+			break;
+		}
+	}
+	return szText.GetPart(0, len2);
+}
+
+string 名前切詰(string szName)
+{
+	return szName;
+}
+
+int テキスト_Ｘ補正(int nWidth, int nFontSize, string szText, int nTextSpace)
+{
+	int nTextWidth = テキスト_幅(nFontSize, szText, nTextSpace);
+	if (nWidth < nTextWidth)
+	{
+		return 0;
+	}
+	return (nWidth - nTextWidth) / 2;
+}
+
+int テキスト_Ｙ補正(int nHeight, int nFontSize)
+{
+	if (nHeight < nFontSize)
+	{
+		return 0;
+	}
+	return (nHeight - nFontSize) / 2;
+}
+
+int テキスト_幅(int nFontSize, string szText, int nTextSpace)
+{
+	return (nFontSize * szText.LengthByte()) / 2 + nTextSpace * (szText.Length() - 1);
+}
+
+string テキスト_マップ名(int nMapNo)
+{
+	return テキスト_名前(マップ_表示名(nMapNo));
+}
+
+string テキスト_キャラ名(int nCharaNo)
+{
+	return テキスト_名前(キャラ_名前(nCharaNo));
+}
+
+string テキスト_キャラ短縮名(int nCharaNo)
+{
+	return テキスト_名前(キャラ_短縮名前(nCharaNo));
+}
+
+string テキスト_固有キャラ名(int nCharaNo)
+{
+	return テキスト_名前(キャラ固有番号文字列(nCharaNo, 0));
+}
+
+string テキスト_固有キャラ短縮名(int nCharaNo)
+{
+	return テキスト_名前(キャラ固有番号文字列(nCharaNo, 1));
+}
+
+string テキスト_アイテム名(int nItemNo)
+{
+	return テキスト_名前(アイテム_名前(nItemNo));
+}
+
+string テキスト_固有アイテム名(int nItemNo)
+{
+	return テキスト_名前(アイテム_固有名(nItemNo));
+}
+
+string テキスト_スキル名(int nSkillNo)
+{
+	return テキスト_名前(スキル_名前(nSkillNo));
+}
+
+string テキスト_モンスター名(int nMonsterNo)
+{
+	return テキスト_名前(モンスター表示名(nMonsterNo));
+}
+
+string テキスト_モンスター一覧(ref array@int anMonsterNo)
+{
+	int i = 0;
+	int cnt = anMonsterNo.Numof();
+	string szText = "";
+	for (i = 0; i < cnt; ++i)
+	{
+		ref int rfMonsterNo = anMonsterNo[i];
+		if (rfMonsterNo > 0)
+		{
+			szText += テキスト_モンスター名(rfMonsterNo);
+		}
+	}
+	if (szText.Empty())
+	{
+		return テキスト_名前("？？？");
+	}
+	return szText;
+}
+
+string テキスト_戦闘名前(int nNo)
+{
+	return テキスト_名前(戦闘データ_名前(nNo));
+}
+
+string テキスト_クエスト名(int nQuestNo)
+{
+	return テキスト_名前(クエスト_名前(nQuestNo));
+}
+
+string テキスト_属性名(int nAttr)
+{
+	return テキスト_名前(属性文字列(nAttr));
+}
+
+string テキスト_スポット名(int nType)
+{
+	return テキスト_名前(スポット文字列(nType));
+}
+
+string テキスト_名前(string szName)
+{
+	if (szName.Empty())
+	{
+		return "【？？？】";
+	}
+	return "【" + szName + "】";
+}
+
+string テキスト_全角数値(int nValue)
+{
+	return "【" + 全角数字(nValue, -1, 0) + "】";
+}
+
+string テキスト_半角数値(int nValue)
+{
+	return "[" + 半角数字(nValue, -1, 0) + "]";
+}
+
+string テキスト_ＨＰ(int nHp, int nMax)
+{
+	string szHp = nHp > 99999 ? "%d" % nHp : "%05d" % nHp;
+	string szMax = nMax > 99999 ? "%d" % nMax : "%05d" % nMax;
+	return szHp + "/" + szMax;
+}
+
+string 属性文字列(int nAttr)
+{
+	switch (nAttr)
+	{
+		case 0:
+			return "Nothing";
+		case 1:
+			return "Light";
+		case 2:
+			return "Darkness";
+		case 3:
+			return "Electric";
+		case 4:
+			return "Ice";
+		case 5:
+			return "Fire";
+		default:
+			break;
+	}
+	return "?";
+}
+

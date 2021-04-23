@@ -1,0 +1,136 @@
+bool T_MapStoreMark::isSuspend()
+{
+	return this.m_aspMark[0].isSuspend();
+}
+
+int T_MapStoreMark::getMarkX(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_aspMark.Numof() ? -1 : 948 + (nIndex % 5) * 13;
+}
+
+int T_MapStoreMark::getMarkY(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_aspMark.Numof() ? -1 : 484 + (nIndex / 5) * 13;
+}
+
+T_MapStoreMark::T_MapStoreMark()
+{
+	this.clear();
+}
+
+T_MapStoreMark::~T_MapStoreMark()
+{
+	this.delete();
+}
+
+bool T_MapStoreMark::create(int nZ)
+{
+	this.delete();
+	this.m_nMaxCount = 15;
+	if (this.m_nMaxCount <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < this.m_nMaxCount; ++i)
+	{
+		ref T_Sprite rfsMark = this.m_aspMark[i];
+		rfsMark.setCg(11332);
+		rfsMark.setPos(this.getMarkX(i), this.getMarkY(i));
+		rfsMark.setZ(nZ);
+	}
+	for (; i < cnt; ++i)
+	{
+		ref T_Sprite rfsMark = this.m_aspMark[i];
+		rfsMark.setCg(11333);
+		rfsMark.setPos(this.getMarkX(i), this.getMarkY(i));
+		rfsMark.setZ(nZ);
+	}
+	this.update();
+	return true;
+}
+
+void T_MapStoreMark::delete()
+{
+	int i = 0;
+	int cnt;
+	for (cnt = this.m_aspMark.Numof(); i < cnt; ++i)
+	{
+		this.m_aspMark[i].delete();
+	}
+	this.clear();
+}
+
+void T_MapStoreMark::clear()
+{
+	this.m_nMaxCount = -1;
+	this.m_nCount = -1;
+	this.m_bShow = false;
+}
+
+void T_MapStoreMark::update()
+{
+	if (this.m_nMaxCount <= 0)
+	{
+		return;
+	}
+	int nCount = アイテム倉庫_数(8, 0, 0);
+	if (nCount < 0 || nCount == this.m_nCount)
+	{
+		return;
+	}
+	this.m_nCount = nCount;
+	this.setShow(this.m_bShow);
+}
+
+void T_MapStoreMark::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	int cnt1 = this.m_nCount < this.m_nMaxCount ? this.m_nCount : this.m_nMaxCount;
+	for (i = 0; i < cnt1; ++i)
+	{
+		this.m_aspMark[i].setShow(bShow);
+	}
+	for (; i < this.m_nMaxCount; ++i)
+	{
+		this.m_aspMark[i].setShow(0);
+	}
+	for (; i < cnt; ++i)
+	{
+		this.m_aspMark[i].setShow(bShow);
+	}
+	this.m_bShow = bShow;
+}
+
+bool T_MapStoreMark::suspend()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_aspMark[i].suspend())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_MapStoreMark::resume()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_aspMark[i].resume())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+

@@ -1,0 +1,159 @@
+T_NetworkMessage::T_NetworkMessage()
+{
+	this.clear();
+}
+
+T_NetworkMessage::~T_NetworkMessage()
+{
+	this.delete();
+}
+
+int T_NetworkMessage::run(int nZ)
+{
+	int nRet = -1;
+	if (!this.create(nZ))
+	{
+		return -1;
+	}
+	_EFFECT(1, 100);
+	int nID = 100001;
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		while (nID > 0)
+		{
+			if (this.exec(nID, nRet))
+			{
+				goto label0;
+			}
+			nID = nRet;
+		}
+	}
+label0:
+	this.delete();
+	return nRet;
+}
+
+bool T_NetworkMessage::create(int nZ)
+{
+	this.delete();
+	this.m_spBase.setCg(10552);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_spBase.setShow(1);
+	this.m_sButton.create();
+	選択ボタン登録_大(this.m_sButton, 100001, "Yes", 342, 592, true);
+	選択ボタン登録_大(this.m_sButton, 100002, "No", 342, 658, true);
+	this.m_sButton.setZ(nZ + 1);
+	this.m_sButton.setShow(true);
+	this.m_sInputKey.create(0, this.m_sButton);
+	return true;
+}
+
+void T_NetworkMessage::delete()
+{
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_NetworkMessage::clear()
+{
+	return;
+}
+
+bool T_NetworkMessage::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 100001:
+			nRet = ネットワーク接続許可設定(true);
+			return true;
+		case 100002:
+			nRet = ネットワーク接続許可設定(false);
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+int T_NetworkMessage::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	else
+	{
+		this.m_sButton.setButtonCursor(nID);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_NetworkMessage::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_NetworkMessage::checkKey(int nID)
+{
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+void T_NetworkMessage::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_NetworkMessage::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_NetworkMessage::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+

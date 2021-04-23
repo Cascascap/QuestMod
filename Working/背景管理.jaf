@@ -1,0 +1,20 @@
+int ”wŒi•ÏŠ·(int nCgNo)
+{
+	return nCgNo;
+}
+
+int ”wŒi_—[•û(int nCgNo)
+{
+	return nCgNo;
+}
+
+int ”wŒi_–é(int nCgNo)
+{
+	return nCgNo;
+}
+
+int ”wŒi–¼‚b‚f(string szName)
+{
+	return 0;
+}
+

@@ -1,0 +1,118 @@
+void scrollMusicMode(int nValue)
+{
+	g_sMusicMode.scroll(nValue);
+}
+
+int 音楽モード_実行(int nMode)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	画面_クリア(true, true);
+	if (nMode == 0)
+	{
+		ミニステータス_ボタン表示設定(false);
+	}
+	g_bMusicModeUpdate = false;
+	int nRet = g_sMusicMode.run(nMode);
+	g_bMusicModeUpdate = false;
+	if (nMode == 0)
+	{
+		ミニステータス_ボタン表示設定(true);
+	}
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	return nRet;
+}
+
+int 音楽モード_上矢印(int nID)
+{
+	return g_sMusicMode.moveUp(nID);
+}
+
+int 音楽モード_下矢印(int nID)
+{
+	return g_sMusicMode.moveDown(nID);
+}
+
+int 音楽モード_左矢印(int nID)
+{
+	return g_sMusicMode.moveLeft(nID);
+}
+
+int 音楽モード_右矢印(int nID)
+{
+	return g_sMusicMode.moveRight(nID);
+}
+
+void 音楽モード_選択設定(int nID, bool bSelect)
+{
+	g_sMusicMode.setSelect(nID, bSelect);
+}
+
+int 音楽モード一覧_Ｘ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 20)
+	{
+		return -1;
+	}
+	return 526;
+}
+
+int 音楽モード一覧_Ｙ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 20)
+	{
+		return -1;
+	}
+	return 68 + 27 * nIndex;
+}
+
+int 音楽モード_一覧(ref array@int anMusicList)
+{
+	if (anMusicList === NULL)
+	{
+		return -1;
+	}
+	if (!anMusicList.Empty())
+	{
+		anMusicList.Free();
+	}
+	int i = 0;
+	int cnt = ◆音楽モード／再生回数.Numof();
+	for (i = 1; i < cnt; ++i)
+	{
+		if (音楽_あり(i))
+		{
+			anMusicList.PushBack(i);
+		}
+	}
+	return anMusicList.Numof();
+}
+
+string 音楽モード_名前(int nMusicNo)
+{
+	return 音楽の名前(nMusicNo);
+}
+
+int 音楽モード_再生回数＋(int nMusicNo)
+{
+	if (nMusicNo < 1 || nMusicNo >= ◆音楽モード／再生回数.Numof())
+	{
+		return -1;
+	}
+	ref int rfnCount = ◆音楽モード／再生回数[nMusicNo];
+	rfnCount = 数値_加算(rfnCount, 1);
+	共通変数_セーブ();
+	return rfnCount;
+}
+
+int 音楽モード_再生回数(int nMusicNo)
+{
+	if (nMusicNo < 1 || nMusicNo >= ◆音楽モード／再生回数.Numof())
+	{
+		return -1;
+	}
+	return ◆音楽モード／再生回数[nMusicNo];
+}
+

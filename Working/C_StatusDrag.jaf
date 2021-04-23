@@ -1,0 +1,15 @@
+bool ステータス_ドラッグ実行(int nZ, int nType, ref T_ItemIcon rfsIcon)
+{
+	return g_sStatusDrag.run(nZ, nType, rfsIcon);
+}
+
+void ステータス_ドラッグ(int nX, int nY)
+{
+	g_sStatusDrag.execDrag(nX, nY);
+}
+
+bool ステータス_ドロップ(int nX, int nY)
+{
+	return g_sStatusDrag.execDrop(nX, nY);
+}
+

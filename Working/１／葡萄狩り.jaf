@@ -1,0 +1,344 @@
+void ０６Ｂプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5040, 0, 0);
+	ト書き();
+	R();
+	'     Cidade   Keith Guild' A;
+	音楽(71, -1, -1);
+	セリフ(2800, "");
+	'"Here\'s today\'s job.' R;
+	' Just shut up and do it."' A;
+	ト書き();
+	'Keith pushed the request form onto Rance.' A;
+	'The name of the request was listed as "grape hunting."' A;
+	セリフ(2005, "");
+	'"Tch, you\'re so full of yourself."' A;
+	セリフ(2000, "");
+	'"Alright, lessee here..."' R;
+	'  ↑  Actually diligently reading it' A;
+	セリフ(2005, "");
+	'"...There\'s no women involved.' R;
+	' I don\'t wanna do it."' A;
+	セリフ(2800, "");
+	'"Oh, don\'t say that.' R;
+	' This request\'s from Atago Macatt at the bar, you know?"' A;
+	セリフ(2000, "");
+	'"Atago, huh?' R;
+	' She\'s a fuck-buddy of mine."' A;
+	セリフ(2004, "");
+	'"She\'s really sexy. She\'s a great girl."' A;
+	思考(2800, "");
+	'(Your buddy, huh?)' A;
+	'(She used to be an idol at that bar and you...' R;
+	' This fuckin\' guy...)' A;
+	'(I thought he\'d calmed down a little after he started living with Sill, but without her, he\'s gone right back to normal again.)' A;
+	セリフ(2005, "");
+	'"Hm? What are you staring at me so hard for?' R;
+	' That\'s gross."' A;
+	セリフ(2800, "");
+	'"Hey, don\'t leave.' R;
+	' Just siddown and listen to me."' A;
+	'"Now, the bar\'s famous for its \'grape special,\' and that dish requires grapes, obviously."' A;
+	'"But those grapes are pretty hard to come by nowadays."' A;
+	'"This year\'s grapes are nice and sweet, but they\'re so wild that the people at the farm can\'t actually harvest them."' A;
+	'"So that\'s why this request was sent to the guild."' A;
+	'"It\'s just defeating five grapes and retrieving their bunches.' R;
+	' That\'s easy, ain\'t it?"' A;
+	セリフ(2000, "");
+	'"And Atago\'s in trouble if she doesn\'t get these grapes?"' A;
+	セリフ(2800, "");
+	'"Yeah, she\'ll be in a ton of trouble.' R;
+	' She can\'t make her signature dish without them, after all."' A;
+	思考(2800, "");
+	'(She barely gets any business at her bar anymore because of you.' R;
+	' If she can\'t sell her specialty, the bar\'s done for.)' A;
+	'(She\'s desperate to keep that store open for her parents\' sake. Poor thing.)' A;
+	セリフ(2000, "");
+	'"Hm hm hm, it\'s a chance to get Atago to owe me.' R;
+	' Alright, I accept."' A;
+	音楽(0, 1, 1000);
+	ADVOFF();
+	大陸位置(8);
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	音楽(2, -1, -1);
+	ト書き();
+	R();
+	'     Southern Red   Clicquot Vineyard' A;
+	'The party arrived at a vineyard managed by Clicquot Farms.' A;
+	'The grapes were free-range, cultivated in a pasture large enough to fit two castles.' A;
+	'The people at Clicquot Farms had given up on collecting the grapes and now the vineyard was open for anyone to try to harvest them.' A;
+	ミニイベント表示(4171, 1, 500);
+	ト書き();
+	'A grape appeared, moving swiftly.' A;
+	セリフ(2000, "");
+	'"Oh, it does look bigger and stronger than usual.' R;
+	' And it smells delicious."' A;
+	セリフ(2004, "");
+	'"...*gulp*"' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	ト書き();
+	'The grape jumped and sped off, sensing a hungry glare.' A;
+	セリフ(2000, "");
+	'"Alright, start the grape hunt!"' A;
+	ADVOFF();
+}
+
+void ０６Ｂアタゴと冒険者()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	音楽(2, -1, -1);
+	セリフ(2000, "");
+	'"Hm? Hey!"' A;
+	セリフ(2040, "");
+	'"Agh!"' A;
+	セリフ(2005, "");
+	'"It\'s pretty rude to see someone\'s face and go \'Agh!,\' don\'t you think?"' A;
+	セリフ(2040, "");
+	'"...Why the hell are you here?"' A;
+	セリフ(2000, "");
+	'"I came to help out since I heard you were short on grapes, babe.' R;
+	' Aren\'t you glad?"' A;
+	セリフ(2040, "");
+	'"Uh, yeah... so glad."' A;
+	セリフ(2040, "");
+	'"I don\'t need your help, though."' A;
+	セリフ(2005, "");
+	'"Wh-What?' R;
+	' What do you mean?"' A;
+	セリフ(2900, "Isuru");
+	'"That\'s because we, Atago\'s bodyguards, are helping her out.' R;
+	' We can collect all the grapes she needs."' A;
+	セリフ(2040, "");
+	'"What he said.' R;
+	' You\'ll just get in my way, so could you get out of here?"' A;
+	セリフ(2002, "");
+	'"Mmm, vermin? Around MY Atago?!' R;
+	' DIE!"' A;
+	ADVOFF();
+}
+
+void ０６Ｂアタゴと冒険者／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	ト書き();
+	音楽(0, 1, 1000);
+	セリフ(2001, "");
+	'"Gahahaha, we win.' R;
+	' I hope you guys learn from this and stay away from Atago."' A;
+	セリフ(2040, "");
+	'"Wh-?! What the hell are you doing?!"' A;
+	セリフ(2000, "");
+	'"Don\'t worry, I used the back of my sword."' A;
+	セリフ(2040, "");
+	'"You cut right through them, you lunatic!"' A;
+	セリフ(2000, "");
+	'"I was just punishing these scoundrels for making moves on my woman."' A;
+	セリフ(2005, "");
+	'"I bet these guys were planning on demanding dirty stuff from you later, Atago."' A;
+	セリフ(2040, "");
+	'"...This coming from you?"' A;
+	セリフ(2000, "");
+	'"Anyway, I\'ll help you out now, so don\'t worry, Atago."' A;
+	セリフ(2040, "");
+	'"I don\'t need your help."' A;
+	セリフ(2005, "");
+	'"Wh-Why not?"' A;
+	枠消去();
+	ミニイベント表示(4200, 1, 500);
+	セリフ(2040, "");
+	'"My bodyguards already collected enough for me.' R;
+	' I can get by with this for the year."' A;
+	ト書き();
+	'A basket full of grapes sat next to Atago.' A;
+	セリフ(2040, "");
+	'"More importantly, now I have to figure out what to do with these guys..."' A;
+	セリフ(2005, "");
+	'"Hmmm..."' A;
+	音楽(75, -1, -1);
+	セリフ(2004, "");
+	'*diiing!*' R;
+	'  ↑  Getting an idea' A;
+	思考(2000, "");
+	'(I\'ll just take this guy\'s sword...)' A;
+	'(Stick it into this huge heap of animal shit...)' A;
+	思考(2004, "");
+	'(And lock onto my target...)' A;
+	セリフ(2002, "");
+	'"Deryaaa!"' A;
+	ト書き();
+	'Rance flung the shit!' A;
+	枠消去();
+	ミニイベント表示(4201, 1, 500);
+	ト書き();
+	'Slap!!' C;
+	R();
+	'Direct hit! The dung landed square on the grapes in the basket.' A;
+	セリフ(2040, "");
+	'"Aah! That\'s nasty!"' A;
+	セリフ(2000, "");
+	'"Whoa, what a sudden gust!' R;
+	' How unlucky for that shit to hit all your grapes!"' A;
+	セリフ(2040, "");
+	'"I-I can\'t believe this..."' A;
+	セリフ(2001, "");
+	'"Gahahahaha!"' A;
+	セリフ(2000, "");
+	'"But don\'t worry! I\'ll bring you some new ones right away!"' A;
+	'"I\'ll bring them right to your shop while thinking about how I\'ll have you thank me!"' A;
+	セリフ(2040, "");
+	'"Ahh... geez..."' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	セリフ(2001, "");
+	'"Well then, let\'s go!' R;
+	' The grape hunting continues!"' A;
+	音楽(0, 1, 1000);
+	ADVOFF();
+}
+
+void ０６Ｂ葡萄発見()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, 0, 0, 0);
+	ミニイベント表示(4171, 1, 500);
+	ト書き();
+	'They found a good-looking grape bearing fruit.' A;
+	思考(2000, "");
+	'(It looks a little vicious, but that\'s not a problem for me!)' A;
+	セリフ(2002, "");
+	'"The hunt\'s ooon!"' A;
+	セリフ２(2925, "Grape");
+	'"...Graaape..."' A;
+	ADVOFF();
+}
+
+void ０６Ｂ夕方()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"This is probably enough.' R;
+	' Alright, let\'s get out of here."' A;
+	ト書き();
+	'Rance stuffed the grapes into a bag and headed home.' A;
+	音楽(0, 1, 1000);
+	ADVOFF();
+	大陸位置(1);
+	ADVON();
+	セット表示(g町全景, 5240, 0, 0);
+	ト書き();
+	R();
+	'     Cidade   Square' A;
+	セリフ(2901, "Atago Fan A");
+	'"Looks like I\'ll be able to get a grape special this year after all. I\'m glad."' A;
+	セリフ(2902, "Atago Fan B");
+	'"Yeah, the season doesn\'t really start until you have one of those, does it?"' A;
+	ト書き();
+	'The Macatt Bar was finally returning to normal business now that it could serve its famous dish again.' A;
+	セリフ(2901, "Atago Fan A");
+	'"I\'m, uh... not sure what to think about that, though."' A;
+	セリフ(2902, "Atago Fan B");
+	'"Yeah.' R;
+	' It goes a bit too far as extra service."' A;
+	セリフ(2901, "Atago Fan A");
+	'"I\'d bet that Rance is involved again."' A;
+	セリフ(2903, "Old Man");
+	'"Poor little Atago...' R;
+	' I\'ll still take that special, though."' A;
+	枠消去();
+	背景アウト(500);
+	背景イン(5030, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Cidade   Macatt Bar' A;
+	音楽(75, -1, -1);
+	セリフ(2000, "");
+	'"Hom, hom, nom, nom, munch, munch.' R;
+	' I s\'pose this\'s earned its reputation.' R;
+	' It\'s not bad!"' A;
+	'"Hey, Atago!' R;
+	' Gimme another one!"' A;
+	セリフ(2040, "");
+	'"..."' A;
+	セリフ(2002, "");
+	'"Hey! Get over here!"' A;
+	セリフ(2040, "");
+	'"...I-I heard you."' A;
+	ト書き();
+	'When Atago moved, the eyes of the male customers in the bar followed her.' A;
+	'Everyone\'s attention was focused on Atago.' A;
+	枠消去();
+	立ち絵表示(1041, 1, 200);
+	ト書き();
+	'Her underwear was clearly visible, after all.' C;
+	R();
+	'　' R;
+	'　' R;
+	'!Everybody right click and get a good look!' A;
+	セリフ(2041, "");
+	'"...Ahh, geez."' A;
+	セリフ(2004, "");
+	'"Heheheh, very cute.' R;
+	' Muscat-colored panties, just like this grape meal."' A;
+	セリフ(2041, "");
+	'"...Shut up... Stop talking."' A;
+	ト書き();
+	'The condition Rance had given for handing over the grapes he\'d collected...' R;
+	'...was for Atago to serve customers without her skirt on.' A;
+	セリフ(2000, "");
+	'"Business is booming with this extra underwear-exposure service!' R;
+	' And it\'s all thanks to me!"' A;
+	セリフ(2041, "");
+	'"...Sooner or later I\'m going to kill you."' A;
+	思考(2000, "");
+	'(Well, I can get her to have sex with me or whatever with a few words, but showing her off to everyone is pretty fun too.)' A;
+	思考(2001, "");
+	'(Gahahaha, I bet those losers are all jealous!' R;
+	' You guys are gonna have to just watch, though!)' A;
+	セリフ(2901, "Atago Fan A");
+	'"Aww~, our idol Atago is being abused..."' A;
+	セリフ(2903, "Perverted Old Man");
+	'"Kh, it\'s all because of that man..."' A;
+	セリフ(2902, "Atago Fan B");
+	'"I\'ll never forgive you... Rance..."' A;
+	思考(2041, "");
+	'(So you all say, but you guys are still looking...!)' A;
+	'(Ahh, to hell with every last one of them!)' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	背景表示(0, 1, 500, "", false);
+	ト書き();
+	'The Macatt Bar served a record number of customers during the Atago Underwear Exposure Service event.' A;
+	音楽(0, 1, 1000);
+}
+

@@ -1,0 +1,146 @@
+int 戦闘番号_ＩＩＣ(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		return 味方パーティ_番号(戦闘番号_味方インデクス(nNo) + 1);
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		return 敵パーティ_番号(戦闘番号_敵インデクス(nNo) + 1);
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return 従魔_番号();
+	}
+	return -1;
+}
+
+bool 戦闘番号_存在確認(int nNo)
+{
+	return 戦闘番号_ＩＩＣ(nNo) > 0;
+}
+
+int 戦闘番号_取得(int nCharaNo)
+{
+	int nNo = 戦闘番号_味方取得(nCharaNo);
+	if (nNo > 0)
+	{
+		return nNo;
+	}
+	nNo = 戦闘番号_敵取得(nCharaNo);
+	if (nNo > 0)
+	{
+		return nNo;
+	}
+	return 戦闘番号_従魔取得(nCharaNo);
+}
+
+int 戦闘番号_味方取得(int nCharaNo)
+{
+	int idx = 味方パーティ_検索(nCharaNo);
+	return idx > 0 ? 戦闘番号_味方(idx - 1) : 0;
+}
+
+int 戦闘番号_敵取得(int nCharaNo)
+{
+	int idx = 敵パーティ_検索(nCharaNo);
+	return idx > 0 ? 戦闘番号_敵(idx - 1) : 0;
+}
+
+int 戦闘番号_従魔取得(int nCharaNo)
+{
+	return nCharaNo == 従魔_番号() ? 戦闘番号_従魔() : 0;
+}
+
+int 戦闘番号_敵ボス()
+{
+	array@int anTable;
+	anTable.PushBack(1);
+	anTable.PushBack(0);
+	anTable.PushBack(2);
+	anTable.PushBack(3);
+	anTable.PushBack(4);
+	int i = 0;
+	int cnt = anTable.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = anTable[i];
+		if (敵パーティ_番号(idx + 1) > 0)
+		{
+			return 戦闘番号_敵(idx);
+		}
+	}
+	return -1;
+}
+
+int 戦闘番号_味方インデクス(int nNo)
+{
+	if (!戦闘番号_味方確認(nNo))
+	{
+		return -1;
+	}
+	return nNo - 1;
+}
+
+int 戦闘番号_敵インデクス(int nNo)
+{
+	if (!戦闘番号_敵確認(nNo))
+	{
+		return -1;
+	}
+	return nNo - 11;
+}
+
+int 戦闘番号_味方(int nIndex)
+{
+	if (!味方パーティ_確認(nIndex + 1))
+	{
+		return -1;
+	}
+	return nIndex + 1;
+}
+
+int 戦闘番号_敵(int nIndex)
+{
+	if (!敵パーティ_確認(nIndex + 1))
+	{
+		return -1;
+	}
+	return nIndex + 11;
+}
+
+int 戦闘番号_従魔()
+{
+	return 21;
+}
+
+bool 戦闘番号_味方確認(int nNo)
+{
+	return nNo >= 1 && nNo < 6;
+}
+
+bool 戦闘番号_敵確認(int nNo)
+{
+	return nNo >= 11 && nNo < 16;
+}
+
+bool 戦闘番号_従魔確認(int nNo)
+{
+	return nNo >= 21 && nNo < 22;
+}
+
+int 戦闘番号_距離(int nNo1, int nNo2)
+{
+	int nCharaNo1 = 戦闘番号_ＩＩＣ(nNo1);
+	if (nCharaNo1 <= 0)
+	{
+		return -1;
+	}
+	int nCharaNo2 = 戦闘番号_ＩＩＣ(nNo2);
+	if (nCharaNo2 <= 0)
+	{
+		return -1;
+	}
+	return (_max(nCharaNo1, nCharaNo2) - _min(nCharaNo1, nCharaNo2)) + 1;
+}
+

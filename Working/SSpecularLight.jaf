@@ -1,0 +1,11 @@
+SSpecularLight::SSpecularLight()
+{
+}
+
+void SSpecularLight::SetVector(float fX, float fY, float fZ)
+{
+	this.fVecX = fX;
+	this.fVecY = fY;
+	this.fVecZ = fZ;
+}
+

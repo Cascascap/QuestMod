@@ -1,0 +1,818 @@
+int T_Config3D::getCheckID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 5 ? -1 : 210000 + nIndex + 1;
+}
+
+int T_Config3D::getCheckIndex(int nID)
+{
+	int idx = nID + -210001;
+	return idx < 0 || idx >= 5 ? -1 : idx;
+}
+
+T_Config3D::T_Config3D()
+{
+	this.clear();
+	this.m_bRun = false;
+	this.m_nTypeBoxX = 274;
+	this.m_nTypeBoxY = 114;
+	this.m_nTypeBoxWidth = 300;
+	this.m_nTypeBoxHeight = 500;
+	this.m_nSelectBoxX = 583;
+	this.m_nSelectBoxY = this.m_nTypeBoxY;
+	this.m_nSelectBoxWidth = 250;
+	this.m_nSelectBoxHeight = 200;
+	this.m_nCommentBoxX = 583;
+	this.m_nCommentBoxY = 294;
+	this.m_nCommentBoxWidth = 744 - this.m_nTypeBoxWidth;
+	this.m_nCommentBoxHeight = 270;
+	this.m_TypeNameList.PushBack("Render Mode");
+	this.m_TypeNameList.PushBack("Anti-Aliasing");
+	this.m_TypeNameList.PushBack("Vertical Synchronization");
+	this.m_TypeNameList.PushBack("Shadows");
+	this.m_TypeNameList.PushBack("Shadow Map Resolution");
+	this.m_TypeNameList.PushBack("Texture Filtering");
+	this.m_TypeNameList.PushBack("Vertex Blending");
+	this.m_TypeNameList.PushBack("Edges");
+	this.m_SelectNameList.Alloc(8);
+	this.m_SelectNameList[0].NameList.PushBack("Shader Disabled");
+	this.m_SelectNameList[0].NameList.PushBack("Shader Enabled");
+	this.m_SelectNameList[1].NameList.PushBack("Disabled");
+	this.m_SelectNameList[1].NameList.PushBack("2X");
+	this.m_SelectNameList[1].NameList.PushBack("4X");
+	this.m_SelectNameList[1].NameList.PushBack("8X");
+	this.m_SelectNameList[2].NameList.PushBack("Disabled");
+	this.m_SelectNameList[2].NameList.PushBack("Enabled");
+	this.m_SelectNameList[3].NameList.PushBack("Disabled");
+	this.m_SelectNameList[3].NameList.PushBack("Low quality");
+	this.m_SelectNameList[3].NameList.PushBack("Medium quality");
+	this.m_SelectNameList[3].NameList.PushBack("High quality");
+	this.m_SelectNameList[4].NameList.PushBack("Low quality");
+	this.m_SelectNameList[4].NameList.PushBack("Medium quality");
+	this.m_SelectNameList[4].NameList.PushBack("High quality");
+	this.m_SelectNameList[5].NameList.PushBack("Point-sampling");
+	this.m_SelectNameList[5].NameList.PushBack("Bilinear interpolation");
+	this.m_SelectNameList[5].NameList.PushBack("4X Anisotropic filtering");
+	this.m_SelectNameList[5].NameList.PushBack("8X Anisotropic filtering");
+	this.m_SelectNameList[5].NameList.PushBack("16X Anisotropic filtering");
+	this.m_SelectNameList[6].NameList.PushBack("Software");
+	this.m_SelectNameList[6].NameList.PushBack("Hardware");
+	this.m_SelectNameList[7].NameList.PushBack("Do not draw");
+	this.m_SelectNameList[7].NameList.PushBack("Draw (Only on characters)");
+	this.m_SelectNameList[7].NameList.PushBack("Draw");
+	this.m_TypeTextFont.nFace = 258;
+	this.m_TypeTextFont.nSize = 20;
+	this.m_TypeTextFont.nShadowPixelL = 1;
+	this.m_TypeTextFont.nShadowPixelU = 1;
+	this.m_TypeTextFont.nShadowPixelR = 1;
+	this.m_TypeTextFont.nShadowPixelD = 1;
+	this.m_TypeTextFont.nShadowColorR = 64;
+	this.m_TypeTextFont.nShadowColorG = 64;
+	this.m_TypeTextFont.nShadowColorB = 96;
+	this.m_TypeTextCursorFont.nFace = 258;
+	this.m_TypeTextCursorFont.nSize = 20;
+	this.m_TypeTextCursorFont.nColorR = 255;
+	this.m_TypeTextCursorFont.nColorG = 0;
+	this.m_TypeTextCursorFont.nColorB = 0;
+	this.m_TypeTextCursorFont.nShadowPixelL = 1;
+	this.m_TypeTextCursorFont.nShadowPixelU = 1;
+	this.m_TypeTextCursorFont.nShadowPixelR = 1;
+	this.m_TypeTextCursorFont.nShadowPixelD = 1;
+	this.m_TypeTextCursorFont.nShadowColorR = 128;
+	this.m_TypeTextCursorFont.nShadowColorG = 128;
+	this.m_TypeTextCursorFont.nShadowColorB = 128;
+	this.m_TypeTextSelectFont.nFace = 258;
+	this.m_TypeTextSelectFont.nSize = 20;
+	this.m_TypeTextSelectFont.nColorR = 0;
+	this.m_TypeTextSelectFont.nColorG = 0;
+	this.m_TypeTextSelectFont.nColorB = 255;
+	this.m_TypeTextSelectFont.nShadowPixelL = 1;
+	this.m_TypeTextSelectFont.nShadowPixelU = 1;
+	this.m_TypeTextSelectFont.nShadowPixelR = 1;
+	this.m_TypeTextSelectFont.nShadowPixelD = 1;
+	this.m_TypeTextSelectFont.nShadowColorR = 255;
+	this.m_TypeTextSelectFont.nShadowColorG = 255;
+	this.m_TypeTextSelectFont.nShadowColorB = 255;
+	this.m_CommentList.Alloc(8);
+	this.m_CommentList[0].PushBack("With shader disabled, some abilities may");
+	this.m_CommentList[0].PushBack("not render.");
+	this.m_CommentList[1].PushBack("Smooths the edges of polygons.");
+	this.m_CommentList[1].PushBack("");
+	this.m_CommentList[1].PushBack("The video card must support this feature.");
+	this.m_CommentList[2].PushBack("Waiting for vertical synchronization may");
+	this.m_CommentList[2].PushBack("reduce flicker and screen tearing");
+	this.m_CommentList[2].PushBack("");
+	this.m_CommentList[2].PushBack("The video card must support this feature.");
+	this.m_CommentList[3].PushBack("When disabled, shadows will not render.");
+	this.m_CommentList[3].PushBack("");
+	this.m_CommentList[3].PushBack("The video card must support Shader Model 2.0");
+	this.m_CommentList[3].PushBack("to enable the higher settings.");
+	this.m_CommentList[4].PushBack("Improves quality of shadow rendering, but");
+	this.m_CommentList[4].PushBack("consumes more video memory.");
+	this.m_CommentList[4].PushBack("");
+	this.m_CommentList[4].PushBack("Not all video cards support the highest setting.");
+	this.m_CommentList[5].PushBack("Improves imaage quality, but consumes");
+	this.m_CommentList[5].PushBack("video memory.");
+	this.m_CommentList[5].PushBack("");
+	this.m_CommentList[5].PushBack("Not all video cards support Anisotropic filtering.");
+	this.m_CommentList[6].PushBack("Blurs overlapping alpha-blended polygons.");
+	this.m_CommentList[6].PushBack("");
+	this.m_CommentList[6].PushBack("The video card must support Shader Model 2.0");
+	this.m_CommentList[6].PushBack("to use hardware rendering.");
+	this.m_CommentList[7].PushBack("Draw outlines on objects.");
+}
+
+T_Config3D::~T_Config3D()
+{
+	this.delete();
+	this.Release();
+}
+
+void T_Config3D::Release()
+{
+	this.m_CommentTextSpriteList.Free();
+	this.m_SelectTextSpriteList.Free();
+	this.m_TypeTextSpriteList.Free();
+}
+
+int T_Config3D::run()
+{
+	int nRet = 0;
+	int nID = this.getFirstCheckBox();
+	this.Release();
+	this.m_bRun = true;
+	this.Create();
+	this.m_bLButtonDown = false;
+	this.m_bRButtonDown = false;
+	if (!this.create())
+	{
+		return -1;
+	}
+	UPDATE(true);
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	this.Release();
+	return nRet;
+}
+
+int T_Config3D::moveUp(int nID)
+{
+	if (nID > 210000)
+	{
+		return this.getPrevCheckBox(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_上矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID2 == 0)
+	{
+		return this.getLastCheckBox();
+	}
+label0:
+	return this.getFirstCheckBox();
+}
+
+int T_Config3D::moveDown(int nID)
+{
+	if (nID > 210000)
+	{
+		return this.getNextCheckBox(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_下矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID2 == 0)
+	{
+		return this.getFirstCheckBox();
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+int T_Config3D::moveLeft(int nID)
+{
+	if (nID > 210000)
+	{
+		return nID;
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_左矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getFirstCheckBox();
+}
+
+int T_Config3D::moveRight(int nID)
+{
+	if (nID > 210000)
+	{
+		return nID;
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_右矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+bool T_Config3D::create()
+{
+	this.delete();
+	this.m_spBase.setCg(40004);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(15000);
+	this.m_spBase.setShow(1);
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsCheck = this.m_aspCheck[i];
+		rfsCheck.setCg(40037);
+		rfsCheck.setZ(15001);
+	}
+	this.m_sButton.create();
+	this.createCheckBox(0, 70, 155, 40052);
+	this.createCheckBox(1, 70, 205, 40052);
+	this.createCheckBox(2, 70, 255, 40052);
+	this.createCheckBox(3, 70, 305, 40052);
+	this.createCheckBox(4, 70, 355, 40052);
+	コンフィグ共通_作成(this.m_sButton);
+	this.m_sButton.setButtonActive(100004, false);
+	this.m_sButton.setZ(15001);
+	this.m_sButton.setShow(true);
+	CReignSetting ReignSetting;
+	if (!system.ExistFile(ReignSetting.GetSaveFileName()))
+	{
+		３Ｄ設定_レベル保存(2);
+	}
+	this.setValue(３Ｄ設定_レベル取得());
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&コンフィグ_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&コンフィグ_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&コンフィグ_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&コンフィグ_右矢印);
+	this.m_sInputKey.setSelectCallback(&コンフィグ_選択設定);
+	return true;
+}
+
+void T_Config3D::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspCheck[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_Config3D::clear()
+{
+	return;
+}
+
+bool T_Config3D::createCheckBox(int nIndex, int nX, int nY, int nCgNo)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspCheck.Numof())
+	{
+		return false;
+	}
+	if (!コンフィグ共通_チェックＢＯＸ作成(this.m_sButton, this.getCheckID(nIndex), nX, nY, nCgNo))
+	{
+		return false;
+	}
+	this.m_aspCheck[nIndex].setPos(nX, nY);
+	return true;
+}
+
+bool T_Config3D::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (nID > 210000)
+	{
+		return this.execCheckBox(this.getCheckIndex(nID));
+	}
+	int nRet2 = コンフィグ共通_処理(nID);
+	if (nRet2 != 0)
+	{
+		nRet = nRet2 > 0 ? nRet2 : 0;
+		return true;
+	}
+	return false;
+}
+
+bool T_Config3D::execCheckBox(int nIndex)
+{
+	int nLevel = 0;
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+			nLevel = ３Ｄ設定_レベル保存(nIndex + 1);
+			３Ｄ_設定更新();
+			this.CreateSelectList();
+			this.UpdateAll();
+			break;
+		case 4:
+			nLevel = ３Ｄ設定_レベル保存(nIndex + 1);
+			break;
+		default:
+			break;
+	}
+	this.setValue(nLevel);
+	return false;
+}
+
+int T_Config3D::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	CReignPlugin ReignPlugin;
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		this.RunLoopOne(NULL, ReignPlugin, false, NULL);
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		int nID4 = this.checkWheel();
+		if (nID4 > 0)
+		{
+			nRet = nID4;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			nRet = 100019;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_Config3D::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_Config3D::checkKey(int nID)
+{
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+int T_Config3D::checkWheel()
+{
+	switch (ホイール_確認(true))
+	{
+		case 9991:
+			return 100003;
+		case 9992:
+			return 100005;
+		default:
+			break;
+	}
+	ホイール_クリア();
+	return 0;
+}
+
+void T_Config3D::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_Config3D::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_Config3D::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_Config3D::setValue(int nLevel)
+{
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspCheck[i].setShow(i == nLevel - 1);
+		this.m_sButton.setButtonActive(this.getCheckID(i), i != nLevel - 1);
+	}
+}
+
+int T_Config3D::getPrevCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastCheckBox();
+	}
+	--idx;
+	if (idx < 0)
+	{
+		return 100001;
+	}
+	return this.getCheckID(idx);
+}
+
+int T_Config3D::getNextCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstCheckBox();
+	}
+	++idx;
+	if (idx >= 5)
+	{
+		return 100011;
+	}
+	return this.getCheckID(idx);
+}
+
+int T_Config3D::getFirstCheckBox()
+{
+	return this.getCheckID(0);
+}
+
+int T_Config3D::getLastCheckBox()
+{
+	return this.getCheckID(4);
+}
+
+void T_Config3D::Create()
+{
+	this.m_nBaseZ = 15001;
+	this.m_nUnderCursorType = -1;
+	this.m_nUnderCursorSelect = -1;
+	this.m_nSelectType = 0;
+	this.CreateSelectList();
+	this.UpdateAll();
+}
+
+void T_Config3D::CreateSelectList()
+{
+	this.m_SelectList.Alloc(this.m_TypeNameList.Numof());
+	CReignSetting ReignSetting;
+	ReignSetting.Load();
+	switch (ReignSetting.GetRenderMode())
+	{
+		case 1:
+			this.m_SelectList[0] = 0;
+			break;
+		case 2:
+			this.m_SelectList[0] = 1;
+			break;
+		default:
+			this.m_SelectList[0] = 0;
+	}
+	this.m_SelectList[1] = ReignSetting.GetAntiAliasing();
+	this.m_SelectList[2] = AFL_Config_GetWaitVSync() ? 1 : 0;
+	this.m_SelectList[3] = ReignSetting.GetShadowMode();
+	switch (ReignSetting.GetShadowMapResolutionLevel())
+	{
+		case 1:
+			this.m_SelectList[4] = 2;
+			break;
+		case 2:
+			this.m_SelectList[4] = 1;
+			break;
+		case 3:
+			this.m_SelectList[4] = 0;
+			break;
+		default:
+			this.m_SelectList[4] = 0;
+	}
+	this.m_SelectList[5] = ReignSetting.GetTextureFilterMode();
+	switch (ReignSetting.GetVertexBlendMode())
+	{
+		case 0:
+			this.m_SelectList[6] = 0;
+			break;
+		case 1:
+			this.m_SelectList[6] = 0;
+			break;
+		case 2:
+			this.m_SelectList[6] = 1;
+			break;
+		default:
+			this.m_SelectList[6] = 0;
+	}
+	this.m_SelectList[7] = ReignSetting.GetEdge();
+}
+
+void T_Config3D::DrawTypeTextList()
+{
+	this.m_TypeTextSpriteList.Alloc(this.m_TypeNameList.Numof());
+	int nOffsetX = 2;
+	int nOffsetY = 2;
+	int n = 0;
+	for (n = 0; n < this.m_TypeNameList.Numof(); ++n)
+	{
+		int nX = this.m_nTypeBoxX + nOffsetX;
+		int nY = this.m_nTypeBoxY + n * this.m_TypeTextFont.nSize + nOffsetY;
+		this.m_TypeTextSpriteList[n].SetPos(nX, nY);
+		this.m_TypeTextSpriteList[n].SetZ(this.m_nBaseZ + 1);
+		if (this.m_nUnderCursorType == 0 && this.m_nUnderCursorSelect == n)
+		{
+			CASCharSpriteProperty TextProperty;
+			TextProperty = SYS_TransCharSpriteProperty(this.m_TypeTextCursorFont);
+			this.m_TypeTextSpriteList[n].SetText(this.m_TypeNameList[n], TextProperty);
+		}
+		else if (n == this.m_nSelectType)
+		{
+			CASCharSpriteProperty TextProperty;
+			TextProperty = SYS_TransCharSpriteProperty(this.m_TypeTextSelectFont);
+			this.m_TypeTextSpriteList[n].SetText(this.m_TypeNameList[n], TextProperty);
+		}
+		else
+		{
+			CASCharSpriteProperty TextProperty;
+			TextProperty = SYS_TransCharSpriteProperty(this.m_TypeTextFont);
+			this.m_TypeTextSpriteList[n].SetText(this.m_TypeNameList[n], TextProperty);
+		}
+	}
+}
+
+void T_Config3D::DrawSelectTextList()
+{
+	this.m_SelectTextSpriteList.Alloc(this.m_SelectNameList[this.m_nSelectType].NameList.Numof());
+	int nOffsetX = 2;
+	int nOffsetY = 2;
+	int n = 0;
+	for (n = 0; n < this.m_SelectNameList[this.m_nSelectType].NameList.Numof(); ++n)
+	{
+		int nX = this.m_nSelectBoxX + nOffsetX;
+		int nY = this.m_nSelectBoxY + n * this.m_TypeTextFont.nSize + nOffsetY;
+		this.m_SelectTextSpriteList[n].SetPos(nX, nY);
+		this.m_SelectTextSpriteList[n].SetZ(this.m_nBaseZ + 1);
+		if (this.m_nUnderCursorType == 1 && this.m_nUnderCursorSelect == n)
+		{
+			CASCharSpriteProperty TextProperty;
+			TextProperty = SYS_TransCharSpriteProperty(this.m_TypeTextCursorFont);
+			this.m_SelectTextSpriteList[n].SetText(this.m_SelectNameList[this.m_nSelectType].NameList[n], TextProperty);
+		}
+		else if (this.m_SelectList[this.m_nSelectType] == n)
+		{
+			CASCharSpriteProperty TextProperty;
+			TextProperty = SYS_TransCharSpriteProperty(this.m_TypeTextSelectFont);
+			this.m_SelectTextSpriteList[n].SetText(this.m_SelectNameList[this.m_nSelectType].NameList[n], TextProperty);
+		}
+		else
+		{
+			CASCharSpriteProperty TextProperty;
+			TextProperty = SYS_TransCharSpriteProperty(this.m_TypeTextFont);
+			this.m_SelectTextSpriteList[n].SetText(this.m_SelectNameList[this.m_nSelectType].NameList[n], TextProperty);
+		}
+	}
+}
+
+void T_Config3D::DrawCommentText()
+{
+	this.m_CommentTextSpriteList.Alloc(this.m_CommentList[this.m_nSelectType].CommentList.Numof());
+	sact_text_metrics_t tm;
+	tm.nFace = 258;
+	tm.nSize = 20;
+	int nOffsetX = 2;
+	int nOffsetY = 2;
+	int nLine = 0;
+	for (nLine = 0; nLine < this.m_CommentList[this.m_nSelectType].CommentList.Numof(); ++nLine)
+	{
+		int nX = this.m_nCommentBoxX + nOffsetX;
+		int nY = this.m_nCommentBoxY + nLine * tm.nSize + nOffsetY;
+		this.m_CommentTextSpriteList[nLine].SetPos(nX, nY);
+		this.m_CommentTextSpriteList[nLine].SetZ(this.m_nBaseZ + 1);
+		CASCharSpriteProperty TextProperty;
+		TextProperty = SYS_TransCharSpriteProperty(tm);
+		this.m_CommentTextSpriteList[nLine].SetText(this.m_CommentList[this.m_nSelectType].CommentList[nLine], TextProperty);
+	}
+}
+
+bool T_Config3D::RunLoopOne(FTReignConfigUpdate Func, ref CReignPlugin ReignPlugin, bool bRealtimeUpdate, sys_btn_fnc_t RealtimeUpdateFunc)
+{
+	int nPrevUnderCursorType = this.m_nUnderCursorType;
+	int nPrevUnderCursorSelect = this.m_nUnderCursorSelect;
+	this.m_nUnderCursorType = -1;
+	this.m_nUnderCursorSelect = -1;
+	int nCursorX = 0;
+	int nCursorY = 0;
+	if (AFL_Mouse_GetPos(nCursorX, nCursorY))
+	{
+		this.CheckUnderCursor(nCursorX, nCursorY);
+	}
+	if (AFL_IsKeyDown(1))
+	{
+		if (!this.m_bLButtonDown)
+		{
+			this.m_nLButtonClickType = this.m_nUnderCursorType;
+			this.m_nLButtonClickSelect = this.m_nUnderCursorSelect;
+			this.m_bLButtonDown = true;
+		}
+	}
+	else if (this.m_bLButtonDown)
+	{
+		if (this.m_nLButtonClickType == this.m_nUnderCursorType && this.m_nLButtonClickSelect == this.m_nUnderCursorSelect && this.m_nLButtonClickType != -1 && this.m_nLButtonClickSelect != -1)
+		{
+			this.OnLButtonClick(ReignPlugin, bRealtimeUpdate, RealtimeUpdateFunc);
+		}
+		this.m_nLButtonClickType = -1;
+		this.m_nLButtonClickSelect = -1;
+		this.m_bLButtonDown = false;
+	}
+	if (AFL_IsKeyDown(2))
+	{
+		this.m_bRButtonDown = true;
+	}
+	else if (this.m_bRButtonDown)
+	{
+		this.m_bRButtonDown = false;
+		return false;
+	}
+	if (this.m_nUnderCursorType != nPrevUnderCursorType || this.m_nUnderCursorSelect != nPrevUnderCursorSelect)
+	{
+		this.UpdateAll();
+	}
+	if (Func != NULL)
+	{
+		Func();
+	}
+	else
+	{
+		UPDATE(true);
+	}
+	return true;
+}
+
+void T_Config3D::CheckUnderCursor(int nCursorX, int nCursorY)
+{
+	if (nCursorX >= this.m_nTypeBoxX && nCursorX < this.m_nTypeBoxX + this.m_nTypeBoxWidth && nCursorY >= this.m_nTypeBoxY && nCursorY < this.m_nTypeBoxY + this.m_nTypeBoxHeight)
+	{
+		int nSelect = (nCursorY - this.m_nTypeBoxY) / this.m_TypeTextFont.nSize;
+		if (nSelect >= 0 && nSelect < this.m_TypeNameList.Numof())
+		{
+			this.m_nUnderCursorType = 0;
+			this.m_nUnderCursorSelect = nSelect;
+			return;
+		}
+	}
+	if (nCursorX >= this.m_nSelectBoxX && nCursorX < this.m_nSelectBoxX + this.m_nSelectBoxWidth && nCursorY >= this.m_nSelectBoxY && nCursorY < this.m_nSelectBoxY + this.m_nSelectBoxHeight)
+	{
+		int nSelect = (nCursorY - this.m_nSelectBoxY) / this.m_TypeTextFont.nSize;
+		if (nSelect >= 0 && nSelect < this.m_SelectNameList[this.m_nSelectType].NameList.Numof())
+		{
+			this.m_nUnderCursorType = 1;
+			this.m_nUnderCursorSelect = nSelect;
+			return;
+		}
+	}
+}
+
+bool T_Config3D::OnLButtonClick(ref CReignPlugin ReignPlugin, bool bRealtimeUpdate, sys_btn_fnc_t RealtimeUpdateFunc)
+{
+	if (this.m_nLButtonClickType == 0)
+	{
+		if (this.m_nSelectType == this.m_nLButtonClickSelect)
+		{
+			return false;
+		}
+		this.m_nSelectType = this.m_nLButtonClickSelect;
+		this.UpdateAll();
+	}
+	else if (this.m_nLButtonClickType == 1)
+	{
+		if (this.m_SelectList[this.m_nSelectType] == this.m_nLButtonClickSelect)
+		{
+			return false;
+		}
+		this.m_SelectList[this.m_nSelectType] = this.m_nLButtonClickSelect;
+		if (this.m_nSelectType == 2)
+		{
+			AFL_Config_SetWaitVSync(this.m_nLButtonClickSelect);
+		}
+		this.UpdateAll();
+		int nLevel = ３Ｄ設定_レベル保存(5);
+		this.setValue(nLevel);
+		this.SaveSetting();
+		３Ｄ_設定更新();
+	}
+	return false;
+}
+
+void T_Config3D::UpdateAll()
+{
+	this.DrawTypeTextList();
+	this.DrawSelectTextList();
+	this.DrawCommentText();
+}
+
+void T_Config3D::SaveSetting()
+{
+	CReignSetting ReignSetting;
+	ReignSetting.Load();
+	switch (this.m_SelectList[0])
+	{
+		case 0:
+			ReignSetting.SetRenderMode(1);
+			break;
+		case 1:
+			ReignSetting.SetRenderMode(2);
+			break;
+	}
+	ReignSetting.SetAntiAliasing(this.m_SelectList[1]);
+	ReignSetting.SetWaitVSync(AFL_Config_GetWaitVSync() ? 1 : 0);
+	ReignSetting.SetShadowMode(this.m_SelectList[3]);
+	switch (this.m_SelectList[4])
+	{
+		case 0:
+			ReignSetting.SetShadowMapResolutionLevel(3);
+			break;
+		case 1:
+			ReignSetting.SetShadowMapResolutionLevel(2);
+			break;
+		case 2:
+			ReignSetting.SetShadowMapResolutionLevel(1);
+			break;
+	}
+	ReignSetting.SetTextureFilterMode(this.m_SelectList[5]);
+	switch (this.m_SelectList[6])
+	{
+		case 0:
+			ReignSetting.SetVertexBlendMode(0);
+			break;
+		case 1:
+			ReignSetting.SetVertexBlendMode(2);
+			break;
+	}
+	ReignSetting.SetEdge(this.m_SelectList[7]);
+	ReignSetting.Save();
+}
+

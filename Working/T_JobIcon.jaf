@@ -1,0 +1,205 @@
+int T_JobIcon::getType()
+{
+	return this.m_nType;
+}
+
+bool T_JobIcon::getActive()
+{
+	return this.m_bActive;
+}
+
+bool T_JobIcon::suspend()
+{
+	return this.m_spIcon.suspend();
+}
+
+bool T_JobIcon::resume()
+{
+	return this.m_spIcon.resume();
+}
+
+bool T_JobIcon::isSuspend()
+{
+	return this.m_spIcon.isSuspend();
+}
+
+T_JobIcon::T_JobIcon()
+{
+	this.clear();
+}
+
+T_JobIcon::~T_JobIcon()
+{
+	this.delete();
+}
+
+bool T_JobIcon::create(int nType, bool bActive)
+{
+	this.delete();
+	if (nType <= 0 || nType >= 9)
+	{
+		return false;
+	}
+	if (this.m_spIcon.setCg(職業_アイコン(nType)) <= 0)
+	{
+		return false;
+	}
+	this.m_nType = nType;
+	this.m_bActive = bActive;
+	return true;
+}
+
+void T_JobIcon::delete()
+{
+	this.m_spIcon.delete();
+	this.clear();
+}
+
+void T_JobIcon::clear()
+{
+	this.m_nType = -1;
+	this.m_bShow = false;
+	this.m_bActive = false;
+}
+
+bool T_JobIcon::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (!this.m_bActive)
+	{
+		return false;
+	}
+	return this.m_spIcon.copyToSprite(rfsDst, nDstX, nDstY);
+}
+
+void T_JobIcon::setPos(int nX, int nY)
+{
+	this.m_spIcon.setPos(nX, nY);
+}
+
+void T_JobIcon::setZ(int nZ)
+{
+	this.m_spIcon.setZ(nZ, -1);
+}
+
+void T_JobIcon::setShow(bool bShow)
+{
+	this.m_spIcon.setShow(this.m_bActive ? bShow : 0);
+	this.m_bShow = bShow;
+}
+
+void T_JobIcon::setBlendRate(int nBlendRate)
+{
+	this.m_spIcon.setBlendRate(nBlendRate);
+}
+
+void T_JobIcon::setActive(bool bActive)
+{
+	this.m_bActive = bActive;
+	this.setShow(this.m_bShow);
+}
+
+int T_JobIconManager::getItemNo()
+{
+	return this.m_nItemNo;
+}
+
+T_JobIconManager::T_JobIconManager()
+{
+	this.clear();
+}
+
+T_JobIconManager::~T_JobIconManager()
+{
+	this.delete();
+}
+
+bool T_JobIconManager::create(int nItemNo)
+{
+	this.delete();
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_aspIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspIcon[i].create(i + 1, アイテム_装備職業(nItemNo, i + 1) > 0);
+	}
+	this.m_nItemNo = nItemNo;
+	return true;
+}
+
+void T_JobIconManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspIcon[i].delete();
+	}
+	this.clear();
+}
+
+void T_JobIconManager::clear()
+{
+	this.m_nItemNo = 0;
+}
+
+bool T_JobIconManager::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_aspIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspIcon[i].copyToSprite(rfsDst, nDstX, nDstY);
+		nDstX += 34;
+	}
+	return true;
+}
+
+void T_JobIconManager::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_aspIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspIcon[i].setPos(nX, nY);
+		nX += 34;
+	}
+}
+
+void T_JobIconManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspIcon[i].setZ(nZ);
+	}
+}
+
+void T_JobIconManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspIcon[i].setShow(bShow);
+	}
+}
+
+void T_JobIconManager::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_aspIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspIcon[i].setBlendRate(nBlendRate);
+	}
+}
+

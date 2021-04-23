@@ -1,0 +1,163 @@
+float CFreeCamera::GetPosX()
+{
+	return this.m_fX;
+}
+
+float CFreeCamera::GetPosY()
+{
+	return this.m_fY;
+}
+
+float CFreeCamera::GetPosZ()
+{
+	return this.m_fZ;
+}
+
+float CFreeCamera::GetAngle()
+{
+	return this.m_fAngle;
+}
+
+float CFreeCamera::GetAngleP()
+{
+	return this.m_fAngleP;
+}
+
+CFreeCamera::CFreeCamera()
+{
+	this.m_fX = 0.0;
+	this.m_fY = 0.0;
+	this.m_fZ = 0.0;
+	this.m_fAngle = 0.0;
+	this.m_fAngleP = 0.0;
+	this.m_fAngleB = 0.0;
+	this.m_fMoveRate = 1.0;
+	this.m_fRotateRate = 1.0;
+	this.m_nPrevTime = system.GetTime();
+}
+
+CFreeCamera::~CFreeCamera()
+{
+	this.Release();
+}
+
+bool CFreeCamera::Create(ref CReignPlugin rPlugin)
+{
+	this.Release();
+	this.m_rPlugin <- rPlugin;
+	return true;
+}
+
+void CFreeCamera::Release()
+{
+	this.m_rPlugin <- NULL;
+}
+
+void CFreeCamera::SetPos(float fX, float fY, float fZ)
+{
+	this.m_fX = fX;
+	this.m_fY = fY;
+	this.m_fZ = fZ;
+	this.m_rPlugin.SetCameraPos(fX, fY, fZ);
+}
+
+void CFreeCamera::SetAngle(float fAngle)
+{
+	this.m_fAngle = fAngle;
+	this.m_rPlugin.SetCameraAngle(fAngle);
+}
+
+void CFreeCamera::SetAngleP(float fAngleP)
+{
+	this.m_fAngleP = fAngleP;
+	this.m_rPlugin.SetCameraAngleP(fAngleP);
+}
+
+void CFreeCamera::Update()
+{
+	int nCurTime = system.GetTime();
+	int nPassTime = nCurTime - this.m_nPrevTime;
+	this.m_nPrevTime = nCurTime;
+	this.m_rPlugin.SetCameraPos(this.m_fX, this.m_fY, this.m_fZ);
+	this.m_rPlugin.SetCameraAngle(this.m_fAngle);
+	this.m_rPlugin.SetCameraAngleP(this.m_fAngleP);
+	this.m_rPlugin.SetCameraAngleB(this.m_fAngleB);
+}
+
+void CFreeCamera::CheckInput(int nPassTime)
+{
+	if (nPassTime > 300)
+	{
+		nPassTime = 300;
+	}
+	if (AFL_IsKeyDown(38))
+	{
+		float fLength = ((6.0 * nPassTime) / 1000.0) * this.m_fMoveRate;
+		float fCos = Math.Cos(this.m_fAngle);
+		float fSin = Math.Sin(this.m_fAngle);
+		float fX = -fLength * fSin;
+		float fZ = fLength * fCos;
+		this.m_fX += fX;
+		this.m_fZ += fZ;
+	}
+	else if (AFL_IsKeyDown(40))
+	{
+		float fLength = ((-6.0 * nPassTime) / 1000.0) * this.m_fMoveRate;
+		float fCos = Math.Cos(this.m_fAngle);
+		float fSin = Math.Sin(this.m_fAngle);
+		float fX = -fLength * fSin;
+		float fZ = fLength * fCos;
+		this.m_fX += fX;
+		this.m_fZ += fZ;
+	}
+	if (AFL_IsKeyDown(37))
+	{
+		this.m_fAngle += ((90.0 * nPassTime) / 1000.0) * this.m_fRotateRate;
+	}
+	else if (AFL_IsKeyDown(39))
+	{
+		this.m_fAngle += ((-90.0 * nPassTime) / 1000.0) * this.m_fRotateRate;
+	}
+	if (AFL_IsKeyDown(36))
+	{
+		this.m_fAngleP += ((90.0 * nPassTime) / 1000.0) * this.m_fRotateRate;
+	}
+	else if (AFL_IsKeyDown(35))
+	{
+		this.m_fAngleP += ((-90.0 * nPassTime) / 1000.0) * this.m_fRotateRate;
+	}
+	if (AFL_IsKeyDown(33))
+	{
+		float fLength = ((2.0 * nPassTime) / 1000.0) * this.m_fMoveRate;
+		this.m_fY += fLength;
+	}
+	else if (AFL_IsKeyDown(34))
+	{
+		float fLength = ((-2.0 * nPassTime) / 1000.0) * this.m_fMoveRate;
+		this.m_fY += fLength;
+	}
+}
+
+SMatrix CFreeCamera::GetMatrix()
+{
+	SMatrix mat;
+	SMatrix matRotH;
+	SMatrix matRotP;
+	mat.SetMove(-this.m_fX, -this.m_fY, -this.m_fZ);
+	matRotH.SetRotH(this.m_fAngle);
+	matRotP.SetRotP(this.m_fAngleP);
+	mat.MulMatrix(matRotH);
+	mat.MulMatrix(matRotP);
+	return mat;
+}
+
+void CFreeCamera::SetMoveRate(float fMoveRate)
+{
+	this.m_fMoveRate = fMoveRate;
+}
+
+void CFreeCamera::SetRotateRate(float fRotateRate)
+{
+	this.m_fRotateRate = fRotateRate;
+}
+

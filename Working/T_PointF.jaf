@@ -1,0 +1,69 @@
+T_PointF::T_PointF()
+{
+	this.clear();
+}
+
+void T_PointF::clear()
+{
+	this.m_fX = -3.40282346638529E+38;
+	this.m_fY = -3.40282346638529E+38;
+}
+
+void T_PointF::set(int fX, int fY)
+{
+	this.m_fX = fX;
+	this.m_fY = fY;
+}
+
+bool T_PointF::empty()
+{
+	return this.m_fX == -3.40282346638529E+38 || this.m_fY == -3.40282346638529E+38;
+}
+
+bool T_PointF::equal(float fX, float fY)
+{
+	return this.m_fX == fX && this.m_fY == fY;
+}
+
+float ComparePointFX(ref T_PointF sPoint1, ref T_PointF sPoint2)
+{
+	if (sPoint1.m_fX < sPoint2.m_fX)
+	{
+		return -1.0;
+	}
+	if (sPoint1.m_fX > sPoint2.m_fX)
+	{
+		return 1.0;
+	}
+	if (sPoint1.m_fY < sPoint2.m_fY)
+	{
+		return -1.0;
+	}
+	if (sPoint1.m_fY > sPoint2.m_fY)
+	{
+		return 1.0;
+	}
+	return 0.0;
+}
+
+float ComparePointFY(ref T_PointF sPoint1, ref T_PointF sPoint2)
+{
+	if (sPoint1.m_fY < sPoint2.m_fY)
+	{
+		return -1.0;
+	}
+	if (sPoint1.m_fY > sPoint2.m_fY)
+	{
+		return 1.0;
+	}
+	if (sPoint1.m_fX < sPoint2.m_fX)
+	{
+		return -1.0;
+	}
+	if (sPoint1.m_fX > sPoint2.m_fX)
+	{
+		return 1.0;
+	}
+	return 0.0;
+}
+

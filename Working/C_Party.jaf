@@ -1,0 +1,803 @@
+void scrollPartyList(int nValue)
+{
+	g_sParty.scroll(nValue);
+}
+
+void scrollPartyStore(int nValue)
+{
+	g_sPartyStore.scroll(nValue);
+}
+
+#ゲーム_パーティ編成()
+{
+	画面_クリア(true, true);
+	仮字枠非表示();
+	システム曲_再生();
+	int nRet = パーティ編成_実行(1, -1);
+	switch (nRet)
+	{
+		case 600001:
+			jump ゲーム_メイン;
+		case 600014:
+			jump ゲーム_クエスト;
+		case 600012:
+			jump ゲーム_アイテム屋;
+		case 600011:
+			jump ゲーム_ランス城;
+		default:
+			break;
+	}
+	jump ゲーム_メイン;
+}
+
+int パーティ編成_戦闘(int nCharaNo)
+{
+	g_bPartyUpdate = false;
+	g_bPartyBlink = false;
+	g_sParty.run(3, -1);
+	g_bPartyUpdate = false;
+	g_bPartyBlink = false;
+	array@int anList[5];
+	パーティ_配置キャラ一覧(anList);
+	if (anList.Find(0, 5, nCharaNo) < 0)
+	{
+		return 2;
+	}
+	bool nRet = false;
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		ref int nCharaNo2 = anList[i];
+		int nOld = 味方パーティ_番号(i + 1);
+		if (nCharaNo2 > 0)
+		{
+			if (nOld > 0)
+			{
+				if (nCharaNo2 != nOld)
+				{
+					nRet = true;
+				}
+			}
+			else
+			{
+				nRet = true;
+			}
+		}
+		else if (nOld > 0)
+		{
+			nRet = true;
+		}
+	}
+	return nRet;
+}
+
+void パーティ編成_再配置()
+{
+	int i = 0;
+	array@int anOldList[5];
+	array@int anNewList[5];
+	パーティ_配置バックアップ一覧(anOldList);
+	パーティ_配置キャラ一覧(anNewList);
+	for (i = 0; i < 5; ++i)
+	{
+		int nCharaNo = anOldList[i];
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		if (anNewList.Find(0, 5, nCharaNo) < 0)
+		{
+			Ｔ戦闘中キャラ外し(nCharaNo);
+		}
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nCharaNo = anNewList[i];
+		if (nCharaNo > 0)
+		{
+			if (anOldList.Find(0, 5, nCharaNo) < 0)
+			{
+				Ｔ戦闘前初期化／キャラ(nCharaNo, 1);
+			}
+		}
+		味方パーティ_登録(i + 1, nCharaNo);
+	}
+}
+
+void パーティ編成_戻し()
+{
+	array@int anList[5];
+	パーティ_配置バックアップ一覧(anList);
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		味方パーティ_登録(i + 1, anList[i]);
+	}
+}
+
+int パーティ編成_実行(int nMode, int nLayout)
+{
+	g_bPartyUpdate = false;
+	g_bPartyBlink = false;
+	g_bPartyStoreBlink = false;
+	キャラデータ一覧_更新();
+	システムバー_作成(nMode == 2 ? 21 : 13, -1, true);
+	int nRet = g_sParty.run(nMode, nLayout);
+	システムバー_削除();
+	g_bPartyUpdate = false;
+	g_bPartyBlink = false;
+	g_bPartyStoreBlink = false;
+	return nRet;
+}
+
+void パーティ編成_キャラ選択設定(int nIndex, bool bSelect)
+{
+	g_sParty.setSelectChara(nIndex, bSelect);
+}
+
+void パーティ編成_レイアウト設定(int nLayout)
+{
+	g_sParty.setLayout(nLayout);
+}
+
+bool パーティ編成_ドロップ確認(int nID, int nCharaNo)
+{
+	return g_sParty.checkDrop(nID, nCharaNo);
+}
+
+void パーティ編成_左スクロール()
+{
+	g_sParty.scrollLeft();
+}
+
+void パーティ編成_右スクロール()
+{
+	g_sParty.scrollRight();
+}
+
+void パーティ編成_削除()
+{
+	g_sParty.delete();
+	g_sPartyStore.delete();
+	g_bPartyUpdate = false;
+	g_bPartyBlink = false;
+	g_bPartyStoreBlink = false;
+}
+
+int パーティ_上矢印(int nID)
+{
+	return g_sParty.moveUp(nID);
+}
+
+int パーティ_下矢印(int nID)
+{
+	return g_sParty.moveDown(nID);
+}
+
+int パーティ_左矢印(int nID)
+{
+	return g_sParty.moveLeft(nID);
+}
+
+int パーティ_右矢印(int nID)
+{
+	return g_sParty.moveRight(nID);
+}
+
+int パーティ_上矢印_ロック(int nID)
+{
+	return g_sParty.moveUpLock(nID);
+}
+
+int パーティ_下矢印_ロック(int nID)
+{
+	return g_sParty.moveDownLock(nID);
+}
+
+int パーティ_左矢印_ロック(int nID)
+{
+	return g_sParty.moveLeftLock(nID);
+}
+
+int パーティ_右矢印_ロック(int nID)
+{
+	return g_sParty.moveRightLock(nID);
+}
+
+int パーティ倉庫_上矢印(int nID)
+{
+	return g_sPartyStore.moveUp(nID);
+}
+
+int パーティ倉庫_下矢印(int nID)
+{
+	return g_sPartyStore.moveDown(nID);
+}
+
+int パーティ倉庫_左矢印(int nID)
+{
+	return g_sPartyStore.moveLeft(nID);
+}
+
+int パーティ倉庫_右矢印(int nID)
+{
+	return g_sPartyStore.moveRight(nID);
+}
+
+void パーティ倉庫_選択設定(int nID, bool bSelect)
+{
+	g_sPartyStore.setSelect(nID, bSelect);
+}
+
+bool パーティ_一覧再作成()
+{
+	return g_sParty.remakeList(-1);
+}
+
+bool パーティ_一覧キャラ再作成()
+{
+	return g_sParty.remakeCharaList();
+}
+
+void パーティ_一覧スクロール(int nID)
+{
+	g_sParty.scrollList(nID);
+}
+
+int パーティ_一覧ステータス表示(int nID)
+{
+	return g_sParty.showStatusList(nID);
+}
+
+int パーティ_一覧ソート(int nSortMode)
+{
+	return g_sParty.sortList(nSortMode);
+}
+
+bool パーティ_職業切り替え(int nJobType)
+{
+	return g_sParty.changeJobList(nJobType);
+}
+
+bool パーティ_キャラ外し(int nCharaNo, int nStatus)
+{
+	return g_sParty.partyOut(nCharaNo, nStatus) >= 0;
+}
+
+int パーティ_入力確認(ref int nID)
+{
+	return g_sParty.checkInputStore(nID);
+}
+
+int パーティ_キー確認(int nID)
+{
+	return g_sParty.checkKeyStore(nID);
+}
+
+bool パーティ_ホイール確認()
+{
+	return g_sParty.checkWheelStore();
+}
+
+void パーティ_ステータスボタン確認(int nID)
+{
+	g_sParty.checkStatus(nID);
+}
+
+void パーティ_選択解除()
+{
+	g_sParty.resetSelect();
+}
+
+void パーティ_選択設定(int nID, bool bSelect)
+{
+	g_sParty.setSelect(nID, bSelect);
+}
+
+void パーティ_選択設定_ロック(int nID, bool bSelect)
+{
+	g_sParty.setSelectLock(nID, bSelect);
+}
+
+void パーティ_カーソル設定(int nID)
+{
+	g_sParty.setCursor(nID);
+}
+
+void パーティ_一覧表示設定(int nID, bool bShow)
+{
+	g_sParty.setListButtonShow(nID, bShow);
+}
+
+void パーティ_入力ＯＮ()
+{
+	g_sParty.setInputFlag(true);
+}
+
+void パーティ_入力ＯＦＦ()
+{
+	g_sParty.setInputFlag(false);
+}
+
+bool パーティ_ボタン有効(int nID)
+{
+	return g_sParty.getButtonActive(nID);
+}
+
+int パーティ_一覧ステータスＩＤ(int nIndex)
+{
+	return g_sParty.getStatusListID(nIndex);
+}
+
+int パーティ_一覧ステータスインデクス(int nID)
+{
+	return g_sParty.getStatusListIndex(nID);
+}
+
+int パーティ_配置ステータスＩＤ(int nIndex)
+{
+	return g_sParty.getStatusCharaID(nIndex);
+}
+
+int パーティ_配置ステータスインデクス(int nID)
+{
+	return g_sParty.getStatusCharaIndex(nID);
+}
+
+int パーティ_一覧ＩＤ(int nIndex)
+{
+	return g_sParty.getListID(nIndex);
+}
+
+int パーティ_一覧インデクス(int nID)
+{
+	return g_sParty.getListIndex(nID);
+}
+
+int パーティ_配置ＩＤ(int nIndex)
+{
+	return g_sParty.getCharaID(nIndex);
+}
+
+int パーティ_配置インデクス(int nID)
+{
+	return g_sParty.getCharaIndex(nID);
+}
+
+int パーティ_キャラ番号(int nIndex)
+{
+	return g_sParty.getCharaNo(nIndex);
+}
+
+int パーティ_配置キャラ番号(int nIndex)
+{
+	return g_sParty.getPartyChara(nIndex);
+}
+
+int パーティ_配置バックアップ一覧(ref array@int anList)
+{
+	return g_sParty.getPartyBackupList(anList);
+}
+
+int パーティ_配置キャラ一覧(ref array@int anList)
+{
+	return g_sParty.getPartyChangeList(anList);
+}
+
+int パーティ_上矢印_一覧(int nIndex)
+{
+	return g_sParty.moveUpList(nIndex);
+}
+
+int パーティ_下矢印_一覧(int nIndex)
+{
+	return g_sParty.moveDownList(nIndex);
+}
+
+int パーティ_左矢印_一覧(int nIndex)
+{
+	return g_sParty.moveLeftList(nIndex);
+}
+
+int パーティ_右矢印_一覧(int nIndex)
+{
+	return g_sParty.moveRightList(nIndex);
+}
+
+int _パーティ_上矢印_一覧(int nRow, int nCol)
+{
+	return g_sParty._moveUpList(nRow, nCol);
+}
+
+int _パーティ_下矢印_一覧(int nRow, int nCol)
+{
+	return g_sParty._moveDownList(nRow, nCol);
+}
+
+int _パーティ_左矢印_一覧(int nRow, int nCol)
+{
+	return g_sParty._moveLeftList(nRow, nCol);
+}
+
+int _パーティ_右矢印_一覧(int nRow, int nCol)
+{
+	return g_sParty._moveRightList(nRow, nCol);
+}
+
+int パーティ_一覧先頭ＩＤ()
+{
+	return g_sParty.getFirstList();
+}
+
+int パーティ_一覧最終ＩＤ()
+{
+	return g_sParty.getLastList();
+}
+
+bool パーティ_一覧ロック(int nCharaNo)
+{
+	return g_sParty.getList().lock(nCharaNo);
+}
+
+ref T_PartyList パーティ_一覧項目(int nCharaNo)
+{
+	return g_sParty.getList().get(nCharaNo);
+}
+
+int パーティ_職業種別()
+{
+	return g_sParty.getJob().getJobType();
+}
+
+int パーティ_職業先頭ＩＤ()
+{
+	return g_sParty.getJob().getFirst();
+}
+
+int パーティ_職業最終ＩＤ()
+{
+	return g_sParty.getJob().getLast();
+}
+
+int パーティ_ソート先頭ＩＤ()
+{
+	return g_sParty.getSort().getFirst();
+}
+
+int パーティ_ソート最終ＩＤ()
+{
+	return g_sParty.getSort().getLast();
+}
+
+bool パーティ編成_ドラッグ実行(int nMode, int nLayout, bool bCustom, int nIndex, int nCharaNo, ref T_CharaFace rfsFace, ref int nDropID)
+{
+	nDropID = -1;
+	if (!g_sPartyDrag.create(nMode, nLayout, bCustom, nIndex, nCharaNo, rfsFace))
+	{
+		return false;
+	}
+	bool bRet = g_sPartyDrag.run();
+	nDropID = g_sPartyDrag.getTargetID();
+	g_sPartyDrag.delete();
+	return bRet;
+}
+
+void パーティ編成_ドラッグ(int nX, int nY)
+{
+	g_sPartyDrag.execDrag(nX, nY);
+}
+
+bool パーティ編成_ドロップ(int nX, int nY)
+{
+	return g_sPartyDrag.execDrop(nX, nY);
+}
+
+void パーティ編成_上移動(ref int nX, ref int nY)
+{
+	g_sPartyDrag.moveUp(nX, nY);
+}
+
+void パーティ編成_下移動(ref int nX, ref int nY)
+{
+	g_sPartyDrag.moveDown(nX, nY);
+}
+
+void パーティ編成_左移動(ref int nX, ref int nY)
+{
+	g_sPartyDrag.moveLeft(nX, nY);
+}
+
+void パーティ編成_右移動(ref int nX, ref int nY)
+{
+	g_sPartyDrag.moveRight(nX, nY);
+}
+
+int パーティ倉庫_実行(int nZ, int nLayout)
+{
+	return g_sPartyStore.run(nZ, nLayout);
+}
+
+void パーティ倉庫_ドラッグ(int nX, int nY)
+{
+	g_sPartyStore.execDrag(nX, nY);
+}
+
+bool パーティ倉庫_ドロップ(int nX, int nY)
+{
+	return g_sPartyStore.execDrop(nX, nY);
+}
+
+bool パーティ一覧_キャラ削除確認(int nMode, int nCharaNo)
+{
+	if (nMode != 1)
+	{
+		return false;
+	}
+	string szName = テキスト_キャラ名(nCharaNo);
+	if (キャラ_削除禁止(nCharaNo) > 0)
+	{
+		選択_通知(szName + "@ cannot be deleted.", "OK", false);
+		return false;
+	}
+	if (!選択_確認(szName + "@ will be deleted. Okay?", 2, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	if (!選択_確認(szName + "@ will be deleted.@Really okay?", 2, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	return true;
+}
+
+int パーティ一覧_キャラＸ(int nIndex, bool bAdjust, int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(bAdjust) : nLayout;
+	if (nIndex < 0 || nIndex >= パーティ一覧_数(nLayout))
+	{
+		return -1;
+	}
+	int nX = 0;
+	switch (nLayout)
+	{
+		case 0:
+			nX = 4 + (nIndex / 2) * 204;
+			break;
+		case 2:
+			nX = 7 + 338 * nIndex;
+			break;
+		case 1:
+			nX = 1 + (nIndex / 4) * 128;
+			break;
+		default:
+			return -1;
+	}
+	return bAdjust ? nX + 0 : nX;
+}
+
+int パーティ一覧_キャラＹ(int nIndex, bool bAdjust, int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(bAdjust) : nLayout;
+	if (nIndex < 0 || nIndex >= パーティ一覧_数(nLayout))
+	{
+		return -1;
+	}
+	int nY = 0;
+	switch (nLayout)
+	{
+		case 0:
+			nY = 119 + (nIndex % 2) * 128;
+			break;
+		case 2:
+			nY = 194;
+			break;
+		case 1:
+			nY = 117 + (nIndex % 4) * 65;
+			break;
+		default:
+			return -1;
+	}
+	return bAdjust ? nY + 311 : nY;
+}
+
+int パーティ一覧_顔Ｘ(int nIndex, bool bAdjust, int nLayout)
+{
+	int nX = パーティ一覧_キャラＸ(nIndex, bAdjust, nLayout);
+	if (nX < 0)
+	{
+		return -1;
+	}
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return nX + 3;
+		case 2:
+			return nX + 9;
+		case 1:
+			return nX + 3;
+		default:
+			break;
+	}
+	return nX;
+}
+
+int パーティ一覧_顔Ｙ(int nIndex, bool bAdjust, int nLayout)
+{
+	int nY = パーティ一覧_キャラＹ(nIndex, bAdjust, nLayout);
+	if (nY < 0)
+	{
+		return -1;
+	}
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return nY + 3;
+		case 2:
+			return nY + 25;
+		case 1:
+			return nY + 3;
+		default:
+			break;
+	}
+	return nY;
+}
+
+int パーティ一覧_幅(int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return 202;
+		case 2:
+			return 334;
+		case 1:
+			return 126;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_高(int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return 124;
+		case 2:
+			return 170;
+		case 1:
+			return 64;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_数(int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return 10;
+		case 2:
+			return 3;
+		case 1:
+			return 32;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_行数(int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return 2;
+		case 2:
+			return 1;
+		case 1:
+			return 4;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_列数(int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return 5;
+		case 2:
+			return 3;
+		case 1:
+			return 8;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_インデクス(int nRow, int nCol, int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			if (nRow < 0 || nRow >= 2 || nCol < 0 || nCol >= 5)
+			{
+				return -1;
+			}
+			return nCol * 2 + nRow;
+		case 2:
+			if (nRow != 0 || nCol < 0 || nCol >= 3)
+			{
+				return -1;
+			}
+			return nCol;
+		case 1:
+			if (nRow < 0 || nRow >= 4 || nCol < 0 || nCol >= 8)
+			{
+				return -1;
+			}
+			return nCol * 4 + nRow;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_行番号(int nIndex, int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return nIndex < 0 || nIndex >= 10 ? -1 : nIndex % 2;
+		case 2:
+			return nIndex < 0 || nIndex >= 3 ? -1 : 0;
+		case 1:
+			return nIndex < 0 || nIndex >= 32 ? -1 : nIndex % 4;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_列番号(int nIndex, int nLayout)
+{
+	nLayout = nLayout < 0 ? パーティ一覧_レイアウト(false) : nLayout;
+	switch (nLayout)
+	{
+		case 0:
+			return nIndex < 0 || nIndex >= 10 ? -1 : nIndex / 2;
+		case 2:
+			return nIndex < 0 || nIndex >= 3 ? -1 : nIndex;
+		case 1:
+			return nIndex < 0 || nIndex >= 32 ? -1 : nIndex / 4;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int パーティ一覧_レイアウト(bool bAdjust)
+{
+	if (bAdjust)
+	{
+		return g_sPartyStore.getList().getLayout();
+	}
+	return g_sParty.getList().getLayout();
+}
+

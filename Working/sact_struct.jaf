@@ -1,0 +1,103 @@
+sact_text_metrics_t::sact_text_metrics_t()
+{
+	this.nColorR = 255;
+	this.nColorG = 255;
+	this.nColorB = 255;
+	this.nSize = 16;
+	this.nWeight = 0;
+	this.nFace = 0;
+	this.nShadowPixelL = 0;
+	this.nShadowPixelU = 0;
+	this.nShadowPixelR = 0;
+	this.nShadowPixelD = 0;
+	this.nShadowColorR = 0;
+	this.nShadowColorG = 0;
+	this.nShadowColorB = 0;
+}
+
+int sact_text_metrics_t::Equal(ref sact_text_metrics_t a)
+{
+	if (this.nColorR != a.nColorR)
+	{
+		return 0;
+	}
+	if (this.nColorG != a.nColorG)
+	{
+		return 0;
+	}
+	if (this.nColorB != a.nColorB)
+	{
+		return 0;
+	}
+	if (this.nSize != a.nSize)
+	{
+		return 0;
+	}
+	if (this.nWeight != a.nWeight)
+	{
+		return 0;
+	}
+	if (this.nFace != a.nFace)
+	{
+		return 0;
+	}
+	if (this.nShadowPixelL != a.nShadowPixelL)
+	{
+		return 0;
+	}
+	if (this.nShadowPixelU != a.nShadowPixelU)
+	{
+		return 0;
+	}
+	if (this.nShadowPixelR != a.nShadowPixelR)
+	{
+		return 0;
+	}
+	if (this.nShadowPixelD != a.nShadowPixelD)
+	{
+		return 0;
+	}
+	if (this.nShadowColorR != a.nShadowColorR)
+	{
+		return 0;
+	}
+	if (this.nShadowColorG != a.nShadowColorG)
+	{
+		return 0;
+	}
+	if (this.nShadowColorB != a.nShadowColorB)
+	{
+		return 0;
+	}
+	return 1;
+}
+
+size_t size_t(int nWidth, int nHeight)
+{
+	size_t si;
+	si.w = nWidth;
+	si.h = nHeight;
+	return si;
+}
+
+rect_t rect_t(int nX, int nY, int nWidth, int nHeight)
+{
+	rect_t rc;
+	rc.x = nX;
+	rc.y = nY;
+	rc.w = nWidth;
+	rc.h = nHeight;
+	return rc;
+}
+
+cg_metrics_t::cg_metrics_t()
+{
+	this.nWidth = 0;
+	this.nHeight = 0;
+	this.nBpp = 0;
+	this.nPixelPitch = 0;
+	this.nAlphaPitch = 0;
+	this.bExistPixel = 0;
+	this.bExistAlpha = 0;
+}
+

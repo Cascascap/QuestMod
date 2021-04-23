@@ -1,0 +1,382 @@
+T_MapData::T_MapData()
+{
+	this.clear();
+}
+
+void T_MapData::clear()
+{
+	this.m_anType.Fill(0, 2500, 0);
+	this.m_anHeight.Fill(0, 2500, 2147483647);
+	this.m_abEnterN.Fill(0, 2500, 0);
+	this.m_abEnterS.Fill(0, 2500, 0);
+	this.m_abEnterE.Fill(0, 2500, 0);
+	this.m_abEnterW.Fill(0, 2500, 0);
+	this.m_abBattle.Fill(0, 2500, 0);
+	this.m_anEvent.Fill(0, 2500, 0);
+	this.m_anGround.Fill(0, 2500, 0);
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		this.m_anInfo[i].Fill(0, 100, 0);
+	}
+}
+
+void T_MapData::copy(ref T_MapData rfData)
+{
+	if (rfData === NULL)
+	{
+		return;
+	}
+	this.m_anType.Copy(0, rfData.m_anType, 0, 2500);
+	this.m_anHeight.Copy(0, rfData.m_anHeight, 0, 2500);
+	this.m_abEnterN.Copy(0, rfData.m_abEnterN, 0, 2500);
+	this.m_abEnterS.Copy(0, rfData.m_abEnterS, 0, 2500);
+	this.m_abEnterE.Copy(0, rfData.m_abEnterE, 0, 2500);
+	this.m_abEnterW.Copy(0, rfData.m_abEnterW, 0, 2500);
+	this.m_abBattle.Copy(0, rfData.m_abBattle, 0, 2500);
+	this.m_anEvent.Copy(0, rfData.m_anEvent, 0, 2500);
+	this.m_anGround.Copy(0, rfData.m_anGround, 0, 2500);
+}
+
+bool T_MapData::load(int nVersion, int nCount)
+{
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_anInfo.Numof(2);
+	int nFlag = 0;
+	for (i = 0; i < nCount; ++i)
+	{
+		if (!File2.ReadInt(this.m_anType[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anHeight[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anEvent[i]))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(this.m_anGround[i]))
+		{
+			return false;
+		}
+		if (nVersion == 100)
+		{
+			for (j = 0; j < cnt; ++j)
+			{
+				if (!File2.ReadInt(this.m_anInfo[i][j]))
+				{
+					return false;
+				}
+			}
+		}
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		this.m_abEnterN[i] = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		this.m_abEnterS[i] = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		this.m_abEnterE[i] = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		this.m_abEnterW[i] = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		this.m_abBattle[i] = nFlag;
+		for (j = 0; j < 3; ++j)
+		{
+			if (!File2.ReadByte(nFlag))
+			{
+				return false;
+			}
+		}
+	}
+	if (nVersion >= 102)
+	{
+		for (i = 0; i < 16; ++i)
+		{
+			if (!File2.ReadInt(this.m_anColor[i]))
+			{
+				return false;
+			}
+		}
+	}
+	else
+	{
+		this.setColor(NULL);
+	}
+	return true;
+}
+
+bool T_MapData::loadResize(int nVersion, int nMapSizeX, int nMapSizeY)
+{
+	int i = 0;
+	int j = 0;
+	int nFlag = 0;
+	int cnt = nMapSizeX * nMapSizeY;
+	int nType = 0;
+	int nHeight = 0;
+	bool bEnterN = false;
+	bool bEnterS = false;
+	bool bEnterE = false;
+	bool bEnterW = false;
+	bool bBattle = false;
+	int nEvent = 0;
+	int nGround = 0;
+	this.clear();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!File2.ReadInt(nType))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHeight))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nEvent))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nGround))
+		{
+			return false;
+		}
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterN = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterS = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterE = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterW = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bBattle = nFlag;
+		for (j = 0; j < 3; ++j)
+		{
+			if (!File2.ReadByte(nFlag))
+			{
+				return false;
+			}
+		}
+		int idx = マップ位置_インデクス変換_サイズ変更(i, nMapSizeX, nMapSizeY);
+		if (idx >= 0)
+		{
+			this.m_anType[idx] = nType;
+			this.m_anHeight[idx] = nHeight;
+			this.m_abEnterN[idx] = bEnterN;
+			this.m_abEnterS[idx] = bEnterS;
+			this.m_abEnterE[idx] = bEnterE;
+			this.m_abEnterW[idx] = bEnterW;
+			this.m_abBattle[idx] = bBattle;
+			this.m_anEvent[idx] = nEvent;
+			this.m_anGround[idx] = nGround;
+		}
+	}
+	return true;
+}
+
+bool T_MapData::loadOld()
+{
+	int i = 0;
+	int j = 0;
+	int nFlag = 0;
+	int nType = 0;
+	int nHeight = 0;
+	bool bEnterN = false;
+	bool bEnterS = false;
+	bool bEnterE = false;
+	bool bEnterW = false;
+	bool bBattle = false;
+	int nEvent = 0;
+	int nGround = 0;
+	this.clear();
+	for (i = 0; i < 2500; ++i)
+	{
+		if (!File2.ReadInt(nType))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nHeight))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nEvent))
+		{
+			return false;
+		}
+		if (!File2.ReadInt(nGround))
+		{
+			return false;
+		}
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterN = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterS = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterE = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bEnterW = nFlag;
+		if (!File2.ReadByte(nFlag))
+		{
+			return false;
+		}
+		bBattle = nFlag;
+		for (j = 0; j < 3; ++j)
+		{
+			if (!File2.ReadByte(nFlag))
+			{
+				return false;
+			}
+		}
+		int idx = マップ位置_インデクス変換_旧データ(i);
+		if (idx >= 0)
+		{
+			this.m_anType[idx] = nType;
+			this.m_anHeight[idx] = nHeight;
+			this.m_abEnterN[idx] = bEnterN;
+			this.m_abEnterS[idx] = bEnterS;
+			this.m_abEnterE[idx] = bEnterE;
+			this.m_abEnterW[idx] = bEnterW;
+			this.m_abBattle[idx] = bBattle;
+			this.m_anEvent[idx] = nEvent;
+			this.m_anGround[idx] = nGround;
+		}
+	}
+	return true;
+}
+
+bool T_MapData::save()
+{
+	return true;
+}
+
+bool T_MapData::setColor(ref T_ColorInfo rfsInfo)
+{
+	if (rfsInfo !== NULL)
+	{
+		this.m_anColor[0] = rfsInfo.m_nPixelColorR;
+		this.m_anColor[1] = rfsInfo.m_nPixelColorG;
+		this.m_anColor[2] = rfsInfo.m_nPixelColorB;
+		this.m_anColor[3] = rfsInfo.m_nAlpha;
+		this.m_anColor[4] = rfsInfo.m_nDrawFilter;
+	}
+	else
+	{
+		T_ColorInfo sInfo;
+		this.m_anColor[0] = sInfo.m_nPixelColorR;
+		this.m_anColor[1] = sInfo.m_nPixelColorG;
+		this.m_anColor[2] = sInfo.m_nPixelColorB;
+		this.m_anColor[3] = sInfo.m_nAlpha;
+		this.m_anColor[4] = sInfo.m_nDrawFilter;
+	}
+	return true;
+}
+
+bool T_MapData::getColor(ref T_ColorInfo rfsInfo)
+{
+	if (rfsInfo === NULL)
+	{
+		return false;
+	}
+	rfsInfo.m_nPixelColorR = this.m_anColor[0];
+	rfsInfo.m_nPixelColorG = this.m_anColor[1];
+	rfsInfo.m_nPixelColorB = this.m_anColor[2];
+	rfsInfo.m_nAlpha = this.m_anColor[3];
+	rfsInfo.m_nDrawFilter = this.m_anColor[4];
+	return true;
+}
+
+bool T_MapData::setInfo(int nIndex1, int nIndex2, int nValue)
+{
+	if (nIndex1 < 0 || nIndex1 >= 2500)
+	{
+		return false;
+	}
+	if (nIndex2 < 0 || nIndex2 >= 100)
+	{
+		return false;
+	}
+	this.m_anInfo[nIndex1][nIndex2] = nValue;
+	return true;
+}
+
+int T_MapData::getInfo(int nIndex1, int nIndex2)
+{
+	if (nIndex1 < 0 || nIndex1 >= 2500)
+	{
+		return 0;
+	}
+	if (nIndex2 < 0 || nIndex2 >= 100)
+	{
+		return 0;
+	}
+	return this.m_anInfo[nIndex1][nIndex2];
+}
+
+int T_MapData::searchInfo(int nIndex1, int nIndex2, int nValue)
+{
+	if (nIndex1 < 0 || nIndex1 >= 2500)
+	{
+		return -1;
+	}
+	if (nIndex2 < 0 || nIndex2 >= 100)
+	{
+		return -1;
+	}
+	if (nValue <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = nIndex1; i < 2500; ++i)
+	{
+		if (this.m_anInfo[i][nIndex2] == nValue)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

@@ -1,0 +1,35 @@
+void AFL_OverrideMessageFunction(FTMessage Function)
+{
+	g_MessageFunction = Function;
+}
+
+void AFL_OverrideMessageRFunction(FTMessageR Function)
+{
+	g_MessageRFunction = Function;
+}
+
+void AFL_OverrideMessageAFunction(FTMessageA Function)
+{
+	g_MessageAFunction = Function;
+}
+
+void AFL_OverrideMessageAAFunction(FTMessageAA Function)
+{
+	g_MessageAAFunction = Function;
+}
+
+void AFL_OverrideMessageBFunction(FTMessageB Function)
+{
+	g_MessageBFunction = Function;
+}
+
+void AFL_OverrideMessageCFunction(FTMessageC Function)
+{
+	g_MessageCFunction = Function;
+}
+
+void AFL_OverrideMessageDFunction(FTMessageD Function)
+{
+	g_MessageDFunction = Function;
+}
+

@@ -1,0 +1,476 @@
+bool T_Number::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	return this.m_spNumber.copyToSprite(rfsDst, nDstX, nDstY, -1, -1, 0);
+}
+
+ref T_Sprite T_Number::getSp()
+{
+	return this.m_spNumber;
+}
+
+int T_Number::getSpNo()
+{
+	return this.m_spNumber.getSpNo();
+}
+
+int T_Number::getPosX()
+{
+	return this.m_spNumber.getPosX();
+}
+
+int T_Number::getPosY()
+{
+	return this.m_spNumber.getPosY();
+}
+
+int T_Number::getZ()
+{
+	return this.m_spNumber.getZ();
+}
+
+bool T_Number::getShow()
+{
+	return this.m_spNumber.getShow();
+}
+
+int T_Number::getWidth()
+{
+	return this.m_nWidth;
+}
+
+int T_Number::getHeight()
+{
+	return this.m_spNumber.getHeight();
+}
+
+int T_Number::getCgNo()
+{
+	return this.m_nCgNo;
+}
+
+int T_Number::getCgWidth()
+{
+	return this.m_nCgW;
+}
+
+int T_Number::getCgHeight()
+{
+	return this.m_nCgH;
+}
+
+int T_Number::getValue()
+{
+	return this.m_nValue;
+}
+
+int T_Number::getMode()
+{
+	return this.m_nMode;
+}
+
+int T_Number::getAnimeMode()
+{
+	return this.m_nAnimeMode;
+}
+
+bool T_Number::suspend()
+{
+	return this.m_spNumber.suspend();
+}
+
+bool T_Number::resume()
+{
+	return this.m_spNumber.resume();
+}
+
+bool T_Number::isSuspend()
+{
+	return this.m_spNumber.isSuspend();
+}
+
+bool T_Number::isCreated()
+{
+	return this.m_spNumber.isCreated();
+}
+
+T_Number::T_Number()
+{
+	this.clear();
+}
+
+T_Number::~T_Number()
+{
+	this.delete();
+}
+
+void T_Number::create(int nCgNo, bool bHyphen, int nMax, int nMode, int nSpace)
+{
+	this.delete();
+	if (!this.loadCg(nCgNo, bHyphen))
+	{
+		return;
+	}
+	if (nMax < 0)
+	{
+		nMax = 10;
+	}
+	else
+	{
+		nMax = ”’l_•â³(nMax, 1, 10);
+	}
+	if (nSpace < 0)
+	{
+		nSpace = 0;
+	}
+	this.m_nMode = nMode;
+	this.m_nMax = nMax;
+	this.m_nSpace = nSpace;
+	this.m_nWidth = 0;
+	this.m_spNumber.create(this.getSpriteWidth(10), this.m_nCgH, 0, 0, 0, 0);
+}
+
+void T_Number::delete()
+{
+	this.m_spNumber.delete();
+	this.m_sSlot.delete();
+	this.unloadCg();
+	this.clear();
+}
+
+void T_Number::clear()
+{
+	this.m_nCgNo = 0;
+	this.m_nCgW = 0;
+	this.m_nCgH = 0;
+	this.m_nHyphen = -1;
+	this.m_nValue = -1;
+	this.m_nMax = -1;
+	this.m_nSpace = 0;
+	this.m_nMode = -1;
+	this.m_nWidth = -1;
+	this.m_nAnimeMode = 0;
+	this.m_nTotalTime = 0;
+	this.m_nWaitTime = 0;
+	this.m_nOldValue = -1;
+	this.m_nNewValue = -1;
+}
+
+void T_Number::update(int nValue, int nTotalTime, int nWaitTime)
+{
+	if (this.m_nMode < 0)
+	{
+		return;
+	}
+	if (this.m_nValue == nValue)
+	{
+		return;
+	}
+	if (this.m_nValue < 0)
+	{
+		this.m_spNumber.setShow(1);
+		this.setValue(nValue, 0, false);
+		return;
+	}
+	if (this.animeStart(nValue, nTotalTime, nWaitTime, -1) < 0)
+	{
+		return;
+	}
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (true)
+	{
+		if (this.anime(sTimer.Get()) <= 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	this.animeEnd();
+	UPDATE(true);
+}
+
+int T_Number::animeStart(int nValue, int nTotalTime, int nWaitTime, int nAnimeMode)
+{
+	if (this.m_nMode < 0)
+	{
+		return -1;
+	}
+	this.animeEnd();
+	if (nValue == this.m_nValue)
+	{
+		return -1;
+	}
+	nTotalTime = nTotalTime < 0 ? 250 : nTotalTime;
+	if (nTotalTime <= 0)
+	{
+		return -1;
+	}
+	int nX = this.m_spNumber.getPosX();
+	int nY = this.m_spNumber.getPosY();
+	int cnt = this.getCount();
+	int cnt2 = ”’lŒ…”(nValue);
+	int nCount = _max(cnt, cnt2);
+	if (this.m_nMode == 3 && nCount < this.m_nMax)
+	{
+		nX += ((this.getSpriteWidth(this.m_nMax) - this.getSpriteWidth(cnt)) + 1) / 2;
+	}
+	this.m_sSlot.create(this.m_nCgNo, this.m_nHyphen, nCount, this.m_nSpace, this.m_nMode == 2);
+	this.m_sSlot.setPos(nX, nY);
+	this.m_sSlot.setZ(this.m_spNumber.getZ());
+	this.m_sSlot.setValue(this.m_nValue);
+	this.m_sSlot.setShow(true);
+	this.m_nTotalTime = nTotalTime;
+	this.m_nOldValue = this.m_nValue;
+	this.m_nNewValue = ”’l_•â³(nValue, 0, this.m_sSlot.getMaxValue());
+	if (â‘Î’l(this.m_nNewValue - this.m_nOldValue) == 1)
+	{
+		this.m_nWaitTime = nTotalTime;
+		this.m_nCurrentOld = this.m_nOldValue;
+		this.m_nCurrentNew = this.m_nNewValue;
+	}
+	else
+	{
+		this.m_nWaitTime = nWaitTime;
+		this.m_nCurrentOld = this.m_nOldValue;
+		this.m_nCurrentNew = this.m_nOldValue + À”ŒvZ(this.m_nNewValue - this.m_nOldValue, nWaitTime, this.m_nTotalTime);
+	}
+	this.m_nCurrentTime = 0;
+	if (!this.m_sSlot.animeStart(this.m_nCurrentNew, this.m_nWaitTime, nAnimeMode))
+	{
+		return -1;
+	}
+	this.m_nAnimeMode = this.m_sSlot.getMode();
+	this.m_spNumber.setShow(0);
+	return this.m_sSlot.getMode();
+}
+
+void T_Number::animeEnd()
+{
+	if (this.m_nAnimeMode <= 0)
+	{
+		return;
+	}
+	this.m_sSlot.animeEnd();
+	this.m_sSlot.delete();
+	this.setValue(this.m_nNewValue, 0, false);
+	this.m_spNumber.setShow(1);
+	this.m_nAnimeMode = 0;
+	this.m_nTotalTime = 0;
+	this.m_nWaitTime = 0;
+	this.m_nOldValue = -1;
+	this.m_nNewValue = -1;
+	this.m_nCurrentOld = -1;
+	this.m_nCurrentNew = -1;
+	this.m_nCurrentTime = -1;
+}
+
+int T_Number::anime(int nTime)
+{
+	if (this.m_nAnimeMode <= 0)
+	{
+		return -1;
+	}
+	if (nTime >= this.m_nTotalTime)
+	{
+		return 0;
+	}
+	int nTime2 = nTime - this.m_nCurrentTime;
+	if (nTime2 < this.m_nWaitTime)
+	{
+		return this.m_sSlot.anime(nTime2);
+	}
+	this.m_sSlot.animeEnd();
+	this.m_nCurrentOld = this.m_nCurrentNew;
+	this.m_nCurrentTime = nTime;
+	int nNextTime = this.m_nCurrentTime + this.m_nWaitTime;
+	if (nNextTime < this.m_nTotalTime)
+	{
+		this.m_nCurrentNew = this.m_nOldValue + À”ŒvZ(this.m_nNewValue - this.m_nOldValue, nNextTime, this.m_nTotalTime);
+	}
+	else
+	{
+		this.m_nCurrentNew = this.m_nNewValue;
+	}
+	return this.m_sSlot.animeStart(this.m_nCurrentNew, this.m_nWaitTime, this.m_nAnimeMode) ? 1 : -1;
+}
+
+void T_Number::setPos(int nX, int nY)
+{
+	this.m_spNumber.setPos(nX, nY);
+}
+
+void T_Number::setPos2(int nX, int nY)
+{
+	this.m_spNumber.setPos(this.m_spNumber.getPosX() + nX, this.m_spNumber.getPosY() + nY);
+}
+
+void T_Number::setZ(int nZ)
+{
+	this.m_spNumber.setZ(nZ);
+}
+
+void T_Number::setShow(bool bShow)
+{
+	this.m_spNumber.setShow(bShow);
+}
+
+void T_Number::setBlendRate(int nRate)
+{
+	this.m_spNumber.setBlendRate(nRate);
+}
+
+void T_Number::setValue(int nValue, int nCgNo, bool bHyphen)
+{
+	nValue = nValue > 0 ? nValue : 0;
+	if (nCgNo > 0)
+	{
+		int nOldHyphen = this.m_nHyphen;
+		if (!this.loadCg(nCgNo, bHyphen))
+		{
+			return;
+		}
+		if (!bHyphen && nOldHyphen > 0)
+		{
+			this.setHyphen(nOldHyphen);
+		}
+		goto label0;
+	}
+	if (nValue == this.m_nValue)
+	{
+		return;
+	}
+label0:
+	this.m_nValue = nValue;
+	this.draw();
+}
+
+bool T_Number::setHyphen(int nHyphenCgNo)
+{
+	if (nHyphenCgNo > 0 && nHyphenCgNo == this.m_nHyphen)
+	{
+		return true;
+	}
+	if (!”š‚b‚f_ƒnƒCƒtƒ“İ’è(this.m_nCgNo, nHyphenCgNo))
+	{
+		return false;
+	}
+	this.m_nHyphen = nHyphenCgNo;
+	return true;
+}
+
+int T_Number::getCount()
+{
+	if (this.m_nValue < 0)
+	{
+		return 0;
+	}
+	switch (this.m_nMode)
+	{
+		case 1:
+		case 2:
+			return this.m_nMax;
+		case 0:
+		case 3:
+		default:
+			break;
+	}
+	return ”’lŒ…”(this.m_nValue);
+}
+
+void T_Number::draw()
+{
+	if (this.m_nCgNo <= 0)
+	{
+		return;
+	}
+	if (this.m_nMax <= 0)
+	{
+		return;
+	}
+	int nW = this.m_spNumber.getWidth();
+	int nH = this.m_spNumber.getHeight();
+	string szText = ”š_”¼ŠpƒeƒLƒXƒg(this.m_nValue, this.m_nMax, this.m_nMode);
+	drawGraph_FillAMap(this.m_spNumber, 0, 0, nW, nH, 0);
+	if (szText.Empty())
+	{
+		this.m_nWidth = 0;
+		return;
+	}
+	int i = 0;
+	int cnt = szText.Length();
+	int nX = 0;
+	int nY = 0;
+	int nWidth = this.getSpriteWidth(cnt);
+	int nMaxW = this.getSpriteWidth(this.m_nMax);
+	if (this.m_nMode == 3 && cnt < this.m_nMax)
+	{
+		nX = ((nMaxW - nWidth) + 1) / 2;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		”š‚b‚f_ƒRƒs[(this.m_spNumber, nX, nY, this.m_nCgNo, szText[i], 0, 0, this.m_nCgW, this.m_nCgH);
+		nX += this.m_nCgW + this.m_nSpace;
+	}
+	switch (this.m_nMode)
+	{
+		case 1:
+		case 2:
+		case 3:
+			this.m_nWidth = _max(nWidth, nMaxW);
+			break;
+		case 0:
+		default:
+			this.m_nWidth = nWidth;
+			break;
+	}
+}
+
+bool T_Number::loadCg(int nCgNo, bool bHyphen)
+{
+	if (nCgNo == this.m_nCgNo)
+	{
+		return true;
+	}
+	this.unloadCg();
+	if (!”š‚b‚f_ƒ[ƒh(nCgNo, bHyphen))
+	{
+		return false;
+	}
+	this.m_nCgNo = nCgNo;
+	this.m_nCgW = ”š‚b‚f_•(nCgNo);
+	this.m_nCgH = ”š‚b‚f_‚(nCgNo);
+	this.m_nHyphen = bHyphen ? 0 : -1;
+	return true;
+}
+
+bool T_Number::unloadCg()
+{
+	if (this.m_nCgNo <= 0)
+	{
+		return false;
+	}
+	if (!”š‚b‚f_ƒAƒ“ƒ[ƒh(this.m_nCgNo))
+	{
+		return false;
+	}
+	this.m_nCgNo = 0;
+	this.m_nCgW = 0;
+	this.m_nCgH = 0;
+	this.m_nHyphen = -1;
+	return true;
+}
+
+int T_Number::getSpriteWidth(int nCount)
+{
+	if (this.m_nCgW <= 0)
+	{
+		return 0;
+	}
+	if (nCount < 1)
+	{
+		return 0;
+	}
+	int nSpace = nCount > 1 ? this.m_nSpace * (nCount - 1) : 0;
+	return this.m_nCgW * nCount + nSpace;
+}
+

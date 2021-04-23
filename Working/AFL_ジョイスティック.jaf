@@ -1,0 +1,48 @@
+int AFL_Joystick_GetNumofDevice()
+{
+	return IbisInputEngine.Joystick_GetNumofDevice();
+}
+
+bool AFL_Joystick_IsKeyDown(int DeviceNumber, int JoystickCode)
+{
+	return IbisInputEngine.Joystick_IsKeyDown(DeviceNumber, JoystickCode);
+}
+
+int AFL_Joystick_GetButtonAssignment(int Function)
+{
+	if (Function < 0 || Function >= g_JoystickButtonAssignmentTable.Numof())
+	{
+		return -1;
+	}
+	if (g_JoystickButtonAssignmentTable[Function] == -1)
+	{
+		return SYS_GetDefaultJoystickButtonAssignment(Function);
+	}
+	return g_JoystickButtonAssignmentTable[Function];
+}
+
+bool AFL_Joystick_SetButtonAssignment(int Function, int JoystickCode)
+{
+	if (Function < 0 || Function >= g_JoystickButtonAssignmentTable.Numof())
+	{
+		return false;
+	}
+	g_JoystickButtonAssignmentTable[Function] = JoystickCode;
+	return true;
+}
+
+bool AFL_Joystick_SetMessageKeyWaitCallback(int AssignCode, FTInputJoypadCallback Function)
+{
+	if (AssignCode < 0 || AssignCode >= 50 || AssignCode == 4 || AssignCode == 6)
+	{
+		return false;
+	}
+	g_InputJoypadCallbackList[AssignCode] = Function;
+	return true;
+}
+
+void AFL_Joystick_InitButtonAssignment()
+{
+	SYS_Init_JoystickButtonAssignment();
+}
+

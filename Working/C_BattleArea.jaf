@@ -1,0 +1,35 @@
+int 戦闘選択領域_確認(bool bForward)
+{
+	return g_sBattleArea.check(bForward);
+}
+
+bool 戦闘選択領域_カーソル設定(int nNo, bool bForward)
+{
+	return g_sBattleArea.setCursor(nNo, bForward);
+}
+
+ref T_Rect 戦闘選択領域_取得(int nNo, bool bForward)
+{
+	return g_sBattleArea.get(nNo, bForward);
+}
+
+int 戦闘選択領域_Ｘ(int nNo)
+{
+	ref T_Rect rcArea = 戦闘選択領域_取得(nNo, false);
+	if (rcArea === NULL)
+	{
+		return -1;
+	}
+	return rcArea.m_nSx;
+}
+
+int 戦闘選択領域_Ｙ(int nNo)
+{
+	ref T_Rect rcArea = 戦闘選択領域_取得(nNo, false);
+	if (rcArea === NULL)
+	{
+		return -1;
+	}
+	return rcArea.m_nSy;
+}
+

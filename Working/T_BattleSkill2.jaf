@@ -1,0 +1,804 @@
+int T_BattleSkill::moveUp(int nID)
+{
+	if (nID < 210000)
+	{
+		return this.moveUpSkill(nID);
+	}
+	return this.moveUpTarget(nID);
+}
+
+int T_BattleSkill::moveDown(int nID)
+{
+	if (nID < 210000)
+	{
+		return this.moveDownSkill(nID);
+	}
+	return this.moveDownTarget(nID);
+}
+
+int T_BattleSkill::getTargetUp(int nNo)
+{
+	int nID = this.moveUpTargetSkill(nNo, -1, false);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.changeTargetUp(nNo);
+}
+
+int T_BattleSkill::getTargetDown(int nNo)
+{
+	int nID = this.moveDownTargetSkill(nNo, -1, false);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.changeTargetDown(nNo);
+}
+
+int T_BattleSkill::getTargetLeft(int nNo)
+{
+	int nID = this.getTargetID(nNo, 0);
+	if (this.m_sButton.getButtonShow(nID))
+	{
+		return nID;
+	}
+	nID = this.moveDownTargetSkill(nNo, 0, false);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.changeTargetLeft(nNo, 0);
+}
+
+int T_BattleSkill::getTargetRight(int nNo)
+{
+	int nID = this.getTargetID(nNo, 0);
+	if (this.m_sButton.getButtonShow(nID))
+	{
+		return nID;
+	}
+	nID = this.moveDownTargetSkill(nNo, 0, false);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.changeTargetRight(nNo, 0);
+}
+
+int T_BattleSkill::moveUpSkill(int nID)
+{
+	int nID2 = this.changeTargetUp(this.m_nNo);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	int idx = this.getButtonIndex(nID);
+	if (idx < 0)
+	{
+		return this.moveRightSkill(nID);
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = idx - 1; i >= 0; --i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	for (i = cnt - 1; i > idx; --i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	return nID;
+}
+
+int T_BattleSkill::moveDownSkill(int nID)
+{
+	int nID2 = this.changeTargetDown(this.m_nNo);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	int idx = this.getButtonIndex(nID);
+	if (idx < 0)
+	{
+		return this.moveLeftSkill(nID);
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = idx + 1; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	for (i = 0; i < idx; ++i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	return nID;
+}
+
+int T_BattleSkill::moveLeftSkill(int nID)
+{
+	int nID2 = this.changeTargetLeft(this.m_nNo, this.getButtonIndex(nID));
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	return nID;
+}
+
+int T_BattleSkill::moveRightSkill(int nID)
+{
+	int nID2 = this.changeTargetRight(this.m_nNo, this.getButtonIndex(nID));
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = cnt - 1; i >= 0; --i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	return nID;
+}
+
+int T_BattleSkill::moveLeft(int nID)
+{
+	if (nID < 210000)
+	{
+		return this.moveLeftSkill(nID);
+	}
+	return this.moveLeftTarget(nID);
+}
+
+int T_BattleSkill::moveRight(int nID)
+{
+	if (nID < 210000)
+	{
+		return this.moveRightSkill(nID);
+	}
+	return this.moveRightTarget(nID);
+}
+
+int T_BattleSkill::moveUpTarget(int nID)
+{
+	int nNo = this.getTargetNo(nID);
+	if (nNo <= 0)
+	{
+		goto label0;
+	}
+	int idx = this.getTargetSkill(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nID2 = this.moveUpTargetSkill(nNo, idx, false);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.changeTargetUp(nNo);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.moveUpTargetSkill(nNo, -1, false);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return nID;
+}
+
+int T_BattleSkill::moveDownTarget(int nID)
+{
+	int nNo = this.getTargetNo(nID);
+	if (nNo <= 0)
+	{
+		goto label0;
+	}
+	int idx = this.getTargetSkill(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nID2 = this.moveDownTargetSkill(nNo, idx, false);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.changeTargetDown(nNo);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.moveDownTargetSkill(nNo, -1, false);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return nID;
+}
+
+int T_BattleSkill::moveLeftTarget(int nID)
+{
+	int nNo = this.getTargetNo(nID);
+	if (nNo <= 0)
+	{
+		goto label0;
+	}
+	int idx = this.getTargetSkill(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nID2 = this.changeTargetLeft(nNo, idx);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return nID;
+}
+
+int T_BattleSkill::moveRightTarget(int nID)
+{
+	int nNo = this.getTargetNo(nID);
+	if (nNo <= 0)
+	{
+		goto label0;
+	}
+	int idx = this.getTargetSkill(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nID2 = this.changeTargetRight(nNo, idx);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return nID;
+}
+
+int T_BattleSkill::moveUpTargetSkill(int nNo, int nIndex, bool bLoop)
+{
+	ref array@int anTargetIndex;
+	if (戦闘番号_味方確認(nNo))
+	{
+		if (nNo == this.m_nNo)
+		{
+			anTargetIndex <- this.m_anTargetMyself;
+		}
+		else
+		{
+			anTargetIndex <- this.m_anTargetChara;
+		}
+	}
+	else
+	{
+		anTargetIndex <- this.m_anTargetMonster;
+	}
+	int i = 0;
+	int cnt = anTargetIndex.Numof();
+	int idx = anTargetIndex.Find(0, cnt, nIndex);
+	int str = idx < 0 ? cnt - 1 : idx - 1;
+	for (i = str; i >= 0; --i)
+	{
+		int nID = this.getTargetID(nNo, anTargetIndex[i]);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+	if (bLoop)
+	{
+		for (i = cnt - 1; i > str; --i)
+		{
+			int nID = this.getTargetID(nNo, anTargetIndex[i]);
+			if (this.m_sButton.getButtonShow(nID))
+			{
+				return nID;
+			}
+		}
+	}
+	return 0;
+}
+
+int T_BattleSkill::moveDownTargetSkill(int nNo, int nIndex, bool bLoop)
+{
+	ref array@int anTargetIndex;
+	if (戦闘番号_味方確認(nNo))
+	{
+		if (nNo == this.m_nNo)
+		{
+			anTargetIndex <- this.m_anTargetMyself;
+		}
+		else
+		{
+			anTargetIndex <- this.m_anTargetChara;
+		}
+	}
+	else
+	{
+		anTargetIndex <- this.m_anTargetMonster;
+	}
+	int i = 0;
+	int cnt = anTargetIndex.Numof();
+	int idx = anTargetIndex.Find(0, cnt, nIndex);
+	int str = idx < 0 ? 0 : idx + 1;
+	for (i = str; i < cnt; ++i)
+	{
+		int nID = this.getTargetID(nNo, anTargetIndex[i]);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+	if (bLoop)
+	{
+		for (i = 0; i < str; ++i)
+		{
+			int nID = this.getTargetID(nNo, anTargetIndex[i]);
+			if (this.m_sButton.getButtonShow(nID))
+			{
+				return nID;
+			}
+		}
+	}
+	return 0;
+}
+
+int T_BattleSkill::changeTargetUp(int nNo)
+{
+	int idx = 戦闘遷移_インデクス(nNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < 10; ++i)
+	{
+		int nNextNo = 戦闘遷移_取得(1, idx, i);
+		if (nNextNo > 100000)
+		{
+			return nNextNo;
+		}
+		if (nNextNo <= 0)
+		{
+			break;
+		}
+		int nID = this.moveUpTargetSkill(nNextNo, -1, false);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return 0;
+}
+
+int T_BattleSkill::changeTargetDown(int nNo)
+{
+	int idx = 戦闘遷移_インデクス(nNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < 10; ++i)
+	{
+		int nNextNo = 戦闘遷移_取得(2, idx, i);
+		if (nNextNo > 100000)
+		{
+			return nNextNo;
+		}
+		if (nNextNo <= 0)
+		{
+			break;
+		}
+		int nID = this.moveDownTargetSkill(nNextNo, -1, false);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return 0;
+}
+
+int T_BattleSkill::changeTargetLeft(int nNo, int nIndex)
+{
+	int idx = 戦闘遷移_インデクス(nNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < 10; ++i)
+	{
+		int nNextNo = 戦闘遷移_取得(3, idx, i);
+		if (nNextNo > 100000)
+		{
+			return nNextNo;
+		}
+		if (nNextNo <= 0)
+		{
+			break;
+		}
+		int nID = this.getTargetID(nNextNo, nIndex);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+		nID = this.moveUpTargetSkill(nNextNo, nIndex, true);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return 0;
+}
+
+int T_BattleSkill::changeTargetRight(int nNo, int nIndex)
+{
+	int idx = 戦闘遷移_インデクス(nNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < 10; ++i)
+	{
+		int nNextNo = 戦闘遷移_取得(4, idx, i);
+		if (nNextNo > 100000)
+		{
+			return nNextNo;
+		}
+		if (nNextNo <= 0)
+		{
+			break;
+		}
+		int nID = this.getTargetID(nNextNo, nIndex);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+		nID = this.moveDownTargetSkill(nNextNo, nIndex, true);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return 0;
+}
+
+int T_BattleSkill::getDefaultMonsterF()
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	int idx = this.searchAttackForward();
+	if (idx < 0)
+	{
+		idx = this.searchAttackLine();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackBack();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackAll();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchDefense();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchDefenseAll();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchMySelf();
+	}
+	return idx;
+}
+
+int T_BattleSkill::getDefaultMonsterB()
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	int idx = this.searchAttackBack();
+	if (idx < 0)
+	{
+		idx = this.searchAttackAll();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackForward();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackLine();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchDefense();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchDefenseAll();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchMySelf();
+	}
+	return idx;
+}
+
+int T_BattleSkill::getDefaultChara()
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	int idx = this.searchDefense();
+	if (idx < 0)
+	{
+		idx = this.searchDefenseAll();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackForward();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackLine();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackBack();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackAll();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchMySelf();
+	}
+	return idx;
+}
+
+int T_BattleSkill::getDefaultMyself()
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	int idx = this.searchMySelf();
+	if (idx < 0)
+	{
+		idx = this.searchAttackForward();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackLine();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackBack();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchAttackAll();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchDefense();
+	}
+	if (idx < 0)
+	{
+		idx = this.searchDefenseAll();
+	}
+	return idx;
+}
+
+int T_BattleSkill::getDefaultTarget(int nIndex)
+{
+	int nTargetNo = 戦闘_ターゲット選択(this.m_nNo, this.getSkillNoFromIndex(nIndex));
+	return nTargetNo > 0 ? this.getTargetID(nTargetNo, nIndex) : this.getButtonID(nIndex);
+}
+
+int T_BattleSkill::searchAttackForward()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] <= 0)
+		{
+			continue;
+		}
+		if (スキル_近距離(this.m_rfsSkill.getSkillNo(i)))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BattleSkill::searchAttackBack()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] <= 0)
+		{
+			continue;
+		}
+		if (スキル_遠距離(this.m_rfsSkill.getSkillNo(i)))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BattleSkill::searchAttackLine()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] <= 0)
+		{
+			continue;
+		}
+		if (スキル_横一列(this.m_rfsSkill.getSkillNo(i)))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BattleSkill::searchAttackAll()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] <= 0)
+		{
+			continue;
+		}
+		if (スキル_全体(this.m_rfsSkill.getSkillNo(i)))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BattleSkill::searchDefense()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] <= 0)
+		{
+			continue;
+		}
+		if (スキル_味方(this.m_rfsSkill.getSkillNo(i)))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BattleSkill::searchDefenseAll()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] <= 0)
+		{
+			continue;
+		}
+		if (スキル_味方全体(this.m_rfsSkill.getSkillNo(i)))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BattleSkill::searchMySelf()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] <= 0)
+		{
+			continue;
+		}
+		if (スキル_自分(this.m_rfsSkill.getSkillNo(i)))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

@@ -1,0 +1,256 @@
+void ３Ｄマップ_ロード(int nMapNo, bool bShow)
+{
+	g_sMapMode.Create(nMapNo, bShow);
+	３Ｄモード_マップ();
+	ＦＰＳ_作成(nMapNo, 150, 0);
+	g_b3DMapUpdate = true;
+}
+
+void ３Ｄマップ_アンロード()
+{
+	g_b3DMapUpdate = false;
+	ＦＰＳ_削除();
+	３Ｄモード_設定(0);
+	g_sMapMode.Release();
+}
+
+void ３Ｄマップ_更新停止()
+{
+	if (!g_b3DMapUpdate)
+	{
+		return;
+	}
+	g_b3DMapUpdate = false;
+}
+
+void ３Ｄマップ_更新再開()
+{
+	if (g_b3DMapUpdate)
+	{
+		return;
+	}
+	g_b3DMapUpdate = true;
+	g_sMapMode.SetPrevTime();
+}
+
+void ３Ｄマップ_設定更新()
+{
+	g_sMapMode.RealtimeSettingUpdate();
+}
+
+void ３Ｄマップ_ロード待ち(int nThreadLoadingMode)
+{
+	g_sMapMode.WaitLoading(nThreadLoadingMode < 0 ? (マップ_ロード直後() ? 0 : 1) : nThreadLoadingMode > 0);
+}
+
+bool ３Ｄマップ_表示設定(bool bDrawFlag)
+{
+	bool bOld = g_sMapMode.GetMapDraw();
+	g_sMapMode.SetMapDraw(bDrawFlag);
+	３Ｄ背景_表示設定(0, bDrawFlag);
+	３Ｄ背景_表示設定(1, bDrawFlag);
+	return bOld;
+}
+
+void ３Ｄマップ_座標設定(float fX, float fY, float fZ)
+{
+	g_sMapMode.SetCameraPos(fX, fY, fZ, true);
+}
+
+void ３Ｄマップ_目的地設定(float fX, float fY, float fZ)
+{
+	if (fX != -3.40282346638529E+38 && fY != -3.40282346638529E+38 && fZ != -3.40282346638529E+38)
+	{
+		g_sMapMode.SetGoalPos(fX, fY, fZ);
+		g_sMapMode.SetGoalDraw(true);
+	}
+	else
+	{
+		g_sMapMode.SetGoalDraw(false);
+	}
+}
+
+float ３Ｄマップ_カメラ距離設定(float fLength)
+{
+	if (fLength < 35.0)
+	{
+		fLength = 35.0;
+	}
+	else if (fLength > 60.0)
+	{
+		fLength = 60.0;
+	}
+	g_sMapMode.SetCameraLength(fLength);
+	return fLength;
+}
+
+float ３Ｄマップ_高さ(float fX, float fZ)
+{
+	return g_sMapMode.CalcHeight(fX, fZ);
+}
+
+bool ３Ｄマップ_表示中()
+{
+	return g_sMapMode.GetMapDraw();
+}
+
+int ３Ｄマップ_番号()
+{
+	return g_sMapMode.GetMapNo();
+}
+
+int ３Ｄマップ_ビュー位置Ｘ()
+{
+	return g_sMapMode.GetViewX();
+}
+
+int ３Ｄマップ_ビュー位置Ｙ()
+{
+	return g_sMapMode.GetViewY();
+}
+
+int ３Ｄマップ_ビュー幅()
+{
+	return g_sMapMode.GetViewWidth();
+}
+
+int ３Ｄマップ_ビュー高()
+{
+	return g_sMapMode.GetViewHeight();
+}
+
+int ３Ｄマップ_デバッグ情報モード()
+{
+	if (!g_sMapMode.IsCreated())
+	{
+		return -1;
+	}
+	return g_sMapMode.GetPlugin().GetDebugInfoMode();
+}
+
+bool ３Ｄマップ_デバッグ情報モード設定(int nMode)
+{
+	if (!g_sMapMode.IsCreated())
+	{
+		return false;
+	}
+	return g_sMapMode.GetPlugin().SetDebugInfoMode(nMode);
+}
+
+ref CReignPlugin ３Ｄマップ_プラグイン()
+{
+	if (!g_sMapMode.IsCreated())
+	{
+		return NULL;
+	}
+	return g_sMapMode.GetPlugin();
+}
+
+ref CInstance ３Ｄマップ_インスタンス()
+{
+	return g_sMapMode.GetMap();
+}
+
+bool ３Ｄマップ_サスペンド()
+{
+	３Ｄキャラ_マウス移動停止();
+	３Ｄキャラ_目的地移動停止();
+	if (!g_sMapMode.Suspend())
+	{
+		return false;
+	}
+	３Ｄモード_設定(0);
+	g_b3DMapUpdate = false;
+	return true;
+}
+
+bool ３Ｄマップ_レジューム()
+{
+	if (!g_sMapMode.Resume())
+	{
+		return false;
+	}
+	３Ｄモード_マップ();
+	３Ｄキャラ_マウス移動停止();
+	３Ｄキャラ_目的地移動停止();
+	g_b3DMapUpdate = true;
+	return true;
+}
+
+bool ３Ｄマップ_サスペンド状態()
+{
+	ref CReignPlugin rfsPlugin = ３Ｄマップ_プラグイン();
+	if (rfsPlugin === NULL)
+	{
+		return false;
+	}
+	return rfsPlugin.IsSuspend();
+}
+
+void ３Ｄマップ_変換_位置＞座標(ref float fX, ref float fZ, int nMapX, int nMapZ)
+{
+	fX = nMapX * 4.0 + 2.0;
+	fZ = nMapZ * 4.0 + 2.0;
+}
+
+void ３Ｄマップ_変換_座標＞位置(ref int nMapX, ref int nMapZ, float fX, float fZ)
+{
+	fX = fX - 2.0;
+	fZ = fZ - 2.0;
+	nMapX = fX / 4.0;
+	nMapZ = fZ / 4.0;
+	if (fX - nMapX * 4.0 > 2.0)
+	{
+		nMapX++;
+	}
+	if (fZ - nMapZ * 4.0 > 2.0)
+	{
+		nMapZ++;
+	}
+}
+
+bool ３Ｄマップ_変換_方向＞移動値(int nDir, ref int nDirX, ref int nDirZ)
+{
+	nDirX = 0;
+	nDirZ = 0;
+	switch (nDir)
+	{
+		case 1:
+			nDirZ = 1;
+			break;
+		case 3:
+			nDirZ = -1;
+			break;
+		case 2:
+			nDirX = 1;
+			break;
+		case 4:
+			nDirX = -1;
+			break;
+		default:
+			return false;
+	}
+	return true;
+}
+
+int ３Ｄマップ_変換_移動値＞方向(int nDirX, int nDirZ)
+{
+	if (nDirX < 0)
+	{
+		return 4;
+	}
+	if (nDirX > 0)
+	{
+		return 2;
+	}
+	if (nDirZ > 0)
+	{
+		return 1;
+	}
+	if (nDirZ < 0)
+	{
+		return 3;
+	}
+	return -1;
+}
+

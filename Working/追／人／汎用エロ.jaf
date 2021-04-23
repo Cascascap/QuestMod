@@ -1,0 +1,689 @@
+void ランス／迷宮で転ける／初()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	効果音(2006);
+	全画面揺れ(2, false);
+	セリフ(2002, "");
+	'"Gyaaa!"' A;
+	ト書き();
+	'Rance suddenly toppled over.' A;
+	音楽(71, -1, -1);
+	セリフ(2060, "");
+	'"Are you alright?"' A;
+	セリフ(2005, "");
+	'"I\'m fine, fuck.' R;
+	' What the hell is a banana peel doing here?"' A;
+	セリフ(2000, "");
+	'"Hm? Huh? Huh?' R;
+	' My ' S(Ｉ名前(◆ＡＡ, ""));
+	'\'s gone?"' A;
+	'"Where\'d it go?"' A;
+	セリフ(2005, "");
+	'"Hmph, I liked that item, too..."' A;
+	セリフ(2060, "");
+	'"Pardon me."' A;
+	ト書き();
+	'Crook began patting Rance all over.' A;
+	セリフ(2005, "");
+	'"...What are you up to?"' A;
+	セリフ(2060, "");
+	'"Mmh, it appears as though that item was absorbed into your body."' A;
+	セリフ(2000, "");
+	'"What?"' A;
+	セリフ(2060, "");
+	'"Any woman you have sex with while you\'re still under the Abstinence Morurun will absorb the special item she has equipped."' A;
+	'"The same thing may have just happened to you."' A;
+	セリフ(2000, "");
+	'"Ooh, so then...' R;
+	' Even if I\'m not holding it, I still have the effects of the ' S(Ｉ名前(◆ＡＡ, ""));
+	'?"' A;
+	セリフ(2060, "");
+	'"I believe so, yes."' A;
+	セリフ(2001, "");
+	'"Gahahaha, good work, Abstinence Morurun!"' A;
+	セリフ(2060, "");
+	'"Congratulations."' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'　' R;
+	'  Rance powered up.' A;
+	ADVOFF();
+}
+
+void ランス／迷宮で転ける／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	全画面揺れ(2, false);
+	効果音(2006);
+	セリフ(2002, "");
+	'"Dwahh!"' A;
+	ト書き();
+	'Rance tripped.' A;
+	セリフ(2005, "");
+	'"Oww... Fuck, who left a banana peel lying around?!"' A;
+	セリフ(2000, "");
+	'"Ah, my ' S(Ｉ名前(◆ＡＡ, ""));
+	'\'s gone."' A;
+	'"Hmmmm? Where\'d it go...?"' A;
+	セリフ(2005, "");
+	'"Huh? I don\'t see it anywhere around..."' A;
+	セリフ(2000, "");
+	'"Oh, I get it.' R;
+	' I absorbed it."' A;
+	セリフ(2001, "");
+	'"Gahahaha, I\'m gettin\' stronger by the minute!"' A;
+	ADVOFF();
+}
+
+void 汎用エロ／香姫()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(0, 1, 1000);
+	ADVON();
+	セット表示(5511, 5250, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Rance\'s Bedroom' A;
+	枠消去();
+	立ち絵表示(1111, 1, 200);
+	セリフ(2111, "");
+	'"Pardon me, Rance."' A;
+	セリフ(2000, "");
+	'"Hey, Kou. You\'re here.' R;
+	' This way, this way."' A;
+	ト書き();
+	'Rance patted the bed.' A;
+	セリフ(2111, "");
+	'"Yes, please excuse me."' A;
+	音楽(91, -1, -1);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Kou timidly crawled into bed with Rance.' A;
+	セリフ(2111, "");
+	'"Phew, it\'s chilly tonight..."' A;
+	セリフ(2000, "");
+	'"Mm, let\'s get warm, then!"' A;
+	ト書き();
+	'Rance put his arms around Kou.' A;
+	セリフ(2113, "");
+	'"Agh, Rance, I can barely breathe..."' A;
+	セリフ(2001, "");
+	'"Gahahaha, it\'s warm, though, right?"' A;
+	セリフ(2111, "");
+	'"..."' A;
+	セリフ(2000, "");
+	'"Hm? What is it?"' A;
+	セリフ(2111, "");
+	'"Nothing, I was just remembering that my brother would do the same thing when I was smaller and scared of monsters."' A;
+	'"He would say, \'Don\'t you feel safe now?\'"' A;
+	セリフ(2000, "");
+	'"Oho?"' A;
+	'"Then it must be embarrassing to do this again."' A;
+	セリフ(2113, "");
+	'"Ahh..."' A;
+	セリフ(2000, "");
+	'"You\'re working really hard, though, Kou.' R;
+	' This is a little reward."' A;
+	セリフ(2111, "");
+	'"Yes..."' A;
+	'"Rance..."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2111, "");
+	'"Thank you for being my brother..."' A;
+	セリフ(2000, "");
+	'"Ah, don\'t worry about it."' A;
+	セリフ(2111, "");
+	'"Right."' A;
+	セリフ(2000, "");
+	'"Let\'s get to sleep."' A;
+	セリフ(2111, "");
+	'"Good night."' A;
+	ト書き();
+	'The two fell asleep.' A;
+	'Night passed in Rance Castle.' A;
+	汎用モルルン影響の表記(20, 0);
+	セリフ(2111, "");
+	'"Thank you, Rance."' A;
+	ADVOFF();
+}
+
+void 汎用エロ／カーマ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(0, 1, 1000);
+	ADVON();
+	セット表示(5511, 5250, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Rance\'s Bedroom' A;
+	'In order to trigger the effects of the Morurun curse, Rance and Karma had decided to sleep side-by-side.' A;
+	'　' R;
+	'  <knock, knock>' A;
+	音楽(94, -1, -1);
+	セリフ(2000, "");
+	'"Mhm, come in."' A;
+	セリフ(2730, "");
+	'"Excuse me...' R;
+	' Rance, I\'m here..."' A;
+	セリフ(2000, "");
+	'"Yep."' A;
+	ト書き();
+	'Karma nervously stepped into the room, clutching her pillow.' A;
+	セリフ(2000, "");
+	'"? What\'s up?"' A;
+	セリフ(2730, "");
+	'"N-No, it\'s nothing."' A;
+	セリフ(2000, "");
+	'"Hm? Okay.' R;
+	' Then let\'s get to bed."' A;
+	セリフ(2730, "");
+	'"...Mm..."' A;
+	'　' R;
+	'  ←  Fidget, fidget' A;
+	セリフ(2005, "");
+	'"What? What\'s the problem?"' A;
+	セリフ(2730, "");
+	'"Mm, no, it\'s just... ahh...' R;
+	' I\'m kind of... nervous..."' A;
+	セリフ(2000, "");
+	'"Even though you came and climbed into my bed once before?"' A;
+	セリフ(2730, "");
+	'"Going myself is different from being called here..."' A;
+	セリフ(2000, "");
+	'"Caught ya!"' A;
+	セリフ(2730, "");
+	'"Aah!"' A;
+	ト書き();
+	'Rance grabbed Karma and swept her onto the bed.' A;
+	セリフ(2730, "");
+	'"Wah, wah, wah, wawawah..."' A;
+	セリフ(2000, "");
+	'"C\'mon, I\'m tired. Let\'s get to sleep."' A;
+	セリフ(2730, "");
+	'"Ahhhhh..."' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ２(2000, "");
+	'"Zzz..."' A;
+	ト書き();
+	'Rance was soon snoring.' A;
+	セリフ(2730, "");
+	'"........."' A;
+	'"Mm..."' A;
+	ト書き();
+	'Karma inched closer to him.' A;
+	'She lay right up by his side.' A;
+	セリフ(2730, "");
+	'"Good night..."' A;
+	ト書き();
+	'She murmured.' A;
+	セリフ(2730, "");
+	'"..."' A;
+	ト書き();
+	'　' R;
+	'  <peck...>' A;
+	'And she quietly kissed his cheek.' A;
+	セリフ(2730, "");
+	'"Eheh..."' A;
+	'"........."' A;
+	ト書き();
+	'After a little while, Karma fell asleep, too.' A;
+	汎用モルルン影響の表記(25, 0);
+	セリフ(2730, "");
+	'"That was kinda exciting..."' A;
+}
+
+void 汎用エロ／オノハ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(0, 1, 1000);
+	ADVON();
+	セット表示(5511, 5250, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Rance\'s Room' A;
+	セリフ(2000, "");
+	'"Mmkay, time for bed..."' A;
+	音楽(71, -1, -1);
+	枠消去();
+	立ち絵表示(1521, 1, 200);
+	セリフ(2521, "");
+	'"........."' R;
+	'  ↑  Trembling' A;
+	'"I... can\'t!"' A;
+	セリフ(2005, "");
+	'"C\'mon..."' A;
+	セリフ(2520, "");
+	'"I can\'t... I can\'t, I can\'t, I can\'t..."' A;
+	セリフ(2000, "");
+	'"Yeah you can.' R;
+	' Get over here, already!"' A;
+	セリフ(2521, "");
+	'"Gyaaaaaaa!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance grabbed hold of Onoha and dragged her under his covers.' A;
+	セリフ(2521, "");
+	'"Augh, augh augh augh...!"' A;
+	セリフ(2000, "");
+	'"You\'re trembling like a scared little animal..."' A;
+	'"Well, I don\'t care. Let\'s sleep, let\'s sleep!"' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'　' R;
+	'     One Hour Later' A;
+	セリフ(2521, "");
+	'"Ah, aaaagh..."' A;
+	セリフ２(2000, "");
+	'"Zzz..."' A;
+	ト書き();
+	'Rance was clutching Onoha with his arms while he slept so that she couldn\'t get away.' A;
+	セリフ(2520, "");
+	'"Z... Zz, zz..."' A;
+	セリフ(2521, "");
+	'"Hahh...!"' A;
+	セリフ(2520, "");
+	'"Th... That was... close...' R;
+	' I can\'t... fall asleep..."' A;
+	'"*nod*... *nod*... zz, zz, zz, zz..."' A;
+	セリフ(2521, "");
+	'"Hahh...!"' A;
+	セリフ(2520, "");
+	'"U-Ugh... I can\'t take this..."' A;
+	'"........."' A;
+	'"Ngh..."' A;
+	'"So... warm..."' A;
+	ト書き();
+	'Onoha slowly rubbed her cheek against Rance\'s chest as she lay in his arms.' A;
+	セリフ(2520, "");
+	'"This... kinda..."' A;
+	'"Takes me back..."' A;
+	'"It\'s not... scary... if he\'s sleeping..."' A;
+	ト書き();
+	'Onoha stole a glance at Rance\'s sleeping face.' A;
+	セリフ(2520, "");
+	'"Mm, I\'m fine... I\'m fine..."' A;
+	'"*sniff*... *sniff*...' R;
+	' He smells... nostalgic... *sniff*..."' A;
+	'"*lick*... *lick*...' R;
+	' He tastes... nostalgic... too... *lick*..."' A;
+	ト書き();
+	'Onoha sighed, satisfied.' A;
+	セリフ(2520, "");
+	'"........."' A;
+	'"Ngh... *rub* *rub*..."' A;
+	ト書き();
+	'Onoha relaxed around Rance, if only for one night.' A;
+	汎用モルルン影響の表記(62, 0);
+	セリフ(2520, "");
+	'"So... warm..."' A;
+	ADVOFF();
+}
+
+void 汎用エロ／リセット()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(0, 1, 1000);
+	ADVON();
+	セット表示(5511, 5250, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Rance\'s Room' A;
+	セリフ(2000, "");
+	'"Well, time for bed."' A;
+	音楽(93, -1, -1);
+	枠消去();
+	立ち絵表示(1230, 1, 200);
+	セリフ(2231, "");
+	'"Yaaah!"' A;
+	ト書き();
+	'Reset suddenly burst into the room, pillow in hand.' A;
+	セリフ(2230, "");
+	'"Morurun♪ Morurun♪"' A;
+	効果音(2011);
+	全画面揺れ(1, false);
+	ト書き();
+	'　' R;
+	'  <whap>' A;
+	セリフ(2234, "");
+	'"Augh!"' A;
+	ト書き();
+	'Rance laid an extremely gentle strike upon Reset\'s head.' A;
+	セリフ(2000, "");
+	'"Hey, what are you doing here?"' A;
+	セリフ(2233, "");
+	'"Huhhh? I can sleep with you tonight, can\'t I, Daddy?"' A;
+	セリフ(2230, "");
+	'"I have to trigger the side effects of the Morurun, don\'t I...?"' A;
+	セリフ(2005, "");
+	'"........."' A;
+	セリフ(2233, "");
+	'"...Can\'t I?"' A;
+	セリフ(2005, "");
+	'"Hmmmmmm..."' A;
+	セリフ(2000, "");
+	'"Tch, okay, just for today..."' A;
+	ト書き();
+	'　' R;
+	'  <pat, pat>' A;
+	'Rance scooted over on the bed.' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2231, "");
+	'"Yaaay!"' A;
+	ト書き();
+	'Reset swiftly dove into it.' A;
+	セリフ(2230, "");
+	'"Mmkay!"' A;
+	ト書き();
+	'Her head popped out from under the covers.' A;
+	セリフ(2230, "");
+	'"G\'night, Daddy!"' A;
+	セリフ(2000, "");
+	'"Mhm, get to sleep."' A;
+	セリフ(2230, "");
+	'"Eheheh..."' A;
+	ト書き();
+	'　' R;
+	'     Thirty Minutes Later' A;
+	セリフ(2230, "");
+	'"And then, and then, a nice lady from the village gave me thiiis many mandarins!"' A;
+	ト書き();
+	'Reset was still wide awake. She was telling Rance about her adventures as best as she could.' A;
+	セリフ(2000, "");
+	'"Oh yeah?"' A;
+	ト書き();
+	'Rance had his chin in his hand, listening intently.' A;
+	セリフ(2230, "");
+	'"And then, y\'know what, Mom was suuuper mad..."' A;
+	セリフ(2000, "");
+	'"Mhm, mhm..."' A;
+	セリフ(2230, "");
+	'"And then, and then, Miss Sakura was..."' A;
+	セリフ(2000, "");
+	'"Huh..."' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'Reset\'s chatting continued deep into the night.' R;
+	'And...' A;
+	セリフ２(2000, "");
+	'"Zzz, zzz, zzz..."' A;
+	セリフ２(2230, "");
+	'"Zzz, zzz, zzz."' A;
+	汎用モルルン影響の表記(72, 0);
+	セリフ(2230, "");
+	'"Heheheh..."' A;
+	ADVOFF();
+}
+
+void 汎用エロ／ロッキー()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"You\'re on the floor, okay? You got it?' R;
+	' You\'re sleeping on the floor."' A;
+	セリフ(2964, "");
+	'"Right! I got it!"' A;
+	ト書き();
+	'Rocky lay down on the floorboards without a pillow or blanket, just like he\'d been told.' A;
+	セリフ(2000, "");
+	'"Alright, I\'m goin\' to bed, then."' A;
+	ト書き();
+	'Rance crawled under his covers.' A;
+	セリフ(2000, "");
+	'"Phew..."' A;
+	セリフ(2964, "");
+	'"..."' A;
+	'"This reminds me..."' A;
+	セリフ(2000, "");
+	'"Huh?"' A;
+	セリフ(2964, "");
+	'"Of those days in Zeth."' A;
+	'"Every day was really tough, but it was a lot of fun, too..."' A;
+	'"Ahh... I\'m so happy...' R;
+	' that I get to be together with ya like this again, Master Rance."' A;
+	セリフ(2000, "");
+	'"Oh? I see, I see."' A;
+	セリフ(2964, "");
+	'"Yep!"' A;
+	セリフ(2000, "");
+	'"I\'m going to sleep.' R;
+	' And I\'ll never forgive anyone who gets in my way."' A;
+	セリフ(2005, "");
+	'"You talk again and I\'ll kill you."' A;
+	セリフ(2964, "");
+	'"I-I\'m sorry!"' A;
+	'"A-Ahh, it\'s so cold...' R;
+	' But... I really am happy to be by yer side, Master Rance."' A;
+	セリフ(2002, "");
+	'"You talked! Now you die!"' A;
+	セリフ(2964, "");
+	'"Gyaaaaaa!' R;
+	' That one doesn\'t count! It doesn\'t count!"' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'The night passed in Rance Castle.' A;
+	汎用モルルン影響の表記(21, 0);
+	セリフ(2964, "");
+	'"I\'ll always stick by Master Rance."' A;
+}
+
+void 汎用エロ／アレキサンダー()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2946, "");
+	'"I heard sleeping with you makes people stronger.' R;
+	' That sounds convenient."' A;
+	セリフ(2005, "");
+	'"I fear my power..."' A;
+	セリフ(2946, "");
+	'"Let\'s sleep, then."' A;
+	ト書き();
+	'Alexander crawled right under the covers with Rance.' A;
+	セリフ(2002, "");
+	'"Hey! You get the floor! The floor!"' A;
+	セリフ(2946, "");
+	'"Hm, really? Well, if I must."' A;
+	セリフ(2005, "");
+	'"I don\'t even want to sleep in the same room as a dude!"' A;
+	セリフ(2946, "");
+	'"Well, I\'m grateful.' R;
+	' I won\'t bother you."' A;
+	セリフ(2000, "");
+	'"Alright, don\'t make any noise, then.' R;
+	' I won\'t take any snoring!"' A;
+	セリフ(2946, "");
+	'"Understood."' A;
+	セリフ(2005, "");
+	'"And don\'t turn over, either!' R;
+	' I don\'t wanna hear it."' A;
+	セリフ(2946, "");
+	'"I\'ll do my best."' A;
+	セリフ(2000, "");
+	'"I don\'t want to breathe the same air as you either.' R;
+	' Don\'t inhale any oxygen."' A;
+	セリフ(2946, "");
+	'"Well...' R;
+	' I\'d die..."' A;
+	セリフ(2000, "");
+	'"If you don\'t like it, leave."' A;
+	セリフ(2946, "");
+	'"Hrm... oh well.' R;
+	' I\'ll do everything I can..."' A;
+	セリフ(2001, "");
+	'"Good.' R;
+	' Do your best not to die.' R;
+	' Gahahaha!"' A;
+	セリフ(2000, "");
+	'"Then, I guess I\'m going to sleep."' A;
+	'"........."' A;
+	セリフ２(2000, "");
+	'"Ghgah..."' A;
+	ト書き();
+	'Rance instantly began snoring.' A;
+	セリフ(2946, "");
+	'"He\'s a very skilled sleeper...' R;
+	' I knew he wasn\'t anyone ordinary..."' A;
+	'"Mm, I\'ll sleep as well..."' A;
+	'"........."' A;
+	セリフ２(2946, "");
+	'"Ghgah..."' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'Alexander started snoring as well.' A;
+	汎用モルルン影響の表記(49, 0);
+	セリフ(2946, "");
+	'"I wonder if I\'ve gotten stronger..."' A;
+	ADVOFF();
+}
+
+void 汎用エロ／バーナード()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"Hey."' A;
+	セリフ(2963, "");
+	'"Yes?"' A;
+	ト書き();
+	'Rance pointed down.' A;
+	セリフ(2000, "");
+	'"Floor."' A;
+	セリフ(2963, "");
+	'"........."' A;
+	ト書き();
+	'Bernard nodded and slowly laid himself down.' A;
+	セリフ(2000, "");
+	'"Mm, good."' A;
+	ト書き();
+	'Rance turned his back to Bernard and crawled into bed.' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ２(2000, "");
+	'"Zzz, zzz..."' A;
+	セリフ(2963, "");
+	'"........."' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'The night passed.' A;
+	ト書き();
+	'　' R;
+	'  ...  ...  ...' A;
+	汎用モルルン影響の表記(16, 0);
+	セリフ(2963, "");
+	'"........."' A;
+	ADVOFF();
+}
+
+void 汎用エロ／松クマ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	ADVON();
+	セリフ(2000, "");
+	'"Oh, fine...' R;
+	' I\'m sleeping in the bed, so you take the floor."' A;
+	セリフ(2965, "");
+	'"........."' A;
+	ト書き();
+	'Bear slowly climbed into the bed.' A;
+	セリフ(2005, "");
+	'"Ah, hey, get outta there!"' A;
+	ト書き();
+	'Bear got onto Rance\'s stomach and yelled:' A;
+	セリフ(2965, "");
+	'"It\'s morning!"' A;
+	セリフ(2000, "");
+	'"It\'s nighttime, you ass!"' A;
+	セリフ(2965, "");
+	'"........."' A;
+	'"For realsies?"' A;
+	セリフ(2005, "");
+	'"For real."' A;
+	セリフ(2000, "");
+	'"Just get to bed already.' R;
+	' I\'m sleepy, so I\'m sleeping."' A;
+	セリフ(2965, "");
+	'"YEAH!"' A;
+	セリフ(2002, "");
+	'"SHUT UP!"' A;
+	セリフ(2005, "");
+	'"I\'m gonna grill you and eat you if you keep yelling."' A;
+	セリフ(2965, "");
+	'"........."' A;
+	ト書き();
+	'Bear slowly crawled under Rance\'s covers.' A;
+	セリフ(2000, "");
+	'"Ah, hey..."' A;
+	セリフ(2005, "");
+	'"Mm, it\'s warm..."' A;
+	セリフ(2965, "");
+	'"........."' A;
+	セリフ２(2965, "");
+	'"ZZZ..."' A;
+	セリフ(2000, "");
+	'"Oh, he\'s asleep..."' A;
+	'"Oh, whatever. I\'m sleeping, too."' A;
+	'"........."' A;
+	セリフ(2016, "");
+	'"He\'s kinda soft..."' A;
+	セリフ２(2000, "");
+	'"...Zzz..."' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'Rance fell asleep with Bear in his arms.' A;
+	汎用モルルン影響の表記(53, 0);
+	セリフ(2965, "");
+	'"Fwahhh."' A;
+	ADVOFF();
+}
+

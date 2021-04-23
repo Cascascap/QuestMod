@@ -1,0 +1,176 @@
+void T_Anime::setTime(int nTime)
+{
+	this.m_nTime = nTime > 0 ? nTime : 100;
+}
+
+void T_Anime::setLoop(bool bLoop)
+{
+	this.m_bLoop = bLoop;
+}
+
+T_Anime::T_Anime()
+{
+	this.clear();
+}
+
+T_Anime::~T_Anime()
+{
+	this.delete();
+}
+
+bool T_Anime::create(int nCgNo, int nCount)
+{
+	this.delete();
+	if (nCount <= 0)
+	{
+		return false;
+	}
+	this.m_aspAnime.Alloc(nCount);
+	int i = 0;
+	for (i = 0; i < nCount; ++i)
+	{
+		if (this.m_aspAnime[i].setCg(nCgNo + i) <= 0)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool T_Anime::createFromOne(int nCgNo, int nCount)
+{
+	this.delete();
+	if (!‚b‚f_‚ ‚è(nCgNo) || nCount <= 0)
+	{
+		return false;
+	}
+	this.m_aspAnime.Alloc(nCount);
+	‚b‚f_•ªŠ„_‰¡(nCgNo, this.m_aspAnime);
+	return true;
+}
+
+void T_Anime::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspAnime.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspAnime[i].delete();
+	}
+	if (!this.m_aspAnime.Empty())
+	{
+		this.m_aspAnime.Free();
+	}
+	this.clear();
+}
+
+void T_Anime::clear()
+{
+	this.m_nTime = 100;
+	this.m_bLoop = false;
+	this.m_nIndex = -1;
+}
+
+void T_Anime::start(bool bUpdate)
+{
+	int cnt = this.m_aspAnime.Numof();
+	if (cnt <= 0)
+	{
+		return;
+	}
+	this.end(false);
+	this.m_aspAnime[0].setShow(1);
+	this.m_nIndex = 0;
+	if (bUpdate)
+	{
+		UPDATE(true);
+	}
+	this.m_sTimer.Reset();
+}
+
+void T_Anime::end(bool bUpdate)
+{
+	int i = 0;
+	int cnt = this.m_aspAnime.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspAnime[i].setShow(0);
+	}
+	this.m_nIndex = -1;
+	if (bUpdate)
+	{
+		UPDATE(true);
+	}
+}
+
+int T_Anime::update(bool bUpdate)
+{
+	if (this.m_nIndex < 0)
+	{
+		goto label0;
+	}
+	if (this.m_sTimer.Get() < this.m_nTime)
+	{
+		goto label0;
+	}
+	int idx = this.m_nIndex + 1;
+	if (idx >= this.m_aspAnime.Numof())
+	{
+		if (!this.m_bLoop)
+		{
+			this.end(bUpdate);
+			return -1;
+		}
+		idx = 0;
+	}
+	this.m_aspAnime[idx].setShow(1);
+	this.m_aspAnime[this.m_nIndex].setShow(0);
+	this.m_nIndex = idx;
+	this.m_sTimer.Reset();
+label0:
+	if (bUpdate)
+	{
+		UPDATE(true);
+	}
+	return this.m_nIndex;
+}
+
+void T_Anime::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_aspAnime.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspAnime[i].setPos(nX, nY);
+	}
+}
+
+void T_Anime::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspAnime.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspAnime[i].setZ(nZ);
+	}
+}
+
+void T_Anime::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_aspAnime.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspAnime[i].setBlendRate(nBlendRate);
+	}
+}
+
+ref T_Sprite T_Anime::getSp(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspAnime.Numof())
+	{
+		return NULL;
+	}
+	return this.m_aspAnime[nIndex];
+}
+

@@ -1,0 +1,712 @@
+SYS_選択_result_t CMenuView::_GetResult()
+{
+	return this._m_result;
+}
+
+CMenuView::CMenuView()
+{
+	this._m_bCreate = true;
+}
+
+bool CMenuView::_IsCreate()
+{
+	return this._m_bCreate;
+}
+
+void CMenuView::_Release()
+{
+	if (!this._m_bCreate)
+	{
+		return;
+	}
+	SYS_選択_result_t _temp_result;
+	this._m_result = _temp_result;
+	this._m_ox = 0;
+	this._m_oy = 0;
+	this._m_oz = 0;
+	this._m_total_w = 0;
+	this._m_total_h = 0;
+	this._ClearItem();
+	this._m_sel_item = 0;
+	this._m_click = false;
+	this._m_cancel_click = false;
+	this._m_move = 0;
+	this._m_exit = false;
+	sact_text_metrics_t _temp_tm;
+	this._m_tm1 = _temp_tm;
+	this._m_tm2 = _temp_tm;
+	this._m_tm3 = _temp_tm;
+	this.m_fBoldWeight = 0.0;
+	this.m_fSelectedBoldWeight = 0.0;
+	this.m_fUnselectableBoldWeight = 0.0;
+	this.m_nCharSpace = 0;
+	this.m_nSelectedCharSpace = 0;
+	this.m_nUnselectableCharSpace = 0;
+	this._m_bCreate = false;
+}
+
+void CMenuView::_Clear()
+{
+	this._m_result.fnc = NULL;
+	this._m_result.値 = 0;
+}
+
+void CMenuView::_Execute(bool _キャンセルあり, int _キャンセル値)
+{
+	this._m_bCreate = true;
+	this._Open();
+	this._Loop(_キャンセルあり, _キャンセル値);
+	this._Close();
+}
+
+void CMenuView::_Open()
+{
+	this._Clear();
+	if (_選択肢.Empty())
+	{
+		ERROR("選択肢が登録されていない", 0);
+		選択肢(0, "キャンセル", 0);
+	}
+	string SaveCommentText = "選択：" + _選択肢[0].テキスト;
+	SYS_デフォルトセーブコメント設定(SaveCommentText);
+	if (g_bBeginSelect)
+	{
+		if (SYS_セーブファイル存在(-2))
+		{
+			SYS_追加セーブ(-2, _ゲーム時間, SaveCommentText);
+		}
+		if (SYS_セーブファイル存在(-3))
+		{
+			SYS_追加セーブ(-3, _ゲーム時間, SaveCommentText);
+		}
+	}
+	this._SetTextMetrics();
+	this._CalcAreaMetrics();
+	this._CreateFrame();
+	this._CreateItems(_選択エリア[_選択枠]);
+	this._ShowFrame();
+	this.CreateCGCursor();
+	this._m_sel_item = -2147483648;
+	this._m_click = false;
+	this._m_cancel_click = false;
+	this._m_move = 1;
+	this._m_exit = false;
+	_g_MouseWheel._Clear();
+	this.m_LButtonClick.Init(1, true);
+	this.m_EnterKeyClick.Init(13, true);
+	this.m_RButtonClick.Init(2, true);
+	this.m_SpaceKeyClick.Init(32, true);
+	this.m_EscapeKeyClick.Init(27, true);
+	this.m_PageUpKeyClick.Init(33, true);
+	this.m_HomeKeyClick.Init(36, true);
+	this.m_UpKeyRepeat.Init(38, true);
+	this.m_DownKeyRepeat.Init(40, true);
+}
+
+void CMenuView::_Close()
+{
+	this._ClearItem();
+	this.m_CGCursorSprite.Release();
+	this.m_BackSprite.Release();
+	SYS_デフォルトセーブコメント更新フラグセット();
+	_g_MouseWheel._Clear();
+}
+
+void CMenuView::SetShow(bool bShow)
+{
+	if (!this._m_bCreate)
+	{
+		return;
+	}
+	this.m_BackSprite.SetShow(bShow);
+	int nItem = 0;
+	for (nItem = 0; nItem < this._m_item.Numof(); ++nItem)
+	{
+		if (bShow)
+		{
+			this._m_item[nItem].SetSelectedState(false);
+		}
+		else
+		{
+			this._m_item[nItem].SetShow(false);
+		}
+	}
+}
+
+void CMenuView::_Loop(bool _キャンセルあり, int _キャンセル値)
+{
+	while (!this._m_exit)
+	{
+		this._Update(_キャンセルあり, _キャンセル値);
+	}
+}
+
+void CMenuView::_Update(bool _キャンセルあり, int _キャンセル値)
+{
+	_g_MouseCursorPos._Update();
+	_g_MouseWheel._Update(true);
+	int s = this._m_sel_item;
+	if (_g_MouseCursorPos._IsMoved())
+	{
+		s = this._ComputeCurSelByMouse();
+	}
+	else
+	{
+		s = this._ComputeCurSelByKey();
+	}
+	this._UpdateItem(s);
+	_g_SystemButtonView._Update();
+	sys_btn_fnc_t _fn = this._m_result.fnc;
+	this._m_result.fnc = _g_SystemButtonView._GetSelectedFunc();
+	if (this._m_result.fnc != NULL)
+	{
+		s = -2147483648;
+	}
+	if (this._m_result.fnc != _fn && this._m_result.fnc != NULL)
+	{
+		_g_MsgKeyWait._PlaySndCursor();
+	}
+	if (s != this._m_sel_item && s != -2147483648)
+	{
+		if (this._m_move == 1)
+		{
+			if (_選択エリア[_選択枠].音移動１)
+			{
+				システム効果音(_選択エリア[_選択枠].音移動１);
+			}
+			if (_選択エリア[_選択枠].音移動２)
+			{
+				this._m_move = 2;
+			}
+		}
+		else
+		{
+			if (_選択エリア[_選択枠].音移動２)
+			{
+				システム効果音(_選択エリア[_選択枠].音移動２);
+			}
+			if (_選択エリア[_選択枠].音移動１)
+			{
+				this._m_move = 1;
+			}
+		}
+	}
+	UpdateView(true);
+	if (SYS_ホイールフォア即確認())
+	{
+		_g_MouseWheel._Clear();
+		this._m_result.fnc = &SYS_RunCommandMouseWheelForward;
+		this._m_exit = true;
+		return;
+	}
+	if (this.m_PageUpKeyClick.IsClick(-2147483648))
+	{
+		this._m_result.fnc = &Ｓ＿バックログ;
+		this._m_exit = true;
+		return;
+	}
+	if (this.m_HomeKeyClick.IsClick(-2147483648))
+	{
+		this._m_result.fnc = &Ｓ＿バックシーン;
+		this._m_exit = true;
+		return;
+	}
+	if (this.m_EscapeKeyClick.IsClick(-2147483648))
+	{
+		this._m_result.fnc = &Ｓ＿コンフィグ;
+		this._m_exit = true;
+		return;
+	}
+	this._m_sel_item = s;
+	if (this.m_LButtonClick.IsClick(s) || this.m_EnterKeyClick.IsClick(s))
+	{
+		if (this._m_result.fnc != NULL)
+		{
+			_g_MsgKeyWait._PlaySndClick();
+			this._SetResultValue();
+			this._m_exit = true;
+			return;
+		}
+		if (s != -2147483648)
+		{
+			if (_選択エリア[_選択枠].音決定)
+			{
+				システム効果音(_選択エリア[_選択枠].音決定);
+			}
+			this._SetResultValue();
+			this._m_exit = true;
+			return;
+		}
+		if (_選択エリア[_選択枠].音無効)
+		{
+			システム効果音(_選択エリア[_選択枠].音無効);
+		}
+	}
+	if (this.m_RButtonClick.IsClick(-2147483648) || this.m_SpaceKeyClick.IsClick(-2147483648))
+	{
+		if (_キャンセルあり)
+		{
+			this._m_result.値 = _キャンセル値;
+			this._m_exit = true;
+			return;
+		}
+		else if (_g_menu_rbutton_callback_fnc != NULL)
+		{
+			_g_menu_rbutton_callback_fnc();
+		}
+	}
+	if (system.IsDebugMode())
+	{
+		int i = 0;
+		for (i = 0; i < this.m_SelectClick.Numof(); ++i)
+		{
+			if (this.m_SelectClick[i].IsClick(-2147483648))
+			{
+				this._m_sel_item = i;
+				this._SetResultValue();
+				this._m_exit = true;
+				return;
+			}
+		}
+	}
+}
+
+void CMenuView::_SetResultValue()
+{
+	if (this._m_sel_item != -2147483648)
+	{
+		this._m_result.値 = _選択肢[this._m_sel_item].番号;
+	}
+}
+
+void CMenuView::CreateCGCursor()
+{
+	ref 選択エリア_t MenuArea = _選択エリア[_選択枠];
+	if (MenuArea.CursorCG.Empty())
+	{
+		return;
+	}
+	this.m_CGCursorSprite.SetCG(MenuArea.CursorCG);
+	this.m_CGCursorSprite.SetPos(MenuArea.nCursorOffsetX, MenuArea.nCursorOffsetY);
+	this.m_CGCursorSprite.SetZ(this._m_oz + 2 + MenuArea.nCursorOffsetZ);
+	this.m_CGCursorSprite.SetShow(false);
+}
+
+void CMenuView::_CreateItems(ref 選択エリア_t _area)
+{
+	this._m_item.Free();
+	this._m_item.Alloc(_選択肢.Numof());
+	int _i = 0;
+	for (_i = 0; _i < _選択肢.Numof(); ++_i)
+	{
+		this._m_item[_i]._Create(_選択肢[_i], this._m_tm1, this._m_tm2, this._m_tm3, this.m_fBoldWeight, this.m_fSelectedBoldWeight, this.m_fUnselectableBoldWeight, this.m_nCharSpace, this.m_nSelectedCharSpace, this.m_nUnselectableCharSpace, this._m_oz + 2, (this._m_ox + _area.余白左) - 1, (this._m_oy + _area.余白上 + _i * (_area.文字サイズ + _area.行間)) - 1, this._m_total_w);
+	}
+	if (system.IsDebugMode())
+	{
+		this.m_SelectClick.Alloc(_選択肢.Numof());
+		int i = 0;
+		for (i = 0; i < this.m_SelectClick.Numof(); ++i)
+		{
+			if (_選択肢[i].キーコード == 0)
+			{
+				continue;
+			}
+			this.m_SelectClick[i].Init(_選択肢[i].キーコード, true);
+		}
+	}
+}
+
+void CMenuView::_ClearItem()
+{
+	this._m_item.Free();
+	this.m_SelectClick.Free();
+}
+
+void CMenuView::_CalcAreaMetrics()
+{
+	this._CalcAreaSize();
+	this._CalcAreaPos();
+	this._SetAreaZ();
+}
+
+int CMenuView::CalcMaxWidth(ref sact_text_metrics_t tm, float Weight)
+{
+	CASCharSpriteProperty Property;
+	Property = SYS_TransCharSpriteProperty(tm);
+	Property.SetBoldWeight(Weight);
+	Property.SetProperty();
+	int MaxSelectWidth = 0;
+	int SelectIndex = 0;
+	for (SelectIndex = 0; SelectIndex < _選択肢.Numof(); ++SelectIndex)
+	{
+		ref string SelectText = _選択肢[SelectIndex].テキスト;
+		int SelectWidth = 0;
+		int TextIndex = 0;
+		for (TextIndex = 0; TextIndex < SelectText.Length(); ++TextIndex)
+		{
+			string Char = SelectText.GetPart(TextIndex, 1);
+			int CharWidth = Property.GetFontWidth(Char);
+			SelectWidth += CharWidth;
+			if (TextIndex < SelectText.Length() - 1)
+			{
+				SelectWidth += this.m_nCharSpace;
+			}
+		}
+		if (MaxSelectWidth < SelectWidth)
+		{
+			MaxSelectWidth = SelectWidth;
+		}
+	}
+	return MaxSelectWidth;
+}
+
+void CMenuView::_CalcAreaSize()
+{
+	ref 選択エリア_t SelectArea = _選択エリア[_選択枠];
+	if (SelectArea.幅フラグ == 1)
+	{
+		int MaxSelectWidth1 = this.CalcMaxWidth(this._m_tm1, this.m_fBoldWeight);
+		int MaxSelectWidth2 = this.CalcMaxWidth(this._m_tm2, this.m_fSelectedBoldWeight);
+		int MaxSelectWidth3 = this.CalcMaxWidth(this._m_tm3, this.m_fUnselectableBoldWeight);
+		int MaxSelectWidth = Math.Max(Math.Max(MaxSelectWidth1, MaxSelectWidth2), MaxSelectWidth3);
+		this._m_total_w = MaxSelectWidth + SelectArea.余白左 + SelectArea.余白右;
+	}
+	else
+	{
+		this._m_total_w = SelectArea.幅;
+	}
+	if (SelectArea.高フラグ == 1)
+	{
+		this._m_total_h = _選択肢.Numof() * SelectArea.文字サイズ + SelectArea.余白上 + SelectArea.余白下 + SelectArea.行間 * (_選択肢.Numof() - 1);
+	}
+	else
+	{
+		this._m_total_h = SelectArea.高;
+	}
+}
+
+void CMenuView::_CalcAreaPos()
+{
+	switch (_選択エリア[_選択枠].座標フラグ)
+	{
+		case 1:
+			this._SetAreaPos左上();
+			break;
+		case 2:
+			this._SetAreaPos中上();
+			break;
+		case 3:
+			this._SetAreaPos右上();
+			break;
+		case 4:
+			this._SetAreaPos左中();
+			break;
+		case 5:
+			this._SetAreaPos中中();
+			break;
+		case 6:
+			this._SetAreaPos右中();
+			break;
+		case 7:
+			this._SetAreaPos左下();
+			break;
+		case 8:
+			this._SetAreaPos中下();
+			break;
+		case 9:
+			this._SetAreaPos右下();
+			break;
+	}
+}
+
+void CMenuView::_SetAreaPos左上()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ;
+	this._m_oy = _選択エリア[_選択枠].Ｙ;
+}
+
+void CMenuView::_SetAreaPos中上()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ - this._m_total_w / 2;
+	this._m_oy = _選択エリア[_選択枠].Ｙ;
+}
+
+void CMenuView::_SetAreaPos右上()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ - this._m_total_w;
+	this._m_oy = _選択エリア[_選択枠].Ｙ;
+}
+
+void CMenuView::_SetAreaPos左中()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ;
+	this._m_oy = _選択エリア[_選択枠].Ｙ - this._m_total_h / 2;
+}
+
+void CMenuView::_SetAreaPos中中()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ - this._m_total_w / 2;
+	this._m_oy = _選択エリア[_選択枠].Ｙ - this._m_total_h / 2;
+}
+
+void CMenuView::_SetAreaPos右中()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ - this._m_total_w;
+	this._m_oy = _選択エリア[_選択枠].Ｙ - this._m_total_h / 2;
+}
+
+void CMenuView::_SetAreaPos左下()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ;
+	this._m_oy = _選択エリア[_選択枠].Ｙ - this._m_total_h;
+}
+
+void CMenuView::_SetAreaPos中下()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ - this._m_total_w / 2;
+	this._m_oy = _選択エリア[_選択枠].Ｙ - this._m_total_h;
+}
+
+void CMenuView::_SetAreaPos右下()
+{
+	this._m_ox = _選択エリア[_選択枠].Ｘ - this._m_total_w;
+	this._m_oy = _選択エリア[_選択枠].Ｙ - this._m_total_h;
+}
+
+void CMenuView::_SetAreaZ()
+{
+	this._m_oz = _選択エリア[_選択枠].Ｚ;
+	if (this._m_oz == 0)
+	{
+		this._m_oz = 10000;
+	}
+}
+
+void CMenuView::_CreateFrame()
+{
+	string CGName = _選択エリア[_選択枠].ＣＧ名;
+	if (!CGName.Empty())
+	{
+		this.m_BackSprite.SetType(0);
+		this.m_BackSprite.GetCGSprite().SetCG(CGName);
+	}
+	else
+	{
+		this.m_BackSprite.SetType(1);
+		ref CASConstructionSprite ConstructionSprite = this.m_BackSprite.GetConstructionSprite();
+		int nWidth = this._m_total_w;
+		int nHeight = this._m_total_h;
+		int nR = _選択エリア[_選択枠].塗Ｒ;
+		int nG = _選択エリア[_選択枠].塗Ｇ;
+		int nB = _選択エリア[_選択枠].塗Ｂ;
+		int nA = _選択エリア[_選択枠].塗率;
+		int nFrameR = _選択エリア[_選択枠].枠Ｒ;
+		int nFrameG = _選択エリア[_選択枠].枠Ｇ;
+		int nFrameB = _選択エリア[_選択枠].枠Ｂ;
+		ConstructionSprite.AddCreate(nWidth, nHeight);
+		switch (_選択エリア[_選択枠].枠タイプ)
+		{
+			case 0:
+				ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, nR, nG, nB, nA);
+				break;
+			case 1:
+				ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 0, 0, 0, 96);
+				ConstructionSprite.AddFillWithAlpha(1, 1, nWidth - 2, nHeight - 2, nFrameR, nFrameG, nFrameB, 255);
+				ConstructionSprite.AddFillWithAlpha(2, 2, nWidth - 4, nHeight - 4, nR, nG, nB, nA);
+				break;
+			case 2:
+				ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 0, 0, 0, 96);
+				ConstructionSprite.AddFillWithAlpha(1, 1, nWidth - 2, nHeight - 2, nFrameR, nFrameG, nFrameB, 255);
+				ConstructionSprite.AddFillWithAlpha(4, 4, nWidth - 8, nHeight - 8, nR, nG, nB, nA);
+				break;
+			case 3:
+				ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 0, 0, 0, 96);
+				ConstructionSprite.AddFillWithAlpha(1, 1, nWidth - 2, nHeight - 2, nFrameR, nFrameG, nFrameB, 255);
+				ConstructionSprite.AddFillWithAlpha(2, 2, nWidth - 4, nHeight - 4, nR, nG, nB, nA);
+				ConstructionSprite.AddFillWithAlpha(3, 3, nWidth - 6, nHeight - 6, nFrameR, nFrameG, nFrameB, 255);
+				ConstructionSprite.AddFillWithAlpha(4, 4, nWidth - 8, nHeight - 8, nR, nG, nB, nA);
+				break;
+			case 4:
+				ConstructionSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 0, 0, 0, 96);
+				ConstructionSprite.AddFillWithAlpha(1, 1, nWidth - 2, nHeight - 2, nFrameR, nFrameG, nFrameB, 255);
+				ConstructionSprite.AddFillWithAlpha(2, 2, nWidth - 4, nHeight - 4, nR, nG, nB, nA);
+				ConstructionSprite.AddFillWithAlpha(3, 3, nWidth - 6, nHeight - 6, nFrameR, nFrameG, nFrameB, 255);
+				ConstructionSprite.AddFillWithAlpha(5, 5, nWidth - 10, nHeight - 10, nR, nG, nB, nA);
+				ConstructionSprite.AddFillWithAlpha(6, 6, nWidth - 12, nHeight - 12, nR, nG, nB, nA);
+				ConstructionSprite.AddFillWithAlpha(7, 7, nWidth - 14, nHeight - 14, nR, nG, nB, nA);
+				break;
+		}
+		ConstructionSprite.Build();
+	}
+}
+
+void CMenuView::_SetTextMetrics()
+{
+	int sr = _選択エリア[_選択枠].選択文字Ｒ;
+	int sg = _選択エリア[_選択枠].選択文字Ｇ;
+	int sb = _選択エリア[_選択枠].選択文字Ｂ;
+	if (sr == -1)
+	{
+		sr = _選択エリア[_選択枠]._選択可能字.文字Ｒ;
+	}
+	if (sg == -1)
+	{
+		sr = _選択エリア[_選択枠]._選択可能字.文字Ｇ;
+	}
+	if (sb == -1)
+	{
+		sr = _選択エリア[_選択枠]._選択可能字.文字Ｂ;
+	}
+	this._m_tm1.nColorR = _選択エリア[_選択枠]._選択可能字.文字Ｒ;
+	this._m_tm1.nColorG = _選択エリア[_選択枠]._選択可能字.文字Ｇ;
+	this._m_tm1.nColorB = _選択エリア[_選択枠]._選択可能字.文字Ｂ;
+	this._m_tm1.nSize = _選択エリア[_選択枠].文字サイズ;
+	this._m_tm1.nWeight = 400;
+	this._m_tm1.nFace = _選択エリア[_選択枠]._選択可能字.フォント;
+	this._m_tm1.nShadowPixelL = _選択エリア[_選択枠]._選択可能字.文字飾左;
+	this._m_tm1.nShadowPixelU = _選択エリア[_選択枠]._選択可能字.文字飾上;
+	this._m_tm1.nShadowPixelR = _選択エリア[_選択枠]._選択可能字.文字飾右;
+	this._m_tm1.nShadowPixelD = _選択エリア[_選択枠]._選択可能字.文字飾下;
+	this._m_tm1.nShadowColorR = _選択エリア[_選択枠]._選択可能字.文字飾Ｒ;
+	this._m_tm1.nShadowColorG = _選択エリア[_選択枠]._選択可能字.文字飾Ｇ;
+	this._m_tm1.nShadowColorB = _選択エリア[_選択枠]._選択可能字.文字飾Ｂ;
+	this._m_tm2.nColorR = sr;
+	this._m_tm2.nColorG = sg;
+	this._m_tm2.nColorB = sb;
+	this._m_tm2.nSize = _選択エリア[_選択枠].文字サイズ;
+	this._m_tm2.nWeight = 400;
+	this._m_tm2.nFace = _選択エリア[_選択枠]._選択可能字.フォント;
+	this._m_tm2.nShadowPixelL = _選択エリア[_選択枠].選択文字飾左;
+	this._m_tm2.nShadowPixelU = _選択エリア[_選択枠].選択文字飾上;
+	this._m_tm2.nShadowPixelR = _選択エリア[_選択枠].選択文字飾右;
+	this._m_tm2.nShadowPixelD = _選択エリア[_選択枠].選択文字飾下;
+	this._m_tm2.nShadowColorR = _選択エリア[_選択枠].選択文字飾Ｒ;
+	this._m_tm2.nShadowColorG = _選択エリア[_選択枠].選択文字飾Ｇ;
+	this._m_tm2.nShadowColorB = _選択エリア[_選択枠].選択文字飾Ｂ;
+	this._m_tm3.nColorR = _選択エリア[_選択枠]._選択不可字.文字Ｒ;
+	this._m_tm3.nColorG = _選択エリア[_選択枠]._選択不可字.文字Ｇ;
+	this._m_tm3.nColorB = _選択エリア[_選択枠]._選択不可字.文字Ｂ;
+	this._m_tm3.nSize = _選択エリア[_選択枠].文字サイズ;
+	this._m_tm3.nWeight = 400;
+	this._m_tm3.nFace = _選択エリア[_選択枠]._選択不可字.フォント;
+	this._m_tm3.nShadowPixelL = _選択エリア[_選択枠]._選択不可字.文字飾左;
+	this._m_tm3.nShadowPixelU = _選択エリア[_選択枠]._選択不可字.文字飾上;
+	this._m_tm3.nShadowPixelR = _選択エリア[_選択枠]._選択不可字.文字飾右;
+	this._m_tm3.nShadowPixelD = _選択エリア[_選択枠]._選択不可字.文字飾下;
+	this._m_tm3.nShadowColorR = _選択エリア[_選択枠]._選択不可字.文字飾Ｒ;
+	this._m_tm3.nShadowColorG = _選択エリア[_選択枠]._選択不可字.文字飾Ｇ;
+	this._m_tm3.nShadowColorB = _選択エリア[_選択枠]._選択不可字.文字飾Ｂ;
+	this.m_fBoldWeight = _選択エリア[_選択枠].m_fBoldWeight;
+	this.m_fSelectedBoldWeight = _選択エリア[_選択枠].m_fSelectedBoldWeight;
+	this.m_fUnselectableBoldWeight = _選択エリア[_選択枠].m_fUnselectableBoldWeight;
+	this.m_nCharSpace = _選択エリア[_選択枠].m_nCharSpace;
+	this.m_nSelectedCharSpace = _選択エリア[_選択枠].m_nSelectedCharSpace;
+	this.m_nUnselectableCharSpace = _選択エリア[_選択枠].m_nUnselectableCharSpace;
+}
+
+void CMenuView::_ShowFrame()
+{
+	this.m_BackSprite.SetPos(this._m_ox, this._m_oy);
+	this.m_BackSprite.SetZ(this._m_oz);
+	this.m_BackSprite.SetShow(true);
+}
+
+int CMenuView::_ComputeCurSelByMouse()
+{
+	int _i = 0;
+	for (_i = 0; _i < this._m_item.Numof(); ++_i)
+	{
+		if (this._m_item[_i]._IsEnableSel() && this._m_item[_i]._IsMousePtIn())
+		{
+			return _i;
+		}
+	}
+	return -2147483648;
+}
+
+int CMenuView::_ComputeCurSelByKey()
+{
+	if (this.m_DownKeyRepeat.IsKeyDown())
+	{
+		return this._GetNextItem(this._m_sel_item);
+	}
+	if (this.m_UpKeyRepeat.IsKeyDown())
+	{
+		return this._GetPrevItem(this._m_sel_item);
+	}
+	return this._m_sel_item;
+}
+
+void CMenuView::_UpdateItem(int _hilite_index)
+{
+	if (!_選択エリア[_選択枠].CursorCG.Empty())
+	{
+		if (_hilite_index >= 0 && _hilite_index < this._m_item.Numof())
+		{
+			this.m_CGCursorSprite.SetPos(this._m_item[_hilite_index].GetX() + _選択エリア[_選択枠].nCursorOffsetX, this._m_item[_hilite_index].GetY() + _選択エリア[_選択枠].nCursorOffsetY);
+			this.m_CGCursorSprite.SetShow(true);
+		}
+		else
+		{
+			this.m_CGCursorSprite.SetShow(false);
+		}
+		int _i = 0;
+		for (_i = 0; _i < this._m_item.Numof(); ++_i)
+		{
+			this._m_item[_i].SetSelectedState(false);
+		}
+	}
+	else
+	{
+		int _i = 0;
+		for (_i = 0; _i < this._m_item.Numof(); ++_i)
+		{
+			this._m_item[_i].SetSelectedState(_i == _hilite_index);
+		}
+	}
+}
+
+int CMenuView::_GetNextItem(int _o)
+{
+	if (_o == -2147483648)
+	{
+		_o = -1;
+	}
+	int _r = _o;
+	for (; ; )
+	{
+		++_r;
+		if (_r >= this._m_item.Numof())
+		{
+			_r = 0;
+		}
+		if (_r == _o || this._m_item[_r]._IsEnableSel())
+		{
+			return _r;
+		}
+	}
+	return _o;
+}
+
+int CMenuView::_GetPrevItem(int _o)
+{
+	if (_o == -2147483648)
+	{
+		_o = this._m_item.Numof();
+	}
+	int _r = _o;
+	for (; ; )
+	{
+		--_r;
+		if (_r < 0)
+		{
+			_r = this._m_item.Numof() - 1;
+		}
+		if (_r == _o || this._m_item[_r]._IsEnableSel())
+		{
+			return _r;
+		}
+	}
+	return _o;
+}
+

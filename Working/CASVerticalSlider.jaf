@@ -1,0 +1,184 @@
+CASVerticalSlider::CASVerticalSlider()
+{
+	this.m_bDragging = false;
+}
+
+void CASVerticalSlider::Init()
+{
+	this.m_bDragging = false;
+}
+
+void CASVerticalSlider::Release()
+{
+	this.m_BoxSprite.Release();
+}
+
+void CASVerticalSlider::SetRect(int nX, int nY, int nWidth, int nHeight)
+{
+	this.m_SliderRect.Set(nX, nY, nWidth, nHeight);
+}
+
+void CASVerticalSlider::CreateSampleSprite(int nWidth, int nHeight)
+{
+	this.m_BoxSprite.SetType(3);
+	ref CASConstructionStateSprite ConstructionStateSprite = this.m_BoxSprite.GetConstructionStateSprite();
+	ConstructionStateSprite.Alloc(2);
+	this.CreateConstructionBoxSprite(ConstructionStateSprite.GetSprite(0), nWidth, nHeight, false);
+	this.CreateConstructionBoxSprite(ConstructionStateSprite.GetSprite(1), nWidth, nHeight, true);
+	this.m_BoxSprite.SetActiveState(0);
+	this.m_BoxSprite.SetPos(this.m_SliderRect.GetX(), this.m_SliderRect.GetY());
+	this.m_BoxSprite.SetShow(true);
+}
+
+void CASVerticalSlider::SetCG(string CG, string OnCursorCG)
+{
+	this.m_BoxSprite.SetType(2);
+	ref CASCGStateSprite CGStateSprite = this.m_BoxSprite.GetCGStateSprite();
+	CGStateSprite.Alloc(2);
+	ref CASCGSprite CGSprite0 = CGStateSprite.GetSprite(0);
+	CGSprite0.SetCG(CG);
+	ref CASCGSprite CGSprite1 = CGStateSprite.GetSprite(1);
+	CGSprite1.SetCG(OnCursorCG);
+	this.m_BoxSprite.SetActiveState(0);
+	this.m_BoxSprite.SetPos(this.m_SliderRect.GetX() + (this.m_SliderRect.GetWidth() - this.m_BoxSprite.GetWidth()) / 2, this.m_SliderRect.GetY());
+	this.m_BoxSprite.SetShow(true);
+}
+
+void CASVerticalSlider::SetZ(int nZ)
+{
+	this.m_BoxSprite.SetZ(nZ);
+}
+
+void CASVerticalSlider::SetShow(bool bShow)
+{
+	this.m_BoxSprite.SetShow(bShow);
+}
+
+void CASVerticalSlider::SetBoxPosByRate(float fRate)
+{
+	if (fRate < 0.0)
+	{
+		fRate = 0.0;
+	}
+	else if (fRate > 1.0)
+	{
+		fRate = 1.0;
+	}
+	int nSpriteX = this.m_SliderRect.GetX();
+	int nSpriteY = this.m_SliderRect.GetY();
+	nSpriteY += (this.m_SliderRect.GetHeight() - this.m_BoxSprite.GetHeight()) * fRate;
+	this.m_BoxSprite.SetPos(nSpriteX + (this.m_SliderRect.GetWidth() - this.m_BoxSprite.GetWidth()) / 2, nSpriteY);
+}
+
+float CASVerticalSlider::GetRateByBoxPos()
+{
+	int nY = this.m_BoxSprite.GetY() - this.m_SliderRect.GetY();
+	float fRate = nY / (this.m_SliderRect.GetHeight() - this.m_BoxSprite.GetHeight());
+	if (fRate < 0.0)
+	{
+		fRate = 0.0;
+	}
+	else if (fRate > 1.0)
+	{
+		fRate = 1.0;
+	}
+	return fRate;
+}
+
+void CASVerticalSlider::CreateConstructionBoxSprite(ref CASConstructionSprite ConstructionSprite, int nWidth, int nHeight, bool bOnCursor)
+{
+	ConstructionSprite.AddCreate(nWidth, nHeight);
+	ConstructionSprite.AddFillGradationHorizon(0, 0, nWidth, nHeight, 220, 200, 255, 240, 230, 255);
+	ConstructionSprite.AddFill(0, nHeight - 1, nWidth, 1, 140, 140, 140);
+	ConstructionSprite.AddFill(nWidth - 1, 0, 1, nHeight, 140, 140, 140);
+	ConstructionSprite.AddFill(0, 0, nWidth, 1, 255, 255, 255);
+	ConstructionSprite.AddFill(0, 0, 1, nHeight - 1, 255, 255, 255);
+	if (bOnCursor)
+	{
+		ConstructionSprite.AddFillAlphaColor(0, 0, nWidth, nHeight, 255, 255, 0, 128);
+	}
+	ConstructionSprite.Build();
+}
+
+void CASVerticalSlider::UpdateState()
+{
+	if (this.m_bDragging)
+	{
+		this.m_BoxSprite.SetActiveState(1);
+	}
+	else
+	{
+		this.m_BoxSprite.SetActiveState(this.m_BoxSprite.IsMouseCursorInRect() ? 1 : 0);
+	}
+}
+
+bool CASVerticalSlider::CheckBeginDrag()
+{
+	if (this.m_bDragging)
+	{
+		return false;
+	}
+	if (!AFL_IsKeyDown(1))
+	{
+		return false;
+	}
+	int nMouseX = 0;
+	int nMouseY = 0;
+	if (!AFL_Mouse_GetPos(nMouseX, nMouseY))
+	{
+		return false;
+	}
+	if (this.m_SliderRect.IsIn(nMouseX, nMouseY))
+	{
+		this.m_bDragging = true;
+		return true;
+	}
+	return false;
+}
+
+void CASVerticalSlider::UpdateDraggingBox()
+{
+	if (!this.m_bDragging)
+	{
+		return;
+	}
+	int nMouseX = 0;
+	int nMouseY = 0;
+	if (!AFL_Mouse_GetPos(nMouseX, nMouseY))
+	{
+		this.m_bDragging = false;
+		return;
+	}
+	int nSpriteX = this.m_SliderRect.GetX();
+	int nSpriteY = nMouseY - this.m_BoxSprite.GetHeight() / 2;
+	if (nSpriteY < this.m_SliderRect.GetY())
+	{
+		nSpriteY = this.m_SliderRect.GetY();
+	}
+	else if (nSpriteY > (this.m_SliderRect.GetY() + this.m_SliderRect.GetHeight()) - this.m_BoxSprite.GetHeight())
+	{
+		nSpriteY = (this.m_SliderRect.GetY() + this.m_SliderRect.GetHeight()) - this.m_BoxSprite.GetHeight();
+	}
+	this.m_BoxSprite.SetPos(nSpriteX + (this.m_SliderRect.GetWidth() - this.m_BoxSprite.GetWidth()) / 2, nSpriteY);
+	if (!AFL_IsKeyDown(1))
+	{
+		this.m_bDragging = false;
+		return;
+	}
+}
+
+CASRect CASVerticalSlider::GetRect()
+{
+	return this.m_SliderRect;
+}
+
+bool CASVerticalSlider::IsDragging()
+{
+	return this.m_bDragging;
+}
+
+bool CASVerticalSlider::IsMouseCursorInRect()
+{
+	return this.m_BoxSprite.IsMouseCursorInRect();
+}
+

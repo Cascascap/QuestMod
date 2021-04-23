@@ -1,0 +1,27 @@
+void ボタン説明_表示(int nID, string szHeader, string szText, int nX, int nY, int nWaitTime)
+{
+	if (説明_表示(nID, szHeader, szText, "", nWaitTime, false) < 0)
+	{
+		return;
+	}
+	説明_位置設定(nX, nY);
+}
+
+void スキル説明_表示(int nID, int nSkillNo, int nX, int nY, int nWaitTime)
+{
+	if (説明_表示(nID, テキスト_スキル名(nSkillNo), スキル_説明文１(nSkillNo), "", 500, false) < 0)
+	{
+		return;
+	}
+	説明_位置設定(nX, nY);
+}
+
+void スキル説明_表示２(int nID, int nType, string szName, string szText, int nX, int nY, int nWaitTime)
+{
+	if (_説明_表示(nID, nType, szName, szText, "", nWaitTime, false) < 0)
+	{
+		return;
+	}
+	説明_位置設定(nX, nY);
+}
+

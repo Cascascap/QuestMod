@@ -1,0 +1,194 @@
+void _CMsgKeyWaitAnime::_Init(ref CMessageWindowModel _area_data)
+{
+	this._m_area_data = _area_data;
+	this._m_mark_anime_frame = -2147483648;
+	this._m_show = true;
+	this._Create();
+	this._SetShow(false, SYS_Ｍ送モード取得());
+	this.m_Timer.Reset();
+}
+
+void _CMsgKeyWaitAnime::_Create()
+{
+	if (this._IsIdentity())
+	{
+		return;
+	}
+	this.m_CGSpriteList.Free();
+	this.m_CharSpriteList.Free();
+	CASCharSpriteProperty Property;
+	Property = this.CreateCharSpriteProperty();
+	if (this._m_area_data.マーク枚数 != 0)
+	{
+		this.m_CGSpriteList.Alloc(this._m_area_data.マーク枚数);
+		int n = 0;
+		for (n = 0; n < this.m_CGSpriteList.Numof(); ++n)
+		{
+			this.m_CGSpriteList[n].SetCG(this._m_area_data.基準ＣＧ名 % (this._m_area_data.開始番号 + n));
+		}
+	}
+	else if (!this._m_area_data.マーク文字.Empty())
+	{
+		this.m_CharSpriteList.Alloc(this._m_area_data.マーク文字.Length());
+		int n = 0;
+		for (n = 0; n < this.m_CharSpriteList.Numof(); ++n)
+		{
+			this.m_CharSpriteList[n].SetChar(this._m_area_data.マーク文字.GetPart(n, 1), Property);
+		}
+	}
+	this._m_n_created_基準ＣＧ名 = this._m_area_data.基準ＣＧ名;
+	this._m_n_created_開始番号 = this._m_area_data.開始番号;
+	this._m_n_created_マーク枚数 = this._m_area_data.マーク枚数;
+	this._m_created_マーク文字 = this._m_area_data.マーク文字;
+	this.m_CreatedProperty = Property;
+}
+
+bool _CMsgKeyWaitAnime::_IsIdentity()
+{
+	if (this.m_CGSpriteList.Empty() && this.m_CharSpriteList.Empty())
+	{
+		return false;
+	}
+	if (this._m_n_created_基準ＣＧ名 != this._m_area_data.基準ＣＧ名)
+	{
+		return false;
+	}
+	if (this._m_n_created_開始番号 != this._m_area_data.開始番号)
+	{
+		return false;
+	}
+	if (this._m_n_created_マーク枚数 != this._m_area_data.マーク枚数)
+	{
+		return false;
+	}
+	if (this._m_created_マーク文字 != this._m_area_data.マーク文字)
+	{
+		return false;
+	}
+	CASCharSpriteProperty Property;
+	Property = this.CreateCharSpriteProperty();
+	if (!this.m_CreatedProperty.Equal(Property))
+	{
+		return false;
+	}
+	return true;
+}
+
+CASCharSpriteProperty _CMsgKeyWaitAnime::CreateCharSpriteProperty()
+{
+	if (this._m_area_data.開始番号 != 0 && this._m_area_data.マーク枚数 != 0 && !this._m_area_data.基準ＣＧ名.Empty())
+	{
+		CASCharSpriteProperty Property;
+		return Property;
+	}
+	int size = this._m_area_data.マーク文字サイズ;
+	if (size == 0)
+	{
+		size = this._m_area_data.GetFontSize();
+	}
+	CASCharSpriteProperty Property;
+	Property.SetType(this._m_area_data.フォント);
+	Property.SetSize(size);
+	Property.SetColor(CF_CASColor(this._m_area_data.文字Ｒ, this._m_area_data.文字Ｇ, this._m_area_data.文字Ｂ, 255));
+	Property.SetEdgeWeight(Math.Max(Math.Max(this._m_area_data.飾上, this._m_area_data.飾下), Math.Max(this._m_area_data.飾左, this._m_area_data.飾右)));
+	Property.SetEdgeColor(CF_CASColor(this._m_area_data.飾Ｒ, this._m_area_data.飾Ｇ, this._m_area_data.飾Ｂ, 255));
+	return Property;
+}
+
+void _CMsgKeyWaitAnime::_Delete()
+{
+	this.m_CGSpriteList.Free();
+	this.m_CharSpriteList.Free();
+}
+
+void _CMsgKeyWaitAnime::_UpdatePos(int nTextEndX, int nTextEndY)
+{
+	int x = g_MessageWindowModelManager.GetMessageWindow(_Ｍ枠).GetX();
+	int y = g_MessageWindowModelManager.GetMessageWindow(_Ｍ枠).GetY();
+	int z = g_MessageWindowModelManager.GetZ() + g_MessageWindowManager.GetShowingMaxOffsetZ() + 1;
+	if (this._m_area_data.マークＸフラグ == 1)
+	{
+		x += nTextEndX;
+	}
+	if (this._m_area_data.マークＹフラグ == 1)
+	{
+		y += nTextEndY;
+	}
+	x += this._m_area_data.マークＸ;
+	y += this._m_area_data.マークＹ;
+	int n = 0;
+	for (n = 0; n < this.m_CGSpriteList.Numof(); ++n)
+	{
+		this.m_CGSpriteList[n].SetPos(x, y);
+		this.m_CGSpriteList[n].SetZ(z);
+	}
+	for (n = 0; n < this.m_CharSpriteList.Numof(); ++n)
+	{
+		this.m_CharSpriteList[n].SetPos(x, y);
+		this.m_CharSpriteList[n].SetZ(z);
+	}
+}
+
+void _CMsgKeyWaitAnime::_Update(int nMessageMode)
+{
+	if (this._m_area_data.マーク速度 == 0)
+	{
+		return;
+	}
+	if (this.m_CGSpriteList.Empty() && this.m_CharSpriteList.Empty())
+	{
+		return;
+	}
+	int nNumof = this.m_CGSpriteList.Numof();
+	if (nNumof < this.m_CharSpriteList.Numof())
+	{
+		nNumof = this.m_CharSpriteList.Numof();
+	}
+	int _time = this.m_Timer.Get();
+	int _frame = (_time / this._m_area_data.マーク速度) % nNumof;
+	if (_frame != this._m_mark_anime_frame)
+	{
+		this._m_mark_anime_frame = _frame;
+		this._Redraw(nMessageMode);
+	}
+}
+
+void _CMsgKeyWaitAnime::_Redraw(int nMessageMode)
+{
+	if (this._m_show && nMessageMode == 1001)
+	{
+		int n = 0;
+		for (n = 0; n < this.m_CGSpriteList.Numof(); ++n)
+		{
+			this.m_CGSpriteList[n].SetShow(n == this._m_mark_anime_frame);
+		}
+		for (n = 0; n < this.m_CharSpriteList.Numof(); ++n)
+		{
+			this.m_CharSpriteList[n].SetShow(n == this._m_mark_anime_frame);
+		}
+	}
+	else
+	{
+		int n = 0;
+		for (n = 0; n < this.m_CGSpriteList.Numof(); ++n)
+		{
+			this.m_CGSpriteList[n].SetShow(false);
+		}
+		for (n = 0; n < this.m_CharSpriteList.Numof(); ++n)
+		{
+			this.m_CharSpriteList[n].SetShow(false);
+		}
+	}
+}
+
+void _CMsgKeyWaitAnime::_SetShow(bool _show, int nMessageMode)
+{
+	this._m_show = _show;
+	this._Redraw(nMessageMode);
+}
+
+bool _CMsgKeyWaitAnime::IsShow()
+{
+	return this._m_show;
+}
+

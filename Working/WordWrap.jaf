@@ -1,0 +1,1825 @@
+void LineStatisticsPosition::Clear()
+{
+	this.CharacterCount = 0;
+	this.SpaceCount = 0;
+	this.CharacterWidthUnscaled = 0.0;
+	this.SpaceWidthUnscaled = 0.0;
+}
+
+void WordNode::Init(string text, int textType, ref _SDrawMessage originalMessage)
+{
+	this.Text = text;
+	this.CharCount = text.Length();
+	this.OriginalMessage <- originalMessage;
+	this.TextType = textType;
+	this.TextWidth = MeasureString(text);
+	if (this.TextType == 0)
+	{
+		this.FindEndPunctuationWidth();
+	}
+}
+
+void WordNode::FindEndPunctuationWidth()
+{
+	int i = 0;
+	for (i = this.CharCount - 1; i >= 0; --i)
+	{
+		if (!IsPunctuation(this.Text[i]))
+		{
+			break;
+		}
+	}
+	++i;
+	if (this.CharCount == i)
+	{
+		return;
+	}
+	this.EndPunctuationCharCount = this.CharCount - i;
+	string endPunctuation = this.Text.GetPart(i, this.CharCount - i);
+	this.EndPunctuationWidth = MeasureString(endPunctuation);
+}
+
+void WordWrapper3::Init(ref CMessageTextView messageTextView)
+{
+	this.SetInitialValuesToDefaultValues();
+	this.MessageTextList <- messageTextView._m_MessageList;
+	this.OriginalMessageList.Free();
+	this.OriginalMessageList.Realloc(this.MessageTextList.Numof());
+	this.OriginalMessageList.Copy(0, this.MessageTextList, 0, this.MessageTextList.Numof());
+	this.MessageWindowNumber = this.FindMessageWindowNumber();
+	if (this.MessageWindowNumber >= 0 && this.MessageWindowNumber < 40)
+	{
+		this.MessageWindow <- g_MessageWindowModelManager.GetMessageWindow(this.MessageWindowNumber);
+	}
+	else
+	{
+		this.MessageWindow <- NULL;
+	}
+	this.SetInitialValuesToMessageWindowDefaults();
+	this.SetValuesToInitialValues();
+	this.ResetMessageWindowParameters();
+}
+
+void WordWrapper3::InitSingleLine(ref string text, int width, int leftMargin, int rightMargin, int fontType, int fontSize, float fontSpacing, float minFontSpacing, float scaleX, float minScaleX, float spaceScaleX, float minSpaceScaleX, int maxLines)
+{
+	this.SetInitialValuesToDefaultValues();
+	this.OriginalMessageList.Free();
+	array@_SDrawMessage newTextList;
+	this.MessageTextList <- newTextList;
+	this.OriginalMessageList.Realloc(1);
+	ref _SDrawMessage messageText = this.OriginalMessageList[0];
+	messageText.Erase();
+	messageText.MessageText = text;
+	this.InitialFontSize = fontSize;
+	this.InitialFontSizeScaled = fontSize;
+	this.InitialFontType = fontType;
+	this.InitialWindowWidth = width;
+	this.InitialLeftMargin = leftMargin;
+	this.InitialRightMargin = rightMargin;
+	this.InitialWindowHeight = fontSize * maxLines;
+	this.InitialTopMargin = 0;
+	this.InitialBottomMargin = 0;
+	this.InitialMinimumSpaceScale1 = minSpaceScaleX;
+	this.InitialMinimumSpaceScale2 = minSpaceScaleX;
+	this.InitialMinimumTextScale1 = minScaleX;
+	this.InitialMinimumTextScale2 = minScaleX;
+	this.InitialSentenceSplitThreshhold = maxLines <= 1 ? 2.0 : 0.75;
+	this.SentenceSplitThreshhold = this.InitialSentenceSplitThreshhold;
+	this.InitialSpaceScaleX = spaceScaleX;
+	this.InitialScaleX = scaleX;
+	this.InitialFontSpacing = fontSpacing;
+	this.AllowAddingNewLines = maxLines > 1;
+	this.InitialAllowAddingNewLines = this.AllowAddingNewLines;
+	this.MaxLinesAllowed = maxLines;
+	this.AllowPrefixMessages = false;
+	this.DoNotDiscardNewLines = false;
+}
+
+void WordWrapper3::SetFontStyle(int r, int g, int b, float boldWidth, int er, int eg, int eb, float edgeWidth)
+{
+	int msgCount = this.OriginalMessageList.Numof();
+	int i = 0;
+	for (i = 0; i < msgCount; ++i)
+	{
+		ref _SDrawMessage msg = this.OriginalMessageList[i];
+		msg.SetFontColor(r, g, b);
+		msg.SetBoldWeight(boldWidth);
+		msg.SetEdgeColor(er, eg, eb);
+	}
+}
+
+int WordWrapper3::FindMessageWindowNumber()
+{
+	if (this.OriginalMessageList.Empty())
+	{
+		return -1;
+	}
+	return this.OriginalMessageList[0].MessageWindowNumber;
+}
+
+void WordWrapper3::SetInitialValuesToMessageWindowDefaults()
+{
+	if (this.MessageWindowNumber >= 1 && this.MessageWindowNumber <= 4)
+	{
+		this.InitialWindowWidth = 696;
+		this.InitialLeftMargin = 20;
+		this.InitialRightMargin = 10;
+		this.InitialWindowHeight = 131;
+		this.InitialTopMargin = 9;
+		this.InitialBottomMargin = 9;
+	}
+	if (this.MessageWindowNumber >= 6 && this.MessageWindowNumber <= 8)
+	{
+		this.InitialWindowWidth = 893;
+		this.InitialLeftMargin = 12;
+		this.InitialRightMargin = 12;
+		this.InitialWindowHeight = 103;
+		this.InitialTopMargin = 7;
+		this.InitialBottomMargin = 0;
+	}
+	if (this.MessageWindowNumber == 9)
+	{
+		this.InitialWindowWidth = 565;
+		this.InitialLeftMargin = 16;
+		this.InitialRightMargin = 16;
+		this.InitialWindowHeight = 131;
+		this.InitialTopMargin = 9;
+		this.InitialBottomMargin = 9;
+	}
+}
+
+void WordWrapper3::SetValuesToInitialValues()
+{
+	this.InitialFontSizeScaled = this.InitialFontSize * this.Scale + 0.5;
+	this.FontSize = this.InitialFontSize;
+	this.FontType = this.InitialFontType;
+	this.WindowWidth = this.InitialWindowWidth;
+	this.LeftMargin = this.InitialLeftMargin;
+	this.RightMargin = this.InitialRightMargin;
+	this.WindowHeight = this.InitialWindowHeight;
+	this.TopMargin = this.InitialTopMargin;
+	this.BottomMargin = this.InitialBottomMargin;
+	this.MinimumSpaceScale1 = this.InitialMinimumSpaceScale1;
+	this.MinimumSpaceScale2 = this.InitialMinimumSpaceScale2;
+	this.MinimumTextScale1 = this.InitialMinimumTextScale1;
+	this.MinimumTextScale2 = this.InitialMinimumTextScale2;
+	this.SentenceSplitThreshhold = this.InitialSentenceSplitThreshhold;
+	this.SpaceScaleX = this.InitialSpaceScaleX;
+	this.ScaleX = this.InitialScaleX;
+	this.FontSpacing = this.InitialFontSpacing;
+	this.AllowAddingNewLines = this.InitialAllowAddingNewLines;
+	this.LineSpacing = this.InitialLineSpacing;
+}
+
+void WordWrapper3::SetInitialValuesToDefaultValues()
+{
+	this.AllowPrefixMessages = true;
+	this.Scale = 1.0;
+	this.InitialFontSize = 40;
+	this.InitialFontSizeScaled = 40;
+	this.InitialFontType = 256;
+	this.InitialWindowWidth = 696;
+	this.InitialLeftMargin = 20;
+	this.InitialRightMargin = 10;
+	this.InitialWindowHeight = 131;
+	this.InitialTopMargin = 9;
+	this.InitialBottomMargin = 9;
+	this.InitialMinimumSpaceScale1 = 1.0;
+	this.InitialMinimumSpaceScale2 = 1.0;
+	this.InitialMinimumTextScale1 = 1.0;
+	this.InitialMinimumTextScale2 = 1.0;
+	this.InitialSentenceSplitThreshhold = 65536.0;
+	this.InitialSpaceScaleX = 1.0;
+	this.InitialScaleX = 1.0;
+	this.InitialFontSpacing = 0.0;
+	this.InitialAllowAddingNewLines = true;
+	this.InitialLineSpacing = -5;
+	this.MaxLinesAllowed = 65536;
+	this.IgnoreDescenders = true;
+	this.DoNotDiscardNewLines = true;
+}
+
+void WordWrapper3::ResetMessageWindowParameters()
+{
+	this.SetValuesToInitialValues();
+	if (this.MessageWindow === NULL)
+	{
+		return;
+	}
+	this.UpdateTextRect();
+}
+
+int WordWrapper3::GetFirstChar()
+{
+	int msgIndex = 0;
+	int msgCount = this.OriginalMessageList.Numof();
+	if (msgCount == 0)
+	{
+		return 0;
+	}
+	for (msgIndex = 0; msgIndex < msgCount; ++msgIndex)
+	{
+		ref _SDrawMessage msg = this.OriginalMessageList[msgIndex];
+		if (msg.nType == 0)
+		{
+			int i = 0;
+			ref string text = msg.MessageText;
+			int count = text.Length();
+			for (i = 0; i < count; ++i)
+			{
+				int c = text[i];
+				if (c != 32 && c != 10 && c != 9)
+				{
+					return c;
+				}
+			}
+			break;
+		}
+	}
+	return 0;
+}
+
+int WordWrapper3::GetLastChar()
+{
+	int msgIndex = 0;
+	int msgCount = this.OriginalMessageList.Numof();
+	int retVal = 0;
+	if (msgCount == 0)
+	{
+		return 0;
+	}
+	for (msgIndex = msgCount - 1; msgIndex >= 0 && retVal == 0; --msgIndex)
+	{
+		ref _SDrawMessage msg = this.OriginalMessageList[msgIndex];
+		if (msg.nType == 0)
+		{
+			int i = 0;
+			ref string text = msg.MessageText;
+			int count = text.Length();
+			for (i = count - 1; i >= 0; --i)
+			{
+				int c = text[i];
+				if (retVal == 0 && c != 32 && c != 10 && c != 9)
+				{
+					retVal = c;
+				}
+				if (c == 43649)
+				{
+					retVal = 0;
+					break;
+				}
+			}
+		}
+	}
+	return retVal;
+}
+
+int WordWrapper3::GetLastChar2()
+{
+	bool insideParenthesis = false;
+	int msgIndex = 0;
+	int msgCount = this.OriginalMessageList.Numof();
+	if (msgCount == 0)
+	{
+		return 0;
+	}
+	for (msgIndex = msgCount - 1; msgIndex >= 0; --msgIndex)
+	{
+		ref _SDrawMessage msg = this.OriginalMessageList[msgIndex];
+		if (msg.nType == 0)
+		{
+			int i = 0;
+			ref string text = msg.MessageText;
+			int count = text.Length();
+			for (i = count - 1; i >= 0; --i)
+			{
+				int c = text[i];
+				if (c != 32 && c != 10 && c != 9)
+				{
+					if (c == 41)
+					{
+						insideParenthesis = true;
+					}
+					else if (insideParenthesis)
+					{
+						if (c == 41)
+						{
+							return c;
+						}
+						if (c == 40)
+						{
+							insideParenthesis = false;
+						}
+					}
+					else
+					{
+						return c;
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+int WordWrapper3::FindQuoteType()
+{
+	int firstChar = this.GetFirstChar();
+	int lastChar = this.GetLastChar();
+	if (lastChar == 41 && (firstChar == 34 || firstChar == 39))
+	{
+		lastChar = this.GetLastChar2();
+	}
+	if (firstChar == 34 && lastChar == 34)
+	{
+		return 26497;
+	}
+	if (firstChar == 39 && lastChar == 39)
+	{
+		return 25985;
+	}
+	if (firstChar == 40 && lastChar == 41 || firstChar == 31105 && lastChar == 31361)
+	{
+		return firstChar;
+	}
+	return 0;
+}
+
+void WordWrapper3::CreateWordNodes()
+{
+	this.WordNodes.Free();
+	this.ScaleX = this.InitialScaleX;
+	this.SpaceScaleX = this.InitialSpaceScaleX;
+	this.FontSpacing = this.InitialFontSpacing;
+	this.SpaceScaleXList.Free();
+	this.ScaleXList.Free();
+	this.FontSpacingList.Free();
+	int nodeIndex = 0;
+	int msgIndex = 0;
+	int msgCount = this.OriginalMessageList.Numof();
+	if (msgCount == 0)
+	{
+		return;
+	}
+	this.QuoteType = 0;
+	if (this.AllowPrefixMessages)
+	{
+		this.QuoteType = this.FindQuoteType();
+	}
+	bool wantToEatQuote = this.QuoteType != 0;
+	ref _SDrawMessage msg = NULL;
+	this._PreviousMessage <- NULL;
+	for (msgIndex = 0; msgIndex < msgCount; ++msgIndex)
+	{
+		msg <- this.OriginalMessageList[msgIndex];
+		if (msg.MessageWindowNumber == 9 && msg.MessageText[0] == '"')
+		{
+			wantToEatQuote = true;
+			this.QuoteType = 26497;
+		}
+		if (msg.MessageWindowNumber == 4)
+		{
+			wantToEatQuote = false;
+		}
+		if (msg.nType == 0 && !msg.MessageText.Empty())
+		{
+			this.UpdateFont(msg);
+			int i = 0;
+			++msgIndex;
+			while (msgIndex < msgCount)
+			{
+				ref _SDrawMessage msg2;
+				msg2 <- this.OriginalMessageList[msgIndex];
+				if (msg2.nType == 0 && !msg.MessageText.Empty())
+				{
+					msg.MessageText = msg.MessageText + msg2.MessageText;
+					++msgIndex;
+				}
+				else
+				{
+					break;
+				}
+			}
+			--msgIndex;
+			ref string text = msg.MessageText;
+			int length = text.Length();
+			if (wantToEatQuote)
+			{
+				wantToEatQuote = false;
+				++i;
+				_SDrawMessage prefixMsg;
+				prefixMsg = msg;
+				prefixMsg.nType = 5;
+				prefixMsg.MessageText = "%c" % this.QuoteType;
+				prefixMsg.ScaleX = this.ScaleX;
+				prefixMsg.FontSpacing = this.FontSpacing;
+				prefixMsg.Width = MeasureString(prefixMsg.MessageText) * this.ScaleX + this.FontSpacing;
+				prefixMsg.SetFontSize(this.FontSize);
+				if (this.FontSize > this.InitialFontSizeScaled)
+				{
+					ChipmunkSpriteEngine.SP_SetTextSpriteSize(this.InitialFontSizeScaled);
+					float smallWidth = MeasureString(prefixMsg.MessageText) * this.ScaleX + this.FontSpacing;
+					ChipmunkSpriteEngine.SP_SetTextSpriteSize(this.FontSize);
+					float difference = prefixMsg.Width - smallWidth;
+					if (difference > 0.0)
+					{
+						this.TryAdjustTextRect(difference, 0, 0, 0);
+					}
+				}
+				nodeIndex = this.WordNodes.Numof();
+				this.WordNodes.Realloc(nodeIndex + 1);
+				ref WordNode node = this.WordNodes[nodeIndex];
+				node.Init("", 5, prefixMsg);
+			}
+			while (i < length)
+			{
+				string word = "";
+				int textType = 0;
+				i = GetWord(text, i, word, textType);
+				if (textType == 0)
+				{
+					PreprocessText(word);
+				}
+				if (textType != 1)
+				{
+					nodeIndex = this.WordNodes.Numof();
+					this.WordNodes.Realloc(nodeIndex + 1);
+					ref WordNode node = this.WordNodes[nodeIndex];
+					node.Init(word, textType, msg);
+				}
+				else
+				{
+					int lineBreakCount = CountLineBreaks(word);
+					int lb = 0;
+					_SDrawMessage msg2;
+					msg2 = msg;
+					msg2.MessageText = "";
+					msg2.nType = 1;
+					for (lb = 0; lb < lineBreakCount; ++lb)
+					{
+						nodeIndex = this.WordNodes.Numof();
+						this.WordNodes.Realloc(nodeIndex + 1);
+						ref WordNode node = this.WordNodes[nodeIndex];
+						node.Init("", 1, msg2);
+					}
+				}
+			}
+		}
+		else
+		{
+			nodeIndex = this.WordNodes.Numof();
+			this.WordNodes.Realloc(nodeIndex + 1);
+			ref WordNode node = this.WordNodes[nodeIndex];
+			node.Init("", msg.nType, msg);
+		}
+	}
+}
+
+void WordWrapper3::UpdateSpaceScaleX()
+{
+	int lineNumber = this.LineStats.Numof() - 1;
+	this.UpdateSpaceScaleX2(lineNumber);
+}
+
+void WordWrapper3::UpdateSpaceScaleX2(int lineNumber)
+{
+	this.SpaceScaleX = this.GetSpaceScaleX(lineNumber);
+	this.ScaleX = this.GetScaleX(lineNumber);
+	this.FontSpacing = this.GetFontSpacing(lineNumber);
+}
+
+float WordWrapper3::GetSpaceScaleX(int lineNumber)
+{
+	if (lineNumber < 0 || lineNumber >= this.SpaceScaleXList.Numof())
+	{
+		return this.InitialSpaceScaleX;
+	}
+	return this.SpaceScaleXList[lineNumber];
+}
+
+float WordWrapper3::GetScaleX(int lineNumber)
+{
+	if (lineNumber < 0 || lineNumber >= this.ScaleXList.Numof())
+	{
+		return this.InitialScaleX;
+	}
+	return this.ScaleXList[lineNumber];
+}
+
+float WordWrapper3::GetFontSpacing(int lineNumber)
+{
+	if (lineNumber < 0 || lineNumber >= this.FontSpacingList.Numof())
+	{
+		return this.InitialFontSpacing;
+	}
+	return this.FontSpacingList[lineNumber];
+}
+
+void WordWrapper3::SetSpaceScaleX(int lineNumber, float value)
+{
+	while (lineNumber >= this.SpaceScaleXList.Numof())
+	{
+		this.SpaceScaleXList.PushBack(this.InitialSpaceScaleX);
+	}
+	this.SpaceScaleXList[lineNumber] = value;
+}
+
+void WordWrapper3::SetScaleX(int lineNumber, float value)
+{
+	while (lineNumber >= this.ScaleXList.Numof())
+	{
+		this.ScaleXList.PushBack(this.InitialScaleX);
+	}
+	this.ScaleXList[lineNumber] = value;
+}
+
+void WordWrapper3::SetFontSpacing(int lineNumber, float value)
+{
+	while (lineNumber >= this.FontSpacingList.Numof())
+	{
+		this.FontSpacingList.PushBack(this.InitialFontSpacing);
+	}
+	this.FontSpacingList[lineNumber] = value;
+}
+
+void WordWrapper3::DoWrap()
+{
+	this.LineStats.Free();
+	this.LineStats.Realloc(1);
+	ref LineStatistics stats = this.LineStats[this.LineStats.Numof() - 1];
+	LineStatisticsPosition pos;
+	this.UpdateSpaceScaleX();
+	this.MessageTextList.Free();
+	this._PreviousMessage <- NULL;
+	this.WrappedVeryLongWord = false;
+	float x = 0.0;
+	int nodeIndex = 0;
+	int nodeCount = this.WordNodes.Numof();
+	bool wantToEatWhitespace = false;
+	bool wantToIgnoreLinebreak = false;
+	float messageStartX = 0.0;
+	string newMessageText = "";
+	ref _SDrawMessage lastMessageNode = NULL;
+	for (nodeIndex = 0; nodeIndex < nodeCount; ++nodeIndex)
+	{
+		ref WordNode node = this.WordNodes[nodeIndex];
+		string nodeText = node.Text;
+		int nodeCharCount = node.CharCount;
+		float nodeTextWidth = node.TextWidth;
+		float nodeEndPunctuationWidth = node.EndPunctuationWidth;
+		int nodeTextType = node.TextType;
+		ref _SDrawMessage nodeMsg = node.OriginalMessage;
+		if (lastMessageNode === NULL)
+		{
+			lastMessageNode <- nodeMsg;
+		}
+		if (nodeCharCount > 0)
+		{
+			lastMessageNode <- nodeMsg;
+			ref _SDrawMessage previousMessage = this._PreviousMessage;
+			pos.NodeIndex = nodeIndex;
+			if (!this.UpdateFont(nodeMsg))
+			{
+				if (!newMessageText.Empty())
+				{
+					this.AddNewMessage(newMessageText, x - messageStartX, previousMessage);
+					newMessageText = "";
+					messageStartX = x;
+				}
+			}
+			if (wantToEatWhitespace)
+			{
+				wantToEatWhitespace = false;
+				if (nodeTextType == 6)
+				{
+					continue;
+				}
+			}
+			bool moreText = false;
+			do
+			{
+				float textWidthUnscaled = 0.0;
+				float spaceWidthUnscaled = 0.0;
+				int textCharacterCount = 0;
+				int spaceCount = 0;
+				if (nodeTextType == 6)
+				{
+					spaceWidthUnscaled = nodeTextWidth;
+					spaceCount = nodeCharCount;
+					nodeTextWidth = nodeTextWidth * this.SpaceScaleX + nodeCharCount * this.FontSpacing;
+				}
+				else
+				{
+					textWidthUnscaled = nodeTextWidth;
+					textCharacterCount = nodeCharCount;
+					nodeTextWidth = nodeTextWidth * this.ScaleX + nodeCharCount * this.FontSpacing;
+				}
+				moreText = false;
+				float right = (x + nodeTextWidth) - this.FontSpacing;
+				bool wraps = right > this.WindowWidth + 0.00999999977648258;
+				if (wraps)
+				{
+					float endPunctuationWidthScaled = nodeEndPunctuationWidth * this.ScaleX + node.EndPunctuationCharCount * this.FontSpacing;
+					if (right - endPunctuationWidthScaled <= this.WindowWidth + 0.00999999977648258 && right <= this.WindowWidth + 0.00999999977648258 + this.RightMargin)
+					{
+						wraps = false;
+					}
+				}
+				if (wraps && x == 0.0)
+				{
+					if (nodeTextType != 6)
+					{
+						nodeTextType = 7;
+						this.WrappedVeryLongWord = true;
+					}
+				}
+				if (wraps && nodeTextType != 6)
+				{
+					moreText = true;
+					if (nodeTextType == 7)
+					{
+						int partialCharacterCount = this.FindCharacterIndexOfPixel(nodeText, this.WindowWidth - x, 0);
+						string partialText = nodeText.GetPart(0, partialCharacterCount);
+						int newCharCount = nodeCharCount - partialCharacterCount;
+						textCharacterCount = partialCharacterCount;
+						pos.CharacterCount += textCharacterCount;
+						newMessageText += partialText;
+						textWidthUnscaled = MeasureString(partialText);
+						pos.CharacterWidthUnscaled += textWidthUnscaled;
+						nodeTextWidth = textWidthUnscaled * this.ScaleX + partialCharacterCount * this.FontSpacing;
+						x += nodeTextWidth;
+						stats.Right = x - this.FontSpacing;
+						stats.BeforeWrap = pos;
+						nodeText = nodeText.GetPart(partialCharacterCount, newCharCount);
+						textWidthUnscaled = MeasureString(nodeText);
+						nodeTextWidth = MeasureString(nodeText) * this.ScaleX + newCharCount * this.FontSpacing;
+						nodeCharCount = newCharCount;
+						textCharacterCount = nodeCharCount;
+					}
+					pos.CharacterCount += textCharacterCount;
+					pos.CharacterWidthUnscaled += textWidthUnscaled;
+					stats.AfterWrap = pos;
+					this.AddNewMessage(newMessageText, x - messageStartX, lastMessageNode);
+					this.AddLineBreak(nodeMsg);
+					this.LineStats.Realloc(this.LineStats.Numof() + 1);
+					stats <- this.LineStats[this.LineStats.Numof() - 1];
+					this.UpdateSpaceScaleX();
+					pos.Clear();
+					pos.NodeIndex = nodeIndex;
+					stats.StartNodeIndex = nodeIndex;
+					stats.BeforeWrap.NodeIndex = nodeIndex;
+					stats.AfterWrap.NodeIndex = nodeIndex;
+					nodeTextWidth = textWidthUnscaled;
+					newMessageText = "";
+					x = 0.0;
+					messageStartX = x;
+					wantToIgnoreLinebreak = true;
+				}
+				else
+				{
+					x += nodeTextWidth;
+					pos.CharacterCount += textCharacterCount;
+					pos.CharacterWidthUnscaled += textWidthUnscaled;
+					pos.SpaceCount += spaceCount;
+					pos.SpaceWidthUnscaled += spaceWidthUnscaled;
+					if (textCharacterCount > 0)
+					{
+						stats.Right = right;
+					}
+					stats.BeforeWrap = pos;
+					newMessageText += nodeText;
+					if (nodeEndPunctuationWidth > 0.0 && !StringIsAbbreviation(nodeText) && EndPunctuationEndsLine(nodeText))
+					{
+						if (stats.FirstPunctuation.CharacterCount == 0)
+						{
+							stats.FirstPunctuation = pos;
+							int previousLineIndex = this.LineStats.Numof() - 2;
+							if (previousLineIndex >= 0)
+							{
+								ref LineStatistics previousLineStats = this.LineStats[previousLineIndex];
+								previousLineStats.NextLinePunctuation = pos;
+								previousLineStats.NextLinePunctuation.CharacterCount += previousLineStats.BeforeWrap.CharacterCount;
+								previousLineStats.NextLinePunctuation.CharacterWidthUnscaled += previousLineStats.BeforeWrap.CharacterWidthUnscaled;
+								previousLineStats.NextLinePunctuation.SpaceCount += previousLineStats.BeforeWrap.SpaceCount;
+								previousLineStats.NextLinePunctuation.SpaceWidthUnscaled += previousLineStats.BeforeWrap.SpaceWidthUnscaled;
+							}
+						}
+						stats.LastPunctuationPosition = right;
+						stats.LastPunctuation = pos;
+					}
+				}
+			} while (moreText);
+		}
+		else if (nodeTextType == 1 || nodeTextType == 8)
+		{
+			bool processNewLine = true;
+			if (this.LineStats.Numof() >= this.MaxLinesAllowed)
+			{
+				processNewLine = false;
+			}
+			else if (nodeTextType == 8)
+			{
+			}
+			else if (wantToIgnoreLinebreak && !this.DoNotDiscardNewLines)
+			{
+				processNewLine = false;
+			}
+			if (!processNewLine)
+			{
+				string space = " ";
+				wantToEatWhitespace = true;
+				int nextNodeType = 0;
+				if (nodeIndex + 1 < nodeCount)
+				{
+					nextNodeType = this.WordNodes[nodeIndex + 1].TextType;
+				}
+				if (this.LineStats.Numof() >= this.MaxLinesAllowed && nextNodeType == 6)
+				{
+					space = "";
+					wantToEatWhitespace = false;
+				}
+				else
+				{
+					float spaceWidthUnscaled = MeasureString(space);
+					float newSpaceWidth = spaceWidthUnscaled * this.SpaceScaleX + this.FontSpacing;
+					x += newSpaceWidth;
+					newMessageText += space;
+					pos.SpaceCount++;
+					pos.SpaceWidthUnscaled += spaceWidthUnscaled;
+				}
+			}
+			else
+			{
+				if (!newMessageText.Empty())
+				{
+					this.AddNewMessage(newMessageText, x - messageStartX, lastMessageNode);
+					newMessageText = "";
+					messageStartX = 0.0;
+				}
+				stats.BeforeWrap = pos;
+				stats.AfterWrap = pos;
+				this.LineStats.Realloc(this.LineStats.Numof() + 1);
+				stats <- this.LineStats[this.LineStats.Numof() - 1];
+				stats.StartNodeIndex = nodeIndex;
+				this.UpdateSpaceScaleX();
+				x = 0.0;
+				pos.Clear();
+				pos.NodeIndex = nodeIndex;
+				this.AddLineBreak(nodeMsg);
+				wantToEatWhitespace = true;
+				if (this.DoNotDiscardNewLines)
+				{
+					string nextNodeText = "";
+					if (nodeIndex + 1 < nodeCount)
+					{
+						nextNodeText = this.WordNodes[nodeIndex + 1].Text;
+					}
+					if (!(this.QuoteType != 0 && nextNodeText == " "))
+					{
+						wantToEatWhitespace = false;
+					}
+				}
+			}
+			wantToIgnoreLinebreak = false;
+		}
+		else
+		{
+			if (!newMessageText.Empty())
+			{
+				this.AddNewMessage(newMessageText, x - messageStartX, lastMessageNode);
+				newMessageText = "";
+				messageStartX = x;
+			}
+			this.AddMsg(nodeMsg);
+		}
+		if (nodeIndex == nodeCount - 1)
+		{
+			if (!newMessageText.Empty())
+			{
+				stats.BeforeWrap = pos;
+				stats.AfterWrap = pos;
+				this.AddNewMessage(newMessageText, x - messageStartX, lastMessageNode);
+				newMessageText = "";
+				messageStartX = x;
+			}
+		}
+	}
+}
+
+bool WordWrapper3::UpdateFont(ref _SDrawMessage msg)
+{
+	bool sameFont = true;
+	if (this._PreviousMessage === NULL)
+	{
+		this._PreviousMessage <- msg;
+		sameFont = true;
+	}
+	else
+	{
+		if (this._PreviousMessage === msg)
+		{
+			sameFont = true;
+		}
+		else
+		{
+			sameFont = msg.FontEquals(this._PreviousMessage);
+			this._PreviousMessage <- msg;
+		}
+		if (sameFont)
+		{
+			return true;
+		}
+	}
+	this.FontType = msg.GetFontType();
+	if (this.FontType == -1)
+	{
+		this.FontType = this.InitialFontType;
+	}
+	this.FontSize = msg.GetFontSize();
+	if (this.FontSize == -1)
+	{
+		this.FontSize = this.InitialFontSize;
+	}
+	this.FontSize = this.FontSize * this.Scale + 0.5;
+	ChipmunkSpriteEngine.SP_SetTextSpriteType(this.FontType);
+	ChipmunkSpriteEngine.SP_SetTextSpriteSize(this.FontSize);
+	ChipmunkSpriteEngine.SP_SetTextSpriteBoldWeight(0.0);
+	ChipmunkSpriteEngine.SP_SetTextSpriteEdgeWeight(0.0);
+	return sameFont;
+}
+
+void WordWrapper3::AddNewMessage(ref string text, float messageWidth, ref _SDrawMessage baseMsg)
+{
+	int i = this.MessageTextList.Numof();
+	this.MessageTextList.Realloc(i + 1);
+	ref _SDrawMessage newMsg = this.MessageTextList[i];
+	newMsg = baseMsg;
+	newMsg.nType = 0;
+	newMsg.ScaleX = this.ScaleX;
+	newMsg.SpaceScaleX = this.SpaceScaleX;
+	newMsg.FontSpacing = this.FontSpacing;
+	newMsg.SetFontType(this.FontType);
+	newMsg.SetFontSize(this.FontSize);
+	newMsg.MessageText = text;
+	newMsg.Width = messageWidth;
+}
+
+void WordWrapper3::AddLineBreak(ref _SDrawMessage baseMsg)
+{
+	int i = this.MessageTextList.Numof();
+	this.MessageTextList.Realloc(i + 1);
+	ref _SDrawMessage newMsg = this.MessageTextList[i];
+	newMsg = baseMsg;
+	newMsg.nType = 1;
+	newMsg.MessageText = "";
+}
+
+void WordWrapper3::AddMsg(ref _SDrawMessage baseMsg)
+{
+	this.MessageTextList.PushBack(baseMsg);
+}
+
+int WordWrapper3::FindCharacterIndexOfPixel(ref string text, float targetX, int startIndex)
+{
+	float x = 0.0;
+	float charWidth = 0.0;
+	int length = text.Length();
+	int i = startIndex;
+	string c = "";
+	for (c = "A"; i < length; ++i)
+	{
+		c = text.GetPart(i, 1);
+		charWidth = MeasureString(c);
+		charWidth = charWidth * this.ScaleX + this.FontSpacing;
+		if ((x + charWidth) - this.FontSpacing > targetX)
+		{
+			return i;
+		}
+		x += charWidth;
+	}
+	return i;
+}
+
+int WordWrapper3::GetLineCount()
+{
+	return this.LineStats.Numof();
+}
+
+void WordWrapper3::UpdateTextRect()
+{
+	return;
+}
+
+void WordWrapper3::TryAdjustTextRect(int left, int right, int top, int bottom)
+{
+	int totalWidth = this.LeftMargin + this.RightMargin + this.WindowWidth;
+	int totalHeight = this.TopMargin + this.BottomMargin + this.WindowHeight;
+	this.LeftMargin += left;
+	if (this.LeftMargin < 0)
+	{
+		this.LeftMargin = 0;
+	}
+	this.RightMargin -= right;
+	if (this.RightMargin < 0)
+	{
+		this.RightMargin = 0;
+	}
+	this.WindowWidth = totalWidth - this.LeftMargin - this.RightMargin;
+	this.TopMargin += top;
+	if (this.TopMargin < 0)
+	{
+		this.TopMargin = 0;
+	}
+	this.BottomMargin -= bottom;
+	if (this.BottomMargin < 0)
+	{
+		this.BottomMargin = 0;
+	}
+	this.WindowHeight = totalHeight - this.TopMargin - this.BottomMargin;
+	this.UpdateTextRect();
+}
+
+void WordWrapper3::AdjustTextRect(int left, int right, int top, int bottom)
+{
+	int addedWidth = right - left;
+	int addedHeight = bottom - top;
+	this.LeftMargin += left;
+	this.RightMargin -= right;
+	this.WindowWidth += addedWidth;
+	this.TopMargin += top;
+	this.BottomMargin -= bottom;
+	this.WindowHeight += addedHeight;
+	this.UpdateTextRect();
+}
+
+void WordWrapper3::RemoveForcedLineBreakNodes()
+{
+	int i = 0;
+	for (i = 0; i < this.WordNodes.Numof(); ++i)
+	{
+		ref WordNode wordNode = this.WordNodes[i];
+		if (wordNode.TextType == 8)
+		{
+			if (wordNode.EndPunctuationWidth == -1.0)
+			{
+				wordNode.TextType = 1;
+			}
+			else
+			{
+				this.WordNodes.Erase(i);
+				--i;
+			}
+		}
+	}
+}
+
+bool WordWrapper3::TryToFit(ref LineStatisticsPosition targetPos, int windowWidth, int rightMargin, float minSpaceScaleX, float minScaleX)
+{
+	float charWidth = targetPos.CharacterWidthUnscaled;
+	float spaceWidth = targetPos.SpaceWidthUnscaled;
+	int charCount = targetPos.CharacterCount;
+	int spaceCount = targetPos.SpaceCount;
+	int totalCount = charCount + spaceCount;
+	ref WordNode punctuationNode = this.WordNodes[targetPos.NodeIndex];
+	int puncCharCount = punctuationNode.EndPunctuationCharCount;
+	float puncWidthUnscaled = punctuationNode.EndPunctuationWidth;
+	float puncWidthScaled1 = puncWidthUnscaled * this.ScaleX + puncCharCount * this.FontSpacing;
+	float puncWidthScaled3 = puncWidthUnscaled * this.ScaleX + puncCharCount * this.MinimumFontSpacing;
+	float puncWidthScaled4 = puncWidthUnscaled * minScaleX + puncCharCount * this.MinimumFontSpacing;
+	if (puncWidthScaled1 > rightMargin)
+	{
+		puncWidthScaled1 = rightMargin;
+	}
+	if (puncWidthScaled3 > rightMargin)
+	{
+		puncWidthScaled3 = rightMargin;
+	}
+	if (puncWidthScaled4 > rightMargin)
+	{
+		puncWidthScaled4 = rightMargin;
+	}
+	float width1 = (charWidth * this.ScaleX + spaceWidth * this.SpaceScaleX + (totalCount - 1) * this.FontSpacing) - puncWidthScaled1;
+	float width2 = (charWidth * this.ScaleX + spaceWidth * minSpaceScaleX + (totalCount - 1) * this.FontSpacing) - puncWidthScaled1;
+	float width3 = (charWidth * this.ScaleX + spaceWidth * minSpaceScaleX + (totalCount - 1) * this.MinimumFontSpacing) - puncWidthScaled3;
+	float width4 = (charWidth * minScaleX + spaceWidth * minSpaceScaleX + (totalCount - 1) * this.MinimumFontSpacing) - puncWidthScaled4;
+	if (width1 <= windowWidth)
+	{
+		return false;
+	}
+	if (width2 <= windowWidth && width1 > width2)
+	{
+		float pixelsAvailable = windowWidth - width2;
+		float pixelDifference = width1 - width2;
+		float x = pixelsAvailable / pixelDifference;
+		float desiredSpaceScale = (1.0 - x) * minSpaceScaleX + x * this.SpaceScaleX;
+		this.SpaceScaleX = desiredSpaceScale;
+		return true;
+	}
+	if (width3 <= windowWidth && width2 > width3)
+	{
+		float Numerator = windowWidth - (charWidth - puncWidthUnscaled) * this.ScaleX - spaceWidth * minSpaceScaleX;
+		float Denominator = totalCount - puncCharCount - 1;
+		this.FontSpacing = Numerator / Denominator;
+		float puncWidthScaled = puncWidthUnscaled * this.ScaleX + puncCharCount * this.FontSpacing;
+		if (puncWidthScaled > rightMargin)
+		{
+			puncWidthScaled = rightMargin;
+		}
+		float width = (charWidth * this.ScaleX + spaceWidth * minSpaceScaleX + (totalCount - 1) * this.FontSpacing) - puncWidthScaled;
+		float epsilon = windowWidth - width;
+		if (epsilon < 0.0)
+		{
+			epsilon = -epsilon;
+		}
+		if (epsilon > 0.00999999977648258)
+		{
+			Numerator = (windowWidth - charWidth * this.ScaleX - spaceWidth * minSpaceScaleX) + rightMargin;
+			Denominator = totalCount - 1;
+			this.FontSpacing = Numerator / Denominator;
+		}
+		this.SpaceScaleX = minSpaceScaleX;
+		return true;
+	}
+	if (width4 <= windowWidth && width3 > width4)
+	{
+		float pixelsAvailable = windowWidth - width4;
+		float pixelDifference = width3 - width4;
+		float x = pixelsAvailable / pixelDifference;
+		float desiredScaleX = (1.0 - x) * minScaleX + x * this.ScaleX;
+		this.SpaceScaleX = minSpaceScaleX;
+		this.FontSpacing = this.MinimumFontSpacing;
+		this.ScaleX = desiredScaleX;
+		return true;
+	}
+	return false;
+}
+
+void WordWrapper3::FitLines()
+{
+	bool expandedMargins = false;
+	int leftMarginUndo = this.LeftMargin;
+	int rightMarginUndo = this.RightMargin;
+label3:
+	if (expandedMargins)
+	{
+		this.TryAdjustTextRect(leftMarginUndo - this.LeftMargin, this.RightMargin - rightMarginUndo, 0, 0);
+		expandedMargins = false;
+	}
+	bool addedLineBreaksAfterPunctuation = false;
+	bool strongShrinkAfterAddedLineBreak = false;
+	this.RemoveForcedLineBreakNodes();
+label2:
+	this.ScaleXList.Free();
+	this.SpaceScaleXList.Free();
+	this.FontSpacingList.Free();
+label0:
+	this.DoWrap();
+	int lineCount = this.GetLineCount();
+	int extraPixelsLeft = 10;
+	if (extraPixelsLeft > this.LeftMargin)
+	{
+		extraPixelsLeft = this.LeftMargin;
+	}
+	int extraPixelsRight = 10;
+	if (extraPixelsRight > this.RightMargin)
+	{
+		extraPixelsRight = this.RightMargin;
+	}
+	int i = 0;
+	for (i = 0; i < lineCount; ++i)
+	{
+		this.UpdateSpaceScaleX2(i);
+		bool doChecks = this.FontSpacing == this.InitialFontSpacing && this.SpaceScaleX == this.InitialSpaceScaleX && this.ScaleX == this.InitialScaleX;
+		if (doChecks)
+		{
+			LineStatistics stats;
+			stats = this.LineStats[i];
+			bool lineHasWrapped = stats.AfterWrap.CharacterCount + stats.AfterWrap.SpaceCount > stats.BeforeWrap.CharacterCount + stats.BeforeWrap.SpaceCount;
+			if (lineHasWrapped && stats.NextLinePunctuation.CharacterCount > 0)
+			{
+				if (this.TryToFit(stats.NextLinePunctuation, this.WindowWidth, this.RightMargin, this.MinimumSpaceScale2, this.MinimumTextScale2))
+				{
+					if (addedLineBreaksAfterPunctuation && this.ScaleX < 0.959999978542328)
+					{
+						strongShrinkAfterAddedLineBreak = true;
+					}
+					this.SetFontSpacing(i, this.FontSpacing);
+					this.SetScaleX(i, this.ScaleX);
+					this.SetSpaceScaleX(i, this.SpaceScaleX);
+					goto label0;
+					goto label1;
+				}
+				if (this.WindowWidth == this.InitialWindowWidth && this.TryToFit(stats.NextLinePunctuation, this.WindowWidth + extraPixelsLeft + extraPixelsRight, this.RightMargin - extraPixelsRight, this.MinimumSpaceScale2, this.MinimumTextScale2))
+				{
+					expandedMargins = true;
+					this.TryAdjustTextRect(-extraPixelsLeft, extraPixelsRight, 0, 0);
+					goto label2;
+				}
+			label1:
+			}
+			if (this.AllowAddingNewLines && lineCount < this.MaxLinesAllowed && stats.LastPunctuation.NodeIndex < stats.BeforeWrap.NodeIndex && stats.LastPunctuationPosition >= this.SentenceSplitThreshhold * this.WindowWidth)
+			{
+				this.AddForcedLineBreakNode(stats.LastPunctuation.NodeIndex + 1);
+				addedLineBreaksAfterPunctuation = true;
+				goto label0;
+			}
+			if (lineHasWrapped)
+			{
+				if (this.TryToFit(stats.AfterWrap, this.WindowWidth, this.RightMargin, this.MinimumSpaceScale1, this.MinimumTextScale1))
+				{
+					this.SetFontSpacing(i, this.FontSpacing);
+					this.SetScaleX(i, this.ScaleX);
+					this.SetSpaceScaleX(i, this.SpaceScaleX);
+					goto label0;
+				}
+			}
+		}
+	}
+	if (strongShrinkAfterAddedLineBreak || this.TooManyLinesAndThereIsRoom())
+	{
+		if (this.SentenceSplitThreshhold < 0.689999997615814)
+		{
+			this.SentenceSplitThreshhold = 0.689999997615814;
+			goto label3;
+			goto label4;
+		}
+		if (this.SentenceSplitThreshhold < 0.75)
+		{
+			this.SentenceSplitThreshhold = 0.75;
+			goto label3;
+		}
+	label4:
+	}
+}
+
+bool WordWrapper3::TooManyLinesAndThereIsRoom()
+{
+	int top = 0;
+	int bottom = 0;
+	int textHeight = this.GetTrueVerticalHeight(top, bottom);
+	if (textHeight <= this.WindowHeight)
+	{
+		return false;
+	}
+	int extraHeight = textHeight - this.WindowHeight;
+	if (extraHeight > this.FontSize)
+	{
+		return false;
+	}
+	float totalRightPixels = 0.0;
+	int i = 0;
+	int lineCount = this.GetLineCount();
+	for (i = 0; i < lineCount - 1; ++i)
+	{
+		ref LineStatistics stats = this.LineStats[i];
+		if (stats.BeforeWrap.CharacterCount == stats.AfterWrap.CharacterCount)
+		{
+			if (i + 1 < this.LineStats.Numof())
+			{
+				ref WordNode nextNode = this.WordNodes[this.LineStats[i + 1].StartNodeIndex];
+				if (nextNode.TextType == 8)
+				{
+					totalRightPixels += this.WindowWidth - stats.Right;
+				}
+			}
+		}
+	}
+	float bottomLineWidth = this.LineStats[this.LineStats.Numof() - 1].Right;
+	if (totalRightPixels > bottomLineWidth)
+	{
+		return true;
+	}
+	return false;
+}
+
+void WordWrapper3::AddForcedLineBreakNode(int nodeIndex)
+{
+	if (nodeIndex < 0 || nodeIndex >= this.WordNodes.Numof())
+	{
+		return;
+	}
+	ref WordNode wordNode = this.WordNodes[nodeIndex];
+	if (wordNode.TextType == 1)
+	{
+		wordNode.TextType = 8;
+		wordNode.EndPunctuationWidth = -1.0;
+	}
+	else
+	{
+		wordNode <- this.WordNodes[nodeIndex - 1];
+		WordNode newWordNode;
+		newWordNode = wordNode;
+		newWordNode.Init("", 8, newWordNode.OriginalMessage);
+		this.WordNodes.Insert(nodeIndex, newWordNode);
+	}
+}
+
+void WordWrapper3::Run()
+{
+	int passes = 0;
+	this.SetValuesToInitialValues();
+	this.CreateWordNodes();
+	this.DoWrap();
+	return;
+}
+
+bool WordWrapper3::FindPrefixMessage(ref _SDrawMessage prefixMsg)
+{
+	if (this.QuoteType > 0)
+	{
+		int messageIndex = 0;
+		int messageCount = this.MessageTextList.Numof();
+		for (messageIndex = 0; messageIndex < messageCount; ++messageIndex)
+		{
+			ref _SDrawMessage msg = this.MessageTextList[messageIndex];
+			if (msg.nType == 5)
+			{
+				prefixMsg = msg;
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+float WordWrapper3::GetHorizontalWidth(ref float left, ref float right)
+{
+	left = 0.0;
+	right = 0.0;
+	_SDrawMessage prefixMsg;
+	if (this.FindPrefixMessage(prefixMsg))
+	{
+		this.UpdateFont(prefixMsg);
+		left = -MeasureString(prefixMsg.MessageText);
+	}
+	else
+	{
+		this.UpdateSpaceScaleX2(0);
+		left = 0.0;
+		float minLeft = 65536.0;
+		int nodeIndex = 0;
+		int nodeCount = this.WordNodes.Numof();
+		for (nodeIndex = 0; nodeIndex < nodeCount; ++nodeIndex)
+		{
+			ref WordNode node = this.WordNodes[nodeIndex];
+			if (node.TextType == 6)
+			{
+				left += node.TextWidth * this.SpaceScaleX + node.CharCount * this.FontSpacing;
+			}
+			else if (node.TextType == 1 || node.TextType == 8)
+			{
+				left = 0.0;
+			}
+			else if (node.TextType == 0 || node.TextType == 7)
+			{
+				if (left < minLeft)
+				{
+					minLeft = left;
+				}
+				left = 65536.0;
+			}
+		}
+		if (left < minLeft)
+		{
+			minLeft = left;
+		}
+		if (minLeft < 65536.0)
+		{
+			left = minLeft;
+		}
+	}
+	int lineNumber = 0;
+	int lineCount = this.GetLineCount();
+	for (lineNumber = 0; lineNumber < lineCount; ++lineNumber)
+	{
+		LineStatistics stats;
+		stats = this.LineStats[lineNumber];
+		if (stats.Right > right)
+		{
+			right = stats.Right;
+		}
+	}
+	return right - left;
+}
+
+int WordWrapper3::GetTrueVerticalHeight(ref int top, ref int bottom)
+{
+	top = 2147483647;
+	bottom = 0;
+	int fontSize = 0;
+	int y = 0;
+	int totalHeight = 0;
+	int messageCount = this.MessageTextList.Numof();
+	int lineHeight = 0;
+	int i = 0;
+	for (i = 0; i < messageCount; ++i)
+	{
+		ref _SDrawMessage msg = this.MessageTextList[i];
+		if (msg.nType == 0 || msg.nType == 1)
+		{
+			fontSize = msg.GetFontSize();
+			if (fontSize == -1)
+			{
+				fontSize = this.InitialFontSizeScaled;
+			}
+			int maxEdge = 2;
+			lineHeight = Math.Max(lineHeight, fontSize + maxEdge);
+			if (msg.nType == 1)
+			{
+				totalHeight = y + lineHeight;
+				y = (totalHeight + this.LineSpacing) - maxEdge;
+				lineHeight = fontSize + maxEdge;
+			}
+			else
+			{
+				int capTop = fontSize * 0.238000005483627 + 0.5 + y + (maxEdge >> 1);
+				int capBottom = fontSize * 0.819999992847443 + 0.5 + y + (maxEdge >> 1);
+				top = Math.Min(top, capTop);
+				bottom = Math.Max(capBottom, bottom);
+				if (!this.IgnoreDescenders && TextContainsDescender(msg.MessageText))
+				{
+					int descenderBottom = fontSize * 0.992649972438812 + 0.5 + y + (maxEdge >> 1);
+					bottom = Math.Max(descenderBottom, bottom);
+				}
+			}
+		}
+	}
+	if (bottom < top)
+	{
+		top = 0;
+	}
+	totalHeight = y + lineHeight;
+	y = totalHeight + this.LineSpacing;
+	return bottom - top;
+}
+
+int WordWrapper3::GetTotalCapHeight()
+{
+	int totalCapHeight = 0;
+	int lineCapTop = 2147483647;
+	int lineCapBottom = 0;
+	int fontSize = 0;
+	int messageCount = this.MessageTextList.Numof();
+	int i = 0;
+	for (i = 0; i < messageCount; ++i)
+	{
+		ref _SDrawMessage msg = this.MessageTextList[i];
+		if (msg.nType == 0 || msg.nType == 1)
+		{
+			fontSize = msg.GetFontSize();
+			if (fontSize == -1)
+			{
+				fontSize = this.InitialFontSizeScaled;
+			}
+			if (msg.nType == 1)
+			{
+				if (lineCapBottom > lineCapTop)
+				{
+					totalCapHeight += lineCapBottom - lineCapTop;
+					lineCapTop = 2147483647;
+					lineCapBottom = 0;
+				}
+			}
+			else
+			{
+				int capTop = fontSize * 0.238000005483627 + 0.5;
+				int capBottom = fontSize * 0.819999992847443 + 0.5;
+				lineCapTop = Math.Min(lineCapTop, capTop);
+				lineCapBottom = Math.Max(lineCapBottom, capBottom);
+			}
+		}
+	}
+	if (lineCapBottom > lineCapTop)
+	{
+		totalCapHeight += lineCapBottom - lineCapTop;
+	}
+	return totalCapHeight;
+}
+
+int WordWrapper3::GetVerticalHeight()
+{
+	int fontSize = 0;
+	int y = 0;
+	int totalHeight = 0;
+	int messageCount = this.MessageTextList.Numof();
+	int lineHeight = 0;
+	int i = 0;
+	for (i = 0; i < messageCount; ++i)
+	{
+		ref _SDrawMessage msg = this.MessageTextList[i];
+		if (msg.nType == 0 || msg.nType == 1)
+		{
+			fontSize = msg.GetFontSize();
+			if (fontSize == -1)
+			{
+				fontSize = this.InitialFontSizeScaled;
+			}
+			int maxEdge = 2;
+			lineHeight = Math.Max(lineHeight, fontSize + maxEdge);
+			if (msg.nType == 1)
+			{
+				totalHeight = y + lineHeight;
+				y = (totalHeight + this.LineSpacing) - maxEdge;
+				lineHeight = fontSize + maxEdge;
+			}
+		}
+	}
+	totalHeight = y + lineHeight;
+	y = totalHeight + this.LineSpacing;
+	return totalHeight;
+}
+
+void WordWrapper3::CopyRightToArray(ref array@float rightArray)
+{
+	int lineCount = this.GetLineCount();
+	int i = 0;
+	rightArray.Realloc(lineCount);
+	for (i = 0; i < lineCount; ++i)
+	{
+		rightArray[i] = this.LineStats[i].Right;
+	}
+}
+
+float MeasureString(ref string text)
+{
+	int i = 0;
+	int charCount = text.Length();
+	float x = 0.0;
+	int charWidth = 0;
+	string charString = "A";
+	for (i = 0; i < charCount; ++i)
+	{
+		charString = text.GetPart(i, 1);
+		int charSizeInt = 0;
+		ChipmunkSpriteEngine.SP_GetFontWidth(charString, charSizeInt);
+		charWidth = charSizeInt;
+		if (charString[0] == '\')
+		{
+			charWidth *= 2;
+		}
+		x += charWidth;
+	}
+	return x;
+}
+
+bool IsPunctuation(int c)
+{
+	int c2 = c;
+	if (c2 >= 128)
+	{
+		c2 = (c2 & 255) << 8 | c2 >> 8;
+	}
+	return c >= 33 && c <= 47 || c >= 58 && c <= 64 || c >= 91 && c <= 96 || c >= 123 && c <= 126 || c2 >= 33089 && c2 <= 33276;
+}
+
+int GetCharTextType(int c)
+{
+	int c2 = c;
+	if (c2 >= 128)
+	{
+		c2 = (c2 & 255) << 8 | c2 >> 8;
+	}
+	if (c == 165)
+	{
+		return 0;
+	}
+	if (c2 >= 33439)
+	{
+		return 7;
+	}
+	if (c == 32 || c == 9 || c == 16513)
+	{
+		return 6;
+	}
+	if (c == 13 || c == 10)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int GetWord(ref string text, int startIndex, ref string word, ref int textType)
+{
+	int textLength = text.Length();
+	if (startIndex < 0)
+	{
+		startIndex = 0;
+	}
+	if (startIndex >= textLength)
+	{
+		word = "";
+		textType = 0;
+		return textLength;
+	}
+	int firstChar = text[startIndex];
+	textType = GetCharTextType(firstChar);
+	int i = 0;
+	for (i = startIndex + 1; i < textLength; ++i)
+	{
+		int c = text[i];
+		int cTextType = GetCharTextType(c);
+		if (cTextType != textType)
+		{
+			break;
+		}
+	}
+	word = text.GetPart(startIndex, i - startIndex);
+	return i;
+}
+
+int CountLineBreaks(ref string word)
+{
+	int i = 0;
+	int lineBreakCount = 0;
+	int l = word.Length();
+	bool sawCr = false;
+	for (i = 0; i < l; ++i)
+	{
+		int c = word[i];
+		if (c == 13)
+		{
+			if (sawCr)
+			{
+				++lineBreakCount;
+			}
+			else
+			{
+				sawCr = true;
+			}
+		}
+		else if (c == 10)
+		{
+			if (sawCr)
+			{
+				sawCr = false;
+			}
+			++lineBreakCount;
+		}
+	}
+	if (sawCr)
+	{
+		++lineBreakCount;
+	}
+	return lineBreakCount;
+}
+
+bool StringIsAbbreviation(ref string str)
+{
+	switch (str)
+	{
+		case "Mr.":
+		case "Ms.":
+		case "Mrs.":
+		case "Jr.":
+		case "Sr.":
+		case "Dr.":
+			return true;
+	}
+	return false;
+}
+
+bool EndPunctuationEndsLine(ref string str)
+{
+	if (str.Empty())
+	{
+		return false;
+	}
+	int c = str[str.Length() - 1];
+	switch (c)
+	{
+		case 36:
+		case 37:
+		case 38:
+		case 40:
+		case 42:
+		case 43:
+		case 45:
+		case 61:
+		case 64:
+		case 94:
+		case 95:
+			return false;
+	}
+	return true;
+}
+
+bool TextContainsDescender(ref string text)
+{
+	int charCount = text.Length();
+	int charIndex = 0;
+	for (charIndex = 0; charIndex < charCount; ++charIndex)
+	{
+		int c = text[charIndex];
+		if (CharacterHasDescender(c))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool CharacterHasDescender(int c)
+{
+	switch (c)
+	{
+		case 36:
+		case 40:
+		case 41:
+		case 44:
+		case 59:
+		case 81:
+		case 91:
+		case 93:
+		case 95:
+		case 103:
+		case 106:
+		case 112:
+		case 113:
+		case 121:
+		case 123:
+		case 124:
+		case 125:
+			return true;
+	}
+	return false;
+}
+
+void RemoveTrailingNewlines(ref string text)
+{
+	while (true)
+	{
+		if (text.Empty())
+		{
+			break;
+		}
+		int c = text[text.Length() - 1];
+		if (c == 13 || c == 10)
+		{
+			text.PopBack();
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+void SplitStringToLines(ref string text, ref array@string lines)
+{
+	string line = "";
+	int i = 0;
+	int l = text.Length();
+	lines.Free();
+	int lineStartIndex = 0;
+	int lineEndIndex = 0;
+	for (i = 0; i < l; ++i)
+	{
+		lineEndIndex = i;
+		int c = text[i];
+		switch (c)
+		{
+			case 13:
+				int c2 = 0;
+				if (i + 1 < l)
+				{
+					c2 = text[i + 1];
+				}
+				if (c2 == 10)
+				{
+					++i;
+				}
+				else
+				{
+				case 10:
+				case 36:
+				case 64:
+				}
+				line = text.GetPart(lineStartIndex, lineEndIndex - lineStartIndex);
+				lines.PushBack(line);
+				lineStartIndex = i + 1;
+				break;
+		}
+	}
+	lineEndIndex = l;
+	line = text.GetPart(lineStartIndex, lineEndIndex - lineStartIndex);
+	lines.PushBack(line);
+}
+
+bool IsSpace(ref string text, int index)
+{
+	if (index < 0 || index >= text.Length())
+	{
+		return true;
+	}
+	int c = text[index];
+	if (c == 0 || c == 32 || c == 10 || c == 13 || c == 9 || c == 16513)
+	{
+		return true;
+	}
+	return false;
+}
+
+void PreprocessText(ref string text)
+{
+	int length = text.Length();
+	int i = 0;
+	string newChar = "";
+	for (i = 0; i < length; ++i)
+	{
+		int c = text[i];
+		switch (c)
+		{
+			case 34:
+				newChar = "h";
+				if (IsSpace(text, i - 1) && i + 1 < length)
+				{
+					newChar = "g";
+				}
+				text = text.GetPart(0, i) + newChar + text.GetPart(i + 1, length - (i + 1));
+				break;
+			case 39:
+				newChar = "f";
+				if (IsSpace(text, i - 1))
+				{
+					newChar = "e";
+				}
+				text = text.GetPart(0, i) + newChar + text.GetPart(i + 1, length - (i + 1));
+				break;
+			case 45:
+				if (i + 1 < length && text[i + 1] == '-')
+				{
+					text = text.GetPart(0, i) + "\" + text.GetPart(i + 2, length - (i + 2));
+					--length;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+void PreprocessString(ref string text)
+{
+	int length = text.Length();
+	int i = 0;
+	string newChar = "";
+	for (i = 0; i < length; ++i)
+	{
+		int c = text[i];
+		switch (c)
+		{
+			case 45:
+				if (i + 1 < length && text[i + 1] == '-')
+				{
+					text = text.GetPart(0, i) + "\" + text.GetPart(i + 2, length - (i + 2));
+					--length;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+}
+
+s‚l::s‚l()
+{
+	this.maptt.Alloc(100, 100);
+	this.maptz.Alloc(100, 100);
+	this.maptv.Alloc(100, 100);
+	this.mapnn.Alloc(100, 100);
+}
+
+s‚h::s‚h()
+{
+	this.‹@”\.Alloc(6);
+	this.Œø‰Ê.Alloc(6);
+	this.‘•”õE‹Æ.Alloc(9);
+	this.‘•”õƒLƒƒƒ‰.Alloc(9);
+}
+
+s‚b::s‚b()
+{
+	this.ƒXƒLƒ‹.Alloc(21);
+	this.‚e‚`.Alloc(101);
+	this.“o˜^ƒXƒLƒ‹.Alloc(6);
+	this.‘äŽŒ.Alloc(6);
+}
+
+s‚p::s‚p()
+{
+	this.à–¾•¶.Alloc(6);
+	this.ŽQ‰ÁðŒ‚`.Alloc(4);
+	this.ŽQ‰ÁðŒ‚a.Alloc(4);
+	this.ŽQ‰ÁðŒ‚b.Alloc(4);
+	this.‚lŒÅ—L”Ô†‹L‰¯.Alloc(17);
+	this.‚l”Ä—p”Ô†‹L‰¯.Alloc(17);
+	this.‚l’Ê‚µ”Ô†‹L‰¯.Alloc(17);
+	this.ƒGƒŠƒA•\Ž¦.Alloc(17, 5);
+}
+
+SMatrix::SMatrix()
+{
+	this.m.Alloc(4, 4);
+}
+
+

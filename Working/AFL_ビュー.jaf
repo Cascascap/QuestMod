@@ -1,0 +1,30 @@
+void AFL_KeepPreviousView_SetMode(bool KeepPreviousViewMode)
+{
+	ChipmunkSpriteEngine.KeepPreviousView_SetMode(KeepPreviousViewMode);
+}
+
+bool AFL_KeepPreviousView_GetMode()
+{
+	return ChipmunkSpriteEngine.KeepPreviousView_GetMode();
+}
+
+bool AFL_Sprite_RenderView(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_RenderView(SpriteNumber);
+}
+
+int AFL_View_GetWidth()
+{
+	return ChipmunkSpriteEngine.GetScreenWidth();
+}
+
+int AFL_View_GetHeight()
+{
+	return ChipmunkSpriteEngine.GetScreenHeight();
+}
+
+void AFL_View_AddMotionVibrationSize(int Width, int Height, int BeginTime, int EndTime)
+{
+	GoatGUIEngine.AddWholeMotionVibrationSize(Width, Height, BeginTime, EndTime);
+}
+

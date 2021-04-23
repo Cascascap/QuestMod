@@ -1,0 +1,465 @@
+int T_MapSmall::getSelectIndex()
+{
+	return this.m_nSelectIndex;
+}
+
+bool T_MapSmall::getInputFlag()
+{
+	return this.m_nInputFlag > 0;
+}
+
+bool T_MapSmall::isKeyDown()
+{
+	return this.m_nDownKey > 0;
+}
+
+bool T_MapSmall::isClick()
+{
+	return this.m_nClickIndex >= 0;
+}
+
+T_MapSmall::T_MapSmall()
+{
+	this.clear();
+}
+
+T_MapSmall::~T_MapSmall()
+{
+	this.delete();
+}
+
+bool T_MapSmall::run(ref int nMapX, ref int nMapY)
+{
+	bool bRet = false;
+	bool bOld = マップ_表示設定(false, -1, -1);
+	nMapX = -1;
+	nMapY = -1;
+	this.create(9801);
+	EFFECT(1, 100);
+	this.resetSelect();
+	while (true)
+	{
+		int nRet = this.checkInput();
+		if (nRet == 2)
+		{
+			bRet = true;
+			nMapX = マップ位置_Ｘ(this.m_nClickIndex);
+			nMapY = マップ位置_Ｙ(this.m_nClickIndex);
+			break;
+		}
+		if (nRet != 1)
+		{
+			if (キャンセル_確認())
+			{
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	this.delete();
+	マップ_表示設定(bOld, -1, -1);
+	return bRet;
+}
+
+void T_MapSmall::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	this.m_spBase.createPixelOnly(1024, 736);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	for (i = 0; i < 2500; ++i)
+	{
+		this.draw(i);
+	}
+	this.m_spBase.setShow(1);
+	this.m_spFrame.create(14, 14, 216, 255, 0, 102);
+	this.m_spFrame.setZ(nZ + 5);
+	this.m_sName.create(285, 64, -1, 0, 0, 0);
+	this.m_sName.setPos(739, 10);
+	this.m_sName.setZ(nZ + 1);
+	this.m_sName.setFontType(0);
+	this.m_sName.setFontSize(16);
+	this.m_sName.setFontColor(255, 255, 255);
+	this.m_sName.setFontBold(1);
+	this.m_sName.setText(テキスト_マップ名(-1) + "@(%s)" % マップ_名前(-1), false);
+	this.m_sName.setShow(true);
+	this.m_sComment.create(285, 246, -1, 0, 0, 0);
+	this.m_sComment.setPos(739, 490);
+	this.m_sComment.setZ(nZ + 1);
+	this.m_sComment.setFontType(0);
+	this.m_sComment.setFontSize(16);
+	this.m_sComment.setFontColor(255, 255, 255);
+	this.m_sComment.setFontBold(1);
+	this.m_nInputFlag = 1;
+}
+
+void T_MapSmall::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spFrame.delete();
+	this.m_sName.delete();
+	this.m_sComment.delete();
+	this.clear();
+}
+
+void T_MapSmall::clear()
+{
+	this.m_nSelectIndex = -1;
+	this.m_nInputFlag = -1;
+	this.clearInput();
+}
+
+void T_MapSmall::updateMark()
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.drawMark(i);
+	}
+}
+
+int T_MapSmall::checkInput()
+{
+	if (this.m_nInputFlag <= 0)
+	{
+		return -1;
+	}
+	if (!this.m_spBase.getShow())
+	{
+		return -1;
+	}
+	if (this.m_nDownKey > 0)
+	{
+		if (this.checkClick())
+		{
+			return 1;
+		}
+	}
+	else if (this.checkDown())
+	{
+		return 1;
+	}
+	return this.m_nClickIndex >= 0 ? 2 : 0;
+}
+
+void T_MapSmall::clearInput()
+{
+	this.m_nDownKey = 0;
+	this.m_nDownIndex = -1;
+	this.m_nClickIndex = -1;
+}
+
+void T_MapSmall::setInputFlag(bool bInputFlag)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	if (!bInputFlag)
+	{
+		this.clearInput();
+		this.resetSelect();
+	}
+	this.m_nInputFlag = bInputFlag ? 1 : 0;
+}
+
+void T_MapSmall::resetSelect()
+{
+	this.clearInput();
+	this.setSelect(-1, false);
+}
+
+void T_MapSmall::setSelect(int nIndex, bool bSound)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	int nX = this.getPosX(nIndex);
+	int nY = this.getPosY(nIndex);
+	if (nX < 0 || nY < 0)
+	{
+		nIndex = -1;
+	}
+	if (nIndex == this.m_nSelectIndex)
+	{
+		return;
+	}
+	this.m_nSelectIndex = nIndex;
+	if (nIndex > 0)
+	{
+		this.m_spFrame.setPos(nX, nY);
+		this.m_spFrame.setShow(1);
+	}
+	else
+	{
+		this.m_spFrame.setShow(0);
+	}
+	this.showComment(nIndex);
+}
+
+int T_MapSmall::checkMouse()
+{
+	int nX = 0;
+	int nY = 0;
+	if (!マウス_位置取得(nX, nY))
+	{
+		return -1;
+	}
+	int nRow = this.getRow2(nY);
+	int nCol = this.getCol2(nX);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	return nRow * 50 + nCol;
+}
+
+bool T_MapSmall::checkClick()
+{
+	bool bSelect = this.m_nDownIndex >= 0 && this.m_nDownIndex == this.checkMouse();
+	if (!キー_押下(this.m_nDownKey))
+	{
+		this.m_nClickIndex = bSelect ? this.m_nDownIndex : -1;
+		this.m_nDownKey = 0;
+		this.m_nDownIndex = -1;
+		return false;
+	}
+	if (this.m_nDownKey == 1)
+	{
+		if (bSelect)
+		{
+			this.setSelect(this.m_nDownIndex, true);
+		}
+		else
+		{
+			this.setSelect(-1, true);
+		}
+	}
+	return true;
+}
+
+bool T_MapSmall::checkDown()
+{
+	this.clearInput();
+	int nKey = キー_決定();
+	if (nKey <= 0)
+	{
+		int idx = this.checkMouse();
+		this.setSelect(idx, true);
+		return false;
+	}
+	if (this.m_nSelectIndex < 0)
+	{
+		return false;
+	}
+	this.m_nDownKey = nKey;
+	this.m_nDownIndex = this.m_nSelectIndex;
+	効果音_クリック();
+	return true;
+}
+
+void T_MapSmall::showComment(int nIndex)
+{
+	if (!マップ位置_インデクス確認(nIndex))
+	{
+		this.m_sComment.setShow(false);
+		return;
+	}
+	array@string aszText[12];
+	int nX = マップ位置_Ｘ(nIndex);
+	int nY = マップ位置_Ｙ(nIndex);
+	int idx = 0;
+	int nNo = 0;
+	aszText.Fill(0, aszText.Numof(), "");
+	aszText[idx++] = "Ｘ:%02d(%02d)" % ＭＸ＞ＴＸ(nX) % nX;
+	aszText[idx++] = "Ｙ:%02d(%02d)" % ＭＹ＞ＴＹ(nY) % nY;
+	nNo = マップデータ_高さ(nX, nY);
+	aszText[idx++] = "Ｈ:" + (nNo != 2147483647 ? 実数字(nNo) : "－");
+	nNo = 置物番号(nX, nY);
+	aszText[idx++] = "置:" + (nNo > 0 ? g_sObjectInfo.getName(nNo) : "－");
+	nNo = ＢＢ番号(nX, nY);
+	aszText[idx++] = "CG:" + (nNo > 0 ? 半角数字(nNo, 5, 1) : "－");
+	aszText[idx++] = "補:" + this.getMarkComment(nX, nY);
+	float fX = 0.0;
+	float fZ = 0.0;
+	３Ｄマップ_変換_位置＞座標(fX, fZ, nX, nY);
+	aszText[idx++] = "H1:%.2f" % g_sMapMode.Calc2DDetectionHeight(fX, fZ);
+	aszText[idx++] = "H2:%.2f" % g_sMapMode.CalcHeightDetection(fX, fZ);
+	this.m_sComment.setTexts(aszText, -1);
+	this.m_sComment.setShow(true);
+}
+
+void T_MapSmall::draw(int nIndex)
+{
+	int nX = this.getPosX(nIndex);
+	int nY = this.getPosY(nIndex);
+	int nType = マップデータ_タイプ(マップ位置_Ｘ(nIndex), マップ位置_Ｙ(nIndex));
+	this.m_spBase.fill(nX, nY, 14, 14, 255, 255, 255, 255);
+	if (nType >= 101)
+	{
+		this.m_spBase.fill(nX + 1, nY + 1, 12, 12, 0, 128, 128, 255);
+	}
+	else if (nType >= 1)
+	{
+		this.m_spBase.fill(nX + 1, nY + 1, 12, 12, 128, 0, 128, 255);
+	}
+	else
+	{
+		this.m_spBase.fill(nX + 1, nY + 1, 12, 12, 128, 128, 128, 255);
+	}
+	this.drawMark(nIndex);
+}
+
+void T_MapSmall::drawMark(int nIndex)
+{
+	int nSpNo = テキスト_文字作成(this.getMark(マップ位置_Ｘ(nIndex), マップ位置_Ｙ(nIndex)), 0, 12, 255, 255, 255, 40, 0, 0, 0, 0);
+	if (nSpNo <= 0)
+	{
+		return;
+	}
+	ref T_Sprite rfsMark = this.m_aspMark[nIndex];
+	rfsMark.attach(nSpNo);
+	rfsMark.setPos(this.getPosX(nIndex) + 1, this.getPosY(nIndex) + 1);
+	rfsMark.setZ(this.m_spBase.getZ() + 1);
+	rfsMark.setShow(1);
+}
+
+int T_MapSmall::getPosX(int nIndex)
+{
+	return this.getPosX2(マップ位置_Ｘ(nIndex));
+}
+
+int T_MapSmall::getPosY(int nIndex)
+{
+	return this.getPosY2(マップ位置_Ｙ(nIndex));
+}
+
+int T_MapSmall::getRow2(int nY)
+{
+	if (nY < 18 || nY > 717)
+	{
+		return -1;
+	}
+	int nRow = (nY - 18) / 14;
+	return 50 - nRow - 1;
+}
+
+int T_MapSmall::getCol2(int nX)
+{
+	if (nX < 20 || nX > 719)
+	{
+		return -1;
+	}
+	return (nX - 20) / 14;
+}
+
+int T_MapSmall::getPosX2(int nCol)
+{
+	if (!マップ位置_Ｘ確認(nCol))
+	{
+		return -14;
+	}
+	return 20 + nCol * 14;
+}
+
+int T_MapSmall::getPosY2(int nRow)
+{
+	if (!マップ位置_Ｙ確認(nRow))
+	{
+		return -14;
+	}
+	nRow = 50 - nRow - 1;
+	return 18 + nRow * 14;
+}
+
+string T_MapSmall::getMark(int nX, int nY)
+{
+	if (マップデータ２_開始位置確認(nX, nY))
+	{
+		return "Ｓ";
+	}
+	if (マップデータ２_北位置確認(nX, nY))
+	{
+		return "北";
+	}
+	if (マップデータ２_東位置確認(nX, nY))
+	{
+		return "東";
+	}
+	if (マップデータ２_南位置確認(nX, nY))
+	{
+		return "南";
+	}
+	if (マップデータ２_西位置確認(nX, nY))
+	{
+		return "西";
+	}
+	if (マップデータ２_発生場所確認(nX, nY))
+	{
+		return "発";
+	}
+	if (マップデータ２_広域場所確認(nX, nY))
+	{
+		return "広";
+	}
+	if (マップデータ２_覚書確認(nX, nY))
+	{
+		return "＊";
+	}
+	if (置物あり(nX, nY))
+	{
+		return "★";
+	}
+	if (ＢＢあり(nX, nY))
+	{
+		return "●";
+	}
+	return "";
+}
+
+string T_MapSmall::getMarkComment(int nX, int nY)
+{
+	if (マップデータ２_開始位置確認(nX, nY))
+	{
+		return "スタート位置";
+	}
+	if (マップデータ２_北位置確認(nX, nY))
+	{
+		return "北の転移位置";
+	}
+	if (マップデータ２_東位置確認(nX, nY))
+	{
+		return "東の転移位置";
+	}
+	if (マップデータ２_南位置確認(nX, nY))
+	{
+		return "南の転移位置";
+	}
+	if (マップデータ２_西位置確認(nX, nY))
+	{
+		return "西の転移位置";
+	}
+	if (マップデータ２_発生場所確認(nX, nY))
+	{
+		return "発生場所";
+	}
+	if (マップデータ２_広域場所確認(nX, nY))
+	{
+		return "広域場所";
+	}
+	if (マップデータ２_覚書確認(nX, nY))
+	{
+		return "覚書";
+	}
+	return "－－－";
+}
+

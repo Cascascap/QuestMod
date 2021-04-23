@@ -1,0 +1,312 @@
+bool T_BattleBar::isAnime()
+{
+	return this.m_rfAnimeBar !== NULL;
+}
+
+int T_BattleBar::getHp()
+{
+	return this.m_sValue.getValue();
+}
+
+int T_BattleBar::getHpMax()
+{
+	return this.m_sMax.getValue();
+}
+
+T_BattleBar::T_BattleBar()
+{
+	this.clear();
+}
+
+T_BattleBar::~T_BattleBar()
+{
+	this.delete();
+}
+
+void T_BattleBar::create(int nNormalColorR, int nNormalColorG, int nNormalColorB, int nDamageColorR, int nDamageColorG, int nDamageColorB, int nHealColorR, int nHealColorG, int nHealColorB, int nPoisonColorR, int nPoisonColorG, int nPoisonColorB)
+{
+	this.delete();
+	this.m_sBar.create(1, 190, 4, nNormalColorR, nNormalColorG, nNormalColorB, 255, nPoisonColorR, nPoisonColorG, nPoisonColorB, 255, -1, -1, -1, 255);
+	this.m_sDamage.create(1, 190, 4, nDamageColorR, nDamageColorG, nDamageColorB, 255, -1, -1, -1, 255, -1, -1, -1, 255);
+	this.m_sHeal.create(1, 190, 4, nHealColorR, nHealColorG, nHealColorB, 255, -1, -1, -1, 255, -1, -1, -1, 255);
+	this.createNumber();
+	this.m_nValue = 0;
+	this.m_nMax = 0;
+}
+
+void T_BattleBar::createCg(int nNormalCgNo, int nDamageCgNo, int nHeaCgNo, int nPoisonCgNo)
+{
+	this.delete();
+	this.m_sBar.createCg(1, nNormalCgNo, nPoisonCgNo, 0);
+	this.m_sDamage.createCg(1, nDamageCgNo, 0, 0);
+	this.m_sHeal.createCg(1, nHeaCgNo, 0, 0);
+	this.createNumber();
+	this.m_nValue = 0;
+	this.m_nMax = 0;
+}
+
+void T_BattleBar::delete()
+{
+	this.m_sBar.delete();
+	this.m_sDamage.delete();
+	this.m_sHeal.delete();
+	this.m_sValue.delete();
+	this.m_sMax.delete();
+	this.m_spSlash.delete();
+	this.clear();
+}
+
+void T_BattleBar::clear()
+{
+	this.m_nValue = -1;
+	this.m_nMax = -1;
+	this.m_nValue2 = 0;
+	this.m_bPoison = false;
+	this.m_bShow = false;
+	this.animeClear();
+}
+
+bool T_BattleBar::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!this.m_sBar.copyToSprite(rfsDst, nDstX, nDstY))
+	{
+		return false;
+	}
+	int nX2 = nDstX + 19;
+	int nY2 = nDstY + -12;
+	if (!this.m_sValue.copyToSprite(rfsDst, nX2, nY2))
+	{
+		return false;
+	}
+	nX2 += this.m_sValue.getWidth();
+	if (!this.m_spSlash.copyToSprite(rfsDst, nX2, nY2, -1, -1, 0))
+	{
+		return false;
+	}
+	nX2 += this.m_spSlash.getWidth();
+	if (!this.m_sMax.copyToSprite(rfsDst, nX2, nY2))
+	{
+		return false;
+	}
+	return true;
+}
+
+void T_BattleBar::update(int nValue, int nTotalTime)
+{
+	if (this.m_nMax < 0)
+	{
+		return;
+	}
+	if (nTotalTime <= 0)
+	{
+		this.setValue(nValue, -1, 0);
+		return;
+	}
+	if (!this.animeStart(nValue, nTotalTime))
+	{
+		return;
+	}
+	UPDATE(true);
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (nTime < nTotalTime)
+	{
+		this.anime(nTime);
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	this.animeEnd();
+}
+
+bool T_BattleBar::animeStart(int nValue, int nTotalTime)
+{
+	if (this.m_nMax < 0)
+	{
+		return false;
+	}
+	this.animeEnd();
+	if (nValue == this.m_nValue)
+	{
+		return false;
+	}
+	if (nTotalTime <= 0)
+	{
+		return false;
+	}
+	if (nValue < this.m_nValue)
+	{
+		if (this.m_sDamage.isCreated())
+		{
+			this.m_rfAnimeBar <- this.m_sDamage;
+			this.m_sDamage.setShow(true, -1);
+			this.m_sDamage.setValue(this.m_nValue, this.m_nMax);
+			this.m_sBar.setValue(nValue, this.m_nMax);
+		}
+		else
+		{
+			this.m_rfAnimeBar <- this.m_sBar;
+		}
+		this.m_sHeal.setShow(false, -1);
+	}
+	else
+	{
+		this.m_sHeal.setShow(true, -1);
+		this.m_sHeal.setValue(nValue, this.m_nMax);
+		this.m_sDamage.setShow(false, -1);
+		this.m_rfAnimeBar <- this.m_sBar;
+	}
+	return this.m_rfAnimeBar.animeStart(nValue, nTotalTime);
+}
+
+void T_BattleBar::animeEnd()
+{
+	if (this.m_rfAnimeBar === NULL)
+	{
+		return;
+	}
+	this.m_rfAnimeBar.animeEnd();
+	this.setValue(this.m_rfAnimeBar.getValue(), -1, 0);
+	this.m_sDamage.setShow(false, -1);
+	this.m_sHeal.setShow(false, -1);
+	this.animeClear();
+}
+
+void T_BattleBar::animeClear()
+{
+	this.m_rfAnimeBar <- NULL;
+}
+
+int T_BattleBar::anime(int nTime)
+{
+	if (this.m_rfAnimeBar === NULL)
+	{
+		return -1;
+	}
+	if (nTime >= this.m_rfAnimeBar.getTotalTime())
+	{
+		this.animeEnd();
+		return -1;
+	}
+	int nValue = this.m_rfAnimeBar.anime(nTime);
+	this.setNumber(nValue, -1);
+	return nValue;
+}
+
+void T_BattleBar::setValue(int nValue, int nMax, int nValue2)
+{
+	if (this.m_nMax < 0)
+	{
+		return;
+	}
+	nMax = nMax < 0 ? this.m_nMax : nMax;
+	if (nValue == this.m_nValue && nMax == this.m_nMax && nValue2 == this.m_nValue2)
+	{
+		return;
+	}
+	this.setNumber(nValue, nMax);
+	if (nValue2 < 0 && this.m_sDamage.isCreated())
+	{
+		this.m_sBar.setValue(nValue + nValue2, nMax);
+		this.m_sDamage.setShow(true, -1);
+		this.m_sDamage.setValue(nValue, nMax);
+		this.m_sHeal.setShow(false, -1);
+	}
+	else if (nValue2 > 0 && this.m_sHeal.isCreated())
+	{
+		this.m_sBar.setValue(nValue, nMax);
+		this.m_sHeal.setShow(true, -1);
+		this.m_sHeal.setValue(nValue + nValue2, nMax);
+		this.m_sDamage.setShow(false, -1);
+	}
+	else
+	{
+		this.m_sBar.setValue(nValue, nMax);
+		this.m_sDamage.setShow(false, -1);
+		this.m_sHeal.setShow(false, -1);
+	}
+	this.m_nValue = nValue;
+	this.m_nMax = nMax;
+	this.m_nValue2 = nValue2;
+}
+
+void T_BattleBar::setPoison(bool bPoison)
+{
+	if (this.m_nMax < 0)
+	{
+		return;
+	}
+	if (bPoison == this.m_bPoison)
+	{
+		return;
+	}
+	this.m_bPoison = bPoison;
+	this.setShow(this.m_bShow);
+}
+
+void T_BattleBar::setPos(int nX, int nY)
+{
+	this.m_sBar.setPos(nX, nY);
+	this.m_sDamage.setPos(nX, nY);
+	this.m_sHeal.setPos(nX, nY);
+	int nX2 = nX + 19;
+	int nY2 = nY + -12;
+	this.m_sValue.setPos(nX2, nY2);
+	nX2 += this.m_sValue.getWidth();
+	this.m_spSlash.setPos(nX2, (nY2 + this.m_sValue.getCgHeight()) - this.m_spSlash.getHeight());
+	nX2 += this.m_spSlash.getWidth();
+	this.m_sMax.setPos(nX2, nY2);
+}
+
+void T_BattleBar::setZ(int nZ)
+{
+	this.m_sBar.setZ(nZ + 1);
+	this.m_sDamage.setZ(nZ);
+	this.m_sHeal.setZ(nZ);
+	this.m_sValue.setZ(nZ);
+	this.m_sMax.setZ(nZ);
+	this.m_spSlash.setZ(nZ);
+}
+
+void T_BattleBar::setShow(bool bShow)
+{
+	this.m_sBar.setShow(bShow, 0);
+	this.m_sValue.setShow(bShow);
+	this.m_sMax.setShow(bShow);
+	this.m_spSlash.setShow(bShow);
+	this.m_sDamage.setShow(false, -1);
+	this.m_sHeal.setShow(false, -1);
+	this.m_bShow = bShow;
+}
+
+void T_BattleBar::setBlendRate(int nBlendRate)
+{
+	this.m_sBar.setBlendRate(nBlendRate);
+	this.m_sDamage.setBlendRate(nBlendRate);
+	this.m_sHeal.setBlendRate(nBlendRate);
+	this.m_sValue.setBlendRate(nBlendRate);
+	this.m_sMax.setBlendRate(nBlendRate);
+	this.m_spSlash.setBlendRate(nBlendRate);
+}
+
+void T_BattleBar::createNumber()
+{
+	this.m_sValue.create(10096, false, 5, 2, 0);
+	this.m_sMax.create(10096, false, 5, 2, 0);
+	this.m_spSlash.setCg(10014);
+}
+
+void T_BattleBar::setNumber(int nValue, int nMax)
+{
+	if (this.m_nMax < 0)
+	{
+		return;
+	}
+	this.m_sValue.setValue(nValue, 0, false);
+	this.m_sMax.setValue(nMax < 0 ? this.m_nMax : nMax, 0, false);
+}
+

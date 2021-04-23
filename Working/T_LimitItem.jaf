@@ -1,0 +1,243 @@
+int T_LimitItem::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_LimitItem::checkKey(int nID)
+{
+	return this.m_sButton.checkKey();
+}
+
+void T_LimitItem::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_LimitItem::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_LimitItem::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_LimitItem::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+void T_LimitItem::setShow(bool bShow)
+{
+	this.m_sButton.setShow(bShow);
+}
+
+int T_LimitItem::getType()
+{
+	return this.m_nStoreType;
+}
+
+int T_LimitItem::getItemType()
+{
+	return this.m_nItemType;
+}
+
+bool T_LimitItem::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_LimitItem::getButtonKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_LimitItem::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_LimitItem::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_LimitItem::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_LimitItem::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_LimitItem::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+int T_LimitItem::getPrev(int nID)
+{
+	return this.m_sButton.getPrevButton(nID, false, false);
+}
+
+int T_LimitItem::getNext(int nID)
+{
+	return this.m_sButton.getNextButton(nID, false, false);
+}
+
+int T_LimitItem::getFirst()
+{
+	return this.m_sButton.getFirstButton(false);
+}
+
+int T_LimitItem::getLast()
+{
+	return this.m_sButton.getLastButton(false);
+}
+
+T_LimitItem::T_LimitItem()
+{
+	this.clear();
+}
+
+T_LimitItem::~T_LimitItem()
+{
+	this.delete();
+}
+
+bool T_LimitItem::create(int nStoreType, int nX, int nY, int nZ, int nButtonID)
+{
+	this.delete();
+	if (nStoreType <= 0 || nStoreType >= 4)
+	{
+		return false;
+	}
+	int i = 0;
+	this.m_sButton.create();
+	for (i = 0; i < 4; ++i)
+	{
+		ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, nButtonID + this.getItemTypeFromIndex(i), nX + 0 * i, nY + 34 * i, 11081 + i, -1, -1, -2147483648, -2147483648);
+	}
+	this.m_sButton.setZ(nZ);
+	this.m_nStoreType = nStoreType;
+	this.m_nButtonID = nButtonID;
+	return true;
+}
+
+void T_LimitItem::delete()
+{
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_LimitItem::clear()
+{
+	this.m_nStoreType = 0;
+	this.m_nButtonID = 0;
+	this.m_nItemType = 0;
+}
+
+bool T_LimitItem::setItemType(int nItemType)
+{
+	if (this.getItemIndex(nItemType) < 0)
+	{
+		return false;
+	}
+	if (nItemType != this.m_nItemType)
+	{
+		this.m_nItemType = nItemType;
+	}
+	else
+	{
+		switch (this.m_nStoreType)
+		{
+			case 1:
+				this.m_nItemType = 0;
+				break;
+			case 2:
+			case 3:
+			default:
+				break;
+		}
+	}
+	return true;
+}
+
+void T_LimitItem::setButtonActive()
+{
+	int i = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		int nItemType = this.getItemTypeFromIndex(i);
+		this.m_sButton.setButtonStatus(this.m_nButtonID + nItemType, this.checkItemType(nItemType) ? 0 : 2);
+	}
+	switch (this.m_nStoreType)
+	{
+		case 2:
+		case 3:
+			this.m_sButton.setButtonStatus(this.m_nButtonID + 23, 1);
+			break;
+		case 1:
+		default:
+			break;
+	}
+}
+
+bool T_LimitItem::checkItemType(int nItemType)
+{
+	if (this.getItemIndex(nItemType) < 0)
+	{
+		return false;
+	}
+	switch (this.m_nStoreType)
+	{
+		case 1:
+			return this.m_nItemType > 0 ? nItemType == this.m_nItemType : 1;
+		case 2:
+		case 3:
+			return this.m_nItemType > 0 ? nItemType == this.m_nItemType : 0;
+		default:
+			break;
+	}
+	return false;
+}
+
+int T_LimitItem::getItemTypeFromIndex(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return 21;
+		case 1:
+			return 1;
+		case 2:
+			return 11;
+		case 3:
+			return 17;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_LimitItem::getItemIndex(int nItemType)
+{
+	switch (nItemType)
+	{
+		case 21:
+			return 0;
+		case 1:
+			return 1;
+		case 11:
+			return 2;
+		case 17:
+			return 3;
+		default:
+			break;
+	}
+	return -1;
+}
+

@@ -1,0 +1,5165 @@
+void ‚h‰Šú‰»(int ii)
+{
+	s‚h ‰Šúƒf[ƒ^;
+	‚h[ii] = ‰Šúƒf[ƒ^;
+}
+
+string ‚h–¼‘O(lint ii, string •¶š—ñ)
+{
+	if (•¶š—ñ == "")
+	{
+		return ‚h[ii].–¼‘O;
+	}
+	‚h[ii].–¼‘O = •¶š—ñ;
+	‚hî•ñ(ii, "");
+	return "";
+}
+
+string ‚hÀ‘•ğŒ(lint ii, string •¶š—ñ)
+{
+	if (•¶š—ñ == "")
+	{
+		return ‚h[ii].À‘•ğŒ;
+	}
+	‚h[ii].À‘•ğŒ = •¶š—ñ;
+	return "";
+}
+
+string ‚hî•ñ(lint ii, string •¶š—ñ)
+{
+	if (•¶š—ñ == "")
+	{
+		return ‚h[ii].î•ñ;
+	}
+	lastDescriptionArgument = •¶š—ñ;
+	int loop = 0;
+	int aa = 0;
+	string •¶š—ñ‚Q = "";
+	string £‹@”\•¶š = "";
+	lint no = ‚hŒÅ—L”Ô†(ii, -1);
+	if (no == 54)
+	{
+		•¶š—ñ = "Cloth |S|: Saps 20% HP after each battle.$";
+	}
+	if (no == 2)
+	{
+		•¶š—ñ = "Is this from the future?";
+	}
+	if (no == 57)
+	{
+		•¶š—ñ = "Will degrade when used.";
+	}
+	if (no == 83)
+	{
+		•¶š—ñ = "Short sword |S| : Regular attacks will hit at least twice.$";
+	}
+	if (no == 84)
+	{
+		•¶š—ñ = "Short sword |SS| : Makes Assassination easier.$";
+	}
+	if (no == 100)
+	{
+		•¶š—ñ = "Sword |S| : Shatters invincibility fields.$";
+	}
+	if (no == 171)
+	{
+		•¶š—ñ = "Firearm: It's kinda like a bazooka. ";
+	}
+	if (no == 118)
+	{
+		•¶š—ñ = "Spear |C| : Applies a poison on contact.$";
+	}
+	if (no == 215)
+	{
+		•¶š—ñ = "A cursed shield. You always wanted to be$a guard, right? No? Too bad!";
+	}
+	if (no == 216)
+	{
+		•¶š—ñ = "A gift from Rance, her precious treasure.";
+	}
+	if (no == 218)
+	{
+		•¶š—ñ = "Milli Yorks.$She was `23.`";
+	}
+	if (no == 217)
+	{
+		•¶š—ñ = "With this, a youkai$can live on the continent,$far from Orochi's presence.";
+	}
+	if (no == 209)
+	{
+		•¶š—ñ = "A gloomy-looking bracelet.$Anyone given this will immediately leave.$Is there an upside?";
+	}
+	if (no == 199)
+	{
+		•¶š—ñ = "Chi-Ha Shell";
+	}
+	if (no == 195)
+	{
+		•¶š—ñ = "Protects against poison.";
+	}
+	if (no == 335)
+	{
+		•¶š—ñ = "Suspicious bloomers.$If you're at your talent cap while wearing these, it might just increase.";
+	}
+	if (no == 206)
+	{
+		•¶š—ñ = "Holding this item gives you 10% more EXP after battle!";
+	}
+	if (no == 343)
+	{
+		•¶š—ñ = "Holding this item gives you 20% more EXP after battle! Nice!";
+	}
+	if (no == 180)
+	{
+		•¶š—ñ = "Lia's pet.$It's really a huge lightning dragon, but due to circumstances, it's currently small.";
+	}
+	if (no == 210)
+	{
+		•¶š—ñ = "Speed +20 at the start of battle.";
+	}
+	if (no == 208)
+	{
+		•¶š—ñ = "A gift from a pitying god.$Enables Angel Mirror skill when equipped.";
+	}
+	if (no == 181)
+	{
+		•¶š—ñ = "Wonderful medicine that heals about half HP.$Allows 1 use of Ibeprofun when equipped.";
+	}
+	if (no == 182)
+	{
+		•¶š—ñ = "Wonderful medicine that heals about half HP.$Allows 2 uses of Ibeprofun when equipped.";
+	}
+	if (no == 183)
+	{
+		•¶š—ñ = "Wonderful medicine that heals about half HP.$Allows 3 uses of Ibeprofun when equipped.";
+	}
+	if (no == 184)
+	{
+		•¶š—ñ = "Wonderful medicine that can revive a dead party member.$Allows 1 use of Epinephrend when equipped.";
+	}
+	if (no == 185)
+	{
+		•¶š—ñ = "A mysterious key that makes opening locked treasure chests easier.$Enables Use Key skill when equipped.";
+	}
+	if (no == 186)
+	{
+		•¶š—ñ = "A mysterious, lewd rope that can capture gal monsters.$Allows 2 uses of Capture per quest when equipped.";
+	}
+	if (no == 318)
+	{
+		•¶š—ñ = "A mysterious, lewd rope that can capture gal monsters.$Allows 8 uses of Capture per quest when equipped.";
+	}
+	if (no == 188)
+	{
+		•¶š—ñ = "Automatically revives you with its mysterious power.$Awesome!$Provides one use of Hanny Zippo Resurrection when equipped.";
+	}
+	if (no == 179)
+	{
+		•¶š—ñ = "A stealth device that will make you invisible.$Allows 3 uses of Stealth when equipped.";
+	}
+	if (no == 207)
+	{
+		•¶š—ñ = "A treat for the master author, entrusted to you.$It doesn't heal you or anything, but if you have it, you can munch on it every so often, which is nice.";
+	}
+	if (no == 255)
+	{
+		•¶š—ñ = "A slimy liquid.";
+	}
+	if (no == 256)
+	{
+		•¶š—ñ = "A slimy liquid.";
+	}
+	if (no == 257)
+	{
+		•¶š—ñ = "A slimy liquid.";
+	}
+	if (no == 258)
+	{
+		•¶š—ñ = "Just some shiny stone, but a treasure to those who desire it.$Especially popular with the ladies.";
+	}
+	if (no == 259)
+	{
+		•¶š—ñ = "One piece of the magical Kugu Torture Device.$It's said that uniting the pieces will free the one eternally tortured inside.";
+	}
+	if (no == 260)
+	{
+		•¶š—ñ = "One piece of the magical Kugu Torture Device.$It's said that uniting the pieces will free the one eternally tortured inside.";
+	}
+	if (no == 261)
+	{
+		•¶š—ñ = "One piece of the magical Kugu Torture Device.$It's said that uniting the pieces will free the one eternally tortured inside.";
+	}
+	if (no == 262)
+	{
+		•¶š—ñ = "Used underwear belonging to Frostbuy's salesgirl Tama.$Extra scented after being worn in heat.$They come with a picture!";
+	}
+	if (no == 263)
+	{
+		•¶š—ñ = "Clothes belonging to Frostbuy's salesgirl Tama.$A cool maid outfit.$Size S.";
+	}
+	if (no == 267)
+	{
+		•¶š—ñ = "Proceeds from the sale of this feather will be donated to the Daddy Long Thing foundation, which helps out students in need. Money well spent, right?";
+	}
+	if (no == 265)
+	{
+		•¶š—ñ = "Tama will join the party.$Her day job is as the shop clerk, but she'll go on adventures with you in her spare time.";
+	}
+	if (no == 266)
+	{
+		•¶š—ñ = "Frostbyne will join the party.$Her day job is inventing, but she'll go on adventures with you in her spare time. `(<3)`";
+	}
+	if (no == 322)
+	{
+		if (FA[175] == 1)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Shaman's Sanctuary|.";
+		}
+		if (FA[175] == 2)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Double Sensei Life|.";
+		}
+		if (FA[175] == 3)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Pastel Chime Continue|.";
+		}
+		if (FA[175] == 4)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Vanish!|.";
+		}
+		if (FA[175] == 5)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Yokubari Saboten|.";
+		}
+		if (FA[175] == 6)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Rance VI: Collapse of Zeth|.";
+		}
+		if (FA[175] == 7)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|ALIVEZ|.";
+		}
+		if (FA[175] == 8)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Galzoo Island|.";
+		}
+		if (FA[175] == 9)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Alice 2010|.";
+		}
+		if (FA[175] == 10)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Alice's Mansion 7|.";
+		}
+		if (FA[175] == 11)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Edoranze|.";
+		}
+		if (FA[175] == 12)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Ojou-sama wo Iinari ni Suru Game|.";
+		}
+		if (FA[175] == 13)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Momoiro Guardian|.";
+		}
+		if (FA[175] == 14)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Tsumashibori|.";
+		}
+		if (FA[175] == 15)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Sengoku Rance|.";
+		}
+		if (FA[175] == 16)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Daiteikoku|.";
+		}
+		if (FA[175] == 17)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Beat Blades Haruka|.";
+		}
+		if (FA[175] == 18)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Toushin Toshi 3|.";
+		}
+		if (FA[175] == 19)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Boku Dake no Hokenshitsu|.";
+		}
+		if (FA[175] == 20)
+		{
+			•¶š—ñ = "A tube with a poster inside.$It's an illustration for something called$|Majo no Shokuzai|.";
+		}
+	}
+	if (no == 269)
+	{
+		•¶š—ñ = "The good part's gone, but there's still potential (for soup)...";
+	}
+	if (no == 270)
+	{
+		•¶š—ñ = "Mostly just looks good, but just looking at it may be enough to energize you.";
+	}
+	if (no == 271)
+	{
+		•¶š—ñ = "Rabbits are delicious, but it's such a pain to chase them. ";
+	}
+	if (no == 323)
+	{
+		•¶š—ñ = "Lots of health, lots of dreams.$As long as you don't die, you'll live.";
+	}
+	if (no == 272)
+	{
+		•¶š—ñ = "Contains the burning soul and strength of the sculptor.$This masterwork makes you brim with power.";
+	}
+	if (no == 273)
+	{
+		•¶š—ñ = "Saddened by the loss of his wooden bear in a fire, someone created this soulful work.";
+	}
+	if (no == 274)
+	{
+		•¶š—ñ = "Saddened by accidentally dropping his steel bear in sulfuric acid, someone created this flawless work.";
+	}
+	if (no == 324)
+	{
+		•¶š—ñ = "A three-in-one special set.$Do the numbers seem a little off to you? ";
+	}
+	if (no == 275)
+	{
+		•¶š—ñ = "Usually an ancient symbol of protection.$Sometimes a dreaded source of superstitions.";
+	}
+	if (no == 276)
+	{
+		•¶š—ñ = "Right when you think you're screwed, this natural monument emits a mysterious power to protect you.";
+	}
+	if (no == 277)
+	{
+		•¶š—ñ = "Benevolently protects you.$Don't forget to pray every day.";
+	}
+	if (no == 325)
+	{
+		•¶š—ñ = "With three, you'll be even safer.$Definitely safe, for sure...";
+	}
+	if (no == 278)
+	{
+		•¶š—ñ = "The fruits of someone's hard work.$These leftovers hold a mysterious power.";
+	}
+	if (no == 279)
+	{
+		•¶š—ñ = "Inside this vessel is but a sliver of a beloved cat mascot's incomprehensible power.";
+	}
+	if (no == 280)
+	{
+		•¶š—ñ = "How are these related to land horses?";
+	}
+	if (no == 326)
+	{
+		•¶š—ñ = "A three-piece set of the mysterious, magic-boosting goods.";
+	}
+	if (no == 281)
+	{
+		•¶š—ñ = "You won't feel as bad after magic attacks if you're concentrating on the pain in your stomach.";
+	}
+	if (no == 282)
+	{
+		•¶š—ñ = "Seems to work by making you oblivious to the fact that you were hit with magic.";
+	}
+	if (no == 283)
+	{
+		•¶š—ñ = "In the embrace of love, all pain feels like pleasure. Maybe. Or maybe not.";
+	}
+	if (no == 327)
+	{
+		•¶š—ñ = "Danger: don't mix.$Carefully manage your doses. ";
+	}
+	if (no == 290)
+	{
+		•¶š—ñ = "The anxiety of unreliable timekeeping gets you moving a little faster.";
+	}
+	if (no == 291)
+	{
+		•¶š—ñ = "An abnormally fast mystery creature.$A bit of its speed rubs off on you.";
+	}
+	if (no == 292)
+	{
+		•¶š—ñ = "Once intended to travel to space and apparently used, but this one part fell off.";
+	}
+	if (no == 330)
+	{
+		•¶š—ñ = "\"I want to be the fastest ever.\"$That's what everybody thinks, right?";
+	}
+	if (no == 287)
+	{
+		•¶š—ñ = "It's really bent out of shape.";
+	}
+	if (no == 288)
+	{
+		•¶š—ñ = "You'd never expect this thing to be popular, but somehow it hit the mark.";
+	}
+	if (no == 289)
+	{
+		•¶š—ñ = "Pressing its stomach makes it go, \"Mojaaaaa!\"$Is it a pressure point or something?";
+	}
+	if (no == 329)
+	{
+		•¶š—ñ = "I can see the enemy's movements... There!$A set that awakens extreme motion acuity within you.";
+	}
+	if (no == 284)
+	{
+		•¶š—ñ = "You pulled the short stake.$That's all there is to it.";
+	}
+	if (no == 285)
+	{
+		•¶š—ñ = "Just having it makes you lighter.$Always stay on your toes.";
+	}
+	if (no == 286)
+	{
+		•¶š—ñ = "It's said you should eat this when you need to dodge something.$Honestly, it's just a placebo.";
+	}
+	if (no == 328)
+	{
+		•¶š—ñ = "Run, dodge!$A super bargain three-piece set.";
+	}
+	if (no == 293)
+	{
+		•¶š—ñ = "It looks like it's done with, but at the critical moment, it just might make it through.";
+	}
+	if (no == 294)
+	{
+		•¶š—ñ = "Appears worthless at first glance, but isn't as annoying as it would be if it were only partially broken.";
+	}
+	if (no == 295)
+	{
+		•¶š—ñ = "Any kid with one of these got popular.$A critical item to have, to be sure.";
+	}
+	if (no == 331)
+	{
+		•¶š—ñ = "Scratched-Up CD, Broken Radio, Watch & Game...$They all kinda piss you off, huh?";
+	}
+	if (no == 296)
+	{
+		•¶š—ñ = "Anyone would be stunned at this item's unreasonable shape and name.";
+	}
+	if (no == 297)
+	{
+		•¶š—ñ = "The trauma of buying tons of these only for none to have the special prize is immeasurable.";
+	}
+	if (no == 298)
+	{
+		•¶š—ñ = "This'll have some Giant impact.$Sure to shock Taiso.";
+	}
+	if (no == 332)
+	{
+		•¶š—ñ = "These are some very good things.$You should give them to your boss for his birthday.";
+	}
+	if (no == 299)
+	{
+		•¶š—ñ = "They seem soft enough, but they just aren't.$They're hearty but they're just not tasty.";
+	}
+	if (no == 300)
+	{
+		•¶š—ñ = "As long as you have this,$you'll always have at least one more breath.";
+	}
+	if (no == 301)
+	{
+		•¶š—ñ = "Heed these words: never give up!";
+	}
+	if (no == 333)
+	{
+		•¶š—ñ = "Legendary heroes once carried these.$Never surrender!";
+	}
+	if (no == 304)
+	{
+		•¶š—ñ = "Super-duper blasphemous.$Whoever equips this has their talent cap raised by 20.";
+	}
+	if (no == 305)
+	{
+		•¶š—ñ = "An offense to the heavens.$Whoever equips this has their talent cap raised by 5.";
+	}
+	if (no == 252)
+	{
+		•¶š—ñ = "Just a bit heretical.$Whoever equips this has their talent cap raised by 3.";
+	}
+	if (no == 306)
+	{
+		•¶š—ñ = "Useful, refreshing, heretical.$Whoever equips this will have their skill points reset (but won't gain any, of course).";
+	}
+	if (no == 268)
+	{
+		•¶š—ñ = "A bonus ticket that allows the creation of one character during the Character Creation quest.";
+	}
+	if (no == 307)
+	{
+		•¶š—ñ = "Equipping this text will let you learn Familiar Knowledge.$It can be discarded after acquiring the skill.";
+	}
+	if (no == 309)
+	{
+		•¶š—ñ = "Equipping this coin will let you learn Alice's Protection.$It can be discarded after acquiring the skill.";
+	}
+	if (no == 310)
+	{
+		•¶š—ñ = "Equip this chunk and you too can learn to Rock On.$It can be discarded after acquiring the skill.";
+	}
+	if (no == 302)
+	{
+		•¶š—ñ = "A gift from Rance, her precious treasure.";
+	}
+	if (no == 315)
+	{
+		•¶š—ñ = "A captured kalar girl.$She's bound with ropes, so she can't resist.";
+	}
+	if (no == 317)
+	{
+		•¶š—ñ = "Key to the entrance of the Despair Group Management Department.$Don't lose it, okay?";
+	}
+	if (no == 339)
+	{
+		•¶š—ñ = "The key to the cell Eropicha is locked in.";
+	}
+	if (no == 311)
+	{
+		•¶š—ñ = "Round, swollen grapes.$You'll hurt your stomach if you eat them raw, but they're delicious when cooked!";
+	}
+	if (no == 334)
+	{
+		•¶š—ñ = "Trying to land on these is likely to dislocate something. The flying lizards have learned that the hard way.";
+	}
+	if (no == 312)
+	{
+		•¶š—ñ = "Well behaved, but tied up just to be safe.$...Looks tasty?";
+	}
+	if (no == 313)
+	{
+		•¶š—ñ = "There's no such thing as a program without bugs.$They exist in all routines.$We are at their mercy.";
+	}
+	if (no == 314)
+	{
+		•¶š—ñ = "A specialty glue made just for capturing ninjas.$Non-ninjas won't even notice it.";
+	}
+	if (no == 316)
+	{
+		•¶š—ñ = "With this appraisal ink, unidentified items will rise 1 rank at the end of a quest.";
+	}
+	if (no == 338)
+	{
+		•¶š—ñ = "Your surroundings will appear on the map.";
+	}
+	if (no == 342)
+	{
+		•¶š—ñ = "The Hanny King's beloved crown.$The key to his power lies in the number of adventurers his hannies defeat.";
+	}
+	if (•¶š—ñ == "©“®¶¬")
+	{
+		if (‚hí—ŞÚ×(ii, -1) != 0)
+		{
+			•¶š—ñ‚Q = ‚hí—ŞÚ×^•¶š—ñ(‚hí—ŞÚ×(ii, -1));
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 10)
+		{
+			•¶š—ñ‚Q += " |C|";
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 11)
+		{
+			•¶š—ñ‚Q += " |CC|";
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 20)
+		{
+			•¶š—ñ‚Q += " |B|";
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 21)
+		{
+			•¶š—ñ‚Q += " |BB|";
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 30)
+		{
+			•¶š—ñ‚Q += " |A|";
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 31)
+		{
+			•¶š—ñ‚Q += " |AA|";
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 40)
+		{
+			•¶š—ñ‚Q += " |S|";
+		}
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 41)
+		{
+			•¶š—ñ‚Q += " |SS|";
+		}
+		if (•¶š—ñ‚Q != "")
+		{
+			•¶š—ñ‚Q += " : ";
+			aa = 1;
+		}
+		if (‚hŒÅ—L”Ô†(ii, -1) == 170)
+		{
+			•¶š—ñ‚Q = "Firearm: Basic attack skills can be used once per battle.$";
+		}
+		if (‚hŒÅ—L”Ô†(ii, -1) == 319)
+		{
+			•¶š—ñ‚Q = "Firearm: Basic attack skills can be used once per battle.$";
+		}
+		if (‚hŒÅ—L”Ô†(ii, -1) == 149)
+		{
+			•¶š—ñ‚Q = "Glove |CC|: Punch hard enough and it'll count as a store donation!$";
+		}
+	}
+	if (•¶š—ñ != "©“®¶¬")
+	{
+		•¶š—ñ‚Q = •¶š—ñ + "$";
+	}
+	int dollars = 0;
+	for (loop = 0; loop < •¶š—ñ‚Q.Length(); ++loop)
+	{
+		if (•¶š—ñ‚Q[loop] == '$')
+		{
+			dollars += 1;
+		}
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) != 0)
+		{
+			£‹@”\•¶š = "";
+			£‹@”\•¶š = ‹@”\•¶š—ñ(‚h‹@”\(ii, loop, -1), ‚hŒø‰Ê(ii, loop, -1));
+			if (£‹@”\•¶š != "")
+			{
+				•¶š—ñ‚Q += £‹@”\•¶š + " ";
+				++aa;
+			}
+			if ((aa == 2 || aa == 4) && dollars < 2)
+			{
+				•¶š—ñ‚Q += "$";
+				dollars += 1;
+			}
+		}
+	}
+	if (‚hí—ŞÚ×(ii, -1) == 18)
+	{
+		if (‚hŒø‰Ê(ii, 2, -1) == 0)
+		{
+			•¶š—ñ‚Q = "The bearer of this scroll can recruit$|%s| to the party!" % ƒLƒƒƒ‰ŒÅ—L”Ô†•¶š—ñ(‚hŒø‰Ê(ii, 3, -1), 0);
+		}
+		if (‚hŒø‰Ê(ii, 2, -1) != 0)
+		{
+			•¶š—ñ‚Q = "After equipping this scroll and$defeating %d gal monsters, $|%s| will join the party." % ‚hŒø‰Ê(ii, 2, -1) % ƒLƒƒƒ‰ŒÅ—L”Ô†•¶š—ñ(‚hŒø‰Ê(ii, 3, -1), 0);
+		}
+	}
+	if (‚hí—ŞÚ×(ii, -1) == 20)
+	{
+		if (‚hŒø‰Ê(ii, 2, -1) == 1)
+		{
+			•¶š—ñ‚Q = "A weak familiar.$";
+		}
+		if (‚hŒø‰Ê(ii, 2, -1) == 2)
+		{
+			•¶š—ñ‚Q = "An average familiar.$";
+		}
+		if (‚hŒø‰Ê(ii, 2, -1) == 3)
+		{
+			•¶š—ñ‚Q = "A strong familiar.$";
+		}
+		if (‚hŒø‰Ê(ii, 2, -1) == 4)
+		{
+			•¶š—ñ‚Q = "An amazing familiar.$";
+		}
+		•¶š—ñ‚Q += "She'll fight in battle with anyone who has Familiar Knowledge.$";
+		•¶š—ñ‚Q += "Success rate (%d%)" % ‚hŒø‰Ê(ii, 3, -1);
+	}
+	if (‚h‘•”õ‚k‚u(ii, -1) != 0)
+	{
+		‚hÀ‘•ğŒ(ii, "Limited to those LV %d or higher." % ‚h‘•”õ‚k‚u(ii, -1));
+	}
+	if (ItemEquippedCharacter(ii, 1, -1) != 0)
+	{
+		‚hÀ‘•ğŒ(ii, "Only " + ƒLƒƒƒ‰ŒÅ—L”Ô†•¶š—ñ(ItemEquippedCharacter(ii, 1, -1), 1) + " can equip this.");
+	}
+	if (‚hŠO‚¹‚Ü‚¹‚ñ(ii, -1) == 1)
+	{
+		‚hÀ‘•ğŒ(ii, " Cannot be removed.");
+	}
+	if (‚hÁ–Å‚µ‚Ü‚·(ii, -1) == 1)
+	{
+		‚hÀ‘•ğŒ(ii, " Will disappear when removed.");
+	}
+	‚h[ii].î•ñ = •¶š—ñ‚Q;
+	return "";
+}
+
+lint ‚hí—Ş(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].í—Ş;
+	}
+	‚h[ii].í—Ş = aa;
+	return 0;
+}
+
+lint ‚hí—ŞÚ×(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].í—ŞÚ×;
+	}
+	‚h[ii].í—ŞÚ× = aa;
+	return 0;
+}
+
+lint ‚hí—Şƒ‰ƒ“ƒN(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].í—Şƒ‰ƒ“ƒN;
+	}
+	‚h[ii].í—Şƒ‰ƒ“ƒN = aa;
+	return 0;
+}
+
+lint ‚h–¢Šm’è(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].–¢Šm’è;
+	}
+	‚h[ii].–¢Šm’è = aa;
+	return 0;
+}
+
+lint ‚h‰¿Ši(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].‰¿Ši;
+	}
+	‚h[ii].‰¿Ši = aa;
+	return 0;
+}
+
+lint ‚hŠO‚¹‚Ü‚¹‚ñ(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].ŠO‚¹‚Ü‚¹‚ñ;
+	}
+	‚h[ii].ŠO‚¹‚Ü‚¹‚ñ = aa;
+	if (aa == 1)
+	{
+		‚hÀ‘•ğŒ(ii, " Cannot be removed.");
+	}
+	return 0;
+}
+
+lint ‚hÁ–Å‚µ‚Ü‚·(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].Á–Å‚µ‚Ü‚·;
+	}
+	‚h[ii].Á–Å‚µ‚Ü‚· = aa;
+	if (aa == 1)
+	{
+		‚hÀ‘•ğŒ(ii, " Will disappear when removed.");
+	}
+	return 0;
+}
+
+lint ‚hƒŒƒAƒ‰ƒ“ƒN(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].ƒŒƒAƒ‰ƒ“ƒN;
+	}
+	if (aa >= 9)
+	{
+		aa = 9;
+	}
+	‚h[ii].ƒŒƒAƒ‰ƒ“ƒN = aa;
+	return 0;
+}
+
+lint ‚h‘•”õ‚k‚u(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].‘•”õ‚k‚u;
+	}
+	‚h[ii].‘•”õ‚k‚u = aa;
+	return 0;
+}
+
+lint ‚h‘•”õE‹Æ(lint ii, int no, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].‘•”õE‹Æ[no];
+	}
+	‚h[ii].‘•”õE‹Æ[no] = aa;
+	return 0;
+}
+
+lint ItemEquippedCharacter(lint ii, int no, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].‘•”õƒLƒƒƒ‰[no];
+	}
+	‚h[ii].‘•”õƒLƒƒƒ‰[no] = aa;
+	return 0;
+}
+
+lint ‚h‘¶İ(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].‘¶İ;
+	}
+	‚h[ii].‘¶İ = aa;
+	return 0;
+}
+
+lint ‚hŒÅ—L”Ô†(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].ŒÅ—L”Ô†;
+	}
+	‚h[ii].ŒÅ—L”Ô† = aa;
+	return 0;
+}
+
+lint ‚h‚b‚f”Ô†(lint ii, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].‚b‚f”Ô†;
+	}
+	‚h[ii].‚b‚f”Ô† = aa;
+	return 0;
+}
+
+lint ‚h‹@”\(lint ii, int no, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].‹@”\[no];
+	}
+	‚h[ii].‹@”\[no] = aa;
+	return 0;
+}
+
+lint ‚hŒø‰Ê(lint ii, int no, int aa)
+{
+	if (aa == -1)
+	{
+		return ‚h[ii].Œø‰Ê[no];
+	}
+	if (‚h‹@”\(ii, no, -1) == 2 && aa >= 3500)
+	{
+		aa = 3500;
+	}
+	if (‚h‹@”\(ii, no, -1) == 14 && aa >= 3500)
+	{
+		aa = 3500;
+	}
+	‚h[ii].Œø‰Ê[no] = aa;
+	return 0;
+}
+
+string ‚hí—Ş•¶š—ñ(int type)
+{
+	if (type == 1)
+	{
+		return "Weapon";
+	}
+	if (type == 11)
+	{
+		return "Armor";
+	}
+	if (type == 17)
+	{
+		return "Item";
+	}
+	if (type == 21)
+	{
+		return "Special";
+	}
+	if (type == 23)
+	{
+		return "Cannot be equipped.";
+	}
+	if (type == 22)
+	{
+		return "Quest item.";
+	}
+	return "ERROR";
+}
+
+int ‚h‹ó‚«”Ô†æ“¾()
+{
+	int ii = 0;
+	for (ii = 1; ii < 3001; ++ii)
+	{
+		if (‚h‘¶İ(ii, -1) == 0)
+		{
+			‚h‰Šú‰»(ii);
+			return ii;
+		}
+	}
+	LOG_TADA("‚d‚q‚q‚n‚q@y" + system.GetFuncStackName(0) + "z   \n");
+	return 0;
+}
+
+int ‚h¶¬(int no, int lv)
+{
+	int aa = 0;
+	int ii = ‚h‹ó‚«”Ô†æ“¾();
+	if (ii == 0)
+	{
+		return 0;
+	}
+	if (Ÿ‚h\‘¢‘ÌÅ‘åg—pˆÊ’u < ii)
+	{
+		Ÿ‚h\‘¢‘ÌÅ‘åg—pˆÊ’u = ii;
+	}
+	‚h‘¶İ(ii, 9);
+	if (lv >= 9)
+	{
+		lv = 9;
+	}
+	‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(ii, no, lv);
+	if (‚hŒÅ—L”Ô†(ii, -1) == 0)
+	{
+		LOG_TADA("‚d‚q‚q‚n‚q@y" + system.GetFuncStackName(0) + "z  " + string(no) + "‚ª–³‚¢ \n");
+		‚híœ(ii);
+		return 0;
+	}
+	return ii;
+}
+
+void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
+{
+	int RLV = ‚b‚k‚u(‚b”Ô†æ“¾(1), -1);
+	int aa = 0;
+	int bb = 0;
+	if (no == 1)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6000, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Adventurer Outfit", 11, 12, 10, 4, 20, 12, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 13)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6648, 10000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "High Grade Adventurer Outfit", 11, 12, 30, 4, 70, 12, 70, 91, 0, 29, 10, 0, 0);
+	}
+	if (no == 56)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6649, 30000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Commander's Uniform", 11, 12, 30, 4, 50, 12, 50, 91, 0, 92, 0, 0, 0);
+	}
+	if (no == 4)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6415, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Miko Outfit", 11, 12, 11, 4, 3, 12, 3, 36, 1, 0, 0, 0, 0);
+	}
+	if (no == 6)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6365, 100, 1, 0, 0, 3, 0, 5, 6, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Maid Outfit", 11, 12, 11, 4, 40, 12, 13, 8, 10, 0, 0, 0, 0);
+	}
+	if (no == 336)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6628, 100, 1, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "White Nurse Outfit", 11, 12, 21, 4, 80, 12, 80, 14, 100, 0, 0, 0, 0);
+	}
+	if (no == 337)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6629, 100, 1, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Black Nurse Outfit", 11, 12, 21, 4, 80, 12, 80, 2, 100, 0, 0, 0, 0);
+	}
+	if (no == 5)
+	{
+		aa = 6418;
+		int ra = RAND(4);
+		if (ra == 1)
+		{
+			aa = 6419;
+		}
+		if (ra == 2)
+		{
+			aa = 6420;
+		}
+		if (ra == 3)
+		{
+			aa = 6421;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, aa, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "T-Shirt", 11, 12, 11, 4, 1, 12, 1, 38, 1, 0, 0, 0, 0);
+	}
+	if (no == 8)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6001, 300, 1, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leather Armor", 11, 13, 10, 4, 30, 12, 30, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 9)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6437, 300, 1, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leather Armor XA", 11, 13, 11, 4, 45, 12, 45, 10, 10, 0, 0, 0, 0);
+	}
+	if (no == 12)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6437, 1200, 35, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resist Armor", 11, 13, 11, 4, 20, 12, 20, 86, 0, 87, 0, 0, 0);
+	}
+	if (no == 11)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6413, 300, 1, 0, 0, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ninja Outfit", 11, 13, 11, 4, 45, 12, 80, 11, 10, 6, 10, 0, 0);
+	}
+	if (no == 14)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6002, 1000, 20, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tough Leather Armor", 11, 13, 20, 4, 60, 12, 60, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 15)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6438, 1000, 20, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tough Leather Armor XB", 11, 13, 21, 4, 80, 12, 80, 10, 20, 0, 0, 0, 0);
+	}
+	if (no == 16)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6422, 1000, 20, 0, 0, 3, 0, 0, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cultux", 11, 13, 21, 4, 120, 12, 50, 16, 2, 23, 60, 0, 0);
+	}
+	if (no == 17)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6651, 1000, 30, 0, 0, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Quintessential Ninja", 11, 13, 31, 4, 120, 12, 150, 16, 10, 6, 30, 91, 0);
+	}
+	if (no == 19)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6003, 5000, 40, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Composite Leather Armor", 11, 13, 30, 4, 150, 12, 150, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 21)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6638, 20000, 55, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Composite Leather Armor", 11, 13, 31, 4, 180, 12, 180, 86, 0, 0, 0, 0, 0);
+	}
+	if (no == 20)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6423, 5000, 45, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "DR Leather Armor", 11, 13, 31, 4, 100, 12, 100, 21, 50, 2, 100, 42, 1);
+	}
+	if (no == 22)
+	{
+		lv = FA[208];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6619, 5000, 45, 1, 0, 3, 0, 5, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sacred Tree Armor", 11, 13, 40, 4, 280, 12, 280, 16, 10, 90, 0, 84, 0);
+	}
+	if (no == 24)
+	{
+		lv = FA[242];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6625, 5000, 45, 0, 0, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Emperor's Armor", 11, 13, 41, 4, 400, 12, 200, 24, 30, 25, 30, 84, 0);
+	}
+	if (no == 25)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6004, 800, 5, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Armor", 11, 14, 10, 4, 40, 12, 20, 7, 20, 0, 0, 0, 0);
+	}
+	if (no == 26)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6436, 800, 5, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Armor XA", 11, 14, 11, 4, 60, 12, 30, 7, 20, 0, 0, 0, 0);
+	}
+	if (no == 30)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6005, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Iron Armor", 11, 14, 20, 4, 80, 12, 40, 7, 40, 0, 0, 0, 0);
+	}
+	if (no == 32)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6417, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crystal Armor", 11, 14, 21, 4, 30, 12, 400, 7, 40, 0, 0, 0, 0);
+	}
+	if (no == 33)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6412, 2000, 20, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Warrior Armor", 11, 14, 21, 4, 80, 12, 40, 2, 40, 0, 0, 0, 0);
+	}
+	if (no == 31)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6409, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Iron Armor X", 11, 14, 21, 4, 100, 12, 60, 7, 40, 0, 0, 0, 0);
+	}
+	if (no == 36)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6006, 8000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Coarse Armor", 11, 14, 30, 4, 200, 12, 100, 7, 60, 0, 0, 0, 0);
+	}
+	if (no == 41)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6635, 28000, 55, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Coarse Armor", 11, 14, 31, 4, 250, 12, 150, 17, 5, 86, 0, 0, 0);
+	}
+	if (no == 42)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6652, 98000, 50, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sengoku Rance Armor", 11, 14, 31, 4, 220, 12, 220, 90, 0, 84, 0, 42, 5);
+	}
+	if (no == 321)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6448, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leazas Red General Armor", 11, 14, 30, 4, 100, 12, 100, 2, 100, 16, 2, 0, 0);
+	}
+	if (no == 34)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6448, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leazas Red General Armor", 11, 14, 30, 4, 200, 12, 200, 2, 100, 16, 2, 0, 0);
+	}
+	if (no == 38)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6414, 8000, 37, 0, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Heavy Armor", 11, 14, 31, 4, 200, 12, 150, 7, 100, 17, 25, 0, 0);
+	}
+	if (no == 39)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6627, 8000, 37, 0, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bikini Armor", 11, 14, 31, 4, 98, 12, 98, 11, 100, 86, 0, 87, 0);
+	}
+	if (no == 37)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6410, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hell Setter", 11, 14, 31, 4, 120, 12, 80, 2, 50, 7, 80, 0, 0);
+	}
+	if (no == 40)
+	{
+		lv = FA[209];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6620, 8000, 45, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Champion", 11, 14, 40, 4, 350, 12, 300, 90, 0, 2, 200, 84, 0);
+	}
+	if (no == 27)
+	{
+		lv = FA[243];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 20);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6336, 8000, 0, 0, 2, 0, 0, 0, 0, 0, 0);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Oda Armor", 11, 14, 31, 4, 160, 12, 160, 17, 15, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+	}
+	if (no == 43)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6007, 250, 1, 0, 0, 0, 4, 5, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Prelan Robe", 11, 15, 10, 4, 25, 12, 60, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 46)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6008, 1200, 20, 0, 0, 0, 4, 5, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Loose Robe", 11, 15, 20, 4, 50, 12, 100, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 47)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6405, 1200, 23, 0, 0, 0, 4, 5, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Split Robe", 11, 15, 21, 4, 45, 12, 95, 16, 10, 0, 0, 0, 0);
+	}
+	if (no == 48)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6650, 4800, 40, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Holy Robe", 11, 15, 31, 4, 400, 12, 400, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 50)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6009, 4800, 40, 0, 0, 0, 4, 5, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "High Grade Loose Robe", 11, 15, 30, 4, 120, 12, 200, 87, 0, 0, 0, 0, 0);
+	}
+	if (no == 53)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6636, 24800, 55, 0, 0, 0, 4, 5, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Black Robe", 11, 15, 31, 4, 200, 12, 200, 87, 0, 0, 0, 0, 0);
+	}
+	if (no == 51)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6404, 4800, 40, 0, 0, 0, 4, 5, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Idiot", 11, 15, 31, 4, 1, 12, 1, 14, 100, 0, 0, 0, 0);
+	}
+	if (no == 52)
+	{
+		lv = FA[210];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6621, 4800, 45, 0, 0, 0, 4, 5, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Minister", 11, 15, 40, 4, 200, 12, 200, 14, 100, 84, 0, 90, 0);
+	}
+	if (no == 54)
+	{
+		lv = FA[244];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6626, 4800, 45, 0, 0, 0, 4, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Orgarhythm", 11, 15, 41, 4, 100, 12, 100, 14, 200, 84, 0, 0, 0);
+	}
+	if (no == 7)
+	{
+		lv = FA[240];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 54);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6248, 4800, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lia's Clothes", 11, 15, 31, 4, 100, 12, 100, 35, 1, 43, 1, £g‘Ìƒu[ƒXƒg, 0);
+	}
+	if (no == 55)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6010, 180, 10, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "White Belt Gi", 11, 16, 10, 4, 10, 12, 10, 29, 30, 0, 0, 0, 0);
+	}
+	if (no == 58)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6011, 700, 30, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Black Belt Gi", 11, 16, 20, 4, 25, 12, 25, 29, 30, 0, 0, 0, 0);
+	}
+	if (no == 59)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6411, 700, 25, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "China Dress", 11, 16, 21, 4, 25, 12, 25, 29, 30, 6, 10, 43, 1);
+	}
+	if (no == 61)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6012, 3000, 40, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Red Belt Gi", 11, 16, 30, 4, 50, 12, 50, 29, 30, 0, 0, 0, 0);
+	}
+	if (no == 63)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6637, 23000, 60, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Initiation Clothes", 11, 16, 31, 4, 100, 12, 100, 29, 30, 86, 0, 0, 0);
+	}
+	if (no == 62)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6442, 3000, 40, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Killer Gi", 11, 16, 31, 4, 1, 12, 1, 2, 88, 18, 50, 0, 0);
+	}
+	if (no == 64)
+	{
+		lv = FA[211];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6622, 3000, 50, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ulaanbaatar", 11, 16, 40, 4, 300, 12, 300, 10, 100, 90, 0, 84, 0);
+	}
+	if (no == 10)
+	{
+		lv = FA[241];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 19);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6372, 8000, 0, 0, 2, 0, 0, 0, 0, 0, 0);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sailor Uniform", 11, 12, 11, 4, 35, 12, 40, 10, 10, 43, 1, £g‘Ìƒu[ƒXƒg, 0);
+	}
+	if (no == 3)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6373, 8000, 1, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tarampi Suit", 11, 12, 21, 4, 75, 12, 75, 42, 1, 0, 0, 0, 0);
+	}
+	if (no == 2)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6324, 8000, 1, 0, 0, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Stealth Suit", 11, 12, 41, 4, 10, 12, 10, 0, 0, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 57)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6629, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		aa = 100;
+		bb = 100;
+		int loop = 0;
+		int iic = 0;
+		for (loop = 1; loop < 6; ++loop)
+		{
+			if (PTA[loop] != 0)
+			{
+				iic = PTA[loop];
+				if (aa <= ‚hŒø‰Ê(‚b–h‹ï(iic, -1), 1, -1))
+				{
+					aa = ‚hŒø‰Ê(‚b–h‹ï(iic, -1), 1, -1) + 100;
+				}
+				if (bb <= ‚hŒø‰Ê(‚b–h‹ï(iic, -1), 2, -1))
+				{
+					bb = ‚hŒø‰Ê(‚b–h‹ï(iic, -1), 2, -1) + 100;
+				}
+				LOG_TADA("@" + ‚b–¼‘O(iic, "") + "@‡¬ " + string(aa) + " " + string(bb) + "\n");
+			}
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Strengthened Synthetic Clothes", 11, 12, 21, 4, aa, 12, bb, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 66)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6100, 250, 1, 1, 2, 0, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dagger", 1, 3, 10, 2, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 67)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6387, 2000, 1, 0, 0, 0, 0, 0, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Accurate Dagger", 1, 3, 11, 2, 10, 8, 50, 39, 0, 0, 0, 0, 0);
+	}
+	if (no == 70)
+	{
+		lv = FA[245];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 54);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6249, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		int £UŒ‚—Í = 50;
+		if (lv >= 1)
+		{
+			£UŒ‚—Í = lv * 100;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lia's Whip", 1, 3, 21, 2, £UŒ‚—Í, 8, 50, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0);
+	}
+	if (no == 68)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6101, 50, 1, 1, 2, 0, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Club", 1, 10, 10, 2, 80, 9, 30, 19, 25, 0, 0, 0, 0);
+	}
+	if (no == 74)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6312, 5000, 1, 1, 2, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Two-handed Shield", 1, 10, 10, 2, 10, 4, 100, 12, 100, 20, 500, 0, 0);
+	}
+	if (no == 69)
+	{
+		lv = FA[246];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 55);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6374, 110, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Omikuji Box", 1, 10, 11, 2, 100, 9, 100, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0);
+	}
+	if (no == 71)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6102, 300, 1, 1, 2, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Shortsword", 1, 3, 10, 2, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 72)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6388, 500, 10, 0, 0, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ninja Knife", 1, 3, 11, 2, 110, 6, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 75)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6103, 1000, 20, 1, 2, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Rapier", 1, 3, 20, 2, 150, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 76)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6430, 3000, 30, 1, 2, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Rapier", 1, 3, 20, 2, 220, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 77)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6390, 1000, 25, 0, 0, 0, 0, 0, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Critical Knife", 1, 3, 21, 2, 280, 18, 40, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 78)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6389, 1000, 25, 0, 0, 0, 0, 0, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Compound Rapier", 1, 3, 21, 2, 180, 8, 10, 16, 5, 0, 0, 0, 0);
+	}
+	if (no == 81)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6104, 7000, 40, 1, 2, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Villa Blade", 1, 3, 30, 2, 320, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 85)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6639, 7000, 50, 1, 0, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Over Blade", 1, 3, 31, 2, 390, 30, 2, 81, 0, 0, 0, 0, 0);
+	}
+	if (no == 82)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6391, 7000, 45, 1, 2, 0, 0, 0, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cuckri", 1, 3, 31, 2, 320, 14, 300, 16, 5, 0, 0, 0, 0);
+	}
+	if (no == 83)
+	{
+		lv = FA[212];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6612, 7000, 45, 1, 2, 0, 0, 0, 6, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Uruncel Blade", 1, 3, 40, 2, 400, 14, 300, 18, 50, 84, 0, 81, 0);
+	}
+	if (no == 84)
+	{
+		lv = FA[247];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 24);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6623, 7000, 0, 1, 2, 0, 0, 0, 6, 0, 8);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Decapitation Blade", 1, 3, 41, 2, 333, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 86)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6105, 350, 2, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Longsword", 1, 2, 10, 2, 70, 9, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 87)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6392, 350, 10, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lightning Sword", 1, 2, 11, 2, 120, 30, 3, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 88)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6443, 1500, 10, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Zombie Sword", 1, 2, 11, 2, 130, 31, 21, 31, 6, 0, 0, 0, 0);
+	}
+	if (no == 90)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6106, 1500, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Buster Sword", 1, 2, 20, 2, 200, 9, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 91)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6431, 4000, 32, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Buster Sword", 1, 2, 20, 2, 300, 9, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 92)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6394, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Katana", 1, 2, 21, 2, 350, 18, 10, 39, 0, 0, 0, 0, 0);
+	}
+	if (no == 94)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6394, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Paper Cutter", 1, 2, 21, 2, 250, 8, 50, 18, 10, 0, 0, 0, 0);
+	}
+	if (no == 93)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6395, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Iceberg Sword", 1, 2, 21, 2, 400, 30, 4, 9, 25, 0, 0, 0, 0);
+	}
+	if (no == 95)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6107, 9000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Super Sword", 1, 2, 30, 2, 500, 9, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 98)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6640, 9000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ultra Sword", 1, 2, 31, 2, 600, 14, 600, 9, 20, 0, 0, 0, 0);
+	}
+	if (no == 96)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6396, 9000, 52, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hideo's Sword", 1, 2, 31, 2, 700, 9, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 99)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6641, 9000, 62, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hero's Sword", 1, 2, 31, 2, 900, 5, 100, 13, 100, 0, 0, 0, 0);
+	}
+	if (no == 97)
+	{
+		lv = FA[213];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6613, 9000, 52, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Persiom", 1, 2, 40, 2, 1000, 8, 20, 20, 500, 84, 0, 81, 0);
+	}
+	if (no == 100)
+	{
+		lv = FA[248];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		lv = 0;
+		ItemEquippedCharacter(ii, 1, 1);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6323, 9000, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Chaos the Darksword", 1, 2, 41, 2, 2000, 18, 30, 81, 0, 82, 60, 0, 0);
+	}
+	if (no == 320)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6447, 9000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "By Road", 1, 2, 31, 2, 450, 9, 40, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 131)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6447, 9000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "By Road", 1, 2, 31, 2, 450, 9, 40, 84, 0, 0, 0, 0, 0);
+	}
+	if (no == 133)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6108, 400, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Shortbow", 1, 5, 10, 2, 40, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 134)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6397, 400, 10, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Elite Kalar Bow", 1, 5, 11, 2, 80, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 135)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6330, 7000, 3, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ear-hunter Boomerang", 1, 5, 11, 2, 44, 31, 13, 8, 30, 0, 0, 0, 0);
+	}
+	if (no == 137)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6109, 1900, 20, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Longbow", 1, 5, 20, 2, 150, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 138)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6434, 5000, 30, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Longbow", 1, 5, 20, 2, 250, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 139)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6398, 1900, 29, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Insect-killer Bow", 1, 5, 21, 2, 250, 31, 6, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 140)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6445, 1900, 29, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ancient-hunter Bow", 1, 5, 21, 2, 270, 31, 11, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 142)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6110, 8800, 40, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Power Attack Bow", 1, 5, 30, 2, 350, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 145)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6644, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Giga Attack Bow", 1, 5, 31, 2, 500, 10, 5, 4, 5, 0, 0, 0, 0);
+	}
+	if (no == 143)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6399, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Artisan's Bow", 1, 5, 31, 2, 450, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 144)
+	{
+		lv = FA[216];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6616, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Stronger", 1, 5, 40, 2, 999, 8, 20, 10, 50, 84, 0, 81, 0);
+	}
+	if (no == 170)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6321, 8800, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		aa = 400;
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			aa = 600;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Arquebus", 1, 6, 30, 2, aa, 16, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 319)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6321, 8800, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		aa = 600;
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			aa = 990;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Arquebus", 1, 6, 31, 2, aa, 16, 20, 39, 0, 0, 0, 0, 0);
+	}
+	if (no == 171)
+	{
+		lv = FA[250];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 29);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6322, 8800, 0, 0, 0, 3, 0, 0, 0, 0, 0);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		aa = 500;
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			aa = 1000;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tulip 1", 1, 6, 40, 2, aa, 8, 20, 19, 20, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+	}
+	if (no == 101)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6111, 260, 5, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Strongman Hammer", 1, 4, 10, 2, 200, 9, 30, 19, 20, 0, 0, 0, 0);
+	}
+	if (no == 104)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6111, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Killer Hammer", 1, 4, 11, 2, 70, 9, 10, 18, 30, 39, 0, 0, 0);
+	}
+	if (no == 103)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6329, 980, 3, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Priest's Mace", 1, 4, 10, 2, 150, 31, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 102)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6370, 260, 15, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dewdrop Axe", 1, 4, 11, 2, 400, 9, 30, 20, 50, 0, 0, 0, 0);
+	}
+	if (no == 106)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6112, 900, 20, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hammer B", 1, 4, 20, 2, 500, 9, 30, 19, 20, 0, 0, 0, 0);
+	}
+	if (no == 107)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6432, 3000, 30, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Hammer B", 1, 4, 20, 2, 700, 9, 30, 19, 20, 0, 0, 0, 0);
+	}
+	if (no == 109)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6439, 1580, 25, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pastor's Mace", 1, 4, 20, 2, 500, 4, 50, 31, 20, 0, 0, 0, 0);
+	}
+	if (no == 110)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6439, 1580, 25, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pastor's Mace D", 1, 4, 20, 2, 700, 31, 8, 31, 20, 31, 11, 0, 0);
+	}
+	if (no == 108)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6440, 900, 25, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mollusc Crusher", 1, 4, 21, 2, 700, 9, 30, 19, 10, 31, 19, 0, 0);
+	}
+	if (no == 111)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6113, 6000, 40, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Big Hammer", 1, 4, 30, 2, 800, 9, 30, 19, 20, 0, 0, 0, 0);
+	}
+	if (no == 115)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6642, 6000, 50, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "10-Ton Hammer", 1, 4, 31, 2, 1200, 9, 60, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 112)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6441, 6000, 45, 1, 2, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Becky", 1, 4, 31, 2, 1000, 9, 40, 5, 99, 19, 30, 0, 0);
+	}
+	if (no == 113)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6329, 8580, 45, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bishop's Mace", 1, 4, 31, 2, 800, 14, 500, 31, 20, 30, 2, 0, 0);
+	}
+	if (no == 114)
+	{
+		lv = FA[214];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6614, 8580, 45, 0, 0, 0, 0, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Comet", 1, 4, 40, 2, 800, 19, 50, 8, 25, 84, 0, 31, 12);
+	}
+	if (no == 117)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6318, 260, 5, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Warrior's Spear", 1, 7, 10, 2, 120, 17, 5, 8, 10, 0, 0, 0, 0);
+	}
+	if (no == 118)
+	{
+		ItemEquippedCharacter(ii, 1, 20);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6375, 260, 0, 0, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Poison Dango", 1, 7, 11, 2, 100, 17, 5, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 119)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6400, 260, 12, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Spear", 1, 7, 11, 2, 200, 17, 5, 30, 5, 8, 10, 0, 0);
+	}
+	if (no == 122)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6319, 1500, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Spear", 1, 7, 20, 2, 200, 17, 5, 8, 10, 0, 0, 0, 0);
+	}
+	if (no == 123)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6433, 5500, 32, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Spear", 1, 7, 20, 2, 280, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 124)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6446, 1500, 27, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Spear", 1, 7, 21, 2, 420, 17, 5, 30, 1, 8, 10, 0, 0);
+	}
+	if (no == 125)
+	{
+		lv = FA[305];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6634, 1500, 30, 1, 0, 0, 0, 0, 0, 0, 0);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Naginata", 1, 7, 21, 2, 380, 14, 190, 8, 10, 4, 45, £g‘Ìƒu[ƒXƒg, 0);
+	}
+	if (no == 127)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6320, 6800, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Halberd", 1, 7, 30, 2, 550, 17, 5, 8, 10, 0, 0, 0, 0);
+	}
+	if (no == 130)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6643, 6800, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Halberd S", 1, 7, 30, 2, 650, 17, 5, 8, 10, 91, 0, 0, 0);
+	}
+	if (no == 128)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6401, 6800, 44, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Anguirus", 1, 7, 31, 2, 800, 17, 5, 5, 30, 0, 0, 0, 0);
+	}
+	if (no == 129)
+	{
+		lv = FA[215];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6615, 6800, 44, 1, 2, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Terror Spear", 1, 7, 40, 2, 950, 8, 10, 16, 5, 18, 50, 84, 0);
+	}
+	if (no == 148)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6114, 100, 1, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Glove", 1, 9, 10, 2, 5, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 149)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6427, 100, 1, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Good Will Punch", 1, 9, 11, 2, 5, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 151)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6115, 900, 20, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Knuckle", 1, 9, 20, 2, 50, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 152)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6435, 2000, 30, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Knuckle", 1, 9, 20, 2, 100, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 153)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6428, 900, 20, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Config", 1, 9, 21, 2, 50, 8, 10, 39, 0, 0, 0, 0, 0);
+	}
+	if (no == 155)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6116, 3200, 40, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Metal Glove", 1, 9, 30, 2, 200, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 158)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6645, 3200, 80, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Veteran Glove", 1, 9, 31, 2, 400, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 156)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6429, 3200, 40, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Killfig", 1, 9, 31, 2, 100, 8, 10, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 157)
+	{
+		lv = FA[217];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6617, 3200, 46, 0, 0, 0, 0, 0, 0, 7, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dragon Gloves", 1, 9, 40, 2, 400, 18, 50, 84, 0, 0, 0, 0, 0);
+	}
+	if (no == 178)
+	{
+		lv = FA[252];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 23);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6325, 260, 0, 0, 0, 0, 0, 0, 6, 0, 0);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Puncher", 1, 9, 40, 2, 1, 19, 80, 8, 50, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+	}
+	if (no == 160)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6117, 298, 1, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Haies Staff", 1, 8, 10, 14, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 161)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6402, 298, 11, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Ice Stick", 1, 8, 11, 14, 60, 30, 4, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 163)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6118, 1980, 20, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sylph Staff", 1, 8, 20, 14, 120, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 164)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6444, 1980, 24, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Shining LED Staff", 1, 8, 21, 14, 180, 30, 1, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 166)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6119, 6900, 40, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Gaia Staff", 1, 8, 30, 14, 250, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 167)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6646, 6900, 40, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Boss's Staff", 1, 8, 30, 14, 300, 30, 2, 91, 0, 0, 0, 0, 0);
+	}
+	if (no == 165)
+	{
+		lv = FA[319];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 84);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6653, 6900, 20, 0, 0, 0, 4, 0, 0, 0, 0);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Queen's Staff", 1, 8, 31, 14, 350, 12, 100, 20, 500, 88, 0, £g‘Ìƒu[ƒXƒg, 0);
+	}
+	if (no == 168)
+	{
+		lv = FA[218];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6618, 6900, 50, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Buddha", 1, 8, 40, 14, 400, 2, 330, 16, 10, 84, 0, 81, 0);
+	}
+	if (no == 169)
+	{
+		lv = FA[249];
+		if (lv >= 9)
+		{
+			lv = 9;
+		}
+		ItemEquippedCharacter(ii, 1, 39);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6624, 6900, 0, 0, 0, 0, 4, 5, 0, 0, 0);
+		int £g‘Ìƒu[ƒXƒg = 0;
+		if (lv != 0 && FA[309] == 1)
+		{
+			£g‘Ìƒu[ƒXƒg = 84;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crystal Rod", 1, 8, 41, 14, 333, 39, 0, 88, 0, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+	}
+	if (no == 205)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6250, 2000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Accuracy Boots", 17, 0, 0, 8, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 340)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6250, 500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Accuracy Boots", 17, 0, 0, 8, 15, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 191)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6206, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Evasion Boots", 17, 0, 0, 6, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 192)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6206, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Evasion Boots", 17, 0, 0, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 193)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6205, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resilience Necklace", 17, 0, 0, 10, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 194)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6205, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resilience Necklace", 17, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 212)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6407, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pocket Hammer", 17, 0, 0, 19, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 341)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6407, 800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pocket Hammer", 17, 0, 0, 19, 15, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 213)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6408, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bloomers", 17, 0, 0, 8, 10, 6, 10, 19, 10, 10, 10, 0, 0);
+	}
+	if (no == 196)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6208, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 40, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 197)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6208, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 198)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6208, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 25, 10, 20, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 189)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6209, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resistance Ring", 17, 0, 0, 12, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 190)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6209, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resistance Ring", 17, 0, 0, 12, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 172)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6654, 1000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Super Resistance Ring", 17, 0, 0, 12, 200, 16, 5, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 215)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6312, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mr. Hiroshi", 17, 0, 0, 10, 20, 7, 30, 4, 5, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 216)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6378, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Marble", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 219)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6251, 100, 20, 0, 0, 0, 4, 5, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crystal", 17, 0, 0, 14, 100, 12, 100, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 218)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6425, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Portrait~", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 217)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6378, 100, 1, 1, 0, 0, 0, 0, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Orochi's Scale", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 209)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6380, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Soul Shackle", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 214)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6416, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hanny Goods", 17, 0, 0, 37, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 199)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6384, 0, 1, 1, 0, 3, 4, 5, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cardboard Armor", 17, 0, 0, 4, 15, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 195)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6207, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Poison Mask", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 211)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6406, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		aa = 15;
+		if (RLV >= 30)
+		{
+			aa = 35;
+		}
+		if (RLV >= 40)
+		{
+			aa = 55;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pocketknife", 17, 0, 0, 2, aa, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 335)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6647, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Abnormal Bloomers", 17, 43, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 200)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6210, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		for (; ; )
+		{
+			if (lv >= 2 && RAND(4) == 1)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 50, 10, 10, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			if (lv >= 2 && RAND(4) == 2)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 50, 18, 10, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			break;
+		}
+	}
+	if (no == 201)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6211, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		for (; ; )
+		{
+			if (lv >= 2 && RAND(4) == 1)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 50, 10, 10, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			if (lv >= 2 && RAND(4) == 2)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 50, 12, 20, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			break;
+		}
+	}
+	if (no == 202)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6212, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		for (; ; )
+		{
+			if (lv >= 2 && RAND(4) == 1)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 50, 10, 10, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			if (lv >= 2 && RAND(4) == 2)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 50, 4, 20, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			break;
+		}
+	}
+	if (no == 203)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6213, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		for (; ; )
+		{
+			if (lv >= 2 && RAND(4) == 1)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Charm", 17, 0, 0, 24, 50, 2, 50, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			if (lv >= 2 && RAND(4) == 2)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Charm", 17, 0, 0, 24, 50, 14, 50, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Charm", 17, 0, 0, 24, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			break;
+		}
+	}
+	if (no == 204)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6214, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		for (; ; )
+		{
+			if (lv >= 2 && RAND(4) == 1)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 50, 2, 50, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			if (lv >= 2 && RAND(4) == 2)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 50, 14, 50, 0, 0, 0, 0, 0, 0);
+				break;
+			}
+			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			break;
+		}
+	}
+	if (no == 206)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6335, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Learning Device", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 343)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6335, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Learning Device", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 180)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6326, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Harumaki", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 226)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Sel)", 17, 18, 0, 60, 0, 61, 5, 62, 35, 0, 0, 0, 0);
+	}
+	if (no == 224)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Shitomone)", 17, 18, 0, 60, 0, 61, 10, 62, 46, 0, 0, 0, 0);
+	}
+	if (no == 223)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Karma)", 17, 18, 0, 60, 0, 61, 10, 62, 25, 0, 0, 0, 0);
+	}
+	if (no == 220)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		aa = 6;
+		if (‚pó‘Ô(76, -1) == 2)
+		{
+			aa = 1;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Elenoa)", 17, 18, 0, 60, 0, 61, aa, 62, 10, 0, 0, 0, 0);
+	}
+	if (no == 222)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Nozomi)", 17, 18, 0, 60, 140, 61, 10, 62, 13, 0, 0, 0, 0);
+	}
+	if (no == 225)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Wichita)", 17, 18, 0, 60, 0, 61, 10, 62, 11, 0, 0, 0, 0);
+	}
+	if (no == 221)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		aa = 20;
+		if (‚pó‘Ô(76, -1) == 2)
+		{
+			aa = 1;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Mill)", 17, 18, 0, 60, 0, 61, aa, 62, 43, 0, 0, 0, 0);
+	}
+	if (no == 227)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Can Can", 17, 20, 0, 63, 114, 75, 1, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 228)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6501, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "97 Chi-Ha", 17, 20, 0, 63, 113, 75, 1, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 229)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6502, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Gecky", 17, 20, 0, 63, 115, 75, 1, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 230)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6503, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magisco", 17, 20, 0, 63, 116, 75, 2, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 231)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6504, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kraken", 17, 20, 0, 63, 117, 75, 1, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 232)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6505, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crab Girl", 17, 20, 0, 63, 118, 75, 2, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 233)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6506, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Splish-Splash", 17, 20, 0, 63, 119, 75, 2, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 234)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6507, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Frog Lady", 17, 20, 0, 63, 120, 75, 2, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 235)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6508, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Maid Lady", 17, 20, 0, 63, 121, 75, 2, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 236)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6509, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Zashiki-Warashi", 17, 20, 0, 63, 122, 75, 2, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 243)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6516, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ralga's Cat", 17, 20, 0, 63, 346, 75, 3, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 237)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6510, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lantyrn", 17, 20, 0, 63, 123, 75, 3, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 238)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6511, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tokko", 17, 20, 0, 63, 124, 75, 3, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 239)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6512, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Majician", 17, 20, 0, 63, 125, 75, 3, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 242)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6515, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Captain Vanilla", 17, 20, 0, 63, 128, 75, 4, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 240)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6513, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Nekomatamata", 17, 20, 0, 63, 126, 75, 4, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 241)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6514, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Valkyrie", 17, 20, 0, 63, 127, 75, 4, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 244)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6632, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Battle Booklet", 17, 20, 0, 63, 129, 75, 3, 76, 1, 0, 0, 0, 0);
+	}
+	if (no == 210)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6331, 800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "FastPass", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 208)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6376, 100, 1, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Angel Mirror", 17, 0, 0, 34, 226, 26, 5, 0, 0, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 181)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6200, 980, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ibeprofun Box", 17, 0, 0, 34, 206, 26, 1, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 182)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6216, 19800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ibeprofun EX Box", 17, 0, 0, 34, 207, 26, 2, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 183)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6217, 98800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ibeprofun EX+ Box", 17, 0, 0, 34, 208, 26, 3, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 184)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6379, 2000, 1, 1, 2, 3, 0, 0, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Epinephrend", 17, 0, 0, 34, 209, 26, 1, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 185)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6201, 7700, 1, 1, 2, 3, 4, 5, 0, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Key", 17, 0, 0, 34, 210, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 186)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6202, 1500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Capture Rope", 17, 0, 0, 34, 166, 26, 2, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 318)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6202, 1500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Strong Capture Rope", 17, 0, 0, 34, 451, 26, 8, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 187)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6203, 9900, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Explosive Rounds", 17, 0, 0, 34, 167, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 188)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6204, 9999, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hanny Zippo", 17, 0, 0, 34, 302, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 179)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6337, 7700, 1, 0, 0, 0, 0, 0, 6, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Stealth Device", 17, 0, 0, 34, 215, 26, 3, 0, 0, 0, 0, 0, 0);
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 207)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6333, 10000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Box of Cakes", 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 255)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lotion A", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 256)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lotion B", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 257)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lotion C", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 258)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6338, 50000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Jewel", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 259)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6361, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kugu Piece A", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 260)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6362, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kugu Piece B", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 261)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6363, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kugu Piece C", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 262)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6364, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tama's Underwear", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 263)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6365, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tama's Dress", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 267)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6383, 1500, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Reddish Feather", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 265)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6366, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mercenary Tama", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 266)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6367, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mercenary Hag", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 322)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6600, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Poster Cylinder", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 268)
+	{
+		int £‰¿Ši = 1000;
+		if (FA[112] != 0)
+		{
+			£‰¿Ši += FA[112] * 1000;
+		}
+		if (£‰¿Ši > 20000)
+		{
+			£‰¿Ši = 20000;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6385, £‰¿Ši, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Character Ticket", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "A bonus ticket that allows$the creation of one character$during the Character Creation quest.");
+	}
+	if (no == 342)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6660, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		aa = 30 + FA[347] / 15;
+		if (aa > 999)
+		{
+			aa = 999;
+		}
+		bb = 30 + FA[347] / 25;
+		if (bb > 999)
+		{
+			bb = 999;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hanny King's Crown", 17, 0, 0, 2, aa, 12, bb, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 269)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6339, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Manga Meat Bone", 21, 0, 1, 20, 100, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 270)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6300, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Manga Meat", 21, 0, 2, 20, 200, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 271)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6340, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Rabbit Stew", 21, 0, 3, 20, 300, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 323)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6601, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Health Up Set", 21, 0, 4, 20, 400, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 272)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6341, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Wooden Bear", 21, 0, 1, 2, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 273)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6342, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Steel Bear", 21, 0, 2, 2, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 274)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6301, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Solid Gold Bear", 21, 0, 3, 2, 100, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 324)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6602, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Attack Up Set", 21, 0, 4, 2, 120, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 275)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6302, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Shiitake", 21, 0, 1, 4, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 276)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6343, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Protective Marimo", 21, 0, 2, 4, 35, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 277)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6344, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Protective God", 21, 0, 3, 4, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 325)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6603, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Defense Up Set", 21, 0, 4, 4, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 278)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6345, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Well-Boned Fish", 21, 0, 1, 14, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 279)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6303, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Dora Cat's Bell", 21, 0, 2, 14, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 280)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6346, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Common Seahorse", 21, 0, 3, 14, 100, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 326)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6604, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Magic Up Set", 21, 0, 4, 14, 120, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 281)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6347, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Stomachache Spirit", 21, 0, 1, 12, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 282)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6304, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Cowlick", 21, 0, 2, 12, 35, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 283)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6348, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Love Pet", 21, 0, 3, 12, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 327)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6605, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Resistance Up Set", 21, 0, 4, 12, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 290)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6349, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Inadequate Clock", 21, 0, 1, 16, 3, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 291)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6350, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Quick, Strange Bug", 21, 0, 2, 16, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 292)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6351, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Rocket Engine", 21, 0, 3, 16, 5, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 330)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6608, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Speed Up Set", 21, 0, 4, 16, 6, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 287)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6352, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Ritchie Rod", 21, 0, 1, 8, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 288)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6353, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Piggyback Pal", 21, 0, 2, 8, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 289)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6306, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Moja Doll", 21, 0, 3, 8, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 329)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6607, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Accuracy Up Set", 21, 0, 4, 8, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 284)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6354, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Miss Stake", 21, 0, 1, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 285)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6305, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Nimble Feather", 21, 0, 2, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 286)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6307, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Dodgy Soup", 21, 0, 3, 6, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 328)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6606, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Evasion Up Set", 21, 0, 4, 6, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 293)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6355, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Scratched-Up CD", 21, 0, 1, 18, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 294)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6356, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Totally Broken Radio", 21, 0, 2, 18, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 295)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6308, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Watch & Game", 21, 0, 3, 18, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 331)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6609, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Critical Up Set", 21, 0, 4, 18, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 296)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6357, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Melting Ice", 21, 0, 1, 19, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 297)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6358, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Prizeless Snack", 21, 0, 2, 19, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 298)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6309, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Shockwave Alberto Belt", 21, 0, 3, 19, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 332)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6610, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Stun Up Set", 21, 0, 4, 19, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 299)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6359, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Stretchy Noodles", 21, 0, 1, 10, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 300)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6360, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Canned Air", 21, 0, 2, 10, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 301)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6310, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Defiance Crown", 21, 0, 3, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 333)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6611, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Resilience Up Set", 21, 0, 4, 10, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
+	if (no == 304)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6311, 150000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Forbidden Talent", 21, 0, 0, 27, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Super-duper blasphemous.$Whoever equips this has their talent cap raised by 20.");
+	}
+	if (no == 305)
+	{
+		if (FA[78] == 0)
+		{
+			FA[78] = 2000;
+		}
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6311, 2000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h‰¿Ši(ii, FA[78]);
+		FA[78] = FA[78] + 500;
+		if (FA[78] > 20000)
+		{
+			FA[78] = 20000;
+		}
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Forbidden Talent - Weak", 21, 0, 0, 27, 5, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "An offense to the heavens.$Whoever equips this has their talent cap raised by 5.");
+	}
+	if (no == 252)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6311, 150000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Forbidden Talent - V", 21, 0, 0, 27, 3, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Just a bit heretical.$Whoever equips this has their talent cap raised by 3.");
+	}
+	if (no == 303)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6377, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "God's Plan", 21, 0, 0, 28, 3, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "You're not supposed to have this.$You're REALLY not supposed to have this.$Whoever equips this item will gain 3 skill points.");
+	}
+	if (no == 306)
+	{
+		int £‰¿Ši = 100;
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6381, £‰¿Ši, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Skill Again", 21, 0, 0, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Useful, refreshing, heretical.$Whoever equips this will have their skill points reset (but won't gain any, of course).");
+	}
+	if (no == 307)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6218, 10000, 1, 0, 0, 0, 0, 0, 0, 0, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Gal Monster Tamer Handbook", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Equipping this text will let you learn Familiar Knowledge.$It can be discarded after acquiring the skill.");
+	}
+	if (no == 309)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6386, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Alice Coin", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Equipping this coin will let you learn Alice's Protection.$It can be discarded after acquiring the skill.");
+	}
+	if (no == 310)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6247, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Rocky Chunk", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Equip this chunk and you too can learn to Rock On.$It can be discarded after acquiring the skill.");
+	}
+	if (no == 302)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6349, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Broken Clock", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "A gift from Rance, her precious treasure.");
+		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+	}
+	if (no == 315)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6314, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lyrica", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "A captured kalar girl.$She's bound with ropes, so she can't resist.");
+	}
+	if (no == 317)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6426, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Despair Key", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Key to the entrance of the Despair Group Management Department.$Don't lose it, okay?");
+	}
+	if (no == 339)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6426, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Prison Key", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "The key to the cell Eropicha is locked in.");
+	}
+	if (no == 311)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6313, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Grapes", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Round, swollen grapes.$You'll hurt your stomach if you eat them raw, but they're delicious when cooked!");
+	}
+	if (no == 334)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6630, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lizard-Away", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Trying to land on these is likely to$dislocate something. The flying lizards$have learned that the hard way.");
+	}
+	if (no == 312)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6315, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cow", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Well behaved, but tied up just to be safe.$...Looks tasty?");
+	}
+	if (no == 313)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6368, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bug", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "There's no such thing as a program without bugs.$They exist in all routines.$We are at their mercy.");
+	}
+	if (no == 314)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6327, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ninja Glue", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "A specialty glue made just for capturing ninjas.$Non-ninjas won't even notice it.");
+	}
+	if (no == 316)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6332, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Appraiser's Ink", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "With this appraisal ink, unidentified items will rise 1 rank at the end of a quest.");
+	}
+	if (no == 338)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6631, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Blank Map", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Your surroundings will appear on the map.");
+	}
+	if (no == 247)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6655, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts A", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
+	}
+	if (no == 248)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6656, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts B", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
+	}
+	if (no == 249)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6657, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts C", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
+	}
+	if (no == 250)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6658, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts D", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
+	}
+	if (no == 251)
+	{
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6659, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts E", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
+	}
+}
+
+void ‚h¶¬^ƒf[ƒ^‚P(int ii, int no, int lv, string –¼‘O, int type, int type2, int £í—Şƒ‰ƒ“ƒN, int ‹@”\‚P, int Œø‰Ê‚P, int ‹@”\‚Q, int Œø‰Ê‚Q, int ‹@”\‚R, int Œø‰Ê‚R, int ‹@”\‚S, int Œø‰Ê‚S, int ‹@”\‚T, int Œø‰Ê‚T)
+{
+	int £ƒ[ƒ‹ƒhƒ{[ƒiƒX = 0;
+	if (£í—Şƒ‰ƒ“ƒN == 11 || £í—Şƒ‰ƒ“ƒN == 21 || £í—Şƒ‰ƒ“ƒN == 31)
+	{
+		if (Ÿƒ[ƒ‹ƒh >= 2)
+		{
+			£ƒ[ƒ‹ƒhƒ{[ƒiƒX = Ÿƒ[ƒ‹ƒh;
+		}
+	}
+	int £ƒAƒCƒeƒ€ƒ‰ƒ“ƒN = 0;
+	if (£ƒ[ƒ‹ƒhƒ{[ƒiƒX != 0)
+	{
+		£ƒAƒCƒeƒ€ƒ‰ƒ“ƒN = £ƒ[ƒ‹ƒhƒ{[ƒiƒX;
+	}
+	if (ŸƒAƒCƒeƒ€•â[”[no] >= 3)
+	{
+		£ƒAƒCƒeƒ€ƒ‰ƒ“ƒN = ŸƒAƒCƒeƒ€•â[”[no] - 2;
+	}
+	if (ŸƒAƒCƒeƒ€¶¬^“ÁêğŒ == "ƒLƒƒƒ‰¶¬")
+	{
+		£ƒAƒCƒeƒ€ƒ‰ƒ“ƒN = 0;
+	}
+	if (Ÿƒ[ƒ‹ƒh == 2)
+	{
+		int vp = 0;
+		if (type == 1)
+		{
+			vp = RAND(100);
+			LOG_TADA("@ƒ[ƒ‹ƒh‚u‚o" + string(vp) + "@•Ší\n");
+			if (‹@”\‚P == 2 || ‹@”\‚P == 14)
+			{
+				Œø‰Ê‚P += vp;
+			}
+		}
+		if (type == 11)
+		{
+			vp = RAND(50);
+			LOG_TADA("@ƒ[ƒ‹ƒh‚u‚o" + string(vp) + "@–h‹ï\n");
+			if (‹@”\‚P == 4)
+			{
+				Œø‰Ê‚P += vp;
+			}
+			if (‹@”\‚Q == 12)
+			{
+				Œø‰Ê‚Q += vp;
+			}
+		}
+	}
+	if (Ÿƒ[ƒ‹ƒh == 3)
+	{
+		int vp = 0;
+		if (type == 1)
+		{
+			vp = RAND(300);
+			if (‹@”\‚P == 2 || ‹@”\‚P == 14)
+			{
+				Œø‰Ê‚P += vp;
+			}
+		}
+		if (type == 11)
+		{
+			vp = RAND(100);
+			if (‹@”\‚P == 4)
+			{
+				Œø‰Ê‚P += vp;
+			}
+			if (‹@”\‚Q == 12)
+			{
+				Œø‰Ê‚Q += vp;
+			}
+		}
+	}
+	if (£ƒAƒCƒeƒ€ƒ‰ƒ“ƒN != 0)
+	{
+		lint aa = 1;
+		aa = £ƒAƒCƒeƒ€ƒ‰ƒ“ƒN;
+		if (aa >= 9)
+		{
+			aa = 9;
+		}
+		int ‰¿Ši”{—¦ = 350;
+		int Œø‰Ê”{—¦ = 125;
+		string ’Ç‰Á•¶š—ñ = " ‡D";
+		if (aa == 1)
+		{
+			‰¿Ši”{—¦ = 130;
+			Œø‰Ê”{—¦ = 5;
+			’Ç‰Á•¶š—ñ = " ‡@";
+		}
+		if (aa == 2)
+		{
+			‰¿Ši”{—¦ = 150;
+			Œø‰Ê”{—¦ = 10;
+			’Ç‰Á•¶š—ñ = " ‡A";
+		}
+		if (aa == 3)
+		{
+			‰¿Ši”{—¦ = 200;
+			Œø‰Ê”{—¦ = 15;
+			’Ç‰Á•¶š—ñ = " ‡B";
+		}
+		if (aa == 4)
+		{
+			‰¿Ši”{—¦ = 250;
+			Œø‰Ê”{—¦ = 20;
+			’Ç‰Á•¶š—ñ = " ‡C";
+		}
+		if (aa == 5)
+		{
+			‰¿Ši”{—¦ = 300;
+			Œø‰Ê”{—¦ = 25;
+			’Ç‰Á•¶š—ñ = " ‡D";
+		}
+		if (aa == 6)
+		{
+			‰¿Ši”{—¦ = 320;
+			Œø‰Ê”{—¦ = 28;
+			’Ç‰Á•¶š—ñ = " ‡E";
+		}
+		if (aa == 7)
+		{
+			‰¿Ši”{—¦ = 350;
+			Œø‰Ê”{—¦ = 30;
+			’Ç‰Á•¶š—ñ = " ‡F";
+		}
+		if (aa == 8)
+		{
+			‰¿Ši”{—¦ = 370;
+			Œø‰Ê”{—¦ = 32;
+			’Ç‰Á•¶š—ñ = " ‡G";
+		}
+		if (aa == 9)
+		{
+			‰¿Ši”{—¦ = 400;
+			Œø‰Ê”{—¦ = 35;
+			’Ç‰Á•¶š—ñ = " ‡H";
+		}
+		if (type == 1)
+		{
+			‚h‰¿Ši(ii, ”{—¦ŒvZŠÖ”(‚h‰¿Ši(ii, -1), ‰¿Ši”{—¦));
+			lint £ƒ{[ƒiƒX’l = 0;
+			£ƒ{[ƒiƒX’l = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, Œø‰Ê”{—¦);
+			if (£ƒ{[ƒiƒX’l >= 200)
+			{
+				£ƒ{[ƒiƒX’l = 200;
+			}
+			Œø‰Ê‚P += £ƒ{[ƒiƒX’l;
+			–¼‘O = –¼‘O + ’Ç‰Á•¶š—ñ;
+		}
+		if (type == 11)
+		{
+			‚h‰¿Ši(ii, ”{—¦ŒvZŠÖ”(‚h‰¿Ši(ii, -1), ‰¿Ši”{—¦));
+			lint £ƒ{[ƒiƒX’l = 0;
+			£ƒ{[ƒiƒX’l = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, Œø‰Ê”{—¦);
+			if (£ƒ{[ƒiƒX’l >= 100)
+			{
+				£ƒ{[ƒiƒX’l = 100;
+			}
+			Œø‰Ê‚P += £ƒ{[ƒiƒX’l;
+			£ƒ{[ƒiƒX’l = 0;
+			£ƒ{[ƒiƒX’l = ”{—¦ŒvZŠÖ”(Œø‰Ê‚Q, Œø‰Ê”{—¦);
+			if (£ƒ{[ƒiƒX’l >= 100)
+			{
+				£ƒ{[ƒiƒX’l = 100;
+			}
+			Œø‰Ê‚Q += £ƒ{[ƒiƒX’l;
+			–¼‘O = –¼‘O + ’Ç‰Á•¶š—ñ;
+		}
+	}
+	‚hƒŒƒAƒ‰ƒ“ƒN(ii, lv);
+	if (type == 21)
+	{
+		‚hƒŒƒAƒ‰ƒ“ƒN(ii, 0);
+		lv = 0;
+	}
+	‚hŒÅ—L”Ô†(ii, no);
+	‚h–¼‘O(ii, –¼‘O);
+	‚hí—Ş(ii, type);
+	‚hí—ŞÚ×(ii, type2);
+	‚hí—Şƒ‰ƒ“ƒN(ii, £í—Şƒ‰ƒ“ƒN);
+	if (type == 21)
+	{
+		‚hÁ–Å‚µ‚Ü‚·(ii, 1);
+	}
+	‚h‹@”\(ii, 1, ‹@”\‚P);
+	‚hŒø‰Ê(ii, 1, Œø‰Ê‚P);
+	‚h‹@”\(ii, 2, ‹@”\‚Q);
+	‚hŒø‰Ê(ii, 2, Œø‰Ê‚Q);
+	‚h‹@”\(ii, 3, ‹@”\‚R);
+	‚hŒø‰Ê(ii, 3, Œø‰Ê‚R);
+	‚h‹@”\(ii, 4, ‹@”\‚S);
+	‚hŒø‰Ê(ii, 4, Œø‰Ê‚S);
+	‚h‹@”\(ii, 5, ‹@”\‚T);
+	‚hŒø‰Ê(ii, 5, Œø‰Ê‚T);
+	LOG_TADA("ƒAƒCƒeƒ€¶¬@" + ‚h–¼‘O(ii, "") + "\n");
+	‚hƒ{[ƒiƒX’Ç‰Á(ii, lv, 0);
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) == 21 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 22 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 23 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 24 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 25 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+	}
+	‚hî•ñ(ii, "©“®¶¬");
+}
+
+void ‚hƒ{[ƒiƒX’Ç‰Á(int ii, int BP, int fg)
+{
+	if (BP == 0)
+	{
+		return;
+	}
+	LOG_TADA("ƒAƒCƒeƒ€i" + ‚h–¼‘O(ii, "") + "j‚Éƒ{[ƒiƒX" + string2(BP, 0) + "‚o‚ğ•t‚¯‚Ü‚·\n");
+	int aa = 0;
+	int bb = 0;
+	int loop = 0;
+	int ra = 0;
+	int ra2 = 0;
+	int £”{—¦ = 0;
+	array@int ‚u‹@”\[10];
+	array@int ‚uŒø‰Ê[10];
+	lint type = ‚hí—Ş(ii, -1);
+	lint ‹@”\‚P = ‚h‹@”\(ii, 1, -1);
+	lint Œø‰Ê‚P = ‚hŒø‰Ê(ii, 1, -1);
+	lint ‹@”\‚Q = ‚h‹@”\(ii, 2, -1);
+	lint Œø‰Ê‚Q = ‚hŒø‰Ê(ii, 2, -1);
+	if (type == 1 && ‹@”\‚P == 2)
+	{
+		£”{—¦ = 10;
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			£”{—¦ = 15;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			£”{—¦ = 20;
+		}
+		if (fg == 1)
+		{
+			£”{—¦ -= 3;
+		}
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, £”{—¦);
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		if (aa > 100)
+		{
+			aa = 100;
+		}
+		bb = 4 + RAND(6);
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			bb += 3;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			bb += 6;
+		}
+		‚u‹@”\[1] = 2;
+		‚uŒø‰Ê[1] = aa;
+		‚u‹@”\[2] = 2;
+		‚uŒø‰Ê[2] = aa;
+		‚u‹@”\[3] = 8;
+		‚uŒø‰Ê[3] = bb;
+		‚u‹@”\[4] = 19;
+		‚uŒø‰Ê[4] = bb;
+		‚u‹@”\[5] = 18;
+		‚uŒø‰Ê[5] = bb;
+		‚u‹@”\[6] = 32;
+		‚uŒø‰Ê[6] = 3;
+	}
+	if (type == 1 && ‹@”\‚P == 14)
+	{
+		£”{—¦ = 10;
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			£”{—¦ = 15;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			£”{—¦ = 20;
+		}
+		if (fg == 1)
+		{
+			£”{—¦ -= 3;
+		}
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, £”{—¦);
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		if (aa > 100)
+		{
+			aa = 100;
+		}
+		bb = 12 + RAND(6);
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			bb += 3;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			bb += 6;
+		}
+		‚u‹@”\[1] = 14;
+		‚uŒø‰Ê[1] = aa;
+		‚u‹@”\[2] = 14;
+		‚uŒø‰Ê[2] = aa;
+		‚u‹@”\[3] = 14;
+		‚uŒø‰Ê[3] = aa;
+		‚u‹@”\[4] = 12;
+		‚uŒø‰Ê[4] = bb;
+		‚u‹@”\[5] = 12;
+		‚uŒø‰Ê[5] = bb;
+		‚u‹@”\[6] = 32;
+		‚uŒø‰Ê[6] = 3;
+	}
+	if (type == 11)
+	{
+		£”{—¦ = 10;
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			£”{—¦ = 15;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			£”{—¦ = 20;
+		}
+		if (fg == 1)
+		{
+			£”{—¦ -= 3;
+		}
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, £”{—¦);
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		if (aa > 50)
+		{
+			aa = 50;
+		}
+		bb = ”{—¦ŒvZŠÖ”(Œø‰Ê‚Q, £”{—¦);
+		if (bb < 2)
+		{
+			bb = 2;
+		}
+		if (aa > 50)
+		{
+			aa = 50;
+		}
+		‚u‹@”\[1] = 4;
+		‚uŒø‰Ê[1] = aa;
+		‚u‹@”\[2] = 4;
+		‚uŒø‰Ê[2] = aa;
+		‚u‹@”\[3] = 12;
+		‚uŒø‰Ê[3] = bb;
+		‚u‹@”\[4] = 12;
+		‚uŒø‰Ê[4] = bb;
+		‚u‹@”\[5] = 10;
+		‚uŒø‰Ê[5] = 10;
+		‚u‹@”\[6] = 32;
+		‚uŒø‰Ê[6] = 3;
+	}
+	if (type == 17 && ‹@”\‚P != 34 && ‹@”\‚P != 0)
+	{
+		£”{—¦ = 10;
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, £”{—¦);
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		if (aa > 50)
+		{
+			aa = 50;
+		}
+		‚u‹@”\[1] = ‹@”\‚P;
+		‚uŒø‰Ê[1] = aa;
+		‚u‹@”\[2] = 16;
+		‚uŒø‰Ê[2] = 2;
+		‚u‹@”\[3] = 42;
+		‚uŒø‰Ê[3] = 1;
+		‚u‹@”\[4] = 20;
+		‚uŒø‰Ê[4] = RAND(50);
+		‚u‹@”\[5] = 20;
+		‚uŒø‰Ê[5] = RAND(50);
+		‚u‹@”\[6] = ‹@”\‚P;
+		‚uŒø‰Ê[6] = aa;
+	}
+	if (type == 1 && fg == 0)
+	{
+		ra = RAND(2);
+		if (ra == 1)
+		{
+			ra2 = RAND(5);
+			if (ra2 == 1)
+			{
+				‚u‹@”\[7] = 30;
+				‚uŒø‰Ê[7] = 5;
+			}
+			if (ra2 == 2)
+			{
+				‚u‹@”\[7] = 30;
+				‚uŒø‰Ê[7] = 4;
+			}
+			if (ra2 == 3)
+			{
+				‚u‹@”\[7] = 30;
+				‚uŒø‰Ê[7] = 3;
+			}
+			if (ra2 == 4)
+			{
+				‚u‹@”\[7] = 30;
+				‚uŒø‰Ê[7] = 1;
+			}
+			if (ra2 == 5)
+			{
+				‚u‹@”\[7] = 30;
+				‚uŒø‰Ê[7] = 2;
+			}
+		}
+		if (ra == 2)
+		{
+			ra2 = RAND(12);
+			if (ra2 == 1)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 16;
+			}
+			if (ra2 == 2)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 17;
+			}
+			if (ra2 == 3)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 18;
+			}
+			if (ra2 == 4)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 19;
+			}
+			if (ra2 == 5)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 20;
+			}
+			if (ra2 == 6)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 21;
+			}
+			if (ra2 == 7)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 6;
+			}
+			if (ra2 == 8)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 7;
+			}
+			if (ra2 == 9)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 8;
+			}
+			if (ra2 == 10)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 13;
+			}
+			if (ra2 == 11)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 11;
+			}
+			if (ra2 == 12)
+			{
+				‚u‹@”\[7] = 31;
+				‚uŒø‰Ê[7] = 12;
+			}
+		}
+	}
+	if (type == 11 && fg == 0)
+	{
+		ra = RAND(3);
+		if (ra == 1)
+		{
+			ra2 = RAND(7);
+			if (ra2 == 1)
+			{
+				‚u‹@”\[7] = 21;
+				‚uŒø‰Ê[7] = 20;
+			}
+			if (ra2 == 2)
+			{
+				‚u‹@”\[7] = 22;
+				‚uŒø‰Ê[7] = 20;
+			}
+			if (ra2 == 3)
+			{
+				‚u‹@”\[7] = 23;
+				‚uŒø‰Ê[7] = 20;
+			}
+			if (ra2 == 4)
+			{
+				‚u‹@”\[7] = 24;
+				‚uŒø‰Ê[7] = 20;
+			}
+			if (ra2 == 5)
+			{
+				‚u‹@”\[7] = 25;
+				‚uŒø‰Ê[7] = 20;
+			}
+			if (ra2 == 6)
+			{
+				‚u‹@”\[7] = 86;
+				‚uŒø‰Ê[7] = 20;
+			}
+			if (ra2 == 7)
+			{
+				‚u‹@”\[7] = 87;
+				‚uŒø‰Ê[7] = 20;
+			}
+		}
+		if (ra != 1)
+		{
+			ra2 = RAND(4);
+			if (ra2 == 1)
+			{
+				‚u‹@”\[7] = 16;
+				‚uŒø‰Ê[7] = 2;
+			}
+			if (ra2 == 2)
+			{
+				‚u‹@”\[7] = 6;
+				‚uŒø‰Ê[7] = 5;
+			}
+			if (ra2 == 3)
+			{
+				‚u‹@”\[7] = 20;
+				‚uŒø‰Ê[7] = 50 + RAND(1 + ‚h‘•”õ‚k‚u(ii, -1) * 2);
+			}
+			if (ra2 == 4)
+			{
+				‚u‹@”\[7] = 33;
+				‚uŒø‰Ê[7] = 3;
+			}
+		}
+	}
+	ra = RAND(11);
+	if (ra == 1)
+	{
+		‚u‹@”\[8] = 20;
+		‚uŒø‰Ê[8] = 50 + RAND(1 + ‚h‘•”õ‚k‚u(ii, -1) * 2);
+	}
+	if (ra == 2)
+	{
+		‚u‹@”\[8] = 4;
+		‚uŒø‰Ê[8] = 5 + RAND(1 + ‚h‘•”õ‚k‚u(ii, -1) * 3);
+	}
+	if (ra == 3)
+	{
+		‚u‹@”\[8] = 2;
+		‚uŒø‰Ê[8] = 5 + RAND(1 + ‚h‘•”õ‚k‚u(ii, -1) * 3);
+	}
+	if (ra == 4)
+	{
+		‚u‹@”\[8] = 12;
+		‚uŒø‰Ê[8] = 5 + RAND(1 + ‚h‘•”õ‚k‚u(ii, -1) * 3);
+	}
+	if (ra == 5)
+	{
+		‚u‹@”\[8] = 14;
+		‚uŒø‰Ê[8] = 5 + RAND(1 + ‚h‘•”õ‚k‚u(ii, -1) * 3);
+	}
+	if (ra == 6)
+	{
+		‚u‹@”\[8] = 10;
+		‚uŒø‰Ê[8] = 4 + RAND(6);
+	}
+	if (ra == 7)
+	{
+		‚u‹@”\[8] = 19;
+		‚uŒø‰Ê[8] = 4 + RAND(6);
+	}
+	if (ra == 8)
+	{
+		‚u‹@”\[8] = 18;
+		‚uŒø‰Ê[8] = 10;
+	}
+	if (ra == 9)
+	{
+		‚u‹@”\[8] = 8;
+		‚uŒø‰Ê[8] = 10;
+	}
+	if (ra == 10)
+	{
+		‚u‹@”\[8] = 6;
+		‚uŒø‰Ê[8] = 10;
+	}
+	if (ra == 11)
+	{
+		‚u‹@”\[8] = 42;
+		‚uŒø‰Ê[8] = 1;
+	}
+	for (loop = 1; loop < BP + 1; ++loop)
+	{
+		ra = RAND(6);
+		if (fg == 0 && (loop == 2 || loop == 6) && RAND(3) == 1)
+		{
+			ra = 8;
+		}
+		if (fg == 0 && loop == 4 && RAND(2) == 1 && ‚h‹@”\æ“¾(ii, 30) == 0 && ‚h‹@”\æ“¾(ii, 31) == 0)
+		{
+			ra = 7;
+		}
+		if (‚u‹@”\[ra] != 0)
+		{
+			‚h‹@”\’Ç‰Á(ii, ‚u‹@”\[ra], ‚uŒø‰Ê[ra]);
+		}
+	}
+	if (fg == 0 && ‚h‹@”\(ii, 5, -1) == 0 && (type == 1 || type == 11))
+	{
+		lint £”­¶Šm—¦ = 8;
+		if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 11 || ‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 21 || ‚hí—Şƒ‰ƒ“ƒN(ii, -1) == 31)
+		{
+			£”­¶Šm—¦ = 3;
+		}
+		if (FA[188] < 2)
+		{
+			£”­¶Šm—¦ += 4;
+		}
+		if (RAND(£”­¶Šm—¦) == 1)
+		{
+			for (; ; )
+			{
+				if (FA[309] == 1 && RAND(4) == 1)
+				{
+					‚h‹@”\’Ç‰Á(ii, 91, 0);
+					break;
+				}
+				if (FA[309] == 1 && RAND(4) == 1)
+				{
+					‚h‹@”\’Ç‰Á(ii, 84, 0);
+					break;
+				}
+				if (FA[263] == 1 && RAND(10) == 1)
+				{
+					‚h‹@”\’Ç‰Á(ii, 81, 0);
+					break;
+				}
+				‚h‹@”\’Ç‰Á(ii, 39, 0);
+				break;
+			}
+		}
+	}
+}
+
+void ‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(lint ii, lint d1, lint d2, lint d3, lint d4, lint d5, lint d6, lint d7, lint d8, lint d9)
+{
+	lint aa = 0;
+	lint bb = 0;
+	lint loop = 0;
+	lint ra = 0;
+	lint ra2 = 0;
+	lint £”{—¦ = 0;
+	lint £UŒ‚—Í‚t‚o”’l = 2;
+	lint £–‚–@—Í‚t‚o”’l = 2;
+	lint £–hŒä—Í‚t‚o”’l = 2;
+	lint £–‚’ï—Í‚t‚o”’l = 2;
+	lint £‚»‚Ì‘¼‚t‚o”’l = 0;
+	lint type = ‚hí—Ş(ii, -1);
+	lint ‹@”\‚P = ‚h‹@”\(ii, 1, -1);
+	lint Œø‰Ê‚P = ‚hŒø‰Ê(ii, 1, -1);
+	lint ‹@”\‚Q = ‚h‹@”\(ii, 2, -1);
+	lint Œø‰Ê‚Q = ‚hŒø‰Ê(ii, 2, -1);
+	aa = 9 + RAND(6);
+	if (Ÿƒ[ƒ‹ƒh >= 2)
+	{
+		aa += RAND(Ÿƒ[ƒ‹ƒh * 2);
+	}
+	£‚»‚Ì‘¼‚t‚o”’l = aa;
+	if (type == 1 && ‹@”\‚P == 2)
+	{
+		£”{—¦ = 10;
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			£”{—¦ = 15;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			£”{—¦ = 20;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 4)
+		{
+			£”{—¦ = 25;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 5)
+		{
+			£”{—¦ = 30;
+		}
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, £”{—¦);
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		if (£‚»‚Ì‘¼‚t‚o”’l > aa)
+		{
+			aa = £‚»‚Ì‘¼‚t‚o”’l;
+		}
+		£UŒ‚—Í‚t‚o”’l = aa;
+	}
+	if (type == 1 && ‹@”\‚P == 14)
+	{
+		£”{—¦ = 10;
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			£”{—¦ = 15;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			£”{—¦ = 20;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 4)
+		{
+			£”{—¦ = 25;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 5)
+		{
+			£”{—¦ = 30;
+		}
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, £”{—¦);
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		if (£‚»‚Ì‘¼‚t‚o”’l > aa)
+		{
+			aa = £‚»‚Ì‘¼‚t‚o”’l;
+		}
+		£–‚–@—Í‚t‚o”’l = aa;
+	}
+	if (type == 11)
+	{
+		£”{—¦ = 10;
+		if (Ÿƒ[ƒ‹ƒh == 2)
+		{
+			£”{—¦ = 15;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			£”{—¦ = 20;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 4)
+		{
+			£”{—¦ = 25;
+		}
+		if (Ÿƒ[ƒ‹ƒh == 5)
+		{
+			£”{—¦ = 30;
+		}
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚P, £”{—¦);
+		if (£‚»‚Ì‘¼‚t‚o”’l > aa)
+		{
+			aa = £‚»‚Ì‘¼‚t‚o”’l;
+		}
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		£–hŒä—Í‚t‚o”’l = aa;
+		aa = ”{—¦ŒvZŠÖ”(Œø‰Ê‚Q, £”{—¦);
+		if (£‚»‚Ì‘¼‚t‚o”’l > aa)
+		{
+			aa = £‚»‚Ì‘¼‚t‚o”’l;
+		}
+		if (aa < 2)
+		{
+			aa = 2;
+		}
+		£–‚’ï—Í‚t‚o”’l = aa;
+	}
+	if (d1 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d1, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d2 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d2, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d3 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d3, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d4 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d4, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d5 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d5, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d6 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d6, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d7 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d7, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d8 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d8, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (d9 != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(ii, d9, £UŒ‚—Í‚t‚o”’l, £–‚–@—Í‚t‚o”’l, £–hŒä—Í‚t‚o”’l, £–‚’ï—Í‚t‚o”’l, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+}
+
+void ‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€^ˆ—(lint ii, lint vv, lint £UŒ‚—Í‚t‚o”’l, lint £–‚–@—Í‚t‚o”’l, lint £–hŒä—Í‚t‚o”’l, lint £–‚’ï—Í‚t‚o”’l, lint £‚»‚Ì‘¼‚t‚o”’l)
+{
+	lint aa = 0;
+	lint bb = 0;
+	lint loop = 0;
+	lint ra = 0;
+	if (vv == 2)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £UŒ‚—Í‚t‚o”’l);
+	}
+	if (vv == 14)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £–‚–@—Í‚t‚o”’l);
+	}
+	if (vv == 4)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £–hŒä—Í‚t‚o”’l);
+	}
+	if (vv == 12)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £–‚’ï—Í‚t‚o”’l);
+	}
+	if (vv == 8)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (vv == 6)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (vv == 19)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (vv == 10)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (vv == 18)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £‚»‚Ì‘¼‚t‚o”’l);
+	}
+	if (vv == 16)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 1 + Ÿƒ[ƒ‹ƒh);
+	}
+	if (vv == 20)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, £‚»‚Ì‘¼‚t‚o”’l * 3);
+	}
+	if (vv == 32)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 3);
+	}
+	if (vv == 30)
+	{
+		if (ra == 1)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 5);
+		}
+		if (ra == 2)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 4);
+		}
+		if (ra == 3)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 3);
+		}
+		if (ra == 4)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 1);
+		}
+		if (ra == 5)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 2);
+		}
+	}
+	if (vv == 31)
+	{
+		if (ra == 1)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 16);
+		}
+		if (ra == 2)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 17);
+		}
+		if (ra == 3)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 18);
+		}
+		if (ra == 4)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 19);
+		}
+		if (ra == 5)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 20);
+		}
+		if (ra == 6)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 21);
+		}
+		if (ra == 7)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 6);
+		}
+		if (ra == 8)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 7);
+		}
+		if (ra == 9)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 8);
+		}
+		if (ra == 10)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 13);
+		}
+		if (ra == 11)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 11);
+		}
+		if (ra == 12)
+		{
+			‚h‹@”\’Ç‰Á(ii, vv, 12);
+		}
+	}
+	if (vv == 21)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 20);
+	}
+	if (vv == 22)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 20);
+	}
+	if (vv == 23)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 20);
+	}
+	if (vv == 24)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 20);
+	}
+	if (vv == 25)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 20);
+	}
+	if (vv == 33)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 1);
+	}
+	if (vv == 39 || vv == 81)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 0);
+	}
+	if (vv == 84 || vv == 91)
+	{
+		‚h‹@”\’Ç‰Á(ii, vv, 1);
+	}
+}
+
+void ‚hƒ{[ƒiƒX’Ç‰Á^”{—¦Œ^(lint ii, lint fg)
+{
+	lint loop = 0;
+	lint £”{—¦ = 100;
+	for (; ; )
+	{
+		if (fg == 1)
+		{
+			£”{—¦ = 105;
+			break;
+		}
+		if (fg == 2)
+		{
+			£”{—¦ = 110;
+			break;
+		}
+		if (fg == 3)
+		{
+			£”{—¦ = 112;
+			break;
+		}
+		if (fg == 4)
+		{
+			£”{—¦ = 114;
+			break;
+		}
+		if (fg == 5)
+		{
+			£”{—¦ = 116;
+			break;
+		}
+		if (fg == 6)
+		{
+			£”{—¦ = 118;
+			break;
+		}
+		if (fg == 7)
+		{
+			£”{—¦ = 120;
+			break;
+		}
+		if (fg == 8)
+		{
+			£”{—¦ = 122;
+			break;
+		}
+		if (fg == 9)
+		{
+			£”{—¦ = 125;
+			break;
+		}
+		return;
+	}
+	for (loop = 1; loop < 6; loop++)
+	{
+		if (‚h‹@”\(ii, loop, -1) == 2)
+		{
+			‚hŒø‰Ê(ii, loop, ”{—¦ŒvZŠÖ”(‚hŒø‰Ê(ii, loop, -1), £”{—¦));
+		}
+		if (‚h‹@”\(ii, loop, -1) == 14)
+		{
+			‚hŒø‰Ê(ii, loop, ”{—¦ŒvZŠÖ”(‚hŒø‰Ê(ii, loop, -1), £”{—¦));
+		}
+		if (‚h‹@”\(ii, loop, -1) == 4)
+		{
+			‚hŒø‰Ê(ii, loop, ”{—¦ŒvZŠÖ”(‚hŒø‰Ê(ii, loop, -1), £”{—¦));
+		}
+		if (‚h‹@”\(ii, loop, -1) == 12)
+		{
+			‚hŒø‰Ê(ii, loop, ”{—¦ŒvZŠÖ”(‚hŒø‰Ê(ii, loop, -1), £”{—¦));
+		}
+		if (‚h‹@”\(ii, loop, -1) == 20)
+		{
+			‚hŒø‰Ê(ii, loop, ”{—¦ŒvZŠÖ”(‚hŒø‰Ê(ii, loop, -1), £”{—¦));
+		}
+	}
+}
+
+void ‚h‹@”\’Ç‰Á(int ii, int a1, int b1)
+{
+	int loop = 0;
+	int rkh = 0;
+	int kn = 0;
+	int ra = 0;
+	LOG_TADA("@¨" + ‚h–¼‘O(ii, "") + " " + ‹@”\•¶š—ñ(a1, b1) + "\n");
+	if (a1 == 32)
+	{
+		‰ÁŒ¸ŠÖ”(‚h[ii].‘•”õ‚k‚u, -3);
+		if (Ÿƒ[ƒ‹ƒh == 3)
+		{
+			‚h‘•”õ‚k‚u(ii, 0);
+		}
+		return;
+	}
+	if (a1 == 33 && (‚hŒÅ—L”Ô†(ii, -1) == 55 || ‚hŒÅ—L”Ô†(ii, -1) == 58 || ‚hŒÅ—L”Ô†(ii, -1) == 61))
+	{
+		ra = RAND(6);
+		‚h‘•”õE‹Æ(ii, ra, 1);
+	}
+	if (a1 == 84 && ‚h‹@”\æ“¾(ii, 91) != 0)
+	{
+		return;
+	}
+	if (a1 == 91 && ‚h‹@”\æ“¾(ii, 84) != 0)
+	{
+		return;
+	}
+	if (a1 == 39 && ‚h‹@”\æ“¾(ii, 81) != 0)
+	{
+		return;
+	}
+	if (a1 == 81 && ‚h‹@”\æ“¾(ii, 39) != 0)
+	{
+		return;
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) == a1)
+		{
+			‚hŒø‰Ê(ii, loop, ‚hŒø‰Ê(ii, loop, -1) + b1);
+			return;
+		}
+	}
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) == 0)
+		{
+			for (; ; )
+			{
+				if (”½‹@”\ˆ—(ii, a1, b1, 2, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 4, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 6, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 8, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 10, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 12, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 14, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 16, 1) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 3, 2) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 5, 2) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 7, 2) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 9, 2) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 11, 2) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 13, 2) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 15, 2) == 1)
+				{
+					break;
+				}
+				if (”½‹@”\ˆ—(ii, a1, b1, 17, 2) == 1)
+				{
+					break;
+				}
+				‚h‹@”\(ii, loop, a1);
+				‚hŒø‰Ê(ii, loop, b1);
+				break;
+			}
+			return;
+		}
+	}
+}
+
+int ”½‹@”\ˆ—(int ii, int aa, int bb, int kn, int fg)
+{
+	int rkh = 0;
+	if (aa != kn)
+	{
+		return 0;
+	}
+	if (fg == 1)
+	{
+		rkh = ‚h‹@”\—L–³(ii, kn + 1);
+	}
+	if (fg == 2)
+	{
+		rkh = ‚h‹@”\—L–³(ii, kn - 1);
+	}
+	if (rkh == 0)
+	{
+		return 0;
+	}
+	‰ÁŒ¸ŠÖ”(‚h[ii].Œø‰Ê[rkh], -bb);
+	if (‚hŒø‰Ê(ii, rkh, -1) == 0)
+	{
+		‚h‹@”\(ii, rkh, 0);
+	}
+	return 1;
+}
+
+int ‚h‹@”\—L–³(int ii, int pp)
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) == pp)
+		{
+			return loop;
+		}
+	}
+	return 0;
+}
+
+void ‚h¶¬^ƒf[ƒ^‚O(int ii, int ‚b‚f, int ‰¿Ši, int ƒŒƒxƒ‹, int E‚P, int E‚Q, int E‚R, int E‚S, int E‚T, int E‚U, int E‚V, int E‚W)
+{
+	if (‰¿Ši > 9999999)
+	{
+		‰¿Ši = 9999999;
+	}
+	‚h‰¿Ši(ii, ‰¿Ši);
+	‚h‚b‚f”Ô†(ii, ‚b‚f);
+	if (ƒŒƒxƒ‹ == 1)
+	{
+		ƒŒƒxƒ‹ = 0;
+	}
+	‚h‘•”õ‚k‚u(ii, ƒŒƒxƒ‹);
+	int a1 = 0;
+	int a2 = 0;
+	int a3 = 0;
+	int a4 = 0;
+	int a5 = 0;
+	int a6 = 0;
+	int a7 = 0;
+	int a8 = 0;
+	if (E‚P == 1 || E‚P == 1)
+	{
+		‚h‘•”õE‹Æ(ii, 1, 1);
+	}
+	if (E‚Q == 1 || E‚Q == 2)
+	{
+		‚h‘•”õE‹Æ(ii, 2, 1);
+	}
+	if (E‚R == 1 || E‚R == 3)
+	{
+		‚h‘•”õE‹Æ(ii, 3, 1);
+	}
+	if (E‚S == 1 || E‚S == 4)
+	{
+		‚h‘•”õE‹Æ(ii, 4, 1);
+	}
+	if (E‚T == 1 || E‚T == 5)
+	{
+		‚h‘•”õE‹Æ(ii, 5, 1);
+	}
+	if (E‚U == 1 || E‚U == 6)
+	{
+		‚h‘•”õE‹Æ(ii, 6, 1);
+	}
+	if (E‚V == 1 || E‚V == 7)
+	{
+		‚h‘•”õE‹Æ(ii, 7, 1);
+	}
+	if (E‚W == 1 || E‚W == 8)
+	{
+		‚h‘•”õE‹Æ(ii, 8, 1);
+	}
+}
+
+lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
+{
+	lint ii = 0;
+	lint ra = 0;
+	lint lv = 0;
+	if (ğŒ == "ƒ}ƒOƒiƒ€—p")
+	{
+		if (Ÿiiq == 121)
+		{
+			ii = ‚h¶¬(72, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 2, 2, 2, 20, 8, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 70)
+		{
+			ii = ‚h¶¬(134, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 2, 2, 39, 20, 8, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 62)
+		{
+			ii = ‚h¶¬(119, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 16, 16, 39, 20, 8, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 61)
+		{
+			ii = ‚h¶¬(87, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 2, 2, 39, 20, 8, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 122)
+		{
+			ii = ‚h¶¬(104, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 2, 2, 20, 20, 20, 20, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 6);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 40)
+		{
+			ii = ‚h¶¬(164, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 14, 14, 39, 14, 8, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 88)
+		{
+			ii = ‚h¶¬(139, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 14, 81, 0, 0, 0, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 2);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 92)
+		{
+			ii = ‚h¶¬(124, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 39, 8, 0, 0, 0, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 1);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 123)
+		{
+			ii = ‚h¶¬(92, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 2, 18, 18, 4, 4, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 71)
+		{
+			ii = ‚h¶¬(109, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 2, 18, 18, 81, 0, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 4);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 97)
+		{
+			ii = ‚h¶¬(59, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 4, 4, 4, 4, 4, 4, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 6);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 48)
+		{
+			ii = ‚h¶¬(82, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 39, 8, 0, 0, 0, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 2);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 64)
+		{
+			ii = ‚h¶¬(33, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 4, 4, 4, 8, 6, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 124)
+		{
+			ii = ‚h¶¬(16, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 4, 4, 4, 8, 6, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 5);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 77)
+		{
+			ii = ‚h¶¬(96, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 39, 8, 2, 2, 0, 0, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 4);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+	}
+	if (ğŒ == "•ó” ‚Ì’†g")
+	{
+		if (Ÿiiq == 168)
+		{
+			ii = ‚h‹ó‚«”Ô†æ“¾();
+			if (ii == 0)
+			{
+				return 0;
+			}
+			lv = 4;
+			‚h¶¬^ƒf[ƒ^‚O(ii, 6438, 1000, 39, 1, 0, 3, 0, 5, 6, 0, 8);
+			‚h¶¬^ƒf[ƒ^‚P(ii, 15, lv, "Tough Leather Armor XB", 11, 13, 21, 4, 80, 12, 80, 10, 20, 86, 0, 0, 0);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 169)
+		{
+			ii = ‚h¶¬(68, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 84, 8, 2, 2, 2, 16, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 6);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 171)
+		{
+			ii = ‚h‹ó‚«”Ô†æ“¾();
+			if (ii == 0)
+			{
+				return 0;
+			}
+			lv = 0;
+			‚h¶¬^ƒf[ƒ^‚O(ii, 6395, 1500, 32, 1, 0, 0, 0, 0, 6, 0, 0);
+			‚h¶¬^ƒf[ƒ^‚P(ii, 93, lv, "Iceberg Sword", 1, 2, 21, 2, 400, 30, 4, 84, 0, 0, 0, 0, 0);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+		if (Ÿiiq == 172)
+		{
+			ra = RAND(2);
+			if (ra == 1)
+			{
+				ii = ‚h‹ó‚«”Ô†æ“¾();
+				if (ii == 0)
+				{
+					return 0;
+				}
+				‚h¶¬^ƒf[ƒ^‚O(ii, 6413, 300, 28, 0, 0, 0, 0, 0, 6, 0, 0);
+				‚h¶¬^ƒf[ƒ^‚P(ii, 11, 0, "Underwater Ninja Clothes", 11, 13, 21, 4, 85, 12, 40, 22, 70, 16, 4, 86, 0);
+				‚hî•ñ(ii, "©“®¶¬");
+			}
+			if (ra == 2)
+			{
+				ii = ‚h‹ó‚«”Ô†æ“¾();
+				if (ii == 0)
+				{
+					return 0;
+				}
+				‚h¶¬^ƒf[ƒ^‚O(ii, 6008, 1200, 27, 0, 0, 0, 4, 5, 0, 0, 8);
+				‚h¶¬^ƒf[ƒ^‚P(ii, 46, lv, "Underwater Loose Robe", 11, 15, 21, 4, 100, 12, 20, 22, 50, 86, 0, 0, 0);
+				‚hî•ñ(ii, "©“®¶¬");
+			}
+		}
+		if (Ÿiiq == 176)
+		{
+			ii = ‚h¶¬(16, 0);
+			if (ii == 0)
+			{
+				return 0;
+			}
+			‚hƒ{[ƒiƒX’Ç‰Á^ƒJƒXƒ^ƒ€(ii, 4, 4, 4, 12, 86, 87, 0, 0, 0);
+			‚hƒŒƒAƒ‰ƒ“ƒN(ii, 6);
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+	}
+	return ii;
+}
+
+void ‚hŠÓ’è(int ii)
+{
+	lint £’Ç‰Áƒ{[ƒiƒX = 0;
+	if (ŸƒNƒGƒXƒgƒ{[ƒiƒX—L–³[1] == 1 && ŸƒNƒGƒXƒgƒ{[ƒiƒX[1] >= ŸƒNƒGƒXƒgƒ{[ƒiƒXÅ‘å[1])
+	{
+		£’Ç‰Áƒ{[ƒiƒX++;
+	}
+	if (ŸƒNƒGƒXƒgƒ{[ƒiƒX—L–³[2] == 1 && ŸƒNƒGƒXƒgƒ{[ƒiƒX[2] >= ŸƒNƒGƒXƒgƒ{[ƒiƒXÅ‘å[2])
+	{
+		£’Ç‰Áƒ{[ƒiƒX++;
+	}
+	if (ŸƒNƒGƒXƒgƒ{[ƒiƒX—L–³[3] == 1 && ŸƒNƒGƒXƒgƒ{[ƒiƒX[3] >= ŸƒNƒGƒXƒgƒ{[ƒiƒXÅ‘å[3])
+	{
+		£’Ç‰Áƒ{[ƒiƒX++;
+	}
+	LOG_TADA("ŠÓ’è@" + ‚h–¼‘O(ii, "") + "@’Ç‰Áƒ{[ƒiƒX" + string(£’Ç‰Áƒ{[ƒiƒX) + "\n");
+	if (£’Ç‰Áƒ{[ƒiƒX != 0 && ‚hƒŒƒAƒ‰ƒ“ƒN(ii, -1) != 0)
+	{
+		‚hƒ{[ƒiƒX’Ç‰Á(ii, £’Ç‰Áƒ{[ƒiƒX, 1);
+	}
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) == 21 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 22 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 23 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 24 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+		if (‚h‹@”\(ii, loop, -1) == 25 && ‚hŒø‰Ê(ii, loop, -1) >= 99)
+		{
+			‚hŒø‰Ê(ii, loop, 99);
+		}
+	}
+	‚h–¢Šm’è(ii, 0);
+	lint no = ‚hŒÅ—L”Ô†(ii, -1);
+	string £ŒÅ—L–¼‘O = ‚hŒÅ—L–¼‘O(no);
+	lint £ŒÅ—L‚b‚f”Ô† = ‚hŒÅ—L‚b‚f”Ô†(no);
+	‚h–¼‘O(ii, £ŒÅ—L–¼‘O);
+	‚h‚b‚f”Ô†(ii, £ŒÅ—L‚b‚f”Ô†);
+	‚hî•ñ(ii, "©“®¶¬");
+	return;
+}
+
+void ‚hƒNƒGƒXƒg‘qŒÉ‚É’Ç‰Á(int no)
+{
+	int ii = ‚h¶¬(no, 0);
+	‚h‘¶İ(ii, 8);
+}
+
+int ‚h‹@”\æ“¾(int ii, int ‹@”\”Ô†)
+{
+	int loop = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) == ‹@”\”Ô†)
+		{
+			if (‚hŒø‰Ê(ii, loop, -1) == 0)
+			{
+				return 1;
+			}
+			return ‚hŒø‰Ê(ii, loop, -1);
+		}
+	}
+	return 0;
+}
+
+void ‚h¬’·‘•”õ‚Ìˆ—(int iic)
+{
+	‚h¬’·‘•”õ‚Ìˆ—^“à•”(iic, ‚b•Ší(iic, -1));
+	‚h¬’·‘•”õ‚Ìˆ—^“à•”(iic, ‚b–h‹ï(iic, -1));
+}
+
+void ‚h¬’·‘•”õ‚Ìˆ—^“à•”(int iic, int ii)
+{
+	if (ii == 0)
+	{
+		return;
+	}
+	int loop = 0;
+	int £Œ³”’l = 0;
+	int £—”• = 0;
+	int loop2 = 0;
+	int £¬’·’l = 0;
+	int £ŒÀŠE’l = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		if (‚h‹@”\(ii, loop, -1) == 39 || ‚h‹@”\(ii, loop, -1) == 81)
+		{
+			£Œ³”’l = ‚hŒø‰Ê(ii, loop, -1) / 100;
+			£—”• = 30;
+			if (‚hŒø‰Ê(ii, loop, -1) >= 500)
+			{
+				£—”• = 10;
+			}
+			if (‚hŒø‰Ê(ii, loop, -1) >= 2000)
+			{
+				£—”• = 3;
+			}
+			if (‚hŒø‰Ê(ii, loop, -1) >= 3000)
+			{
+				£—”• = 2;
+			}
+			‚hŒø‰Ê(ii, loop, ‚hŒø‰Ê(ii, loop, -1) + RAND(£—”•));
+			£ŒÀŠE’l = 1000;
+			if (‚h‹@”\(ii, loop, -1) == 81)
+			{
+				£ŒÀŠE’l = 5000;
+			}
+			if (‚hŒø‰Ê(ii, loop, -1) >= £ŒÀŠE’l)
+			{
+				‚hŒø‰Ê(ii, loop, £ŒÀŠE’l);
+			}
+			if (‚hŒø‰Ê(ii, loop, -1) / 100 > £Œ³”’l)
+			{
+				LOG("     " + ‚b–¼‘O(iic, "") + "'s item [" + ‚h–¼‘O(ii, "") + "] has risen in rank\n");
+				£¬’·’l = 5;
+				if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) >= 20)
+				{
+					£¬’·’l = 10;
+				}
+				if (‚hí—Şƒ‰ƒ“ƒN(ii, -1) >= 30)
+				{
+					£¬’·’l = 20;
+				}
+				for (loop2 = 1; loop2 < 6; ++loop2)
+				{
+					if (‚hí—Ş(ii, -1) == 1)
+					{
+						if (‚h‹@”\(ii, loop2, -1) == 2)
+						{
+							‚hŒø‰Ê(ii, loop2, ‚hŒø‰Ê(ii, loop2, -1) + £¬’·’l);
+						}
+						if (‚h‹@”\(ii, loop2, -1) == 14)
+						{
+							‚hŒø‰Ê(ii, loop2, ‚hŒø‰Ê(ii, loop2, -1) + £¬’·’l);
+						}
+					}
+					if (‚hí—Ş(ii, -1) == 11)
+					{
+						if (‚h‹@”\(ii, loop2, -1) == 4)
+						{
+							‚hŒø‰Ê(ii, loop2, ‚hŒø‰Ê(ii, loop2, -1) + £¬’·’l);
+						}
+						if (‚h‹@”\(ii, loop2, -1) == 12)
+						{
+							‚hŒø‰Ê(ii, loop2, ‚hŒø‰Ê(ii, loop2, -1) + £¬’·’l);
+						}
+					}
+					if (‚h‹@”\(ii, loop2, -1) == 20)
+					{
+						‚hŒø‰Ê(ii, loop2, ‚hŒø‰Ê(ii, loop2, -1) + £¬’·’l * 2);
+					}
+				}
+				‚bÄŒvZ(iic);
+			}
+			‚hî•ñ(ii, "©“®¶¬");
+		}
+	}
+}
+
+int ‚hƒNƒGƒXƒg‘qŒÉ‚Ì—L–³(int no)
+{
+	int ii = 0;
+	for (ii = 1; ii < 3001; ++ii)
+	{
+		if (‚hŒÅ—L”Ô†(ii, -1) == no && ‚h‘¶İ(ii, -1) == 8)
+		{
+			return ii;
+		}
+	}
+	return 0;
+}
+
+int ‚h‘”æ“¾(int fg)
+{
+	int loop = 0;
+	int aa = 0;
+	for (loop = 1; loop < 3001; ++loop)
+	{
+		if (fg == 0 && ‚h‘¶İ(loop, -1) >= 20)
+		{
+			++aa;
+		}
+		if (fg == 0 && ‚h‘¶İ(loop, -1) == 7)
+		{
+			++aa;
+		}
+		if (fg == 0 && ‚h‘¶İ(loop, -1) == 11)
+		{
+			++aa;
+		}
+		if (fg != 0 && ‚h‘¶İ(loop, -1) == fg)
+		{
+			++aa;
+		}
+	}
+	return aa;
+}
+
+int ‚h‘”æ“¾^ŒÅ—L”Ô†(int no, int fg)
+{
+	int loop = 0;
+	int aa = 0;
+	for (loop = 1; loop < 3001; ++loop)
+	{
+		if (no == ‚hŒÅ—L”Ô†(loop, -1))
+		{
+			if (fg == 0 && ‚h‘¶İ(loop, -1) >= 20)
+			{
+				++aa;
+			}
+			if (fg == 0 && ‚h‘¶İ(loop, -1) == 7)
+			{
+				++aa;
+			}
+			if (fg == 0 && ‚h‘¶İ(loop, -1) == 11)
+			{
+				++aa;
+			}
+			if (fg != 0 && ‚h‘¶İ(loop, -1) == fg)
+			{
+				++aa;
+			}
+		}
+	}
+	return aa;
+}
+
+int ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H()
+{
+	if (‚h‘”æ“¾(8) >= 15)
+	{
+		return 1;
+	}
+	if (‚h‹ó‚«”Ô†æ“¾() == 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int ‚h—L–³(int no, int fg, string ğŒ)
+{
+	int loop = 0;
+	for (loop = 1; loop < 3001; ++loop)
+	{
+		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 7)
+		{
+			return loop;
+		}
+		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 11)
+		{
+			return loop;
+		}
+		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 8)
+		{
+			return loop;
+		}
+		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) > 19)
+		{
+			return loop;
+		}
+		if (fg != 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == fg)
+		{
+			return loop;
+		}
+		if (ğŒ == "‘qŒÉŠO‚àŠÜ‚Ş" && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 9)
+		{
+			return loop;
+		}
+	}
+	return 0;
+}
+
+int ‚h—L–³^\‘¢‘Ì”Ô†(int iino, int fg)
+{
+	if (fg == 0 && ‚h‘¶İ(iino, -1) == 7)
+	{
+		return 1;
+	}
+	if (fg == 0 && ‚h‘¶İ(iino, -1) == 11)
+	{
+		return 1;
+	}
+	if (fg == 0 && ‚h‘¶İ(iino, -1) > 19)
+	{
+		return 1;
+	}
+	if (fg != 0 && ‚h‘¶İ(iino, -1) == fg)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int ‚o‚s‚`Q‚hŒÂ”(int ino)
+{
+	int loop = 0;
+	int cc = 0;
+	int iic = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		iic = PTA[loop];
+		if (iic != 0 && ‚bó‘Ô•Ï‰»(iic, -1) != 3)
+		{
+			if (‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == ino)
+			{
+				++cc;
+			}
+			if (‚hŒÅ—L”Ô†(‚b–h‹ï(iic, -1), -1) == ino)
+			{
+				++cc;
+			}
+			if (‚hŒÅ—L”Ô†(‚bƒIƒvƒVƒ‡ƒ“(iic, -1), -1) == ino)
+			{
+				++cc;
+			}
+			if (‚hŒÅ—L”Ô†(‚b‚¿•¨(iic, -1), -1) == ino)
+			{
+				++cc;
+			}
+		}
+	}
+	return cc;
+}
+
+int ‚o‚s‚`Q‚h—L–³(int ino)
+{
+	int loop = 0;
+	int cc = 0;
+	int iic = 0;
+	for (loop = 1; loop < 6; ++loop)
+	{
+		iic = PTA[loop];
+		if (iic != 0 && ‚bó‘Ô•Ï‰»(iic, -1) != 3)
+		{
+			if (‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == ino)
+			{
+				return iic;
+			}
+			if (‚hŒÅ—L”Ô†(‚b–h‹ï(iic, -1), -1) == ino)
+			{
+				return iic;
+			}
+			if (‚hŒÅ—L”Ô†(‚bƒIƒvƒVƒ‡ƒ“(iic, -1), -1) == ino)
+			{
+				return iic;
+			}
+			if (‚hŒÅ—L”Ô†(‚b‚¿•¨(iic, -1), -1) == ino)
+			{
+				return iic;
+			}
+		}
+	}
+	return 0;
+}
+
+void ‚h•Û—L(int no)
+{
+	int ii = ‚h¶¬(no, 0);
+	if (ii == 0)
+	{
+		return;
+	}
+	‚h‘¶İ(ii, 7);
+}
+
+void ‚híœ(int ii)
+{
+	‚h‰Šú‰»(ii);
+}
+
+int ‚hŒÅ—L”Ô†‚Åíœ(int no, int fg)
+{
+	int loop = 0;
+	for (loop = 1; loop < 3001; ++loop)
+	{
+		if (fg != 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == fg)
+		{
+			‚h‰Šú‰»(loop);
+		}
+		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 7)
+		{
+			‚h‰Šú‰»(loop);
+		}
+		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 11)
+		{
+			‚h‰Šú‰»(loop);
+		}
+		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) > 19)
+		{
+			‚h‰Šú‰»(loop);
+		}
+	}
+	return 0;
+}
+
+void ‚sƒAƒCƒeƒ€Šñ•t”„‹pÌ‚Ä‚é‘O(lint ii)
+{
+	int no = ‚hŒÅ—L”Ô†(ii, -1);
+	if (no == 7)
+	{
+		FA[240]++;
+	}
+	if (no == 10)
+	{
+		FA[241]++;
+	}
+	if (no == 24)
+	{
+		FA[242]++;
+	}
+	if (no == 27)
+	{
+		FA[243]++;
+	}
+	if (no == 54)
+	{
+		FA[244]++;
+	}
+	if (no == 70)
+	{
+		FA[245]++;
+	}
+	if (no == 69)
+	{
+		FA[246]++;
+	}
+	if (no == 84)
+	{
+		FA[247]++;
+	}
+	if (no == 100)
+	{
+		FA[248]++;
+	}
+	if (no == 169)
+	{
+		FA[249]++;
+	}
+	if (no == 171)
+	{
+		FA[250]++;
+	}
+	if (no == 178)
+	{
+		FA[252]++;
+	}
+	if (no == 125)
+	{
+		FA[305]++;
+	}
+	if (no == 165)
+	{
+		FA[319]++;
+	}
+	if (no == 22)
+	{
+		FA[208]++;
+	}
+	if (no == 64)
+	{
+		FA[211]++;
+	}
+	if (no == 40)
+	{
+		FA[209]++;
+	}
+	if (no == 52)
+	{
+		FA[210]++;
+	}
+	if (no == 83)
+	{
+		FA[212]++;
+	}
+	if (no == 97)
+	{
+		FA[213]++;
+	}
+	if (no == 114)
+	{
+		FA[214]++;
+	}
+	if (no == 129)
+	{
+		FA[215]++;
+	}
+	if (no == 144)
+	{
+		FA[216]++;
+	}
+	if (no == 168)
+	{
+		FA[218]++;
+	}
+	if (no == 157)
+	{
+		FA[217]++;
+	}
+}
+
+string ‚hŒÅ—L–¼‘O(int no)
+{
+	int ii = 0;
+	string •¶š—ñ = "‚d‚’‚’‚‚’ƒAƒCƒeƒ€";
+	LOG_TADA("‚hŒÅ—L–¼‘OŠm”F‚Ìˆ×@—Õ‚Å");
+	ii = ‚h¶¬(no, 0);
+	•¶š—ñ = ‚h–¼‘O(ii, "");
+	‚híœ(ii);
+	return •¶š—ñ;
+}
+
+lint ‚hŒÅ—L‚b‚f”Ô†(int no)
+{
+	int ii = 0;
+	int cgno = 0;
+	LOG_TADA("‚h‚b‚f”Ô†Šm”F‚Ìˆ×@—Õ‚Å");
+	ii = ‚h¶¬(no, 0);
+	cgno = 0;
+	cgno = ‚h‚b‚f”Ô†(ii, -1);
+	‚híœ(ii);
+	return cgno;
+}
+
+lint ‚hŒÅ—Lí—Şƒ‰ƒ“ƒN(int no)
+{
+	int ii = 0;
+	int aa = 0;
+	aa = 0;
+	LOG_TADA("‚hƒ‰ƒ“ƒN‚Ìˆ×@—Õ‚Å");
+	ii = ‚h¶¬(no, 0);
+	aa = ‚hí—Şƒ‰ƒ“ƒN(ii, -1);
+	‚híœ(ii);
+	return aa;
+}
+
+void ‚h‰‹N“®“o˜^()
+{
+	‚h–¼‘O(0, "|–³‚µ|");
+	lint loop = 0;
+	lint ii = 0;
+	lint nni = 0;
+	ŸƒAƒCƒeƒ€•â[”[55] = 2;
+	ŸƒAƒCƒeƒ€•â[”[43] = 2;
+	ŸƒAƒCƒeƒ€•â[”[25] = 2;
+	ŸƒAƒCƒeƒ€•â[”[8] = 2;
+	ŸƒAƒCƒeƒ€•â[”[1] = 2;
+	ŸƒAƒCƒeƒ€•â[”[160] = 2;
+	ŸƒAƒCƒeƒ€•â[”[148] = 2;
+	ŸƒAƒCƒeƒ€•â[”[133] = 2;
+	ŸƒAƒCƒeƒ€•â[”[117] = 2;
+	ŸƒAƒCƒeƒ€•â[”[101] = 2;
+	ŸƒAƒCƒeƒ€•â[”[86] = 2;
+	ŸƒAƒCƒeƒ€•â[”[71] = 2;
+	ŸƒAƒCƒeƒ€•â[”[68] = 1;
+	ŸƒAƒCƒeƒ€•â[”[66] = 2;
+	ŸƒAƒCƒeƒ€•â[”[181] = 1;
+	ŸƒAƒCƒeƒ€•â[”[182] = 1;
+	ŸƒAƒCƒeƒ€•â[”[184] = 1;
+	ŸƒAƒCƒeƒ€•â[”[185] = 1;
+	ŸƒAƒCƒeƒ€•â[”[190] = 1;
+	ŸƒAƒCƒeƒ€•â[”[192] = 1;
+	ŸƒAƒCƒeƒ€•â[”[194] = 1;
+	ŸƒAƒCƒeƒ€•â[”[197] = 1;
+	ŸƒAƒCƒeƒ€•â[”[103] = 1;
+	ŸƒAƒCƒeƒ€•â[”[210] = 1;
+	ŸƒAƒCƒeƒ€•â[”[340] = 1;
+	ŸƒAƒCƒeƒ€•â[”[341] = 1;
+	nni = 269;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 272;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 275;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 278;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 281;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 284;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 287;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 290;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 293;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 296;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 299;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 202;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 204;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+	nni = 205;
+	ii = ‚h¶¬(nni, 0);
+	‚h‘¶İ(ii, 6);
+}
+
+void ‚hƒ[ƒ‹ƒh‚Q‚Ì“X¤•i’Ç‰Á()
+{
+	ŸƒAƒCƒeƒ€•â[”[271] = 1;
+	ŸƒAƒCƒeƒ€•â[”[274] = 1;
+	ŸƒAƒCƒeƒ€•â[”[277] = 1;
+	ŸƒAƒCƒeƒ€•â[”[280] = 1;
+	ŸƒAƒCƒeƒ€•â[”[283] = 1;
+	ŸƒAƒCƒeƒ€•â[”[286] = 1;
+	ŸƒAƒCƒeƒ€•â[”[289] = 1;
+	ŸƒAƒCƒeƒ€•â[”[292] = 1;
+	ŸƒAƒCƒeƒ€•â[”[295] = 1;
+	ŸƒAƒCƒeƒ€•â[”[298] = 1;
+	ŸƒAƒCƒeƒ€•â[”[301] = 1;
+}
+
+void ‚hƒ[ƒ‹ƒh‚R‚Ì“X¤•i’Ç‰Á()
+{
+	ŸƒAƒCƒeƒ€•â[”[323] = 1;
+	ŸƒAƒCƒeƒ€•â[”[324] = 1;
+	ŸƒAƒCƒeƒ€•â[”[325] = 1;
+	ŸƒAƒCƒeƒ€•â[”[326] = 1;
+	ŸƒAƒCƒeƒ€•â[”[327] = 1;
+	ŸƒAƒCƒeƒ€•â[”[328] = 1;
+	ŸƒAƒCƒeƒ€•â[”[329] = 1;
+	ŸƒAƒCƒeƒ€•â[”[330] = 1;
+	ŸƒAƒCƒeƒ€•â[”[331] = 1;
+	ŸƒAƒCƒeƒ€•â[”[332] = 1;
+	ŸƒAƒCƒeƒ€•â[”[333] = 1;
+}
+
+int ‚q‚WƒAƒCƒeƒ€æ“¾(int no, lint lv)
+{
+	int ii = 0;
+	if (no == 347)
+	{
+		ii = •ó” ‚Ì’†g¶¬(2, 0, 0);
+	}
+	if (no == 345)
+	{
+		if (Ÿƒ}ƒOƒiƒ€‚Ì•ó•¨ != 0)
+		{
+			ii = Ÿƒ}ƒOƒiƒ€‚Ì•ó•¨;
+			Ÿƒ}ƒOƒiƒ€‚Ì•ó•¨ = 0;
+			‚h‘¶İ(ii, 8);
+			LOG_TADA("@‚q‚WƒAƒCƒeƒ€æ“¾@ƒ}ƒOƒiƒ€i" + ‚h–¼‘O(ii, "") + "j\n");
+		}
+	}
+	if (ii == 0)
+	{
+		ii = ‚h¶¬(no, lv);
+		if (ii != 0)
+		{
+			‚h‘¶İ(ii, 8);
+		}
+	}
+	if (ii != 0)
+	{
+		‚q‚WƒWƒ“ƒOƒ‹(1008, false);
+		if (no == 345)
+		{
+			‚q‚W‚Ç‚±‚©‚©‚çƒAƒCƒeƒ€^ƒ}ƒOƒiƒ€(ii);
+		}
+		if (no != 345)
+		{
+			‚q‚W‚Ç‚±‚©‚©‚çƒAƒCƒeƒ€(ii);
+		}
+	}
+	return ii;
+}
+
+void ƒAƒCƒeƒ€•\¦(int ii)
+{
+	int loop = 0;
+	‚k(4);
+	'–¼‘O@m' S(‚h–¼‘O(ii, ""));
+	'n@‚P‚O•¶š' R;
+	'í—Ş@@' S(‚hí—Ş•¶š—ñ(‚hí—Ş(ii, -1)));
+	R();
+	R();
+	'œƒAƒCƒeƒ€î•ñœ@i‚Q‚T–‚Sj' R;
+	“Áê•¶š—ñ•\¦(‚hî•ñ(ii, ""), "@@");
+	R();
+	R();
+	'œ‘•”õ‰Â”\E‹Æ@‘•”õ‰Â”\Òœ' R;
+	'@•K—vƒŒƒxƒ‹@' N(‚h‘•”õ‚k‚u(ii, -1), 0, 0);
+	'‚k‚u' R;
+	'@‘•”õ‰Â”\E‹Æ@';
+	for (loop = 1; loop < 9; ++loop)
+	{
+		if (‚h‘•”õE‹Æ(ii, loop, -1) == 1)
+		{
+			S(‚bE‹Æ•¶š—ñ(loop, 1));
+			' ';
+		}
+	}
+	R();
+	'@@ƒ’ˆÓFŒÅ—LƒLƒƒƒ‰w’è‚ª‚ ‚éê‡‚ÍE‹Æ‚Ìƒf[ƒ^‚Í‚ ‚è‚Ü‚¹‚ñ„' R;
+	R();
+	return;
+}
+
+void “Áê•¶š—ñ•\¦(string •¶š—ñ, string ƒ^ƒu)
+{
+	int loop = 0;
+	int aa = 0;
+	string mj = "";
+	S(ƒ^ƒu);
+	aa = •¶š—ñ.Length();
+	for (loop = 1; loop < aa + 1; ++loop)
+	{
+		mj = •¶š—ñ.GetPart(loop, 1);
+		if (mj == "$")
+		{
+			R();
+			S(ƒ^ƒu);
+		}
+		if (mj != "$")
+		{
+			S(mj);
+		}
+	}
+}
+

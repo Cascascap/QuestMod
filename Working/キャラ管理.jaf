@@ -1,0 +1,46 @@
+bool Ｒ８スキルソート(int nCharaNo)
+{
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	if (rfsData.登録状態 == 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = rfsData.スキル.Numof();
+	array@sスキル asSkill;
+	for (i = 1; i < cnt; ++i)
+	{
+		ref sスキル rfsSkill = rfsData.スキル[i];
+		if (rfsSkill.番号 > 0)
+		{
+			asSkill.PushBack(rfsSkill);
+		}
+	}
+	int j = 0;
+	int cnt2 = asSkill.Numof();
+	if (cnt2 <= 0)
+	{
+		return false;
+	}
+	asSkill.Sort(&sスキル.番号);
+	i = 1;
+	for (j = 0; j < cnt2; ++j)
+	{
+		rfsData.スキル[i] = asSkill[j];
+		++i;
+	}
+	for (; i < cnt; ++i)
+	{
+		ref sスキル rfsSkill = rfsData.スキル[i];
+		rfsSkill.番号 = 0;
+		rfsSkill.状態 = 0;
+		rfsSkill.実装中 = 0;
+		rfsSkill.確率 = 0;
+	}
+	return true;
+}
+

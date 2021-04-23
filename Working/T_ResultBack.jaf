@@ -1,0 +1,47 @@
+T_ResultBack::T_ResultBack()
+{
+	this.clear();
+}
+
+T_ResultBack::~T_ResultBack()
+{
+	this.delete();
+}
+
+bool T_ResultBack::create(int nZ)
+{
+	this.delete();
+	int nMapNo = マップ_番号();
+	マップ制御_終了(false);
+	画面_クリア(true, true);
+	仮字枠非表示();
+	this.m_spBase.setCg(Ｒ８マグナム確認() ? 10355 : 10350);
+	this.m_spBase.setPos(8, 8);
+	this.m_spBase.setZ(nZ);
+	this.m_spBase.setShow(1);
+	this.m_sWorld.create(257, 421, nZ + 1);
+	this.m_sWorld.setShow(true);
+	this.m_sWorld.setBlendRate(128);
+	this.m_sWorld.setValue(◆ワールド);
+	マップ部品_作成(nZ + 1, nMapNo, 0, false);
+	マップ部品_表示設定(true);
+	システムバー_作成(20, nMapNo, true);
+	ミニステータス_ボタン表示設定(false);
+	_EFFECT(1, 500);
+	return true;
+}
+
+void T_ResultBack::delete()
+{
+	this.m_spBase.delete();
+	this.m_sWorld.delete();
+	マップ部品_削除();
+	システムバー_削除();
+	this.clear();
+}
+
+void T_ResultBack::clear()
+{
+	this.m_nMapNo = -1;
+}
+

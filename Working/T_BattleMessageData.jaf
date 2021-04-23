@@ -1,0 +1,111 @@
+T_BattleMessageData::T_BattleMessageData()
+{
+	this.clear();
+}
+
+void T_BattleMessageData::clear()
+{
+	this.m_nNo = 0;
+	this.m_nCgNo = 0;
+	this.m_nTextX = 0;
+	this.m_nTextY = 0;
+	this.m_nTextWidth = 0;
+	this.m_nTextHeight = 0;
+	this.m_nTextSpace = 0;
+	this.m_nLineSpace = 0;
+	this.m_nFontSize = 0;
+	this.m_nFontFace = 0;
+	this.m_bFontBold = false;
+	this.m_nFontColorR = 0;
+	this.m_nFontColorG = 0;
+	this.m_nFontColorB = 0;
+	this.m_nShadowPixelL = 0;
+	this.m_nShadowPixelU = 0;
+	this.m_nShadowPixelR = 0;
+	this.m_nShadowPixelD = 0;
+	this.m_nShadowColorR = 0;
+	this.m_nShadowColorG = 0;
+	this.m_nShadowColorB = 0;
+}
+
+int T_BattleMessageDataManager::getCount()
+{
+	return this.m_asData.Numof();
+}
+
+int T_BattleMessageDataManager::getIndex(int nNo)
+{
+	return this.search(nNo);
+}
+
+ref T_BattleMessageData T_BattleMessageDataManager::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asData.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asData[nIndex];
+}
+
+T_BattleMessageDataManager::T_BattleMessageDataManager()
+{
+	this.add(1, 10295, 18, 9, 244, 64, -8, -5, 28, -1, false, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	this.add(2, 10296, 8, 9, 244, 64, -8, -5, 28, -1, false, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	this.add(3, 10297, 18, 9, 244, 64, -8, -5, 28, -1, false, 185, 255, 226, 0, 0, 0, 0, 0, 0, 0);
+	this.add(4, 10298, 8, 9, 244, 64, -8, -5, 28, -1, false, 185, 255, 226, 0, 0, 0, 0, 0, 0, 0);
+}
+
+bool T_BattleMessageDataManager::add(int nNo, int nCgNo, int nTextX, int nTextY, int nTextWidth, int nTextHeight, int nTextSpace, int nLineSpace, int nFontSize, int nFontFace, bool bFontBold, int nFontColorR, int nFontColorG, int nFontColorB, int nShadowPixelL, int nShadowPixelU, int nShadowPixelR, int nShadowPixelD, int nShadowColorR, int nShadowColorG, int nShadowColorB)
+{
+	if (nNo <= 0 || !‚b‚f_‚ ‚è(nCgNo))
+	{
+		return false;
+	}
+	if (this.search(nNo) >= 0)
+	{
+		return false;
+	}
+	T_BattleMessageData sData;
+	sData.m_nNo = nNo;
+	sData.m_nCgNo = nCgNo;
+	sData.m_nTextX = nTextX;
+	sData.m_nTextY = nTextY;
+	sData.m_nTextWidth = nTextWidth;
+	sData.m_nTextHeight = nTextHeight;
+	sData.m_nTextSpace = nTextSpace;
+	sData.m_nLineSpace = nLineSpace;
+	sData.m_nFontSize = nFontSize;
+	sData.m_nFontFace = nFontFace < 0 ? 256 : nFontFace;
+	sData.m_bFontBold = bFontBold;
+	sData.m_nFontColorR = nFontColorR;
+	sData.m_nFontColorG = nFontColorG;
+	sData.m_nFontColorB = nFontColorB;
+	sData.m_nShadowPixelL = nShadowPixelL;
+	sData.m_nShadowPixelU = nShadowPixelU;
+	sData.m_nShadowPixelR = nShadowPixelR;
+	sData.m_nShadowPixelD = nShadowPixelD;
+	sData.m_nShadowColorR = nShadowColorR;
+	sData.m_nShadowColorG = nShadowColorG;
+	sData.m_nShadowColorB = nShadowColorB;
+	this.m_asData.PushBack(sData);
+	return true;
+}
+
+int T_BattleMessageDataManager::search(int nNo)
+{
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].m_nNo == nNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

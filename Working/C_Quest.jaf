@@ -1,0 +1,588 @@
+void Ｒ８不要クエスト倉庫を空に()
+{
+	クエスト倉庫_クリア();
+}
+
+void scrollQuestList(int nValue)
+{
+	g_sQuest.scroll(nValue);
+}
+
+void scrollQuestStore(int nValue)
+{
+	g_sQuestStore.scroll(nValue);
+}
+
+#ゲーム_クエスト()
+{
+	int nRet = クエスト_選択();
+	if (nRet > 0)
+	{
+		自動セーブ(1);
+		Ｔクエスト();
+		クエスト_実行(nRet);
+	}
+	jump ゲーム_メイン;
+}
+
+#クエスト_プロローグ()
+{
+	Ｔクエスト();
+	クエスト_実行(25);
+	jump ゲーム_メイン;
+}
+
+void クエスト_実行(int nNo)
+{
+	クエスト_攻略番号設定(nNo);
+	if (Ｔクエスト開始(nNo) == 1)
+	{
+		goto label0;
+	}
+	if (◆ＭＡＰ実装 == 1)
+	{
+		jump ゲーム_マップ;
+	}
+	Ｔマップ割り込み();
+label0:
+	クエスト_終了();
+}
+
+void クエスト_終了()
+{
+	マップ_終了処理(false);
+	戦闘_終了処理(false);
+	クエスト_攻略番号設定(0);
+	クエスト_パーティ編成禁止解除();
+	自動セーブ(1);
+}
+
+int クエスト_選択()
+{
+	g_bQuestUpdate = false;
+	g_bQuestStoreBlink = false;
+	Ｔクエストメニュー前();
+	画面_クリア(true, true);
+	仮字枠非表示();
+	システム曲_再生();
+	int nRet = g_sQuest.run();
+	switch (nRet)
+	{
+		case 600001:
+			jump ゲーム_メイン;
+		case 600012:
+			jump ゲーム_アイテム屋;
+		case 600013:
+			jump ゲーム_パーティ編成;
+		case 600011:
+			jump ゲーム_ランス城;
+		default:
+			break;
+	}
+	音楽(0, -1, -1);
+	g_bQuestUpdate = false;
+	g_bQuestStoreBlink = false;
+	return nRet;
+}
+
+void クエスト_削除()
+{
+	g_sQuest.delete();
+	g_sQuestStore.delete();
+	g_bQuestUpdate = false;
+	g_bQuestStoreBlink = false;
+}
+
+bool クエスト_一覧再作成()
+{
+	return g_sQuest.remakeList(-1, -1);
+}
+
+void クエスト_一覧スクロール(int nID)
+{
+	g_sQuest.scrollList(nID);
+}
+
+int クエスト_一覧ソート(int nID)
+{
+	return g_sQuest.sortList(nID);
+}
+
+int クエスト_一覧絞込み(int nID)
+{
+	return g_sQuest.limitList(nID);
+}
+
+int クエスト_入力確認(ref int nID)
+{
+	return g_sQuest.checkInputStore(nID);
+}
+
+int クエスト_キー確認(int nID)
+{
+	return g_sQuest.checkKeyStore(nID);
+}
+
+bool クエスト_ホイール確認()
+{
+	return g_sQuest.checkWheelStore();
+}
+
+void クエスト_選択解除()
+{
+	g_sQuest.resetSelect();
+}
+
+void クエスト_選択設定(int nID, bool bSelect)
+{
+	g_sQuest.setSelect(nID, bSelect, 0);
+}
+
+void クエスト_選択設定_不要倉庫ＯＰＥＮ中(int nID, bool bSelect)
+{
+	g_sQuest.setSelect(nID, bSelect, 1);
+}
+
+void クエスト_カーソル設定(int nID)
+{
+	g_sQuest.setCursor(nID);
+}
+
+void クエスト_一覧表示設定(int nID, bool bShow)
+{
+	g_sQuest.setListButtonShow(nID, bShow);
+}
+
+void クエスト_入力ＯＮ()
+{
+	g_sQuest.setInputFlag(true);
+}
+
+void クエスト_入力ＯＦＦ()
+{
+	g_sQuest.setInputFlag(false);
+}
+
+bool クエスト_ボタン有効(int nID)
+{
+	return g_sQuest.getButtonActive(nID);
+}
+
+int クエスト_インデクス(int nID)
+{
+	return g_sQuest.getQuestIndex(nID);
+}
+
+int クエスト_ボタンＩＤ(int nIndex)
+{
+	return g_sQuest.getButtonID(nIndex);
+}
+
+int クエスト_番号(int nIndex)
+{
+	return g_sQuest.getListNo(nIndex);
+}
+
+int クエスト_ソート＞一覧(int nID)
+{
+	return g_sQuest.moveFromSortToList(nID);
+}
+
+int クエスト_限定＞一覧(int nID)
+{
+	return g_sQuest.moveFromLimitToList(nID);
+}
+
+int クエスト_一覧＞ボタン(int nID)
+{
+	return g_sQuest.moveFromListToButton(nID);
+}
+
+int クエスト_一覧前ＩＤ(int nID, bool bLoop)
+{
+	return g_sQuest.getPrevList(nID, bLoop);
+}
+
+int クエスト_一覧次ＩＤ(int nID, bool bLoop)
+{
+	return g_sQuest.getNextList(nID, bLoop);
+}
+
+int クエスト_一覧先頭ＩＤ()
+{
+	return g_sQuest.getFirstList();
+}
+
+int クエスト_一覧最終ＩＤ()
+{
+	return g_sQuest.getLastList();
+}
+
+int クエスト_一覧ＩＤ_インデクス(int nIndex)
+{
+	return g_sQuest.getListFromIndex(nIndex);
+}
+
+bool クエスト_一覧ロック(int nQuestNo)
+{
+	return g_sQuest.getList().lock(nQuestNo);
+}
+
+ref T_QuestList クエスト_一覧項目(int nQuestNo)
+{
+	return g_sQuest.getList().getItem(nQuestNo);
+}
+
+int クエスト_限定前ＩＤ(int nID)
+{
+	return g_sQuest.getLimit().getPrev(nID);
+}
+
+int クエスト_限定次ＩＤ(int nID)
+{
+	return g_sQuest.getLimit().getNext(nID);
+}
+
+int クエスト_限定先頭ＩＤ()
+{
+	return g_sQuest.getLimit().getFirst();
+}
+
+int クエスト_限定最終ＩＤ()
+{
+	return g_sQuest.getLimit().getLast();
+}
+
+int クエスト_ソート前ＩＤ(int nID)
+{
+	return g_sQuest.getSort().getPrev(nID);
+}
+
+int クエスト_ソート次ＩＤ(int nID)
+{
+	return g_sQuest.getSort().getNext(nID);
+}
+
+int クエスト_ソート先頭ＩＤ()
+{
+	return g_sQuest.getSort().getFirst();
+}
+
+int クエスト_ソート最終ＩＤ()
+{
+	return g_sQuest.getSort().getLast();
+}
+
+int 不要クエスト倉庫_実行(int nZ, int nSortMode, int nQuestType)
+{
+	return g_sQuestStore.run(nZ, nSortMode, nQuestType);
+}
+
+void 不要クエスト倉庫_ドラッグ(int nX, int nY)
+{
+	g_sQuestStore.execDrag(nX, nY);
+}
+
+bool 不要クエスト倉庫_ドロップ(int nX, int nY)
+{
+	return g_sQuestStore.execDrop(nX, nY);
+}
+
+int クエスト_上矢印(int nID)
+{
+	return g_sQuest.moveUp(nID);
+}
+
+int クエスト_下矢印(int nID)
+{
+	return g_sQuest.moveDown(nID);
+}
+
+int クエスト_左矢印(int nID)
+{
+	return g_sQuest.moveLeft(nID);
+}
+
+int クエスト_右矢印(int nID)
+{
+	return g_sQuest.moveRight(nID);
+}
+
+int 不要クエスト倉庫_上矢印(int nID)
+{
+	return g_sQuestStore.moveUp(nID);
+}
+
+int 不要クエスト倉庫_下矢印(int nID)
+{
+	return g_sQuestStore.moveDown(nID);
+}
+
+int 不要クエスト倉庫_左矢印(int nID)
+{
+	return g_sQuestStore.moveLeft(nID);
+}
+
+int 不要クエスト倉庫_右矢印(int nID)
+{
+	return g_sQuestStore.moveRight(nID);
+}
+
+void 不要クエスト倉庫_選択設定(int nID, bool bSelect)
+{
+	g_sQuestStore.setSelect(nID, bSelect);
+}
+
+int クエスト一覧_項目Ｘ(int nIndex, int nStoreNo)
+{
+	if (nIndex < 0 || nIndex >= 13)
+	{
+		return -1;
+	}
+	return 676 + (nStoreNo > 0 ? -350 : 0);
+}
+
+int クエスト一覧_項目Ｙ(int nIndex, int nStoreNo)
+{
+	if (nIndex < 0 || nIndex >= 13)
+	{
+		return -1;
+	}
+	return 130 + 34 * nIndex + (nStoreNo > 0 ? 0 : 0);
+}
+
+int クエスト_ソート＞一覧インデクス(int nID)
+{
+	switch (nID)
+	{
+		case 180001:
+			return 6;
+		case 180002:
+			return 7;
+		case 180003:
+			return 8;
+		case 180004:
+			return 9;
+		case 180005:
+			return 10;
+		case 180006:
+			return 11;
+		case 180007:
+			return 12;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int クエスト_限定＞一覧インデクス(int nID)
+{
+	switch (nID - 170000)
+	{
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		case 3:
+			return 3;
+		case 4:
+			return 4;
+		case 5:
+			return 5;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int クエスト_一覧インデクス＞ボタン(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return 100008;
+		case 1:
+			return 170001;
+		case 2:
+			return 170002;
+		case 3:
+			return 170003;
+		case 4:
+			return 170004;
+		case 5:
+			return 170005;
+		case 6:
+			return 180001;
+		case 7:
+			return 180002;
+		case 8:
+			return 180003;
+		case 9:
+			return 180004;
+		case 10:
+			return 180005;
+		case 11:
+			return 180006;
+		case 12:
+			return 180007;
+		default:
+			break;
+	}
+	return 0;
+}
+
+bool クエスト_ボタンＳＰ作成(int nNo, ref T_Button rfsButton)
+{
+	if (rfsButton === NULL)
+	{
+		return false;
+	}
+	rfsButton.setStatus(1);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	ref T_TextSprite rfSp1 = rfsButton.getSp(0);
+	ref T_TextSprite rfSp2 = rfsButton.getSp(2);
+	if (!テキストスプライト_有効(rfSp1) || !テキストスプライト_有効(rfSp2))
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	spWork.setCg(クエスト_ボタンＣＧ番号(nNo));
+	int nW = spWork.getWidth() / 2;
+	int nH = spWork.getHeight();
+	rfSp1.copyCg(0, 0, spWork, 0, 0, nW, nH);
+	rfSp2.copyCg(0, 0, spWork, nW, 0, nW, nH);
+	rfsButton.setStatus(0);
+	return true;
+}
+
+int クエスト_ボタンＣＧ番号(int nNo)
+{
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	if (クエスト_サブ(nNo))
+	{
+		return クエスト倉庫_お気に入り(nNo) ? 11010 : 11009;
+	}
+	return クエスト倉庫_お気に入り(nNo) ? 11022 : 11012;
+}
+
+int クエスト_一覧(int nStoreNo, int nQuestType, ref array@int anQuestList)
+{
+	if (anQuestList === NULL)
+	{
+		return -1;
+	}
+	if (!anQuestList.Empty())
+	{
+		anQuestList.Free();
+	}
+	int i = 0;
+	int cnt = クエスト_数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (!クエスト_発生中(i))
+		{
+			continue;
+		}
+		if (nStoreNo != クエスト倉庫_確認(i))
+		{
+			continue;
+		}
+		if (!クエスト_一覧_種類確認(i, nQuestType))
+		{
+			continue;
+		}
+		anQuestList.PushBack(i);
+	}
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (!クエスト_クリア済み(i))
+		{
+			continue;
+		}
+		if (nStoreNo != クエスト倉庫_確認(i))
+		{
+			continue;
+		}
+		if (!クエスト_一覧_種類確認(i, nQuestType))
+		{
+			continue;
+		}
+		anQuestList.PushBack(i);
+	}
+	return anQuestList.Numof();
+}
+
+bool クエスト_一覧_種類確認(int nQuestNo, int nQuestType)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return false;
+	}
+	if (nQuestType <= 0)
+	{
+		return true;
+	}
+	switch (nQuestType)
+	{
+		case 1:
+			return クエスト倉庫_お気に入り(nQuestNo);
+		case 2:
+			return !クエスト_クリア済み(nQuestNo);
+		case 3:
+			return クエスト_クリア済み(nQuestNo);
+		case 4:
+			return クエスト_メイン(nQuestNo);
+		case 5:
+			return マグナム_未取得(nQuestNo);
+		default:
+			break;
+	}
+	return false;
+}
+
+int クエスト_発生数(int nStoreNo)
+{
+	int i = 0;
+	int cnt = クエスト_数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (!クエスト_発生中(i))
+		{
+			continue;
+		}
+		if (nStoreNo != クエスト倉庫_確認(i))
+		{
+			continue;
+		}
+		++nCount;
+	}
+	return nCount;
+}
+
+int クエスト_クリア数(int nStoreNo)
+{
+	int i = 0;
+	int cnt = クエスト_数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (!クエスト_クリア済み(i))
+		{
+			continue;
+		}
+		if (nStoreNo != クエスト倉庫_確認(i))
+		{
+			continue;
+		}
+		++nCount;
+	}
+	return nCount;
+}
+

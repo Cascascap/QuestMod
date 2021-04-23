@@ -1,0 +1,71 @@
+CEndResultCountData::CEndResultCountData()
+{
+	this.m_Count.SetOriginPosMode(9);
+	this.m_Width = 0;
+	this.m_Height = 0;
+}
+
+CEndResultCountData::~CEndResultCountData()
+{
+	this.m_Title.Release();
+	this.m_Count.Release();
+	this.m_Line.Release();
+}
+
+int CEndResultCountData::GetLineCount(string Text)
+{
+	int i = 0;
+	int Count;
+	for (Count = 1; i < Text.Length(); ++i)
+	{
+		if (Text[i] == '\n')
+		{
+			++Count;
+		}
+	}
+	return Count;
+}
+
+void CEndResultCountData::Set(string Title, string Count, int •)
+{
+	this.m_Title.SetFont(256, 32, 140, 255, 100, 0, 0, 0);
+	this.m_Title.SetText(Title, "");
+	this.m_Title.SetShiftSize(1);
+	this.m_Count.SetFont(256, 32, 140, 255, 100, 0, 0, 0);
+	this.m_Count.SetText(Count, "");
+	this.m_Count.SetShiftSize(1);
+	this.m_Height = 32 * this.GetLineCount(Title);
+	this.m_Width = •;
+	‚oQ\’zŽè‡Qì¬(this.m_Line.GetPartsNumber(), this.m_Width, 2, 1);
+	‚oQ\’zŽè‡Q‹éŒ`(this.m_Line.GetPartsNumber(), 0, 0, this.m_Width, 2, 140, 255, 100, 1);
+	‚oQ\’zŽè‡QƒAƒ‹ƒtƒ@“h‚è(this.m_Line.GetPartsNumber(), 0, 0, this.m_Width, 2, 128, 1);
+	‚oQ\’zƒrƒ‹ƒh(this.m_Line.GetPartsNumber(), 1);
+}
+
+void CEndResultCountData::ShowLine(bool Show)
+{
+	this.m_Line.SetShow(Show);
+}
+
+int CEndResultCountData::GetHeight()
+{
+	return this.m_Height;
+}
+
+void CEndResultCountData::SetPos(int X, int Y)
+{
+	int CountX = (X + this.m_Width) - 1;
+	int CountY = Y + this.m_Height;
+	int LineY = Y + this.m_Height;
+	this.m_Title.SetPos(X, Y);
+	this.m_Count.SetPos(CountX, CountY);
+	this.m_Line.SetPos(X, LineY);
+}
+
+void CEndResultCountData::SetZ(int Z)
+{
+	this.m_Title.SetZ(Z);
+	this.m_Count.SetZ(Z);
+	this.m_Line.SetZ(Z);
+}
+

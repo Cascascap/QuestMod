@@ -1,0 +1,25 @@
+CVolumeElement::CVolumeElement()
+{
+	this.m_nGroup = -1;
+}
+
+void CVolumeElement::SetName(string Name)
+{
+	this.m_Name = Name;
+}
+
+void CVolumeElement::SetGroup(int nGroup)
+{
+	this.m_nGroup = nGroup;
+}
+
+string CVolumeElement::GetName()
+{
+	return this.m_Name;
+}
+
+int CVolumeElement::GetGroup()
+{
+	return this.m_nGroup;
+}
+

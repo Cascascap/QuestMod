@@ -1,0 +1,122 @@
+CMonsterGold::CMonsterGold()
+{
+}
+
+bool CMonsterGold::Create(ref CReignPlugin rfPlugin)
+{
+	this.Release();
+	int i = 0;
+	int cnt = this.m_asGold.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.CreateGold(i, rfPlugin);
+	}
+	‚R‚cí“¬_ƒ[ƒh‘Ò‚¿(false);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.SetGold(i);
+	}
+	return true;
+}
+
+void CMonsterGold::Release()
+{
+	int i = 0;
+	int cnt = this.m_asGold.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asGold[i].Release();
+	}
+}
+
+void CMonsterGold::SetPos(int nIndex, float fX, float fY, float fZ)
+{
+	ref CMonster rfsGold = this.GetGold(nIndex);
+	if (rfsGold === NULL)
+	{
+		return;
+	}
+	rfsGold.SetPos(fX, fY, fZ);
+}
+
+void CMonsterGold::SetAngle(int nIndex, float fAngle)
+{
+	ref CMonster rfsGold = this.GetGold(nIndex);
+	if (rfsGold === NULL)
+	{
+		return;
+	}
+	rfsGold.SetAngle(fAngle);
+}
+
+void CMonsterGold::SetDraw(int nIndex, bool bDraw)
+{
+	ref CMonster rfsGold = this.GetGold(nIndex);
+	if (rfsGold === NULL)
+	{
+		return;
+	}
+	rfsGold.SetDraw(bDraw);
+}
+
+void CMonsterGold::SetDrawAll(bool bDraw)
+{
+	int i = 0;
+	int cnt = this.m_asGold.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.SetDraw(i, bDraw);
+	}
+}
+
+ref CMonster CMonsterGold::GetGold(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asGold.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asGold[nIndex];
+}
+
+bool CMonsterGold::CreateGold(int nIndex, ref CReignPlugin rfPlugin)
+{
+	ref CMonster rfsGold = this.GetGold(nIndex);
+	if (rfsGold === NULL)
+	{
+		return false;
+	}
+	if (!rfsGold.Create(rfPlugin))
+	{
+		return false;
+	}
+	rfsGold.SetDraw(false);
+	if (!rfsGold.BeginLoading(213))
+	{
+		return false;
+	}
+	if (!rfsGold.BeginMotionLoading(0))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CMonsterGold::SetGold(int nIndex)
+{
+	ref CMonster rfsGold = this.GetGold(nIndex);
+	if (rfsGold === NULL)
+	{
+		return false;
+	}
+	if (!rfsGold.EndLoading())
+	{
+		return false;
+	}
+	if (!rfsGold.EndMotionLoading(2))
+	{
+		return false;
+	}
+	rfsGold.SetDraw(false);
+	return true;
+}
+

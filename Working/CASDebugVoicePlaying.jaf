@@ -1,0 +1,48 @@
+CASDebugVoicePlaying::CASDebugVoicePlaying()
+{
+	this.m_Show = false;
+}
+
+void CASDebugVoicePlaying::SetShow(bool Show)
+{
+	if (this.m_Show == Show)
+	{
+		return;
+	}
+	if (Show)
+	{
+		CASCharSpriteProperty TextProperty;
+		TextProperty.SetSize(32);
+		TextProperty.SetColor(CF_CASColor(255, 160, 160, 255));
+		TextProperty.SetEdgeWeight(1.5);
+		TextProperty.SetEdgeColor(CF_CASColor(64, 0, 0, 255));
+		this.m_TextSprite.SetText("ÅÙ", TextProperty);
+		this.m_TextSprite.SetZ(19001);
+		this.m_TextSprite.SetShow(false);
+	}
+	else
+	{
+		this.m_TextSprite.Release();
+	}
+	this.m_Show = Show;
+}
+
+bool CASDebugVoicePlaying::IsShow()
+{
+	return this.m_Show;
+}
+
+void CASDebugVoicePlaying::SetPos(int X, int Y)
+{
+	this.m_TextSprite.SetPos(X, Y);
+}
+
+void CASDebugVoicePlaying::Update()
+{
+	if (!this.m_Show)
+	{
+		return;
+	}
+	this.m_TextSprite.SetShow(SYS_IsPlayVoice());
+}
+

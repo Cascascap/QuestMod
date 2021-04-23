@@ -1,0 +1,643 @@
+int compQuest_Favorite(int nQuestNo1, int nQuestNo2)
+{
+	bool bFavorite1 = クエスト倉庫_お気に入り(nQuestNo1);
+	bool bFavorite2 = クエスト倉庫_お気に入り(nQuestNo2);
+	if (bFavorite1 == bFavorite2)
+	{
+		return 0;
+	}
+	return bFavorite1 ? -1 : 1;
+}
+
+int compQuest_ClearCount(int nQuestNo1, int nQuestNo2)
+{
+	int nRet = compQuest_Favorite(nQuestNo1, nQuestNo2);
+	if (nRet != 0)
+	{
+		return nRet;
+	}
+	int nValue1 = クエスト_クリア回数(nQuestNo1);
+	int nValue2 = クエスト_クリア回数(nQuestNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compQuest_Difficult(int nQuestNo1, int nQuestNo2)
+{
+	int nRet = compQuest_Favorite(nQuestNo1, nQuestNo2);
+	if (nRet != 0)
+	{
+		return nRet;
+	}
+	int nValue1 = クエスト_難易度(nQuestNo1);
+	int nValue2 = クエスト_難易度(nQuestNo2);
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int compQuest_Easy(int nQuestNo1, int nQuestNo2)
+{
+	int nRet = compQuest_Favorite(nQuestNo1, nQuestNo2);
+	if (nRet != 0)
+	{
+		return nRet;
+	}
+	int nValue1 = クエスト_難易度(nQuestNo1);
+	int nValue2 = クエスト_難易度(nQuestNo2);
+	if (nValue1 < nValue2)
+	{
+		return -1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int compQuest_Fame(int nQuestNo1, int nQuestNo2)
+{
+	int nRet = compQuest_Favorite(nQuestNo1, nQuestNo2);
+	if (nRet != 0)
+	{
+		return nRet;
+	}
+	int nValue1 = クエスト_取得名声値(nQuestNo1);
+	int nValue2 = クエスト_取得名声値(nQuestNo2);
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int compQuest_Syllabary(int nQuestNo1, int nQuestNo2)
+{
+	int nRet = compQuest_Favorite(nQuestNo1, nQuestNo2);
+	if (nRet != 0)
+	{
+		return nRet;
+	}
+	string szName1 = クエスト_名前(nQuestNo1);
+	string szName2 = クエスト_名前(nQuestNo2);
+	if (szName1 < szName2)
+	{
+		return -1;
+	}
+	if (szName1 > szName2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int T_QuestList::getQuestNo()
+{
+	return this.m_nQuestNo;
+}
+
+int T_QuestList::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_QuestList::getPosY()
+{
+	return this.m_nY;
+}
+
+T_QuestList::T_QuestList()
+{
+	this.clear();
+}
+
+T_QuestList::~T_QuestList()
+{
+	this.delete();
+}
+
+bool T_QuestList::create()
+{
+	this.delete();
+	this.m_sText.create(176, 22, -1, 0, 0, 1);
+	this.m_sText.setDrawType(2);
+	this.m_sText.setTextSpace(-4);
+	this.m_sText.setFontSize(20);
+	this.m_sText.setFontType(258);
+	this.m_sText.setFontBold(0);
+	this.m_sText.setFontColor(255, 245, 100);
+	this.m_sText.setSpacing(0.949999988079071);
+	this.m_sNumber.create(38, 20, -1, 0, 1, 1);
+	this.m_sNumber.setTextSpace(-6);
+	this.m_sNumber.setFontSize(24);
+	this.m_sNumber.setFontType(258);
+	this.m_sNumber.setFontBold(太字確認(258, 40));
+	this.m_sNumber.setFontColor(25, 25, 25);
+	return true;
+}
+
+void T_QuestList::delete()
+{
+	this.m_spMark.delete();
+	this.m_sText.delete();
+	this.m_sNumber.delete();
+	this.clear();
+}
+
+void T_QuestList::clear()
+{
+	this.m_nQuestNo = 0;
+	this.m_nClearCount = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+}
+
+bool T_QuestList::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (this.m_spMark.isCreated())
+	{
+		if (!this.m_spMark.copyToSprite(rfsDst, nDstX + -32, nDstY + 1, 0))
+		{
+			return false;
+		}
+	}
+	if (!this.m_sText.copyToSprite(rfsDst, nDstX + 50, nDstY + 4))
+	{
+		return false;
+	}
+	if (!this.m_sNumber.copyToSprite(rfsDst, nDstX + 4, nDstY + 4))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_QuestList::copyToSprite2(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (this.m_spMark.isCreated())
+	{
+		if (!this.m_spMark.copyToSprite(rfsDst, nDstX + -32, nDstY + 1, 0))
+		{
+			return false;
+		}
+	}
+	if (!this.m_sText.copyToSprite(rfsDst, nDstX + 42, nDstY + 4))
+	{
+		return false;
+	}
+	if (!this.m_sNumber.copyToSprite(rfsDst, nDstX + 2, nDstY + 4))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_QuestList::set(int nQuestNo)
+{
+	if (nQuestNo <= 0)
+	{
+		goto label0;
+	}
+	string szName = クエスト_名前(nQuestNo);
+	if (szName.Empty())
+	{
+		goto label0;
+	}
+	switch (クエスト_状態(nQuestNo))
+	{
+		case 1:
+		case 2:
+			this.m_nClearCount = クエスト_クリア回数(nQuestNo);
+			break;
+		default:
+			goto label0;
+	}
+	this.m_nQuestNo = nQuestNo;
+	if (this.m_nClearCount > 0)
+	{
+		string szText = "";
+		sact_text_metrics_t tmMark;
+		tmMark.nSize = 26;
+		tmMark.nColorR = 255;
+		tmMark.nColorG = 255;
+		tmMark.nColorB = 255;
+		tmMark.nWeight = 0;
+		tmMark.nFace = 257;
+		if (this.m_nClearCount > 9)
+		{
+			szText = "★";
+		}
+		else
+		{
+			szText = "%D" % this.m_nClearCount;
+		}
+		this.m_spMark.createFromTextMetrics(1, szText, tmMark, 0);
+		this.m_spMark.setPos(this.m_nX + -32, this.m_nY + 1);
+		this.m_spMark.setZ(this.m_sText.getZ());
+		this.m_spMark.setShow(this.m_sText.getShow());
+	}
+	else
+	{
+		this.m_spMark.delete();
+	}
+	int width = 0;
+	int fontSize = 20;
+	this.m_sText.setMaxLines(1);
+	this.m_sText.setText(szName, false);
+	this.m_sNumber.setText("%03d" % nQuestNo, false);
+	return true;
+label0:
+	this.m_nQuestNo = 0;
+	this.m_nClearCount = -1;
+	this.m_spMark.delete();
+	this.m_sText.setText("", false);
+	this.m_sNumber.setText("", false);
+	return false;
+}
+
+void T_QuestList::setPos(int nX, int nY)
+{
+	this.m_spMark.setPos(nX + -32, nX + 1);
+	this.m_sText.setPos(nX + 42, nY + 4);
+	this.m_sNumber.setPos(nX + 2, nY + 4);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_QuestList::setZ(int nZ)
+{
+	this.m_spMark.setZ(nZ);
+	this.m_sText.setZ(nZ);
+	this.m_sNumber.setZ(nZ);
+}
+
+void T_QuestList::setShow(bool bShow)
+{
+	bShow = this.m_nQuestNo > 0 ? bShow : 0;
+	this.m_spMark.setShow(bShow);
+	this.m_sText.setShow(bShow);
+	this.m_sNumber.setShow(bShow);
+}
+
+int T_QuestListManager::getIndex(int nQuestNo)
+{
+	return this.searchItem(nQuestNo);
+}
+
+int T_QuestListManager::getSortMode()
+{
+	return this.m_nSortMode;
+}
+
+int T_QuestListManager::getTopIndex()
+{
+	return this.m_nTopIndex;
+}
+
+int T_QuestListManager::getSelectNo()
+{
+	return this.m_nSelectNo;
+}
+
+int T_QuestListManager::getLockIndex()
+{
+	return this.m_nLockIndex;
+}
+
+int T_QuestListManager::getListCount()
+{
+	return this.m_anQuestList.Numof();
+}
+
+int T_QuestListManager::getList(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anQuestList.Numof() ? -1 : this.m_anQuestList[nIndex];
+}
+
+int T_QuestListManager::getListIndex(int nQuestNo)
+{
+	return this.searchQuestList(nQuestNo);
+}
+
+int T_QuestListManager::searchQuestList(int nQuestNo)
+{
+	return nQuestNo > 0 ? this.m_anQuestList.Find(0, this.m_anQuestList.Numof(), nQuestNo) : -1;
+}
+
+T_QuestListManager::T_QuestListManager()
+{
+	this.clear();
+}
+
+T_QuestListManager::~T_QuestListManager()
+{
+	this.delete();
+}
+
+bool T_QuestListManager::create(int nStoreNo, int nSortMode, int nQuestType)
+{
+	this.delete();
+	if (!this.setQuestList(nStoreNo, nSortMode > 0 ? nSortMode : クエストソートモード(), nQuestType))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_QuestList rfsItem = this.m_asItem[i];
+		rfsItem.create();
+		rfsItem.setPos(クエスト一覧_項目Ｘ(i, nStoreNo), クエスト一覧_項目Ｙ(i, nStoreNo));
+	}
+	this.m_spFrame.create(228, 30, 0, 255, 255, 128);
+	this.setTopIndex(0);
+	return true;
+}
+
+void T_QuestListManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].delete();
+	}
+	this.m_sFlash.delete();
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_QuestListManager::clear()
+{
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nTopIndex = -1;
+	this.m_nSelectNo = -1;
+	this.m_nLockIndex = -1;
+	this.cleartQuestList();
+}
+
+void T_QuestListManager::update()
+{
+	if (this.m_nSelectNo > 0)
+	{
+		this.m_sFlash.update();
+	}
+}
+
+bool T_QuestListManager::lock(int nQuestNo)
+{
+	int idx = this.searchItem(nQuestNo);
+	if (idx < 0)
+	{
+		this.m_spFrame.setShow(0);
+		this.m_nLockIndex = -1;
+		return false;
+	}
+	ref T_QuestList rfsItem = this.m_asItem[idx];
+	this.m_spFrame.setPos(rfsItem.getPosX(), rfsItem.getPosY());
+	this.m_spFrame.setShow(1);
+	this.m_nLockIndex = idx;
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_QuestListManager::blink()
+{
+	if (this.m_nLockIndex < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 350)
+	{
+		return true;
+	}
+	bool bShow = this.m_spFrame.getShow();
+	this.m_spFrame.setShow(!bShow);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_QuestListManager::remake(int nQuestType)
+{
+	if (this.m_nStoreNo < 0)
+	{
+		return false;
+	}
+	int nTopIndex = this.m_nTopIndex;
+	if (!this.setQuestList(this.m_nStoreNo, this.m_nSortMode, nQuestType < 0 ? this.m_nQuestType : nQuestType))
+	{
+		return false;
+	}
+	this.setTopIndex(nTopIndex);
+	return true;
+}
+
+bool T_QuestListManager::sort(int nSortMode, bool bCompulsory)
+{
+	if (this.m_nStoreNo < 0)
+	{
+		return false;
+	}
+	if (!bCompulsory && nSortMode == this.m_nSortMode)
+	{
+		return false;
+	}
+	if (!this.setQuestList(this.m_nStoreNo, nSortMode, this.m_nQuestType))
+	{
+		return false;
+	}
+	this.setTopIndex(0);
+	return true;
+}
+
+int T_QuestListManager::setTopIndex(int nIndex)
+{
+	int cnt = this.m_anQuestList.Numof();
+	int cnt2 = this.m_asItem.Numof();
+	nIndex = cnt > cnt2 ? 数値_補正(nIndex, 0, cnt - cnt2) : 0;
+	int i = 0;
+	for (i = 0; i < cnt2; ++i)
+	{
+		int idx = i + nIndex;
+		this.m_asItem[i].set(idx < cnt ? this.m_anQuestList[idx] : 0);
+	}
+	this.m_nTopIndex = nIndex;
+	if (this.m_nZ > 0)
+	{
+		this.setZ(this.m_nZ);
+	}
+	this.setShow(this.m_bShow);
+	this.setSelectNo(this.m_nSelectNo);
+	return nIndex;
+}
+
+int T_QuestListManager::setSelectNo(int nQuestNo)
+{
+	if (nQuestNo > 0 && nQuestNo == this.m_nSelectNo)
+	{
+		return 1;
+	}
+	this.m_sFlash.delete();
+	this.m_nSelectNo = -1;
+	g_bQuestUpdate = false;
+	if (nQuestNo < 0)
+	{
+		return 0;
+	}
+	int idx = this.searchQuestList(nQuestNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int idx2 = this.searchItem(nQuestNo);
+	if (idx2 >= 0)
+	{
+		this.m_sFlash.create(-1);
+		this.m_sFlash.setFileName(Ｆｌａｓｈファイル名("クエスト選択中3B"));
+		this.m_sFlash.setPos(クエスト一覧_項目Ｘ(idx2, this.m_nStoreNo) + -5, クエスト一覧_項目Ｙ(idx2, this.m_nStoreNo) + -5);
+		this.m_sFlash.setZ(this.m_nZ + 20);
+		this.m_sFlash.loop();
+	}
+	this.m_nSelectNo = nQuestNo;
+	g_bQuestUpdate = true;
+	return 1;
+}
+
+void T_QuestListManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setZ(nZ);
+	}
+	this.m_spFrame.setZ(nZ + 20);
+	this.m_nZ = nZ;
+}
+
+void T_QuestListManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setShow(bShow);
+	}
+	this.m_spFrame.setShow(0);
+	this.m_bShow = bShow;
+}
+
+ref T_QuestList T_QuestListManager::getItem(int nQuestNo)
+{
+	int idx = this.searchItem(nQuestNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asItem[idx];
+}
+
+int T_QuestListManager::searchItem(int nQuestNo)
+{
+	if (nQuestNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asItem[i].getQuestNo() == nQuestNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool T_QuestListManager::setQuestList(int nStoreNo, int nSortMode, int nQuestType)
+{
+	this.cleartQuestList();
+	クエスト_一覧(nStoreNo, nQuestType, this.m_anQuestList);
+	this.m_nStoreNo = nStoreNo;
+	this.m_nSortMode = this.sortQuestList(nSortMode);
+	this.m_nQuestType = nQuestType;
+	return true;
+}
+
+void T_QuestListManager::cleartQuestList()
+{
+	if (!this.m_anQuestList.Empty())
+	{
+		this.m_anQuestList.Free();
+	}
+	this.m_nStoreNo = -1;
+	this.m_nSortMode = -1;
+	this.m_nQuestType = -1;
+}
+
+int T_QuestListManager::sortQuestList(int nSortMode)
+{
+	switch (nSortMode)
+	{
+		case 2:
+			this.m_anQuestList.Sort(NULL);
+			this.m_anQuestList.Sort(&compQuest_Favorite);
+			break;
+		case 3:
+			this.m_anQuestList.Sort(NULL);
+			this.m_anQuestList.Sort(&compQuest_ClearCount);
+			break;
+		case 4:
+			this.m_anQuestList.Sort(NULL);
+			this.m_anQuestList.Sort(&compQuest_Difficult);
+			break;
+		case 5:
+			this.m_anQuestList.Sort(NULL);
+			this.m_anQuestList.Sort(&compQuest_Easy);
+			break;
+		case 6:
+			this.m_anQuestList.Sort(NULL);
+			this.m_anQuestList.Sort(&compQuest_Fame);
+			break;
+		case 7:
+			this.m_anQuestList.Sort(NULL);
+			this.m_anQuestList.Sort(&compQuest_Syllabary);
+			break;
+		case 1:
+		default:
+			this.m_anQuestList.Sort(&compQuest_Favorite);
+			nSortMode = 1;
+			break;
+	}
+	クエストソートモード_設定(nSortMode);
+	return nSortMode;
+}
+

@@ -1,0 +1,51 @@
+void 迷宮台詞_作成(int nZ)
+{
+	g_sMapMessage.create(nZ);
+	g_bMapMessageCheck = true;
+	g_bMapMessageUpdate = false;
+}
+
+void 迷宮台詞_削除()
+{
+	g_bMapMessageCheck = false;
+	g_bMapMessageUpdate = false;
+	g_sMapMessage.delete();
+}
+
+void 迷宮台詞_割り込み確認()
+{
+	if (!g_sMapMessage.check())
+	{
+		return;
+	}
+	Ｔ台詞割り込み／迷宮();
+	if (迷宮台詞_表示(◆戦闘台詞発声者, ◆戦闘セリフタイプ, ◆戦闘台詞))
+	{
+		return;
+	}
+	迷宮台詞_タイマリセット();
+}
+
+void 迷宮台詞_タイマリセット()
+{
+	g_sMapMessage.resetCheckTimer();
+}
+
+bool 迷宮台詞_表示(int nCharaNo, int nType, string szMessage)
+{
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (szMessage.Empty())
+	{
+		return false;
+	}
+	return g_sMapMessage.show(nCharaNo, nType, szMessage);
+}
+
+void 迷宮台詞_消去()
+{
+	g_sMapMessage.hide();
+}
+

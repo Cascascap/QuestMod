@@ -1,0 +1,29 @@
+SDirLight::SDirLight()
+{
+	this.Diffuse.Set(0.0, 0.0, 0.0, 1.0);
+	this.GlobeDiffuse.Set(0.0, 0.0, 0.0, 1.0);
+	this.Ambient.Set(1.0, 1.0, 1.0, 1.0);
+}
+
+void SDirLight::SetVector(float fX, float fY, float fZ)
+{
+	this.fVecX = fX;
+	this.fVecY = fY;
+	this.fVecZ = fZ;
+}
+
+void SDirLight::SetDiffuse(float fR, float fG, float fB)
+{
+	this.Diffuse.Set(fR, fG, fB, 1.0);
+}
+
+void SDirLight::SetGlobeDiffuse(float fR, float fG, float fB)
+{
+	this.GlobeDiffuse.Set(fR, fG, fB, 1.0);
+}
+
+void SDirLight::SetAmbient(float fR, float fG, float fB)
+{
+	this.Ambient.Set(fR, fG, fB, 1.0);
+}
+

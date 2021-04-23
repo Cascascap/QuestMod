@@ -1,0 +1,62 @@
+void 戦闘接触／汚染冒険者／初()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmm? What\'s with these guys?"' A;
+	ト書き();
+	'There were four or five adventurers standing ahead of Rance.' A;
+	セリフ(2980, "");
+	'"........."' A;
+	セリフ(2981, "");
+	'"........."' A;
+	セリフ(2982, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"I don\'t like the look in their eyes."' A;
+	セリフ(2000, "");
+	'"Hey, assholes."' A;
+	セリフ(2980, "");
+	'"...It\'s over for us..."' A;
+	セリフ(2981, "");
+	'"I\'ve... had enough... I\'ve had enough..."' A;
+	セリフ(2982, "");
+	'"I\'ll kill you... It\'s over... Everything\'s over..."' A;
+	セリフ(2000, "");
+	'"...I think I\'ve seen this before."' A;
+	セリフ(2060, "");
+	'"...They\'re Contaminated."' A;
+	'"They\'re wearing the Black Bracelets distributed by the Shepherds."' A;
+	'"It\'s dangerous to leave them be.' R;
+	' Let\'s take them out."' A;
+	ADVOFF();
+	TOFF();
+}
+
+void 戦闘接触／汚染冒険者／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2980, "");
+	'"It\'s over...! It\'s all over...!"' A;
+	セリフ(2981, "");
+	'"We\'ll... destroy... We have to, destroy..."' A;
+	セリフ(2982, "");
+	'"Diiiiiiiiiiiie!!"' A;
+	ト書き();
+	'The Contaminated attacked.' A;
+	ADVOFF();
+}
+

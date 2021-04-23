@@ -1,0 +1,883 @@
+void CPlayer::StartMovingToGoal(ref CInstance Map)
+{
+	this.BeginMoveToGoalMode(Map, 0, true);
+}
+
+void CPlayer::EndMovingToGoal()
+{
+	this.ClearMoveToGoal();
+}
+
+bool CPlayer::IsMovingToGoal()
+{
+	return this.m_MoveToGoalMode;
+}
+
+bool CPlayer::SetDraw(bool bFlag)
+{
+	return this.m_Instance.SetDraw(bFlag);
+}
+
+bool CPlayer::GetDraw()
+{
+	return this.m_Instance.GetDraw();
+}
+
+int CPlayer::GetMapX()
+{
+	return this.m_nMapX;
+}
+
+int CPlayer::GetMapZ()
+{
+	return this.m_nMapZ;
+}
+
+int CPlayer::GetMapDir()
+{
+	return this.m_nMapDir;
+}
+
+int CPlayer::GetNextMapX()
+{
+	return this.m_nNextMapX;
+}
+
+int CPlayer::GetNextMapZ()
+{
+	return this.m_nNextMapZ;
+}
+
+float CPlayer::GetPosX()
+{
+	return this.m_fX;
+}
+
+float CPlayer::GetPosY()
+{
+	return this.m_fY;
+}
+
+float CPlayer::GetPosZ()
+{
+	return this.m_fZ;
+}
+
+bool CPlayer::IsStop()
+{
+	return !this.m_MoveToGoalMode && this.m_nWalkState == 0;
+}
+
+bool CPlayer::IsWalk()
+{
+	return this.m_MoveToGoalMode || this.m_nWalkState == 1;
+}
+
+bool CPlayer::SetMotionState(int nState)
+{
+	return this.m_Instance.SetMotionState(nState);
+}
+
+bool CPlayer::SetMotionFrame(float fFrame)
+{
+	return this.m_Instance.SetMotionFrame(fFrame);
+}
+
+bool CPlayer::SetMotionFrameRange(float fBeginFrame, float fEndFrame)
+{
+	return this.m_Instance.SetMotionFrameRange(fBeginFrame < 0.0 ? this.m_fBeginFrame : fBeginFrame, fEndFrame < 0.0 ? this.m_fEndFrame : fEndFrame);
+}
+
+int CPlayer::GetNo()
+{
+	return this.m_nNo;
+}
+
+int CPlayer::GetMotion()
+{
+	return this.m_nMotion;
+}
+
+int CPlayer::GetNextMotion()
+{
+	return this.m_nNextMotion;
+}
+
+int CPlayer::GetMotionState()
+{
+	return this.m_Instance.GetMotionState();
+}
+
+float CPlayer::GetMotionFrame()
+{
+	return this.m_Instance.GetMotionFrame();
+}
+
+void CPlayer::SetLButtonDown(bool bLButtonDown)
+{
+	this.m_bLButtonDown = bLButtonDown;
+}
+
+bool CPlayer::GetLButtonDown()
+{
+	return this.m_bLButtonDown;
+}
+
+void CPlayer::SetMouseX(int nMouseX)
+{
+	this.m_nMouseX = nMouseX;
+}
+
+int CPlayer::GetMouseX()
+{
+	return this.m_nMouseX;
+}
+
+void CPlayer::SetMouseY(int nMouseY)
+{
+	this.m_nMouseY = nMouseY;
+}
+
+int CPlayer::GetMouseY()
+{
+	return this.m_nMouseY;
+}
+
+void CPlayer::SetTotalTime(int nTotalTime)
+{
+	this.m_nTotalTime = nTotalTime;
+}
+
+int CPlayer::GetTotalTime()
+{
+	return this.m_nTotalTime;
+}
+
+void CPlayer::SetMoveLengthPerTime(float fMoveLengthPerTime)
+{
+	this.m_fMoveLengthPerTime = fMoveLengthPerTime;
+}
+
+float CPlayer::GetMoveLengthPerTime()
+{
+	return this.m_fMoveLengthPerTime;
+}
+
+void CPlayer::SetMoveTime(float fMoveTime)
+{
+	this.m_fMoveTime = fMoveTime;
+}
+
+float CPlayer::GetMoveTime()
+{
+	return this.m_fMoveTime;
+}
+
+CPlayer::CPlayer()
+{
+	this.Clear();
+}
+
+CPlayer::~CPlayer()
+{
+	this.Release();
+}
+
+void CPlayer::Clear()
+{
+	this.m_nNo = -1;
+	this.m_nMotion = -1;
+	this.m_fBeginFrame = 0.0;
+	this.m_fEndFrame = 0.0;
+	this.m_fBeginLoopFrame = 0.0;
+	this.m_fEndLoopFrame = 0.0;
+	this.m_nNextMotion = -1;
+	this.m_fNextBeginFrame = 0.0;
+	this.m_fNextEndFrame = 0.0;
+	this.m_fNextBeginLoopFrame = 0.0;
+	this.m_fNextEndLoopFrame = 0.0;
+	this.m_nMapX = 0;
+	this.m_nMapZ = 0;
+	this.m_nMapDir = 0;
+	this.m_fX = 0.0;
+	this.m_fY = 0.0;
+	this.m_fZ = 0.0;
+	this.m_nTotalTime = 250;
+	this.m_fMoveLengthPerTime = 1.79999995231628;
+	this.m_fMoveTime = 100.0;
+	this.ClearWalk();
+	this.ClearMoveToGoal();
+}
+
+bool CPlayer::Create(ref CReignPlugin rfPlugin, int nNo, bool bShow)
+{
+	this.Release();
+	if (!this._Create(rfPlugin, nNo, bShow))
+	{
+		return false;
+	}
+	this.m_nViewX = 8;
+	this.m_nViewY = 8;
+	this.m_nViewWidth = 800;
+	this.m_nViewHeight = 600;
+	return true;
+}
+
+void CPlayer::Release()
+{
+	this.m_Instance.Release();
+	this.Clear();
+}
+
+bool CPlayer::Change(ref CReignPlugin rfPlugin, int nNo)
+{
+	int nMapX = this.m_nMapX;
+	int nMapZ = this.m_nMapZ;
+	int nMapDir = this.m_nMapDir;
+	float fX = this.m_fX;
+	float fY = this.m_fY;
+	float fZ = this.m_fZ;
+	float fAngle = this.m_Instance.GetAngle();
+	float fMoveLengthPerTime = this.m_fMoveLengthPerTime;
+	float fMoveTime = this.m_fMoveTime;
+	bool bShow = this.GetDraw();
+	this.Release();
+	if (!this._Create(rfPlugin, nNo, bShow))
+	{
+		return false;
+	}
+	this.m_Instance.SetAngle(fAngle);
+	this.m_Instance.SetPos(fX, fY, fZ);
+	this.m_fX = fX;
+	this.m_fY = fY;
+	this.m_fZ = fZ;
+	this.m_nMapX = nMapX;
+	this.m_nMapZ = nMapZ;
+	this.m_nMapDir = nMapDir;
+	this.m_fMoveLengthPerTime = fMoveLengthPerTime;
+	this.m_fMoveTime = fMoveTime;
+	return true;
+}
+
+bool CPlayer::_Create(ref CReignPlugin rfPlugin, int nNo, bool bShow)
+{
+	string szPolyName = g_sMonsterInfo.GetPolyName(nNo);
+	if (szPolyName.Empty())
+	{
+		return false;
+	}
+	this.m_Instance.Create(rfPlugin.GetPlugin());
+	this.m_Instance.SetType(2);
+	this.m_Instance.SetDraw(false);
+	this.m_Instance.Load("Data\\PolyData\\Chara\\" + szPolyName);
+	if (bShow)
+	{
+		this.WaitLoading(rfPlugin, false);
+		this.m_Instance.SetDraw(true);
+	}
+	this.m_nNo = nNo;
+	this.m_Instance.SetScale(g_sMonsterInfo.GetScale(this.m_nNo));
+	this.m_Instance.SetAmbient(0.0, 0.0, 0.0);
+	this.m_Instance.SetDrawMakeShadow(true);
+	this.m_Instance.SetDrawShadow(false);
+	this.m_Instance.SetShadowVolumeBoneRadius(g_sMonsterInfo.GetShadowVolumeBoneRadius(this.m_nNo));
+	this.m_Instance.SetMotionState(0);
+	this.m_Instance.SetMotionFrame(0.0);
+	this.m_nWalkState = 0;
+	this.ClearWalk();
+	return true;
+}
+
+bool CPlayer::Update(ref CInstance Map, bool CollisionDetection)
+{
+	int nCurTime = system.GetTime();
+	int nPassTime = nCurTime - this.m_nPrevTime;
+	this.m_nPrevTime = nCurTime;
+	if (nPassTime > 33)
+	{
+		nPassTime = 33;
+	}
+	if (this.m_MoveToGoalMode)
+	{
+		return this.UpdateMoveToGoal(Map, nPassTime, CollisionDetection);
+	}
+	return this.UpdateWalk(Map, nPassTime, CollisionDetection);
+}
+
+void CPlayer::BeginMoveToGoalMode(ref CInstance Map, int PassTime, bool CollisionDetection)
+{
+	this.ClearWalk();
+	int MouseX = 0;
+	int MouseY = 0;
+	if (!AFL_Mouse_GetPos(MouseX, MouseY))
+	{
+		return;
+	}
+	float GoalX = 0.0;
+	float GoalY = 0.0;
+	float GoalZ = 0.0;
+	if (!Map.CalcPathFinderIntersectEyeVec(MouseX, MouseY, GoalX, GoalY, GoalZ))
+	{
+		return;
+	}
+	if (!Map.FindInstancePath(this.GetPosX(), this.GetPosY(), this.GetPosZ(), GoalX, GoalY, GoalZ))
+	{
+		return;
+	}
+	Map.OptimizePathLine();
+	if (!Map.GetPathLine(this.m_PathX, this.m_PathY, this.m_PathZ))
+	{
+		return;
+	}
+	this.m_MoveToGoalMode = true;
+	this.m_PathIndex = 0;
+	this.m_MovedLength = 0.0;
+	３Ｄマップ_目的地設定(GoalX, GoalY, GoalZ);
+}
+
+bool CPlayer::UpdateMoveToGoal(ref CInstance Map, int PassTime, bool CollisionDetection)
+{
+	float MoveLength = (this.m_fMoveLengthPerTime * PassTime) / this.m_fMoveTime;
+	float BeginX = 0.0;
+	float BeginZ = 0.0;
+	float NextX = 0.0;
+	float NextZ = 0.0;
+	float NewX = 0.0;
+	float NewZ = 0.0;
+	float fAngle = 0.0;
+	float fOldX = this.m_fX;
+	float fOldZ = this.m_fZ;
+	for (; ; )
+	{
+		if (this.m_PathIndex < 0 || this.m_PathIndex + 1 >= this.m_PathX.Numof())
+		{
+			if (!this.m_PathX.Empty())
+			{
+				float fX = this.m_PathX[this.m_PathX.Numof() - 1];
+				float fZ = this.m_PathZ[this.m_PathZ.Numof() - 1];
+				this.SetPos(fX, 0.0, fZ);
+				キャラ_位置記憶(fX, fZ);
+				this.CalcMapPos(fX, fZ, this.m_Instance.GetAngle());
+			}
+			this.AdjustHeight(Map);
+			this.ClearMoveToGoal();
+			this.StopWalkMotion();
+			return false;
+		}
+		BeginX = this.m_PathX[this.m_PathIndex];
+		BeginZ = this.m_PathZ[this.m_PathIndex];
+		NextX = this.m_PathX[this.m_PathIndex + 1];
+		NextZ = this.m_PathZ[this.m_PathIndex + 1];
+		float TotalLength = Math.Sqrt((NextX - BeginX) * (NextX - BeginX) + (NextZ - BeginZ) * (NextZ - BeginZ));
+		if (this.m_MovedLength + MoveLength >= TotalLength)
+		{
+			MoveLength = (this.m_MovedLength + MoveLength) - TotalLength;
+			this.m_MovedLength = 0.0;
+			this.m_PathIndex++;
+			continue;
+		}
+		this.m_MovedLength += MoveLength;
+		NewX = BeginX + ((NextX - BeginX) * this.m_MovedLength) / TotalLength;
+		NewZ = BeginZ + ((NextZ - BeginZ) * this.m_MovedLength) / TotalLength;
+		this.SetPos(NewX, 0.0, NewZ);
+		キャラ_位置記憶(NewX, NewZ);
+		this.m_MoveVecX = NextX - BeginX;
+		this.m_MoveVecZ = NextZ - BeginZ;
+		this.NormalizeMoveVec();
+		fAngle = this.UpdateAngle();
+		this.StartWalkMotion();
+		break;
+	}
+	this.AdjustHeight(Map);
+	return this.CheckHit(fOldX, fOldZ, NewX, NewZ, fAngle);
+}
+
+void CPlayer::ClearMoveToGoal()
+{
+	if (!this.m_PathX.Empty())
+	{
+		this.m_PathX.Free();
+	}
+	if (!this.m_PathY.Empty())
+	{
+		this.m_PathY.Free();
+	}
+	if (!this.m_PathZ.Empty())
+	{
+		this.m_PathZ.Free();
+	}
+	this.m_MoveToGoalMode = false;
+	this.m_PathIndex = -1;
+	３Ｄマップ_目的地設定(-3.40282346638529E+38, -3.40282346638529E+38, -3.40282346638529E+38);
+}
+
+bool CPlayer::UpdateWalk(ref CInstance Map, int nPassTime, bool CollisionDetection)
+{
+	bool bRet = false;
+	bool LButtonDown = this.m_bLButtonDown;
+	if (LButtonDown)
+	{
+		this.ClearMoveToGoal();
+	}
+	if (this.m_nWalkState == 0)
+	{
+		if (LButtonDown)
+		{
+			bRet = this.UpdateWalk_BeginWalk(Map, nPassTime, CollisionDetection);
+		}
+	}
+	else if (this.m_nWalkState == 1)
+	{
+		if (LButtonDown)
+		{
+			bRet = this.UpdateWalk_BeginWalk(Map, nPassTime, CollisionDetection);
+		}
+		else
+		{
+			this.m_nWalkState = 0;
+			this.StopWalkMotion();
+		}
+	}
+	return bRet;
+}
+
+void CPlayer::CalcMoveVec()
+{
+	int MouseX = this.m_nMouseX;
+	int MouseY = this.m_nMouseY;
+	if (MouseX >= 0 && MouseY >= 0)
+	{
+		if (MouseX < this.m_nViewX || MouseX >= this.m_nViewX + this.m_nViewWidth || MouseY < this.m_nViewY || MouseY >= this.m_nViewY + this.m_nViewHeight)
+		{
+			this.m_MoveVecX = 0.0;
+			this.m_MoveVecZ = 0.0;
+			return;
+		}
+		int OffsetX = MouseX - this.m_nViewX - this.m_nViewWidth / 2;
+		int OffsetY = this.m_nViewHeight / 2 - (MouseY - this.m_nViewY);
+		this.m_MoveVecX = OffsetX;
+		this.m_MoveVecZ = OffsetY;
+		this.NormalizeMoveVec();
+	}
+	else
+	{
+		this.m_MoveVecX = 0.0;
+		this.m_MoveVecZ = 0.0;
+	}
+}
+
+void CPlayer::NormalizeMoveVec()
+{
+	if (this.m_MoveVecX == 0.0 && this.m_MoveVecZ == 0.0)
+	{
+	}
+	else
+	{
+		float Length = Math.Sqrt(this.m_MoveVecX * this.m_MoveVecX + this.m_MoveVecZ * this.m_MoveVecZ);
+		this.m_MoveVecX = this.m_MoveVecX / Length;
+		this.m_MoveVecZ = this.m_MoveVecZ / Length;
+	}
+}
+
+void CPlayer::ClearWalk()
+{
+	this.m_bLButtonDown = false;
+	this.m_nMouseX = -1;
+	this.m_nMouseY = -1;
+}
+
+bool CPlayer::UpdateWalk_BeginWalk(ref CInstance Map, int PassTime, bool CollisionDetection)
+{
+	this.CalcMoveVec();
+	bool bRet = this.Move(Map, PassTime, CollisionDetection);
+	this.m_nWalkState = 1;
+	return bRet;
+}
+
+bool CPlayer::Move(ref CInstance Map, int PassTime, bool CollisionDetection)
+{
+	float MoveLength = (this.m_fMoveLengthPerTime * PassTime) / this.m_fMoveTime;
+	float X0 = this.m_fX;
+	float Y0 = this.m_fY;
+	float Z0 = this.m_fZ;
+	float X1 = X0 + this.m_MoveVecX * MoveLength;
+	float Y1 = Y0;
+	float Z1 = Z0 + this.m_MoveVecZ * MoveLength;
+	float X2 = 0.0;
+	float Y2 = 0.0;
+	float Z2 = 0.0;
+	if (CollisionDetection)
+	{
+		float Radius = 1.0;
+		Map.CalcInstance2DDetection(X0, Y0, Z0, X1, Y1, Z1, X2, Y2, Z2, Radius);
+	}
+	else
+	{
+		X2 = X1;
+		Y2 = Y1;
+		Z2 = Z1;
+	}
+	this.SetPos(X2, Y2, Z2);
+	キャラ_位置記憶(X2, Z2);
+	float fAngle = this.UpdateAngle();
+	this.StartWalkMotion();
+	this.m_nWalkState = 1;
+	return this.CheckHit(X0, Z0, X2, Z2, fAngle);
+}
+
+float CPlayer::UpdateAngle()
+{
+	float PI = 3.14159202575684;
+	float Atan2 = Math.Atan2(this.m_MoveVecZ, this.m_MoveVecX);
+	float Angle = (Atan2 * 180.0) / PI;
+	float fAngle2 = 360.0 - (Angle + 90.0);
+	this.m_Instance.SetAngle(fAngle2);
+	return fAngle2;
+}
+
+bool CPlayer::CheckHit(float fX0, float fZ0, float fX1, float fZ1, float fAngle)
+{
+	bool bRet = this.CalcMapPos(fX1, fZ1, fAngle);
+	if (キャラ_当たり確認_距離(fX1, fZ1))
+	{
+		return false;
+	}
+	if (キャラ_エンカウント確認(距離(fX0, fZ0, fX1, fZ1)))
+	{
+		return false;
+	}
+	return bRet;
+}
+
+float CPlayer::CalcAngle(int nDirX, int nDirZ)
+{
+	float fAngle = 0.0;
+	if (nDirX > 0)
+	{
+		fAngle = 0.0;
+	}
+	else if (nDirX < 0)
+	{
+		fAngle = 180.0;
+	}
+	else if (nDirZ > 0)
+	{
+		fAngle = 270.0;
+	}
+	else
+	{
+		fAngle = 90.0;
+	}
+	return fAngle - 90.0;
+}
+
+int CPlayer::CalcMapDir(float fAngle)
+{
+	float fAngle2 = 360.0 - fAngle;
+	if (fAngle2 < 0.0)
+	{
+		fAngle2 += 360.0;
+	}
+	else if (fAngle2 > 360.0)
+	{
+		fAngle2 -= 360.0;
+	}
+	if (45.0 < fAngle2 && fAngle <= 135.0)
+	{
+		return 3;
+	}
+	if (135.0 < fAngle2 && fAngle <= 225.0)
+	{
+		return 4;
+	}
+	if (225.0 < fAngle2 && fAngle <= 315.0)
+	{
+		return 1;
+	}
+	return 2;
+}
+
+bool CPlayer::CalcMapPos(float fX, float fZ, float fAngle)
+{
+	int nMapX = 0;
+	int nMapZ = 0;
+	３Ｄマップ_変換_座標＞位置(nMapX, nMapZ, fX, fZ);
+	if (nMapX == this.m_nMapX && nMapZ == this.m_nMapZ)
+	{
+		return false;
+	}
+	this.m_nMapX = nMapX;
+	this.m_nMapZ = nMapZ;
+	this.m_nMapDir = this.CalcMapDir(fAngle);
+	return true;
+}
+
+void CPlayer::SetPos(float fX, float fY, float fZ)
+{
+	this.m_fX = fX;
+	this.m_fY = fY;
+	this.m_fZ = fZ;
+	this.m_Instance.SetPos(fX, fY, fZ);
+}
+
+void CPlayer::AdjustHeight(ref CInstance Map)
+{
+	float fOldY = this.m_fY;
+	float fHeight = Map.Calc2DDetectionHeight(this.m_fX, this.m_fZ);
+	if (this.m_fY != fHeight)
+	{
+		this.m_fY = fHeight;
+		this.SetPos(this.m_fX, this.m_fY, this.m_fZ);
+	}
+}
+
+void CPlayer::WaitLoading(ref CReignPlugin rfPlugin, bool bThreadLoadingMode)
+{
+	int nPlugin = rfPlugin.GetPlugin();
+	if (nPlugin < 0)
+	{
+		return;
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, bThreadLoadingMode);
+	for (; ; )
+	{
+		_UPDATE(true);
+		if (!rfPlugin.IsLoading())
+		{
+			break;
+		}
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, true);
+	_UPDATE(true);
+}
+
+void CPlayer::SetMapPos(int nMapX, int nMapZ)
+{
+	float fX = 0.0;
+	float fY = 0.0;
+	float fZ = 0.0;
+	this.m_nMapX = nMapX;
+	this.m_nMapZ = nMapZ;
+	３Ｄマップ_変換_位置＞座標(fX, fZ, nMapX, nMapZ);
+	fY = ３Ｄマップ_高さ(fX, fZ);
+	this.SetPos(fX, fY, fZ);
+}
+
+void CPlayer::SetMapDir(int nDir)
+{
+	int nDirX = 0;
+	int nDirZ = 0;
+	if (!３Ｄマップ_変換_方向＞移動値(nDir, nDirX, nDirZ))
+	{
+		return;
+	}
+	this.m_Instance.SetAngle(this.CalcAngle(nDirX, nDirZ));
+	this.m_nMapDir = nDir;
+}
+
+void CPlayer::Stop()
+{
+	this.m_nWalkState = 0;
+	this.ClearWalk();
+	this.ClearMoveToGoal();
+	this.StopWalkMotion();
+}
+
+void CPlayer::MoveForward()
+{
+	int nDirX = 0;
+	int nDirZ = 0;
+	if (!３Ｄマップ_変換_方向＞移動値(this.m_nMapDir, nDirX, nDirZ))
+	{
+		return;
+	}
+	float fX0 = 0.0;
+	float fZ0 = 0.0;
+	float fX1 = 0.0;
+	float fZ1 = 0.0;
+	３Ｄマップ_変換_位置＞座標(fX0, fZ0, this.m_nMapX, this.m_nMapZ);
+	３Ｄマップ_変換_位置＞座標(fX1, fZ1, this.m_nMapX + nDirX, this.m_nMapZ + nDirZ);
+	this.AutoMove(fX0, fZ0, fX1, fZ1);
+}
+
+bool CPlayer::MoveBack(ref array@T_PointF asPos)
+{
+	if (asPos === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = asPos.Numof();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	float fMax = -3.40282346638529E+38;
+	int idx = -1;
+	for (i = cnt - 1; i >= 0; --i)
+	{
+		ref T_PointF rfPos = asPos[i];
+		float fLength = 距離(this.m_fX, this.m_fZ, rfPos.m_fX, rfPos.m_fY);
+		if (fLength >= 2.0)
+		{
+			fMax = fLength;
+			idx = i;
+			break;
+		}
+		if (fLength > fMax)
+		{
+			fMax = fLength;
+			idx = i;
+		}
+	}
+	if (idx < 0)
+	{
+		return false;
+	}
+	T_PointF sPos;
+	sPos = asPos[idx];
+	for (i = cnt - 1; i > idx; --i)
+	{
+		asPos.PopBack();
+	}
+	this.AutoMove(this.m_fX, this.m_fZ, sPos.m_fX, sPos.m_fY);
+	this.Stop();
+	return true;
+}
+
+void CPlayer::AutoMove(float fX0, float fZ0, float fX1, float fZ1)
+{
+	this.m_nWalkState = 9;
+	this.ClearWalk();
+	this.ClearMoveToGoal();
+	this.StartWalkMotion();
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (nTime < this.m_nTotalTime)
+	{
+		float fX = fX0 + 実数計算(fX1 - fX0, nTime, this.m_nTotalTime);
+		float fZ = fZ0 + 実数計算(fZ1 - fZ0, nTime, this.m_nTotalTime);
+		this.SetPos(fX, ３Ｄマップ_高さ(fX, fZ), fZ);
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	this.SetPos(fX1, ３Ｄマップ_高さ(fX1, fZ1), fZ1);
+	this.CalcMapPos(fX1, fZ1, this.m_Instance.GetAngle());
+}
+
+void CPlayer::Scroll(int nScrollX, int nScrollZ, int nTotalTime)
+{
+	float fBeginX = this.m_fX;
+	float fBeginZ = this.m_fZ;
+	float fEndX = 0.0;
+	float fEndZ = 0.0;
+	３Ｄマップ_変換_位置＞座標(fEndX, fEndZ, nScrollX, nScrollZ);
+	int nTime = 0;
+	int nPrevTime = system.GetTime();
+	while (nTime < nTotalTime)
+	{
+		float fT = nTime / nTotalTime;
+		this.m_fX = fBeginX + (fEndX - fBeginX) * fT;
+		this.m_fZ = fBeginZ + (fEndZ - fBeginZ) * fT;
+		UPDATE(true);
+		nTime = system.GetTime() - nPrevTime;
+	}
+	this.m_fX = fEndX;
+	this.m_fZ = fEndZ;
+	UPDATE(true);
+}
+
+bool CPlayer::SetMotion(int nMotion, bool bWait)
+{
+	if (nMotion == this.m_nMotion)
+	{
+		goto label0;
+	}
+	string MotionDataName = g_sMonsterInfo.GetMotionDataName(this.m_nNo, nMotion);
+	if (MotionDataName.Empty())
+	{
+		return false;
+	}
+	this.m_nMotion = nMotion;
+	this.m_fBeginFrame = g_sMonsterInfo.GetBeginFrame(this.m_nNo, nMotion);
+	this.m_fEndFrame = g_sMonsterInfo.GetEndFrame(this.m_nNo, nMotion);
+	this.m_fBeginLoopFrame = g_sMonsterInfo.GetBeginLoopFrame(this.m_nNo, nMotion);
+	this.m_fEndLoopFrame = g_sMonsterInfo.GetEndLoopFrame(this.m_nNo, nMotion);
+	this.m_Instance.LoadMotion(MotionDataName);
+	if (bWait)
+	{
+		３Ｄマップ_ロード待ち(-1);
+	}
+	this.m_Instance.SetMotionFrameRange(this.m_fBeginFrame, this.m_fEndFrame);
+	this.m_Instance.SetMotionLoopFrameRange(this.m_fBeginLoopFrame, this.m_fEndLoopFrame);
+label0:
+	this.m_Instance.SetMotionState(2);
+	this.m_Instance.SetMotionFrame(this.m_fBeginFrame);
+	return true;
+}
+
+bool CPlayer::SetNextMotion(int nNextMotion, bool bWait)
+{
+	if (nNextMotion == this.m_nNextMotion)
+	{
+		return false;
+	}
+	string MotionDataName = g_sMonsterInfo.GetMotionDataName(this.m_nNo, nNextMotion);
+	if (MotionDataName.Empty())
+	{
+		return false;
+	}
+	this.m_nNextMotion = nNextMotion;
+	this.m_fNextBeginFrame = g_sMonsterInfo.GetBeginFrame(this.m_nNo, nNextMotion);
+	this.m_fNextEndFrame = g_sMonsterInfo.GetEndFrame(this.m_nNo, nNextMotion);
+	this.m_fNextBeginLoopFrame = g_sMonsterInfo.GetBeginLoopFrame(this.m_nNo, nNextMotion);
+	this.m_fNextEndLoopFrame = g_sMonsterInfo.GetEndLoopFrame(this.m_nNo, nNextMotion);
+	this.m_Instance.LoadNextMotion(MotionDataName);
+	if (bWait)
+	{
+		３Ｄマップ_ロード待ち(-1);
+	}
+	this.m_Instance.SetNextMotionFrameRange(this.m_fNextBeginFrame, this.m_fNextEndFrame);
+	this.m_Instance.SetNextMotionLoopFrameRange(this.m_fNextBeginLoopFrame, this.m_fNextEndLoopFrame);
+	return true;
+}
+
+bool CPlayer::SwapMotion()
+{
+	if (this.m_nNextMotion < 0)
+	{
+		return false;
+	}
+	this.m_Instance.SetNextMotionState(2);
+	this.m_Instance.SetNextMotionFrame(this.m_fNextBeginFrame);
+	this.m_Instance.SwapMotion();
+	this.m_nMotion <=> this.m_nNextMotion;
+	this.m_fBeginFrame <=> this.m_fNextBeginFrame;
+	this.m_fEndFrame <=> this.m_fNextEndFrame;
+	this.m_fBeginLoopFrame <=> this.m_fNextBeginLoopFrame;
+	this.m_fEndLoopFrame <=> this.m_fNextEndLoopFrame;
+	return true;
+}
+
+void CPlayer::StartWalkMotion()
+{
+	if (this.m_nMotion != 1)
+	{
+		this.SwapMotion();
+		this.m_Instance.SetMotionFrame(this.m_fBeginFrame);
+	}
+	this.m_Instance.SetMotionState(2);
+}
+
+void CPlayer::StopWalkMotion()
+{
+	if (this.m_nMotion == 0)
+	{
+		return;
+	}
+	this.SwapMotion();
+	this.m_Instance.SetMotionState(2);
+	this.m_Instance.SetMotionFrame(this.m_fBeginFrame);
+}
+

@@ -1,0 +1,853 @@
+void T_ConfigMessage::resetSampleMessage()
+{
+	this.m_SampleMessageTimer.Reset();
+}
+
+int T_ConfigMessage::getSliderID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 4 ? -1 : 230000 + nIndex + 1;
+}
+
+int T_ConfigMessage::getSliderIndex(int nID)
+{
+	int idx = nID + -230001;
+	return idx < 0 || idx >= 4 ? -1 : idx;
+}
+
+int T_ConfigMessage::getDefaultID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 4 ? -1 : 210000 + nIndex + 1;
+}
+
+int T_ConfigMessage::getDefaultIndex(int nID)
+{
+	int idx = nID + -210001;
+	return idx < 0 || idx >= 4 ? -1 : idx;
+}
+
+int T_ConfigMessage::getCheckID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 8 ? -1 : 220000 + nIndex + 1;
+}
+
+int T_ConfigMessage::getCheckIndex(int nID)
+{
+	int idx = nID + -220001;
+	return idx < 0 || idx >= 8 ? -1 : idx;
+}
+
+T_ConfigMessage::T_ConfigMessage()
+{
+	this.clear();
+	this.m_DefaultCharProperty.SetType(256);
+	this.m_DefaultCharProperty.SetSize(26);
+	this.m_DefaultCharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	this.m_DefaultCharProperty.SetEdgeWeight(1.0);
+	this.m_DefaultCharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+}
+
+T_ConfigMessage::~T_ConfigMessage()
+{
+	this.delete();
+}
+
+int T_ConfigMessage::run()
+{
+	if (!this.create())
+	{
+		return -1;
+	}
+	UPDATE(true);
+	int nRet = 0;
+	int nID = this.getFirstSlider();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+bool T_ConfigMessage::update()
+{
+	this.UpdateSampleMessage();
+	return true;
+}
+
+int T_ConfigMessage::moveUp(int nID)
+{
+	if (nID > 230000)
+	{
+		return this.getPrevSlider(nID);
+	}
+	if (nID > 220000)
+	{
+		if (this.getCheckIndex(nID) == 7)
+		{
+			return 100006;
+		}
+		return this.getPrevCheckBox(nID);
+	}
+	if (nID > 210000)
+	{
+		return this.getPrevDefault(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_上矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID2 == 0)
+	{
+		return this.getLastCheckBox();
+	}
+label0:
+	return this.getFirstSlider();
+}
+
+int T_ConfigMessage::moveDown(int nID)
+{
+	if (nID > 230000)
+	{
+		return this.getNextSlider(nID);
+	}
+	if (nID > 220000)
+	{
+		if (this.getCheckIndex(nID) == 7)
+		{
+			return this.getDefaultID(1);
+		}
+		return this.getNextCheckBox(nID);
+	}
+	if (nID > 210000)
+	{
+		return this.getNextDefault(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+			return this.getFirstSlider();
+		case 100003:
+		case 100004:
+			return this.getFirstDefault();
+		case 100005:
+		case 100006:
+		case 100007:
+		case 100008:
+		case 100019:
+			return this.getCheckID(7);
+		case 100011:
+		case 100012:
+		case 100013:
+			return コンフィグ共通_下矢印(nID);
+		default:
+			break;
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+int T_ConfigMessage::moveLeft(int nID)
+{
+	if (nID > 230000)
+	{
+		int idx = this.getSliderIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return idx == 0 ? this.getCheckID(7) : this.getDefaultID(idx);
+	}
+	if (nID > 220000)
+	{
+		if (this.getCheckIndex(nID) == 7)
+		{
+			return this.getDefaultID(0);
+		}
+		return nID;
+	}
+	if (nID > 210000)
+	{
+		int idx = this.getDefaultIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return this.getSliderID(idx);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_左矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getFirstSlider();
+}
+
+int T_ConfigMessage::moveRight(int nID)
+{
+	if (nID > 230000)
+	{
+		int idx = this.getSliderIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return this.getDefaultID(idx);
+	}
+	if (nID > 220000)
+	{
+		if (this.getCheckIndex(nID) == 7)
+		{
+			return this.getSliderID(0);
+		}
+		return nID;
+	}
+	if (nID > 210000)
+	{
+		int idx = this.getDefaultIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return idx == 0 ? this.getCheckID(7) : this.getSliderID(idx);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_右矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+bool T_ConfigMessage::create()
+{
+	this.delete();
+	this.m_spBase.setCg(40001);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(15000);
+	this.m_spBase.setShow(1);
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsCheck = this.m_aspCheck[i];
+		rfsCheck.setCg(40037);
+		rfsCheck.setZ(15001);
+	}
+	this.m_sButton.create();
+	this.createSlider(0, 320, 115, 15001);
+	this.createSlider(1, 320, 165, 15001);
+	this.createSlider(2, 320, 215, 15001);
+	this.createSlider(3, 320, 265, 15001);
+	this.m_asSlider[0].setCallback(&コンフィグ_メッセージ表示速度設定);
+	this.m_asSlider[1].setCallback(&コンフィグ_オートモード待ち時間設定);
+	this.m_asSlider[2].setCallback(&コンフィグ_既読スキップ待ち時間設定);
+	this.m_asSlider[3].setCallback(&コンフィグ_未読スキップ待ち時間設定);
+	this.createCheckBox(0, 70, 305, 40043);
+	this.createCheckBox(1, 70, 335, 40043);
+	this.createCheckBox(2, 70, 365, 40043);
+	this.createCheckBox(3, 70, 395, 40043);
+	this.createCheckBox(4, 70, 455, 40043);
+	this.createCheckBox(5, 70, 565, 40044);
+	this.createCheckBox(6, 70, 595, 40044);
+	this.createCheckBox(7, 670, 105, 40044);
+	コンフィグ共通_作成(this.m_sButton);
+	this.m_sButton.setButtonActive(100001, false);
+	this.m_sButton.setZ(15010);
+	this.m_sButton.setShow(true);
+	this.m_SampleMessageTextSprite.SetText("", this.m_DefaultCharProperty);
+	this.m_SampleMessageTextSprite.SetCharSpace(-2);
+	this.m_SampleMessageTextSprite.SetPos(710, 150);
+	this.m_SampleMessageTextSprite.SetZ(15001);
+	this.m_SampleMessageTextSprite.SetShow(AFL_Config_GetShowSampleMessage());
+	this.setValue(true);
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&コンフィグ_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&コンフィグ_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&コンフィグ_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&コンフィグ_右矢印);
+	this.m_sInputKey.setSelectCallback(&コンフィグ_選択設定);
+	return true;
+}
+
+void T_ConfigMessage::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspCheck[i].delete();
+	}
+	cnt = this.m_asSlider.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSlider[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.m_SampleMessageTextSprite.Release();
+	this.clear();
+}
+
+void T_ConfigMessage::clear()
+{
+	return;
+}
+
+bool T_ConfigMessage::createSlider(int nIndex, int nX, int nY, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	ref T_ConfigSlider rfsSlider = this.m_asSlider[nIndex];
+	if (!rfsSlider.create(nZ, nX, nY, 200, 15))
+	{
+		return false;
+	}
+	rfsSlider.setShow(true);
+	int nID = this.getSliderID(nIndex);
+	T_Rect rcArea;
+	rcArea = rfsSlider.getArea();
+	this.m_sButton.addButtonRect(nID, rcArea.getWidth(), rcArea.getHeight(), -1, -1, -1, -1);
+	this.m_sButton.setButtonPos(nID, rcArea.m_nSx, rcArea.m_nSy);
+	return コンフィグ共通_ボタン作成(this.m_sButton, this.getDefaultID(nIndex), nX + 240, nY + -10, 40041, 40042);
+}
+
+bool T_ConfigMessage::createCheckBox(int nIndex, int nX, int nY, int nCgNo)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspCheck.Numof())
+	{
+		return false;
+	}
+	if (!コンフィグ共通_チェックＢＯＸ作成(this.m_sButton, this.getCheckID(nIndex), nX, nY, nCgNo))
+	{
+		return false;
+	}
+	this.m_aspCheck[nIndex].setPos(nX, nY);
+	return true;
+}
+
+bool T_ConfigMessage::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (nID > 230000)
+	{
+		return this.execSlider(this.getSliderIndex(nID));
+	}
+	if (nID > 220000)
+	{
+		return this.execCheckBox(this.getCheckIndex(nID));
+	}
+	if (nID > 210000)
+	{
+		return this.execDefaultButton(this.getDefaultIndex(nID));
+	}
+	int nRet2 = コンフィグ共通_処理(nID);
+	if (nRet2 != 0)
+	{
+		nRet = nRet2 > 0 ? nRet2 : 0;
+		return true;
+	}
+	return false;
+}
+
+bool T_ConfigMessage::execSlider(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	if (!this.m_asSlider[nIndex].drag())
+	{
+		return false;
+	}
+	this.setValueFromSlider(nIndex);
+	return false;
+}
+
+bool T_ConfigMessage::execDefaultButton(int nIndex)
+{
+	bool bReset = false;
+	switch (nIndex)
+	{
+		case 0:
+			AFL_Config_ResetMessageSpeedRate();
+			bReset = true;
+			break;
+		case 1:
+			AFL_Config_ResetAutoModeWaitTimeRate();
+			break;
+		case 2:
+			AFL_Config_ResetAlreadyReadMessageSkipWaitTimeRate();
+			break;
+		case 3:
+			AFL_Config_ResetNotYetReadMessageSkipWaitTimeRate();
+			break;
+		default:
+			return false;
+	}
+	this.setValue(bReset);
+	return false;
+}
+
+bool T_ConfigMessage::execCheckBox(int nIndex)
+{
+	bool bReset = false;
+	switch (nIndex)
+	{
+		case 0:
+			AFL_Config_SetRestrainScreensaverWhileAutoMode(!AFL_Config_GetRestrainScreensaverWhileAutoMode());
+			break;
+		case 1:
+			AFL_Config_SetReleaseMessageModeByClick(!AFL_Config_GetReleaseMessageModeByClick());
+			break;
+		case 2:
+			AFL_Config_SetReleaseMessageSkipInSelectMenu(!AFL_Config_GetReleaseMessageSkipInSelectMenu());
+			break;
+		case 3:
+			AFL_Config_SetReleaseAutoModeInSelectMenu(!AFL_Config_GetReleaseAutoModeInSelectMenu());
+			break;
+		case 4:
+			AFL_Config_SetFrameSkipWhileMessageSkip(!AFL_Config_GetFrameSkipWhileMessageSkip());
+			break;
+		case 5:
+			AFL_Config_SetWheelForward(0);
+			break;
+		case 6:
+			AFL_Config_SetWheelForward(1);
+			break;
+		case 7:
+			AFL_Config_SetShowSampleMessage(!AFL_Config_GetShowSampleMessage());
+			bReset = true;
+			break;
+		default:
+			return false;
+	}
+	this.setValue(bReset);
+	return false;
+}
+
+int T_ConfigMessage::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		int nID4 = this.checkWheel();
+		if (nID4 > 0)
+		{
+			nRet = nID4;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			nRet = 100019;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		else if (this.getSliderIndex(nID2) >= 0)
+		{
+			nRet = nID2;
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_ConfigMessage::checkInput(ref int nSelectID)
+{
+	int nRet = this.m_sButton.checkInput(nSelectID);
+	int idx = this.getSliderIndex(nSelectID);
+	int i = 0;
+	int cnt = this.m_asSlider.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSlider[i].setSelect(i == idx);
+	}
+	return nRet;
+}
+
+int T_ConfigMessage::checkKey(int nID)
+{
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID > 230000)
+	{
+		if (this.checkKeySlider(this.getSliderIndex(nID)))
+		{
+			return 0;
+		}
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+bool T_ConfigMessage::checkKeySlider(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	if (!this.m_asSlider[nIndex].checkKey())
+	{
+		return false;
+	}
+	return this.setValueFromSlider(nIndex);
+}
+
+int T_ConfigMessage::checkWheel()
+{
+	switch (ホイール_確認(true))
+	{
+		case 9992:
+			return 100002;
+		case 9991:
+		default:
+			break;
+	}
+	ホイール_クリア();
+	return 0;
+}
+
+void T_ConfigMessage::resetSelect()
+{
+	int i = 0;
+	int cnt = this.m_asSlider.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSlider[i].setSelect(false);
+	}
+	this.m_sButton.resetSelect();
+}
+
+void T_ConfigMessage::setSelect(int nID, bool bSelect)
+{
+	int idx = this.getSliderIndex(nID);
+	if (idx >= 0)
+	{
+		this.m_asSlider[idx].setSelect(bSelect);
+	}
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_ConfigMessage::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_ConfigMessage::setValue(bool bReset)
+{
+	this.setSliderValue(0, AFL_Config_GetMessageSpeedRate());
+	this.setSliderValue(1, AFL_Config_GetAutoModeWaitTimeRate());
+	this.m_aspCheck[0].setShow(AFL_Config_GetRestrainScreensaverWhileAutoMode());
+	this.m_aspCheck[1].setShow(AFL_Config_GetReleaseMessageModeByClick());
+	this.m_aspCheck[2].setShow(AFL_Config_GetReleaseMessageSkipInSelectMenu());
+	this.m_aspCheck[3].setShow(AFL_Config_GetReleaseAutoModeInSelectMenu());
+	bool bFlag = AFL_Config_GetFrameSkipWhileMessageSkip();
+	this.m_aspCheck[4].setShow(bFlag);
+	if (bFlag)
+	{
+		this.setSliderValue(2, -3.40282346638529E+38);
+		this.setSliderValue(3, -3.40282346638529E+38);
+	}
+	else
+	{
+		this.setSliderValue(2, AFL_Config_GetAlreadyReadMessageSkipWaitTimeRate());
+		this.setSliderValue(3, AFL_Config_GetNotYetReadMessageSkipWaitTimeRate());
+	}
+	if (AFL_Config_GetWheelForward() == 1)
+	{
+		this.m_aspCheck[5].setShow(0);
+		this.m_aspCheck[6].setShow(1);
+		this.m_sButton.setButtonActive(this.getCheckID(5), true);
+		this.m_sButton.setButtonActive(this.getCheckID(6), false);
+	}
+	else
+	{
+		this.m_aspCheck[5].setShow(1);
+		this.m_aspCheck[6].setShow(0);
+		this.m_sButton.setButtonActive(this.getCheckID(5), false);
+		this.m_sButton.setButtonActive(this.getCheckID(6), true);
+	}
+	bool bShow = AFL_Config_GetShowSampleMessage();
+	this.m_aspCheck[7].setShow(bShow);
+	this.m_SampleMessageTextSprite.SetShow(bShow);
+	if (bReset)
+	{
+		this.resetSampleMessage();
+	}
+}
+
+bool T_ConfigMessage::setValueFromSlider(int nIndex)
+{
+	bool bReset = false;
+	switch (nIndex)
+	{
+		case 0:
+			AFL_Config_SetMessageSpeedRate(this.m_asSlider[nIndex].getValue());
+			bReset = true;
+			break;
+		case 1:
+			AFL_Config_SetAutoModeWaitTimeRate(this.m_asSlider[nIndex].getValue());
+			break;
+		case 2:
+			AFL_Config_SetAlreadyReadMessageSkipWaitTimeRate(this.m_asSlider[nIndex].getValue());
+			break;
+		case 3:
+			AFL_Config_SetNotYetReadMessageSkipWaitTimeRate(this.m_asSlider[nIndex].getValue());
+			break;
+		default:
+			return false;
+	}
+	this.setValue(bReset);
+	return true;
+}
+
+bool T_ConfigMessage::setSliderValue(int nIndex, float fRate)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	this.m_asSlider[nIndex].setValue(fRate);
+	bool bShow = fRate != -3.40282346638529E+38;
+	this.m_sButton.setButtonShow(this.getSliderID(nIndex), bShow);
+	this.m_sButton.setButtonActive(this.getDefaultID(nIndex), bShow);
+	return true;
+}
+
+void T_ConfigMessage::UpdateSampleMessage()
+{
+	this.m_SampleMessageTextSprite.SetTextWithoutProperty(AFL_Config_GetSampleMessageTextByElapsedTime(this.m_SampleMessageTimer.Get()));
+}
+
+int T_ConfigMessage::getPrevCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastCheckBox();
+	}
+	--idx;
+	if (idx < 0)
+	{
+		return this.getLastSlider();
+	}
+	return this.getCheckID(idx);
+}
+
+int T_ConfigMessage::getNextCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstCheckBox();
+	}
+	++idx;
+	if (idx >= 7)
+	{
+		return 100011;
+	}
+	return this.getCheckID(idx);
+}
+
+int T_ConfigMessage::getFirstCheckBox()
+{
+	return this.getCheckID(0);
+}
+
+int T_ConfigMessage::getLastCheckBox()
+{
+	return this.getCheckID(6);
+}
+
+int T_ConfigMessage::getPrevSlider(int nID)
+{
+	int idx = this.getSliderIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastSlider();
+	}
+	int i = 0;
+	for (i = idx - 1; i >= 0; --i)
+	{
+		int nID = this.getSliderID(i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+	return 100002;
+}
+
+int T_ConfigMessage::getNextSlider(int nID)
+{
+	int idx = this.getSliderIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstSlider();
+	}
+	int i = 0;
+	for (i = idx + 1; i < 4; ++i)
+	{
+		int nID = this.getSliderID(i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+	return this.getFirstCheckBox();
+}
+
+int T_ConfigMessage::getFirstSlider()
+{
+	int i = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		int nID = this.getSliderID(i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+	return this.getFirstCheckBox();
+}
+
+int T_ConfigMessage::getLastSlider()
+{
+	int i = 0;
+	for (i = 3; i >= 0; --i)
+	{
+		int nID = this.getSliderID(i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+	return 100002;
+}
+
+int T_ConfigMessage::getPrevDefault(int nID)
+{
+	int idx = this.getDefaultIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastDefault();
+	}
+	int i = 0;
+	for (i = idx - 1; i >= 0; --i)
+	{
+		int nID = this.getDefaultID(i);
+		if (this.m_sButton.getButtonActive(nID))
+		{
+			return nID;
+		}
+	}
+	return 100003;
+}
+
+int T_ConfigMessage::getNextDefault(int nID)
+{
+	int idx = this.getDefaultIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstDefault();
+	}
+	int i = 0;
+	for (i = idx + 1; i < 4; ++i)
+	{
+		int nID = this.getDefaultID(i);
+		if (this.m_sButton.getButtonActive(nID))
+		{
+			return nID;
+		}
+	}
+	return this.getFirstCheckBox();
+}
+
+int T_ConfigMessage::getFirstDefault()
+{
+	int i = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		int nID = this.getDefaultID(i);
+		if (this.m_sButton.getButtonActive(nID))
+		{
+			return nID;
+		}
+	}
+	return this.getFirstCheckBox();
+}
+
+int T_ConfigMessage::getLastDefault()
+{
+	int i = 0;
+	for (i = 3; i >= 0; --i)
+	{
+		int nID = this.getDefaultID(i);
+		if (this.m_sButton.getButtonActive(nID))
+		{
+			return nID;
+		}
+	}
+	return 100003;
+}
+

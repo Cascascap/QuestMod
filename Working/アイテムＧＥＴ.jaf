@@ -1,0 +1,33 @@
+void Ｒ８宝箱からアイテム(int nItemNo)
+{
+	T_ItemComment sItemComment;
+	sItemComment.treasure(nItemNo, アイテム_確定済(nItemNo));
+}
+
+void Ｒ８どこかからアイテム(int nItemNo)
+{
+	T_ItemComment sItemComment;
+	sItemComment.field(nItemNo, アイテム_確定済(nItemNo), false);
+}
+
+void Ｒ８どこかからアイテム／マグナム(int nItemNo)
+{
+	T_ItemComment sItemComment;
+	sItemComment.field(nItemNo, アイテム_確定済(nItemNo), true);
+}
+
+void Ｒ８女の子モンスターＧＥＴ(int nCgNo, string szText)
+{
+	bool bOld1 = ビュー状態保存モード_ＯＮ();
+	bool bOld2 = バックシーン登録制御(false);
+	音楽_再生(108);
+	T_GirlMessage sGirlMessage;
+	sGirlMessage.run(nCgNo, szText);
+	音楽_再生(0);
+	if (!bOld1)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	バックシーン登録制御(bOld2);
+}
+

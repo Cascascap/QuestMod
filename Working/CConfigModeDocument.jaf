@@ -1,0 +1,805 @@
+ref _CCgInfo CConfigModeDocument::GetBackCGInfo()
+{
+	return this._m_cg_background;
+}
+
+ref _CCgInfo CConfigModeDocument::GetEachBackCGInfo(int nIndex)
+{
+	return this.m_BackCGList[nIndex];
+}
+
+void CConfigModeDocument::GetTabCGInfoList(ref array@_CCgInfo@2 Obj)
+{
+	Obj.Alloc(this.m_TabCGInfo.Numof(), this.m_TabCGInfo.Numof(2));
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < Obj.Numof(); ++i)
+	{
+		for (j = 0; j < Obj.Numof(2); ++j)
+		{
+			Obj[i][j] = this.m_TabCGInfo[i][j];
+		}
+	}
+}
+
+CConfigModeDocument::CConfigModeDocument()
+{
+	this.m_TabCGInfo.Alloc(6, 3);
+	this.m_CloseGameButtonCGInfo.Alloc(2);
+	this.m_ReturnToTitleButtonCGInfo.Alloc(2);
+	this.m_ExitButtonCGInfo.Alloc(2);
+	this.m_WindowManualTextPos.Set(350, 50);
+	this.m_CheckBoxBaseCG = "";
+	this.m_CheckBoxMarkCG = "";
+	this.m_CheckBoxCursorCG = "";
+}
+
+void CConfigModeDocument::_Init()
+{
+	this.m_bShowEffectKeyCancel = !g_bƒGƒtƒFƒNƒgƒL[ƒLƒƒƒ“ƒZƒ‹—LŒø‰ŠúÝ’è;
+	this.m_nSoundDecide = -2147483648;
+	this.m_nSoundUnderCursor = -2147483648;
+	this.m_nSoundCancel = -2147483648;
+	this._m_pos_msg_spd_gauge.Alloc(7);
+	this._m_pos_auto_spd_gauge.Alloc(7);
+	this._m_pos_readedmsgskip_spd_gauge.Alloc(7);
+	this._m_pos_doesnotreadmsgskip_spd_gauge.Alloc(7);
+	int _z = 15000;
+	this._m_cg_background._Set(0, 0, _z + 0, "");
+	this.m_BackCGList.Alloc(6);
+	int n = 0;
+	for (n = 0; n < this.m_BackCGList.Numof(); ++n)
+	{
+		this.m_BackCGList[n]._Set(0, 0, _z, "");
+	}
+	this._m_btn_cg_back._SetPos(50, 500);
+	this._m_btn_cg_back._SetZ(_z + 1);
+	this._m_btn_cg_exit._SetPos(124, 500);
+	this._m_btn_cg_exit._SetZ(_z + 1);
+	this._m_btn_cg_reset._SetPos(270, 500);
+	this._m_btn_cg_reset._SetZ(_z + 1);
+	this._m_btn_cg_wnd_mode._SetPos(400, 100);
+	this._m_btn_cg_wnd_mode._SetZ(_z + 1);
+	this._m_btn_cg_fll_mode._SetPos(546, 100);
+	this._m_btn_cg_fll_mode._SetZ(_z + 1);
+	this._m_btn_cg_msg_spd_dec._SetPos(50, 130);
+	this._m_btn_cg_msg_spd_dec._SetZ(_z + 1);
+	this._m_btn_cg_msg_spd_inc._SetPos(306, 130);
+	this._m_btn_cg_msg_spd_inc._SetZ(_z + 1);
+	this._m_btn_cg_auto_spd_dec._SetPos(50, 230);
+	this._m_btn_cg_auto_spd_dec._SetZ(_z + 1);
+	this._m_btn_cg_auto_spd_inc._SetPos(306, 230);
+	this._m_btn_cg_auto_spd_inc._SetZ(_z + 1);
+	this._m_btn_cg_readedmsgskip_spd_dec._SetPos(50, 130);
+	this._m_btn_cg_readedmsgskip_spd_dec._SetZ(_z + 1);
+	this._m_btn_cg_readedmsgskip_spd_inc._SetPos(306, 130);
+	this._m_btn_cg_readedmsgskip_spd_inc._SetZ(_z + 1);
+	this._m_btn_cg_readedmsgskip_spd_dec._SetPos(50, 130);
+	this._m_btn_cg_readedmsgskip_spd_dec._SetZ(_z + 1);
+	this._m_btn_cg_doesnotreadmsgskip_spd_inc._SetPos(306, 130);
+	this._m_btn_cg_doesnotreadmsgskip_spd_inc._SetZ(_z + 1);
+	int _i = 0;
+	for (_i = 0; _i < 7; ++_i)
+	{
+		this._SetGaugeMsgSpeedPos(_i, 50 + (_i + 1) * 32 + 2, 92, _z + 1);
+	}
+	for (_i = 0; _i < 7; ++_i)
+	{
+		this._SetGaugeAutoSpeedPos(_i, 50 + (_i + 1) * 32 + 2, 172, _z + 1);
+	}
+	for (_i = 0; _i < 7; ++_i)
+	{
+		this._SetGaugeReadedMsgskipWaitTimePos(_i, 50 + (_i + 1) * 32 + 2, 252, _z + 1);
+	}
+	for (_i = 0; _i < 7; ++_i)
+	{
+		this._SetGaugeDoesNotReadMsgskipWaitTimePos(_i, 50 + (_i + 1) * 32 + 2, 332, _z + 1);
+	}
+	this.m_MessageSpeedSliderCG = "";
+	this.m_MessageSpeedSliderOnCursorCG = "";
+	this.m_AutoModeWaitTimeSliderCG = "";
+	this.m_AutoModeWaitTimeSliderOnCursorCG = "";
+	this.m_ReadedMessageSkipWaitTimeSliderCG = "";
+	this.m_ReadedMessageSkipWaitTimeSliderOnCursorCG = "";
+	this.m_DoesNotReadMessageSkipWaitTimeSliderCG = "";
+	this.m_DoesNotReadMessageSkipWaitTimeSliderOnCursorCG = "";
+	this.m_MessageSpeedResetButtonKeyUpCG = "";
+	this.m_MessageSpeedResetButtonKeyDownCG = "";
+	this.m_MessageSpeedResetButtonKeyUpOnCursorCG = "";
+	this.m_MessageSpeedResetButtonKeyDownOnCursorCG = "";
+	this.m_AutoModeWaitTimeResetButtonKeyUpCG = "";
+	this.m_AutoModeWaitTimeResetButtonKeyDownCG = "";
+	this.m_AutoModeWaitTimeResetButtonKeyUpOnCursorCG = "";
+	this.m_AutoModeWaitTimeResetButtonKeyDownOnCursorCG = "";
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyUpCG = "";
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyDownCG = "";
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyUpOnCursorCG = "";
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyDownOnCursorCG = "";
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyUpCG = "";
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyDownCG = "";
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyUpOnCursorCG = "";
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyDownOnCursorCG = "";
+	this.m_RestrainScreensaverCheckBoxBaseCG = "";
+	this.m_RestrainScreensaverCheckBoxCheckMarkCG = "";
+	this.m_RestrainScreensaverCheckBoxOnCursorCG = "";
+	this.m_EffectKeyCancelButton._SetPos(375, 350);
+	this.m_EffectKeyCancelButton._SetZ(_z + 1);
+	this.m_EffectKeyCancelOnButton._SetPos(375, 350);
+	this.m_EffectKeyCancelOnButton._SetZ(_z + 1);
+	this.m_SoundSettingButton._SetPos(400, 150);
+	this.m_SoundSettingButton._SetZ(_z + 1);
+	this.m_bShowReturnTitleButton = true;
+}
+
+void CConfigModeDocument::_SetBackground(int _x, int _y, int _z, string _cg)
+{
+	this._m_cg_background._Set(_x, _y, _z, _cg);
+}
+
+void CConfigModeDocument::SetEachBackCG(int Index, int X, int Y, string CG)
+{
+	this.m_BackCGList[Index]._Set(X, Y, -2147483648, CG);
+}
+
+void CConfigModeDocument::SetTabCGInfo(int nIndex, int nX, int nY, string ActiveCG, string DisableCG, string OnCursorCG)
+{
+	this.m_TabCGInfo[nIndex][0]._Set(nX, nY, -2147483648, ActiveCG);
+	this.m_TabCGInfo[nIndex][1]._Set(nX, nY, -2147483648, DisableCG);
+	this.m_TabCGInfo[nIndex][2]._Set(nX, nY, -2147483648, OnCursorCG);
+}
+
+void CConfigModeDocument::SetCheckBoxCG(string BaseCG, string MarkCG, string CursorCG)
+{
+	this.m_CheckBoxBaseCG = BaseCG;
+	this.m_CheckBoxMarkCG = MarkCG;
+	this.m_CheckBoxCursorCG = CursorCG;
+}
+
+string CConfigModeDocument::GetCheckBoxBaseCG()
+{
+	return this.m_CheckBoxBaseCG;
+}
+
+string CConfigModeDocument::GetCheckBoxMarkCG()
+{
+	return this.m_CheckBoxMarkCG;
+}
+
+string CConfigModeDocument::GetCheckBoxCursorCG()
+{
+	return this.m_CheckBoxCursorCG;
+}
+
+void CConfigModeDocument::SetCloseGameButtonCGInfo(int nX, int nY, string CG, string OnCursorCG)
+{
+	this.m_CloseGameButtonCGInfo[0]._Set(nX, nY, -2147483648, CG);
+	this.m_CloseGameButtonCGInfo[1]._Set(nX, nY, -2147483648, OnCursorCG);
+}
+
+void CConfigModeDocument::SetReturnToTitleButtonCGInfo(int nX, int nY, string CG, string OnCursorCG)
+{
+	this.m_ReturnToTitleButtonCGInfo[0]._Set(nX, nY, -2147483648, CG);
+	this.m_ReturnToTitleButtonCGInfo[1]._Set(nX, nY, -2147483648, OnCursorCG);
+}
+
+void CConfigModeDocument::SetExitButtonCGInfo(int nX, int nY, string CG, string OnCursorCG)
+{
+	this.m_ExitButtonCGInfo[0]._Set(nX, nY, -2147483648, CG);
+	this.m_ExitButtonCGInfo[1]._Set(nX, nY, -2147483648, OnCursorCG);
+}
+
+void CConfigModeDocument::GetCloseGameButtonCGInfo(ref array@_CCgInfo CGInfo)
+{
+	CGInfo.Alloc(this.m_CloseGameButtonCGInfo.Numof());
+	CGInfo.Copy(0, this.m_CloseGameButtonCGInfo, 0, this.m_CloseGameButtonCGInfo.Numof());
+}
+
+void CConfigModeDocument::GetReturnToTitleButtonCGInfo(ref array@_CCgInfo CGInfo)
+{
+	CGInfo.Alloc(this.m_ReturnToTitleButtonCGInfo.Numof());
+	CGInfo.Copy(0, this.m_ReturnToTitleButtonCGInfo, 0, this.m_ReturnToTitleButtonCGInfo.Numof());
+}
+
+void CConfigModeDocument::GetExitButtonCGInfo(ref array@_CCgInfo CGInfo)
+{
+	CGInfo.Alloc(this.m_ExitButtonCGInfo.Numof());
+	CGInfo.Copy(0, this.m_ExitButtonCGInfo, 0, this.m_ExitButtonCGInfo.Numof());
+}
+
+void CConfigModeDocument::_SetBtnBack(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_back._SetPos(_x, _y);
+	this._m_btn_cg_back._SetZ(_z);
+	this._m_btn_cg_back._SetCgPln(_cg_plain);
+	this._m_btn_cg_back._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnExit(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_exit._SetPos(_x, _y);
+	this._m_btn_cg_exit._SetZ(_z);
+	this._m_btn_cg_exit._SetCgPln(_cg_plain);
+	this._m_btn_cg_exit._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnReset(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_reset._SetPos(_x, _y);
+	this._m_btn_cg_reset._SetZ(_z);
+	this._m_btn_cg_reset._SetCgPln(_cg_plain);
+	this._m_btn_cg_reset._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnWindowMode(int _x, int _y, int _z, string _cg_plain, string _cg_hilite, string _cg_invalid)
+{
+	this._m_btn_cg_wnd_mode._SetPos(_x, _y);
+	this._m_btn_cg_wnd_mode._SetZ(_z);
+	this._m_btn_cg_wnd_mode._SetCgPln(_cg_plain);
+	this._m_btn_cg_wnd_mode._SetCgHlt(_cg_hilite);
+	this._m_btn_cg_wnd_mode._SetCgInv(_cg_invalid);
+}
+
+void CConfigModeDocument::_SetBtnFullMode(int _x, int _y, int _z, string _cg_plain, string _cg_hilite, string _cg_invalid)
+{
+	this._m_btn_cg_fll_mode._SetPos(_x, _y);
+	this._m_btn_cg_fll_mode._SetZ(_z);
+	this._m_btn_cg_fll_mode._SetCgPln(_cg_plain);
+	this._m_btn_cg_fll_mode._SetCgHlt(_cg_hilite);
+	this._m_btn_cg_fll_mode._SetCgInv(_cg_invalid);
+}
+
+void CConfigModeDocument::_SetBtnMsgSpeedInc(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_msg_spd_inc._SetPos(_x, _y);
+	this._m_btn_cg_msg_spd_inc._SetZ(_z);
+	this._m_btn_cg_msg_spd_inc._SetCgPln(_cg_plain);
+	this._m_btn_cg_msg_spd_inc._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnMsgSpeedDec(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_msg_spd_dec._SetPos(_x, _y);
+	this._m_btn_cg_msg_spd_dec._SetZ(_z);
+	this._m_btn_cg_msg_spd_dec._SetCgPln(_cg_plain);
+	this._m_btn_cg_msg_spd_dec._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetGaugeMsgSpeedCg(string _cg)
+{
+	if (!_cg.Empty())
+	{
+		this._m_cg_msg_spd_gauge = _cg;
+	}
+}
+
+void CConfigModeDocument::_SetGaugeMsgSpeedPos(int _index, int _x, int _y, int _z)
+{
+	if (_x != -2147483648)
+	{
+		this._m_pos_msg_spd_gauge[_index].‚w = _x;
+	}
+	if (_y != -2147483648)
+	{
+		this._m_pos_msg_spd_gauge[_index].‚x = _y;
+	}
+	if (_z != -2147483648)
+	{
+		this._m_pos_msg_spd_gauge[_index].‚y = _z;
+	}
+}
+
+void CConfigModeDocument::_SetBtnAutoSpeedInc(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_auto_spd_inc._SetPos(_x, _y);
+	this._m_btn_cg_auto_spd_inc._SetZ(_z);
+	this._m_btn_cg_auto_spd_inc._SetCgPln(_cg_plain);
+	this._m_btn_cg_auto_spd_inc._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnAutoSpeedDec(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_auto_spd_dec._SetPos(_x, _y);
+	this._m_btn_cg_auto_spd_dec._SetZ(_z);
+	this._m_btn_cg_auto_spd_dec._SetCgPln(_cg_plain);
+	this._m_btn_cg_auto_spd_dec._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetGaugeAutoSpeedCg(string _cg)
+{
+	if (!_cg.Empty())
+	{
+		this._m_cg_auto_spd_gauge = _cg;
+	}
+}
+
+void CConfigModeDocument::_SetGaugeAutoSpeedPos(int _index, int _x, int _y, int _z)
+{
+	if (_x != -2147483648)
+	{
+		this._m_pos_auto_spd_gauge[_index].‚w = _x;
+	}
+	if (_y != -2147483648)
+	{
+		this._m_pos_auto_spd_gauge[_index].‚x = _y;
+	}
+	if (_z != -2147483648)
+	{
+		this._m_pos_auto_spd_gauge[_index].‚y = _z;
+	}
+}
+
+void CConfigModeDocument::_SetBtnReadedMsgskipWaitTimeInc(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_readedmsgskip_spd_inc._SetPos(_x, _y);
+	this._m_btn_cg_readedmsgskip_spd_inc._SetZ(_z);
+	this._m_btn_cg_readedmsgskip_spd_inc._SetCgPln(_cg_plain);
+	this._m_btn_cg_readedmsgskip_spd_inc._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnReadedMsgskipWaitTimeDec(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_readedmsgskip_spd_dec._SetPos(_x, _y);
+	this._m_btn_cg_readedmsgskip_spd_dec._SetZ(_z);
+	this._m_btn_cg_readedmsgskip_spd_dec._SetCgPln(_cg_plain);
+	this._m_btn_cg_readedmsgskip_spd_dec._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetGaugeReadedMsgskipWaitTimeCg(string _cg)
+{
+	if (!_cg.Empty())
+	{
+		this._m_cg_readedmsgskip_spd_gauge = _cg;
+	}
+}
+
+void CConfigModeDocument::_SetGaugeReadedMsgskipWaitTimePos(int _index, int _x, int _y, int _z)
+{
+	if (_x != -2147483648)
+	{
+		this._m_pos_readedmsgskip_spd_gauge[_index].‚w = _x;
+	}
+	if (_y != -2147483648)
+	{
+		this._m_pos_readedmsgskip_spd_gauge[_index].‚x = _y;
+	}
+	if (_z != -2147483648)
+	{
+		this._m_pos_readedmsgskip_spd_gauge[_index].‚y = _z;
+	}
+}
+
+void CConfigModeDocument::_SetBtnDoesNotReadMsgskipWaitTimeInc(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_doesnotreadmsgskip_spd_inc._SetPos(_x, _y);
+	this._m_btn_cg_doesnotreadmsgskip_spd_inc._SetZ(_z);
+	this._m_btn_cg_doesnotreadmsgskip_spd_inc._SetCgPln(_cg_plain);
+	this._m_btn_cg_doesnotreadmsgskip_spd_inc._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnDoesNotReadMsgskipWaitTimeDec(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this._m_btn_cg_doesnotreadmsgskip_spd_dec._SetPos(_x, _y);
+	this._m_btn_cg_doesnotreadmsgskip_spd_dec._SetZ(_z);
+	this._m_btn_cg_doesnotreadmsgskip_spd_dec._SetCgPln(_cg_plain);
+	this._m_btn_cg_doesnotreadmsgskip_spd_dec._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetGaugeDoesNotReadMsgskipWaitTimeCg(string _cg)
+{
+	if (!_cg.Empty())
+	{
+		this._m_cg_doesnotreadmsgskip_spd_gauge = _cg;
+	}
+}
+
+void CConfigModeDocument::_SetGaugeDoesNotReadMsgskipWaitTimePos(int _index, int _x, int _y, int _z)
+{
+	if (_x != -2147483648)
+	{
+		this._m_pos_doesnotreadmsgskip_spd_gauge[_index].‚w = _x;
+	}
+	if (_y != -2147483648)
+	{
+		this._m_pos_doesnotreadmsgskip_spd_gauge[_index].‚x = _y;
+	}
+	if (_z != -2147483648)
+	{
+		this._m_pos_doesnotreadmsgskip_spd_gauge[_index].‚y = _z;
+	}
+}
+
+void CConfigModeDocument::_SetBtnSkipPrevRead(int _x, int _y, int _z, string _cg_uncheck, string _cg_check, string _cg_hilite)
+{
+	this._m_btn_cg_skip_prev_read._SetPos(_x, _y);
+	this._m_btn_cg_skip_prev_read._SetZ(_z);
+	this._m_btn_cg_skip_prev_read._SetCgPln(_cg_uncheck);
+	this._m_btn_cg_skip_prev_read._SetCgChk(_cg_check);
+	this._m_btn_cg_skip_prev_read._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnSkipEffect(int _x, int _y, int _z, string _cg_uncheck, string _cg_check, string _cg_hilite)
+{
+	this._m_btn_cg_skip_effect._SetPos(_x, _y);
+	this._m_btn_cg_skip_effect._SetZ(_z);
+	this._m_btn_cg_skip_effect._SetCgPln(_cg_uncheck);
+	this._m_btn_cg_skip_effect._SetCgChk(_cg_check);
+	this._m_btn_cg_skip_effect._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::_SetBtnSoundSetting(int _x, int _y, int _z, string _cg_plain, string _cg_hilite)
+{
+	this.m_SoundSettingButton._SetPos(_x, _y);
+	this.m_SoundSettingButton._SetZ(_z);
+	this.m_SoundSettingButton._SetCgPln(_cg_plain);
+	this.m_SoundSettingButton._SetCgHlt(_cg_hilite);
+}
+
+void CConfigModeDocument::SetEffectKeyCancelButton(string CG, string UnderCursorCG, int nX, int nY, int nZ)
+{
+	this.m_EffectKeyCancelButton._SetPos(nX, nY);
+	this.m_EffectKeyCancelButton._SetZ(nZ);
+	this.m_EffectKeyCancelButton._SetCgPln(CG);
+	this.m_EffectKeyCancelButton._SetCgHlt(UnderCursorCG);
+}
+
+void CConfigModeDocument::SetEffectKeyCancelOnButton(string CG, string UnderCursorCG, int nX, int nY, int nZ)
+{
+	this.m_EffectKeyCancelOnButton._SetPos(nX, nY);
+	this.m_EffectKeyCancelOnButton._SetZ(nZ);
+	this.m_EffectKeyCancelOnButton._SetCgPln(CG);
+	this.m_EffectKeyCancelOnButton._SetCgHlt(UnderCursorCG);
+}
+
+string CConfigModeDocument::GetBackSpriteCG()
+{
+	return this._m_cg_background._GetCg();
+}
+
+void CConfigModeDocument::SetMessageSpeedSliderCG(string CG, string OnCursorCG)
+{
+	this.m_MessageSpeedSliderCG = CG;
+	this.m_MessageSpeedSliderOnCursorCG = OnCursorCG;
+}
+
+string CConfigModeDocument::GetMessageSpeedSliderCG()
+{
+	return this.m_MessageSpeedSliderCG;
+}
+
+string CConfigModeDocument::GetMessageSpeedSliderOnCursorCG()
+{
+	return this.m_MessageSpeedSliderOnCursorCG;
+}
+
+void CConfigModeDocument::SetMessageSpeedSliderRect(CASRect Rect)
+{
+	this.m_MessageSpeedSliderRect = Rect;
+}
+
+CASRect CConfigModeDocument::GetMessageSpeedSliderRect()
+{
+	return this.m_MessageSpeedSliderRect;
+}
+
+void CConfigModeDocument::SetAutoModeWaitTimeSliderCG(string CG, string OnCursorCG)
+{
+	this.m_AutoModeWaitTimeSliderCG = CG;
+	this.m_AutoModeWaitTimeSliderOnCursorCG = OnCursorCG;
+}
+
+string CConfigModeDocument::GetAutoModeWaitTimeSliderCG()
+{
+	return this.m_AutoModeWaitTimeSliderCG;
+}
+
+string CConfigModeDocument::GetAutoModeWaitTimeSliderOnCursorCG()
+{
+	return this.m_AutoModeWaitTimeSliderOnCursorCG;
+}
+
+void CConfigModeDocument::SetAutoModeWaitTimeSliderRect(CASRect Rect)
+{
+	this.m_AutoModeWaitTimeSliderRect = Rect;
+}
+
+CASRect CConfigModeDocument::GetAutoModeWaitTimeSliderRect()
+{
+	return this.m_AutoModeWaitTimeSliderRect;
+}
+
+void CConfigModeDocument::SetReadedMessageSkipWaitTimeSliderCG(string CG, string OnCursorCG)
+{
+	this.m_ReadedMessageSkipWaitTimeSliderCG = CG;
+	this.m_ReadedMessageSkipWaitTimeSliderOnCursorCG = OnCursorCG;
+}
+
+string CConfigModeDocument::GetReadedMessageSkipWaitTimeSliderCG()
+{
+	return this.m_ReadedMessageSkipWaitTimeSliderCG;
+}
+
+string CConfigModeDocument::GetReadedMessageSkipWaitTimeSliderOnCursorCG()
+{
+	return this.m_ReadedMessageSkipWaitTimeSliderOnCursorCG;
+}
+
+void CConfigModeDocument::SetReadedMessageSkipWaitTimeSliderRect(CASRect Rect)
+{
+	this.m_ReadedMessageSkipWaitTimeSliderRect = Rect;
+}
+
+CASRect CConfigModeDocument::GetReadedMessageSkipWaitTimeSliderRect()
+{
+	return this.m_ReadedMessageSkipWaitTimeSliderRect;
+}
+
+void CConfigModeDocument::SetDoesNotReadMessageSkipWaitTimeSliderCG(string CG, string OnCursorCG)
+{
+	this.m_DoesNotReadMessageSkipWaitTimeSliderCG = CG;
+	this.m_DoesNotReadMessageSkipWaitTimeSliderOnCursorCG = OnCursorCG;
+}
+
+string CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeSliderCG()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeSliderCG;
+}
+
+string CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeSliderOnCursorCG()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeSliderOnCursorCG;
+}
+
+void CConfigModeDocument::SetDoesNotReadMessageSkipWaitTimeSliderRect(CASRect Rect)
+{
+	this.m_DoesNotReadMessageSkipWaitTimeSliderRect = Rect;
+}
+
+CASRect CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeSliderRect()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeSliderRect;
+}
+
+void CConfigModeDocument::SetMessageSpeedResetButtonCG(string KeyUpCG, string KeyDownCG, string KeyUpOnCursorCG, string KeyDownOnCursorCG)
+{
+	this.m_MessageSpeedResetButtonKeyUpCG = KeyUpCG;
+	this.m_MessageSpeedResetButtonKeyDownCG = KeyDownCG;
+	this.m_MessageSpeedResetButtonKeyUpOnCursorCG = KeyUpOnCursorCG;
+	this.m_MessageSpeedResetButtonKeyDownOnCursorCG = KeyDownOnCursorCG;
+}
+
+void CConfigModeDocument::SetMessageSpeedResetButtonPos(CASPos Pos)
+{
+	this.m_MessageSpeedResetButtonPos = Pos;
+}
+
+string CConfigModeDocument::GetMessageSpeedResetButtonKeyUpCG()
+{
+	return this.m_MessageSpeedResetButtonKeyUpCG;
+}
+
+string CConfigModeDocument::GetMessageSpeedResetButtonKeyDownCG()
+{
+	return this.m_MessageSpeedResetButtonKeyDownCG;
+}
+
+string CConfigModeDocument::GetMessageSpeedResetButtonKeyUpOnCursorCG()
+{
+	return this.m_MessageSpeedResetButtonKeyUpOnCursorCG;
+}
+
+string CConfigModeDocument::GetMessageSpeedResetButtonKeyDownOnCursorCG()
+{
+	return this.m_MessageSpeedResetButtonKeyDownOnCursorCG;
+}
+
+CASPos CConfigModeDocument::GetMessageSpeedResetButtonPos()
+{
+	return this.m_MessageSpeedResetButtonPos;
+}
+
+void CConfigModeDocument::SetAutoModeWaitTimeResetButtonCG(string KeyUpCG, string KeyDownCG, string KeyUpOnCursorCG, string KeyDownOnCursorCG)
+{
+	this.m_AutoModeWaitTimeResetButtonKeyUpCG = KeyUpCG;
+	this.m_AutoModeWaitTimeResetButtonKeyDownCG = KeyDownCG;
+	this.m_AutoModeWaitTimeResetButtonKeyUpOnCursorCG = KeyUpOnCursorCG;
+	this.m_AutoModeWaitTimeResetButtonKeyDownOnCursorCG = KeyDownOnCursorCG;
+}
+
+void CConfigModeDocument::SetAutoModeWaitTimeResetButtonPos(CASPos Pos)
+{
+	this.m_AutoModeWaitTimeResetButtonPos = Pos;
+}
+
+string CConfigModeDocument::GetAutoModeWaitTimeResetButtonKeyUpCG()
+{
+	return this.m_AutoModeWaitTimeResetButtonKeyUpCG;
+}
+
+string CConfigModeDocument::GetAutoModeWaitTimeResetButtonKeyDownCG()
+{
+	return this.m_AutoModeWaitTimeResetButtonKeyDownCG;
+}
+
+string CConfigModeDocument::GetAutoModeWaitTimeResetButtonKeyUpOnCursorCG()
+{
+	return this.m_AutoModeWaitTimeResetButtonKeyUpOnCursorCG;
+}
+
+string CConfigModeDocument::GetAutoModeWaitTimeResetButtonKeyDownOnCursorCG()
+{
+	return this.m_AutoModeWaitTimeResetButtonKeyDownOnCursorCG;
+}
+
+CASPos CConfigModeDocument::GetAutoModeWaitTimeResetButtonPos()
+{
+	return this.m_AutoModeWaitTimeResetButtonPos;
+}
+
+void CConfigModeDocument::SetReadedMessageSkipWaitTimeResetButtonCG(string KeyUpCG, string KeyDownCG, string KeyUpOnCursorCG, string KeyDownOnCursorCG)
+{
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyUpCG = KeyUpCG;
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyDownCG = KeyDownCG;
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyUpOnCursorCG = KeyUpOnCursorCG;
+	this.m_ReadedMessageSkipWaitTimeResetButtonKeyDownOnCursorCG = KeyDownOnCursorCG;
+}
+
+void CConfigModeDocument::SetReadedMessageSkipWaitTimeResetButtonPos(CASPos Pos)
+{
+	this.m_ReadedMessageSkipWaitTimeResetButtonPos = Pos;
+}
+
+string CConfigModeDocument::GetReadedMessageSkipWaitTimeResetButtonKeyUpCG()
+{
+	return this.m_ReadedMessageSkipWaitTimeResetButtonKeyUpCG;
+}
+
+string CConfigModeDocument::GetReadedMessageSkipWaitTimeResetButtonKeyDownCG()
+{
+	return this.m_ReadedMessageSkipWaitTimeResetButtonKeyDownCG;
+}
+
+string CConfigModeDocument::GetReadedMessageSkipWaitTimeResetButtonKeyUpOnCursorCG()
+{
+	return this.m_ReadedMessageSkipWaitTimeResetButtonKeyUpOnCursorCG;
+}
+
+string CConfigModeDocument::GetReadedMessageSkipWaitTimeResetButtonKeyDownOnCursorCG()
+{
+	return this.m_ReadedMessageSkipWaitTimeResetButtonKeyDownOnCursorCG;
+}
+
+CASPos CConfigModeDocument::GetReadedMessageSkipWaitTimeResetButtonPos()
+{
+	return this.m_ReadedMessageSkipWaitTimeResetButtonPos;
+}
+
+void CConfigModeDocument::SetDoesNotReadMessageSkipWaitTimeResetButtonCG(string KeyUpCG, string KeyDownCG, string KeyUpOnCursorCG, string KeyDownOnCursorCG)
+{
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyUpCG = KeyUpCG;
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyDownCG = KeyDownCG;
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyUpOnCursorCG = KeyUpOnCursorCG;
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyDownOnCursorCG = KeyDownOnCursorCG;
+}
+
+void CConfigModeDocument::SetDoesNotReadMessageSkipWaitTimeResetButtonPos(CASPos Pos)
+{
+	this.m_DoesNotReadMessageSkipWaitTimeResetButtonPos = Pos;
+}
+
+string CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeResetButtonKeyUpCG()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyUpCG;
+}
+
+string CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeResetButtonKeyDownCG()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyDownCG;
+}
+
+string CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeResetButtonKeyUpOnCursorCG()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyUpOnCursorCG;
+}
+
+string CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeResetButtonKeyDownOnCursorCG()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeResetButtonKeyDownOnCursorCG;
+}
+
+CASPos CConfigModeDocument::GetDoesNotReadMessageSkipWaitTimeResetButtonPos()
+{
+	return this.m_DoesNotReadMessageSkipWaitTimeResetButtonPos;
+}
+
+void CConfigModeDocument::SetRestrainScreensaverCheckBoxPos(CASPos Pos)
+{
+	this.m_RestrainScreensaverCheckBoxPos = Pos;
+}
+
+void CConfigModeDocument::SetRestrainScreensaverCheckBoxCG(string BaseCG, string CheckMarkCG, string OnCursorCG)
+{
+	this.m_RestrainScreensaverCheckBoxBaseCG = BaseCG;
+	this.m_RestrainScreensaverCheckBoxCheckMarkCG = CheckMarkCG;
+	this.m_RestrainScreensaverCheckBoxOnCursorCG = OnCursorCG;
+}
+
+CASPos CConfigModeDocument::GetRestrainScreensaverCheckBoxPos()
+{
+	return this.m_RestrainScreensaverCheckBoxPos;
+}
+
+string CConfigModeDocument::GetRestrainScreensaverCheckBoxBaseCG()
+{
+	return this.m_RestrainScreensaverCheckBoxBaseCG;
+}
+
+string CConfigModeDocument::GetRestrainScreensaverCheckBoxCheckMarkCG()
+{
+	return this.m_RestrainScreensaverCheckBoxCheckMarkCG;
+}
+
+string CConfigModeDocument::GetRestrainScreensaverCheckBoxOnCursorCG()
+{
+	return this.m_RestrainScreensaverCheckBoxOnCursorCG;
+}
+
+CASPos CConfigModeDocument::GetWindowManualTextPos()
+{
+	return this.m_WindowManualTextPos;
+}
+
+void CConfigModeDocument::SetWindowManualTextPos(int X, int Y)
+{
+	this.m_WindowManualTextPos.Set(X, Y);
+}
+
+void CConfigModeDocument::SetShowEffectKeyCancel(bool bShow)
+{
+	this.m_bShowEffectKeyCancel = bShow;
+}
+
+bool CConfigModeDocument::GetShowEffectKeyCancel()
+{
+	return this.m_bShowEffectKeyCancel;
+}
+
+void CConfigModeDocument::SetSoundDecide(int nSound)
+{
+	this.m_nSoundDecide = nSound;
+}
+
+void CConfigModeDocument::SetSoundUnderCursor(int nSound)
+{
+	this.m_nSoundUnderCursor = nSound;
+}
+
+void CConfigModeDocument::SetSoundCancel(int nSound)
+{
+	this.m_nSoundCancel = nSound;
+}
+
+int CConfigModeDocument::GetSoundDecide()
+{
+	return this.m_nSoundDecide;
+}
+
+int CConfigModeDocument::GetSoundUnderCursor()
+{
+	return this.m_nSoundUnderCursor;
+}
+
+int CConfigModeDocument::GetSoundCancel()
+{
+	return this.m_nSoundCancel;
+}
+
+void CConfigModeDocument::SetShowReturnTitleButton(bool bShow)
+{
+	this.m_bShowReturnTitleButton = bShow;
+}
+
+bool CConfigModeDocument::GetShowReturnTitleButton()
+{
+	return this.m_bShowReturnTitleButton;
+}
+

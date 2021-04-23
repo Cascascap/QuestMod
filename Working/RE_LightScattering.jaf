@@ -1,0 +1,123 @@
+bool RE_SaveLightScattering(int nPlugin, string FileName)
+{
+	int nFogType = TapirEngine.GetFogType(nPlugin);
+	float fFogNear = TapirEngine.GetFogNear(nPlugin);
+	float fFogFar = TapirEngine.GetFogFar(nPlugin);
+	float fFogColorR = 0.0;
+	float fFogColorG = 0.0;
+	float fFogColorB = 0.0;
+	TapirEngine.GetFogColor(nPlugin, fFogColorR, fFogColorG, fFogColorB);
+	float fLSBetaR = TapirEngine.GetLSBetaR(nPlugin);
+	float fLSBetaM = TapirEngine.GetLSBetaM(nPlugin);
+	float fLSG = TapirEngine.GetLSG(nPlugin);
+	float fLSDistance = TapirEngine.GetLSDistance(nPlugin);
+	float fLSLightDirX = 0.0;
+	float fLSLightDirY = 0.0;
+	float fLSLightDirZ = 0.0;
+	TapirEngine.GetLSLightDir(nPlugin, fLSLightDirX, fLSLightDirY, fLSLightDirZ);
+	float fLSLightColorR = 0.0;
+	float fLSLightColorG = 0.0;
+	float fLSLightColorB = 0.0;
+	TapirEngine.GetLSLightColor(nPlugin, fLSLightColorR, fLSLightColorG, fLSLightColorB);
+	float fLSSunColorR = 0.0;
+	float fLSSunColorG = 0.0;
+	float fLSSunColorB = 0.0;
+	TapirEngine.GetLSSunColor(nPlugin, fLSSunColorR, fLSSunColorG, fLSSunColorB);
+	if (!File2.OpenForWrite(FileName))
+	{
+		system.MsgBox("%s\nファイルの書き込み用オープンに失敗しました" % FileName);
+		return false;
+	}
+	if (!File2.WriteString("LS0"))
+	{
+		return false;
+	}
+	if (!File2.WriteInt(0))
+	{
+		return false;
+	}
+	if (!File2.WriteInt(nFogType))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fFogNear))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fFogFar))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fFogColorR))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fFogColorG))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fFogColorB))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSBetaR))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSBetaM))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSG))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSDistance))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSLightDirX))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSLightDirY))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSLightDirZ))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSLightColorR))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSLightColorG))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSLightColorB))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSSunColorR))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSSunColorG))
+	{
+		return false;
+	}
+	if (!File2.WriteFloat(fLSSunColorB))
+	{
+		return false;
+	}
+	if (!File2.Close())
+	{
+		system.MsgBox("ファイルのクローズに失敗しました");
+		return false;
+	}
+	system.MsgBox("%s\n保存しました" % FileName);
+	return true;
+}
+

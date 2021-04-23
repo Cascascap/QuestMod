@@ -1,0 +1,150 @@
+bool 戦闘従魔_作成(int nZ)
+{
+	g_bBattleGirlUpdate = false;
+	if (!g_sBattleGirl.create(従魔_オーナー番号(), nZ))
+	{
+		return false;
+	}
+	return true;
+}
+
+void 戦闘従魔_削除()
+{
+	g_bBattleGirlUpdate = false;
+	g_sBattleGirl.delete();
+}
+
+bool 戦闘従魔_再作成()
+{
+	g_bBattleGirlUpdate = false;
+	return g_sBattleGirl.remake();
+}
+
+void 戦闘従魔_表示設定(bool bShow)
+{
+	if (!g_sBattleGirl.isCreated())
+	{
+		return;
+	}
+	g_sBattleGirl.setShow(bShow);
+	g_bBattleGirlUpdate = bShow;
+}
+
+void 戦闘従魔_カットイン開始()
+{
+	g_sBattleGirl.startCutIn();
+}
+
+void 戦闘従魔_消し()
+{
+	g_sBattleGirl.setShow(false);
+	g_bBattleGirlUpdate = false;
+}
+
+int 戦闘従魔_オーナー番号()
+{
+	return 戦闘番号_味方取得(g_sBattleGirl.getCharaNo());
+}
+
+bool 戦闘従魔_オーナー確認()
+{
+	return 戦闘従魔_オーナー番号() > 0;
+}
+
+bool 戦闘従魔_作成済()
+{
+	return g_sBattleGirl.isCreated();
+}
+
+string 戦闘従魔_アイコン(int nItemCgNo)
+{
+	switch (nItemCgNo)
+	{
+		case 6500:
+			return "アイコン・きゃんきゃん";
+		case 6501:
+			return "アイコン・チハ";
+		case 6502:
+			return "アイコン・やもりん";
+		case 6503:
+			return "アイコン・マジスコ";
+		case 6504:
+			return "アイコン・クラーケン";
+		case 6505:
+			return "アイコン・カニちゃん";
+		case 6506:
+			return "アイコン・ちゃぷちゃぷ";
+		case 6507:
+			return "アイコン・かえる女";
+		case 6508:
+			return "アイコン・メイドさん";
+		case 6509:
+			return "アイコン・ざしきわらし";
+		case 6516:
+			return "アイコン・ラルガの猫";
+		case 6510:
+			return "アイコン・ちょーちん";
+		case 6511:
+			return "アイコン・とっこーちゃん";
+		case 6512:
+			return "アイコン・まじしゃん";
+		case 6513:
+			return "アイコン・ねこまたまた";
+		case 6514:
+			return "アイコン・バルキリー";
+		case 6515:
+			return "アイコン・キャプテンバニラ";
+		case 6632:
+			return "アイコン・バトルノート";
+		default:
+			break;
+	}
+	return "";
+}
+
+string 戦闘従魔_カットイン(int nItemCgNo)
+{
+	switch (nItemCgNo)
+	{
+		case 6500:
+			return "カットイン・きゃんきゃん";
+		case 6501:
+			return "カットイン・チハ";
+		case 6502:
+			return "カットイン・やもりん";
+		case 6503:
+			return "カットイン・マジスコ";
+		case 6504:
+			return "カットイン・クラーケン";
+		case 6505:
+			return "カットイン・カニちゃん";
+		case 6506:
+			return "カットイン・ちゃぷちゃぷ";
+		case 6507:
+			return "カットイン・かえる女";
+		case 6508:
+			return "カットイン・メイドさん";
+		case 6509:
+			return "カットイン・ざしきわらし";
+		case 6516:
+			return "カットイン・ラルガの猫";
+		case 6510:
+			return "カットイン・ちょーちん";
+		case 6511:
+			return "カットイン・とっこーちゃん";
+		case 6512:
+			return "カットイン・まじしゃん";
+		case 6513:
+			return "カットイン・ねこまたまた";
+		case 6514:
+			return "カットイン・バルキリー";
+		case 6515:
+			return "カットイン・キャプテンバニラ";
+		case 6632:
+			return "カットイン・バトルノート";
+		default:
+			break;
+	}
+	return "";
+}
+

@@ -1,0 +1,1379 @@
+int CReignPlugin::GetPlugin()
+{
+	return this.m_nPlugin;
+}
+
+void CReignPlugin::SetDrawFlag(bool bFlag)
+{
+	if (this.m_sp != -1)
+	{
+		ChipmunkSpriteEngine.SP_SetShow(this.m_sp, bFlag);
+	}
+}
+
+CReignPlugin::CReignPlugin()
+{
+	this.m_sp = -1;
+	this.m_nPlugin = -1;
+}
+
+CReignPlugin::~CReignPlugin()
+{
+	this.Release();
+}
+
+bool CReignPlugin::Create(int nZ, int nWidth, int nHeight)
+{
+	this.Release();
+	this.m_sp = SP_GET_UNUSE_NUM();
+	SP_CREATE(this.m_sp, 1, 1, 255, 255, 255, 255);
+	SP_SET_Z(this.m_sp, nZ);
+	this.m_nPlugin = TapirEngine.CreatePlugin();
+	if (this.m_nPlugin == -1)
+	{
+		system.Error("プラグインの作成に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+void CReignPlugin::Release()
+{
+	if (this.m_nPlugin != -1)
+	{
+		if (!TapirEngine.ReleasePlugin(this.m_nPlugin))
+		{
+			system.Error("プラグインの解放に失敗しました");
+		}
+		this.m_nPlugin = -1;
+	}
+	if (this.m_sp != -1)
+	{
+		SP_DEL(this.m_sp);
+		this.m_sp = -1;
+	}
+}
+
+bool CReignPlugin::Bind()
+{
+	if (this.m_nPlugin == -1)
+	{
+		return false;
+	}
+	if (this.m_sp == -1)
+	{
+		return false;
+	}
+	if (!TapirEngine.BindPlugin(this.m_nPlugin, this.m_sp))
+	{
+		system.Error("プラグインのバインドに失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::Unbind()
+{
+	if (this.m_nPlugin == -1)
+	{
+		return true;
+	}
+	if (!TapirEngine.UnbindPlugin(this.m_nPlugin))
+	{
+		system.Error("プラグインのアンバインドに失敗しました");
+		return false;
+	}
+	return true;
+}
+
+int CReignPlugin::CreateInstance()
+{
+	int nInstance = TapirEngine.CreateInstance(this.m_nPlugin);
+	if (nInstance == -1)
+	{
+		system.Error("インスタンスの作成に失敗しました");
+	}
+	return nInstance;
+}
+
+bool CReignPlugin::ReleaseInstance(int nInstance)
+{
+	if (!TapirEngine.ReleaseInstance(this.m_nPlugin, nInstance))
+	{
+		system.Error("インスタンスの解放に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceType(int nInstance, int nType)
+{
+	if (!TapirEngine.SetInstanceType(this.m_nPlugin, nInstance, nType))
+	{
+		system.Error("インスタンスのタイプ設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstancePos(int nInstance, float fX, float fY, float fZ)
+{
+	if (!TapirEngine.SetInstancePos(this.m_nPlugin, nInstance, fX, fY, fZ))
+	{
+		system.Error("インスタンスの位置設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceVector(int nInstance, float fX, float fY, float fZ)
+{
+	if (!TapirEngine.SetInstanceVector(this.m_nPlugin, nInstance, fX, fY, fZ))
+	{
+		system.Error("インスタンスのベクトル設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceAngle(int nInstance, float fAngle)
+{
+	if (!TapirEngine.SetInstanceAngle(this.m_nPlugin, nInstance, fAngle))
+	{
+		system.Error("インスタンスの角度設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceAngleP(int nInstance, float fAngleP)
+{
+	if (!TapirEngine.SetInstanceAngleP(this.m_nPlugin, nInstance, fAngleP))
+	{
+		system.Error("インスタンスの角度設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceAngleB(int nInstance, float fAngleB)
+{
+	if (!TapirEngine.SetInstanceAngleB(this.m_nPlugin, nInstance, fAngleB))
+	{
+		system.Error("インスタンスの角度設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceScaleX(int nInstance, float fScaleX)
+{
+	if (!TapirEngine.SetInstanceScaleX(this.m_nPlugin, nInstance, fScaleX))
+	{
+		system.Error("インスタンスのスケール設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceScaleY(int nInstance, float fScaleY)
+{
+	if (!TapirEngine.SetInstanceScaleY(this.m_nPlugin, nInstance, fScaleY))
+	{
+		system.Error("インスタンスのスケール設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceScaleZ(int nInstance, float fScaleZ)
+{
+	if (!TapirEngine.SetInstanceScaleZ(this.m_nPlugin, nInstance, fScaleZ))
+	{
+		system.Error("インスタンスのスケール設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceZBias(int nInstance, float fZBias)
+{
+	return TapirEngine.SetInstanceZBias(this.m_nPlugin, nInstance, fZBias);
+}
+
+float CReignPlugin::GetInstanceZBias(int nInstance)
+{
+	return TapirEngine.GetInstanceZBias(this.m_nPlugin, nInstance);
+}
+
+bool CReignPlugin::SetInstanceVertexPos(int nInstance, int nIndex, float fX, float fY, float fZ)
+{
+	if (!TapirEngine.SetInstanceVertexPos(this.m_nPlugin, nInstance, nIndex, fX, fY, fZ))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceDiffuse(int nInstance, float fR, float fG, float fB)
+{
+	if (!TapirEngine.SetInstanceDiffuse(this.m_nPlugin, nInstance, fR, fG, fB))
+	{
+		system.Error("インスタンスのディフューズ設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceGlobeDiffuse(int nInstance, float fR, float fG, float fB)
+{
+	if (!TapirEngine.SetInstanceGlobeDiffuse(this.m_nPlugin, nInstance, fR, fG, fB))
+	{
+		system.Error("インスタンスの地球ディフューズ設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceAmbient(int nInstance, float fR, float fG, float fB)
+{
+	if (!TapirEngine.SetInstanceAmbient(this.m_nPlugin, nInstance, fR, fG, fB))
+	{
+		system.Error("インスタンスのアンビエント設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceSpecular(int nInstance, float fSpecular)
+{
+	if (!TapirEngine.SetInstanceSpecular(this.m_nPlugin, nInstance, fSpecular))
+	{
+		system.Error("インスタンスのスペキュラー設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceAlpha(int nInstance, float fAlpha)
+{
+	if (!TapirEngine.SetInstanceAlpha(this.m_nPlugin, nInstance, fAlpha))
+	{
+		system.Error("インスタンスのアルファ設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceAttenuationNear(int nInstance, float fNear)
+{
+	if (!TapirEngine.SetInstanceAttenuationNear(this.m_nPlugin, nInstance, fNear))
+	{
+		system.Error("インスタンスの減衰近距離設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceAttenuationFar(int nInstance, float fFar)
+{
+	if (!TapirEngine.SetInstanceAttenuationFar(this.m_nPlugin, nInstance, fFar))
+	{
+		system.Error("インスタンスの減衰遠距離設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceDraw(int nInstance, bool bFlag)
+{
+	if (!TapirEngine.SetInstanceDraw(this.m_nPlugin, nInstance, bFlag))
+	{
+		system.Error("インスタンスの描画設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceDrawShadow(int nInstance, bool bFlag)
+{
+	if (!TapirEngine.SetInstanceDrawShadow(this.m_nPlugin, nInstance, bFlag))
+	{
+		system.Error("インスタンスのシャドウ描画設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceDrawMakeShadow(int nInstance, bool bFlag)
+{
+	if (!TapirEngine.SetInstanceDrawMakeShadow(this.m_nPlugin, nInstance, bFlag))
+	{
+		system.Error("インスタンスのシャドウ生成設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceDrawBump(int nInstance, bool bFlag)
+{
+	if (!TapirEngine.SetInstanceDrawBump(this.m_nPlugin, nInstance, bFlag))
+	{
+		system.Error("インスタンスのバンプ描画設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceMotionFrame(int nInstance, float fFrame)
+{
+	if (!TapirEngine.SetInstanceMotionFrame(this.m_nPlugin, nInstance, fFrame))
+	{
+		system.Error("インスタンスのモーションフレーム設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceMotionState(int nInstance, int nState)
+{
+	if (!TapirEngine.SetInstanceMotionState(this.m_nPlugin, nInstance, nState))
+	{
+		system.Error("インスタンスのモーションステート設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceMotionFrameRange(int nInstance, float fBeginFrame, float fEndFrame)
+{
+	if (!TapirEngine.SetInstanceMotionFrameRange(this.m_nPlugin, nInstance, fBeginFrame, fEndFrame))
+	{
+		system.Error("インスタンスのモーションフレーム範囲設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceMotionLoopFrameRange(int nInstance, float fBeginFrame, float fEndFrame)
+{
+	if (!TapirEngine.SetInstanceMotionLoopFrameRange(this.m_nPlugin, nInstance, fBeginFrame, fEndFrame))
+	{
+		system.Error("インスタンスのモーションループフレーム範囲設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceNextMotionState(int nInstance, int nState)
+{
+	if (!TapirEngine.SetInstanceNextMotionState(this.m_nPlugin, nInstance, nState))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceNextMotionFrame(int nInstance, float fFrame)
+{
+	if (!TapirEngine.SetInstanceNextMotionFrame(this.m_nPlugin, nInstance, fFrame))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceNextMotionFrameRange(int nInstance, float fBeginFrame, float fEndFrame)
+{
+	if (!TapirEngine.SetInstanceNextMotionFrameRange(this.m_nPlugin, nInstance, fBeginFrame, fEndFrame))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetInstanceNextMotionLoopFrameRange(int nInstance, float fBeginFrame, float fEndFrame)
+{
+	if (!TapirEngine.SetInstanceNextMotionLoopFrameRange(this.m_nPlugin, nInstance, fBeginFrame, fEndFrame))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::IsInstanceMotionBlend(int nInstance)
+{
+	return TapirEngine.IsInstanceMotionBlend(this.m_nPlugin, nInstance);
+}
+
+int CReignPlugin::GetInstanceNumofMaterial(int nInstance)
+{
+	return TapirEngine.GetInstanceNumofMaterial(this.m_nPlugin, nInstance);
+}
+
+bool CReignPlugin::GetInstanceMaterialName(int nInstance, int nNum, ref string Name)
+{
+	return TapirEngine.GetInstanceMaterialName(this.m_nPlugin, nInstance, nNum, Name);
+}
+
+float CReignPlugin::GetInstanceMaterialParam(int nInstance, int nMaterial, int nType)
+{
+	return TapirEngine.GetInstanceMaterialParam(this.m_nPlugin, nInstance, nMaterial, nType);
+}
+
+bool CReignPlugin::SetInstanceMaterialParam(int nInstance, int nMaterial, int nType, float fParam)
+{
+	return TapirEngine.SetInstanceMaterialParam(this.m_nPlugin, nInstance, nMaterial, nType, fParam);
+}
+
+bool CReignPlugin::SaveInstanceAddMaterialData(int nInstance)
+{
+	return TapirEngine.SaveInstanceAddMaterialData(this.m_nPlugin, nInstance);
+}
+
+bool CReignPlugin::SetInstancePointPos(int nInstance, int nIndex, float fX, float fY, float fZ)
+{
+	return TapirEngine.SetInstancePointPos(this.m_nPlugin, nInstance, nIndex, fX, fY, fZ);
+}
+
+bool CReignPlugin::GetInstancePointPos(int nInstance, int nIndex, ref float pfX, ref float pfY, ref float pfZ)
+{
+	return TapirEngine.GetInstancePointPos(this.m_nPlugin, nInstance, nIndex, pfX, pfY, pfZ);
+}
+
+bool CReignPlugin::SetInstanceColumnHeight(int nInstance, float fHeight)
+{
+	return TapirEngine.SetInstanceColumnHeight(this.m_nPlugin, nInstance, fHeight);
+}
+
+bool CReignPlugin::SetInstanceColumnRadius(int nInstance, float fRadius)
+{
+	return TapirEngine.SetInstanceColumnRadius(this.m_nPlugin, nInstance, fRadius);
+}
+
+bool CReignPlugin::SetInstanceColumnAngle(int nInstance, float fAngle)
+{
+	return TapirEngine.SetInstanceColumnAngle(this.m_nPlugin, nInstance, fAngle);
+}
+
+bool CReignPlugin::SetInstanceColumnAngleP(int nInstance, float fAngleP)
+{
+	return TapirEngine.SetInstanceColumnAngleP(this.m_nPlugin, nInstance, fAngleP);
+}
+
+bool CReignPlugin::SetInstanceColumnAngleB(int nInstance, float fAngleB)
+{
+	return TapirEngine.SetInstanceColumnAngleB(this.m_nPlugin, nInstance, fAngleB);
+}
+
+float CReignPlugin::GetInstanceColumnHeight(int nInstance)
+{
+	return TapirEngine.GetInstanceColumnHeight(this.m_nPlugin, nInstance);
+}
+
+float CReignPlugin::GetInstanceColumnRadius(int nInstance)
+{
+	return TapirEngine.GetInstanceColumnRadius(this.m_nPlugin, nInstance);
+}
+
+float CReignPlugin::GetInstanceColumnAngle(int nInstance)
+{
+	return TapirEngine.GetInstanceColumnAngle(this.m_nPlugin, nInstance);
+}
+
+float CReignPlugin::GetInstanceColumnAngleP(int nInstance)
+{
+	return TapirEngine.GetInstanceColumnAngleP(this.m_nPlugin, nInstance);
+}
+
+float CReignPlugin::GetInstanceColumnAngleB(int nInstance)
+{
+	return TapirEngine.GetInstanceColumnAngleB(this.m_nPlugin, nInstance);
+}
+
+bool CReignPlugin::SetInstanceTarget(int nInstance, int nIndex, int nTarget)
+{
+	return TapirEngine.SetInstanceTarget(this.m_nPlugin, nInstance, nIndex, nTarget);
+}
+
+int CReignPlugin::GetInstanceTarget(int nInstance, int nIndex)
+{
+	return TapirEngine.GetInstanceTarget(this.m_nPlugin, nInstance, nIndex);
+}
+
+int CReignPlugin::GetInstanceBoneIndex(int nInstance, string pIName)
+{
+	return TapirEngine.GetInstanceBoneIndex(this.m_nPlugin, nInstance, pIName);
+}
+
+bool CReignPlugin::TransInstanceLocalPosToWorldPosByBone(int nInstance, int nBone, float fOffsetX, float fOffsetY, float fOffsetZ, ref float pfX, ref float pfY, ref float pfZ)
+{
+	return TapirEngine.TransInstanceLocalPosToWorldPosByBone(this.m_nPlugin, nInstance, nBone, fOffsetX, fOffsetY, fOffsetZ, pfX, pfY, pfZ);
+}
+
+int CReignPlugin::GetInstanceNumofPolygon(int nInstance)
+{
+	return TapirEngine.GetInstanceNumofPolygon(this.m_nPlugin, nInstance);
+}
+
+int CReignPlugin::GetInstanceTextureMemorySize(int nInstance)
+{
+	return TapirEngine.GetInstanceTextureMemorySize(this.m_nPlugin, nInstance);
+}
+
+float CReignPlugin::CalcInstanceHeightDetection(int nInstance, float fX, float fZ)
+{
+	return TapirEngine.CalcInstanceHeightDetection(this.m_nPlugin, nInstance, fX, fZ);
+}
+
+int CReignPlugin::GetEffectNumofObject(int nInstance)
+{
+	return TapirEngine.GetEffectNumofObject(this.m_nPlugin, nInstance);
+}
+
+string CReignPlugin::GetEffectObjectName(int nInstance, int nObject)
+{
+	string Name = "";
+	TapirEngine.GetEffectObjectName(this.m_nPlugin, nInstance, nObject, Name);
+	return Name;
+}
+
+int CReignPlugin::GetEffectNumofObjectTexture(int nInstance, int nObject)
+{
+	return TapirEngine.GetEffectNumofObjectTexture(this.m_nPlugin, nInstance, nObject);
+}
+
+string CReignPlugin::GetEffectObjectTexture(int nInstance, int nObject, int nTexture)
+{
+	string Name = "";
+	TapirEngine.GetEffectObjectTexture(this.m_nPlugin, nInstance, nObject, nTexture, Name);
+	return Name;
+}
+
+void CReignPlugin::SetCameraPos(float fX, float fY, float fZ)
+{
+	if (!TapirEngine.SetCameraPos(this.m_nPlugin, fX, fY, fZ))
+	{
+		system.Error("カメラ位置の設定に失敗しました");
+	}
+}
+
+void CReignPlugin::SetCameraAngle(float fAngle)
+{
+	if (!TapirEngine.SetCameraAngle(this.m_nPlugin, fAngle))
+	{
+		system.Error("カメラ角度の設定に失敗しました");
+	}
+}
+
+void CReignPlugin::SetCameraAngleP(float fAngleP)
+{
+	if (!TapirEngine.SetCameraAngleP(this.m_nPlugin, fAngleP))
+	{
+		system.Error("カメラ角度の設定に失敗しました");
+	}
+}
+
+void CReignPlugin::SetCameraAngleB(float fAngleB)
+{
+	if (!TapirEngine.SetCameraAngleB(this.m_nPlugin, fAngleB))
+	{
+		system.Error("カメラ角度の設定に失敗しました");
+	}
+}
+
+float CReignPlugin::GetShadowBias(int nNum)
+{
+	return TapirEngine.GetShadowBias(this.m_nPlugin, nNum);
+}
+
+float CReignPlugin::GetShadowTargetDistance(int nNum)
+{
+	return TapirEngine.GetShadowTargetDistance(this.m_nPlugin, nNum);
+}
+
+bool CReignPlugin::SetShadowMapType(int nType)
+{
+	if (!TapirEngine.SetShadowMapType(this.m_nPlugin, nType))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowMapLightLookPos(float fX, float fY, float fZ)
+{
+	if (!TapirEngine.SetShadowMapLightLookPos(this.m_nPlugin, fX, fY, fZ))
+	{
+		system.Error("シャドウマップライト位置の設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowMapLightDir(float fX, float fY, float fZ)
+{
+	if (!TapirEngine.SetShadowMapLightDir(this.m_nPlugin, fX, fY, fZ))
+	{
+		system.Error("シャドウマップライト方向の設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowBox(float fX, float fY, float fZ, float fSizeX, float fSizeY, float fSizeZ)
+{
+	if (!TapirEngine.SetShadowBox(this.m_nPlugin, fX, fY, fZ, fSizeX, fSizeY, fSizeZ))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowBias(int nNum, float fShadowBias)
+{
+	if (!TapirEngine.SetShadowBias(this.m_nPlugin, nNum, fShadowBias))
+	{
+		system.Error("シャドウマップのバイアスの設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowSlopeBias(float fShadowSlopeBias)
+{
+	if (!TapirEngine.SetShadowSlopeBias(this.m_nPlugin, fShadowSlopeBias))
+	{
+		system.Error("シャドウマップのスロープバイアスの設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowFilterMag(float fShadowFilterMag)
+{
+	if (!TapirEngine.SetShadowFilterMag(this.m_nPlugin, fShadowFilterMag))
+	{
+		system.Error("シャドウマップのフィルター倍率の設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowTargetDistance(int nNum, float fDistance)
+{
+	if (!TapirEngine.SetShadowTargetDistance(this.m_nPlugin, nNum, fDistance))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetShadowMapResolutionLevel(int nLevel)
+{
+	if (!TapirEngine.SetShadowMapResolutionLevel(this.m_nPlugin, nLevel))
+	{
+		return false;
+	}
+	return true;
+}
+
+int CReignPlugin::GetShadowMapResolutionLevel()
+{
+	return TapirEngine.GetShadowMapResolutionLevel(this.m_nPlugin);
+}
+
+float CReignPlugin::GetShadowSplitDepth(int nNum)
+{
+	return TapirEngine.GetShadowSplitDepth(this.m_nPlugin, nNum);
+}
+
+bool CReignPlugin::SetShadowSplitDepth(int nNum, float fDepth)
+{
+	return TapirEngine.SetShadowSplitDepth(this.m_nPlugin, nNum, fDepth);
+}
+
+bool CReignPlugin::SetFogType(int nType)
+{
+	if (!TapirEngine.SetFogType(this.m_nPlugin, nType))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetFogNear(float fNear)
+{
+	if (!TapirEngine.SetFogNear(this.m_nPlugin, fNear))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetFogFar(float fFar)
+{
+	if (!TapirEngine.SetFogFar(this.m_nPlugin, fFar))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetFogColor(float fR, float fG, float fB)
+{
+	if (!TapirEngine.SetFogColor(this.m_nPlugin, fR, fG, fB))
+	{
+		return false;
+	}
+	return true;
+}
+
+int CReignPlugin::GetFogType()
+{
+	return TapirEngine.GetFogType(this.m_nPlugin);
+}
+
+float CReignPlugin::GetFogNear()
+{
+	return TapirEngine.GetFogNear(this.m_nPlugin);
+}
+
+float CReignPlugin::GetFogFar()
+{
+	return TapirEngine.GetFogFar(this.m_nPlugin);
+}
+
+void CReignPlugin::GetFogColor(ref float pfR, ref float pfG, ref float pfB)
+{
+	TapirEngine.GetFogColor(this.m_nPlugin, pfR, pfG, pfB);
+}
+
+bool CReignPlugin::SetDrawTextureFog(bool bDraw)
+{
+	if (!TapirEngine.SetDrawTextureFog(this.m_nPlugin, bDraw))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::GetDrawTextureFog()
+{
+	return TapirEngine.GetDrawTextureFog(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetOptionAntiAliasing(int nFlag)
+{
+	if (!TapirEngine.SetOptionAntiAliasing(nFlag))
+	{
+		system.Error("アンチエイリアシング設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetOptionWaitVSync(int nFlag)
+{
+	if (!TapirEngine.SetOptionWaitVSync(nFlag))
+	{
+		system.Error("ＶＳＹＮＣ待ち設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+int CReignPlugin::GetOptionAntiAliasing()
+{
+	return TapirEngine.GetOptionAntiAliasing();
+}
+
+int CReignPlugin::GetOptionWaitVSync()
+{
+	return TapirEngine.GetOptionWaitVSync();
+}
+
+bool CReignPlugin::SetViewport(int nX, int nY, int nWidth, int nHeight)
+{
+	if (!TapirEngine.SetViewport(this.m_nPlugin, nX, nY, nWidth, nHeight))
+	{
+		system.Error("ビューポートの設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetProjection(float fWidth, float fHeight, float fNear, float fFar, float fDeg)
+{
+	if (!TapirEngine.SetProjection(this.m_nPlugin, fWidth, fHeight, fNear, fFar, fDeg))
+	{
+		system.Error("プロジェクションの設定に失敗しました");
+		return false;
+	}
+	return true;
+}
+
+float CReignPlugin::GetBrightness()
+{
+	return TapirEngine.GetBrightness(this.m_nPlugin);
+}
+
+void CReignPlugin::SetBrightness(float fBrightness)
+{
+	if (!TapirEngine.SetBrightness(this.m_nPlugin, fBrightness))
+	{
+		system.Error("輝度設定に失敗しました");
+	}
+}
+
+int CReignPlugin::GetRenderMode()
+{
+	return TapirEngine.GetRenderMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetShadowMode()
+{
+	return TapirEngine.GetShadowMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetBumpMode()
+{
+	return TapirEngine.GetBumpMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetFogMode()
+{
+	return TapirEngine.GetFogMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetSpecularMode()
+{
+	return TapirEngine.GetSpecularMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetLightMapMode()
+{
+	return TapirEngine.GetLightMapMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetSoftFogEdgeMode()
+{
+	return TapirEngine.GetSoftFogEdgeMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetSSAOMode()
+{
+	return TapirEngine.GetSSAOMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetShaderPrecisionMode()
+{
+	return TapirEngine.GetShaderPrecisionMode(this.m_nPlugin);
+}
+
+int CReignPlugin::GetShaderDebugMode()
+{
+	return TapirEngine.GetShaderDebugMode(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetDebugMode(int DebugModeType, int Mode)
+{
+	return TapirEngine.SetDebugMode(this.m_nPlugin, DebugModeType, Mode);
+}
+
+int CReignPlugin::GetDebugMode(int DebugModeType)
+{
+	return TapirEngine.GetDebugMode(this.m_nPlugin, DebugModeType);
+}
+
+int CReignPlugin::GetHDRMode()
+{
+	return TapirEngine.GetHDRMode(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetHDRMode(int nMode)
+{
+	if (!TapirEngine.SetHDRMode(this.m_nPlugin, nMode))
+	{
+		return false;
+	}
+	return true;
+}
+
+int CReignPlugin::GetVertexBlendMode()
+{
+	return TapirEngine.GetVertexBlendMode(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetVertexBlendMode(int nMode)
+{
+	if (!TapirEngine.SetVertexBlendMode(this.m_nPlugin, nMode))
+	{
+		return false;
+	}
+	return true;
+}
+
+int CReignPlugin::GetTextureFilterMode()
+{
+	return TapirEngine.GetTextureFilterMode(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetRenderMode(int nMode)
+{
+	if (nMode > 0)
+	{
+		if (!ChipmunkSpriteEngine.VIEW_SetMode(1))
+		{
+			system.MsgBox("ビューモードの切り替えに失敗しました");
+		}
+	}
+	if (!TapirEngine.SetRenderMode(this.m_nPlugin, nMode))
+	{
+		system.Error("レンダーモードの設定に失敗しました");
+	}
+	if (nMode <= 0)
+	{
+		if (!ChipmunkSpriteEngine.VIEW_SetMode(0))
+		{
+			system.Error("ビューモードの切り替えに失敗しました");
+		}
+	}
+	return true;
+}
+
+bool CReignPlugin::SetDrawOption(int DrawOption, int Param)
+{
+	return TapirEngine.SetDrawOption(this.m_nPlugin, DrawOption, Param);
+}
+
+int CReignPlugin::GetDrawOption(int DrawOption)
+{
+	return TapirEngine.GetDrawOption(this.m_nPlugin, DrawOption);
+}
+
+bool CReignPlugin::SetShadowMode(int nMode)
+{
+	if (!TapirEngine.SetShadowMode(this.m_nPlugin, nMode))
+	{
+		system.Error("シャドウモードの設定に失敗しました");
+	}
+	return true;
+}
+
+bool CReignPlugin::SetBumpMode(int nMode)
+{
+	if (!TapirEngine.SetBumpMode(this.m_nPlugin, nMode))
+	{
+		system.Error("バンプマッピングモードの設定に失敗しました");
+	}
+	return true;
+}
+
+bool CReignPlugin::SetFogMode(int nMode)
+{
+	return TapirEngine.SetFogMode(this.m_nPlugin, nMode);
+}
+
+bool CReignPlugin::SetSpecularMode(int nMode)
+{
+	return TapirEngine.SetSpecularMode(this.m_nPlugin, nMode);
+}
+
+bool CReignPlugin::SetLightMapMode(int nMode)
+{
+	return TapirEngine.SetLightMapMode(this.m_nPlugin, nMode);
+}
+
+bool CReignPlugin::SetSoftFogEdgeMode(int nMode)
+{
+	return TapirEngine.SetSoftFogEdgeMode(this.m_nPlugin, nMode);
+}
+
+bool CReignPlugin::SetSSAOMode(int nMode)
+{
+	return TapirEngine.SetSSAOMode(this.m_nPlugin, nMode);
+}
+
+bool CReignPlugin::SetShaderPrecisionMode(int nMode)
+{
+	return TapirEngine.SetShaderPrecisionMode(this.m_nPlugin, nMode);
+}
+
+bool CReignPlugin::SetShaderDebugMode(int nMode)
+{
+	return TapirEngine.SetShaderDebugMode(this.m_nPlugin, nMode);
+}
+
+int CReignPlugin::GetTextureResolutionLevel()
+{
+	return TapirEngine.GetTextureResolutionLevel(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetTextureResolutionLevel(int nLevel)
+{
+	if (!TapirEngine.SetTextureResolutionLevel(this.m_nPlugin, nLevel))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetTextureFilterMode(int nMode)
+{
+	if (!TapirEngine.SetTextureFilterMode(this.m_nPlugin, nMode))
+	{
+		system.Error("テクスチャフィルタモードの設定に失敗しました");
+	}
+	return true;
+}
+
+bool CReignPlugin::GetUsePower2Texture()
+{
+	return TapirEngine.GetUsePower2Texture(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetUsePower2Texture(bool bUse)
+{
+	return TapirEngine.SetUsePower2Texture(this.m_nPlugin, bUse);
+}
+
+bool CReignPlugin::GetGlobalAmbient(ref float fR, ref float fG, ref float fB)
+{
+	if (!TapirEngine.GetGlobalAmbient(this.m_nPlugin, fR, fG, fB))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CReignPlugin::SetGlobalAmbient(float fR, float fG, float fB)
+{
+	if (!TapirEngine.SetGlobalAmbient(this.m_nPlugin, fR, fG, fB))
+	{
+		return false;
+	}
+	return true;
+}
+
+int CReignPlugin::GetBloomMode()
+{
+	return TapirEngine.GetBloomMode(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetBloomMode(int nMode)
+{
+	return TapirEngine.SetBloomMode(this.m_nPlugin, nMode);
+}
+
+int CReignPlugin::GetGlareMode()
+{
+	return TapirEngine.GetGlareMode(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetGlareMode(int nMode)
+{
+	return TapirEngine.SetGlareMode(this.m_nPlugin, nMode);
+}
+
+float CReignPlugin::GetPostEffectFilterY()
+{
+	return TapirEngine.GetPostEffectFilterY(this.m_nPlugin);
+}
+
+float CReignPlugin::GetPostEffectFilterCb()
+{
+	return TapirEngine.GetPostEffectFilterCb(this.m_nPlugin);
+}
+
+float CReignPlugin::GetPostEffectFilterCr()
+{
+	return TapirEngine.GetPostEffectFilterCr(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetPostEffectFilterY(float fY)
+{
+	return TapirEngine.SetPostEffectFilterY(this.m_nPlugin, fY);
+}
+
+bool CReignPlugin::SetPostEffectFilterCb(float fCb)
+{
+	return TapirEngine.SetPostEffectFilterCb(this.m_nPlugin, fCb);
+}
+
+bool CReignPlugin::SetPostEffectFilterCr(float fCr)
+{
+	return TapirEngine.SetPostEffectFilterCr(this.m_nPlugin, fCr);
+}
+
+bool CReignPlugin::GetBackCGName(int nNum, ref string pICGName)
+{
+	return TapirEngine.GetBackCGName(this.m_nPlugin, nNum, pICGName);
+}
+
+int CReignPlugin::GetBackCGNum(int nNum)
+{
+	return TapirEngine.GetBackCGNum(this.m_nPlugin, nNum);
+}
+
+float CReignPlugin::GetBackCGBlendRate(int nNum)
+{
+	return TapirEngine.GetBackCGBlendRate(this.m_nPlugin, nNum);
+}
+
+float CReignPlugin::GetBackCGDestPosX(int nNum)
+{
+	return TapirEngine.GetBackCGDestPosX(this.m_nPlugin, nNum);
+}
+
+float CReignPlugin::GetBackCGDestPosY(int nNum)
+{
+	return TapirEngine.GetBackCGDestPosY(this.m_nPlugin, nNum);
+}
+
+float CReignPlugin::GetBackCGMag(int nNum)
+{
+	return TapirEngine.GetBackCGMag(this.m_nPlugin, nNum);
+}
+
+float CReignPlugin::GetBackCGQuakeMag(int nNum)
+{
+	return TapirEngine.GetBackCGQuakeMag(this.m_nPlugin, nNum);
+}
+
+bool CReignPlugin::GetBackCGShow(int nNum)
+{
+	return TapirEngine.GetBackCGShow(this.m_nPlugin, nNum);
+}
+
+bool CReignPlugin::SetBackCGName(int nNum, string pICGName)
+{
+	return TapirEngine.SetBackCGName(this.m_nPlugin, nNum, pICGName);
+}
+
+bool CReignPlugin::SetBackCGNum(int nNum, int nCGNum)
+{
+	return TapirEngine.SetBackCGNum(this.m_nPlugin, nNum, nCGNum);
+}
+
+bool CReignPlugin::SetBackCGBlendRate(int nNum, float fBlendRate)
+{
+	return TapirEngine.SetBackCGBlendRate(this.m_nPlugin, nNum, fBlendRate);
+}
+
+bool CReignPlugin::SetBackCGDestPos(int nNum, float fX, float fY)
+{
+	return TapirEngine.SetBackCGDestPos(this.m_nPlugin, nNum, fX, fY);
+}
+
+bool CReignPlugin::SetBackCGMag(int nNum, float fMag)
+{
+	return TapirEngine.SetBackCGMag(this.m_nPlugin, nNum, fMag);
+}
+
+bool CReignPlugin::SetBackCGQuakeMag(int nNum, float fQuakeMag)
+{
+	return TapirEngine.SetBackCGQuakeMag(this.m_nPlugin, nNum, fQuakeMag);
+}
+
+bool CReignPlugin::SetBackCGShow(int nNum, bool bShow)
+{
+	return TapirEngine.SetBackCGShow(this.m_nPlugin, nNum, bShow);
+}
+
+float CReignPlugin::GetGlareBrightnessParam(int nIndex)
+{
+	return TapirEngine.GetGlareBrightnessParam(this.m_nPlugin, nIndex);
+}
+
+bool CReignPlugin::SetGlareBrightnessParam(int nIndex, float fParam)
+{
+	return TapirEngine.SetGlareBrightnessParam(this.m_nPlugin, nIndex, fParam);
+}
+
+float CReignPlugin::GetSSAOParam(int nType)
+{
+	return TapirEngine.GetSSAOParam(this.m_nPlugin, nType);
+}
+
+bool CReignPlugin::SetSSAOParam(int nType, float fParam)
+{
+	return TapirEngine.SetSSAOParam(this.m_nPlugin, nType, fParam);
+}
+
+bool CReignPlugin::IsLoading()
+{
+	return TapirEngine.IsLoading(this.m_nPlugin);
+}
+
+int CReignPlugin::GetDebugInfoMode()
+{
+	return TapirEngine.GetDebugInfoMode(this.m_nPlugin);
+}
+
+bool CReignPlugin::SetDebugInfoMode(int nMode)
+{
+	if (!TapirEngine.SetDebugInfoMode(this.m_nPlugin, nMode))
+	{
+		system.Error("デバッグ情報モードの設定に失敗しました");
+	}
+	return true;
+}
+
+int CReignPlugin::GetVertexShaderVersion()
+{
+	return TapirEngine.GetVertexShaderVersion();
+}
+
+int CReignPlugin::GetPixelShaderVersion()
+{
+	return TapirEngine.GetPixelShaderVersion();
+}
+
+bool CReignPlugin::SetInstanceSpecularReflectRate(int nInstance, float fRate)
+{
+	return TapirEngine.SetInstanceSpecularReflectRate(this.m_nPlugin, nInstance, fRate);
+}
+
+bool CReignPlugin::SetInstanceFresnelReflectRate(int nInstance, float fRate)
+{
+	return TapirEngine.SetInstanceFresnelReflectRate(this.m_nPlugin, nInstance, fRate);
+}
+
+float CReignPlugin::GetInstanceSpecularReflectRate(int nInstance)
+{
+	return TapirEngine.GetInstanceSpecularReflectRate(this.m_nPlugin, nInstance);
+}
+
+float CReignPlugin::GetInstanceFresnelReflectRate(int nInstance)
+{
+	return TapirEngine.GetInstanceFresnelReflectRate(this.m_nPlugin, nInstance);
+}
+
+bool CReignPlugin::LoadLightScatteringSetting(string pIFileName)
+{
+	return TapirEngine.LoadLightScatteringSetting(this.m_nPlugin, pIFileName);
+}
+
+float CReignPlugin::GetLSBetaR()
+{
+	return TapirEngine.GetLSBetaR(this.m_nPlugin);
+}
+
+float CReignPlugin::GetLSBetaM()
+{
+	return TapirEngine.GetLSBetaM(this.m_nPlugin);
+}
+
+float CReignPlugin::GetLSG()
+{
+	return TapirEngine.GetLSG(this.m_nPlugin);
+}
+
+float CReignPlugin::GetLSDistance()
+{
+	return TapirEngine.GetLSDistance(this.m_nPlugin);
+}
+
+void CReignPlugin::GetLSLightDir(ref float pfX, ref float pfY, ref float pfZ)
+{
+	TapirEngine.GetLSLightDir(this.m_nPlugin, pfX, pfY, pfZ);
+}
+
+void CReignPlugin::GetLSLightColor(ref float pfR, ref float pfG, ref float pfB)
+{
+	TapirEngine.GetLSLightColor(this.m_nPlugin, pfR, pfG, pfB);
+}
+
+void CReignPlugin::GetLSSunColor(ref float pfR, ref float pfG, ref float pfB)
+{
+	TapirEngine.GetLSSunColor(this.m_nPlugin, pfR, pfG, pfB);
+}
+
+bool CReignPlugin::SetLSBetaR(float fBetaR)
+{
+	return TapirEngine.SetLSBetaR(this.m_nPlugin, fBetaR);
+}
+
+bool CReignPlugin::SetLSBetaM(float fBetaM)
+{
+	return TapirEngine.SetLSBetaM(this.m_nPlugin, fBetaM);
+}
+
+bool CReignPlugin::SetLSG(float fG)
+{
+	return TapirEngine.SetLSG(this.m_nPlugin, fG);
+}
+
+bool CReignPlugin::SetLSDistance(float fDistance)
+{
+	return TapirEngine.SetLSDistance(this.m_nPlugin, fDistance);
+}
+
+bool CReignPlugin::SetLSLightDir(float fX, float fY, float fZ)
+{
+	return TapirEngine.SetLSLightDir(this.m_nPlugin, fX, fY, fZ);
+}
+
+bool CReignPlugin::SetLSLightColor(float fR, float fG, float fB)
+{
+	return TapirEngine.SetLSLightColor(this.m_nPlugin, fR, fG, fB);
+}
+
+bool CReignPlugin::SetLSSunColor(float fR, float fG, float fB)
+{
+	return TapirEngine.SetLSSunColor(this.m_nPlugin, fR, fG, fB);
+}
+
+void CReignPlugin::SetDebugMessage(string Text)
+{
+	sact_text_metrics_t tm;
+	tm.nColorR = 255;
+	tm.nColorG = 0;
+	tm.nColorB = 0;
+	tm.nSize = 32;
+}
+
+void CReignPlugin::SetThreadLoadingMode(bool Mode)
+{
+	TapirEngine.SetThreadLoadingMode(this.m_nPlugin, Mode);
+}
+
+bool CReignPlugin::Suspend()
+{
+	return TapirEngine.Suspend(this.m_nPlugin);
+}
+
+bool CReignPlugin::IsSuspend()
+{
+	return TapirEngine.IsSuspend(this.m_nPlugin);
+}
+
+bool CReignPlugin::Resume()
+{
+	if (!TapirEngine.Resume(this.m_nPlugin))
+	{
+		return false;
+	}
+	TapirEngine.SetThreadLoadingMode(this.m_nPlugin, false);
+	int BeginTime = system.GetTime();
+	ChipmunkSpriteEngine.SP_SetShow(this.m_sp, 0);
+	for (; ; )
+	{
+		UpdateView(true);
+		if (!this.IsLoading())
+		{
+			break;
+		}
+	}
+	ChipmunkSpriteEngine.SP_SetShow(this.m_sp, 1);
+	TapirEngine.SetThreadLoadingMode(this.m_nPlugin, true);
+	system.Output("Resume %d ms\n" % (system.GetTime() - BeginTime));
+	return true;
+}
+
+bool CReignPlugin::DrawToMainSurface()
+{
+	return TapirEngine.DrawToMainSurface(this.m_nPlugin);
+}
+

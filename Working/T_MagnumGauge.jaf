@@ -1,0 +1,140 @@
+bool T_MagnumGauge::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+int T_MagnumGauge::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_MagnumGauge::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_MagnumGauge::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+bool T_MagnumGauge::getShow()
+{
+	return this.m_bShow;
+}
+
+int T_MagnumGauge::getValue()
+{
+	return this.m_sBar.getValue();
+}
+
+int T_MagnumGauge::getMax()
+{
+	return this.m_sBar.getMax();
+}
+
+bool T_MagnumGauge::getBlink()
+{
+	return this.m_bBlink;
+}
+
+bool T_MagnumGauge::isCreated()
+{
+	return this.m_spBase.isCreated();
+}
+
+T_MagnumGauge::T_MagnumGauge()
+{
+	this.clear();
+}
+
+T_MagnumGauge::~T_MagnumGauge()
+{
+	this.delete();
+}
+
+bool T_MagnumGauge::create(int nZ, int nMax)
+{
+	this.delete();
+	if (nMax <= 0)
+	{
+		return false;
+	}
+	this.m_spBase.setCg(11315);
+	this.m_spBase.setPos(778, 349);
+	this.m_spBase.setZ(nZ);
+	this.m_sBar.createCg(2, 11316, 0, 0);
+	this.m_sBar.setPos(784, 362);
+	this.m_sBar.setZ(nZ + 1);
+	this.m_sBar.setValue(0, nMax);
+	return true;
+}
+
+void T_MagnumGauge::delete()
+{
+	this.m_sBar.delete();
+	this.m_spBase.delete();
+	this.clear();
+}
+
+void T_MagnumGauge::clear()
+{
+	this.m_bBlink = false;
+	this.m_bShow = false;
+}
+
+bool T_MagnumGauge::blink()
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (!this.m_bBlink)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 500)
+	{
+		return true;
+	}
+	this.m_sBar.setShow(!this.m_sBar.getShow(), -1);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+void T_MagnumGauge::setValue(int nValue, int nMax)
+{
+	this.m_sBar.setValue(nValue, nMax);
+	this.setShow(this.m_bShow);
+	nValue = this.m_sBar.getValue();
+	nMax = this.m_sBar.getMax();
+	this.m_bBlink = nMax > 0 && nValue >= nMax;
+	this.m_sTimer.Reset();
+}
+
+void T_MagnumGauge::setShow(bool bShow)
+{
+	bool bShow2 = this.m_sBar.getMax() > 0 ? bShow : 0;
+	this.m_spBase.setShow(bShow2);
+	this.m_sBar.setShow(bShow2, -1);
+	this.m_bShow = bShow;
+}
+
+void T_MagnumGauge::setBlendRate(int nBlendRate)
+{
+	this.m_spBase.setBlendRate(nBlendRate);
+	this.m_sBar.setBlendRate(nBlendRate);
+}
+
+bool T_MagnumGauge::suspend()
+{
+	this.m_sBar.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_MagnumGauge::resume()
+{
+	this.m_sBar.resume();
+	return this.m_spBase.resume();
+}
+

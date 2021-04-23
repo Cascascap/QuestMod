@@ -1,0 +1,171 @@
+void キノコ／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(11, -1, -1);
+	セット表示(0, 5620, 0, 0);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmm, so this is where we do our work today."' A;
+	'"Read the request, Alkanese."' A;
+	セリフ(2100, "");
+	'"Sure thing."' A;
+	'"Hmm, let\'s see here."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ミニイベント表示(4210, 1, 500);
+	ト書き_paper();
+	': The geckies have been very violent:' R;
+	': lately.:' A;
+	': Some youths from the village tried to:' R;
+	': take care of them, but were beaten:' R;
+	': back...    :' A;
+	': The forest is full of food,:' R;
+	': but the villagers will all :' R;
+	': starve at this rate.:' A;
+	': Adventurers, please eliminate:' R;
+	': the gecky threat.:' R;
+	':                             :' R;
+	':           Cong Village Mayor:' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmm?"' A;
+	'"Well, let\'s get to it, I guess."' A;
+	セリフ(2030, "");
+	'"Wait a second."' A;
+	'"We should be careful in this forest. There are sloth shrooms all over the place."' A;
+	セリフ(2000, "");
+	'"Well dang."' A;
+	セリフ(2030, "");
+	'"Sloth shrooms will put you to sleep if you step on them. You\'ll be of no use in a fight."' A;
+	'"We should have at least one person who can deal with traps, like Suzume."' A;
+	セリフ(2000, "");
+	'"Sloth shrooms, huh...?"' A;
+	'"Anybody who actually falls asleep after stepping on that shit just didn\'t have the guts in the first place!"' A;
+	'"Now let\'s go!"' A;
+	セリフ(2100, "");
+	'"Ah, Bro, watch out!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ミニイベント表示(4310, 1, 500);
+	ト書き();
+	'  Shit! A trap!' R;
+	'    There were sloth shrooms underfoot!' A;
+	枠消去();
+	ミニイベント表示(4320, 1, 500);
+	ト書き();
+	'Rance stepped on a sloth shroom.' A;
+	セリフ(2005, "");
+	'"Hahh... hanya..."' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	セリフ(2100, "");
+	'"Whoa, Bro!"' A;
+	セリフ(2033, "");
+	'"Aw, geez."' A;
+	ト書き();
+	'Rance went limp and collapsed.' A;
+	セリフ(2033, "");
+	'"Well, he\'s not gonna be any help now..."' A;
+	セリフ(2030, "");
+	'"Guess we\'ll have to keep on without Rance."' A;
+	セリフ(2100, "");
+	'"I\'ll carry on your will, Bro..."' A;
+	ADVOFF();
+}
+
+void キノコ／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1100, 1, 200);
+	セリフ(2100, "");
+	'"We\'re in pretty deep now..."' A;
+	セリフ(2030, "");
+	'"Oui, we should be close."' A;
+	セリフ(2100, "");
+	'"Really?"' A;
+	セリフ(2030, "");
+	'"Ni-nin-nin, leave the search to Suzume!"' A;
+	セリフ(2100, "");
+	'"Ah..."' A;
+	ト書き();
+	'A gecky appeared before the group.' A;
+	セリフ２(2120, "Gecky");
+	'"...An enemy... No... must defeat..."' A;
+	セリフ(2100, "");
+	'"It\'s acting kind of weird..."' A;
+	セリフ(2030, "");
+	'"Her eyes are all glassy."' A;
+	セリフ２(2925, "Gates 95");
+	'"Ohhhhh, an error!' R;
+	' Why are humans here?!"' A;
+	'"Death to all of them!"' A;
+	セリフ２(2120, "Gecky");
+	'"...Yes... sir..."' A;
+	セリフ(2030, "");
+	'"Looks like she\'s being controlled."' A;
+	セリフ(2100, "");
+	'"Feh, you\'re a disgrace to all guy monsters!"' A;
+	セリフ２(2925, "Gates 95");
+	'"ME\'s shutting down your window!"' A;
+	セリフ(2103, "");
+	'"Just try it!"' A;
+	ADVOFF();
+}
+
+void キノコ／エピローグ／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ２(2000, "");
+	'"Mmm..."' A;
+	'"........."' A;
+	セリフ(2002, "");
+	'"Ah!"' A;
+	セリフ(2100, "");
+	'"Oh, you up, Bro?"' A;
+	音楽(71, -1, -1);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmmm... Guess I must\'ve fallen asleep..."' A;
+	ト書き();
+	'Rance had stepped on a sloth shroom and fallen asleep. He was up again.' A;
+	セリフ(2000, "");
+	'"Mm... I\'m awake now..."' A;
+	セリフ(2000, "");
+	'"Alright, time to eradicate the geckies in Mushroom Forest!"' A;
+	セリフ(2002, "");
+	'"Everybody, follow me!"' A;
+	セリフ(2100, "");
+	'"What? We just did that..."' A;
+	セリフ(2000, "");
+	'"Huh?"' A;
+	セリフ(2030, "");
+	'"Well, let\'s head home."' A;
+	セリフ(2000, "");
+	'"Huh? What?"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance\'s party cleared the quest.' A;
+}
+

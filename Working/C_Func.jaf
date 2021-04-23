@@ -1,0 +1,497 @@
+int ÇRÇcÉÇÅ[Éh_êÌì¨()
+{
+	return ÇRÇcÉÇÅ[Éh_ê›íË(1);
+}
+
+int ÇRÇcÉÇÅ[Éh_èóÇÃéqïîâÆ()
+{
+	return ÇRÇcÉÇÅ[Éh_ê›íË(3);
+}
+
+int ÇRÇcÉÇÅ[Éh_É}ÉbÉv()
+{
+	return ÇRÇcÉÇÅ[Éh_ê›íË(2);
+}
+
+int ÇRÇcÉÇÅ[Éh_ê›íË(int nGameMode)
+{
+	int nOldMode = ÇRÇcÉÇÅ[Éh();
+	SetGameMode(nGameMode);
+	return nOldMode;
+}
+
+int ÇRÇcÉÇÅ[Éh()
+{
+	return g_nGameMode;
+}
+
+ref CReignPlugin ÇRÇc_ÉvÉâÉOÉCÉì()
+{
+	switch (g_nGameMode)
+	{
+		case 2:
+			return ÇRÇcÉ}ÉbÉv_ÉvÉâÉOÉCÉì();
+		case 1:
+			return ÇRÇcêÌì¨_ÉvÉâÉOÉCÉì();
+		case 3:
+			return ÇRÇcèóÇÃéqïîâÆ_ÉvÉâÉOÉCÉì();
+		default:
+			break;
+	}
+	return NULL;
+}
+
+void ÇRÇc_ê›íËçXêV()
+{
+	switch (g_nGameMode)
+	{
+		case 2:
+			LoadReignSetting(ÇRÇcÉ}ÉbÉv_ÉvÉâÉOÉCÉì());
+			ÇRÇcÉ}ÉbÉv_ê›íËçXêV();
+			return;
+		case 1:
+			LoadReignSetting(ÇRÇcêÌì¨_ÉvÉâÉOÉCÉì());
+			ÇRÇcêÌì¨_ê›íËçXêV();
+			return;
+		case 3:
+			LoadReignSetting(ÇRÇcèóÇÃéqïîâÆ_ÉvÉâÉOÉCÉì());
+			ÇRÇcèóÇÃéqïîâÆ_ê›íËçXêV();
+			return;
+		default:
+			break;
+	}
+}
+
+void ÇRÇc_ï\é¶ë“Çø(bool bAlign)
+{
+	switch (g_nGameMode)
+	{
+		case 2:
+			ÇRÇcÉ}ÉbÉv_ÉçÅ[Éhë“Çø(0);
+			ÇRÇcÉ}ÉbÉv_ÉvÉâÉOÉCÉì().SetDrawFlag(true);
+			break;
+		case 1:
+			ÇRÇcêÌì¨_ÉçÅ[Éhë“Çø(false);
+			ÇRÇcêÌì¨_ÉvÉâÉOÉCÉì().SetDrawFlag(true);
+			break;
+		case 3:
+			ÇRÇcèóÇÃéqïîâÆ_ÉçÅ[Éhë“Çø(false);
+			ÇRÇcèóÇÃéqïîâÆ_ÉvÉâÉOÉCÉì().SetDrawFlag(true);
+			break;
+		default:
+			return;
+	}
+	_W(10);
+	if (bAlign)
+	{
+		ÇRÇcÉLÉÉÉâ_à íuê›íË(ÇRÇcÉLÉÉÉâ_à íuÇw(), ÇRÇcÉLÉÉÉâ_à íuÇx());
+		ÇRÇcÉ}ÉbÉv_ç¿ïWê›íË(-1.0, -1.0, -1.0);
+		íuï®_çƒîzíu();
+		UPDATE(true);
+	}
+	bool bOld = ÉrÉÖÅ[èÛë‘ï€ë∂ÉÇÅ[Éh_ÇnÇm();
+	âÊñ _ÉNÉäÉA(true, true);
+	_EFFECT(1, 500);
+	if (!bOld)
+	{
+		ÉrÉÖÅ[èÛë‘ï€ë∂ÉÇÅ[Éh_ÇnÇeÇe();
+	}
+	ÉLÅ[_ÉNÉäÉA(true);
+}
+
+bool ÇRÇcîwåi_ñºëOê›íË(int nNo, string szName, float fX, float fY, bool bShow)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return false;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return false;
+	}
+	rfPlugin.SetBackCGName(nNo, szName);
+	rfPlugin.SetBackCGDestPos(nNo, fX, fY);
+	rfPlugin.SetBackCGShow(nNo, bShow);
+	return true;
+}
+
+bool ÇRÇcîwåi_ÇbÇfê›íË(int nNo, int nCgNo, float fX, float fY, bool bShow)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return false;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return false;
+	}
+	rfPlugin.SetBackCGNum(nNo, nCgNo);
+	rfPlugin.SetBackCGDestPos(nNo, fX, fY);
+	rfPlugin.SetBackCGShow(nNo, bShow);
+	return true;
+}
+
+void ÇRÇcîwåi_à íuê›íË(int nNo, float fX, float fY)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return;
+	}
+	rfPlugin.SetBackCGDestPos(nNo, fX, fY);
+}
+
+void ÇRÇcîwåi_ï\é¶ê›íË(int nNo, bool bShow)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return;
+	}
+	rfPlugin.SetBackCGShow(nNo, bShow);
+}
+
+void ÇRÇcîwåi_ÉuÉåÉìÉhê›íË(int nNo, float fBlendRate)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return;
+	}
+	rfPlugin.SetBackCGBlendRate(nNo, fBlendRate);
+}
+
+void ÇRÇcîwåi_ägëÂó¶ê›íË(int nNo, float fMag)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return;
+	}
+	rfPlugin.SetBackCGMag(nNo, fMag);
+}
+
+void ÇRÇcîwåi_óhÇÍê›íË(int nNo, float fQuakeMag)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return;
+	}
+	rfPlugin.SetBackCGQuakeMag(nNo, fQuakeMag);
+}
+
+float ÇRÇcîwåi_à íuÇw(int nNo)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return 0.0;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return 0.0;
+	}
+	return rfPlugin.GetBackCGDestPosX(nNo);
+}
+
+float ÇRÇcîwåi_à íuÇx(int nNo)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return 0.0;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return 0.0;
+	}
+	return rfPlugin.GetBackCGDestPosY(nNo);
+}
+
+bool ÇRÇcîwåi_ï\é¶(int nNo)
+{
+	ref CReignPlugin rfPlugin = ÇRÇc_ÉvÉâÉOÉCÉì();
+	if (rfPlugin === NULL)
+	{
+		return false;
+	}
+	if (!ÇRÇcîwåi_î‘çÜämîF(nNo))
+	{
+		return false;
+	}
+	return rfPlugin.GetBackCGShow(nNo);
+}
+
+bool ÇRÇcîwåi_î‘çÜämîF(int nNo)
+{
+	return nNo >= 0 && nNo < 16;
+}
+
+bool LoadReignSetting(ref CReignPlugin Plugin)
+{
+	string ReignSettingFileName = system.GetSaveFolderName() + "\\" + "3DSetting.asd";
+	if (!system.ExistFile(ReignSettingFileName))
+	{
+		ÇRÇcê›íË_ÉåÉxÉãéÊìæ();
+	}
+	int nRenderMode = 0;
+	int Edge = 0;
+	int nShadowMode = 0;
+	int nShadowMapResolutionLevel = 0;
+	int nBumpMode = 0;
+	int nBloomMode = 0;
+	int nGlareMode = 0;
+	int nFogMode = 0;
+	int nSpecularMode = 0;
+	int nLightMapMode = 0;
+	int nSoftFogEdgeMode = 0;
+	int nSSAOMode = 0;
+	int nVertexBlendMode = 0;
+	int nShaderPrecisionMode = 0;
+	int nTextureResolutionLevel = 0;
+	int nTextureFilterMode = 0;
+	float fFilterY = 0.0;
+	int nAntiAliasing = 0;
+	int nWaitVSync = 0;
+	bool bUsePower2Texture = false;
+	if (!VSFile.OpenForRead(ReignSettingFileName))
+	{
+		return false;
+	}
+	string ChunkName = "";
+	if (!VSFile.ReadString(ChunkName))
+	{
+		return false;
+	}
+	if (ChunkName != "RST")
+	{
+		return false;
+	}
+	int nVersion = 0;
+	if (!VSFile.ReadInt(nVersion))
+	{
+		return false;
+	}
+	if (nVersion < 0 || nVersion > 7)
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nRenderMode))
+	{
+		return false;
+	}
+	if (nVersion >= 7)
+	{
+		if (!VSFile.ReadInt(Edge))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		Edge = 1;
+	}
+	if (!VSFile.ReadInt(nShadowMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nShadowMapResolutionLevel))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nBumpMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nBloomMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nGlareMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nFogMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nSpecularMode))
+	{
+		return false;
+	}
+	if (nVersion >= 2)
+	{
+		if (!VSFile.ReadInt(nLightMapMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nLightMapMode = 1;
+	}
+	if (nVersion >= 3)
+	{
+		if (!VSFile.ReadInt(nSoftFogEdgeMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nSoftFogEdgeMode = 0;
+	}
+	if (nVersion >= 6)
+	{
+		if (!VSFile.ReadInt(nSSAOMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nSSAOMode = 0;
+	}
+	if (nVersion >= 4)
+	{
+		if (!VSFile.ReadInt(nVertexBlendMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nVertexBlendMode = 0;
+	}
+	if (nVersion >= 5)
+	{
+		if (!VSFile.ReadInt(nShaderPrecisionMode))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nShaderPrecisionMode = 0;
+	}
+	if (!VSFile.ReadInt(nTextureResolutionLevel))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nTextureFilterMode))
+	{
+		return false;
+	}
+	if (!VSFile.ReadFloat(fFilterY))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nAntiAliasing))
+	{
+		return false;
+	}
+	if (!VSFile.ReadInt(nWaitVSync))
+	{
+		return false;
+	}
+	if (nVersion >= 1)
+	{
+		int nUsePower2Texture = 0;
+		if (!VSFile.ReadInt(nUsePower2Texture))
+		{
+			return false;
+		}
+		bUsePower2Texture = nUsePower2Texture != 0;
+	}
+	else
+	{
+		bUsePower2Texture = false;
+	}
+	if (!VSFile.Close())
+	{
+		return false;
+	}
+	Plugin.SetRenderMode(nRenderMode);
+	Plugin.SetShadowMode(nShadowMode);
+	Plugin.SetShadowMapResolutionLevel(nShadowMapResolutionLevel);
+	Plugin.SetBumpMode(nBumpMode);
+	Plugin.SetBloomMode(nBloomMode);
+	Plugin.SetGlareMode(nGlareMode);
+	Plugin.SetFogMode(nFogMode);
+	Plugin.SetSpecularMode(nSpecularMode);
+	Plugin.SetLightMapMode(nLightMapMode);
+	Plugin.SetSoftFogEdgeMode(nSoftFogEdgeMode);
+	Plugin.SetSSAOMode(nSSAOMode);
+	Plugin.SetVertexBlendMode(nVertexBlendMode);
+	Plugin.SetShaderPrecisionMode(nShaderPrecisionMode);
+	Plugin.SetTextureResolutionLevel(nTextureResolutionLevel);
+	Plugin.SetTextureFilterMode(nTextureFilterMode);
+	Plugin.SetPostEffectFilterY(fFilterY);
+	Plugin.SetOptionAntiAliasing(nAntiAliasing);
+	Plugin.SetOptionWaitVSync(nWaitVSync);
+	Plugin.SetUsePower2Texture(bUsePower2Texture);
+	ChipmunkSpriteEngine.DX_SetUsePower2Texture(bUsePower2Texture);
+	Plugin.SetDrawOption(0, Edge);
+	return true;
+}
+
+void SetGameMode(int nMode)
+{
+	g_nGameMode = nMode;
+}
+
+void ForceToSetSoftwareRenderMode(ref CReignPlugin Plugin)
+{
+	if (Plugin.GetRenderMode() == 0)
+	{
+		return;
+	}
+	system.MsgBox("ï`âÊÇ…é∏îsÇµÇ‹ÇµÇΩ\nÉ\ÉtÉgÉEÉFÉAï`âÊÉÇÅ[ÉhÇ…à⁄çsÇµÇ‹Ç∑");
+	Plugin.SetRenderMode(0);
+}
+
+bool ÇcÇRÇcÉÇÅ[Éh_ÇnÇm()
+{
+	return ÇcÇRÇcÉÇÅ[Éh_ê›íË(true);
+}
+
+bool ÇcÇRÇcÉÇÅ[Éh_ÇnÇeÇe()
+{
+	return ÇcÇRÇcÉÇÅ[Éh_ê›íË(false);
+}
+
+bool ÇcÇRÇcÉÇÅ[Éh_ê›íË(bool bFlag)
+{
+	bool bOld = AFL_Config_GetDirect3DMode();
+	AFL_Config_SetDirect3DMode(bFlag);
+	return bOld;
+}
+
+bool ÇcÇRÇcÉÇÅ[Éh_ämîF()
+{
+	return AFL_Config_GetDirect3DMode();
+}
+

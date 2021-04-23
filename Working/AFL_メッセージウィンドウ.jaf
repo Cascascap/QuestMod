@@ -1,0 +1,27 @@
+void AFL_SetShowMessageWindowCallbackFunc(FTShowMessageWindowCallback Func)
+{
+	if (Func == NULL)
+	{
+		return;
+	}
+	AFL_ClearShowMessageWindowCallbackFunc(Func);
+	g_ShowMessageWindowCallbackFuncList.PushBack(Func);
+}
+
+void AFL_ClearShowMessageWindowCallbackFunc(FTShowMessageWindowCallback Func)
+{
+	if (Func == NULL)
+	{
+		return;
+	}
+	int n = 0;
+	for (n = 0; n < g_ShowMessageWindowCallbackFuncList.Numof(); )
+	{
+		if (g_ShowMessageWindowCallbackFuncList[n] == Func)
+		{
+			g_ShowMessageWindowCallbackFuncList.Erase(n);
+			break;
+		}
+	}
+}
+

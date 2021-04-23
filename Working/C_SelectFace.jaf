@@ -1,0 +1,53 @@
+void scrollSelectFaceList(int nValue)
+{
+	g_sSelectFace.scroll(nValue);
+}
+
+int 顔ＣＧ選択(ref string szFileName)
+{
+	return g_sSelectFace.run(szFileName);
+}
+
+int 顔選択_一覧Ｘ(int nIndex)
+{
+	int nCol = 顔選択_列位置(nIndex);
+	if (nCol < 0)
+	{
+		return -1;
+	}
+	return 4 + 102 * nCol;
+}
+
+int 顔選択_一覧Ｙ(int nIndex)
+{
+	int nRow = 顔選択_行位置(nIndex);
+	if (nRow < 0)
+	{
+		return -1;
+	}
+	return 470 + 120 * nRow;
+}
+
+int 顔選択_一覧インデクス(int nRow, int nCol)
+{
+	if (nRow < 0 || nRow >= 2)
+	{
+		return -1;
+	}
+	if (nCol < 0 || nCol >= 10)
+	{
+		return -1;
+	}
+	return nCol * 2 + nRow;
+}
+
+int 顔選択_行位置(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 20 ? -1 : nIndex % 2;
+}
+
+int 顔選択_列位置(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 20 ? -1 : nIndex / 2;
+}
+

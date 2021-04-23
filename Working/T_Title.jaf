@@ -1,0 +1,326 @@
+T_Title::T_Title()
+{
+	this.m_rcMenu.set2(683, 465, 848, 622);
+	this.clear();
+}
+
+T_Title::~T_Title()
+{
+	this.delete();
+}
+
+int T_Title::run()
+{
+	int nRet = 0;
+	int nID = 1;
+	if (!this.create())
+	{
+		return -1;
+	}
+	_EFFECT(1, 500);
+	this.m_bUpdate = true;
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	_EFFECT(1, 500);
+	return nRet;
+}
+
+bool T_Title::create()
+{
+	this.delete();
+	this.m_spBase.setCg(Ｒ８マグナム確認() ? 10505 : 10501);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(101);
+	this.m_spBase.blendCg(0, 0, 10511, 255);
+	this.m_spMenu.setCg(10061);
+	this.m_spMenu.setPos(686, 468);
+	this.m_spMenu.setZ(102);
+	this.m_sWorld.create(611, 180, 102);
+	this.m_sWorld.setValue(最終セーブ_ワールド());
+	this.m_sButton.create();
+	int nY = 275;
+	ボタン登録_ＣＧ(this.m_sButton, 1, 603, nY, 10502, -1, -1, -2147483648, -2147483648);
+	if (中断セーブファイル_あり())
+	{
+		nY += 91;
+		ボタン登録_ＣＧ(this.m_sButton, 2, 603, nY, 10503, -1, -1, -2147483648, -2147483648);
+	}
+	this.createMenu(0, 910012);
+	this.createMenu(1, 910013);
+	this.createMenu(2, 910092);
+	this.createMenu(3, 910014);
+	this.createMenu(4, 910011);
+	ボタン登録_ＣＧ(this.m_sButton, 3, 946, 732, 10504, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(102);
+	this.m_sText.create(404, 77, -1, -4, 0, 0);
+	this.m_sText.setPos(566, 637);
+	this.m_sText.setTextSpace(-8);
+	this.m_sText.setDrawType(2);
+	this.m_sText.setFontType(256);
+	this.m_sText.setFontSize(28);
+	this.m_sText.setFontColor(80, 250, 190);
+	this.m_sText.setFontBold(0);
+	this.m_sText.setZ(102);
+	this.setShow(true);
+	this.m_sInputKey.create(0, this.m_sButton);
+	return true;
+}
+
+bool T_Title::createMenu(int nIndex, int nID)
+{
+	int nX = 0;
+	int nY = 0 + 30 * nIndex;
+	T_Button sButton;
+	if (!システムメニュー_ボタン作成(sButton, nX, nY, 10062, 0, 0, 0))
+	{
+		return false;
+	}
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonPos(nID, 686 + nX, 468 + nY);
+	return true;
+}
+
+void T_Title::delete()
+{
+	this.m_spBase.delete();
+	this.m_spMenu.delete();
+	this.m_sWorld.delete();
+	this.m_sButton.delete();
+	this.m_sText.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_Title::clear()
+{
+	this.m_bUpdate = false;
+}
+
+bool T_Title::update()
+{
+	if (!this.m_bUpdate)
+	{
+		return false;
+	}
+	string szInfo = NET_GetInfoText();
+	if (szInfo.Empty())
+	{
+		return false;
+	}
+	this.m_sText.setText(szInfo, false);
+	UpdateView(true);
+	this.m_bUpdate = false;
+	return true;
+}
+
+bool T_Title::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (nID > 910000)
+	{
+		return this.execMenu(nID, nRet);
+	}
+	switch (nID)
+	{
+		case 1:
+			return this.execLoad(nID, nRet);
+		case 2:
+			return this.execRestart(nID, nRet);
+		case 3:
+			return this.execInitialize(nID, nRet);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_Title::execLoad(int nID, ref int nRet)
+{
+	if (中断セーブファイル_あり())
+	{
+		if (!選択_確認("[Suspend Save] data@will be lost.@Okay?", 2, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+	}
+	nRet = nID;
+	return true;
+}
+
+bool T_Title::execRestart(int nID, ref int nRet)
+{
+	if (!中断セーブファイル_あり())
+	{
+		選択_通知("No suspend data.", "OK", false);
+		return false;
+	}
+	if (!選択_確認("[Suspend Save] data@will be lost after loading.@Okay?", 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	nRet = nID;
+	return true;
+}
+
+bool T_Title::execInitialize(int nID, ref int nRet)
+{
+	T_Sprite spWork;
+	spWork.create(1024, 768, 255, 0, 15, 102);
+	spWork.setPos(0, 0);
+	spWork.setZ(121);
+	spWork.setShow(1);
+	if (!選択_確認("Resetting the game will clear all@save data.@Really reset?", 2, "Reset", "No", -1, -1, false))
+	{
+		goto label0;
+	}
+	if (!選択_確認("Resetting game.@Okay?", 2, "Yes", "No", -1, -1, false))
+	{
+		goto label0;
+	}
+	spWork.delete();
+	自動セーブファイル_削除();
+	中断セーブファイル_削除(true);
+	最終セーブ_ワールド保存(0);
+	ゲーム_再起動();
+label0:
+	spWork.delete();
+	return false;
+}
+
+bool T_Title::execMenu(int nID, ref int nRet)
+{
+	switch (nID)
+	{
+		case 910011:
+			システムメニュー_環境設定();
+			break;
+		case 910012:
+			システムバー_ＣＧモード(1, nRet);
+			break;
+		case 910013:
+			システムバー_音楽モード(1, nRet);
+			break;
+		case 910014:
+			システムメニュー_Ｗｅｂ(false);
+			break;
+		case 910092:
+			システムメニュー_ゲーム終了();
+			break;
+		default:
+			break;
+	}
+	this.m_bUpdate = true;
+	this.update();
+	return false;
+}
+
+bool T_Title::execDebug(int nID, ref int nRet)
+{
+	return false;
+}
+
+int T_Title::checkSelect(int nCursorID)
+{
+	int nRet = 0;
+	int nID = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	this.setCursor(nCursorID);
+	while (true)
+	{
+		int nRet2 = this.checkInput(nID);
+		if (nRet2 == 2)
+		{
+			nRet = nID;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			this.setCursor(900001);
+			continue;
+		}
+		if (nRet2 != 1)
+		{
+			int nID2 = this.checkKey(nID);
+			if (nID2 > 0)
+			{
+				nRet = nID2;
+				break;
+			}
+			this.setMenuShow(キー優先() ? 1 : this.m_rcMenu.mouseInRect());
+		}
+		UPDATE(true);
+		if (this.m_bUpdate)
+		{
+			this.update();
+		}
+	}
+	return nRet;
+}
+
+int T_Title::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_Title::checkKey(int nID)
+{
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+void T_Title::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	this.setMenuShow(false);
+}
+
+void T_Title::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_Title::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_Title::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sWorld.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	this.m_sText.setShow(bShow);
+	this.setMenuShow(false);
+}
+
+void T_Title::setMenuShow(bool bShow)
+{
+	if (bShow == this.m_spMenu.getShow())
+	{
+		return;
+	}
+	this.m_spMenu.setShow(bShow);
+	this.m_sButton.setButtonShow(910012, bShow);
+	this.m_sButton.setButtonShow(910013, bShow);
+	this.m_sButton.setButtonShow(910092, bShow);
+	this.m_sButton.setButtonShow(910014, bShow);
+	this.m_sButton.setButtonShow(910011, bShow);
+}
+

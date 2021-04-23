@@ -1,0 +1,186 @@
+bool 音楽_あり(int nMusicNo)
+{
+	if (nMusicNo <= 0)
+	{
+		return false;
+	}
+	return KiwiSoundEngine.Music_IsExist(nMusicNo);
+}
+
+void 音楽_再生(int nMusicNo)
+{
+	if (nMusicNo > 0)
+	{
+		if (nMusicNo == 音楽_番号())
+		{
+			return;
+		}
+		if (音楽_あり(nMusicNo))
+		{
+			音楽(nMusicNo, -1, -1);
+		}
+		else
+		{
+			音楽(0, -1, -1);
+		}
+	}
+	else
+	{
+		音楽(0, -1, -1);
+	}
+}
+
+int 音楽_番号()
+{
+	return 音楽再生中番号取得();
+}
+
+int 音楽_サイズ()
+{
+	return AFL_BGM_GetPlayLength();
+}
+
+int 音楽_再生位置()
+{
+	return AFL_BGM_GetPlayPos();
+}
+
+bool ループ効果音_あり(int nSoundNo)
+{
+	return 音楽_あり(nSoundNo);
+}
+
+void ループ効果音_再生(int nMusicNo)
+{
+	ループ効果音(nMusicNo, -1, -1);
+}
+
+bool ループ効果音_番号()
+{
+	return _ループ効果音;
+}
+
+void 音楽_戦闘(int nMusicNo)
+{
+	音楽(nMusicNo, -1, -1);
+	g_nBattleMusicNo = nMusicNo;
+}
+
+void 音楽_戦闘後(bool bBoss)
+{
+	if (g_nBattleMusicNo <= 0)
+	{
+		return;
+	}
+	switch (クエスト_攻略番号())
+	{
+		case 121:
+		case 122:
+		case 123:
+		case 124:
+		case 125:
+		case 126:
+		case 127:
+		case 128:
+			if (!bBoss)
+			{
+				goto label0;
+			}
+			break;
+		case 77:
+			goto label0;
+		case 135:
+			goto label0;
+		default:
+			break;
+	}
+	音楽(0, -1, -1);
+label0:
+	g_nBattleMusicNo = 0;
+}
+
+int 曲_戦闘()
+{
+	return ◆戦闘曲 > 0 ? ◆戦闘曲 : 52;
+	return 0;
+}
+
+void 迷宮音楽_再生()
+{
+	int nNo = ◆マップ曲 > 0 ? ◆マップ曲 : 1;
+	if (音楽_番号() != nNo)
+	{
+		音楽(nNo, -1, -1);
+	}
+}
+
+void 迷宮音楽_停止()
+{
+	if (!迷宮音楽_再生中())
+	{
+		return;
+	}
+	音楽(0, -1, -1);
+}
+
+bool 迷宮音楽_再生中()
+{
+	switch (音楽_番号())
+	{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+			return true;
+		case 57:
+			return ◆iiq == 135;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool 迷宮音楽_バベル再生中()
+{
+	switch (音楽_番号())
+	{
+		case 8:
+		case 9:
+		case 10:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+void システム曲_再生()
+{
+	int nMusicNo = 0;
+	if (ランス城_オープン確認())
+	{
+		nMusicNo = ◆音楽セット == 1 ? 106 : 101;
+	}
+	else
+	{
+		nMusicNo = 105;
+	}
+	音楽_再生(nMusicNo);
+}
+
+void ＯＰ曲_再生()
+{
+	int nMusicNo = ◆音楽セット == 1 ? 107 : 103;
+	音楽_再生(nMusicNo);
+}
+

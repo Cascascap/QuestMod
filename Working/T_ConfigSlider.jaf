@@ -1,0 +1,251 @@
+void T_ConfigSlider::setCallback(ftConfigSliderCallback sFunc)
+{
+	this.m_pCallback = sFunc;
+}
+
+T_Rect T_ConfigSlider::getArea()
+{
+	return this.m_rcArea;
+}
+
+bool T_ConfigSlider::getSelect()
+{
+	return this.m_bSelect;
+}
+
+float T_ConfigSlider::getValue()
+{
+	return this.m_fValue;
+}
+
+T_ConfigSlider::T_ConfigSlider()
+{
+	this.clear();
+}
+
+T_ConfigSlider::~T_ConfigSlider()
+{
+	this.delete();
+}
+
+bool T_ConfigSlider::create(int nZ, int nX, int nY, int nWidth, int nHeight)
+{
+	this.delete();
+	nY += -19;
+	nHeight -= -19;
+	this.m_rcArea.set(nX, nY, nWidth, nHeight);
+	if (this.m_rcArea.empty())
+	{
+		return false;
+	}
+	this.m_spBox1.setCg(40035);
+	this.m_spBox2.setCg(40036);
+	this.m_spBox1.setZ(nZ);
+	this.m_spBox2.setZ(nZ);
+	return true;
+}
+
+void T_ConfigSlider::delete()
+{
+	this.m_spBox1.delete();
+	this.m_spBox2.delete();
+	this.clear();
+}
+
+void T_ConfigSlider::clear()
+{
+	this.m_bShow = false;
+	this.m_bSelect = false;
+	this.m_fValue = -3.40282346638529E+38;
+	this.m_pCallback = NULL;
+	this.m_rcArea.clear();
+}
+
+bool T_ConfigSlider::drag()
+{
+	if (!this.m_bShow || !this.m_bSelect)
+	{
+		return false;
+	}
+	if (!this._drag())
+	{
+		return false;
+	}
+	UPDATE(true);
+	while (true)
+	{
+		if (!this._drag())
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	return true;
+}
+
+bool T_ConfigSlider::checkKey()
+{
+	if (!this.m_bShow || !this.m_bSelect)
+	{
+		return false;
+	}
+	if (キー_押下(33))
+	{
+		return this.scroll(33, -0.0500000007450581);
+	}
+	if (キー_押下(34))
+	{
+		return this.scroll(34, 0.0500000007450581);
+	}
+	return false;
+}
+
+void T_ConfigSlider::setSelect(bool bSelect)
+{
+	if (bSelect == this.m_bSelect)
+	{
+		return;
+	}
+	this.m_bSelect = bSelect;
+	this.setShow(this.m_bShow);
+}
+
+void T_ConfigSlider::setValue(float fValue)
+{
+	this.m_fValue = fValue;
+	this.setShow(this.m_bShow);
+}
+
+void T_ConfigSlider::setShow(bool bShow)
+{
+	if (this.m_fValue == -3.40282346638529E+38)
+	{
+		this.m_spBox1.setShow(0);
+		this.m_spBox2.setShow(0);
+	}
+	else
+	{
+		int nX = this.getBoxX(this.m_fValue);
+		int nY = this.getBoxY(this.m_fValue);
+		this.m_spBox1.setPos(nX, nY);
+		this.m_spBox2.setPos(nX, nY);
+		this.m_spBox1.setShow(this.m_bSelect ? 0 : bShow);
+		this.m_spBox2.setShow(this.m_bSelect ? bShow : 0);
+	}
+	this.m_bShow = bShow;
+}
+
+bool T_ConfigSlider::_drag()
+{
+	int nMx = 0;
+	int nMy = 0;
+	if (!マウス_位置取得(nMx, nMy))
+	{
+		return false;
+	}
+	if (キー_押下(13))
+	{
+		キー_離し待ち(13, true);
+		return false;
+	}
+	if (!キー_押下(1))
+	{
+		return false;
+	}
+	float fValue = this.calcValue(nMx);
+	if (fValue != this.m_fValue)
+	{
+		this.setValue(fValue);
+		if (this.m_pCallback != NULL)
+		{
+			this.m_pCallback(fValue);
+		}
+	}
+	return true;
+}
+
+float T_ConfigSlider::calcValue(int nPos)
+{
+	if (this.m_rcArea.empty())
+	{
+		return 0.0;
+	}
+	if (nPos <= this.m_rcArea.m_nSx)
+	{
+		return 0.0;
+	}
+	if (nPos >= this.m_rcArea.m_nEx)
+	{
+		return 1.0;
+	}
+	float fRate = (nPos - this.m_rcArea.m_nSx) / this.m_rcArea.getWidth();
+	return fRate;
+}
+
+bool T_ConfigSlider::scroll(int nKey, float fSize)
+{
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	if (fSize == 0.0)
+	{
+		return false;
+	}
+	if (!キー_押下(nKey))
+	{
+		return false;
+	}
+	int nWaitTime = 250;
+	while (true)
+	{
+		if (!this._scroll(nKey, fSize, nWaitTime))
+		{
+			break;
+		}
+		UPDATE(true);
+		nWaitTime = 10;
+	}
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_ConfigSlider::_scroll(int nKey, float fSize, int nWaitTime)
+{
+	if (fSize < 0.0 && this.m_fValue <= 0.0)
+	{
+		return false;
+	}
+	if (fSize > 0.0 && this.m_fValue >= 1.0)
+	{
+		return false;
+	}
+	float fValue = 数値Ｆ_補正(this.m_fValue + fSize, 0.0, 1.0);
+	this.setValue(fValue);
+	if (this.m_pCallback != NULL)
+	{
+		this.m_pCallback(fValue);
+	}
+	return キー_離し待ち_タイマ(nWaitTime, nKey, true);
+}
+
+int T_ConfigSlider::getBoxX(float fValue)
+{
+	if (this.m_rcArea.empty())
+	{
+		return 0;
+	}
+	fValue = 数値Ｆ_補正(fValue, 0.0, 1.0);
+	float fWidth = fValue * this.m_rcArea.getWidth();
+	return this.m_rcArea.m_nSx + fWidth + -12.0;
+}
+
+int T_ConfigSlider::getBoxY(float fValue)
+{
+	if (this.m_rcArea.empty())
+	{
+		return 0;
+	}
+	return this.m_rcArea.m_nSy;
+}
+

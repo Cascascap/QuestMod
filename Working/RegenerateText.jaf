@@ -1,0 +1,104 @@
+void RegenerateAllCharacterTextData()
+{
+	lint iic = 0;
+	for (iic = 20; iic < 200; iic++)
+	{
+		if (Çbìoò^èÛë‘(iic, -1) != 0)
+		{
+			RegenerateCharacterTextData(iic);
+		}
+	}
+}
+
+void RegenerateCharacterTextData(lint iic)
+{
+	string invalidName = ÉLÉÉÉâå≈óLî‘çÜï∂éöóÒ(-1, -1);
+	lint no = Çbî‘çÜ(iic, -1);
+	string newName = ÉLÉÉÉâå≈óLî‘çÜï∂éöóÒ(no, 0);
+	if (newName == invalidName)
+	{
+		return;
+	}
+	string shortName = ÉLÉÉÉâå≈óLî‘çÜï∂éöóÒ(no, 1);
+	if (shortName == invalidName)
+	{
+		return;
+	}
+	ÇbñºëO(iic, newName);
+	ÇbíZèkñºëO(iic, shortName);
+	Çbë‰éåìoò^(iic, no, 0, "");
+}
+
+void RegenerateAllItemText()
+{
+	lint oldFA78 = FA[78];
+	lint ii = 0;
+	for (ii = 1; ii < 3001; ii++)
+	{
+		if (Çhë∂ç›(ii, -1) != 0)
+		{
+			RegenerateItemText(ii);
+		}
+	}
+	FA[78] = oldFA78;
+}
+
+void RegenerateItemText(lint ii)
+{
+	if (ii == 0)
+	{
+		return;
+	}
+	if (Çhë∂ç›(ii, -1) == 0)
+	{
+		return;
+	}
+	lint itemNumber = Çhå≈óLî‘çÜ(ii, -1);
+	if (itemNumber == 322)
+	{
+		return;
+	}
+	sÇh oldItem0;
+	oldItem0 = Çh[0];
+	lastDescriptionArgument = "__INVALID__";
+	Çhê∂ê¨Å^å≈óLÉfÅ[É^Å^Ç`(0, itemNumber, 0);
+	if (lastDescriptionArgument != "__INVALID__")
+	{
+		string oldItemName = ÇhñºëO(ii, "");
+		string newItemName = ÇhñºëO(0, "");
+		if (oldItemName != "" && newItemName != "" && oldItemName != newItemName)
+		{
+			int lastChar = 0;
+			int secondLastChar = 0;
+			int lastChar2 = 0;
+			int secondLastChar2 = 0;
+			lastChar = oldItemName[oldItemName.Length() - 1];
+			if (oldItemName.Length() >= 2)
+			{
+				secondLastChar = oldItemName[oldItemName.Length() - 2];
+			}
+			lastChar2 = newItemName[newItemName.Length() - 1];
+			if (newItemName.Length() >= 2)
+			{
+				secondLastChar2 = newItemName[newItemName.Length() - 2];
+			}
+			if (lastChar2 == 16519 || lastChar2 == 16775 || lastChar2 == 17031 || lastChar2 == 17287 || lastChar2 == 17543 || lastChar2 == 17799 || lastChar2 == 18055 || lastChar2 == 18311 || lastChar2 == 18567)
+			{
+				newItemName.PopBack();
+				if (secondLastChar2 == 32)
+				{
+					newItemName.PopBack();
+				}
+			}
+			if (lastChar == 16519 || lastChar == 16775 || lastChar == 17031 || lastChar == 17287 || lastChar == 17543 || lastChar == 17799 || lastChar == 18055 || lastChar == 18311 || lastChar == 18567)
+			{
+				newItemName.PushBack(32);
+				newItemName.PushBack(lastChar);
+			}
+		}
+		ÇhñºëO(ii, newItemName);
+		ÇhèÓïÒ(ii, lastDescriptionArgument);
+	}
+	Çh[0] = oldItem0;
+}
+

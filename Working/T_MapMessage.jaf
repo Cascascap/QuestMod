@@ -1,0 +1,122 @@
+void T_MapMessage::resetCheckTimer()
+{
+	this.m_sCheckTimer.Reset();
+}
+
+T_MapMessage::T_MapMessage()
+{
+}
+
+T_MapMessage::~T_MapMessage()
+{
+	this.delete();
+}
+
+void T_MapMessage::create(int nZ)
+{
+	this.delete();
+	this.m_sFrame.create(nZ);
+}
+
+void T_MapMessage::delete()
+{
+	this.m_sFrame.delete();
+	this.clear();
+}
+
+void T_MapMessage::clear()
+{
+	this.m_nCharaNo = -1;
+	this.m_nType = -1;
+}
+
+bool T_MapMessage::update()
+{
+	if (this.m_nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_sWaitTimer.Get() < 2000)
+	{
+		return true;
+	}
+	this.hide();
+	return false;
+}
+
+bool T_MapMessage::check()
+{
+	if (this.m_nCharaNo > 0)
+	{
+		return false;
+	}
+	return this.m_sCheckTimer.Get() > 3000;
+}
+
+bool T_MapMessage::show(int nCharaNo, int nType, string szMessage)
+{
+	if (!this.showFrame(nCharaNo, nType, szMessage))
+	{
+		return false;
+	}
+	this.m_nCharaNo = nCharaNo;
+	this.m_nType = nType;
+	this.m_sWaitTimer.Reset();
+	g_bMapMessageCheck = false;
+	g_bMapMessageUpdate = true;
+	return true;
+}
+
+void T_MapMessage::hide()
+{
+	if (this.m_nCharaNo > 0)
+	{
+		this.m_sFrame.set(0, "");
+		this.m_nCharaNo = -1;
+		this.m_nType = -1;
+	}
+	this.resetCheckTimer();
+	g_bMapMessageCheck = true;
+	g_bMapMessageUpdate = false;
+}
+
+bool T_MapMessage::showFrame(int nCharaNo, int nType, string szMessage)
+{
+	if (szMessage.Empty())
+	{
+		goto label0;
+	}
+	ref T_MiniCard rfCard = ミニステータス_カード(nCharaNo);
+	if (rfCard === NULL)
+	{
+		goto label0;
+	}
+	int nX = rfCard.getFaceX();
+	int nY = rfCard.getFaceY();
+	switch (味方パーティ_検索(nCharaNo))
+	{
+		case 1:
+		case 2:
+		case 4:
+		case 5:
+			if (this.m_sFrame.set(nType == 1 ? 3 : 1, szMessage))
+			{
+				this.m_sFrame.setPos(nX + 98, nY);
+				return true;
+			}
+			break;
+		case 3:
+			if (this.m_sFrame.set(nType == 1 ? 4 : 2, szMessage))
+			{
+				this.m_sFrame.setPos(nX - this.m_sFrame.getWidth(), nY);
+				return true;
+			}
+			break;
+		default:
+			break;
+	}
+label0:
+	this.hide();
+	return false;
+}
+

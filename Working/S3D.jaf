@@ -1,0 +1,28 @@
+void S3D::MulMatrix(SMatrix m)
+{
+	float fNewX = this.fX * m.m[0][0] + this.fY * m.m[1][0] + this.fZ * m.m[2][0] + m.m[3][0];
+	float fNewY = this.fX * m.m[0][1] + this.fY * m.m[1][1] + this.fZ * m.m[2][1] + m.m[3][1];
+	float fNewZ = this.fX * m.m[0][2] + this.fY * m.m[1][2] + this.fZ * m.m[2][2] + m.m[3][2];
+	float fH = this.fX * m.m[0][3] + this.fY * m.m[1][3] + this.fZ * m.m[2][3] + m.m[3][3];
+	if (fH == 1.0)
+	{
+		this.fX = fNewX;
+		this.fY = fNewY;
+		this.fZ = fNewZ;
+	}
+	else if (fH != 0.0)
+	{
+		float fInvH = 1 / fH;
+		this.fX = fNewX * fInvH;
+		this.fY = fNewY * fInvH;
+		this.fZ = fNewZ * fInvH;
+	}
+}
+
+void S3D::Set(float X, float Y, float Z)
+{
+	this.fX = X;
+	this.fY = Y;
+	this.fZ = Z;
+}
+

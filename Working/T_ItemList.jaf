@@ -1,0 +1,552 @@
+int compItem_Attack(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_攻撃力(nItemNo1);
+	int nValue2 = アイテム_効果_攻撃力(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Defense(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_防御力(nItemNo1);
+	int nValue2 = アイテム_効果_防御力(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Rank(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_レアランク(nItemNo1);
+	int nValue2 = アイテム_レアランク(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Syllabary(int nItemNo1, int nItemNo2)
+{
+	string szName1 = アイテム_名前(nItemNo1);
+	string szName2 = アイテム_名前(nItemNo2);
+	if (szName1 < szName2)
+	{
+		return -1;
+	}
+	if (szName1 > szName2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int compItem_OriginalNo(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_固有番号(nItemNo1);
+	int nValue2 = アイテム_固有番号(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return -1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return 1;
+	}
+	int nRank1 = アイテム_レアランク(nItemNo1);
+	int nRank2 = アイテム_レアランク(nItemNo2);
+	if (nRank1 < nRank2)
+	{
+		return -1;
+	}
+	if (nRank1 > nRank2)
+	{
+		return 1;
+	}
+	if (nItemNo1 < nItemNo2)
+	{
+		return -1;
+	}
+	if (nItemNo1 > nItemNo2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int compItem_Magic(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_魔法力(nItemNo1);
+	int nValue2 = アイテム_効果_魔法力(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Hit(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_命中率(nItemNo1);
+	int nValue2 = アイテム_効果_命中率(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Critical(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_必殺率(nItemNo1);
+	int nValue2 = アイテム_効果_必殺率(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Shock(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_衝撃率(nItemNo1);
+	int nValue2 = アイテム_効果_衝撃率(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Speed(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_素早さ(nItemNo1);
+	int nValue2 = アイテム_効果_素早さ(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Resist(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_魔抵力(nItemNo1);
+	int nValue2 = アイテム_効果_魔抵力(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Avoid(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_回避率(nItemNo1);
+	int nValue2 = アイテム_効果_回避率(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Stand(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_耐性率(nItemNo1);
+	int nValue2 = アイテム_効果_耐性率(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_Hp(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_ＨＰ(nItemNo1);
+	int nValue2 = アイテム_効果_ＨＰ(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_ResistFire(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_炎耐性(nItemNo1);
+	int nValue2 = アイテム_効果_炎耐性(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_ResistIce(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_氷耐性(nItemNo1);
+	int nValue2 = アイテム_効果_氷耐性(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_ResistThunder(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_雷耐性(nItemNo1);
+	int nValue2 = アイテム_効果_雷耐性(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_ResistLight(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_光耐性(nItemNo1);
+	int nValue2 = アイテム_効果_光耐性(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_ResistDarkness(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_効果_闇耐性(nItemNo1);
+	int nValue2 = アイテム_効果_闇耐性(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int compItem_RankUp(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_強化ランク(nItemNo1);
+	int nValue2 = アイテム_強化ランク(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return -1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int compItem_RankDown(int nItemNo1, int nItemNo2)
+{
+	int nValue1 = アイテム_強化ランク(nItemNo1);
+	int nValue2 = アイテム_強化ランク(nItemNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return 0;
+}
+
+int T_ItemList::getType()
+{
+	return this.m_nType;
+}
+
+int T_ItemList::getItemType()
+{
+	return this.m_nItemType;
+}
+
+int T_ItemList::getItemTypeEx()
+{
+	return this.m_nItemTypeEx;
+}
+
+int T_ItemList::getJobType()
+{
+	return this.m_nJobType;
+}
+
+int T_ItemList::getEquipType()
+{
+	return this.m_nEquipType;
+}
+
+int T_ItemList::getCharaNo()
+{
+	return this.m_nCharaNo;
+}
+
+int T_ItemList::getLockType()
+{
+	return this.m_nLockType;
+}
+
+int T_ItemList::getSortMode()
+{
+	return this.m_nSortMode;
+}
+
+int T_ItemList::getCount()
+{
+	return this.m_anItemNo.Numof();
+}
+
+int T_ItemList::getIndex(int nItemNo)
+{
+	return this.search(nItemNo);
+}
+
+int T_ItemList::get(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anItemNo.Numof() ? -1 : this.m_anItemNo[nIndex];
+}
+
+int T_ItemList::search(int nItemNo)
+{
+	return nItemNo > 0 ? this.m_anItemNo.Find(0, this.m_anItemNo.Numof(), nItemNo) : -1;
+}
+
+T_ItemList::T_ItemList()
+{
+	this.clear();
+}
+
+T_ItemList::~T_ItemList()
+{
+	this.clear();
+}
+
+int T_ItemList::create(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	this.clear();
+	int cnt = アイテム倉庫_一覧(nType, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType, this.m_anItemNo);
+	if (cnt < 0)
+	{
+		return -1;
+	}
+	this.m_nType = nType;
+	this.m_nItemType = nItemType;
+	this.m_nItemTypeEx = nItemTypeEx;
+	this.m_nJobType = nJobType;
+	this.m_nEquipType = nEquipType;
+	this.m_nCharaNo = nCharaNo;
+	this.m_nLockType = nLockType;
+	this.m_nSortMode = 1;
+	return cnt;
+}
+
+void T_ItemList::clear()
+{
+	if (!this.m_anItemNo.Empty())
+	{
+		this.m_anItemNo.Free();
+	}
+	this.m_nType = -1;
+	this.m_nItemType = -1;
+	this.m_nItemTypeEx = -1;
+	this.m_nJobType = -1;
+	this.m_nEquipType = -1;
+	this.m_nCharaNo = -1;
+	this.m_nLockType = -1;
+	this.m_nSortMode = -1;
+}
+
+int T_ItemList::remake(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	int nSortMode = this.m_nSortMode;
+	int cnt = this.create(nType < 0 ? this.m_nType : nType, nItemType < 0 ? this.m_nItemType : nItemType, nJobType < 0 ? this.m_nJobType : nJobType, nEquipType < 0 ? this.m_nEquipType : nEquipType, nCharaNo < 0 ? this.m_nCharaNo : nCharaNo, nItemTypeEx < 0 ? this.m_nItemTypeEx : nItemTypeEx, nLockType < 0 ? this.m_nLockType : nLockType);
+	if (cnt < 0)
+	{
+		return -1;
+	}
+	if (!this.sort(nSortMode, false))
+	{
+		return -1;
+	}
+	return cnt;
+}
+
+bool T_ItemList::sort(int nSortMode, bool bCompulsory)
+{
+	nSortMode = nSortMode > 0 ? nSortMode : 1;
+	if (nSortMode < 10)
+	{
+		nSortMode = 1;
+	}
+	if (!bCompulsory && nSortMode == this.m_nSortMode)
+	{
+		return true;
+	}
+	this.create(this.m_nType, this.m_nItemType, this.m_nJobType, this.m_nEquipType, this.m_nCharaNo, this.m_nItemTypeEx, this.m_nLockType);
+	switch (nSortMode)
+	{
+		case 2:
+			this.m_anItemNo.Sort(&compItem_Attack);
+			break;
+		case 3:
+			this.m_anItemNo.Sort(&compItem_Defense);
+			break;
+		case 4:
+			this.m_anItemNo.Sort(&compItem_Rank);
+			break;
+		case 5:
+			this.m_anItemNo.Sort(&compItem_Syllabary);
+			break;
+		case 11:
+			this.m_anItemNo.Sort(&compItem_Attack);
+			break;
+		case 12:
+			this.m_anItemNo.Sort(&compItem_Magic);
+			break;
+		case 13:
+			this.m_anItemNo.Sort(&compItem_Hit);
+			break;
+		case 14:
+			this.m_anItemNo.Sort(&compItem_Critical);
+			break;
+		case 15:
+			this.m_anItemNo.Sort(&compItem_Shock);
+			break;
+		case 16:
+			this.m_anItemNo.Sort(&compItem_Speed);
+			break;
+		case 17:
+			this.m_anItemNo.Sort(&compItem_Defense);
+			break;
+		case 18:
+			this.m_anItemNo.Sort(&compItem_Resist);
+			break;
+		case 19:
+			this.m_anItemNo.Sort(&compItem_Avoid);
+			break;
+		case 20:
+			this.m_anItemNo.Sort(&compItem_Stand);
+			break;
+		case 21:
+			this.m_anItemNo.Sort(&compItem_Hp);
+			break;
+		case 22:
+			this.m_anItemNo.Sort(&compItem_ResistFire);
+			break;
+		case 23:
+			this.m_anItemNo.Sort(&compItem_ResistIce);
+			break;
+		case 24:
+			this.m_anItemNo.Sort(&compItem_ResistThunder);
+			break;
+		case 25:
+			this.m_anItemNo.Sort(&compItem_ResistLight);
+			break;
+		case 26:
+			this.m_anItemNo.Sort(&compItem_ResistDarkness);
+			break;
+		case 27:
+			this.m_anItemNo.Sort(&compItem_RankUp);
+			break;
+		case 28:
+			this.m_anItemNo.Sort(&compItem_RankDown);
+			break;
+		case 1:
+		default:
+			nSortMode = 1;
+			break;
+	}
+	this.m_nSortMode = nSortMode;
+	return true;
+}
+
+bool T_ItemList::set(int nIndex, int nValue)
+{
+	if (nIndex < 0 || nIndex >= this.m_anItemNo.Numof())
+	{
+		return false;
+	}
+	this.m_anItemNo[nIndex] = nValue;
+	return true;
+}
+

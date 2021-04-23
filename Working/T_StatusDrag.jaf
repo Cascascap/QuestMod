@@ -1,0 +1,140 @@
+T_StatusDrag::T_StatusDrag()
+{
+	this.clear();
+}
+
+T_StatusDrag::~T_StatusDrag()
+{
+	this.delete();
+}
+
+bool T_StatusDrag::run(int nZ, int nType, ref T_ItemIcon rfsIcon)
+{
+	if (!this.create(nZ, nType, rfsIcon))
+	{
+		return false;
+	}
+	rfsIcon.setShow(false);
+	bool bRet = this.exec();
+	rfsIcon.setShow(true);
+	this.delete();
+	return bRet;
+}
+
+bool T_StatusDrag::create(int nZ, int nType, ref T_ItemIcon rfsIcon)
+{
+	this.delete();
+	if (rfsIcon === NULL)
+	{
+		return false;
+	}
+	int nItemNo = rfsIcon.getItemNo();
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	int idx = ステータス_アイテムインデクス(アイテム_種類(nItemNo));
+	if (idx < 0)
+	{
+		return false;
+	}
+	if (!this.m_sIcon.copy(rfsIcon.getSp(), false))
+	{
+		return false;
+	}
+	this.m_sIcon.setPos(rfsIcon.getPosX(), rfsIcon.getPosY());
+	this.m_sIcon.setZ(nZ + 20, -1);
+	this.m_sIcon.setShow(true);
+	this.m_spFrame.create(100, 100, 216, 255, 0, 102);
+	this.m_spFrame.setPos(ステータス_アイテムＸ(idx), ステータス_アイテムＹ(idx));
+	this.m_spFrame.setZ(nZ);
+	this.m_spFrame.setShow(0);
+	this.m_nType = nType > 0 ? nType : 0;
+	this.m_rcArea = this.m_spFrame.getRect();
+	return true;
+}
+
+void T_StatusDrag::delete()
+{
+	this.m_sIcon.delete();
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_StatusDrag::clear()
+{
+	this.m_nType = -1;
+	this.m_nSelectIndex = -1;
+	this.m_nTargetIndex = -1;
+}
+
+bool T_StatusDrag::exec()
+{
+	bool bRet = false;
+	T_Rect sRect;
+	T_DragMouse sDrag;
+	sRect.set2(39, 0, 919, 768);
+	sDrag.create2(this.m_sIcon, sRect);
+	sDrag.setSoundDrop(0);
+	sDrag.setSoundError(0);
+	sDrag.setDragCallback(&ステータス_ドラッグ);
+	sDrag.setDropCallback(&ステータス_ドロップ);
+	if (キー_押下(1))
+	{
+		bRet = sDrag.run(0);
+	}
+	else
+	{
+		bRet = sDrag.runJoypad(0);
+	}
+	sDrag.delete();
+	return bRet;
+}
+
+void T_StatusDrag::execDrag(int nX, int nY)
+{
+	if (!this.m_sIcon.isCreated())
+	{
+		return;
+	}
+	this.m_sIcon.setPos(nX, nY);
+	this.setSelect(this.m_rcArea.spriteIntersect(this.m_sIcon.getSp()) > 0 ? 1 : -1);
+}
+
+bool T_StatusDrag::execDrop(int nX, int nY)
+{
+	if (!this.m_sIcon.isCreated())
+	{
+		return false;
+	}
+	this.m_sIcon.setPos(nX, nY);
+	bool bRet = false;
+	if (this.m_nType > 0)
+	{
+		if (this.m_nSelectIndex < 0)
+		{
+			goto label0;
+		}
+	}
+	else if (this.m_nSelectIndex >= 0)
+	{
+		goto label0;
+	}
+	bRet = true;
+	this.m_nTargetIndex = this.m_nSelectIndex;
+label0:
+	this.setSelect(-1);
+	this.m_sIcon.setShow(false);
+	return bRet;
+}
+
+void T_StatusDrag::setSelect(int nIndex)
+{
+	if (nIndex == this.m_nSelectIndex)
+	{
+		return;
+	}
+	this.m_spFrame.setShow(nIndex >= 0);
+	this.m_nSelectIndex = nIndex;
+}
+

@@ -1,0 +1,743 @@
+CVolumeConfigView::CVolumeConfigView()
+{
+	this.m_nBaseZ = 15000;
+	this.m_nTabHeight = 32;
+	this.m_nExitBarHeight = 32;
+	this.m_nElementOffsetX = 32;
+	this.m_nElementOffsetY = 64;
+	this.m_nElementHeight = 64;
+	this.m_nVolumeAreaWidth = 256;
+	this.m_nVolumeAreaHeight = 32;
+	this.m_nVolumeBoxWidth = 24;
+	this.m_nVolumeBoxHeight = 28;
+	this.m_nMuteWidth = 24;
+	this.m_nMuteHeight = 24;
+}
+
+int CVolumeConfigView::Open(ref CVolumeConfigModel VolumeConfigModel, ref array@string TabNameList)
+{
+	this.m_VolumeConfigModel = VolumeConfigModel;
+	this.m_bDragging = false;
+	this.m_nMuteLButtonDownElement = -1;
+	this.m_nExitCode = -1;
+	this.m_nPlayingTestSound = -2147483648;
+	this.Create(TabNameList);
+	this.Run();
+	this.Release();
+	return this.m_nExitCode;
+}
+
+void CVolumeConfigView::Create(ref array@string TabNameList)
+{
+	this.CreateVolumeAreaRectList();
+	CConfigCommonViewCreater ConfigCommonViewCreater;
+	ConfigCommonViewCreater.CreateTab(this.m_ConfigTabView, this.m_nBaseZ + 1, 2, TabNameList);
+	ConfigCommonViewCreater.CreateBaseSprite(this.m_BaseSprite, 2, this.m_nBaseZ);
+	ConfigCommonViewCreater.CreateExitBar(this.m_ExitBar, this.m_nBaseZ + 1);
+	this.CreateVolumeAreaSprite();
+	this.CreateVolumeBoxSprite();
+	this.CreateVolumeBoxOnSprite();
+	this.CreateMuteSprite();
+	this.CreateVolumeNameSpriteList();
+	this.CreateBGMFadeByVoiceCheckBoxSprite();
+	this.CreateMuteByInactiveCheckBoxSprite();
+}
+
+void CVolumeConfigView::Release()
+{
+	this.m_MuteByInactiveCheckBoxSprite.Release();
+	this.m_BGMFadeByVoiceCheckBoxSprite.Release();
+	this.StopTestSound();
+	this.m_MuteSpriteList.Free();
+	this.m_VolumeNameSpriteList.Free();
+	this.m_VolumeBoxOnSpriteList.Free();
+	this.m_VolumeBoxSpriteList.Free();
+	this.m_VolumeAreaSpriteList.Free();
+	this.m_ExitBar.Release();
+	this.m_BaseSprite.Release();
+	this.m_ConfigTabView.Release();
+}
+
+void CVolumeConfigView::CreateBGMFadeByVoiceCheckBoxSprite()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_BGMFadeByVoiceCheckBoxSprite.CreateSampleSprite(20, 490, this.m_nBaseZ + 1, 20, 20);
+	this.m_BGMFadeByVoiceCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_BGMFadeByVoiceCheckBoxSprite.SetText("音声再生時にＢＧＭの音量を下げる", CharProperty);
+	this.m_BGMFadeByVoiceCheckBoxSprite.SetShowCheckMark(g_bConfigBGMFadeByVoice);
+}
+
+void CVolumeConfigView::CreateMuteByInactiveCheckBoxSprite()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_MuteByInactiveCheckBoxSprite.CreateSampleSprite(20, 520, this.m_nBaseZ + 1, 20, 20);
+	this.m_MuteByInactiveCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_MuteByInactiveCheckBoxSprite.SetText("ウィンドウが非アクティブのときにミュートする（次回起動時より有効）", CharProperty);
+	this.m_MuteByInactiveCheckBoxSprite.SetShowCheckMark(!g_ConfigSoundGlobalFocus);
+}
+
+void CVolumeConfigView::CreateVolumeAreaRectList()
+{
+	this.m_VolumeAreaRectList.Alloc(this.m_VolumeConfigModel.GetNumofElement());
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeAreaRectList.Numof(); ++nElement)
+	{
+		ref rect_t Rect = this.m_VolumeAreaRectList[nElement];
+		rect_t ModelRect;
+		ModelRect = this.m_VolumeConfigModel.GetVolumeAreaRect(nElement);
+		if (ModelRect.w != 0 && ModelRect.h != 0)
+		{
+			Rect = ModelRect;
+			continue;
+		}
+		Rect.x = this.m_nElementOffsetX + 160;
+		Rect.y = this.m_nElementOffsetY + this.m_nElementHeight * nElement + (this.m_nElementHeight - this.m_nVolumeAreaHeight) / 2;
+		Rect.w = this.m_nVolumeAreaWidth;
+		Rect.h = this.m_nVolumeAreaHeight;
+	}
+}
+
+void CVolumeConfigView::CreateVolumeAreaSprite()
+{
+	if (!this.m_VolumeConfigModel.GetBackCG().Empty())
+	{
+		return;
+	}
+	this.m_VolumeAreaSpriteList.Alloc(this.m_VolumeConfigModel.GetNumofElement());
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeAreaSpriteList.Numof(); ++nElement)
+	{
+		ref CASConstructionSprite Sprite = this.m_VolumeAreaSpriteList[nElement];
+		int nX = 0;
+		int nY = 0;
+		int nWidth = 0;
+		int nHeight = 0;
+		this.GetVolumeAreaRect(nElement, nX, nY, nWidth, nHeight);
+		Sprite.AddCreate(nWidth, nHeight);
+		Sprite.AddFillGradationHorizon(0, 0, nWidth, nHeight, 240, 240, 240, 220, 220, 220);
+		Sprite.Build();
+		Sprite.SetPos(nX, nY);
+		Sprite.SetZ(this.m_nBaseZ + 1);
+	}
+}
+
+void CVolumeConfigView::CreateVolumeBoxSprite()
+{
+	string VolumeBoxCG = this.m_VolumeConfigModel.GetVolumeBoxCG();
+	if (!VolumeBoxCG.Empty())
+	{
+		cg_metrics_t CGMetrics;
+		if (GetCgMetrics(VolumeBoxCG, CGMetrics))
+		{
+			this.m_nVolumeBoxWidth = CGMetrics.nWidth;
+			this.m_nVolumeBoxHeight = CGMetrics.nHeight;
+		}
+	}
+	this.m_VolumeBoxSpriteList.Alloc(this.m_VolumeConfigModel.GetNumofElement());
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeBoxSpriteList.Numof(); ++nElement)
+	{
+		ref CASVersatileSprite Sprite = this.m_VolumeBoxSpriteList[nElement];
+		if (!VolumeBoxCG.Empty())
+		{
+			Sprite.SetType(0);
+			Sprite.GetCGSprite().SetCG(VolumeBoxCG);
+			Sprite.SetZ(this.m_nBaseZ + 2);
+			Sprite.SetShow(true);
+			continue;
+		}
+		Sprite.SetType(1);
+		ref CASConstructionSprite ConstructionSprite = Sprite.GetConstructionSprite();
+		ConstructionSprite.AddCreate(this.m_nVolumeBoxWidth, this.m_nVolumeBoxHeight);
+		ConstructionSprite.AddFillGradationHorizon(0, 0, this.m_nVolumeBoxWidth, this.m_nVolumeBoxHeight, 220, 200, 255, 240, 230, 255);
+		ConstructionSprite.AddFill(0, this.m_nVolumeBoxHeight - 1, this.m_nVolumeBoxWidth, 1, 140, 140, 140);
+		ConstructionSprite.AddFill(this.m_nVolumeBoxWidth - 1, 0, 1, this.m_nVolumeBoxHeight, 140, 140, 140);
+		ConstructionSprite.AddFill(0, 0, this.m_nVolumeBoxWidth, 1, 255, 255, 255);
+		ConstructionSprite.AddFill(0, 0, 1, this.m_nVolumeBoxHeight - 1, 255, 255, 255);
+		ConstructionSprite.Build();
+		Sprite.SetZ(this.m_nBaseZ + 2);
+		Sprite.SetShow(true);
+	}
+}
+
+void CVolumeConfigView::CreateVolumeBoxOnSprite()
+{
+	string VolumeBoxUnderCursorCG = this.m_VolumeConfigModel.GetVolumeBoxUnderCursorCG();
+	this.m_VolumeBoxOnSpriteList.Alloc(this.m_VolumeConfigModel.GetNumofElement());
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeBoxOnSpriteList.Numof(); ++nElement)
+	{
+		ref CASVersatileSprite Sprite = this.m_VolumeBoxOnSpriteList[nElement];
+		if (!VolumeBoxUnderCursorCG.Empty())
+		{
+			Sprite.SetType(0);
+			Sprite.GetCGSprite().SetCG(VolumeBoxUnderCursorCG);
+			Sprite.SetZ(this.m_nBaseZ + 2);
+			Sprite.SetShow(false);
+			continue;
+		}
+		Sprite.SetType(1);
+		ref CASConstructionSprite ConstructionSprite = Sprite.GetConstructionSprite();
+		ConstructionSprite.AddCreate(this.m_nVolumeBoxWidth, this.m_nVolumeBoxHeight);
+		ConstructionSprite.AddFillGradationHorizon(0, 0, this.m_nVolumeBoxWidth, this.m_nVolumeBoxHeight, 220, 200, 255, 240, 230, 255);
+		ConstructionSprite.AddFill(0, this.m_nVolumeBoxHeight - 1, this.m_nVolumeBoxWidth, 1, 140, 140, 140);
+		ConstructionSprite.AddFill(this.m_nVolumeBoxWidth - 1, 0, 1, this.m_nVolumeBoxHeight, 140, 140, 140);
+		ConstructionSprite.AddFill(0, 0, this.m_nVolumeBoxWidth, 1, 255, 255, 255);
+		ConstructionSprite.AddFill(0, 0, 1, this.m_nVolumeBoxHeight - 1, 255, 255, 255);
+		ConstructionSprite.AddFillAlphaColor(0, 0, this.m_nVolumeBoxWidth, this.m_nVolumeBoxHeight, 255, 255, 0, 128);
+		ConstructionSprite.Build();
+		Sprite.SetZ(this.m_nBaseZ + 2);
+		Sprite.SetShow(false);
+	}
+}
+
+void CVolumeConfigView::CreateMuteSprite()
+{
+	this.m_MuteSpriteList.Alloc(this.m_VolumeConfigModel.GetNumofElement());
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_MuteSpriteList.Numof(); ++nElement)
+	{
+		ref CASVersatileSprite VersatileSprite = this.m_MuteSpriteList[nElement];
+		if (!this.m_VolumeConfigModel.GetMuteButtonCG().Empty())
+		{
+			VersatileSprite.SetType(2);
+			ref CASCGStateSprite StateSprite = VersatileSprite.GetCGStateSprite();
+			StateSprite.Alloc(4);
+			StateSprite.GetSprite(0).SetCG(this.m_VolumeConfigModel.GetMuteButtonCG());
+			StateSprite.GetSprite(1).SetCG(this.m_VolumeConfigModel.GetMuteButtonCheckCG());
+			StateSprite.GetSprite(2).SetCG(this.m_VolumeConfigModel.GetMuteButtonUnderCursorCG());
+			StateSprite.GetSprite(3).SetCG(this.m_VolumeConfigModel.GetMuteButtonCheckUnderCursorCG());
+			pos_t ButtonPos;
+			ButtonPos = this.m_VolumeConfigModel.GetMuteButtonPos(nElement);
+			int nX = this.m_nElementOffsetX + 160 + this.m_nVolumeAreaWidth + 16;
+			int nY = this.m_nElementOffsetY + this.m_nElementHeight * nElement + (this.m_nElementHeight - this.m_nMuteHeight) / 2;
+			if (ButtonPos.x != 0 || ButtonPos.y != 0)
+			{
+				nX = ButtonPos.x;
+				nY = ButtonPos.y;
+			}
+			int nSprite = 0;
+			for (nSprite = 0; nSprite < 4; ++nSprite)
+			{
+				StateSprite.GetSprite(nSprite).SetPos(nX, nY);
+			}
+		}
+		else
+		{
+			VersatileSprite.SetType(3);
+			ref CASConstructionStateSprite StateSprite = VersatileSprite.GetConstructionStateSprite();
+			StateSprite.Alloc(4);
+			int nSprite = 0;
+			for (nSprite = 0; nSprite < 4; ++nSprite)
+			{
+				ref CASConstructionSprite Sprite = StateSprite.GetSprite(nSprite);
+				Sprite.AddCreate(this.m_nMuteWidth, this.m_nMuteHeight);
+				Sprite.AddFill(0, 0, this.m_nMuteWidth, this.m_nMuteHeight, 255, 255, 255);
+				Sprite.AddDrawRect(0, 0, this.m_nMuteWidth, this.m_nMuteHeight, 96, 96, 96);
+				if (nSprite % 2 == 1)
+				{
+					Sprite.AddDrawLine(2, 2, this.m_nMuteWidth - 3, this.m_nMuteHeight - 3, 32, 32, 32);
+					Sprite.AddDrawLine(this.m_nMuteWidth - 3, 2, 2, this.m_nMuteHeight - 3, 32, 32, 32);
+				}
+				if (nSprite >= 2)
+				{
+					Sprite.AddFillAlphaColor(0, 0, this.m_nMuteWidth, this.m_nMuteHeight, 255, 255, 0, 160);
+				}
+				Sprite.Build();
+				int nX = this.m_nElementOffsetX + 160 + this.m_nVolumeAreaWidth + 16;
+				int nY = this.m_nElementOffsetY + this.m_nElementHeight * nElement + (this.m_nElementHeight - this.m_nMuteHeight) / 2;
+				Sprite.SetPos(nX, nY);
+			}
+		}
+		VersatileSprite.SetZ(this.m_nBaseZ + 1);
+		VersatileSprite.SetActiveState(0);
+	}
+}
+
+void CVolumeConfigView::CreateVolumeNameSpriteList()
+{
+	this.m_VolumeNameSpriteList.Alloc(this.m_VolumeConfigModel.GetNumofElement());
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeNameSpriteList.Numof(); ++nElement)
+	{
+		ref CVolumeElement VolumeElement = this.m_VolumeConfigModel.GetElement(nElement);
+		ref CASTextSprite TextSprite = this.m_VolumeNameSpriteList[nElement];
+		CASCharSpriteProperty CharProperty;
+		CharProperty.SetSize(24);
+		CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+		CharProperty.SetEdgeWeight(1.0);
+		CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+		TextSprite.SetText(VolumeElement.GetName(), CharProperty);
+		int nX = this.m_nElementOffsetX;
+		int nY = this.m_nElementOffsetY + this.m_nElementHeight * nElement + (this.m_nElementHeight - CharProperty.GetSize()) / 2;
+		TextSprite.SetPos(nX, nY);
+		TextSprite.SetZ(this.m_nBaseZ + 1);
+	}
+}
+
+void CVolumeConfigView::CreateButtonSprite(ref CASConstructionSprite Sprite, int nWidth, int nHeight, string Text, bool bSelect)
+{
+	Sprite.AddCreate(nWidth, nHeight);
+	Sprite.AddFillGradationHorizon(0, 0, nWidth, nHeight, 240, 240, 240, 190, 190, 190);
+	Sprite.AddDrawRect(0, 0, nWidth, nHeight, 0, 0, 0);
+	Sprite.AddFill(nWidth - 2, 1, 1, nHeight - 2, 96, 96, 96);
+	Sprite.AddFill(1, nHeight - 2, nWidth - 2, 1, 96, 96, 96);
+	sact_text_metrics_t tm;
+	tm.nSize = nHeight - 16;
+	tm.nColorR = 0;
+	tm.nColorG = 0;
+	tm.nColorB = 0;
+	tm.nShadowColorR = 255;
+	tm.nShadowColorG = 255;
+	tm.nShadowColorB = 255;
+	tm.nShadowPixelL = 1;
+	tm.nShadowPixelR = 1;
+	tm.nShadowPixelU = 1;
+	tm.nShadowPixelD = 1;
+	int nTextX = (nWidth - (tm.nSize * Text.LengthByte()) / 2) / 2;
+	int nTextY = (nHeight - tm.nSize) / 2;
+	Sprite.AddDrawText(nTextX, nTextY, Text, tm, 0);
+	if (bSelect)
+	{
+		Sprite.AddFillAlphaColor(0, 0, nWidth, nHeight, 255, 255, 255, 96);
+	}
+	Sprite.Build();
+}
+
+void CVolumeConfigView::Run()
+{
+	this.UpdateVolumeBoxPos();
+	this.UpdateMuteState();
+	SYS_画面更新(1, 100, 0, 0);
+	CASClick RButtonClick;
+	CASClick EscapeKeyClick;
+	CASClick SpaceKeyClick;
+	RButtonClick.Init(2, true);
+	EscapeKeyClick.Init(27, true);
+	SpaceKeyClick.Init(32, true);
+	this.m_LButtonClick.Init(1, true);
+	this.m_nOnCursorObject = -1;
+	for (; ; )
+	{
+		if (RButtonClick.IsClick(-2147483648))
+		{
+			this.PlayCancelSound();
+			break;
+		}
+		if (EscapeKeyClick.IsClick(-2147483648))
+		{
+			this.PlayCancelSound();
+			break;
+		}
+		if (SpaceKeyClick.IsClick(-2147483648))
+		{
+			this.PlayCancelSound();
+			break;
+		}
+		this.CheckBeginDrag();
+		this.UpdateDraggingVolumeBox();
+		if (!this.m_bDragging)
+		{
+			this.UpdateVolumeBoxPos();
+		}
+		this.UpdateVolumeBoxOnCursor();
+		this.UpdateMuteState();
+		if (this.UpdateButton())
+		{
+			break;
+		}
+		this.UpdateTestSound();
+		UpdateView(true);
+	}
+}
+
+void CVolumeConfigView::CheckBeginDrag()
+{
+	if (this.m_bDragging)
+	{
+		return;
+	}
+	if (!AFL_IsKeyDown(1))
+	{
+		return;
+	}
+	int nMouseX = 0;
+	int nMouseY = 0;
+	if (!AFL_Mouse_GetPos(nMouseX, nMouseY))
+	{
+		return;
+	}
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeConfigModel.GetNumofElement(); ++nElement)
+	{
+		int nX = 0;
+		int nY = 0;
+		int nWidth = 0;
+		int nHeight = 0;
+		this.GetVolumeAreaRect(nElement, nX, nY, nWidth, nHeight);
+		if (nMouseX >= nX && nMouseX < nX + nWidth && nMouseY >= nY && nMouseY < nY + nHeight)
+		{
+			int nTestSound = this.m_VolumeConfigModel.GetTestSound(nElement);
+			if (nTestSound != -2147483648)
+			{
+				this.PlayTestSound(nTestSound);
+			}
+			else
+			{
+				this.PlayDecideSound(false);
+			}
+			this.m_bDragging = true;
+			this.m_nDragElement = nElement;
+		}
+	}
+}
+
+void CVolumeConfigView::UpdateDraggingVolumeBox()
+{
+	if (!this.m_bDragging)
+	{
+		return;
+	}
+	int nMouseX = 0;
+	int nMouseY = 0;
+	if (!AFL_Mouse_GetPos(nMouseX, nMouseY))
+	{
+		this.StopTestSound();
+		this.m_bDragging = false;
+		return;
+	}
+	int nAreaX = 0;
+	int nAreaY = 0;
+	int nAreaWidth = 0;
+	int nAreaHeight = 0;
+	this.GetVolumeAreaRect(this.m_nDragElement, nAreaX, nAreaY, nAreaWidth, nAreaHeight);
+	int nVolume = ((nMouseX - nAreaX - this.m_nVolumeBoxWidth / 2) * 100) / (nAreaWidth - this.m_nVolumeBoxWidth);
+	if (nVolume < 0)
+	{
+		nVolume = 0;
+	}
+	else if (nVolume > 100)
+	{
+		nVolume = 100;
+	}
+	int nX = 0;
+	int nY = 0;
+	this.CalcVolumeToVolumeBoxPos(nVolume, this.m_nDragElement, nX, nY);
+	this.m_VolumeBoxSpriteList[this.m_nDragElement].SetPos(nX, nY);
+	this.m_VolumeBoxOnSpriteList[this.m_nDragElement].SetPos(nX, nY);
+	ref CVolumeElement VolumeElement = this.m_VolumeConfigModel.GetElement(this.m_nDragElement);
+	int nGroup = VolumeElement.GetGroup();
+	SystemService.SetMixerVolume(nGroup, nVolume);
+	if (!AFL_IsKeyDown(1))
+	{
+		this.StopTestSound();
+		this.m_bDragging = false;
+	}
+}
+
+void CVolumeConfigView::UpdateVolumeBoxPos()
+{
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeBoxSpriteList.Numof(); ++nElement)
+	{
+		ref CASVersatileSprite Sprite = this.m_VolumeBoxSpriteList[nElement];
+		ref CASVersatileSprite OnSprite = this.m_VolumeBoxOnSpriteList[nElement];
+		ref CVolumeElement VolumeElement = this.m_VolumeConfigModel.GetElement(nElement);
+		int nGroup = VolumeElement.GetGroup();
+		int nVolume = 0;
+		SystemService.GetMixerVolume(nGroup, nVolume);
+		int nX = 0;
+		int nY = 0;
+		this.CalcVolumeToVolumeBoxPos(nVolume, nElement, nX, nY);
+		Sprite.SetPos(nX, nY);
+		OnSprite.SetPos(nX, nY);
+	}
+}
+
+void CVolumeConfigView::UpdateVolumeBoxOnCursor()
+{
+	int nMouseX = -1;
+	int nMouseY = -1;
+	AFL_Mouse_GetPos(nMouseX, nMouseY);
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_VolumeBoxSpriteList.Numof(); ++nElement)
+	{
+		ref CASVersatileSprite Sprite = this.m_VolumeBoxSpriteList[nElement];
+		ref CASVersatileSprite OnSprite = this.m_VolumeBoxOnSpriteList[nElement];
+		if (this.m_bDragging)
+		{
+			if (this.m_nDragElement == nElement)
+			{
+				Sprite.SetShow(false);
+				OnSprite.SetShow(true);
+			}
+			else
+			{
+				Sprite.SetShow(true);
+				OnSprite.SetShow(false);
+			}
+		}
+		else
+		{
+			int nX = 0;
+			int nY = 0;
+			int nWidth = 0;
+			int nHeight = 0;
+			this.GetVolumeAreaRect(nElement, nX, nY, nWidth, nHeight);
+			if (nMouseX >= nX && nMouseX < nX + nWidth && nMouseY >= nY && nMouseY < nY + nHeight)
+			{
+				if (OnSprite.GetShow() == false)
+				{
+					this.PlayUnderCursorSound();
+				}
+				Sprite.SetShow(false);
+				OnSprite.SetShow(true);
+			}
+			else
+			{
+				Sprite.SetShow(true);
+				OnSprite.SetShow(false);
+			}
+		}
+	}
+}
+
+void CVolumeConfigView::UpdateMuteState()
+{
+	bool bKeyDown = AFL_IsKeyDown(1);
+	int nElement = 0;
+	for (nElement = 0; nElement < this.m_MuteSpriteList.Numof(); ++nElement)
+	{
+		ref CASVersatileSprite VersatileSprite = this.m_MuteSpriteList[nElement];
+		ref CVolumeElement VolumeElement = this.m_VolumeConfigModel.GetElement(nElement);
+		int nGroup = VolumeElement.GetGroup();
+		bool bMute = false;
+		SystemService.GetMixerMute(nGroup, bMute);
+		bool bOnCursor = false;
+		if (this.m_bDragging)
+		{
+			bOnCursor = false;
+		}
+		else
+		{
+			bOnCursor = VersatileSprite.IsMouseCursorInRect();
+		}
+		bool bMuteClick = false;
+		if (bKeyDown)
+		{
+			if (bOnCursor && this.m_nMuteLButtonDownElement == -1)
+			{
+				this.m_nMuteLButtonDownElement = nElement;
+			}
+		}
+		else if (bOnCursor && this.m_nMuteLButtonDownElement == nElement)
+		{
+			bMute = !bMute;
+			if (bMute)
+			{
+				if (nGroup != 0 && nGroup != 2)
+				{
+					this.PlayDecideSound(false);
+				}
+				SystemService.SetMixerMute(nGroup, bMute);
+				bMuteClick = true;
+			}
+			else
+			{
+				SystemService.SetMixerMute(nGroup, bMute);
+				this.PlayDecideSound(false);
+				bMuteClick = true;
+			}
+		}
+		if (bMute)
+		{
+			int nNewActiveState = 1 + (bOnCursor ? 2 : 0);
+			if (VersatileSprite.GetActiveState() != nNewActiveState && bOnCursor && !bMuteClick)
+			{
+				this.PlayUnderCursorSound();
+			}
+			VersatileSprite.SetActiveState(nNewActiveState);
+		}
+		else
+		{
+			int nNewActiveState = 0 + (bOnCursor ? 2 : 0);
+			if (VersatileSprite.GetActiveState() != nNewActiveState && bOnCursor && !bMuteClick)
+			{
+				this.PlayUnderCursorSound();
+			}
+			VersatileSprite.SetActiveState(nNewActiveState);
+		}
+	}
+	if (!bKeyDown)
+	{
+		this.m_nMuteLButtonDownElement = -1;
+	}
+}
+
+bool CVolumeConfigView::UpdateButton()
+{
+	int nPrevOnCursorObject = this.m_nOnCursorObject;
+	this.m_nOnCursorObject = -1;
+	this.m_ConfigTabView.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ConfigTabView.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 10 + nObject;
+		}
+	}
+	this.m_ExitBar.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ExitBar.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 20 + nObject;
+		}
+	}
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_BGMFadeByVoiceCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 1;
+		}
+	}
+	this.m_BGMFadeByVoiceCheckBoxSprite.SetShowCursor(this.m_BGMFadeByVoiceCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_MuteByInactiveCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 2;
+		}
+	}
+	this.m_MuteByInactiveCheckBoxSprite.SetShowCursor(this.m_MuteByInactiveCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject != -1 && nPrevOnCursorObject != this.m_nOnCursorObject)
+	{
+		this.PlayUnderCursorSound();
+	}
+	if (this.m_LButtonClick.IsClick(this.m_nOnCursorObject) && this.m_nOnCursorObject != -1)
+	{
+		if (this.m_nOnCursorObject == 1)
+		{
+			this.PlayDecideSound(false);
+			g_bConfigBGMFadeByVoice = !g_bConfigBGMFadeByVoice;
+			this.m_BGMFadeByVoiceCheckBoxSprite.SetShowCheckMark(g_bConfigBGMFadeByVoice);
+		}
+		else if (this.m_nOnCursorObject == 2)
+		{
+			this.PlayDecideSound(false);
+			g_ConfigSoundGlobalFocus = !g_ConfigSoundGlobalFocus;
+			this.m_MuteByInactiveCheckBoxSprite.SetShowCheckMark(!g_ConfigSoundGlobalFocus);
+		}
+		else if (this.m_nOnCursorObject == 20 + 0)
+		{
+			this.PlayDecideSound(false);
+			ゲーム終了();
+		}
+		else if (this.m_nOnCursorObject == 20 + 1)
+		{
+			this.PlayDecideSound(false);
+			タイトルに戻る();
+		}
+		else if (this.m_nOnCursorObject == 20 + 2)
+		{
+			this.PlayDecideSound(false);
+			return true;
+		}
+		else if (this.m_nOnCursorObject >= 10 && this.m_nOnCursorObject < 16 && this.m_nOnCursorObject - 10 != 2)
+		{
+			this.PlayDecideSound(false);
+			this.m_nExitCode = this.m_nOnCursorObject - 10;
+			return true;
+		}
+	}
+	return false;
+}
+
+void CVolumeConfigView::CalcVolumeToVolumeBoxPos(int nVolume, int nElement, ref int nX, ref int nY)
+{
+	ref rect_t Rect = this.m_VolumeAreaRectList[nElement];
+	nX = Rect.x + ((Rect.w - this.m_nVolumeBoxWidth) * nVolume) / 100;
+	nY = Rect.y + (Rect.h - this.m_nVolumeBoxHeight) / 2;
+}
+
+void CVolumeConfigView::GetVolumeAreaRect(int nElement, ref int nX, ref int nY, ref int nWidth, ref int nHeight)
+{
+	ref rect_t Rect = this.m_VolumeAreaRectList[nElement];
+	nX = Rect.x;
+	nY = Rect.y;
+	nWidth = Rect.w;
+	nHeight = Rect.h;
+}
+
+void CVolumeConfigView::PlayDecideSound(bool bWaitPlayEnd)
+{
+	if (g_ConfigModeDocument.GetSoundDecide() == -2147483648)
+	{
+		return;
+	}
+	_g_SystemSound._Play(g_ConfigModeDocument.GetSoundDecide(), bWaitPlayEnd);
+}
+
+void CVolumeConfigView::PlayUnderCursorSound()
+{
+	if (g_ConfigModeDocument.GetSoundUnderCursor() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundUnderCursor());
+}
+
+void CVolumeConfigView::PlayCancelSound()
+{
+	if (g_ConfigModeDocument.GetSoundCancel() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundCancel());
+}
+
+void CVolumeConfigView::PlayTestSound(int nTestSound)
+{
+	KiwiSoundEngine.Sound_Stop(3);
+	KiwiSoundEngine.Sound_Prepare(3, nTestSound);
+	KiwiSoundEngine.Sound_Fade(3, 0, 100, 0);
+	KiwiSoundEngine.Sound_Play(3);
+	this.m_nPlayingTestSound = nTestSound;
+}
+
+void CVolumeConfigView::UpdateTestSound()
+{
+	if (this.m_nPlayingTestSound == -2147483648)
+	{
+		return;
+	}
+	if (KiwiSoundEngine.Sound_IsPlay(3))
+	{
+		return;
+	}
+	this.PlayTestSound(this.m_nPlayingTestSound);
+}
+
+void CVolumeConfigView::StopTestSound()
+{
+	if (this.m_nPlayingTestSound == -2147483648)
+	{
+		return;
+	}
+	int nFadeTime = 500;
+	int nVolume = 0;
+	bool bStop = true;
+	KiwiSoundEngine.Sound_Fade(3, nFadeTime, nVolume, bStop);
+	this.m_nPlayingTestSound = -2147483648;
+}
+

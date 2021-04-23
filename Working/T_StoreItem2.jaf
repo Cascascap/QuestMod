@@ -1,0 +1,1435 @@
+int T_StoreItem::moveUp(int nID)
+{
+	switch (this.m_nStoreType)
+	{
+		case 1:
+			return this.moveUp01(nID);
+		case 2:
+			return this.moveUp02(nID);
+		case 3:
+			return this.moveUp03(nID);
+		default:
+			break;
+	}
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveDown(int nID)
+{
+	switch (this.m_nStoreType)
+	{
+		case 1:
+			return this.moveDown01(nID);
+		case 2:
+			return this.moveDown02(nID);
+		case 3:
+			return this.moveDown03(nID);
+		default:
+			break;
+	}
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeft(int nID)
+{
+	switch (this.m_nStoreType)
+	{
+		case 1:
+			return this.moveLeft01(nID);
+		case 2:
+			return this.moveLeft02(nID);
+		case 3:
+			return this.moveLeft03(nID);
+		default:
+			break;
+	}
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRight(int nID)
+{
+	switch (this.m_nStoreType)
+	{
+		case 1:
+			return this.moveRight01(nID);
+		case 2:
+			return this.moveRight02(nID);
+		case 3:
+			return this.moveRight03(nID);
+		default:
+			break;
+	}
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveUp01(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.m_sSort.getLast();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return nID;
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		int nID2 = this.m_sLimitLock.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitJob.getLast();
+	}
+	if (nID > 574000)
+	{
+		return this.getLastItem();
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveUp(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItem.getLast();
+	}
+	if (nID > 571000)
+	{
+		int nID2 = this.m_sLimitItem.getPrev(nID);
+		return nID2 > 0 ? nID2 : 509991;
+	}
+	if (nID > 560000)
+	{
+		int nID2 = this.m_sSort.getPrev(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.m_sLimitLock.getLast();
+	}
+	if (nID > 555000)
+	{
+		goto label0;
+	}
+	if (nID > 554000)
+	{
+		return this.getPrevItem(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.getPrevItem(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.getPrevItem(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.getPrevItem(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.getPrevItem(this.getItemIndex(nID));
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveDown01(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.m_sLimitItem.getFirst();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return nID;
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		int nID2 = this.m_sLimitLock.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sSort.getFirst();
+	}
+	if (nID > 574000)
+	{
+		return this.getFirstItem();
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveDown(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.m_sLimitLock.getFirst();
+	}
+	if (nID > 571000)
+	{
+		int nID2 = this.m_sLimitItem.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitJob.getFirst();
+	}
+	if (nID > 560000)
+	{
+		int nID2 = this.m_sSort.getNext(nID);
+		return nID2 > 0 ? nID2 : 509991;
+	}
+	if (nID > 555000)
+	{
+		goto label0;
+	}
+	if (nID > 554000)
+	{
+		return this.getNextItem(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.getNextItem(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.getNextItem(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.getNextItem(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.getNextItem(this.getItemIndex(nID));
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeft01(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			if (this.isLimitItemEx())
+			{
+				return this.m_sLimitItemEx.getFirst();
+			}
+			goto label0;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getPrevSystemBar(nID);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		return this.isLimitItemEx() ? this.getButtonID(3) : this.getButtonID(4);
+	}
+	if (nID > 574000)
+	{
+		int nID2 = this.m_sLimitItemEx.getNext(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.m_bOpenFlag ? アイテム保存庫_ボタンＩＤ(0) : 509991;
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveLeft(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(1);
+		}
+		return this.getButtonID(2);
+	}
+	if (nID > 571000)
+	{
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(0);
+		}
+		return this.getButtonID(1);
+	}
+	if (nID > 560000)
+	{
+		return this.getButtonID(this.m_sList.getItemCount() - 1);
+	}
+	if (nID > 555000)
+	{
+		goto label0;
+	}
+	if (nID > 554000)
+	{
+		return this.moveLeftItem01(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.moveLeftItem01(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.moveLeftItem01(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.moveLeftItem01(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.moveLeftItem01(this.getItemIndex(nID));
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRight01(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			if (this.m_bOpenFlag)
+			{
+				return アイテム保存庫_ボタンＩＤ(0);
+			}
+			if (this.isLimitItemEx())
+			{
+				return this.m_sLimitItemEx.getLast();
+			}
+			return this.getFirstItem();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getNextSystemBar(nID);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		if (this.m_bOpenFlag)
+		{
+			return アイテム保存庫_ボタンＩＤ(4);
+		}
+		return this.isLimitItemEx() ? this.getButtonID(3) : this.getButtonID(4);
+	}
+	if (nID > 574000)
+	{
+		int nID2 = this.m_sLimitItemEx.getPrev(nID);
+		return nID2 > 0 ? nID2 : 509991;
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveRight(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		if (this.m_bOpenFlag)
+		{
+			return アイテム保存庫_ボタンＩＤ(2);
+		}
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(1);
+		}
+		return this.getButtonID(2);
+	}
+	if (nID > 571000)
+	{
+		if (this.m_bOpenFlag)
+		{
+			return アイテム保存庫_ボタンＩＤ(1);
+		}
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(0);
+		}
+		return this.getButtonID(1);
+	}
+	if (nID > 560000)
+	{
+		return this.m_bOpenFlag ? アイテム保存庫_ボタンＩＤ(5) : this.getButtonID(this.m_sList.getItemCount() - 1);
+	}
+	if (nID > 555000)
+	{
+		goto label0;
+	}
+	if (nID > 554000)
+	{
+		return this.moveRightItem01(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.moveRightItem01(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.moveRightItem01(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.moveRightItem01(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.moveRightItem01(this.getItemIndex(nID));
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveUp02(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.m_sSort.getLast();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getStatusID(3);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		int nID2 = this.m_sLimitLock.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitJob.getLast();
+	}
+	if (nID > 574000)
+	{
+		return this.getLastItem();
+	}
+	if (nID > 573000)
+	{
+		int nID2 = this.m_sLimitEquip.getPrev(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.m_sLimitLock.getLast();
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveUp(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItem.getLast();
+	}
+	if (nID > 571000)
+	{
+		int nID2 = this.m_sLimitItem.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sSort.getLast();
+	}
+	if (nID > 560000)
+	{
+		int nID2 = this.m_sSort.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitEquip.getLast();
+	}
+	if (nID > 555000)
+	{
+		return this.getPrevStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.getPrevItem(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.getPrevItem(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.getPrevItem(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.getPrevItem(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.getPrevItem(this.getItemIndex(nID));
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveDown02(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.m_sLimitItem.getFirst();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getStatusID(0);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		int nID2 = this.m_sLimitLock.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitEquip.getFirst();
+	}
+	if (nID > 574000)
+	{
+		return this.getFirstItem();
+	}
+	if (nID > 573000)
+	{
+		int nID2 = this.m_sLimitEquip.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sSort.getFirst();
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveDown(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.m_sLimitLock.getFirst();
+	}
+	if (nID > 571000)
+	{
+		int nID2 = this.m_sLimitItem.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitJob.getFirst();
+	}
+	if (nID > 560000)
+	{
+		int nID2 = this.m_sSort.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItem.getFirst();
+	}
+	if (nID > 555000)
+	{
+		return this.getNextStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.getNextItem(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.getNextItem(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.getNextItem(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.getNextItem(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.getNextItem(this.getItemIndex(nID));
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeft02(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			if (this.isLimitItemEx())
+			{
+				return this.m_sLimitItemEx.getFirst();
+			}
+			goto label0;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getPrevSystemBar(nID);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		return this.isLimitItemEx() ? this.getButtonID(2) : this.getButtonID(3);
+	}
+	if (nID > 574000)
+	{
+		int nID2 = this.m_sLimitItemEx.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItemEx.getFirst();
+	}
+	if (nID > 573000)
+	{
+		return this.isLimitItemEx() ? this.getButtonID(3) : this.getButtonID(4);
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveLeft(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(1);
+		}
+		return this.getButtonID(2);
+	}
+	if (nID > 571000)
+	{
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(0);
+		}
+		return this.getButtonID(1);
+	}
+	if (nID > 560000)
+	{
+		return this.getButtonID(this.m_sList.getItemCount() - 1);
+	}
+	if (nID > 555000)
+	{
+		return this.moveLeftStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.moveLeftItem02(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.moveLeftItem02(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.moveLeftItem02(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.moveLeftItem02(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.moveLeftItem02(this.getItemIndex(nID));
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRight02(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.getStatusID(0);
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getNextSystemBar(nID);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		return this.getStatusID(2);
+	}
+	if (nID > 574000)
+	{
+		int nID2 = this.m_sLimitItemEx.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItemEx.getLast();
+	}
+	if (nID > 573000)
+	{
+		return this.getStatusID(3);
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveRight(nID);
+		return nID2 > 0 ? nID2 : this.getStatusID(1);
+	}
+	if (nID > 571000)
+	{
+		return this.getStatusID(0);
+	}
+	if (nID > 560000)
+	{
+		return 900001;
+	}
+	if (nID > 555000)
+	{
+		return this.moveRightStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.moveRightItem02(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.moveRightItem02(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.moveRightItem02(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.moveRightItem02(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.moveRightItem02(this.getItemIndex(nID));
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveUp03(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.m_sSort.getLast();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getStatusID(3);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		goto label0;
+	}
+	if (nID > 574000)
+	{
+		return this.getLastItem();
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveUp(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItem.getLast();
+	}
+	if (nID > 571000)
+	{
+		int nID2 = this.m_sLimitItem.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sSort.getLast();
+	}
+	if (nID > 560000)
+	{
+		int nID2 = this.m_sSort.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitJob.getLast();
+	}
+	if (nID > 555000)
+	{
+		return this.getPrevStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.getPrevItem(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.getPrevItem(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.getPrevItem(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.getPrevItem(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.getPrevItem(this.getItemIndex(nID));
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveDown03(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.m_sLimitItem.getFirst();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getStatusID(0);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		goto label0;
+	}
+	if (nID > 574000)
+	{
+		return this.getFirstItem();
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveDown(nID);
+		return nID2 > 0 ? nID2 : this.m_sSort.getFirst();
+	}
+	if (nID > 571000)
+	{
+		int nID2 = this.m_sLimitItem.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitJob.getFirst();
+	}
+	if (nID > 560000)
+	{
+		int nID2 = this.m_sSort.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItem.getFirst();
+	}
+	if (nID > 555000)
+	{
+		return this.getNextStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.getNextItem(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.getNextItem(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.getNextItem(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.getNextItem(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.getNextItem(this.getItemIndex(nID));
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeft03(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			if (this.isLimitItemEx())
+			{
+				return this.m_sLimitItemEx.getFirst();
+			}
+			goto label0;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getPrevSystemBar(nID);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		return this.isLimitItemEx() ? this.getButtonID(2) : this.getButtonID(3);
+	}
+	if (nID > 574000)
+	{
+		int nID2 = this.m_sLimitItemEx.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItemEx.getFirst();
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveLeft(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(1);
+		}
+		return this.getButtonID(2);
+	}
+	if (nID > 571000)
+	{
+		if (this.isLimitItemEx())
+		{
+			return this.getButtonID(0);
+		}
+		return this.getButtonID(1);
+	}
+	if (nID > 560000)
+	{
+		return this.getButtonID(this.m_sList.getItemCount() - 1);
+	}
+	if (nID > 555000)
+	{
+		return this.moveLeftStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.moveLeftItem03(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.moveLeftItem03(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.moveLeftItem03(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.moveLeftItem03(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.moveLeftItem03(this.getItemIndex(nID));
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRight03(int nID)
+{
+	switch (nID)
+	{
+		case 509991:
+		case 509999:
+			return this.getStatusID(0);
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.getNextSystemBar(nID);
+	}
+	if (nID > 580000)
+	{
+		goto label0;
+	}
+	if (nID > 575000)
+	{
+		return this.getStatusID(2);
+	}
+	if (nID > 574000)
+	{
+		int nID2 = this.m_sLimitItemEx.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimitItemEx.getLast();
+	}
+	if (nID > 573000)
+	{
+		goto label0;
+	}
+	if (nID > 572000)
+	{
+		int nID2 = this.m_sLimitJob.moveRight(nID);
+		return nID2 > 0 ? nID2 : this.getStatusID(1);
+	}
+	if (nID > 571000)
+	{
+		return this.getStatusID(0);
+	}
+	if (nID > 560000)
+	{
+		return 900001;
+	}
+	if (nID > 555000)
+	{
+		return this.moveRightStatus(nID);
+	}
+	if (nID > 554000)
+	{
+		return this.moveRightItem03(this.getUnlockIndex(nID));
+	}
+	if (nID > 553000)
+	{
+		return this.moveRightItem03(this.getLockIndex(nID));
+	}
+	if (nID > 552000)
+	{
+		return this.moveRightItem03(this.getSellIndex(nID));
+	}
+	if (nID > 551000)
+	{
+		return this.moveRightItem03(this.getDonationIndex(nID));
+	}
+	if (nID > 500000)
+	{
+		return this.moveRightItem03(this.getItemIndex(nID));
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeftItem01(int nIndex)
+{
+	if (this.m_bOpenFlag)
+	{
+		if (this.isLimitItemEx())
+		{
+			return アイテム保存庫_ボタンＩＤ(nIndex + 1);
+		}
+		return アイテム保存庫_ボタンＩＤ(nIndex);
+	}
+	if (this.isLimitItemEx())
+	{
+		switch (nIndex)
+		{
+			case 0:
+				return this.m_sLimitItem.getFirst();
+			case 1:
+				return this.m_sLimitJob.getFirst();
+			case 2:
+				return this.m_sLimitJob.getLast();
+			case 3:
+				return this.m_sLimitLock.getFirst();
+			case 4:
+				return this.m_sSort.getFirst();
+			case 5:
+			default:
+				goto label0;
+		}
+	}
+	switch (nIndex)
+	{
+		case 0:
+			return 509991;
+		case 1:
+			return this.m_sLimitItem.getFirst();
+		case 2:
+			return this.m_sLimitJob.getFirst();
+		case 3:
+			return this.m_sLimitJob.getLast();
+		case 4:
+			return this.m_sLimitLock.getFirst();
+		case 5:
+			return this.m_sSort.getFirst();
+		default:
+			break;
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRightItem01(int nIndex)
+{
+	if (this.isLimitItemEx())
+	{
+		switch (nIndex)
+		{
+			case 0:
+				return this.m_sLimitItem.getFirst();
+			case 1:
+				return this.m_sLimitJob.getFirst();
+			case 2:
+				return this.m_sLimitJob.getLast();
+			case 3:
+				return this.m_sLimitLock.getFirst();
+			case 4:
+				return this.m_sSort.getFirst();
+			case 5:
+			default:
+				goto label0;
+		}
+	}
+	switch (nIndex)
+	{
+		case 0:
+			return 509991;
+		case 1:
+			return this.m_sLimitItem.getFirst();
+		case 2:
+			return this.m_sLimitJob.getFirst();
+		case 3:
+			return this.m_sLimitJob.getLast();
+		case 4:
+			return this.m_sLimitLock.getFirst();
+		case 5:
+			return this.m_sSort.getFirst();
+		default:
+			break;
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeftItem02(int nIndex)
+{
+	if (this.isLimitItemEx())
+	{
+		switch (nIndex)
+		{
+			case 0:
+				return this.getStatusID(0);
+			case 1:
+				return this.getStatusID(1);
+			case 2:
+				return this.getStatusID(2);
+			case 3:
+				return this.getStatusID(3);
+			case 4:
+				return 900003;
+			case 5:
+			default:
+				goto label0;
+		}
+	}
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+			return this.getStatusID(0);
+		case 2:
+			return this.getStatusID(1);
+		case 3:
+			return this.getStatusID(2);
+		case 4:
+			return this.getStatusID(3);
+		case 5:
+			return 900003;
+		default:
+			break;
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRightItem02(int nIndex)
+{
+	if (this.isLimitItemEx())
+	{
+		switch (nIndex)
+		{
+			case 0:
+				return this.m_sLimitItem.getFirst();
+			case 1:
+				return this.m_sLimitJob.getFirst();
+			case 2:
+				return this.m_sLimitLock.getFirst();
+			case 3:
+				return this.m_sLimitEquip.getFirst();
+			case 4:
+				return this.m_sSort.getFirst();
+			case 5:
+			default:
+				goto label0;
+		}
+	}
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+			return this.m_sLimitItem.getFirst();
+		case 2:
+			return this.m_sLimitJob.getFirst();
+		case 3:
+			return this.m_sLimitLock.getFirst();
+		case 4:
+			return this.m_sLimitEquip.getFirst();
+		case 5:
+			return this.m_sSort.getFirst();
+		default:
+			break;
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeftItem03(int nIndex)
+{
+	if (this.isLimitItemEx())
+	{
+		switch (nIndex)
+		{
+			case 0:
+				return this.getStatusID(0);
+			case 1:
+				return this.getStatusID(1);
+			case 2:
+				return this.getStatusID(2);
+			case 3:
+				return this.getStatusID(3);
+			case 4:
+				return 900003;
+			case 5:
+			default:
+				goto label0;
+		}
+	}
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+			return this.getStatusID(0);
+		case 2:
+			return this.getStatusID(1);
+		case 3:
+			return this.getStatusID(2);
+		case 4:
+			return this.getStatusID(3);
+		case 5:
+			return 900003;
+		default:
+			break;
+	}
+label0:
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRightItem03(int nIndex)
+{
+	if (this.isLimitItemEx())
+	{
+		switch (nIndex)
+		{
+			case 0:
+				return this.m_sLimitItem.getFirst();
+			case 1:
+			case 2:
+				return this.m_sLimitJob.getFirst();
+			case 3:
+			case 4:
+				return this.m_sSort.getFirst();
+			case 5:
+			default:
+				goto label0;
+		}
+	}
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+			return this.m_sLimitItem.getFirst();
+		case 2:
+		case 3:
+			return this.m_sLimitJob.getFirst();
+		case 4:
+		case 5:
+			return this.m_sSort.getFirst();
+		default:
+			break;
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::moveLeftStatus(int nID)
+{
+	switch (this.getStatusIndex(nID))
+	{
+		case 0:
+			return this.m_sLimitItem.getFirst();
+		case 1:
+			return this.m_sLimitJob.getFirst();
+		case 2:
+			if (this.m_nStoreType == 2)
+			{
+				return this.m_sLimitLock.getFirst();
+			}
+			return this.m_sLimitJob.getFirst();
+		case 3:
+			if (this.m_nStoreType == 2)
+			{
+				return this.m_sLimitEquip.getFirst();
+			}
+			return this.m_sSort.getFirst();
+		default:
+			break;
+	}
+	return this.getFirstItem();
+}
+
+int T_StoreItem::moveRightStatus(int nID)
+{
+	if (this.isLimitItemEx())
+	{
+		switch (this.getStatusIndex(nID))
+		{
+			case 0:
+				return this.getButtonID(0);
+			case 1:
+				return this.getButtonID(1);
+			case 2:
+				return this.getButtonID(2);
+			case 3:
+				return this.getButtonID(3);
+			default:
+				goto label0;
+		}
+	}
+	switch (this.getStatusIndex(nID))
+	{
+		case 0:
+			return this.getButtonID(1);
+		case 1:
+			return this.getButtonID(2);
+		case 2:
+			return this.getButtonID(3);
+		case 3:
+			return this.getButtonID(4);
+		default:
+			break;
+	}
+label0:
+	return this.getLastItem();
+}
+
+int T_StoreItem::getPrevStatus(int nID)
+{
+	int idx = this.getStatusIndex(nID);
+	if (idx < 1)
+	{
+		return 900003;
+	}
+	return this.getStatusID(idx - 1);
+}
+
+int T_StoreItem::getNextStatus(int nID)
+{
+	int idx = this.getStatusIndex(nID);
+	if (idx < 0 || idx >= 3)
+	{
+		return 900003;
+	}
+	return this.getStatusID(idx + 1);
+}
+
+int T_StoreItem::getPrevSystemBar(int nID)
+{
+	switch (nID)
+	{
+		case 900002:
+		case 900003:
+			return システムバー_前ボタン(nID);
+		case 900001:
+		default:
+			break;
+	}
+	return this.m_sSort.getFirst();
+}
+
+int T_StoreItem::getNextSystemBar(int nID)
+{
+	switch (nID)
+	{
+		case 900001:
+		case 900002:
+			return システムバー_次ボタン(nID);
+		case 900003:
+		default:
+			break;
+	}
+	return this.getLastItem();
+}
+
+int T_StoreItem::getPrevItem(int nIndex)
+{
+	if (this.isLimitItemEx())
+	{
+		if (nIndex <= 0)
+		{
+			return this.m_sLimitItemEx.getLast();
+		}
+	}
+	return this.getButtonID(this.m_sList.getPrev(nIndex));
+}
+
+int T_StoreItem::getNextItem(int nIndex)
+{
+	if (this.isLimitItemEx())
+	{
+		if (nIndex >= this.m_sList.getItemCount() - 1)
+		{
+			return this.m_sLimitItemEx.getFirst();
+		}
+	}
+	return this.getButtonID(this.m_sList.getNext(nIndex));
+}
+
+int T_StoreItem::getFirstItem()
+{
+	return this.getButtonID(this.m_sList.getFirst());
+}
+
+int T_StoreItem::getLastItem()
+{
+	return this.getButtonID(this.m_sList.getLast());
+}
+

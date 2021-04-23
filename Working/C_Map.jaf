@@ -1,0 +1,353 @@
+int マップ_上矢印(int nID)
+{
+	return g_sMap.moveUp(nID);
+}
+
+int マップ_下矢印(int nID)
+{
+	return g_sMap.moveDown(nID);
+}
+
+int マップ_左矢印(int nID)
+{
+	return g_sMap.moveLeft(nID);
+}
+
+int マップ_右矢印(int nID)
+{
+	return g_sMap.moveRight(nID);
+}
+
+void マップ_初期化(int nMapNo, int nWalkNo, int nX, int nY, int nDir, bool bShow, bool bPlayerShow)
+{
+	マップデータ_ロード(nMapNo);
+	g_sMap.create(nMapNo, nWalkNo);
+	３Ｄマップ_ロード(nMapNo, bShow);
+	キャラ_作成(nMapNo, nX, nY, nDir, bPlayerShow);
+	置物_作成(bShow);
+	３Ｄマップ_座標設定(-1.0, -1.0, -1.0);
+	マップ部品_カメラ距離設定(-3.40282346638529E+38);
+	g_sMap.setShow(bShow);
+	g_nMapUpdate = 1;
+}
+
+void マップ_終了処理(bool bLoad)
+{
+	g_nMapUpdate = -1;
+	置物_削除();
+	キャラ_削除(bLoad);
+	３Ｄマップ_アンロード();
+	g_sMap.delete();
+	マップデータ_アンロード();
+	システムバー_削除();
+}
+
+int マップ_実行(ref int nValue)
+{
+	while (true)
+	{
+		int nRet = g_sMap.run(nValue);
+		if (デバッグモード())
+		{
+			if (nRet < 0)
+			{
+				return 2;
+			}
+		}
+		switch (nRet)
+		{
+			case 11:
+			case 12:
+			case 13:
+			case 19:
+			case 21:
+			case 22:
+			case 29:
+				return nRet;
+			default:
+				break;
+		}
+	}
+	return 0;
+}
+
+bool マップ_更新停止()
+{
+	bool bOld = マップ_更新中();
+	マップ_更新設定(false);
+	３Ｄマップ_更新停止();
+	return bOld;
+}
+
+bool マップ_更新再開()
+{
+	bool bOld = マップ_更新中();
+	マップ_更新設定(true);
+	３Ｄマップ_更新再開();
+	return bOld;
+}
+
+void マップ_更新設定(bool bFlag)
+{
+	if (g_nMapUpdate < 0)
+	{
+		return;
+	}
+	g_nMapUpdate = bFlag ? 1 : 0;
+}
+
+bool マップ_更新中()
+{
+	return g_nMapUpdate > 0;
+}
+
+void マップ_状態設定(int nStatus)
+{
+	g_sMap.setStatus(nStatus);
+}
+
+int マップ_状態()
+{
+	return g_sMap.getStatus();
+}
+
+bool マップ_未ロード()
+{
+	return g_sMap.getStatus() <= -1;
+}
+
+bool マップ_ロード直後()
+{
+	return g_sMap.getStatus() == 0;
+}
+
+bool マップ_ロード中()
+{
+	return g_sMap.getStatus() >= 0;
+}
+
+void マップ_描画(bool bShow, int nPlayerShow, int nWait)
+{
+	画面_クリア(true, true);
+	bool bOld = マップ_表示設定(bShow, nPlayerShow, nWait);
+	bool bOld2 = ３Ｄキャラ_表示();
+	UPDATE(true);
+	マップ_表示設定(bOld, bOld2, 0);
+}
+
+void マップ_色設定(ref T_ColorInfo rfsInfo)
+{
+	g_sMap.setColor(rfsInfo);
+}
+
+bool マップ_表示設定(bool bShow, int nPlayerShow, int nWait)
+{
+	bool bOld = マップ_表示中();
+	bool bPlayerShow = nPlayerShow < 0 ? bShow : nPlayerShow > 0;
+	bool bWait = nWait < 0 ? bShow : nWait > 0;
+	３Ｄマップ_表示設定(bShow);
+	キャラ_表示設定(bPlayerShow);
+	置物_表示設定(bShow);
+	g_sMap.setShow(bShow);
+	if (bWait)
+	{
+		３Ｄマップ_ロード待ち(-1);
+	}
+	return bOld;
+}
+
+bool マップ_表示中()
+{
+	return ３Ｄマップ_表示中();
+}
+
+void マップ_選択設定(int nID, bool bSelect)
+{
+	g_sMap.setSelect(nID, bSelect);
+}
+
+void マップ_キャラ表示フラグ設定(bool bPlayerShow)
+{
+	g_sMap.setPlayerShow(bPlayerShow);
+}
+
+int マップ_キャラ表示フラグ()
+{
+	return g_sMap.getPlayerShow();
+}
+
+void マップ_表示待ち(bool bAlign)
+{
+	３Ｄ_表示待ち(bAlign);
+	マップ_更新停止();
+	３Ｄキャラ_マウス移動停止();
+	３Ｄキャラ_目的地移動停止();
+	迷宮台詞_タイマリセット();
+}
+
+void マップ_位置設定(int nX, int nY)
+{
+	キャラ_位置設定(nX, nY);
+	３Ｄマップ_座標設定(-1.0, -1.0, -1.0);
+}
+
+void マップ_ボタン設定(bool bActive)
+{
+	return;
+}
+
+int マップ_番号()
+{
+	return ３Ｄマップ_番号();
+}
+
+bool マップ_サスペンド()
+{
+	if (マップ_未ロード())
+	{
+		return false;
+	}
+	マップ_表示設定(false, -1, -1);
+	マップ_更新停止();
+	キャラ_停止(false);
+	キャラ_更新設定(false);
+	if (!g_sMap.suspend())
+	{
+		return false;
+	}
+	return ３Ｄマップ_サスペンド();
+}
+
+bool マップ_レジューム()
+{
+	if (!マップ_サスペンド状態())
+	{
+		return false;
+	}
+	if (!３Ｄマップ_レジューム())
+	{
+		return false;
+	}
+	if (!g_sMap.resume())
+	{
+		return false;
+	}
+	マップ部品_配置残り回数更新();
+	キャラ_停止(false);
+	キャラ_更新設定(true);
+	マップ_更新設定(true);
+	システムバー_表示設定(true);
+	マップ_表示設定(true, -1, -1);
+	マップ_更新再開();
+	マップ_表示待ち(false);
+	return true;
+}
+
+bool マップ_サスペンド状態()
+{
+	return ３Ｄマップ_サスペンド状態();
+}
+
+int マップ_反対方向(int nDir)
+{
+	switch (nDir)
+	{
+		case 1:
+			return 3;
+		case 3:
+			return 1;
+		case 2:
+			return 4;
+		case 4:
+			return 2;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int マップ位置_インデクス(int nMapX, int nMapY)
+{
+	if (!マップ位置_確認(nMapX, nMapY))
+	{
+		return -1;
+	}
+	return nMapY * 50 + nMapX;
+}
+
+int マップ位置_Ｘ(int nIndex)
+{
+	if (!マップ位置_インデクス確認(nIndex))
+	{
+		return -1;
+	}
+	return nIndex % 50;
+}
+
+int マップ位置_Ｙ(int nIndex)
+{
+	if (!マップ位置_インデクス確認(nIndex))
+	{
+		return -1;
+	}
+	return nIndex / 50;
+}
+
+bool マップ位置_確認(int nMapX, int nMapY)
+{
+	if (!マップ位置_Ｘ確認(nMapX))
+	{
+		return false;
+	}
+	if (!マップ位置_Ｙ確認(nMapY))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool マップ位置_Ｘ確認(int nMapX)
+{
+	if (nMapX < 0 || nMapX >= 50)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool マップ位置_Ｙ確認(int nMapY)
+{
+	if (nMapY < 0 || nMapY >= 50)
+	{
+		return false;
+	}
+	return true;
+}
+
+int マップ位置_インデクス確認(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 2500)
+	{
+		return 0;
+	}
+	return 1;
+}
+
+int マップ位置_インデクス変換_サイズ変更(int nIndex, int nMapSizeX, int nMapSizeY)
+{
+	if (nIndex < 0 || nIndex >= nMapSizeX * nMapSizeY)
+	{
+		return -1;
+	}
+	return マップ位置_インデクス(nIndex % nMapSizeX, nIndex / nMapSizeX);
+}
+
+int マップ位置_インデクス変換_旧データ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 2500)
+	{
+		return -1;
+	}
+	return マップ位置_インデクス(nIndex % 50 - 1, nIndex / 50);
+}
+

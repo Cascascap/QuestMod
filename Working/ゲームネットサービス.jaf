@@ -1,0 +1,203 @@
+bool ネットサービス_プレイ人口(ref array@string aszResultText)
+{
+	if (aszResultText === NULL)
+	{
+		return false;
+	}
+	CASGameNetDataPack sResultDataPack;
+	if (!_NET_GetData("getverstat", 0, sResultDataPack))
+	{
+		return false;
+	}
+	int n = 0;
+	for (n = 0; n < sResultDataPack.GetNumof(); ++n)
+	{
+		ref CASGameNetData Result = sResultDataPack.GetByIndex(n);
+		string Type = Result.GetType();
+		if (Type.GetPart(0, 8) != "verusers")
+		{
+			continue;
+		}
+		string VersionNumString = Type.GetPart(8, Type.Length());
+		int VersionNum = VersionNumString;
+		int Numof = Result.GetParam();
+		aszResultText.PushBack(("%s\t\t\t\t\t% 3d.%02d%" % ネットサービス_バージョン(VersionNum) % (Numof / 100)) % (Numof % 100));
+	}
+	return true;
+}
+
+string ネットサービス_バージョン(int nVersion)
+{
+	switch (nVersion)
+	{
+		case 1000:
+			return "Ver. 1.000";
+		default:
+			break;
+	}
+	if (nVersion > 0)
+	{
+		return ("Ver. %d.%03d" % (nVersion / 1000)) % (nVersion % 1000);
+	}
+	return "Ver. ?.???";
+}
+
+int ネットサービス_進行状況(ref array@int anValue)
+{
+	if (anValue === NULL)
+	{
+		return -1;
+	}
+	if (!anValue.Empty())
+	{
+		anValue.Free();
+	}
+	CASGameNetDataPack sResultDataPack;
+	if (!_NET_GetData("getchapstat2", 0, sResultDataPack))
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = 0; i <= 8; ++i)
+	{
+		int nValue = _NET_GetParamInt("chap%dplayers" % i, sResultDataPack);
+		if (nValue < 0)
+		{
+			return -1;
+		}
+		anValue.PushBack(nValue);
+	}
+	return anValue.Numof();
+}
+
+int ネットサービス_累計プレイ時間(ref array@int anValue)
+{
+	if (anValue === NULL)
+	{
+		return -1;
+	}
+	if (!anValue.Empty())
+	{
+		anValue.Free();
+	}
+	CASGameNetDataPack sResultDataPack;
+	if (!_NET_GetData("gettotaltimestat", 0, sResultDataPack))
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = 1; i <= 5; ++i)
+	{
+		int nValue = _NET_GetParamInt("totaltime%d" % i, sResultDataPack);
+		if (nValue < 0)
+		{
+			return -1;
+		}
+		anValue.PushBack(nValue);
+	}
+	return anValue.Numof();
+}
+
+int ネットサービス_その他情報(ref array@string aszName, ref array@int anValue)
+{
+	if (aszName === NULL || anValue === NULL)
+	{
+		return -1;
+	}
+	if (!aszName.Empty())
+	{
+		aszName.Free();
+	}
+	if (!anValue.Empty())
+	{
+		anValue.Free();
+	}
+	CASGameNetDataPack sResultDataPack;
+	if (!_NET_GetData("getetcstat2", 0, sResultDataPack))
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = 0; i <= 8; ++i)
+	{
+		if (i == 4 || i == 5)
+		{
+			continue;
+		}
+		int nValue = _NET_GetParamInt("etcstat%d" % i, sResultDataPack);
+		if (nValue < 0)
+		{
+			return -1;
+		}
+		string szName = _NET_GetParamText("etcname%d" % i, sResultDataPack);
+		aszName.PushBack(szName.Empty() ? "？？？" : szName);
+		anValue.PushBack(nValue);
+	}
+	return anValue.Numof();
+}
+
+int ネットサービス_追加データ取得(string szCommand, ref array@string aszResultText)
+{
+	if (aszResultText === NULL)
+	{
+		return -1;
+	}
+	if (!aszResultText.Empty())
+	{
+		aszResultText.Free();
+	}
+	CASGameNetDataPack sResultDataPack;
+	if (!_NET_GetData(szCommand, 0, sResultDataPack))
+	{
+		return -1;
+	}
+	string szText = _NET_GetParamText("text", sResultDataPack);
+	while (!szText.Empty())
+	{
+		int nIndex = szText.Find("\n");
+		if (nIndex < 0)
+		{
+			aszResultText.PushBack(szText);
+			break;
+		}
+		aszResultText.PushBack(szText.GetPart(0, nIndex));
+		szText = szText.GetPart(nIndex + 1, szText.Length());
+	}
+	return aszResultText.Numof();
+}
+
+void ネットサービス_ユーザデータ送信()
+{
+	CASGameNetDataPack sDataPack;
+	sDataPack.AddByParam("version", "%d" % FB[1]);
+	sDataPack.AddByParam("chapter", "%d" % FB[2]);
+	sDataPack.AddByParam("tadaMode", "%d" % ◆２倍モード);
+	sDataPack.AddByParam("rance", "%d" % FB[14]);
+	sDataPack.AddByParam("yankee", "%d" % FB[5]);
+	sDataPack.AddByParam("pastel", "%d" % FB[6]);
+	sDataPack.AddByParam("alternateEnding", "%d" % (ＣＧモード_確認(3580) ? 1 : 0));
+	sDataPack.AddByParam("sachiko", "%d" % FB[7]);
+	sDataPack.AddByParam("sex", "%d" % FB[8]);
+	sDataPack.AddByParam("ranceAttack", "%d" % FB[11]);
+	sDataPack.AddByParam("hanny", "%d" % FB[12]);
+	sDataPack.AddByParam("hikikomori", "%d" % FB[13]);
+	sDataPack.AddByParam("quest", "%d" % FB[18]);
+	sDataPack.AddByParam("chara", "%d" % FB[19]);
+	sDataPack.AddByParam("item", "%d" % FB[20]);
+	sDataPack.AddByParam("galmon", "%d" % FB[21]);
+	sDataPack.AddByParam("masuzoe", "%d" % FB[22]);
+	sDataPack.AddByParam("king", "%d" % FB[23]);
+	sDataPack.AddByParam("goddess", "%d" % FB[24]);
+	sDataPack.AddByParam("gunagan", "%d" % FB[25]);
+	sDataPack.AddByParam("frameSkip", "%d" % AFL_Config_GetFrameSkipWhileMessageSkip());
+	sDataPack.AddByParam("mouseWheel", "%d" % AFL_Config_GetWheelForward());
+	sDataPack.AddByParam("fullscreen", "%d" % !AFL_Config_GetWindowMode());
+	sDataPack.AddByParam("movement", "%d" % マップ移動タイプ());
+	sDataPack.AddByParam("drag", "%d" % 画面操作モード());
+	sDataPack.AddByParam("moveSpeed", "%d" % 移動速度());
+	sDataPack.AddByParam("battleSpeed", "%d" % 戦闘速度());
+	sDataPack.AddByParam("log", "%d" % ユーザーログフラグ());
+	sDataPack.AddByParam("totaltime", "%d" % AFL_TotalPlayTime_GetMinuteTime());
+	NET_SendUserData(sDataPack);
+}
+

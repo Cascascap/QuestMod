@@ -1,0 +1,25 @@
+CMessageWindowModelManager::CMessageWindowModelManager()
+{
+}
+
+bool CMessageWindowModelManager::Init()
+{
+	this.m_ModelList.Alloc(40);
+	return true;
+}
+
+void CMessageWindowModelManager::SetZ(int Z)
+{
+	this.m_Z = Z;
+}
+
+int CMessageWindowModelManager::GetZ()
+{
+	return this.m_Z;
+}
+
+ref CMessageWindowModel CMessageWindowModelManager::GetMessageWindow(int MessageWindowNumber)
+{
+	return this.m_ModelList[MessageWindowNumber];
+}
+

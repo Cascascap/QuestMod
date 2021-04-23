@@ -1,0 +1,103 @@
+bool T_MapBackup::isBackup()
+{
+	return this.getMapNo() > 0;
+}
+
+int T_MapBackup::getMapNo()
+{
+	return this.m_anData[0];
+}
+
+int T_MapBackup::getMarker()
+{
+	return this.m_anData[13];
+}
+
+int T_MapBackup::getPosX()
+{
+	return this.m_anData[10];
+}
+
+int T_MapBackup::getPosY()
+{
+	return this.m_anData[11];
+}
+
+int T_MapBackup::getDir()
+{
+	return this.m_anData[12];
+}
+
+float T_MapBackup::getWalkDistance1()
+{
+	return 実数変換(this.m_anData[14]);
+}
+
+float T_MapBackup::getWalkDistance2()
+{
+	return 実数変換(this.m_anData[15]);
+}
+
+bool T_MapBackup::getEncountCheck()
+{
+	return this.m_anData[16] > 0;
+}
+
+T_MapBackup::T_MapBackup()
+{
+	this.clear();
+}
+
+void T_MapBackup::clear()
+{
+	this.m_anData.Fill(0, this.m_anData.Numof(), 0);
+	if (!this.m_asPos.Empty())
+	{
+		this.m_asPos.Free();
+	}
+	this.m_sMapData.clear();
+	this.m_sObjectData.clear();
+	this.m_sBillboardData.clear();
+}
+
+bool T_MapBackup::backup()
+{
+	if (this.isBackup())
+	{
+		return false;
+	}
+	this.clear();
+	if (!マップ_ロード中())
+	{
+		return false;
+	}
+	this.m_anData[0] = マップ_番号();
+	this.m_anData[10] = キャラ_位置Ｘ();
+	this.m_anData[11] = キャラ_位置Ｙ();
+	this.m_anData[12] = キャラ_方向();
+	this.m_anData[13] = キャラ_マーカー(-1);
+	this.m_anData[14] = 数値変換(キャラ_歩き距離());
+	this.m_anData[15] = 数値変換(キャラ_歩き距離２());
+	this.m_anData[16] = キャラ_エンカウントチェック中();
+	キャラ_待避(this.m_asPos);
+	マップデータ_退避(this.m_sMapData);
+	置物データ_退避(this.m_sObjectData);
+	ビルボードデータ_退避(this.m_sBillboardData);
+	return true;
+}
+
+bool T_MapBackup::restore()
+{
+	if (!this.isBackup())
+	{
+		return false;
+	}
+	マップデータ_復元(this.m_sMapData);
+	置物データ_復元(this.m_sObjectData);
+	ビルボードデータ_復元(this.m_sBillboardData);
+	キャラ_復元(this.m_asPos);
+	置物_作成(false);
+	this.clear();
+	return true;
+}
+

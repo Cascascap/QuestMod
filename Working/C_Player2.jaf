@@ -1,0 +1,353 @@
+void キャラ_作成(int nMapNo, int nX, int nY, int nDir, bool bShow)
+{
+	if (nX < 0 || nY < 0 || nDir < 0)
+	{
+		if (!マップデータ２_開始位置(nX, nY, nDir))
+		{
+		}
+	}
+	g_sPlayerX.create();
+	３Ｄキャラ_作成(200, nX, nY, nDir, bShow);
+	キャラ_移動速度設定(0.0);
+}
+
+void キャラ_削除(bool bLoad)
+{
+	３Ｄキャラ_削除();
+	g_sPlayerX.delete(bLoad);
+}
+
+void キャラ_更新(int nPassTime)
+{
+	if (!g_sPlayerX.checkUpdate())
+	{
+		return;
+	}
+	int nRet = ３Ｄキャラ_更新(nPassTime, true);
+	if (nRet < 0)
+	{
+		return;
+	}
+}
+
+int キャラ_入力確認(ref int nSelectID)
+{
+	return g_sPlayerX.checkInput(nSelectID);
+}
+
+bool キャラ_当たり確認_距離(float fX, float fZ)
+{
+	return g_sPlayerX.checkDistance(fX, fZ);
+}
+
+bool キャラ_エンカウント確認(float fDistance)
+{
+	if (g_sPlayerX.checkEncount(fDistance))
+	{
+		return true;
+	}
+	エンカウントバー_更新();
+	return false;
+}
+
+void キャラ_エンカウント進行(int nCount)
+{
+	g_sPlayerX.addEncount(nCount * 4.0);
+	エンカウントバー_更新();
+}
+
+void キャラ_エンカウント設定(float fWalkDistance1, float fWalkDistance2, bool bEncountCheck)
+{
+	if (!g_sPlayerX.setEncount(fWalkDistance1, fWalkDistance2, bEncountCheck))
+	{
+		return;
+	}
+	エンカウントバー_更新();
+}
+
+void キャラ_移動(int nMode)
+{
+	g_sPlayerX.autoMove(nMode);
+}
+
+void キャラ_移動終了()
+{
+	g_sPlayerX.autoMoveEnd();
+}
+
+void キャラ_スクロール(int nDir, int nCount)
+{
+	g_sPlayerX.scroll(nDir, nCount);
+}
+
+void キャラ_スクロール戻し()
+{
+	g_sPlayerX.scrollBack();
+}
+
+void キャラ_位置記憶(float fX, float fZ)
+{
+	g_sPlayerX.pushPos(fX, fZ);
+}
+
+void キャラ_待避(ref array@T_PointF asPos)
+{
+	g_sPlayerX.backupPos(asPos);
+}
+
+void キャラ_復元(ref array@T_PointF asPos)
+{
+	g_sPlayerX.restorePos(asPos);
+}
+
+bool キャラ_更新設定(bool bUpdate)
+{
+	bool bOld = g_sPlayerX.getUpdate();
+	g_sPlayerX.setUpdate(bUpdate);
+	return bOld;
+}
+
+void キャラ_入力ＯＮ()
+{
+	g_sPlayerX.setInputFlag(true);
+}
+
+void キャラ_入力ＯＦＦ()
+{
+	g_sPlayerX.setInputFlag(false);
+	キャラ_停止(false);
+}
+
+bool キャラ_更新フラグ()
+{
+	return g_sPlayerX.getUpdate();
+}
+
+bool キャラ_入力フラグ()
+{
+	return g_sPlayerX.getInputFlag();
+}
+
+void キャラ_フラグクリア()
+{
+	g_sPlayerX.clearFlag();
+}
+
+int キャラ_当たりフラグ()
+{
+	return g_sPlayerX.getHitFlag();
+}
+
+int キャラ_当たりＸ()
+{
+	return g_sPlayerX.getHitX();
+}
+
+int キャラ_当たりＹ()
+{
+	return g_sPlayerX.getHitY();
+}
+
+bool キャラ_エンカウントフラグ()
+{
+	return g_sPlayerX.getEncountFlag();
+}
+
+float キャラ_歩き距離()
+{
+	return g_sPlayerX.getWalkDistance();
+}
+
+float キャラ_歩き距離２()
+{
+	return g_sPlayerX.getWalkDistance2();
+}
+
+bool キャラ_エンカウントチェック中()
+{
+	return g_sPlayerX.getEncountCheck();
+}
+
+bool キャラ_スクロール中()
+{
+	return g_sPlayerX.isScroll();
+}
+
+bool キャラ_作成済()
+{
+	return g_sPlayerX.isCreated();
+}
+
+int キャラ_位置Ｘ()
+{
+	return ３Ｄキャラ_位置Ｘ();
+}
+
+int キャラ_位置Ｙ()
+{
+	return ３Ｄキャラ_位置Ｙ();
+}
+
+int キャラ_方向()
+{
+	return ３Ｄキャラ_方向();
+}
+
+bool キャラ_表示()
+{
+	return ３Ｄキャラ_表示();
+}
+
+int キャラ_モーション()
+{
+	return ３Ｄキャラ_モーション();
+}
+
+void キャラ_停止(bool bUpdate)
+{
+	if (!キャラ_作成済())
+	{
+		return;
+	}
+	３Ｄキャラ_再生停止();
+	if (bUpdate)
+	{
+		UPDATE(true);
+	}
+}
+
+void キャラ_位置設定(int nX, int nY)
+{
+	if (!キャラ_作成済())
+	{
+		return;
+	}
+	if (キャラ_スクロール中())
+	{
+		return;
+	}
+	３Ｄキャラ_位置設定(nX, nY);
+}
+
+void キャラ_方向設定(int nDir)
+{
+	if (!キャラ_作成済())
+	{
+		return;
+	}
+	３Ｄキャラ_方向設定(nDir);
+}
+
+void キャラ_表示設定(bool bShow)
+{
+	if (!キャラ_作成済())
+	{
+		return;
+	}
+	３Ｄキャラ_表示設定(bShow);
+}
+
+int キャラ_モーション設定(int nMotion)
+{
+	if (!キャラ_作成済())
+	{
+		return -1;
+	}
+	int nOld = ３Ｄキャラ_モーション();
+	if (nMotion == ３Ｄキャラ_次モーション())
+	{
+		３Ｄキャラ_モーション切り替え();
+	}
+	else if (nMotion != nOld)
+	{
+		３Ｄキャラ_モーション設定(nMotion);
+	}
+	マップ_ボタン設定(nMotion == 1);
+	return nOld;
+}
+
+int キャラ_次モーション設定(int nNextMotion)
+{
+	if (!キャラ_作成済())
+	{
+		return -1;
+	}
+	int nOld = ３Ｄキャラ_次モーション();
+	if (nNextMotion == nOld)
+	{
+		return nOld;
+	}
+	３Ｄキャラ_次モーション設定(nNextMotion);
+	return nOld;
+}
+
+bool キャラ_ポリゴン変更(int nType)
+{
+	int nNo = キャラ_ポリゴン番号(nType);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	return ３Ｄキャラ_変更(nNo);
+}
+
+int キャラ_ポリゴン番号(int nType)
+{
+	switch (nType)
+	{
+		case 0:
+			return 200;
+		case 1:
+			return 216;
+		case 2:
+			return 215;
+		default:
+			break;
+	}
+	return 200;
+}
+
+int キャラ_マーカー(int nNo)
+{
+	nNo = nNo > 0 ? nNo : ３Ｄキャラ_番号();
+	switch (nNo)
+	{
+		case 200:
+			return 0;
+		case 216:
+			return 1;
+		case 215:
+			return 2;
+		default:
+			break;
+	}
+	return 0;
+}
+
+void キャラ_移動速度設定(float fMoveTime)
+{
+	if (fMoveTime <= 0.0)
+	{
+		fMoveTime = 移動速度() == 1 ? 75.0 : 100.0;
+	}
+	３Ｄキャラ_移動単位時間設定(fMoveTime);
+}
+
+void キャラ_移動距離設定(float fLength)
+{
+	float fMoveLength = 0.0;
+	if (fLength <= 35.0)
+	{
+		fMoveLength = 1.79999995231628;
+	}
+	if (fLength >= 60.0)
+	{
+		fMoveLength = 2.70000004768372;
+	}
+	else
+	{
+		fMoveLength = 1.79999995231628 + 実数計算(0.900000095367432, fLength - 35.0, 25.0);
+	}
+	３Ｄキャラ_移動距離設定(fMoveLength);
+}
+

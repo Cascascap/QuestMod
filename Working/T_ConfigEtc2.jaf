@@ -1,0 +1,386 @@
+int T_ConfigEtc2::getCheckID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 2 ? -1 : 210000 + nIndex + 1;
+}
+
+int T_ConfigEtc2::getCheckIndex(int nID)
+{
+	int idx = nID + -210001;
+	return idx < 0 || idx >= 2 ? -1 : idx;
+}
+
+T_ConfigEtc2::T_ConfigEtc2()
+{
+	this.clear();
+}
+
+T_ConfigEtc2::~T_ConfigEtc2()
+{
+	this.delete();
+}
+
+int T_ConfigEtc2::run()
+{
+	int nRet = 0;
+	int nID = this.getFirstCheckBox();
+	if (!this.create())
+	{
+		return -1;
+	}
+	UPDATE(true);
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+int T_ConfigEtc2::moveUp(int nID)
+{
+	if (nID > 210000)
+	{
+		return this.getPrevCheckBox(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_上矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID2 == 0)
+	{
+		return this.getLastCheckBox();
+	}
+label0:
+	return this.getFirstCheckBox();
+}
+
+int T_ConfigEtc2::moveDown(int nID)
+{
+	if (nID > 210000)
+	{
+		return this.getNextCheckBox(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_下矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID2 == 0)
+	{
+		return this.getFirstCheckBox();
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+int T_ConfigEtc2::moveLeft(int nID)
+{
+	if (nID > 210000)
+	{
+		return nID;
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_左矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getFirstCheckBox();
+}
+
+int T_ConfigEtc2::moveRight(int nID)
+{
+	if (nID > 210000)
+	{
+		return nID;
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_右矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+bool T_ConfigEtc2::create()
+{
+	this.delete();
+	this.m_spBase.setCg(40007);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(15000, -1);
+	this.m_spBase.setShow(true);
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsCheck = this.m_aspCheck[i];
+		rfsCheck.setCg(40037);
+		rfsCheck.setZ(15001);
+	}
+	this.m_sButton.create();
+	this.createCheckBox(0, 70, 135, 40056, "");
+	this.createCheckBox(1, 70, 205, 40056, "");
+	コンフィグ共通_作成(this.m_sButton);
+	this.m_sButton.setButtonActive(100007, false);
+	this.m_sButton.setZ(15001);
+	this.m_sButton.setShow(true);
+	this.setValue();
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&コンフィグ_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&コンフィグ_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&コンフィグ_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&コンフィグ_右矢印);
+	this.m_sInputKey.setSelectCallback(&コンフィグ_選択設定);
+	return true;
+}
+
+void T_ConfigEtc2::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspCheck[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_ConfigEtc2::clear()
+{
+	return;
+}
+
+bool T_ConfigEtc2::createCheckBox(int nIndex, int nX, int nY, int nCgNo, string szText)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspCheck.Numof())
+	{
+		return false;
+	}
+	if (!コンフィグ共通_チェックＢＯＸ作成(this.m_sButton, this.getCheckID(nIndex), nX, nY, nCgNo))
+	{
+		return false;
+	}
+	this.m_aspCheck[nIndex].setPos(nX, nY);
+	return true;
+}
+
+bool T_ConfigEtc2::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (nID > 210000)
+	{
+		return this.execCheckBox(this.getCheckIndex(nID));
+	}
+	int nRet2 = コンフィグ共通_処理(nID);
+	if (nRet2 != 0)
+	{
+		nRet = nRet2 > 0 ? nRet2 : 0;
+		return true;
+	}
+	return false;
+}
+
+bool T_ConfigEtc2::execCheckBox(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			if (!ネットワーク接続許可())
+			{
+				ネットサービス_接続確認(1, 999999);
+			}
+			else
+			{
+				ネットワーク接続許可設定(false);
+			}
+			break;
+		case 1:
+			bool bFlag = ユーザーログフラグ設定(!ユーザーログフラグ());
+			if (bFlag)
+			{
+				LOG_OPEN();
+			}
+			else
+			{
+				LOG_CLOSE();
+			}
+			break;
+		default:
+			return false;
+	}
+	this.setValue();
+	return false;
+}
+
+int T_ConfigEtc2::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		int nID4 = this.checkWheel();
+		if (nID4 > 0)
+		{
+			nRet = nID4;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			nRet = 100019;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_ConfigEtc2::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_ConfigEtc2::checkKey(int nID)
+{
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+int T_ConfigEtc2::checkWheel()
+{
+	switch (ホイール_確認(true))
+	{
+		case 9991:
+			return 100006;
+		case 9992:
+		default:
+			break;
+	}
+	ホイール_クリア();
+	return 0;
+}
+
+void T_ConfigEtc2::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_ConfigEtc2::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_ConfigEtc2::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_ConfigEtc2::setValue()
+{
+	this.m_aspCheck[0].setShow(ネットワーク接続許可());
+	if (!ログビューワ_表示中())
+	{
+		ユーザーログフラグ設定(false);
+	}
+	this.m_aspCheck[1].setShow(ユーザーログフラグ());
+}
+
+int T_ConfigEtc2::getPrevCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastCheckBox();
+	}
+	--idx;
+	if (idx < 0)
+	{
+		return 100006;
+	}
+	return this.getCheckID(idx);
+}
+
+int T_ConfigEtc2::getNextCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstCheckBox();
+	}
+	++idx;
+	if (idx >= 2)
+	{
+		return 100011;
+	}
+	return this.getCheckID(idx);
+}
+
+int T_ConfigEtc2::getFirstCheckBox()
+{
+	return this.getCheckID(0);
+}
+
+int T_ConfigEtc2::getLastCheckBox()
+{
+	return this.getCheckID(1);
+}
+

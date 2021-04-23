@@ -1,0 +1,423 @@
+T_GenerateSelect::T_GenerateSelect()
+{
+	this.clear();
+}
+
+T_GenerateSelect::~T_GenerateSelect()
+{
+	this.delete();
+}
+
+int T_GenerateSelect::run(int nLockID)
+{
+	int nRet = 0;
+	if (選択データ_有効数() < 1)
+	{
+		goto label0;
+	}
+	this.create(nLockID);
+	UPDATE(true);
+	int nID = 選択データ_カーソル();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (nID > 0)
+		{
+			nRet = nID;
+			break;
+		}
+	}
+	this.delete();
+	UPDATE(true);
+label0:
+	選択データ_解放();
+	return nRet;
+}
+
+void T_GenerateSelect::create(int nLockID)
+{
+	int i = 0;
+	int cnt = 選択データ_数();
+	int nZ = 9991;
+	int nH = 0;
+	bool bLarge = 選択データ_有効数() - 選択データ_拡張項目数() < 3;
+	T_SelectData sData;
+	T_SelectData sOld;
+	this.delete();
+	this.m_sButton.create();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!選択データ_取得(i, sData))
+		{
+			break;
+		}
+		if (sData.m_nID > 0)
+		{
+			if (bLarge)
+			{
+				nH = this.createButtonLarge(nH, sData, sOld);
+			}
+			else
+			{
+				nH = this.createButton(nH, sData, sOld);
+			}
+		}
+		else if (sData.m_nID == 0)
+		{
+			nH = this.createText(nH, sData, sOld);
+		}
+		else
+		{
+			nH = this.createSeparator(nH, sData, sOld);
+		}
+		sOld = sData;
+	}
+	if (!sOld.isClear())
+	{
+		nH += this.getSpace(NULL, sOld);
+		if (nH > 762)
+		{
+			nH = 762;
+		}
+	}
+	this.createBase(376, nH, nZ);
+	int nX = this.m_spBase.getPosX();
+	int nY = this.m_spBase.getPosY();
+	this.setDataPos(nX, nY, nZ);
+	ボタン登録_ＣＧ(this.m_sButton, 100001, 654, 722, 12304, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100002, 788, 722, 12305, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100003, 922, 722, 12306, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(nZ + 1);
+	this.m_sButton.setShow(true);
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_spFrame.create(bLarge ? 340 : 340, bLarge ? 60 : 27, 0, 255, 255, 128);
+	this.m_spFrame.setZ(nZ + 20);
+	this.lock(nLockID);
+}
+
+void T_GenerateSelect::delete()
+{
+	this.hideComment(-1);
+	int i = 0;
+	int cnt = this.m_aspText.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspText[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spFrame.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_GenerateSelect::clear()
+{
+	this.m_nLockID = -1;
+	this.m_nCommentID = -1;
+}
+
+void T_GenerateSelect::createBase(int nW, int nH, int nZ)
+{
+	選択ＣＧ_土台作成(nW, nH, this.m_spBase);
+	int nX = キャラ生成_入力領域位置Ｘ(this.m_spBase.getWidth() - 4);
+	int nY = キャラ生成_入力領域位置Ｙ(this.m_spBase.getHeight() - 4);
+	this.m_spBase.setPos(nX, nY);
+	this.m_spBase.setZ(nZ);
+	this.m_spBase.setShow(1);
+}
+
+int T_GenerateSelect::createButton(int nH, ref T_SelectData rfData, ref T_SelectData rfOld)
+{
+	T_Button sButton;
+	if (rfData === NULL || rfData.isClear())
+	{
+		return nH;
+	}
+	nH += this.getSpace(rfData, rfOld);
+	if (!選択ＣＧ_ボタン作成(rfData, sButton))
+	{
+		return nH;
+	}
+	int nID = rfData.m_nID;
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonPos(nID, 18, nH);
+	this.m_sButton.setButtonActive(nID, true);
+	return nH + 27;
+}
+
+int T_GenerateSelect::createButtonLarge(int nH, ref T_SelectData rfData, ref T_SelectData rfOld)
+{
+	T_Button sButton;
+	if (rfData === NULL || rfData.isClear())
+	{
+		return nH;
+	}
+	nH += this.getSpace(rfData, rfOld);
+	if (!選択ＣＧ_でかボタン作成(rfData, sButton))
+	{
+		return nH;
+	}
+	int nID = rfData.m_nID;
+	this.m_sButton.addButton(nID, sButton);
+	this.m_sButton.setButtonPos(nID, 18, nH);
+	this.m_sButton.setButtonActive(nID, true);
+	return nH + 60;
+}
+
+int T_GenerateSelect::createText(int nH, ref T_SelectData rfData, ref T_SelectData rfOld)
+{
+	if (rfData === NULL || rfData.isClear())
+	{
+		return nH;
+	}
+	nH += this.getSpace(rfData, rfOld);
+	if (rfData.m_szText.Empty())
+	{
+		return 0;
+	}
+	ref T_TextSprite rfSp = this.getText();
+	if (rfSp === NULL)
+	{
+		return nH;
+	}
+	選択ＣＧ_テキスト作成(rfData, rfSp);
+	rfSp.setPos(7, nH);
+	rfSp.setShow(true);
+	return nH + rfSp.getHeight();
+}
+
+int T_GenerateSelect::createSeparator(int nH, ref T_SelectData rfData, ref T_SelectData rfOld)
+{
+	if (rfData === NULL || rfData.isClear())
+	{
+		return nH;
+	}
+	nH += this.getSpace(rfData, rfOld);
+	ref T_TextSprite rfSp = this.getText();
+	if (rfSp === NULL)
+	{
+		return nH;
+	}
+	選択ＣＧ_区切り作成(rfSp);
+	rfSp.setPos(4, nH);
+	rfSp.setShow(true);
+	return nH + 7;
+}
+
+int T_GenerateSelect::checkSelect(int nID)
+{
+	int nRet = 0;
+	int nSelectID = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	nID = this.setCursor(nID);
+	this.setSelect(nID, true);
+	UPDATE(true);
+	while (true)
+	{
+		int nRet2 = this.checkInput(nSelectID);
+		if (nRet2 == 2)
+		{
+			nRet = nSelectID;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			this.checkKey(nSelectID);
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_GenerateSelect::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	int nRet = this.m_sButton.checkInput(nSelectID);
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+	return nRet;
+}
+
+int T_GenerateSelect::checkKey(int nID)
+{
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+void T_GenerateSelect::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	this.hideComment(-1);
+}
+
+void T_GenerateSelect::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+int T_GenerateSelect::setCursor(int nID)
+{
+	if (nID <= 0)
+	{
+		int i = 0;
+		int cnt = 選択データ_数();
+		for (i = 0; i < cnt; ++i)
+		{
+			int nID2 = 選択データ_ＩＤ(i);
+			if (nID2 > 0)
+			{
+				nID = nID2;
+				break;
+			}
+		}
+	}
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+	}
+	else
+	{
+		this.m_sButton.setButtonCursor(nID);
+	}
+	return nID;
+}
+
+void T_GenerateSelect::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	string szComment = 選択データ_説明(nID);
+	if (szComment.Empty())
+	{
+		説明_消し(-1);
+		return;
+	}
+	if (説明_表示(nID, "", szComment, "", 500, false) > 0)
+	{
+		説明_位置設定(this.m_spBase.getPosX() - 説明_幅(), this.m_sButton.getButtonPosY(nID));
+	}
+	this.m_nCommentID = nID;
+}
+
+void T_GenerateSelect::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_GenerateSelect::setDataPos(int nX, int nY, int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspText.Numof();
+	int nX2 = 0;
+	int nY2 = 0;
+	ref T_TextSprite rfSp;
+	for (i = 0; i < cnt; ++i)
+	{
+		rfSp <- this.m_aspText[i];
+		nX2 = nX + rfSp.getPosX();
+		nY2 = nY + rfSp.getPosY();
+		rfSp.setPos(nX2, nY2);
+		rfSp.setZ(nZ + 1, -1);
+	}
+	cnt = this.m_sButton.getButtonCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nID = this.m_sButton.getButtonID(i);
+		nX2 = nX + this.m_sButton.getButtonPosX(nID);
+		nY2 = nY + this.m_sButton.getButtonPosY(nID);
+		this.m_sButton.setButtonPos(nID, nX2, nY2);
+		this.m_sButton.setButtonSelectArea(nID, nX2 - 3, nY2 - 3, this.m_sButton.getButtonWidth(nID) + 6, this.m_sButton.getButtonHeight(nID) + 6);
+	}
+}
+
+int T_GenerateSelect::getSpace(ref T_SelectData rfData, ref T_SelectData rfOld)
+{
+	if (rfOld === NULL || rfOld.isClear())
+	{
+		return 8;
+	}
+	if (rfOld.m_nID > 0)
+	{
+		if (rfData !== NULL && rfData.m_nID > 0)
+		{
+			return 6;
+		}
+		return 6;
+	}
+	if (rfOld.m_nID == 0)
+	{
+		if (rfData !== NULL && rfData.m_nID == 0)
+		{
+			return 0;
+		}
+		return 8;
+	}
+	if (rfData !== NULL && rfData.m_nID < 0)
+	{
+		return 1;
+	}
+	return 6;
+}
+
+ref T_TextSprite T_GenerateSelect::getText()
+{
+	int i = 0;
+	int cnt = this.m_aspText.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!this.m_aspText[i].isCreated())
+		{
+			return this.m_aspText[i];
+		}
+	}
+	return NULL;
+}
+
+bool T_GenerateSelect::lock(int nLockID)
+{
+	ref T_Button rfButton = this.m_sButton.getButton(nLockID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	int nX = rfButton.getPosX();
+	int nY = rfButton.getPosY();
+	this.m_spFrame.setPos(nX, nY);
+	this.m_spFrame.setShow(1);
+	this.m_nLockID = nLockID;
+	return true;
+}
+
+void T_GenerateSelect::unlock()
+{
+	this.m_spFrame.setShow(0);
+	this.m_nLockID = -1;
+}
+

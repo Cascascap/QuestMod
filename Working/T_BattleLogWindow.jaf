@@ -1,0 +1,361 @@
+int T_BattleLogWindow::getLogNo()
+{
+	return this.m_nLogNo;
+}
+
+int T_BattleLogWindow::getLogCount()
+{
+	return this.m_nLogCount;
+}
+
+int T_BattleLogWindow::getLogIndex()
+{
+	return this.m_nLogIndex;
+}
+
+T_BattleLogWindow::T_BattleLogWindow()
+{
+	this.clear();
+}
+
+T_BattleLogWindow::~T_BattleLogWindow()
+{
+	this.delete();
+}
+
+bool T_BattleLogWindow::create(int nLogNo)
+{
+	this.delete();
+	if (this.m_spBase.setCg(10291) < 0)
+	{
+		return false;
+	}
+	this.m_spBase.setPos(92, 194);
+	this.m_spBase.setZ(9981);
+	this.m_sLine.setZ(9982, -1);
+	this.m_sScroll.create(2, 438, 190000, 0, 0);
+	this.m_sScroll.setPos(858, 234);
+	this.m_sScroll.setZ(9982);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&戦闘ログ_窓スクロール);
+	this.m_sButton.create();
+	ボタン登録_ＣＧ(this.m_sButton, 100001, 888, 740, 10292, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 109999, 857, 205, 10007, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(9982);
+	this.m_nLogNo = nLogNo;
+	this.m_nLogCount = 0;
+	this.m_nLogIndex = -1;
+	return true;
+}
+
+void T_BattleLogWindow::delete()
+{
+	this.m_spBase.delete();
+	this.m_sLine.delete();
+	this.m_sScroll.delete();
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_BattleLogWindow::clear()
+{
+	this.m_nLogNo = -1;
+	this.m_nLogCount = -1;
+	this.m_nLogIndex = -1;
+	this.m_tmLog.nSize = 20;
+	this.m_tmLog.nColorR = 250;
+	this.m_tmLog.nColorG = 230;
+	this.m_tmLog.nColorB = 170;
+	this.m_tmLog.nWeight = 40;
+	this.m_tmLog.nFace = 256;
+	this.m_tmLog.nShadowPixelL = 0;
+	this.m_tmLog.nShadowPixelR = 0;
+	this.m_tmLog.nShadowPixelU = 0;
+	this.m_tmLog.nShadowPixelD = 0;
+	this.m_tmLog.nShadowColorR = 0;
+	this.m_tmLog.nShadowColorG = 0;
+	this.m_tmLog.nShadowColorB = 0;
+}
+
+void T_BattleLogWindow::scroll(int nValue)
+{
+	this.m_nLogIndex = 数値_補正(nValue, 0, this.m_nLogCount > 0 ? this.m_nLogCount - 1 : 0);
+	this.resetLine();
+	this.setLinePos();
+}
+
+void T_BattleLogWindow::run()
+{
+	if (this.m_nLogNo < 0)
+	{
+		return;
+	}
+	this.redraw();
+	this.open();
+	while (true)
+	{
+		int nID = this.checkSelect();
+		if (nID < 0)
+		{
+			break;
+		}
+		if (this.exec(nID))
+		{
+			break;
+		}
+	}
+	this.setShow(false);
+	UPDATE(true);
+	マウス_フラグクリア();
+}
+
+bool T_BattleLogWindow::exec(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+		case 109999:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 190000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	return false;
+}
+
+int T_BattleLogWindow::checkSelect()
+{
+	int nRet = 0;
+	int nID = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	while (true)
+	{
+		int nRet2 = this.checkInput(nID);
+		if (nRet2 == 2)
+		{
+			nRet = nID;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 109999;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID2 = this.checkKey(nID);
+			if (nID2 > 0)
+			{
+				nRet = nID2;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_BattleLogWindow::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (this.m_sScroll.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label0:
+	this.m_sScroll.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	return 0;
+}
+
+int T_BattleLogWindow::checkKey(int nID)
+{
+	if (this.m_sScroll.checkKey())
+	{
+		return 0;
+	}
+	return 0;
+}
+
+bool T_BattleLogWindow::checkWheel()
+{
+	if (this.m_sScroll.checkWheel())
+	{
+		return true;
+	}
+	ホイール_クリア();
+	return false;
+}
+
+void T_BattleLogWindow::resetSelect()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sButton.resetSelect();
+}
+
+void T_BattleLogWindow::setSelect(int nID, bool bSelect)
+{
+	if (nID > 190000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+	}
+}
+
+void T_BattleLogWindow::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 190000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_BattleLogWindow::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sLine.setShow(bShow, -1);
+	this.m_sScroll.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+}
+
+void T_BattleLogWindow::redraw()
+{
+	if (this.m_nLogNo <= 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = ログデータ_数(this.m_nLogNo);
+	if (cnt <= 0)
+	{
+		return;
+	}
+	this.m_nLogCount = cnt;
+	if (this.m_nLogCount > 22)
+	{
+		this.m_nLogIndex = this.m_nLogCount - 22;
+	}
+	else
+	{
+		this.m_nLogIndex = 0;
+	}
+	this.resetLine();
+	this.setLinePos();
+	this.m_sScroll.setValue(this.m_nLogIndex, _max(this.m_nLogCount, 22), 22);
+}
+
+void T_BattleLogWindow::resetLine()
+{
+	int i = 0;
+	int cnt = this.m_nLogCount > 22 ? 22 : this.m_nLogCount;
+	this.m_sLine.eraseAll();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!this.drawLine(this.m_nLogIndex + i))
+		{
+			break;
+		}
+	}
+}
+
+bool T_BattleLogWindow::drawLine(int nLogIndex)
+{
+	switch (ログデータ_タイプ(this.m_nLogNo, nLogIndex))
+	{
+		case 1:
+			this.drawText(-1, ログデータ_テキスト(this.m_nLogNo, nLogIndex), ログデータ_色(this.m_nLogNo, nLogIndex));
+			break;
+		case 2:
+			this.drawSeparator(-1, ログデータ_色(this.m_nLogNo, nLogIndex));
+			break;
+		default:
+			return false;
+	}
+	return true;
+}
+
+void T_BattleLogWindow::drawText(int nLineIndex, string szText, int nColor)
+{
+	this.setColor(nColor);
+	T_DrawLine sLine;
+	float spacing = 1.0;
+	sLine.createFromTextMetrics2(2, szText, this.m_tmLog, -4, spacing);
+	this.m_sLine.add(sLine, nLineIndex);
+}
+
+void T_BattleLogWindow::drawSeparator(int nLineIndex, int nColor)
+{
+	this.drawText(nLineIndex, 全角区切り(47), nColor);
+}
+
+void T_BattleLogWindow::setLinePos()
+{
+	int i = 0;
+	int cnt = this.m_sLine.getCount();
+	int nX = this.m_spBase.getPosX() + 10;
+	int nY = this.m_spBase.getPosY() + 2;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsLine = this.m_sLine.get(i);
+		rfsLine.setPos(nX, nY);
+		nY += 26;
+	}
+}
+
+void T_BattleLogWindow::setColor(int nColor)
+{
+	ログテキスト_色(nColor, this.m_tmLog.nColorR, this.m_tmLog.nColorG, this.m_tmLog.nColorB);
+}
+
+void T_BattleLogWindow::open()
+{
+	効果音_戦闘ログＯＰＥＮ();
+	スプライト_拡大ズーム(this.m_spBase, this.m_spBase.getPosX(), this.m_spBase.getPosY() + this.m_spBase.getHeight(), this.m_spBase.getWidth(), 0, 100);
+	this.setShow(true);
+	UPDATE(true);
+}
+

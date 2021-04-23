@@ -1,0 +1,30 @@
+void AFL_LogViewer_OpenViewer()
+{
+	CrayfishLogViewer.OpenViewer();
+}
+
+void AFL_LogViewer_CloseViewer()
+{
+	CrayfishLogViewer.CloseViewer();
+}
+
+bool AFL_LogViewer_IsOpenedViewer()
+{
+	return CrayfishLogViewer.IsOpenedViewer();
+}
+
+void AFL_LogViewer_SetWindowTitleName(string WindowTitleName)
+{
+	CrayfishLogViewer.SetWindowTitleName(WindowTitleName);
+}
+
+void AFL_LogViewer_AddText(string Text)
+{
+	CrayfishLogViewer.AddText(Text);
+}
+
+void AFL_LogViewer_ClearText()
+{
+	CrayfishLogViewer.ClearText();
+}
+

@@ -1,0 +1,405 @@
+T_Result::T_Result()
+{
+	this.clear();
+}
+
+T_Result::~T_Result()
+{
+	this.delete();
+}
+
+bool T_Result::run(int nType)
+{
+	if (!this.create(nType, クエスト_攻略番号(), クエスト_名声ポイント()))
+	{
+		return false;
+	}
+	システムバー_更新(0, -1);
+	システムバー_表示設定(true);
+	ミニステータス_ボタン表示設定(false);
+	bool bRet = false;
+	switch (nType)
+	{
+		case 1:
+			bRet = this.success();
+			break;
+		case 2:
+			this.failure();
+			break;
+		case 3:
+			this.giveUp(true);
+			break;
+		case 4:
+			this.giveUp(false);
+			bRet = true;
+			break;
+		default:
+			break;
+	}
+	this.delete();
+	return bRet;
+}
+
+bool T_Result::create(int nType, int nQuestNo, int nPoint)
+{
+	this.delete();
+	if (!クエスト_確認(nQuestNo))
+	{
+		return false;
+	}
+	int nCgNo = 0;
+	switch (nType)
+	{
+		case 1:
+			nCgNo = 10352;
+			break;
+		case 2:
+			nCgNo = 10354;
+			break;
+		case 3:
+		case 4:
+			nCgNo = 10353;
+			break;
+		default:
+			return false;
+	}
+	名声_ポイント＋(nPoint);
+	this.m_spBase.setCg(10351);
+	this.m_spBase.setPos(0, 80);
+	this.m_spBase.setZ(9001);
+	this.m_spMessage.setCg(nCgNo);
+	this.m_spMessage.setPos(250, 180);
+	this.m_spMessage.setZ(9002);
+	this.createQuestName(クエスト_名前(nQuestNo), 252, 85, 9003);
+	this.createPoint(nPoint, 252, 312, 9003);
+	this.m_nQuestNo = nQuestNo;
+	this.m_bRankUp = 名声_ランクアップ();
+	this.setShow(true);
+	if (this.m_bRankUp)
+	{
+		効果_フラッシュ("カリスマアップ", 390, 640, 9601);
+	}
+	return true;
+}
+
+void T_Result::createQuestName(string szName, int nX, int nY, int nZ)
+{
+	sact_text_metrics_t tmName;
+	tmName.nSize = 42;
+	tmName.nColorR = 255;
+	tmName.nColorG = 245;
+	tmName.nColorB = 100;
+	tmName.nWeight = 0;
+	tmName.nFace = 256;
+	float spacing = 1.0;
+	this.m_sName.createFromTextMetrics2(2, szName, tmName, -4, spacing);
+	this.m_sName.setPos(nX + (this.m_spMessage.getWidth() - this.m_sName.getWidth()) / 2, nY);
+	this.m_sName.setZ(nZ);
+}
+
+void T_Result::createPoint(int nPoint, int nX, int nY, int nZ)
+{
+	if (nPoint <= 0)
+	{
+		return;
+	}
+	sact_text_metrics_t tmPoint;
+	tmPoint.nSize = 24;
+	tmPoint.nColorR = 255;
+	tmPoint.nColorG = 245;
+	tmPoint.nColorB = 100;
+	tmPoint.nWeight = 0;
+	tmPoint.nFace = 258;
+	tmPoint.nSize += 4;
+	this.m_asPoint[0].createFromTextMetrics2(2, "Acquired [", tmPoint, -4, 0.949999988079071);
+	this.m_asPoint[2].createFromTextMetrics2(2, "] reputation", tmPoint, -4, 0.949999988079071);
+	tmPoint.nColorR = 255;
+	tmPoint.nColorG = 255;
+	tmPoint.nColorB = 255;
+	this.m_asPoint[1].createFromTextMetrics2(1, "%d" % nPoint, tmPoint, -4, 0.949999988079071);
+	int i = 0;
+	int cnt = this.m_asPoint.Numof();
+	int nW = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		T_DrawLine rfsLine;
+		rfsLine = this.m_asPoint[i];
+		nW += rfsLine.getWidth();
+	}
+	int nTx = nX + (this.m_spMessage.getWidth() - nW) / 2;
+	int nTy = nY;
+	for (i = 0; i < cnt; ++i)
+	{
+		T_DrawLine rfsLine;
+		rfsLine = this.m_asPoint[i];
+		rfsLine.setPos(nTx, nTy + (24 - rfsLine.getHeight()));
+		rfsLine.setZ(nZ);
+		nTx += rfsLine.getWidth();
+	}
+}
+
+void T_Result::delete()
+{
+	int i = 0;
+	int cnt = this.m_asPoint.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asPoint[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spMessage.delete();
+	this.m_sName.delete();
+	this.m_sChara.delete();
+	this.m_sQuest.delete();
+	this.m_sLevelUp.delete();
+	this.clear();
+}
+
+void T_Result::clear()
+{
+	this.m_nQuestNo = -1;
+	this.m_bRankUp = false;
+}
+
+bool T_Result::success()
+{
+	if (this.m_bRankUp)
+	{
+		効果音_カリスマランクアップ();
+	}
+	EFFECT(1, 100);
+	音楽_再生(102);
+	bool bRet1 = this.m_sChara.create(9051);
+	bool bRet2 = this.m_sQuest.create(9051);
+	bool bRet3 = this.m_sLevelUp.create(9051);
+	if (bRet2)
+	{
+		this.success1();
+		if (bRet3)
+		{
+			_W(1000);
+			this.success3();
+		}
+	}
+	else if (bRet1 || bRet3)
+	{
+		this.success2();
+	}
+	this.wait(3000, 0, true);
+	return true;
+}
+
+bool T_Result::success1()
+{
+	bool bRet = false;
+	if (this.m_sChara.start(500))
+	{
+		bRet = true;
+	}
+	if (this.m_sQuest.start(0, 500))
+	{
+		bRet = true;
+	}
+	if (!bRet)
+	{
+		return false;
+	}
+	int nKey = this.wait(1000, 0, true);
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label1:
+	if (nTime < 500)
+	{
+		nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			goto label0;
+		}
+		this.m_sChara.update(nTime);
+		this.m_sQuest.update(nTime);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label1;
+	}
+label0:
+	this.m_sChara.end();
+	this.m_sQuest.end();
+	UPDATE(true);
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_Result::success2()
+{
+	bool bRet = false;
+	if (this.m_sChara.start(500))
+	{
+		bRet = true;
+	}
+	if (this.m_sLevelUp.start(0, 500))
+	{
+		bRet = true;
+	}
+	if (!bRet)
+	{
+		return false;
+	}
+	int nKey = this.wait(1000, 0, true);
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label1:
+	if (nTime < 500)
+	{
+		nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			goto label0;
+		}
+		this.m_sChara.update(nTime);
+		this.m_sLevelUp.update(nTime);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label1;
+	}
+label0:
+	this.m_sChara.end();
+	this.m_sLevelUp.end();
+	UPDATE(true);
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_Result::success3()
+{
+	if (!this.m_sLevelUp.start(1, 500))
+	{
+		return false;
+	}
+	this.m_sQuest.start(1, 500);
+	int nKey = this.wait(1000, 0, true);
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label1:
+	if (nTime < 500)
+	{
+		nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			goto label0;
+		}
+		this.m_sLevelUp.update(nTime);
+		this.m_sQuest.update(nTime);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label1;
+	}
+label0:
+	this.m_sLevelUp.end();
+	this.m_sQuest.delete();
+	UPDATE(true);
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+void T_Result::failure()
+{
+	効果音_クエスト失敗();
+	EFFECT(1, 100);
+	int nKey = this.wait(1000, 0, true);
+	if (Ｒ８クエスト倉庫(2) < 0)
+	{
+		nKey = this.wait(2000, nKey, true);
+	}
+	this.setShow(false);
+	黒画面(20, 1000);
+}
+
+void T_Result::giveUp(bool bBlackOut)
+{
+	効果音_クエスト断念();
+	EFFECT(1, 100);
+	int nKey = this.wait(3000, 0, true);
+	this.setShow(false);
+	if (bBlackOut)
+	{
+		if (nKey > 0)
+		{
+			黒画面(0, 0);
+		}
+		else
+		{
+			黒画面(1, 1000);
+		}
+	}
+}
+
+int T_Result::wait(int nWaitTime, int nKey, bool bWaitRelease)
+{
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (sTimer.Get() < nWaitTime)
+	{
+		nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+label0:
+	UPDATE(false);
+	if (bWaitRelease)
+	{
+		キー_離し待ち(nKey, true);
+	}
+	return nKey;
+}
+
+int T_Result::checkKey()
+{
+	int nKey = 0;
+	nKey = ホイール_確認(true);
+	if (nKey == 9992)
+	{
+		return nKey;
+	}
+	nKey = キー_メッセージ送り();
+	if (nKey > 0)
+	{
+		return nKey;
+	}
+	return 0;
+}
+
+void T_Result::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asPoint.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asPoint[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_spMessage.setShow(bShow);
+	this.m_sName.setShow(bShow);
+}
+

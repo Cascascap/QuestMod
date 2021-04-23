@@ -1,0 +1,123 @@
+CASClick::CASClick()
+{
+	this.m_nKey = -1;
+	this.m_bKeyDown = false;
+	this.m_bFirstClickOff = false;
+	this.m_nKeyDownOnObject = -2147483648;
+	this.m_Trigger = false;
+}
+
+void CASClick::Init(int nKey, bool FirstKeyDownCancel)
+{
+	this.m_nKey = nKey;
+	this.Reset(FirstKeyDownCancel);
+}
+
+void CASClick::Reset(bool FirstKeyDownCancel)
+{
+	this.m_bKeyDown = false;
+	this.m_nKeyDownOnObject = -2147483648;
+	this.m_bFirstClickOff = FirstKeyDownCancel && AFL_IsKeyDown(this.m_nKey);
+}
+
+bool CASClick::IsFirstClick()
+{
+	if (this.m_nKey == -1)
+	{
+		return false;
+	}
+	if (!this.m_bFirstClickOff)
+	{
+		return false;
+	}
+	if (AFL_IsKeyDown(this.m_nKey))
+	{
+		if (!this.m_bKeyDown)
+		{
+			this.m_bKeyDown = true;
+		}
+	}
+	else if (this.m_bKeyDown)
+	{
+		this.m_bKeyDown = false;
+		this.m_bFirstClickOff = false;
+	}
+	return true;
+}
+
+bool CASClick::IsClick(int nOnObject)
+{
+	if (this.m_nKey == -1)
+	{
+		return false;
+	}
+	if (this.IsFirstClick())
+	{
+		return false;
+	}
+	if (AFL_IsKeyDown(this.m_nKey))
+	{
+		if (!this.m_bKeyDown)
+		{
+			this.m_bKeyDown = true;
+			this.m_nKeyDownOnObject = nOnObject;
+		}
+	}
+	else if (this.m_bKeyDown)
+	{
+		this.m_bKeyDown = false;
+		if (nOnObject != -2147483648)
+		{
+			if (nOnObject == this.m_nKeyDownOnObject)
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return true;
+		}
+		this.m_nKeyDownOnObject = -2147483648;
+	}
+	return false;
+}
+
+bool CASClick::IsKeyDown()
+{
+	if (this.m_nKey == -1)
+	{
+		return false;
+	}
+	if (this.IsFirstClick())
+	{
+		return false;
+	}
+	return AFL_IsKeyDown(this.m_nKey);
+}
+
+bool CASClick::IsKeyTrigger()
+{
+	if (this.m_nKey == -1)
+	{
+		return false;
+	}
+	if (this.IsFirstClick())
+	{
+		return false;
+	}
+	if (AFL_IsKeyDown(this.m_nKey) && !this.m_Trigger)
+	{
+		this.m_Trigger = true;
+		return true;
+	}
+	else if (AFL_IsKeyDown(this.m_nKey))
+	{
+		return false;
+	}
+	else
+	{
+		this.m_Trigger = false;
+	}
+	return false;
+}
+

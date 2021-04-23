@@ -1,0 +1,230 @@
+int compBillboard(ref T_BillboardInfo sInfo1, ref T_BillboardInfo sInfo2)
+{
+	if (sInfo1.m_nCgNo < sInfo2.m_nCgNo)
+	{
+		return -1;
+	}
+	if (sInfo1.m_nCgNo > sInfo2.m_nCgNo)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+T_BillboardInfo::T_BillboardInfo()
+{
+	this.clear();
+}
+
+void T_BillboardInfo::clear()
+{
+	this.m_nCgNo = 0;
+	this.m_nCgCount = 0;
+	this.m_nSize = 0;
+	this.m_nHoseiX = 0;
+	this.m_nHoseiY = 0;
+	this.m_nHoseiZ = 0;
+	this.m_nDrawType = 0;
+	this.m_nEnterFlag = 0;
+	this.m_nState = 0;
+	this.m_nBegin = 0;
+	this.m_nEnd = 0;
+	this.m_nLoopBegin = 0;
+	this.m_nLoopEnd = 0;
+	this.m_nFPS = 5;
+}
+
+bool T_BillboardInfo::isMotion()
+{
+	return this.m_nEnd > this.m_nBegin;
+}
+
+T_BillboardInfoManager::T_BillboardInfoManager()
+{
+	this.m_bUpdate = false;
+}
+
+bool T_BillboardInfoManager::init()
+{
+	int nRet = this.load();
+	if (nRet < 0)
+	{
+		return false;
+	}
+	this.m_bUpdate = false;
+	return true;
+}
+
+void T_BillboardInfoManager::checkUpdate()
+{
+	this.m_bUpdate = false;
+}
+
+void T_BillboardInfoManager::save()
+{
+	this.m_bUpdate = false;
+}
+
+int T_BillboardInfoManager::select()
+{
+	return 0;
+}
+
+bool T_BillboardInfoManager::set(ref T_BillboardInfo sInfo)
+{
+	if (sInfo === NULL)
+	{
+		return false;
+	}
+	ref T_BillboardInfo rfInfo = this.get(sInfo.m_nCgNo);
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	rfInfo = sInfo;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_BillboardInfoManager::setDrawType(int nCgNo, int nDrawType)
+{
+	ref T_BillboardInfo rfInfo = this.get(nCgNo);
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	rfInfo.m_nDrawType = nDrawType;
+	this.m_bUpdate = true;
+	return true;
+}
+
+int T_BillboardInfoManager::getCount()
+{
+	return this.m_asInfo.Numof();
+}
+
+int T_BillboardInfoManager::getCgNo(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asInfo.Numof())
+	{
+		return 0;
+	}
+	return this.m_asInfo[nIndex].m_nCgNo;
+}
+
+ref T_BillboardInfo T_BillboardInfoManager::get(int nCgNo)
+{
+	int idx = this.search(nCgNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asInfo[idx];
+}
+
+int T_BillboardInfoManager::load()
+{
+	if (!this.m_asInfo.Empty())
+	{
+		this.m_asInfo.Free();
+	}
+	if (this.loadAcx())
+	{
+		return 0;
+	}
+	return -1;
+}
+
+bool T_BillboardInfoManager::loadAcx()
+{
+	bool bRet = false;
+	if (!‚`‚b‚w_ƒ[ƒh("Data\\Billboard.acx"))
+	{
+		return false;
+	}
+	int cnt = ‚`‚b‚w_s”();
+	if (cnt <= 0)
+	{
+		bRet = true;
+		goto label0;
+	}
+	int i = 0;
+	T_BillboardInfo sInfo;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!‚`‚b‚w_ƒrƒ‹ƒ{[ƒhî•ñ(i, sInfo))
+		{
+			system.Error("There's an error in the billboard information.");
+			goto label0;
+		}
+		this.m_asInfo.PushBack(sInfo);
+	}
+	this.m_asInfo.Sort(&compBillboard);
+	bRet = true;
+label0:
+	‚`‚b‚w_‰ð•ú();
+	return bRet;
+}
+
+int T_BillboardInfoManager::loadText()
+{
+	return -1;
+}
+
+bool T_BillboardInfoManager::save2()
+{
+	return true;
+}
+
+bool T_BillboardInfoManager::add(int nCgNo)
+{
+	return true;
+}
+
+int T_BillboardInfoManager::search(int nCgNo)
+{
+	if (nCgNo < 20001 || nCgNo > 30000)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asInfo.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asInfo[i].m_nCgNo == nCgNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BillboardInfoManager::search2(int nCgNo)
+{
+	if (nCgNo < 20001 || nCgNo > 30000)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asInfo.Numof();
+	ref T_BillboardInfo rfInfo;
+	for (i = 0; i < cnt; ++i)
+	{
+		rfInfo <- this.m_asInfo[i];
+		if (rfInfo.m_nCgNo <= nCgNo && nCgNo < rfInfo.m_nCgNo + rfInfo.m_nCgCount)
+		{
+			return i;
+		}
+		if (rfInfo.m_nBegin <= nCgNo && nCgNo <= rfInfo.m_nEnd)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+void T_BillboardInfoManager::output()
+{
+	return;
+}
+

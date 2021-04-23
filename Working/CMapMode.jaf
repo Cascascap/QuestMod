@@ -1,0 +1,494 @@
+void CMapMode::SetGoalPos(float fX, float fY, float fZ)
+{
+	this.m_Goal.SetPos(fX, fY, fZ);
+}
+
+void CMapMode::SetGoalDraw(bool bFlag)
+{
+	this.m_Goal.SetDraw(bFlag);
+}
+
+float CMapMode::CalcHeightDetection(float fX, float fZ)
+{
+	return this.m_Map.CalcHeightDetection(fX, fZ);
+}
+
+float CMapMode::Calc2DDetectionHeight(float fX, float fZ)
+{
+	return this.m_Map.Calc2DDetectionHeight(fX, fZ);
+}
+
+int CMapMode::GetMapNo()
+{
+	return this.m_nMapNo;
+}
+
+int CMapMode::GetMode()
+{
+	return this.m_nMode;
+}
+
+int CMapMode::GetViewX()
+{
+	return this.m_nViewX;
+}
+
+int CMapMode::GetViewY()
+{
+	return this.m_nViewY;
+}
+
+int CMapMode::GetViewWidth()
+{
+	return this.m_nViewWidth;
+}
+
+int CMapMode::GetViewHeight()
+{
+	return this.m_nViewHeight;
+}
+
+bool CMapMode::GetMapDraw()
+{
+	return this.m_Map.GetDraw();
+}
+
+bool CMapMode::IsCreated()
+{
+	return this.m_Plugin.GetPlugin() >= 0;
+}
+
+ref CReignPlugin CMapMode::GetPlugin()
+{
+	return this.m_Plugin;
+}
+
+ref CInstance CMapMode::GetMap()
+{
+	return this.m_Map;
+}
+
+CMapMode::CMapMode()
+{
+	this.Clear();
+}
+
+CMapMode::~CMapMode()
+{
+	this.Release();
+}
+
+void CMapMode::Clear()
+{
+	this.m_nViewX = 8;
+	this.m_nViewY = 8;
+	this.m_nViewWidth = 800;
+	this.m_nViewHeight = 600;
+	this.m_nMapNo = 0;
+	this.m_fProjectionNear = 5.0;
+	this.m_fProjectionFar = 200.0;
+	this.m_fProjectionDeg = 60.0;
+	this.m_fCenterCameraLength = 25.0;
+	this.m_fCenterCameraAngleP = 52.0;
+}
+
+bool CMapMode::Create(int nMapNo, bool bShow)
+{
+	if (nMapNo == this.m_nMapNo)
+	{
+		return true;
+	}
+	this.Release();
+	if (nMapNo <= 0)
+	{
+		return false;
+	}
+	this.m_Plugin.Create(101, this.m_nViewWidth, this.m_nViewHeight);
+	this.m_Plugin.Bind();
+	LoadReignSetting(this.m_Plugin);
+	this.CreateMap();
+	this.CreateCenterCamera();
+	this.CreateLight();
+	this.SetGlareParam();
+	this.SetMap(nMapNo, bShow);
+	this.SetCameraPos(-1.0, -1.0, -1.0, false);
+	this.m_PathLine.Create(this.m_Plugin.GetPlugin());
+	this.m_PathLine.SetType(9);
+	this.m_PathLine.SetDiffuse(1.0, 0.0, 0.0);
+	this.m_PathLine.SetDraw(false);
+	this.m_OptimizedPathLine.Create(this.m_Plugin.GetPlugin());
+	this.m_OptimizedPathLine.SetType(9);
+	this.m_OptimizedPathLine.SetDiffuse(0.0, 0.5, 1.0);
+	this.m_OptimizedPathLine.SetDraw(false);
+	this.m_Goal.Create(this.m_Plugin.GetPlugin());
+	this.m_Goal.SetType(1);
+	this.m_Goal.SetScale(0.5);
+	this.m_Goal.SetDraw(false);
+	this.m_Goal.Load("Data\\PolyData\\Etc\\" + "point");
+	this.SetShadowParam();
+	this.SetSSAOParam();
+	this.SetFogParam();
+	this.m_Plugin.SetViewport(this.m_nViewX, this.m_nViewY, this.m_nViewWidth, this.m_nViewHeight);
+	this.InitProjection(this.m_nViewWidth, this.m_nViewHeight);
+	this.m_Plugin.SetProjection(this.m_Projection.fWidth, this.m_Projection.fHeight, this.m_Projection.fNear, this.m_Projection.fFar, this.m_Projection.fDeg);
+	this.m_nPrevTime = system.GetTime();
+	return true;
+}
+
+void CMapMode::Release()
+{
+	this.m_aDirLightInfo.Free();
+	this.m_aDirLight.Free();
+	this.m_aSpecularLightInfo.Free();
+	this.m_aSpecularLight.Free();
+	this.m_Goal.Release();
+	this.m_OptimizedPathLine.Release();
+	this.m_PathLine.Release();
+	this.m_CenterCamera.Release();
+	this.m_Map.Release();
+	this.m_Plugin.Unbind();
+	this.m_Plugin.Release();
+	this.Clear();
+}
+
+void CMapMode::InitProjection(int nViewWidth, int nViewHeight)
+{
+	float fNear = this.m_fProjectionNear;
+	float fFar = this.m_fProjectionFar;
+	float fDeg = this.m_fProjectionDeg;
+	this.m_Projection.Set(nViewWidth, nViewHeight, fNear, fFar, fDeg);
+	this.m_fProjectionNear = fNear;
+	this.m_fProjectionFar = fFar;
+	this.m_fProjectionDeg = fDeg;
+}
+
+bool CMapMode::Suspend()
+{
+	if (!this.IsCreated())
+	{
+		return false;
+	}
+	this.WaitLoading(false);
+	if (!this.m_Plugin.Suspend())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CMapMode::Resume()
+{
+	if (!this.IsCreated())
+	{
+		return false;
+	}
+	if (!this.m_Plugin.IsSuspend())
+	{
+		return false;
+	}
+	if (!this.m_Plugin.Resume())
+	{
+		return false;
+	}
+	LoadReignSetting(this.m_Plugin);
+	return true;
+}
+
+void CMapMode::Update()
+{
+	if (!this.IsCreated())
+	{
+		return;
+	}
+	if (!this.GetMapDraw())
+	{
+		return;
+	}
+	ƒLƒƒƒ‰_XV(this.m_nPassTime);
+	this.UpdateCamera();
+	this.m_Plugin.SetShadowMapLightLookPos(‚R‚cƒLƒƒƒ‰_À•W‚w(), ‚R‚cƒLƒƒƒ‰_À•W‚x() + 2.0, ‚R‚cƒLƒƒƒ‰_À•W‚y());
+	this.m_Plugin.SetShadowBox(‚R‚cƒLƒƒƒ‰_À•W‚w(), ‚R‚cƒLƒƒƒ‰_À•W‚x() + 2.0, ‚R‚cƒLƒƒƒ‰_À•W‚y(), 0.0, 0.0, 0.0);
+	‚R‚c”wŒi_ƒuƒŒƒ“ƒhÝ’è(1, Math.Sin(((system.GetTime() % 4000) * 360.0) / 4000.0) * 0.5 + 0.5);
+}
+
+void CMapMode::UpdatePathFinding()
+{
+	if (‚R‚cƒLƒƒƒ‰_–Ú“I’nˆÚ“®’†())
+	{
+		return;
+	}
+	int MouseX = 0;
+	int MouseY = 0;
+	AFL_Mouse_GetPos(MouseX, MouseY);
+	float GoalX = 0.0;
+	float GoalY = 0.0;
+	float GoalZ = 0.0;
+	this.m_Map.CalcPathFinderIntersectEyeVec(MouseX, MouseY, GoalX, GoalY, GoalZ);
+	this.m_Map.FindInstancePath(‚R‚cƒLƒƒƒ‰_À•W‚w(), ‚R‚cƒLƒƒƒ‰_À•W‚x(), ‚R‚cƒLƒƒƒ‰_À•W‚y(), GoalX, GoalY, GoalZ);
+	this.m_Map.OptimizePathLine();
+	this.m_Goal.SetPos(GoalX, GoalY, GoalZ);
+}
+
+void CMapMode::CreateMap()
+{
+	this.m_Map.Create(this.m_Plugin.GetPlugin());
+	this.m_Map.SetType(1);
+	this.m_Map.SetDrawShadow(true);
+	this.m_Map.SetDrawMakeShadow(false);
+	this.m_Map.SetDrawBackShadow(false);
+	this.m_Map.SetDrawBump(true);
+	this.m_Map.SetDiffuse(1.0, 1.0, 1.0);
+	this.m_Map.SetAmbient(0.0, 0.0, 0.0);
+}
+
+bool CMapMode::SetMap(int nMapNo, bool bShow)
+{
+	this.m_Map.SetDraw(false);
+	if (!this.m_Map.Load("Data\\PolyData\\Map\\" + ƒ}ƒbƒv_–¼‘O(nMapNo)))
+	{
+		return false;
+	}
+	if (bShow)
+	{
+		this.WaitLoading(false);
+		this.m_Map.SetDraw(true);
+	}
+	this.m_Map.SetDrawParam(0, this.m_Plugin.GetDrawOption(0) >= 2 ? 1 : 0);
+	this.m_nMapNo = nMapNo;
+	return true;
+}
+
+void CMapMode::CreateLight()
+{
+	if (this.m_Plugin.GetRenderMode() <= 1)
+	{
+		this.m_aDirLightInfo.Alloc(1);
+		this.m_aDirLightInfo[0].SetVector(1.0, -0.400000005960464, 1.0);
+		this.m_aDirLightInfo[0].SetDiffuse(1.0, 1.0, 1.0);
+		this.m_aDirLightInfo[0].SetAmbient(0.0, 0.0, 0.0);
+		this.m_aDirLightInfo[0].SetGlobeDiffuse(0.5, 0.5, 0.5);
+		this.m_aSpecularLightInfo.Free();
+		this.m_Plugin.SetGlobalAmbient(0.5, 0.5, 0.5);
+	}
+	else
+	{
+		this.m_aDirLightInfo.Alloc(3);
+		this.m_aDirLightInfo[0].SetVector(-1.39999997615814, -0.600000023841858, 1.0);
+		this.m_aDirLightInfo[0].SetDiffuse(1.10000002384186, 1.04999995231628, 1.0);
+		this.m_aDirLightInfo[0].SetGlobeDiffuse(-0.200000002980232, -0.200000002980232, -0.200000002980232);
+		this.m_aDirLightInfo[0].SetAmbient(1.0, 1.0, 1.0);
+		this.m_aDirLightInfo[1].SetVector(1.29999995231628, -0.699999988079071, 1.0);
+		this.m_aDirLightInfo[1].SetDiffuse(0.300000011920929, 0.300000011920929, 0.400000005960464);
+		this.m_aDirLightInfo[1].SetGlobeDiffuse(-0.100000001490116, -0.100000001490116, -0.100000001490116);
+		this.m_aDirLightInfo[1].SetAmbient(1.0, 1.0, 1.0);
+		this.m_aDirLightInfo[2].SetVector(0.0, -0.5, -1.0);
+		this.m_aDirLightInfo[2].SetDiffuse(0.5, 0.5, 0.5);
+		this.m_aDirLightInfo[2].SetGlobeDiffuse(-0.200000002980232, -0.200000002980232, -0.200000002980232);
+		this.m_aDirLightInfo[2].SetAmbient(1.0, 1.0, 1.0);
+		this.m_aSpecularLightInfo.Alloc(1);
+		this.m_aSpecularLightInfo[0].SetVector(-1.39999997615814, -2.20000004768372, -3.5);
+		this.m_Plugin.SetGlobalAmbient(0.0, 0.0, 0.0);
+	}
+	this.CreateDirLight();
+	this.CreateSpecularLight();
+}
+
+void CMapMode::CreateDirLight()
+{
+	this.m_aDirLight.Alloc(this.m_aDirLightInfo.Numof());
+	int n = 0;
+	for (n = 0; n < this.m_aDirLight.Numof(); ++n)
+	{
+		this.m_aDirLight[n].Create(this.m_Plugin.GetPlugin());
+		this.m_aDirLight[n].SetType(4);
+		this.SetDirLight(this.m_aDirLight[n], this.m_aDirLightInfo[n]);
+	}
+}
+
+void CMapMode::CreateSpecularLight()
+{
+	this.m_aSpecularLight.Alloc(this.m_aSpecularLightInfo.Numof());
+	int n = 0;
+	for (n = 0; n < this.m_aSpecularLightInfo.Numof(); ++n)
+	{
+		this.m_aSpecularLight[n].Create(this.m_Plugin.GetPlugin());
+		this.m_aSpecularLight[n].SetType(6);
+		this.SetSpecularLight(this.m_aSpecularLight[n], this.m_aSpecularLightInfo[n]);
+	}
+}
+
+void CMapMode::SetDirLight(ref CInstance DirLight, ref SDirLight Info)
+{
+	DirLight.SetVector(Info.fVecX, Info.fVecY, Info.fVecZ);
+	DirLight.SetDiffuse(Info.Diffuse.fR, Info.Diffuse.fG, Info.Diffuse.fB);
+	DirLight.SetAmbient(Info.Ambient.fR, Info.Ambient.fG, Info.Ambient.fB);
+	DirLight.SetGlobeDiffuse(Info.GlobeDiffuse.fR, Info.GlobeDiffuse.fG, Info.GlobeDiffuse.fB);
+}
+
+void CMapMode::SetSpecularLight(ref CInstance SpecularLight, ref SSpecularLight Info)
+{
+	SpecularLight.SetVector(Info.fVecX, Info.fVecY, Info.fVecZ);
+}
+
+void CMapMode::SetFogParam()
+{
+	this.m_Plugin.SetFogType(1);
+	this.m_Plugin.SetFogNear(30.0);
+	this.m_Plugin.SetFogFar(80.0);
+	this.m_Plugin.SetFogColor(0.100000001490116, 0.150000005960464, 0.550000011920929);
+}
+
+void CMapMode::SetGlareParam()
+{
+	this.m_Plugin.SetGlareBrightnessParam(0, -0.100000001490116);
+	this.m_Plugin.SetGlareBrightnessParam(1, 0.300000011920929);
+	this.m_Plugin.SetGlareBrightnessParam(2, 0.0);
+	this.m_Plugin.SetGlareBrightnessParam(3, 0.449999988079071);
+}
+
+void CMapMode::CreateCenterCamera()
+{
+	this.m_CenterCamera.Create(this.m_Plugin);
+	float fLength = this.m_fCenterCameraLength;
+	float fAngleP = this.m_fCenterCameraAngleP;
+	this.m_CenterCamera.SetLength(fLength);
+	this.m_CenterCamera.SetAngleP(fAngleP);
+	this.m_fCenterCameraLength = fLength;
+	this.m_fCenterCameraAngleP = fAngleP;
+}
+
+void CMapMode::UpdateCamera()
+{
+	float fX0 = this.m_CenterCamera.GetCenterX();
+	float fY0 = this.m_CenterCamera.GetCenterY();
+	float fZ0 = this.m_CenterCamera.GetCenterZ();
+	float fX1 = 0.0;
+	float fY1 = 0.0;
+	float fZ1 = 0.0;
+	this.CalcCameraPos(fX1, fY1, fZ1);
+	float fX = fX1;
+	float fY = fY1;
+	float fZ = fZ1;
+	this.m_CenterCamera.SetCenterPos(fX, fY, fZ);
+	this.m_CenterCamera.Update();
+}
+
+void CMapMode::CalcCameraPos(ref float fX, ref float fY, ref float fZ)
+{
+	fX = ‚R‚cƒLƒƒƒ‰_À•W‚w();
+	fY = ‚R‚cƒLƒƒƒ‰_À•W‚x();
+	fZ = ‚R‚cƒLƒƒƒ‰_À•W‚y();
+}
+
+void CMapMode::SetShadowParam()
+{
+	this.m_Plugin.SetShadowMapType(0);
+	this.m_Plugin.SetShadowMapLightDir(0.0, -1.0, 0.00999999977648258);
+	this.m_Plugin.SetShadowBias(0, 0.00999999977648258);
+}
+
+void CMapMode::SetSSAOParam()
+{
+	this.m_Plugin.SetSSAOParam(0, 0.5);
+	this.m_Plugin.SetSSAOParam(1, 5.0);
+	this.m_Plugin.SetSSAOParam(2, 0.0);
+}
+
+void CMapMode::WaitLoading(bool bThreadLoadingMode)
+{
+	int nPlugin = this.m_Plugin.GetPlugin();
+	if (nPlugin < 0)
+	{
+		return;
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, bThreadLoadingMode);
+	for (; ; )
+	{
+		_UPDATE(true);
+		if (!this.m_Plugin.IsLoading())
+		{
+			break;
+		}
+	}
+	TapirEngine.SetThreadLoadingMode(nPlugin, true);
+	_UPDATE(true);
+}
+
+void CMapMode::RealtimeSettingUpdate()
+{
+	this.CreateLight();
+	this.m_Map.SetDrawParam(0, this.m_Plugin.GetDrawOption(0) >= 2 ? 1 : 0);
+}
+
+void CMapMode::SetCameraPos(float fX, float fY, float fZ, bool bUpdate)
+{
+	if (fX < 0.0 || fY < 0.0 || fZ < 0.0)
+	{
+		this.CalcCameraPos(fX, fY, fZ);
+	}
+	this.m_CenterCamera.SetCenterPos(fX, fY, fZ);
+	if (bUpdate)
+	{
+		this.m_CenterCamera.Update();
+	}
+}
+
+void CMapMode::SetCameraLength(float fLength)
+{
+	this.m_CenterCamera.SetLength(fLength);
+	this.m_CenterCamera.Update();
+	this.m_fCenterCameraLength = fLength;
+}
+
+bool CMapMode::SetMode(int nMode)
+{
+	return true;
+}
+
+void CMapMode::SetPrevTime()
+{
+	this.m_nPrevTime = system.GetTime();
+}
+
+bool CMapMode::SetMapDraw(bool bFlag)
+{
+	return this.m_Map.SetDraw(bFlag);
+}
+
+float CMapMode::CalcHeight(float fX, float fZ)
+{
+	float fHeight = this.m_Map.Calc2DDetectionHeight(fX, fZ);
+	if (fHeight > 0.0)
+	{
+		goto label0;
+	}
+	fHeight = this.m_Map.Calc2DDetectionHeight(fX, fZ + 2.0);
+	if (fHeight > 0.0)
+	{
+		goto label0;
+	}
+	fHeight = this.m_Map.Calc2DDetectionHeight(fX + 2.0, fZ);
+	if (fHeight > 0.0)
+	{
+		goto label0;
+	}
+	fHeight = this.m_Map.Calc2DDetectionHeight(fX, fZ - 2.0);
+	if (fHeight > 0.0)
+	{
+		goto label0;
+	}
+	fHeight = this.m_Map.Calc2DDetectionHeight(fX - 2.0, fZ);
+	if (fHeight > 0.0)
+	{
+		goto label0;
+	}
+	fHeight = this.m_Map.CalcHeightDetection(fX, fZ);
+label0:
+	return fHeight;
+}
+
+void CMapMode::SetProjection(float fNear, float fFar, float fDeg)
+{
+	return;
+}
+

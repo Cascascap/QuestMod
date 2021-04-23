@@ -1,0 +1,80 @@
+void 戦闘台詞_作成(int nZ)
+{
+	g_sBattleMessage.create(nZ);
+	g_bBattleMessageCheck = true;
+	g_bBattleMessageUpdate = false;
+}
+
+void 戦闘台詞_削除()
+{
+	g_bBattleMessageCheck = false;
+	g_bBattleMessageUpdate = false;
+	g_sBattleMessage.delete();
+}
+
+void 戦闘台詞_割り込み確認(int nNo)
+{
+	if (!g_sBattleMessage.check(nNo))
+	{
+		return;
+	}
+	Ｔ台詞割り込み(戦闘番号_ＩＩＣ(nNo));
+	戦闘台詞_表示(-1, -1, "", true);
+}
+
+void 戦闘台詞_割り込み確認_リザルト(int nResult)
+{
+	if (!g_sBattleMessage.checkResult())
+	{
+		return;
+	}
+	Ｔ台詞割り込み／リザルト(nResult == 1 ? 1 : 0);
+	if (戦闘台詞_表示(-1, -1, "", false))
+	{
+		return;
+	}
+	戦闘台詞_タイマリセット(0);
+}
+
+void 戦闘台詞_タイマリセット(int nTime)
+{
+	g_sBattleMessage.resetCheckTimer(nTime);
+}
+
+bool 戦闘台詞_表示(int nCharaNo, int nType, string szMessage, bool bSound)
+{
+	if (nCharaNo < 0)
+	{
+		nCharaNo = ◆戦闘台詞発声者;
+	}
+	if (szMessage.Empty())
+	{
+		szMessage = ◆戦闘台詞;
+	}
+	if (nType < 0)
+	{
+		nType = ◆戦闘セリフタイプ;
+	}
+	return g_sBattleMessage.show(nCharaNo, nType, szMessage);
+}
+
+void 戦闘台詞_消去()
+{
+	g_sBattleMessage.hide();
+}
+
+int 戦闘台詞データ_数()
+{
+	return g_sBattleMessageData.getCount();
+}
+
+int 戦闘台詞データ_インデクス(int nNo)
+{
+	return g_sBattleMessageData.getIndex(nNo);
+}
+
+ref T_BattleMessageData 戦闘台詞データ_取得(int nIndex)
+{
+	return g_sBattleMessageData.get(nIndex);
+}
+

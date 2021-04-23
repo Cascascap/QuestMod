@@ -1,0 +1,154 @@
+T_SystemMessage::T_SystemMessage()
+{
+}
+
+T_SystemMessage::~T_SystemMessage()
+{
+	this.delete();
+}
+
+void T_SystemMessage::run(string szText, int nItemNo, int nCount, int nSoundNo)
+{
+	bool bOld = false;
+	枠消去();
+	キー_クリア(true);
+	if (マップ_ロード中())
+	{
+		bOld = Ｒ８キャラ停止();
+	}
+	this.create(szText, nItemNo, nCount);
+	効果音_再生(nSoundNo);
+	EFFECT(1, 100);
+	this.wait();
+	this.delete();
+	EFFECT(1, 100);
+	if (bOld)
+	{
+		Ｒ８キャラ停止解除();
+	}
+}
+
+void T_SystemMessage::create(string szText, int nItemNo, int nCount)
+{
+	int nZ = 9201;
+	this.delete();
+	this.m_spBase.create(800, 484, 0, 0, 0, 64);
+	this.m_spBase.fill(227, 222, 347, 63, 0, 0, 0, 128);
+	this.m_spBase.setPosCenter();
+	this.m_spBase.setZ(nZ);
+	this.m_spBase.setShow(1);
+	this.createItem(nZ + 1, nItemNo, nCount);
+	this.m_sText.create(347, 63, -1, 1, 1, 1);
+	this.m_sText.setPos(this.m_spBase.getPosX() + 227, this.m_spBase.getPosY() + (nItemNo > 0 ? 332 : 222));
+	this.m_sText.setZ(nZ + 1);
+	this.m_sText.setShow(true);
+	this.m_sText.setFontSize(20);
+	this.m_sText.setFontType(257);
+	this.m_sText.setFontBold(1);
+	this.m_sText.setFontColor(255, 255, 255);
+	this.m_sText.setShadowPixel(1, 1, 1, 1);
+	this.m_sText.setShadowColor(0, 0, 0);
+	this.m_sText.setText(szText, false);
+}
+
+void T_SystemMessage::createItem(int nZ, int nItemNo, int nCount)
+{
+	if (nItemNo <= 0)
+	{
+		return;
+	}
+	int nIconNo = 0;
+	string szName = "???";
+	if (this.m_spItem.setCg(nIconNo) <= 0)
+	{
+		return;
+	}
+	this.m_spItem.setPos(this.m_spBase.getPosX() + 300, this.m_spBase.getPosY() + 116);
+	this.m_spItem.setZ(nZ, -1);
+	this.m_spItem.setShow(true);
+}
+
+void T_SystemMessage::delete()
+{
+	this.m_spBase.delete();
+	this.m_spItem.delete();
+	this.m_sText.delete();
+}
+
+void T_SystemMessage::wait()
+{
+	if (キー_未読スキップ() > 0)
+	{
+		return;
+	}
+	int nX = this.m_sText.getPosX();
+	int nY = this.m_sText.getPosY();
+	int nZ = this.m_sText.getZ();
+	bool bDebug = デバッグモード();
+	int nKey = 0;
+	T_Anime sIcon;
+	sIcon.create(50021, 5);
+	sIcon.setPos(nX + 329, nY + 66);
+	sIcon.setZ(nZ + 1);
+	sIcon.setTime(200);
+	sIcon.setLoop(true);
+	sIcon.start(true);
+	メッセージ送り_クリア();
+	while (true)
+	{
+		UPDATE(true);
+		if (メッセージ送り_確認())
+		{
+			break;
+		}
+		if (bDebug)
+		{
+			if (this.checkKey(nKey))
+			{
+				break;
+			}
+		}
+		sIcon.update(false);
+	}
+	メッセージ送り_クリア();
+	sIcon.end(true);
+	sIcon.delete();
+}
+
+bool T_SystemMessage::checkKey(ref int nKey)
+{
+	if (nKey > 0)
+	{
+		if (キー_押下(nKey))
+		{
+			return false;
+		}
+		nKey = 0;
+		return true;
+	}
+	int nKey2 = 0;
+	nKey2 = キー_左矢印(true);
+	if (nKey2 > 0)
+	{
+		goto label0;
+	}
+	nKey2 = キー_右矢印(true);
+	if (nKey2 > 0)
+	{
+		goto label0;
+	}
+	nKey2 = キー_上矢印(true);
+	if (nKey2 > 0)
+	{
+		goto label0;
+	}
+	nKey2 = キー_下矢印(true);
+	if (nKey2 > 0)
+	{
+		goto label0;
+	}
+label0:
+	nKey = nKey2;
+	return false;
+}
+

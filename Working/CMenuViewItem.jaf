@@ -1,0 +1,171 @@
+bool CMenuViewItem::_IsEnableSel()
+{
+	return this.m_bEnableSel;
+}
+
+CMenuViewItem::CMenuViewItem()
+{
+}
+
+CMenuViewItem::~CMenuViewItem()
+{
+	this.Release();
+}
+
+void CMenuViewItem::Release()
+{
+	this.m_CursorSprite.Release();
+	this.m_SeparatorSprite.Release();
+	this.m_SelectedTextSprite.Release();
+	this.m_TextSprite.Release();
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nAreaWidth = 0;
+	this.m_nAreaHeight = 0;
+}
+
+void CMenuViewItem::SetShow(bool bShow)
+{
+	this.m_TextSprite.SetShow(bShow);
+	this.m_SelectedTextSprite.SetShow(false);
+	this.m_SeparatorSprite.SetShow(bShow);
+	this.m_CursorSprite.SetShow(bShow);
+}
+
+bool CMenuViewItem::_IsMousePtIn()
+{
+	int nCursorX = 0;
+	int nCursorY = 0;
+	if (!AFL_Mouse_GetPos(nCursorX, nCursorY))
+	{
+		return false;
+	}
+	if (nCursorX < this.m_nX || nCursorX >= this.m_nX + this.m_nAreaWidth || nCursorY < this.m_nY || nCursorY >= this.m_nY + this.m_nAreaHeight)
+	{
+		return false;
+	}
+	return true;
+}
+
+void CMenuViewItem::SetSelectedState(bool bSelected)
+{
+	if (bSelected)
+	{
+		this.m_TextSprite.SetShow(false);
+		this.m_SelectedTextSprite.SetShow(true);
+	}
+	else
+	{
+		this.m_TextSprite.SetShow(true);
+		this.m_SelectedTextSprite.SetShow(false);
+	}
+	this.m_SeparatorSprite.SetShow(true);
+	this.m_CursorSprite.SetShow(bSelected);
+}
+
+void CMenuViewItem::_Create(ref 選択肢_t _data, ref sact_text_metrics_t tm1, ref sact_text_metrics_t tm2, ref sact_text_metrics_t tm3, float fBoldWeight, float fSelectedBoldWeight, float fUnselectableBoldWeight, int nCharSpace, int nSelectedCharSpace, int nUnselectableCharSpace, int _z, int _x, int _y, int _w)
+{
+	this.m_bEnableSel = _data.番号 != -2147483648;
+	int nAreaWidth = Math.Max((_w - _選択エリア[_選択枠].余白左 - _選択エリア[_選択枠].余白右) + 2, 1);
+	int nAreaHeight = Math.Max(_選択エリア[_選択枠].文字サイズ + 2, 1);
+	this.CreateTextSprite(_x, _y, _z, nAreaWidth, nAreaHeight, _data, tm1, tm2, tm3, fBoldWeight, fSelectedBoldWeight, fUnselectableBoldWeight, nCharSpace, nSelectedCharSpace, nUnselectableCharSpace, this.m_bEnableSel);
+	if (!this.m_bEnableSel && _data.テキスト.Empty())
+	{
+		this.CreateSeparatorSprite(_x, _y, _z, nAreaWidth, nAreaHeight, tm1.nColorR, tm1.nColorG, tm1.nColorB);
+	}
+	this.CreateCursorSprite(_x, _y, _z, nAreaWidth, nAreaHeight, _選択エリア[_選択枠].カーソルタイプ, _選択エリア[_選択枠].カーソルＲ, _選択エリア[_選択枠].カーソルＧ, _選択エリア[_選択枠].カーソルＢ, _選択エリア[_選択枠].カーソル率);
+	this.m_nX = _x;
+	this.m_nY = _y;
+	this.m_nAreaWidth = nAreaWidth;
+	this.m_nAreaHeight = nAreaHeight;
+}
+
+void CMenuViewItem::CreateTextSprite(int nX, int nY, int nZ, int nWidth, int nHeight, ref 選択肢_t MenuInfo, ref sact_text_metrics_t TextMetrics, ref sact_text_metrics_t SelectedTextMetrics, ref sact_text_metrics_t UnselectableTextMetrics, float fBoldWeight, float fSelectedBoldWeight, float fUnselectableBoldWeight, int nCharSpace, int nSelectedCharSpace, int nUnselectableCharSpace, bool bEnableSel)
+{
+	if (bEnableSel)
+	{
+		this.CreateTextSpriteItem(this.m_TextSprite, nX, nY, nZ, nWidth, nHeight, MenuInfo, TextMetrics, fBoldWeight, nCharSpace);
+		this.CreateTextSpriteItem(this.m_SelectedTextSprite, nX, nY, nZ, nWidth, nHeight, MenuInfo, SelectedTextMetrics, fSelectedBoldWeight, nSelectedCharSpace);
+	}
+	else if (MenuInfo.テキスト.Empty())
+	{
+	}
+	else
+	{
+		this.CreateTextSpriteItem(this.m_TextSprite, nX, nY, nZ, nWidth, nHeight, MenuInfo, UnselectableTextMetrics, fUnselectableBoldWeight, nUnselectableCharSpace);
+	}
+}
+
+void CMenuViewItem::CreateTextSpriteItem(ref CASTextSprite TextSprite, int nX, int nY, int nZ, int nWidth, int nHeight, ref 選択肢_t MenuInfo, ref sact_text_metrics_t TextMetrics, float fBoldWeight, int nCharSpace)
+{
+	CASCharSpriteProperty CharSpriteProperty;
+	CharSpriteProperty = SYS_TransCharSpriteProperty(TextMetrics);
+	CharSpriteProperty.SetBoldWeight(fBoldWeight);
+	TextSprite.SetText(MenuInfo.テキスト, CharSpriteProperty);
+	TextSprite.SetCharSpace(nCharSpace);
+	switch (_選択エリア[_選択枠].文字配置)
+	{
+		case 1:
+			TextSprite.SetPos(nX + 1, nY + 1);
+			break;
+		case 2:
+			TextSprite.SetPos(nX + 1 + (nWidth - TextSprite.GetWidth()) / 2, nY + 1);
+			break;
+		case 3:
+			TextSprite.SetPos((nX + nWidth) - TextSprite.GetWidth() - 1, nY + 1);
+			break;
+	}
+	TextSprite.SetZ(nZ + 1);
+	TextSprite.SetShow(false);
+}
+
+void CMenuViewItem::CreateSeparatorSprite(int nX, int nY, int nZ, int nWidth, int nHeight, int nR, int nG, int nB)
+{
+	int nSpriteWidth = Math.Max(nWidth - 2, 1);
+	int nSpriteHeight = 1;
+	this.m_SeparatorSprite.Clear();
+	this.m_SeparatorSprite.AddCreate(nSpriteWidth, nSpriteHeight);
+	this.m_SeparatorSprite.AddFillWithAlpha(0, 0, nSpriteWidth, nSpriteHeight, nR, nG, nB, 255);
+	this.m_SeparatorSprite.Build();
+	this.m_SeparatorSprite.SetPos(nX + 1, nY + nHeight / 2);
+	this.m_SeparatorSprite.SetZ(nZ + 1);
+	this.m_SeparatorSprite.SetShow(true);
+}
+
+void CMenuViewItem::CreateCursorSprite(int nX, int nY, int nZ, int nWidth, int nHeight, int nCursorType, int nCursorR, int nCursorG, int nCursorB, int nCursorA)
+{
+	this.m_CursorSprite.Clear();
+	this.m_CursorSprite.AddCreate(nWidth, nHeight);
+	switch (nCursorType)
+	{
+		case 0:
+			this.m_CursorSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, nCursorR, nCursorG, nCursorB, 0);
+			break;
+		case 1:
+			this.m_CursorSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, nCursorR, nCursorG, nCursorB, nCursorA);
+			this.m_CursorSprite.AddFillAMap(0, 0, nWidth, nHeight - 1, 0);
+			break;
+		case 2:
+			this.m_CursorSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, nCursorR, nCursorG, nCursorB, nCursorA);
+			this.m_CursorSprite.AddFillAMap(1, 1, nWidth - 2, nHeight - 2, 0);
+			break;
+		case 3:
+			this.m_CursorSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, nCursorR, nCursorG, nCursorB, nCursorA);
+			break;
+	}
+	this.m_CursorSprite.Build();
+	this.m_CursorSprite.SetPos(nX, nY);
+	this.m_CursorSprite.SetZ(nZ);
+	this.m_CursorSprite.SetShow(false);
+}
+
+int CMenuViewItem::GetX()
+{
+	return this.m_nX;
+}
+
+int CMenuViewItem::GetY()
+{
+	return this.m_nY;
+}
+

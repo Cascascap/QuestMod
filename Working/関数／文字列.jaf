@@ -1,0 +1,793 @@
+string í“¬Œ‹‰Ê•¶š—ñ(lint re)
+{
+	if (re == 1)
+	{
+		return "Ÿ‚¿";
+	}
+	if (re == 2)
+	{
+		return "•‰‚¯";
+	}
+	if (re == 6)
+	{
+		return "“G“¦‚°‚½";
+	}
+	if (re == 5)
+	{
+		return "–¡•û“¦‚°‚½";
+	}
+	if (re == 99)
+	{
+		return "‹­§I—¹";
+	}
+	if (re == 4)
+	{
+		return "ƒ^ƒCƒ€ƒI[ƒo[";
+	}
+	if (re == 3)
+	{
+		return "ˆø‚«•ª‚¯";
+	}
+	return "HH" + string2(re, 0);
+}
+
+string ‘ÎÛ•¶š—ñ(lint no)
+{
+	if (no == 10)
+	{
+		return "©•ª";
+	}
+	if (no == 11)
+	{
+		return "–¡•û";
+	}
+	if (no == 12)
+	{
+		return "–¡•û‘S‘Ì";
+	}
+	if (no == 1)
+	{
+		return "‹ß‹——£";
+	}
+	if (no == 4)
+	{
+		return "‰¡ˆê—ñ";
+	}
+	if (no == 2)
+	{
+		return "‰“‹——£";
+	}
+	if (no == 3)
+	{
+		return "‘S‘Ì";
+	}
+	if (no == 20)
+	{
+		return "ƒ‰ƒ“ƒ_ƒ€ƒ^[ƒQƒbƒg";
+	}
+	return "H";
+}
+
+string ‚l‚cî•ñ•¶š—ñ(lint xx, lint yy)
+{
+	string •¶š—ñ = "y";
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 1)
+	{
+		•¶š—ñ += "•ó”  ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 2)
+	{
+		•¶š—ñ += "Ô•ó”  ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 6)
+	{
+		•¶š—ñ += "ƒgƒ‰ƒbƒv ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 5)
+	{
+		•¶š—ñ += "–`Œ¯Œ÷Ñ ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 16)
+	{
+		•¶š—ñ += "G‹›“G ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 17)
+	{
+		•¶š—ñ += "G‹›“G‚‚ ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 13)
+	{
+		•¶š—ñ += "‰ñ•œ‚Ìò ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 8)
+	{
+		•¶š—ñ += "ƒCƒxƒ“ƒg ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 9)
+	{
+		•¶š—ñ += "ƒCƒxƒ“ƒg‚‚ ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 10)
+	{
+		•¶š—ñ += "ƒCƒxƒ“ƒg‚Q ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 12)
+	{
+		•¶š—ñ += "“§–¾ƒCƒxƒ“ƒg ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 3)
+	{
+		•¶š—ñ += "“]ˆÚ ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 4)
+	{
+		•¶š—ñ += "“]ˆÚ‚‚ ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 15)
+	{
+		•¶š—ñ += "’Eo‘•’u ";
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptz[xx][yy] != 0)
+	{
+		for (; ; )
+		{
+			if (‚l[Ÿ‚a‚l‚`‚o].maptt[xx][yy] == 3)
+			{
+				if (‚l[Ÿ‚a‚l‚`‚o].maptz[xx][yy] == 1)
+				{
+					•¶š—ñ += "–k";
+					break;
+				}
+				if (‚l[Ÿ‚a‚l‚`‚o].maptz[xx][yy] == 3)
+				{
+					•¶š—ñ += "“ì";
+					break;
+				}
+				if (‚l[Ÿ‚a‚l‚`‚o].maptz[xx][yy] == 2)
+				{
+					•¶š—ñ += "“Œ";
+					break;
+				}
+				if (‚l[Ÿ‚a‚l‚`‚o].maptz[xx][yy] == 4)
+				{
+					•¶š—ñ += "¼";
+					break;
+				}
+			}
+			•¶š—ñ += "”Ô†F" + string2(‚l[Ÿ‚a‚l‚`‚o].maptz[xx][yy], 0) + " ";
+			break;
+		}
+	}
+	if (‚l[Ÿ‚a‚l‚`‚o].maptv[xx][yy] != 0)
+	{
+		•¶š—ñ += "ƒ‰ƒ“ƒNF" + string2(‚l[Ÿ‚a‚l‚`‚o].maptv[xx][yy], 0);
+	}
+	•¶š—ñ += "z";
+	return •¶š—ñ;
+}
+
+string ƒgƒ‰ƒbƒv•¶š—ñ(int no)
+{
+	if (no == 1)
+	{
+		return "Sloth Shrooms";
+	}
+	if (no == 2)
+	{
+		return "Electric Current";
+	}
+	if (no == 3)
+	{
+		return "Alarm Device";
+	}
+	if (no == 6)
+	{
+		return "Pitfall";
+	}
+	return "???";
+}
+
+string •ûŠp•¶š—ñ(int no)
+{
+	if (no == 1)
+	{
+		return "–k";
+	}
+	if (no == 3)
+	{
+		return "“ì";
+	}
+	if (no == 2)
+	{
+		return "“Œ";
+	}
+	if (no == 4)
+	{
+		return "¼";
+	}
+	return "";
+}
+
+string E‹Æ•¶š—ñ(int ii, int fg)
+{
+	return ‚bE‹Æ•¶š—ñ(ii, fg);
+}
+
+string ‚bE‹Æ•¶š—ñ(int ii, int fg)
+{
+	if (fg == 0)
+	{
+		if (ii == 1)
+		{
+			return "Fighter";
+		}
+		if (ii == 2)
+		{
+			return "Guard";
+		}
+		if (ii == 3)
+		{
+			return "Gunner";
+		}
+		if (ii == 4)
+		{
+			return "Sorcerer";
+		}
+		if (ii == 5)
+		{
+			return "Healer";
+		}
+		if (ii == 6)
+		{
+			return "Ranger";
+		}
+		if (ii == 7)
+		{
+			return "Brawler";
+		}
+		if (ii == 8)
+		{
+			return "Civilian";
+		}
+	}
+	if (fg == 1)
+	{
+		if (ii == 1)
+		{
+			return "FI";
+		}
+		if (ii == 2)
+		{
+			return "GD";
+		}
+		if (ii == 3)
+		{
+			return "GN";
+		}
+		if (ii == 4)
+		{
+			return "SO";
+		}
+		if (ii == 5)
+		{
+			return "HL";
+		}
+		if (ii == 6)
+		{
+			return "RN";
+		}
+		if (ii == 7)
+		{
+			return "BR";
+		}
+		if (ii == 8)
+		{
+			return "CV";
+		}
+	}
+	return "-----";
+}
+
+string ƒ‚ƒ“ƒXƒ^[ŒÅ—L”Ô†•¶š—ñ(lint no)
+{
+	string •¶š—ñ = "‚d‚’‚’ƒ‚ƒ“ƒXƒ^[";
+	‚b“G“o˜^(1, no);
+	•¶š—ñ = ‚b–¼‘O(1, "");
+	‚b‰Šú‰»(1);
+	return •¶š—ñ;
+}
+
+string ó‘Ô•Ï‰»•¶š—ñ(int no)
+{
+	if (no == 0)
+	{
+		return "";
+	}
+	if (no == 1)
+	{
+		return "“Å";
+	}
+	if (no == 2)
+	{
+		return "‚Ò‚æ‚è";
+	}
+	if (no == 3)
+	{
+		return "•m€";
+	}
+	return "–––";
+}
+
+string í‘°•¶š—ñ(int no)
+{
+	if (no == 0)
+	{
+		return "";
+	}
+	if (no == 2)
+	{
+		return "Human";
+	}
+	if (no == 24)
+	{
+		return "Contaminated";
+	}
+	if (no == 3)
+	{
+		return "Gal Monster";
+	}
+	if (no == 60)
+	{
+		return "Familiar";
+	}
+	if (no == 4)
+	{
+		return "Guy Monster";
+	}
+	if (no == 5)
+	{
+		return "Guy Monster";
+	}
+	if (no == 6)
+	{
+		return "Insect";
+	}
+	if (no == 8)
+	{
+		return "Hanny";
+	}
+	if (no == 13)
+	{
+		return "Kalar";
+	}
+	if (no == 9)
+	{
+		return "Fiend";
+	}
+	if (no == 7)
+	{
+		return "Plant";
+	}
+	if (no == 10)
+	{
+		return "Holy Shroud Warlord";
+	}
+	if (no == 11)
+	{
+		return "Ancient";
+	}
+	if (no == 12)
+	{
+		return "Construct";
+	}
+	if (no == 14)
+	{
+		return "Angel";
+	}
+	if (no == 15)
+	{
+		return "Devil";
+	}
+	return "___";
+}
+
+string ƒ^ƒCƒv•¶š—ñ(int no)
+{
+	if (no == 16)
+	{
+		return "Flying";
+	}
+	if (no == 17)
+	{
+		return "Breakable";
+	}
+	if (no == 19)
+	{
+		return "Mollusc";
+	}
+	if (no == 20)
+	{
+		return "Spirit";
+	}
+	if (no == 21)
+	{
+		return "Zombie";
+	}
+	if (no == 22)
+	{
+		return "Humanoid";
+	}
+	return "___";
+}
+
+string ‚hí—ŞÚ×^•¶š—ñ(int no)
+{
+	if (no == 2)
+	{
+		return "Sword";
+	}
+	if (no == 3)
+	{
+		return "Shortsword";
+	}
+	if (no == 4)
+	{
+		return "Hammer";
+	}
+	if (no == 5)
+	{
+		return "Bow";
+	}
+	if (no == 6)
+	{
+		return "Firearm";
+	}
+	if (no == 7)
+	{
+		return "Spear";
+	}
+	if (no == 8)
+	{
+		return "Staff";
+	}
+	if (no == 9)
+	{
+		return "Glove";
+	}
+	if (no == 10)
+	{
+		return "Blunt Weapon";
+	}
+	if (no == 12)
+	{
+		return "Clothing";
+	}
+	if (no == 13)
+	{
+		return "Leather";
+	}
+	if (no == 14)
+	{
+		return "Steel";
+	}
+	if (no == 15)
+	{
+		return "Cloth";
+	}
+	if (no == 16)
+	{
+		return "Gi";
+	}
+	if (no == 18)
+	{
+		return "Scroll";
+	}
+	if (no == 19)
+	{
+		return "Flag";
+	}
+	if (no == 20)
+	{
+		return "Familiar";
+	}
+	return "Type Details (" + string(no) + ")";
+}
+
+string •ó” ’†gƒ^ƒCƒv^•¶š—ñ(int no)
+{
+	if (no == 11)
+	{
+		return "‚`‚PƒZƒbƒg";
+	}
+	if (no == 12)
+	{
+		return "‚`‚QƒZƒbƒg";
+	}
+	if (no == 14)
+	{
+		return "‚`‚SƒZƒbƒg";
+	}
+	if (no == 21)
+	{
+		return "‚a‚PƒZƒbƒg";
+	}
+	if (no == 22)
+	{
+		return "‚a‚QƒZƒbƒg";
+	}
+	if (no == 24)
+	{
+		return "‚a‚SƒZƒbƒg";
+	}
+	if (no == 31)
+	{
+		return "‚b‚PƒZƒbƒg";
+	}
+	if (no == 32)
+	{
+		return "‚b‚QƒZƒbƒg";
+	}
+	if (no == 34)
+	{
+		return "‚b‚SƒZƒbƒg";
+	}
+	return "";
+}
+
+string ‰¹Šy‚Ì–¼‘O(int no)
+{
+	if (no == 1)
+	{
+		return "Indoor Crawl/R8";
+	}
+	if (no == 13)
+	{
+		return "Indoor Crawl/Magnum";
+	}
+	if (no == 2)
+	{
+		return "Outdoor Crawl/R8";
+	}
+	if (no == 14)
+	{
+		return "Outdoor Crawl/Magnum";
+	}
+	if (no == 12)
+	{
+		return "Outdoor Crawl-Mountain/R8";
+	}
+	if (no == 11)
+	{
+		return "Outdoor Crawl-Forest/R8";
+	}
+	if (no == 3)
+	{
+		return "Boss Crawl/R8";
+	}
+	if (no == 4)
+	{
+		return "Infiltration Crawl/R8";
+	}
+	if (no == 5)
+	{
+		return "Free-For-All Crawl/R8";
+	}
+	if (no == 6)
+	{
+		return "Malgrid/R8";
+	}
+	if (no == 6)
+	{
+		return "Challenge/R8";
+	}
+	if (no == 7)
+	{
+		return "Mystery Crawl/R8";
+	}
+	if (no == 8)
+	{
+		return "Tower Crawl, Climb/R8";
+	}
+	if (no == 9)
+	{
+		return "Tower Crawl, Climb Higher/R8";
+	}
+	if (no == 10)
+	{
+		return "Tower Crawl, Climb Ever Higher/R8";
+	}
+	if (no == 8)
+	{
+		return "Unused Babel Crawl/R8";
+	}
+	if (no == 51)
+	{
+		return "Battle 1/R8";
+	}
+	if (no == 52)
+	{
+		return "Battle 2/R8";
+	}
+	if (no == 60)
+	{
+		return "Battle/Magnum";
+	}
+	if (no == 55)
+	{
+		return "TrnsBeat? (R5D)/R8";
+	}
+	if (no == 53)
+	{
+		return "Boss Battle/R8";
+	}
+	if (no == 58)
+	{
+		return "Boss Boss Battle/R8";
+	}
+	if (no == 54)
+	{
+		return "Full Battle/R8";
+	}
+	if (no == 59)
+	{
+		return "Am Battle/Magnum";
+	}
+	if (no == 56)
+	{
+		return "Lucky Can Can/R8";
+	}
+	if (no == 57)
+	{
+		return "Hanny/R8";
+	}
+	if (no == 71)
+	{
+		return "Everyday Conversation/R8";
+	}
+	if (no == 93)
+	{
+		return "Normal Everyday Conversation/R8";
+	}
+	if (no == 75)
+	{
+		return "No Good Everyday Conversation/R8";
+	}
+	if (no == 76)
+	{
+		return "Tense! Everyday Conversation/R8";
+	}
+	if (no == 72)
+	{
+		return "Conversation with Girl/R8";
+	}
+	if (no == 86)
+	{
+		return "Happy Everyday Conversation/R8";
+	}
+	if (no == 94)
+	{
+		return "Monthly Payment Plan/R8";
+	}
+	if (no == 73)
+	{
+		return "An Erotic Mood/R8";
+	}
+	if (no == 74)
+	{
+		return "An Energetic Rance/R8";
+	}
+	if (no == 92)
+	{
+		return "Ero (Rance Theme Sad)/R8";
+	}
+	if (no == 77)
+	{
+		return "Memories of Sill/R8";
+	}
+	if (no == 78)
+	{
+		return "Wrong Theme for Pastel/R8";
+	}
+	if (no == 79)
+	{
+		return "Inside the Church/R8";
+	}
+	if (no == 99)
+	{
+		return "Outside the Church/R8";
+	}
+	if (no == 80)
+	{
+		return "Shepherds 1/R8";
+	}
+	if (no == 81)
+	{
+		return "Shepherds 2/R8";
+	}
+	if (no == 108)
+	{
+		return "New Friend Theme";
+	}
+	if (no == 105)
+	{
+		return "Go to the Brutal Man (R5D)/R8";
+	}
+	if (no == 101)
+	{
+		return "Copandon Cidade/R8";
+	}
+	if (no == 106)
+	{
+		return "Copandon Cidade/Magnum";
+	}
+	if (no == 102)
+	{
+		return "Results/R8";
+	}
+	if (no == 103)
+	{
+		return "Opening/R8";
+	}
+	if (no == 107)
+	{
+		return "Opening/Magnum";
+	}
+	if (no == 104)
+	{
+		return "Ending/R8";
+	}
+	if (no == 96)
+	{
+		return "Epilogue/R8";
+	}
+	if (no == 82)
+	{
+		return "Trouble/R8";
+	}
+	if (no == 83)
+	{
+		return "Overwhelmed and Intimidated/R8";
+	}
+	if (no == 84)
+	{
+		return "Alice's Mansion/R8";
+	}
+	if (no == 85)
+	{
+		return "Tragedy Sob Sob/R8";
+	}
+	if (no == 87)
+	{
+		return "Brutal Man's Daily Life (R7)/R8";
+	}
+	if (no == 88)
+	{
+		return "Mars (R7)/R8";
+	}
+	if (no == 89)
+	{
+		return "Rance Castle/R8";
+	}
+	if (no == 90)
+	{
+		return "Reset/R8";
+	}
+	if (no == 91)
+	{
+		return "Solemn/R8";
+	}
+	if (no == 95)
+	{
+		return "The Contaminated/R8";
+	}
+	if (no == 97)
+	{
+		return "My Glory/R8";
+	}
+	if (no == 98)
+	{
+		return "Shepherds/R8";
+	}
+	return "";
+}
+

@@ -1,0 +1,94 @@
+CBGMVolumeCapManager::CBGMVolumeCapManager()
+{
+	this.m_CurrentBGMVolumeCapRate = 100;
+	this.m_bRunBGMFadeByVoice = false;
+	this.m_bWaitingBGMFadeByVoice = false;
+	this.m_PlayChannel = -1;
+}
+
+void CBGMVolumeCapManager::Set(int GroupNumber, int CapVolume, int FadeOutTime, int WaitForFadeInTime, int FadeInTime)
+{
+	if (GroupNumber < 0)
+	{
+		return;
+	}
+	if (GroupNumber >= this.m_BGMVolumeCapList.Numof())
+	{
+		this.m_BGMVolumeCapList.Realloc(GroupNumber + 1);
+	}
+	this.m_BGMVolumeCapList[GroupNumber].Set(CapVolume, FadeOutTime, WaitForFadeInTime, FadeInTime);
+}
+
+void CBGMVolumeCapManager::BeginBGMFade(int Channel, int SoundNumber)
+{
+	if (!g_bConfigBGMFadeByVoice)
+	{
+		return;
+	}
+	int GroupNumber = KiwiSoundEngine.Sound_GetGroupNumFromDataNum(SoundNumber);
+	if (GroupNumber < 0 || GroupNumber == 0 || GroupNumber == 1 || GroupNumber == 2)
+	{
+		return;
+	}
+	if (GroupNumber == 3)
+	{
+		CBGMVolumeCap DefaultBGMVolumeCap;
+		this.m_CurrentBGMVolumeCap = DefaultBGMVolumeCap;
+	}
+	else if (GroupNumber < 0 || GroupNumber >= this.m_BGMVolumeCapList.Numof())
+	{
+		CBGMVolumeCap DefaultBGMVolumeCap;
+		this.m_CurrentBGMVolumeCap = DefaultBGMVolumeCap;
+	}
+	else
+	{
+		this.m_CurrentBGMVolumeCap = this.m_BGMVolumeCapList[GroupNumber];
+	}
+	this.m_PlayChannel = Channel;
+	this.m_CurrentBGMVolumeCapRate = this.m_CurrentBGMVolumeCap.GetCapVolume();
+	int TotalTime = this.m_CurrentBGMVolumeCap.GetFadeOutTime();
+	SYS_BGM_BeginFade(TotalTime);
+	this.m_bRunBGMFadeByVoice = true;
+	this.m_bWaitingBGMFadeByVoice = false;
+}
+
+void CBGMVolumeCapManager::UpdateBGMFade()
+{
+	if (!this.m_bRunBGMFadeByVoice)
+	{
+		return;
+	}
+	if (!this.m_bWaitingBGMFadeByVoice)
+	{
+		if (KiwiSoundEngine.Sound_IsPlay(this.m_PlayChannel))
+		{
+			return;
+		}
+		this.m_bWaitingBGMFadeByVoice = true;
+		this.m_WaitingBGMFadeByVoiceTimer.Reset();
+		return;
+	}
+	int nBGMFadeWaitTime = this.m_CurrentBGMVolumeCap.GetWaitForFadeInTime();
+	if (this.m_WaitingBGMFadeByVoiceTimer.Get() < nBGMFadeWaitTime)
+	{
+		return;
+	}
+	this.m_CurrentBGMVolumeCapRate = 100;
+	int TotalTime = this.m_CurrentBGMVolumeCap.GetFadeInTime();
+	SYS_BGM_BeginFade(TotalTime);
+	this.m_bRunBGMFadeByVoice = false;
+	this.m_bWaitingBGMFadeByVoice = false;
+}
+
+void CBGMVolumeCapManager::ResetBGMFade()
+{
+	this.m_bRunBGMFadeByVoice = false;
+	this.m_bWaitingBGMFadeByVoice = false;
+	this.m_CurrentBGMVolumeCapRate = 100;
+}
+
+int CBGMVolumeCapManager::GetCurrentBGMVolumeCapRate()
+{
+	return this.m_CurrentBGMVolumeCapRate;
+}
+

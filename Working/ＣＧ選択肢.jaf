@@ -1,0 +1,125 @@
+void ＣＧ選択音設定(int 決定, int 無効, int 移動１, int 移動２)
+{
+	SYS_ASSERTE_SOUND(決定);
+	SYS_ASSERTE_SOUND(無効);
+	SYS_ASSERTE_SOUND(移動１);
+	SYS_ASSERTE_SOUND(移動２);
+	_ＣＧ選択音決定 = 決定;
+	_ＣＧ選択音無効 = 無効;
+	_ＣＧ選択音移動１ = 移動１;
+	_ＣＧ選択音移動２ = 移動２;
+}
+
+void ＣＧ選択肢テキストフォント設定(int nType)
+{
+	g_ASCGMenuModel.GetTextProperty().SetType(nType);
+}
+
+void ＣＧ選択肢テキスト文字サイズ設定(int nSize)
+{
+	g_ASCGMenuModel.GetTextProperty().SetSize(nSize);
+}
+
+void ＣＧ選択肢テキスト文字色設定(int nR, int nG, int nB)
+{
+	g_ASCGMenuModel.GetTextProperty().SetColor(CF_CASColor(nR, nG, nB, 255));
+}
+
+void ＣＧ選択肢テキスト太字幅設定(float fBoldWeight)
+{
+	g_ASCGMenuModel.GetTextProperty().SetBoldWeight(fBoldWeight);
+}
+
+void ＣＧ選択肢テキスト文字縁取り幅設定(float fEdgeWeight)
+{
+	g_ASCGMenuModel.GetTextProperty().SetEdgeWeight(fEdgeWeight);
+}
+
+void ＣＧ選択肢テキスト縁取り色設定(int nR, int nG, int nB)
+{
+	g_ASCGMenuModel.GetTextProperty().SetEdgeColor(CF_CASColor(nR, nG, nB, 255));
+}
+
+void ＣＧ選択肢テキスト字間隔設定(int nCharSpace)
+{
+	g_ASCGMenuModel.SetCharSpace(nCharSpace);
+}
+
+void ＣＧ選択肢テキスト座標設定(int nX, int nY)
+{
+	g_ASCGMenuModel.SetTextOffsetPos(nX, nY);
+}
+
+void ＣＧ選択肢テキスト原点座標モード設定(int Mode)
+{
+	g_ASCGMenuModel.SetTextOriginPosMode(Mode);
+}
+
+void ＣＧ選択肢(int 登録番号, int Ｘ, int Ｙ, int Ｚ, string 通常ＣＧ名, string 選択ＣＧ名, string クリックＣＧ名, string Text, int キーコード)
+{
+	SYS_ASSERTE_Z(Ｚ);
+	SYS_ASSERTE_CG(通常ＣＧ名);
+	SYS_ASSERTE_CG(選択ＣＧ名);
+	if (!クリックＣＧ名.Empty())
+	{
+		SYS_ASSERTE_CG(クリックＣＧ名);
+	}
+	ＣＧ選択肢_t t;
+	t.登録番号 = 登録番号;
+	t.Ｘ = Ｘ;
+	t.Ｙ = Ｙ;
+	t.Ｚ = Ｚ;
+	t.通常ＣＧ名 = 通常ＣＧ名;
+	t.選択ＣＧ名 = 選択ＣＧ名;
+	t.m_KeyDownCG = クリックＣＧ名;
+	t.m_UnselectableCG = "";
+	t.m_Text = Text;
+	t.m_KeyCode = キーコード;
+	_ＣＧ選択肢.PushBack(t);
+}
+
+void ＣＧ非選択肢(int 登録番号, int Ｘ, int Ｙ, int Ｚ, string 非選択ＣＧ名, string Text)
+{
+	SYS_ASSERTE_Z(Ｚ);
+	SYS_ASSERTE_CG(非選択ＣＧ名);
+	ＣＧ選択肢_t t;
+	t.登録番号 = 登録番号;
+	t.Ｘ = Ｘ;
+	t.Ｙ = Ｙ;
+	t.Ｚ = Ｚ;
+	t.通常ＣＧ名 = "";
+	t.選択ＣＧ名 = "";
+	t.m_KeyDownCG = "";
+	t.m_UnselectableCG = 非選択ＣＧ名;
+	t.m_Text = Text;
+	t.m_KeyCode = 0;
+	_ＣＧ選択肢.PushBack(t);
+}
+
+int ＣＧ選択(bool _キャンセルあり, int _キャンセル値, bool bCanOpenBackLog, int 効果番号, int 効果時間)
+{
+	if (_ＣＧ選択肢.Empty())
+	{
+		ERROR("ＣＧ選択肢が登録されていない", 0);
+		return -1;
+	}
+	SYS_選択_result_t Result;
+	for (; ; )
+	{
+		_g_MouseWheel._Clear();
+		CCGMenuView CGMenuView;
+		CGMenuView._Execute(_キャンセルあり, _キャンセル値, bCanOpenBackLog, 効果番号, 効果時間);
+		Result = CGMenuView._GetResult();
+		if (Result.fnc == NULL)
+		{
+			break;
+		}
+		Result.fnc();
+		効果番号 = -1;
+		効果時間 = -1;
+	}
+	_ＣＧ選択肢.Free();
+	g_ASCGMenuModel.Clear();
+	return Result.値;
+}
+

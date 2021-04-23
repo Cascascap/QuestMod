@@ -1,0 +1,241 @@
+T_PosterData::T_PosterData()
+{
+	this.clear();
+}
+
+bool T_PosterData::set(int nCgNo, int nThumbnailNo, int nX, int nY, int nWidth, int nHeight)
+{
+	this.clear();
+	if (nCgNo <= 0)
+	{
+		return false;
+	}
+	if (nThumbnailNo <= 0)
+	{
+		return false;
+	}
+	this.m_nCgNo = nCgNo;
+	this.m_nThumbnailNo = nThumbnailNo;
+	this.m_nX = nX;
+	this.m_nY = nY;
+	this.m_nWidth = nWidth;
+	this.m_nHeight = nHeight;
+	return true;
+}
+
+void T_PosterData::clear()
+{
+	this.m_nCgNo = -1;
+	this.m_nThumbnailNo = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nWidth = -1;
+	this.m_nHeight = -1;
+}
+
+int T_PosterData::getThumbnailNo()
+{
+	return this.m_nThumbnailNo;
+}
+
+int T_PosterData::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_PosterData::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_PosterData::getWidth()
+{
+	return this.m_nWidth;
+}
+
+int T_PosterData::getHeight()
+{
+	return this.m_nHeight;
+}
+
+int T_PosterDataManager::getCount()
+{
+	return this.m_asData.Numof();
+}
+
+ref T_PosterData T_PosterDataManager::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asData.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asData[nIndex];
+}
+
+T_PosterDataManager::T_PosterDataManager()
+{
+	this.m_asData[0].set(8526, 8506, 586, 166, 0, 0);
+	this.m_asData[1].set(8527, 8507, 666, 147, 0, 0);
+	this.m_asData[2].set(8528, 8508, 751, 120, 0, 0);
+	this.m_asData[3].set(8529, 8509, 840, 82, 0, 0);
+	this.m_asData[4].set(8535, 8515, 385, 425, 0, 0);
+	this.m_asData[5].set(8534, 8514, 300, 420, 0, 0);
+	this.m_asData[6].set(8525, 8505, 384, 166, 0, 0);
+	this.m_asData[7].set(8539, 8519, 841, 402, 0, 0);
+	this.m_asData[8].set(8531, 8511, 19, 385, 0, 0);
+	this.m_asData[9].set(8537, 8517, 665, 420, 0, 0);
+	this.m_asData[10].set(8538, 8518, 750, 412, 0, 0);
+	this.m_asData[11].set(8540, 8520, 935, 385, 0, 0);
+	this.m_asData[12].set(8530, 8510, 935, 34, 0, 0);
+	this.m_asData[13].set(8533, 8513, 212, 412, 0, 0);
+	this.m_asData[14].set(8532, 8512, 117, 402, 0, 0);
+	this.m_asData[15].set(8536, 8516, 584, 425, 0, 0);
+	this.m_asData[16].set(8521, 8501, 21, 34, 0, 0);
+	this.m_asData[17].set(8522, 8502, 119, 82, 0, 0);
+	this.m_asData[18].set(8523, 8503, 212, 120, 0, 0);
+	this.m_asData[19].set(8524, 8504, 300, 148, 0, 0);
+	this.m_anKeyboard[0] = 16;
+	this.m_anKeyboard[1] = 17;
+	this.m_anKeyboard[2] = 18;
+	this.m_anKeyboard[3] = 19;
+	this.m_anKeyboard[4] = 6;
+	this.m_anKeyboard[5] = 0;
+	this.m_anKeyboard[6] = 1;
+	this.m_anKeyboard[7] = 2;
+	this.m_anKeyboard[8] = 3;
+	this.m_anKeyboard[9] = 12;
+	this.m_anKeyboard[10] = 8;
+	this.m_anKeyboard[11] = 14;
+	this.m_anKeyboard[12] = 13;
+	this.m_anKeyboard[13] = 5;
+	this.m_anKeyboard[14] = 4;
+	this.m_anKeyboard[15] = 15;
+	this.m_anKeyboard[16] = 9;
+	this.m_anKeyboard[17] = 10;
+	this.m_anKeyboard[18] = 7;
+	this.m_anKeyboard[19] = 11;
+}
+
+int T_PosterDataManager::getPrevIndex(int nIndex)
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	int idx = this.searchKeyboard(nIndex);
+	if (idx < 0)
+	{
+		return this.getLastIndex();
+	}
+	for (i = idx - 1; i >= 0; --i)
+	{
+		if (ポスター_確認(this.m_anKeyboard[i]))
+		{
+			return this.m_anKeyboard[i];
+		}
+	}
+	for (i = cnt - 1; i > idx; --i)
+	{
+		if (ポスター_確認(this.m_anKeyboard[i]))
+		{
+			return this.m_anKeyboard[i];
+		}
+	}
+	return nIndex;
+}
+
+int T_PosterDataManager::getNextIndex(int nIndex)
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	int idx = this.searchKeyboard(nIndex);
+	if (idx < 0)
+	{
+		return this.getLastIndex();
+	}
+	for (i = idx + 1; i < cnt; ++i)
+	{
+		if (ポスター_確認(this.m_anKeyboard[i]))
+		{
+			return this.m_anKeyboard[i];
+		}
+	}
+	for (i = 0; i < idx; ++i)
+	{
+		if (ポスター_確認(this.m_anKeyboard[i]))
+		{
+			return this.m_anKeyboard[i];
+		}
+	}
+	return nIndex;
+}
+
+int T_PosterDataManager::getFirstIndex()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (ポスター_確認(this.m_anKeyboard[i]))
+		{
+			return this.m_anKeyboard[i];
+		}
+	}
+	return -1;
+}
+
+int T_PosterDataManager::getLastIndex()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = cnt - 1; i >= 0; --i)
+	{
+		if (ポスター_確認(this.m_anKeyboard[i]))
+		{
+			return this.m_anKeyboard[i];
+		}
+	}
+	return -1;
+}
+
+int T_PosterDataManager::getRow(int nIndex)
+{
+	int idx = this.searchKeyboard(nIndex);
+	return idx < 0 ? -1 : idx / 10;
+}
+
+int T_PosterDataManager::getCol(int nIndex)
+{
+	int idx = this.searchKeyboard(nIndex);
+	return idx < 0 ? -1 : idx % 10;
+}
+
+int T_PosterDataManager::getIndex(int nRow, int nCol)
+{
+	if (nRow < 0 || nRow >= 2)
+	{
+		return -1;
+	}
+	if (nCol < 0 || nCol >= 10)
+	{
+		return -1;
+	}
+	return this.m_anKeyboard[nRow * 10 + nCol];
+}
+
+int T_PosterDataManager::searchKeyboard(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asData.Numof())
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anKeyboard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anKeyboard[i] == nIndex)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

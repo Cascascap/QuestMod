@@ -1,0 +1,402 @@
+CStaffRoll::CStaffRoll()
+{
+	this.m_BG.SetCG(Ｒ８マグナム確認() ? "10600" : "10601", 1);
+	this.m_BG.SetZ(10);
+	this.m_BG.SetAlpha(0);
+	this.Skips = false;
+	this.Throughs = false;
+}
+
+CStaffRoll::~CStaffRoll()
+{
+	this.Release();
+}
+
+void CStaffRoll::Release()
+{
+	this.m_BG.Release();
+}
+
+bool CStaffRoll::Update(int フェードイン, int フェードアウト)
+{
+	CASTimer Timer;
+	全表示(1, 1000);
+	音楽１回再生(104, -1, -1);
+	Timer.Reset();
+	int Handle = AFL_CreateFreeSpriteHandle();
+	int SpriteNumber = AFL_GetFreeSpriteNum(Handle);
+	AFL_Sprite_CreatePixelOnly(SpriteNumber, 1024, 768);
+	AFL_Sprite_SetZ(SpriteNumber, 5);
+	float ChangeValue = 0.0254999995231628;
+	for (; ; )
+	{
+		int Time = Timer.Get();
+		this.m_BG.SetAlpha(ChangeValue * Time);
+		if (15500 < Time)
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+	AFL_ReleaseFreeSpriteHandle(Handle);
+	int BlockCount = 0;
+	bool IsEnd = false;
+	int TotalTime;
+	for (TotalTime = 0; !IsEnd; ++BlockCount)
+	{
+		CCharcterSlider Char;
+		CStaffSlider Staff;
+		if (!this.GetStaffRollData(BlockCount, Char, Staff))
+		{
+			break;
+		}
+		Char.UpdateZ(20);
+		Staff.UpdateZ(30);
+		float StartTime = BlockCount * 10100 + 15500;
+		for (; ; )
+		{
+			if (未読スキップ中確認() && this.Skips)
+			{
+				TotalTime += 100;
+			}
+			float NowTime = Timer.Get() - StartTime;
+			if (this.Throughs || this.Skips)
+			{
+				NowTime += TotalTime;
+			}
+			if (0 <= NowTime && NowTime < 1050.0)
+			{
+				int Time = NowTime;
+				switch (フェードイン)
+				{
+					case 0:
+						this.等速FadeIn(Time, BlockCount, Char, Staff);
+						break;
+					case 1:
+						this.等加速FadeIn(Time, BlockCount, Char, Staff);
+						break;
+					case 2:
+						this.等減速FadeIn(Time, BlockCount, Char, Staff);
+						break;
+					default:
+						this.等減速FadeIn(Time, BlockCount, Char, Staff);
+						break;
+				}
+			}
+			else if (1050 <= NowTime && NowTime < 9050.0)
+			{
+				int Time = NowTime - 1050.0;
+				this.Wait(Time, BlockCount, Char, Staff);
+			}
+			else if (9050 <= NowTime && NowTime < 10100.0)
+			{
+				int Time = NowTime - 9050.0;
+				switch (フェードアウト)
+				{
+					case 0:
+						this.等速FadeOut(Time, BlockCount, Char, Staff);
+						break;
+					case 1:
+						this.等加速FadeOut(Time, BlockCount, Char, Staff);
+						break;
+					case 2:
+						this.等減速FadeOut(Time, BlockCount, Char, Staff);
+						break;
+					default:
+						this.等加速FadeOut(Time, BlockCount, Char, Staff);
+						break;
+				}
+			}
+			else
+			{
+				break;
+			}
+			UpdateView(true);
+			if (this.IsDownChancelButton())
+			{
+				if (this.Throughs)
+				{
+					TotalTime += Timer.Get();
+				}
+				if (this.IsChancel())
+				{
+					IsEnd = true;
+					break;
+				}
+				if (this.Throughs)
+				{
+					Timer.Reset();
+				}
+			}
+		}
+	}
+	if (!IsEnd)
+	{
+		W強制待ち(1000);
+		CCharcterSlider Char;
+		CStaffSlider Staff;
+		Char.UpdateShow(false);
+		Staff.SetLogo();
+		Char.UpdateZ(20);
+		Staff.UpdateZ(30);
+		Timer.Reset();
+		for (; Timer.Get() < 1050; )
+		{
+			switch (フェードイン)
+			{
+				case 0:
+					this.等速FadeIn(Timer.Get(), BlockCount, Char, Staff);
+					break;
+				case 1:
+					this.等加速FadeIn(Timer.Get(), BlockCount, Char, Staff);
+					break;
+				case 2:
+					this.等減速FadeIn(Timer.Get(), BlockCount, Char, Staff);
+					break;
+				default:
+					this.等減速FadeIn(Timer.Get(), BlockCount, Char, Staff);
+					break;
+			}
+			UpdateView(true);
+		}
+		W強制待ち(10000);
+	}
+	音楽(0, 1, 5000);
+	return true;
+}
+
+void CStaffRoll::Skip(bool 許可)
+{
+	this.Skips = 許可;
+}
+
+void CStaffRoll::Through(bool 許可)
+{
+	this.Throughs = 許可;
+}
+
+bool CStaffRoll::IsChancel()
+{
+	return 選択_確認("Abridge staff roll?", 2, "Yes", "No", -1, -1, false);
+}
+
+bool CStaffRoll::IsDownChancelButton()
+{
+	return AFL_IsKeyDown(1);
+}
+
+bool CStaffRoll::GetStaffRollData(int BlockNumber, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	lint FaceCGNumber = 0;
+	string CharactorName = "";
+	string FaceCGName = "";
+	string Story = "";
+	Ｔエンドロール(BlockNumber + 1, CharactorName, FaceCGNumber, FaceCGName, Story);
+	if (FaceCGName.Empty() && FaceCGNumber == 0)
+	{
+		Char.UpdateShow(false);
+	}
+	else
+	{
+		Char.UpdateShow(true);
+		FaceCGName = "<save>SaveData\\%s\\%s" % "Face CG" % FaceCGName;
+		if (FaceCGNumber != 0)
+		{
+			FaceCGName = string(FaceCGNumber);
+		}
+		Char.SetCharData(FaceCGName, CharactorName, Story);
+	}
+	switch (BlockNumber)
+	{
+		case 0:
+			Staff.AddStaff("TADA", "・Supervision\n・Game Design\n・Rough Script\n・Script Programming");
+			break;
+		case 1:
+			Staff.AddStaff("Purin", "・Game Design\n・Planning Assistance\n・Screen Layout");
+			Staff.AddStaff("Orion", "・Line Art\n・Planning Assistance\n・Event Screen Design\n・Gal Monster Supervision");
+			break;
+		case 2:
+			Staff.AddStaff("Yasube", "・Main Programming");
+			Staff.AddStaff("Senoo Yudai", "・Framework Development");
+			Staff.AddStaff("Kokoro", "・Framework Development");
+			Staff.AddStaff("Itten Chiroku", "・Script Programming");
+			break;
+		case 3:
+			Staff.AddStaff("Yoidore Dragon", "・Script (Main)");
+			Staff.AddStaff("Fumya", "・Script (Sub)");
+			Staff.AddStaff("Youichirou", "・Script (Sub)");
+			Staff.AddStaff("Imam", "・Script (Sub)");
+			break;
+		case 4:
+			Staff.AddStaff("Shade (ASTLYRE)", "・Music (Main)\n・Sound Effects");
+			Staff.AddStaff("L-Minatsu (ASTLYRE)", "・Music (Sub)\n・Sound Effects");
+			Staff.AddStaff("DJ C++ (ASTLYRE)", "・Music Supervision\n・Sound Effects");
+			break;
+		case 5:
+			Staff.AddStaff("Takepen", "・CG Supervision");
+			Staff.AddStaff("Hisato", "・CGs\n・Printing Supervisor");
+			Staff.AddStaff("Ebichiri", "・CGs");
+			Staff.AddStaff("Takkun", "・CGs");
+			break;
+		case 6:
+			Staff.AddStaff("Fukupon", "・3D Supervision");
+			Staff.AddStaff("Yoshio", "・Battle Backgrounds\n・Battle Units\n・Battle Effects");
+			Staff.AddStaff("Kei", "・Map\n・Battle Units");
+			Staff.AddStaff("K", "・Battle Units");
+			break;
+		case 7:
+			Staff.AddStaff("Nakajii", "・Backgrounds\n・Background Supervision");
+			Staff.AddStaff("Kosuke", "・Backgrounds");
+			Staff.AddStaff("Doranosuke Moguta", "・SD Art\n・Item Art");
+			Staff.AddStaff("Kuribayashi", "・Item Art\n・Battle Unit Help");
+			break;
+		case 8:
+			Staff.AddStaff("Kohama Toshihiro (Bihou Co.)", "・Backgrounds");
+			Staff.AddStaff("Tanioka Yoshio (Bihou Co.)", "・Backgrounds");
+			Staff.AddStaff("Hirasawa Akihiro (Bihou Co.)", "・Backgrounds\n\n");
+			Staff.AddStaff("Fontworks Inc.", "・Font Collaboration");
+			break;
+		case 9:
+			Staff.AddStaff("Moomin", "・Debug Supervisor");
+			Staff.AddStaff("Arima Rui", "・Special Debugging");
+			Staff.AddStaff("Maeda Shunsuke", "・Special Debugging");
+			Staff.AddStaff("Yuuki", "・Special Debugging\n・Manual Cut");
+			break;
+		case 10:
+			Staff.AddStaff("Otsuyu Fever", "・PR Planning");
+			Staff.AddStaff("AD Hanny-kun", "・PR");
+			Staff.AddStaff("Oushuu Ran", "・Webpage\n・PR Sub");
+			Staff.AddStaff("YOK", "・PR Sub\n・Censor guy");
+			break;
+		case 11:
+			Staff.AddStaff("Watanabe", "・Progress Control");
+			Staff.AddStaff("Gyokai", "・CG Helper");
+			Staff.AddStaff("Naritaya", "・Helper");
+			Staff.AddStaff("Renren", "・Backgrounds");
+			break;
+		case 12:
+			Staff.AddStaff("OKAMURA", "・Operations");
+			Staff.AddStaff("MACKY", "・Operations");
+			Staff.AddStaff("Shiraking", "・Production & Sales Supervisor");
+			Staff.AddStaff("HIRO", "・Producer\n・PR Planning");
+			break;
+		default:
+			return false;
+	}
+	return true;
+}
+
+void CStaffRoll::Wait(int Timer, int Count, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	if (Timer >= 8000)
+	{
+		return;
+	}
+	Staff.UpdatePos(550, 0);
+	Char.UpdatePos(173, 0);
+	float FrameTime = 16.0;
+	float Frame = Timer / FrameTime;
+	float FadeAlphaByWaitFrame = 500.0 / FrameTime;
+	float ChangeSpeed = 8.5;
+	if (FadeAlphaByWaitFrame < Frame)
+	{
+		Char.UpdateTextAlpha(ChangeSpeed * (Frame - FadeAlphaByWaitFrame));
+	}
+}
+
+void CStaffRoll::等速FadeIn(int Timer, int Count, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	if (Timer >= 1050)
+	{
+		return;
+	}
+	float FrameTime = 16.0;
+	float Frame = Timer / FrameTime;
+	float FadeInFrame = 1050.0 / FrameTime;
+	float ViewHeight = 768.0;
+	float ChangeSpeed = ViewHeight / FadeInFrame;
+	int PosY = ViewHeight - ChangeSpeed * Frame;
+	Staff.UpdatePos(550, PosY);
+	Char.UpdatePos(173, -PosY);
+}
+
+void CStaffRoll::等速FadeOut(int Timer, int Count, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	if (Timer >= 1050)
+	{
+		return;
+	}
+	float FrameTime = 16.0;
+	float Frame = Timer / FrameTime;
+	float FadeOutFrame = 1050.0 / FrameTime;
+	float ViewHeight = 768.0;
+	float ChangeSpeed = ViewHeight / FadeOutFrame;
+	int PosY = ChangeSpeed * Frame;
+	Staff.UpdatePos(550, -PosY);
+	Char.UpdatePos(173, PosY);
+}
+
+void CStaffRoll::等加速FadeIn(int Timer, int Count, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	if (Timer >= 1050)
+	{
+		return;
+	}
+	float FrameTime = 16.0;
+	float Frame = Timer / FrameTime;
+	float FadeInFrame = 1050.0 / FrameTime;
+	float ViewHeight = 768.0;
+	float ViewFrame = (1.0 / FadeInFrame) * Frame;
+	int PosY = ViewHeight - ViewHeight * Math.Pow(ViewFrame, 4.0);
+	Staff.UpdatePos(550, PosY);
+	Char.UpdatePos(173, -PosY);
+}
+
+void CStaffRoll::等加速FadeOut(int Timer, int Count, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	if (Timer >= 1050)
+	{
+		return;
+	}
+	float FrameTime = 16.0;
+	float Frame = Timer / FrameTime;
+	float FadeOutFrame = 1050.0 / FrameTime;
+	float ViewHeight = 768.0;
+	float ViewFrame = (1.0 / FadeOutFrame) * Frame;
+	int PosY = ViewHeight * Math.Pow(ViewFrame, 4.0);
+	Staff.UpdatePos(550, -PosY);
+	Char.UpdatePos(173, PosY);
+}
+
+void CStaffRoll::等減速FadeIn(int Timer, int Count, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	if (Timer >= 1050)
+	{
+		return;
+	}
+	float FrameTime = 16.0;
+	float Frame = Timer / FrameTime;
+	float FadeInFrame = 1050.0 / FrameTime;
+	float ViewHeight = 768.0;
+	float ViewFrame = 1.0 - (1.0 / FadeInFrame) * Frame;
+	int PosY = ViewHeight - ViewHeight * (1.0 - Math.Pow(ViewFrame, 4.0));
+	Staff.UpdatePos(550, PosY);
+	Char.UpdatePos(173, -PosY);
+}
+
+void CStaffRoll::等減速FadeOut(int Timer, int Count, ref CCharcterSlider Char, ref CStaffSlider Staff)
+{
+	if (Timer >= 1050)
+	{
+		return;
+	}
+	float FrameTime = 16.0;
+	float Frame = Timer / FrameTime;
+	float FadeOutFrame = 1050.0 / FrameTime;
+	float ViewHeight = 768.0;
+	float ViewFrame = 1.0 - (1.0 / FadeOutFrame) * Frame;
+	int PosY = ViewHeight * (1.0 - Math.Pow(ViewFrame, 4.0));
+	Staff.UpdatePos(550, -PosY);
+	Char.UpdatePos(173, PosY);
+}
+

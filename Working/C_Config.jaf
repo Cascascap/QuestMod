@@ -1,0 +1,386 @@
+void コンフィグ_実行(int nMode)
+{
+	g_bConfigUpdate = false;
+	g_sConfig.run(nMode);
+	g_bConfigUpdate = false;
+}
+
+int コンフィグ_上矢印(int nID)
+{
+	return g_sConfig.moveUp(nID);
+}
+
+int コンフィグ_下矢印(int nID)
+{
+	return g_sConfig.moveDown(nID);
+}
+
+int コンフィグ_左矢印(int nID)
+{
+	return g_sConfig.moveLeft(nID);
+}
+
+int コンフィグ_右矢印(int nID)
+{
+	return g_sConfig.moveRight(nID);
+}
+
+void コンフィグ_選択設定(int nID, bool bSelect)
+{
+	g_sConfig.setSelect(nID, bSelect);
+}
+
+void コンフィグ_メッセージ表示速度設定(float fValue)
+{
+	if (g_sConfig.getMode() != 1)
+	{
+		return;
+	}
+	AFL_Config_SetMessageSpeedRate(fValue);
+}
+
+void コンフィグ_オートモード待ち時間設定(float fValue)
+{
+	if (g_sConfig.getMode() != 1)
+	{
+		return;
+	}
+	AFL_Config_SetAutoModeWaitTimeRate(fValue);
+}
+
+void コンフィグ_既読スキップ待ち時間設定(float fValue)
+{
+	if (g_sConfig.getMode() != 1)
+	{
+		return;
+	}
+	AFL_Config_SetAlreadyReadMessageSkipWaitTimeRate(fValue);
+}
+
+void コンフィグ_未読スキップ待ち時間設定(float fValue)
+{
+	if (g_sConfig.getMode() != 1)
+	{
+		return;
+	}
+	AFL_Config_SetNotYetReadMessageSkipWaitTimeRate(fValue);
+}
+
+void コンフィグ_マスターボリューム設定(float fVolume)
+{
+	g_sConfig.setSountVolume(0, fVolume);
+}
+
+void コンフィグ_ＢＧＭボリューム設定(float fVolume)
+{
+	g_sConfig.setSountVolume(1, fVolume);
+}
+
+void コンフィグ_効果音ボリューム設定(float fVolume)
+{
+	g_sConfig.setSountVolume(2, fVolume);
+}
+
+void コンフィグ_ジングルボリューム設定(float fVolume)
+{
+	g_sConfig.setSountVolume(3, fVolume);
+}
+
+void コンフィグ_ピコピコ音ボリューム設定(float fVolume)
+{
+	g_sConfig.setSountVolume(4, fVolume);
+}
+
+int コンフィグ共通_処理(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+			return 1;
+		case 100002:
+			return 2;
+		case 100003:
+			return 3;
+		case 100004:
+			return 4;
+		case 100005:
+			return 5;
+		case 100006:
+			return 6;
+		case 100007:
+			return 7;
+		case 100008:
+			return 8;
+		case 100012:
+			SYS_システム共通セーブ();
+			タイトルに戻る();
+			break;
+		case 100013:
+			SYS_システム共通セーブ();
+			ゲーム終了();
+			break;
+		case 100011:
+		case 100019:
+			return -1;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int コンフィグ共通_上矢印(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+			return 100011;
+		case 100003:
+		case 100004:
+			return 100012;
+		case 100005:
+		case 100006:
+		case 100007:
+		case 100008:
+		case 100019:
+			return 100013;
+		case 100011:
+		case 100012:
+		case 100013:
+			return 0;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int コンフィグ共通_下矢印(int nID)
+{
+	int nMode = g_sConfig.getMode();
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+		case 100003:
+		case 100004:
+		case 100005:
+		case 100006:
+		case 100007:
+		case 100008:
+		case 100019:
+			return 0;
+		case 100011:
+			return nMode != 1 ? 100001 : 100002;
+		case 100012:
+			return nMode != 3 ? 100003 : 100004;
+		case 100013:
+			return nMode != 7 ? 100007 : 100006;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int コンフィグ共通_左矢印(int nID)
+{
+	int nMode = g_sConfig.getMode();
+	switch (nID)
+	{
+		case 100001:
+			return nMode != 7 ? 100007 : 100006;
+		case 100002:
+			return nMode != 1 ? 100001 : 100006;
+		case 100003:
+			return nMode != 2 ? 100002 : 100001;
+		case 100004:
+			return nMode != 3 ? 100003 : 100002;
+		case 100005:
+			return nMode != 4 ? 100004 : 100003;
+		case 100006:
+			return nMode != 5 ? 100005 : 100004;
+		case 100007:
+			return nMode != 6 ? 100006 : 100005;
+		case 100008:
+		case 100019:
+			return nMode != 7 ? 100007 : 100006;
+		case 100011:
+			return 100013;
+		case 100012:
+			return 100011;
+		case 100013:
+			return 100012;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int コンフィグ共通_右矢印(int nID)
+{
+	int nMode = g_sConfig.getMode();
+	switch (nID)
+	{
+		case 100001:
+			return nMode != 2 ? 100002 : 100003;
+		case 100002:
+			return nMode != 3 ? 100003 : 100004;
+		case 100003:
+			return nMode != 4 ? 100004 : 100005;
+		case 100004:
+			return nMode != 5 ? 100005 : 100006;
+		case 100005:
+			return nMode != 6 ? 100006 : 100007;
+		case 100006:
+			return nMode != 7 ? 100007 : 100001;
+		case 100007:
+		case 100008:
+		case 100019:
+			return nMode != 1 ? 100001 : 100002;
+		case 100011:
+			return 100012;
+		case 100012:
+			return 100013;
+		case 100013:
+			return 100011;
+		default:
+			break;
+	}
+	return -1;
+}
+
+bool コンフィグ共通_作成(ref T_ButtonGroup sButtonGroup)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	int nX = 12;
+	int nY = 40;
+	コンフィグ共通_タブ作成(sButtonGroup, 100001, nX, nY, 40011, 40012, 40013, 112);
+	nX += 120;
+	コンフィグ共通_タブ作成(sButtonGroup, 100002, nX, nY, 40014, 40015, 40016, 113);
+	nX += 120;
+	コンフィグ共通_タブ作成(sButtonGroup, 100003, nX, nY, 40017, 40018, 40019, 114);
+	nX += 120;
+	コンフィグ共通_タブ作成(sButtonGroup, 100004, nX, nY, 40020, 40021, 40022, 115);
+	nX += 120;
+	コンフィグ共通_タブ作成(sButtonGroup, 100005, nX, nY, 40023, 40024, 40025, 116);
+	nX += 120;
+	コンフィグ共通_タブ作成(sButtonGroup, 100006, nX, nY, 40026, 40027, 40028, 117);
+	nX += 120;
+	コンフィグ共通_タブ作成(sButtonGroup, 100007, nX, nY, 40061, 40062, 40063, 118);
+	nX = 562;
+	nY = 685;
+	コンフィグ共通_ボタン作成_土台付(sButtonGroup, 100011, nX, nY, 40031, 82);
+	nX += 150;
+	コンフィグ共通_ボタン作成_土台付(sButtonGroup, 100012, nX, nY, 40032, 84);
+	nX += 150;
+	コンフィグ共通_ボタン作成_土台付(sButtonGroup, 100013, nX, nY, 40033, 88);
+	ボタン登録_ＣＧ(sButtonGroup, 100019, 988, 10, 10007, -1, -1, -2147483648, -2147483648);
+	return true;
+}
+
+bool コンフィグ共通_タブ作成(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, int nCgNo2, int nCgNo3, int nKey)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	T_TextSprite spWork3;
+	if (spWork1.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	if (spWork2.setCg(nCgNo2) < 0)
+	{
+		return false;
+	}
+	if (spWork3.setCg(nCgNo3) < 0)
+	{
+		return false;
+	}
+	T_Button sButton;
+	sButton.createSp(spWork1, spWork3, NULL);
+	sButton.createFrameSp(0, spWork2, 1);
+	sButton.createFrameSp(2, spWork2, 1);
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	sButtonGroup.setButtonKey(nID, nKey);
+	return true;
+}
+
+bool コンフィグ共通_ボタン作成_土台付(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, int nKey)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	T_Button sButton;
+	sButton.createRect(nW, nH, nW, nH, nW, nH);
+	sButton.createFrame(0, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButton.createFrame(1, nW, nH, 255, 0, 0, 128, -2147483648, -2147483648, 0);
+	sButton.createFrame(2, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButton.getSp(2).attachSp(spWork.detach());
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	sButtonGroup.setButtonKey(nID, nKey);
+	return true;
+}
+
+bool コンフィグ共通_ボタン作成(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, int nCgNo2)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	if (spWork1.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	if (spWork2.setCg(nCgNo2) < 0)
+	{
+		return false;
+	}
+	T_Button sButton;
+	sButton.createSp(spWork1, NULL, NULL);
+	sButton.createFrameSp(0, spWork2, 1);
+	sButton.createFrameSp(2, spWork2, 1);
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	return true;
+}
+
+bool コンフィグ共通_チェックＢＯＸ作成(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	T_TextSprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	T_Button sButton;
+	sButton.createRect(nW, nH, nW, nH, nW, nH);
+	sButton.createFrameSp(0, spWork, 0);
+	sButton.createFrameSp(1, spWork, 0);
+	sButton.createFrameSp(2, spWork, 0);
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	return true;
+}
+

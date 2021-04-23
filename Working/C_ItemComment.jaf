@@ -1,0 +1,40 @@
+void アイテム説明_初期化()
+{
+	アイテム説明_終了処理();
+}
+
+void アイテム説明_終了処理()
+{
+	g_sItemComment.delete();
+}
+
+int アイテム説明_表示(int nItemNo, bool bJudge, int nWaitTime)
+{
+	if (!g_sItemComment.create(nItemNo, bJudge))
+	{
+		return -1;
+	}
+	g_sItemComment.setShow(true, nWaitTime);
+	return 1;
+}
+
+void アイテム説明_消し()
+{
+	g_sItemComment.delete();
+}
+
+void アイテム説明_位置設定(int nX, int nY)
+{
+	g_sItemComment.setPos(nX, nY);
+}
+
+int アイテム説明_幅()
+{
+	return g_sItemComment.getWidth();
+}
+
+int アイテム説明_高()
+{
+	return g_sItemComment.getHeight();
+}
+

@@ -1,0 +1,248 @@
+void 戦闘エフェクト_作成()
+{
+	g_abBattleEffectUpdate.Fill(0, g_abBattleEffectUpdate.Numof(), 0);
+	g_sBattleEffect.create(9601);
+}
+
+void 戦闘エフェクト_削除()
+{
+	g_sBattleEffect.delete();
+	g_abBattleEffectUpdate.Fill(0, g_abBattleEffectUpdate.Numof(), 0);
+}
+
+void 戦闘エフェクト_味方単体(int nTargetNo, string szEffectName, bool bWait)
+{
+	g_sBattleEffect.playNormal(戦闘エフェクト_位置インデクス(nTargetNo), szEffectName, bWait);
+}
+
+void 戦闘エフェクト_味方全体(string szEffectName, bool bWait)
+{
+	g_sBattleEffect.playNormal(5, szEffectName, bWait);
+}
+
+void 戦闘エフェクト_敵単体(int nTargetNo, string szEffectName, bool bWait)
+{
+	g_sBattleEffect.playNormal(戦闘エフェクト_位置インデクス(nTargetNo), szEffectName, bWait);
+}
+
+void 戦闘エフェクト_敵全体(string szEffectName, bool bWait)
+{
+	g_sBattleEffect.playNormal(11, szEffectName, bWait);
+}
+
+void 戦闘エフェクト_再生待ち(bool bFlag)
+{
+	if (!bFlag)
+	{
+		if (戦闘速度() == 2)
+		{
+			return;
+		}
+	}
+	g_sBattleEffect.waitNormal(-1);
+}
+
+void 戦闘エフェクト_再生待ち_途中(bool bWait)
+{
+	g_sBattleEffect.waitNormal(再生待ちフレーム番号(g_sBattleEffect.getEndFrameNo(), bWait));
+}
+
+void モンスターエフェクト_再生(int nNo, int nType, string szEffectName, bool bWait)
+{
+	g_sBattleEffect.playMonster(nType == 0 ? 戦闘エフェクト_位置インデクス(nNo) : 11, szEffectName, bWait);
+}
+
+void モンスターエフェクト_再生待ち()
+{
+	g_sBattleEffect.waitMonster(-1);
+}
+
+void モンスターエフェクト_再生待ち_途中()
+{
+	g_sBattleEffect.waitMonster(再生待ちフレーム番号(g_sBattleEffect.getMonsterEndFrameNo(), false));
+}
+
+void モンスターエフェクト_停止()
+{
+	g_sBattleEffect.stopMonster();
+}
+
+void 戦闘エフェクト_味方補助(int nTargetNo, string szEffectName, bool bWait)
+{
+	g_sBattleEffect.playSub(戦闘エフェクト_位置インデクス(nTargetNo), szEffectName, bWait);
+}
+
+void 戦闘エフェクト_敵補助(int nTargetNo, string szEffectName, bool bWait)
+{
+	g_sBattleEffect.playSub(戦闘エフェクト_位置インデクス(nTargetNo), szEffectName, bWait);
+}
+
+int 戦闘_敵エフェクト(int nNo, int nSkillNo, ref string szEffectName)
+{
+	szEffectName = "";
+	ref T_BattleEffectData rfsData = g_sBattleEffectData.get(戦闘データ_ポリゴン(nNo));
+	if (rfsData === NULL)
+	{
+		return -1;
+	}
+	int nMotionNo = 戦闘データ_スキルモーション(nNo, nSkillNo);
+	switch (rfsData.m_nMonsterNo)
+	{
+		case 100191:
+			if (nSkillNo == 236)
+			{
+				nMotionNo = 3;
+			}
+			break;
+		case 100220:
+			if (nSkillNo == 430)
+			{
+				nMotionNo = 3;
+			}
+			break;
+		case 100198:
+			if (nSkillNo == 181)
+			{
+				nMotionNo = 3;
+			}
+			break;
+		case 100229:
+			if (nMotionNo != 2)
+			{
+				return -1;
+			}
+			switch (nSkillNo)
+			{
+				case 224:
+				case 225:
+					break;
+				default:
+					return -1;
+			}
+			break;
+		default:
+			break;
+	}
+	szEffectName = rfsData.getName(nMotionNo);
+	return rfsData.getType(nMotionNo);
+}
+
+int 戦闘エフェクト_位置インデクス(int nTargetNo)
+{
+	switch (nTargetNo)
+	{
+		case 1:
+			return 0;
+		case 2:
+			return 1;
+		case 3:
+			return 2;
+		case 4:
+			return 3;
+		case 5:
+			return 4;
+		case 11:
+			return 6;
+		case 12:
+			return 7;
+		case 13:
+			return 8;
+		case 14:
+			return 9;
+		case 15:
+			return 10;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int 戦闘エフェクト_位置Ｘ(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return -26;
+		case 1:
+			return 313;
+		case 2:
+			return 651;
+		case 3:
+			return 144;
+		case 4:
+			return 482;
+		case 5:
+			return 0;
+		case 6:
+			return -98;
+		case 7:
+			return 312;
+		case 8:
+			return 722;
+		case 9:
+			return 戦闘敵_前進中() ? 50 : 107;
+		case 10:
+			return 戦闘敵_前進中() ? 575 : 517;
+		case 11:
+			return 0;
+		default:
+			break;
+	}
+	return -2147483648;
+}
+
+int 戦闘エフェクト_位置Ｙ(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+		case 2:
+			return 275;
+		case 3:
+		case 4:
+			return 450;
+		case 5:
+			return 368;
+		case 6:
+		case 7:
+		case 8:
+			return 40;
+		case 9:
+		case 10:
+			return 戦闘敵_前進中() ? 40 : 0;
+		case 11:
+			return 0;
+		default:
+			break;
+	}
+	return -2147483648;
+}
+
+int 再生待ちフレーム番号(int nEndFrameNo, bool bWait)
+{
+	if (戦闘速度() == 2)
+	{
+		return bWait ? nEndFrameNo / 3 : 0;
+	}
+	return (nEndFrameNo * 3) / 5;
+}
+
+string 戦闘エフェクト_名前(string szEffectName)
+{
+	if (szEffectName.Empty())
+	{
+		return "";
+	}
+	return "Data/Flash/Battle/" + szEffectName + ".swf";
+}
+
+string モンスターエフェクト_名前(string szEffectName)
+{
+	if (szEffectName.Empty())
+	{
+		return "";
+	}
+	return "Data/Flash/Monster/" + szEffectName + ".swf";
+}
+

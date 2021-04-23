@@ -1,0 +1,208 @@
+int まめ知識_存在(int nNo)
+{
+	if (nNo < 1 || nNo >= MM.Numof())
+	{
+		return -1;
+	}
+	return MM[nNo];
+}
+
+int まめ知識_状態(int nNo)
+{
+	if (nNo < 1 || nNo >= MMp.Numof())
+	{
+		return -1;
+	}
+	return MMp[nNo];
+}
+
+int まめ知識_ＣＧ番号(int nNo)
+{
+	if (nNo < 1 || nNo >= MMcg.Numof())
+	{
+		return -1;
+	}
+	return MMcg[nNo];
+}
+
+string まめ知識_タイトル(int nNo)
+{
+	if (nNo < 1 || nNo >= MM文字.Numof())
+	{
+		return "";
+	}
+	return MM文字[nNo];
+}
+
+string まめ知識_テキスト(int nNo)
+{
+	if (nNo < 1 || nNo >= MM文字.Numof())
+	{
+		return "";
+	}
+	return テキスト改行変換(マメ知識文字列(nNo), "$");
+}
+
+int まめ知識_絞込み(int nNo)
+{
+	if (nNo < 1 || nNo >= MM絞り込み.Numof())
+	{
+		return -1;
+	}
+	return MM絞り込み[nNo];
+}
+
+bool まめ知識_絞込み確認(int nNo, int nType)
+{
+	if (まめ知識_存在(nNo) <= 0)
+	{
+		return false;
+	}
+	if (nType <= 0)
+	{
+		return true;
+	}
+	return まめ知識_絞込み(nNo) == nType;
+}
+
+int まめ知識_存在設定(int nNo, int nValue)
+{
+	if (nNo < 1 || nNo >= MM.Numof())
+	{
+		return -1;
+	}
+	MM[nNo] = nValue;
+	return MM[nNo];
+}
+
+int まめ知識_状態設定(int nNo, int nValue)
+{
+	if (nNo < 1 || nNo >= MMp.Numof())
+	{
+		return -1;
+	}
+	MMp[nNo] = nValue;
+	return MMp[nNo];
+}
+
+int まめ知識_絞込み設定(int nNo, int nValue)
+{
+	if (nNo < 1 || nNo >= MM絞り込み.Numof())
+	{
+		return -1;
+	}
+	MM絞り込み[nNo] = nValue;
+	return MM絞り込み[nNo];
+}
+
+bool まめ知識_新規(int nNo)
+{
+	return まめ知識_存在(nNo) > 0 && まめ知識_状態(nNo) == 0;
+}
+
+bool まめ知識_既存(int nNo)
+{
+	return まめ知識_存在(nNo) > 0 && まめ知識_状態(nNo) == 1;
+}
+
+int まめ知識_数()
+{
+	return MM.Numof() - 1;
+}
+
+int まめ知識_一覧(int nType, ref array@int anList)
+{
+	if (anList === NULL)
+	{
+		return -1;
+	}
+	if (!anList.Empty())
+	{
+		anList.Free();
+	}
+	int i = 0;
+	int cnt = MM.Numof();
+	for (i = 1; i < cnt; ++i)
+	{
+		if (まめ知識_絞込み確認(i, nType))
+		{
+			anList.PushBack(i);
+		}
+	}
+	anList.Sort(&まめ知識_比較);
+	return anList.Numof();
+}
+
+int まめ知識_比較(int nNo1, int nNo2)
+{
+	if (nNo1 < 1 || nNo1 >= MM.Numof())
+	{
+		return -1;
+	}
+	if (nNo2 < 1 || nNo2 >= MM.Numof())
+	{
+		return -1;
+	}
+	int nNew1 = MMp[nNo1];
+	int nNew2 = MMp[nNo2];
+	if (nNew1 == 1 && nNew2 == 0)
+	{
+		return 1;
+	}
+	if (nNew1 == 0 && nNew2 == 1)
+	{
+		return -1;
+	}
+	int nSort1 = MMソート[nNo1];
+	int nSort2 = MMソート[nNo2];
+	if (nSort1 < nSort2)
+	{
+		return -1;
+	}
+	if (nSort1 > nSort2)
+	{
+		return 1;
+	}
+	if (nNo1 < nNo2)
+	{
+		return -1;
+	}
+	if (nNo1 > nNo2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+bool まめ知識_あり()
+{
+	int i = 0;
+	int cnt = MM.Numof();
+	for (i = 1; i < cnt; ++i)
+	{
+		if (まめ知識_存在(i) > 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool まめ知識_新規あり()
+{
+	int i = 0;
+	int cnt = MM.Numof();
+	for (i = 1; i < cnt; ++i)
+	{
+		if (まめ知識_存在(i) <= 0)
+		{
+			continue;
+		}
+		if (まめ知識_新規(i))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+

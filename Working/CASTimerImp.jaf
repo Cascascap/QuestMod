@@ -1,0 +1,30 @@
+void CASTimerImp::Reset()
+{
+	this.m_nBeginTime = system.GetTime();
+	this.m_nCurrentTime = this.m_nBeginTime;
+}
+
+int CASTimerImp::Get()
+{
+	this.m_nCurrentTime = system.GetTime();
+	return this.m_nCurrentTime - this.m_nBeginTime;
+}
+
+void CASTimerImp::SetPassTime(int PassTime)
+{
+	this.m_nCurrentTime = system.GetTime();
+	this.m_nBeginTime = this.m_nCurrentTime - PassTime;
+}
+
+void CASTimerImp::UpdateCurrentTime()
+{
+	this.m_nCurrentTime = system.GetTime();
+}
+
+void CASTimerImp::Rebuild(int nCurrentTime)
+{
+	int nPassTime = this.m_nCurrentTime - this.m_nBeginTime;
+	this.m_nCurrentTime = nCurrentTime;
+	this.m_nBeginTime = nCurrentTime - nPassTime;
+}
+

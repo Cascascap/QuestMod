@@ -1,0 +1,279 @@
+int T_ItemComment::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_ItemComment::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_ItemComment::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+int T_ItemComment::getWidth()
+{
+	return this.m_spBase.getWidth();
+}
+
+int T_ItemComment::getHeight()
+{
+	return this.m_spBase.getHeight();
+}
+
+int T_ItemComment::getItemNo()
+{
+	return this.m_sItem.getItemNo();
+}
+
+bool T_ItemComment::getJudge()
+{
+	return this.m_sItem.getJudge();
+}
+
+T_ItemComment::T_ItemComment()
+{
+	this.clear();
+}
+
+T_ItemComment::~T_ItemComment()
+{
+	this.delete();
+}
+
+bool T_ItemComment::treasure(int nItemNo, bool bJudge)
+{
+	if (!this.create(nItemNo, bJudge))
+	{
+		return false;
+	}
+	this._setPos(316, 220);
+	this._setShow(false);
+	T_Sprite spWork;
+	if (!this.copyToSprite(spWork))
+	{
+		goto label0;
+	}
+	spWork.setZ(9801);
+	spWork.setShow(1);
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label1:
+	if (nTime < 350)
+	{
+		float fRate = nTime / 350.0;
+		int nX = 554 + -238 * fRate;
+		int nY = 331 + -111 * fRate;
+		spWork.setPos(nX, nY);
+		スプライト_変形(spWork, -360.0 * fRate, fRate);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label1;
+	}
+	spWork.delete();
+label0:
+	this._setShow(true);
+	UPDATE(true);
+	メッセージ送り_待ち();
+	this.delete();
+	return true;
+}
+
+bool T_ItemComment::field(int nItemNo, bool bJudge, bool bMagnum)
+{
+	if (!this.create(nItemNo, bJudge))
+	{
+		return false;
+	}
+	if (bMagnum)
+	{
+		this.m_spMagnum.setCg(10357);
+		this.m_spMagnum.setPos(3, 84);
+		this.m_spMagnum.setZ(9191);
+	}
+	this._setShow(true);
+	this.move(1024, 220, 315, 220, 250, bMagnum);
+	メッセージ送り_待ち();
+	this.delete();
+	return true;
+}
+
+bool T_ItemComment::create(int nItemNo, bool bJudge)
+{
+	this.delete();
+	if (!this.m_sItem.create(nItemNo, bJudge, 0))
+	{
+		return false;
+	}
+	this.m_sItem.setZ(9193);
+	this.m_spBase.setCg(10402);
+	this.m_spBase.setZ(9192);
+	if (!bJudge)
+	{
+		this.m_spBase.blendCg(0, 0, 10403, 255);
+	}
+	return true;
+}
+
+void T_ItemComment::delete()
+{
+	this.m_spBase.delete();
+	this.m_sItem.delete();
+	this.m_spMagnum.delete();
+	this.clear();
+}
+
+void T_ItemComment::clear()
+{
+	this.m_bShow = false;
+	this.m_nWaitTime = -1;
+	g_bItemCommentUpdate = false;
+}
+
+bool T_ItemComment::update()
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (this.m_nWaitTime < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < this.m_nWaitTime)
+	{
+		return false;
+	}
+	効果音_説明();
+	this._setShow(true);
+	this.m_nWaitTime = -1;
+	g_bItemCommentUpdate = false;
+	return true;
+}
+
+bool T_ItemComment::setPos(int nX, int nY)
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	int nMx = 0;
+	int nMy = 0;
+	if (nX < 0 || nY < 0)
+	{
+		if (!マウス_位置取得(nMx, nMy))
+		{
+			return false;
+		}
+		nX = nMx + 11;
+		nY = nMy + 20;
+	}
+	else
+	{
+		nMx = 1024;
+		nMy = nY;
+	}
+	int nW = this.m_spBase.getWidth();
+	int nH = this.m_spBase.getHeight();
+	if (nX + nW > 1024)
+	{
+		nX = nMx - nW;
+	}
+	if (nY + nH > 736)
+	{
+		nY = 736 - nH;
+	}
+	this._setPos(nX, nY);
+	return true;
+}
+
+void T_ItemComment::setShow(bool bShow, int nWaitTime)
+{
+	if (bShow == this.m_bShow)
+	{
+		return;
+	}
+	this._setShow(false);
+	this.m_bShow = bShow;
+	if (bShow)
+	{
+		this.m_nWaitTime = nWaitTime;
+		this.m_sTimer.Reset();
+		g_bItemCommentUpdate = true;
+	}
+	else
+	{
+		this.m_nWaitTime = -1;
+		g_bItemCommentUpdate = false;
+	}
+}
+
+bool T_ItemComment::copyToSprite(ref T_Sprite rfsDst)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!rfsDst.copy(this.m_spBase, false))
+	{
+		return false;
+	}
+	if (!this.m_sItem.copyToSprite(rfsDst, 6, 6))
+	{
+		return false;
+	}
+	if (!this.m_sItem.getJudge())
+	{
+		rfsDst.blendCg(0, 0, 10403, 255);
+	}
+	return true;
+}
+
+void T_ItemComment::move(int nStrX, int nStrY, int nEndX, int nEndY, int nMoveTime, bool bMagnum)
+{
+	int nTime = 0;
+	CASTimer sTimer;
+	int nMagnumStart = nMoveTime - 75;
+	sTimer.Reset();
+	while (nTime < nMoveTime)
+	{
+		float fMag = nTime / nMoveTime;
+		int nX = (nEndX - nStrX) * fMag;
+		int nY = (nEndY - nStrY) * fMag;
+		this._setPos(nStrX + nX, nStrY + nY);
+		if (bMagnum)
+		{
+			if (nTime > nMagnumStart)
+			{
+				float fMag = (nTime - nMagnumStart) / 75.0;
+				this.m_spMagnum.setShow(1);
+				this.m_spMagnum.setBlendRate(255 * fMag);
+			}
+		}
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	if (bMagnum)
+	{
+		this.m_spMagnum.setBlendRate(255);
+	}
+	this._setPos(nEndX, nEndY);
+	UPDATE(true);
+}
+
+void T_ItemComment::_setPos(int nX, int nY)
+{
+	this.m_spBase.setPos(nX, nY);
+	this.m_sItem.setPos(nX + 6, nY + 5);
+	this.m_sItem.m_sJob.setPos(nX + 113, nY + 104);
+}
+
+void T_ItemComment::_setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sItem.setShow(bShow);
+}
+

@@ -1,0 +1,877 @@
+int T_BattleSequence::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_BattleSequence::getCharaNo()
+{
+	return this.m_nCharaNo;
+}
+
+int T_BattleSequence::getStatus()
+{
+	return this.m_nStatus;
+}
+
+int T_BattleSequence::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_BattleSequence::getPosY()
+{
+	return this.m_nY;
+}
+
+bool T_BattleSequence::getShow()
+{
+	return this.m_bShow;
+}
+
+bool T_BattleSequence::getSelect()
+{
+	return this.m_bSelect;
+}
+
+bool T_BattleSequence::isPrepare()
+{
+	return this.m_abMarkShow[0];
+}
+
+bool T_BattleSequence::isPiyori()
+{
+	return this.m_abMarkShow[1];
+}
+
+T_BattleSequence::T_BattleSequence()
+{
+	this.clear();
+}
+
+T_BattleSequence::~T_BattleSequence()
+{
+	this.delete();
+}
+
+bool T_BattleSequence::create()
+{
+	this.delete();
+	this.m_spIcon.create(28, 33, 0, 0, 0, 0);
+	this.m_aspMark[0].setCg(10287);
+	this.m_aspMark[1].setCg(10286);
+	return true;
+}
+
+void T_BattleSequence::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].delete();
+	}
+	this.m_spIcon.delete();
+	this.clear();
+}
+
+void T_BattleSequence::clear()
+{
+	this.moveEnd();
+	this.m_nNo = -1;
+	this.m_nCharaNo = -1;
+	this.m_nStatus = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_bShow = false;
+	this.m_abMarkShow.Fill(0, this.m_abMarkShow.Numof(), 0);
+}
+
+void T_BattleSequence::moveOut()
+{
+	if (!this.moveStart(this.m_nX, this.m_nY, -28, this.m_nY, 150))
+	{
+		return;
+	}
+	CASTimer sTimer;
+	int nTime = 0;
+	sTimer.Reset();
+	while (true)
+	{
+		if (this.move(nTime) <= 0)
+		{
+			break;
+		}
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	this.moveEnd();
+}
+
+bool T_BattleSequence::moveStart(int nStrX, int nStrY, int nEndX, int nEndY, int nTotalTime)
+{
+	if (this.m_nTotalTime > 0)
+	{
+		return false;
+	}
+	this.m_nStrX = nStrX;
+	this.m_nStrY = nStrY;
+	this.m_nEndX = nEndX;
+	this.m_nEndY = nEndY;
+	this.m_nTotalTime = nTotalTime;
+	return true;
+}
+
+void T_BattleSequence::moveEnd()
+{
+	if (this.m_nTotalTime > 0)
+	{
+		this._setPos(this.m_nEndX, this.m_nEndY);
+	}
+	this.m_nStrX = -2147483648;
+	this.m_nStrY = -2147483648;
+	this.m_nEndX = -2147483648;
+	this.m_nEndY = -2147483648;
+	this.m_nTotalTime = -1;
+}
+
+int T_BattleSequence::move(int nTime)
+{
+	if (this.m_nTotalTime <= 0)
+	{
+		return -1;
+	}
+	if (nTime > this.m_nTotalTime)
+	{
+		return 0;
+	}
+	int nX = this.m_nStrX + é¿êîåvéZ(this.m_nEndX - this.m_nStrX, nTime, this.m_nTotalTime);
+	int nY = this.m_nStrY + é¿êîåvéZ(this.m_nEndY - this.m_nStrY, nTime, this.m_nTotalTime);
+	this._setPos(nX, nY);
+	return 1;
+}
+
+bool T_BattleSequence::change(int nNo)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	this.m_nNo = nNo;
+	return true;
+}
+
+bool T_BattleSequence::set(int nNo)
+{
+	bool bRet = false;
+	T_Sprite spWork;
+	this.m_nNo = -1;
+	this.m_nCharaNo = -1;
+	this.m_nStatus = -1;
+	this.m_abMarkShow.Fill(0, this.m_abMarkShow.Numof(), 0);
+	spWork.attach(çsìÆèáÉAÉCÉRÉì_î‘çÜ(nNo));
+	if (!spWork.isCreated())
+	{
+		goto label0;
+	}
+	this.m_spIcon.copyCg(0, 0, spWork, 0, 0, 28, 33);
+	this.m_nNo = nNo;
+	this.m_nCharaNo = êÌì¨î‘çÜ_ÇhÇhÇb(nNo);
+	this.m_nStatus = 0;
+	this.m_abMarkShow[0] = êÌì¨ÉfÅ[É^_ó≠ÇﬂíÜ(nNo);
+	this.m_abMarkShow[1] = êÌì¨ÉfÅ[É^_Ç“ÇÊÇËèÛë‘(nNo);
+	bRet = true;
+label0:
+	spWork.detach();
+	this.setBlendRate(255);
+	this.setShow(this.m_bShow);
+	return bRet;
+}
+
+void T_BattleSequence::setPos(int nX, int nY)
+{
+	this._setPos(nX, nY);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_BattleSequence::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].setZ(nZ + 5);
+	}
+	this.m_spIcon.setZ(nZ);
+}
+
+void T_BattleSequence::setShow(bool bShow)
+{
+	bool bShow2 = this.m_nNo > 0 ? bShow : 0;
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].setShow(this.m_abMarkShow[i] ? bShow2 : 0);
+	}
+	this.m_spIcon.setShow(bShow2);
+	switch (this.m_nStatus)
+	{
+		case 0:
+			this._setPos(this.m_nX, this.m_nY);
+			break;
+		case 1:
+			this._setPos(this.m_nX, this.m_nY + -7);
+			break;
+		default:
+			break;
+	}
+	this.m_bShow = bShow;
+}
+
+void T_BattleSequence::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].setBlendRate(nBlendRate);
+	}
+	this.m_spIcon.setBlendRate(nBlendRate);
+}
+
+void T_BattleSequence::setSelect(bool bSelect)
+{
+	if (this.m_bSelect != bSelect)
+	{
+		if (bSelect)
+		{
+			this.m_spIcon.coverColor3D(216, 255, 0, 102, true);
+		}
+		else
+		{
+			this.m_spIcon.coverColor3D(-1, -1, -1, -1, true);
+		}
+	}
+	this.m_bSelect = bSelect;
+}
+
+int T_BattleSequence::setStatus(int nStatus)
+{
+	this.m_nStatus = nStatus;
+	this.setShow(this.m_bShow);
+	return this.m_nStatus;
+}
+
+void T_BattleSequence::setPrepare(bool bShow)
+{
+	this.m_abMarkShow[0] = bShow;
+	this.setShow(this.m_bShow);
+}
+
+void T_BattleSequence::setPiyori(bool bShow)
+{
+	this.m_abMarkShow[1] = bShow;
+	this.setShow(this.m_bShow);
+}
+
+void T_BattleSequence::_setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].setPos(nX + -4, nY + -4);
+	}
+	this.m_spIcon.setPos(nX, nY);
+}
+
+int T_BattleSequenceManager::getCurrentIndex()
+{
+	return this.m_nCurrentIndex;
+}
+
+int T_BattleSequenceManager::getSequence(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anSequence.Numof() ? -1 : this.m_anSequence[nIndex];
+}
+
+int T_BattleSequenceManager::getIconX(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anSequence.Numof() ? -1 : 12 + 39 * nIndex;
+}
+
+int T_BattleSequenceManager::getIconY(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anSequence.Numof() ? -1 : 357;
+}
+
+T_BattleSequenceManager::T_BattleSequenceManager()
+{
+	this.clear();
+}
+
+T_BattleSequenceManager::~T_BattleSequenceManager()
+{
+	this.delete();
+}
+
+bool T_BattleSequenceManager::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.m_asSequence.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.m_asSequence[i];
+		rfsSeq.create();
+		rfsSeq.setZ(nZ + 1);
+	}
+	this.m_nCurrentIndex = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_anSequence[i] = i;
+	}
+	int nMax = êÌì¨èÓïÒ_âÒêî();
+	int cnt2 = nMax < 13 ? nMax : cnt;
+	for (i = 0; i < cnt2; ++i)
+	{
+		int nNo = this.getNextNo();
+		if (nNo <= 0)
+		{
+			break;
+		}
+		this.m_asSequence[i].set(nNo);
+	}
+	this.setPos(false, 0);
+	return true;
+}
+
+void T_BattleSequenceManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asSequence.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSequence[i].delete();
+	}
+	this.clear();
+}
+
+void T_BattleSequenceManager::clear()
+{
+	this.m_nCurrentIndex = -1;
+	this.m_anSequence.Fill(0, this.m_anSequence.Numof(), -1);
+}
+
+bool T_BattleSequenceManager::remake()
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	this.m_nCurrentIndex = 0;
+	return true;
+}
+
+bool T_BattleSequenceManager::change(int nCharaNo, bool bAddFlag)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	array@int anCharaNo;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.get(i);
+		if (rfsSeq === NULL)
+		{
+			continue;
+		}
+		int nCharaNo = rfsSeq.getCharaNo();
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		if (rfsSeq.getNo() == êÌì¨î‘çÜ_è]ñÇ())
+		{
+			if (!êÌì¨è]ñÇ_ÉIÅ[ÉiÅ[ämîF())
+			{
+				if (anCharaNo.Find(0, anCharaNo.Numof(), nCharaNo) < 0)
+				{
+					anCharaNo.PushBack(nCharaNo);
+				}
+			}
+			continue;
+		}
+		int nNo = êÌì¨î‘çÜ_éÊìæ(nCharaNo);
+		if (nNo > 0)
+		{
+			rfsSeq.change(nNo);
+		}
+		else if (anCharaNo.Find(0, anCharaNo.Numof(), nCharaNo) < 0)
+		{
+			anCharaNo.PushBack(nCharaNo);
+		}
+	}
+	if (this._setDead(anCharaNo, nCharaNo))
+	{
+		if (bAddFlag)
+		{
+			this.add();
+		}
+	}
+	return true;
+}
+
+bool T_BattleSequenceManager::changeAll(int nCharaNo)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	ref T_BattleSequence rfsSeq = this.get(0);
+	if (rfsSeq === NULL)
+	{
+		return false;
+	}
+	int idx = rfsSeq.getCharaNo() == nCharaNo ? 1 : 0;
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	array@int anCharaNo;
+	for (i = idx; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.get(i);
+		if (rfsSeq === NULL)
+		{
+			continue;
+		}
+		int nCharaNo = rfsSeq.getCharaNo();
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		anCharaNo.PushBack(nCharaNo);
+	}
+	this._setDead(anCharaNo, 0);
+	return true;
+}
+
+int T_BattleSequenceManager::start()
+{
+	this.add();
+	ref T_BattleSequence rfsSeq = this.get(0);
+	if (rfsSeq === NULL)
+	{
+		return -1;
+	}
+	int nNo = rfsSeq.getNo();
+	if (nNo <= 0)
+	{
+		return 0;
+	}
+	rfsSeq.setStatus(1);
+	UPDATE(true);
+	return nNo;
+}
+
+bool T_BattleSequenceManager::end(int nCharaNo)
+{
+	ref T_BattleSequence rfsSeq = this.get(0);
+	if (rfsSeq === NULL)
+	{
+		return false;
+	}
+	if (nCharaNo > 0 && rfsSeq.getCharaNo() != nCharaNo)
+	{
+		return false;
+	}
+	rfsSeq.setStatus(0);
+	rfsSeq.moveOut();
+	rfsSeq.set(0);
+	this.eraseSequence(0);
+	this.setPos(true, 0);
+	UPDATE(true);
+	return true;
+}
+
+void T_BattleSequenceManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asSequence.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSequence[i].setShow(bShow);
+	}
+}
+
+void T_BattleSequenceManager::setSelect(int nNo, bool bSelect)
+{
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.get(i);
+		if (rfsSeq === NULL)
+		{
+			continue;
+		}
+		if (rfsSeq.getNo() == nNo)
+		{
+			rfsSeq.setSelect(bSelect);
+		}
+	}
+}
+
+void T_BattleSequenceManager::setPrepare(int nNo, bool bPrepare)
+{
+	int nCharaNo = êÌì¨î‘çÜ_ÇhÇhÇb(nNo);
+	if (nCharaNo <= 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.get(i);
+		if (rfsSeq === NULL)
+		{
+			continue;
+		}
+		if (rfsSeq.getCharaNo() == nCharaNo)
+		{
+			rfsSeq.setPrepare(bPrepare);
+			bPrepare = false;
+		}
+	}
+}
+
+void T_BattleSequenceManager::setPiyori(int nNo, bool bPiyori)
+{
+	int nCharaNo = êÌì¨î‘çÜ_ÇhÇhÇb(nNo);
+	if (nCharaNo <= 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.get(i);
+		if (rfsSeq === NULL)
+		{
+			continue;
+		}
+		if (rfsSeq.getCharaNo() == nCharaNo)
+		{
+			rfsSeq.setPiyori(bPiyori);
+			bPiyori = false;
+		}
+	}
+}
+
+void T_BattleSequenceManager::setDead(ref array@int anNo)
+{
+	if (anNo === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = anNo.Numof();
+	if (cnt <= 0)
+	{
+		return;
+	}
+	array@int anCharaNo;
+	anCharaNo.Alloc(cnt);
+	for (i = 0; i < cnt; ++i)
+	{
+		anCharaNo[i] = êÌì¨î‘çÜ_ÇhÇhÇb(anNo[i]);
+	}
+	this._setDead(anCharaNo, 0);
+	anCharaNo.Free();
+}
+
+ref T_BattleSequence T_BattleSequenceManager::get(int nIndex)
+{
+	int idx = this.getSequence(nIndex);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asSequence[idx];
+}
+
+bool T_BattleSequenceManager::_setDead(ref array@int anCharaNo, int nCharaNo)
+{
+	if (anCharaNo === NULL)
+	{
+		return false;
+	}
+	int cnt2 = anCharaNo.Numof();
+	if (cnt2 <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	int nEndIndex = cnt - 1;
+	array@int anIndex;
+	i = 0;
+	while (true)
+	{
+		if (i > nEndIndex)
+		{
+			break;
+		}
+		int idx = this.getSequence(i);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		if (anCharaNo.Find(0, cnt2, this.m_asSequence[idx].getCharaNo()) >= 0)
+		{
+			anIndex.PushBack(idx);
+			this.eraseSequence(i);
+			--nEndIndex;
+			continue;
+		}
+	label0:
+		++i;
+	}
+	if (this.erase(anIndex) <= 0)
+	{
+		return false;
+	}
+	this.setPos(true, nCharaNo);
+	UPDATE(true);
+	return true;
+}
+
+int T_BattleSequenceManager::add()
+{
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	array@int anIndex;
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = this.getSequence(i);
+		if (idx < 0)
+		{
+			continue;
+		}
+		if (this.m_asSequence[idx].getNo() > 0)
+		{
+			++nCount;
+			continue;
+		}
+		anIndex.PushBack(idx);
+	}
+	int cnt2 = anIndex.Numof();
+	if (cnt2 <= 0)
+	{
+		return 0;
+	}
+	int nCount2 = 0;
+	int nMax = êÌì¨èÓïÒ_âÒêî();
+	for (i = 0; i < cnt2; ++i)
+	{
+		if (nCount >= nMax)
+		{
+			break;
+		}
+		int nNo = this.getNextNo();
+		if (nNo <= 0)
+		{
+			break;
+		}
+		this.m_asSequence[anIndex[i]].set(nNo);
+		++nCount;
+		++nCount2;
+	}
+	for (; i < cnt2; ++i)
+	{
+		this.m_asSequence[anIndex[i]].set(0);
+	}
+	if (nCount2 > 0)
+	{
+		int nStrX = 1024;
+		for (i = 0; i < cnt2; ++i)
+		{
+			ref T_BattleSequence rfsSeq = this.m_asSequence[anIndex[i]];
+			rfsSeq.setPos(nStrX, rfsSeq.getPosY());
+		}
+	}
+	this.setPos(nCount2 > 0, 0);
+	UPDATE(true);
+	return cnt2;
+}
+
+int T_BattleSequenceManager::erase(ref array@int anIndex)
+{
+	int i = 0;
+	int cnt = anIndex.Numof();
+	if (cnt <= 0)
+	{
+		return 0;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.m_asSequence[anIndex[i]];
+		int nX = rfsSeq.getPosX();
+		int nY = rfsSeq.getPosY();
+		rfsSeq.moveStart(nX, nY, nX, nY + 33, 180);
+	}
+	CASTimer sTimer;
+	int nTime = 0;
+	sTimer.Reset();
+label0:
+	if (nTime < 180)
+	{
+		int nRate = 255 - é¿êîåvéZ(255.0, nTime, 180.0);
+		for (i = 0; i < cnt; ++i)
+		{
+			ref T_BattleSequence rfsSeq = this.m_asSequence[anIndex[i]];
+			rfsSeq.move(nTime);
+			rfsSeq.setBlendRate(nRate);
+		}
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label0;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.m_asSequence[anIndex[i]];
+		rfsSeq.moveEnd();
+		rfsSeq.set(0);
+	}
+	UPDATE(true);
+	return cnt;
+}
+
+void T_BattleSequenceManager::setPos(bool bMove, int nCharaNo)
+{
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	int idx = 0;
+	if (nCharaNo > 0)
+	{
+		ref T_BattleSequence rfsSeq = this.get(0);
+		if (rfsSeq !== NULL && rfsSeq.getCharaNo() == nCharaNo)
+		{
+			++idx;
+		}
+	}
+	if (bMove)
+	{
+		for (i = idx; i < cnt; ++i)
+		{
+			ref T_BattleSequence rfsSeq = this.get(i);
+			int nX = rfsSeq.getPosX();
+			int nY = rfsSeq.getPosY();
+			rfsSeq.moveStart(nX, nY, this.getIconX(i), this.getIconY(i), 150);
+		}
+		CASTimer sTimer;
+		int nTime = 0;
+		sTimer.Reset();
+	label0:
+		if (nTime < 150)
+		{
+			for (i = idx; i < cnt; ++i)
+			{
+				ref T_BattleSequence rfsSeq = this.get(i);
+				rfsSeq.move(nTime);
+			}
+			UPDATE(true);
+			nTime = sTimer.Get();
+			goto label0;
+		}
+		for (i = idx; i < cnt; ++i)
+		{
+			ref T_BattleSequence rfsSeq = this.get(i);
+			rfsSeq.moveEnd();
+		}
+		UPDATE(true);
+	}
+	for (i = idx; i < cnt; ++i)
+	{
+		ref T_BattleSequence rfsSeq = this.get(i);
+		if (rfsSeq === NULL)
+		{
+			break;
+		}
+		rfsSeq.setPos(this.getIconX(i), this.getIconY(i));
+	}
+}
+
+void T_BattleSequenceManager::eraseSequence(int nIndex)
+{
+	int i = 0;
+	int cnt = this.m_anSequence.Numof();
+	if (nIndex < 0 || nIndex >= cnt)
+	{
+		return;
+	}
+	int idx = this.m_anSequence[nIndex];
+	for (i = nIndex; i < cnt - 1; ++i)
+	{
+		this.m_anSequence[i] = this.m_anSequence[i + 1];
+	}
+	this.m_anSequence[cnt - 1] = idx;
+}
+
+int T_BattleSequenceManager::getNextNo()
+{
+	if (this.m_nCurrentIndex < 0)
+	{
+		return -1;
+	}
+	int nRet = 0;
+	int i = 0;
+	int cnt = êÌì¨èáî‘_êî();
+	int idx = this.m_nCurrentIndex;
+	for (i = 0; i < cnt; ++i)
+	{
+		idx = this.getNextIndex(idx);
+		if (idx < 0)
+		{
+			break;
+		}
+		int nNo = êÌì¨î‘çÜ_éÊìæ(êÌì¨èáî‘(idx));
+		if (êÌì¨ÉfÅ[É^_çsìÆâ¬î\(nNo, true))
+		{
+			nRet = nNo;
+			break;
+		}
+	}
+	this.m_nCurrentIndex = idx;
+	return nRet;
+}
+
+int T_BattleSequenceManager::getNextIndex(int nIndex)
+{
+	if (nIndex < 0)
+	{
+		return -1;
+	}
+	int idx = nIndex;
+	if (idx > êÌì¨èáî‘_êî())
+	{
+		idx = 1;
+	}
+	else
+	{
+		++idx;
+	}
+	return idx;
+}
+
+void T_BattleSequenceManager::outputSequence(string szComment)
+{
+	return;
+}
+

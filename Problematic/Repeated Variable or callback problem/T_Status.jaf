@@ -1,0 +1,906 @@
+bool T_Status::blinkCard()
+{
+	return this.m_sCard.blinkSkill();
+}
+
+bool T_Status::getScrollFlag()
+{
+	return this.m_bScroll;
+}
+
+ref T_StatusCard T_Status::getCard()
+{
+	return this.m_sCard;
+}
+
+ref T_ScrollBar T_Status::getScrollBar()
+{
+	return this.m_sScroll;
+}
+
+ref T_CharaList T_Status::getCharaList()
+{
+	return this.m_sList;
+}
+
+int T_Status::getEquipSkillID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 110000 + nIndex + 1;
+}
+
+int T_Status::getEquipSkillIndex(int nID)
+{
+	int idx = nID + -110001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+int T_Status::getHoldSkillID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 18 ? -1 : 120000 + nIndex + 1;
+}
+
+int T_Status::getHoldSkillIndex(int nID)
+{
+	int idx = nID + -120001;
+	return idx < 0 || idx >= 18 ? -1 : idx;
+}
+
+int T_Status::getItemID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 4 ? -1 : 130000 + nIndex + 1;
+}
+
+int T_Status::getItemIndex(int nID)
+{
+	int idx = nID + -130001;
+	return idx < 0 || idx >= 4 ? -1 : idx;
+}
+
+int T_Status::getItemRemoveID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 4 ? -1 : 139000 + nIndex + 1;
+}
+
+int T_Status::getItemRemoveIndex(int nID)
+{
+	int idx = nID + -139001;
+	return idx < 0 || idx >= 4 ? -1 : idx;
+}
+
+int T_Status::getFirstItem()
+{
+	return this.getItemID(0);
+}
+
+int T_Status::getLastItem()
+{
+	return this.getItemID(3);
+}
+
+T_Status::T_Status()
+{
+	this.clear();
+}
+
+T_Status::~T_Status()
+{
+	this.delete();
+}
+
+int T_Status::run(int nMode, int nCharaNo, int nSortMode, int nJobType)
+{
+	if (nCharaNo <= 0)
+	{
+		return 0;
+	}
+	int nRet = 0;
+	this.create(9111, nMode, nCharaNo, nSortMode, nJobType);
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID = nMode != 20 ? this.getFirstEquip() : 0;
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+		switch (nID)
+		{
+			case 100011:
+				nID = 100012;
+				break;
+			case 100013:
+				nID = 100011;
+				break;
+			default:
+				break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+void T_Status::scroll(int nValue)
+{
+	int nOld = this.m_sCard.getCharaNo();
+	if (nOld <= 0)
+	{
+		return;
+	}
+	int nCharaNo = this.m_sList.get(nValue);
+	if (nCharaNo <= 0 || nCharaNo == nOld)
+	{
+		return;
+	}
+	this.hideComment(-1);
+	this.setChara(nCharaNo, false);
+	効果音_窓開き();
+	if (this.m_bScroll && this.m_bItemOpen)
+	{
+		アイテム倉庫_再作成(-1, -1, -1, -1, nCharaNo);
+		int idx = ステータス_アイテムインデクス(アイテム倉庫_アイテム種別());
+		this.showItemComment(idx);
+	}
+}
+
+void T_Status::setSelect(int nID, bool bSelect)
+{
+	if (nID > 900000)
+	{
+		システムバー_選択設定(nID, bSelect, true);
+		return;
+	}
+	if (nID > 140000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+	}
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+void T_Status::showItemComment(int nIndex)
+{
+	if (アイテム説明_表示(this.m_sCard.getItemNo(nIndex), true, 0) >= 0)
+	{
+		アイテム説明_位置設定(this.getItemCommentX(nIndex), this.getItemCommentY(nIndex));
+	}
+	else
+	{
+		アイテム説明_消し();
+	}
+	説明_消し(this.m_nCommentID);
+}
+
+bool T_Status::create(int nZ, int nMode, int nCharaNo, int nSortMode, int nJobType)
+{
+	this.delete();
+	int nCount = -1;
+	if (nMode == 20)
+	{
+		if (!this.m_sLevelUp.create(nCharaNo, nZ + 10))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		nCount = this.createCharaList(nMode, nSortMode, nJobType);
+		if (nCount < 0)
+		{
+			return false;
+		}
+	}
+	this.m_nMode = nMode;
+	this.m_bScroll = nMode != 20;
+	this.m_bItemOpen = false;
+	this.m_spBase.setCg(11501);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	if (this.m_bScroll)
+	{
+		this.m_spScrollBase.setCg(11500);
+		this.m_spScrollBase.setPos(8, 59);
+		this.m_spScrollBase.setZ(nZ + 1);
+		this.m_sScroll.create(2, 527, 140000, 0, 0);
+		this.m_sScroll.setPos(14, 119);
+		this.m_sScroll.setZ(nZ + 2);
+		this.m_sScroll.setActive(-1, true);
+		this.m_sScroll.setCallback(&scrollStatus);
+		this.m_sScroll.setValue(0, nCount, 1);
+	}
+	this.m_sCard.create(nZ + 1, false, this.m_spBase);
+	this.m_sButton.create();
+	this.m_sButtonLock.create();
+	int i = 0;
+	for (i = 0; i < 6; ++i)
+	{
+		int nID = this.getEquipSkillID(i);
+		int nX = ステータス_実装スキルＸ(i);
+		int nY = ステータス_実装スキルＹ(i);
+		ボタン登録_矩形(this.m_sButton, nID, nX, nY, 142, 24, true);
+		ボタン登録_矩形(this.m_sButtonLock, nID, nX, nY, 142, 24, true);
+	}
+	for (i = 0; i < 18; ++i)
+	{
+		int nID = this.getHoldSkillID(i);
+		int nX = ステータス_保有スキルＸ(i);
+		int nY = ステータス_保有スキルＹ(i);
+		ボタン登録_矩形(this.m_sButton, nID, nX, nY, 142, 24, true);
+	}
+	if (nMode != 20)
+	{
+		for (i = 0; i < 4; ++i)
+		{
+			this.createItem(i);
+		}
+	}
+	ボタン登録_ＣＧ(this.m_sButton, 100011, 60, 410, 11507, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100012, 60, 410, 11508, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100013, 60, 549, 11509, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100002, 388, 610, 11505, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100009, 510, 65, 10007, -1, -1, -2147483648, -2147483648);
+	ボタン登録_矩形(this.m_sButtonLock, 100001, 271, 127, 142, 468, true);
+	this.m_sButton.setButtonKey(100011, 69);
+	this.m_sButton.setButtonKey(100012, 8);
+	this.m_sButton.setButtonKey(100013, 46);
+	this.m_sButton.setButtonKey(100002, 83);
+	this.m_sButton.setZ(nZ + 10);
+	this.m_sButtonLock.setZ(nZ + 10);
+	this.m_spFrame.create(100, 100, 216, 255, 0, 102);
+	this.m_spFrame.setZ(nZ + 10);
+	this.setChara(nCharaNo, true);
+	this.m_sShortcutInfo.create(9901);
+	this.m_sShortcutInfo.addAll(this.m_sButton);
+	this.m_sShortcutInfo.addAll(システムバー_ボタン群());
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&ステータス_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&ステータス_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&ステータス_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&ステータス_右矢印);
+	this.m_sInputKey.setSelectCallback(&ステータス_選択設定);
+	this.m_sInputKeyLock.create(0, this.m_sButtonLock);
+	this.m_sInputKeyLock.setArrowUpCallback(&ステータス_上矢印_ロック);
+	this.m_sInputKeyLock.setArrowDownCallback(&ステータス_下矢印_ロック);
+	this.m_sInputKeyLock.setArrowLeftCallback(&ステータス_左矢印_ロック);
+	this.m_sInputKeyLock.setArrowRightCallback(&ステータス_右矢印_ロック);
+	return true;
+}
+
+bool T_Status::createItem(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 4)
+	{
+		return false;
+	}
+	int nX = ステータス_アイテムＸ(nIndex);
+	int nY = ステータス_アイテムＹ(nIndex);
+	if (!クエスト_攻略中())
+	{
+		int nID = this.getItemRemoveID(nIndex);
+		int nX2 = nX + 100;
+		int nY2 = nY + 10;
+		ボタン登録_ＣＧ(this.m_sButton, nID, nX2, nY2, 11506, -1, -1, -2147483648, -2147483648);
+	}
+	ボタン登録_矩形(this.m_sButton, this.getItemID(nIndex), nX, nY, 100, 100, false);
+	return true;
+}
+
+void T_Status::delete()
+{
+	this.hideComment(-1);
+	this.m_sList.clear();
+	this.m_spBase.delete();
+	this.m_sCard.delete();
+	this.m_sLevelUp.delete();
+	this.m_spScrollBase.delete();
+	this.m_sScroll.delete();
+	this.m_sButton.delete();
+	this.m_sButtonLock.delete();
+	this.m_spFrame.delete();
+	this.m_sShortcutInfo.delete();
+	this.m_sInputKey.delete();
+	this.m_sInputKeyLock.delete();
+	this.clear();
+}
+
+void T_Status::clear()
+{
+	this.m_nMode = -1;
+	this.m_bEntrySkill = false;
+	this.m_nCommentID = -1;
+	this.m_bScroll = false;
+	this.m_bItemOpen = false;
+}
+
+int T_Status::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 100009;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+			this.checkRemoveItem(nID2);
+		}
+		else if (this.checkDrag(nID2))
+		{
+			nRet = nID2;
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_Status::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (システムバー_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	if (this.m_bScroll)
+	{
+		switch (this.m_sScroll.checkInput(nSelectID))
+		{
+			case 0:
+				if (nSelectID > 0)
+				{
+					goto label0;
+				}
+				break;
+			case 1:
+			case 2:
+				return 2;
+			default:
+				break;
+		}
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			システムバー_入力ＯＦＦ();
+			this.m_sScroll.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+label0:
+	this.m_sScroll.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	システムバー_入力ＯＮ();
+	return 0;
+}
+
+int T_Status::checkKey(int nID)
+{
+	if (this.m_bScroll)
+	{
+		if (this.m_sScroll.checkKey())
+		{
+			return 0;
+		}
+	}
+	int nID2 = システムバー_キー確認(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.checkRemoveItemKey(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_nMode == 20)
+	{
+		if (nID <= 0)
+		{
+			int nKey = キー_決定();
+			if (nKey > 0)
+			{
+				効果音_クリック();
+				キー_離し待ち(nKey, true);
+				return 100009;
+			}
+		}
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	this.m_sShortcutInfo.check();
+	return 0;
+}
+
+bool T_Status::checkWheel()
+{
+	if (this.m_bScroll)
+	{
+		if (this.m_sScroll.checkWheel())
+		{
+			return true;
+		}
+	}
+	ホイール_クリア();
+	return false;
+}
+
+bool T_Status::checkDrag(int nID)
+{
+	if (画面操作モード確認() != 0)
+	{
+		return false;
+	}
+	if (nID < 110000 || nID >= 130000)
+	{
+		return false;
+	}
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_Status::checkRemoveItem(int nID)
+{
+	if (クエスト_攻略中())
+	{
+		return 0;
+	}
+	int nSelectIndex = -1;
+	int nRemoveID = 0;
+	if (nID > 900000)
+	{
+		goto label0;
+	}
+	if (nID > 139000)
+	{
+		int idx = this.getItemRemoveIndex(nID);
+		if (idx < 0 || idx >= 4)
+		{
+			goto label0;
+		}
+		nSelectIndex = idx;
+		nRemoveID = nID;
+		goto label0;
+	}
+	if (nID > 130000)
+	{
+		int idx = this.getItemIndex(nID);
+		if (idx < 0 || idx >= 4)
+		{
+			goto label0;
+		}
+		int nType = ステータス_アイテム種別(idx);
+		if (nType <= 0)
+		{
+			goto label0;
+		}
+		int nItemNo = キャラ_装備取得(this.m_sCard.getCharaNo(), nType);
+		if (nItemNo <= 0)
+		{
+			goto label0;
+		}
+		if (アイテム_外せません(nItemNo) > 0)
+		{
+			goto label0;
+		}
+		nRemoveID = this.getItemRemoveID(idx);
+		goto label0;
+	}
+label0:
+	int i = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		int nID2 = this.getItemRemoveID(i);
+		this.m_sButton.setButtonShow(nID2, nID2 == nRemoveID);
+	}
+	if (nSelectIndex >= 0)
+	{
+		this.m_spFrame.setPos(ステータス_アイテムＸ(nSelectIndex), ステータス_アイテムＹ(nSelectIndex));
+		this.m_spFrame.setShow(1);
+	}
+	else
+	{
+		this.m_spFrame.setShow(0);
+	}
+	return nRemoveID;
+}
+
+int T_Status::checkRemoveItemKey(int nID)
+{
+	if (!キー_押下(68))
+	{
+		return 0;
+	}
+	if (クエスト_攻略中())
+	{
+		goto label0;
+	}
+	int idx = -1;
+	if (nID > 139000)
+	{
+		idx = this.getItemRemoveIndex(nID);
+		goto label1;
+	}
+	if (nID > 130000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label1;
+	}
+label1:
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	効果音_クリック();
+	キー_離し待ち(68, true);
+	return this.getItemRemoveID(idx);
+label0:
+	効果音_エラー();
+	キー_離し待ち(68, true);
+	return 0;
+}
+
+void T_Status::resetSelect()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sButton.resetSelect();
+	this.m_sButtonLock.resetSelect();
+	システムバー_選択解除();
+	this.checkRemoveItem(0);
+	this.hideComment(-1);
+}
+
+void T_Status::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 900000)
+	{
+		システムバー_カーソル設定(nID);
+		return;
+	}
+	if (nID > 140000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_Status::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	string szText = "";
+	if (nID > 900000)
+	{
+		アイテム説明_消し();
+		goto label0;
+	}
+	if (nID > 139000)
+	{
+		int idx = this.getItemRemoveIndex(nID);
+		ステータス_パラメータ表示(ステータス_アイテム種別(idx), 0);
+		goto label1;
+	}
+	if (nID > 130000)
+	{
+		if (!this.showCommentItem(nID))
+		{
+			goto label0;
+		}
+		goto label1;
+	}
+	if (nID > 120000)
+	{
+		int idx = this.getHoldSkillIndex(nID);
+		ref T_SkillButton rfsSkill = this.m_sCard.getHoldSkill().getFromIndex(idx);
+		if (rfsSkill === NULL)
+		{
+			goto label0;
+		}
+		スキル説明_表示(nID, rfsSkill.getSkillNo(), ステータス_保有スキルＸ(idx) + 142, ステータス_保有スキルＹ(idx), 500);
+		アイテム説明_消し();
+		ステータス_パラメータ消し();
+		goto label1;
+	}
+	if (nID > 110000)
+	{
+		int idx = this.getEquipSkillIndex(nID);
+		ref T_SkillButton rfsSkill = this.m_sCard.getEquipSkill().getFromIndex(idx);
+		if (rfsSkill === NULL)
+		{
+			goto label0;
+		}
+		スキル説明_表示(nID, rfsSkill.getSkillNo(), ステータス_実装スキルＸ(idx) + 142, ステータス_実装スキルＹ(idx), 500);
+		アイテム説明_消し();
+		ステータス_パラメータ消し();
+		goto label1;
+	}
+	switch (nID)
+	{
+		case 100011:
+			szText = "Store this skill profile so you can switch to it later.";
+			break;
+		case 100012:
+			szText = "Change active skills back to the skill profile saved earlier.";
+			break;
+		case 100013:
+			szText = "Delete the skill profile.";
+			break;
+		case 100002:
+			szText = "Opens skill screen.";
+			break;
+		case 100009:
+			break;
+		default:
+			goto label0;
+	}
+	ボタン説明_表示(nID, "", szText, this.m_sButton.getButtonPosX(nID) + this.m_sButton.getButtonWidth(nID), this.m_sButton.getButtonPosY(nID), 500);
+	アイテム説明_消し();
+	ステータス_パラメータ消し();
+label1:
+	this.m_nCommentID = nID;
+	return;
+label0:
+	this.hideComment(-1);
+}
+
+void T_Status::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+		説明_ＩＤクリア();
+	}
+	アイテム説明_消し();
+	ステータス_パラメータ消し();
+	this.m_nCommentID = -1;
+}
+
+bool T_Status::showCommentItem(int nID)
+{
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nItemNo = this.m_sCard.getItemNo(idx);
+	int nX = this.m_sCard.getItemX(idx);
+	int nY = this.m_sCard.getItemY(idx);
+	if (nItemNo > 0)
+	{
+		if (アイテム説明_表示(nItemNo, true, 500) >= 0)
+		{
+			アイテム説明_位置設定(nX - アイテム説明_幅(), nY);
+		}
+		説明_消し(this.m_nCommentID);
+		ステータス_パラメータ消し();
+		return true;
+	}
+	if (idx != 0)
+	{
+		return false;
+	}
+	if (説明_表示(nID, "", "The item equipped here will disappear" + "@after level reset, but its effect" + "@will be incorporated into the character.", "", 500, false) < 0)
+	{
+		return false;
+	}
+	説明_位置設定(nX - 説明_幅(), nY);
+	アイテム説明_消し();
+	ステータス_パラメータ消し();
+	return true;
+}
+
+int T_Status::getItemCommentX(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+			return this.m_sCard.getItemX(nIndex) - アイテム説明_幅();
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_Status::getItemCommentY(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return this.m_sCard.getItemY(nIndex);
+		case 1:
+			return 230;
+		case 2:
+			return 387;
+		case 3:
+			return 465;
+		default:
+			break;
+	}
+	return -1;
+}
+
+bool T_Status::setChara(int nCharaNo, bool bScrollBar)
+{
+	if (!this.m_sCard.set(nCharaNo, 0))
+	{
+		return false;
+	}
+	this.m_bEntrySkill = キャラ_登録スキルあり(nCharaNo);
+	this.setButtonActive(true);
+	this.setShow(true);
+	if (bScrollBar)
+	{
+		this.m_sScroll.setValue(this.m_sList.getIndex(nCharaNo), -1, -1);
+	}
+	return true;
+}
+
+void T_Status::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sCard.setShow(bShow);
+	this.m_sLevelUp.setShow(bShow);
+	this.m_spScrollBase.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+	this.m_sButtonLock.setShow(bShow);
+	this.m_spFrame.setShow(0);
+	this.setButtonShow(bShow);
+}
+
+void T_Status::setButtonShow(bool bShow)
+{
+	int i = 0;
+	this.m_sButton.setShow(bShow);
+	for (i = 0; i < 6; ++i)
+	{
+		this.m_sButton.setButtonShow(this.getEquipSkillID(i), this.m_sCard.getEquipSkillNo(i) > 0 ? bShow : 0);
+	}
+	for (i = 0; i < 18; ++i)
+	{
+		this.m_sButton.setButtonShow(this.getHoldSkillID(i), this.m_sCard.getHoldSkillNo(i) > 0 ? bShow : 0);
+	}
+	if (!クエスト_攻略中())
+	{
+		for (i = 0; i < 4; ++i)
+		{
+			this.m_sButton.setButtonShow(this.getItemRemoveID(i), false);
+		}
+	}
+	this.m_sButton.setButtonShow(100011, this.m_bEntrySkill ? 0 : bShow);
+	this.m_sButton.setButtonShow(100012, this.m_bEntrySkill ? bShow : 0);
+	this.m_sButton.setButtonShow(100013, this.m_bEntrySkill ? bShow : 0);
+}
+
+void T_Status::setButtonActive(bool bActive)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	int i = 0;
+	for (i = 0; i < 6; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getEquipSkillID(i), this.m_sCard.getEquipSkillNo(i) > 0 ? bActive : 0);
+	}
+	for (i = 0; i < 18; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getHoldSkillID(i), キャラスキル_実装可能(nCharaNo, this.m_sCard.getHoldSkillNo(i)) ? bActive : 0);
+	}
+	if (クエスト_攻略中())
+	{
+		for (i = 0; i < 4; ++i)
+		{
+			this.m_sButton.setButtonActive(this.getItemID(i), false);
+		}
+	}
+	else
+	{
+		for (i = 0; i < 4; ++i)
+		{
+			this.m_sButton.setButtonActive(this.getItemID(i), bActive);
+			this.m_sButton.setButtonActive(this.getItemRemoveID(i), bActive);
+		}
+	}
+	this.m_sButton.setButtonActive(100011, this.m_bEntrySkill ? 0 : bActive);
+	this.m_sButton.setButtonActive(100012, this.m_bEntrySkill ? bActive : 0);
+	this.m_sButton.setButtonActive(100013, this.m_bEntrySkill ? bActive : 0);
+	this.m_sButton.setButtonActive(100009, bActive);
+}
+
+int T_Status::createCharaList(int nMode, int nSortMode, int nJobType)
+{
+	this.m_sList.clear();
+	switch (nMode)
+	{
+		case 0:
+			return this.m_sList.create(1, nSortMode, nJobType);
+		case 11:
+			return this.m_sList.create(0, nSortMode, nJobType);
+		case 12:
+			return this.m_sList.create(2, nSortMode, nJobType);
+		case 20:
+		default:
+			break;
+	}
+	return -1;
+}
+

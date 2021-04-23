@@ -1,0 +1,44 @@
+void キー待ち(bool _ignore_skip_mode)
+{
+	SYS_バックシーン登録();
+	CASClick LButtonClick;
+	CASClick EnterKeyClick;
+	LButtonClick.Init(1, true);
+	EnterKeyClick.Init(13, true);
+	int _time_out = GetTickCount() + SYS_オートモード待機時間計算(15);
+	for (; ; )
+	{
+		_g_MouseWheel._Update(true);
+		if (SYS_未読スキップ中確認())
+		{
+			SYS_メッセージスキップ待ち();
+			break;
+		}
+		if (LButtonClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (EnterKeyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (!_ignore_skip_mode)
+		{
+			if (SYS_Ｍ送モード確認(1002))
+			{
+				SYS_メッセージスキップ待ち();
+				break;
+			}
+			if (SYS_Ｍ送モード確認(1003) && GetTickCount() >= _time_out)
+			{
+				break;
+			}
+		}
+		if (SYS_ホイールバック確認())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+

@@ -1,0 +1,175 @@
+ref T_JobIcon T_CharaJob::getIcon()
+{
+	return this.m_sJob;
+}
+
+ref T_Number T_CharaJob::getLevel()
+{
+	return this.m_sLevel;
+}
+
+ref T_Number T_CharaJob::getMax()
+{
+	return this.m_sMax;
+}
+
+bool T_CharaJob::suspend()
+{
+	this.m_sLevel.suspend();
+	this.m_sMax.suspend();
+	return this.m_sJob.suspend();
+}
+
+bool T_CharaJob::resume()
+{
+	this.m_sLevel.resume();
+	this.m_sMax.resume();
+	return this.m_sJob.resume();
+}
+
+bool T_CharaJob::isSuspend()
+{
+	return this.m_sJob.isSuspend();
+}
+
+T_CharaJob::T_CharaJob()
+{
+	this.clear();
+}
+
+T_CharaJob::~T_CharaJob()
+{
+	this.delete();
+}
+
+bool T_CharaJob::create(int nJob, int nType)
+{
+	this.delete();
+	this.m_sJob.create(nJob, true);
+	this.m_sLevel.create(10122, false, 3, 3, 0);
+	if (nType == 1)
+	{
+		this.m_sMax.create(10122, false, 3, 3, 0);
+		this.m_spInfinity.setCg(11499);
+	}
+	this.m_nType = nType;
+	return true;
+}
+
+void T_CharaJob::delete()
+{
+	this.m_sJob.delete();
+	this.m_sLevel.delete();
+	this.m_sMax.delete();
+	this.m_spInfinity.delete();
+	this.clear();
+}
+
+void T_CharaJob::clear()
+{
+	this.m_nType = -1;
+	this.m_bInfinity = false;
+}
+
+bool T_CharaJob::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!this.m_sJob.copyToSprite(rfsDst, nDstX, nDstY))
+	{
+		return false;
+	}
+	if (this.m_nType == 1)
+	{
+		if (!this.m_sLevel.copyToSprite(rfsDst, nDstX + 2, nDstY + 36))
+		{
+			return false;
+		}
+		if (this.m_bInfinity)
+		{
+			if (!this.m_spInfinity.copyToSprite(rfsDst, nDstX + 33, nDstY + 37, -1, -1, 0))
+			{
+				return false;
+			}
+		}
+		else if (!this.m_sMax.copyToSprite(rfsDst, nDstX + 31, nDstY + 36))
+		{
+			return false;
+		}
+	}
+	else if (!this.m_sLevel.copyToSprite(rfsDst, nDstX + 4, nDstY + 36))
+	{
+		return false;
+	}
+	return true;
+}
+
+void T_CharaJob::setPos(int nX, int nY)
+{
+	this.m_sJob.setPos(nX, nY);
+	if (this.m_nType == 1)
+	{
+		this.m_sLevel.setPos(nX + 2, nY + 36);
+		this.m_sMax.setPos(nX + 31, nY + 36);
+		this.m_spInfinity.setPos(nX + 33, nY + 37);
+	}
+	else
+	{
+		this.m_sLevel.setPos(nX + 4, nY + 36);
+	}
+}
+
+void T_CharaJob::setZ(int nZ)
+{
+	this.m_sJob.setZ(nZ);
+	this.m_sLevel.setZ(nZ);
+	if (this.m_nType == 1)
+	{
+		this.m_sMax.setZ(nZ);
+		this.m_spInfinity.setZ(nZ);
+	}
+}
+
+void T_CharaJob::setShow(bool bShow)
+{
+	this.m_sJob.setShow(bShow);
+	this.m_sLevel.setShow(bShow);
+	if (this.m_nType == 1)
+	{
+		if (this.m_bInfinity)
+		{
+			this.m_sMax.setShow(false);
+			this.m_spInfinity.setShow(bShow);
+		}
+		else
+		{
+			this.m_sMax.setShow(bShow);
+			this.m_spInfinity.setShow(0);
+		}
+	}
+}
+
+void T_CharaJob::setBlendRate(int nBlendRate)
+{
+	this.m_sJob.setBlendRate(nBlendRate);
+	this.m_sLevel.setBlendRate(nBlendRate);
+	if (this.m_nType == 1)
+	{
+		this.m_sMax.setBlendRate(nBlendRate);
+		this.m_spInfinity.setBlendRate(nBlendRate);
+	}
+}
+
+void T_CharaJob::setLevel(int nLevel, int nLevelMax)
+{
+	this.m_sLevel.setValue(nLevel, nLevel >= nLevelMax ? 10124 : 10122, false);
+	if (this.m_nType == 1)
+	{
+		this.m_bInfinity = nLevelMax == 2147483647;
+		this.m_sMax.setValue(nLevelMax, 0, false);
+		this.setShow(this.m_sLevel.getShow());
+	}
+}
+

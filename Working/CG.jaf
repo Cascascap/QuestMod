@@ -1,0 +1,25 @@
+bool ‚`Q‚b‚f‘¶İŠm”F(string CGName)
+{
+	return ChipmunkSpriteEngine.CG_IsExist(CGName);
+}
+
+int ‚`Q‚b‚f•æ“¾(string CGName)
+{
+	cg_metrics_t CGMetrics;
+	if (!ChipmunkSpriteEngine.CG_GetMetrics(CGName, CGMetrics))
+	{
+		return 0;
+	}
+	return CGMetrics.nWidth;
+}
+
+int ‚`Q‚b‚f‚‚³æ“¾(string CGName)
+{
+	cg_metrics_t CGMetrics;
+	if (!ChipmunkSpriteEngine.CG_GetMetrics(CGName, CGMetrics))
+	{
+		return 0;
+	}
+	return CGMetrics.nHeight;
+}
+

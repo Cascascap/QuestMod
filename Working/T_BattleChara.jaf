@@ -1,0 +1,922 @@
+bool T_BattleChara::updateCard()
+{
+	return this.m_sCard.update();
+}
+
+bool T_BattleChara::animeStartHp(int nHp, int nTotalTime)
+{
+	return this.m_sCard.getHpBar().animeStart(nHp, nTotalTime);
+}
+
+bool T_BattleChara::isAnimeHp()
+{
+	return this.m_sCard.getHpBar().isAnime();
+}
+
+int T_BattleChara::getNo()
+{
+	return this.m_nNo;
+}
+
+bool T_BattleChara::getSelect()
+{
+	return this.m_bSelect;
+}
+
+int T_BattleChara::getStatus()
+{
+	return this.m_nStatus;
+}
+
+int T_BattleChara::getAttackStatus()
+{
+	return this.m_sMark.getStatus(0);
+}
+
+int T_BattleChara::getDefenseStatus()
+{
+	return this.m_sMark.getStatus(1);
+}
+
+bool T_BattleChara::isPoison()
+{
+	return this.m_sMark.getFlag(0);
+}
+
+bool T_BattleChara::isPiyori()
+{
+	return this.m_sMark.getFlag(1);
+}
+
+bool T_BattleChara::isDead()
+{
+	return this.m_sMark.getFlag(2);
+}
+
+bool T_BattleChara::isGuard()
+{
+	return this.m_sMark2.isGuard();
+}
+
+bool T_BattleChara::isBurster()
+{
+	return this.m_sMark2.isBurster();
+}
+
+bool T_BattleChara::isStealth()
+{
+	return this.m_sMark2.isStealth();
+}
+
+bool T_BattleChara::isProtect()
+{
+	return this.m_sMark2.isProtect();
+}
+
+bool T_BattleChara::isBarrier()
+{
+	return this.m_sMark2.isBarrier();
+}
+
+int T_BattleChara::getCharaNo()
+{
+	return this.m_sCard.getCharaNo();
+}
+
+int T_BattleChara::getPosX()
+{
+	return this.m_sCard.getPosX();
+}
+
+int T_BattleChara::getPosY()
+{
+	return this.m_sCard.getPosY();
+}
+
+int T_BattleChara::getZ()
+{
+	return this.m_sCard.getZ();
+}
+
+int T_BattleChara::getFaceX()
+{
+	return this.m_sCard.getFaceX();
+}
+
+int T_BattleChara::getFaceY()
+{
+	return this.m_sCard.getFaceY();
+}
+
+int T_BattleChara::getFaceZ()
+{
+	return this.m_sCard.getFaceZ();
+}
+
+int T_BattleChara::getFaceMoveX()
+{
+	return this.m_sCard.getFaceMoveX();
+}
+
+int T_BattleChara::getFaceMoveY()
+{
+	return this.m_sCard.getFaceMoveY();
+}
+
+int T_BattleChara::getFaceMoveZ()
+{
+	return this.m_sCard.getFaceMoveZ();
+}
+
+bool T_BattleChara::getShow()
+{
+	return this.m_sCard.getShow();
+}
+
+ref T_Sprite T_BattleChara::getBase()
+{
+	return this.m_sCard.getBase();
+}
+
+ref T_BattleBar T_BattleChara::getHpBar()
+{
+	return this.m_sCard.getHpBar();
+}
+
+ref T_CharaSkill T_BattleChara::getSkill()
+{
+	return this.m_sCard.getSkill();
+}
+
+ref T_CharaFace T_BattleChara::getFace()
+{
+	return this.m_sCard.getFace();
+}
+
+ref T_BattleMarkManager T_BattleChara::getMark()
+{
+	return this.m_sMark;
+}
+
+ref T_BattleMarkNum T_BattleChara::getMark2()
+{
+	return this.m_sMark2;
+}
+
+T_BattleChara::T_BattleChara()
+{
+	this.clear();
+}
+
+T_BattleChara::~T_BattleChara()
+{
+	this.delete();
+}
+
+bool T_BattleChara::create(int nNo)
+{
+	this.delete();
+	if (!this.m_sCard.create(戦闘番号_ＩＩＣ(nNo), 1))
+	{
+		return false;
+	}
+	this.m_spMask.setCg(10130);
+	this.m_sMark.create(0);
+	this.m_sMark2.create();
+	this.m_nNo = nNo;
+	this.setStatus(0);
+	return true;
+}
+
+void T_BattleChara::delete()
+{
+	this.m_sCard.delete();
+	this.m_spMask.delete();
+	this.m_sMark.delete();
+	this.m_sMark2.delete();
+	this.clear();
+}
+
+void T_BattleChara::clear()
+{
+	this.m_nNo = -1;
+	this.m_nStatus = -1;
+	this.m_bSelect = false;
+	this.m_bMaskShow = false;
+}
+
+bool T_BattleChara::update(int nTime)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	if (!this.getShow())
+	{
+		return false;
+	}
+	this.m_sMark.update();
+	this.m_sMark2.update();
+	this.m_sCard.getHpBar().anime(nTime);
+	return true;
+}
+
+void T_BattleChara::moveFace(int nMoveX, int nMoveY, int nMoveZ, int nMoveTime)
+{
+	this.m_sCard.moveFace(nMoveX, nMoveY, nMoveZ, nMoveTime);
+}
+
+void T_BattleChara::resetMark()
+{
+	this.m_sMark.reset();
+	this.m_sMark2.reset();
+	this.m_spMask.setShow(0);
+	this.m_sCard.getNonSkill().setShow(0);
+	this.m_sCard.getDead().setShow(0);
+	this.m_bMaskShow = false;
+}
+
+void T_BattleChara::setPos(int nX, int nY)
+{
+	this.m_sCard.setPos(nX, nY);
+	this.m_spMask.setPos(nX, nY);
+	this.m_sMark.setPos(nX + 143, nY + 24);
+	this.m_sMark2.setPos(nX + 111, nY + 80);
+}
+
+void T_BattleChara::setZ(int nZ)
+{
+	this.m_sCard.setZ(nZ, true);
+	this.m_spMask.setZ(nZ + 55);
+	this.m_sMark.setZ(nZ + 1);
+	this.m_sMark2.setZ(nZ + 10);
+}
+
+void T_BattleChara::setShow(bool bShow)
+{
+	bool bShow2 = this.isDead() ? 0 : bShow;
+	this.m_sCard.setShow(bShow);
+	this.m_spMask.setShow(bShow && this.m_bMaskShow);
+	this.m_sMark.setShow(bShow);
+	this.m_sMark2.setShow(bShow2);
+}
+
+void T_BattleChara::setSelect(bool bSelect)
+{
+	this.m_bSelect = bSelect;
+	if (bSelect)
+	{
+		this.m_sCard.coverColorFace(255, 0, 255, 128, true);
+	}
+	else
+	{
+		this.m_sCard.coverColorFace(-1, -1, -1, -1, true);
+	}
+}
+
+void T_BattleChara::setBlink(int nBlink)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	if (!this.getShow())
+	{
+		return;
+	}
+	if (nBlink > 0)
+	{
+		this.m_sCard.coverColorFace(255, 0, 255, 128, true);
+	}
+	else
+	{
+		this.m_sCard.coverColorFace(-1, -1, -1, -1, true);
+	}
+}
+
+int T_BattleChara::setStatus(int nStatus)
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	if (nStatus < 0 || nStatus >= 2)
+	{
+		return -1;
+	}
+	if (nStatus == this.m_nStatus)
+	{
+		return this.m_nStatus;
+	}
+	this.m_nStatus = nStatus;
+	return this.m_nStatus;
+}
+
+int T_BattleChara::setAttackStatus(int nStatus)
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	return this.m_sMark.setStatus(0, nStatus, 1, 2);
+}
+
+int T_BattleChara::setDefenseStatus(int nStatus)
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	return this.m_sMark.setStatus(1, nStatus, 11, 12);
+}
+
+bool T_BattleChara::setPoison(bool bFlag)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	return this.m_sMark.setFlag(0, bFlag, 21);
+}
+
+bool T_BattleChara::setPiyori(bool bFlag)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	return this.m_sMark.setFlag(1, bFlag, 22);
+}
+
+bool T_BattleChara::setDead(bool bFlag)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	if (bFlag)
+	{
+		this.m_sMark.reset();
+	}
+	bool bRet = this.m_sMark.setFlag(2, bFlag, 23);
+	this.m_sCard.setDeadShow(bRet);
+	return bRet;
+}
+
+bool T_BattleChara::setMask(bool bFlag)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	this.m_bMaskShow = bFlag;
+	this.setShow(this.getShow());
+	return bFlag;
+}
+
+bool T_BattleCharaManager::isCreated()
+{
+	return this.m_aspBase[0].isCreated();
+}
+
+T_BattleCharaManager::T_BattleCharaManager()
+{
+	this.clear();
+}
+
+T_BattleCharaManager::~T_BattleCharaManager()
+{
+	this.delete();
+}
+
+bool T_BattleCharaManager::create(int nZ)
+{
+	if (!this.createChara(nZ))
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	spWork.setCg(10101);
+	int nX = 92;
+	int nY = 364;
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	int nW2 = nW - nX - 793;
+	int nH2 = nH - nY;
+	int nH3 = nH2 - 20;
+	ref T_Sprite rfsBack;
+	drawGraph_FillAlphaColor(spWork, 4, 248, 166, 46, 0, 0, 0, 128);
+	drawGraph_FillAlphaColor(spWork, 4, 298, 166, 46, 0, 0, 0, 128);
+	drawGraph_FillAlphaColor(spWork, 13, 207, 60, 28, 0, 0, 0, 128);
+	drawGraph_FillAlphaColor(spWork, 854, 298, 166, 46, 0, 0, 0, 128);
+	rfsBack <- this.m_aspBase[0];
+	rfsBack.createPixelOnly(nW, nY);
+	rfsBack.setPos(0, 378);
+	rfsBack.setZ(nZ);
+	drawGraph_Copy(rfsBack, 0, 0, spWork, 0, 0, nW, nY);
+	rfsBack <- this.m_aspBase[1];
+	rfsBack.createPixelOnly(nX, nH2);
+	rfsBack.setPos(0, 742);
+	rfsBack.setZ(nZ);
+	drawGraph_Copy(rfsBack, 0, 0, spWork, 0, nY, nX, nH2);
+	rfsBack <- this.m_aspBase[2];
+	rfsBack.createPixelOnly(nW2, nH2);
+	rfsBack.setPos(885, 742);
+	rfsBack.setZ(nZ);
+	drawGraph_Copy(rfsBack, 0, 0, spWork, nX + 793, nY, nW2, nH2);
+	rfsBack <- this.m_aspBase[3];
+	rfsBack.createPixelOnly(793, nH3);
+	rfsBack.setPos(92, 762);
+	rfsBack.setZ(nZ);
+	drawGraph_Copy(rfsBack, 0, 0, spWork, nX, nY + 20, 793, nH3);
+	rfsBack <- this.m_aspBase[4];
+	rfsBack.createPixelOnly(793, 20);
+	rfsBack.setPos(92, 742);
+	rfsBack.setZ(nZ - 10);
+	drawGraph_Copy(rfsBack, 0, 0, spWork, nX, nY, 793, 20);
+	this.m_nZ = nZ;
+	return true;
+}
+
+void T_BattleCharaManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBase[i].delete();
+	}
+	cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].delete();
+	}
+	this.m_sFlash.delete();
+	this.m_nZ = -1;
+}
+
+void T_BattleCharaManager::clear()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].clear();
+	}
+}
+
+bool T_BattleCharaManager::remake()
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	this.m_sFlash.delete();
+	if (!this.createChara(this.m_nZ))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_BattleCharaManager::erase(int nNo)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL)
+	{
+		return false;
+	}
+	rfChara.delete();
+	return true;
+}
+
+void T_BattleCharaManager::update()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	int nTime = this.m_sTimer.Get();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].update(nTime);
+	}
+	this.m_sFlash.update();
+}
+
+void T_BattleCharaManager::updateHp(int nNo, int nHp, int nTotalTime)
+{
+	if (!this.startHp(nNo, nHp, nTotalTime))
+	{
+		return;
+	}
+	this.waitHp(nNo);
+}
+
+bool T_BattleCharaManager::startHp(int nNo, int nHp, int nTotalTime)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL)
+	{
+		return false;
+	}
+	if (rfChara.isDead())
+	{
+		if (nHp <= 0)
+		{
+			return false;
+		}
+		rfChara.setDead(false);
+	}
+	if (!rfChara.animeStartHp(nHp, nTotalTime))
+	{
+		return false;
+	}
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_BattleCharaManager::waitHp(int nNo)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL)
+	{
+		return false;
+	}
+	while (rfChara.isAnimeHp())
+	{
+		UPDATE(true);
+	}
+	return true;
+}
+
+void T_BattleCharaManager::updateHpAll(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	if (!this.startHpAll(anNo, anHp, nTotalTime))
+	{
+		return;
+	}
+	this.waitHpAll(anNo);
+}
+
+bool T_BattleCharaManager::startHpAll(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt)
+	{
+		return false;
+	}
+	if (anHp === NULL || anHp.Numof() != cnt)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref int rfnNo = anNo[i];
+		if (rfnNo <= 0)
+		{
+			continue;
+		}
+		if (!this.startHp(rfnNo, anHp[i], nTotalTime))
+		{
+		}
+	}
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_BattleCharaManager::waitHpAll(ref array@int anNo)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt)
+	{
+		return false;
+	}
+	bool bAnime = true;
+	while (bAnime)
+	{
+		bAnime = false;
+		for (i = 0; i < cnt; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			if (this.m_asChara[i].isAnimeHp())
+			{
+				bAnime = true;
+			}
+		}
+		UPDATE(true);
+	}
+	return true;
+}
+
+void T_BattleCharaManager::blink(int nNo, int nBlinkTime)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL || rfChara.isDead())
+	{
+		return;
+	}
+	int j = 0;
+	int cnt = 6;
+	bool bBlink = true;
+	CASTimer sTimer;
+	for (j = 0; j < cnt; ++j)
+	{
+		sTimer.Reset();
+		bBlink = !bBlink;
+		rfChara.setBlink(bBlink);
+		UPDATE(true);
+		while (sTimer.Get() < nBlinkTime)
+		{
+			UPDATE(true);
+		}
+	}
+	rfChara.setBlink(-1);
+	UPDATE(true);
+}
+
+void T_BattleCharaManager::blinkAll(ref array@int anNo, int nBlinkTime)
+{
+	int cnt2 = this.m_asChara.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt2)
+	{
+		return;
+	}
+	int i = 0;
+	int j = 0;
+	int cnt = 6;
+	bool bBlink = true;
+	CASTimer sTimer;
+	for (j = 0; j < cnt; ++j)
+	{
+		sTimer.Reset();
+		bBlink = !bBlink;
+		for (i = 0; i < cnt2; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			ref T_BattleChara rfChara = this.m_asChara[i];
+			rfChara.setBlink(bBlink);
+		}
+		UPDATE(true);
+		while (sTimer.Get() < nBlinkTime)
+		{
+			UPDATE(true);
+		}
+	}
+	for (i = 0; i < cnt2; ++i)
+	{
+		if (anNo[i] <= 0)
+		{
+			continue;
+		}
+		ref T_BattleChara rfChara = this.m_asChara[i];
+		rfChara.setBlink(-1);
+	}
+	UPDATE(true);
+}
+
+void T_BattleCharaManager::setMask(int nNo)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleChara rfChara = this.m_asChara[i];
+		rfChara.setMask(rfChara.getNo() != nNo);
+	}
+}
+
+void T_BattleCharaManager::setMaskAll(ref array@int anNo)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt)
+	{
+		return;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleChara rfChara = this.m_asChara[i];
+		rfChara.setMask(anNo[i] <= 0);
+	}
+	UPDATE(true);
+}
+
+void T_BattleCharaManager::clearMaskAll()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleChara rfChara = this.m_asChara[i];
+		rfChara.setMask(false);
+	}
+}
+
+void T_BattleCharaManager::resetMarkAll()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleChara rfChara = this.m_asChara[i];
+		rfChara.resetMark();
+	}
+}
+
+void T_BattleCharaManager::quakeFace(int nNo, int nQuakeX, int nQuakeY, int nQuakeTime)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL || rfChara.isDead())
+	{
+		return;
+	}
+	rfChara.getFace().quake(nQuakeX, nQuakeY, nQuakeTime);
+}
+
+void T_BattleCharaManager::quakeFaceAll(ref array@int anNo, int nQuakeX, int nQuakeY, int nQuakeTime)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt)
+	{
+		return;
+	}
+	array@int anSpNo;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (anNo[i] <= 0)
+		{
+			continue;
+		}
+		ref T_CharaFace rfsFace = this.m_asChara[i].getFace();
+		if (!rfsFace.isCreated())
+		{
+			continue;
+		}
+		anSpNo.PushBack(rfsFace.getSpNo());
+	}
+	スプライト_揺らし_複数(anSpNo, nQuakeX, nQuakeY, nQuakeTime);
+}
+
+void T_BattleCharaManager::flashFace(int nNo, int nFlashTime)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL || rfChara.isDead())
+	{
+		return;
+	}
+	rfChara.getFace().flash(nFlashTime);
+}
+
+void T_BattleCharaManager::flashFaceAll(ref array@int anNo, int nFlashTime)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	if (anNo === NULL || anNo.Numof() != cnt)
+	{
+		return;
+	}
+	array@int anSpNo;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (anNo[i] <= 0)
+		{
+			continue;
+		}
+		ref T_CharaFace rfsFace = this.m_asChara[i].getFace();
+		if (!rfsFace.isCreated())
+		{
+			continue;
+		}
+		anSpNo.PushBack(rfsFace.getSpNo());
+	}
+	スプライト_フラッシュ_複数(anSpNo, nFlashTime);
+}
+
+bool T_BattleCharaManager::moveGuard(int nNo, int nTargetNo)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL)
+	{
+		return false;
+	}
+	if (nTargetNo < 0)
+	{
+		rfChara.moveFace(-1, -1, -1, 50);
+		return true;
+	}
+	ref T_BattleChara rfChara2 = this.get(nTargetNo);
+	if (rfChara2 === NULL)
+	{
+		return false;
+	}
+	rfChara.moveFace(rfChara2.getFaceX() + 10, rfChara2.getFaceY() + -10, rfChara2.getFaceZ() + 50, 100);
+	return true;
+}
+
+bool T_BattleCharaManager::movePush(int nNo)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL)
+	{
+		return false;
+	}
+	int nX = rfChara.getFaceMoveX();
+	int nY = rfChara.getFaceMoveY();
+	int nZ = rfChara.getFaceMoveZ();
+	nX = nX < 0 ? rfChara.getFaceX() : nX;
+	nY = nY < 0 ? rfChara.getFaceY() : nY;
+	nZ = nZ < 0 ? rfChara.getFaceZ() + 50 : nZ;
+	rfChara.moveFace(nX, 768, nZ, 100);
+	return true;
+}
+
+bool T_BattleCharaManager::levelUp(int nNo)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL)
+	{
+		return false;
+	}
+	return rfChara.updateCard();
+}
+
+void T_BattleCharaManager::setShow(bool bShow, int nBaseShow)
+{
+	bool bBaseShow = nBaseShow < 0 ? bShow : nBaseShow > 0;
+	int i = 0;
+	int cnt = this.m_aspBase.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspBase[i].setShow(bBaseShow);
+	}
+	cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].setShow(bShow);
+	}
+	this.m_sFlash.setShow(bShow);
+}
+
+int T_BattleCharaManager::setStatus(int nNo, int nStatus)
+{
+	ref T_BattleChara rfChara = this.get(nNo);
+	if (rfChara === NULL)
+	{
+		return -1;
+	}
+	int nRet = rfChara.setStatus(nStatus);
+	if (nRet < 0)
+	{
+		return -1;
+	}
+	if (nRet == 1)
+	{
+		this.m_sFlash.create(-1);
+		this.m_sFlash.setFileName(Ｆｌａｓｈファイル名("順番キタ"));
+		this.m_sFlash.setPos(rfChara.getFaceX() + -7, rfChara.getFaceY() + -7);
+		this.m_sFlash.setZ(rfChara.getFaceZ() + 5);
+		this.m_sFlash.loop();
+	}
+	else
+	{
+		this.m_sFlash.delete();
+	}
+	return nRet;
+}
+
+ref T_BattleChara T_BattleCharaManager::get(int nNo)
+{
+	int idx = 戦闘番号_味方インデクス(nNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asChara[idx];
+}
+
+bool T_BattleCharaManager::createChara(int nZ)
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleChara rfChara = this.m_asChara[i];
+		if (rfChara.create(戦闘番号_味方(i)))
+		{
+			rfChara.setPos(戦闘味方_位置Ｘ(i), 戦闘味方_位置Ｙ(i));
+			rfChara.setZ(nZ + 20);
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+

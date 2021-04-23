@@ -1,0 +1,218 @@
+int T_SkillCost::getCost()
+{
+	return this.m_nCost;
+}
+
+bool T_SkillCost::isMax()
+{
+	return this.m_nCost == 2147483647;
+}
+
+T_SkillCost::T_SkillCost()
+{
+	this.clear();
+}
+
+T_SkillCost::~T_SkillCost()
+{
+	this.delete();
+}
+
+bool T_SkillCost::create(int nType)
+{
+	this.delete();
+	this.m_sCost.create(23, 20, 2, 3, 1, true);
+	this.m_sCost.setFontType(257);
+	this.m_sCost.setFontSize(26);
+	this.m_sCost.setFontBold(0);
+	this.m_sCost.setTextSpace(-4);
+	this.m_sCost.setDrawType(0);
+	this.m_aspMark[0].setCg(11556);
+	this.m_aspMark[1].setCg(11557);
+	return true;
+}
+
+void T_SkillCost::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].delete();
+	}
+	this.m_sCost.delete();
+	this.clear();
+}
+
+void T_SkillCost::clear()
+{
+	this.m_nCost = -1;
+	this.m_bShow = false;
+}
+
+void T_SkillCost::setCost(int nCost, bool bActive)
+{
+	if (bActive)
+	{
+		this.m_sCost.setFontColor(255, 255, 255);
+	}
+	else
+	{
+		this.m_sCost.setFontColor(116, 116, 116);
+	}
+	this.m_sCost.setValue(nCost > 0 && nCost != 2147483647 ? nCost : 0, false);
+	this.m_nCost = nCost;
+	this.setShow(this.m_bShow);
+}
+
+void T_SkillCost::setPos(int nX, int nY)
+{
+	this.m_sCost.setPos(nX, nY - 2);
+	this.m_aspMark[0].setPos(nX, nY);
+	this.m_aspMark[1].setPos(nX + 1, nY + 1);
+}
+
+void T_SkillCost::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].setZ(nZ);
+	}
+	this.m_sCost.setZ(nZ);
+}
+
+void T_SkillCost::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMark[i].setShow(0);
+	}
+	this.m_sCost.setShow(false);
+	if (this.m_nCost == 2147483647)
+	{
+		this.m_aspMark[0].setShow(bShow);
+	}
+	else if (this.m_nCost > 0)
+	{
+		this.m_sCost.setShow(bShow);
+	}
+	else if (this.m_nCost == 0)
+	{
+		this.m_aspMark[1].setShow(bShow);
+	}
+	this.m_bShow = bShow;
+}
+
+int T_SkillCostManager::getCount()
+{
+	return this.m_asCost.Numof();
+}
+
+int T_SkillCostManager::getCost(int nIndex)
+{
+	ref T_SkillCost rfsCost = this.get(nIndex);
+	return rfsCost === NULL ? -1 : rfsCost.getCost();
+}
+
+ref T_SkillCost T_SkillCostManager::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asCost.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asCost[nIndex];
+}
+
+T_SkillCostManager::T_SkillCostManager()
+{
+	this.clear();
+}
+
+T_SkillCostManager::~T_SkillCostManager()
+{
+	this.delete();
+}
+
+bool T_SkillCostManager::create(int nType, int nCount)
+{
+	this.delete();
+	if (nCount <= 0)
+	{
+		return false;
+	}
+	this.m_asCost.Alloc(nCount);
+	int i = 0;
+	for (i = 0; i < nCount; ++i)
+	{
+		this.m_asCost[i].create(nType);
+	}
+	return true;
+}
+
+void T_SkillCostManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asCost.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCost[i].delete();
+	}
+	if (!this.m_asCost.Empty())
+	{
+		this.m_asCost.Free();
+	}
+	this.clear();
+}
+
+void T_SkillCostManager::clear()
+{
+	this.m_nZ = -1;
+}
+
+bool T_SkillCostManager::setCost(int nIndex, int nCost, bool bActive)
+{
+	ref T_SkillCost rfsCost = this.get(nIndex);
+	if (rfsCost === NULL)
+	{
+		return false;
+	}
+	rfsCost.setCost(nCost, bActive);
+	return true;
+}
+
+bool T_SkillCostManager::setPos(int nIndex, int nX, int nY)
+{
+	ref T_SkillCost rfsCost = this.get(nIndex);
+	if (rfsCost === NULL)
+	{
+		return false;
+	}
+	rfsCost.setPos(nX, nY);
+	return true;
+}
+
+void T_SkillCostManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asCost.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCost[i].setZ(nZ);
+	}
+	this.m_nZ = nZ;
+}
+
+void T_SkillCostManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asCost.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCost[i].setShow(bShow);
+	}
+}
+

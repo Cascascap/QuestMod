@@ -1,0 +1,64 @@
+string 方向_識別子(int nDir)
+{
+	switch (nDir)
+	{
+		case 1:
+			return "北";
+		case 2:
+			return "東";
+		case 3:
+			return "南";
+		case 4:
+			return "西";
+		default:
+			break;
+	}
+	return "南";
+}
+
+string 状態_識別子(int nState)
+{
+	switch (nState)
+	{
+		case 1:
+			return "PLAY";
+		case 2:
+			return "LOOP";
+		default:
+			break;
+	}
+	return "STOP";
+}
+
+string 描画タイプ_識別子(int nDrawType)
+{
+	switch (nDrawType)
+	{
+		case 1:
+			return "加算";
+		case 2:
+			return "乗算";
+		case 3:
+			return "ｽｸﾘｰﾝ";
+		case 0:
+		default:
+			break;
+	}
+	return "通常";
+}
+
+int 方向_数値(int nLine, int nColumn)
+{
+	return -1;
+}
+
+int 状態_数値(int nLine, int nColumn)
+{
+	return -1;
+}
+
+int 描画タイプ_数値(int nLine, int nColumn)
+{
+	return -1;
+}
+

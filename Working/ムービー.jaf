@@ -1,0 +1,10 @@
+void ムービー(string ファイル名, bool キーキャンセル, int nBackColorR, int nBackColorG, int nBackColorB)
+{
+	return;
+}
+
+void ムービー内部ボリューム率設定(int nInnerVolumeRate)
+{
+	return;
+}
+

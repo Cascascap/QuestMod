@@ -1,0 +1,171 @@
+T_SelectData::T_SelectData()
+{
+	this.clear();
+}
+
+void T_SelectData::clear()
+{
+	this.m_nID = 0;
+	this.m_szText = "";
+	this.m_nR = -1;
+	this.m_nG = -1;
+	this.m_nB = -1;
+	this.m_szComment = "";
+	this.m_nCgNo = -1;
+	this.m_nSoundClick = -1;
+}
+
+bool T_SelectData::isClear()
+{
+	return this.m_nID == 0 && this.m_szText.Empty() && this.m_szComment.Empty();
+}
+
+int T_SelectDataManager::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_SelectDataManager::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_SelectDataManager::getCursorID()
+{
+	return this.m_nCursorID;
+}
+
+int T_SelectDataManager::getIndex(int nID)
+{
+	return this.search(nID);
+}
+
+T_SelectDataManager::T_SelectDataManager()
+{
+	this.clear();
+}
+
+T_SelectDataManager::~T_SelectDataManager()
+{
+	this.free();
+}
+
+void T_SelectDataManager::clear()
+{
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nCursorID = -1;
+}
+
+int T_SelectDataManager::add(int nID, string szText, int nR, int nG, int nB, string szComment, int nCgNo, int nSoundClick)
+{
+	T_SelectData sData;
+	sData.m_nID = nID;
+	sData.m_szText = szText;
+	sData.m_nR = nR;
+	sData.m_nG = nG;
+	sData.m_nB = nB;
+	sData.m_szComment = szComment;
+	sData.m_nCgNo = nCgNo;
+	sData.m_nSoundClick = nSoundClick;
+	this.m_asData.PushBack(sData);
+	return this.m_asData.Numof();
+}
+
+void T_SelectDataManager::free()
+{
+	if (!this.m_asData.Empty())
+	{
+		this.m_asData.Free();
+	}
+	this.clear();
+}
+
+void T_SelectDataManager::setPos(int nX, int nY)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_SelectDataManager::setCursorID(int nID)
+{
+	this.m_nCursorID = nID;
+}
+
+int T_SelectDataManager::getCount()
+{
+	return this.m_asData.Numof();
+}
+
+int T_SelectDataManager::getActiveCount()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].m_nID > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int T_SelectDataManager::getSpecialCount()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].m_nCgNo > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int T_SelectDataManager::getFirst()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nID = this.m_asData[i].m_nID;
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return 0;
+}
+
+ref T_SelectData T_SelectDataManager::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asData.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asData[nIndex];
+}
+
+int T_SelectDataManager::search(int nID)
+{
+	if (nID <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].m_nID == nID)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

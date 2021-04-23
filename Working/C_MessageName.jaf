@@ -1,0 +1,91 @@
+void メッセージ名札_登録(int nType, int nX, int nY, int nCgNo)
+{
+	g_sMessageName.add(nType, nX, nY, 8102, nCgNo);
+}
+
+void メッセージ名札_作成()
+{
+	g_sMessageName.create();
+	メッセージ名札_ログクリア();
+}
+
+void メッセージ名札_削除()
+{
+	g_sMessageName.delete();
+	メッセージ名札_ログクリア();
+}
+
+void メッセージ名札_設定(int nNo, int nFaceCgNo, string szName)
+{
+	_メッセージ名札_クリア();
+	if (nFaceCgNo <= 0)
+	{
+		return;
+	}
+	_メッセージ名札_設定(nNo, szName.Empty() ? 名札文字取得(nFaceCgNo) : szName);
+}
+
+void メッセージ名札_設定Ｆ(int nNo, int nCharaNo, string szName)
+{
+	_メッセージ名札_クリア();
+	if (nCharaNo <= 0)
+	{
+		return;
+	}
+	_メッセージ名札_設定(nNo, szName.Empty() ? 名札文字取得Ｆ(nCharaNo) : szName);
+}
+
+void _メッセージ名札_設定(int nNo, string szName)
+{
+	if (!メッセージ_枠番号確認(nNo))
+	{
+		return;
+	}
+	if (szName.Empty())
+	{
+		return;
+	}
+	int nType = メッセージ名札種別(nNo);
+	if (nType <= 0)
+	{
+		return;
+	}
+	g_sMessageName.set(nType, szName);
+	メッセージ名札_ログ登録();
+}
+
+void _メッセージ名札_クリア()
+{
+	g_sMessageName.set(0, "");
+	メッセージ名札_ログクリア();
+}
+
+void メッセージ名札_ログ登録()
+{
+	if (g_bLogName)
+	{
+		return;
+	}
+	string szName = g_sMessageName.getName();
+	if (szName.Length() > 0)
+	{
+		バックログ登録(テキスト_名前(szName));
+	}
+	g_bLogName = true;
+}
+
+void メッセージ名札_ログクリア()
+{
+	g_bLogName = false;
+}
+
+string 名札文字取得Ｆ(int nCharaNo)
+{
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return "？？？";
+	}
+	return rfsData.名前;
+}
+

@@ -1,0 +1,216 @@
+void ‚R‚cí“¬_‰Šú‰»(ref array@int anMonsterNo, string szBackName)
+{
+	if (anMonsterNo === NULL || anMonsterNo.Numof() < 5)
+	{
+		return;
+	}
+	if (!szBackName.Empty() && szBackName == g_szBattleBackName)
+	{
+		if (g_sBattleMode.Resume(anMonsterNo))
+		{
+			goto label0;
+		}
+	}
+	g_sBattleMode.Create(szBackName, anMonsterNo);
+label0:
+	‚R‚cƒ‚[ƒh_í“¬();
+	AFL_DebugFPS_SetShow(g_bFPSShow);
+	g_szBattleBackName = szBackName;
+	g_b3DBattleUpdate = true;
+}
+
+void ‚R‚cí“¬_I—¹ˆ—(bool bSuspend)
+{
+	if (bSuspend && !g_szBattleBackName.Empty())
+	{
+		if (g_sBattleMode.Suspend(true))
+		{
+			goto label0;
+		}
+	}
+	g_sBattleMode.Release();
+	g_szBattleBackName = "";
+label0:
+	‚R‚cƒ‚[ƒh_İ’è(0);
+	g_b3DBattleUpdate = false;
+}
+
+void ‚R‚cí“¬_İ’èXV()
+{
+	g_sBattleMode.RealtimeSettingUpdate();
+}
+
+void ‚R‚cí“¬_ƒ[ƒh‘Ò‚¿(bool bThreadLoadingMode)
+{
+	g_sBattleMode.WaitLoading(bThreadLoadingMode);
+}
+
+bool ‚R‚cí“¬_ƒ‚[ƒVƒ‡ƒ“ŠJn(int nMonsterIndex, int nMotionNo)
+{
+	if (!g_sBattleMode.StartMonsterMotion(nMonsterIndex, nMotionNo, -1))
+	{
+		return false;
+	}
+	g_sBattleMode.WaitMotionBlend(nMonsterIndex);
+	return true;
+}
+
+void ‚R‚cí“¬_ƒ‚[ƒVƒ‡ƒ“I—¹(int nMonsterIndex, int nMotionNo, bool bWait, bool bDead)
+{
+	g_sBattleMode.EndMotionBlend(nMonsterIndex, nMotionNo, bWait, bDead);
+	g_sBattleMode.WaitMotionBlend(nMonsterIndex);
+}
+
+void ‚R‚cí“¬_ƒ‚[ƒVƒ‡ƒ““–‚½‚è‘Ò‚¿(int nMonsterIndex, int nPer)
+{
+	g_sBattleMode.WaitMotionFrame(nMonsterIndex, nPer);
+}
+
+bool ‚R‚cí“¬_ƒ‚[ƒVƒ‡ƒ“ŠJn_•¡”(ref array@int anNo, int nMotionNo)
+{
+	if (!g_sBattleMode.StartMonsterMotionAll(anNo, nMotionNo, -1))
+	{
+		return false;
+	}
+	g_sBattleMode.WaitMotionBlendAll(anNo);
+	return true;
+}
+
+void ‚R‚cí“¬_ƒ‚[ƒVƒ‡ƒ“I—¹_•¡”(ref array@int anNo, int nMotionNo, bool bWait, ref array@bool abDead)
+{
+	g_sBattleMode.EndMotionBlendAll(anNo, nMotionNo, bWait, abDead);
+	g_sBattleMode.WaitMotionBlendAll(anNo);
+}
+
+bool ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[ˆÊ’uİ’è(int nIndex, float fX, float fY, float fZ)
+{
+	return g_sBattleMode.SetMonsterPos(nIndex, fX, fY, fZ);
+}
+
+bool ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[ˆÊ’uİ’è_çŒì(int nIndex)
+{
+	return g_sBattleMode.SetMonsterPos(nIndex, g_sBattleMode.GetCameraX() + 0.0, g_sBattleMode.GetCameraY() + -0.649999976158142, g_sBattleMode.GetCameraZ() + 2.09999990463257);
+}
+
+bool ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[ˆÊ’u–ß‚µ(int nIndex)
+{
+	return g_sBattleMode.SetMonsterPos(nIndex, -3.40282346638529E+38, -3.40282346638529E+38, -3.40282346638529E+38);
+}
+
+bool ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[ƒtƒ‰ƒbƒVƒ…(int nIndex, int nTime)
+{
+	return g_sBattleMode.FlashMonster(nIndex, nTime);
+}
+
+bool ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[ƒtƒ‰ƒbƒVƒ…_•¡”(ref array@int anNo, int nTime)
+{
+	return g_sBattleMode.FlashMonsterAll(anNo, nTime);
+}
+
+bool ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[“_–Å(int nIndex, int nCount, int nTime)
+{
+	return g_sBattleMode.BlinkMonster(nIndex, nCount, nTime);
+}
+
+void ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[Á‚µ(int nMonsterIndex)
+{
+	g_sBattleMode.SetMonsterDraw(nMonsterIndex, false);
+}
+
+void ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[Äì¬(int nMonsterIndex, int nMonsterNo)
+{
+	g_sBattleMode.RemakeMonster(nMonsterIndex, nMonsterNo);
+}
+
+void ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[Ä•\¦(int nMonsterIndex, int nTotalTime)
+{
+	g_sBattleMode.RedrawMonster(nMonsterIndex, nTotalTime);
+}
+
+void ‚R‚cí“¬_ƒ‚ƒ“ƒXƒ^[Ä•\¦_•¡”(ref array@int anMonsterIndex, int nTotalTime)
+{
+	g_sBattleMode.RedrawMonsters(anMonsterIndex, nTotalTime);
+}
+
+void ‚R‚cí“¬_‹à‘Ü•\¦İ’è(int nMonsterIndex, bool bDraw)
+{
+	g_sBattleMode.SetGoldDraw(nMonsterIndex, bDraw);
+}
+
+void ‚R‚cí“¬_ƒJƒƒ‰ˆÚ“®(float fCameraX, float fCameraY, float fCameraZ, int nTime)
+{
+	g_sBattleMode.MoveCamera(fCameraX, fCameraY, fCameraZ, nTime);
+}
+
+int ‚R‚cí“¬_ƒrƒ…[ˆÊ’u‚w()
+{
+	return g_sBattleMode.GetViewX();
+}
+
+int ‚R‚cí“¬_ƒrƒ…[ˆÊ’u‚x()
+{
+	return g_sBattleMode.GetViewY();
+}
+
+int ‚R‚cí“¬_ƒrƒ…[•()
+{
+	return g_sBattleMode.GetViewWidth();
+}
+
+int ‚R‚cí“¬_ƒrƒ…[‚()
+{
+	return g_sBattleMode.GetViewHeight();
+}
+
+string ‚R‚cí“¬_”wŒi–¼()
+{
+	return g_sBattleMode.GetMapName();
+}
+
+void ‚R‚cí“¬_•\¦İ’è(bool bShow)
+{
+	g_sBattleMode.GetPlugin().SetDrawFlag(bShow);
+}
+
+ref CReignPlugin ‚R‚cí“¬_ƒvƒ‰ƒOƒCƒ“()
+{
+	if (!g_sBattleMode.IsCreated())
+	{
+		return NULL;
+	}
+	return g_sBattleMode.GetPlugin();
+}
+
+bool ‚R‚cí“¬_ƒTƒXƒyƒ“ƒh()
+{
+	if (!g_sBattleMode.Suspend(false))
+	{
+		return false;
+	}
+	‚R‚cƒ‚[ƒh_İ’è(0);
+	g_b3DBattleUpdate = false;
+	return true;
+}
+
+bool ‚R‚cí“¬_ƒŒƒWƒ…[ƒ€()
+{
+	array@int anMonsterNo;
+	if (!g_sBattleMode.Resume(anMonsterNo))
+	{
+		return false;
+	}
+	‚R‚cƒ‚[ƒh_ƒ}ƒbƒv();
+	g_b3DBattleUpdate = true;
+	return true;
+}
+
+bool ‚R‚cí“¬_ƒTƒXƒyƒ“ƒhó‘Ô()
+{
+	ref CReignPlugin rfsPlugin = ‚R‚cí“¬_ƒvƒ‰ƒOƒCƒ“();
+	if (rfsPlugin === NULL)
+	{
+		return false;
+	}
+	return rfsPlugin.IsSuspend();
+}
+

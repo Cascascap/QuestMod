@@ -1,0 +1,1097 @@
+void T_BattleSkill::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+int T_BattleSkill::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_BattleSkill::getCharaNo()
+{
+	return 戦闘番号_ＩＩＣ(this.m_nNo);
+}
+
+int T_BattleSkill::getSkillCount()
+{
+	return this.m_anStatus.Numof();
+}
+
+int T_BattleSkill::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anStatus.Numof() ? -1 : 200000 + nIndex + 1;
+}
+
+int T_BattleSkill::getButtonIndex(int nID)
+{
+	if (nID < 200000 || nID >= 210000)
+	{
+		return -1;
+	}
+	int idx = nID + -200001;
+	return idx < 0 || idx >= this.m_anStatus.Numof() ? -1 : idx;
+}
+
+int T_BattleSkill::getTargetID(int nNo, int nIndex)
+{
+	return nNo <= 0 || nIndex < 0 || nIndex >= this.m_anStatus.Numof() ? -1 : 210000 + nNo * 100 + nIndex + 1;
+}
+
+int T_BattleSkill::getTargetNo(int nID)
+{
+	if (nID < 210000 || nID >= 220000)
+	{
+		return -1;
+	}
+	int nNo = (nID - 210000) / 100;
+	return nNo > 0 ? nNo : 0;
+}
+
+int T_BattleSkill::getTargetSkill(int nID)
+{
+	if (nID < 210000 || nID >= 220000)
+	{
+		return -1;
+	}
+	int idx = (nID - 210000) % 100 - 1;
+	return idx < 0 || idx >= this.m_anStatus.Numof() ? -1 : idx;
+}
+
+int T_BattleSkill::getSkillStatus(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anStatus.Numof() ? -1 : this.m_anStatus[nIndex];
+}
+
+ref T_ButtonGroup T_BattleSkill::getButton()
+{
+	return this.m_sButton;
+}
+
+T_BattleSkill::T_BattleSkill()
+{
+	this.clear();
+}
+
+T_BattleSkill::~T_BattleSkill()
+{
+	this.delete();
+}
+
+bool T_BattleSkill::create(int nNo)
+{
+	this.delete();
+	ref T_BattleChara rfsChara = 戦闘味方_取得(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	ref T_CharaSkill rfsSkill = rfsChara.getSkill();
+	int nCharaNo = rfsSkill.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = rfsSkill.getSkillCount();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	this.m_aspLock1.Alloc(cnt);
+	this.m_aspLock2.Alloc(cnt);
+	this.m_anStatus.Alloc(cnt);
+	this.m_anLock.Alloc(cnt);
+	this.m_nNo = nNo;
+	this.m_rfsSkill <- rfsSkill;
+	this.updateSkillStatus();
+	this.m_sButton.create();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createSkill(i);
+	}
+	this.setBlendRate(76);
+	this.createTargetIndex(2, this.m_anTargetMyself);
+	this.createTargetIndex(1, this.m_anTargetChara);
+	this.createTargetIndex(3, this.m_anTargetMonster);
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		if (nNo == this.m_nNo)
+		{
+			this.createTarget(nNo, false, this.m_anTargetMyself);
+		}
+		else
+		{
+			this.createTarget(nNo, false, this.m_anTargetChara);
+		}
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_敵(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		this.createTarget(nNo, true, this.m_anTargetMonster);
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] >= 0)
+		{
+			this.m_sCount.update(i, キャラスキル_使用回数(nCharaNo, rfsSkill.getSkillNo(i)));
+		}
+	}
+	return true;
+}
+
+void T_BattleSkill::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspLock1.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspLock1[i].delete();
+		this.m_aspLock2[i].delete();
+	}
+	this.m_sButton.delete();
+	this.m_sCount.delete();
+	if (!this.m_aspLock1.Empty())
+	{
+		this.m_aspLock1.Free();
+	}
+	if (!this.m_aspLock2.Empty())
+	{
+		this.m_aspLock2.Free();
+	}
+	this.clear();
+}
+
+void T_BattleSkill::clear()
+{
+	this.m_nNo = -1;
+	this.m_nTargetNo = -1;
+	this.m_nTargetShowMode = -1;
+	this.m_bShow = false;
+	this.m_rfsSkill <- NULL;
+	if (!this.m_anStatus.Empty())
+	{
+		this.m_anStatus.Free();
+	}
+	if (!this.m_anLock.Empty())
+	{
+		this.m_anLock.Free();
+	}
+	if (!this.m_anTargetMyself.Empty())
+	{
+		this.m_anTargetMyself.Free();
+	}
+	if (!this.m_anTargetChara.Empty())
+	{
+		this.m_anTargetChara.Free();
+	}
+	if (!this.m_anTargetMonster.Empty())
+	{
+		this.m_anTargetMonster.Free();
+	}
+}
+
+void T_BattleSkill::checkSkill(int nID)
+{
+	if (this.m_nTargetShowMode > 0)
+	{
+		return;
+	}
+	if (nID < 210000)
+	{
+		goto label0;
+	}
+	int nSkillNo = this.getSkillNo(nID);
+	int nTargetNo = this.getTargetNo(nID);
+	switch (スキル_対象(nSkillNo))
+	{
+		case 1:
+		case 2:
+			this.setTargetShow(nTargetNo, -1);
+			return;
+		case 3:
+			this.setTargetShowAllMonster(nSkillNo, nTargetNo);
+			return;
+		case 4:
+			this.setTargetShowLine(nSkillNo, nTargetNo);
+			return;
+		case 10:
+		case 11:
+			this.setTargetShow(nTargetNo, -1);
+			return;
+		case 13:
+			this.setTargetShow(nTargetNo, -1);
+			return;
+		case 12:
+			this.setTargetShowAllChara(nSkillNo, nTargetNo);
+			return;
+		case 14:
+			this.setTargetShowAllChara2(nSkillNo, nTargetNo);
+			return;
+		case 30:
+		default:
+			break;
+	}
+label0:
+	this.setTargetShow(-1, -1);
+}
+
+int T_BattleSkill::moveCursor(int nID)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return 0;
+	}
+	bool bFlag = false;
+	if (this.m_nTargetShowMode > 0)
+	{
+		bFlag = this.getTargetNo(nID) > 10;
+	}
+	else
+	{
+		int nX = 0;
+		int nY = 0;
+		if (!マウス_位置取得(nX, nY))
+		{
+			return 0;
+		}
+		bFlag = nY < 378;
+	}
+	int nID2 = 0;
+	if (bFlag)
+	{
+		nID2 = this.getTargetActiveChara(2);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveChara(1);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveChara(3);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveChara(4);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveChara(5);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+	}
+	else
+	{
+		nID2 = this.getTargetActiveMonster(12);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveMonster(11);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveMonster(13);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveMonster(14);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+		nID2 = this.getTargetActiveMonster(15);
+		if (nID2 > 0)
+		{
+			goto label0;
+		}
+	label0:
+	}
+	if (nID2 > 0)
+	{
+		this.m_sButton.setButtonCursor(nID2);
+	}
+	return nID2;
+}
+
+int T_BattleSkill::countDown(int nSkillNo)
+{
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.setCount(nSkillNo, キャラスキル_使用回数－(this.getCharaNo(), nSkillNo));
+}
+
+bool T_BattleSkill::updateCount(int nSkillNo)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return false;
+	}
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (nSkillNo < 0)
+	{
+		int i = 0;
+		int cnt = this.m_rfsSkill.getSkillCount();
+		for (i = 0; i < cnt; ++i)
+		{
+			this.setCountFromIndex(i, キャラスキル_使用回数(nCharaNo, this.m_rfsSkill.getSkillNo(i)));
+		}
+		return true;
+	}
+	return this.setCount(nSkillNo, キャラスキル_使用回数(nCharaNo, nSkillNo)) > 0;
+}
+
+int T_BattleSkill::setCount(int nSkillNo, int nValue)
+{
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.setCountFromIndex(idx, nValue);
+}
+
+void T_BattleSkill::changePos()
+{
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_anTargetMonster.Numof();
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_敵(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		int nX = 戦闘選択枠_Ｘ(nNo) + 3;
+		int nY = 戦闘選択枠_Ｙ(nNo) + 3;
+		for (j = 0; j < cnt; ++j)
+		{
+			int idx = this.m_anTargetMonster[j];
+			int nID = this.getTargetID(nNo, idx);
+			int nH = this.m_sButton.getButtonHeight(nID);
+			if (nH <= 0)
+			{
+				continue;
+			}
+			this.m_sButton.setButtonPos(nID, nX, nY);
+			this.m_sCount.setTargetPos(nNo, idx, nX, nY, nH);
+			this.setSelectArea(nNo, idx, cnt, nX, nY, nH, j == cnt - 1 ? 99 : j, true);
+			nY += nH;
+		}
+	}
+}
+
+void T_BattleSkill::setZ(int nZ)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return;
+	}
+	this.m_sButton.setZ(nZ);
+	this.m_sCount.setZ(nZ + 5);
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_aspLock1.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspLock1[i].setZ(nZ + 11);
+		this.m_aspLock2[i].setZ(nZ + 11);
+	}
+	cnt = this.m_rfsSkill.getSkillCount();
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		for (j = 0; j < cnt; ++j)
+		{
+			this.m_sButton.setButtonZ(this.getTargetID(nNo, j), nZ + 20);
+		}
+		this.m_sCount.setTargetZ(nNo, nZ + 25);
+	}
+}
+
+void T_BattleSkill::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonShow(this.getButtonID(i), bShow);
+		this.m_aspLock1[i].setShow(this.m_anLock[i] == 1 ? bShow : 0);
+		this.m_aspLock2[i].setShow(this.m_anLock[i] == 2 ? bShow : 0);
+	}
+	this.m_sCount.setShow(bShow);
+	this.setTargetShowAll(this.m_nTargetShowMode > 0 ? bShow : 0);
+	this.m_bShow = bShow;
+}
+
+void T_BattleSkill::setBlendRate(int nBlendRate)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_rfsSkill.getSkillCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonBlendRate(this.getButtonID(i), nBlendRate);
+		this.m_aspLock1[i].setBlendRate(nBlendRate);
+		this.m_aspLock2[i].setBlendRate(nBlendRate);
+	}
+	this.m_sCount.setBlendRate(nBlendRate);
+}
+
+void T_BattleSkill::setTargetShow(int nNo, int nSkillNo)
+{
+	if (this.m_nTargetShowMode > 0)
+	{
+		return;
+	}
+	int i = 0;
+	int idx = this.getSkillIndex(nSkillNo);
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo2 = 戦闘番号_味方(i);
+		this._setTargetShow(nNo2, idx, 戦闘番号_存在確認(nNo2) ? nNo2 == nNo : 0);
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo2 = 戦闘番号_敵(i);
+		this._setTargetShow(nNo2, idx, 戦闘データ_有効(nNo2) ? nNo2 == nNo : 0);
+	}
+}
+
+void T_BattleSkill::setTargetShowMode(int nMode)
+{
+	this.m_nTargetShowMode = nMode;
+	this.setTargetShowAll(this.m_nTargetShowMode > 0 ? this.m_bShow : 0);
+}
+
+void T_BattleSkill::setSkillPos(int nX, int nY)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_rfsSkill.getSkillCount();
+	int nX2 = nX + 184;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nY2 = nY + 8 + 26 * i;
+		this.m_sButton.setButtonPos(this.getButtonID(i), nX2, nY2);
+		this.m_sCount.setNumberPos(i, nX2, nY2);
+		this.m_aspLock1[i].setPos(nX2, nY2);
+		this.m_aspLock2[i].setPos(nX2, nY2);
+	}
+}
+
+void T_BattleSkill::setButtonActive()
+{
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_anStatus.Numof();
+	this.updateSkillStatus();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getButtonID(i), this.m_anStatus[i] > 0);
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		for (j = 0; j < cnt; ++j)
+		{
+			this.m_sButton.setButtonActive(this.getTargetID(nNo, j), this.getSkillStatus(j) > 0);
+		}
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_敵(i);
+		for (j = 0; j < cnt; ++j)
+		{
+			this.m_sButton.setButtonActive(this.getTargetID(nNo, j), this.getSkillStatus(j) > 0);
+		}
+	}
+}
+
+int T_BattleSkill::getActiveSkillCount()
+{
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	int nCount = 0;
+	this.updateSkillStatus();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			if (this.m_rfsSkill.getSkillNo(i) != 384)
+			{
+				++nCount;
+			}
+		}
+	}
+	return nCount;
+}
+
+int T_BattleSkill::getActiveSkill()
+{
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	this.updateSkillStatus();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] > 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_BattleSkill::getComment(int nID, ref int nX, ref int nY, ref string szComment, ref string szSubComment)
+{
+	if (nX === NULL || nY === NULL || szComment === NULL || szSubComment === NULL)
+	{
+		return -1;
+	}
+	int nSkillNo = this.getSkillNo(nID);
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	int nTargetNo = this.getTargetNo(nID);
+	nX = this.m_sButton.getButtonPosX(nID);
+	nY = this.m_sButton.getButtonPosY(nID);
+	szComment = スキル_説明文１(nSkillNo);
+	szSubComment = 戦闘スキル_補足説明(this.m_nNo, nTargetNo, nSkillNo);
+	return nTargetNo;
+}
+
+int T_BattleSkill::getDefaultID()
+{
+	if (this.m_nNo <= 0)
+	{
+		return -1;
+	}
+	if (this.m_nTargetShowMode < 0)
+	{
+		return -1;
+	}
+	int idx = this.getActiveSkill();
+	if (idx < 0)
+	{
+		return -1;
+	}
+	if (this.m_nTargetShowMode == 0)
+	{
+		return this.getButtonID(idx);
+	}
+	int idx2 = -1;
+	switch (戦闘データ_職業(this.m_nNo))
+	{
+		case 1:
+		case 6:
+		case 7:
+		case 8:
+			idx2 = this.getDefaultMonsterF();
+			break;
+		case 3:
+		case 4:
+			idx2 = this.getDefaultMonsterB();
+			break;
+		case 2:
+			idx2 = this.getDefaultMyself();
+			break;
+		case 5:
+			idx2 = this.getDefaultChara();
+			break;
+		default:
+			break;
+	}
+	return idx2 < 0 ? this.getButtonID(idx) : this.getDefaultTarget(idx2);
+}
+
+int T_BattleSkill::getSkillNo(int nID)
+{
+	if (nID > 210000)
+	{
+		return this.getSkillNoFromIndex(this.getTargetSkill(nID));
+	}
+	return this.getSkillNoFromIndex(this.getButtonIndex(nID));
+}
+
+int T_BattleSkill::getSkillNoFromIndex(int nIndex)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	if (this.getSkillStatus(nIndex) < 0)
+	{
+		return -1;
+	}
+	return this.m_rfsSkill.getSkillNo(nIndex);
+}
+
+int T_BattleSkill::getSkillIndex(int nSkillNo)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	int idx = this.m_rfsSkill.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	if (this.getSkillStatus(idx) < 0)
+	{
+		return -1;
+	}
+	return idx;
+}
+
+bool T_BattleSkill::createTargetIndex(int nType, ref array@int anTargetIndex)
+{
+	if (anTargetIndex === NULL)
+	{
+		return false;
+	}
+	if (!anTargetIndex.Empty())
+	{
+		anTargetIndex.Free();
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_anStatus[i] < 0)
+		{
+			continue;
+		}
+		int nSkillNo = this.m_rfsSkill.getSkillNo(i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		if (ターゲット種別_確認(nType, this.m_nNo, nSkillNo))
+		{
+			anTargetIndex.PushBack(i);
+		}
+	}
+	return true;
+}
+
+bool T_BattleSkill::createSkill(int nIndex)
+{
+	int nStatus = this.getSkillStatus(nIndex);
+	if (nStatus < 0)
+	{
+		return false;
+	}
+	int nSkillNo = this.getSkillNoFromIndex(nIndex);
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	int nX = 戦闘選択領域_Ｘ(this.m_nNo) + 184;
+	int nY = 戦闘選択領域_Ｙ(this.m_nNo) + 8 + 26 * nIndex;
+	if (戦闘スキル_登録(this.m_sButton, this.getButtonID(nIndex), nX, nY, スキルボタン_ＣＧ番号(nSkillNo), スキル_名前(nSkillNo), nStatus > 0) < 0)
+	{
+		return false;
+	}
+	this.m_sCount.create(nIndex, nX, nY);
+	if (スキル_初ターン使用禁止技(nSkillNo))
+	{
+		ref T_Sprite rfsLock = this.m_aspLock1[nIndex];
+		rfsLock.setCg(10140);
+		rfsLock.setPos(nX, nY);
+	}
+	if (スキル_同一戦闘一度のみ技(nSkillNo))
+	{
+		ref T_Sprite rfsLock = this.m_aspLock2[nIndex];
+		rfsLock.setCg(10150);
+		rfsLock.setPos(nX, nY);
+	}
+	return true;
+}
+
+bool T_BattleSkill::createTarget(int nNo, bool bSelectArea, ref array@int anTargetIndex)
+{
+	if (anTargetIndex === NULL)
+	{
+		return false;
+	}
+	int nX = 戦闘選択枠_Ｘ(nNo) + 3;
+	int nY = 戦闘選択枠_Ｙ(nNo) + 3;
+	int i = 0;
+	int cnt = anTargetIndex.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = anTargetIndex[i];
+		int nH = this._createTarget(nNo, idx, cnt, nX, nY);
+		if (nH <= 0)
+		{
+			continue;
+		}
+		if (bSelectArea)
+		{
+			this.setSelectArea(nNo, idx, cnt, nX, nY, nH, i == cnt - 1 ? 99 : i, false);
+		}
+		nY += nH;
+	}
+	return true;
+}
+
+int T_BattleSkill::_createTarget(int nNo, int nIndex, int nCount, int nX, int nY)
+{
+	int nStatus = this.getSkillStatus(nIndex);
+	if (nStatus < 0)
+	{
+		return -1;
+	}
+	int nSkillNo = this.getSkillNoFromIndex(nIndex);
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	int nH = 戦闘スキル_登録(this.m_sButton, this.getTargetID(nNo, nIndex), nX, nY, 戦闘スキルＣＧ_番号(nSkillNo, nCount), スキル_名前(nSkillNo), nStatus > 0);
+	if (nH <= 0)
+	{
+		return -1;
+	}
+	this.m_sCount.createTarget(nNo, nIndex, nX, nY, nH);
+	return nH;
+}
+
+bool T_BattleSkill::setSelectArea(int nNo, int nIndex, int nCount, int nX, int nY, int nH, int nSelectIndex, bool bForward)
+{
+	int nID = this.getTargetID(nNo, nIndex);
+	if (nID <= 0)
+	{
+		return false;
+	}
+	if (nH < 0)
+	{
+		return false;
+	}
+	if (nSelectIndex < 0)
+	{
+		return false;
+	}
+	ref T_Rect rcArea = 戦闘選択領域_取得(nNo, bForward);
+	if (rcArea === NULL)
+	{
+		return false;
+	}
+	if (nCount > 1)
+	{
+		switch (nSelectIndex)
+		{
+			case 0:
+				this.m_sButton.setButtonSelectArea2(nID, rcArea.m_nSx, rcArea.m_nSy, rcArea.m_nEx, (nY + nH) - 1);
+				break;
+			case 99:
+				this.m_sButton.setButtonSelectArea2(nID, rcArea.m_nSx, nY, rcArea.m_nEx, rcArea.m_nEy);
+				break;
+			default:
+				this.m_sButton.setButtonSelectArea2(nID, rcArea.m_nSx, nY, rcArea.m_nEx, (nY + nH) - 1);
+				break;
+		}
+	}
+	else
+	{
+		this.m_sButton.setButtonSelectArea2(nID, rcArea.m_nSx, rcArea.m_nSy, rcArea.m_nEx, rcArea.m_nEy);
+	}
+	return true;
+}
+
+void T_BattleSkill::setTargetShowAllChara(int nSkillNo, int nNo)
+{
+	this.setTargetShow(-1, -1);
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo2 = 戦闘番号_味方(i);
+		this._setTargetShow(nNo2, nNo2 == nNo ? -1 : idx, 戦闘データ_有効(nNo2));
+	}
+}
+
+void T_BattleSkill::setTargetShowAllChara2(int nSkillNo, int nNo)
+{
+	this.setTargetShow(-1, -1);
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo2 = 戦闘番号_味方(i);
+		this._setTargetShow(nNo2, nNo2 == nNo ? -1 : idx, 戦闘番号_存在確認(nNo2));
+	}
+}
+
+void T_BattleSkill::setTargetShowAllMonster(int nSkillNo, int nNo)
+{
+	this.setTargetShow(-1, -1);
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo2 = 戦闘番号_敵(i);
+		this._setTargetShow(nNo2, nNo2 == nNo ? -1 : idx, 戦闘データ_有効(nNo2));
+	}
+}
+
+void T_BattleSkill::setTargetShowLine(int nSkillNo, int nNo)
+{
+	this.setTargetShow(-1, -1);
+	int idx = this.getSkillIndex(nSkillNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	int i = 0;
+	bool bFlag = 戦闘データ_敵前衛全滅();
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo2 = 戦闘番号_敵(i);
+		bool bShow = 戦闘データ_敵前衛(nNo) ? 1 : bFlag;
+		this._setTargetShow(nNo2, nNo2 == nNo ? -1 : idx, 戦闘データ_有効(nNo2) ? bShow : 0);
+	}
+}
+
+void T_BattleSkill::_setTargetShow(int nNo, int nIndex, bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	bool bFrameShow = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this._setTargetShow1(nNo, i, nIndex < 0 ? bShow : (i == nIndex ? bShow : 0)) > 0)
+		{
+			bFrameShow = true;
+		}
+	}
+	戦闘選択枠_表示設定(bFrameShow, nNo);
+}
+
+int T_BattleSkill::_setTargetShow1(int nNo, int nIndex, bool bShow)
+{
+	int nSkillNo = this.getSkillNoFromIndex(nIndex);
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	int nID = this.getTargetID(nNo, nIndex);
+	if (nID <= 0)
+	{
+		return -1;
+	}
+	bShow = this.isTargetSkillActive(nNo, nIndex) ? bShow : 0;
+	if (!this.m_sButton.setButtonShow(nID, bShow))
+	{
+		return -1;
+	}
+	this.m_sCount.setTargetShow(bShow, nNo, nIndex);
+	return bShow;
+}
+
+void T_BattleSkill::setTargetShowAll(bool bShow)
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		this._setTargetShowAll(nNo, 戦闘番号_存在確認(nNo) ? bShow : 0);
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_敵(i);
+		this._setTargetShowAll(nNo, 戦闘データ_有効(nNo) ? bShow : 0);
+	}
+}
+
+void T_BattleSkill::_setTargetShowAll(int nNo, bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	bool bFrameShow = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this._setTargetShow1(nNo, i, bShow) > 0)
+		{
+			bFrameShow = true;
+		}
+	}
+	戦闘選択枠_表示設定(bFrameShow, nNo);
+}
+
+void T_BattleSkill::updateSkillStatus()
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	int nCharaNo = this.getCharaNo();
+	bool bBack = 戦闘データ_味方後衛(this.m_nNo) && !戦闘データ_味方前衛全滅();
+	this.m_anStatus.Fill(0, cnt, -1);
+	this.m_anLock.Fill(0, cnt, 0);
+	for (i = 0; i < cnt; ++i)
+	{
+		int nSkillNo = this.m_rfsSkill.getSkillNo(i);
+		if (!スキル_行動(nSkillNo))
+		{
+			continue;
+		}
+		ref int rfnLock = this.m_anLock[i];
+		rfnLock = キャラスキル_使用禁止(nCharaNo, nSkillNo);
+		if (rfnLock > 0)
+		{
+			this.m_anStatus[i] = 0;
+			continue;
+		}
+		if (bBack && スキル_対象_前衛(nSkillNo))
+		{
+			this.m_anStatus[i] = 0;
+		}
+		else
+		{
+			this.m_anStatus[i] = キャラスキル_使用回数(nCharaNo, nSkillNo) > 0 ? 1 : 0;
+		}
+	}
+}
+
+int T_BattleSkill::setCountFromIndex(int nIndex, int nValue)
+{
+	if (this.m_rfsSkill === NULL)
+	{
+		return -1;
+	}
+	nValue = this.m_rfsSkill.setCount(nIndex, nValue);
+	if (nValue < 0)
+	{
+		return -1;
+	}
+	this.m_anStatus[nIndex] = nValue > 0 ? 1 : 0;
+	this.m_sCount.update(nIndex, nValue);
+	return nValue;
+}
+
+int T_BattleSkill::getTargetActiveChara(int nNo)
+{
+	if (!戦闘番号_存在確認(nNo))
+	{
+		return -1;
+	}
+	int idx = this.getTargetActiveIndex(nNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.getTargetID(nNo, idx);
+}
+
+int T_BattleSkill::getTargetActiveMonster(int nNo)
+{
+	if (!戦闘データ_有効(nNo))
+	{
+		return -1;
+	}
+	int idx = this.getTargetActiveIndex(nNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.getTargetID(nNo, idx);
+}
+
+int T_BattleSkill::getTargetActiveIndex(int nNo)
+{
+	int i = 0;
+	int cnt = this.m_anStatus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.isTargetSkillActive(nNo, i))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool T_BattleSkill::isTargetSkillActive(int nNo, int nIndex)
+{
+	int nSkillNo = this.getSkillNoFromIndex(nIndex);
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	int nID = this.getTargetID(nNo, nIndex);
+	if (nID <= 0)
+	{
+		return false;
+	}
+	if (this.m_anLock[nIndex] > 0)
+	{
+		return false;
+	}
+	if (スキル_対象_前衛(nSkillNo))
+	{
+		if (!戦闘データ_敵前衛全滅() && !戦闘データ_敵前衛(nNo))
+		{
+			return false;
+		}
+	}
+	if (戦闘番号_味方確認(nNo) && 戦闘データ_瀕死状態(nNo))
+	{
+		if (!スキル_対象_瀕死味方(nSkillNo))
+		{
+			return false;
+		}
+	}
+	return this.m_sButton.getButtonIndex(nID) >= 0;
+}
+

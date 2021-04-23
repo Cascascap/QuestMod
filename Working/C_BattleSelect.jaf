@@ -1,0 +1,421 @@
+int 戦闘選択_上矢印(int nID)
+{
+	return g_sBattleSelect.moveUp(nID);
+}
+
+int 戦闘選択_下矢印(int nID)
+{
+	return g_sBattleSelect.moveDown(nID);
+}
+
+int 戦闘選択_左矢印(int nID)
+{
+	return g_sBattleSelect.moveLeft(nID);
+}
+
+int 戦闘選択_右矢印(int nID)
+{
+	return g_sBattleSelect.moveRight(nID);
+}
+
+void 戦闘選択_選択設定(int nID, bool bSelect)
+{
+	g_sBattleSelect.setSelect(nID, bSelect);
+}
+
+bool 戦闘選択_作成(int nZ)
+{
+	戦闘遷移_初期化();
+	return g_sBattleSelect.create(nZ);
+}
+
+void 戦闘選択_削除()
+{
+	g_sBattleSelect.delete();
+}
+
+bool 戦闘選択_再作成()
+{
+	return g_sBattleSelect.remake();
+}
+
+void 戦闘選択_消去(int nNo)
+{
+	g_sBattleSelect.erase(nNo);
+}
+
+int 戦闘選択_味方行動(ref int nNo, ref int nTargetNo)
+{
+	nTargetNo = -1;
+	int nSkillNo = g_sBattleSelect.select(nNo);
+label0:
+	if (nSkillNo == 100003)
+	{
+		if (戦闘_入れ替え(nNo))
+		{
+			return 100003;
+		}
+		nSkillNo = g_sBattleSelect.select(nNo);
+		goto label0;
+	}
+	if (nSkillNo == 100002)
+	{
+		return 100002;
+	}
+	nTargetNo = nSkillNo != 211 ? g_sBattleSelect.getTargetNo() : -1;
+	return nSkillNo;
+}
+
+void 戦闘選択_解除(int nNo)
+{
+	g_sBattleSelect.reset(nNo);
+}
+
+bool 戦闘選択_自動戦闘停止確認()
+{
+	return g_sBattleSelect.checkStopAuto();
+}
+
+void 戦闘選択_キー待ち(int nWaitTime, int nResult)
+{
+	g_sBattleSelect.waitKey(nWaitTime, nResult);
+}
+
+void 戦闘選択_閉じる待ち(int nResult)
+{
+	g_sBattleSelect.waitClose(nResult);
+}
+
+bool 戦闘選択_行動回数回復(int nNo, int nSkillNo)
+{
+	return g_sBattleSelect.updateCount(nNo, nSkillNo);
+}
+
+bool 戦闘選択_行動回数更新(int nNo, int nSkillNo)
+{
+	return g_sBattleSelect.updateCount(nNo, nSkillNo);
+}
+
+void 戦闘選択_位置変更()
+{
+	g_sBattleSelect.changePos();
+}
+
+void 戦闘選択_表示設定(bool bShow, int nLogOpenShow)
+{
+	g_sBattleSelect.setShow(bShow, nLogOpenShow);
+}
+
+void 戦闘選択_ボタン消し()
+{
+	g_sBattleSelect.setButtonShow(false, -1);
+}
+
+void 戦闘選択_有効設定()
+{
+	g_sBattleSelect.setButtonActive();
+}
+
+void 戦闘選択_可能行動全表示設定(int nMode)
+{
+	g_sBattleSelect.setSkillMode(nMode);
+}
+
+int 戦闘選択_スキル有効数(int nNo)
+{
+	return g_sBattleSelect.getActiveCount(nNo);
+}
+
+void 戦闘選択_ボタン有効設定(int nID, bool bActive)
+{
+	g_sBattleSelect.getButtonGroup().setButtonActive(nID, bActive);
+}
+
+ref T_BattleSkill 戦闘選択_スキル(int nNo)
+{
+	return g_sBattleSelect.getSkill(nNo);
+}
+
+ref T_Button 戦闘選択_ボタン(int nID)
+{
+	return g_sBattleSelect.getButton(nID);
+}
+
+bool 戦闘選択_スキルブレンド率設定(int nNo, int nBlendRate)
+{
+	ref T_BattleSkill rfsSkill = g_sBattleSelect.getSkill(nNo);
+	if (rfsSkill === NULL)
+	{
+		return false;
+	}
+	rfsSkill.setBlendRate(nBlendRate);
+	return true;
+}
+
+int 戦闘_ターゲット選択(int nNo, int nSkillNo)
+{
+	if (!戦闘データ_有効(nNo))
+	{
+		return -1;
+	}
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	switch (スキル_対象(nSkillNo))
+	{
+		case 1:
+		case 3:
+		case 4:
+			return 戦闘_ターゲット選択_敵前衛();
+		case 2:
+			return 戦闘_ターゲット選択_敵後衛();
+			break;
+		case 10:
+			return nNo;
+		case 11:
+			if (スキル_回復技(nSkillNo))
+			{
+				return 戦闘_ターゲット選択_味方ダメージあり();
+			}
+			return 戦闘_ターゲット選択_味方();
+		case 12:
+			return 戦闘_ターゲット選択_味方();
+		case 13:
+		case 14:
+			return 戦闘_ターゲット選択_味方瀕死();
+		default:
+			break;
+	}
+	return -1;
+}
+
+int 戦闘_ターゲット選択_敵前衛()
+{
+	array@int anIndex;
+	anIndex.PushBack(1);
+	anIndex.PushBack(0);
+	anIndex.PushBack(2);
+	anIndex.PushBack(3);
+	anIndex.PushBack(4);
+	int i = 0;
+	int cnt = anIndex.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = 戦闘番号_敵(anIndex[i]);
+		if (戦闘データ_有効(nNo))
+		{
+			return nNo;
+		}
+	}
+	return -1;
+}
+
+int 戦闘_ターゲット選択_敵後衛()
+{
+	array@int anIndex;
+	anIndex.PushBack(3);
+	anIndex.PushBack(4);
+	anIndex.PushBack(1);
+	anIndex.PushBack(0);
+	anIndex.PushBack(2);
+	int i = 0;
+	int cnt = anIndex.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = 戦闘番号_敵(anIndex[i]);
+		if (戦闘データ_有効(nNo))
+		{
+			return nNo;
+		}
+	}
+	return -1;
+}
+
+int 戦闘_ターゲット選択_味方()
+{
+	array@int anIndex;
+	anIndex.PushBack(1);
+	anIndex.PushBack(0);
+	anIndex.PushBack(2);
+	anIndex.PushBack(3);
+	anIndex.PushBack(4);
+	int i = 0;
+	int cnt = anIndex.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = 戦闘番号_味方(anIndex[i]);
+		if (戦闘データ_有効(nNo))
+		{
+			return nNo;
+		}
+	}
+	return -1;
+}
+
+int 戦闘_ターゲット選択_味方ダメージあり()
+{
+	int i = 0;
+	int nRet = -1;
+	int nMin = 100;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘データ_有効(nNo))
+		{
+			continue;
+		}
+		int nPer = 戦闘データ_体力％(nNo);
+		if (nPer < nMin)
+		{
+			nMin = nPer;
+			nRet = nNo;
+		}
+	}
+	return nRet > 0 ? nRet : 戦闘_ターゲット選択_味方();
+}
+
+int 戦闘_ターゲット選択_味方瀕死()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		if (戦闘データ_瀕死状態(nNo))
+		{
+			return nNo;
+		}
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘データ_有効(nNo))
+		{
+			continue;
+		}
+		if (戦闘データ_状態異常(nNo))
+		{
+			return nNo;
+		}
+	}
+	return 戦闘_ターゲット選択_味方();
+}
+
+bool ターゲット種別_確認(int nType, int nNo, int nSkillNo)
+{
+	switch (スキル_対象(nSkillNo))
+	{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			if (nType == 3)
+			{
+				return ターゲット種別_取得(nSkillNo) == 3;
+			}
+			break;
+		case 10:
+			if (nType == 2)
+			{
+				return ターゲット種別_取得(nSkillNo) == 1;
+			}
+			if (nType == 1)
+			{
+				switch (nSkillNo)
+				{
+					case 212:
+					case 232:
+						return true;
+					default:
+						break;
+				}
+			}
+			break;
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+			if (nType == 1 || nType == 2)
+			{
+				return ターゲット種別_取得(nSkillNo) == 1;
+			}
+			break;
+		case 30:
+		default:
+			break;
+	}
+	return false;
+}
+
+int ターゲット種別_取得(int nSkillNo)
+{
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	switch (スキル_パネル色(nSkillNo))
+	{
+		case 100:
+			return 3;
+		case 101:
+			return 1;
+		case 104:
+			switch (スキル_アイテム種別(nSkillNo))
+			{
+				case 1:
+					return 3;
+				case 2:
+					return 1;
+				default:
+					break;
+			}
+			return 0;
+		case 102:
+		case 103:
+		case 105:
+			return 0;
+		default:
+			break;
+	}
+	return -1;
+}
+
+string 戦闘スキル_補足説明(int nNo, int nTargetNo, int nSkillNo)
+{
+	if (!戦闘番号_味方確認(nNo))
+	{
+		return "";
+	}
+	if (!戦闘番号_敵確認(nTargetNo))
+	{
+		return "";
+	}
+	if (nSkillNo <= 0)
+	{
+		return "";
+	}
+	int i = 0;
+	int cnt = 味方パーティ_数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nCharaNo = 味方パーティ_番号(i);
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		if (キャラ_状態変化(nCharaNo) == 3)
+		{
+			continue;
+		}
+		if (キャラスキル_保有中(nCharaNo, 488) > false)
+		{
+			return Ｔ戦闘_予測(nNo, nTargetNo, nSkillNo);
+		}
+	}
+	return "";
+}
+

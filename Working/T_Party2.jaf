@@ -1,0 +1,1169 @@
+int T_Party::moveUp(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+			return メイン編成Ｃ登録中() ? 100019 : 100017;
+		case 100002:
+			return メイン編成Ｃ登録中() ? 100018 : 100017;
+		case 100003:
+			if (this.m_sList.getMode() == 2)
+			{
+				return 900001;
+			}
+			return this.m_sButton.getButtonActive(600011) ? 600011 : 600012;
+		case 100011:
+		case 100012:
+		case 100013:
+			return this._moveUpChara(0, 0, -1, -1, -1, -1);
+		case 100014:
+		case 100016:
+			return メイン編成Ａ登録中() ? 100013 : 100011;
+		case 100015:
+			return メイン編成Ａ登録中() ? 100012 : 100011;
+		case 100017:
+		case 100019:
+			return メイン編成Ｂ登録中() ? 100016 : 100014;
+		case 100018:
+			return メイン編成Ｂ登録中() ? 100015 : 100014;
+		case 100031:
+		case 100032:
+			return this.m_sList.getMode() == 2 ? 900002 : 600012;
+		case 109999:
+			return 900003;
+		case 100021:
+		case 100022:
+			goto label0;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		switch (nID)
+		{
+			case 900001:
+				return 100002;
+			case 900002:
+				return this._moveUpChara(3, 3, 4, 1, 0, 2);
+			case 900003:
+				return this._moveUpChara(4, 4, 3, 2, 1, 0);
+			default:
+				break;
+		}
+		goto label0;
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ＞システムバー(nID);
+	}
+	if (nID > 190000)
+	{
+		return 100003;
+	}
+	if (nID > 180000)
+	{
+		return this.m_sList.getMode() == 2 ? 900002 : 600012;
+	}
+	if (nID > 170000)
+	{
+		return this.m_sList.getMode() == 2 ? 900003 : 600014;
+	}
+	if (nID > 130000)
+	{
+		return this.moveUpChara(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveUpList(this.getListIndex(nID));
+	}
+	if (nID > 119000)
+	{
+		return this.moveUpChara(this.getStatusCharaIndex(nID));
+	}
+	if (nID > 114000)
+	{
+		return this.moveUpList(this.getStatusListIndex(nID));
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_Party::moveDown(int nID)
+{
+	int nLayout = this.m_sList.getLayout();
+	switch (nID)
+	{
+		case 100001:
+			return 900001;
+		case 100002:
+			return 900001;
+		case 100003:
+			return this.getFirstList();
+		case 100011:
+		case 100013:
+			return メイン編成Ｂ登録中() ? 100016 : 100014;
+		case 100012:
+			return メイン編成Ｂ登録中() ? 100015 : 100014;
+		case 100014:
+		case 100016:
+			return メイン編成Ｃ登録中() ? 100019 : 100017;
+		case 100015:
+			return メイン編成Ｃ登録中() ? 100018 : 100017;
+		case 100017:
+		case 100019:
+			return 100001;
+		case 100018:
+			return 100002;
+		case 100031:
+		case 100032:
+			if (nLayout == 1)
+			{
+				return this._moveDownList(-1, 4);
+			}
+			return this._moveDownList(-1, 2);
+		case 100021:
+		case 100022:
+		case 109999:
+			goto label0;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		if (this.m_sList.getMode() == 2)
+		{
+			switch (nID)
+			{
+				case 900001:
+					return 100003;
+				case 900002:
+					return this.m_sJob.getFirst();
+				case 900003:
+					return this.m_sSort.getFirst();
+				default:
+					break;
+			}
+			goto label0;
+		}
+		return カーソル移動_システムバー＞街マップ(nID, this.m_sButton);
+	}
+	if (nID > 600000)
+	{
+		switch (nID)
+		{
+			case 600011:
+				return 100003;
+			case 600012:
+				return this.m_sJob.getFirst();
+			case 600014:
+				return this.m_sSort.getFirst();
+			default:
+				break;
+		}
+		goto label0;
+	}
+	if (nID > 190000)
+	{
+		return this.getFirstList();
+	}
+	if (nID > 180000)
+	{
+		return this._moveDownList(-1, 1);
+	}
+	if (nID > 170000)
+	{
+		if (nLayout == 1)
+		{
+			return this._moveDownList(-1, 7);
+		}
+		return this._moveDownList(-1, 4);
+	}
+	if (nID > 130000)
+	{
+		return this.moveDownChara(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveDownList(this.getListIndex(nID));
+	}
+	if (nID > 119000)
+	{
+		return this.moveDownChara(this.getStatusCharaIndex(nID));
+	}
+	if (nID > 114000)
+	{
+		return this.moveDownList(this.getStatusListIndex(nID));
+	}
+label0:
+	return this.getLastList();
+}
+
+int T_Party::moveLeft(int nID)
+{
+	switch (nID)
+	{
+		case 100003:
+			return this.m_sSort.getLast();
+		case 100001:
+			return 100002;
+		case 100002:
+		case 100011:
+		case 100012:
+			return this._moveLeftChara(4, 4, 3, -1, -1, -1);
+		case 100013:
+			return 100012;
+		case 100014:
+		case 100015:
+		case 100017:
+		case 100018:
+			return this._moveLeftChara(4, 4, 3, -1, -1, -1);
+		case 100016:
+			return 100015;
+		case 100019:
+			return 100018;
+		case 100031:
+			return this.m_sJob.getLast();
+		case 100032:
+			return 100031;
+		case 109999:
+			return 100003;
+		case 100021:
+		case 100022:
+			goto label0;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ左(nID, this.m_sButton);
+	}
+	if (nID > 190000)
+	{
+		goto label0;
+	}
+	if (nID > 180000)
+	{
+		int nID2 = this.m_sJob.getPrev(nID);
+		return nID2 > 0 ? nID2 : 100003;
+	}
+	if (nID > 170000)
+	{
+		int nID2 = this.m_sSort.getPrev(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return 100032;
+	}
+	if (nID > 130000)
+	{
+		return this.moveLeftChara(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveLeftList(this.getListIndex(nID));
+	}
+	if (nID > 119000)
+	{
+		return this.moveLeftChara(this.getStatusCharaIndex(nID));
+	}
+	if (nID > 114000)
+	{
+		return this.moveLeftList(this.getStatusListIndex(nID));
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_Party::moveRight(int nID)
+{
+	switch (nID)
+	{
+		case 100003:
+			return this.m_sJob.getFirst();
+		case 100002:
+			return 100001;
+		case 100001:
+		case 100011:
+		case 100013:
+			return this._moveRightChara(3, 3, 4, -1, -1, -1);
+		case 100012:
+			return 100013;
+		case 100014:
+		case 100016:
+		case 100017:
+		case 100019:
+			return this._moveRightChara(3, 3, 4, -1, -1, -1);
+		case 100015:
+			return 100016;
+		case 100018:
+			return 100019;
+		case 100031:
+			return 100032;
+		case 100032:
+			return this.m_sSort.getFirst();
+		case 109999:
+			return 100003;
+		case 100021:
+		case 100022:
+			goto label0;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ右(nID, this.m_sButton);
+	}
+	if (nID > 190000)
+	{
+		goto label0;
+	}
+	if (nID > 180000)
+	{
+		int nID2 = this.m_sJob.getNext(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return 100031;
+	}
+	if (nID > 170000)
+	{
+		int nID2 = this.m_sSort.getNext(nID);
+		return nID2 > 0 ? nID2 : 100003;
+	}
+	if (nID > 130000)
+	{
+		return this.moveRightChara(this.getCharaIndex(nID));
+	}
+	if (nID > 120000)
+	{
+		return this.moveRightList(this.getListIndex(nID));
+	}
+	if (nID > 119000)
+	{
+		return this.moveRightChara(this.getStatusCharaIndex(nID));
+	}
+	if (nID > 114000)
+	{
+		return this.moveRightList(this.getStatusListIndex(nID));
+	}
+label0:
+	return this.getLastList();
+}
+
+int T_Party::moveUpChara(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 3:
+			return this._moveUpChara(nIndex, 1, 0, 2, -1, -1);
+		case 4:
+			return this._moveUpChara(nIndex, 2, 1, 0, -1, -1);
+		case 0:
+		case 1:
+		case 2:
+		default:
+			break;
+	}
+	return this._moveUpChara(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::moveDownChara(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 1:
+			return this._moveDownChara(nIndex, 3, 4, -1, -1, -1);
+		case 2:
+			return this._moveDownChara(nIndex, 4, 3, -1, -1, -1);
+		case 0:
+		case 3:
+		case 4:
+		default:
+			break;
+	}
+	return this._moveDownChara(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::moveLeftChara(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return this._moveLeftChara(nIndex, 2, 1, 0, -1, -1);
+		case 1:
+			return this._moveLeftChara(nIndex, 0, 2, 1, -1, -1);
+		case 2:
+			return this._moveLeftChara(nIndex, 1, 0, 2, -1, -1);
+		case 4:
+			return this._moveLeftChara(nIndex, 3, -1, -1, -1, -1);
+		case 3:
+		default:
+			break;
+	}
+	return this._moveLeftChara(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::moveRightChara(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return this._moveRightChara(nIndex, 1, 2, 0, -1, -1);
+		case 1:
+			return this._moveRightChara(nIndex, 2, 1, 0, -1, -1);
+		case 2:
+			return this._moveRightChara(nIndex, 0, 1, 2, -1, -1);
+		case 3:
+			return this._moveRightChara(nIndex, 4, -1, -1, -1, -1);
+		case 4:
+		default:
+			break;
+	}
+	return this._moveRightChara(nIndex, -1, -1, -1, -1, -1);
+}
+
+int T_Party::_moveUpChara(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveChara(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	int nLayout = this.m_sList.getLayout();
+	switch (nIndex)
+	{
+		case 0:
+			if (nLayout == 1)
+			{
+				return this._moveUpList(4, 0);
+			}
+			return this._moveUpList(2, 0);
+		case 1:
+		case 3:
+			if (nLayout == 1)
+			{
+				return this._moveUpList(4, 2);
+			}
+			return this._moveUpList(2, 2);
+		case 2:
+		case 4:
+			if (nLayout == 1)
+			{
+				return this._moveUpList(4, 5);
+			}
+			return this._moveUpList(2, 4);
+		default:
+			break;
+	}
+	return this.getLastList();
+}
+
+int T_Party::_moveDownChara(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveChara(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	switch (nIndex)
+	{
+		case 0:
+			return メイン編成Ａ登録中() ? 100013 : 100011;
+		case 1:
+		case 3:
+			return 900002;
+		case 2:
+		case 4:
+			return 900003;
+		default:
+			break;
+	}
+	return 900001;
+}
+
+int T_Party::_moveLeftChara(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveChara(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return メイン編成Ａ登録中() ? 100013 : 100011;
+}
+
+int T_Party::_moveRightChara(int nIndex, int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = this._moveChara(nIndex0, nIndex1, nIndex2, nIndex3, nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return メイン編成Ａ登録中() ? 100012 : 100011;
+}
+
+int T_Party::_moveChara(int nIndex0, int nIndex1, int nIndex2, int nIndex3, int nIndex4)
+{
+	int nID = 0;
+	nID = this.getCharaID(nIndex0);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.getCharaID(nIndex1);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.getCharaID(nIndex2);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.getCharaID(nIndex3);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.getCharaID(nIndex4);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return 0;
+}
+
+int T_Party::moveUpList(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getFirstList();
+	}
+	return this._moveUpList(nRow, nCol);
+}
+
+int T_Party::moveDownList(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getLastList();
+	}
+	return this._moveDownList(nRow, nCol);
+}
+
+int T_Party::moveLeftList(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getFirstList();
+	}
+	return this._moveLeftList(nRow, nCol);
+}
+
+int T_Party::moveRightList(int nIndex)
+{
+	int nRow = パーティ一覧_行番号(nIndex, -1);
+	int nCol = パーティ一覧_列番号(nIndex, -1);
+	if (nRow < 0 || nCol < 0)
+	{
+		return this.getLastList();
+	}
+	return this._moveRightList(nRow, nCol);
+}
+
+int T_Party::_moveUpList(int nRow, int nCol)
+{
+	int idx = this.m_sList.moveUp(this.m_bOpenFlag ? 1 : 0, nRow, nCol);
+	if (idx >= 0)
+	{
+		return this.getListID(idx);
+	}
+	if (this.m_sList.getLayout() == 1)
+	{
+		switch (nCol)
+		{
+			case 0:
+				return 100003;
+			case 1:
+			case 2:
+				return this.m_sJob.getFirst();
+			case 3:
+				return this.m_sJob.getLast();
+			case 4:
+				return 100031;
+			case 5:
+			case 6:
+				if (this.m_bOpenFlag)
+				{
+					return 0;
+				}
+				return this.m_sSort.getFirst();
+			case 7:
+				if (this.m_bOpenFlag)
+				{
+					return 0;
+				}
+				return this.m_sSort.getLast();
+			default:
+				break;
+		}
+	}
+	else
+	{
+		switch (nCol)
+		{
+			case 0:
+				return 100003;
+			case 1:
+				return this.m_sJob.getFirst();
+			case 2:
+				return 100032;
+			case 3:
+				if (this.m_bOpenFlag)
+				{
+					return 0;
+				}
+				return this.m_sSort.getFirst();
+			case 4:
+				if (this.m_bOpenFlag)
+				{
+					return 0;
+				}
+				return this.m_sSort.getLast();
+			default:
+				break;
+		}
+	}
+	return this.getFirstList();
+}
+
+int T_Party::_moveDownList(int nRow, int nCol)
+{
+	int idx = this.m_sList.moveDown(this.m_bOpenFlag ? 1 : 0, nRow, nCol);
+	if (idx >= 0)
+	{
+		return this.getListID(idx);
+	}
+	if (this.m_bOpenFlag)
+	{
+		return 0;
+	}
+	if (this.m_sList.getLayout() == 1)
+	{
+		switch (nCol)
+		{
+			case 0:
+			case 1:
+				return this._moveDownChara(0, 0, -1, -1, -1, -1);
+			case 2:
+			case 3:
+			case 4:
+				return this._moveDownChara(1, 1, 3, 2, 4, 0);
+			case 5:
+			case 6:
+			case 7:
+				return this._moveDownChara(2, 2, 4, 1, 3, 0);
+			default:
+				break;
+		}
+	}
+	else
+	{
+		switch (nCol)
+		{
+			case 0:
+				return this._moveDownChara(0, 0, -1, -1, -1, -1);
+			case 1:
+			case 2:
+				return this._moveDownChara(1, 1, 3, 2, 4, 0);
+			case 3:
+			case 4:
+				return this._moveDownChara(2, 2, 4, 1, 3, 0);
+			default:
+				break;
+		}
+	}
+	return this.getLastList();
+}
+
+int T_Party::_moveLeftList(int nRow, int nCol)
+{
+	int idx = this.m_sList.moveLeft(this.m_bOpenFlag ? 1 : 0, nRow, nCol);
+	if (idx >= 0)
+	{
+		return this.getListID(idx);
+	}
+	return this.getFirstList();
+}
+
+int T_Party::_moveRightList(int nRow, int nCol)
+{
+	int idx = this.m_sList.moveRight(this.m_bOpenFlag ? 1 : 0, nRow, nCol);
+	if (idx >= 0)
+	{
+		return this.getListID(idx);
+	}
+	return this.getLastList();
+}
+
+int T_Party::getFirstList()
+{
+	int idx = this.m_sList.getFirst(this.m_bOpenFlag ? 1 : 0);
+	if (idx < 0)
+	{
+		return 100003;
+	}
+	return this.getListID(idx);
+}
+
+int T_Party::getLastList()
+{
+	int idx = this.m_sList.getLast(this.m_bOpenFlag ? 1 : 0);
+	if (idx < 0)
+	{
+		return 100003;
+	}
+	return this.getListID(idx);
+}
+
+bool T_Party::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	this.m_sShortcutInfo.setShow(false);
+	switch (nID)
+	{
+		case 100001:
+			return this.execReset();
+		case 100002:
+			return this.execRemoveAll();
+		case 100003:
+			return this.execOpen(nRet);
+		case 100011:
+			return this.execEntryMain(1);
+		case 100012:
+			return this.execClearMain(1);
+		case 100013:
+			return this.execLoadMain(1);
+		case 100014:
+			return this.execEntryMain(2);
+		case 100015:
+			return this.execClearMain(2);
+		case 100016:
+			return this.execLoadMain(2);
+		case 100017:
+			return this.execEntryMain(3);
+		case 100018:
+			return this.execClearMain(3);
+		case 100019:
+			return this.execLoadMain(3);
+		case 100031:
+			return this.execLayout(0);
+		case 100032:
+			return this.execLayout(1);
+		case 109999:
+			return this.execClose();
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.execSystemBar(nID, nRet);
+	}
+	if (nID > 600000)
+	{
+		switch (nID)
+		{
+			case 600001:
+			case 600011:
+			case 600012:
+			case 600014:
+				if (this.execClose())
+				{
+					nRet = nID;
+					return true;
+				}
+				break;
+			default:
+				break;
+		}
+		return false;
+	}
+	if (nID > 190000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 180000)
+	{
+		return this.execJob(nID);
+	}
+	if (nID > 170000)
+	{
+		return this.execSort(nID);
+	}
+	if (nID > 130000)
+	{
+		return this.execChara(nID);
+	}
+	if (nID > 120000)
+	{
+		return this.execList(nID);
+	}
+	if (nID > 119000)
+	{
+		return this.execStatusChara(nID, nRet);
+	}
+	if (nID > 114000)
+	{
+		return this.execStatusList(nID, nRet);
+	}
+	return false;
+}
+
+bool T_Party::execSystemBar(int nID, ref int nRet)
+{
+	int nRet2 = システムバー_実行(nID);
+	if (nRet2 == 910002)
+	{
+		システムメニュー_ロード();
+	}
+	else if (nRet2 > 0)
+	{
+		if (this.execClose())
+		{
+			nRet = nRet2;
+			return true;
+		}
+	}
+	return false;
+}
+
+bool T_Party::execStatusList(int nID, ref int nRet)
+{
+	nRet = this.showStatusList(nID);
+	return false;
+}
+
+bool T_Party::execStatusChara(int nID, ref int nRet)
+{
+	int idx = this.getStatusCharaIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nCharaNo = this.m_sChara.getCharaNo(idx);
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	this.resetSelect();
+	nRet = Ｒ８ステータス画面(11, nCharaNo, this.m_sList.getSortMode(), this.m_sList.getJobType());
+	this.m_sChara.remake();
+	this.m_sList.remakeChara();
+	return false;
+}
+
+bool T_Party::execList(int nID)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execList01(nID);
+		case 1:
+			return this.execList02(nID);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_Party::execList01(int nID)
+{
+	int idx = this.getListIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref T_PartyList rfsList = this.m_sList.getFromIndex(idx);
+	if (rfsList === NULL)
+	{
+		return false;
+	}
+	int nCharaNo = rfsList.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	int nMode = this.m_sList.getMode();
+	int nDropID = 0;
+	if (!パーティ編成_ドラッグ実行(nMode, this.m_sList.getLayout(), this.m_sList.isCustom(), this.m_sChara.getIndex(nCharaNo), nCharaNo, rfsList.getFace(), nDropID))
+	{
+		効果音_ドロップ();
+		return false;
+	}
+	if (nDropID == 999)
+	{
+		this.eraseChara(nCharaNo);
+		効果音_ドロップ();
+	}
+	else if (nDropID > 130000)
+	{
+		if (!this.m_sChara.drop(this.getCharaIndex(nDropID), nCharaNo))
+		{
+			効果音_ドロップ();
+			return false;
+		}
+		効果音_パーティー変更();
+	}
+	else
+	{
+		if (!this.m_sList.drop(this.getListIndex(nDropID), nCharaNo))
+		{
+			効果音_キャンセル();
+			return false;
+		}
+		効果音_ドロップ();
+	}
+	this.update(2147483647, true);
+	return false;
+}
+
+bool T_Party::execList02(int nID)
+{
+	int idx = this.getListIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.moveLockChara(1, this.m_sList.isCustom(), this.getCharaNo(idx));
+	return false;
+}
+
+bool T_Party::execChara(int nID)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execChara01(nID);
+		case 1:
+			return this.execChara02(nID);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_Party::execChara01(int nID)
+{
+	int idx = this.getCharaIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref T_CharaCard rfsChara = this.m_sChara.getFromIndex(idx);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	int nCharaNo = rfsChara.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	int nMode = this.m_sList.getMode();
+	int nDropID = 0;
+	if (!パーティ編成_ドラッグ実行(nMode, this.m_sList.getLayout(), false, idx, nCharaNo, rfsChara.getFace(), nDropID))
+	{
+		if (nDropID <= 0)
+		{
+			this.m_sChara.erase(nCharaNo, 2);
+			効果音_パーティー変更();
+		}
+		else
+		{
+			効果音_ドロップ();
+		}
+	}
+	else if (nDropID == 999)
+	{
+		if (this.eraseChara(nCharaNo))
+		{
+			効果音_パーティー変更();
+		}
+		else
+		{
+			効果音_ドロップ();
+		}
+	}
+	else
+	{
+		if (!this.m_sChara.drop(this.getCharaIndex(nDropID), nCharaNo))
+		{
+			効果音_ドロップ();
+			return false;
+		}
+		効果音_パーティー変更();
+	}
+	this.update(2147483647, true);
+	return false;
+}
+
+bool T_Party::execChara02(int nID)
+{
+	int idx = this.getCharaIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.moveLockChara(2, false, this.getPartyChara(idx));
+	return false;
+}
+
+bool T_Party::execSort(int nID)
+{
+	switch (nID)
+	{
+		case 170001:
+		case 170002:
+		case 170003:
+		case 170009:
+			this.sortList(nID - 170000);
+			break;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_Party::execJob(int nID)
+{
+	this.changeJobList(nID - 180000);
+	return false;
+}
+
+bool T_Party::execReset()
+{
+	this.m_sChara.reset();
+	this.update(2147483647, true);
+	return false;
+}
+
+bool T_Party::execRemoveAll()
+{
+	this.m_sChara.removeAll();
+	this.update(2147483647, true);
+	return false;
+}
+
+bool T_Party::execOpen(ref int nRet)
+{
+	this.resetSelect();
+	this.setOpenFlag(true);
+	nRet = パーティ倉庫_実行(this.m_spBase.getZ() + 50, this.m_sList.getLayout());
+	this.setOpenFlag(false);
+	this.update(2147483647, true);
+	return false;
+}
+
+bool T_Party::execEntryMain(int nPartyNo)
+{
+	if (this.m_sChara.getCharaCount() <= 0)
+	{
+		選択_通知("Party is empty.@Deploy 1 person.", "OK", false);
+		return false;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		メイン編成_設定(nPartyNo, i, this.m_sChara.getCharaNo(i));
+	}
+	メイン編成登録中_設定(nPartyNo, true);
+	this.setButtonShow(true);
+	return false;
+}
+
+bool T_Party::execClearMain(int nPartyNo)
+{
+	if (!メイン編成登録中(nPartyNo))
+	{
+		return false;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		メイン編成_設定(nPartyNo, i, 0);
+	}
+	メイン編成登録中_設定(nPartyNo, false);
+	this.setButtonShow(true);
+	return false;
+}
+
+bool T_Party::execLoadMain(int nPartyNo)
+{
+	if (!メイン編成登録中(nPartyNo))
+	{
+		選択_通知("No main formation is set.", "OK", false);
+		return false;
+	}
+	if (!this.m_sChara.checkLoadMain(nPartyNo))
+	{
+		return false;
+	}
+	this.m_sChara.loadMain(nPartyNo);
+	this.remakeList(-1);
+	this.updateChangeCount(true);
+	return false;
+}
+
+bool T_Party::execLayout(int nLayout)
+{
+	this.setLayout(nLayout);
+	return false;
+}
+
+bool T_Party::execClose()
+{
+	if (this.m_sChara.getCharaCount() <= 0)
+	{
+		選択_通知("Party is empty.@Deploy 1 person.", "OK", false);
+		return false;
+	}
+	if (!this.m_sChara.change())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_Party::eraseChara(int nCharaNo)
+{
+	if (this.m_sList.getMode() != 1)
+	{
+		return false;
+	}
+	if (キャラ_削除禁止(nCharaNo) > 0)
+	{
+		return false;
+	}
+	メイン編成_消去(nCharaNo);
+	this.m_sChara.erase(nCharaNo, 0);
+	キャラデータ一覧_消去(nCharaNo, キャラ_番号(nCharaNo));
+	this.m_sList.erase(nCharaNo);
+	return キャラ_消去(nCharaNo);
+}
+

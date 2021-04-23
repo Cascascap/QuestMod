@@ -1,0 +1,53 @@
+int Ｒ８戦闘(int nFlag)
+{
+	Ｒ８戦闘_前処理(nFlag);
+	int nRet = -1;
+	if (!戦闘_初期化(マップ_番号(), nFlag))
+	{
+		goto label0;
+	}
+	戦闘_奇襲();
+	nRet = 戦闘_ループ();
+	nRet = nRet > 0 ? nRet : (nRet < 0 ? -nRet : 1);
+label0:
+	Ｒ８戦闘_後処理(nRet);
+	return nRet;
+}
+
+bool Ｒ８戦闘_前処理(int nFlag)
+{
+	戦闘ログ_作成(196);
+	Ｔ戦闘前初期化(nFlag);
+	効果_戦闘準備(0);
+	音楽_戦闘(曲_戦闘());
+	return マップ_サスペンド();
+}
+
+bool Ｒ８戦闘_後処理(int nRet)
+{
+	bool bRet = false;
+	int nType = 戦闘種別();
+	戦闘リザルト_表示(nRet);
+	戦闘_終了処理(true);
+	戦闘リザルト_メッセージ表示(nRet);
+	効果_戦闘準備(0);
+	if (!マップ_サスペンド状態())
+	{
+		goto label0;
+	}
+	音楽_戦闘後(nType > 0);
+	if (!マップ_レジューム())
+	{
+		goto label0;
+	}
+	bRet = true;
+label0:
+	所持金＋(◆取得金額);
+	return bRet;
+}
+
+void Ｒ８戦闘ログ／追加(string szText)
+{
+	戦闘ログ_追加(szText, 5, false);
+}
+

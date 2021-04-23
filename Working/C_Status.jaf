@@ -1,0 +1,277 @@
+int Ｒ８ステータス画面(int nMode, int nCharaNo, int nSortMode, int nJobType)
+{
+	int nOld = システムバー_モード変更(19, -1);
+	bool bFlag = Ｒ８キャラ停止();
+	int nRet = ステータス_実行(nMode, nCharaNo > 0 ? nCharaNo : ステータス_表示キャラ(nMode), nSortMode, nJobType);
+	if (bFlag)
+	{
+		Ｒ８キャラ停止解除();
+	}
+	システムバー_モード変更(nOld, -1);
+	return nRet;
+}
+
+void scrollStatus(int nValue)
+{
+	g_sStatus.scroll(nValue);
+}
+
+int ステータス_実行(int nMode, int nCharaNo, int nSortMode, int nJobType)
+{
+	g_bStatusBlink = false;
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	int nRet = g_sStatus.run(nMode, nCharaNo, nSortMode, nJobType);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	g_bStatusBlink = false;
+	return nRet;
+}
+
+int ステータス_上矢印(int nID)
+{
+	return g_sStatus.moveUp(nID);
+}
+
+int ステータス_下矢印(int nID)
+{
+	return g_sStatus.moveDown(nID);
+}
+
+int ステータス_左矢印(int nID)
+{
+	return g_sStatus.moveLeft(nID);
+}
+
+int ステータス_右矢印(int nID)
+{
+	return g_sStatus.moveRight(nID);
+}
+
+void ステータス_選択設定(int nID, bool bSelect)
+{
+	g_sStatus.setSelect(nID, bSelect);
+}
+
+int ステータス_上矢印_ロック(int nID)
+{
+	return g_sStatus.moveUpLock(nID);
+}
+
+int ステータス_下矢印_ロック(int nID)
+{
+	return g_sStatus.moveDownLock(nID);
+}
+
+int ステータス_左矢印_ロック(int nID)
+{
+	return g_sStatus.moveLeftLock(nID);
+}
+
+int ステータス_右矢印_ロック(int nID)
+{
+	return g_sStatus.moveRightLock(nID);
+}
+
+void ステータス_アイテム説明表示(int nItemIndex)
+{
+	g_sStatus.showItemComment(nItemIndex);
+}
+
+void ステータス_パラメータ表示(int nItemType, int nItemNo)
+{
+	g_sStatus.getCard().showParam(nItemType, nItemNo);
+}
+
+void ステータス_パラメータ消し()
+{
+	g_sStatus.getCard().showParam(-1, -1);
+}
+
+ref T_ItemIcon ステータス_アイテムアイコン(int nIndex)
+{
+	return g_sStatus.getCard().getItemIcon(nIndex);
+}
+
+int ステータス_スクロール_入力確認(ref int nSelectID)
+{
+	nSelectID = 0;
+	if (!g_sStatus.getScrollFlag())
+	{
+		return -1;
+	}
+	return g_sStatus.getScrollBar().checkInput(nSelectID);
+}
+
+bool ステータス_スクロール_ホイール確認()
+{
+	if (!g_sStatus.getScrollFlag())
+	{
+		return false;
+	}
+	return g_sStatus.getScrollBar().checkWheel();
+}
+
+int ステータス_スクロール_キー確認()
+{
+	if (!g_sStatus.getScrollFlag())
+	{
+		return 0;
+	}
+	return g_sStatus.getScrollBar().checkKey();
+}
+
+void ステータス_スクロール_入力ＯＮ()
+{
+	if (g_sStatus.getScrollFlag())
+	{
+		g_sStatus.getScrollBar().setInputFlag(true);
+	}
+}
+
+void ステータス_スクロール_入力ＯＦＦ()
+{
+	if (g_sStatus.getScrollFlag())
+	{
+		g_sStatus.getScrollBar().setInputFlag(false);
+	}
+}
+
+int ステータス_キャラ一覧_数()
+{
+	return g_sStatus.getCharaList().getCount();
+}
+
+int ステータス_キャラ一覧_番号(int nIndex)
+{
+	return g_sStatus.getCharaList().get(nIndex);
+}
+
+int ステータス_キャラ一覧_インデクス(int nCharaNo)
+{
+	return g_sStatus.getCharaList().getIndex(nCharaNo);
+}
+
+int ステータス_表示キャラ(int nMode)
+{
+	int i = 0;
+	switch (nMode)
+	{
+		case 0:
+			for (i = 1; i <= 5; ++i)
+			{
+				int nCharaNo = 味方パーティ_番号(i);
+				if (nCharaNo > 0)
+				{
+					return nCharaNo;
+				}
+			}
+			break;
+		case 11:
+		case 12:
+			int cnt = キャラ_数();
+			for (i = 20; i <= cnt; ++i)
+			{
+				if (キャラ_登録状態(i) > 0)
+				{
+					return i;
+				}
+			}
+			break;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int ステータス_アイテム種別(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return 21;
+		case 1:
+			return 1;
+		case 2:
+			return 11;
+		case 3:
+			return 17;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int ステータス_アイテムインデクス(int nItemType)
+{
+	switch (nItemType)
+	{
+		case 21:
+			return 0;
+		case 1:
+			return 1;
+		case 11:
+			return 2;
+		case 17:
+			return 3;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int ステータス_アイテムＸ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 4)
+	{
+		return -1;
+	}
+	return 428;
+}
+
+int ステータス_アイテムＹ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 4)
+	{
+		return -1;
+	}
+	return 125 + 116 * nIndex;
+}
+
+int ステータス_実装スキルＸ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 6)
+	{
+		return -1;
+	}
+	return 108;
+}
+
+int ステータス_実装スキルＹ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 6)
+	{
+		return -1;
+	}
+	return 432 + 26 * nIndex;
+}
+
+int ステータス_保有スキルＸ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 18)
+	{
+		return -1;
+	}
+	return 271;
+}
+
+int ステータス_保有スキルＹ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 18)
+	{
+		return -1;
+	}
+	return 127 + 26 * nIndex;
+}
+

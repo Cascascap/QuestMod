@@ -1,0 +1,748 @@
+bool T_Party::create(int nMode, int nLayout)
+{
+	this.delete();
+	int nZ = this.createBase(nMode, nLayout);
+	if (nMode == 2 || nMode == 3)
+	{
+		this.m_sNumber.create(nZ + 1, false);
+	}
+	this.m_sChara.create(nMode, nZ + 1);
+	this.m_sList.create(nMode, nLayout, -1, 0);
+	this.m_sList.setZ(nZ + 1);
+	this.m_sSort.create(1, 170000, "Join Order", "High LV", "Low LV", "", "", "", "", "", "Custom", "", "", "", "", "", "", "");
+	this.m_sSort.setPos(1020, 91);
+	this.m_sSort.setZ(nZ + 1);
+	this.m_sScroll.create(1, 944, 190000, 0, 0);
+	this.m_sScroll.setPos(0, 95);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&scrollPartyList);
+	this.m_sScroll.setValue(0, this.m_sList.getScrollMax(), this.m_sList.getScrollPage());
+	this.m_sScroll.setZ(nZ + 1);
+	this.m_sJob.create(1, 187, 60, nZ + 10, 180000);
+	this.m_sButton.create();
+	this.createList(nLayout);
+	this.createChara();
+	ボタン登録_ＣＧ(this.m_sButton, 100003, 2, 58, 11070, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100001, 54, 676, 11048, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100002, 4, 676, 11049, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100011, 4, 576, 11041, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100012, 4, 576, 11047, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100013, 54, 576, 11044, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100014, 4, 609, 11042, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100015, 4, 609, 11047, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100016, 54, 609, 11045, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100017, 4, 642, 11043, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100018, 4, 642, 11047, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100019, 54, 642, 11046, -1, -1, -2147483648, -2147483648);
+	ラジオボタン登録_ＣＧ(this.m_sButton, 100031, 525, 60, 11039, false);
+	ラジオボタン登録_ＣＧ(this.m_sButton, 100032, 577, 60, 11040, false);
+	if (nMode == 1)
+	{
+		ボタン登録_矩形(this.m_sButton, 100022, 936, 638, 80, 80, false);
+	}
+	if (nMode == 1 || nMode == 9)
+	{
+		街マップ_タブ作成(this.m_sButton, 600013);
+	}
+	else
+	{
+		ボタン登録_ＣＧ(this.m_sButton, 109999, 996, 37, 10007, -1, -1, -2147483648, -2147483648);
+	}
+	this.m_sButton.setButtonKey(100001, 82);
+	this.m_sButton.setButtonKey(100002, 79);
+	this.setButtonZ(nZ);
+	this.update(-1, false);
+	this.setShow(true);
+	this.m_sShortcutInfo.create(9901);
+	this.m_sShortcutInfo.addAll(this.m_sButton);
+	this.m_sShortcutInfo.addAll(システムバー_ボタン群());
+	this.m_sInputKey.create(1, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&パーティ_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&パーティ_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&パーティ_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&パーティ_右矢印);
+	this.m_sInputKey.setSelectCallback(&パーティ_選択設定);
+	return true;
+}
+
+void T_Party::delete()
+{
+	this.hideComment(-1);
+	this.deleteLockButton();
+	this.m_spBase.delete();
+	this.m_sNumber.delete();
+	this.m_sChara.delete();
+	this.m_sList.delete();
+	this.m_sSort.delete();
+	this.m_sScroll.delete();
+	this.m_sJob.delete();
+	this.m_sButton.delete();
+	this.m_sShortcutInfo.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_Party::clear()
+{
+	this.m_nCommentID = 0;
+	this.m_bOpenFlag = false;
+	this.m_nLockMode = 0;
+	this.m_nLockChara = 0;
+}
+
+void T_Party::update(int nIndex, bool bAnime)
+{
+	if (nIndex == 2147483647)
+	{
+		int i = 0;
+		int cnt = this.m_sList.getCount();
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_sList.update(i);
+		}
+	}
+	else if (nIndex >= 0)
+	{
+		this.m_sList.update(nIndex);
+	}
+	this.m_sList.setBlendRate(this.m_bOpenFlag ? 255 : -1);
+	this.setButtonActive();
+	this.setShow(this.m_spBase.getShow());
+	this.updateChangeCount(bAnime);
+}
+
+void T_Party::updateChangeCount(bool bAnime)
+{
+	int nMode = this.m_sList.getMode();
+	switch (nMode)
+	{
+		case 2:
+		case 3:
+			break;
+		case 1:
+		case 9:
+		default:
+			return;
+	}
+	int nRet = 0;
+	if (クエスト_パーティ編成無制限())
+	{
+		nRet = this.m_sNumber.set(99, false);
+	}
+	else
+	{
+		nRet = this.m_sNumber.set(パーティ入れ替え残り回数(this.m_sChara.getChangeCount()), bAnime);
+	}
+	g_bPartyUpdate = nRet > 0;
+}
+
+int T_Party::createBase(int nMode, int nLayout)
+{
+	int nZ = 0;
+	if (nMode == 1 || nMode == 9)
+	{
+		int nCgNo = nLayout == 1 ? 11053 : 11051;
+		this.m_spBase.attach(街マップ_土台作成(nCgNo));
+		nZ = 1;
+	}
+	else
+	{
+		this.m_spBase.setCg(nLayout == 1 ? 11052 : 11050);
+		nZ = nMode == 2 ? 201 : 301;
+	}
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	return nZ;
+}
+
+void T_Party::createChara()
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < 5; ++i)
+	{
+		int nX = 戦闘味方_位置Ｘ(i);
+		int nY = 戦闘味方_位置Ｙ(i);
+		ボタン登録_ＣＧ(this.m_sButton, this.getStatusCharaID(i), nX + 112, nY + 94, 11055, -1, -1, -2147483648, -2147483648);
+		ボタン登録_矩形(this.m_sButton, this.getCharaID(i), nX, nY, 334, 170, true);
+	}
+}
+
+void T_Party::createList(int nLayout)
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	int nW = パーティ一覧_幅(nLayout);
+	int nH = パーティ一覧_高(nLayout);
+	for (i = 0; i < cnt; ++i)
+	{
+		int nX = パーティ一覧_キャラＸ(i, false, nLayout);
+		int nY = パーティ一覧_キャラＹ(i, false, nLayout);
+		if (nLayout == 1)
+		{
+			ボタン登録_ＣＧ(this.m_sButton, this.getStatusListID(i), nX + 86, nY + 0, 11056, -1, -1, -2147483648, -2147483648);
+		}
+		else
+		{
+			ボタン登録_ＣＧ(this.m_sButton, this.getStatusListID(i), パーティ一覧_顔Ｘ(i, false, nLayout) + 103, パーティ一覧_顔Ｙ(i, false, nLayout) + 69, 11055, -1, -1, -2147483648, -2147483648);
+		}
+		ボタン登録_矩形(this.m_sButton, this.getListID(i), nX, nY, nW, nH, false);
+	}
+}
+
+void T_Party::deleteList()
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.eraseButton(this.getListID(i));
+		this.m_sButton.eraseButton(this.getStatusListID(i));
+	}
+}
+
+int T_Party::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(0, nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 109999;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(0, nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		else if (this.checkDrag(nID2))
+		{
+			nRet = nID2;
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_Party::checkInput(int nMode, ref int nSelectID)
+{
+	nSelectID = 0;
+	if (nMode == 0)
+	{
+		switch (システムバー_入力確認(nSelectID))
+		{
+			case 0:
+				if (nSelectID > 0)
+				{
+					goto label0;
+				}
+				break;
+			case 1:
+				this.m_sSort.setInputFlag(false);
+				this.m_sScroll.setInputFlag(false);
+				this.m_sJob.setInputFlag(false);
+				this.m_sButton.setInputFlag(false);
+				return 1;
+			case 2:
+				return 2;
+			default:
+				break;
+		}
+	}
+	switch (this.m_sSort.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label1;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sJob.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sScroll.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sJob.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label1;
+			}
+			break;
+		case 1:
+			this.m_sSort.setInputFlag(false);
+			this.m_sScroll.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sSort.setInputFlag(false);
+			this.m_sScroll.setInputFlag(false);
+			this.m_sJob.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label1:
+	if (nMode == 0)
+	{
+		if (nSelectID > 0)
+		{
+			this.showComment(nSelectID);
+		}
+		else
+		{
+			this.hideComment(-1);
+		}
+	}
+label0:
+	if (nMode == 0)
+	{
+		システムバー_入力ＯＮ();
+	}
+	else
+	{
+		システムバー_入力ＯＦＦ();
+	}
+	this.m_sSort.setInputFlag(true);
+	this.m_sScroll.setInputFlag(true);
+	this.m_sJob.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	this.checkStatus(nSelectID);
+	return 0;
+}
+
+int T_Party::checkKey(int nMode, int nID)
+{
+	int nID2 = this.m_sSort.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sScroll.checkKey())
+	{
+		return 0;
+	}
+	nID2 = this.checkKeyStatus(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nMode == 0)
+	{
+		nID2 = システムバー_キー確認(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		nID2 = this.m_sButton.checkKey();
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		if (this.m_sInputKey.check(nID))
+		{
+			return 0;
+		}
+		this.m_sShortcutInfo.check();
+	}
+	return 0;
+}
+
+int T_Party::checkKeyStatus(int nID)
+{
+	if (!キー_押下(83))
+	{
+		return 0;
+	}
+	if (this.m_sList.isBattle())
+	{
+		goto label0;
+	}
+	int idx = -1;
+	if (nID > 130000)
+	{
+		idx = this.getCharaIndex(nID);
+		goto label1;
+	}
+	if (nID > 120000)
+	{
+		idx = this.getListIndex(nID);
+		goto label2;
+	}
+	if (nID > 119000)
+	{
+		idx = this.getStatusCharaIndex(nID);
+		goto label1;
+	}
+	if (nID > 114000)
+	{
+		idx = this.getStatusListIndex(nID);
+		goto label2;
+	}
+label2:
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	if (this.getCharaNo(idx) <= 0)
+	{
+		goto label0;
+	}
+	効果音_クリック();
+	キー_離し待ち(83, true);
+	return this.getStatusListID(idx);
+label1:
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	if (this.getPartyChara(idx) <= 0)
+	{
+		goto label0;
+	}
+	効果音_クリック();
+	キー_離し待ち(83, true);
+	return this.getStatusCharaID(idx);
+label0:
+	効果音_エラー();
+	キー_離し待ち(83, true);
+	return 0;
+}
+
+bool T_Party::checkWheel()
+{
+	if (this.m_sScroll.checkWheel())
+	{
+		return true;
+	}
+	ホイール_クリア();
+	return false;
+}
+
+bool T_Party::checkDrag(int nID)
+{
+	if (画面操作モード確認() != 0)
+	{
+		return false;
+	}
+	if (nID < 120000 || nID > 139999)
+	{
+		return false;
+	}
+	return this.m_sButton.getButtonActive(nID);
+}
+
+void T_Party::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	int nX = 0;
+	int nY = 0;
+	bool bAdjustX = false;
+	string szText = "";
+	switch (nID)
+	{
+		case 100022:
+			szText = "Custom characters only" + "@can be dragged and dropped here" + "@to be deleted." + "@@※Only items equipped in the [Special] slot" + "@will be lost, but be careful.";
+			nX = this.m_sButton.getButtonPosX(nID) - 10;
+			nY = this.m_sButton.getButtonPosY(nID);
+			bAdjustX = true;
+			break;
+		case 100003:
+			szText = "Use for organization.";
+			nX = this.m_sButton.getButtonPosX(nID);
+			nY = this.m_sButton.getButtonPosY(nID) + this.m_sButton.getButtonHeight(nID);
+			break;
+		case 170009:
+			szText = "Can only be freely organized" + "@when [Custom]" + "@is selected." + "@@Cannot be rearranged when in" + "@[2nd Army] screen" + "@or on a Quest.";
+			nX = this.m_sSort.getPosX(nID) + this.m_sSort.getWidth(nID);
+			nY = this.m_sSort.getPosY(nID) + this.m_sSort.getHeight(nID);
+			bAdjustX = true;
+			break;
+		default:
+			break;
+	}
+	if (szText.Empty())
+	{
+		this.hideComment(-1);
+		return;
+	}
+	if (説明_表示(nID, "", szText, "", 500, false) > 0)
+	{
+		説明_位置設定(bAdjustX ? nX - 説明_幅() : nX, nY);
+	}
+	this.m_nCommentID = nID;
+}
+
+void T_Party::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_Party::setButtonZ(int nZ)
+{
+	int nButtonZ = nZ + 20;
+	this.m_sButton.setZ(nButtonZ);
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonZ(this.getStatusListID(i), nButtonZ + 20);
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_sButton.setButtonZ(this.getStatusCharaID(i), nButtonZ + 20);
+	}
+}
+
+void T_Party::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sNumber.setShow(bShow);
+	this.m_sChara.setShow(bShow, -1);
+	this.m_sList.setShow(bShow);
+	this.m_sSort.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+	this.m_sJob.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	システムバー_表示設定(bShow);
+	this.setButtonShow(bShow);
+}
+
+void T_Party::setButtonShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.setListShow(i, bShow);
+	}
+	bool bShow2 = this.m_bOpenFlag ? 0 : bShow;
+	for (i = 0; i < 5; ++i)
+	{
+		this.setCharaShow(i, bShow2);
+	}
+	bool bFlag = メイン編成Ａ登録中();
+	this.m_sButton.setButtonShow(100011, !bFlag);
+	this.m_sButton.setButtonShow(100012, bFlag);
+	this.m_sButton.setButtonShow(100013, bFlag);
+	bool bFlag2 = メイン編成Ｂ登録中();
+	bool bFlag3 = メイン編成Ｃ登録中();
+	this.m_sButton.setButtonShow(100014, !bFlag2);
+	this.m_sButton.setButtonShow(100015, bFlag2);
+	this.m_sButton.setButtonShow(100016, bFlag2);
+	this.m_sButton.setButtonShow(100017, !bFlag3);
+	this.m_sButton.setButtonShow(100018, bFlag3);
+	this.m_sButton.setButtonShow(100019, bFlag3);
+	this.m_sButton.setButtonShow(100001, this.m_bOpenFlag ? 0 : bShow);
+	this.m_sButton.setButtonShow(100002, this.m_bOpenFlag ? 0 : bShow);
+	this.m_sButton.setButtonShow(600011, this.m_bOpenFlag ? 0 : bShow);
+	this.m_sButton.setButtonShow(600012, this.m_bOpenFlag ? 0 : bShow);
+	this.m_sButton.setButtonShow(600014, this.m_bOpenFlag ? 0 : bShow);
+	if (this.m_nLockMode > 0)
+	{
+		this.setButtonShowLock(bShow);
+	}
+}
+
+void T_Party::setListShow(int nIndex, bool bShow)
+{
+	if (nIndex < 0 || nIndex >= this.m_sList.getCount())
+	{
+		return;
+	}
+	this.m_sButton.setButtonShow(this.getListID(nIndex), bShow);
+	this.m_sButton.setButtonShow(this.getStatusListID(nIndex), false);
+}
+
+void T_Party::setCharaShow(int nIndex, bool bShow)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return;
+	}
+	this.m_sButton.setButtonShow(this.getCharaID(nIndex), bShow);
+	this.m_sButton.setButtonShow(this.getStatusCharaID(nIndex), false);
+}
+
+void T_Party::setButtonActive()
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.setListActive(i);
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		this.setCharaActive(i);
+	}
+	int nMode = this.m_sList.getMode();
+	this.m_sButton.setButtonActive(100002, nMode != 3);
+	this.m_sButton.setButtonActive(100003, nMode == 1 || nMode == 9);
+	this.m_sButton.setButtonActive(100011, nMode != 3);
+	this.m_sButton.setButtonActive(100012, nMode != 3);
+	this.m_sButton.setButtonActive(100013, nMode != 3);
+	this.m_sButton.setButtonActive(100022, false);
+	this.m_sButton.setButtonActive(100014, nMode != 3);
+	this.m_sButton.setButtonActive(100015, nMode != 3);
+	this.m_sButton.setButtonActive(100016, nMode != 3);
+	this.m_sButton.setButtonActive(100017, nMode != 3);
+	this.m_sButton.setButtonActive(100018, nMode != 3);
+	this.m_sButton.setButtonActive(100019, nMode != 3);
+	int nLayout = this.m_sList.getLayout();
+	this.m_sButton.setButtonActive(100031, nLayout != 0);
+	this.m_sButton.setButtonActive(100032, nLayout != 1);
+	this.m_sJob.setButtonActive();
+	int nSortMode = this.m_sList.getSortMode();
+	this.m_sSort.setCurrentID(nSortMode > 0 ? 170000 + nSortMode : 0, false);
+	if (this.m_nLockMode > 0)
+	{
+		this.setButtonActiveLock();
+	}
+}
+
+void T_Party::setListActive(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_sList.getCount())
+	{
+		return;
+	}
+	switch (this.getStatus(nIndex))
+	{
+		case 1:
+			this.m_sButton.setButtonActive(this.getStatusListID(nIndex), true);
+			this.m_sButton.setButtonActive(this.getListID(nIndex), this.m_bOpenFlag ? 1 : 0);
+			break;
+		case 2:
+			this.m_sButton.setButtonActive(this.getStatusListID(nIndex), true);
+			this.m_sButton.setButtonActive(this.getListID(nIndex), true);
+			break;
+		case 3:
+			this.m_sButton.setButtonActive(this.getStatusListID(nIndex), true);
+			this.m_sButton.setButtonActive(this.getListID(nIndex), this.m_bOpenFlag ? 1 : 0);
+			break;
+		case 4:
+		default:
+			this.m_sButton.setButtonActive(this.getStatusListID(nIndex), false);
+			this.m_sButton.setButtonActive(this.getListID(nIndex), false);
+			break;
+	}
+}
+
+void T_Party::setCharaActive(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return;
+	}
+	int nNo = this.m_sChara.getCharaNo(nIndex);
+	this.m_sButton.setButtonActive(this.getCharaID(nIndex), nNo > 0);
+	this.m_sButton.setButtonActive(this.getStatusCharaID(nIndex), nNo > 0);
+}
+
+void T_Party::setOpenFlag(bool bOpenFlag)
+{
+	if (bOpenFlag == this.m_bOpenFlag)
+	{
+		return;
+	}
+	this.m_bOpenFlag = bOpenFlag;
+	this.m_sList.setBlendRate(bOpenFlag ? 255 : -1);
+	this.setButtonActive();
+	this.setButtonShow(true);
+}
+
+int T_Party::getStatus(int nIndex)
+{
+	int nCharaNo = this.getCharaNo(nIndex);
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_登録状態(nCharaNo);
+}
+
+int T_Party::getDefaultID(int nID)
+{
+	switch (nID)
+	{
+		case 100011:
+			return 100013;
+		case 100012:
+			return 100011;
+		case 100014:
+			return 100016;
+		case 100015:
+			return 100014;
+		case 100017:
+			return 100019;
+		case 100018:
+			return 100017;
+		default:
+			break;
+	}
+	return nID > 0 ? nID : this.getFirstList();
+}
+

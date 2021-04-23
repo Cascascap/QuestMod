@@ -1,0 +1,33 @@
+void SYS_PlayTime_Update()
+{
+	int MilliSecondTime = g_PlayTimer.Get();
+	if (MilliSecondTime >= 60000)
+	{
+		int MinuteTime = MilliSecondTime / 60000;
+		g_PlayMinuteTime += MinuteTime;
+		SYS_TotalPlayTime_SetMinuteTime(SYS_TotalPlayTime_GetMinuteTime() + MinuteTime);
+		int PassTime = MilliSecondTime - MinuteTime * 60000;
+		g_PlayTimer.SetPassTime(PassTime);
+	}
+}
+
+void SYS_PlayTime_Reset()
+{
+	g_PlayTimer.Reset();
+}
+
+int SYS_TotalPlayTime_GetMinuteTime()
+{
+	int MinuteTime = 0;
+	if (!CommonSystemData.GetDataInt("Asra_TotalPlayTime", MinuteTime))
+	{
+		SYS_TotalPlayTime_SetMinuteTime(0);
+	}
+	return MinuteTime;
+}
+
+void SYS_TotalPlayTime_SetMinuteTime(int MinuteTime)
+{
+	CommonSystemData.SetDataInt("Asra_TotalPlayTime", MinuteTime);
+}
+

@@ -1,0 +1,197 @@
+bool ‚q‚WˆÚ“®‚m(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (nFlag >= 0)
+	{
+		ƒ}ƒbƒv_’Ês‰Âİ’è(nX, nY, 1, nFlag);
+	}
+	return ƒ}ƒbƒv_’Ês‰Â(nX, nY, 1);
+}
+
+bool ‚q‚WˆÚ“®‚r(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (nFlag >= 0)
+	{
+		ƒ}ƒbƒv_’Ês‰Âİ’è(nX, nY, 3, nFlag);
+	}
+	return ƒ}ƒbƒv_’Ês‰Â(nX, nY, 3);
+}
+
+bool ‚q‚WˆÚ“®‚d(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (nFlag >= 0)
+	{
+		ƒ}ƒbƒv_’Ês‰Âİ’è(nX, nY, 2, nFlag);
+	}
+	return ƒ}ƒbƒv_’Ês‰Â(nX, nY, 2);
+}
+
+bool ‚q‚WˆÚ“®‚v(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (nFlag >= 0)
+	{
+		ƒ}ƒbƒv_’Ês‰Âİ’è(nX, nY, 4, nFlag);
+	}
+	return ƒ}ƒbƒv_’Ês‰Â(nX, nY, 4);
+}
+
+int ‚q‚WƒCƒxƒ“ƒgƒtƒ‰ƒO(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (nFlag >= 0)
+	{
+		ƒ}ƒbƒvƒf[ƒ^_ƒCƒxƒ“ƒgİ’è(nX, nY, nFlag);
+	}
+	return ƒ}ƒbƒvƒf[ƒ^_ƒCƒxƒ“ƒg(nX, nY);
+}
+
+int ‚q‚Wƒ}ƒbƒv’nŒ`(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (nFlag >= 0)
+	{
+		ƒ}ƒbƒvƒf[ƒ^_’nŒ`İ’è(nX, nY, nFlag);
+	}
+	return ƒ}ƒbƒvƒf[ƒ^_’nŒ`(nX, nY);
+}
+
+int ‚q‚Wí“¬ƒtƒ‰ƒO(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (nFlag >= 0)
+	{
+		ƒ}ƒbƒvƒf[ƒ^_í“¬İ’è(nX, nY, nFlag);
+	}
+	return ƒ}ƒbƒvƒf[ƒ^_í“¬(nX, nY);
+}
+
+int ‚q‚W’u•¨”Ô†(int nX, int nY)
+{
+	nX = nX < 0 ? Ÿ‚w‚w : nX;
+	nY = nY < 0 ? Ÿ‚x‚x : nY;
+	if (nX == Ÿ‚w‚w && nY == Ÿ‚x‚x)
+	{
+		return Ÿ“–‚½‚è;
+	}
+	int nX2 = ‚s‚w„‚l‚w(nX);
+	int nY2 = ‚s‚x„‚l‚x(nY);
+	int nNo = ’u•¨”Ô†(nX2, nY2);
+	if (nNo > 0)
+	{
+		return nNo;
+	}
+	nNo = ‚a‚a”Ô†(nX2, nY2);
+	if (nNo > 0)
+	{
+		return nNo;
+	}
+	return 0;
+}
+
+int ‚q‚W’u•¨ˆÚ“®ƒtƒ‰ƒO(int nX, int nY, int nFlag)
+{
+	nX = ‚s‚w„‚l‚w(nX < 0 ? Ÿ‚w‚w : nX);
+	nY = ‚s‚x„‚l‚x(nY < 0 ? Ÿ‚x‚x : nY);
+	if (’u•¨‚ ‚è(nX, nY))
+	{
+		if (nFlag >= 0)
+		{
+			’u•¨ƒf[ƒ^_ˆÚ“®ƒtƒ‰ƒOİ’è(nX, nY, nFlag);
+		}
+		return ’u•¨ƒf[ƒ^_ˆÚ“®ƒtƒ‰ƒO(nX, nY);
+	}
+	if (‚a‚a‚ ‚è(nX, nY))
+	{
+		if (nFlag >= 0)
+		{
+			‚a‚aƒf[ƒ^_ˆÚ“®ƒtƒ‰ƒOİ’è(nX, nY, nFlag);
+		}
+		return ‚a‚aƒf[ƒ^_ˆÚ“®ƒtƒ‰ƒO(nX, nY);
+	}
+	return -1;
+}
+
+int ‚q‚W”½‘Î•ûŒü(int nDir)
+{
+	return ƒ}ƒbƒv_”½‘Î•ûŒü(nDir < 0 ? Ÿ‚m‚m : nDir);
+}
+
+bool ‚q‚W°Šm”F(int nX, int nY)
+{
+	nX = nX < 0 ? Ÿ‚w‚w : nX;
+	nY = nY < 0 ? Ÿ‚x‚x : nY;
+	return ƒ}ƒbƒv_°(‚s‚w„‚l‚w(nX), ‚s‚x„‚l‚x(nY));
+}
+
+bool ‚q‚W•ÇŠm”F(int nX, int nY)
+{
+	nX = nX < 0 ? Ÿ‚w‚w : nX;
+	nY = nY < 0 ? Ÿ‚x‚x : nY;
+	return ƒ}ƒbƒv_•Ç(‚s‚w„‚l‚w(nX), ‚s‚x„‚l‚x(nY));
+}
+
+void ‚q‚W‘S‘Ìƒ}ƒbƒv()
+{
+	if (!ƒfƒoƒbƒOƒ‚[ƒh())
+	{
+		return;
+	}
+	‘S‘Ìƒ}ƒbƒv();
+}
+
+int ‚l‚w„‚s‚w(int nX)
+{
+	if (nX < 0 || nX >= 50)
+	{
+		return 0;
+	}
+	return nX + 1;
+}
+
+int ‚l‚x„‚s‚x(int nY)
+{
+	if (nY < 0 || nY >= 50)
+	{
+		return 0;
+	}
+	return 50 - nY;
+}
+
+int ‚s‚w„‚l‚w(int nX)
+{
+	if (nX < 1 || nX > 50)
+	{
+		return -1;
+	}
+	return nX - 1;
+}
+
+int ‚s‚x„‚l‚x(int nY)
+{
+	if (nY < 1 || nY > 50)
+	{
+		return -1;
+	}
+	return 50 - nY;
+}
+
+void ‚q‚Wƒ}ƒbƒvƒJƒƒ‰‚k‚n‚b‚j(bool bLock)
+{
+	ƒ}ƒbƒv•”•i_ƒJƒƒ‰ƒƒbƒNİ’è(bLock);
+}
+
+void ‚q‚Wƒ}ƒbƒvƒJƒƒ‰‹——£‰ğœ()
+{
+	ƒ}ƒbƒv•”•i_ƒJƒƒ‰‹——£ŒÀ’è‰ğœ();
+}
+

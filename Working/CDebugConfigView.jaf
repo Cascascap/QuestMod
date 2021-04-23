@@ -1,0 +1,348 @@
+CDebugConfigView::CDebugConfigView()
+{
+	this.m_nBaseZ = 15000;
+	this.m_nTabHeight = 32;
+	this.m_nExitBarHeight = 32;
+	this.m_nOnCursorObject = -1;
+}
+
+int CDebugConfigView::Run(ref array@string TabNameList)
+{
+	this.Create(TabNameList);
+	SYS_画面更新(1, 100, 0, 0);
+	this.m_nExitCode = -1;
+	this.RunLoop();
+	this.Release();
+	return this.m_nExitCode;
+}
+
+void CDebugConfigView::Create(ref array@string TabNameList)
+{
+	CConfigCommonViewCreater ConfigCommonViewCreater;
+	ConfigCommonViewCreater.CreateTab(this.m_ConfigTabView, this.m_nBaseZ + 1, 5, TabNameList);
+	ConfigCommonViewCreater.CreateBaseSprite(this.m_BaseSprite, 5, this.m_nBaseZ);
+	ConfigCommonViewCreater.CreateExitBar(this.m_ExitBar, this.m_nBaseZ + 1);
+	this.CreateShowFPSCheckBox();
+	this.CreateDirect3DModeCheckBox();
+	this.CreateAntiAliasingModeButtion();
+	this.CreateShowMemorySizeCheckBox();
+	this.CreateShowFillRateCheckBox();
+	this.CreateShowVoicePlayingCheckBox();
+	this.CreateShowVideoMemorySizeCheckBox();
+	this.m_SpaceKeyClick.Init(32, true);
+	this.m_LButtonClick.Init(1, true);
+	this.m_RButtonClick.Init(2, true);
+	this.m_EscapeKeyClick.Init(27, true);
+}
+
+void CDebugConfigView::Release()
+{
+	this.m_ShowVoicePlayingCheckBoxSprite.Release();
+	this.m_ShowFillRateCheckBoxSprite.Release();
+	this.m_ShowMemorySizeCheckBoxSprite.Release();
+	this.m_AntiAliasingModeButtionSprite.Release();
+	this.m_Direct3DModeCheckBoxSprite.Release();
+	this.m_ShowFPSCheckBoxSprite.Release();
+	this.m_ShowVideoMemorySizeCheckBoxSprite.Release();
+	this.m_ExitBar.Release();
+	this.m_BaseSprite.Release();
+	this.m_ConfigTabView.Release();
+}
+
+void CDebugConfigView::CreateShowFPSCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_ShowFPSCheckBoxSprite.CreateSampleSprite(20, 100, this.m_nBaseZ + 1, 20, 20);
+	this.m_ShowFPSCheckBoxSprite.SetTextCharSpace(-2);
+	this.m_ShowFPSCheckBoxSprite.SetText("fps表示", CharProperty);
+	this.m_ShowFPSCheckBoxSprite.SetShowCheckMark(AFL_DebugFPS_GetShow());
+}
+
+void CDebugConfigView::CreateDirect3DModeCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_Direct3DModeCheckBoxSprite.CreateSampleSprite(20, 132, this.m_nBaseZ + 1, 20, 20);
+	this.m_Direct3DModeCheckBoxSprite.SetTextCharSpace(-2);
+	this.m_Direct3DModeCheckBoxSprite.SetText("Direct3Dモード", CharProperty);
+	int ViewMode = ChipmunkSpriteEngine.VIEW_GetMode();
+	this.m_Direct3DModeCheckBoxSprite.SetShowCheckMark(ViewMode != 0);
+}
+
+void CDebugConfigView::CreateAntiAliasingModeButtion()
+{
+	this.m_AntiAliasingModeButtionSprite.CreateTextButton(280, 20, "Direct3D アンチエイリアシングモード", -2);
+	this.m_AntiAliasingModeButtionSprite.SetPos(20, 164);
+	this.m_AntiAliasingModeButtionSprite.SetZ(this.m_nBaseZ + 1);
+}
+
+void CDebugConfigView::CreateShowMemorySizeCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_ShowMemorySizeCheckBoxSprite.CreateSampleSprite(20, 196, this.m_nBaseZ + 1, 20, 20);
+	this.m_ShowMemorySizeCheckBoxSprite.SetTextCharSpace(-2);
+	this.m_ShowMemorySizeCheckBoxSprite.SetText("メモリ使用量表示　　　　M：現在使用サイズ/最大使用サイズ　共にMB", CharProperty);
+	this.m_ShowMemorySizeCheckBoxSprite.SetShowCheckMark(g_DebugMemorySize.GetShow());
+}
+
+void CDebugConfigView::CreateShowFillRateCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_ShowFillRateCheckBoxSprite.CreateSampleSprite(20, 228, this.m_nBaseZ + 1, 20, 20);
+	this.m_ShowFillRateCheckBoxSprite.SetTextCharSpace(-2);
+	this.m_ShowFillRateCheckBoxSprite.SetText("フィルレート表示　　　　F：現在使用サイズ/最大使用サイズ　共にMB", CharProperty);
+	this.m_ShowFillRateCheckBoxSprite.SetShowCheckMark(g_DebugFillRate.GetShow());
+}
+
+void CDebugConfigView::CreateShowVoicePlayingCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_ShowVoicePlayingCheckBoxSprite.CreateSampleSprite(20, 260, this.m_nBaseZ + 1, 20, 20);
+	this.m_ShowVoicePlayingCheckBoxSprite.SetTextCharSpace(-2);
+	this.m_ShowVoicePlayingCheckBoxSprite.SetText("音声再生中表示", CharProperty);
+	this.m_ShowVoicePlayingCheckBoxSprite.SetShowCheckMark(g_DebugVoicePlaying.IsShow());
+}
+
+void CDebugConfigView::CreateShowVideoMemorySizeCheckBox()
+{
+	CASCharSpriteProperty CharProperty;
+	CharProperty.SetSize(20);
+	CharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	CharProperty.SetEdgeWeight(1.0);
+	CharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	this.m_ShowVideoMemorySizeCheckBoxSprite.CreateSampleSprite(20, 292, this.m_nBaseZ + 1, 20, 20);
+	this.m_ShowVideoMemorySizeCheckBoxSprite.SetTextCharSpace(-2);
+	this.m_ShowVideoMemorySizeCheckBoxSprite.SetText("ビデオメモリ使用量表示　V：現在使用サイズ/最大使用サイズ　共にMB", CharProperty);
+	this.m_ShowVideoMemorySizeCheckBoxSprite.SetShowCheckMark(g_DebugVideoMemorySize.GetShow());
+}
+
+void CDebugConfigView::RunLoop()
+{
+	for (; ; )
+	{
+		if (!this.CheckInput())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+
+bool CDebugConfigView::CheckInput()
+{
+	int nPrevOnCursorObject = this.m_nOnCursorObject;
+	this.m_nOnCursorObject = -1;
+	this.m_ConfigTabView.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ConfigTabView.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 10 + nObject;
+		}
+	}
+	this.m_ExitBar.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ExitBar.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 20 + nObject;
+		}
+	}
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ShowFPSCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 0;
+		}
+	}
+	this.m_ShowFPSCheckBoxSprite.SetShowCursor(this.m_ShowFPSCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_Direct3DModeCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 1;
+		}
+	}
+	this.m_Direct3DModeCheckBoxSprite.SetShowCursor(this.m_Direct3DModeCheckBoxSprite.IsMouseCursorInRect());
+	this.m_AntiAliasingModeButtionSprite.UpdateState();
+	if (this.m_nOnCursorObject == -1 && this.m_AntiAliasingModeButtionSprite.IsMouseCursorInRect())
+	{
+		this.m_nOnCursorObject = 2;
+	}
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ShowMemorySizeCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 3;
+		}
+	}
+	this.m_ShowMemorySizeCheckBoxSprite.SetShowCursor(this.m_ShowMemorySizeCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ShowFillRateCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 4;
+		}
+	}
+	this.m_ShowFillRateCheckBoxSprite.SetShowCursor(this.m_ShowFillRateCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ShowVoicePlayingCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 5;
+		}
+	}
+	this.m_ShowVoicePlayingCheckBoxSprite.SetShowCursor(this.m_ShowVoicePlayingCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ShowVideoMemorySizeCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 6;
+		}
+	}
+	this.m_ShowVideoMemorySizeCheckBoxSprite.SetShowCursor(this.m_ShowVideoMemorySizeCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject != -1 && nPrevOnCursorObject != this.m_nOnCursorObject)
+	{
+		this.PlaySoundUnderCursor();
+	}
+	if (this.m_SpaceKeyClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_RButtonClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_EscapeKeyClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_LButtonClick.IsClick(this.m_nOnCursorObject) && this.m_nOnCursorObject != -1)
+	{
+		if (this.m_nOnCursorObject == 0)
+		{
+			this.PlaySoundDecide();
+			AFL_DebugFPS_SetShow(!AFL_DebugFPS_GetShow());
+			this.m_ShowFPSCheckBoxSprite.SetShowCheckMark(AFL_DebugFPS_GetShow());
+		}
+		else if (this.m_nOnCursorObject == 1)
+		{
+			this.PlaySoundDecide();
+			ChipmunkSpriteEngine.VIEW_SetMode(ChipmunkSpriteEngine.VIEW_GetMode() ? 0 : 1);
+			this.m_Direct3DModeCheckBoxSprite.SetShowCheckMark(ChipmunkSpriteEngine.VIEW_GetMode() != 0);
+		}
+		else if (this.m_nOnCursorObject == 2)
+		{
+			this.PlaySoundDecide();
+			int AntiAliasingMode = SystemService.GetAntiAliasingMode();
+			選択肢(0, "なし" + (AntiAliasingMode == 0 ? " [*]" : ""), 0);
+			選択肢(1, "2x" + (AntiAliasingMode == 1 ? " [*]" : ""), 0);
+			選択肢(2, "4x" + (AntiAliasingMode == 2 ? " [*]" : ""), 0);
+			選択肢(3, "8x" + (AntiAliasingMode == 3 ? " [*]" : ""), 0);
+			選択肢(4, "16x" + (AntiAliasingMode == 4 ? " [*]" : ""), 0);
+			int Selected = テスト選択();
+			if (Selected >= 0)
+			{
+				SystemService.SetAntiAliasingMode(Selected);
+			}
+		}
+		else if (this.m_nOnCursorObject == 3 && !g_DebugMemorySize.IsCompulsorilyShow())
+		{
+			this.PlaySoundDecide();
+			g_DebugMemorySize.SetShow(!g_DebugMemorySize.GetShow());
+			this.m_ShowMemorySizeCheckBoxSprite.SetShowCheckMark(g_DebugMemorySize.GetShow());
+		}
+		else if (this.m_nOnCursorObject == 4 && !g_DebugFillRate.IsCompulsorilyShow())
+		{
+			this.PlaySoundDecide();
+			g_DebugFillRate.SetShow(!g_DebugFillRate.GetShow());
+			this.m_ShowFillRateCheckBoxSprite.SetShowCheckMark(g_DebugFillRate.GetShow());
+		}
+		else if (this.m_nOnCursorObject == 5)
+		{
+			this.PlaySoundDecide();
+			g_DebugVoicePlaying.SetShow(!g_DebugVoicePlaying.IsShow());
+			this.m_ShowVoicePlayingCheckBoxSprite.SetShowCheckMark(g_DebugVoicePlaying.IsShow());
+		}
+		else if (this.m_nOnCursorObject == 6 && !g_DebugVideoMemorySize.IsCompulsorilyShow())
+		{
+			this.PlaySoundDecide();
+			g_DebugVideoMemorySize.SetShow(!g_DebugVideoMemorySize.GetShow());
+			this.m_ShowVideoMemorySizeCheckBoxSprite.SetShowCheckMark(g_DebugVideoMemorySize.GetShow());
+		}
+		else if (this.m_nOnCursorObject == 20 + 0)
+		{
+			this.PlaySoundDecide();
+			ゲーム終了();
+		}
+		else if (this.m_nOnCursorObject == 20 + 1)
+		{
+			this.PlaySoundDecide();
+			タイトルに戻る();
+		}
+		else if (this.m_nOnCursorObject == 20 + 2)
+		{
+			this.PlaySoundDecide();
+			return false;
+		}
+		else if (this.m_nOnCursorObject >= 10 && this.m_nOnCursorObject < 16 && this.m_nOnCursorObject - 10 != 5)
+		{
+			this.PlaySoundDecide();
+			this.m_nExitCode = this.m_nOnCursorObject - 10;
+			return false;
+		}
+	}
+	return true;
+}
+
+void CDebugConfigView::PlaySoundDecide()
+{
+	if (g_ConfigModeDocument.GetSoundDecide() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundDecide());
+}
+
+void CDebugConfigView::PlaySoundUnderCursor()
+{
+	if (g_ConfigModeDocument.GetSoundUnderCursor() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundUnderCursor());
+}
+
+void CDebugConfigView::PlaySoundCancel()
+{
+	if (g_ConfigModeDocument.GetSoundCancel() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundCancel());
+}
+

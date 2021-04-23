@@ -1,0 +1,457 @@
+void CMonster::SetPos(float fPosX, float fPosY, float fPosZ)
+{
+	this.m_Instance.SetPos(fPosX, fPosY, fPosZ);
+}
+
+void CMonster::SetAngle(float fAngle)
+{
+	this.m_Instance.SetAngle(fAngle);
+}
+
+void CMonster::SetAngleP(float fAngleP)
+{
+	this.m_Instance.SetAngleP(fAngleP);
+}
+
+void CMonster::SetAngleB(float fAngleB)
+{
+	this.m_Instance.SetAngleB(fAngleB);
+}
+
+void CMonster::SetAmbient(float fR, float fG, float fB)
+{
+	this.m_Instance.SetAmbient(fR, fG, fB);
+}
+
+void CMonster::SetAlpha(float fAlpha)
+{
+	this.m_Instance.SetAlpha(fAlpha);
+}
+
+ref CInstance CMonster::GetInstance()
+{
+	return this.m_Instance;
+}
+
+int CMonster::GetMotionState()
+{
+	return this.m_Instance.GetMotionState();
+}
+
+float CMonster::GetMotionFrame()
+{
+	return this.m_Instance.GetMotionFrame();
+}
+
+bool CMonster::IsMotionBlend()
+{
+	return this.m_Instance.IsMotionBlend();
+}
+
+bool CMonster::IsMotionLoop()
+{
+	return this.m_Instance.GetMotionState() == 2;
+}
+
+bool CMonster::IsMotionPlay()
+{
+	return this.m_Instance.GetMotionState() == 1;
+}
+
+bool CMonster::IsMotionStop()
+{
+	return this.m_Instance.GetMotionState() == 0;
+}
+
+bool CMonster::GetDraw()
+{
+	return this.m_Instance.GetDraw();
+}
+
+float CMonster::GetPosX()
+{
+	return this.m_Instance.GetPosX();
+}
+
+float CMonster::GetPosY()
+{
+	return this.m_Instance.GetPosY();
+}
+
+float CMonster::GetPosZ()
+{
+	return this.m_Instance.GetPosZ();
+}
+
+int CMonster::GetMonsterNo()
+{
+	return this.m_nMonsterNo;
+}
+
+int CMonster::GetMotionNo()
+{
+	return this.m_nMotionNo;
+}
+
+float CMonster::GetOffsetX()
+{
+	return this.m_nOffsetX;
+}
+
+float CMonster::GetOffsetY()
+{
+	return this.m_nOffsetY;
+}
+
+float CMonster::GetOffsetZ()
+{
+	return this.m_nOffsetZ;
+}
+
+CMonster::CMonster()
+{
+	this.Clear();
+}
+
+CMonster::~CMonster()
+{
+	this.Release();
+}
+
+bool CMonster::Create(ref CReignPlugin rfPlugin)
+{
+	this.Release();
+	if (rfPlugin === NULL)
+	{
+		return false;
+	}
+	this.m_Instance.Create(rfPlugin.GetPlugin());
+	this.m_Instance.SetType(2);
+	this.m_Instance.SetAmbient(0.0, 0.0, 0.0);
+	this.m_Instance.SetMotionBlendPutTime(true);
+	return true;
+}
+
+void CMonster::Release()
+{
+	this.m_Instance.Release();
+	this.Clear();
+}
+
+void CMonster::Clear()
+{
+	this.m_nMonsterNo = -1;
+	this.m_nMotionNo = -1;
+	this.m_nNextMotionNo = -1;
+	this.m_fBeginFrame = 0.0;
+	this.m_fEndFrame = 0.0;
+	this.m_fBeginLoopFrame = 0.0;
+	this.m_fEndLoopFrame = 0.0;
+	this.m_fNextBeginFrame = 0.0;
+	this.m_fNextEndFrame = 0.0;
+	this.m_fNextBeginLoopFrame = 0.0;
+	this.m_fNextEndLoopFrame = 0.0;
+	this.m_bLoading = false;
+	this.m_bMotionLoading = false;
+	this.m_bNextMotionLoading = false;
+	this.m_bMonsterNextMotion = false;
+	this.m_nMonsterNextMotion = -1;
+}
+
+void CMonster::Update()
+{
+	this.UpdateMotionBlend();
+}
+
+void CMonster::UpdateMotion()
+{
+	if (this.m_nMonsterNo <= 0)
+	{
+		return;
+	}
+	if (!this.IsMotionStop())
+	{
+		return;
+	}
+	if (this.m_bNextMotionLoading)
+	{
+		return;
+	}
+	if (this.m_bMonsterNextMotion)
+	{
+		return;
+	}
+	if (!this.BeginNextMotionLoading(0))
+	{
+		return;
+	}
+	３Ｄ戦闘_ロード待ち(true);
+	if (!this.EndNextMotionLoading())
+	{
+		return;
+	}
+	this.BeginMotionBlend(0, 100);
+}
+
+bool CMonster::BeginLoading(int nMonsterNo)
+{
+	if (this.m_bLoading)
+	{
+		return false;
+	}
+	this.EndMotionBlend(true);
+	this.m_Instance.SetDraw(false);
+	if (nMonsterNo < 0)
+	{
+		this.m_Instance.Load("");
+	}
+	else
+	{
+		this.m_Instance.Load("Data\\PolyData\\Chara\\" + g_sMonsterInfo.GetPolyName(nMonsterNo));
+	}
+	this.m_nMonsterNo = nMonsterNo;
+	this.m_bLoading = true;
+	return true;
+}
+
+bool CMonster::EndLoading()
+{
+	if (!this.m_bLoading)
+	{
+		return false;
+	}
+	this.m_Instance.SetScale(g_sMonsterInfo.GetScale(this.m_nMonsterNo));
+	this.m_Instance.SetAmbient(0.0, 0.0, 0.0);
+	this.m_nOffsetX = g_sMonsterInfo.GetPosX(this.m_nMonsterNo);
+	this.m_nOffsetY = g_sMonsterInfo.GetPosY(this.m_nMonsterNo);
+	this.m_nOffsetZ = g_sMonsterInfo.GetPosZ(this.m_nMonsterNo);
+	this.m_Instance.SetPos(this.m_nOffsetX, this.m_nOffsetY, this.m_nOffsetZ);
+	this.m_Instance.SetDrawBump(true);
+	this.m_Instance.SetDrawShadow(false);
+	this.m_Instance.SetDrawMakeShadow(g_sMonsterInfo.GetMakeShadow(this.m_nMonsterNo));
+	this.m_Instance.SetShadowVolumeBoneRadius(g_sMonsterInfo.GetShadowVolumeBoneRadius(this.m_nMonsterNo));
+	this.m_bMonsterNextMotion = false;
+	this.m_nMonsterNextMotion = -1;
+	this.m_bLoading = false;
+	return true;
+}
+
+bool CMonster::BeginMotionLoading(int nMotionNo)
+{
+	if (this.m_bMotionLoading)
+	{
+		return false;
+	}
+	nMotionNo = モンスター_モーション確認(this.m_nMonsterNo, nMotionNo);
+	if (nMotionNo < 0)
+	{
+		return false;
+	}
+	if (nMotionNo == this.m_nMotionNo)
+	{
+		if (nMotionNo == 0)
+		{
+			return false;
+		}
+		goto label0;
+	}
+	if (nMotionNo == this.m_nNextMotionNo)
+	{
+		this.m_Instance.SwapMotion();
+		this.m_nMotionNo <=> this.m_nNextMotionNo;
+		this.m_fBeginFrame <=> this.m_fNextBeginFrame;
+		this.m_fEndFrame <=> this.m_fNextEndFrame;
+		this.m_fBeginLoopFrame <=> this.m_fNextBeginLoopFrame;
+		this.m_fEndLoopFrame <=> this.m_fNextEndLoopFrame;
+		goto label0;
+	}
+	string MotionDataName = g_sMonsterInfo.GetMotionDataName(this.m_nMonsterNo, nMotionNo);
+	if (MotionDataName.Empty())
+	{
+		return true;
+	}
+	if (!this.m_Instance.LoadMotion(MotionDataName))
+	{
+	}
+	this.m_nMotionNo = nMotionNo;
+label0:
+	this.m_bMotionLoading = true;
+	return true;
+}
+
+bool CMonster::EndMotionLoading(int nMotionState)
+{
+	if (!this.m_bMotionLoading)
+	{
+		return false;
+	}
+	if (nMotionState < 0)
+	{
+		nMotionState = g_sMonsterInfo.GetMotionType(this.m_nMonsterNo, this.m_nMotionNo);
+	}
+	this.m_Instance.SetMotionState(nMotionState);
+	this.m_fBeginFrame = g_sMonsterInfo.GetBeginFrame(this.m_nMonsterNo, this.m_nMotionNo);
+	this.m_fEndFrame = g_sMonsterInfo.GetEndFrame(this.m_nMonsterNo, this.m_nMotionNo);
+	this.m_fBeginLoopFrame = g_sMonsterInfo.GetBeginLoopFrame(this.m_nMonsterNo, this.m_nMotionNo);
+	this.m_fEndLoopFrame = g_sMonsterInfo.GetEndLoopFrame(this.m_nMonsterNo, this.m_nMotionNo);
+	this.m_Instance.SetMotionFrameRange(this.m_fBeginFrame, this.m_fEndFrame);
+	this.m_Instance.SetMotionLoopFrameRange(this.m_fBeginLoopFrame, this.m_fEndLoopFrame);
+	this.m_Instance.SetMotionFrame(nMotionState == 2 ? this.m_fBeginLoopFrame : this.m_fBeginFrame);
+	this.m_bMotionLoading = false;
+	return true;
+}
+
+bool CMonster::BeginNextMotionLoading(int nNextMotionNo)
+{
+	if (this.m_bNextMotionLoading)
+	{
+		return false;
+	}
+	if (this.m_bMonsterNextMotion)
+	{
+		return false;
+	}
+	nNextMotionNo = モンスター_モーション確認(this.m_nMonsterNo, nNextMotionNo);
+	if (nNextMotionNo == this.m_nNextMotionNo)
+	{
+		goto label0;
+	}
+	string MotionDataName = g_sMonsterInfo.GetMotionDataName(this.m_nMonsterNo, nNextMotionNo);
+	if (MotionDataName.Empty())
+	{
+		return true;
+	}
+	if (!this.m_Instance.LoadNextMotion(MotionDataName))
+	{
+	}
+	this.m_nNextMotionNo = nNextMotionNo;
+label0:
+	this.m_bNextMotionLoading = true;
+	return true;
+}
+
+bool CMonster::EndNextMotionLoading()
+{
+	if (!this.m_bNextMotionLoading)
+	{
+		return false;
+	}
+	this.m_fNextBeginFrame = g_sMonsterInfo.GetBeginFrame(this.m_nMonsterNo, this.m_nNextMotionNo);
+	this.m_fNextEndFrame = g_sMonsterInfo.GetEndFrame(this.m_nMonsterNo, this.m_nNextMotionNo);
+	this.m_fNextBeginLoopFrame = g_sMonsterInfo.GetBeginLoopFrame(this.m_nMonsterNo, this.m_nNextMotionNo);
+	this.m_fNextEndLoopFrame = g_sMonsterInfo.GetEndLoopFrame(this.m_nMonsterNo, this.m_nNextMotionNo);
+	this.m_Instance.SetNextMotionFrameRange(this.m_fNextBeginFrame, this.m_fNextEndFrame);
+	this.m_Instance.SetNextMotionLoopFrameRange(this.m_fNextBeginLoopFrame, this.m_fNextEndLoopFrame);
+	int nMotionState = g_sMonsterInfo.GetMotionType(this.m_nMonsterNo, this.m_nNextMotionNo);
+	this.m_Instance.SetNextMotionFrame(nMotionState == 2 ? this.m_fNextBeginLoopFrame : this.m_fNextBeginFrame);
+	this.m_bNextMotionLoading = false;
+	return true;
+}
+
+bool CMonster::BeginMotionBlend(int nMotionNo, int nTime)
+{
+	if (this.m_bMonsterNextMotion)
+	{
+		return false;
+	}
+	this.m_Instance.SetNextMotionState(nMotionNo == 0 ? 2 : 1);
+	this.m_Instance.SetNextMotionFrame(g_sMonsterInfo.GetBeginLoopFrame(this.m_nMonsterNo, nMotionNo));
+	this.m_Instance.SetMotionBlend(true);
+	this.m_Instance.SetMotionBlendRate(0.0);
+	this.m_bMonsterNextMotion = true;
+	this.m_nMonsterNextMotion = nMotionNo;
+	this.m_nMotionBlendTotalTime = nTime;
+	this.m_nMotionBlendStartTime = system.GetTime();
+	return true;
+}
+
+void CMonster::EndMotionBlend(bool bFree)
+{
+	if (!this.m_bMonsterNextMotion)
+	{
+		return;
+	}
+	if (!this.m_Instance.IsMotionBlend())
+	{
+		return;
+	}
+	this.m_Instance.SetMotionBlend(false);
+	this.m_Instance.SwapMotion();
+	this.m_bMonsterNextMotion = false;
+	this.m_nMonsterNextMotion = -1;
+	this.m_nMotionNo <=> this.m_nNextMotionNo;
+	this.m_fBeginFrame <=> this.m_fNextBeginFrame;
+	this.m_fEndFrame <=> this.m_fNextEndFrame;
+	this.m_fBeginLoopFrame <=> this.m_fNextBeginLoopFrame;
+	this.m_fEndLoopFrame <=> this.m_fNextEndLoopFrame;
+	if (bFree)
+	{
+		this.m_Instance.FreeNextMotion();
+		this.m_nNextMotionNo = -1;
+	}
+}
+
+void CMonster::UpdateMotionBlend()
+{
+	if (!this.m_Instance.IsMotionBlend())
+	{
+		return;
+	}
+	int nTime = system.GetTime() - this.m_nMotionBlendStartTime;
+	if (nTime >= this.m_nMotionBlendTotalTime)
+	{
+		this.EndMotionBlend(this.m_nNextMotionNo == 0);
+	}
+	else
+	{
+		float fBlendRate = nTime / this.m_nMotionBlendTotalTime;
+		this.m_Instance.SetMotionBlendRate(fBlendRate);
+	}
+}
+
+bool CMonster::CheckDead()
+{
+	if (this.m_nMotionNo != 4 || this.m_Instance.GetMotionState() != 1)
+	{
+		return false;
+	}
+	if (this.m_Instance.IsMotionBlend())
+	{
+		return false;
+	}
+	if (this.m_Instance.GetMotionFrame() < this.m_fBeginFrame + (this.m_fEndFrame - this.m_fBeginFrame) / 2.0)
+	{
+		return false;
+	}
+	this.m_Instance.SetMotionState(0);
+	this.m_Instance.SetDraw(false);
+	return true;
+}
+
+bool CMonster::CheckFrame(int nPercent)
+{
+	if (this.m_Instance.GetMotionState() != 1)
+	{
+		return false;
+	}
+	if (this.m_Instance.IsMotionBlend())
+	{
+		return false;
+	}
+	if (this.m_Instance.GetMotionFrame() < this.m_fBeginFrame + 実数計算(this.m_fEndFrame - this.m_fBeginFrame, nPercent, 100.0))
+	{
+		return false;
+	}
+	return true;
+}
+
+void CMonster::SetDraw(bool bDraw)
+{
+	this.m_Instance.SetDraw(bDraw);
+}
+
+void CMonster::DebugOutput(string szComment, int nValue)
+{
+	return;
+}
+

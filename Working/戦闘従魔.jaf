@@ -1,0 +1,45 @@
+bool 戦闘従魔_初期化(int nZ)
+{
+	return true;
+}
+
+void 戦闘従魔_単体攻撃(int nSkillNo, int nNo, int nTargetNo)
+{
+	戦闘従魔_カットイン開始();
+	戦闘ログ_追加("Familiar " + テキスト_戦闘名前(nNo) + " cut in.", 5, false);
+	戦闘味方_単体攻撃(nSkillNo, nNo, nTargetNo);
+}
+
+void 戦闘従魔_全体攻撃(int nSkillNo, int nNo)
+{
+	戦闘従魔_カットイン開始();
+	戦闘ログ_追加("Familiar " + テキスト_戦闘名前(nNo) + " cut in.", 5, false);
+	戦闘味方_全体攻撃(nSkillNo, nNo);
+}
+
+void 戦闘従魔_横一列攻撃(int nSkillNo, int nNo)
+{
+	戦闘従魔_カットイン開始();
+	戦闘ログ_追加("Familiar " + テキスト_戦闘名前(nNo) + " cut in.", 5, false);
+	戦闘味方_横一列攻撃(nSkillNo, nNo);
+}
+
+void 戦闘従魔_単体補助(int nSkillNo, int nNo, int nTargetNo)
+{
+	戦闘従魔_カットイン開始();
+	戦闘ログ_追加("Familiar " + テキスト_戦闘名前(nNo) + " cut in.", 5, false);
+	戦闘味方_単体補助(nSkillNo, nNo, nTargetNo);
+}
+
+void 戦闘従魔_全体補助(int nSkillNo, int nNo)
+{
+	戦闘従魔_カットイン開始();
+	戦闘ログ_追加("Familiar " + テキスト_戦闘名前(nNo) + " cut in.", 5, false);
+	戦闘味方_全体補助(nSkillNo, nNo);
+}
+
+int 戦闘従魔_行動選択(int nNo)
+{
+	return 戦闘データ_スキル番号(nNo, 1);
+}
+

@@ -1,0 +1,205 @@
+string マップ_名前(int nMapNo)
+{
+	if (nMapNo < 0)
+	{
+		nMapNo = マップ_番号();
+	}
+	return g_sMapInfo.getName(nMapNo);
+}
+
+string マップ_表示名(int nMapNo)
+{
+	string szName = "";
+	if (nMapNo < 0)
+	{
+		nMapNo = マップ_番号();
+	}
+	szName = g_sMapInfo.getName2(nMapNo);
+	if (szName.Length() > 0)
+	{
+		return szName;
+	}
+	szName = g_sMapInfo.getName(nMapNo);
+	if (szName.Length() > 0)
+	{
+		return szName;
+	}
+	return "－";
+}
+
+int マップ_開始位置Ｘ(int nMapNo)
+{
+	T_MapInfo sInfo;
+	if (!マップ情報_取得(nMapNo, sInfo))
+	{
+		return 25;
+	}
+	return sInfo.m_nX;
+}
+
+int マップ_開始位置Ｙ(int nMapNo)
+{
+	T_MapInfo sInfo;
+	if (!マップ情報_取得(nMapNo, sInfo))
+	{
+		return 25;
+	}
+	return sInfo.m_nY;
+}
+
+int マップ_開始方向(int nMapNo)
+{
+	T_MapInfo sInfo;
+	if (!マップ情報_取得(nMapNo, sInfo))
+	{
+		return 3;
+	}
+	return sInfo.m_nDir;
+}
+
+void マップ情報_初期化()
+{
+	モンスター情報_初期化();
+	g_sMapInfo.init();
+	g_sObjectInfo.init();
+	g_sBillboardInfo.init();
+}
+
+int マップ情報_マップ選択()
+{
+	return g_sMapInfo.select();
+}
+
+bool マップ情報_開始位置変換(string szMapName)
+{
+	return g_sMapInfo.convertPos(szMapName);
+}
+
+int マップ情報_インデクス(int nMapNo)
+{
+	return g_sMapInfo.getIndex(nMapNo);
+}
+
+int マップ情報_マップ番号(int nIndex)
+{
+	ref T_MapInfo rfInfo = g_sMapInfo.getFromIndex(nIndex);
+	if (rfInfo === NULL)
+	{
+		return 0;
+	}
+	return rfInfo.m_nNo;
+}
+
+int マップ情報_数()
+{
+	return g_sMapInfo.getCount();
+}
+
+bool マップ情報_取得(int nMapNo, ref T_MapInfo sInfo)
+{
+	ref T_MapInfo rfInfo = g_sMapInfo.get(nMapNo);
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	sInfo = rfInfo;
+	return true;
+}
+
+bool 置物情報_取得(int nX, int nY, ref T_ObjectInfo sInfo)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(置物番号(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	sInfo = rfInfo;
+	return true;
+}
+
+int 置物情報_移動フラグ(int nNo)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(nNo);
+	if (rfInfo === NULL)
+	{
+		return 0;
+	}
+	return rfInfo.m_nEnterFlag;
+	return 0;
+}
+
+string 置物情報_名前(int nNo)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(nNo);
+	if (rfInfo === NULL)
+	{
+		return "";
+	}
+	return rfInfo.m_szName;
+}
+
+bool ＢＢ情報_設定(ref T_BillboardInfo sInfo)
+{
+	return g_sBillboardInfo.set(sInfo);
+}
+
+bool ＢＢ情報_取得(int nX, int nY, ref T_BillboardInfo sInfo)
+{
+	ref T_BillboardInfo rfInfo = g_sBillboardInfo.get(ＢＢ番号(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	sInfo = rfInfo;
+	int nValue = g_sBillboardData.getSize(nX, nY);
+	if (nValue != 2147483647)
+	{
+		sInfo.m_nSize = nValue;
+	}
+	nValue = g_sBillboardData.getHoseiX(nX, nY);
+	if (nValue != 2147483647)
+	{
+		sInfo.m_nHoseiX = nValue;
+	}
+	nValue = g_sBillboardData.getHoseiY(nX, nY);
+	if (nValue != 2147483647)
+	{
+		sInfo.m_nHoseiY = nValue;
+	}
+	nValue = g_sBillboardData.getHoseiZ(nX, nY);
+	if (nValue != 2147483647)
+	{
+		sInfo.m_nHoseiZ = nValue;
+	}
+	return true;
+}
+
+int ＢＢ情報_移動フラグ(int nCgNo)
+{
+	ref T_BillboardInfo rfInfo = g_sBillboardInfo.get(nCgNo);
+	if (rfInfo === NULL)
+	{
+		return 0;
+	}
+	return rfInfo.m_nEnterFlag;
+}
+
+bool ＢＢ確認_システム(int nCgNo)
+{
+	switch (nCgNo)
+	{
+		case 29901:
+		case 29911:
+		case 29912:
+		case 29913:
+		case 29914:
+		case 29922:
+		case 29923:
+		case 29929:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+

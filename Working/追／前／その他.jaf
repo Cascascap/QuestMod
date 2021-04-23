@@ -1,0 +1,411 @@
+void ランス城／ポスター回収／初()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(89, -1, -1);
+	ADVON();
+	セット表示(5510, 0, 0, 0);
+	セリフ(2000, "");
+	'"Hey, Miss Biscuitta."' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Welcome back, Master."' A;
+	セリフ(2000, "");
+	'"Mm, I found this poster while I was out adventuring.' R;
+	' Find someplace to hang it up, alright?"' A;
+	セリフ(2450, "");
+	'"...This is..."' A;
+	'"Ah, it\'s a poster for something called an \'eroge.\'' R;
+	' It\'s my first time seeing one."' A;
+	'"We have a poster room for just this purpose downstairs, so I will hang it there."' A;
+	セリフ(2000, "");
+	'"Oh? We had a room like that?"' A;
+	セリフ(2450, "");
+	'"Indeed, we do."' A;
+	セリフ(2000, "");
+	'"Hm hm, then I know where I\'m going later."' A;
+	ADVOFF();
+}
+
+void ランス城／ポスター回収／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(89, -1, -1);
+	ADVON();
+	セット表示(5510, 0, 0, 0);
+	セリフ(2000, "");
+	'"Hey, I\'m back."' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Welcome back, Master."' A;
+	セリフ(2000, "");
+	'"Found this."' A;
+	セリフ(2450, "");
+	'"A poster?' R;
+	' Very well.' R;
+	' I will hang it with the others."' A;
+	セリフ(2000, "");
+	'"Mm."' A;
+	ADVOFF();
+}
+
+void ポスタールーム／城１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	壁紙ポスタールーム表示();
+	音楽(89, -1, -1);
+	ト書き();
+	' ' R;
+	'     Rance Castle   Poster Room' A;
+	セリフ(2000, "");
+	'"Oho, there was a room like this here?"' A;
+	セリフ(2450, "");
+	'"Yes."' A;
+	ト書き();
+	'The room had the posters Rance had collected displayed on the walls. The atmosphere was as austere as a museum\'s.' A;
+	セリフ(2000, "");
+	'"Mm, I like seeing the posters like this. It\'s good."' A;
+	セリフ(2450, "");
+	'"I\'m honored."' A;
+	セリフ(2000, "");
+	'"The fancy atmosphere is nice, too. Yeah, it suits me."' A;
+	'"These are posters of... What was it, eroge?' R;
+	' Mm, things like that are okay every once in a while."' A;
+	セリフ(2450, "");
+	'"Yes."' A;
+	セリフ(2000, "");
+	'"So, Miss Biscuitta."' A;
+	セリフ(2450, "");
+	'"Yes?"' A;
+	セリフ(2000, "");
+	'"What\'s an eroge?"' A;
+	セリフ(2450, "");
+	'"........."' A;
+	セリフ(2451, "");
+	'"I\'m..."' A;
+	セリフ(2000, "");
+	'"Mhm?"' A;
+	セリフ(2451, "");
+	'"Not sure how to answer..."' A;
+	セリフ(2005, "");
+	'"???"' A;
+	ADVOFF();
+}
+
+void ポスタールーム／城２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(89, -1, -1);
+	ADVON();
+	壁紙ポスタールーム表示();
+	ト書き();
+	' ' R;
+	'     Rance Castle   Poster Room' A;
+	セリフ(2000, "");
+	'"The collection\'s starting to fill up, huh?"' A;
+	セリフ(2450, "");
+	'"Yes, it\'s quite impressive."' A;
+	'"Come to think of it..."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2450, "");
+	'"Well, there may be a strange rumor spreading. I heard about it from a maid who was patrolling down by this poster room late at night."' A;
+	セリフ(2000, "");
+	'"Mm?"' A;
+	セリフ(2450, "");
+	'"She said something creepy and red was eyeing the posters."' A;
+	セリフ(2000, "");
+	'"What, like a ghost?"' A;
+	セリフ(2450, "");
+	'"I\'m not sure.' R;
+	' It\'s possible something has invaded the castle.' R;
+	' Please be careful."' A;
+	セリフ(2000, "");
+	'"A pervtergeist, huh? Sounds fun."' A;
+	'"Alright, I\'ll stay here all night, then.' R;
+	' And I\'ll capture the ghost!"' A;
+	'"Bring me a futon for later, Miss Biscuitta."' A;
+	セリフ(2450, "");
+	'"...Very well.' R;
+	' I will join you, then."' A;
+	ト書き();
+	'Rance stayed in the poster room all night, but the ghost never ended up showing itself.' A;
+	セリフ(2000, "");
+	'"Hmph...' R;
+	' Guess it was just a rumor."' A;
+	ADVOFF();
+}
+
+void ポスタールーム／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(89, -1, -1);
+	ADVON();
+	壁紙ポスタールーム表示();
+	ト書き();
+	' ' R;
+	'     Rance Castle   Poster Room' A;
+	'Several posters were hung around the room.' A;
+	セリフ(2000, "");
+	'"Mm."' A;
+	ADVOFF();
+}
+
+void クルックー／モルルン３回目()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, gランスの部屋, 0, 0);
+	ト書き();
+	' ' R;
+	'     Rance Castle   Rance\'s Room' A;
+	音楽(86, -1, -1);
+	'Biscuitta was cleaning Rance\'s room after he\'d had sex with someone.' A;
+	セリフ(2016, "");
+	'"Phaahh, that was fun."' A;
+	セリフ(2450, "");
+	'"I\'m glad you enjoyed yourself."' A;
+	ト書き();
+	'Biscuitta collected the sheets.' A;
+	セリフ(2010, "");
+	'"It was a little weird, though.' R;
+	' Different than usual somehow."' A;
+	'"The girls I have sex with are supposed to fall down to level 1 afterward because of the Abstinence Morurun curse, but this time her level only dropped a little bit."' A;
+	セリフ(2015, "");
+	'"Hmmm..."' A;
+	セリフ(2010, "");
+	'"Oh, could I be gradually overcoming the curse?!"' A;
+	セリフ(2014, "");
+	'"Oooh, how wonderful..."' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"That\'s not it."' A;
+	セリフ(2010, "");
+	'"Whoa, when did you show up?"' A;
+	セリフ(2060, "");
+	'"Just now."' A;
+	'"I was reading something on curses and made a discovery, so I came to share it with you."' A;
+	セリフ(2010, "");
+	'"Oho...?"' A;
+	セリフ(2060, "");
+	'"The more a person with the Abstinence Morurun curse has sexual relations with one person, the harder it becomes for that person to lose levels."' A;
+	'"In exchange, the curse will require them to be at a higher level next time."' A;
+	セリフ(2015, "");
+	'"What, so the effect just changes a little bit?"' A;
+	セリフ(2060, "");
+	'"Yes, the curse is still in effect."' A;
+	'"Well then, excuse me."' A;
+	音楽(0, 1, 2000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Crook left the room.' A;
+	セリフ(2015, "");
+	'"Haahh... damn..."' A;
+	ADVOFF();
+}
+
+void クルックー／モルルン１０回目()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(0, 1, 1000);
+	ADVON();
+	セット表示(5510, gランスの部屋, 0, 0);
+	セリフ(2005, "");
+	'"Mmmm, booored..."' A;
+	ト書き();
+	'Rance was bored out of his mind in his room.' A;
+	ト書き();
+	' ' R;
+	'  <knock knock>' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	音楽(86, -1, -1);
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"Do you have a moment, Rance?' R;
+	' I have something to report."' A;
+	セリフ(2000, "");
+	'"Yeah, what is it?"' A;
+	セリフ(2060, "");
+	'"I was performing research about curses and found that it may be possible to become immune to the effects of the Abstinence Morurun."' A;
+	セリフ(2000, "");
+	'"Oh? Immune?"' A;
+	セリフ(2060, "");
+	'"Someone can become immune after being affected by the Abstinence Morurun multiple times.' A;
+	'"It appears to occur after ten instances of sex."' A;
+	セリフ(2000, "");
+	'"O-Ohh? So...' R;
+	' When they become immune..."' A;
+	セリフ(2060, "");
+	'"Yes, you\'ll be able to have as much sex as you want with them."' A;
+	セリフ(2000, "");
+	'"Oh..."' A;
+	'"Oooh! That\'s great!"' A;
+	セリフ(2004, "");
+	'"So whenever I want, wherever I want, as much as I want..."' A;
+	セリフ(2001, "");
+	'"Go meee! Go meee!"' A;
+	セリフ(2060, "");
+	'"Yes, congratulations."' A;
+	ADVOFF();
+}
+
+void フロスト売店５()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(0, 1, 1000);
+	ADVON();
+	セット表示(5520, 0, 0, 0);
+	音楽(93, -1, -1);
+	立ち絵表示(1280, 1, 200);
+	セリフ(2280, "");
+	'"\'Come!"' A;
+	セリフ(2005, "");
+	'"The hell? You greet customers with \'cum\' when they enter the store?' R;
+	' What an awful place."' A;
+	セリフ(2280, "");
+	'"That\'s not what I said!' R;
+	' I said, \'welcome\'!"' A;
+	'"Anyway, knock off the gags.' R;
+	' We\'ve got good news!"' A;
+	'"Your levels have risen, so our products have leveled up too!"' A;
+	'"We\'ve got more high-quality stuff now!"' A;
+	セリフ(2000, "");
+	'"Oho, that\'s good."' A;
+	セリフ(2280, "");
+	'"Mm, your level\'s gone up so much that we\'ve got a great selection now...' R;
+	' It\'s almost making me tear up!"' A;
+	セリフ(2005, "");
+	'"Really?"' A;
+	セリフ(2280, "");
+	'"Mhm, we\'ve only come this far ’cause of the money you\'ve poured into us, Boss..."' A;
+	セリフ(2000, "");
+	'"If you\'re thankful, then gimme somethin\' for it."' A;
+	セリフ(2280, "");
+	'"Mm? You wanna go on a date?"' A;
+	'"If you\'re treating me to a luxurious all-you-can-eat dinner, I\'ll gladly go along."' A;
+	セリフ(2005, "");
+	'"Nah..."' A;
+	セリフ(2280, "");
+	'"Oh yeah?' R;
+	' Well if you\'re ever in the mood, hit me up!"' A;
+	'"I\'ll bring some tupperware, too."' A;
+	セリフ(2005, "");
+	'"I said I don\'t want to..."' A;
+	セリフ(2803, "");
+	'"Oh? What was that?' R;
+	' Did I just hear something about a luxurious all-you-can-eat dinner?"' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"You two really are alike."' A;
+	セリフ(2803, "");
+	効果音(2011);
+	顔揺れ(1, false);
+	'"How rude!"' A;
+	セリフ(2280, "");
+	効果音(2011);
+	顔揺れ(1, false);
+	'"Yeah, how rude!"' A;
+	セリフ(2000, "");
+	'"Ahh, whatever, just show me what you got, already."' A;
+	セリフ(2280, "");
+	'"Yeah, yeah, you\'re such a stick in the mud...' R;
+	' This is why you\'re not popular..."' A;
+	セリフ(2005, "");
+	'"What was that?"' A;
+	音楽(0, 1, 1000);
+	セリフ(2280, "");
+	'"Oookay!' R;
+	' Take a look at our fabulous selection today!"' R;
+	'  ↑ Ignoring him' A;
+	ADVOFF();
+}
+
+void アリス／シナリオ初期化／説明()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5080, 0, 0);
+	ト書き();
+	' ' R;
+	'     Alice\'s Mansion' A;
+	音楽(84, -1, -1);
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Welcome! I\'m Alice."' A;
+	'"Here, you can restart the story, going back to the beginning of the game with all your strong characters."' A;
+	'"If you make this decision, you will not be able to take it back, so please listen carefully."' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+	セリフ(2080, "");
+	'"If you restart the story, the following will happen:"' A;
+	'"One.' R;
+	' It will be as if all events and quests have not occurred."' A;
+	'"Two.' R;
+	' You will still be able to use all recruited characters, levels, items, and Gold you\'ve acquired."' A;
+	'"Basically, you\'ll be starting over while still strong."' A;
+	'"Oh, and you\'ll stay in the same world you\'re currently in, too.' R;
+	' That won\'t be reset, so you don\'t need to worry about losing that progress."' A;
+	セリフ(2916, "");
+	'"Caw, caw!"' A;
+	セリフ(2080, "");
+	'"There\'s also another option if you\'d like to gather the party members you\'ve collected over again."' A;
+	'"That would be story restart + character reset."' A;
+	'"If you select this, you\'ll be left with the characters available at the beginning of the story: Rance, Sachiko, and Suzume, and any custom characters you\'ve created. You\'ll have to collect all the other characters again."' A;
+	'"Those characters will be at the level they originally were in the story."' A;
+	'"Their statuses and Morurun counts will be reset, their bodies still pure."' A;
+	'"However, their talent caps will remain at their current maximum."' A;
+	'"They will also have the EXP they need to get to that level reduced to under 30,000."' A;
+	'"I think they\'ll be easier to train than they normally would be."' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+	セリフ(2080, "");
+	'"Yes, that\'s the end of my explanation."' A;
+	'"Once again, I\'d just like to say that if you choose this, you will not be able to go back.' R;
+	' Please think very carefully about this decision."' A;
+	'"Well, what would you like to do?"' A;
+}
+

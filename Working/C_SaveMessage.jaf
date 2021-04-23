@@ -1,0 +1,13 @@
+void セーブメッセージ_表示(int nMode)
+{
+	g_sSaveMessage.create(nMode);
+	UPDATE(true);
+}
+
+void セーブメッセージ_削除()
+{
+	g_sSaveMessage.wait();
+	g_sSaveMessage.delete();
+	UPDATE(true);
+}
+

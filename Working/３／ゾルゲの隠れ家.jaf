@@ -1,0 +1,543 @@
+void ０５Ｂプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5040, 0, 0);
+	音楽(71, -1, -1);
+	セリフ(2800, "");
+	'"Hey, we\'ve got another request related to the Menacing Crane."' A;
+	セリフ(2000, "");
+	'"Ahh, Crane...' R;
+	' What is it this time?"' A;
+	セリフ(2800, "");
+	'"\'Capture or Assassination.\'"' A;
+	セリフ(2800, "");
+	'"As usual, the reward\'s higher if you capture her alive, but they\'re fine with you killing her, too. They just want Crane delivered to them."' A;
+	セリフ(2005, "");
+	'"Anybody who says that\'s just gonna kill her anyway once I hand her over.' R;
+	' It\'d be such a waste when she\'s so cute."' A;
+	セリフ(2800, "");
+	'"You don\'t wanna hear the details, then?' R;
+	' We\'ve got special information this time."' A;
+	セリフ(2002, "");
+	'"What?! Say that first, baldy!' R;
+	' What kind of information? I\'ll at least hear it."' A;
+	セリフ(2800, "");
+	'"...Well, I don\'t mind..."' A;
+	セリフ(2800, "");
+	'"This client says they know where Crane is.' R;
+	' We won\'t know if they\'re right about it until she\'s captured, but it\'s good information."' A;
+	セリフ(2000, "");
+	'"Ooh, that sounds alright.' R;
+	' So where is it?"' A;
+	セリフ(2800, "");
+	'"The abandoned Bolbod Castle.' R;
+	' Regular nobles were living there until about a year ago, when the lord of the castle suddenly slaughtered all the residents."' A;
+	'"It\'s been abandoned ever since."' A;
+	セリフ(2800, "");
+	'"No, to be more accurate, two people have tried to buy it up since then, but they both came down with a mysterious illness and died."' A;
+	セリフ(2000, "");
+	'"Oho."' A;
+	セリフ(2800, "");
+	'"It\'s dirt cheap now, but no one\'s going for it.' R;
+	' And apparently Crane\'s settled down there."' A;
+	セリフ(2004, "");
+	'"I see, I see...' R;
+	' She must be uneasy, hiding out in a place like that.' R;
+	' I\'ll have to go see her right away."' A;
+	セリフ(2800, "");
+	'"...I think I can figure out what you\'re thinking about from your face, but..."' A;
+	セリフ(2800, "");
+	'"This is Crane we\'re talking about here.' R;
+	' At this very moment, I\'m sure Bolbod Castle is full of adventurers and intelligence agents."' A;
+	セリフ(2800, "");
+	'"If you wanna capture her, you\'re gonna have to hurry.' R;
+	' They might beat you to the punch."' A;
+	セリフ(2000, "");
+	'"Heheh, leave it to me."' A;
+	思考(2004, "");
+	'(I\'m Crane\'s savior, and I know that she can turn invisible.' R;
+	' I\'ll find her first.)' A;
+	音楽(0, -1, -1);
+	ADVOFF();
+	地図点滅(22, "", 0, 0);
+	ADVON();
+	セット表示(5550, 5650, 0, 0);
+	ト書き();
+	'　' R;
+	'     Bolbod Castle' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"Well, we\'re here now... but what a stupidly big castle.' R;
+	' Finding her in here is going to be a pain in the ass."' A;
+	セリフ(2001, "");
+	'"Well, whatever.' R;
+	' Crane might show herself to me if I just walk around some. Gahaha!"' A;
+	セリフ(2000, "");
+	'"Now let\'s start the search!"' A;
+	ADVOFF();
+}
+
+void ０５Ｂリーザス兵／リア無し()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Huh?' R;
+	' What are Leazish soldiers doing here?"' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Huh?' R;
+	' ...Ack, R-! ...Lord Rance..."' A;
+	セリフ(2005, "");
+	'"Hmm, so you know me.' R;
+	' Whose orders are you here under?"' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Ah, th-this is independent!' R;
+	' We\'re acting independently!"' A;
+	セリフ(2002, "");
+	'"Liar.' R;
+	' I bet Lia ordered you to find Crane!"' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Eeek, th-that\'s, umm, right...' R;
+	' For her protection... We\'re here for her protection..."' A;
+	セリフ(2002, "");
+	'"Go home and tell this to Lia: \'I told you I\'d hate you if you didn\'t stop pursuing Crane.\'' R;
+	' Everybody from Leazas, get out!"' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"U-Urghh...' R;
+	' Y... Yes, sir..."' A;
+	セリフ(2000, "");
+	'"Alright. You\'d better do what I said."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Ugh... I just got married, too...' R;
+	' I haven\'t been home in a whole year... and now this happens...' R;
+	' Her Majesty will be furious with me..."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"I\'m sorry, honey...' R;
+	' Maybe we can open up a bar in town..."' A;
+	ト書き();
+	'The Leazish soldiers staggered away.' A;
+	セリフ(2000, "");
+	'"Good."' A;
+	ADVOFF();
+}
+
+void ０５Ｂリーザス兵／リア有り()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Huh?' R;
+	' What are Leazish soldiers doing here?"' A;
+	セリフ(2150, "");
+	'"Ah..."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Huh?' R;
+	' ...Ack, R-! ...Lord Rance... and..."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Your Majesty???!!!"' A;
+	セリフ(2005, "");
+	'"Hmm, so you know me.' R;
+	' Whose orders are you here under?"' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Ah, th-this is independent!' R;
+	' We\'re acting independently!"' A;
+	セリフ(2002, "");
+	'"Liar.' R;
+	' I bet Lia ordered you to find Crane!"' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Eeek, th-that\'s, umm, right...' R;
+	' For her protection... We\'re here for her protection..."' A;
+	枠消去();
+	立ち絵表示(1150, 1, 200);
+	セリフ(2150, "");
+	'"Letting Darling find you... You clumsy fools."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Eeek...' R;
+	' W-We\'re terribly sorry!' R;
+	' W-W-We\'re terribly sorry!"' A;
+	セリフ(2005, "");
+	'"I thought I told you I\'d hate you if you didn\'t stop pursuing Crane, Lia."' A;
+	セリフ(2152, "");
+	'"Aaahn, I\'m so sorry, Darling!' R;
+	' There must have been some mistake when we rescinded the order!"' A;
+	セリフ(2152, "");
+	'"Lia always listens to you, doesn\'t she, Darling?' R;
+	' I stopped torturing girls, and I didn\'t invade Zeth, right?"' A;
+	セリフ(2152, "");
+	'"Won\'t you please forgive me...?' R;
+	' I\'ll make the soldiers here leave right away."' A;
+	セリフ(2005, "");
+	'"You won\'t get another chance."' A;
+	セリフ(2150, "");
+	'"Okay, I really promise!' R;
+	' I promise you, Darling!"' A;
+	セリフ(2000, "");
+	'"Alright."' A;
+	セリフ(2151, "");
+	'"Then, you there..."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Ye-Yes! Ma\'am!"' A;
+	セリフ(2151, "");
+	'"Retreat at once.' R;
+	' I don\'t want a single one of your forces to remain here."' A;
+	セリフ(2151, "");
+	'"You\'ll receive your punishment at a later date."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Y-Yes, ma\'am...!' R;
+	' Please excuse us...!"' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"Ugh... I just got married, too...' R;
+	' I haven\'t been home in a whole year..."' A;
+	セリフ(2969, "Crane Pursuit Squad");
+	'"I\'m sorry, honey...' R;
+	' Maybe we can open up a bar in town..."' A;
+	ト書き();
+	'The Leazish soldiers staggered away.' A;
+	セリフ(2150, "");
+	'"I\'m so sorry, Darling.' R;
+	' Is that better?"' A;
+	セリフ(2000, "");
+	'"Well, I guess it ended well."' A;
+	セリフ(2150, "");
+	'"Thank you, Darling! I love you!"' A;
+	ADVOFF();
+}
+
+void ０５Ｂ冒険者()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'Rance\'s party found a lone adventurer, laughing to himself.' A;
+	セリフ(2900, "Adventurer");
+	'"Eheheheh..."' A;
+	セリフ(2000, "");
+	'"Whoa, what\'s with this guy?' R;
+	' How creepy. Is he a junkie or something?"' A;
+	セリフ(2900, "Adventurer");
+	'"Whoops, no, not at all.' R;
+	' I\'m just thinking about what I\'m gonna do when I catch Crane, see?"' A;
+	'"It\'s 1,000,000 Gold if she\'s captured alive, after all.' R;
+	' I can mess around my whole life on that kind of money."' A;
+	'"First I\'ll buy a house, then I\'ll buy some women, then I\'ll eat my fill, and then, then..."' A;
+	セリフ(2000, "");
+	'"And a jab!"' A;
+	セリフ(2900, "Adventurer");
+	'"Wha-! Why--Ow, ow!' R;
+	' What are you doing?!"' A;
+	セリフ(2000, "");
+	'"Shut it.' R;
+	' Small fry like you should hurry and get lost.' R;
+	' If you go after Crane, I\'ll kill you."' A;
+	セリフ(2900, "Adventurer");
+	'"Waaaah, Mommyyy!!"' A;
+	ト書き();
+	'Nothing compared to Rance, the adventurer ran off as fast as his legs would carry him.' A;
+	セリフ(2000, "");
+	'"Hmph, know your place."' A;
+	ADVOFF();
+}
+
+void ０５Ｂヘルマン兵()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Whoa, the Helmanian Army\'s here, too?"' A;
+	セリフ(2913, "");
+	'"........."' A;
+	ト書き();
+	'A Helmanian soldier with a robust build was scanning his surroundings, his gaze like a hawk\'s.' A;
+	セリフ(2005, "");
+	'"Hmm...' R;
+	' So they\'re after her, too..."' A;
+	セリフ(2000, "");
+	'"Getting involved with them would only be trouble.' R;
+	' Let\'s leave ’em alone and hurry up and find Crane."' A;
+	ADVOFF();
+}
+
+void ０５Ｂアマズサ組()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'The Amazusa Group were huddled deep in conversation in a corner of the hallway.' A;
+	セリフ(2905, "Amazusa Employee #273");
+	'"Maybe we could seal her up right here?"' A;
+	セリフ(2942, "Amazusa Manager");
+	'"No, we should do it farther in.' R;
+	' With any luck, we\'ll be able to get ahold of plastering material..."' A;
+	セリフ(2000, "");
+	'"Oh, it\'s the Amazusa Group."' A;
+	セリフ(2905, "Amazusa Employee #273");
+	'"Wah! Mr. Rance!"' A;
+	セリフ(2000, "");
+	'"What, repairing the castle?' R;
+	' Or are you gonna nab the pillars and walls and stuff and use them elsewhere..."' A;
+	セリフ(2905, "Amazusa Employee #273");
+	'"Huh?' R;
+	' No, that\'ll come later."' A;
+	セリフ(2942, "Amazusa Manager");
+	'"Leave it at that, idiot!"' A;
+	セリフ(2905, "Amazusa Employee #273");
+	'"Ah..."' A;
+	セリフ(2005, "");
+	'"...Let me guess, you guys are after Crane too."' A;
+	セリフ(2905, "Amazusa Employee #273");
+	'"Uhh, well, y\'know...' R;
+	' Since she knows about our construction company cartel and all..."' A;
+	セリフ(2942, "Amazusa Manager");
+	'"No, she\'s just got the wrong idea about us."' A;
+	セリフ(2942, "Amazusa Manager");
+	'"We\'d like to converse with her, so that we can dispel that misunderstanding. In case it makes it complicated for us to land our next contract."' A;
+	セリフ(2905, "Amazusa Employee #273");
+	'"Th-That\'s right, that\'s right."' A;
+	セリフ(2906, "Amazusa Employee #315");
+	'"Manager! I found a perfect wall to seal her up in after we\'ve got Crane trapped!"' A;
+	セリフ(2942, "Amazusa Manager");
+	'"Heeey!!"' A;
+	セリフ(2002, "");
+	'"Heeeeey!!!"' A;
+	セリフ(2906, "Amazusa Employee #315");
+	'"Urk?!"' A;
+	セリフ(2002, "");
+	'"The likes of you really think you can get away with sealing up the beautiful Crane in a wall?!' R;
+	' I\'ll beat the shit out of you!"' A;
+	セリフ(2906, "Amazusa Employee #315");
+	顔揺れ(3, false);
+	'"Eek!"' A;
+	セリフ(2942, "Amazusa Manager");
+	'"Hey, we\'re getting out of here!"' A;
+	セリフ(2905, "Amazusa Employee #273");
+	'"W-Wait!"' A;
+	ト書き();
+	'The Amazusa Group fled.' A;
+	セリフ(2005, "");
+	'"Tch, I only got two hits in."' A;
+	ADVOFF();
+}
+
+void ０５Ｂクレイン発見()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Hmmmm..."' A;
+	'"*sniff* *sniff*... *sniff* *sniff* *sniff*..."' A;
+	ト書き();
+	'Rance suddenly stopped and began sniffing the air.' A;
+	セリフ(2000, "");
+	'".........Heh."' A;
+	音楽(71, -1, -1);
+	セリフ(2002, "");
+	全画面揺れ(3, false);
+	'"There you aaaaaaaaaare!!"' C;
+	R();
+	'  ↑  He points! Bam!' A;
+	セリフ２(2220, "? ? ?");
+	'"........."' A;
+	枠消去();
+	立ち絵表示(1221, 1, 1000);
+	ト書き();
+	'Right ahead of Rance\'s extended finger, Crane appeared.' A;
+	セリフ(2222, "");
+	'"You...' R;
+	' were also roused by my scent last time..."' A;
+	セリフ(2000, "");
+	'"Yep, when you came to my room for that tryst.' R;
+	' The scent of a beauty never escapes me."' A;
+	セリフ(2222, "");
+	'".........' R;
+	' ...It wasn\'t a tryst."' A;
+	セリフ(2001, "");
+	'"Is that so?' R;
+	' You were totally head-over-heels, moaning from my sweet love-making technique."' A;
+	セリフ(2222, "");
+	'"...It wasn\'t a tryst."' A;
+	セリフ(2005, "");
+	'"Sure, sure.' R;
+	' Anyway, take that mask off.' R;
+	' It\'s kinda unpleasant."' A;
+	セリフ(2222, "");
+	'"........."' A;
+	ト書き();
+	'Crane thought for a bit, then removed the mask as he\'d instructed her to do.' A;
+	枠消去();
+	立ち絵表示(1220, 1, 200);
+	セリフ(2220, "");
+	'"How... did you find me?' R;
+	' This suit... should have a deodorizing function."' A;
+	セリフ(2000, "");
+	'"It just means my keen sense of smell is stronger than that function of the suit\'s."' A;
+	セリフ(2220, "");
+	'".........' R;
+	' ...I see."' A;
+	セリフ(2000, "");
+	'"Well, Crane, if all these people have found your hideout, it seems like you\'re in trouble.' R;
+	' Getting ready to flee?"' A;
+	セリフ(2220, "");
+	'"...Ahh, yes...' R;
+	' Did you find out about that... and come here, too?' R;
+	' To capture me?"' A;
+	セリフ(2000, "");
+	'"Well, in a sense.' R;
+	' How about it?' R;
+	' Wanna become my woman this time?"' A;
+	セリフ(2220, "");
+	'"...Your woman..."' A;
+	セリフ(2000, "");
+	'"You could just join my party to start.' R;
+	' You\'ll fall for me if we hang out for a while together. It\'s guaranteed."' A;
+	セリフ(2220, "");
+	'"...You seem sure..."' A;
+	セリフ(2002, "");
+	'"Argh, just hurry up and come with me!' R;
+	' There are squads of guys out to get you, here! I could never let those losers capture a beautiful woman like you!"' A;
+	音楽(0, 1, 3000);
+	セリフ(2220, "");
+	'"........."' A;
+	セリフ(2220, "");
+	'".........' R;
+	' ...If I......"' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2220, "");
+	'"If I...' R;
+	' go with you, I\'m sure I\'d cause trouble for you and your companions."' A;
+	セリフ(2220, "");
+	'"I\'m a woman who knows too much...' R;
+	' One who finds out too much."' A;
+	セリフ(2005, "");
+	'"So you think you\'re dangerous ’cause all sorts of people are after you?' R;
+	' That\'s nothing terrible."' A;
+	セリフ(2000, "");
+	'"I stopped your pursuers from Leazas, right?' R;
+	' The Zethan guys\'ll listen to me too.' R;
+	' And Nippon. And Copandon\'s guys."' A;
+	セリフ(2000, "");
+	'"I\'ll have the Helmanian princess one day, too, and I can deal with fiends no problem.' R;
+	' There won\'t be anyone left to go after you, Crane."' A;
+	セリフ(2001, "");
+	'"See? It\'s no trouble.' R;
+	' If you get it, then come with me, already."' A;
+	音楽(72, -1, -1);
+	セリフ(2220, "");
+	'".........' R;
+	' ...I can\'t believe you..."' A;
+	セリフ(2005, "");
+	'"Huh?' R;
+	' What do you mean? I\'m telling the truth."' A;
+	セリフ(2221, "");
+	'"I\'ve never known someone like you before."' A;
+	セリフ(2001, "");
+	'"Oh? Right, right?' R;
+	' Nobody\'s as great as I am."' A;
+	セリフ(2220, "");
+	'"Is it really... alright?' R;
+	' If my pursuers and assassins follow me?"' A;
+	セリフ(2000, "");
+	'"Yep, leave it to me."' A;
+	セリフ(2220, "");
+	'"...I see...' R;
+	' Then... I will join you."' A;
+	セリフ(2220, "");
+	'"I\'d like to take you up on your offer to stop my pursuers from each nation...' R;
+	' But I do believe I can protect myself."' A;
+	セリフ(2220, "");
+	'"I\'ll try...' R;
+	' not to burden you, as much as possible.' R;
+	' Is that alright?"' A;
+	セリフ(2001, "");
+	'"Yep, it\'s fine.' R;
+	' In fact, you should burden me as much as you can so that you can pay back that debt to me. Gahaha!"' A;
+	セリフ(2220, "");
+	'"...I\'ll meet up with you later, then."' A;
+	セリフ(2000, "");
+	'"Sure."' A;
+	枠消去();
+	立ち絵表示(1221, 1, 200);
+	ト書き();
+	'Crane donned her mask and disappeared.' A;
+	枠消去();
+	立ち絵表示(0, 1, 1000);
+	音楽(0, 1, 1000);
+	セリフ(2001, "");
+	'"Alright, goal achieved.' R;
+	' Let\'s go home! Gahahahahaha!"' A;
+	ト書き();
+	'And that was how Crane joined the party.' A;
+}
+
+void ０５Ｂ恩返し／ステルススーツ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+}
+
+void ０５Ｂ恩返し／セックス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+}
+
+void ０５Ｂ恩返し／仲間()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+}
+
+void ０５Ｂ恩返し／美女情報()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+}
+

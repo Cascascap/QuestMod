@@ -1,0 +1,190 @@
+int compChara_No(int nCharaNo1, int nCharaNo2)
+{
+	if (nCharaNo1 < nCharaNo2)
+	{
+		return -1;
+	}
+	if (nCharaNo1 > nCharaNo2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int compChara_Level_High(int nCharaNo1, int nCharaNo2)
+{
+	int nValue1 = キャラ_レベル(nCharaNo1);
+	int nValue2 = キャラ_レベル(nCharaNo2);
+	if (nValue1 < nValue2)
+	{
+		return 1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return -1;
+	}
+	return compChara_No(nCharaNo1, nCharaNo2);
+}
+
+int compChara_Level_Low(int nCharaNo1, int nCharaNo2)
+{
+	int nValue1 = キャラ_レベル(nCharaNo1);
+	int nValue2 = キャラ_レベル(nCharaNo2);
+	if (nValue1 < nValue2)
+	{
+		return -1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return 1;
+	}
+	return compChara_No(nCharaNo1, nCharaNo2);
+}
+
+int compChara_Custom(int nCharaNo1, int nCharaNo2)
+{
+	int nValue1 = キャラデータ一覧_検索_番号(nCharaNo1, キャラ_番号(nCharaNo1));
+	int nValue2 = キャラデータ一覧_検索_番号(nCharaNo2, キャラ_番号(nCharaNo2));
+	if (nValue1 < nValue2)
+	{
+		return -1;
+	}
+	if (nValue1 > nValue2)
+	{
+		return 1;
+	}
+	return compChara_No(nCharaNo1, nCharaNo2);
+}
+
+int T_CharaList::getMode()
+{
+	return this.m_nMode;
+}
+
+int T_CharaList::getSortMode()
+{
+	return this.m_nSortMode;
+}
+
+int T_CharaList::getJobType()
+{
+	return this.m_nJobType;
+}
+
+int T_CharaList::getCount()
+{
+	return this.m_anCharaNo.Numof();
+}
+
+int T_CharaList::getIndex(int nCharaNo)
+{
+	return this.search(nCharaNo);
+}
+
+int T_CharaList::get(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anCharaNo.Numof() ? -1 : this.m_anCharaNo[nIndex];
+}
+
+int T_CharaList::search(int nCharaNo)
+{
+	return nCharaNo > 0 ? this.m_anCharaNo.Find(0, this.m_anCharaNo.Numof(), nCharaNo) : -1;
+}
+
+T_CharaList::T_CharaList()
+{
+	this.clear();
+}
+
+T_CharaList::~T_CharaList()
+{
+	this.clear();
+}
+
+int T_CharaList::create(int nMode, int nSortMode, int nJobType)
+{
+	this.clear();
+	int cnt = 0;
+	switch (nMode)
+	{
+		case 0:
+			cnt = キャラデータ一覧_１軍(this.m_anCharaNo, nJobType);
+			break;
+		case 1:
+			cnt = キャラデータ一覧_パーティ(this.m_anCharaNo, 0);
+			break;
+		case 2:
+			cnt = キャラデータ一覧_２軍(this.m_anCharaNo, nJobType);
+			break;
+		default:
+			return -1;
+	}
+	if (cnt < 0)
+	{
+		return -1;
+	}
+	this.m_nMode = nMode;
+	this.m_nJobType = nJobType;
+	this.m_nSortMode = this.sort(nSortMode);
+	return cnt;
+}
+
+void T_CharaList::clear()
+{
+	if (!this.m_anCharaNo.Empty())
+	{
+		this.m_anCharaNo.Free();
+	}
+	this.m_nMode = -1;
+	this.m_nSortMode = -1;
+	this.m_nJobType = -1;
+}
+
+bool T_CharaList::remake(int nSortMode, int nJobType)
+{
+	if (this.m_nMode < 0)
+	{
+		return false;
+	}
+	int cnt = this.create(this.m_nMode, nSortMode < 0 ? this.m_nSortMode : nSortMode, nJobType < 0 ? this.m_nJobType : nJobType);
+	return cnt >= 0;
+}
+
+bool T_CharaList::erase(int nCharaNo)
+{
+	int idx = this.search(nCharaNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_anCharaNo.Erase(idx);
+	return true;
+}
+
+int T_CharaList::sort(int nSortMode)
+{
+	if (this.m_nMode == 1)
+	{
+		return 0;
+	}
+	switch (nSortMode)
+	{
+		case 2:
+			this.m_anCharaNo.Sort(&compChara_Level_High);
+			break;
+		case 3:
+			this.m_anCharaNo.Sort(&compChara_Level_Low);
+			break;
+		case 9:
+			this.m_anCharaNo.Sort(&compChara_Custom);
+			break;
+		case 1:
+		default:
+			this.m_anCharaNo.Sort(&compChara_No);
+			nSortMode = 1;
+			break;
+	}
+	パーティソートモード_設定(nSortMode);
+	return nSortMode;
+}
+

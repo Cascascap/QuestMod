@@ -1,0 +1,613 @@
+int T_SkillPoint::getEraseID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 17 ? -1 : 110000 + nIndex + 1;
+}
+
+int T_SkillPoint::getEraseIndex(int nID)
+{
+	int idx = nID + -110001;
+	return idx < 0 || idx >= 17 ? -1 : idx;
+}
+
+T_SkillPoint::T_SkillPoint()
+{
+	this.clear();
+}
+
+T_SkillPoint::~T_SkillPoint()
+{
+	this.delete();
+}
+
+int T_SkillPoint::run(int nCharaNo, int nZ, bool bScroll, bool bEffect)
+{
+	int nRet = 0;
+	if (!this.create(nCharaNo, nZ, bScroll, false))
+	{
+		return -1;
+	}
+	効果音_窓開き();
+	if (bEffect)
+	{
+		_EFFECT(1, 100);
+	}
+	else
+	{
+		UPDATE(true);
+	}
+	int nID = this.getFirstHold();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	nCharaNo = this.m_sCard.getCharaNo();
+	this.delete();
+	return nRet > 0 ? nRet : nCharaNo;
+}
+
+void T_SkillPoint::scroll(int nValue)
+{
+	int nOld = this.m_sCard.getCharaNo();
+	if (nOld <= 0)
+	{
+		return;
+	}
+	int nCharaNo = ステータス_キャラ一覧_番号(nValue);
+	if (nCharaNo <= 0 || nCharaNo == nOld)
+	{
+		return;
+	}
+	this.hideComment(-1);
+	this.createSkill(nCharaNo, -1);
+	this.setShow(true);
+}
+
+void T_SkillPoint::setSelect(int nID, bool bSelect)
+{
+	if (nID > 500000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 300000)
+	{
+		this.m_sHoldSkill.setSelect(nID, bSelect);
+		goto label0;
+	}
+	if (nID > 200000)
+	{
+		this.m_sNewSkill.setSelect(nID, bSelect);
+		goto label0;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+		goto label0;
+	}
+	nID = 0;
+label0:
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+bool T_SkillPoint::create(int nCharaNo, int nZ, bool bScroll, bool bTutorial)
+{
+	this.delete();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	this.m_spBase0.setCg(11501);
+	this.m_spBase0.setPos(0, 0);
+	this.m_spBase0.setZ(nZ);
+	this.m_sCard.create(nZ + 1, クエスト_攻略中(), this.m_spBase0);
+	nZ += 10;
+	if (!this.createSkill(nCharaNo, nZ))
+	{
+		return false;
+	}
+	this.m_spBase1.setCg(11551);
+	this.m_spBase1.setPos(0, 0);
+	this.m_spBase1.setZ(nZ);
+	this.m_sButton.create();
+	int i = 0;
+	for (i = 0; i < 17; ++i)
+	{
+		ボタン登録_ＣＧ(this.m_sButton, this.getEraseID(i), ステータス_保有スキルＸ(i) + 192, ステータス_保有スキルＹ(i) + 2, 11554, -1, -1, -2147483648, -2147483648);
+	}
+	ボタン登録_ＣＧ(this.m_sButton, 109999, 897, 93, 10007, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(nZ + 1);
+	this.m_bQuest = クエスト_攻略中();
+	if (bScroll)
+	{
+		int nZ2 = this.m_spBase0.getZ();
+		this.m_spScrollBase.setCg(11500);
+		this.m_spScrollBase.setPos(8, 59);
+		this.m_spScrollBase.setZ(nZ2 + 1);
+		this.m_sScroll.create(2, 527, 500000, 0, 0);
+		this.m_sScroll.setPos(14, 119);
+		this.m_sScroll.setZ(nZ2 + 2);
+		this.m_sScroll.setActive(-1, true);
+		this.m_sScroll.setCallback(&scrollSkillPoint);
+		this.m_sScroll.setValue(ステータス_キャラ一覧_インデクス(nCharaNo), ステータス_キャラ一覧_数(), 1);
+	}
+	this.m_bScroll = bScroll;
+	this.setShow(true);
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&スキルポイント_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&スキルポイント_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&スキルポイント_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&スキルポイント_右矢印);
+	this.m_sInputKey.setSelectCallback(&スキルポイント_選択設定);
+	return true;
+}
+
+void T_SkillPoint::delete()
+{
+	this.hideComment(-1);
+	this.m_spBase0.delete();
+	this.m_sCard.delete();
+	this.m_spBase1.delete();
+	this.m_spScrollBase.delete();
+	this.m_sScroll.delete();
+	this.m_sHoldSkill.delete();
+	this.m_sNewSkill.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_SkillPoint::clear()
+{
+	this.m_nCommentID = -1;
+	this.m_bQuest = false;
+	this.m_bScroll = false;
+	this.m_bTutorial = false;
+}
+
+bool T_SkillPoint::createSkill(int nCharaNo, int nZ)
+{
+	if (!this.m_sCard.set(nCharaNo, 2))
+	{
+		return false;
+	}
+	nZ = nZ < 0 ? this.m_spBase1.getZ() : nZ;
+	Ｔ購入スキル登録(nCharaNo);
+	ref T_StatusSkill rfsSkill = this.m_sCard.getHoldSkill();
+	rfsSkill.setZ(nZ + 1);
+	this.m_sHoldSkill.create(クエスト_攻略中(), rfsSkill);
+	this.m_sHoldSkill.setZ(nZ + 1);
+	this.m_sNewSkill.create(nCharaNo);
+	this.m_sNewSkill.setZ(nZ + 1);
+	return true;
+}
+
+bool T_SkillPoint::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	this.hideComment(-1);
+	switch (nID)
+	{
+		case 109999:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 500000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 300000)
+	{
+		return this.execHoldSkill(nID);
+	}
+	if (nID > 200000)
+	{
+		return this.execNewSkill(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.execErase(nID);
+	}
+	return false;
+}
+
+bool T_SkillPoint::execNewSkill(int nID)
+{
+	int nSkillNo = this.m_sNewSkill.getSkillNo(nID);
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	int nCost = this.m_sNewSkill.getCost(nID);
+	if (nCost <= 0)
+	{
+		return false;
+	}
+	int nCharaNo = this.m_sCard.getCharaNo();
+	this.addNewSkill(nCharaNo, nSkillNo, nCost);
+	return false;
+}
+
+bool T_SkillPoint::execHoldSkill(int nID)
+{
+	int nSkillNo = this.m_sHoldSkill.getSkillNo(nID);
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	int nCost = this.m_sHoldSkill.getCost(nID);
+	if (nCost <= 0)
+	{
+		return false;
+	}
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (!キャラスキル_更新(nCharaNo, nSkillNo, nCost))
+	{
+		return false;
+	}
+	キャラ_再計算(nCharaNo, !this.m_bQuest);
+	this.createSkill(nCharaNo, -1);
+	this.setShow(this.m_spBase1.getShow());
+	効果音_スキル追加();
+	UPDATE(true);
+	return false;
+}
+
+bool T_SkillPoint::execErase(int nID)
+{
+	int idx = this.getEraseIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nSkillNo = this.m_sHoldSkill.getSkillNoFromIndex(idx);
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (!キャラスキル_削除(nCharaNo, nSkillNo))
+	{
+		return false;
+	}
+	キャラ_再計算(nCharaNo, !this.m_bQuest);
+	this.createSkill(nCharaNo, -1);
+	this.setShow(this.m_spBase1.getShow());
+	効果音_スキル削除();
+	UPDATE(true);
+	return false;
+}
+
+bool T_SkillPoint::addNewSkill(int nCharaNo, int nSkillNo, int nCost)
+{
+	if (!キャラスキル_新規追加(nCharaNo, nSkillNo, nCost, this.m_bTutorial))
+	{
+		return false;
+	}
+	キャラ_再計算(nCharaNo, !this.m_bQuest);
+	this.createSkill(nCharaNo, -1);
+	this.setShow(this.m_spBase1.getShow());
+	効果音_スキル追加();
+	UPDATE(true);
+	return true;
+}
+
+int T_SkillPoint::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 109999;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_SkillPoint::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	if (this.m_bScroll)
+	{
+		switch (this.m_sScroll.checkInput(nSelectID))
+		{
+			case 0:
+				if (nSelectID > 0)
+				{
+					goto label0;
+				}
+				break;
+			case 1:
+			case 2:
+				return 2;
+			default:
+				break;
+		}
+	}
+	switch (this.m_sHoldSkill.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sNewSkill.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			this.m_sScroll.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sNewSkill.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sHoldSkill.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			this.m_sScroll.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sHoldSkill.setInputFlag(false);
+			this.m_sNewSkill.setInputFlag(false);
+			this.m_sScroll.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label0:
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+	this.m_sHoldSkill.setInputFlag(true);
+	this.m_sNewSkill.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	this.m_sScroll.setInputFlag(true);
+	return 0;
+}
+
+int T_SkillPoint::checkKey(int nID)
+{
+	if (this.m_bScroll)
+	{
+		if (this.m_sScroll.checkKey())
+		{
+			return 0;
+		}
+	}
+	int nRet = this.m_sHoldSkill.checkKey();
+	if (nRet > 0)
+	{
+		return nRet;
+	}
+	nRet = this.m_sNewSkill.checkKey();
+	if (nRet > 0)
+	{
+		return nRet;
+	}
+	nRet = this.m_sButton.checkKey();
+	if (nRet > 0)
+	{
+		return nRet;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+bool T_SkillPoint::checkWheel()
+{
+	if (this.m_bScroll)
+	{
+		if (this.m_sScroll.checkWheel())
+		{
+			return true;
+		}
+	}
+	ホイール_クリア();
+	return false;
+}
+
+void T_SkillPoint::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	this.m_sScroll.resetSelect();
+	this.hideComment(-1);
+}
+
+void T_SkillPoint::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 500000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 300000)
+	{
+		this.m_sHoldSkill.setCursor(nID);
+		return;
+	}
+	if (nID > 200000)
+	{
+		this.m_sNewSkill.setCursor(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_SkillPoint::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	int nCharaNo = this.m_sCard.getCharaNo();
+	int nSkillNo = -1;
+	int nX = -1;
+	int nY = -1;
+	int nType = 0;
+	string szComment = "";
+	if (nID > 300000)
+	{
+		int idx = this.m_sHoldSkill.getButtonIndex(nID);
+		if (idx >= 0)
+		{
+			nSkillNo = this.m_sHoldSkill.getSkillNoFromIndex(idx);
+			nX = ステータス_保有スキルＸ(idx);
+			nY = ステータス_保有スキルＹ(idx) + 24;
+			if (キャラスキル_コスト(nCharaNo, nSkillNo) != 0)
+			{
+				szComment = スキル_説明文１(nSkillNo);
+			}
+			else
+			{
+				nType = 1;
+				szComment = キャラスキル_取得不可能説明(nCharaNo, nSkillNo);
+			}
+		}
+		goto label0;
+	}
+	if (nID > 200000)
+	{
+		int idx = this.m_sNewSkill.getButtonIndex(nID);
+		if (idx >= 0)
+		{
+			nSkillNo = this.m_sNewSkill.getSkillNoFromIndex(idx);
+			nX = this.m_sNewSkill.getPosX(idx);
+			nY = this.m_sNewSkill.getPosY(idx) + 24;
+			if (キャラスキル_コスト(nCharaNo, nSkillNo) > 0)
+			{
+				szComment = スキル_説明文１(nSkillNo);
+			}
+			else
+			{
+				nType = 1;
+				szComment = キャラスキル_取得不可能説明(nCharaNo, nSkillNo);
+			}
+		}
+		goto label0;
+	}
+	if (nID > 100000)
+	{
+		goto label0;
+	}
+label0:
+	if (nSkillNo <= 0)
+	{
+		this.hideComment(-1);
+		return;
+	}
+	スキル説明_表示２(nID, nType, テキスト_スキル名(nSkillNo), szComment, nX, nY, 500);
+	this.m_nCommentID = nID;
+}
+
+void T_SkillPoint::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+		説明_ＩＤクリア();
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_SkillPoint::setShow(bool bShow)
+{
+	this.m_spBase0.setShow(bShow);
+	this.m_sCard.setShow(bShow);
+	this.m_spBase1.setShow(bShow);
+	this.m_sHoldSkill.setShow(bShow);
+	this.m_sNewSkill.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	this.m_spScrollBase.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+	int i = 0;
+	for (i = 0; i < 17; ++i)
+	{
+		int nSkillNo = this.m_sHoldSkill.getSkillNoFromIndex(i);
+		if (nSkillNo > 0)
+		{
+			this.m_sButton.setButtonShow(this.getEraseID(i), スキル_削除不可(nSkillNo) ? 0 : bShow);
+		}
+		else
+		{
+			this.m_sButton.setButtonShow(this.getEraseID(i), false);
+		}
+	}
+}
+

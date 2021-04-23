@@ -1,0 +1,318 @@
+void T_InputKeyboard::setDeactiveSkip(bool bDeactiveSkip)
+{
+	this.m_bDeactiveSkip = bDeactiveSkip;
+}
+
+void T_InputKeyboard::setArrowUpCallback(ftInputKeyboardCallback pCallback)
+{
+	this.m_pArrowUpCallback = pCallback;
+}
+
+void T_InputKeyboard::setArrowDownCallback(ftInputKeyboardCallback pCallback)
+{
+	this.m_pArrowDownCallback = pCallback;
+}
+
+void T_InputKeyboard::setArrowLeftCallback(ftInputKeyboardCallback pCallback)
+{
+	this.m_pArrowLeftCallback = pCallback;
+}
+
+void T_InputKeyboard::setArrowRightCallback(ftInputKeyboardCallback pCallback)
+{
+	this.m_pArrowRightCallback = pCallback;
+}
+
+void T_InputKeyboard::setSelectCallback(ftSelectCallback pCallback)
+{
+	this.m_pSelectCallback = pCallback;
+}
+
+int T_InputKeyboard::getSelectID()
+{
+	return this.m_rfsButton !== NULL ? this.m_rfsButton.getSelectID() : -1;
+}
+
+T_InputKeyboard::T_InputKeyboard()
+{
+	this.clear();
+}
+
+T_InputKeyboard::~T_InputKeyboard()
+{
+	this.delete();
+}
+
+bool T_InputKeyboard::create(int nMode, ref T_ButtonGroup rfsButton)
+{
+	this.delete();
+	if (rfsButton === NULL || rfsButton.getButtonCount() <= 0)
+	{
+		return false;
+	}
+	this.m_rfsButton <- rfsButton;
+	this.m_nMode = nMode > 0 ? 1 : 0;
+	return true;
+}
+
+void T_InputKeyboard::delete()
+{
+	this.clear();
+}
+
+void T_InputKeyboard::clear()
+{
+	this.m_nMode = -1;
+	this.m_bDeactiveSkip = false;
+	this.m_rfsButton <- NULL;
+	this.m_pArrowUpCallback = NULL;
+	this.m_pArrowDownCallback = NULL;
+	this.m_pArrowLeftCallback = NULL;
+	this.m_pArrowRightCallback = NULL;
+	this.m_pSelectCallback = NULL;
+}
+
+bool T_InputKeyboard::check(int nID)
+{
+	bool bRet = false;
+	if (this.arrowUp(nID))
+	{
+		bRet = true;
+	}
+	if (this.arrowDown(nID))
+	{
+		bRet = true;
+	}
+	if (this.arrowLeft(nID))
+	{
+		bRet = true;
+	}
+	if (this.arrowRight(nID))
+	{
+		bRet = true;
+	}
+	return bRet;
+}
+
+bool T_InputKeyboard::arrowUp(int nID)
+{
+	if (this.m_rfsButton === NULL)
+	{
+		return false;
+	}
+	int nKey = キー_上矢印(false);
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	int nTime = 250;
+	while (nKey > 0)
+	{
+		int nID2 = -1;
+		if (this.m_pArrowUpCallback != NULL)
+		{
+			nID2 = this.m_pArrowUpCallback(nID);
+		}
+		else
+		{
+			switch (this.m_nMode)
+			{
+				case 0:
+					nID2 = this.m_rfsButton.getPrevButton(nID, this.m_bDeactiveSkip, true);
+					break;
+				case 1:
+					nID2 = this.m_rfsButton.getFirstButton(this.m_bDeactiveSkip);
+					break;
+				default:
+					break;
+			}
+		}
+		if (nID2 <= 0 || nID2 == nID)
+		{
+			break;
+		}
+		this.setSelect(nID, false);
+		this.setSelect(nID2, true);
+		nID = nID2;
+		UPDATE(true);
+		if (!キー_離し待ち_タイマ(nTime, nKey, true))
+		{
+			break;
+		}
+		nTime = 50;
+		nKey = キー_上矢印(false);
+	}
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_InputKeyboard::arrowDown(int nID)
+{
+	if (this.m_rfsButton === NULL)
+	{
+		return false;
+	}
+	int nKey = キー_下矢印(false);
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	int nTime = 250;
+	while (nKey > 0)
+	{
+		int nID2 = -1;
+		if (this.m_pArrowDownCallback != NULL)
+		{
+			nID2 = this.m_pArrowDownCallback(nID);
+		}
+		else
+		{
+			switch (this.m_nMode)
+			{
+				case 0:
+					nID2 = this.m_rfsButton.getNextButton(nID, this.m_bDeactiveSkip, true);
+					break;
+				case 1:
+					nID2 = this.m_rfsButton.getLastButton(this.m_bDeactiveSkip);
+					break;
+				default:
+					break;
+			}
+		}
+		if (nID2 <= 0 || nID2 == nID)
+		{
+			break;
+		}
+		this.setSelect(nID, false);
+		this.setSelect(nID2, true);
+		nID = nID2;
+		UPDATE(true);
+		if (!キー_離し待ち_タイマ(nTime, nKey, true))
+		{
+			break;
+		}
+		nTime = 50;
+		nKey = キー_下矢印(false);
+	}
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_InputKeyboard::arrowLeft(int nID)
+{
+	if (this.m_rfsButton === NULL)
+	{
+		return false;
+	}
+	int nKey = キー_左矢印(false);
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	int nTime = 250;
+	while (nKey > 0)
+	{
+		int nID2 = -1;
+		if (this.m_pArrowLeftCallback != NULL)
+		{
+			nID2 = this.m_pArrowLeftCallback(nID);
+		}
+		else
+		{
+			switch (this.m_nMode)
+			{
+				case 0:
+					nID2 = this.m_rfsButton.getFirstButton(this.m_bDeactiveSkip);
+					break;
+				case 1:
+					nID2 = this.m_rfsButton.getPrevButton(nID, this.m_bDeactiveSkip, true);
+					break;
+				default:
+					break;
+			}
+		}
+		if (nID2 <= 0 || nID2 == nID)
+		{
+			break;
+		}
+		this.setSelect(nID, false);
+		this.setSelect(nID2, true);
+		nID = nID2;
+		UPDATE(true);
+		if (!キー_離し待ち_タイマ(nTime, nKey, true))
+		{
+			break;
+		}
+		nTime = 50;
+		nKey = キー_左矢印(false);
+	}
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+bool T_InputKeyboard::arrowRight(int nID)
+{
+	if (this.m_rfsButton === NULL)
+	{
+		return false;
+	}
+	int nKey = キー_右矢印(false);
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	int nTime = 250;
+	while (nKey > 0)
+	{
+		int nID2 = -1;
+		if (this.m_pArrowRightCallback != NULL)
+		{
+			nID2 = this.m_pArrowRightCallback(nID);
+		}
+		else
+		{
+			switch (this.m_nMode)
+			{
+				case 0:
+					nID2 = this.m_rfsButton.getLastButton(this.m_bDeactiveSkip);
+					break;
+				case 1:
+					nID2 = this.m_rfsButton.getNextButton(nID, this.m_bDeactiveSkip, true);
+					break;
+				default:
+					break;
+			}
+		}
+		if (nID2 <= 0 || nID2 == nID)
+		{
+			break;
+		}
+		this.setSelect(nID, false);
+		this.setSelect(nID2, true);
+		nID = nID2;
+		UPDATE(true);
+		if (!キー_離し待ち_タイマ(nTime, nKey, true))
+		{
+			break;
+		}
+		nTime = 50;
+		nKey = キー_右矢印(false);
+	}
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+void T_InputKeyboard::setSelect(int nID, bool bSelect)
+{
+	if (this.m_rfsButton === NULL)
+	{
+		return;
+	}
+	if (this.m_pSelectCallback != NULL)
+	{
+		this.m_pSelectCallback(nID, bSelect);
+		return;
+	}
+	this.m_rfsButton.setButtonSelect(nID, bSelect, true);
+}
+

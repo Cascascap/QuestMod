@@ -1,0 +1,227 @@
+int T_LogData::getCount()
+{
+	return this.m_anType.Numof();
+}
+
+int T_LogData::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_LogData::getLength()
+{
+	return this.m_nLength;
+}
+
+bool T_LogData::isLogging()
+{
+	return this.m_nLength > 0;
+}
+
+T_LogData::T_LogData()
+{
+	this.clear();
+}
+
+bool T_LogData::create(int nNo)
+{
+	this.delete();
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	this.m_nNo = nNo;
+	return true;
+}
+
+void T_LogData::delete()
+{
+	this.clearLog();
+	this.clear();
+}
+
+void T_LogData::clear()
+{
+	this.m_nNo = -1;
+	this.m_nLength = -1;
+}
+
+void T_LogData::start(int nLength, bool bClearLog)
+{
+	if (bClearLog)
+	{
+		this.clearLog();
+	}
+	this.m_nLength = nLength;
+}
+
+void T_LogData::stop(bool bClearLog)
+{
+	if (bClearLog)
+	{
+		this.clearLog();
+	}
+	this.m_nLength = -1;
+}
+
+void T_LogData::clearLog()
+{
+	if (!this.m_anType.Empty())
+	{
+		this.m_anType.Free();
+	}
+	if (!this.m_aszText.Empty())
+	{
+		this.m_aszText.Free();
+	}
+	if (!this.m_anColor.Empty())
+	{
+		this.m_anColor.Free();
+	}
+}
+
+bool T_LogData::addText(string szText, int nColor)
+{
+	if (!this.isLogging())
+	{
+		return false;
+	}
+	array@string aszText;
+	テキスト分割_強制改行(szText, this.m_nLength, aszText);
+	int i = 0;
+	int cnt = aszText.Numof();
+	if (cnt > 0)
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_anType.PushBack(1);
+			this.m_aszText.PushBack(aszText[i]);
+			this.m_anColor.PushBack(nColor);
+		}
+	}
+	else
+	{
+		this.m_anType.PushBack(1);
+		this.m_aszText.PushBack("");
+		this.m_anColor.PushBack(nColor);
+	}
+	return true;
+}
+
+bool T_LogData::addSeparator(int nColor)
+{
+	if (!this.isLogging())
+	{
+		return false;
+	}
+	int cnt = this.m_anType.Numof();
+	if (cnt > 0 && this.m_anType[cnt - 1] == 2)
+	{
+		return true;
+	}
+	this.m_anType.PushBack(2);
+	this.m_aszText.PushBack("");
+	this.m_anColor.PushBack(nColor);
+	return true;
+}
+
+int T_LogData::getType(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_anType.Numof())
+	{
+		return -1;
+	}
+	return this.m_anType[nIndex];
+}
+
+string T_LogData::getText(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_aszText.Numof())
+	{
+		return "";
+	}
+	return this.m_aszText[nIndex];
+}
+
+int T_LogData::getColor(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_anColor.Numof())
+	{
+		return -1;
+	}
+	return this.m_anColor[nIndex];
+}
+
+int T_LogDataManager::getCount()
+{
+	return this.m_asData.Numof();
+}
+
+T_LogDataManager::T_LogDataManager()
+{
+	this.clear();
+}
+
+T_LogDataManager::~T_LogDataManager()
+{
+	this.delete();
+}
+
+void T_LogDataManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asData[i].delete();
+	}
+}
+
+void T_LogDataManager::clear()
+{
+	return;
+}
+
+bool T_LogDataManager::add(int nNo)
+{
+	if (this.search(nNo) >= 0)
+	{
+		return false;
+	}
+	T_LogData sData;
+	if (!sData.create(nNo))
+	{
+		return false;
+	}
+	this.m_asData.PushBack(sData);
+	return true;
+}
+
+ref T_LogData T_LogDataManager::get(int nNo)
+{
+	int idx = this.search(nNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asData[idx];
+}
+
+int T_LogDataManager::search(int nNo)
+{
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].getNo() == nNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

@@ -1,0 +1,325 @@
+bool 戦闘敵_作成(int nZ)
+{
+	g_bBattleMonsterUpdate = false;
+	if (!g_sBattleMonster.create(nZ))
+	{
+		return false;
+	}
+	return true;
+}
+
+void 戦闘敵_削除()
+{
+	g_bBattleMonsterUpdate = false;
+	g_sBattleMonster.delete();
+}
+
+void 戦闘敵_前進確認()
+{
+	g_sBattleMonster.checkForward();
+}
+
+void 戦闘敵_ＨＰ更新(int nNo, int nHp, int nTotalTime)
+{
+	g_sBattleMonster.updateHp(nNo, nHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘敵_ＨＰ更新開始(int nNo, int nHp, int nTotalTime)
+{
+	g_sBattleMonster.startHp(nNo, nHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘敵_ＨＰ更新終了待ち(int nNo)
+{
+	g_sBattleMonster.waitHp(nNo);
+}
+
+void 戦闘敵_ＨＰ更新_複数(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	g_sBattleMonster.updateHpAll(anNo, anHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘敵_ＨＰ更新開始_複数(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	g_sBattleMonster.startHpAll(anNo, anHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘敵_ＨＰ更新終了待ち_複数(ref array@int anNo)
+{
+	g_sBattleMonster.waitHpAll(anNo);
+}
+
+void 戦闘敵_点滅(int nNo, int nBlinkTime)
+{
+	g_sBattleMonster.blink(nNo, nBlinkTime);
+}
+
+void 戦闘敵_点滅_複数(ref array@int anNo, int nBlinkTime)
+{
+	g_sBattleMonster.blinkAll(anNo, nBlinkTime);
+}
+
+void 戦闘敵_弱点表示(int nNo)
+{
+	g_sBattleMonster.showWeakPoint(nNo);
+}
+
+void 戦闘敵_弱点表示_複数(ref array@int anNo)
+{
+	g_sBattleMonster.showWeakPointAll(anNo);
+}
+
+void 戦闘敵_マーク消し()
+{
+	g_sBattleMonster.resetMarkAll();
+}
+
+void 戦闘敵_表示設定(bool bShow)
+{
+	if (!g_sBattleMonster.isCreated())
+	{
+		return;
+	}
+	g_sBattleMonster.setShow(bShow);
+	g_bBattleMonsterUpdate = bShow;
+}
+
+void 戦闘敵_弱点表示設定(int nNo, bool bShow)
+{
+	g_sBattleMonster.setShowWeakPoint(nNo, bShow);
+}
+
+bool 戦闘敵_前進中()
+{
+	return g_sBattleMonster.isForward();
+}
+
+ref T_BattleMonster 戦闘敵_取得(int nNo)
+{
+	return g_sBattleMonster.get(nNo);
+}
+
+void 戦闘敵_選択設定(int nNo, bool bSelect)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return;
+	}
+	rfMonster.setSelect(bSelect);
+}
+
+int 戦闘敵_行動状態設定(int nNo, int nStatus)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return -1;
+	}
+	int nRet = rfMonster.setStatus(nStatus);
+	if (nRet < 0)
+	{
+		return -1;
+	}
+	return nRet;
+}
+
+int 戦闘敵_攻撃付与設定(int nNo, int nStatus)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return 0;
+	}
+	return rfMonster.setAttackStatus(nStatus);
+}
+
+int 戦闘敵_防御付与設定(int nNo, int nStatus)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return 0;
+	}
+	return rfMonster.setDefenseStatus(nStatus);
+}
+
+bool 戦闘敵_毒設定(int nNo, bool bFlag)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return false;
+	}
+	return rfMonster.setPoison(bFlag);
+}
+
+bool 戦闘敵_ぴより設定(int nNo, bool bFlag)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return false;
+	}
+	return rfMonster.setPiyori(bFlag);
+}
+
+bool 戦闘敵_瀕死設定(int nNo, bool bFlag)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return false;
+	}
+	return rfMonster.setDead(bFlag);
+}
+
+bool 戦闘敵_準備中設定(int nNo, bool bFlag)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return false;
+	}
+	return rfMonster.getMark2().setPrepare(bFlag);
+}
+
+int 戦闘敵_守護率設定(int nNo, int nGuard)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return 0;
+	}
+	return rfMonster.getMark2().setGuard(nGuard);
+}
+
+bool 戦闘敵_狂戦士設定(int nNo, bool bFlag)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return false;
+	}
+	return rfMonster.getMark2().setBurster(bFlag);
+}
+
+bool 戦闘敵_隠密設定(int nNo, bool bFlag)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return false;
+	}
+	return rfMonster.getMark2().setStealth(bFlag);
+}
+
+bool 戦闘敵_全体加護設定(int nNo, bool bFlag)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return false;
+	}
+	return rfMonster.getMark2().setProtect(bFlag);
+}
+
+int 戦闘敵_バリア設定(int nNo, int nBarrier)
+{
+	ref T_BattleMonster rfMonster = g_sBattleMonster.get(nNo);
+	if (rfMonster === NULL)
+	{
+		return -1;
+	}
+	return rfMonster.getMark2().setBarrier(nBarrier);
+}
+
+int 戦闘敵_位置Ｘ(int nNo)
+{
+	int idx = 戦闘番号_敵インデクス(nNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return 6 + 204 * 戦闘配置_敵並び(idx);
+}
+
+int 戦闘敵_位置Ｙ(int nNo)
+{
+	return 0;
+}
+
+int 戦闘敵_行動選択(int nNo)
+{
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	int nSkillNo = 0;
+	int nRand = 乱数(100);
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nSkillNo2 = 戦闘データ_スキル番号(nNo, i);
+		if (nSkillNo2 <= 0)
+		{
+			continue;
+		}
+		if (nRand <= 戦闘データ_スキル確率(nNo, i))
+		{
+			nSkillNo = nSkillNo2;
+			goto label0;
+		}
+	}
+	nSkillNo = 戦闘データ_スキル番号(nNo, 1);
+label0:
+	if (戦闘データ_敵後衛(nNo) && !戦闘データ_敵前衛全滅() && スキル_対象_前衛(nSkillNo))
+	{
+		return 384;
+	}
+	return nSkillNo;
+}
+
+void 戦闘敵_初期状態確認(int nNo)
+{
+	戦闘敵_攻撃付与設定(nNo, 戦闘データ_攻撃付与(nNo));
+	戦闘敵_防御付与設定(nNo, 戦闘データ_防御付与(nNo));
+	戦闘敵_毒設定(nNo, 戦闘データ_毒状態(nNo));
+	戦闘敵_守護率設定(nNo, 戦闘データ_守護率(nNo));
+	戦闘敵_狂戦士設定(nNo, 戦闘データ_狂戦士(nNo));
+	戦闘敵_隠密設定(nNo, 戦闘データ_隠密(nNo));
+	戦闘敵_全体加護設定(nNo, 戦闘データ_全体加護(nNo));
+	戦闘敵_バリア設定(nNo, 戦闘データ_バリア(nNo));
+}
+
+void 戦闘敵_状態確認(int nNo, int nDamage, int nHeal)
+{
+	戦闘敵_攻撃付与設定(nNo, 戦闘データ_攻撃付与(nNo));
+	戦闘敵_防御付与設定(nNo, 戦闘データ_防御付与(nNo));
+	戦闘敵_毒設定(nNo, 戦闘データ_毒状態(nNo));
+	戦闘敵_ぴより設定(nNo, 戦闘データ_ぴより状態(nNo));
+	戦闘敵_瀕死設定(nNo, 戦闘データ_瀕死状態(nNo));
+	戦闘敵_準備中設定(nNo, 戦闘データ_溜め中(nNo));
+	戦闘敵_守護率設定(nNo, 戦闘データ_守護率(nNo));
+	戦闘敵_狂戦士設定(nNo, 戦闘データ_狂戦士(nNo));
+	戦闘敵_隠密設定(nNo, 戦闘データ_隠密(nNo));
+	戦闘敵_全体加護設定(nNo, 戦闘データ_全体加護(nNo));
+	戦闘敵_バリア設定(nNo, 戦闘データ_バリア(nNo));
+	戦闘敵_弱点表示設定(nNo, 戦闘データ_弱点把握(nNo));
+	if (nDamage > 0)
+	{
+		戦闘敵_ダメージ(nNo, nDamage, 0, false, 戦闘データ_体力(nNo) == 0, false, -1, -1);
+	}
+	if (nHeal > 0)
+	{
+		戦闘エフェクト_敵単体(nNo, "自動回復", false);
+		戦闘敵_回復(nNo, nHeal, -1);
+	}
+}
+
+int 戦闘バー_総時間()
+{
+	if (戦闘速度() == 2)
+	{
+		return 160;
+	}
+	return 320;
+}
+

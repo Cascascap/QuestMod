@@ -1,0 +1,678 @@
+int Ｒ８アイテム倉庫()
+{
+	g_bStoreItemBlink = false;
+	int nRet = 0;
+	int nOld = システムバー_モード変更(18, -1);
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	bool bFlag = Ｒ８キャラ停止();
+	if (!アイテム倉庫_作成(7, 0, 0, nOld))
+	{
+		return -1;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID = アイテム倉庫_先頭アイテム();
+	while (true)
+	{
+		nID = アイテム倉庫_選択確認(nID);
+		if (アイテム倉庫_実行(nID, nRet))
+		{
+			break;
+		}
+		if (nRet > 0)
+		{
+			アイテム倉庫_再作成(-1, -1, -1, -1, -1);
+			システムバー_更新(2, -1);
+			UPDATE(true);
+		}
+	}
+	アイテム倉庫_削除();
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	if (bFlag)
+	{
+		Ｒ８キャラ停止解除();
+	}
+	システムバー_モード変更(nOld, -1);
+	g_bStoreItemBlink = false;
+	return nRet;
+}
+
+void scrollStoreItem(int nValue)
+{
+	g_sStoreItem.scroll(nValue);
+}
+
+int アイテム倉庫_上矢印(int nID)
+{
+	return g_sStoreItem.moveUp(nID);
+}
+
+int アイテム倉庫_下矢印(int nID)
+{
+	return g_sStoreItem.moveDown(nID);
+}
+
+int アイテム倉庫_左矢印(int nID)
+{
+	return g_sStoreItem.moveLeft(nID);
+}
+
+int アイテム倉庫_右矢印(int nID)
+{
+	return g_sStoreItem.moveRight(nID);
+}
+
+bool アイテム倉庫_作成(int nType, int nItemType, int nCharaNo, int nSystemBarMode)
+{
+	if (!g_sStoreItem.create(nType, nItemType, nCharaNo, nSystemBarMode))
+	{
+		return false;
+	}
+	ミニステータス_ボタン表示設定(false);
+	return true;
+}
+
+void アイテム倉庫_削除()
+{
+	g_sStoreItem.delete();
+	ミニステータス_ボタン表示設定(システムバー_モード() != 19);
+}
+
+int アイテム倉庫_選択確認(int nID)
+{
+	return g_sStoreItem.checkSelect(nID);
+}
+
+int アイテム倉庫_選択確認_スクロール付(int nID)
+{
+	return g_sStoreItem.checkSelectWithScroll(nID);
+}
+
+bool アイテム倉庫_実行(int nID, ref int nRet)
+{
+	return g_sStoreItem.exec(nID, nRet);
+}
+
+bool アイテム倉庫_再作成(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo)
+{
+	return g_sStoreItem.remake(nType, nItemType, nJobType, nEquipType, nCharaNo, -1, -1);
+}
+
+int アイテム倉庫_アイテム番号(int nIndex)
+{
+	return g_sStoreItem.getItemNo(nIndex);
+}
+
+int アイテム倉庫_アイテム種別()
+{
+	return g_sStoreItem.getItemType();
+}
+
+bool アイテム倉庫_ステータススクロールあり()
+{
+	return g_sStoreItem.getStatusScroll();
+}
+
+void アイテム倉庫_一覧スクロール(int nID)
+{
+	g_sStoreItem.scrollList(nID);
+}
+
+int アイテム倉庫_一覧ソート(int nSortMode)
+{
+	return g_sStoreItem.sortList(nSortMode);
+}
+
+int アイテム倉庫_一覧ロック(int nItemNo)
+{
+	return g_sStoreItem.lockList(nItemNo);
+}
+
+int アイテム倉庫_アイテム切り替え(int nItemType)
+{
+	return g_sStoreItem.changeItem(nItemType);
+}
+
+int アイテム倉庫_アイテム切り替え＋(int nItemType)
+{
+	return g_sStoreItem.changeItemEx(nItemType);
+}
+
+int アイテム倉庫_職業切り替え(int nJobType)
+{
+	return g_sStoreItem.changeJob(nJobType);
+}
+
+int アイテム倉庫_装備切り替え(int nEquipType)
+{
+	return g_sStoreItem.changeEquip(nEquipType);
+}
+
+int アイテム倉庫_ＬＯＣＫ切り替え(int nLockType)
+{
+	return g_sStoreItem.changeLock(nLockType);
+}
+
+bool アイテム倉庫_寄付(int nID)
+{
+	return g_sStoreItem.donation(nID);
+}
+
+bool アイテム倉庫_売却(int nID)
+{
+	return g_sStoreItem.sell(nID);
+}
+
+int アイテム倉庫_入力確認(ref int nID)
+{
+	return g_sStoreItem.checkInput(1, nID);
+}
+
+int アイテム倉庫_キー確認(int nID)
+{
+	return g_sStoreItem.checkKey(1, nID);
+}
+
+bool アイテム倉庫_ホイール確認()
+{
+	return g_sStoreItem.checkWheel(1);
+}
+
+void アイテム倉庫_選択解除()
+{
+	g_sStoreItem.resetSelect();
+}
+
+void アイテム倉庫_選択設定(int nID, bool bSelect)
+{
+	g_sStoreItem.setSelect(nID, bSelect);
+}
+
+void アイテム倉庫_カーソル設定(int nID)
+{
+	g_sStoreItem.setCursor(nID);
+}
+
+void アイテム倉庫_入力ＯＮ()
+{
+	g_sStoreItem.setInputFlag(true);
+}
+
+void アイテム倉庫_入力ＯＦＦ()
+{
+	g_sStoreItem.setInputFlag(false);
+}
+
+bool アイテム倉庫_ボタン有効(int nID)
+{
+	return g_sStoreItem.getButtonActive(nID);
+}
+
+bool アイテム倉庫_アイテム限定中()
+{
+	return g_sStoreItem.isLimitItemEx();
+}
+
+bool アイテム倉庫_寄付可能()
+{
+	return g_sStoreItem.getDonationFlag();
+}
+
+bool アイテム倉庫_売却可能()
+{
+	return g_sStoreItem.getSellFlag();
+}
+
+ref T_ItemIcon アイテム倉庫_アイコン(int nItemNo)
+{
+	return g_sStoreItem.getList().getIcon(nItemNo);
+}
+
+int アイテム倉庫_ボタンＩＤ(int nIndex)
+{
+	return g_sStoreItem.getButtonID(nIndex);
+}
+
+int アイテム倉庫_インデクス(int nID)
+{
+	return g_sStoreItem.getItemIndex(nID);
+}
+
+int アイテム倉庫_先頭アイテム()
+{
+	return g_sStoreItem.getFirstItem();
+}
+
+int アイテム倉庫_最終アイテム()
+{
+	return g_sStoreItem.getFirstItem();
+}
+
+int アイテム倉庫_アイテム限定_先頭()
+{
+	return g_sStoreItem.getLimitItem().getFirst();
+}
+
+int アイテム倉庫_アイテム限定＋_先頭()
+{
+	return g_sStoreItem.getLimitItemEx().getFirst();
+}
+
+int アイテム倉庫_アイテム限定＋_最終()
+{
+	return g_sStoreItem.getLimitItemEx().getLast();
+}
+
+int アイテム倉庫_職業限定_先頭()
+{
+	return g_sStoreItem.getLimitJob().getFirst();
+}
+
+int アイテム倉庫_職業限定_最終()
+{
+	return g_sStoreItem.getLimitJob().getLast();
+}
+
+int アイテム倉庫_ＬＯＣＫ限定_先頭()
+{
+	return g_sStoreItem.getLimitLock().getFirst();
+}
+
+int アイテム倉庫_ソート_先頭()
+{
+	return g_sStoreItem.getSort().getFirst();
+}
+
+int アイテム倉庫_位置Ｘ(int nIndex, bool bAdjust)
+{
+	if (nIndex < 0 || nIndex >= 6)
+	{
+		return -1;
+	}
+	return 538 + (bAdjust ? -437 : 0);
+}
+
+int アイテム倉庫_位置Ｙ(int nIndex, bool bAdjust)
+{
+	if (nIndex < 0 || nIndex >= 6)
+	{
+		return -1;
+	}
+	return 0 + 128 * nIndex + (bAdjust ? 0 : 0);
+}
+
+int アイテム倉庫_一覧(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType, ref array@int anItemList)
+{
+	if (anItemList === NULL)
+	{
+		return -1;
+	}
+	if (!anItemList.Empty())
+	{
+		anItemList.Free();
+	}
+	int i = 0;
+	int cnt = アイテム_数();
+	switch (nType)
+	{
+		case 6:
+		case 7:
+		case 8:
+		case 11:
+			break;
+		default:
+			return -1;
+	}
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (アイテム_存在(i) != nType)
+		{
+			continue;
+		}
+		if (!アイテム倉庫_一覧_種類確認(i, nItemType, nItemTypeEx))
+		{
+			continue;
+		}
+		if (!アイテム倉庫_一覧_職業確認(i, nJobType))
+		{
+			continue;
+		}
+		if (!アイテム倉庫_一覧_装備タイプ確認(i, nEquipType, nCharaNo))
+		{
+			continue;
+		}
+		if (!アイテム倉庫_一覧_ＬＯＣＫタイプ確認(i, nLockType))
+		{
+			continue;
+		}
+		anItemList.PushBack(i);
+	}
+	switch (nType)
+	{
+		case 6:
+		case 7:
+		case 11:
+			anItemList.Sort(&compItem_OriginalNo);
+			break;
+		case 8:
+		default:
+			break;
+	}
+	return anItemList.Numof();
+}
+
+bool アイテム倉庫_一覧_種類確認(int nItemNo, int nItemType, int nItemTypeEx)
+{
+	if (nItemType <= 0)
+	{
+		return true;
+	}
+	switch (nItemType)
+	{
+		case 21:
+			return アイテム倉庫_一覧_オプション確認(nItemNo, nItemTypeEx);
+		case 1:
+			return アイテム倉庫_一覧_武器確認(nItemNo, nItemTypeEx);
+		case 11:
+			return アイテム倉庫_一覧_防具確認(nItemNo, nItemTypeEx);
+		case 17:
+			switch (アイテム_種類(nItemNo))
+			{
+				case 17:
+				case 23:
+					return true;
+				default:
+					break;
+			}
+			break;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool アイテム倉庫_一覧_オプション確認(int nItemNo, int nItemTypeEx)
+{
+	if (!アイテム種類_オプション(nItemNo))
+	{
+		return false;
+	}
+	if (nItemTypeEx <= 0)
+	{
+		return true;
+	}
+	switch (nItemTypeEx)
+	{
+		case 1:
+			return アイテム種類_オプション_Ｃ(nItemNo);
+		case 2:
+			return アイテム種類_オプション_Ｂ(nItemNo);
+		case 3:
+			return アイテム種類_オプション_Ａ(nItemNo);
+		case 4:
+			return アイテム種類_オプション_Ｓ(nItemNo);
+		case 5:
+			return アイテム種類_オプション_その他(nItemNo);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool アイテム倉庫_一覧_武器確認(int nItemNo, int nItemTypeEx)
+{
+	if (!アイテム種類_武器(nItemNo))
+	{
+		return false;
+	}
+	if (nItemTypeEx <= 0)
+	{
+		return true;
+	}
+	switch (nItemTypeEx)
+	{
+		case 1:
+			return アイテム種類_武器_短剣(nItemNo);
+		case 2:
+			return アイテム種類_武器_剣(nItemNo);
+		case 3:
+			return アイテム種類_武器_槌(nItemNo);
+		case 4:
+			return アイテム種類_武器_槍(nItemNo);
+		case 5:
+			return アイテム種類_武器_弓(nItemNo);
+		case 6:
+			return アイテム種類_武器_グローブ(nItemNo);
+		case 7:
+			return アイテム種類_武器_杖(nItemNo);
+		case 8:
+			return アイテム種類_武器_その他(nItemNo);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool アイテム倉庫_一覧_防具確認(int nItemNo, int nItemTypeEx)
+{
+	if (!アイテム種類_防具(nItemNo))
+	{
+		return false;
+	}
+	if (nItemTypeEx <= 0)
+	{
+		return true;
+	}
+	switch (nItemTypeEx)
+	{
+		case 1:
+			return アイテム種類_防具_革鎧(nItemNo);
+		case 2:
+			return アイテム種類_防具_鉄鎧(nItemNo);
+		case 3:
+			return アイテム種類_防具_布鎧(nItemNo);
+		case 4:
+			return アイテム種類_防具_道着(nItemNo);
+		case 5:
+			return アイテム種類_防具_その他(nItemNo);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool アイテム倉庫_一覧_装備タイプ確認(int nItemNo, int nEquipType, int nCharaNo)
+{
+	if (nEquipType <= 0 || nCharaNo <= 0)
+	{
+		return true;
+	}
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	switch (nEquipType)
+	{
+		case 1:
+			return アイテム_装備可能(nItemNo, nCharaNo);
+		case 2:
+			return !アイテム_装備可能(nItemNo, nCharaNo);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool アイテム倉庫_一覧_ＬＯＣＫタイプ確認(int nItemNo, int nLockType)
+{
+	if (nLockType <= 0)
+	{
+		return true;
+	}
+	switch (nLockType)
+	{
+		case 1:
+			return アイテム_ＬＯＣＫ中(nItemNo);
+		case 2:
+			return !アイテム_ＬＯＣＫ中(nItemNo);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool アイテム倉庫_一覧_職業確認(int nItemNo, int nJobType)
+{
+	if (nJobType <= 0)
+	{
+		return true;
+	}
+	return アイテム_装備職業(nItemNo, nJobType) > 0;
+}
+
+int アイテム倉庫_数(int nType, int nItemType, int nJobType)
+{
+	switch (nType)
+	{
+		case 6:
+		case 7:
+		case 8:
+		case 11:
+			break;
+		default:
+			return -1;
+	}
+	int i = 0;
+	int cnt = アイテム_数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (アイテム_存在(i) != nType)
+		{
+			continue;
+		}
+		if (!アイテム倉庫_一覧_種類確認(i, nItemType, 0))
+		{
+			continue;
+		}
+		if (!アイテム倉庫_一覧_職業確認(i, nJobType))
+		{
+			continue;
+		}
+		++nCount;
+	}
+	return nCount;
+}
+
+int アイテム倉庫_ソート選択()
+{
+	int i = 0;
+	for (i = 11; i < 29; ++i)
+	{
+		選択_項目追加(i, アイテム倉庫_ソート名(i), -1, -1, -1, "", -1);
+	}
+	選択_区切り追加();
+	選択_項目追加(999, "Return", -1, -1, -1, "", -1);
+	int nSortMode = 選択_実行(true, 0, 0, false);
+	return 10 < nSortMode && nSortMode < 29 ? nSortMode : 0;
+}
+
+string アイテム倉庫_ソート名(int nSortMode)
+{
+	nSortMode = nSortMode < 0 ? アイテムソートモード() : nSortMode;
+	switch (nSortMode)
+	{
+		case 11:
+			return "Attack";
+		case 12:
+			return "Magic";
+		case 13:
+			return "Accuracy";
+		case 14:
+			return "Critical";
+		case 15:
+			return "Stun";
+		case 16:
+			return "Speed";
+		case 17:
+			return "Defense";
+		case 18:
+			return "Resistance";
+		case 19:
+			return "Evasion";
+		case 20:
+			return "Resilience";
+		case 21:
+			return "HP";
+		case 22:
+			return "Fire Damage Reduction";
+		case 23:
+			return "Ice Damage Reduction";
+		case 24:
+			return "Electric Damage Reduction";
+		case 25:
+			return "Light Damage Reduction";
+		case 26:
+			return "Darkness Damage Reduction";
+		case 27:
+			return "Low Enhancement Rank";
+		case 28:
+			return "High Enhancement Rank";
+		case 1:
+		default:
+			break;
+	}
+	return "Attack";
+}
+
+string アイテム倉庫_ソート名_short(int nSortMode)
+{
+	nSortMode = nSortMode < 0 ? アイテムソートモード() : nSortMode;
+	switch (nSortMode)
+	{
+		case 11:
+			return "Attack";
+		case 12:
+			return "Magic";
+		case 13:
+			return "Accuracy";
+		case 14:
+			return "Critical";
+		case 15:
+			return "Stun";
+		case 16:
+			return "Speed";
+		case 17:
+			return "Defense";
+		case 18:
+			return "Resistance";
+		case 19:
+			return "Evasion";
+		case 20:
+			return "Resilience";
+		case 21:
+			return "HP";
+		case 22:
+			return "Fire Reduction";
+		case 23:
+			return "Ice Reduction";
+		case 24:
+			return "Electric Reduction";
+		case 25:
+			return "Light Reduction";
+		case 26:
+			return "Darkness Reduction";
+		case 27:
+			return "Low Rank";
+		case 28:
+			return "High Rank";
+		case 1:
+		default:
+			break;
+	}
+	return "Attack";
+}
+

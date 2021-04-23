@@ -1,0 +1,11 @@
+void AFL_SetCharSprite(int SpriteNumber, string Text, int FontType, int Size, int ColorR, int ColorG, int ColorB, float BoldWeight, int EdgeR, int EdgeG, int EdgeB, float EdgeWeight)
+{
+	ChipmunkSpriteEngine.SP_SetTextSpriteType(FontType);
+	ChipmunkSpriteEngine.SP_SetTextSpriteSize(Size);
+	ChipmunkSpriteEngine.SP_SetTextSpriteColor(ColorR, ColorG, ColorB);
+	ChipmunkSpriteEngine.SP_SetTextSpriteBoldWeight(BoldWeight);
+	ChipmunkSpriteEngine.SP_SetTextSpriteEdgeWeight(EdgeWeight);
+	ChipmunkSpriteEngine.SP_SetTextSpriteEdgeColor(EdgeR, EdgeG, EdgeB);
+	ChipmunkSpriteEngine.SP_SetTextSprite(SpriteNumber, Text.GetPart(0, 1));
+}
+

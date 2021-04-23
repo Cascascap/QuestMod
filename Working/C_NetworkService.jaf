@@ -1,0 +1,110 @@
+void NET_Initialize()
+{
+	if (!ネットワーク接続許可())
+	{
+		return;
+	}
+	g_sNetworkService.create();
+	g_bNetworkServiceUpdate = g_sNetworkService.start();
+}
+
+void NET_SendUserData(ref CASGameNetDataPack sDataPack)
+{
+	if (!ネットワーク接続許可())
+	{
+		return;
+	}
+	_NET_Wait();
+	g_bNetworkServiceUpdate = g_sNetworkService.sendUserData(sDataPack);
+}
+
+string NET_GetInfoText()
+{
+	if (!ネットワーク接続許可())
+	{
+		return "Thank you very much for purchasing Rance Quest.";
+	}
+	string szText = g_sNetworkService.getInfo();
+	return szText.Empty() ? "Thank you very much for purchasing Rance Quest." : szText;
+}
+
+void _NET_Wait()
+{
+	if (!ネットワーク接続許可())
+	{
+		return;
+	}
+	while (g_bNetworkServiceUpdate)
+	{
+		UPDATE(true);
+	}
+}
+
+int _NET_GetStatus()
+{
+	return g_sNetworkService.getStatus();
+}
+
+bool _NET_GetData(string szCommand, int nType, ref CASGameNetDataPack sResultDataPack)
+{
+	if (!ネットワーク接続許可())
+	{
+		return false;
+	}
+	_NET_Wait();
+	return g_sNetworkService.getUserData(szCommand, nType, sResultDataPack);
+}
+
+int _NET_GetInt(string szCommand, string szType)
+{
+	CASGameNetDataPack sResultDataPack;
+	if (!g_sNetworkService.getUserData(szCommand, 0, sResultDataPack))
+	{
+		return -1;
+	}
+	return _NET_GetParamInt(szType, sResultDataPack);
+}
+
+string _NET_GetText(string szCommand, string szType)
+{
+	CASGameNetDataPack sResultDataPack;
+	if (!g_sNetworkService.getUserData(szCommand, 0, sResultDataPack))
+	{
+		return "";
+	}
+	return _NET_GetParamText(szType, sResultDataPack);
+}
+
+int _NET_GetParamInt(string szType, ref CASGameNetDataPack rfsResultDataPack)
+{
+	if (rfsResultDataPack === NULL)
+	{
+		return -1;
+	}
+	ref CASGameNetData rfsData = rfsResultDataPack.Get(szType);
+	if (rfsData === NULL)
+	{
+		return -1;
+	}
+	return rfsData.GetParam();
+}
+
+string _NET_GetParamText(string szType, ref CASGameNetDataPack rfsResultDataPack)
+{
+	if (rfsResultDataPack === NULL)
+	{
+		return "";
+	}
+	ref CASGameNetData rfsData = rfsResultDataPack.Get(szType);
+	if (rfsData === NULL)
+	{
+		return "";
+	}
+	string szParam = rfsData.GetParam();
+	if (szParam.Empty())
+	{
+		return "";
+	}
+	return szParam.GetPart(1, szParam.Length() - 2);
+}
+

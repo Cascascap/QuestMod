@@ -1,0 +1,56 @@
+int Ｒ８クエスト倉庫(int nMode)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	bool bFlag = Ｒ８キャラ停止();
+	int nRet = g_sStoreQuest.run(nMode, 9111);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	if (bFlag)
+	{
+		Ｒ８キャラ停止解除();
+	}
+	return nRet;
+}
+
+int クエスト倉庫_上矢印(int nID)
+{
+	return g_sStoreQuest.moveUp(nID);
+}
+
+int クエスト倉庫_下矢印(int nID)
+{
+	return g_sStoreQuest.moveDown(nID);
+}
+
+int クエスト倉庫_左矢印(int nID)
+{
+	return g_sStoreQuest.moveLeft(nID);
+}
+
+int クエスト倉庫_右矢印(int nID)
+{
+	return g_sStoreQuest.moveRight(nID);
+}
+
+void クエスト倉庫_選択設定(int nID, bool bSelect)
+{
+	g_sStoreQuest.setSelect(nID, bSelect);
+}
+
+int クエスト倉庫_インデクス(int nRow, int nCol)
+{
+	return nRow < 0 || nRow >= 3 || nCol < 0 || nCol >= 5 ? -1 : nRow * 5 + nCol;
+}
+
+int クエスト倉庫_行番号(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : nIndex / 5;
+}
+
+int クエスト倉庫_列番号(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : nIndex % 5;
+}
+

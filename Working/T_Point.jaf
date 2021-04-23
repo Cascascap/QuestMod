@@ -1,0 +1,69 @@
+T_Point::T_Point()
+{
+	this.clear();
+}
+
+void T_Point::clear()
+{
+	this.m_nX = -2147483648;
+	this.m_nY = -2147483648;
+}
+
+void T_Point::set(int nX, int nY)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+bool T_Point::empty()
+{
+	return this.m_nX == -2147483648 || this.m_nY == -2147483648;
+}
+
+bool T_Point::equal(int nX, int nY)
+{
+	return this.m_nX == nX && this.m_nY == nY;
+}
+
+int ComparePointX(ref T_Point sPoint1, ref T_Point sPoint2)
+{
+	if (sPoint1.m_nX < sPoint2.m_nX)
+	{
+		return -1;
+	}
+	if (sPoint1.m_nX > sPoint2.m_nX)
+	{
+		return 1;
+	}
+	if (sPoint1.m_nY < sPoint2.m_nY)
+	{
+		return -1;
+	}
+	if (sPoint1.m_nY > sPoint2.m_nY)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+int ComparePointY(ref T_Point sPoint1, ref T_Point sPoint2)
+{
+	if (sPoint1.m_nY < sPoint2.m_nY)
+	{
+		return -1;
+	}
+	if (sPoint1.m_nY > sPoint2.m_nY)
+	{
+		return 1;
+	}
+	if (sPoint1.m_nX < sPoint2.m_nX)
+	{
+		return -1;
+	}
+	if (sPoint1.m_nX > sPoint2.m_nX)
+	{
+		return 1;
+	}
+	return 0;
+}
+

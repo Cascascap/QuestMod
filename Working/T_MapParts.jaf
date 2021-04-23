@@ -1,0 +1,761 @@
+void T_MapParts::startMapQuestAnime(bool bRet)
+{
+	this.m_sQuest.startAnime(bRet);
+}
+
+void T_MapParts::eraseMapQuestBall(int nNo)
+{
+	this.m_sQuest.eraseBall(nNo);
+}
+
+void T_MapParts::setButtonActive(int nID, bool bActive)
+{
+	this.m_sButton.setButtonActive(nID, bActive);
+}
+
+void T_MapParts::setInputFlag(bool bInputFlag)
+{
+	this.m_sScroll.setInputFlag(bInputFlag);
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+void T_MapParts::setShortcutInfoShow(bool bShow)
+{
+	this.m_sShortcutInfo.setShow(bShow);
+}
+
+void T_MapParts::setInputKey(bool bInputKey)
+{
+	this.m_bInputKey = bInputKey;
+}
+
+bool T_MapParts::getShow()
+{
+	return this.m_spBase.getShow();
+}
+
+bool T_MapParts::getActive()
+{
+	return this.m_bActive;
+}
+
+bool T_MapParts::getAreaShow()
+{
+	return ◆クエストエリア表示禁止 == 1 ? 0 : this.m_bAreaShow;
+}
+
+bool T_MapParts::getLockCamera()
+{
+	return this.m_bLockCamera;
+}
+
+bool T_MapParts::getInputKey()
+{
+	return this.m_bInputKey;
+}
+
+int T_MapParts::getFirst()
+{
+	return this.getAreaShow() ? 700002 : 700001;
+}
+
+int T_MapParts::getLast()
+{
+	return 700005;
+}
+
+bool T_MapParts::getButtonActive(int nID)
+{
+	return nID > 790000 ? this.m_sScroll.getButtonActive(nID) : this.m_sButton.getButtonActive(nID);
+}
+
+int T_MapParts::getButtonKey(int nID)
+{
+	return nID > 790000 ? this.m_sScroll.getButtonKey(nID) : this.m_sButton.getButtonKey(nID);
+}
+
+int T_MapParts::getSelectID()
+{
+	int nID = this.m_sScroll.getSelectID();
+	return nID > 0 ? nID : this.m_sButton.getSelectID();
+}
+
+int T_MapParts::getKeyDownID()
+{
+	int nID = this.m_sScroll.getKeyDownID();
+	return nID > 0 ? nID : this.m_sButton.getKeyDownID();
+}
+
+int T_MapParts::getClickID()
+{
+	int nID = this.m_sScroll.getClickID();
+	return nID > 0 ? nID : this.m_sButton.getClickID();
+}
+
+bool T_MapParts::isKeyDown()
+{
+	return this.m_sScroll.isKeyDown() ? 1 : this.m_sButton.isKeyDown();
+}
+
+bool T_MapParts::isClick()
+{
+	return this.m_sScroll.isClick() ? 1 : this.m_sButton.isClick();
+}
+
+bool T_MapParts::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+T_MapParts::T_MapParts()
+{
+	this.clear();
+	this.m_rcCheckWheel.set2(8, 8, 807, 607);
+}
+
+T_MapParts::~T_MapParts()
+{
+	this.delete();
+}
+
+bool T_MapParts::create(int nZ, int nMapNo, int nWalkNo)
+{
+	this.delete();
+	int nQuestNo = クエスト_攻略番号();
+	bool bClear = クエスト_クリア済み(nQuestNo);
+	if (◆ｅａｓｙ／マップ > 0)
+	{
+		bClear = true;
+	}
+	this.m_spBase.setCg(11301);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_sName.create(209, 27, -1, 0, 1, 1);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setMaxLines(1);
+	this.m_sName.setTextSpace(-8);
+	this.m_sName.setFontSize(28);
+	this.m_sName.setFontType(256);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setFontColor(0, 80, 10);
+	this.m_sName.setPos(811, 7);
+	this.m_sName.setZ(nZ + 1);
+	this.m_sName.setText(nMapNo > 0 ? ◆ＭＡＰ名前 : "", false);
+	this.m_sCount.create(18, 10014, 2, 65, 15, -1, -1);
+	this.m_sCount.setPos(936, 559);
+	this.m_sCount.setZ(nZ + 5);
+	this.m_sQuest.create(nZ + 1);
+	this.m_sMark.create(nZ + 5);
+	if (nMapNo > 0)
+	{
+		this.m_sArea.create(nZ + 1, nQuestNo);
+	}
+	this.m_spLock.setCg(11323);
+	this.m_spLock.setPos(867, 95);
+	this.m_spLock.setZ(nZ + 10);
+	this.m_sScroll.create(1, 117, 790000, 11321, 11322);
+	this.m_sScroll.setPos(817, 95);
+	this.m_sScroll.setZ(nZ + 1);
+	this.m_sScroll.setActive(-1, bClear);
+	this.m_sScroll.setCallback(&scrollCameraLength);
+	this.m_sScroll.setValue(0, 26, 1);
+	this.m_sButton.create();
+	ボタン登録_ＣＧ_マーク付(this.m_sButton, 700001, 818, 43, 11350, 139, 26, 10138);
+	ボタン登録_ＣＧ_マーク付(this.m_sButton, 700002, 818, 43, 11350, 139, 7, 10137);
+	ボタン登録_ＣＧ(this.m_sButton, 700003, 935, 159, 11302, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 700004, 820, 479, 11331, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 700005, 820, 533, 11341, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 700011, 816, 159, 11311, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 700012, 816, 159, 11312, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setButtonKey(700001, 77);
+	this.m_sButton.setButtonKey(700002, 77);
+	this.m_sButton.setButtonKey(700003, 46);
+	this.m_sButton.setButtonKey(700004, 81);
+	this.m_sButton.setButtonKey(700005, 80);
+	this.m_sButton.setButtonKey(700011, 87);
+	this.m_sButton.setButtonKey(700012, 87);
+	this.m_sButton.setZ(nZ + 1);
+	this.m_nMapNo = nMapNo;
+	this.m_bAreaShow = マップエリア表示();
+	this.m_bLockCamera = !bClear;
+	this.updateCount();
+	this.updateButton();
+	this.m_sShortcutInfo.create(9901);
+	this.m_sShortcutInfo.addAll(this.m_sButton);
+	this.m_sShortcutInfo.addAll(システムバー_ボタン群());
+	this.m_sScroll.addShortcutInfo(this.m_sShortcutInfo);
+	this.m_sInputKey.create(1, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&マップ_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&マップ_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&マップ_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&マップ_右矢印);
+	this.m_sInputKey.setSelectCallback(&マップ_選択設定);
+	return true;
+}
+
+void T_MapParts::delete()
+{
+	this.hideComment(-1);
+	this.m_spBase.delete();
+	this.m_sName.delete();
+	this.m_sCount.delete();
+	this.m_sQuest.delete();
+	this.m_sMark.delete();
+	this.m_sArea.delete();
+	this.m_spLock.delete();
+	this.m_sScroll.delete();
+	this.m_sButton.delete();
+	this.m_sShortcutInfo.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_MapParts::clear()
+{
+	this.m_nMapNo = 0;
+	this.m_bActive = false;
+	this.m_bAreaShow = false;
+	this.m_bLockCamera = false;
+	this.m_nCommentID = 0;
+	this.m_bInputKey = false;
+}
+
+void T_MapParts::update()
+{
+	if (this.m_nMapNo <= 0)
+	{
+		return;
+	}
+	this.m_sQuest.blinkBar();
+	this.m_sQuest.updateAnime();
+}
+
+void T_MapParts::updateCount()
+{
+	this.m_sCount.setValue(パーティ入れ替え残り回数(0), パーティ入れ替え回数最大());
+}
+
+void T_MapParts::updateButton()
+{
+	this.m_sButton.setButtonActive(700005, クエスト_パーティ編成可能());
+	this.m_sButton.setButtonActive(700001, ◆クエストエリア表示禁止 != 1 ? !this.m_bAreaShow : 0);
+	this.m_sButton.setButtonActive(700002, ◆クエストエリア表示禁止 != 1 ? this.m_bAreaShow : 0);
+	this.m_sButton.setButtonActive(700011, 移動速度() != 1);
+	this.m_sButton.setButtonActive(700012, 移動速度() == 1);
+}
+
+void T_MapParts::updateCameraLength(float fLength)
+{
+	if (fLength == -3.40282346638529E+38)
+	{
+		fLength = カメラ距離();
+	}
+	bool bSave = false;
+	if (this.m_nMapNo > 0)
+	{
+		if (this.m_bLockCamera)
+		{
+			fLength = ３Ｄマップ_カメラ距離設定(35.0);
+		}
+		else
+		{
+			fLength = ３Ｄマップ_カメラ距離設定(fLength);
+			bSave = true;
+		}
+		this.m_sScroll.setValue(fLength - 35.0, -1, -1);
+		キャラ_移動距離設定(fLength);
+	}
+	else
+	{
+		bSave = true;
+	}
+	if (bSave)
+	{
+		カメラ距離_設定(fLength);
+	}
+}
+
+bool T_MapParts::updateStatus(int nMode, int nHitFlag, int nTotalTime)
+{
+	if (this.m_nMapNo <= 0)
+	{
+		return false;
+	}
+	this.m_sMark.update();
+	this.m_sArea.update();
+	this.updateButton();
+	this.setAreaShow(マップエリア表示());
+	return this.m_sQuest.update(nMode, nHitFlag, nTotalTime);
+}
+
+void T_MapParts::scrollCameraLength(int nValue)
+{
+	if (this.m_bLockCamera)
+	{
+		return;
+	}
+	float fLength = ３Ｄマップ_カメラ距離設定(35.0 + nValue);
+	カメラ距離_設定(fLength);
+	キャラ_移動距離設定(fLength);
+}
+
+bool T_MapParts::changeInputKey()
+{
+	if (this.m_nMapNo <= 0)
+	{
+		return false;
+	}
+	if (!キー_押下(32))
+	{
+		return this.m_bInputKey;
+	}
+	if (３Ｄキャラ_歩き中())
+	{
+		効果音_エラー();
+		キー_離し待ち(32, true);
+		return false;
+	}
+	効果音_クリック();
+	キー_離し待ち(32, true);
+	this.m_bInputKey = !this.m_bInputKey;
+	if (this.m_bInputKey)
+	{
+		this.resetSelect();
+		ミニステータス_カーソル設定(ミニステータス_先頭ボタン());
+		キャラ_入力ＯＦＦ();
+	}
+	else
+	{
+		this.resetSelect();
+		マウス_位置設定(408, 308, true);
+		キャラ_入力ＯＮ();
+		this.m_sShortcutInfo.setShow(false);
+	}
+	return this.m_bInputKey;
+}
+
+int T_MapParts::moveUp(int nID)
+{
+	switch (nID)
+	{
+		case 700001:
+		case 700002:
+			return ミニステータス_最終ボタン();
+		case 700003:
+		case 700011:
+		case 700012:
+			return this.getAreaShow() ? 700002 : 700001;
+		case 700004:
+			return 移動速度() > 0 ? 700012 : 700011;
+		case 700005:
+			return 700004;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int T_MapParts::moveDown(int nID)
+{
+	switch (nID)
+	{
+		case 700001:
+		case 700002:
+			return 移動速度() > 0 ? 700012 : 700011;
+		case 700003:
+		case 700011:
+		case 700012:
+			return 700004;
+		case 700004:
+			return 700005;
+		case 700005:
+			return ミニステータス_最終ボタン();
+		default:
+			break;
+	}
+	return 0;
+}
+
+int T_MapParts::moveLeft(int nID)
+{
+	switch (nID)
+	{
+		case 700001:
+		case 700002:
+			return nID;
+		case 700003:
+			return 移動速度() > 0 ? 700012 : 700011;
+		case 700004:
+		case 700005:
+			return ミニステータス_前ボタン_遷移(3);
+		case 700011:
+		case 700012:
+			return 700003;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int T_MapParts::moveRight(int nID)
+{
+	switch (nID)
+	{
+		case 700001:
+		case 700002:
+			return nID;
+		case 700003:
+			return 移動速度() > 0 ? 700012 : 700011;
+		case 700004:
+		case 700005:
+			return ミニステータス_先頭ボタン();
+		case 700011:
+		case 700012:
+			return 700003;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int T_MapParts::exec(int nID, ref int nMapNo)
+{
+	nMapNo = 0;
+	this.m_sShortcutInfo.setShow(false);
+	if (nID > 790000)
+	{
+		if (!this.m_bLockCamera)
+		{
+			this.m_sScroll.exec(nID);
+		}
+		return 0;
+	}
+	switch (nID)
+	{
+		case 700001:
+			this.setAreaShow(true);
+			break;
+		case 700002:
+			this.setAreaShow(false);
+			break;
+		case 700003:
+			return this.execGiveUp();
+		case 700004:
+			return this.execStore();
+		case 700005:
+			return this.execParty();
+		case 700011:
+			this.setWalkSpeed(1);
+			break;
+		case 700012:
+			this.setWalkSpeed(0);
+			break;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int T_MapParts::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (this.m_sScroll.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+label0:
+	this.m_sScroll.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	return 0;
+}
+
+int T_MapParts::checkKey(int nID)
+{
+	if (!this.m_bActive)
+	{
+		return 0;
+	}
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (!this.m_bLockCamera)
+	{
+		if (this.m_sScroll.checkKey())
+		{
+			return 0;
+		}
+	}
+	if (this.m_bInputKey)
+	{
+		if (this.m_sInputKey.check(nID))
+		{
+			return 0;
+		}
+	}
+	this.m_sShortcutInfo.check();
+	return 0;
+}
+
+bool T_MapParts::checkWheel()
+{
+	if (!this.m_bLockCamera)
+	{
+		if (this.m_rcCheckWheel.mouseInRect())
+		{
+			if (this.m_sScroll.checkWheel())
+			{
+				return true;
+			}
+		}
+	}
+	ホイール_クリア();
+	return false;
+}
+
+void T_MapParts::resetSelect()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sButton.resetSelect();
+	this.hideComment(-1);
+}
+
+void T_MapParts::setSelect(int nID, bool bSelect)
+{
+	if (!this.m_bActive)
+	{
+		return;
+	}
+	if (nID > 790000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 700000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+	}
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+void T_MapParts::setCursor(int nID)
+{
+	if (!this.m_bActive)
+	{
+		return;
+	}
+	if (nID > 790000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 700000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_MapParts::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sName.setShow(bShow);
+	this.m_sCount.setShow(bShow);
+	this.m_sQuest.setShow(bShow);
+	this.m_sMark.setShow(bShow);
+	this.m_spLock.setShow(this.m_bLockCamera ? bShow : 0);
+	this.m_sScroll.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	if (◆クエストエリア表示禁止 == 1)
+	{
+		this.m_sArea.setShow(false);
+		this.m_sButton.setButtonShow(700001, bShow);
+		this.m_sButton.setButtonShow(700002, false);
+	}
+	else
+	{
+		this.m_sArea.setShow(this.m_bAreaShow ? bShow : 0);
+		this.m_sButton.setButtonShow(700001, this.m_bAreaShow ? 0 : bShow);
+		this.m_sButton.setButtonShow(700002, this.m_bAreaShow ? bShow : 0);
+	}
+	this.m_sButton.setButtonShow(700011, 移動速度() != 1 ? bShow : 0);
+	this.m_sButton.setButtonShow(700012, 移動速度() == 1 ? bShow : 0);
+}
+
+void T_MapParts::setActive(bool bActive)
+{
+	this.m_bActive = bActive;
+}
+
+void T_MapParts::setAreaShow(bool bShow)
+{
+	マップエリア表示_設定(bShow);
+	if (!this.m_spBase.isCreated())
+	{
+		return;
+	}
+	this.m_bAreaShow = bShow;
+	this.updateButton();
+	this.setShow(this.m_spBase.getShow());
+}
+
+void T_MapParts::setLockCamera(bool bLock)
+{
+	if (!this.m_spBase.isCreated())
+	{
+		return;
+	}
+	this.m_bLockCamera = bLock;
+	this.m_sScroll.setActive(-1, !bLock);
+	this.updateCameraLength(-3.40282346638529E+38);
+	this.setShow(this.m_spBase.getShow());
+}
+
+void T_MapParts::setWalkSpeed(int nSpeed)
+{
+	移動速度_設定(nSpeed);
+	if (!this.m_spBase.isCreated())
+	{
+		return;
+	}
+	this.updateButton();
+	this.setShow(this.m_spBase.getShow());
+	キャラ_移動速度設定(0.0);
+}
+
+bool T_MapParts::suspend()
+{
+	this.m_sName.suspend();
+	this.m_sCount.suspend();
+	this.m_sQuest.suspend();
+	this.m_sMark.suspend();
+	this.m_sArea.suspend();
+	this.m_spLock.suspend();
+	this.m_sScroll.suspend();
+	this.m_sButton.suspend();
+	this.m_sShortcutInfo.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_MapParts::resume()
+{
+	this.m_sName.resume();
+	this.m_sCount.resume();
+	this.m_sQuest.resume();
+	this.m_sMark.resume();
+	this.m_sArea.resume();
+	this.m_spLock.resume();
+	this.m_sScroll.resume();
+	this.m_sButton.resume();
+	this.m_sShortcutInfo.resume();
+	return this.m_spBase.resume();
+}
+
+int T_MapParts::execGiveUp()
+{
+	int nRet = Ｒ８クエスト倉庫(1);
+	if (nRet == 1)
+	{
+		return 29;
+	}
+	if (nRet < 0)
+	{
+		if (選択_確認("Abandon this quest?", 1, "Yes", "No", -1, -1, false))
+		{
+			return 29;
+		}
+	}
+	return 0;
+}
+
+int T_MapParts::execStore()
+{
+	Ｒ８クエスト倉庫(0);
+	this.m_sMark.update();
+	return 0;
+}
+
+int T_MapParts::execParty()
+{
+	if (クエスト_パーティ編成禁止())
+	{
+		選択_通知("Party cannot be changed.", "OK", false);
+		return 0;
+	}
+	int nOld = システムバー_モード();
+	int nMapNo = システムバー_マップ番号();
+	bool bFlag = Ｒ８キャラ停止();
+	システムバー_削除();
+	int nRet = パーティ編成_実行(2, -1);
+	システムバー_作成(nOld, nMapNo, true);
+	this.updateCount();
+	if (bFlag)
+	{
+		Ｒ８キャラ停止解除();
+	}
+	return nRet;
+}
+
+void T_MapParts::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	this.hideComment(-1);
+	this.m_nCommentID = nID;
+}
+
+void T_MapParts::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+	}
+	this.m_nCommentID = -1;
+}
+
+bool T_MapParts::setCameraLengthForDebug(float fLength)
+{
+	return false;
+}
+

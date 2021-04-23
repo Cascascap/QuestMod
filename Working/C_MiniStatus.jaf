@@ -1,0 +1,288 @@
+int ミニステータス_上矢印(int nID)
+{
+	return g_sMiniStatus.moveUp(nID);
+}
+
+int ミニステータス_下矢印(int nID)
+{
+	return g_sMiniStatus.moveDown(nID);
+}
+
+int ミニステータス_左矢印(int nID)
+{
+	return g_sMiniStatus.moveLeft(nID);
+}
+
+int ミニステータス_右矢印(int nID)
+{
+	return g_sMiniStatus.moveRight(nID);
+}
+
+void ミニステータス_作成(int nZ)
+{
+	g_bMiniStatusBlink = false;
+	g_sMiniStatus.create(nZ);
+}
+
+void ミニステータス_削除()
+{
+	g_sMiniStatus.delete();
+	g_bMiniStatusBlink = false;
+}
+
+void ミニステータス_再作成()
+{
+	g_bMiniStatusBlink = false;
+	g_sMiniStatus.remake();
+}
+
+void ミニステータス_更新(bool bAnime, int nTotalTime)
+{
+	g_sMiniStatus.update(bAnime, nTotalTime);
+}
+
+void ミニステータス_キャラ更新(int nCharaNo, bool bAnime, int nTotalTime)
+{
+	g_sMiniStatus.updateChara(nCharaNo, bAnime, nTotalTime);
+}
+
+int ミニステータス_実行(int nID)
+{
+	return g_sMiniStatus.exec(nID);
+}
+
+void ミニステータス_ボタン確認(int nID)
+{
+	g_sMiniStatus.checkStatus(nID);
+}
+
+int ミニステータス_入力確認(ref int nSelectID)
+{
+	return g_sMiniStatus.checkInput(nSelectID);
+}
+
+int ミニステータス_キー確認(int nID)
+{
+	return g_sMiniStatus.checkKey(nID);
+}
+
+void ミニステータス_選択解除()
+{
+	g_sMiniStatus.resetSelect();
+}
+
+void ミニステータス_選択設定(int nID, bool bSelect)
+{
+	g_sMiniStatus.setSelect(nID, bSelect);
+}
+
+void ミニステータス_カーソル設定(int nID)
+{
+	g_sMiniStatus.setCursor(nID);
+}
+
+void ミニステータス_入力ＯＮ()
+{
+	g_sMiniStatus.setInputFlag(true);
+}
+
+void ミニステータス_入力ＯＦＦ()
+{
+	g_sMiniStatus.setInputFlag(false);
+}
+
+void ミニステータス_表示設定(bool bShow)
+{
+	g_sMiniStatus.setShow(bShow);
+}
+
+void ミニステータス_ボタン表示設定(bool bShow)
+{
+	g_sMiniStatus.setButtonShow(bShow);
+}
+
+void ミニステータス_ボタン有効設定()
+{
+	g_sMiniStatus.setButtonActive();
+}
+
+void ミニステータス_カード選択設定(int nIndex, bool bSelect)
+{
+	g_sMiniStatus.setSelectCard(nIndex, bSelect);
+}
+
+int ミニステータス_前ボタン(int nID)
+{
+	return g_sMiniStatus.getPrevButton(nID);
+}
+
+int ミニステータス_次ボタン(int nID)
+{
+	return g_sMiniStatus.getNextButton(nID);
+}
+
+int ミニステータス_先頭ボタン()
+{
+	return g_sMiniStatus.getFirstButton();
+}
+
+int ミニステータス_最終ボタン()
+{
+	return g_sMiniStatus.getLastButton();
+}
+
+int ミニステータス_遷移インデクス(int nID)
+{
+	return g_sMiniStatus.getKeyboardIndex(nID);
+}
+
+int ミニステータス_前ボタン_遷移(int nIndex)
+{
+	return g_sMiniStatus.getPrevButtonFromIndex(nIndex);
+}
+
+int ミニステータス_次ボタン_遷移(int nIndex)
+{
+	return g_sMiniStatus.getNextButtonFromIndex(nIndex);
+}
+
+bool ミニステータス_ボタン有効(int nID)
+{
+	return g_sMiniStatus.getButtonActive(nID);
+}
+
+int ミニステータス_ショートカット(int nID)
+{
+	return g_sMiniStatus.getButtonKey(nID);
+}
+
+int ミニステータス_選択ＩＤ()
+{
+	return g_sMiniStatus.getSelectID();
+}
+
+int ミニステータス_押下ＩＤ()
+{
+	return g_sMiniStatus.getKeyDownID();
+}
+
+int ミニステータス_クリックＩＤ()
+{
+	return g_sMiniStatus.getClickID();
+}
+
+bool ミニステータス_押下中()
+{
+	return g_sMiniStatus.isKeyDown();
+}
+
+bool ミニステータス_クリック()
+{
+	return g_sMiniStatus.isClick();
+}
+
+bool ミニステータス_作成済()
+{
+	return g_sMiniStatus.isCreated();
+}
+
+bool ミニステータス_サスペンド()
+{
+	return g_sMiniStatus.suspend();
+}
+
+bool ミニステータス_レジューム()
+{
+	if (!g_sMiniStatus.resume())
+	{
+		return false;
+	}
+	g_sMiniStatus.remake();
+	return true;
+}
+
+bool ミニステータス_サスペンド状態()
+{
+	return g_sMiniStatus.isSuspend();
+}
+
+int ミニステータス_キャラ番号(int nID)
+{
+	return g_sMiniStatus.getCharaNoFromID(nID);
+}
+
+ref T_MiniCard ミニステータス_カード(int nCharaNo)
+{
+	return g_sMiniStatus.get(nCharaNo);
+}
+
+ref T_ButtonGroup ミニステータス_ボタン群()
+{
+	return g_sMiniStatus.getButton();
+}
+
+bool ミニステータス_ドラッグ実行(int nIndex, int nCharaNo, ref T_TextSprite rfsIcon, ref int nDropIndex)
+{
+	nDropIndex = -1;
+	if (!g_sMiniStatusDrag.create(nIndex, nCharaNo, rfsIcon))
+	{
+		return false;
+	}
+	bool bRet = g_sMiniStatusDrag.run();
+	nDropIndex = g_sMiniStatusDrag.getTargetIndex();
+	g_sMiniStatusDrag.delete();
+	return bRet;
+}
+
+void ミニステータス_ドラッグ(int nX, int nY)
+{
+	g_sMiniStatusDrag.execDrag(nX, nY);
+}
+
+bool ミニステータス_ドロップ(int nX, int nY)
+{
+	return g_sMiniStatusDrag.execDrop(nX, nY);
+}
+
+void ミニステータス_上移動(ref int nX, ref int nY)
+{
+	g_sMiniStatusDrag.moveUp(nX, nY);
+}
+
+void ミニステータス_下移動(ref int nX, ref int nY)
+{
+	g_sMiniStatusDrag.moveDown(nX, nY);
+}
+
+void ミニステータス_左移動(ref int nX, ref int nY)
+{
+	g_sMiniStatusDrag.moveLeft(nX, nY);
+}
+
+void ミニステータス_右移動(ref int nX, ref int nY)
+{
+	g_sMiniStatusDrag.moveRight(nX, nY);
+}
+
+int ミニステータス_位置Ｘ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	if (戦闘配置_前衛(nIndex))
+	{
+		return 4 + 204 * nIndex * 2;
+	}
+	return 208 + 204 * (nIndex - 3) * 2;
+}
+
+int ミニステータス_位置Ｙ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return 戦闘配置_前衛(nIndex) ? 592 : 613;
+}
+

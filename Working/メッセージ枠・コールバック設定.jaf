@@ -1,0 +1,15 @@
+void 右クリック関数登録(rbutton_callback_t _f)
+{
+	_g_rbutton_callback_fnc = _f;
+}
+
+void スペースキー関数登録(spacekey_callback_t _f)
+{
+	_g_spacekey_callback_fnc = _f;
+}
+
+void エスケープキー関数登録(escapekey_callback_t _f)
+{
+	_g_escapekey_callback_fnc = _f;
+}
+

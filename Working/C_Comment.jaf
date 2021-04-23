@@ -1,0 +1,68 @@
+void 説明_初期化()
+{
+	説明_終了処理();
+	アイテム説明_初期化();
+}
+
+void 説明_終了処理()
+{
+	g_sComment.delete();
+	アイテム説明_終了処理();
+}
+
+int 説明_表示(int nID, string szHeader, string szText, string szSubText, int nWaitTime, bool tabStyle)
+{
+	return _説明_表示(nID, 0, szHeader, szText, szSubText, nWaitTime, tabStyle);
+}
+
+int _説明_表示(int nID, int nType, string szHeader, string szText, string szSubText, int nWaitTime, bool tabStyle)
+{
+	if (g_sComment.getID() == nID)
+	{
+		g_sComment.setShow(true, nWaitTime);
+		return 0;
+	}
+	if (!g_sComment.create(nType, szHeader, szText, szSubText, nWaitTime, tabStyle))
+	{
+		return -1;
+	}
+	g_sComment.setID(nID);
+	return 1;
+}
+
+void 説明_消し(int nID)
+{
+	if (nID > 0 && g_sComment.getID() != nID)
+	{
+		return;
+	}
+	g_sComment.setShow(false, 0);
+	if (nID < 0)
+	{
+		g_sComment.delete();
+	}
+}
+
+void 説明_ＩＤクリア()
+{
+	g_sComment.setID(0);
+}
+
+void 説明_位置設定(int nX, int nY)
+{
+	if (!g_sComment.setPos(nX, nY))
+	{
+		return;
+	}
+}
+
+int 説明_幅()
+{
+	return g_sComment.getWidth();
+}
+
+int 説明_高()
+{
+	return g_sComment.getHeight();
+}
+

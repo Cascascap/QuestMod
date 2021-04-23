@@ -1,0 +1,16 @@
+文字入力エリア_t::文字入力エリア_t()
+{
+	this.m_nMaxTextLengthSJIS = -1;
+}
+
+選択エリア_t::選択エリア_t()
+{
+	this.m_fBoldWeight = 0.0;
+	this.m_fSelectedBoldWeight = 0.0;
+	this.m_fUnselectableBoldWeight = 0.0;
+	this.m_nCharSpace = 0;
+	this.m_nSelectedCharSpace = 0;
+	this.m_nUnselectableCharSpace = 0;
+	this.nCursorOffsetZ = 1;
+}
+

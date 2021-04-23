@@ -1,0 +1,142 @@
+void 音楽設定(int 効果タイプ, int 効果時間)
+{
+	_音楽効果 = 効果タイプ;
+	_音楽効果時間 = 効果時間;
+}
+
+void 音楽(int 音楽番号, int 効果タイプ, int 効果時間)
+{
+	SYS_PlayBGM(音楽番号, 0, 効果タイプ, 効果時間, 100);
+	Ｔ音楽が登録されました(音楽番号);
+}
+
+void 音楽１回再生(int 音楽番号, int 効果タイプ, int 効果時間)
+{
+	SYS_PlayBGM(音楽番号, 1, 効果タイプ, 効果時間, 100);
+}
+
+bool 音楽再生中確認()
+{
+	return SYS_IsPlayBGM();
+}
+
+int 音楽再生中番号取得()
+{
+	return SYS_BGM_GetPlayingNumber();
+}
+
+void 音楽ボリューム(int 音量)
+{
+	return;
+}
+
+bool Ａ＿音楽確認(int 音楽番号)
+{
+	return PassRegister.ExistNumber(2, 音楽番号);
+}
+
+void 効果音(int _効果音番号)
+{
+	SYS_PlaySE(_効果音番号, false, true);
+}
+
+void 効果音終了待ちあり(int _効果音番号)
+{
+	SYS_PlaySE(_効果音番号, true, true);
+}
+
+void 効果音強制終了待ちあり(int _効果音番号)
+{
+	SYS_PlaySE(_効果音番号, true, false);
+}
+
+void 効果音ボリューム(int 音量)
+{
+	SYS_ASSERTE_VOLUME(音量);
+	_効果音ボリューム = 音量;
+	KiwiSoundEngine.Sound_Fade(1, 0, _効果音ボリューム, 0);
+}
+
+void システム効果音(int _snd)
+{
+	_g_SystemSound._Play(_snd, false);
+}
+
+void ループ効果音設定(int 効果タイプ, int 効果時間)
+{
+	_ループ効果音効果 = 効果タイプ;
+	_ループ効果音効果時間 = 効果時間;
+}
+
+void ループ効果音(int ループ効果音番号, int 効果タイプ, int 効果時間)
+{
+	if (ループ効果音番号 != 0 && !KiwiSoundEngine.Music_IsExist(ループ効果音番号))
+	{
+		ERROR("ループ効果音[%d]ロード失敗" % ループ効果音番号, 0);
+		ループ効果音番号 = 0;
+	}
+	if (効果タイプ == -1)
+	{
+		効果タイプ = _ループ効果音効果;
+	}
+	if (効果時間 == -1)
+	{
+		効果時間 = _ループ効果音効果時間;
+	}
+	if (効果タイプ == 0)
+	{
+		効果時間 = 0;
+	}
+	if (ループ効果音番号 != 0)
+	{
+		KiwiSoundEngine.Music_Prepare(chループ効果音, ループ効果音番号);
+		KiwiSoundEngine.Music_Fade(chループ効果音, 0, 0, 0);
+		KiwiSoundEngine.Music_Fade(chループ効果音, 効果時間, _ループ効果音ボリューム, 0);
+		KiwiSoundEngine.Music_SetLoopCount(chループ効果音, 0);
+		KiwiSoundEngine.Music_Play(chループ効果音);
+	}
+	else
+	{
+		KiwiSoundEngine.Music_Fade(chループ効果音, 効果時間, 0, 1);
+	}
+	_ループ効果音 = ループ効果音番号;
+}
+
+void ループ効果音ボリューム(int 音量)
+{
+	SYS_ASSERTE_VOLUME(音量);
+	_ループ効果音ボリューム = 音量;
+	KiwiSoundEngine.Music_Fade(chループ効果音, 0, _ループ効果音ボリューム, 0);
+}
+
+void VOICE(int VOICE番号)
+{
+	SYS_VOICE(VOICE番号);
+}
+
+bool Ａ＿ボイスリプレイ可能確認()
+{
+	if (_g_最終音声番号 <= 0)
+	{
+		return false;
+	}
+	if (!KiwiSoundEngine.Sound_IsExist(_g_最終音声番号))
+	{
+		return false;
+	}
+	return true;
+}
+
+void Ｓ＿ボイスリプレイ()
+{
+	if (Ａ＿ボイスリプレイ可能確認())
+	{
+		SYS_PlayVoice(_g_最終音声番号);
+	}
+}
+
+void Ａ＿ＢＧＭボリュームキャップ設定(int サウンドグループ番号, int ボリューム, int フェードアウト時間, int フェードイン待ち時間, int フェードイン時間)
+{
+	g_BGMVolumeCapManager.Set(サウンドグループ番号, ボリューム, フェードアウト時間, フェードイン待ち時間, フェードイン時間);
+}
+

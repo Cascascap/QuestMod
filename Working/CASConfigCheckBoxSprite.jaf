@@ -1,0 +1,45 @@
+void CASConfigCheckBoxSprite::CreateSampleSprite(int nX, int nY, int nZ, int Width, int Height)
+{
+	string BaseCG = g_ConfigModeDocument.GetCheckBoxBaseCG();
+	string MarkCG = g_ConfigModeDocument.GetCheckBoxMarkCG();
+	string CursorCG = g_ConfigModeDocument.GetCheckBoxCursorCG();
+	if (!BaseCG.Empty() && !MarkCG.Empty() && !CursorCG.Empty())
+	{
+		this.m_CheckBoxSprite.Create(nX, nY, nZ, BaseCG, MarkCG, CursorCG);
+	}
+	else
+	{
+		this.m_CheckBoxSprite.CreateSampleSprite(nX, nY, nZ, Width, Height);
+	}
+}
+
+void CASConfigCheckBoxSprite::Release()
+{
+	this.m_CheckBoxSprite.Release();
+}
+
+void CASConfigCheckBoxSprite::SetTextCharSpace(int nCharSpace)
+{
+	this.m_CheckBoxSprite.SetTextCharSpace(nCharSpace);
+}
+
+void CASConfigCheckBoxSprite::SetText(string Text, ref CASCharSpriteProperty CharProperty)
+{
+	this.m_CheckBoxSprite.SetText(Text, CharProperty);
+}
+
+void CASConfigCheckBoxSprite::SetShowCheckMark(bool bShow)
+{
+	this.m_CheckBoxSprite.SetShowCheckMark(bShow);
+}
+
+void CASConfigCheckBoxSprite::SetShowCursor(bool bShow)
+{
+	this.m_CheckBoxSprite.SetShowCursor(bShow);
+}
+
+bool CASConfigCheckBoxSprite::IsMouseCursorInRect()
+{
+	return this.m_CheckBoxSprite.IsMouseCursorInRect();
+}
+

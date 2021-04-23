@@ -1,0 +1,117 @@
+bool Ｔ戦闘_行動開始(int nNo)
+{
+	Ｔ行動開始(戦闘番号_ＩＩＣ(nNo));
+	戦闘台詞_表示(-1, -1, "", false);
+	戦闘ログ_追加(◆戦闘ログ１, 5, false);
+	戦闘ログ_追加(◆戦闘ログ２, 5, false);
+	戦闘表示_状態確認(nNo, ◆毒ダメージ有り, ◆体力回復あり);
+	if (◆狂戦士変化あり > 0)
+	{
+		戦闘_狂戦士設定(nNo);
+	}
+	if (◆全体加護発動 > 0)
+	{
+		戦闘味方_全体加護();
+	}
+	if (戦闘データ_行動数(nNo) <= 0)
+	{
+		return false;
+	}
+	return ◆行動パスです == 0;
+}
+
+void Ｔ戦闘_スルー行動(int nNo)
+{
+	Ｔスルー行動(戦闘番号_ＩＩＣ(nNo));
+}
+
+int Ｔ戦闘_行動(int nNo, int nTargetNo, int nSkillNo, bool bMessage)
+{
+	if (スキル_対象_要ターゲット(nSkillNo))
+	{
+		if (nTargetNo <= 0)
+		{
+			return -1;
+		}
+	}
+	int nDamage = 0;
+	switch (スキル_行動種類(nSkillNo))
+	{
+		case 1:
+			nDamage = Ｔ物理攻撃行動(戦闘番号_ＩＩＣ(nNo), 戦闘番号_ＩＩＣ(nTargetNo), nSkillNo);
+			break;
+		case 2:
+			nDamage = Ｔ魔法攻撃行動(戦闘番号_ＩＩＣ(nNo), 戦闘番号_ＩＩＣ(nTargetNo), nSkillNo);
+			break;
+		case 3:
+			Ｔ特殊行動(戦闘番号_ＩＩＣ(nNo), 戦闘番号_ＩＩＣ(nTargetNo), nSkillNo);
+			break;
+		case 4:
+			Ｔ補助行動(戦闘番号_ＩＩＣ(nNo), 戦闘番号_ＩＩＣ(nTargetNo), nSkillNo);
+			break;
+		default:
+			return -1;
+	}
+	if (bMessage)
+	{
+		戦闘台詞_表示(-1, -1, "", false);
+		戦闘ログ_追加(◆戦闘ログ１, 5, false);
+	}
+	戦闘ログ_追加(◆戦闘ログ２, 5, false);
+	if (bMessage && ◆溜めになった > 0)
+	{
+		戦闘_準備開始(nNo, nSkillNo);
+	}
+	if (◆味方ガード率変化あり > 0)
+	{
+		戦闘_守護設定(nNo);
+	}
+	if (◆隠密率変化あり > 0)
+	{
+		戦闘_隠密設定(nNo);
+	}
+	if (◆狂戦士変化あり > 0)
+	{
+		戦闘_狂戦士設定(nTargetNo);
+	}
+	if (◆全体加護変化あり > 0)
+	{
+		戦闘_全体加護設定(nNo);
+	}
+	if (◆バリア変化あり > 0)
+	{
+		戦闘_バリア設定(nNo);
+	}
+	return ◆行動パスです == 0 ? (nDamage > 0 ? nDamage : 0) : -1;
+}
+
+int Ｔ戦闘_対象選択(int nNo, int nSkillNo)
+{
+	if (スキル_自分(nSkillNo))
+	{
+		return nNo;
+	}
+	int nNo2 = Ｔターゲット決定(戦闘番号_ＩＩＣ(nNo), nSkillNo);
+	return nNo2 > 0 ? 戦闘番号_取得(nNo2) : 0;
+}
+
+int Ｔ戦闘_守護率減少(int nNo)
+{
+	return Ｔ守護率減少(戦闘番号_ＩＩＣ(nNo));
+}
+
+int Ｔ戦闘_連続行動回数(int nNo, int nSkillNo)
+{
+	return Ｔ連続行動回数(戦闘番号_ＩＩＣ(nNo), nSkillNo);
+}
+
+void Ｔ戦闘_行動終了(int nNo, int nSkillNo)
+{
+	Ｔ行動終了(戦闘番号_ＩＩＣ(nNo), nSkillNo);
+}
+
+string Ｔ戦闘_予測(int nNo, int nTargetNo, int nSkillNo)
+{
+	return Ｔ戦闘予測(戦闘番号_ＩＩＣ(nNo), 戦闘番号_ＩＩＣ(nTargetNo), nSkillNo);
+}
+

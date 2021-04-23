@@ -1,0 +1,177 @@
+void SetFontNumber(int fontNumber)
+{
+	SelectFontNumber(fontNumber);
+}
+
+void SetFontFace(int fontNumber)
+{
+	SelectFontNumber(fontNumber);
+}
+
+void GetFontOpticalTopBottom(int fontNumber, int fontSize, ref float top, ref float bottom, bool includeDescender)
+{
+	float defaultSize = 0.0;
+	float oTop = 0.0;
+	float oBottom = 0.0;
+	float oBottom2 = 0.0;
+	if (fontNumber == 256)
+	{
+		oTop = OpticalTop256;
+		oBottom = OpticalBottom256;
+		oBottom2 = OpticalDescenderBottom256;
+		defaultSize = DefaultFontSize256;
+	}
+	else if (fontNumber == 257)
+	{
+		oTop = OpticalTop257;
+		oBottom = OpticalBottom257;
+		oBottom2 = OpticalDescenderBottom257;
+		defaultSize = DefaultFontSize257;
+	}
+	else if (fontNumber == 258)
+	{
+		oTop = OpticalTop258;
+		oBottom = OpticalBottom258;
+		oBottom2 = OpticalDescenderBottom258;
+		defaultSize = DefaultFontSize258;
+	}
+	top = (oTop * fontSize) / defaultSize;
+	if (includeDescender)
+	{
+		bottom = (oBottom2 * fontSize) / defaultSize;
+	}
+	else
+	{
+		bottom = (oBottom * fontSize) / defaultSize;
+	}
+}
+
+int CenterTextGetY(int y, int boxHeight, int fontNumber, int fontSize, bool includeDescender)
+{
+	float opticalTop = 0.0;
+	float opticalBottom = 0.0;
+	GetFontOpticalTopBottom(fontNumber, fontSize, opticalTop, opticalBottom, includeDescender);
+	float centerY = y + boxHeight / 2.0;
+	float opticalHeight = opticalBottom - opticalTop;
+	return (centerY - opticalHeight / 2.0 - opticalTop) + 0.5;
+}
+
+int GetMaxLines(int height, int fontNumber, int fontSize, int lineSpacing, bool includeDescenders)
+{
+	float opticalTop = 0.0;
+	float opticalBottom = 0.0;
+	GetFontOpticalTopBottom(fontNumber, fontSize, opticalTop, opticalBottom, includeDescenders);
+	int opticalHeight = (opticalBottom + 0.5) - (opticalTop + 0.5);
+	return (height + lineSpacing + (fontSize - opticalHeight)) / (fontSize + lineSpacing);
+}
+
+void SelectFontNumber(int fontNumber)
+{
+	currentFont = fontNumber;
+	if (fontNumber == 256)
+	{
+		DefaultSpacing = DefaultSpacing256;
+		DefaultFontSize = DefaultFontSize256;
+		Advances <- Advances256;
+	}
+	else if (fontNumber == 257)
+	{
+		DefaultSpacing = DefaultSpacing257;
+		DefaultFontSize = DefaultFontSize257;
+		Advances <- Advances257;
+	}
+	else if (fontNumber == 258)
+	{
+		if (currentFontSize == 18)
+		{
+			DefaultSpacing = DefaultSpacing258_18;
+			DefaultFontSize = DefaultFontSize258_18;
+			Advances <- Advances258_18;
+		}
+		else
+		{
+			DefaultSpacing = DefaultSpacing258;
+			DefaultFontSize = DefaultFontSize258;
+			Advances <- Advances258;
+		}
+	}
+	currentScale = currentFontSize / DefaultFontSize;
+	scaledSpacing = currentSpacing * DefaultSpacing;
+}
+
+void SetFontSize(int fontSize)
+{
+	currentFontSize = fontSize;
+	currentScale = currentFontSize / DefaultFontSize;
+	if (currentFont == 258)
+	{
+		SelectFontNumber(currentFont);
+	}
+}
+
+void SetSpacing(float spacing)
+{
+	currentSpacing = spacing;
+	scaledSpacing = currentSpacing * DefaultSpacing;
+}
+
+void SetFixedWidthSpacing(int spacing)
+{
+	currentFixedWidthSpacing = spacing;
+	currentTabWidth = (currentFontSize + spacing) * 2;
+}
+
+void SetTabWidth(int tabWidth)
+{
+	currentTabWidth = tabWidth;
+}
+
+bool LoadAdvances(int fontNumber, string fileName)
+{
+	ref array@float advances;
+	if (fileName == "")
+	{
+		fileName = "Data\\kern%d.acx" % fontNumber;
+	}
+	if (!‚`‚b‚w_ƒ[ƒh(fileName))
+	{
+		system.MsgBox("Cannot load " + fileName);
+		return false;
+	}
+	int lineCount = ‚`‚b‚w_—ñ”();
+	int columnCount = ‚`‚b‚w_—ñ”();
+	int size = 9216;
+	if (fontNumber == 256)
+	{
+		Advances256.Alloc(size);
+		advances <- Advances256;
+	}
+	else if (fontNumber == 257)
+	{
+		Advances257.Alloc(size);
+		advances <- Advances257;
+	}
+	else if (fontNumber == 258)
+	{
+		if (currentFontSize == 18)
+		{
+			Advances258_18.Alloc(size);
+			advances <- Advances258_18;
+		}
+		else
+		{
+			Advances258.Alloc(size);
+			advances <- Advances258;
+		}
+	}
+	int i = 0;
+	int value = 0;
+	for (i = 0; i < size; ++i)
+	{
+		value = ‚`‚b‚w_”’l(i, 0);
+		advances[i] = value / 65536.0;
+	}
+	‚`‚b‚w_‰ð•ú();
+	return true;
+}
+

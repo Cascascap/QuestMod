@@ -1,0 +1,59 @@
+CASCGMenuModel::CASCGMenuModel()
+{
+	this.m_nCharSpace = 0;
+	this.m_nTextOffsetX = 0;
+	this.m_nTextOffsetY = 0;
+	this.m_TextOrignPosMode = 1;
+}
+
+void CASCGMenuModel::Clear()
+{
+	CASCharSpriteProperty TextProperty;
+	this.m_TextProperty = TextProperty;
+	this.m_nCharSpace = 0;
+	this.m_nTextOffsetX = 0;
+	this.m_nTextOffsetY = 0;
+	this.m_TextOrignPosMode = 1;
+}
+
+ref CASCharSpriteProperty CASCGMenuModel::GetTextProperty()
+{
+	return this.m_TextProperty;
+}
+
+void CASCGMenuModel::SetCharSpace(int nCharSpace)
+{
+	this.m_nCharSpace = nCharSpace;
+}
+
+int CASCGMenuModel::GetCharSpace()
+{
+	return this.m_nCharSpace;
+}
+
+void CASCGMenuModel::SetTextOffsetPos(int nTextOffsetX, int nTextOffsetY)
+{
+	this.m_nTextOffsetX = nTextOffsetX;
+	this.m_nTextOffsetY = nTextOffsetY;
+}
+
+int CASCGMenuModel::GetTextOffsetX()
+{
+	return this.m_nTextOffsetX;
+}
+
+int CASCGMenuModel::GetTextOffsetY()
+{
+	return this.m_nTextOffsetY;
+}
+
+void CASCGMenuModel::SetTextOriginPosMode(int Mode)
+{
+	this.m_TextOrignPosMode = Mode;
+}
+
+int CASCGMenuModel::GetTextOriginPosMode()
+{
+	return this.m_TextOrignPosMode;
+}
+

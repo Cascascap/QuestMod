@@ -1,0 +1,87 @@
+void エンドロール()
+{
+	CStaffRoll StaffRoll;
+	StaffRoll.Skip(system.IsDebugMode() || true);
+	StaffRoll.Through(system.IsDebugMode() || true);
+	StaffRoll.Update(2, 1);
+	StaffRoll.Release();
+	CEndResult EndResult;
+	EndResult.Update();
+	EndResult.Release();
+	全表示(1, 1000);
+}
+
+void WaitDecisionButton()
+{
+	CASClick LButtonClick;
+	CASClick EnterKeyClick;
+	LButtonClick.Init(1, true);
+	EnterKeyClick.Init(13, true);
+	for (; ; )
+	{
+		_g_MouseWheel._Update(true);
+		if (LButtonClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (EnterKeyClick.IsClick(-2147483648))
+		{
+			break;
+		}
+		if (SYS_ホイールバック確認())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+
+void スタッフロールテスト()
+{
+	if (!system.IsDebugMode())
+	{
+		return;
+	}
+	while (true)
+	{
+		選択_項目追加(1, " スタッフロール", -1, -1, -1, "", -1);
+		選択_項目追加(2, " スタッフロール／スキップ可", -1, -1, -1, "", -1);
+		選択_項目追加(3, " スタッフロール／スキップ可／待機あり", -1, -1, -1, "", -1);
+		選択_項目追加(11, " リザルト", -1, -1, -1, "", -1);
+		選択_区切り追加();
+		選択_項目追加(98, " 両方", -1, -1, -1, "", -1);
+		選択_項目追加(99, " 戻る ", -1, -1, -1, "", -1);
+		Ｔエンドロール／初期化();
+		switch (選択_実行(true, 0, 0, false))
+		{
+			case 1:
+				CStaffRoll StaffRoll;
+				StaffRoll.Update(2, 1);
+				break;
+			case 2:
+				CStaffRoll StaffRoll;
+				StaffRoll.Skip(true);
+				StaffRoll.Update(2, 1);
+				break;
+			case 3:
+				CStaffRoll StaffRoll;
+				StaffRoll.Skip(true);
+				StaffRoll.Through(true);
+				StaffRoll.Update(2, 1);
+				break;
+			case 11:
+				CEndResult EndResult;
+				EndResult.Update();
+				break;
+			case 98:
+				エンドロール();
+				break;
+			case 99:
+				return;
+			default:
+				break;
+		}
+	}
+	字枠(0, -2147483648, -1, -1);
+}
+

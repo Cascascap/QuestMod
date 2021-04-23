@@ -1,0 +1,258 @@
+void ３Ｄキャラ_作成(int nNo, int nX, int nY, int nDir, bool bShow)
+{
+	ref CReignPlugin rfPlugin = ３Ｄマップ_プラグイン();
+	if (rfPlugin === NULL)
+	{
+		return;
+	}
+	g_sPlayer.Create(rfPlugin, nNo, bShow);
+	g_sPlayer.SetMapPos(nX, nY);
+	g_sPlayer.SetMapDir(nDir);
+	g_sPlayer.SetDraw(bShow);
+	g_sPlayer.SetMotion(0, bShow);
+	g_sPlayer.SetNextMotion(1, bShow);
+}
+
+void ３Ｄキャラ_削除()
+{
+	g_sPlayer.Release();
+}
+
+bool ３Ｄキャラ_変更(int nNo)
+{
+	ref CReignPlugin rfPlugin = ３Ｄマップ_プラグイン();
+	if (rfPlugin === NULL)
+	{
+		return false;
+	}
+	if (!g_sPlayer.Change(rfPlugin, nNo))
+	{
+		return false;
+	}
+	bool bShow = g_sPlayer.GetDraw();
+	g_sPlayer.SetMotion(0, bShow);
+	g_sPlayer.SetNextMotion(1, bShow);
+	return true;
+}
+
+int ３Ｄキャラ_更新(int nPassTime, bool bCollisionDetection)
+{
+	ref CReignPlugin rfPlugin = ３Ｄマップ_プラグイン();
+	if (rfPlugin === NULL)
+	{
+		return -1;
+	}
+	return g_sPlayer.Update(３Ｄマップ_インスタンス(), bCollisionDetection);
+}
+
+void ３Ｄキャラ_マウス移動開始(int nMouseX, int nMouseY)
+{
+	g_sPlayer.SetLButtonDown(true);
+	g_sPlayer.SetMouseX(nMouseX);
+	g_sPlayer.SetMouseY(nMouseY);
+}
+
+void ３Ｄキャラ_マウス移動停止()
+{
+	g_sPlayer.SetLButtonDown(false);
+	g_sPlayer.SetMouseX(-1);
+	g_sPlayer.SetMouseY(-1);
+}
+
+void ３Ｄキャラ_マウス移動中(int nMouseX, int nMouseY)
+{
+	g_sPlayer.SetMouseX(nMouseX);
+	g_sPlayer.SetMouseY(nMouseY);
+}
+
+void ３Ｄキャラ_目的地移動開始()
+{
+	ref CReignPlugin rfPlugin = ３Ｄマップ_プラグイン();
+	if (rfPlugin === NULL)
+	{
+		return;
+	}
+	g_sPlayer.StartMovingToGoal(３Ｄマップ_インスタンス());
+}
+
+void ３Ｄキャラ_目的地移動停止()
+{
+	g_sPlayer.EndMovingToGoal();
+}
+
+void ３Ｄキャラ_位置設定(int nX, int nY)
+{
+	g_sPlayer.SetMapPos(nX, nY);
+}
+
+void ３Ｄキャラ_方向設定(int nDir)
+{
+	g_sPlayer.SetMapDir(nDir);
+}
+
+void ３Ｄキャラ_表示設定(bool bShow)
+{
+	g_sPlayer.SetDraw(bShow);
+}
+
+void ３Ｄキャラ_座標設定(float fX, float fY, float fZ)
+{
+	g_sPlayer.SetPos(fX, fY, fZ);
+}
+
+void ３Ｄキャラ_再生停止()
+{
+	g_sPlayer.Stop();
+}
+
+void ３Ｄキャラ_前進(int nDir)
+{
+	g_sPlayer.SetMapDir(nDir);
+	g_sPlayer.MoveForward();
+}
+
+bool ３Ｄキャラ_後退(ref array@T_PointF asPos)
+{
+	return g_sPlayer.MoveBack(asPos);
+}
+
+void ３Ｄキャラ_スクロール(int nX, int nY)
+{
+	g_sPlayer.Scroll(nX, nY, 250);
+}
+
+bool ３Ｄキャラ_モーション設定(int nMotion)
+{
+	return g_sPlayer.SetMotion(nMotion, true);
+}
+
+bool ３Ｄキャラ_次モーション設定(int nNextMotion)
+{
+	return g_sPlayer.SetNextMotion(nNextMotion, true);
+}
+
+bool ３Ｄキャラ_モーション切り替え()
+{
+	return g_sPlayer.SwapMotion();
+}
+
+bool ３Ｄキャラ_モーション状態設定(int nState)
+{
+	return g_sPlayer.SetMotionState(nState);
+}
+
+bool ３Ｄキャラ_モーションフレーム設定(float fFrame)
+{
+	return g_sPlayer.SetMotionFrame(fFrame);
+}
+
+bool ３Ｄキャラ_モーションフレーム範囲設定(float fBeginFrame, float fEndFrame)
+{
+	return g_sPlayer.SetMotionFrameRange(fBeginFrame, fEndFrame);
+}
+
+void ３Ｄキャラ_移動速度設定(int nTotalTime)
+{
+	g_sPlayer.SetTotalTime(nTotalTime);
+}
+
+void ３Ｄキャラ_移動距離設定(float fMoveLengthPerTime)
+{
+	g_sPlayer.SetMoveLengthPerTime(fMoveLengthPerTime);
+}
+
+void ３Ｄキャラ_移動単位時間設定(float fMoveTime)
+{
+	g_sPlayer.SetMoveTime(fMoveTime);
+}
+
+bool ３Ｄキャラ_表示()
+{
+	return g_sPlayer.GetDraw();
+}
+
+int ３Ｄキャラ_位置Ｘ()
+{
+	return g_sPlayer.GetMapX();
+}
+
+int ３Ｄキャラ_位置Ｙ()
+{
+	return g_sPlayer.GetMapZ();
+}
+
+int ３Ｄキャラ_方向()
+{
+	return g_sPlayer.GetMapDir();
+}
+
+int ３Ｄキャラ_次位置Ｘ()
+{
+	return g_sPlayer.GetNextMapX();
+}
+
+int ３Ｄキャラ_次位置Ｙ()
+{
+	return g_sPlayer.GetNextMapZ();
+}
+
+float ３Ｄキャラ_座標Ｘ()
+{
+	return g_sPlayer.GetPosX();
+}
+
+float ３Ｄキャラ_座標Ｙ()
+{
+	return g_sPlayer.GetPosY();
+}
+
+float ３Ｄキャラ_座標Ｚ()
+{
+	return g_sPlayer.GetPosZ();
+}
+
+bool ３Ｄキャラ_停止中()
+{
+	return g_sPlayer.IsStop();
+}
+
+bool ３Ｄキャラ_歩き中()
+{
+	return g_sPlayer.IsWalk();
+}
+
+int ３Ｄキャラ_番号()
+{
+	return g_sPlayer.GetNo();
+}
+
+int ３Ｄキャラ_モーション()
+{
+	return g_sPlayer.GetMotion();
+}
+
+int ３Ｄキャラ_次モーション()
+{
+	return g_sPlayer.GetNextMotion();
+}
+
+int ３Ｄキャラ_モーション状態()
+{
+	return g_sPlayer.GetMotionState();
+}
+
+float ３Ｄキャラ_モーションフレーム()
+{
+	return g_sPlayer.GetMotionFrame();
+}
+
+int ３Ｄキャラ_移動速度()
+{
+	return g_sPlayer.GetTotalTime();
+}
+
+bool ３Ｄキャラ_目的地移動中()
+{
+	return g_sPlayer.IsMovingToGoal();
+}
+

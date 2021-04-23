@@ -1,0 +1,156 @@
+void １５Ａ／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(0, -1, -1);
+	セット表示(5530, 0, 0, 0);
+	ト書き();
+	'A giant cave stretching out across two kilometers in eastern Helman.' A;
+	'The whole area is considered ancient, historical ruins.' A;
+	'Extensive exploration and research has been ongoing for several hundred years, but its true depths are still unknown, as no one knows if anyone\'s ever reached them.' A;
+	'Even now, its fame and its rumors still call many adventurers to it.' A;
+	'They come for training, and in search of special items, or the secrets of the world.' R;
+	'Many challenge this dungeon.' A;
+	セット表示(5530, 5075, 0, 0);
+	音楽(93, -1, -1);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Heh heh heh, I\'ll get straight to the bottom of this place."' A;
+	セリフ(2902, "Elevator Manager");
+	'"Oh? You customers?"' A;
+	セリフ(2000, "");
+	'"Hm? Who the heck are you?"' A;
+	セリフ(2902, "Elevator Manager");
+	'"Pleased to meet you.' R;
+	' I manage the elevator that leads into the dungeon."' A;
+	'"Welcome.' R;
+	' This is the Malgrid Dungeon.' R;
+	' The entrance fee is 100 Gold."' A;
+	セリフ(2000, "");
+	'"Hm? It costs money?"' A;
+	セリフ(2902, "Elevator Manager");
+	'"Yes, since it\'s a sightseeing site as well."' A;
+	'"And I assume you\'re aware of this, but it\'s very dangerous, so we can\'t guarantee your safety."' A;
+	セリフ(2001, "");
+	'"Gahahaha, who do you think I am?"' A;
+	セリフ(2902, "Elevator Manager");
+	'"If it\'s your first time here, you\'ll be starting from the 1st stratum."' A;
+	セリフ(2000, "");
+	'"Hmm... I\'d like to head straight down to the lowest part..."' A;
+	セリフ(2902, "Elevator Manager");
+	'"Well, you can\'t. Those are the rules."' A;
+	'"And you can\'t go on to the next stratum if you haven\'t made it to the stairs and gotten a stamp."' A;
+	'"Make sure to get a stamp when you clear a stratum.' R;
+	' Don\'t forget."' A;
+	セリフ(2000, "");
+	'"I get it, I get it.' R;
+	' I understand, so let me in already."' A;
+	セリフ(2902, "Elevator Manager");
+	'"Very well. Please enter the elevator, then."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2000, "");
+	'"Sure, sure."' A;
+	セリフ(2902, "Elevator Manager");
+	'"Here we go, then."' A;
+	ト書き();
+	'　' R;
+	' <clang, clang, clang, clang>' A;
+	'The elevator noisily descended into the dungeon.' A;
+	ADVOFF();
+}
+
+void １５Ａ／プロローグ／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(0, -1, -1);
+	セット表示(5530, 5075, 0, 0);
+	セリフ(2902, "Elevator Manager");
+	'"Oh hey, welcome."' A;
+	セリフ(2902, "Elevator Manager");
+	'"Heading down again?' R;
+	' Please pay here, then."' A;
+	セリフ(2005, "");
+	'"Tch, fine."' A;
+	セリフ(2902, "Elevator Manager");
+	'"Right this way, then.' R;
+	' We\'ll take you to your desired stratum from the elevator."' A;
+	セリフ(2000, "");
+	'"Mm."' A;
+	ト書き();
+	'　' R;
+	' <clang, clang, clang, clang>' A;
+	'The elevator noisily descended.' A;
+	ADVOFF();
+}
+
+void １５Ａ／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Ooh, there\'s somethin\' over here."' A;
+	枠消去();
+	ミニイベント表示(4330, 1, 500);
+	セリフ(2000, "");
+	'"Oho... This is the stamp stand?' R;
+	' Let\'s see here..."' A;
+	ト書き();
+	'"Congratulations on clearing this stratum."' A;
+	'"There are stairs past this point, and the monsters will walk around the cavern without attacking you for a while after this."' A;
+	'"We recommend going back to the surface for now and taking the elevator down to the next stratum."' A;
+	'"Please take this stamp as proof that you\'ve cleared this stratum."' A;
+	セリフ(2000, "");
+	'"Alright, all we gotta do is stamp this, then.' R;
+	' Stamp stamp!"' A;
+	セリフ(2001, "");
+	'"And now we\'ve cleared the stratum!' R;
+	' I knew I could do it!"' A;
+	セリフ(2000, "");
+	'"Which means this stratum is pretty much my property now."' A;
+	'"I should put my flag somewhere down here, then I can charge money to the people who wander in..."' A;
+	'"For now I guess I\'ll carve my name into the wall.' R;
+	' Carve, carve... R-A-N-C-E."' A;
+	セリフ(2001, "");
+	'"Alright, time to go home.' R;
+	' Gahahahahaha!"' A;
+}
+
+void １５Ａ／エピローグ／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(1, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	ミニイベント表示(4330, 1, 500);
+	セリフ(2000, "");
+	'"Oh, there\'s the stamp stand."' A;
+	'"Let\'s get a stamp. Stamp stamp!"' A;
+	セリフ(2001, "");
+	'"Now I\'ve cleared this stratum, too!' R;
+	' I knew I could do it!"' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	セリフ(2000, "");
+	'"Well, I\'m hungry, so I guess I\'ll go home for today."' A;
+	'"I think I\'d like some curry udon tonight..."' A;
+}
+

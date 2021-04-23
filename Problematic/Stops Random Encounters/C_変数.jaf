@@ -1,0 +1,559 @@
+int 名声_ランク()
+{
+	return ◆名声ランク;
+}
+
+int 名声_ランク設定(int nValue)
+{
+	◆名声ランク = nValue > 0 ? nValue : 0;
+	return ◆名声ランク;
+}
+
+int 名声_ランク＋(int nValue)
+{
+	return 名声_ランク設定(数値_加算(名声_ランク(), nValue));
+}
+
+int 名声_ポイント()
+{
+	return ◆名声;
+}
+
+int 名声_ポイント＋(int nValue)
+{
+	◆名声 = 数値_加算(◆名声, nValue);
+	return ◆名声;
+}
+
+int 名声_ポイント－(int nValue)
+{
+	◆名声 = 数値_減算(◆名声, nValue);
+	return ◆名声;
+}
+
+int 名声_ポイント最大()
+{
+	return ◆名声最大;
+}
+
+bool 名声_ランクアップ()
+{
+	int nMax = 名声_ポイント最大();
+	if (名声_ポイント() < nMax)
+	{
+		return false;
+	}
+	名声_ランク＋(1);
+	名声_ポイント－(nMax);
+	Ｔ名声最大書き換え();
+	return true;
+}
+
+int マップエリア番号()
+{
+	if (◆ＢＭＡＰ < 1 || ◆ＢＭＡＰ > クエスト_エリア数())
+	{
+		return 0;
+	}
+	return ◆ＢＭＡＰ;
+}
+
+int クエスト_攻略番号()
+{
+	return ◆iiq;
+}
+
+int クエスト_攻略番号設定(int nQuestNo)
+{
+	◆iiq = クエスト_確認(nQuestNo) ? nQuestNo : 0;
+	return ◆iiq;
+}
+
+bool クエスト_攻略中()
+{
+	return ◆iiq > 0;
+}
+
+int クエスト_名声ポイント()
+{
+	return ◆クエスト名声;
+}
+
+int クエスト_名声ポイント設定(int nPoint)
+{
+	◆クエスト名声 = nPoint > 0 ? nPoint : 0;
+	return ◆クエスト名声;
+}
+
+void クエスト_鑑定料初期化()
+{
+	g_nクエスト鑑定料_倍率 = 1;
+	g_nクエスト鑑定料_初期値 = ◆クエスト鑑定料;
+}
+
+int クエスト_鑑定料()
+{
+	return ◆クエスト鑑定料;
+}
+
+int クエスト_鑑定料設定(int nValue)
+{
+	◆クエスト鑑定料 = 数値_補正(nValue, 0, 9999);
+	return ◆クエスト鑑定料;
+}
+
+int クエスト_鑑定料ＵＰ(int nCount)
+{
+	return クエスト_鑑定料設定(数値_乗算(g_nクエスト鑑定料_初期値, ++g_nクエスト鑑定料_倍率));
+}
+
+int クエスト_ボーナス有無(int nNo)
+{
+	if (nNo < 1 || nNo >= ◆クエストボーナス有無.Numof())
+	{
+		return -1;
+	}
+	return ◆クエストボーナス有無[nNo];
+}
+
+int クエスト_ボーナス(int nNo)
+{
+	if (!クエスト_ボーナス番号確認(nNo))
+	{
+		return -1;
+	}
+	if (クエスト_ボーナス有無(nNo) != 1)
+	{
+		return -1;
+	}
+	return ◆クエストボーナス[nNo];
+}
+
+int クエスト_ボーナス最大(int nNo)
+{
+	if (nNo < 1 || nNo >= ◆クエストボーナス最大.Numof())
+	{
+		return -1;
+	}
+	if (クエスト_ボーナス有無(nNo) != 1)
+	{
+		return -1;
+	}
+	return ◆クエストボーナス最大[nNo];
+}
+
+bool クエスト_ボーナス番号確認(int nNo)
+{
+	return 0 < nNo && nNo < ◆クエストボーナス.Numof();
+}
+
+bool クエスト_パーティ編成可能()
+{
+	return ◆クエストパーティ編成禁止 != 1;
+}
+
+bool クエスト_パーティ編成禁止()
+{
+	return ◆クエストパーティ編成禁止 == 1;
+}
+
+bool クエスト_パーティ編成無制限()
+{
+	return ◆クエストパーティ編成禁止 == 2;
+}
+
+void クエスト_パーティ編成禁止解除()
+{
+	◆クエストパーティ編成禁止 = 0;
+}
+
+bool 戦闘入れ替え可能()
+{
+	if (クエスト_種類(クエスト_攻略番号()) != 0)
+	{
+		return false;
+	}
+	return クエスト_パーティ編成可能();
+}
+
+int 寄付()
+{
+	return ◆寄付;
+}
+
+int 寄付_設定(int nValue)
+{
+	◆寄付 = nValue > 0 ? nValue : 0;
+	return ◆寄付;
+}
+
+int 寄付＋()
+{
+	return 寄付_設定(数値_加算(寄付(), 1));
+}
+
+int 所持金()
+{
+	return ◆金;
+}
+
+int 所持金_設定(int nGold)
+{
+	◆金 = 数値_補正(nGold, 0, 999999999);
+	return ◆金;
+}
+
+int 所持金＋(int nGold)
+{
+	return 所持金_設定(数値_加算(所持金(), nGold));
+}
+
+int 所持金－(int nGold)
+{
+	return 所持金_設定(数値_減算(所持金(), nGold));
+}
+
+int 消費金額()
+{
+	return ◆売店で使った金;
+}
+
+int 消費金額_設定(int nGold)
+{
+	◆売店で使った金 = nGold;
+	return ◆売店で使った金;
+}
+
+int 消費金額＋(int nGold)
+{
+	return 消費金額_設定(数値_加算(消費金額(), nGold));
+}
+
+bool ランダムエンカウント_あり()
+{
+	return ◆ランダムエンカウント有無 > 0;
+}
+
+bool ランダムエンカウント_有無設定(bool bFlag)
+{
+	◆ランダムエンカウント有無 = bFlag ? 1 : 0;
+	return bFlag;
+}
+
+int ランダムエンカウント_歩数()
+{
+	return ◆ランダムエンカウント歩数;
+}
+
+int ランダムエンカウント_歩数設定(int nValue)
+{
+	◆ランダムエンカウント歩数 = nValue > 0 ? nValue : 0;
+	return ◆ランダムエンカウント歩数;
+}
+
+float ランダムエンカウント_距離()
+{
+	return ◆ランダムエンカウント歩数 * 4.0;
+}
+
+int 戦闘順番(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ◆戦闘順番.Numof())
+	{
+		return -1;
+	}
+	return ◆戦闘順番[nIndex];
+}
+
+int 戦闘順番_数()
+{
+	return ◆戦闘順番.Numof() - 1;
+}
+
+int 戦闘行動回数()
+{
+	return ◆戦闘行動回数;
+}
+
+int 戦闘逃げる率()
+{
+	if (◆ボス戦 > 0)
+	{
+		return 0;
+	}
+	return ◆逃げる確率;
+}
+
+int 戦闘逃げる率_設定(int nValue)
+{
+	◆逃げる確率 = 数値_補正(◆ボス戦 > 0 ? 0 : nValue, 0, 100);
+	return ◆逃げる確率;
+}
+
+int 戦闘逃げる率ＵＰ(int nValue)
+{
+	return 戦闘逃げる率_設定(数値_加算(◆逃げる確率, nValue));
+}
+
+string 戦闘エフェクト名()
+{
+	return ◆戦闘ＥＦ;
+}
+
+bool ランス城_オープン確認()
+{
+	return ◆ランス城オープン > 0;
+}
+
+bool ランス城_掃除中確認()
+{
+	return ◆ランス城オープン == 2;
+}
+
+bool ランス城_選択可能()
+{
+	return ◆ランス城オープン == 1;
+}
+
+int ランス城_エリア状態(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ランス城エリア.Numof())
+	{
+		return -1;
+	}
+	return ランス城エリア[nIndex];
+}
+
+int ランス城_エリアＣＧ(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ランス城エリアcg.Numof())
+	{
+		return -1;
+	}
+	return ランス城エリアcg[nIndex];
+}
+
+string ランス城_エリアＣＧ文字列(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ランス城エリアcg文字列.Numof())
+	{
+		return "";
+	}
+	return ランス城エリアcg文字列[nIndex];
+}
+
+int ランス城_エリアＮＥＷ(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ランス城エリアnew.Numof())
+	{
+		return -1;
+	}
+	return ランス城エリアnew[nIndex];
+}
+
+int ランス城_エリアエロ(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ランス城エリアero.Numof())
+	{
+		return -1;
+	}
+	return ランス城エリアero[nIndex];
+}
+
+string ランス城_エリア名(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ランス城エリア名.Numof())
+	{
+		return "";
+	}
+	return ランス城エリア名[nIndex];
+}
+
+int ＣＧモード_サムネイル番号(int nNo)
+{
+	if (nNo > ＣＧモード_最大数())
+	{
+		return -1;
+	}
+	if (nNo < 1 || nNo >= ◆ＣＧ／サムネイル.Numof())
+	{
+		return -1;
+	}
+	return ◆ＣＧ／サムネイル[nNo];
+}
+
+bool ＣＧモード_回想あり(int nNo)
+{
+	if (nNo > ＣＧモード_最大数())
+	{
+		return false;
+	}
+	if (nNo < 1 || nNo >= ◆ＣＧ／回想.Numof())
+	{
+		return false;
+	}
+	return ◆ＣＧ／回想[nNo];
+}
+
+int ＣＧモード_表示回数(int nNo)
+{
+	if (nNo > ＣＧモード_最大数())
+	{
+		return 0;
+	}
+	if (nNo < 1 || nNo >= ◆ＣＧモード／表示回数.Numof())
+	{
+		return 0;
+	}
+	return ◆ＣＧモード／表示回数[nNo];
+}
+
+int ＣＧモード_最大数()
+{
+	return ◆ＣＧモードの表示総数;
+}
+
+int ＣＧモード_有効数()
+{
+	int i = 0;
+	int cnt = ＣＧモード_最大数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (ＣＧモード_サムネイル番号(i) > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int 取得可能スキル_番号(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= 取得可能スキル.Numof())
+	{
+		return -1;
+	}
+	return 取得可能スキル[nIndex];
+}
+
+int 取得可能スキル_ポイント(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= 取得可能スキルポイント.Numof())
+	{
+		return -1;
+	}
+	return 取得可能スキルポイント[nIndex];
+}
+
+string 取得不可能スキル_説明(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= 取得不可能スキル説明.Numof())
+	{
+		return "";
+	}
+	return 取得不可能スキル説明[nIndex];
+}
+
+int 取得可能スキル_数()
+{
+	return 取得可能スキル.Numof() - 1;
+}
+
+int 取得可能スキル_検索(int nSkillNo)
+{
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = 取得可能スキル.Numof();
+	for (i = 1; i < cnt; ++i)
+	{
+		if (nSkillNo == 取得可能スキル[i])
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int ボーナススキル(int nIndex)
+{
+	if (nIndex < 1 || nIndex >= ◆ボーナススキル.Numof())
+	{
+		return -1;
+	}
+	return ◆ボーナススキル[nIndex];
+}
+
+int ボーナススキル_数()
+{
+	return ◆ボーナススキル.Numof() - 1;
+}
+
+int マップ_スタートＸ()
+{
+	switch (◆キャラ位置)
+	{
+		case 10:
+			return ＴＸ＞ＭＸ(NNx);
+		case 11:
+			return ＴＸ＞ＭＸ(SSx);
+		case 12:
+			return ＴＸ＞ＭＸ(EEx);
+		case 13:
+			return ＴＸ＞ＭＸ(WWx);
+		default:
+			break;
+	}
+	return ＴＸ＞ＭＸ(ＳｔＸＸ);
+}
+
+int マップ_スタートＹ()
+{
+	switch (◆キャラ位置)
+	{
+		case 10:
+			return ＴＸ＞ＭＸ(NNy);
+		case 11:
+			return ＴＸ＞ＭＸ(SSy);
+		case 12:
+			return ＴＸ＞ＭＸ(EEy);
+		case 13:
+			return ＴＸ＞ＭＸ(WWy);
+		default:
+			break;
+	}
+	return ＴＹ＞ＭＹ(ＳｔＹＹ);
+}
+
+bool マップ_スタート確認(int nMapX, int nMapY)
+{
+	return nMapX == マップ_スタートＸ() && nMapX == マップ_スタートＹ();
+}
+
+bool マグナム_あり(int nQuestNo)
+{
+	return マグナム_設置フラグ(nQuestNo) > 0;
+}
+
+bool マグナム_未取得(int nQuestNo)
+{
+	return マグナム_設置フラグ(nQuestNo) == 1;
+}
+
+bool マグナム_クリア(int nQuestNo)
+{
+	return マグナム_設置フラグ(nQuestNo) > 1;
+}
+
+int マグナム_設置フラグ(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｔマグナム設置処理(nQuestNo, 0);
+}
+

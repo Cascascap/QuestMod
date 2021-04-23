@@ -1,0 +1,35 @@
+void ログビューワ_初期化()
+{
+	ログビューワ_タイトル設定(ゲーム_名前());
+}
+
+void ログビューワ_ＯＰＥＮ()
+{
+	AFL_LogViewer_OpenViewer();
+}
+
+void ログビューワ_ＣＬＯＳＥ()
+{
+	AFL_LogViewer_CloseViewer();
+}
+
+bool ログビューワ_表示中()
+{
+	return AFL_LogViewer_IsOpenedViewer();
+}
+
+void ログビューワ_タイトル設定(string szTitleName)
+{
+	AFL_LogViewer_SetWindowTitleName(szTitleName);
+}
+
+void ログビューワ_テキスト追加(string szText)
+{
+	AFL_LogViewer_AddText(szText);
+}
+
+void ログビューワ_テキストクリア()
+{
+	AFL_LogViewer_ClearText();
+}
+

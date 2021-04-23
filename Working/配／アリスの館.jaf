@@ -1,0 +1,72 @@
+void アリス／１１０()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5080, 0, 0);
+	音楽(84, -1, -1);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Hello, this is Alice."' A;
+	'"Thank you for applying expansion patch 1.1."' A;
+	'"This patch fixes the following dangerous bugs:"' A;
+	'"There was a bug where a certain character would be unrecruitable if you discarded the reddish feather before recruiting her."' A;
+	'"Now you can buy the reddish feather again if you throw it away."' A;
+	'"We fixed a bug where certain transport devices in the quest \'Queen Pastel\' would get you stuck."' A;
+	'"We changed transport devices that bring you down a floor to disappear after being used."' A;
+	'"The often-used Normal Attacks 1 and 2 have damage limits, but we adjusted them a little."' A;
+	'"Now if you hit the damage limit but your attack power is high, you\'ll still do a good deal of damage."' A;
+	'"We also adjusted the skill \'Raise Damage Limit\' a lot.' R;
+	' Some other skills have also had their effects strengthened."' A;
+	'"We added just a few more scenes:"' A;
+	'"The three quests \'Cockroach Commotion,\' \'Cockroach Commotion Cont.\' and \'Biscuitta Joins.\'"' A;
+	'"We added player information to the trivia.' R;
+	' It\'s personal data that we can look at over the internet."' A;
+	'"Finally, we adjusted the price of skill resetter.' R;
+	' It was too expensive and no one was buying it, so Tama-san was crying."' A;
+	'"I felt bad, so I bought one myself.' R;
+	' ...But then I realized I had no way to use it."' A;
+	'"If you\'d like it, you can have it. Please put it to good use."' A;
+	'"Well, we hope you continue to enjoy Rance Quest."' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+	ADVOFF();
+}
+
+void アリス／１１５()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5080, 0, 0);
+	音楽(84, -1, -1);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Hello, this is Alice."' A;
+	'"Thank you for using updater file 1.15."' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+	セリフ(2080, "");
+	'"Let me just run the updater now, then."' A;
+	'"Let\'s see, these two go together, and...' R;
+	' I have to remove this and this..."' A;
+	'"Okay, okay..."' A;
+	セリフ(2916, "");
+	'"Caw, caw..."' A;
+	セリフ(2080, "");
+	'"It\'s finished!"' A;
+	セリフ(2916, "");
+	'"Caw!"' A;
+	セリフ(2080, "");
+	'"Nothing has changed much, but we made a lot of small adjustments."' A;
+	'"Please continue to enjoy Rance Quest."' A;
+	セリフ(2916, "");
+	'"Caaaaaw!"' A;
+}
+

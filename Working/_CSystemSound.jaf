@@ -1,0 +1,78 @@
+_CSystemSound::_CSystemSound()
+{
+	this._m_ch[0]._SetChannel(4);
+	this._m_ch[1]._SetChannel(5);
+	this._m_ch[2]._SetChannel(6);
+	this._m_ch[3]._SetChannel(7);
+	this._m_ch[4]._SetChannel(8);
+	this._m_ch[5]._SetChannel(9);
+	this._m_index = 0;
+}
+
+void _CSystemSound::_Play(int _snd, bool bWaitPlayEnd)
+{
+	if (_snd == 0 || _snd == -2147483648)
+	{
+		return;
+	}
+	this._m_ch[this._m_index]._Prepare(_snd);
+	this._m_ch[this._m_index]._Play();
+	if (bWaitPlayEnd)
+	{
+		this.WaitPlayEnd(this._m_index);
+	}
+	if (++this._m_index >= this._m_ch.Numof())
+	{
+		this._m_index = 0;
+	}
+}
+
+bool _CSystemSound::_Recycle(int _snd, bool bWaitPlayEnd)
+{
+	int _i = this._Find(_snd);
+	if (_i == -2147483648)
+	{
+		return false;
+	}
+	if (this._m_ch[_i]._IsPlay())
+	{
+		return false;
+	}
+	this._m_ch[_i]._Play();
+	if (bWaitPlayEnd)
+	{
+		this.WaitPlayEnd(_i);
+	}
+	return true;
+}
+
+void _CSystemSound::WaitPlayEnd(int nIndex)
+{
+	while (this._m_ch[nIndex]._IsPlay())
+	{
+		UpdateView(true);
+	}
+}
+
+int _CSystemSound::_Find(int _snd)
+{
+	int _i = 0;
+	for (_i = 0; _i < this._m_ch.Numof(); ++_i)
+	{
+		if (this._m_ch[_i]._IsSound(_snd))
+		{
+			return _i;
+		}
+	}
+	return -2147483648;
+}
+
+void _CSystemSound::_ClearCache()
+{
+	int _i = 0;
+	for (_i = 0; _i < this._m_ch.Numof(); ++_i)
+	{
+		this._m_ch[_i]._Unprepare();
+	}
+}
+

@@ -1,0 +1,487 @@
+float AFL_Config_GetMessageSpeedRate()
+{
+	return g_fMessageSpeedRate;
+}
+
+void AFL_Config_SetMessageSpeedRate(float Rate)
+{
+	if (Rate < 0.0)
+	{
+		Rate = 0.0;
+	}
+	else if (Rate > 1.0)
+	{
+		Rate = 1.0;
+	}
+	g_fMessageSpeedRate = Rate;
+}
+
+void AFL_Config_ResetMessageSpeedRate()
+{
+	g_fMessageSpeedRate = 0.5;
+}
+
+float AFL_Config_GetAutoModeWaitTimeRate()
+{
+	return g_fAutoModeWaitTimeRate;
+}
+
+void AFL_Config_SetAutoModeWaitTimeRate(float Rate)
+{
+	if (Rate < 0.0)
+	{
+		Rate = 0.0;
+	}
+	else if (Rate > 1.0)
+	{
+		Rate = 1.0;
+	}
+	g_fAutoModeWaitTimeRate = Rate;
+}
+
+void AFL_Config_ResetAutoModeWaitTimeRate()
+{
+	g_fAutoModeWaitTimeRate = 0.5;
+}
+
+float AFL_Config_GetAlreadyReadMessageSkipWaitTimeRate()
+{
+	return g_fReadedMessageSkipWaitTimeRate;
+}
+
+void AFL_Config_SetAlreadyReadMessageSkipWaitTimeRate(float Rate)
+{
+	if (Rate < 0.0)
+	{
+		Rate = 0.0;
+	}
+	else if (Rate > 1.0)
+	{
+		Rate = 1.0;
+	}
+	g_fReadedMessageSkipWaitTimeRate = Rate;
+}
+
+void AFL_Config_ResetAlreadyReadMessageSkipWaitTimeRate()
+{
+	g_fReadedMessageSkipWaitTimeRate = 1.0;
+}
+
+float AFL_Config_GetNotYetReadMessageSkipWaitTimeRate()
+{
+	return g_fDoesNotReadMessageSkipWaitTimeRate;
+}
+
+void AFL_Config_SetNotYetReadMessageSkipWaitTimeRate(float Rate)
+{
+	if (Rate < 0.0)
+	{
+		Rate = 0.0;
+	}
+	else if (Rate > 1.0)
+	{
+		Rate = 1.0;
+	}
+	g_fDoesNotReadMessageSkipWaitTimeRate = Rate;
+}
+
+void AFL_Config_ResetNotYetReadMessageSkipWaitTimeRate()
+{
+	g_fDoesNotReadMessageSkipWaitTimeRate = 0.666666686534882;
+}
+
+bool AFL_Config_GetRestrainScreensaverWhileAutoMode()
+{
+	return g_bRestrainScreensaverWhileAutoMode;
+}
+
+void AFL_Config_SetRestrainScreensaverWhileAutoMode(bool Flag)
+{
+	g_bRestrainScreensaverWhileAutoMode = Flag;
+}
+
+bool AFL_Config_GetStopVoiceByMessageClick()
+{
+	return g_bConfigStopVoiceByMessageClick;
+}
+
+void AFL_Config_SetStopVoiceByMessageClick(bool Flag)
+{
+	g_bConfigStopVoiceByMessageClick = Flag;
+}
+
+bool AFL_Config_GetFrameSkipWhileMessageSkip()
+{
+	return g_bConfigIsSpeedupForFrameSkip;
+}
+
+void AFL_Config_SetFrameSkipWhileMessageSkip(bool Flag)
+{
+	g_bConfigIsSpeedupForFrameSkip = Flag;
+	ChipmunkSpriteEngine.SYSTEM_SetConfigFrameSkipWhileMessageSkip(g_bConfigIsSpeedupForFrameSkip);
+}
+
+bool AFL_Config_GetReleaseMessageModeByClick()
+{
+	return g_bConfigReleaseMessageModeByClick;
+}
+
+void AFL_Config_SetReleaseMessageModeByClick(bool Flag)
+{
+	g_bConfigReleaseMessageModeByClick = Flag;
+}
+
+bool AFL_Config_GetReleaseMessageSkipInSelectMenu()
+{
+	return g_ReleaseMessageSkipInSelectMenu;
+}
+
+void AFL_Config_SetReleaseMessageSkipInSelectMenu(bool Flag)
+{
+	g_ReleaseMessageSkipInSelectMenu = Flag;
+}
+
+bool AFL_Config_GetReleaseAutoModeInSelectMenu()
+{
+	return g_ReleaseAutoModeInSelectMenu;
+}
+
+void AFL_Config_SetReleaseAutoModeInSelectMenu(bool Flag)
+{
+	g_ReleaseAutoModeInSelectMenu = Flag;
+}
+
+bool AFL_Config_GetShowSampleMessage()
+{
+	return g_ShowSampleMessage;
+}
+
+void AFL_Config_SetShowSampleMessage(bool Flag)
+{
+	g_ShowSampleMessage = Flag;
+}
+
+string AFL_Config_GetSampleMessageTextByElapsedTime(int MilliSecond)
+{
+	string l_SampleMessageText = "This is a sample message.";
+	int TimePerOneChar = g_MessageWindowModelManager.GetMessageWindow(1).文字速度 * SYS_メッセージ速度比率();
+	if (TimePerOneChar <= 0)
+	{
+		return l_SampleMessageText;
+	}
+	int TotalTime = l_SampleMessageText.Length() * TimePerOneChar + SYS_オートモード待機時間計算(l_SampleMessageText.Length());
+	MilliSecond %= TotalTime;
+	int TextLength = Math.Min(MilliSecond / TimePerOneChar, l_SampleMessageText.Length());
+	return l_SampleMessageText.GetPart(0, TextLength);
+}
+
+int AFL_Config_GetVolume(int GroupNumber)
+{
+	int Volume = 0;
+	SystemService.GetMixerVolume(GroupNumber, Volume);
+	return Volume;
+}
+
+void AFL_Config_SetVolume(int GroupNumber, int Volume)
+{
+	if (Volume < 0)
+	{
+		Volume = 0;
+	}
+	else if (Volume > 100)
+	{
+		Volume = 100;
+	}
+	SystemService.SetMixerVolume(GroupNumber, Volume);
+}
+
+bool AFL_Config_GetMute(int GroupNumber)
+{
+	bool Mute = false;
+	SystemService.GetMixerMute(GroupNumber, Mute);
+	return Mute;
+}
+
+void AFL_Config_SetMute(int GroupNumber, bool Mute)
+{
+	SystemService.SetMixerMute(GroupNumber, Mute);
+}
+
+bool AFL_Config_GetBGMFadeByVoice()
+{
+	return g_bConfigBGMFadeByVoice;
+}
+
+void AFL_Config_SetBGMFadeByVoice(bool Flag)
+{
+	g_bConfigBGMFadeByVoice = Flag;
+}
+
+bool AFL_Config_GetSoundGlobalFocus()
+{
+	return g_ConfigSoundGlobalFocus;
+}
+
+void AFL_Config_SetSoundGlobalFocus(bool Flag)
+{
+	g_ConfigSoundGlobalFocus = Flag;
+}
+
+bool AFL_Config_GetHideUnmoveMouseCursor()
+{
+	int HideUnmoveMouseCursor = 0;
+	SystemService.GetMouseCursorConfig(0, HideUnmoveMouseCursor);
+	return HideUnmoveMouseCursor != 0;
+}
+
+void AFL_Config_SetHideUnmoveMouseCursor(bool Flag)
+{
+	SystemService.SetMouseCursorConfig(0, Flag ? 1 : 0);
+}
+
+int AFL_Config_GetWheelForward()
+{
+	return g_nKeyConfigMouseWheelForward;
+}
+
+void AFL_Config_SetWheelForward(int Type)
+{
+	if (Type != 0 && Type != 1)
+	{
+		return;
+	}
+	g_nKeyConfigMouseWheelForward = Type;
+}
+
+bool AFL_Config_GetQuickSaveConfirm()
+{
+	return AFL_GetConfigQuickSaveConfirm();
+}
+
+void AFL_Config_SetQuickSaveConfirm(bool Flag)
+{
+	g_ConfigQuickSaveConfirm = Flag;
+}
+
+bool AFL_Config_GetQuickLoadConfirm()
+{
+	return AFL_GetConfigQuickLoadConfirm();
+}
+
+void AFL_Config_SetQuickLoadConfirm(bool Flag)
+{
+	g_ConfigQuickLoadConfirm = Flag;
+}
+
+bool AFL_Config_GetSaveConfirm()
+{
+	return AFL_GetConfigSaveConfirm();
+}
+
+void AFL_Config_SetSaveConfirm(bool Flag)
+{
+	g_ConfigSaveConfirm = Flag;
+}
+
+bool AFL_Config_GetLoadConfirm()
+{
+	return AFL_GetConfigLoadConfirm();
+}
+
+void AFL_Config_SetLoadConfirm(bool Flag)
+{
+	g_ConfigLoadConfirm = Flag;
+}
+
+bool AFL_Config_GetWindowMode()
+{
+	return !SystemService.IsFullScreen();
+}
+
+void AFL_Config_SetWindowMode(bool WindowMode)
+{
+	if (WindowMode)
+	{
+		if (!SystemService.IsFullScreen())
+		{
+			return;
+		}
+		SystemService.ChangeNormalScreen();
+	}
+	else
+	{
+		if (SystemService.IsFullScreen())
+		{
+			return;
+		}
+		SystemService.ChangeFullScreen();
+	}
+}
+
+int AFL_Config_GetAspectRatio()
+{
+	int AspectRatio = 0;
+	SystemService.GetWindowSetting(0, AspectRatio);
+	return AspectRatio;
+}
+
+void AFL_Config_SetAspectRatio(int Type)
+{
+	if (Type != 0 && Type != 1)
+	{
+		return;
+	}
+	SystemService.SetWindowSetting(0, Type);
+}
+
+int AFL_Config_GetScalingType()
+{
+	int ScalingMode = 0;
+	SystemService.GetWindowSetting(1, ScalingMode);
+	return ScalingMode;
+}
+
+void AFL_Config_SetScalingType(int Type)
+{
+	if (Type != 0 && Type != 1)
+	{
+		return;
+	}
+	SystemService.SetWindowSetting(1, Type);
+}
+
+bool AFL_Config_GetWaitVSync()
+{
+	int WaitVSync = 0;
+	SystemService.GetWindowSetting(2, WaitVSync);
+	return WaitVSync != 0;
+}
+
+void AFL_Config_SetWaitVSync(bool Flag)
+{
+	SystemService.SetWindowSetting(2, Flag ? 1 : 0);
+}
+
+bool AFL_Config_GetRecordPosSize()
+{
+	int RecordPosSize = 0;
+	SystemService.GetWindowSetting(3, RecordPosSize);
+	return RecordPosSize != 0;
+}
+
+void AFL_Config_SetRecordPosSize(bool Flag)
+{
+	SystemService.SetWindowSetting(3, Flag ? 1 : 0);
+}
+
+bool AFL_Config_GetMinimizeByFullScreenInactive()
+{
+	int MinimizeByFullScreenInactive = 0;
+	SystemService.GetWindowSetting(4, MinimizeByFullScreenInactive);
+	return MinimizeByFullScreenInactive != 0;
+}
+
+void AFL_Config_SetMinimizeByFullScreenInactive(bool Flag)
+{
+	SystemService.SetWindowSetting(4, Flag ? 1 : 0);
+}
+
+bool AFL_Config_GetSleepByInactive()
+{
+	return ChipmunkSpriteEngine.SYSTEM_GetConfigSleepByInactiveWindow();
+}
+
+void AFL_Config_SetSleepByInactive(bool Flag)
+{
+	ChipmunkSpriteEngine.SYSTEM_SetConfigSleepByInactiveWindow(Flag);
+	g_bSleepByInactiveWindow = Flag;
+}
+
+bool AFL_Config_GetOverFrameRateSleep()
+{
+	return ChipmunkSpriteEngine.SYSTEM_GetConfigOverFrameRateSleep();
+}
+
+void AFL_Config_SetOverFrameRateSleep(bool Flag)
+{
+	ChipmunkSpriteEngine.SYSTEM_SetConfigOverFrameRateSleep(Flag);
+	g_bConfigOverFrameRateSleep = Flag;
+}
+
+void AFL_Config_InitMainWindowPosAndSize()
+{
+	SystemService.InitMainWindowPosAndSize();
+}
+
+bool AFL_Config_GetShowFPS()
+{
+	return AFL_DebugFPS_GetShow();
+}
+
+void AFL_Config_SetShowFPS(bool Flag)
+{
+	AFL_DebugFPS_SetShow(Flag);
+}
+
+bool AFL_Config_GetDirect3DMode()
+{
+	return ChipmunkSpriteEngine.VIEW_GetMode() != 0;
+}
+
+void AFL_Config_SetDirect3DMode(bool Flag)
+{
+	ChipmunkSpriteEngine.VIEW_SetMode(Flag ? 1 : 0);
+}
+
+bool AFL_Config_GetShowMemorySize()
+{
+	return g_DebugMemorySize.GetShow();
+}
+
+void AFL_Config_SetShowMemorySize(bool Flag)
+{
+	g_DebugMemorySize.SetShow(Flag);
+}
+
+bool AFL_Config_GetShowFillRate()
+{
+	return g_DebugFillRate.GetShow();
+}
+
+void AFL_Config_SetShowFillRate(bool Flag)
+{
+	g_DebugFillRate.SetShow(Flag);
+}
+
+bool AFL_Config_GetShowVideoMemorySize()
+{
+	return g_DebugVideoMemorySize.GetShow();
+}
+
+void AFL_Config_SetShowVideoMemorySize(bool Flag)
+{
+	g_DebugVideoMemorySize.SetShow(Flag);
+}
+
+string AFL_Config_GetHelpText(int Type, bool AddNewLine)
+{
+	string NewLineText = AddNewLine ? "\n" : "";
+	string NewLineText2 = AddNewLine ? "\n\n" : "";
+	switch (Type)
+	{
+		case 0:
+			return "Maintain the game window's aspect ratio" + NewLineText + "in full screen mode even when it doesn't" + NewLineText + "match the display's aspect ratio." + NewLineText2 + "Requires a Direct3D-enabled video card.";
+		case 1:
+			return "Use Bilinear filtering to enlarge the screen." + NewLineText2 + "Only applies in Fullscreen mode when" + NewLineText + "'Dimensions when full screened' is set to" + NewLineText + "'Use screen dimensions.'";
+		case 2:
+			return "Sharper scaling than bilinear, but may" + NewLineText + "cause jaggedness depending on the" + NewLineText + "target resolution." + NewLineText2 + "Only applies in Fullscreen mode when" + NewLineText + "'Dimensions when full screened' is set to" + NewLineText + "'Use screen dimensions.'" + NewLineText2 + "Requires a Shader Model 3.0-compatible" + NewLineText + "video card.";
+		case 3:
+			return "Reduce flickering and tearing by matching the" + NewLineText + "frame rate to the display's refresh rate.";
+		case 4:
+			return "If checked, the game will minimize itself" + NewLineText + "whenever you switch to another program.";
+		case 5:
+			return "Decrease the game's frame rate to" + NewLineText + "save on CPU usage." + NewLineText2 + "If your CPU reduces its own clock speed," + NewLineText + "CPU usage may not look lower on the" + NewLineText + "task manager.";
+	}
+	return "";
+}
+

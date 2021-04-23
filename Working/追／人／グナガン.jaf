@@ -1,0 +1,285 @@
+void グナガン／その１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, 5322, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Hall' A;
+	セット表示(5540, 0, 0, 0);
+	イベントＣＧ表示(3730, 1, 1000);
+	音楽(89, -1, -1);
+	ト書きＥ();
+	'Several maids were cleaning in the hall.' A;
+	セリフＥ(2120, "Cheeky Maid");
+	'"Oh yeah, have you heard the rumor about the poster room downstairs?"' A;
+	セリフＥ(2020, "Clean-Freak Maid");
+	'"Ah, yeah, I heard it\'s all full now.' R;
+	' That\'s so cool!"' A;
+	セリフＥ(2120, "Cheeky Maid");
+	'"No, not that.' R;
+	' I heard there are monsters who look at the art at night."' A;
+	セリフＥ(2020, "Clean-Freak Maid");
+	'"Heh?"' A;
+	セリフＥ(2120, "Cheeky Maid");
+	'"A few people have seen them now. They\'re red, creepy-looking things...' R;
+	' They just stare mindlessly at the art, they say."' A;
+	セリフＥ(2020, "Clean-Freak Maid");
+	'"Huh... What are they?"' A;
+	セリフＥ(2120, "Cheeky Maid");
+	'"How should I know!' R;
+	' All the girls who saw them have been freaking out, though."' A;
+	'"Well, I think it\'s just a rumor, but...' R;
+	' You guys should be careful, too."' A;
+	セリフＥ(2020, "Clean-Freak Maid");
+	'"Yeah, yeah."' A;
+	音楽(0, 1, 1000);
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	'　' R;
+	'  ...  ...  ...' A;
+	音楽(83, -1, -1);
+	'There are mysteries in this world that have not yet been solved.' A;
+	'Is it a servant of God, or a relative of devils, or could it be a lifeform from space...?' A;
+	'It\'s said to appear whenever certain pieces of art are collected...' A;
+	'Why does it appear before this art...?' R;
+	'Why does it exist at all...?' A;
+	'The answers to these questions are all shrouded in darkness...' A;
+	音楽(0, 1, 1000);
+	'　' R;
+	'  ...  ...  ...' A;
+	枠消去();
+	セット表示(5510, 5322, 0, 0);
+	音楽(82, -1, -1);
+	全画面揺れ(1, false);
+	セリフ２(2120, "Cheeky Maid");
+	'"Aaaaaaaah!"' A;
+	ト書き();
+	'A maid\'s scream resounded through the castle.' A;
+	セリフ２(2120, "Senior Maid");
+	'"Wh-What? What?! What happened?!"' A;
+	セリフ２(2120, "Cheeky Maid");
+	'"Th-Th-There are monsters in the basement poster room!"' A;
+	'"Some of the girls who can fight tried to stand up to them, but they already lost!"' A;
+	'"Wh-Where\'s the master and his friends?!' R;
+	' He\'s probably the only one who could win against those things..."' A;
+	セリフ２(2120, "Senior Maid");
+	'"Th-They\'re out on an adventure..."' A;
+	セリフ２(2120, "Cheeky Maid");
+	'"Oh no..."' A;
+	枠消去();
+	立ち絵表示(1330, 1, 200);
+	セリフ(2330, "");
+	'"I heard what happened."' A;
+	セリフ２(2120, "Senior Maid");
+	'"Y-You\'re the gate guard..."' A;
+	セリフ(2330, "");
+	'"Leave the rest to me.' R;
+	' Protecting the castle is the duty of a knight."' A;
+	'"Rance Castle\'s Head Knight, Sanakia Drelshkaf..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2331, "");
+	'"Will fight!"' A;
+	ト書き();
+	'Sanakia headed down to face the monsters.' A;
+	ADVOFF();
+}
+
+void グナガン／その２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, 5322, 0, 0);
+	音楽(76, -1, -1);
+	セリフ(2331, "");
+	'"Ghh!"' A;
+	'"D-Damn it... They\'re strong!"' A;
+	'"Kh, I can\'t lose...' R;
+	' If I retreat here, the castle will..."' A;
+	ト書き();
+	'Sanakia lifted herself onto her knee, trying to pick herself up one more time.' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"You can\'t handle this. Leave it to me."' A;
+	セリフ(2331, "");
+	'"Huh...? R-Rance...?"' A;
+	セリフ(2000, "");
+	'"Fuckin\' around in my house while I\'m gone..."' A;
+	セリフ(2002, "");
+	'"DIIIIIE!"' A;
+	ADVOFF();
+}
+
+void グナガン／その３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, 5322, 0, 0);
+	セリフ(2000, "");
+	'"Hmph, comin\' into somebody\'s castle without his permission..."' A;
+	ト書き();
+	'Rance defeated the mysterious beings.' A;
+	セリフ(2005, "");
+	'"Hmph, still more of ’em."' A;
+	セリフ(2000, "");
+	'"Everybody split up and take care of these creepy things."' A;
+	セリフ(2124, "");
+	'"Certainly!"' A;
+	セリフ(2103, "");
+	'"Whooooooooooa!"' A;
+	セリフ(2110, "");
+	'"B-Be careful, everyone!"' A;
+	音楽(94, -1, -1);
+	枠消去();
+	立ち絵表示(1330, 1, 200);
+	セリフ(2330, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Hey, Sanakia, you okay?"' A;
+	セリフ(2330, "");
+	'"Ah... Rance..."' A;
+	セリフ(2000, "");
+	'"Yep, Rance."' A;
+	セリフ(2330, "");
+	'"L-Let me make sure..."' A;
+	セリフ(2000, "");
+	'"Hm? What\'s up?"' A;
+	セリフ(2330, "");
+	'"U-Umm... about me..."' A;
+	セリフ(2000, "");
+	'"Ah, right.' R;
+	' Yeah, I knew you were here, Sanakia."' A;
+	セリフ(2331, "");
+	'"Th-Then... why did you never say anything...?!"' A;
+	'"I believed you when you said you\'d make me captain of your knights..."' A;
+	'"I heard you\'d built a castle, so I thought I\'d surprise you with a visit..."' A;
+	'"I thought you would be happy to see me guarding your castle as your knight..."' A;
+	'"But you didn\'t notice at all."' A;
+	セリフ(2000, "");
+	'"Guess not."' A;
+	セリフ(2331, "");
+	'"Miss Biscuitta prepared a room for me, yet you still didn\'t notice, and you took other girls on your adventures without saying a word to me..."' A;
+	'"I thought it was because I was weak, but there seem to be girls who can\'t be anything but civilians with you, too..."' A;
+	'"And then I decided to think that maybe you\'d entrusted me with the important task of guarding your castle... but..."' A;
+	ト書き();
+	'Sanakia\'s expression clouded more and more.' A;
+	セリフ(2330, "");
+	'"I thought about asking Miss Biscuitta, but...' R;
+	' After all this time..."' A;
+	'"I thought maybe you really just hadn\'t noticed..."' A;
+	'"So I started loitering around nearby hoping you\'d say something..."' A;
+	セリフ(2331, "");
+	'"Wh-What\'s going on here?!"' A;
+	セリフ(2000, "");
+	'"Well, of course I\'d noticed."' A;
+	セリフ(2331, "");
+	'"...Th-Then...!"' A;
+	セリフ(2000, "");
+	'"Which is why I pretended not to, ’cause it was fun seeing you look so nervous all the time."' A;
+	セリフ(2330, "");
+	'"Huh? Wh...?"' A;
+	セリフ(2001, "");
+	'"Gahahaha, you were so cute!"' A;
+	セリフ(2330, "");
+	'"Y..."' A;
+	セリフ(2331, "");
+	'"You asshooooooooole!!"' A;
+	セリフ(2001, "");
+	'"Gahahahahahahahahahaha!"' A;
+	セリフ(2060, "");
+	'"I apologize for the intrusion, but may I...?"' A;
+	セリフ(2331, "");
+	'"You may not!"' A;
+	セリフ(2000, "");
+	'"You may. What is it?"' A;
+	セリフ(2060, "");
+	'"........."' A;
+	'"Well, it appears that the monster in the poster room downstairs is the legendary Gunagan."' A;
+	セリフ(2000, "");
+	'"Oho, a fine catch."' A;
+	'"Hmph, intruders get the death penalty!"' A;
+	'"Alright, we\'re hunting Gunagans today!"' A;
+	セリフ(2331, "");
+	'"Ah, h-hey! We\'re not done here yet!"' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance\'s party moved down to the poster room.' A;
+	枠消去();
+	セット表示(5540, 0, 0, 0);
+	壁紙ポスタールーム表示();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Basement   Poster Room' A;
+	'Gunagan was underground.' A;
+	セリフ(2000, "");
+	'"Heh, what a pipsqueak."' A;
+	セリフ(2002, "");
+	'"Let\'s go, everybody!"' A;
+	ADVOFF();
+}
+
+void グナガン／その４()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	壁紙ポスタールーム表示();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	'Rance defeated Gunagan.' A;
+	セリフ(2003, "");
+	'"Yikes...' R;
+	' That thing was pretty tough..."' A;
+	セリフ(2005, "");
+	'"Hmm, he dropped something."' A;
+	音楽(71, -1, -1);
+	枠消去();
+	セット表示(5540, 0, 0, 0);
+	イベントＣＧ表示(3740, 1, 1000);
+	キー待ち_左クリック();
+	ト書きＥ();
+	'　' R;
+	'  ...  ...  ...' A;
+	枠消去();
+	セット表示(5540, 0, 0, 0);
+	壁紙ポスタールーム表示();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2005, "");
+	'"What... is this...?"' A;
+	セリフ(2060, "");
+	'"It\'s called Gunagan\'s Treasure.' R;
+	' It\'s a very rare thing. Pretty amazing."' A;
+	セリフ(2005, "");
+	'"I don\'t want it..."' A;
+	'"What the fuck is a Gunagan, anyway..."' A;
+	セリフ(2060, "");
+	'"No one knows.' R;
+	' Even the Church\'s documents on it just call it a mysterious evil god."' A;
+	'"Apparently, its appearances are linked to the keyword \'art\'?"' A;
+	セリフ(2005, "");
+	'"I really don\'t care..."' A;
+	セリフ(2060, "");
+	'"I see."' A;
+	ADVOFF();
+}
+

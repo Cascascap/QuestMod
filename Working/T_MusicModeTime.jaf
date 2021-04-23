@@ -1,0 +1,84 @@
+T_MusicModeTime::T_MusicModeTime()
+{
+	this.clear();
+}
+
+T_MusicModeTime::~T_MusicModeTime()
+{
+	this.delete();
+}
+
+bool T_MusicModeTime::create(int nZ)
+{
+	this.delete();
+	this.m_spSlider.setCg(12282);
+	this.m_spSlider.setPos(540, 636);
+	this.m_spSlider.setZ(nZ);
+	this.m_sNumber.create(193, 23, -1, 0, 1, 1);
+	this.m_sNumber.setPos(811, 725);
+	this.m_sNumber.setZ(nZ);
+	this.m_sNumber.setTextSpace(-4);
+	this.m_sNumber.setFontSize(22);
+	this.m_sNumber.setFontType(258);
+	this.m_sNumber.setFontBold(0);
+	this.m_sNumber.setFontColor(255, 255, 255);
+	this.m_sNumber.setDrawType(1);
+	this.m_sNumber.setText("00:00:00Å^00:00:00", false);
+	return true;
+}
+
+void T_MusicModeTime::delete()
+{
+	this.m_spSlider.delete();
+	this.m_sNumber.delete();
+	this.clear();
+}
+
+void T_MusicModeTime::clear()
+{
+	this.m_nLength = -1;
+	this.m_szLength = "";
+}
+
+void T_MusicModeTime::start()
+{
+	this.m_nLength = AFL_BGM_GetPlayLength();
+	this.m_szLength = this.getTimeText(this.m_nLength);
+	g_bMusicModeUpdate = true;
+}
+
+void T_MusicModeTime::stop()
+{
+	this.m_spSlider.setPos(540, 636);
+	this.m_sNumber.setText("%sÅ^%s" % this.getTimeText(0) % this.m_szLength, false);
+	g_bMusicModeUpdate = false;
+}
+
+bool T_MusicModeTime::update()
+{
+	if (this.m_nLength < 0)
+	{
+		return false;
+	}
+	int nPos = êîíl_ï‚ê≥(AFL_BGM_GetPlayPos(), 0, this.m_nLength);
+	int nSize = é¿êîåvéZ(457.0, nPos, this.m_nLength);
+	this.m_spSlider.setPos(540 + nSize, 636);
+	this.m_sNumber.setText("%sÅ^%s" % this.getTimeText(nPos) % this.m_szLength, false);
+	return true;
+}
+
+void T_MusicModeTime::setShow(bool bShow)
+{
+	this.m_spSlider.setShow(bShow);
+	this.m_sNumber.setShow(bShow);
+}
+
+string T_MusicModeTime::getTimeText(int nTime)
+{
+	nTime = nTime > 0 ? nTime : 0;
+	int nMinute = nTime / 60000;
+	int nSecond = (nTime / 1000) % 60;
+	int nMilliSeconds = (nTime % 1000) / 10;
+	return "%02d:%02d:%02d" % nMinute % nSecond % nMilliSeconds;
+}
+

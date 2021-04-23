@@ -1,0 +1,5 @@
+void SReignConfigCommentList::PushBack(string Text)
+{
+	this.CommentList.PushBack(Text);
+}
+

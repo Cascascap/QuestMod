@@ -1,0 +1,241 @@
+void 武器ハニー／実行不可()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5070, 0, 0);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"So this is the hanny village."' A;
+	セリフ(2000, "");
+	'"Sounds like you can\'t get in if you\'re carrying weapons, metal things, or blades."' A;
+	'"........."' A;
+	セリフ(2005, "");
+	'"Hey, who\'s the moron who\'s holding one?!"' A;
+	'"Tch, oh well, we\'ll have to come back."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance\'s party had to turn back, since they were carrying weapons.' A;
+	'　' R;
+	'  This quest can only be taken' R;
+	'  if all party members are either' R;
+	'  unarmed or equipped with clubs.' A;
+}
+
+void 武器ハニー／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5070, 0, 0);
+	ト書き();
+	'Once upon a time... some hannies lived together merrily.' A;
+	音楽(57, -1, -1);
+	セリフ(2927, "");
+	'"Aiya!"' A;
+	セリフ(2974, "");
+	'"Hey, hey!"' A;
+	セリフ(2903, "");
+	'"Eeeee, stop that!"' A;
+	ト書き();
+	'The hannies did many bad things, attacking nearby villages.' A;
+	セリフ(2903, "");
+	'"*sob* *sob*... They stole our food again..."' A;
+	ト書き();
+	'However...' R;
+	'One day, they realized something.' A;
+	セリフ(2927, "");
+	'"...Can we really keep going like this?"' A;
+	セリフ(2974, "");
+	'"What do you mean?"' A;
+	セリフ(2927, "");
+	'"If we keep doing bad things like this, one day the humans are gonna get back at us..."' A;
+	セリフ(2974, "");
+	'"...Yeah."' A;
+	'"You\'re right. Bad things come to people who do bad things."' A;
+	セリフ(2927, "");
+	'"Let\'s stop doing this stuff!"' A;
+	ト書き();
+	'Voices rang out in agreement with the hanny.' A;
+	セリフ(2927, "");
+	'"Let\'s get away from the humans while we can! We\'ll quit while we\'re ahead!"' A;
+	セリフ(2974, "");
+	'"...Quit while we\'re ahead..."' A;
+	'"...That sounds cool..."' R;
+	'  ↑  Spellbound' A;
+	セリフ(2927, "");
+	'"Quit while we\'re ahead! Quit while we\'re ahead!' R;
+	' I don\'t really get it, but it\'s cool!"' A;
+	セリフ(2974, "");
+	'"Alright, I\'m gonna quit while I\'m ahead♪!"' A;
+	セリフ(2927, "");
+	'"Me too♪!"' A;
+	セリフ(2974, "");
+	'"Okay, then when we get back to our village, let\'s outlaw weapons there."' A;
+	セリフ(2927, "");
+	'"Ooh, what a good idea!' R;
+	' Then we won\'t lose to the humans!"' A;
+	セリフ(2974, "");
+	'"Let\'s do that♪! Let\'s do that♪!"' A;
+	ト書き();
+	'The hannies returned to their village in high spirits and outlawed the use of blades and metal objects in their village.' A;
+	'Afterward, the occasional human would show up unarmed to challenge them, but they were all done in by their Hanny Flash attacks.' A;
+	'The only other weapons unarmed humans had was magic, but that didn\'t work on hannies in the first place.' A;
+	セリフ(2927, "");
+	'"We definitely quit while we were ahead♪!"' R;
+	'  ↑  Looking happy' A;
+	セリフ(2974, "");
+	'"Yeah, we did♪!"' R;
+	'  ↑  Looking happy' A;
+	セリフ(2927, "");
+	'"We\'re on the forefront of our time, huh♪?"' A;
+	セリフ(2974, "");
+	'"We\'re starting all the trends, aren\'t we♪?"' A;
+	セリフ(2927, "");
+	'"We\'re not afraid of humans anymore, after all♪!"' A;
+	セリフ(2974, "");
+	'"They\'re easy to beat now♪!"' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'The hannies named their village, now an eternal paradise, Hanny\'z Heaven.' A;
+	'And the hannies lived there happily ever after...' A;
+	セット表示(0, 0, 0, 0);
+	ト書き();
+	'The end...' A;
+	セット表示(5530, 5070, 0, 0);
+	音楽(75, -1, -1);
+	全画面揺れ(3, false);
+	セリフ(2002, "");
+	'"Kabaaam!"' A;
+	ト書き();
+	'　' R;
+	' <craaash!>' A;
+	セリフ(2927, "");
+	'"Aaaaah!"' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2001, "");
+	'"Gahahaha, so this is the hanny village, huh?' R;
+	' Taking these guys out is gonna be a piece of cake!"' A;
+	セリフ(2927, "");
+	'"Heeey!' R;
+	' It\'s forbidden to bring weapons into this village!"' A;
+	セリフ(2000, "");
+	'"Yeah, I know.' R;
+	' You guys don\'t allow blades or metal in your village, right?"' A;
+	セリフ(2927, "");
+	'"Huh...?' R;
+	' Is what you\'re carrying not a weapon?"' A;
+	セリフ(2000, "");
+	'"It is. It\'s a wooden weapon called a club."' A;
+	セリフ(2927, "");
+	'"...Oh."' A;
+	'"Aw, crap!' R;
+	' Nobody thought about big pieces of wood!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, I\'ll wipe out this hanny-infested village!"' A;
+	セリフ(2927, "");
+	'"Eee! Everybody run! Run!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, after ’em! After ’em!"' A;
+	ADVOFF();
+}
+
+void 武器ハニー／ボス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2927, "");
+	'"Aiyaaa! Wait a second!"' A;
+	セリフ(2000, "");
+	'"What is it?"' A;
+	セリフ(2927, "");
+	'"Those wooden weapons are against the rules!"' A;
+	'"No dangerous things!"' A;
+	セリフ(2000, "");
+	'"Oh, it\'s fine. These are just clubs."' A;
+	セリフ(2927, "");
+	'"Huh? Really?"' A;
+	'"They\'re safe?"' A;
+	セリフ(2000, "");
+	'"They\'re super dangerous.' R;
+	' We\'re gonna smash you guys with ’em."' A;
+	セリフ(2927, "");
+	'"Nooo, stop!"' A;
+	セリフ(2001, "");
+	'"Gahahahaaa!"' A;
+	ADVOFF();
+}
+
+void 武器ハニー／ボス／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2974, "");
+	'"Aiyaaaaa!"' A;
+	ト書き();
+	'　' R;
+	' <craaaaash!>' A;
+	セリフ(2927, "");
+	'"This village is done for!"' A;
+	セリフ(2974, "");
+	'"Aaah, wait!"' A;
+	ト書き();
+	'The hannies scattered in all directions.' A;
+	音楽(93, -1, -1);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2001, "");
+	'"Gahahaha, divine punishment delivered."' A;
+	'"Clubs are perfectly fine weapons when they\'re used by someone as amazing as me."' A;
+	セリフ(2000, "");
+	'"Look at my devastating swing!"' A;
+	ト書き();
+	'　' R;
+	' <swing! swing!>' A;
+	セリフ(2001, "");
+	'"Gahahahahaha!"' A;
+	ト書き();
+	'Rance got caught up in the moment and started swinging his club around.' A;
+	セリフ(2020, "");
+	'"S-Sir, it\'s dangerous to swing it around like that..."' A;
+	セリフ(2001, "");
+	'"Huh? Wha\'d ya say?"' A;
+	ト書き();
+	'　' R;
+	' <whack!>' A;
+	セリフ(2022, "");
+	'"Owwwww!"' A;
+	ト書き();
+	'The club flew into Sachiko\'s head!' A;
+	セリフ(2022, "");
+	'"Ah... aah... ah, ah..."' A;
+	セリフ(2005, "");
+	'"Yeesh..."' A;
+	'"...That\'s dangerous. Don\'t just get whacked by the thing, you loser."' A;
+	セリフ(2022, "");
+	'"Wha...? That\'s... Aah..."' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'The paradise where the hannies could live in peace, Hanny\'z Heaven, crumbled.' A;
+}
+

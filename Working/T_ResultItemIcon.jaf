@@ -1,0 +1,395 @@
+bool T_ResultItemIcon::getJudge(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asIcon.Numof() ? 0 : this.m_asIcon[nIndex].getJudge();
+}
+
+bool T_ResultItemIcon::getDonation(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_abDonation.Numof() ? 0 : this.m_abDonation[nIndex];
+}
+
+int T_ResultItemIcon::getPosX(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asIcon.Numof() ? -1 : this.getIconPosX(nIndex);
+}
+
+int T_ResultItemIcon::getPosY(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_asIcon.Numof() ? -1 : this.getIconPosY(nIndex);
+}
+
+int T_ResultItemIcon::getCount()
+{
+	return this.m_asIcon.Numof();
+}
+
+int T_ResultItemIcon::getItemNo(int nIndex)
+{
+	return this.m_sList.get(nIndex);
+}
+
+int T_ResultItemIcon::getItemCount()
+{
+	return this.m_sList.getCount();
+}
+
+ref T_ItemIcon T_ResultItemIcon::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asIcon.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asIcon[nIndex];
+}
+
+int T_ResultItemIcon::getIconPosX(int nIndex)
+{
+	return 46 + (nIndex % 5) * 146;
+}
+
+int T_ResultItemIcon::getIconPosY(int nIndex)
+{
+	return 198 + (nIndex / 5) * 106;
+}
+
+T_ResultItemIcon::T_ResultItemIcon()
+{
+	this.clear();
+}
+
+T_ResultItemIcon::~T_ResultItemIcon()
+{
+	this.delete();
+}
+
+bool T_ResultItemIcon::create()
+{
+	this.delete();
+	if (this.m_sList.create(8, 0, 0, 0, 0, 0, 0) <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createIcon(i);
+	}
+	return true;
+}
+
+void T_ResultItemIcon::delete()
+{
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asIcon[i].delete();
+		this.m_aspFrame[i].delete();
+	}
+	this.clear();
+}
+
+void T_ResultItemIcon::clear()
+{
+	this.m_sList.clear();
+	this.m_abDonation.Fill(0, this.m_abDonation.Numof(), 0);
+}
+
+void T_ResultItemIcon::rankUp(int nNo)
+{
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	int nCount = 0;
+	array@T_Sprite aspMark[15];
+	array@bool abRankUp[15];
+	for (i = 0; i < cnt; ++i)
+	{
+		int nRank = this.getRankUpItem(this.m_sList.get(i), 1);
+		if (nRank <= 0)
+		{
+			continue;
+		}
+		ref T_ItemIcon rfsIcon = this.m_asIcon[i];
+		ref T_Sprite rfsMark = aspMark[i];
+		rfsMark.setCg(11420 + nRank);
+		rfsMark.setPos(this.getIconPosX(i), (this.getIconPosY(i) + 100) - rfsMark.getHeight());
+		rfsMark.setZ(rfsIcon.getZ() + 10);
+		abRankUp[i] = true;
+		++nCount;
+	}
+	if (nCount <= 0)
+	{
+		return;
+	}
+	int j = 0;
+	int cnt2 = aspMark.Numof();
+	bool bShow = false;
+	CASTimer sTimer;
+	for (i = 0; i < 6; ++i)
+	{
+		sTimer.Reset();
+		bShow = !bShow;
+		for (j = 0; j < cnt2; ++j)
+		{
+			if (abRankUp[j])
+			{
+				aspMark[j].setShow(bShow);
+			}
+		}
+		UPDATE(true);
+		while (sTimer.Get() < 150)
+		{
+			UPDATE(true);
+		}
+	}
+	for (j = 0; j < cnt2; ++j)
+	{
+		if (abRankUp[j])
+		{
+			this.m_asIcon[j].setRank();
+		}
+		aspMark[j].delete();
+	}
+}
+
+bool T_ResultItemIcon::erase(int nIndex)
+{
+	ref T_ItemIcon rfsIcon = this.get(nIndex);
+	if (rfsIcon === NULL)
+	{
+		return false;
+	}
+	rfsIcon.delete();
+	this.m_sList.set(nIndex, 0);
+	return true;
+}
+
+int T_ResultItemIcon::moveUp(int nIndex)
+{
+	int nRow = クエスト倉庫_行番号(nIndex);
+	int nCol = クエスト倉庫_列番号(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = nRow - 1; i >= 0; --i)
+	{
+		int idx = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	for (i = 2; i >= nRow; --i)
+	{
+		int idx = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	return nIndex;
+}
+
+int T_ResultItemIcon::moveDown(int nIndex)
+{
+	int nRow = クエスト倉庫_行番号(nIndex);
+	int nCol = クエスト倉庫_列番号(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = nRow + 1; i < 3; ++i)
+	{
+		int idx = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	for (i = 0; i <= nRow; ++i)
+	{
+		int idx = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	return nIndex;
+}
+
+int T_ResultItemIcon::moveLeft(int nIndex)
+{
+	int nRow = クエスト倉庫_行番号(nIndex);
+	int nCol = クエスト倉庫_列番号(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	int j = 0;
+	for (j = nCol - 1; j >= 0; --j)
+	{
+		int idx = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	for (j = 4; j >= nCol; --j)
+	{
+		int idx = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	return nIndex;
+}
+
+int T_ResultItemIcon::moveRight(int nIndex)
+{
+	int nRow = クエスト倉庫_行番号(nIndex);
+	int nCol = クエスト倉庫_列番号(nIndex);
+	if (nRow < 0 || nCol < 0)
+	{
+		return -1;
+	}
+	int j = 0;
+	for (j = nCol + 1; j < 5; ++j)
+	{
+		int idx = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	for (j = 0; j <= nCol; ++j)
+	{
+		int idx = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx) > 0)
+		{
+			return idx;
+		}
+	}
+	return nIndex;
+}
+
+bool T_ResultItemIcon::setJudge(int nIndex, bool bJudge)
+{
+	ref T_ItemIcon rfsIcon = this.get(nIndex);
+	if (rfsIcon === NULL)
+	{
+		return false;
+	}
+	rfsIcon.setJudge(bJudge);
+	return true;
+}
+
+bool T_ResultItemIcon::setDonation(int nIndex, bool bDonation)
+{
+	ref T_ItemIcon rfsIcon = this.get(nIndex);
+	if (rfsIcon === NULL)
+	{
+		return false;
+	}
+	this.m_abDonation[nIndex] = bDonation;
+	return true;
+}
+
+void T_ResultItemIcon::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asIcon[i].setZ(nZ);
+		this.m_aspFrame[i].setZ(nZ + 5);
+	}
+}
+
+void T_ResultItemIcon::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this._setShow(i, bShow);
+	}
+}
+
+int T_ResultItemIcon::getFirstIndex()
+{
+	return this.m_sList.getCount() > 0 ? 0 : -1;
+}
+
+int T_ResultItemIcon::getLastIndex()
+{
+	int cnt = this.m_sList.getCount();
+	return cnt > 0 ? cnt - 1 : -1;
+}
+
+bool T_ResultItemIcon::createIcon(int nIndex)
+{
+	ref T_ItemIcon rfsIcon = this.get(nIndex);
+	if (rfsIcon === NULL)
+	{
+		return false;
+	}
+	int nItemNo = this.m_sList.get(nIndex);
+	if (!rfsIcon.create(nItemNo, アイテム_確定済(nItemNo)))
+	{
+		return false;
+	}
+	int nX = this.getIconPosX(nIndex);
+	int nY = this.getIconPosY(nIndex);
+	rfsIcon.setPos(nX, nY);
+	ref T_Sprite rfsFrame = this.m_aspFrame[nIndex];
+	rfsFrame.setCg(12109);
+	rfsFrame.setPos(nX + -2, nY + -2);
+	return true;
+}
+
+void T_ResultItemIcon::_setShow(int nIndex, bool bShow)
+{
+	ref T_ItemIcon rfsIcon = this.get(nIndex);
+	if (rfsIcon === NULL)
+	{
+		return;
+	}
+	if (this.m_sList.get(nIndex) > 0)
+	{
+		rfsIcon.setShow(bShow);
+		this.m_aspFrame[nIndex].setShow(this.m_abDonation[nIndex] ? bShow : 0);
+	}
+	else
+	{
+		rfsIcon.setShow(false);
+		this.m_aspFrame[nIndex].setShow(0);
+	}
+}
+
+int T_ResultItemIcon::getRankUpItem(int nItemNo, int nRankUpCount)
+{
+	if (nItemNo <= 0)
+	{
+		return -1;
+	}
+	if (アイテム_確定済(nItemNo))
+	{
+		return 0;
+	}
+	int nRank = アイテム_レアランク(nItemNo);
+	if (nRank <= 0)
+	{
+		return 0;
+	}
+	if (nRank >= 9)
+	{
+		return 0;
+	}
+	return アイテム_レアランク＋(nItemNo, nRankUpCount);
+}
+

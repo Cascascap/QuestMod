@@ -1,0 +1,422 @@
+void セーブデータ_初期化()
+{
+	クエスト倉庫_初期化(Ｑ.Numof());
+	g_anSaveData.Fill(0, g_anSaveData.Numof(), 0);
+}
+
+bool セーブデータ_読み込み(string szKey, int nSaveNo)
+{
+	if (!オブジェクトグループ_読込(szKey, セーブ_ファイル名(nSaveNo), "ＴＡＤＡセーブデータ"))
+	{
+		return false;
+	}
+	if (!オブジェクトグループ_読込(szKey, セーブ_データファイル名(nSaveNo), "SAVE_SYSTEM_DATA"))
+	{
+		return false;
+	}
+	int nVersion = バージョン番号();
+	if (nVersion > 3000)
+	{
+		system.MsgBox("Cannot load save data.");
+		return false;
+	}
+	if (nVersion < 3000)
+	{
+	}
+	return true;
+}
+
+bool セーブデータ_保存(int nSaveNo)
+{
+	バージョン番号_設定(3000);
+	if (!オブジェクトグループ_保存("RANCE8MAGNUM", セーブ_ファイル名(nSaveNo), "ＴＡＤＡセーブデータ"))
+	{
+		return false;
+	}
+	if (!オブジェクトグループ_保存("RANCE8MAGNUM", セーブ_データファイル名(nSaveNo), "SAVE_SYSTEM_DATA"))
+	{
+		return false;
+	}
+	return true;
+}
+
+void クエスト倉庫_初期化(int nCount)
+{
+	if (!g_anQuestStore.Empty())
+	{
+		g_anQuestStore.Free();
+	}
+	g_anQuestStore.Alloc(nCount);
+	g_anQuestStore.Fill(0, nCount, 0);
+}
+
+void クエスト倉庫_クリア()
+{
+	g_anQuestStore.Fill(0, g_anQuestStore.Numof(), 0);
+}
+
+bool クエスト倉庫_フラグ取得(int nIndex, int nMask)
+{
+	if (nIndex < 0 || nIndex >= g_anQuestStore.Numof())
+	{
+		return false;
+	}
+	return (g_anQuestStore[nIndex] & nMask) > 0;
+}
+
+bool クエスト倉庫_フラグ設定(int nIndex, int nMask, bool bFlag)
+{
+	if (nIndex < 0 || nIndex >= g_anQuestStore.Numof())
+	{
+		return false;
+	}
+	ref int rfnValue = g_anQuestStore[nIndex];
+	rfnValue = フラグ設定(rfnValue, nMask, bFlag);
+	return true;
+}
+
+int クエスト倉庫_確認(int nIndex)
+{
+	return クエスト倉庫_フラグ取得(nIndex, 1) ? 1 : 0;
+}
+
+bool クエスト倉庫_設定(int nIndex, int nValue)
+{
+	return クエスト倉庫_フラグ設定(nIndex, 1, nValue > 0);
+}
+
+bool クエスト倉庫_お気に入り(int nIndex)
+{
+	return クエスト倉庫_フラグ取得(nIndex, 2);
+}
+
+bool クエスト倉庫_お気に入り設定(int nIndex, bool bFlag)
+{
+	return クエスト倉庫_フラグ設定(nIndex, 2, bFlag);
+}
+
+int バージョン番号()
+{
+	return セーブデータ_取得(0);
+}
+
+int バージョン番号_設定(int nValue)
+{
+	return セーブデータ_設定(0, nValue, 0, 99999999);
+}
+
+int パーティ入れ替え回数()
+{
+	return セーブデータ_取得(1);
+}
+
+int パーティ入れ替え回数_設定(int nValue)
+{
+	return セーブデータ_設定(1, nValue, 0, 99999999);
+}
+
+int パーティ入れ替え回数＋(int nValue)
+{
+	return セーブデータ_設定(1, 数値_加算(パーティ入れ替え回数(), nValue), 0, 99999999);
+}
+
+int パーティ入れ替え残り回数(int nAddValue)
+{
+	if (クエスト_パーティ編成無制限())
+	{
+		return 99;
+	}
+	int nMax = 名声_ランク();
+	int nCount = パーティ入れ替え回数() + nAddValue;
+	return 数値_補正(nMax - nCount, 0, nMax);
+}
+
+int パーティ入れ替え回数最大()
+{
+	return クエスト_パーティ編成無制限() ? 99 : 名声_ランク();
+}
+
+int メイン編成(int nPartyNo, int nIndex)
+{
+	switch (nPartyNo)
+	{
+		case 1:
+			return メイン編成Ａ(nIndex);
+		case 2:
+			return メイン編成Ｂ(nIndex);
+		case 3:
+			return メイン編成Ｃ(nIndex);
+		default:
+			break;
+	}
+	return -1;
+}
+
+int メイン編成_設定(int nPartyNo, int nIndex, int nValue)
+{
+	switch (nPartyNo)
+	{
+		case 1:
+			return メイン編成Ａ_設定(nIndex, nValue);
+		case 2:
+			return メイン編成Ｂ_設定(nIndex, nValue);
+		case 3:
+			return メイン編成Ｃ_設定(nIndex, nValue);
+		default:
+			break;
+	}
+	return -1;
+}
+
+void メイン編成_消去(int nValue)
+{
+	int idx = メイン編成Ａ_検索(nValue);
+	if (idx >= 0)
+	{
+		メイン編成Ａ_設定(idx, 0);
+	}
+	idx = メイン編成Ｂ_検索(nValue);
+	if (idx >= 0)
+	{
+		メイン編成Ｂ_設定(idx, 0);
+	}
+	idx = メイン編成Ｃ_検索(nValue);
+	if (idx >= 0)
+	{
+		メイン編成Ｃ_設定(idx, 0);
+	}
+}
+
+int メイン編成Ａ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return セーブデータ_取得(10 + nIndex);
+}
+
+int メイン編成Ａ_設定(int nIndex, int nValue)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return セーブデータ_設定(10 + nIndex, nValue, 0, 99999999);
+}
+
+int メイン編成Ａ_検索(int nValue)
+{
+	if (nValue <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (nValue == メイン編成Ａ(i))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int メイン編成Ｂ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return セーブデータ_取得(15 + nIndex);
+}
+
+int メイン編成Ｂ_設定(int nIndex, int nValue)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return セーブデータ_設定(15 + nIndex, nValue, 0, 99999999);
+}
+
+int メイン編成Ｂ_検索(int nValue)
+{
+	if (nValue <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (nValue == メイン編成Ｂ(i))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int メイン編成Ｃ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return セーブデータ_取得(20 + nIndex);
+}
+
+int メイン編成Ｃ_設定(int nIndex, int nValue)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return セーブデータ_設定(20 + nIndex, nValue, 0, 99999999);
+}
+
+int メイン編成Ｃ_検索(int nValue)
+{
+	if (nValue <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (nValue == メイン編成Ｃ(i))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool メイン編成登録中(int nPartyNo)
+{
+	switch (nPartyNo)
+	{
+		case 1:
+			return メイン編成Ａ登録中();
+		case 2:
+			return メイン編成Ｂ登録中();
+		case 3:
+			return メイン編成Ｃ登録中();
+		default:
+			break;
+	}
+	return false;
+}
+
+bool メイン編成登録中_設定(int nPartyNo, bool bFlag)
+{
+	switch (nPartyNo)
+	{
+		case 1:
+			return メイン編成Ａ登録中_設定(bFlag);
+		case 2:
+			return メイン編成Ｂ登録中_設定(bFlag);
+		case 3:
+			return メイン編成Ｃ登録中_設定(bFlag);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool メイン編成Ａ登録中()
+{
+	return セーブデータ_フラグ取得(1) != 0;
+}
+
+bool メイン編成Ａ登録中_設定(bool bFlag)
+{
+	セーブデータ_フラグ設定(1, bFlag);
+	return メイン編成Ａ登録中();
+}
+
+bool メイン編成Ｂ登録中()
+{
+	return セーブデータ_フラグ取得(4) != 0;
+}
+
+bool メイン編成Ｂ登録中_設定(bool bFlag)
+{
+	セーブデータ_フラグ設定(4, bFlag);
+	return メイン編成Ｂ登録中();
+}
+
+bool メイン編成Ｃ登録中()
+{
+	return セーブデータ_フラグ取得(8) != 0;
+}
+
+bool メイン編成Ｃ登録中_設定(bool bFlag)
+{
+	セーブデータ_フラグ設定(8, bFlag);
+	return メイン編成Ｃ登録中();
+}
+
+int セーブデータ_フラグ取得(int nMask)
+{
+	return g_anSaveData[99] & nMask;
+}
+
+int セーブデータ_フラグ設定(int nMask, bool bFlag)
+{
+	ref int rfSaveData = g_anSaveData[99];
+	rfSaveData = フラグ設定(rfSaveData, nMask, bFlag);
+	return rfSaveData;
+}
+
+int セーブデータ_取得(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= g_anSaveData.Numof())
+	{
+		return -2147483648;
+	}
+	int nValue = g_anSaveData[nIndex];
+	return nValue > -2147483648 ? nValue : -2147483648;
+}
+
+int セーブデータ_設定(int nIndex, int nValue, int nMin, int nMax)
+{
+	if (nIndex < 0 || nIndex >= g_anSaveData.Numof())
+	{
+		return -2147483648;
+	}
+	ref int rfSaveData = g_anSaveData[nIndex];
+	rfSaveData = 数値_補正(nValue, nMin, nMax);
+	return rfSaveData;
+}
+
+int ＥＶバックアップ()
+{
+	if (!g_aszEventBackup.Empty())
+	{
+		g_aszEventBackup.Free();
+	}
+	int cnt = _EV_TABLE.Numof();
+	if (cnt > 0)
+	{
+		g_aszEventBackup.Alloc(cnt);
+		g_aszEventBackup.Copy(0, _EV_TABLE, 0, cnt);
+	}
+	return cnt;
+}
+
+int ＥＶ復元()
+{
+	if (!_EV_TABLE.Empty())
+	{
+		_EV_TABLE.Free();
+	}
+	int cnt = g_aszEventBackup.Numof();
+	if (cnt > 0)
+	{
+		_EV_TABLE.Alloc(cnt);
+		_EV_TABLE.Copy(0, g_aszEventBackup, 0, cnt);
+	}
+	return cnt;
+}
+

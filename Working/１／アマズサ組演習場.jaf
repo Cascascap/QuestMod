@@ -1,0 +1,188 @@
+void ０２Ｇプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, gＭ, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade Outskirts   Mock Forest' A;
+	'A little to the west of Cidade lay Mock Forest.' A;
+	'Most people kept their distance, knowing it was full of monsters.' A;
+	'Rance, however, had business there.' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"Hmmmm..."' A;
+	ト書き();
+	'A camp had been set up at the entrance of the forest. Twenty or so men were sitting around there.' A;
+	'It was the Amazusa Group.' A;
+	音楽(93, -1, -1);
+	セリフ(2804, "");
+	'"Oh? What brings you here, sir?"' A;
+	セリフ(2005, "");
+	'"Hm? Who the fuck are you?"' A;
+	セリフ(2804, "");
+	'"Oh, my."' A;
+	'"Hah hah hah, that\'s a harsh joke.' R;
+	' It\'s me, Amazusa, the president of the Amazusa Group."' A;
+	セリフ(2005, "");
+	'"President Amazusa...' R;
+	' Ah, I guess I remember somebody like that."' A;
+	セリフ(2804, "");
+	'"It\'s fine. If you forget, it\'s just a matter of remembering."' A;
+	セリフ(2000, "");
+	'"I don\'t give a shit about that.' R;
+	' What are you guys doing here?"' A;
+	セリフ(2804, "");
+	'"Oh, it\'s nothing serious.' R;
+	' We\'re just practicing our kalar-hunting today."' A;
+	セリフ(2000, "");
+	'"...Practicing kalar-hunting?"' A;
+	セリフ(2804, "");
+	'"They\'re a tough bunch, after all.' R;
+	' We have to make sure we\'re tough, too."' A;
+	'"The monsters in this forest are at just the right strength to practice against.' R;
+	' We use it all the time."' A;
+	セリフ(2000, "");
+	'"All your employees at once?"' A;
+	セリフ(2804, "");
+	'"Nah, just four teams this time.' R;
+	' They\'re heading for the treasure chest in the depths of the forest."' A;
+	セリフ(2000, "");
+	'"A treasure chest, you say?"' A;
+	セリフ(2804, "");
+	'"Heh heh heh, it\'s got an ear-hunter boomerang inside."' A;
+	セリフ(2000, "");
+	'"The heck\'s that?"' A;
+	セリフ(2804, "");
+	'"A weapon for defeating kalars with.' R;
+	' And let me tell you, it took a while to win it at auction."' A;
+	セリフ(2000, "");
+	'"Oho."' A;
+	セリフ(2804, "");
+	'"The thing was expensive, so I\'m planning on equipping the best team with it.' R;
+	' Whoever gets there first."' A;
+	セリフ(2000, "");
+	'"Hm, hm, hm."' A;
+	セリフ(2804, "");
+	'"So?' R;
+	' What are you up to here, sir?"' A;
+	セリフ(2000, "");
+	'"Only on a walk. I was just getting home."' A;
+	セリフ(2804, "");
+	'"I see.' R;
+	' Well, there are many monsters out here, so be careful."' A;
+	セリフ(2000, "");
+	'"Yeah. Good luck with your practice!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance ambled away from Amazusa.' A;
+	思考(2004, "");
+	'(...Just kidding!)' A;
+	'(I came out here because I heard about that weapon.)' A;
+	思考(2000, "");
+	'(A good weapon like that is wasted on these guys.)' A;
+	セリフ(2001, "");
+	'"Alright, let\'s go bring it home."' A;
+	ADVOFF();
+}
+
+void ０２Ｇ社員()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2906, "Amazusa Employee #341");
+	'"Huh? What are you doing here, Rance?"' A;
+	セリフ(2000, "");
+	'"That\'s not your business."' A;
+	セリフ(2906, "Amazusa Employee #341");
+	'"Ugh, what an ass..."' A;
+	セリフ(2905, "Amazusa Employee #268");
+	'"Come on, we\'re in a hurry.' R;
+	' Don\'t worry about him."' A;
+	セリフ(2906, "Amazusa Employee #341");
+	'"Whoops, yeah, gotta keep grinding."' A;
+	セリフ(2905, "Amazusa Employee #268");
+	'"Forget grinding, stupid.' R;
+	' We\'ve gotta find the treasure chest.' R;
+	' You\'ve heard, right?"' A;
+	'"The team that finds the chest first gets a 20% summer bonus."' A;
+	セリフ(2906, "Amazusa Employee #341");
+	'"What?! When did they say that?!"' A;
+	セリフ(2905, "Amazusa Employee #268");
+	'"The pres told me about it himself."' A;
+	'"I\'ve gotta make some money for my son\'s cram school tuition."' A;
+	セリフ(2906, "Amazusa Employee #341");
+	'"Oh yeah, come to think of it, he\'s taking exams this year, isn\'t he?' R;
+	' Guess we\'ve gotta give it our all."' A;
+	セリフ(2905, "Amazusa Employee #268");
+	'"Yeah, let\'s go."' A;
+	セリフ(2906, "Amazusa Employee #341");
+	'"Right!"' A;
+	ト書き();
+	'The Amazusa employees went off ahead.' A;
+	セリフ(2000, "");
+	'"...What a dumb thing to overhear."' A;
+	'"Worthless. Let\'s get going."' A;
+	ADVOFF();
+}
+
+void ０２Ｇ宝箱()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(75, -1, -1);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Ooh, so this is the ear-hunter boomerang."' A;
+	'"Good, good, this\'ll make fighting kalars easier."' A;
+	セリフ(2005, "");
+	'"Ack, it has \'Amazusa Group\' scribbled on it."' A;
+	'"Writing their name on it just ’cause it\'s company property...' R;
+	' What a selfish thing to do."' A;
+	セリフ(2000, "");
+	'"Well, I found it, so it\'s mine now.' R;
+	' Lemme just erase this..."' A;
+	セリフ(2804, "");
+	'"--Wait, what are you doing?!"' A;
+	セリフ(2000, "");
+	'"Hmm, Amazusa, huh?"' A;
+	セリフ(2905, "Amazusa Employee #268");
+	'"Whoa, this guy just went and opened the chest on his own!"' A;
+	セリフ(2804, "");
+	'"Rance, sir, the Amazusa Group is using that."' A;
+	'"And that treasure chest has \'for exclusive use by the Amazusa Group\' on it, doesn\'t it?!"' A;
+	セリフ(2000, "");
+	'"Nope, it was just sitting here.' R;
+	' Which means it\'s mine."' A;
+	セリフ(2804, "");
+	'"Wha...?"' A;
+	セリフ(2942, "");
+	'"It\'s useless, Boss.' R;
+	' He knew about the weapon when he came here.' R;
+	' It was premeditated."' A;
+	セリフ(2804, "");
+	'"S-Son of a..."' A;
+	セリフ(2001, "");
+	'"Well, see ya!' R;
+	' Gahahahahahahahah!"' A;
+	セリフ(2804, "");
+	'"Never come back!"' A;
+}
+

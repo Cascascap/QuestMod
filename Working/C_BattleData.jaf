@@ -1,0 +1,733 @@
+void 戦闘データ_初期化()
+{
+	モンスター_初期化();
+	戦闘背景_初期化();
+}
+
+bool 戦闘データ_作成(int nMapNo)
+{
+	int i = 0;
+	int cnt = g_anMonsterGold.Numof();
+	for (i = 0; i < 5; ++i)
+	{
+		if (敵パーティ_番号(i + 1) > 0)
+		{
+			g_anMonsterGold[i] = 確率チェック(50) ? 0 : -1;
+		}
+	}
+	return true;
+}
+
+void 戦闘データ_削除()
+{
+	g_anMonsterGold.Fill(0, g_anMonsterGold.Numof(), -1);
+}
+
+bool 戦闘データ_金袋ＧＥＴ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= g_anMonsterGold.Numof())
+	{
+		return false;
+	}
+	ref int rfnGold = g_anMonsterGold[nIndex];
+	if (rfnGold < 0)
+	{
+		return false;
+	}
+	rfnGold = 1;
+	return true;
+}
+
+int 戦闘データ_金袋ＧＥＴ数()
+{
+	int i = 0;
+	int cnt = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (g_anMonsterGold[i] > 0)
+		{
+			++cnt;
+		}
+	}
+	return cnt;
+}
+
+int 戦闘データ_金袋数()
+{
+	int i = 0;
+	int cnt = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (g_anMonsterGold[i] >= 0)
+		{
+			++cnt;
+		}
+	}
+	return cnt;
+}
+
+int 戦闘データ_キャラ番号(int nNo)
+{
+	if (!戦闘番号_味方確認(nNo))
+	{
+		return -1;
+	}
+	return 戦闘データ_番号(nNo);
+}
+
+int 戦闘データ_モンスター番号(int nNo)
+{
+	if (!戦闘番号_敵確認(nNo))
+	{
+		return -1;
+	}
+	int nMonsterNo = 戦闘データ_ポリゴン(nNo);
+	if (nMonsterNo <= 0)
+	{
+		if (戦闘番号_存在確認(nNo))
+		{
+			return 100003;
+		}
+	}
+	return nMonsterNo;
+}
+
+int 戦闘データ_番号(int nNo)
+{
+	return キャラ_番号(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_登録状態(int nNo)
+{
+	return キャラ_登録状態(戦闘番号_ＩＩＣ(nNo));
+}
+
+string 戦闘データ_名前(int nNo)
+{
+	return 名前切詰(キャラ_名前(戦闘番号_ＩＩＣ(nNo)));
+}
+
+string 戦闘データ_短縮名前(int nNo)
+{
+	return キャラ_短縮名前(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_顔ＣＧ(int nNo)
+{
+	return キャラ_顔ＣＧ(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_ポリゴン(int nNo)
+{
+	return キャラ_ポリゴン(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_職業(int nNo)
+{
+	return キャラ_職業(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_レベル(int nNo)
+{
+	return キャラ_レベル(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_レベル最大(int nNo)
+{
+	return キャラ_レベル最大(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_ＥＸＰ(int nNo)
+{
+	return キャラ_ＥＸＰ(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_ＥＸＰ最大(int nNo)
+{
+	return キャラ_ＥＸＰ最大(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_体力(int nNo)
+{
+	return キャラ_体力(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_体力最大(int nNo)
+{
+	return キャラ_体力最大(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_素早さ(int nNo)
+{
+	return キャラ_素早さ(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_攻撃力(int nNo)
+{
+	return キャラ_攻撃力(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_防御力(int nNo)
+{
+	return キャラ_防御力(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_命中率(int nNo)
+{
+	return キャラ_命中率(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_回避率(int nNo)
+{
+	return キャラ_回避率(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_必殺率(int nNo)
+{
+	return キャラ_必殺率(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_衝撃率(int nNo)
+{
+	return キャラ_衝撃率(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_耐性率(int nNo)
+{
+	return キャラ_耐性率(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_魔法力(int nNo)
+{
+	return キャラ_魔法力(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_魔抵力(int nNo)
+{
+	return キャラ_魔抵力(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_炎耐性(int nNo)
+{
+	return キャラ_炎耐性(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_氷耐性(int nNo)
+{
+	return キャラ_氷耐性(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_雷耐性(int nNo)
+{
+	return キャラ_雷耐性(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_光耐性(int nNo)
+{
+	return キャラ_光耐性(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_闇耐性(int nNo)
+{
+	return キャラ_闇耐性(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_弱点属性(int nNo)
+{
+	return キャラ_弱点属性(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_武器(int nNo)
+{
+	return キャラ_武器(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_防具(int nNo)
+{
+	return キャラ_防具(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_持ち物(int nNo)
+{
+	return キャラ_持ち物(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_オプション(int nNo)
+{
+	return キャラ_オプション(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_スキルポイント(int nNo)
+{
+	return キャラ_スキルポイント(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_スキル枠最大(int nNo)
+{
+	return キャラ_スキル枠最大(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_スキル番号(int nNo, int nNo2)
+{
+	return キャラ_スキル番号(戦闘番号_ＩＩＣ(nNo), nNo2);
+}
+
+int 戦闘データ_スキル使用回数(int nNo, int nNo2)
+{
+	return キャラ_スキル使用回数(戦闘番号_ＩＩＣ(nNo), nNo2);
+}
+
+int 戦闘データ_スキル確率(int nNo, int nNo2)
+{
+	return キャラ_スキル確率(戦闘番号_ＩＩＣ(nNo), nNo2);
+}
+
+int 戦闘データ_スキル実装中(int nNo, int nNo2)
+{
+	return キャラ_スキル実装中(戦闘番号_ＩＩＣ(nNo), nNo2);
+}
+
+int 戦闘データ_スキルモーション(int nNo, int nSkillNo)
+{
+	int nCharaNo = 戦闘番号_ＩＩＣ(nNo);
+	return キャラ_スキルモーション(nCharaNo, キャラスキル_検索(nCharaNo, nSkillNo));
+}
+
+bool 戦闘データ_ボス(int nNo)
+{
+	return キャラ_ボス(戦闘番号_ＩＩＣ(nNo)) > 0;
+}
+
+bool 戦闘データ_毒状態(int nNo)
+{
+	return キャラ_状態変化(戦闘番号_ＩＩＣ(nNo)) == 1;
+}
+
+bool 戦闘データ_ぴより状態(int nNo)
+{
+	return キャラ_状態変化(戦闘番号_ＩＩＣ(nNo)) == 2;
+}
+
+bool 戦闘データ_瀕死状態(int nNo)
+{
+	return キャラ_状態変化(戦闘番号_ＩＩＣ(nNo)) == 3;
+}
+
+bool 戦闘データ_状態変化あり(int nNo)
+{
+	return キャラ_状態変化(戦闘番号_ＩＩＣ(nNo)) > 0;
+}
+
+int 戦闘データ_守護率(int nNo)
+{
+	return キャラ_守護率(戦闘番号_ＩＩＣ(nNo));
+}
+
+bool 戦闘データ_守護中(int nNo)
+{
+	return キャラ_守護率(戦闘番号_ＩＩＣ(nNo)) > 0;
+}
+
+int 戦闘データ_隠密率(int nNo)
+{
+	return キャラ_隠密率(戦闘番号_ＩＩＣ(nNo));
+}
+
+bool 戦闘データ_隠密(int nNo)
+{
+	return キャラ_隠密率(戦闘番号_ＩＩＣ(nNo)) > 0;
+}
+
+bool 戦闘データ_狂戦士(int nNo)
+{
+	return キャラ_狂戦士(戦闘番号_ＩＩＣ(nNo)) > 0;
+}
+
+bool 戦闘データ_全体加護(int nNo)
+{
+	return キャラ_全体加護(戦闘番号_ＩＩＣ(nNo)) > 0;
+}
+
+int 戦闘データ_バリア(int nNo)
+{
+	return キャラ_バリア(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_攻撃付与(int nNo)
+{
+	return キャラ_攻撃付与(戦闘番号_ＩＩＣ(nNo));
+}
+
+bool 戦闘データ_攻撃強化(int nNo)
+{
+	return 戦闘データ_攻撃付与(nNo) == 1;
+}
+
+bool 戦闘データ_攻撃弱体(int nNo)
+{
+	return 戦闘データ_攻撃付与(nNo) == 2;
+}
+
+int 戦闘データ_防御付与(int nNo)
+{
+	return キャラ_防御付与(戦闘番号_ＩＩＣ(nNo));
+}
+
+bool 戦闘データ_防御強化(int nNo)
+{
+	return 戦闘データ_防御付与(nNo) == 1;
+}
+
+bool 戦闘データ_防御弱体(int nNo)
+{
+	return 戦闘データ_防御付与(nNo) == 2;
+}
+
+bool 戦闘データ_状態異常(int nNo)
+{
+	return 戦闘データ_状態変化あり(nNo) || 戦闘データ_攻撃弱体(nNo) || 戦闘データ_防御弱体(nNo);
+}
+
+int 戦闘データ_溜め(int nNo)
+{
+	return キャラ_溜め(戦闘番号_ＩＩＣ(nNo));
+}
+
+bool 戦闘データ_溜め中(int nNo)
+{
+	return 戦闘データ_溜め(nNo) > 0;
+}
+
+bool 戦闘データ_弱点把握(int nNo)
+{
+	return キャラ_弱点把握(戦闘番号_ＩＩＣ(nNo));
+}
+
+bool 戦闘データ_ダメージあり(int nNo)
+{
+	return 戦闘データ_体力(nNo) < 戦闘データ_体力最大(nNo);
+}
+
+int 戦闘データ_体力％(int nNo)
+{
+	return ％計算(戦闘データ_体力最大(nNo), 戦闘データ_体力(nNo));
+}
+
+bool 戦闘データ_有効(int nNo)
+{
+	if (!戦闘番号_存在確認(nNo))
+	{
+		return false;
+	}
+	if (戦闘データ_瀕死状態(nNo))
+	{
+		return false;
+	}
+	return true;
+}
+
+int 戦闘データ_行動数(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		return 戦闘選択_スキル有効数(nNo);
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		return 99;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return 99;
+	}
+	return -1;
+}
+
+bool 戦闘データ_行動可能(int nNo, bool bWait)
+{
+	if (!戦闘データ_有効(nNo))
+	{
+		return false;
+	}
+	if (戦闘番号_味方確認(nNo))
+	{
+		return キャラ_スキル残り回数(戦闘番号_ＩＩＣ(nNo), bWait) > 0;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		return true;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return 戦闘従魔_作成済();
+	}
+	return false;
+}
+
+ref sＣ 戦闘データ_取得(int nNo)
+{
+	return キャラ_データ参照(戦闘番号_ＩＩＣ(nNo));
+}
+
+int 戦闘データ_体力設定(int nNo, int nValue)
+{
+	return キャラ_体力設定(戦闘番号_ＩＩＣ(nNo), nValue);
+}
+
+int 戦闘データ_守護率設定(int nNo, int nValue)
+{
+	return キャラ_守護率設定(戦闘番号_ＩＩＣ(nNo), nValue);
+}
+
+int 戦闘データ_ＥＸＰ設定(int nNo, int nValue)
+{
+	return キャラ_ＥＸＰ設定(戦闘番号_ＩＩＣ(nNo), nValue);
+}
+
+int 戦闘データ_ＥＸＰ加算(int nNo, int nValue)
+{
+	return 戦闘データ_ＥＸＰ設定(nNo, 数値_加算(戦闘データ_ＥＸＰ(nNo), nValue));
+}
+
+int 戦闘データ_ＥＸＰ最大設定(int nNo, int nValue)
+{
+	return キャラ_ＥＸＰ最大設定(戦闘番号_ＩＩＣ(nNo), nValue);
+}
+
+int 戦闘データ_状態変化設定(int nNo, int nValue)
+{
+	return キャラ_状態変化設定(戦闘番号_ＩＩＣ(nNo), nValue);
+}
+
+bool 戦闘データ_レベルアップ(int nNo)
+{
+	int nCharaNo = 戦闘番号_ＩＩＣ(nNo);
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	bool bRet = false;
+	while (キャラ_レベルアップ(nCharaNo))
+	{
+		bRet = true;
+	}
+	return bRet;
+}
+
+bool 戦闘データ_レベルアップ可能(int nNo)
+{
+	int nCharaNo = 戦闘番号_ＩＩＣ(nNo);
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	return キャラ_レベルアップ可能(nCharaNo);
+}
+
+int 戦闘データ_味方参加数()
+{
+	int i = 0;
+	int cnt = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (戦闘番号_存在確認(戦闘番号_味方(i)))
+		{
+			++cnt;
+		}
+	}
+	return cnt;
+}
+
+int 戦闘データ_敵参加数()
+{
+	int i = 0;
+	int cnt = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (戦闘番号_存在確認(戦闘番号_敵(i)))
+		{
+			++cnt;
+		}
+	}
+	return cnt;
+}
+
+int 戦闘データ_味方有効数()
+{
+	int i = 0;
+	int cnt = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (戦闘データ_有効(戦闘番号_味方(i)))
+		{
+			++cnt;
+		}
+	}
+	return cnt;
+}
+
+int 戦闘データ_敵有効数()
+{
+	int i = 0;
+	int cnt = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (戦闘データ_有効(戦闘番号_敵(i)))
+		{
+			++cnt;
+		}
+	}
+	return cnt;
+}
+
+bool 戦闘データ_敵前衛全滅()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (!戦闘配置_前衛(i))
+		{
+			continue;
+		}
+		if (戦闘データ_有効(戦闘番号_敵(i)))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+int 戦闘データ_味方前衛_有効(ref array@bool abFlag)
+{
+	if (abFlag === NULL || abFlag.Numof() < 5)
+	{
+		return -1;
+	}
+	int i = 0;
+	int nCount = 0;
+	abFlag.Fill(0, abFlag.Numof(), 0);
+	for (i = 0; i < 5; ++i)
+	{
+		if (!戦闘配置_前衛(i))
+		{
+			continue;
+		}
+		if (!戦闘データ_有効(戦闘番号_味方(i)))
+		{
+			continue;
+		}
+		abFlag[i] = true;
+		++nCount;
+	}
+	return nCount;
+}
+
+int 戦闘データ_味方後衛_有効(ref array@bool abFlag)
+{
+	if (abFlag === NULL || abFlag.Numof() < 5)
+	{
+		return -1;
+	}
+	int i = 0;
+	int nCount = 0;
+	abFlag.Fill(0, abFlag.Numof(), 0);
+	for (i = 0; i < 5; ++i)
+	{
+		if (!戦闘配置_後衛(i))
+		{
+			continue;
+		}
+		if (!戦闘データ_有効(戦闘番号_味方(i)))
+		{
+			continue;
+		}
+		abFlag[i] = true;
+		++nCount;
+	}
+	return nCount;
+}
+
+bool 戦闘データ_味方後衛存在()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (!戦闘配置_後衛(i))
+		{
+			continue;
+		}
+		if (戦闘番号_存在確認(戦闘番号_味方(i)))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool 戦闘データ_味方前衛全滅()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (!戦闘配置_前衛(i))
+		{
+			continue;
+		}
+		if (戦闘データ_有効(戦闘番号_味方(i)))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+int 戦闘データ_敵前衛_有効(ref array@bool abFlag)
+{
+	if (abFlag === NULL || abFlag.Numof() < 5)
+	{
+		return -1;
+	}
+	int i = 0;
+	int nCount = 0;
+	abFlag.Fill(0, abFlag.Numof(), 0);
+	for (i = 0; i < 5; ++i)
+	{
+		if (!戦闘配置_前衛(i))
+		{
+			continue;
+		}
+		if (!戦闘データ_有効(戦闘番号_敵(i)))
+		{
+			continue;
+		}
+		abFlag[i] = true;
+		++nCount;
+	}
+	return nCount;
+}
+
+int 戦闘データ_敵後衛_有効(ref array@bool abFlag)
+{
+	if (abFlag === NULL || abFlag.Numof() < 5)
+	{
+		return -1;
+	}
+	int i = 0;
+	int nCount = 0;
+	abFlag.Fill(0, abFlag.Numof(), 0);
+	for (i = 0; i < 5; ++i)
+	{
+		if (!戦闘配置_後衛(i))
+		{
+			continue;
+		}
+		if (!戦闘データ_有効(戦闘番号_敵(i)))
+		{
+			continue;
+		}
+		abFlag[i] = true;
+		++nCount;
+	}
+	return nCount;
+}
+

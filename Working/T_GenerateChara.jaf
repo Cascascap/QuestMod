@@ -1,0 +1,450 @@
+T_GenerateChara::T_GenerateChara()
+{
+	this.clear();
+}
+
+T_GenerateChara::~T_GenerateChara()
+{
+	this.delete();
+}
+
+bool T_GenerateChara::run(int nCharaNo, int nZ)
+{
+	if (!this.create(nCharaNo, nZ, 0))
+	{
+		return false;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 500);
+	int nRet = 0;
+	int nPhase = 1;
+	this.m_bInitText = true;
+	while (nPhase > 0)
+	{
+		nPhase = this.exec(nPhase, nRet);
+	}
+	this.delete();
+	return nRet > 0;
+}
+
+bool T_GenerateChara::input(int nCharaNo, int nZ, string szComment, ref string szMessage)
+{
+	bool bRet = false;
+	if (szMessage === NULL)
+	{
+		return false;
+	}
+	if (!this.create(nCharaNo, nZ, 1))
+	{
+		return false;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 500);
+	int nNo = キャラ_台詞番号(nCharaNo, szMessage);
+	string szText = szMessage;
+	while (true)
+	{
+		switch (this._inputText(0, nNo, 0, szComment, szText))
+		{
+			case 100004:
+				if (nNo > 0)
+				{
+					this.m_asMessage[nNo - 1].set(szText, true);
+					UPDATE(true);
+					_W(250);
+				}
+				szMessage = szText;
+				bRet = true;
+				goto label0;
+			case 100002:
+				szText = szMessage;
+				break;
+			case 100003:
+			default:
+				goto label0;
+		}
+	}
+label0:
+	this.delete();
+	return bRet;
+}
+
+bool T_GenerateChara::create(int nCharaNo, int nZ, int nMode)
+{
+	this.delete();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	this.m_spBase.setCg(12301);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_sCard.create(nZ + 1, false, this.m_spBase);
+	if (!this.m_sCard.set(nCharaNo, 0))
+	{
+		return false;
+	}
+	if (nMode == 1)
+	{
+		this.createButton(654, 722, 12307);
+		this.createButton(788, 722, 12305);
+		this.createButton(922, 722, 12306);
+	}
+	else
+	{
+		this.createButton(654, 722, 12304);
+		this.createButton(788, 722, 12305);
+		this.createButton(922, 722, 12306);
+	}
+	int i = 0;
+	int cnt = this.m_asMessage.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_GenerateMessage rfsMessage = this.m_asMessage[i];
+		rfsMessage.create(716, 12 + 80 * i, nZ + 1);
+		rfsMessage.set(キャラ_台詞(nCharaNo, i + 1), false);
+	}
+	this.m_spBase.setShow(1);
+	this.m_sCard.setShow(true);
+	this.m_nBonusSkill = 276;
+	this.m_nMode = nMode;
+	return true;
+}
+
+void T_GenerateChara::delete()
+{
+	int i = 0;
+	int cnt = this.m_asMessage.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMessage[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sCard.delete();
+	this.clear();
+}
+
+void T_GenerateChara::clear()
+{
+	this.m_bNameUpdate = false;
+	this.m_nBonusSkill = 0;
+	this.m_nMode = -1;
+}
+
+bool T_GenerateChara::createButton(int nX, int nY, int nCgNo)
+{
+	T_Sprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	this.m_spBase.copyCg(nX - 0, nY - 0, spWork, 0, 0, spWork.getWidth() / 2, spWork.getHeight());
+	return true;
+}
+
+int T_GenerateChara::exec(int nPhase, ref int nRet)
+{
+	nRet = 0;
+	switch (nPhase)
+	{
+		case 1:
+			if (!選択_確認("Character Creation Mode", 1, "Next", "Quit", -1, -1, false))
+			{
+				return -1;
+			}
+			return nPhase + 1;
+		case 2:
+			return this.inputName(nPhase);
+		case 3:
+			return this.selectFace(nPhase);
+		case 4:
+			return this.selectSex(nPhase);
+		case 5:
+			return this.selectJob(nPhase);
+		case 6:
+			return this.inputText(nPhase, 1, "Standby Line (Own Turn)");
+		case 7:
+			return this.inputText(nPhase, 2, "Standby Line (Other Character's Turn)");
+		case 8:
+			return this.inputText(nPhase, 3, "Attack Line");
+		case 9:
+			return this.inputText(nPhase, 4, "Special Technique Line");
+		case 10:
+			return this.inputText(nPhase, 5, "Support Action Line");
+		case 11:
+			return this.selectBonus(nPhase, nRet);
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_GenerateChara::inputName(int nPhase)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	string szName = キャラ_名前(nCharaNo);
+	T_InputText sInput;
+	sInput.create(10, 1, "Input name", nPhase);
+	sInput.setText(0, szName);
+	switch (sInput.run(this.m_bNameUpdate ? -1 : 0))
+	{
+		case 100001:
+			if (this.m_sCard.setName(sInput.getText(0)))
+			{
+				this.m_bNameUpdate = true;
+				return nPhase + 1;
+			}
+			break;
+		case 100002:
+			return nPhase - 1;
+		case 100003:
+		default:
+			break;
+	}
+	sInput.delete();
+	return -1;
+}
+
+int T_GenerateChara::selectFace(int nPhase)
+{
+	string szFileName = this.m_sCard.getFaceFileName();
+	switch (顔ＣＧ選択(szFileName))
+	{
+		case 100001:
+			if (this.m_sCard.setFaceFileName(szFileName))
+			{
+				return nPhase + 1;
+			}
+			break;
+		case 100002:
+			return nPhase - 1;
+		case 100003:
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_GenerateChara::selectSex(int nPhase)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	int nOld = キャラ_性別(nCharaNo);
+	while (true)
+	{
+		string szText = "Choose gender";
+		選択_テキスト追加(szText, -1, -1, -1);
+		選択_項目追加(1, 性別文字列(1), -1, -1, -1, "", -1);
+		選択_項目追加(2, 性別文字列(2), -1, -1, -1, "", -1);
+		選択_項目追加(9, 性別文字列(9), -1, -1, -1, "", -1);
+		int nNo = キャラ生成_選択実行(キャラ_性別(nCharaNo));
+		switch (nNo)
+		{
+			case 100001:
+				return nPhase + 1;
+			case 100002:
+				return nPhase - 1;
+			case 100003:
+				return -1;
+			default:
+				if (this.m_sCard.setSex(nNo))
+				{
+					if (nNo != nOld)
+					{
+						this.m_bInitText = true;
+					}
+				}
+				break;
+		}
+	}
+	return -1;
+}
+
+int T_GenerateChara::selectJob(int nPhase)
+{
+	int i = 0;
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	int nOld = キャラ_職業(nCharaNo);
+	while (true)
+	{
+		string szText = "Choose class";
+		for (i = 1; i < 9; ++i)
+		{
+			選択_項目追加(i, 職業_名前(i), -1, -1, -1, "", -1);
+		}
+		int nNo = キャラ生成_選択実行(キャラ_職業(nCharaNo));
+		switch (nNo)
+		{
+			case 100001:
+				this.initText();
+				return nPhase + 1;
+			case 100002:
+				return nPhase - 1;
+			case 100003:
+				return -1;
+			default:
+				this.m_sCard.setJob(nNo);
+				if (this.m_sCard.setJob(nNo))
+				{
+					if (nNo != nOld)
+					{
+						this.m_bInitText = true;
+					}
+				}
+				break;
+		}
+	}
+	return -1;
+}
+
+int T_GenerateChara::selectBonus(int nPhase, ref int nRet)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	Ｔキャラ生成／ボーナススキル(キャラ_職業(nCharaNo));
+	string szName = テキスト_キャラ名(nCharaNo);
+label1:
+	while (true)
+	{
+		string szText = "Choose bonus skill";
+		選択_テキスト追加(szText, -1, -1, -1);
+		int i = 0;
+		int cnt = ボーナススキル_数();
+		for (i = 1; i <= cnt; ++i)
+		{
+			int nSkillNo = ボーナススキル(i);
+			if (nSkillNo > 0)
+			{
+				選択_項目追加(nSkillNo, スキル_名前(nSkillNo), -1, -1, -1, スキル_説明文１(nSkillNo), -1);
+			}
+		}
+		int nNo = キャラ生成_選択実行(this.m_nBonusSkill);
+		switch (nNo)
+		{
+			case 100001:
+				if (this.m_nBonusSkill > 0)
+				{
+					goto label0;
+				}
+				選択_通知(szText, "OK", false);
+				break;
+			case 100002:
+				return nPhase - 1;
+			case 100003:
+				return -1;
+			default:
+				this.m_nBonusSkill = nNo;
+				break;
+		}
+	}
+label0:
+	if (!選択_確認("Create character @" + szName.GetPart(1, szName.Length() - 2) + "?", 1, "Yes", "No", -1, -1, false))
+	{
+		goto label1;
+	}
+	nRet = 1;
+	キャラスキル_追加(nCharaNo, this.m_nBonusSkill);
+	キャラ_登録状態設定(nCharaNo, 2);
+	return 0;
+}
+
+int T_GenerateChara::inputText(int nPhase, int nNo, string szComment)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	if (!キャラ_台詞確認(nNo))
+	{
+		return -1;
+	}
+	ref T_GenerateMessage rfsMessage = this.m_asMessage[nNo - 1];
+	string szText = キャラ_台詞(nCharaNo, nNo);
+	int nStartLine = rfsMessage.getUpdate() ? -1 : 0;
+	switch (this._inputText(nPhase, nNo, nStartLine, szComment, szText))
+	{
+		case 100001:
+			キャラ_台詞設定(nCharaNo, nNo, szText);
+			rfsMessage.set(szText, true);
+			++nPhase;
+			break;
+		case 100002:
+			--nPhase;
+			break;
+		case 100003:
+		default:
+			nPhase = -1;
+			break;
+	}
+	return nPhase;
+}
+
+int T_GenerateChara::_inputText(int nPhase, int nNo, int nStartLine, string szComment, ref string szMessage)
+{
+	ref T_GenerateMessage rfsMessage = NULL;
+	if (キャラ_台詞確認(nNo))
+	{
+		rfsMessage <- this.m_asMessage[nNo - 1];
+	}
+	T_InputText sInput;
+	array@string aszText;
+	int i = 0;
+	int cnt = _テキスト分割_強制改行(szMessage, "$", 12, aszText);
+	sInput.create(12, 3, szComment, nPhase);
+	for (i = 0; i < 3; ++i)
+	{
+		sInput.setText(i, i < cnt ? aszText[i] : "");
+	}
+	if (rfsMessage !== NULL)
+	{
+		rfsMessage.setCoverShow(false);
+	}
+	int nRet = sInput.run(nStartLine);
+	szMessage = sInput.getJointText("$");
+	sInput.delete();
+	if (rfsMessage !== NULL)
+	{
+		rfsMessage.setCoverShow(true);
+	}
+	return nRet;
+}
+
+bool T_GenerateChara::initText()
+{
+	if (!this.m_bInitText)
+	{
+		return false;
+	}
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	Ｃキャラ生成／セリフ初期化(nCharaNo);
+	int i = 0;
+	int cnt = this.m_asMessage.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_GenerateMessage rfsMessage = this.m_asMessage[i];
+		rfsMessage.set(キャラ_台詞(nCharaNo, i + 1), false);
+	}
+	UPDATE(true);
+	this.m_bInitText = false;
+	return true;
+}
+

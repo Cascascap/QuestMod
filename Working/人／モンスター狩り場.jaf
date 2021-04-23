@@ -1,0 +1,215 @@
+void 狩り場／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(◆マップ曲, -1, -1);
+	ト書き();
+	'　' R;
+	'     Southern Zeth   Kadonoma Wetlands' A;
+	'Rance came to the wetlands with Onoha\'s guidance.' A;
+	セリフ(2000, "");
+	'"So this is the place you wanted to show us?"' A;
+	枠消去();
+	立ち絵表示(1521, 1, 200);
+	セリフ(2520, "");
+	'"Y-Yes..."' A;
+	'"This was a safe place... that humans hadn\'t come to in a long time..."' A;
+	'"So there are a lot of monsters that give a lot of experience.' R;
+	' It\'s perfect... for grinding..."' A;
+	セリフ(2000, "");
+	'"Oho, that sounds nice."' A;
+	セリフ(2520, "");
+	'"But one mysterious thing is that... people over level 35 won\'t get experience."' A;
+	セリフ(2000, "");
+	'"Hmm, how odd."' A;
+	'"Is it really okay, though?' R;
+	' You telling us about this place.' R;
+	' I\'m gonna hunt the crap out of the monsters here, you know."' A;
+	セリフ(2520, "");
+	'"It... It\'s fine... I\'m glad to be helpful..."' A;
+	セリフ(2004, "");
+	'"Oho?' R;
+	' Have you fallen for me?"' A;
+	セリフ(2520, "");
+	'"Ah... After living with you for a little while, Mr. Human... I realized that..."' A;
+	'"I don\'t like humans like you."' A;
+	セリフ(2002, "");
+	'"Whaaat?!"' A;
+	セリフ(2521, "");
+	'"Eek! I don\'t like... when people yell...' R;
+	' It\'s scary... I don\'t like... violent people..."' A;
+	セリフ(2005, "");
+	'"Urghhh..."' A;
+	セリフ(2520, "");
+	'"But I want to... pay you back...' R;
+	' for saving me..."' A;
+	'"I learned that monsters are scary...' R;
+	' because of you, Mr. Human."' A;
+	'"Thank you."' A;
+	セリフ(2000, "");
+	'"Mm, I don\'t really get it, but be thankful."' A;
+	セリフ(2520, "");
+	'"Yes, I am... I am..."' A;
+	セリフ(2000, "");
+	'"Alright, let\'s get grinding, then."' A;
+	セリフ(2520, "");
+	'"...Yes... I\'ll guide you.' R;
+	' This way, this way..."' A;
+	セリフ(2000, "");
+	'"Mhm!"' A;
+	ADVOFF();
+}
+
+void 狩り場／途中()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Come to think of it, you\'re just kinda fighting monsters normally, huh?"' A;
+	'"Is that okay?"' A;
+	枠消去();
+	立ち絵表示(1521, 1, 200);
+	セリフ(2520, "");
+	'"Ah... yes..."' A;
+	'"I have to defeat... guy monsters..."' A;
+	'"Or..."' A;
+	セリフ(2521, "");
+	'"...Auuugh."' R;
+	'  ↑  Remembered something' A;
+	セリフ(2005, "");
+	'"So you\'re traumatized now..."' A;
+	セリフ(2520, "");
+	'"I-I\'ll... overcome this..."' A;
+	セリフ(2000, "");
+	'"Mm, keep at it."' A;
+	セリフ(2521, "");
+	'"Ah, Mr. Human, you can\'t... go past here...' R;
+	' You can\'t..."' A;
+	セリフ(2000, "");
+	'"Why not?"' A;
+	セリフ(2520, "");
+	'"The monsters\' boss is... past here... so..."' A;
+	'"I\'m sure the boss is...' R;
+	' really strong and scary and big..."' A;
+	'"...And awful."' A;
+	セリフ(2000, "");
+	'"Hmm?"' A;
+	'"But if it\'s that impressive, there\'s definitely treasure too, right?"' A;
+	セリフ(2520, "");
+	'"Still, we can\'t... It\'s too dangerous..."' A;
+	'"I\'m sure I\'ll be eaten...' R;
+	' I don\'t want to... be eaten..."' A;
+	'"Let\'s go that way... That way..."' A;
+	セリフ(2000, "");
+	'"Hmm."' A;
+	ADVOFF();
+}
+
+void 狩り場／オノハが行方不明()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	音楽(◆マップ曲, -1, -1);
+	セリフ(2005, "");
+	'"H-Huh...?' R;
+	' We\'re lost... Where are we?"' A;
+	セリフ(2000, "");
+	'"Hey, Magic, what\'s going on here?"' A;
+	セリフ(2310, "");
+	'"Huh? M-Me?"' A;
+	セリフ(2311, "");
+	'"Well, I mean... isn\'t this a place only Onoha knows about?"' A;
+	'"Nobody could know where to go without her in the party."' A;
+	セリフ(2003, "");
+	'"Ack, now that you mention it, that\'s right."' A;
+	セリフ(2005, "");
+	'"I shouldn\'t have removed Onoha from the party, I guess..."' A;
+	'"Oh well... We\'ll have to give up this time..."' A;
+}
+
+void 狩り場／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'The giant body of the hugant sunk down.' A;
+	セリフ(2000, "");
+	'"Alright, I win!"' A;
+	枠消去();
+	立ち絵表示(1521, 1, 200);
+	セリフ(2520, "");
+	'"You\'re amazing, Mr. Human..."' A;
+	セリフ２(2925, "Hugant");
+	'"Ngoooooooh!!"' A;
+	ト書き();
+	'The hugant rose up again.' A;
+	セリフ(2521, "");
+	'"Eeek..."' A;
+	セリフ(2000, "");
+	'"Hrm, you wanna go again?"' A;
+	ト書き();
+	'The hugant stared at Onoha as if it wanted to join her.' A;
+	セリフ(2520, "");
+	'"Huh?"' A;
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"I guess it wants to join you."' A;
+	セリフ２(2925, "Hugant");
+	'"...*nod* *nod*"' A;
+	セリフ(2520, "");
+	'"I... don\'t want guy monsters."' A;
+	セリフ２(2925, "Hugant");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Aww, now it\'s sad."' A;
+	セリフ(2520, "");
+	'"I-I still... don\'t want them..."' A;
+	'"Guy monsters are... s-scary..."' A;
+	'"They\'ll do... terrible things to me again..."' A;
+	セリフ２(2925, "Hugant");
+	'"........."' A;
+	セリフ(2520, "");
+	'"I-It\'s staring at me..."' A;
+	'"Umm, I\'m sorry... Mr. Monster..."' A;
+	セリフ２(2925, "Hugant");
+	'"...*stare*~~~"' A;
+	セリフ(2521, "");
+	'"Eeek..."' A;
+	'"L-Let\'s go home, Mr. Human."' A;
+	ト書き();
+	'Onoha pushed on Rance\'s back.' A;
+	セリフ(2000, "");
+	'"Yeah, yeah."' A;
+	音楽(0, 1, 2000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance\'s party left.' A;
+	'The hugant\'s shoulders slumped.' A;
+	'Perhaps he would have been able to become Onoha\'s true friend.' A;
+	'But with her heart wounded as it was, she was unable to let a guy monster in.' A;
+	セリフ２(2925, "Hugant");
+	'"...*sob* *sob*"' A;
+}
+

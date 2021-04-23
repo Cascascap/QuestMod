@@ -1,0 +1,31 @@
+void AFL_OpenConfig()
+{
+	CRootConfigView RootConfigView;
+	RootConfigView.Run(0);
+}
+
+int AFL_GetKeyConfigMouseWheelForwardMode()
+{
+	return g_nKeyConfigMouseWheelForward;
+}
+
+bool AFL_GetConfigQuickSaveConfirm()
+{
+	return g_ConfigQuickSaveConfirm;
+}
+
+bool AFL_GetConfigQuickLoadConfirm()
+{
+	return g_ConfigQuickLoadConfirm;
+}
+
+bool AFL_GetConfigSaveConfirm()
+{
+	return g_ConfigSaveConfirm;
+}
+
+bool AFL_GetConfigLoadConfirm()
+{
+	return g_ConfigLoadConfirm;
+}
+

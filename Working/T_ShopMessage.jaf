@@ -1,0 +1,58 @@
+T_ShopMessage::T_ShopMessage()
+{
+}
+
+T_ShopMessage::~T_ShopMessage()
+{
+	this.delete();
+}
+
+void T_ShopMessage::create(int nZ)
+{
+	this.delete();
+	this.m_spFrame.setCg(11110);
+	this.m_spFrame.setPos(20, 87);
+	this.m_spFrame.setZ(nZ);
+	this.m_sText.create(367, 78, 18, -2, 0, 0);
+	this.m_sText.setPos(30, 96);
+	this.m_sText.setZ(nZ + 1);
+	this.m_sText.setTextSpace(-8);
+	this.m_sText.setFontSize(28);
+	this.m_sText.setFontBold(0);
+	this.m_sText.setFontColor(80, 25, 0);
+	this.m_sText.setDrawType(2);
+	this.m_sText.setFontType(258);
+	this.m_sText.setSpacing(0.899999976158142);
+}
+
+void T_ShopMessage::delete()
+{
+	this.m_spFrame.delete();
+	this.m_sText.delete();
+	this.clear();
+}
+
+void T_ShopMessage::clear()
+{
+	return;
+}
+
+void T_ShopMessage::set(string szMessage)
+{
+	this.m_sText.setText(szMessage, false);
+	if (szMessage.Length() == 0)
+	{
+		this.setShow(false);
+	}
+	else
+	{
+		this.setShow(true);
+	}
+}
+
+void T_ShopMessage::setShow(bool bShow)
+{
+	this.m_spFrame.setShow(bShow);
+	this.m_sText.setShow(bShow);
+}
+

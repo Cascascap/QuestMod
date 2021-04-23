@@ -1,0 +1,90 @@
+void マップ_退避クリア()
+{
+	g_sMapBackup.clear();
+}
+
+bool マップ_退避()
+{
+	return g_sMapBackup.backup();
+}
+
+bool マップ_復元()
+{
+	return g_sMapBackup.restore();
+}
+
+bool マップ_退避中()
+{
+	return g_sMapBackup.isBackup();
+}
+
+int マップ_退避番号()
+{
+	return g_sMapBackup.getMapNo();
+}
+
+int マップ_退避マーカー()
+{
+	return g_sMapBackup.getMarker();
+}
+
+int マップ_退避位置Ｘ()
+{
+	return g_sMapBackup.getPosX();
+}
+
+int マップ_退避位置Ｙ()
+{
+	return g_sMapBackup.getPosY();
+}
+
+int マップ_退避方向()
+{
+	return g_sMapBackup.getDir();
+}
+
+float マップ_退避歩き距離１()
+{
+	return g_sMapBackup.getWalkDistance1();
+}
+
+float マップ_退避歩き距離２()
+{
+	return g_sMapBackup.getWalkDistance2();
+}
+
+bool マップ_退避エンカウントチェック中()
+{
+	return g_sMapBackup.getEncountCheck();
+}
+
+void マップデータ_退避(ref T_MapData sData)
+{
+	g_sMapData.backup(sData);
+}
+
+void マップデータ_復元(ref T_MapData sData)
+{
+	g_sMapData.restore(sData);
+}
+
+void 置物データ_退避(ref T_ObjectData sData)
+{
+	g_sObjectData.backup(sData);
+}
+
+void 置物データ_復元(ref T_ObjectData sData)
+{
+	g_sObjectData.restore(sData);
+}
+
+void ビルボードデータ_退避(ref T_BillboardData sData)
+{
+	g_sBillboardData.backup(sData);
+}
+
+void ビルボードデータ_復元(ref T_BillboardData sData)
+{
+	g_sBillboardData.restore(sData);
+}
+

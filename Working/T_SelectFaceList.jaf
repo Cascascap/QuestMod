@@ -1,0 +1,252 @@
+int T_SelectFaceListManager::scroll(int nValue)
+{
+	return this.setTopIndex(nValue * 2);
+}
+
+int T_SelectFaceListManager::getScrollMax()
+{
+	return this.m_nScrollMax;
+}
+
+int T_SelectFaceListManager::getTopIndex()
+{
+	return this.m_nTopIndex;
+}
+
+int T_SelectFaceListManager::getLockIndex()
+{
+	return this.m_nLockIndex;
+}
+
+string T_SelectFaceListManager::getLockName()
+{
+	return this.getFileName(this.m_nLockIndex);
+}
+
+int T_SelectFaceListManager::getListCount()
+{
+	return this.m_aszFileName.Numof();
+}
+
+string T_SelectFaceListManager::getFileName(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_aszFileName.Numof() ? "" : this.m_aszFileName[nIndex];
+}
+
+bool T_SelectFaceListManager::isActive(int nIndex)
+{
+	return this.getFileNameIndex(nIndex) >= 0;
+}
+
+int T_SelectFaceListManager::searchFileName(string szFileName)
+{
+	return szFileName.Empty() ? -1 : this.m_aszFileName.Find(0, this.m_aszFileName.Numof(), szFileName);
+}
+
+T_SelectFaceListManager::T_SelectFaceListManager()
+{
+	this.clear();
+}
+
+T_SelectFaceListManager::~T_SelectFaceListManager()
+{
+	this.delete();
+}
+
+bool T_SelectFaceListManager::create(string szFileName)
+{
+	this.delete();
+	int nCount = this.createList();
+	if (nCount < 0)
+	{
+		return false;
+	}
+	this.m_spFrame.create(98, 116, 0, 255, 255, 128);
+	this.m_nScrollMax = (this.m_aszFileName.Numof() + 1) / 2;
+	int idx = this.searchFileName(szFileName);
+	if (idx < 0)
+	{
+		this.setTopIndex(0);
+	}
+	else
+	{
+		this.setTopIndex((idx / 2) * 2);
+		this.lock(idx);
+	}
+	return true;
+}
+
+void T_SelectFaceListManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspFace.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspFace[i].delete();
+	}
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_SelectFaceListManager::clear()
+{
+	if (!this.m_aszFileName.Empty())
+	{
+		this.m_aszFileName.Free();
+	}
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nScrollMax = -1;
+	this.m_nTopIndex = -1;
+	this.m_nLockIndex = -1;
+}
+
+int T_SelectFaceListManager::setTopIndex(int nIndex)
+{
+	int cnt = this.m_aszFileName.Numof();
+	int cnt2 = this.m_aspFace.Numof();
+	int nMax = ((cnt + 1) / 2) * 2 - cnt2;
+	int nLockIndex = this.m_nLockIndex;
+	nIndex = cnt > cnt2 ? êîíl_ï‚ê≥(nIndex, 0, nMax) : 0;
+	int i = 0;
+	for (i = 0; i < cnt2; ++i)
+	{
+		int idx = i + nIndex;
+		ref T_Sprite rfsFace = this.m_aspFace[i];
+		if (idx < cnt)
+		{
+			T_Sprite spWork;
+			spWork.setCgFromFile(ÉLÉÉÉâê∂ê¨_äÁÇbÇfÉtÉ@ÉCÉãñº(this.m_aszFileName[idx]));
+			rfsFace.copyStretch(98, 116, spWork);
+			rfsFace.setPos(äÁëIë_àÍóóÇw(i), äÁëIë_àÍóóÇx(i));
+		}
+		else
+		{
+			rfsFace.delete();
+		}
+	}
+	this.m_nTopIndex = nIndex;
+	this.setZ(this.m_nZ);
+	this.setShow(this.m_bShow);
+	this.setLockIndex(this.getFaceIndex(nLockIndex));
+	return nIndex;
+}
+
+int T_SelectFaceListManager::setLockIndex(int nIndex)
+{
+	if (nIndex < 0)
+	{
+		this.unlock();
+		return -1;
+	}
+	if (!this.lock(this.getFileNameIndex(nIndex)))
+	{
+		return -1;
+	}
+	return this.m_nLockIndex;
+}
+
+void T_SelectFaceListManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspFace.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspFace[i].setZ(nZ);
+	}
+	this.m_spFrame.setZ(nZ + 20);
+	this.m_nZ = nZ;
+}
+
+void T_SelectFaceListManager::setShow(bool bShow)
+{
+	if (this.m_nTopIndex < 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_aspFace.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspFace[i].setShow(bShow);
+	}
+	this.m_spFrame.setShow(this.getFaceIndex(this.m_nLockIndex) >= 0 ? bShow : 0);
+	this.m_bShow = bShow;
+}
+
+int T_SelectFaceListManager::createList()
+{
+	array@string aszName;
+	if (!FileOperation.GetFileList(ÉLÉÉÉâê∂ê¨_äÁÇbÇfÉtÉHÉãÉ_ñº(), aszName))
+	{
+		return -1;
+	}
+	if (!this.m_aszFileName.Empty())
+	{
+		this.m_aszFileName.Free();
+	}
+	int i = 0;
+	int cnt = aszName.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		T_Sprite spWork;
+		if (!spWork.setCgFromFile(ÉLÉÉÉâê∂ê¨_äÁÇbÇfÉtÉ@ÉCÉãñº(aszName[i])))
+		{
+			continue;
+		}
+		if (spWork.getWidth() != 196 || spWork.getHeight() != 232)
+		{
+			continue;
+		}
+		this.m_aszFileName.PushBack(aszName[i]);
+	}
+	return this.m_aszFileName.Numof();
+}
+
+bool T_SelectFaceListManager::lock(int nIndex)
+{
+	int idx = this.getFaceIndex(nIndex);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_spFrame.setPos(äÁëIë_àÍóóÇw(idx) + 0, äÁëIë_àÍóóÇx(idx) + 0);
+	this.m_spFrame.setShow(this.m_bShow);
+	this.m_nLockIndex = nIndex;
+	return true;
+}
+
+void T_SelectFaceListManager::unlock()
+{
+	this.m_spFrame.setShow(0);
+	this.m_nLockIndex = -1;
+}
+
+int T_SelectFaceListManager::getFileNameIndex(int nIndex)
+{
+	if (this.m_nTopIndex < 0)
+	{
+		return -1;
+	}
+	if (nIndex < 0 || nIndex >= this.m_aspFace.Numof())
+	{
+		return -1;
+	}
+	int idx = this.m_nTopIndex + nIndex;
+	return idx < 0 || idx >= this.m_aszFileName.Numof() ? -1 : idx;
+}
+
+int T_SelectFaceListManager::getFaceIndex(int nIndex)
+{
+	if (this.m_nTopIndex < 0)
+	{
+		return -1;
+	}
+	if (nIndex < 0 || nIndex >= this.m_aszFileName.Numof())
+	{
+		return -1;
+	}
+	int idx = nIndex - this.m_nTopIndex;
+	return idx < 0 || idx >= this.m_aspFace.Numof() ? -1 : idx;
+}
+

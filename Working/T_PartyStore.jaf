@@ -1,0 +1,615 @@
+bool T_PartyStore::blinkList()
+{
+	return this.m_sList.blink();
+}
+
+int T_PartyStore::getStatusID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_sList.getCount() ? -1 : 270000 + nIndex + 1;
+}
+
+int T_PartyStore::getStatusIndex(int nID)
+{
+	if (nID < 270000 || nID >= 280000)
+	{
+		return -1;
+	}
+	int idx = nID + -270001;
+	return idx < 0 || idx >= this.m_sList.getCount() ? -1 : idx;
+}
+
+int T_PartyStore::getListID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_sList.getCount() ? -1 : 280000 + nIndex + 1;
+}
+
+int T_PartyStore::getListIndex(int nID)
+{
+	if (nID < 280000 || nID >= 290000)
+	{
+		return -1;
+	}
+	int idx = nID + -280001;
+	return idx < 0 || idx >= this.m_sList.getCount() ? -1 : idx;
+}
+
+int T_PartyStore::getCharaNo(int nIndex)
+{
+	return this.m_sList.getCharaNo(nIndex);
+}
+
+ref T_PartyListManager T_PartyStore::getList()
+{
+	return this.m_sList;
+}
+
+T_PartyStore::T_PartyStore()
+{
+	this.clear();
+	this.m_rcArea1.set(0, 115, 1024, 263);
+	this.m_rcArea2.set(0, 426, 1024, 263);
+}
+
+T_PartyStore::~T_PartyStore()
+{
+	this.delete();
+}
+
+int T_PartyStore::run(int nZ, int nLayout)
+{
+	int nRet = 0;
+	if (!this.create(nZ, nLayout))
+	{
+		return -1;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID = this.getFirstList();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+void T_PartyStore::scroll(int nValue)
+{
+	this.m_sList.scroll(nValue);
+	this.checkStatus(0);
+	this.setButtonActive();
+}
+
+bool T_PartyStore::remakeList(int nJobType)
+{
+	if (!this.m_sList.remake(-1, nJobType))
+	{
+		return false;
+	}
+	this.m_sScroll.setValue(this.m_sList.getTopIndex(), this.m_sList.getScrollMax(), -1);
+	this.setButtonActive();
+	this.setButtonShow(true);
+	return true;
+}
+
+void T_PartyStore::execDrag(int nX, int nY)
+{
+	if (!this.m_spIcon.isCreated())
+	{
+		return;
+	}
+	this.m_spIcon.setPos(nX, nY);
+	int nID = this.m_sButtonLock.checkIntersect(this.m_spIcon.getSp());
+	switch (nID)
+	{
+		case 200011:
+			this.m_nSelectNo = 0;
+			break;
+		case 200012:
+			this.m_nSelectNo = 1;
+			break;
+		default:
+			this.m_nSelectNo = -1;
+			break;
+	}
+}
+
+bool T_PartyStore::execDrop(int nX, int nY)
+{
+	if (!this.m_spIcon.isCreated())
+	{
+		return false;
+	}
+	this.m_spIcon.setPos(nX, nY);
+	bool bRet = false;
+	if (this.m_nSelectNo < 0)
+	{
+		goto label0;
+	}
+	bRet = true;
+	効果音_ドロップ();
+	this.m_nTargetNo = this.m_nSelectNo;
+label0:
+	return bRet;
+}
+
+bool T_PartyStore::create(int nZ, int nLayout)
+{
+	this.delete();
+	this.createBase(nLayout);
+	this.m_sList.create(9, nLayout, -1, 0);
+	this.m_sScroll.create(1, 944, 290000, 0, 0);
+	this.m_sScroll.setPos(0, 406);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&scrollPartyStore);
+	this.m_sScroll.setValue(0, this.m_sList.getScrollMax(), this.m_sList.getScrollPage());
+	this.m_sButton.create();
+	this.m_sButtonLock.create();
+	this.createList(nLayout);
+	ボタン登録_ＣＧ(this.m_sButton, 200001, 998, 384, 10007, -1, -1, -2147483648, -2147483648);
+	ボタン登録_矩形(this.m_sButtonLock, 200011, 0, 115, 1024, 263, true);
+	ボタン登録_矩形(this.m_sButtonLock, 200012, 0, 426, 1024, 263, true);
+	this.setZ(nZ);
+	this.setButtonActive();
+	this.setShow(true);
+	this.m_sInputKey.create(1, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&パーティ倉庫_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&パーティ倉庫_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&パーティ倉庫_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&パーティ倉庫_右矢印);
+	this.m_sInputKey.setSelectCallback(&パーティ倉庫_選択設定);
+	return true;
+}
+
+void T_PartyStore::createBase(int nLayout)
+{
+	this.m_spBase.setCg(nLayout == 1 ? 11068 : 11069);
+	this.m_spBase.setPos(0, 378);
+}
+
+void T_PartyStore::createList(int nLayout)
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	int nW = パーティ一覧_幅(nLayout);
+	int nH = パーティ一覧_高(nLayout);
+	for (i = 0; i < cnt; ++i)
+	{
+		int nX = パーティ一覧_キャラＸ(i, true, nLayout);
+		int nY = パーティ一覧_キャラＹ(i, true, nLayout);
+		if (nLayout == 1)
+		{
+			ボタン登録_ＣＧ(this.m_sButton, this.getStatusID(i), nX + 86, nY + 0, 11056, -1, -1, -2147483648, -2147483648);
+		}
+		else
+		{
+			ボタン登録_ＣＧ(this.m_sButton, this.getStatusID(i), パーティ一覧_顔Ｘ(i, true, nLayout) + 103, パーティ一覧_顔Ｙ(i, true, nLayout) + 69, 11055, -1, -1, -2147483648, -2147483648);
+		}
+		ボタン登録_矩形(this.m_sButton, this.getListID(i), nX, nY, nW, nH, false);
+	}
+}
+
+void T_PartyStore::deleteList()
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.eraseButton(this.getListID(i));
+		this.m_sButton.eraseButton(this.getStatusID(i));
+	}
+}
+
+void T_PartyStore::delete()
+{
+	this.endDrag();
+	this.m_spBase.delete();
+	this.m_sList.delete();
+	this.m_sScroll.delete();
+	this.m_sButton.delete();
+	this.m_sButtonLock.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_PartyStore::clear()
+{
+	this.m_nLockChara = 0;
+}
+
+void T_PartyStore::update()
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sList.update(i);
+	}
+	this.setButtonActive();
+	this.setShow(this.m_spBase.getShow());
+}
+
+int T_PartyStore::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 200001;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		else if (this.checkDrag(nID2))
+		{
+			nRet = nID2;
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_PartyStore::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (this.m_sScroll.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			パーティ_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (パーティ_入力確認(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label0:
+	this.m_sScroll.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	パーティ_入力ＯＮ();
+	this.checkStatus(nSelectID);
+	return 0;
+}
+
+int T_PartyStore::checkKey(int nID)
+{
+	int nID2 = 0;
+	switch (this.checkSelectArea(nID))
+	{
+		case 1:
+			nID2 = パーティ_キー確認(nID);
+			if (nID2 > 0)
+			{
+				return nID2;
+			}
+			break;
+		case 2:
+			if (this.m_sScroll.checkKey())
+			{
+				return 0;
+			}
+			nID2 = this.checkKeyStatus(nID);
+			if (nID2 > 0)
+			{
+				return nID2;
+			}
+			break;
+		default:
+			break;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+int T_PartyStore::checkKeyStatus(int nID)
+{
+	if (!キー_押下(83))
+	{
+		return 0;
+	}
+	int idx = -1;
+	if (nID > 280000)
+	{
+		idx = this.getListIndex(nID);
+		goto label0;
+	}
+	if (nID > 270000)
+	{
+		idx = this.getStatusIndex(nID);
+		goto label0;
+	}
+label0:
+	if (idx < 0)
+	{
+		goto label1;
+	}
+	if (this.getCharaNo(idx) <= 0)
+	{
+		goto label1;
+	}
+	効果音_クリック();
+	キー_離し待ち(83, true);
+	return this.getStatusID(idx);
+label1:
+	効果音_エラー();
+	キー_離し待ち(83, true);
+	return 0;
+}
+
+bool T_PartyStore::checkWheel()
+{
+	if (this.m_rcArea1.mouseInRect())
+	{
+		if (パーティ_ホイール確認())
+		{
+			return true;
+		}
+	}
+	if (this.m_rcArea2.mouseInRect())
+	{
+		if (this.m_sScroll.checkWheel())
+		{
+			return true;
+		}
+	}
+	ホイール_クリア();
+	return false;
+}
+
+bool T_PartyStore::checkDrag(int nID)
+{
+	if (画面操作モード確認() != 0)
+	{
+		return false;
+	}
+	if (120000 < nID && nID < 130000)
+	{
+		return パーティ_ボタン有効(nID);
+	}
+	if (280000 < nID && nID < 290000)
+	{
+		return this.m_sButton.getButtonActive(nID);
+	}
+	return false;
+}
+
+void T_PartyStore::checkStatus(int nID)
+{
+	int nID1 = 0;
+	if (nID < 200000)
+	{
+		パーティ_ステータスボタン確認(nID);
+		goto label0;
+	}
+	パーティ_ステータスボタン確認(0);
+	if (nID > 290000)
+	{
+		goto label0;
+	}
+	if (nID > 280000)
+	{
+		int idx = this.getListIndex(nID);
+		if (this.getCharaNo(idx) > 0)
+		{
+			nID1 = this.getStatusID(idx);
+		}
+		goto label0;
+	}
+	if (nID > 270000)
+	{
+		nID1 = nID;
+		goto label0;
+	}
+label0:
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nID2 = this.getStatusID(i);
+		this.m_sButton.setButtonShow(nID2, nID2 == nID1);
+	}
+}
+
+int T_PartyStore::checkSelectArea(int nID)
+{
+	if (キー優先())
+	{
+		if (nID > 200000)
+		{
+			return 2;
+		}
+		if (nID > 100000)
+		{
+			return 1;
+		}
+	}
+	else
+	{
+		if (this.m_rcArea1.mouseInRect())
+		{
+			return 1;
+		}
+		if (this.m_rcArea2.mouseInRect())
+		{
+			return 2;
+		}
+	}
+	return 0;
+}
+
+void T_PartyStore::resetSelect()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sButton.resetSelect();
+	this.m_sButtonLock.resetSelect();
+	パーティ_選択解除();
+	this.checkStatus(0);
+}
+
+void T_PartyStore::setSelect(int nID, bool bSelect)
+{
+	if (nID > 290000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		goto label0;
+	}
+	if (nID > 200000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+		goto label0;
+	}
+	パーティ_選択設定(nID, bSelect);
+label0:
+	this.checkStatus(bSelect ? nID : 0);
+}
+
+void T_PartyStore::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 290000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 200000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+	パーティ_カーソル設定(nID);
+}
+
+void T_PartyStore::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_sList.setZ(nZ + 1);
+	this.m_sScroll.setZ(nZ + 1);
+	this.m_sButton.setZ(nZ + 10);
+	this.m_sButtonLock.setZ(nZ + 50);
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonZ(this.getStatusID(i), nZ + 20);
+	}
+}
+
+void T_PartyStore::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sList.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+	this.m_sButtonLock.setShow(bShow);
+	this.setButtonShow(bShow);
+}
+
+void T_PartyStore::setButtonShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonShow(this.getListID(i), bShow);
+		this.m_sButton.setButtonShow(this.getStatusID(i), false);
+	}
+	this.m_sButton.setButtonShow(200001, bShow);
+}
+
+void T_PartyStore::setButtonActive()
+{
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		bool bActive = this.getCharaNo(i) > 0;
+		this.m_sButton.setButtonActive(this.getListID(i), bActive);
+		this.m_sButton.setButtonActive(this.getStatusID(i), bActive);
+	}
+}
+
+void T_PartyStore::setListButtonShow(int nID, bool bShow)
+{
+	if (nID > 290000)
+	{
+		return;
+	}
+	if (nID > 280000)
+	{
+		this.m_sButton.setButtonShow(nID, bShow);
+		return;
+	}
+	if (nID > 200000)
+	{
+		return;
+	}
+	パーティ_一覧表示設定(nID, bShow);
+}
+

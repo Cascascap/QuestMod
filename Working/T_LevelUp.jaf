@@ -1,0 +1,142 @@
+T_LevelUp::T_LevelUp()
+{
+	this.clear();
+}
+
+T_LevelUp::~T_LevelUp()
+{
+	this.delete();
+}
+
+bool T_LevelUp::create(int nCharaNo, int nZ)
+{
+	this.delete();
+	ref sＣ rfsData = キャラ_データ参照(nCharaNo);
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	sＣ sOldData;
+	sOldData = rfsData;
+	if (!戦闘データ_レベルアップ(戦闘番号_取得(nCharaNo)))
+	{
+		return false;
+	}
+	this.m_spBase.setCg(10311);
+	this.m_spBase.setPos(548, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_sLevel.create(10321, false, 5, 3, 0);
+	this.m_sLevel.setPos(675, 104);
+	this.m_sLevel.setZ(nZ + 2);
+	this.m_sLevel.setValue(rfsData.ＬＶ, 0, false);
+	this.m_sOld.create(10321, false, 5, 3, 0);
+	this.m_sOld.setPos(675, 45);
+	this.m_sOld.setZ(nZ + 2);
+	this.m_sOld.setValue(sOldData.ＬＶ, 0, false);
+	this.createParam(0, 148, 27, 8, 621, 840, nZ + 1);
+	this.createParam(1, 116, 27, 6, 682, 869, nZ + 1);
+	this.createParam(2, 116, 27, 6, 682, 869, nZ + 1);
+	this.createParam(3, 116, 27, 6, 682, 869, nZ + 1);
+	this.createParam(4, 116, 27, 6, 682, 869, nZ + 1);
+	this.createParam(5, 47, 27, 2, 682, 822, nZ + 1);
+	this.createParam(6, 47, 27, 2, 682, 822, nZ + 1);
+	this.createParam(7, 47, 27, 2, 682, 822, nZ + 1);
+	this.createParam(8, 47, 27, 2, 682, 822, nZ + 1);
+	this.createParam(9, 47, 27, 2, 682, 822, nZ + 1);
+	this.createParam(10, 69, 27, 3, 682, 822, nZ + 1);
+	this.createParam(11, 75, 27, 5, 778, 925, nZ + 1);
+	this.setParam(0, sOldData.体力最大, rfsData.体力最大);
+	this.setParam(1, sOldData.攻撃力, rfsData.攻撃力);
+	this.setParam(2, sOldData.防御力, rfsData.防御力);
+	this.setParam(3, sOldData.魔法力, rfsData.魔法力);
+	this.setParam(4, sOldData.魔抵力, rfsData.魔抵力);
+	this.setParam(5, sOldData.命中率, rfsData.命中率);
+	this.setParam(6, sOldData.回避率, rfsData.回避率);
+	this.setParam(7, sOldData.衝撃率, rfsData.衝撃率);
+	this.setParam(8, sOldData.耐性率, rfsData.耐性率);
+	this.setParam(9, sOldData.必殺率, rfsData.必殺率);
+	this.setParam(10, sOldData.素早さ, rfsData.素早さ);
+	this.setParam(11, sOldData.スキルポイント, rfsData.スキルポイント);
+	return true;
+}
+
+void T_LevelUp::delete()
+{
+	int i = 0;
+	int j = 0;
+	int cnt1 = this.m_asParam.Numof();
+	int cnt2 = this.m_asParam.Numof(2);
+	for (i = 0; i < cnt1; ++i)
+	{
+		for (j = 0; j < cnt2; ++j)
+		{
+			this.m_asParam[i][j].delete();
+		}
+	}
+	this.m_spBase.delete();
+	this.m_sLevel.delete();
+	this.m_sOld.delete();
+	this.clear();
+}
+
+void T_LevelUp::clear()
+{
+	this.m_bUpdate = false;
+}
+
+void T_LevelUp::setShow(bool bShow)
+{
+	int i = 0;
+	int j = 0;
+	int cnt1 = this.m_asParam.Numof();
+	int cnt2 = this.m_asParam.Numof(2);
+	for (i = 0; i < cnt1; ++i)
+	{
+		for (j = 0; j < cnt2; ++j)
+		{
+			this.m_asParam[i][j].setShow(bShow);
+		}
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_sLevel.setShow(bShow);
+	this.m_sOld.setShow(bShow);
+}
+
+void T_LevelUp::createParam(int nIndex, int nWidth, int nHeight, int nCount, int nX1, int nX2, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_asParam.Numof(2))
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_asParam.Numof();
+	int nY = nIndex == 11 ? 679 : 167 + 46 * nIndex;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawNumber rfsParam = this.m_asParam[i][nIndex];
+		rfsParam.create(nWidth, nHeight, nCount, 3, 1, true);
+		rfsParam.setFontType(258);
+		rfsParam.setFontSize(32);
+		rfsParam.setFontColor(107, 107, 107);
+		rfsParam.setFontBold(1);
+		rfsParam.setPos(i == 0 ? nX1 : nX2, nY);
+		rfsParam.setZ(nZ);
+	}
+}
+
+void T_LevelUp::setParam(int nIndex, int nOldValue, int nNewValue)
+{
+	if (nIndex < 0 || nIndex >= this.m_asParam.Numof(2))
+	{
+		return;
+	}
+	ref T_DrawNumber rfsParam1 = this.m_asParam[0][nIndex];
+	ref T_DrawNumber rfsParam2 = this.m_asParam[1][nIndex];
+	if (nOldValue != nNewValue)
+	{
+		rfsParam2.setFontColor(255, 255, 255);
+	}
+	rfsParam1.setValue(nOldValue, false);
+	rfsParam2.setValue(nNewValue, false);
+}
+

@@ -1,0 +1,291 @@
+float 実数変換(int nValue)
+{
+	float fValue = nValue;
+	return fValue / 100.0;
+}
+
+int 数値変換(float fValue)
+{
+	fValue *= 100.0;
+	return fValue < 2147483648.0 ? fValue : 2147483648.0;
+}
+
+int ランダム選択_確率(ref array@int anRate)
+{
+	if (anRate === NULL || anRate.Empty())
+	{
+		return -1;
+	}
+	int nRand = 乱数(100);
+	int nPer = 0;
+	int i = 0;
+	int cnt = anRate.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		nPer += anRate[i];
+		if (nRand <= nPer)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int ランダム選択_範囲(int nStartValue, int nEndValue)
+{
+	return 乱数_範囲_値(nStartValue, nEndValue);
+}
+
+bool 確率チェック(int n確率)
+{
+	if (n確率 <= 0)
+	{
+		return false;
+	}
+	if (n確率 >= 100)
+	{
+		return true;
+	}
+	return 乱数(100) <= n確率;
+}
+
+int 乱数(int nMax)
+{
+	if (nMax <= 1)
+	{
+		return 1;
+	}
+	return AFL_Rand() % nMax + 1;
+}
+
+int 乱数_範囲_サイズ(int nMin, int nLength)
+{
+	if (nLength <= 0)
+	{
+		return nMin;
+	}
+	return (nMin + 乱数(nLength)) - 1;
+}
+
+int 乱数_範囲_値(int nMin, int nMax)
+{
+	return 乱数_範囲_サイズ(nMin, (nMax - nMin) + 1);
+}
+
+int _max(int nNo1, int nNo2)
+{
+	return Math.Max(nNo1, nNo2);
+}
+
+int _min(int nNo1, int nNo2)
+{
+	return Math.Min(nNo1, nNo2);
+}
+
+int 絶対値(int nNo)
+{
+	return Math.Abs(nNo);
+}
+
+float 絶対値Ｆ(float fNo)
+{
+	return Math.AbsF(fNo);
+}
+
+int 数値桁数(int nNo)
+{
+	string szText = 半角数字(nNo, -1, 0);
+	return szText.LengthByte();
+}
+
+bool 数値チェック(string szText)
+{
+	int i = 0;
+	int cnt = szText.Length();
+	if (cnt < 1)
+	{
+		return false;
+	}
+	if (szText[0] == '-')
+	{
+		++i;
+	}
+	while (i < cnt)
+	{
+		int cc = szText[i++];
+		if (cc < 48 || cc > 57)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+float 距離(float fX, float fY, float fX2, float fY2)
+{
+	return Math.Sqrt((fX - fX2) * (fX - fX2) + (fY - fY2) * (fY - fY2));
+}
+
+int 最大数値(int nSize)
+{
+	if (nSize >= 10)
+	{
+		return 2147483647;
+	}
+	string szText = 半角数字詰め(9, nSize);
+	return szText;
+}
+
+int 数値_補正(int nValue, int nMin, int nMax)
+{
+	if (nMin > -2147483648)
+	{
+		if (nValue < nMin)
+		{
+			nValue = nMin;
+		}
+	}
+	if (nMax > -2147483648)
+	{
+		if (nValue > nMax)
+		{
+			nValue = nMax;
+		}
+	}
+	return nValue;
+}
+
+float 数値Ｆ_補正(float fValue, float fMin, float fMax)
+{
+	if (fMin > -3.40282346638529E+38)
+	{
+		if (fValue < fMin)
+		{
+			fValue = fMin;
+		}
+	}
+	if (fMax > -3.40282346638529E+38)
+	{
+		if (fValue > fMax)
+		{
+			fValue = fMax;
+		}
+	}
+	return fValue;
+}
+
+void 色_補正(ref int nR, ref int nG, ref int nB)
+{
+	nR = 数値_補正(nR, 0, 255);
+	nG = 数値_補正(nG, 0, 255);
+	nB = 数値_補正(nB, 0, 255);
+}
+
+void α値_補正(ref int nAlpha)
+{
+	nAlpha = 数値_補正(nAlpha, 0, 255);
+}
+
+void 影ピクセル_補正(ref int nL, ref int nR, ref int nU, ref int nD)
+{
+	nL = 数値_補正(nL, 0, -2147483648);
+	nR = 数値_補正(nR, 0, -2147483648);
+	nU = 数値_補正(nU, 0, -2147483648);
+	nD = 数値_補正(nD, 0, -2147483648);
+}
+
+int 乱数補正(int nValue, int nMin, int nMax)
+{
+	int nPer = 乱数_範囲_値(nMin, nMax);
+	if (nPer < 0)
+	{
+		return ％数値補正－(nValue, 絶対値(nPer));
+	}
+	return ％数値補正＋(nValue, nPer);
+}
+
+int ％数値補正＋(int nValue, int nPer)
+{
+	return 数値_加算(nValue, ％数値(nValue, nPer));
+}
+
+int ％数値補正－(int nValue, int nPer)
+{
+	return nPer < 100 ? 数値_減算(nValue, ％数値(nValue, nPer)) : 0;
+}
+
+int ％数値(int nValue, int nPer)
+{
+	return 実数計算(nValue, nPer, 100.0);
+}
+
+int ％計算(int nBase, int nValue)
+{
+	return 実数計算(100.0, nValue, nBase);
+}
+
+float ％数値Ｆ(int nValue, int nPer)
+{
+	return 実数計算(nValue, nPer, 100.0);
+}
+
+float ％計算Ｆ(int nBase, int nValue)
+{
+	return 実数計算(100.0, nValue, nBase);
+}
+
+float 実数計算(float fValue, float fValue1, float fValue2)
+{
+	if (fValue == 0.0 || fValue1 == 0.0 || fValue2 == 0.0)
+	{
+		return 0.0;
+	}
+	float fRate = fValue1 / fValue2;
+	return fValue * fRate;
+}
+
+int フラグ設定(int nValue, int nMask, bool bFlag)
+{
+	return bFlag ? nValue | nMask : nValue & ~nMask;
+}
+
+bool フラグ取得(int nValue, int nMask)
+{
+	return (nValue & nMask) > 0;
+}
+
+int 数値_加算(int nValue1, int nValue2)
+{
+	if (nValue1 == 2147483647 || nValue2 == 2147483647)
+	{
+		return 2147483647;
+	}
+	if (2147483647 - nValue1 < nValue2)
+	{
+		return 2147483647;
+	}
+	return nValue1 + nValue2;
+}
+
+int 数値_減算(int nValue1, int nValue2)
+{
+	return nValue1 > nValue2 ? nValue1 - nValue2 : 0;
+}
+
+int 数値_乗算(int nValue1, int nValue2)
+{
+	if (nValue1 == 2147483647 || nValue2 == 2147483647)
+	{
+		return 2147483647;
+	}
+	float fValue1 = nValue1;
+	float fValue2 = nValue2;
+	float fValue = fValue1 * fValue2;
+	return fValue < 2147483648.0 ? fValue : 2147483648.0;
+}
+
+int 数値_計算(int nValue1, int nValue2, int nValue3)
+{
+	return 数値_加算(nValue1, 数値_乗算(nValue2, nValue3));
+}
+

@@ -1,0 +1,36 @@
+void Ｒ８リザルト画面(int nType)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	T_ResultBack sBack;
+	sBack.create(101);
+	T_Result sResult;
+	if (!sResult.run(nType))
+	{
+		goto label0;
+	}
+	リザルト鑑定_実行();
+	sBack.delete();
+	_黒画面(1, 500);
+label0:
+	リザルト_クエスト倉庫クリア();
+	音楽_再生(0);
+	画面_クリア(true, true);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+
+void リザルト_クエスト倉庫クリア()
+{
+	int i = 0;
+	int cnt = アイテム_数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (アイテム_存在(i) == 8)
+		{
+			アイテム_存在設定(i, 0);
+		}
+	}
+}
+

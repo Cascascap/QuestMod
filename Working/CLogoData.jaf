@@ -1,0 +1,46 @@
+CLogoData::CLogoData()
+{
+	this.Init();
+}
+
+CLogoData::~CLogoData()
+{
+	this.Release();
+}
+
+void CLogoData::Init()
+{
+	return;
+}
+
+void CLogoData::Release()
+{
+	this.m_Logo.Release();
+	this.m_LogoBG.Release();
+}
+
+void CLogoData::SetLogo()
+{
+	‚oQƒtƒHƒ“ƒgİ’è(this.m_Logo.GetPartsNumber(), 257, 40, 140, 255, 100, 0.0, 0, 0, 0, 0.0, 1);
+	this.m_Logo.SetText("‚`‚k‚h‚b‚d@‚r‚n‚e‚s", 1);
+	‚oQƒtƒHƒ“ƒgİ’è(this.m_LogoBG.GetPartsNumber(), 257, 40, 0, 190, 100, 0.0, 0, 0, 0, 0.0, 1);
+	this.m_LogoBG.SetText("‚`‚k‚h‚b‚d@‚r‚n‚e‚s", 1);
+}
+
+int CLogoData::GetHeight()
+{
+	return 40;
+}
+
+void CLogoData::UpdatePos(int PosX, int PosY)
+{
+	this.m_Logo.SetPos(PosX, PosY);
+	this.m_LogoBG.SetPos(PosX + 2, PosY + 2);
+}
+
+void CLogoData::UpdateZ(int PosZ)
+{
+	this.m_Logo.SetZ(PosZ + 1);
+	this.m_LogoBG.SetZ(PosZ);
+}
+

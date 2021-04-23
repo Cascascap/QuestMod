@@ -1,0 +1,336 @@
+void T_DrawNumber::setPos(int nX, int nY)
+{
+	this.m_sText.setPos(nX, nY);
+}
+
+void T_DrawNumber::setPos2(int nX, int nY)
+{
+	this.m_sText.setPos2(nX, nY);
+}
+
+void T_DrawNumber::setZ(int nZ)
+{
+	this.m_sText.setZ(nZ);
+}
+
+void T_DrawNumber::setShow(bool bShow)
+{
+	this.m_sText.setShow(bShow);
+}
+
+void T_DrawNumber::setBlendRate(int nRate)
+{
+	this.m_sText.setBlendRate(nRate);
+}
+
+void T_DrawNumber::setShadowRate(int nRate)
+{
+	this.m_sText.setShadowRate(nRate);
+}
+
+void T_DrawNumber::setTextSpace(int nTextSpace)
+{
+	this.m_sText.setTextSpace(nTextSpace);
+}
+
+void T_DrawNumber::setDrawType(int nDrawType)
+{
+	this.m_sText.setDrawType(nDrawType);
+}
+
+void T_DrawNumber::setFontType(int nFontType)
+{
+	this.m_sText.setFontType(nFontType);
+}
+
+void T_DrawNumber::setFontSize(int nFontSize)
+{
+	this.m_sText.setFontSize(nFontSize);
+}
+
+void T_DrawNumber::setFontBold(int nFontBold)
+{
+	this.m_sText.setFontBold(nFontBold);
+}
+
+void T_DrawNumber::setFontColor(int nR, int nG, int nB)
+{
+	this.m_sText.setFontColor(nR, nG, nB);
+}
+
+void T_DrawNumber::setShadowPixel(int nL, int nR, int nU, int nD)
+{
+	this.m_sText.setShadowPixel(nL, nR, nU, nD);
+}
+
+void T_DrawNumber::setShadowColor(int nR, int nG, int nB)
+{
+	this.m_sText.setShadowColor(nR, nG, nB);
+}
+
+int T_DrawNumber::getValue()
+{
+	return this.m_nValue;
+}
+
+int T_DrawNumber::getMode()
+{
+	return this.m_nMode;
+}
+
+bool T_DrawNumber::getHankaku()
+{
+	return this.m_bHankaku;
+}
+
+ref T_DrawText T_DrawNumber::getText()
+{
+	return this.m_sText;
+}
+
+int T_DrawNumber::getPosX()
+{
+	return this.m_sText.getPosX();
+}
+
+int T_DrawNumber::getPosY()
+{
+	return this.m_sText.getPosY();
+}
+
+int T_DrawNumber::getZ()
+{
+	return this.m_sText.getZ();
+}
+
+bool T_DrawNumber::getShow()
+{
+	return this.m_sText.getShow();
+}
+
+int T_DrawNumber::getBlendRate()
+{
+	return this.m_sText.getBlendRate();
+}
+
+int T_DrawNumber::getShadowRate()
+{
+	return this.m_sText.getShadowRate();
+}
+
+int T_DrawNumber::getDrawType()
+{
+	return this.m_sText.getDrawType();
+}
+
+int T_DrawNumber::getFontType()
+{
+	return this.m_sText.getFontType();
+}
+
+int T_DrawNumber::getFontSize()
+{
+	return this.m_sText.getFontSize();
+}
+
+bool T_DrawNumber::getFontBold()
+{
+	return this.m_sText.getFontBold();
+}
+
+void T_DrawNumber::getFontColor(ref int nR, ref int nG, ref int nB)
+{
+	this.m_sText.getFontColor(nR, nG, nB);
+}
+
+void T_DrawNumber::getShadowPixel(ref int nL, ref int nR, ref int nU, ref int nD)
+{
+	this.m_sText.getShadowPixel(nL, nR, nU, nD);
+}
+
+void T_DrawNumber::getShadowColor(ref int nR, ref int nG, ref int nB)
+{
+	this.m_sText.getShadowColor(nR, nG, nB);
+}
+
+int T_DrawNumber::getWidth()
+{
+	return this.m_sText.getWidth();
+}
+
+int T_DrawNumber::getHeight()
+{
+	return this.m_sText.getHeight();
+}
+
+int T_DrawNumber::getRealWidth()
+{
+	return this.m_sText.getRealWidth();
+}
+
+int T_DrawNumber::getRealHeight()
+{
+	return this.m_sText.getRealHeight();
+}
+
+bool T_DrawNumber::suspend()
+{
+	return this.m_sText.suspend();
+}
+
+bool T_DrawNumber::resume()
+{
+	return this.m_sText.resume();
+}
+
+bool T_DrawNumber::isSuspend()
+{
+	return this.m_sText.isSuspend();
+}
+
+bool T_DrawNumber::isCreated()
+{
+	return this.m_sText.isCreated();
+}
+
+bool T_DrawNumber::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	return this.m_sText.copyToSprite(rfsDst, nDstX, nDstY);
+}
+
+T_DrawNumber::T_DrawNumber()
+{
+	this.clear();
+}
+
+T_DrawNumber::~T_DrawNumber()
+{
+	this.delete();
+}
+
+void T_DrawNumber::create(int nWidth, int nHeight, int nCount, int nMode, int nLineMode, bool bHankaku)
+{
+	this.delete();
+	if (nMode != 0 && nCount < 0)
+	{
+		return;
+	}
+	this.m_sText.create(nWidth, nHeight, nCount, 0, 数字表示モード＞テキスト描画モード(nMode), nLineMode);
+	this.m_sText.setDrawType(1);
+	this.m_nMode = nMode;
+	this.m_bHankaku = bHankaku;
+}
+
+void T_DrawNumber::delete()
+{
+	this.m_sText.delete();
+	this.clear();
+}
+
+void T_DrawNumber::clear()
+{
+	this.m_nValue = -1;
+	this.m_nMode = -1;
+	this.m_bHankaku = false;
+	this.m_nTotalTime = 0;
+	this.m_nOldValue = -1;
+	this.m_nNewValue = -1;
+}
+
+void T_DrawNumber::update(int nValue, int nTotalTime)
+{
+	if (this.m_nMode < 0)
+	{
+		return;
+	}
+	if (this.m_nValue == nValue)
+	{
+		return;
+	}
+	if (this.m_nValue < 0)
+	{
+		this.setValue(nValue, false);
+		return;
+	}
+	int nTime = 0;
+	CASTimer sTimer;
+	this.slotStart(nValue, nTotalTime);
+	sTimer.Reset();
+	while (nTime < nTotalTime)
+	{
+		this.slot(nTime);
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	this.slotEnd();
+}
+
+bool T_DrawNumber::slotStart(int nValue, int nTotalTime)
+{
+	if (this.m_nMode < 0)
+	{
+		return false;
+	}
+	this.slotEnd();
+	if (nValue == this.m_nValue)
+	{
+		return false;
+	}
+	nTotalTime = nTotalTime < 0 ? 250 : nTotalTime;
+	if (nTotalTime <= 0)
+	{
+		return false;
+	}
+	this.m_nTotalTime = nTotalTime;
+	this.m_nOldValue = this.m_nValue;
+	this.m_nNewValue = nValue;
+	return true;
+}
+
+void T_DrawNumber::slotEnd()
+{
+	if (this.m_nNewValue >= 0)
+	{
+		this.setValue(this.m_nNewValue, false);
+	}
+	this.m_nTotalTime = 0;
+	this.m_nOldValue = -1;
+	this.m_nNewValue = -1;
+}
+
+int T_DrawNumber::slot(int nTime)
+{
+	if (this.m_nNewValue < 0)
+	{
+		return this.m_nValue;
+	}
+	int nValue = 0;
+	if (nTime > this.m_nTotalTime)
+	{
+		nTime = this.m_nTotalTime;
+	}
+	if (nTime >= this.m_nTotalTime)
+	{
+		nValue = this.m_nNewValue;
+	}
+	else
+	{
+		nValue = this.m_nOldValue + 実数計算(this.m_nNewValue - this.m_nOldValue, nTime, this.m_nTotalTime);
+	}
+	this.setValue(nValue, false);
+	return nValue;
+}
+
+void T_DrawNumber::setValue(int nValue, bool bCompulsory)
+{
+	nValue = nValue > 0 ? nValue : 0;
+	if (nValue == this.m_nValue && !bCompulsory)
+	{
+		return;
+	}
+	this.m_nValue = nValue;
+	int nMax = this.m_sText.getCharCount();
+	string szText = this.m_bHankaku ? 数字_半角テキスト(this.m_nValue, nMax, this.m_nMode) : 数字_全角テキスト(this.m_nValue, nMax, this.m_nMode);
+	this.m_sText.setText(szText, bCompulsory);
+}
+

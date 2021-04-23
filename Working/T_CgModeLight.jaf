@@ -1,0 +1,120 @@
+T_CgModeLight::T_CgModeLight()
+{
+	this.clear();
+}
+
+T_CgModeLight::~T_CgModeLight()
+{
+	this.delete();
+}
+
+void T_CgModeLight::create(int nZ, ref T_Sprite spBase)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.m_aspLight.Numof();
+	int nMaxCount = ÇbÇfÉÇÅ[Éh_ç≈ëÂêî();
+	for (i = 0; i < nMaxCount; ++i)
+	{
+		this.createLight(i, nZ);
+		this.m_anStatus[i] = ÇbÇfÉÇÅ[Éh_ÉTÉÄÉlÉCÉãî‘çÜ(i + 1) > 0 ? 1 : 0;
+	}
+	if (spBase !== NULL)
+	{
+		int nW = 19;
+		int nH;
+		for (nH = 16; i < cnt; ++i)
+		{
+			int nX = this.getPosX(i);
+			int nY = this.getPosY(i) - 1;
+			spBase.fill(nX, nY, nW, nH, 66, 66, 66, 255);
+		}
+	}
+	this.m_spLock.setCg(12254);
+	this.m_spLock.setZ(nZ + 1);
+	this.m_nZ = nZ;
+}
+
+void T_CgModeLight::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspLight.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspLight[i].delete();
+	}
+	this.m_spLock.delete();
+	this.clear();
+}
+
+void T_CgModeLight::clear()
+{
+	this.m_nZ = -1;
+	this.m_anStatus.Fill(0, this.m_anStatus.Numof(), -1);
+}
+
+bool T_CgModeLight::remake(int nIndex)
+{
+	if (this.m_nZ < 0)
+	{
+		return false;
+	}
+	if (nIndex < 0 || nIndex >= this.m_aspLight.Numof())
+	{
+		return false;
+	}
+	return this.createLight(nIndex, this.m_nZ);
+}
+
+bool T_CgModeLight::lock(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspLight.Numof())
+	{
+		return false;
+	}
+	this.m_spLock.setPos(this.getPosX(nIndex) + -1, this.getPosY(nIndex) + -1);
+	return true;
+}
+
+void T_CgModeLight::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspLight.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspLight[i].setShow(this.m_anStatus[i] > 0 ? bShow : 0);
+	}
+	this.m_spLock.setShow(bShow);
+}
+
+bool T_CgModeLight::createLight(int nIndex, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspLight.Numof())
+	{
+		return false;
+	}
+	ref T_Sprite rfsLight = this.m_aspLight[nIndex];
+	rfsLight.setCg(ÇbÇfÉÇÅ[Éhå©ÇΩ(nIndex) ? 12253 : 12259);
+	rfsLight.setPos(this.getPosX(nIndex) + 3, this.getPosY(nIndex) + 3);
+	rfsLight.setZ(nZ);
+	return true;
+}
+
+int T_CgModeLight::getPosX(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspLight.Numof())
+	{
+		return -1;
+	}
+	return 13 + 18 * (nIndex / 4);
+}
+
+int T_CgModeLight::getPosY(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspLight.Numof())
+	{
+		return -1;
+	}
+	return 37 + 14 * (nIndex % 4);
+}
+

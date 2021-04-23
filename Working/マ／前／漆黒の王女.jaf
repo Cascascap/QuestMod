@@ -1,0 +1,1254 @@
+void ＤＰ／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5071, 0, 0);
+	ト書き();
+	' ' R;
+	'     Outside Peperon Church' A;
+	音楽(79, -1, -1);
+	枠消去();
+	立ち絵表示(1420, 1, 200);
+	セリフ(2420, "");
+	'"........."' A;
+	ト書き();
+	'Before the Peperon Church, in the woods.' R;
+	'Bishop Enron, a candidate for the papacy, had a force of 200 men with him.' A;
+	セリフ(2932, "");
+	'"The scouts have reported back, Bishop Enron.' R;
+	' The presence of the Shepherds inside Peperon Church has been confirmed."' A;
+	'"It would appear there are only a few members present, however, they\'ve set several crucibles in the church and are flooding it with monsters."' A;
+	'"It\'s likely retaliation for all the Shepherd-hunting the Peperon Church was engaged in.' R;
+	' All clergymen seem to have been wiped out."' A;
+	'"...Wiped out...' R;
+	' It\'s tragic..."' A;
+	ト書き();
+	'The Templar\'s brisk report faded in enthusiasm at the end.' A;
+	'Enron was listening to it quietly, but eventually gave a small shiver.' A;
+	セリフ(2420, "");
+	'"Keh... Keheh, keh..."' A;
+	'"K-Kehahaha... How interesting..."' A;
+	セリフ(2932, "");
+	'"Er, huh?"' A;
+	セリフ(2420, "");
+	'"Th-This will be worth some points...' R;
+	' And there are high-ranking Shepherds inside..."' A;
+	セリフ(2420, "");
+	'"Keh, keheheh... Keeheeheehee...' R;
+	' I-I-I-I can get ahead in the Mula Test..."' A;
+	セリフ(2932, "");
+	'"Er, right..."' A;
+	ト書き();
+	'The Templars watched Enron chuckle with apprehension.' A;
+	セリフ(2420, "");
+	'"H-H-H-Healcinths."' A;
+	ト書き();
+	'The healcinths nodded silently and started moving their master\'s wheelchair.' A;
+	セリフ(2420, "");
+	'"N-N-Now, let\'s go.' R;
+	' We will bring down the hammer of justice on those who disrespect the goddess... Eeheeheehee..."' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	背景アウト(500);
+	背景イン(5655, 500, "", false);
+	ト書き();
+	' ' R;
+	'     At that time   Inside the church' A;
+	音楽(76, -1, -1);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"Haahh, haahh... haahh, haahh..."' A;
+	セリフ(2002, "");
+	'"Wh-Why are monsters spawning inside a church?!"' A;
+	ト書き();
+	'There was already a mountain of monster corpses piled up around Rance.' A;
+	セリフ(2005, "");
+	'"Kh, I\'m only here because I heard there was a pretty girl..."' A;
+	セリフ(2060, "");
+	'"It seems we\'ve gotten caught up in a raid by the Shepherds."' A;
+	セリフ(2000, "");
+	'"Whoa, Crook, when\'d you get here?"' A;
+	セリフ(2060, "");
+	'"Just now.' R;
+	' I came with everyone to get you."' A;
+	セリフ(2030, "");
+	'"By the way, how\'d things go?"' A;
+	セリフ(2000, "");
+	'"Heh... Never trust rumors...' R;
+	' The slender beauty with black hair who\'s a master of the spear, Guan Yu..."' A;
+	セリフ(2002, "");
+	'"Wasn\'t cute!' R;
+	' She was strong, but if she\'s not cute, she\'s not even a woman!"' A;
+	セリフ(2030, "");
+	'"You\'re too picky, Rance.' R;
+	' You gotta lower your standards a little."' A;
+	セリフ(2000, "");
+	'"Shut up!"' A;
+	'"Anyway, we\'re getting out of here!' R;
+	' Let\'s go!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／奇襲された()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2001, "");
+	'"Gahahaha, there\'s nobody even getting in our way! This is going well!"' A;
+	セリフ(2060, "");
+	'"...No, it\'s going a little too well.' R;
+	' We have to consider the possibility it\'s a trap."' A;
+	セリフ(2060, "");
+	'"Oh, monsters."' A;
+	セリフ(2002, "");
+	'"Dammit, stay back!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／エンロン初接触()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(0, 1, 1000);
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2060, "");
+	'"Rance, please wait.' R;
+	' Someone\'s coming."' A;
+	セリフ(2005, "");
+	'"Huh? Who is it...?"' A;
+	音楽(79, -1, -1);
+	枠消去();
+	立ち絵表示(1420, 1, 200);
+	セリフ(2420, "");
+	'"Hrm...?"' A;
+	ト書き();
+	'Enron\'s group appeared out of the darkness.' A;
+	セリフ(2003, "");
+	'"Whoa, what\'s this pile of bones?!' R;
+	' A monster?!"' A;
+	セリフ(2932, "");
+	'"Hey, show some respect!"' A;
+	セリフ(2060, "");
+	'"Ah, it\'s you, Bishop Enron.' R;
+	' Good evening."' A;
+	セリフ(2420, "");
+	'"........."' A;
+	ト書き();
+	'Enron ignored Crook\'s greeting.' A;
+	セリフ(2060, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Oh?' R;
+	' Who are those half-naked beauties behind him?"' A;
+	セリフ(2060, "");
+	'"They\'re a very rare breed of gal monster called healcinths."' A;
+	'"Bishop Enron is a summoner. He uses the healcinths to take care of him."' A;
+	セリフ(2000, "");
+	'"Hrm, an old geezer and some sexy gal monsters...' R;
+	' That\'s an unholy match..."' A;
+	思考(2004, "");
+	'(Heheheh... should I beat him up and steal them...?)' A;
+	セリフ(2420, "");
+	'"Kh, kha!"' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2420, "");
+	'"Kha, kha, kha!' R;
+	' Kkhaaaa!"' A;
+	ト書き();
+	'Enron started making strange noises.' A;
+	セリフ(2003, "");
+	'"Wh-What\'s going on...?"' A;
+	セリフ(2060, "");
+	'"He has some trouble with his throat, so when he speaks, he often chokes on phlegm."' A;
+	セリフ(2005, "");
+	'"Gross..."' A;
+	ト書き();
+	'Enron looked at Rance and smiled.' A;
+	セリフ(2420, "");
+	'"Oho... H-Hmm, so you haven\'t delivered him to the Church yet...' R;
+	' Th-That\'s an awful lot of points you\'re holding on to."' A;
+	セリフ(2005, "");
+	'"Huh?' R;
+	' What are you talking about, gramps?"' A;
+	セリフ(2060, "");
+	'"........."' A;
+	セリフ(2420, "");
+	'"Kehah!' R;
+	' Th-That means I\'ve still got a chance, doesn\'t it..."' A;
+	セリフ(2005, "");
+	'"A chance?' R;
+	' A chance at what, you senile old man...?' R;
+	' ...Oh."' A;
+	セリフ(2000, "");
+	'"I see. You were after Guan Yu, weren\'t you, you old pervert?' R;
+	' You think you have a chance ’cause she\'s not with us."' A;
+	セリフ(2001, "");
+	'"Gahahaha, well, too bad!' R;
+	' She wasn\'t hot!' R;
+	' Do anything you want with her!"' A;
+	セリフ(2420, "");
+	'"Keh, kah!"' A;
+	'"...Wh-What are you saying...?' R;
+	' W-W-We\'re here to subjugate Schachmatt..."' A;
+	セリフ(2000, "");
+	'"Schachmatt... Oh those armored guys?' R;
+	' They\'re here?"' A;
+	セリフ(2420, "");
+	'"Kehaha...' R;
+	' Th-They g-g-got away...' R;
+	' They got away, but..."' A;
+	'"W-W-We have the Obsidian Princess surrounded... Kehah, i-it\'s only a matter of time until we capture her...' R;
+	' Kehaha... The points will be mine..."' A;
+	セリフ(2932, "Templar 1");
+	'"B-Bishop Enron, that--"' A;
+	セリフ(2932, "Templar 2");
+	'"Shh...!"' A;
+	セリフ(2005, "");
+	'"The Obsidian Princess?"' A;
+	セリフ(2060, "");
+	'"...Who is that?"' A;
+	セリフ(2000, "");
+	'"I\'m surprised you don\'t know, Crook.' R;
+	' Hey, armor."' A;
+	セリフ(2932, "");
+	'"H-Huh?!"' A;
+	セリフ(2060, "");
+	'"Please explain."' A;
+	セリフ(2932, "");
+	'"B-But..."' A;
+	セリフ(2060, "");
+	'"Please explain."' A;
+	セリフ(2932, "");
+	'"U-Ugh... This Obsidian... person, is an assassin belonging to the Shepherds..."' A;
+	'"Apparently they\'re a half-devil, not bound by the restrictions devils are.' R;
+	' They can reap souls without a contract."' A;
+	'"They\'ve been showing up where we\'ve been hunting the Shepherds and interfering with the Church\'s work."' A;
+	セリフ(2060, "");
+	'"I see.' R;
+	' ........."' A;
+	セリフ(2420, "");
+	'"Kehahaha, keeheeheehee...' R;
+	' The Obsidian Princess has already taken the lives of dozens of high-ranking priests at Peperon Church..."' A;
+	'"Heeheeheehee...' R;
+	' M-M-Meaning if I defeat her, I\'ll move far ahead in the Mula Test..."' A;
+	セリフ(2000, "");
+	'"Hm, hm, the Obsidian Princess, eh...?' R;
+	' Nice. It has a good ring to it."' A;
+	'"Alright, I\'m gonna look for her, too.' R;
+	' Hey, where\'s she at?"' A;
+	音楽(76, -1, -1);
+	枠消去();
+	全画面揺れ(2, false);
+	セリフ(2420, "");
+	'"GyyyEEEEEEeeeeeeeeh!"' A;
+	セリフ(2003, "");
+	'"Whoa, what the hell?"' A;
+	セリフ(2420, "");
+	'"Y-Y-Y-You intend to steal my prey, do you?' R;
+	' I knew you women wouldn\'t play fair!' R;
+	' Mofus, you wretch!"' A;
+	セリフ(2005, "");
+	'"Whoa, his mouth\'s flapping. Gross..."' A;
+	セリフ(2060, "");
+	'"...No, I..."' A;
+	セリフ(2420, "");
+	'"Sh-Shut your mouth! Silence!' R;
+	' I-I-I will be the next pope!' R;
+	' You can just shut up and watch!"' A;
+	'"I-I-I-I order you in the name of Bishop Enron!' R;
+	' Finish these fools, Templars!"' A;
+	セリフ(2005, "");
+	'"Hey, isn\'t Crook one of your bishop friends?"' A;
+	セリフ(2932, "");
+	'"H-He\'s right, we couldn\'t possibly..."' A;
+	セリフ(2420, "");
+	'"...D-Do you want your whole family to be subject to an Inquisition, you fool...?"' A;
+	セリフ(2932, "");
+	'"Eep...!"' A;
+	セリフ(2420, "");
+	'"Kill theeeeem!"' A;
+	セリフ(2932, "Templar 1");
+	'"Kh, let\'s do it!"' A;
+	セリフ(2932, "Templar 2");
+	'"It\'s dangerous, Bishop Enron, please stay back!"' A;
+	セリフ(2420, "");
+	'"H-Heeeee...' R;
+	' I-I don\'t need your warnings.' R;
+	' I-I-I\'ll leave this to you..."' A;
+	ト書き();
+	'Enron left, the healcinths pushing his wheelchair.' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2005, "");
+	'"Tch, damn that old man.' R;
+	' Here they come!"' A;
+	セリフ(2932, "Templar 1");
+	'"I-I\'m sorry! Prepare yourselves!"' A;
+	セリフ(2060, "");
+	'"........."' A;
+	ADVOFF();
+}
+
+void ＤＰ／トラップ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ミニイベント表示(4885, 1, 500);
+	効果音(2008);
+	全画面揺れ(3, false);
+	ト書き();
+	' ' R;
+	'  <crummmmmmble!>' A;
+	セリフ(2002, "");
+	'"Dwaaah!"' A;
+	ト書き();
+	'A nearby wall and the ceiling both collapsed.' A;
+	ト書き();
+	' ' R;
+	'  ... ... ...' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	セリフ(2002, "");
+	'"Phah! That was horrible!"' A;
+	セリフ(2005, "");
+	'"Fuck! Who did that?!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／漆黒の王女を考える()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'".........Hrm."' A;
+	セリフ(2100, "");
+	'"What\'s up with you, Bro?' R;
+	' You haven\'t said anything in a while.' R;
+	' You thinking about something?"' A;
+	セリフ(2050, "");
+	'"He\'s been this way since we ran into that bishop, Enron..."' A;
+	セリフ(2100, "");
+	'"Do they have some sort of connection...?"' A;
+	セリフ(2050, "");
+	'"Hmmm..."' A;
+	セリフ(2000, "");
+	'"Obsidian Princess, Obsidian Princess... a devil princess..."' A;
+	音楽(71, -1, -1);
+	思考(2004, "");
+	'(Ooh, that sounds nice. I\'m sure she\'s a beauty.' R;
+	' Mhmm, this is a trial given to me by God, and a reward, too!)' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ミニイベント表示(4820, 1, 500);
+	思考(2000, "");
+	'(Yeah...' R;
+	' Bet she looks something like this.' R;
+	' Obsidian and a princess and an assassin...)' A;
+	思考(2004, "");
+	'(She\'ll say, like... \'if you want to bed me, then defeat me! Though you\'ll die before you get the chance\'...' R;
+	' Then she\'ll attack.)' A;
+	思考(2000, "");
+	'(But my blade will ring out, all cool!' R;
+	' Wham, shiiing, thud!' R;
+	' Heh... I\'ve defeated you, and now I\'ll have my reward, gahaha!)' A;
+	思考２(2120, "Obsidian Princess");
+	'(You win... You\'re the strongest person I\'ve ever met.' R;
+	' Fuck me!)' A;
+	思考(2004, "");
+	'(Comin\' right up!' R;
+	' And then I\'ll ungh, ungh! Heheh... Heeheehee...)' A;
+	思考(2001, "");
+	'(Wow, you\'re a virgin, Obsidian Princess!' R;
+	' Nobody\'s been good enough to fuck you yet, eh?' R;
+	' Whoa, look at all this blood! Crazy!)' A;
+	'(And you\'re so tight!' R;
+	' Let\'s keep this up!)' A;
+	思考２(2120, "Obsidian Princess");
+	'(Aahn, ah, ah, please, no more!)' A;
+	思考(2001, "");
+	'(Gahahaha, it\'s not over yet!' R;
+	' Toooooh!)' A;
+	思考２(2120, "Obsidian Princess");
+	'(Aaaaahn!)' A;
+	思考(2004, "");
+	'(Heh heh heh...)' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2100, "");
+	'"Bro...?"' A;
+	セリフ(2000, "");
+	'"Whoa!"' A;
+	ト書き();
+	'Alkanese poked him and Rance came back to himself.' A;
+	セリフ(2000, "");
+	'"Alright, I\'m fuckin\' the Obsidian Princess!' R;
+	' I\'ve considered all the possibilities and I\'ve decided I\'ll tie her up with a rope and do it that way!"' A;
+	セリフ(2100, "");
+	'"So that\'s what you were thinking about?!"' A;
+	セリフ(2050, "");
+	'"Hardly a departure from his normal behavior."' A;
+	ADVOFF();
+}
+
+void ＤＰ／ペペローン神父()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Hm? Who\'s this?"' A;
+	セリフ(2935, "");
+	'"Eek!"' A;
+	'"P-Please, spare me...' R;
+	' The Shepherds cannot be allowed to throw the world into chaos...' R;
+	' that\'s why they must be purged..."' A;
+	'"H-Heee... p-please...' R;
+	' Vorrucken Krepp..."' A;
+	セリフ(2005, "");
+	'"...Huh?"' A;
+	セリフ(2935, "");
+	'"Ohh... Great Bishop Enron...' R;
+	' Please save this pious servant of God..."' A;
+	'"Eee... awawawah..."' A;
+	ト書き();
+	'The pastor muttered on and on.' A;
+	ADVOFF();
+}
+
+void ＤＰ／る壺破壊()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Hm? Look at that..."' A;
+	枠消去();
+	ミニイベント表示(4550, 1, 500);
+	ト書き();
+	'There was a crucible on the floor.' A;
+	セリフ(2060, "");
+	'"This must be part of the Shepherds\' attack."' A;
+	セリフ(2005, "");
+	'"A jar that spawns monsters. How annoying..."' A;
+	セリフ(2000, "");
+	'"Rah!"' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	効果音(2009);
+	全画面揺れ(1, false);
+	ト書き();
+	'*crash*!' R;
+	'Rance shattered the crucible.' A;
+	セリフ(2000, "");
+	'"There we go."' A;
+	セリフ(2060, "");
+	'"Yes, we should run into fewer monsters now."' A;
+	ADVOFF();
+}
+
+void ＤＰ／進撃の詰み手()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(95, 1, 1000);
+	立ち絵表示(1416, 1, 200);
+	セリフ(2416, "");
+	'"You okay, Contaott?"' A;
+	セリフ(2419, "");
+	'"A banquet for the elderly, shrill eyes, the solidity of a fly."' A;
+	セリフ(2416, "");
+	'"Yeesh, that\'s what you get for going off on your own and being reckless."' A;
+	'"Here, I patched you up.' R;
+	' We should concentrate on retreating for now."' A;
+	'"Hmph, he may be a rotten old geezer, but he\'s still a bishop, huh...?' R;
+	' I didn\'t think he\'d be that strong at that age..."' A;
+	'"Atch... But we did some damage, too, so we can count it as a draw this time."' A;
+	'"Ain\'t that right, Paluott?"' A;
+	セリフ(2418, "");
+	'"........."' A;
+	ト書き();
+	'Paluott merely stared silently at Seconaott.' A;
+	セリフ(2416, "");
+	'"What about you, Contaott?"' A;
+	セリフ(2419, "");
+	'"The woman of hot sand, a turbid room, emotion!"' A;
+	セリフ(2416, "");
+	'"Right... forgot I was dealing with a mute and a freak...' R;
+	' Not gonna get a conversation out of these guys..."' A;
+	'"Well, whatever.' R;
+	' Let\'s get back."' A;
+	セリフ(2418, "");
+	'"........."' A;
+	ト書き();
+	'Paluott silently shook his head.' A;
+	セリフ(2416, "");
+	'"What? You worried about the kid?"' A;
+	セリフ(2418, "");
+	'"........."' A;
+	セリフ(2416, "");
+	'"Well, yeah, but..."' A;
+	'"We\'ve gotta get away from that feeble old bishop for now.' R;
+	' The kid\'ll be alright."' A;
+	'"And anyway, if he dies in a place like this, it just means he wasn\'t worth much in the first place."' A;
+	'"Heh, don\'t forget that tough face he was making, either.' R;
+	' We might be wasting our time worrying about him, you know?"' A;
+	セリフ(2418, "");
+	'"........."' A;
+	セリフ(2416, "");
+	'"Alright, let\'s get going."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2002, "");
+	'"There you are!"' A;
+	セリフ(2416, "");
+	'"Wait, I know them...' R;
+	' Tch, and we were just about to get away, too..."' A;
+	セリフ(2005, "");
+	'"This is your guys\'s work, huh?' R;
+	' The crucibles and all that?!"' A;
+	セリフ(2000, "");
+	'"I don\'t give a shit about Guan Yu, but I can\'t let you take any cute girls from me.' R;
+	' You\'re not getting away today. I\'m defeating you!"' A;
+	セリフ(2416, "");
+	'"Tch, he\'s spoiling for a fight..."' A;
+	枠消去();
+	立ち絵表示(1418, 1, 200);
+	セリフ(2418, "");
+	'"........."' A;
+	セリフ(2416, "");
+	'"Oh?"' A;
+	ト書き();
+	'Seconaott was about to ready his weapon, but Paluott gestured for him to stop.' A;
+	セリフ(2416, "");
+	'"...You\'re gonna take him on?"' A;
+	セリフ(2418, "");
+	'"..."' A;
+	ト書き();
+	'Paluott nodded.' A;
+	セリフ(2416, "");
+	'"..."' A;
+	'"Well, I\'ll leave it to you, then.' R;
+	' Fight like you\'re gonna die, but don\'t actually die, alright?"' A;
+	セリフ(2418, "");
+	'".........Leave it to me."' A;
+	ト書き();
+	'Paluott gave a firm nod.' A;
+	セリフ(2419, "");
+	'"Muddied people! Crystal! Unending doors!"' A;
+	セリフ(2418, "");
+	'".........Worried?"' A;
+	セリフ(2419, "");
+	'"A ravine! Transparent hearing! A maddened feline!"' A;
+	セリフ(2418, "");
+	'".........Can\'t say I understand."' A;
+	セリフ(2416, "");
+	'"Well, we\'re gonna get going.' R;
+	' Don\'t forget that if you die here, your death is wasted, Paluott."' A;
+	ト書き();
+	'Seconaott and Contaott ran off.' A;
+	セリフ(2002, "");
+	'"Ah, hey, wait!!"' A;
+	セリフ(2418, "");
+	'"........."' A;
+	セリフ(2002, "");
+	'"Fuck, another one of these huge jerks is blocking us."' A;
+	セリフ(2418, "");
+	'"........."' A;
+	セリフ(2418, "");
+	'"...The philosopher of implication...' R;
+	' Springer Paluott..."' A;
+	'"...You won\'t get past me."' A;
+	セリフ(2002, "");
+	'"You\'re in my way! You die first!"' A;
+	セリフ(2418, "");
+	'".........!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／進撃の詰み手／戦闘後／逃げられた()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1418, 1, 200);
+	セリフ(2418, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"Kh, this guy\'s actually pretty tough."' A;
+	セリフ(2418, "");
+	'"..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2000, "");
+	'"Ah!"' A;
+	ト書き();
+	'The moment Rance turned his back, Paluott retreated.' A;
+	セリフ(2005, "");
+	'"Argh... He got away... I hate this..."' A;
+	ADVOFF();
+}
+
+void ＤＰ／進撃の詰み手／戦闘後／勝ち()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	枠消去();
+	立ち絵表示(1418, 1, 200);
+	セリフ(2418, "");
+	'"...Kh..."' A;
+	セリフ(2000, "");
+	'"Heh, we won."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Paluott fell to his knees.' A;
+	セリフ(2418, "");
+	'"..."' A;
+	セリフ(2000, "");
+	'"Now then, why don\'t you tell me where I can find this Obsidian Princess?' R;
+	' She works with you guys, right?"' A;
+	セリフ(2418, "");
+	'".........' R;
+	' Obsidian... Princess...?"' A;
+	セリフ(2000, "");
+	'"Yeah, I heard she was your assassin."' A;
+	セリフ(2418, "");
+	'".........' R;
+	' ...Never heard of her."' A;
+	セリフ(2002, "");
+	'"What?!"' A;
+	セリフ(2418, "");
+	'"........."' A;
+	セリフ(2002, "");
+	'"Hey, keep talkin\'! Say something!"' A;
+	セリフ(2418, "");
+	'".........' R;
+	' ...My words... My philosophies..."' A;
+	セリフ(2000, "");
+	'"Huh?"' A;
+	セリフ(2418, "");
+	'"All I... needed... was to believe... that the world... is... beautiful."' A;
+	'"But since... learning the truth... from her..."' A;
+	'"I\'ve lost... most of... my words..."' A;
+	セリフ(2005, "");
+	'"Hey, what the fuck are you talking about?"' A;
+	セリフ(2418, "");
+	'"........."' A;
+	'"Still...' R;
+	' Have I... repaid... my debt... to her...?"' A;
+	'"...a...el..."' A;
+	'"........."' A;
+	セリフ(2000, "");
+	'"Ah, hey..."' A;
+	ト書き();
+	'Paluott stopped moving.' A;
+	セリフ(2005, "");
+	'"What the hell\'s with these guys?"' A;
+	ADVOFF();
+}
+
+void ＤＰ／エンロンの勝利確信()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	' ' R;
+	'     At that time' A;
+	音楽(79, -1, -1);
+	枠消去();
+	立ち絵表示(1420, 1, 200);
+	セリフ(2420, "");
+	'"Kahaha, keh..."' A;
+	ト書き();
+	'Enron was groping a healcinth\'s chest.' A;
+	セリフ(2425, "");
+	'"..."' A;
+	ト書き();
+	'The healcinth was bent down so it would be easier for him to reach, holding his hand to her chest.' A;
+	セリフ(2420, "");
+	'"Keh heh, that Obsidian Princess...' R;
+	' T-T-To think she\'d be so strong..."' A;
+	'"Kh, she took out five of my strongest summons and 30 of my elite Templars..."' A;
+	セリフ(2425, "");
+	'"...!"' A;
+	ト書き();
+	'He twisted the healcinth\'s nipple and her expression warped in pain.' A;
+	セリフ(2932, "");
+	'"Please calm yourself, Bishop Enron.' R;
+	' It\'s not good for your health."' A;
+	'"True, it was a hard battle, but we did succeed in sealing her with your barrier magic. Her destruction is now guaranteed. It was wonderful work, sir."' A;
+	セリフ(2420, "");
+	'"...Keh, kahahaha..."' A;
+	'"Keheh, yes, that\'s right..."' A;
+	'"Gggh, Obsidian Princess...' R;
+	' Suffer, suffer...' R;
+	' Suffer, and be destroyed..."' A;
+	'"Keeheehee... this will be a lot of points...' R;
+	' I may even be on top in the Mula Test..."' A;
+	セリフ(2425, "");
+	'"........."' A;
+	思考(2932, "Templar 1");
+	'(Hey...' R;
+	' He keeps saying \'Obsidian Princess,\' but...)' A;
+	思考(2932, "Templar 2");
+	'(Shh, he\'s just gonna get mad again if you point it out...)' A;
+	思考(2932, "Templar 1");
+	'(Ugh, you\'re right...' R;
+	' I won\'t mention it.)' A;
+	セリフ(2420, "");
+	'"Keeheeheehee... I\'ve won... My path to the papacy..."' A;
+	セリフ(2425, "");
+	'"...! ...!"' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Enron\'s group left.' A;
+	エフェクトセット表示(7002, 0, gＭ, 0, 0, 0);
+	ト書き();
+	' ' R;
+	'     Meanwhile, Rance\'s Party...' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hm...?"' A;
+	セリフ(2100, "");
+	'"? What\'s up, Bro?"' A;
+	セリフ(2005, "");
+	'"........."' A;
+	セリフ(2002, "");
+	'"There!"' A;
+	効果音(2005);
+	全画面揺れ(1, false);
+	ト書き();
+	'Rance threw a stone at the wall behind them.' A;
+	効果音(2004);
+	全画面揺れ(2, false);
+	セリフ(2932, "");
+	'"Gweh!"' A;
+	音楽(76, -1, -1);
+	セリフ(2001, "");
+	'"Gaaa ha ha ha!' R;
+	' Don\'t think you can get the drop on me!"' A;
+	セリフ(2103, "");
+	'"He was gonna take that wall down and bury us alive!"' A;
+	セリフ(2932, "");
+	'"Kh... That was the last one, too..."' A;
+	セリフ(2000, "");
+	'"Last one? What do you mean?' R;
+	' Tell me or I\'ll kill you."' A;
+	セリフ(2932, "");
+	'"I-I got it, I\'ll talk.' R;
+	' I was ordered by Bishop Enron to slow you down."' A;
+	セリフ(2000, "");
+	'"Why?"' A;
+	セリフ(2932, "");
+	'"Well... So that you wouldn\'t get in the way of him killing the Shepherds\' assassin."' A;
+	セリフ(2005, "");
+	'"Tch, how stupid."' A;
+	セリフ(2932, "");
+	'"But I heard Bishop Enron\'s already trapped the assassin.' R;
+	' She\'s probably being destroyed as we speak."' A;
+	セリフ(2000, "");
+	'"What? Destroyed?"' A;
+	セリフ(2932, "");
+	'"Mm, so I just had to delay you until then..."' A;
+	セリフ(2002, "");
+	'"Kh, we\'ve got no time for this!' R;
+	' Just wait, Obsidian Princess! I\'ll save you!' R;
+	' And then we\'ll fuuuck!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2100, "");
+	'"Wh-? Bro?!"' A;
+	ト書き();
+	'Rance threw aside the Templar and ran ahead.' A;
+	ADVOFF();
+}
+
+void ＤＰ／結界前()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Oh, someone\'s in that room up ahead."' A;
+	枠消去();
+	ミニイベント表示(4888, 1, 500);
+	セリフ２(2440, "Obsidian Princess?");
+	'"...Gh! Gh, rgh! ...Agh!"' A;
+	セリフ(2000, "");
+	'"Ooh, that\'s gotta be the Obsidian Princess!"' A;
+	セリフ(2060, "");
+	'"The barrier rods are already in effect."' A;
+	セリフ(2000, "");
+	'"Mm, what\'s that mean?"' A;
+	セリフ(2060, "");
+	'"The person trapped in the barrier will be destroyed."' A;
+	セリフ(2000, "");
+	'"Tch, let\'s hurry!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／消滅するダークランス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(0, 1, 1000);
+	ミニイベント表示(4888, 1, 500);
+	セリフ２(2440, "Obsidian Princess?");
+	'"...Gh! ...Rgh!"' A;
+	'"Ah, ah, aaah..."' A;
+	効果音(2010);
+	ト書き();
+	' ' R;
+	'  <fwoomp!>' A;
+	ミニイベント表示(0, 1, 500);
+	ト書き();
+	'The barrier vanished and the figure trapped inside went with it.' A;
+	セリフ(2003, "");
+	'"Ack!"' A;
+	'"W-We didn\'t make it in time...' R;
+	' Oh... no..."' A;
+	'"My Obsidian Princeeess..."' A;
+	セリフ(2060, "");
+	'"There\'s no reason to stay here any longer, then. It looks like we can escape easily from this window.' R;
+	' Let\'s get going."' A;
+	セリフ(2005, "");
+	'"Aww, aww, aww..."' A;
+	ト書き();
+	'Rance fled, Crook pulling him by the hand as they went.' A;
+}
+
+void ＤＰ／結界志木()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2932, "");
+	'"Eh, civilians?' R;
+	' We\'re busy right now. Leave, if you would."' A;
+	セリフ(2000, "");
+	'"Are you the guys who\'re bullying the Obsidian Princess?"' A;
+	セリフ(2932, "");
+	'"You make it sound like we\'re the bad guys.' R;
+	' We\'re sealing away evil using these barrier rods Bishop Enron made."' A;
+	セリフ(2000, "");
+	'"Incidentally, to cancel the barrier, would you just have to break those rods or whatever?"' A;
+	セリフ(2932, "");
+	'"Hm? Well, I guess so.' R;
+	' They\'re not likely to break, but we\'re here guarding them just to make sure that doesn\'t happen."' A;
+	セリフ(2002, "");
+	'"Then diiie!"' A;
+	セリフ(2932, "");
+	'"Wuh?!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／結界志木／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Found an evil Templar guilty of bullying my sweet Obsidian Princess!"' A;
+	'"Die!"' A;
+	セリフ(2932, "");
+	'"Wh-What?!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／結界志木／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Alright, we win.' R;
+	' Now we just..."' A;
+	ト書き();
+	'There was a rod of some sort standing at Rance\'s feet.' A;
+	セリフ(2000, "");
+	'"Mm, this is one of those barrier rods, I take it."' A;
+	ト書き();
+	'Rance stomped on the barrier rod and split it in half.' A;
+	セリフ(2060, "");
+	'"Ah..."' A;
+	セリフ(2000, "");
+	'"Hm? What is it?"' A;
+	セリフ(2060, "");
+	'"No, just, a priest has to pray for many hours to create those rods.' R;
+	' It seems a waste to break them."' A;
+	'"And they were being used to seal an assassin of the Shepherds."' A;
+	セリフ(2000, "");
+	'"I don\'t care."' A;
+	'"We don\'t need these crummy things.' R;
+	' Come on, let\'s break the barrier!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／結界志木／戦闘後／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Barrier rod, barrier rod..."' A;
+	'"Oh, there we go."' A;
+	ト書き();
+	'Rance snapped the rod in half.' A;
+	ADVOFF();
+}
+
+void ＤＰ／ダークランス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(0, 1, 2000);
+	ミニイベント表示(4888, 1, 500);
+	セリフ(2000, "");
+	'"Hm? We should have destroyed the barrier.' R;
+	' Is it still in effect?"' A;
+	セリフ(2060, "");
+	'"No, it\'s disappearing.' R;
+	' It should be gone momentarily."' A;
+	セリフ(2000, "");
+	'"Ooh, really?' R;
+	' Guess I\'ll wait in anticipation."' A;
+	'"Anticipation..."' A;
+	ト書き();
+	'The barrier gradually weakened, and when the whorls of magic disappeared, the fog lifted.' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	ト書き();
+	'And from within came...' A;
+	セリフ(2440, "");
+	'"N-Nngh..."' A;
+	セリフ(2005, "");
+	'"Huh?"' A;
+	枠消去();
+	立ち絵表示(1440, 1, 200);
+	セリフ(2440, "");
+	'"Wh-What...? I..."' A;
+	ト書き();
+	'Dark Rance.' A;
+	音楽(75, -1, -1);
+	全画面揺れ(1, false);
+	セリフ(2002, "");
+	'"HUH?! What is HE doing here?!' R;
+	' And where\'s my cute little devil princess?!"' A;
+	セリフ(2060, "");
+	'"...Ah."' A;
+	'"I thought it was strange that it didn\'t match what I\'d heard. Bishop Enron must have confused prince and princess."' A;
+	セリフ(2005, "");
+	'"Heh? Prince? Not princess?"' A;
+	セリフ(2060, "");
+	'"Yes, the Obsidian Prince."' A;
+	セリフ(2002, "");
+	'"Ghahh! I don\'t want that! And it\'s THIS kid?!"' A;
+	セリフ(2440, "");
+	'"Wha-?! Y-You\'re...!"' A;
+	セリフ(2000, "");
+	'"That\'s right, it\'s me! Your dad, though I wish I wasn\'t!"' A;
+	セリフ(2023, "");
+	'"HUUUH?!"' A;
+	セリフ(2005, "");
+	'"What? Shut up, Sachiko."' A;
+	セリフ(2020, "");
+	'"Wh- B- Huh? But this boy is your son, and he\'s half devil...?"' A;
+	セリフ(2021, "");
+	'"Huh? What does that... mean?"' A;
+	セリフ(2005, "");
+	'"Means the human half comes from me.' R;
+	' I had sex with a devil named Feliss and she had this kid."' A;
+	セリフ(2023, "");
+	'"HUUUH?!"' A;
+	セリフ(2030, "");
+	'"Rance has a long and storied sexual history."' A;
+	セリフ(2313, "");
+	'"I-I haven\'t heard about this!"' A;
+	セリフ(2000, "");
+	'"Well, I didn\'t tell you."' A;
+	セリフ(2150, "");
+	'"Darling... Darling has...' R;
+	' more children..."' A;
+	セリフ(2300, "");
+	'"Q-Queen Lia, please recompose yourself."' A;
+	セリフ(2152, "");
+	'"Darling! Have sex with me!' R;
+	' I want a child, too!"' A;
+	セリフ(2005, "");
+	'"No!"' A;
+	セリフ(2440, "");
+	'"Ugh, he\'s got even more girls around him..."' A;
+	セリフ(2060, "");
+	'"A child with a devil, huh...?"' A;
+	セリフ(2440, "");
+	'"Shut up...!' C;
+	' That is..."' A;
+	セリフ(2440, "");
+	'"Silence! I have renounced both devils and humans!' R;
+	' My new role is to destroy this rotten world under Lady Am!"' A;
+	'"I will have vengeance against this world!"' A;
+	セリフ(2000, "");
+	'"Hmm? Vengeance?"' R;
+	'  ↑ Picking his nose' A;
+	セリフ(2440, "");
+	'"L-Listen to me!"' A;
+	'"Don\'t think I\'m like I was when I was unawakened!' R;
+	' When I awaken to true power, you\'ll see true hell!"' A;
+	セリフ(2005, "");
+	'"Huh? What are you going on about?"' A;
+	セリフ(2440, "");
+	'"Shut up! Die!"' A;
+	ADVOFF();
+}
+
+void ＤＰ／ダークランス／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1440, 1, 200);
+	セリフ(2440, "");
+	'"Ghh... I-I lost..."' A;
+	セリフ(2060, "");
+	'"A half devil... How terrible...' R;
+	' He really can reap souls without a contract..."' A;
+	セリフ(2440, "");
+	'"Dammit! Dammit!' R;
+	' Why can\'t I beat you?!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, of course you can\'t.' R;
+	' Don\'t you know? Sons can never beat their fathers!"' A;
+	セリフ(2440, "");
+	'"Who the hell\'s a father?!"' A;
+	セリフ(2000, "");
+	'"Well, whatever.' R;
+	' Hey, what\'s Feliss up to?' R;
+	' I saved her before, didn\'t I?"' A;
+	セリフ(2440, "");
+	'"Don\'t you say Ma\'s name!' R;
+	' It\'s nothing to do with you!"' A;
+	'"I\'m not--' C;
+	'I mean..."' A;
+	'"I\'ve discarded the name that you gave me. I am Dark Rance no longer."' A;
+	'"I\'ve received a new name, that of the Obsidian Prince, Vorrucken Krepp!"' A;
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"Vo... Vorr...ucken... Krepp?"' A;
+	セリフ(2005, "");
+	'"...What the heck are you talking about?' R;
+	' Have you been reading some twisted shit?"' A;
+	全画面揺れ(1, false);
+	セリフ(2060, "");
+	'"Pft."' A;
+	セリフ(2005, "");
+	'"Huh?"' A;
+	セリフ(2060, "");
+	'"........."' A;
+	'"I\'m not laughing."' A;
+	セリフ(2003, "");
+	'"That was a laugh?!"' A;
+	セリフ(2000, "");
+	'"........."' A;
+	'"...Vorrucken Krepp."' A;
+	全画面揺れ(1, false);
+	セリフ(2060, "");
+	'"Ahem, ahem, ahem."' A;
+	'"...Please stop."' A;
+	セリフ(2001, "");
+	'"Gahahahahahahaha!"' A;
+	セリフ(2440, "");
+	'"Don\'t make fun of someone\'s name!!"' A;
+	セリフ(2000, "");
+	'"Hey, I\'m just picking up what you\'re putting down... Ah, I see, it\'s not books, it\'s those damn Shepherds.' R;
+	' You\'re a part of them, aren\'t you?"' A;
+	セリフ(2005, "");
+	'"I mean... Schmerz Kaiserin, Schachmatt, they\'ve all got these names that it feels like you\'ll bite your tongue when you try to say them..."' A;
+	セリフ(2001, "");
+	'"It\'s just funny hearing a brat like you say this stuff!' R;
+	' Even Crook\'s laughing... Vorrucken Krepp... Gahahaha!"' A;
+	全画面揺れ(1, false);
+	セリフ(2060, "");
+	'"Ahem, ahem, ahem."' A;
+	セリフ(2440, "");
+	'"Don\'t laaaugh!"' A;
+	セリフ(2060, "");
+	'"I\'m not laughing."' A;
+	全画面揺れ(1, false);
+	セリフ(2440, "");
+	'"I\'m not talking to you!"' A;
+	'"Listen, Rance!' R;
+	' The next time our fates cross paths, that place will become your grave!"' A;
+	'"I\'ll let you have your life until then!' R;
+	' Farewell!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2060, "");
+	'"Excuse me."' A;
+	音楽(76, -1, -1);
+	効果音(2006);
+	全画面揺れ(2, false);
+	セリフ(2440, "");
+	'"Bbbpt!"' A;
+	ト書き();
+	'Crook hooked Dark Rance\'s leg and tripped him.' A;
+	セリフ(2440, "");
+	'"Wah! Wh-What are you doing, you gloomy midget?!"' A;
+	セリフ(2060, "");
+	'"Pardon me."' A;
+	ト書き();
+	'Crook wasted no time mounting astride Dark Rance.' R;
+	'In her hand was a syringe.' A;
+	セリフ(2440, "");
+	'"S-Stop!"' A;
+	セリフ(2000, "");
+	'"What\'s that?"' A;
+	セリフ(2060, "");
+	'"A poison that will cause instant death.' R;
+	' He\'s a high-ranking member of the Shepherds and is responsible for the death of many people."' A;
+	'"He\'s too dangerous not to deal with right now."' A;
+	セリフ(2005, "");
+	'"Hrm? Er, you\'re gonna kill him? Mmm..."' A;
+	セリフ(2060, "");
+	'"...Oh."' A;
+	'"That\'s right, he\'s your son..."' A;
+	'"........."' A;
+	セリフ(2440, "");
+	'"Dorya!"' A;
+	セリフ(2060, "");
+	'"Ah."' A;
+	ト書き();
+	'The second Crook stopped moving, Dark Rance threw her off and broke out running.' A;
+	セリフ(2440, "");
+	'"Kh, I\'ll get you back for this!' R;
+	' Just wait!"' A;
+	音楽(0, 1, 2000);
+	ト書き();
+	'Dark Rance fled.' A;
+	思考(2923, "");
+	'(You idiot! That\'s a devil you have a highest-priority order from the Church to capture or kill!)' A;
+	思考(2918, "");
+	'(...H-Hey, are you listening?)' A;
+	思考(2060, "");
+	'(.........)' A;
+	エフェクトセット表示(7002, 5530, 5071, 0, 0, 0);
+	ト書き();
+	' ' R;
+	'     At that time' A;
+	音楽(79, -1, -1);
+	枠消去();
+	立ち絵表示(1420, 1, 200);
+	セリフ(2420, "");
+	'"Th-Th-Th-The Obsidian Princess got away...!"' A;
+	セリフ(2932, "");
+	'"Yes, sir. It seems so..."' A;
+	セリフ(2420, "");
+	'"M-M-M-Mofus... Her...' R;
+	' She\'s the one who got in my way..."' A;
+	'"Urrrgh..."' A;
+	'"Ggah! Gah!' R;
+	' She acts like she has no interest in being pope, but she\'s aimed at the seat after all...!"' A;
+	'"Sh-Sh-She\'s just like Yisael f-f-f-41 years ago...' R;
+	' Even though a woman could never be pope!"' A;
+	'"She won\'t get away with this...' R;
+	' I\'ll kill her... I\'ll kill her!' R;
+	' Mofuuus!"' A;
+	セリフ(2425, "");
+	'"...!"' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'Enron screamed hysterically.' A;
+}
+

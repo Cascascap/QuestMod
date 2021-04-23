@@ -1,0 +1,713 @@
+bool T_Player::getUpdate()
+{
+	return this.m_nUpdate > 0;
+}
+
+bool T_Player::getInputFlag()
+{
+	return this.m_nInputFlag > 0;
+}
+
+int T_Player::getHitFlag()
+{
+	return this.m_nHitFlag;
+}
+
+int T_Player::getHitX()
+{
+	return this.m_nHitX;
+}
+
+int T_Player::getHitY()
+{
+	return this.m_nHitY;
+}
+
+bool T_Player::getEncountFlag()
+{
+	return this.m_bEncountFlag;
+}
+
+float T_Player::getWalkDistance()
+{
+	return this.m_fWalkDist1;
+}
+
+float T_Player::getWalkDistance2()
+{
+	return this.m_fWalkDist2;
+}
+
+bool T_Player::getEncountCheck()
+{
+	return this.m_bEncountCheck;
+}
+
+bool T_Player::isScroll()
+{
+	return !this.m_asScrollPos.Empty();
+}
+
+bool T_Player::isCreated()
+{
+	return this.m_nUpdate >= 0;
+}
+
+T_Player::T_Player()
+{
+	this.clear(false);
+}
+
+T_Player::~T_Player()
+{
+	this.delete(false);
+}
+
+void T_Player::create()
+{
+	this.delete(true);
+	this.m_nUpdate = 1;
+	this.m_nInputFlag = 1;
+}
+
+void T_Player::delete(bool bLoad)
+{
+	this.clear(bLoad);
+}
+
+void T_Player::clear(bool bLoad)
+{
+	this.m_nUpdate = -1;
+	this.m_nInputFlag = -1;
+	this.clearFlag();
+	this.clearInput();
+	this.clearEncount(bLoad);
+	if (!this.m_asPos.Empty())
+	{
+		this.m_asPos.Free();
+	}
+	if (!this.m_asScrollPos.Empty())
+	{
+		this.m_asScrollPos.Free();
+	}
+}
+
+void T_Player::clearFlag()
+{
+	this.m_nHitFlag = 0;
+	this.m_nHitX = -1;
+	this.m_nHitY = -1;
+	this.m_bEncountFlag = false;
+	this.m_bAutoMove = false;
+	this.m_rcCheck.set(8, 8, 800, 600);
+}
+
+bool T_Player::checkUpdate()
+{
+	if (this.m_nUpdate < 1)
+	{
+		return false;
+	}
+	if (this.m_nHitFlag > 0)
+	{
+		return false;
+	}
+	if (this.m_bEncountFlag)
+	{
+		return false;
+	}
+	if (this.m_bAutoMove)
+	{
+		return false;
+	}
+	if (this.isScroll())
+	{
+		return false;
+	}
+	return true;
+}
+
+int T_Player::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	if (this.m_nUpdate < 1)
+	{
+		return -1;
+	}
+	if (this.m_nInputFlag <= 0)
+	{
+		return -1;
+	}
+	if (this.m_bLeftKey || this.m_bRightKey || this.m_bUpKey || this.m_bDownKey)
+	{
+		if (this.checkClickArrow(nSelectID))
+		{
+			return 1;
+		}
+	}
+	else if (this.m_nKey > 0)
+	{
+		if (this.checkClick(nSelectID))
+		{
+			return 1;
+		}
+	}
+	else if (this.checkDown(nSelectID))
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void T_Player::clearInput()
+{
+	this.m_nKey = 0;
+	this.m_bLeftKey = false;
+	this.m_bRightKey = false;
+	this.m_bUpKey = false;
+	this.m_bDownKey = false;
+}
+
+bool T_Player::checkDistance(float fX, float fZ)
+{
+	if (this.m_nUpdate < 0)
+	{
+		return false;
+	}
+	if (!３Ｄキャラ_歩き中())
+	{
+		return false;
+	}
+	int nObjectX = 0;
+	int nObjectZ = 0;
+	int nFlag = 当たり判定_距離(fX, fZ, nObjectX, nObjectZ);
+	if (this.checkObject(nFlag, nObjectX, nObjectZ))
+	{
+		３Ｄキャラ_再生停止();
+		this.m_nHitFlag = nFlag;
+		this.m_nHitX = nObjectX;
+		this.m_nHitY = nObjectZ;
+		return true;
+	}
+	return false;
+}
+
+bool T_Player::checkEncount(float fDistance)
+{
+	if (this.m_nUpdate < 0)
+	{
+		return false;
+	}
+	if (!３Ｄキャラ_歩き中())
+	{
+		return false;
+	}
+	if (!ランダムエンカウント_あり())
+	{
+		return false;
+	}
+	if (this.m_bEncountCheck)
+	{
+		this.m_fWalkDist2 += fDistance;
+		if (this.m_fWalkDist2 < 4.0)
+		{
+			return false;
+		}
+		this.m_fWalkDist2 = 0.0;
+	}
+	else if (!this.addEncount(fDistance))
+	{
+		return false;
+	}
+	if (乱数(10) != 1)
+	{
+		return false;
+	}
+	３Ｄキャラ_マウス移動停止();
+	３Ｄキャラ_目的地移動停止();
+	this.m_bEncountFlag = true;
+	this.clearEncount(false);
+	return true;
+	return false;
+}
+
+bool T_Player::addEncount(float fDistance)
+{
+	if (this.m_nUpdate < 0)
+	{
+		return false;
+	}
+	float fMax = ランダムエンカウント_距離();
+	this.m_fWalkDist1 = 数値Ｆ_補正(this.m_fWalkDist1 + fDistance, 0.0, fMax);
+	bool bEncountCheck = this.m_fWalkDist1 >= fMax;
+	if (this.m_bEncountCheck && !bEncountCheck)
+	{
+		this.m_bEncountCheck = false;
+		this.m_fWalkDist2 = 0.0;
+	}
+	else if (!this.m_bEncountCheck && bEncountCheck)
+	{
+		this.m_bEncountCheck = true;
+		this.m_fWalkDist2 = 0.0;
+	}
+	return bEncountCheck;
+}
+
+bool T_Player::setEncount(float fWalkDistance1, float fWalkDistance2, bool bEncountCheck)
+{
+	if (this.m_nUpdate < 0)
+	{
+		return false;
+	}
+	this.m_fWalkDist1 = 数値Ｆ_補正(fWalkDistance1, 0.0, ランダムエンカウント_距離());
+	this.m_fWalkDist2 = 数値Ｆ_補正(fWalkDistance2, 0.0, 4.0);
+	this.m_bEncountCheck = bEncountCheck;
+	return true;
+}
+
+void T_Player::clearEncount(bool bLoad)
+{
+	if (!bLoad)
+	{
+		this.m_fWalkDist1 = 0.0;
+	}
+	this.m_fWalkDist2 = 0.0;
+	this.m_bEncountCheck = false;
+}
+
+void T_Player::autoMove(int nMode)
+{
+	if (!this.autoMoveStart())
+	{
+		return;
+	}
+	switch (nMode)
+	{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			３Ｄキャラ_前進(nMode);
+			break;
+		case 9:
+			３Ｄキャラ_後退(this.m_asPos);
+			break;
+		default:
+			break;
+	}
+}
+
+bool T_Player::autoMoveStart()
+{
+	if (this.m_nUpdate < 0)
+	{
+		return false;
+	}
+	if (this.isScroll())
+	{
+		return false;
+	}
+	if (!this.m_bAutoMove)
+	{
+		３Ｄキャラ_再生停止();
+		UPDATE(true);
+	}
+	this.m_bAutoMove = true;
+	return true;
+}
+
+void T_Player::autoMoveEnd()
+{
+	if (!this.m_bAutoMove)
+	{
+		return;
+	}
+	３Ｄキャラ_再生停止();
+	UPDATE(true);
+	this.m_bAutoMove = false;
+}
+
+void T_Player::scroll(int nDir, int nCount)
+{
+	if (this.m_nUpdate < 0)
+	{
+		return;
+	}
+	int nDirX = 0;
+	int nDirZ = 0;
+	if (!３Ｄマップ_変換_方向＞移動値(nDir, nDirX, nDirZ))
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_asScrollPos.Numof();
+	T_Point sPos;
+	if (cnt > 0)
+	{
+		sPos = this.m_asScrollPos[cnt - 1];
+	}
+	else
+	{
+		３Ｄキャラ_再生停止();
+		UPDATE(true);
+		sPos.set(３Ｄキャラ_位置Ｘ(), ３Ｄキャラ_位置Ｙ());
+		this.m_asScrollPos.PushBack(sPos);
+	}
+	for (i = 0; i < nCount; ++i)
+	{
+		sPos.m_nX += nDirX;
+		sPos.m_nY += nDirZ;
+		３Ｄキャラ_スクロール(sPos.m_nX, sPos.m_nY);
+		this.m_asScrollPos.PushBack(sPos);
+	}
+}
+
+void T_Player::scrollBack()
+{
+	if (this.m_asScrollPos.Empty())
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_asScrollPos.Numof();
+	ref T_Point rfPos;
+	for (i = cnt - 2; i >= 0; --i)
+	{
+		rfPos <- this.m_asScrollPos[i];
+		３Ｄキャラ_スクロール(rfPos.m_nX, rfPos.m_nY);
+	}
+	this.m_asScrollPos.Free();
+}
+
+void T_Player::pushPos(float fX, float fZ)
+{
+	int cnt = this.m_asPos.Numof();
+	if (cnt > 0 && this.m_asPos[cnt - 1].equal(fX, fZ))
+	{
+		return;
+	}
+	if (cnt >= 100)
+	{
+		this.m_asPos.Erase(0);
+	}
+	T_PointF sPos;
+	sPos.set(fX, fZ);
+	this.m_asPos.PushBack(sPos);
+}
+
+bool T_Player::backupPos(ref array@T_PointF asPos)
+{
+	if (asPos === NULL)
+	{
+		return false;
+	}
+	if (!asPos.Empty())
+	{
+		asPos.Free();
+	}
+	int i = 0;
+	int cnt = this.m_asPos.Numof();
+	if (cnt < 1)
+	{
+		return false;
+	}
+	asPos.Alloc(cnt);
+	asPos.Copy(0, this.m_asPos, 0, cnt);
+	return true;
+}
+
+bool T_Player::restorePos(ref array@T_PointF asPos)
+{
+	if (asPos === NULL)
+	{
+		return false;
+	}
+	if (!this.m_asPos.Empty())
+	{
+		this.m_asPos.Free();
+	}
+	int i = 0;
+	int cnt = asPos.Numof();
+	if (cnt < 1)
+	{
+		return false;
+	}
+	this.m_asPos.Alloc(cnt);
+	this.m_asPos.Copy(0, asPos, 0, cnt);
+	return true;
+}
+
+void T_Player::setUpdate(bool bFlag)
+{
+	if (this.m_nUpdate < 0)
+	{
+		return;
+	}
+	this.m_nUpdate = bFlag;
+}
+
+void T_Player::setInputFlag(bool bInputFlag)
+{
+	if (this.m_nUpdate < 0)
+	{
+		return;
+	}
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	if (!bInputFlag)
+	{
+		this.clearInput();
+	}
+	this.m_nInputFlag = bInputFlag ? 1 : 0;
+}
+
+bool T_Player::checkClick(ref int nSelectID)
+{
+	if (キー_押下(this.m_nKey))
+	{
+		int nMouseX = 0;
+		int nMouseY = 0;
+		int nID = this.checkMouse(nMouseX, nMouseY);
+		if (nID > 0)
+		{
+			３Ｄキャラ_マウス移動中(nMouseX, nMouseY);
+			return true;
+		}
+	}
+	this.endClick();
+	return false;
+}
+
+bool T_Player::checkClickArrow(ref int nSelectID)
+{
+	bool bLeft = キー_左矢印(true) > 0;
+	bool bRight = キー_右矢印(true) > 0;
+	bool bUp = キー_上矢印(true) > 0;
+	bool bDown = キー_下矢印(true) > 0;
+	if (bLeft && !bRight && !bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動中(308, 308);
+		return true;
+	}
+	if (!bLeft && bRight && !bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動中(508, 308);
+		return true;
+	}
+	if (!bLeft && !bRight && bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動中(408, 208);
+		return true;
+	}
+	if (!bLeft && !bRight && !bUp && bDown)
+	{
+		３Ｄキャラ_マウス移動中(408, 408);
+		return true;
+	}
+	if (bLeft && !bRight && bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動中(308, 208);
+		return true;
+	}
+	if (bLeft && !bRight && !bUp && bDown)
+	{
+		３Ｄキャラ_マウス移動中(308, 408);
+		return true;
+	}
+	if (!bLeft && bRight && bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動中(508, 208);
+		return true;
+	}
+	if (!bLeft && bRight && !bUp && bDown)
+	{
+		３Ｄキャラ_マウス移動中(508, 408);
+		return true;
+	}
+	this.endClick();
+	return false;
+}
+
+void T_Player::endClick()
+{
+	３Ｄキャラ_再生停止();
+	３Ｄキャラ_マウス移動停止();
+	switch (マップ移動タイプ())
+	{
+		case 0:
+			if (this.m_nKey == 2)
+			{
+				３Ｄキャラ_目的地移動開始();
+				マップ部品_キー操作有効設定(false);
+			}
+			break;
+		case 1:
+			if (this.m_nKey == 1)
+			{
+				３Ｄキャラ_目的地移動開始();
+				マップ部品_キー操作有効設定(false);
+			}
+			break;
+	}
+	this.clearInput();
+}
+
+bool T_Player::checkDown(ref int nSelectID)
+{
+	int nMouseX = 0;
+	int nMouseY = 0;
+	this.clearInput();
+	if (this.checkDownArrow(nSelectID))
+	{
+		return true;
+	}
+	int nID = this.checkMouse(nMouseX, nMouseY);
+	if (nID <= 0)
+	{
+		return false;
+	}
+	int nType = マップ移動タイプ();
+	if (キー_押下(2))
+	{
+		nSelectID = nID;
+		this.m_nKey = 2;
+		if (nType == 1)
+		{
+			３Ｄキャラ_マウス移動開始(nMouseX, nMouseY);
+		}
+		マップ部品_キー操作有効設定(false);
+		return true;
+	}
+	if (キー_押下(1))
+	{
+		nSelectID = nID;
+		this.m_nKey = 1;
+		if (nType == 0)
+		{
+			３Ｄキャラ_マウス移動開始(nMouseX, nMouseY);
+		}
+		マップ部品_キー操作有効設定(false);
+		return true;
+	}
+	return false;
+}
+
+bool T_Player::checkDownArrow(ref int nSelectID)
+{
+	if (マップ部品_キー操作有効())
+	{
+		return false;
+	}
+	bool bLeft = キー_左矢印(true) > 0;
+	bool bRight = キー_右矢印(true) > 0;
+	bool bUp = キー_上矢印(true) > 0;
+	bool bDown = キー_下矢印(true) > 0;
+	if (bLeft && !bRight && !bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動開始(308, 308);
+		this.m_bLeftKey = true;
+		goto label0;
+	}
+	if (!bLeft && bRight && !bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動開始(508, 308);
+		this.m_bRightKey = true;
+		goto label0;
+	}
+	if (!bLeft && !bRight && bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動開始(408, 208);
+		this.m_bUpKey = true;
+		goto label0;
+	}
+	if (!bLeft && !bRight && !bUp && bDown)
+	{
+		３Ｄキャラ_マウス移動開始(408, 408);
+		this.m_bDownKey = true;
+		goto label0;
+	}
+	if (bLeft && !bRight && bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動開始(308, 208);
+		this.m_bLeftKey = true;
+		this.m_bUpKey = true;
+		goto label0;
+	}
+	if (bLeft && !bRight && !bUp && bDown)
+	{
+		３Ｄキャラ_マウス移動開始(308, 408);
+		this.m_bLeftKey = true;
+		this.m_bDownKey = true;
+		goto label0;
+	}
+	if (!bLeft && bRight && bUp && !bDown)
+	{
+		３Ｄキャラ_マウス移動開始(508, 208);
+		this.m_bRightKey = true;
+		this.m_bUpKey = true;
+		goto label0;
+	}
+	if (!bLeft && bRight && !bUp && bDown)
+	{
+		３Ｄキャラ_マウス移動開始(508, 408);
+		this.m_bRightKey = true;
+		this.m_bDownKey = true;
+		goto label0;
+	}
+	return false;
+label0:
+	nSelectID = 800009;
+	マップ部品_キー操作有効設定(false);
+	return true;
+}
+
+int T_Player::checkMouse(ref int nMouseX, ref int nMouseY)
+{
+	if (キー優先())
+	{
+		return 0;
+	}
+	int nX = 0;
+	int nY = 0;
+	if (!マウス_位置取得(nX, nY))
+	{
+		return 0;
+	}
+	if (!this.m_rcCheck.ptInRect(nX, nY))
+	{
+		return 0;
+	}
+	nMouseX = nX;
+	nMouseY = nY;
+	return 800009;
+}
+
+bool T_Player::checkObject(int nHitFlag, int nHitX, int nHitY)
+{
+	int nX = ＭＸ＞ＴＸ(nHitX);
+	int nY = ＭＹ＞ＴＹ(nHitY);
+	switch (nHitFlag)
+	{
+		case 203:
+			回復の泉処理(nX, nY);
+			break;
+		case 210:
+			冒険功績処理(nX, nY);
+			break;
+		case 212:
+			ＥＸＰボーナス処理(nX, nY);
+			break;
+		case 213:
+			金拾い処理(nX, nY);
+			break;
+		default:
+			return nHitFlag > 0;
+	}
+	システムバー_更新(2, -1);
+	マップ部品_状態更新(2, nHitFlag, -1);
+	数値点滅_開始();
+	return false;
+}
+

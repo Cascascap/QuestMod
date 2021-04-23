@@ -1,0 +1,168 @@
+T_BattleMessageFrame::T_BattleMessageFrame()
+{
+	this.clear();
+}
+
+T_BattleMessageFrame::~T_BattleMessageFrame()
+{
+	this.delete();
+}
+
+bool T_BattleMessageFrame::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = 戦闘台詞データ_数();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	this.m_anFrameSp.Alloc(cnt);
+	this.m_anFrameSp.Fill(0, cnt, -1);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_anFrameSp[i] = this.createFrame(i, nZ);
+	}
+	this.m_nZ = nZ;
+	return true;
+}
+
+void T_BattleMessageFrame::delete()
+{
+	int i = 0;
+	int cnt = this.m_anFrameSp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		T_Sprite spWork;
+		spWork.attach(this.m_anFrameSp[i]);
+		spWork.delete();
+		spWork.detach();
+	}
+	this.m_sText.delete();
+	if (!this.m_anFrameSp.Empty())
+	{
+		this.m_anFrameSp.Free();
+	}
+	this.clear();
+}
+
+void T_BattleMessageFrame::clear()
+{
+	this.m_nZ = -1;
+	this.m_nIndex = -1;
+	this.m_anFrameSp.Fill(0, this.m_anFrameSp.Numof(), -1);
+}
+
+bool T_BattleMessageFrame::set(int nNo, string szMessage)
+{
+	if (nNo <= 0 || szMessage.Empty())
+	{
+		goto label0;
+	}
+	int idx = 戦闘台詞データ_インデクス(nNo);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nSpNo = this.m_anFrameSp[idx];
+	if (nSpNo <= 0)
+	{
+		goto label0;
+	}
+	ref T_BattleMessageData rfsData = 戦闘台詞データ_取得(idx);
+	if (rfsData === NULL)
+	{
+		goto label0;
+	}
+	int nTextCount = rfsData.m_nTextWidth / (rfsData.m_nFontSize + rfsData.m_nTextSpace);
+	this.m_sText.create(rfsData.m_nTextWidth, rfsData.m_nTextHeight, nTextCount, rfsData.m_nLineSpace, 0, 0);
+	this.m_sText.setDrawType(2);
+	this.m_sText.useOpticalTop = 1;
+	this.m_sText.setZ(this.m_nZ + 1);
+	this.m_sText.setTextSpace(rfsData.m_nTextSpace);
+	this.m_sText.setFontSize(rfsData.m_nFontSize);
+	this.m_sText.setFontType(rfsData.m_nFontFace);
+	this.m_sText.setFontBold(rfsData.m_bFontBold);
+	this.m_sText.setFontColor(rfsData.m_nFontColorR, rfsData.m_nFontColorG, rfsData.m_nFontColorB);
+	this.m_sText.setShadowPixel(rfsData.m_nShadowPixelL, rfsData.m_nShadowPixelR, rfsData.m_nShadowPixelU, rfsData.m_nShadowPixelD);
+	this.m_sText.setShadowColor(rfsData.m_nShadowColorR, rfsData.m_nShadowColorG, rfsData.m_nShadowColorB);
+	this.m_sText.setText(szMessage, false);
+	this.m_nIndex = idx;
+	this.setShow(true);
+	return true;
+label0:
+	this.m_nIndex = -1;
+	this.setShow(false);
+	return false;
+}
+
+void T_BattleMessageFrame::setPos(int nX, int nY)
+{
+	ref T_BattleMessageData rfsData = 戦闘台詞データ_取得(this.m_nIndex);
+	if (rfsData === NULL)
+	{
+		return;
+	}
+	T_Sprite spWork;
+	spWork.attach(this.m_anFrameSp[this.m_nIndex]);
+	spWork.setPos(nX, nY);
+	spWork.detach();
+	this.m_sText.setPos(nX + rfsData.m_nTextX, nY + rfsData.m_nTextY);
+}
+
+int T_BattleMessageFrame::getWidth()
+{
+	if (this.m_nIndex < 0)
+	{
+		return -1;
+	}
+	T_Sprite spWork;
+	spWork.attach(this.m_anFrameSp[this.m_nIndex]);
+	int nW = spWork.getWidth();
+	spWork.detach();
+	return nW;
+}
+
+int T_BattleMessageFrame::getHeight()
+{
+	if (this.m_nIndex < 0)
+	{
+		return -1;
+	}
+	T_Sprite spWork;
+	spWork.attach(this.m_anFrameSp[this.m_nIndex]);
+	int nH = spWork.getHeight();
+	spWork.detach();
+	return nH;
+}
+
+int T_BattleMessageFrame::createFrame(int nIndex, int nZ)
+{
+	ref T_BattleMessageData rfsData = 戦闘台詞データ_取得(nIndex);
+	if (rfsData === NULL)
+	{
+		return -1;
+	}
+	T_Sprite spWork;
+	if (spWork.setCg(rfsData.m_nCgNo) < 0)
+	{
+		return -1;
+	}
+	spWork.setZ(nZ);
+	return spWork.detach();
+}
+
+void T_BattleMessageFrame::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_anFrameSp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		T_Sprite spWork;
+		spWork.attach(this.m_anFrameSp[i]);
+		spWork.setShow(i == this.m_nIndex ? bShow : 0);
+		spWork.detach();
+	}
+	this.m_sText.setShow(bShow);
+}
+

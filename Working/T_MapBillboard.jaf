@@ -1,0 +1,275 @@
+T_MapBillboardManager::T_MapBillboardManager()
+{
+	this.clear();
+}
+
+T_MapBillboardManager::~T_MapBillboardManager()
+{
+	this.delete();
+}
+
+void T_MapBillboardManager::create()
+{
+	this.delete();
+	int nX = 0;
+	int nY = 0;
+	for (nX = 0; nX < 50; ++nX)
+	{
+		for (nY = 0; nY < 50; ++nY)
+		{
+			this.set(nX, nY, true);
+		}
+	}
+}
+
+void T_MapBillboardManager::delete()
+{
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		this.m_asBoard[i].Release();
+	}
+	this.clear();
+}
+
+void T_MapBillboardManager::clear()
+{
+	this.m_afDistance.Fill(0, this.m_afDistance.Numof(), 3.40282346638529E+38);
+}
+
+void T_MapBillboardManager::update(int nCgNo)
+{
+	int nX = 0;
+	int nY = 0;
+	for (nX = 0; nX < 50; ++nX)
+	{
+		for (nY = 0; nY < 50; ++nY)
+		{
+			this.setInfo(nX, nY, nCgNo);
+		}
+	}
+}
+
+void T_MapBillboardManager::align()
+{
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		this.m_asBoard[i].Align();
+	}
+}
+
+void T_MapBillboardManager::setDraw(bool bDrawFlag)
+{
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		this.m_asBoard[i].SetDraw(bDrawFlag);
+	}
+}
+
+bool T_MapBillboardManager::set(int nMapX, int nMapY, bool bDraw)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.Release();
+	T_BillboardInfo sInfo;
+	if (!ＢＢ情報_取得(nMapX, nMapY, sInfo))
+	{
+		return false;
+	}
+	rfBoard.Create(g_sMapMode.GetPlugin());
+	rfBoard.Set(sInfo.m_nCgNo, sInfo.m_nCgCount, bDraw);
+	rfBoard.SetSize(実数変換(sInfo.m_nSize));
+	rfBoard.SetHoseiX(実数変換(sInfo.m_nHoseiX));
+	rfBoard.SetHoseiY(実数変換(sInfo.m_nHoseiY));
+	rfBoard.SetHoseiZ(実数変換(sInfo.m_nHoseiZ));
+	rfBoard.SetDrawType(sInfo.m_nDrawType);
+	rfBoard.SetMapPos(nMapX, nMapY);
+	if (sInfo.isMotion())
+	{
+		rfBoard.SetMotionState(sInfo.m_nState);
+		rfBoard.SetMotionFrameRange(sInfo.m_nBegin, sInfo.m_nEnd + 1);
+		rfBoard.SetMotionFrame(sInfo.m_nBegin);
+		rfBoard.SetMotionLoopFrameRange(sInfo.m_nLoopBegin, sInfo.m_nLoopEnd + 1);
+	}
+	rfBoard.SetFPS(sInfo.m_nFPS);
+	this.m_afDistance[nMapX * 50 + nMapY] = 当り距離計算(sInfo.m_nCgNo, sInfo.m_nEnterFlag);
+	return true;
+}
+
+bool T_MapBillboardManager::setSize(int nMapX, int nMapY, int nSize)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetSize(実数変換(nSize));
+	return true;
+}
+
+bool T_MapBillboardManager::setHoseiX(int nMapX, int nMapY, int nHoseiX)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetHoseiX(実数変換(nHoseiX));
+	return true;
+}
+
+bool T_MapBillboardManager::setHoseiY(int nMapX, int nMapY, int nHoseiY)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetHoseiY(実数変換(nHoseiY));
+	return true;
+}
+
+bool T_MapBillboardManager::setHoseiZ(int nMapX, int nMapY, int nHoseiZ)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetHoseiZ(実数変換(nHoseiZ));
+	return true;
+}
+
+bool T_MapBillboardManager::setDrawType(int nMapX, int nMapY, int nDrawType)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetDrawType(nDrawType);
+	return true;
+}
+
+bool T_MapBillboardManager::setMotionState(int nMapX, int nMapY, int nState)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetMotionState(nState);
+	return true;
+}
+
+bool T_MapBillboardManager::setMotionFrame(int nMapX, int nMapY, float fFrame)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetMotionFrame(fFrame);
+	return true;
+}
+
+bool T_MapBillboardManager::setFPS(int nMapX, int nMapY, float fFPS)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	rfBoard.SetFPS(fFPS);
+	return true;
+}
+
+int T_MapBillboardManager::getMotionState(int nMapX, int nMapY)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return 0;
+	}
+	return rfBoard.GetMotionState();
+}
+
+float T_MapBillboardManager::getMotionFrame(int nMapX, int nMapY)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return 0.0;
+	}
+	return rfBoard.GetMotionFrame();
+}
+
+bool T_MapBillboardManager::getDraw(int nMapX, int nMapY)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	return rfBoard.GetDraw();
+}
+
+float T_MapBillboardManager::getFPS(int nMapX, int nMapY)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return 0.0;
+	}
+	return rfBoard.GetFPS();
+}
+
+float T_MapBillboardManager::getDistance(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 3.40282346638529E+38;
+	}
+	return this.m_afDistance[idx];
+}
+
+ref CBillboard T_MapBillboardManager::get(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asBoard[idx];
+}
+
+bool T_MapBillboardManager::setInfo(int nMapX, int nMapY, int nCgNo)
+{
+	ref CBillboard rfBoard = this.get(nMapX, nMapY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	T_BillboardInfo sInfo;
+	if (!ＢＢ情報_取得(nMapX, nMapY, sInfo))
+	{
+		return false;
+	}
+	if (sInfo.m_nCgNo != nCgNo)
+	{
+		return false;
+	}
+	rfBoard.SetSize(実数変換(sInfo.m_nSize));
+	rfBoard.SetHoseiX(実数変換(sInfo.m_nHoseiX));
+	rfBoard.SetHoseiY(実数変換(sInfo.m_nHoseiY));
+	rfBoard.SetHoseiZ(実数変換(sInfo.m_nHoseiZ));
+	rfBoard.SetDrawType(sInfo.m_nDrawType);
+	return true;
+}
+

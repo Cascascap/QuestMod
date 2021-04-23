@@ -1,0 +1,118 @@
+int T_BattleAdjust::getNo()
+{
+	return this.m_nNo;
+}
+
+bool T_BattleAdjust::isCreated()
+{
+	return this.m_spBase.isCreated();
+}
+
+T_BattleAdjust::T_BattleAdjust()
+{
+	this.clear();
+}
+
+T_BattleAdjust::~T_BattleAdjust()
+{
+	this.delete();
+}
+
+bool T_BattleAdjust::create(int nNo, int nX, int nY, int nZ)
+{
+	this.delete();
+	if (!戦闘番号_存在確認(nNo))
+	{
+		return false;
+	}
+	nX += 147;
+	nY += 5;
+	this.m_spBase.setCg(10305);
+	this.m_spBase.setPos(nX, nY);
+	this.m_spBase.setZ(nZ);
+	this.m_sExp.create(10321, false, 8, 3, 0);
+	this.m_sExp.setPos(nX + 8, nY + 120);
+	this.m_sExp.setZ(nZ + 1);
+	this.m_sExp.setValue(味方パーティ_取得経験値(nNo), 0, false);
+	this.createLabel(nNo, nX + 14, nY + 19, nZ + 1);
+	this.m_nNo = nNo;
+	return true;
+}
+
+void T_BattleAdjust::delete()
+{
+	int i = 0;
+	int cnt = this.m_asLabel.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLabel[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sExp.delete();
+	if (!this.m_asLabel.Empty())
+	{
+		this.m_asLabel.Free();
+	}
+	this.clear();
+}
+
+void T_BattleAdjust::clear()
+{
+	this.m_nNo = -1;
+}
+
+void T_BattleAdjust::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asLabel.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLabel[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_sExp.setShow(bShow);
+}
+
+int T_BattleAdjust::createLabel(int nNo, int nX, int nY, int nZ)
+{
+	array@int anCgNo;
+	if (味方パーティ_経験値補正_才能限界(nNo))
+	{
+		anCgNo.PushBack(10306);
+	}
+	if (味方パーティ_経験値補正_敵弱すぎ(nNo))
+	{
+		anCgNo.PushBack(10307);
+	}
+	if (味方パーティ_経験値補正_ＬＶ制限(nNo))
+	{
+		anCgNo.PushBack(10308);
+	}
+	if (味方パーティ_経験値補正_スキル効果(nNo))
+	{
+		anCgNo.PushBack(10309);
+	}
+	if (味方パーティ_経験値補正_アイテム効果(nNo))
+	{
+		anCgNo.PushBack(10310);
+	}
+	int i = 0;
+	int cnt = anCgNo.Numof();
+	if (cnt <= 0)
+	{
+		return 0;
+	}
+	this.m_asLabel.Alloc(cnt);
+	int nH = 19 * cnt + 3 * (cnt - 1);
+	int nY2 = nY + (63 - nH) / 2;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsLabel = this.m_asLabel[i];
+		rfsLabel.setCg(anCgNo[i]);
+		rfsLabel.setPos(nX, nY2);
+		rfsLabel.setZ(nZ);
+		nY2 += 22;
+	}
+	return cnt;
+}
+

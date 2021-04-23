@@ -1,0 +1,112 @@
+CMessageWindow::CMessageWindow()
+{
+	this.m_Flash = false;
+	this.m_InactiveMultipleColor.Set(255, 255, 255, 255);
+	this.m_OffsetZ = 0;
+}
+
+CMessageWindow::~CMessageWindow()
+{
+	‚oQíœ(this.GetPartsNumber());
+}
+
+bool CMessageWindow::Create(int MessageWindowNumber)
+{
+	this.m_MessageWindowNumber = MessageWindowNumber;
+	ref CMessageWindowModel a = g_MessageWindowModelManager.GetMessageWindow(MessageWindowNumber);
+	if (!a.GetFlashFileName().Empty())
+	{
+		‚oQƒtƒ‰ƒbƒVƒ…İ’è(this.GetPartsNumber(), a.GetFlashFileName(), 1);
+		this.m_Flash = true;
+	}
+	else if (!a.GetCGName().Empty())
+	{
+		‚oQ‚b‚fİ’è(this.GetPartsNumber(), a.GetCGName(), 1);
+		this.m_Flash = false;
+	}
+	‚oQÀ•Wİ’è(this.GetPartsNumber(), a.GetX(), a.GetY());
+	this.m_InactiveMultipleColor = a.GetInactiveMultipleColor();
+	‚oQƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE•\¦˜A“®İ’è(this.GetPartsNumber(), true);
+	return true;
+}
+
+int CMessageWindow::GetMessageWindowNumber()
+{
+	return this.m_MessageWindowNumber;
+}
+
+void CMessageWindow::SetShow(bool Show)
+{
+	‚oQ•\¦İ’è(this.GetPartsNumber(), Show);
+}
+
+bool CMessageWindow::IsShow()
+{
+	return ‚oQ•\¦İ’èæ“¾(this.GetPartsNumber());
+}
+
+void CMessageWindow::SetOffsetZ(int OffsetZ)
+{
+	this.m_OffsetZ = OffsetZ;
+}
+
+int CMessageWindow::GetOffsetZ()
+{
+	return this.m_OffsetZ;
+}
+
+void CMessageWindow::UpdateZ()
+{
+	‚oQ‚yÀ•Wİ’è(this.GetPartsNumber(), g_MessageWindowModelManager.GetZ() + this.m_OffsetZ);
+}
+
+void CMessageWindow::UpdateActiveState(bool Active)
+{
+	if (Active)
+	{
+		‚oQæZFİ’è(this.GetPartsNumber(), 255, 255, 255);
+	}
+	else
+	{
+		‚oQæZFİ’è(this.GetPartsNumber(), this.m_InactiveMultipleColor.GetR(), this.m_InactiveMultipleColor.GetG(), this.m_InactiveMultipleColor.GetB());
+	}
+}
+
+bool CMessageWindow::IsFlash()
+{
+	return this.m_Flash;
+}
+
+bool CMessageWindow::IsOverFlashWaitFrame()
+{
+	if (!this.IsShow())
+	{
+		return true;
+	}
+	if (!this.IsFlash())
+	{
+		return true;
+	}
+	ref CMessageWindowModel MessageWindowModel = g_MessageWindowModelManager.GetMessageWindow(this.m_MessageWindowNumber);
+	if (GoatGUIEngine.GetPartsFlashCurrentFrameNumber(this.GetPartsNumber(), 1) >= MessageWindowModel.m_FlashShowWaitFrameNumber)
+	{
+		return true;
+	}
+	return false;
+}
+
+void CMessageWindow::BackFlashBeginFrame()
+{
+	‚oQƒtƒ‰ƒbƒVƒ…ŠJnƒtƒŒ[ƒ€ˆÚ“®(this.GetPartsNumber(), 1);
+}
+
+void CMessageWindow::StepFlashFinalFrame()
+{
+	‚oQƒtƒ‰ƒbƒVƒ…ÅIƒtƒŒ[ƒ€ƒXƒeƒbƒv(this.GetPartsNumber(), 1);
+}
+
+int CMessageWindow::GetPartsNumber()
+{
+	return 1000000000 + this.m_MessageWindowNumber;
+}
+

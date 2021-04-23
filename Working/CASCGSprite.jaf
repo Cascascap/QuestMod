@@ -1,0 +1,75 @@
+CASCGSprite::CASCGSprite()
+{
+	this.m_nHandle = g_ASCGSpriteManager.CreateHandle();
+}
+
+CASCGSprite::~CASCGSprite()
+{
+	g_ASCGSpriteManager.ReleaseHandle(this.m_nHandle);
+}
+
+void CASCGSprite::Release()
+{
+	g_ASCGSpriteManager.GetObject(this.m_nHandle).Release();
+}
+
+void CASCGSprite::SetCG(string CGName)
+{
+	g_ASCGSpriteManager.GetObject(this.m_nHandle).SetCG(CGName);
+}
+
+void CASCGSprite::SetPos(int nX, int nY)
+{
+	g_ASCGSpriteManager.GetObject(this.m_nHandle).SetPos(nX, nY);
+}
+
+void CASCGSprite::SetZ(int nZ)
+{
+	g_ASCGSpriteManager.GetObject(this.m_nHandle).SetZ(nZ);
+}
+
+void CASCGSprite::SetShow(bool bShow)
+{
+	g_ASCGSpriteManager.GetObject(this.m_nHandle).SetShow(bShow);
+}
+
+bool CASCGSprite::GetShow()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).GetShow();
+}
+
+int CASCGSprite::GetX()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).GetX();
+}
+
+int CASCGSprite::GetY()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).GetY();
+}
+
+int CASCGSprite::GetZ()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).GetZ();
+}
+
+int CASCGSprite::GetCGWidth()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).GetCGWidth();
+}
+
+int CASCGSprite::GetCGHeight()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).GetCGHeight();
+}
+
+bool CASCGSprite::IsMouseCursorIn()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).IsMouseCursorIn();
+}
+
+bool CASCGSprite::IsMouseCursorInRect()
+{
+	return g_ASCGSpriteManager.GetObject(this.m_nHandle).IsMouseCursorInRect();
+}
+

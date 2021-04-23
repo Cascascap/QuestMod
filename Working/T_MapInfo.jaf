@@ -1,0 +1,215 @@
+int compMapInfo(ref T_MapInfo sInfo1, ref T_MapInfo sInfo2)
+{
+	if (sInfo1.m_nNo < sInfo2.m_nNo)
+	{
+		return -1;
+	}
+	if (sInfo1.m_nNo > sInfo2.m_nNo)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+T_MapInfo::T_MapInfo()
+{
+	this.clear();
+}
+
+void T_MapInfo::clear()
+{
+	this.m_nNo = 0;
+	this.m_szName = "";
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nDir = 0;
+	this.m_szName2 = "";
+}
+
+int T_MapInfoManager::getCount()
+{
+	return this.m_asInfo.Numof();
+}
+
+T_MapInfoManager::T_MapInfoManager()
+{
+}
+
+bool T_MapInfoManager::init()
+{
+	int nRet = this.load();
+	if (nRet < 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+int T_MapInfoManager::select()
+{
+	return 0;
+}
+
+bool T_MapInfoManager::convertPos(string szName)
+{
+	int idx = this.searchFromName(szName);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref T_MapInfo rfInfo = this.m_asInfo[idx];
+	int nX = rfInfo.m_nX - 1;
+	if (!É}ÉbÉvà íu_ÇwämîF(nX))
+	{
+		return false;
+	}
+	rfInfo.m_nX = nX;
+	return true;
+}
+
+int T_MapInfoManager::getMapNo(string szName)
+{
+	int idx = this.searchFromName(szName);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_asInfo[idx].m_nNo;
+}
+
+string T_MapInfoManager::getName(int nMapNo)
+{
+	ref T_MapInfo rfInfo = this.get(nMapNo);
+	if (rfInfo === NULL)
+	{
+		return "";
+	}
+	return rfInfo.m_szName;
+}
+
+string T_MapInfoManager::getName2(int nMapNo)
+{
+	ref T_MapInfo rfInfo = this.get(nMapNo);
+	if (rfInfo === NULL)
+	{
+		return "";
+	}
+	return rfInfo.m_szName2;
+}
+
+ref T_MapInfo T_MapInfoManager::get(int nMapNo)
+{
+	int idx = this.search(nMapNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asInfo[idx];
+}
+
+ref T_MapInfo T_MapInfoManager::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asInfo.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asInfo[nIndex];
+}
+
+int T_MapInfoManager::getIndex(int nMapNo)
+{
+	return this.search(nMapNo);
+}
+
+int T_MapInfoManager::load()
+{
+	if (!this.m_asInfo.Empty())
+	{
+		this.m_asInfo.Free();
+	}
+	if (this.loadAcx())
+	{
+		return 0;
+	}
+	return -1;
+}
+
+bool T_MapInfoManager::loadAcx()
+{
+	bool bRet = false;
+	if (!Ç`ÇbÇw_ÉçÅ[Éh(É}ÉbÉvèÓïÒ_ÉtÉ@ÉCÉãñº()))
+	{
+		return false;
+	}
+	int cnt = Ç`ÇbÇw_çsêî();
+	if (cnt <= 0)
+	{
+		bRet = true;
+		goto label0;
+	}
+	int i = 0;
+	T_MapInfo sInfo;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!Ç`ÇbÇw_É}ÉbÉvèÓïÒ(i, sInfo))
+		{
+			system.Error("There's an error in the map information.");
+			goto label0;
+		}
+		this.m_asInfo.PushBack(sInfo);
+	}
+	this.m_asInfo.Sort(&compMapInfo);
+	bRet = true;
+label0:
+	Ç`ÇbÇw_âï˙();
+	return bRet;
+}
+
+int T_MapInfoManager::loadText()
+{
+	return -1;
+}
+
+bool T_MapInfoManager::save()
+{
+	return true;
+}
+
+bool T_MapInfoManager::add(string szName)
+{
+	return true;
+}
+
+int T_MapInfoManager::search(int nMapNo)
+{
+	int i = 0;
+	int cnt = this.m_asInfo.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asInfo[i].m_nNo == nMapNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int T_MapInfoManager::searchFromName(string szName)
+{
+	int i = 0;
+	int cnt = this.m_asInfo.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asInfo[i].m_szName == szName)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+void T_MapInfoManager::output()
+{
+	return;
+}
+

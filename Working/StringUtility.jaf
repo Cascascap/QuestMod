@@ -1,0 +1,127 @@
+string PadZeroes(string numberString, int count)
+{
+	while (numberString.LengthByte() < count)
+	{
+		numberString = "0" + numberString;
+	}
+	return numberString;
+}
+
+bool SplitString(string text, string separator, ref array@string result)
+{
+	result.Free();
+	int separatorLength = separator.Length();
+	if (separatorLength == 0)
+	{
+		return false;
+	}
+	for (; ; )
+	{
+		int tabIndex = text.Find(separator);
+		if (tabIndex == -1)
+		{
+			break;
+		}
+		string left = text.GetPart(0, tabIndex);
+		text = text.GetPart(tabIndex + separatorLength, text.Length() - tabIndex - separatorLength);
+		result.PushBack(left);
+	}
+	result.PushBack(text);
+	if (result.Numof() > 1)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool SplitTabs(string text, ref array@string result)
+{
+	return SplitString(text, "\t", result);
+}
+
+int IndexOfNonWordCharacter(int i, string text)
+{
+	int textLength = text.Length();
+	while (i < textLength)
+	{
+		int c = text[i];
+		if (c == 32 || c >= 127 || c < 32)
+		{
+			return i;
+		}
+		++i;
+	}
+	return textLength;
+}
+
+bool RemoveFirstLineBreak(ref string text)
+{
+	int i = 0;
+	int c = 0;
+	int textLength = text.Length();
+	for (i = 0; i < textLength; ++i)
+	{
+		c = text[i];
+		if (c == 36 || c == 64 || c == 10)
+		{
+			text[i] = ' ';
+			return true;
+		}
+	}
+	return false;
+}
+
+string RemoveTrailingWhitespace(string str)
+{
+	int l = str.Length();
+	int i = 0;
+	for (i = l - 1; i >= 0; --i)
+	{
+		int c = str[i];
+		if (c == 64 || c == 36 || c == 16513 || c <= 32)
+		{
+		}
+		else
+		{
+			return str.GetPart(0, i + 1);
+		}
+	}
+	return "";
+}
+
+string FullwidthNumber(int aa, int bb)
+{
+	lint cc = 0;
+	string •¶š—ñ = string‘SŠp(aa);
+	if (bb != 0)
+	{
+		for (; ; )
+		{
+			cc = •¶š—ñ.Length();
+			if (cc >= bb)
+			{
+				return •¶š—ñ;
+			}
+			•¶š—ñ = "@" + •¶š—ñ;
+		}
+	}
+	return •¶š—ñ;
+}
+
+string Numbereth(int aa)
+{
+	if (aa % 10 != 1 && aa % 10 != 2 || (aa % 100) / 10 == 1)
+	{
+		return "%dth" % aa;
+	}
+	else if (aa % 10 == 2)
+	{
+		return "%dnd" % aa;
+	}
+	else if (aa % 10 == 1)
+	{
+		return "%dst" % aa;
+	}
+	return "%d" % aa;
+}
+

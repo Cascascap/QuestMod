@@ -1,0 +1,234 @@
+int T_CharaSkill::getCharaNo()
+{
+	return this.m_sList.getCharaNo();
+}
+
+int T_CharaSkill::getSkillIndex(int nSkillNo)
+{
+	return this.m_sList.getIndex(nSkillNo);
+}
+
+int T_CharaSkill::getSkillCount()
+{
+	return this.m_sList.getCount();
+}
+
+int T_CharaSkill::getSpace()
+{
+	return this.m_sList.getSpace();
+}
+
+ref T_SkillList T_CharaSkill::getList()
+{
+	return this.m_sList;
+}
+
+T_CharaSkill::T_CharaSkill()
+{
+	this.clear();
+}
+
+T_CharaSkill::~T_CharaSkill()
+{
+	this.delete();
+}
+
+bool T_CharaSkill::create(int nCharaNo, int nType, bool bLongSkill)
+{
+	this.delete();
+	if (!this.m_sList.create(nCharaNo, 0))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = _min(キャラ_スキル枠最大(nCharaNo), 6);
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nSkillNo = this.m_sList.get(i);
+		int nType2 = スキル_ボタン種別(nType, bLongSkill, nCharaNo, nSkillNo);
+		ref T_SkillButton rfsSkill = this.m_asSkill[i];
+		if (rfsSkill.create(nType2, nSkillNo, キャラスキル_ランク(nCharaNo, nSkillNo)))
+		{
+			rfsSkill.setNumber(キャラスキル_使用回数(nCharaNo, nSkillNo), キャラスキル_使用回数最大(nCharaNo, nSkillNo));
+			++nCount;
+		}
+	}
+	this.m_nType = nType;
+	return nCount > 0;
+}
+
+void T_CharaSkill::delete()
+{
+	int i = 0;
+	int cnt = this.m_asSkill.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSkill[i].delete();
+	}
+	this.clear();
+}
+
+void T_CharaSkill::clear()
+{
+	this.m_nType = -1;
+	this.m_sList.clear();
+}
+
+bool T_CharaSkill::drawBack(int nX, int nY, ref T_Sprite rfSp)
+{
+	if (!スプライト_有効(rfSp))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = _min(キャラ_スキル枠最大(this.getCharaNo()), 6);
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_nType == 1 && this.getSkillNo(i) > 0)
+		{
+			continue;
+		}
+		スキルボタン_背景作成(nX, nY + 26 * i, 全角数字(i + 1, -1, 0), rfSp);
+	}
+	return true;
+}
+
+bool T_CharaSkill::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asSkill.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSkill[i].copyToSprite(rfsDst, nDstX, nDstY + 26 * i);
+	}
+	return true;
+}
+
+int T_CharaSkill::setCount(int nIndex, int nValue)
+{
+	int nValue2 = this.getCount(nIndex);
+	if (nValue2 < 0)
+	{
+		return -1;
+	}
+	this.m_asSkill[nIndex].setNumber(nValue < 0 ? nValue2 : nValue, -1);
+	return nValue;
+}
+
+void T_CharaSkill::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_asSkill.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSkill[i].setPos(nX, nY + 26 * i);
+	}
+}
+
+void T_CharaSkill::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asSkill.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSkill[i].setZ(nZ);
+	}
+}
+
+void T_CharaSkill::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asSkill.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSkill[i].setShow(bShow);
+	}
+}
+
+void T_CharaSkill::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_asSkill.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSkill[i].setBlendRate(nBlendRate);
+	}
+}
+
+void T_CharaSkill::setSkillShow(int nSkillNo, bool bShow)
+{
+	ref T_SkillButton rfsSkill = this.get(nSkillNo);
+	if (rfsSkill === NULL)
+	{
+		return;
+	}
+	rfsSkill.setShow(bShow);
+}
+
+int T_CharaSkill::getActiveCount()
+{
+	int i = 0;
+	int cnt = this.m_asSkill.Numof();
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.getSkillNo(i) == 384)
+		{
+			continue;
+		}
+		if (this.getCount(i) > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int T_CharaSkill::getSkillNo(int nIndex)
+{
+	ref T_SkillButton rfsSkill = this.getFromIndex(nIndex);
+	if (rfsSkill === NULL)
+	{
+		return -1;
+	}
+	return rfsSkill.getSkillNo();
+}
+
+ref T_SkillButton T_CharaSkill::get(int nSkillNo)
+{
+	return this.getFromIndex(this.m_sList.getIndex(nSkillNo));
+}
+
+ref T_SkillButton T_CharaSkill::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSkill.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asSkill[nIndex];
+}
+
+int T_CharaSkill::getCount(int nIndex)
+{
+	int nSkillNo = this.getSkillNo(nIndex);
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	if (!スキル_行動(nSkillNo))
+	{
+		return -1;
+	}
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	return キャラスキル_使用回数(nCharaNo, nSkillNo);
+}
+

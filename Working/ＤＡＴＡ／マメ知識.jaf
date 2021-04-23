@@ -1,0 +1,3538 @@
+string マメ知識文字列(int no)
+{
+	string 文字列 = "";
+	string 作業文字 = "";
+	if (no == 1)
+	{
+		if (◆ｅａｓｙモード == 0)
+		{
+			文字列 = "Rance's Adventure Notes$$";
+		}
+		文字列 += "Goal - Turn Sill back to normal (break the... curse?)$";
+		if (Ｑ状態(67, -1) == 2)
+		{
+			文字列 += "Goal - Break the Abstinence Morurun curse$";
+		}
+		if (Ｑ状態(68, -1) == 2)
+		{
+			文字列 += "Goal - Fuck every level 35+ woman in the world$";
+		}
+		if (Ｑ状態(168, -1) == 2 && FA[201] == 0)
+		{
+			文字列 += "Goal - Defeat the Shepherds (they're hurting girls!)$";
+		}
+		文字列 += "$";
+		for (; ; )
+		{
+			if (FA[201] == 1)
+			{
+				文字列 += "  !Congrats!  Rance Quest Magnum Clear  !Congrats!$";
+				文字列 += "  $";
+				文字列 += "  You can continue playing as if the final quest was never triggered.";
+				文字列 += "  $";
+				break;
+			}
+			if (クリア確認(175) == 1)
+			{
+				文字列 += "  Guess it's all thanks to me that Crook's the new pope.$  Anyway, now I'm off to bigger and better things.$";
+				break;
+			}
+			if (クリア確認(174) == 1)
+			{
+				文字列 += "  We're doing the Mula Test to determine who'll be the new pope.$  We're exploring the Kaiz Underground.$  ※Got the Curse Eraser.$";
+				break;
+			}
+			if (クリア確認(173) == 1)
+			{
+				文字列 += "  We're doing the Mula Test to determine who'll be the new pope.$  We're raiding the Kaiz Underground through the route Crane found.$";
+				break;
+			}
+			if (クリア確認(190) == 1)
+			{
+				文字列 += "  We attacked the Shepherds' base and kicked their butts.$  ...But Am got away. Next time, I'm gonna catch her and put my dick in her.$$";
+				break;
+			}
+			if (EV("クレイン／ＢＭ情報", -2147483648) == true)
+			{
+				文字列 += "  Crane discovered the location of the Shepherds' base.$  They piss me off, so they're going to be annihilated. For great justice.$";
+				break;
+			}
+			if (クリア確認(168) == 1)
+			{
+				文字列 += "  Shepherds = The guys who're corrupting peoples' minds.$  They're even driving some girls to suicide.$  It's unforgivable! All beautiful women are mine!$";
+				break;
+			}
+			if (クリア確認(165) == 1)
+			{
+				文字列 += "  Apparently, there's a bounty on those \"Soul Shackles\" the Shepherds have been spreading.$ You can get a reward from the Church of Alicism for turning them in.$  Sounds good, let's get on that.$";
+				break;
+			}
+			if (FA[263] == 1)
+			{
+				文字列 += "  Heheheh, now there's nothing to worry about.$  And I can fuck Pastel whenever I want, too!$  I think it's time to check in on her!$";
+				break;
+			}
+			if (FA[200] == 1 && FA[263] == 0)
+			{
+				文字列 += "  !Congrats!  Rance Quest Clear  !Congrats!$";
+				文字列 += "  $";
+				文字列 += "  You can continue playing as if the final quest was never triggered.";
+				文字列 += "  $";
+				break;
+			}
+			if (クリア確認(76) == 1)
+			{
+				文字列 += "  Now I just need Pastel to lift my curse.$  She seems kinda down, though, so I won't push her.$  I'm being extra nice, since we're almost done. Go me!$";
+				break;
+			}
+			if (クリア確認(72) == 1)
+			{
+				文字列 += "  Now I just need Pastel to lift my curse.$  I'll charge up my ero power and invade the Kalar Village again.$";
+				break;
+			}
+			if (発生確認(72) == 1)
+			{
+				文字列 += "  Sill's curse and the Abstinence Morurun are all Pastel's fault.$  I'm gonna go back to the Kalar Village and rape her 'til she cries.$";
+				break;
+			}
+			if (クリア確認(65) == 1)
+			{
+				文字列 += "  The \"curse eraser\" I was counting on wasn't even there!$  Somebody got to it before me...$  Well, what am I supposed to do about the curse now?$";
+				break;
+			}
+			if (クリア確認(64) == 1)
+			{
+				文字列 += "  The Zethan Magic Museum is supposed to have an item called a \"curse eraser.\"$  I've got Magic's permission, so let's get going!$";
+				break;
+			}
+			if (クリア確認(71) == 1)
+			{
+				文字列 += "  The Zethan Magic Museum is supposed to have an item called a \"curse eraser.\"$  Let's get permission to swipe it from Magic.$";
+				break;
+			}
+			if (クリア確認(20) == 1)
+			{
+				文字列 += "  My super cool awesome Rance Castle is finally complete!$  Huh...? Was I supposed to be doing something?$";
+				break;
+			}
+			if (クリア確認(63) == 1)
+			{
+				文字列 += "  I did it with Maris in Leazas and it was great.$  Next stop on my trip to find beauties over level 35...$  Yeah, we need to go to the magic country, Zeth!$";
+				break;
+			}
+			if (クリア確認(41) == 1)
+			{
+				文字列 += "  I went to Nippon and did Kenshin.$  I took Kouhime under my protection, too.$  Next stop, Leazas.$";
+				break;
+			}
+			if (クリア確認(60) == 1)
+			{
+				文字列 += "  I fucked the level 35 beauty, Alkanese.$  Yeah, sex is good, it's fun.$  Let's keep this going and fuck all the world's level 35 beauties!$";
+				break;
+			}
+			if (クリア確認(68) == 1)
+			{
+				文字列 += "  Queen Pastel cast the Abstinence Morurun Curse on me.$  But that's not going to be enough to stop me. Not even close.$  I'll just find and fuck all the beauties over level 35!$";
+				break;
+			}
+			if (クリア確認(67) == 1)
+			{
+				文字列 += "  I invaded the Kalar Village and raped Queen Pastel, but she cast a curse on me!$";
+				break;
+			}
+			if (クリア確認(66) == 1)
+			{
+				文字列 += "  I've found the Kalar Village.$  I'm gonna break in and get the Kalar Queen to break Sill's curse!$";
+				break;
+			}
+			break;
+		}
+		文字列 += "$";
+		if (◆２倍モード == 1)
+		{
+			文字列 += "TADA Mode is active$";
+		}
+		if (◆ワールド == 2)
+		{
+			文字列 += "Playing on World 2 (high difficulty)$";
+			文字列 += " Enemy strength x2, experience x3, no \"Too weak for experience\" enemies$";
+		}
+		if (◆ワールド == 3)
+		{
+			文字列 += "Playing on World 3 (extra high difficulty)$";
+			文字列 += " Enemy strength x4, experience x5, bonus special encounters$";
+		}
+		for (; ; )
+		{
+			if (FA[201] == 1)
+			{
+				文字列 += "Post-clear mode 2 (Magnum clear)$";
+				break;
+			}
+			if (FA[263] == 1)
+			{
+				文字列 += "Playing Magnum campaign$";
+				break;
+			}
+			if (FA[200] == 1)
+			{
+				文字列 += "Post-clear mode (Clear)$";
+				break;
+			}
+			文字列 += "Playing main campaign$";
+			break;
+		}
+		文字列 += "$";
+		if (◆iiq != 0)
+		{
+			文字列 += "Current Quest [" + Ｑ名前(◆iiq, "") + "]$";
+			文字列 += "$";
+			if (◆iiq == 87)
+			{
+				文字列 += "※Head to the dungeon off Route 13$";
+			}
+			if (◆iiq == 42)
+			{
+				文字列 += "※Reach the goal on Route 13 before Katsuko and Torako$";
+			}
+			if (◆iiq == 47)
+			{
+				文字列 += "※The testing dungeon is south of Route 12$";
+			}
+			if (◆iiq == 47)
+			{
+				文字列 += "※Keep Nopel alive$";
+			}
+			if (◆iiq == 50 && EV("０１Ｃ第１地点／戦闘後", -2147483648) == true)
+			{
+				文字列 += "※1st paper\t: East\t\t\t\t:$";
+			}
+			if (◆iiq == 50 && EV("０１Ｃ第２地点／戦闘後", -2147483648) == true)
+			{
+				文字列 += "※2nd paper\t: West → South\t:$";
+			}
+			if (◆iiq == 50 && EV("０１Ｃ第３地点／戦闘後", -2147483648) == true)
+			{
+				文字列 += "※3rd paper\t: West → South\t:$";
+			}
+			if (◆iiq == 50 && EV("０１Ｃ第４地点／戦闘後", -2147483648) == true)
+			{
+				文字列 += "※4th paper\t: North → North\t:$";
+			}
+			if (◆iiq == 71 && QD[2] == 0)
+			{
+				文字列 += "※Rescue at least four cows$";
+			}
+			if (◆iiq == 71 && QD[3] == 1)
+			{
+				文字列 += "※Catch the rare black cow$";
+			}
+			if (◆iiq == 17)
+			{
+				文字列 += "※Clean up five groups of soil pollution$";
+			}
+			if (◆iiq == 83)
+			{
+				文字列 += "※Collect five bunches of grapes$";
+			}
+			if (◆iiq == 66 && QD[9] == 2)
+			{
+				文字列 += "※Pull the jizo's chin$";
+			}
+			if (◆iiq == 72)
+			{
+				文字列 += "※Pass east from Point A with a party of all women, including one kalar$";
+			}
+			if (◆iiq == 75)
+			{
+				文字列 += "※Head underwater from Point C to get to Mothercow$";
+			}
+			if (◆iiq == 95)
+			{
+				文字列 += "※Collect five bugs$";
+			}
+		}
+	}
+	if (no == 88)
+	{
+		文字列 = "Game Flag Notes$";
+		文字列 += "Version [%d]$" % FA[101];
+		if (◆プラスキット == 0)
+		{
+			文字列 += "\nRegular Edition$";
+		}
+		if (◆プラスキット == 1)
+		{
+			文字列 += "\nMagnum Edition$";
+		}
+		if (◆２倍モード == 1)
+		{
+			文字列 += "\nTADA Mode is active$";
+		}
+		if (FA[309] == 1)
+		{
+			文字列 += "\nBody Boost attribute added to certain items.$";
+		}
+		文字列 += "$";
+		文字列 += "The following can be changed if you redo earlier quests:$";
+		if (FA[8] == 1)
+		{
+			文字列 += "※Flattie the peddler is in good health (Highway Yankees)$";
+		}
+		if (FA[8] == 2)
+		{
+			文字列 += "※Flattie the peddler is dead (Highway Yankees)$";
+		}
+		if (FA[10] == 1)
+		{
+			文字列 += "※Master Author Doessky is in good health (Retrieve Manuscript...)$";
+		}
+		if (FA[10] == 2)
+		{
+			文字列 += "※Master Author Doessky is dead (Retrieve Manuscript...)$";
+		}
+		if (FA[9] == 1)
+		{
+			文字列 += "※Zombie containment breached (Lion Mind)$";
+		}
+		if (FA[257] == 1)
+		{
+			文字列 += "※The Maid Ghost still exists (Leazish Horror Story)$";
+		}
+		if (FA[257] == 2)
+		{
+			文字列 += "※The Maid Ghost was exterminated (Leazish Horror Story)$";
+		}
+		if (FA[84] == 1)
+		{
+			文字列 += "※Aegis is dead (Kalar Incident)$";
+		}
+		if (FA[258] == 1)
+		{
+			文字列 += "※Defeated Kaito (Green Village)$";
+		}
+		if (FA[199] == 1)
+		{
+			文字列 += "※??? was exterminated (Obsidian Princess)$";
+		}
+	}
+	if (no == 43)
+	{
+		文字列 = "Player Info$";
+		文字列 += "－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－$";
+		文字列 += "Progression: ";
+		for (; ; )
+		{
+			if (◆ワールド == 2)
+			{
+				文字列 += "World 2$";
+				break;
+			}
+			if (◆ワールド == 3)
+			{
+				文字列 += "World 3$";
+				break;
+			}
+			if (◆ワールド == 4)
+			{
+				文字列 += "World 4$";
+				break;
+			}
+			if (◆ワールド == 5)
+			{
+				文字列 += "World 5$";
+				break;
+			}
+			if (Ｑ状態(77, -1) == 2)
+			{
+				文字列 += "Playing the postgame$";
+				break;
+			}
+			if (Ｑ状態(72, -1) == 2)
+			{
+				文字列 += "Playing the endgame$";
+				break;
+			}
+			if (Ｑ状態(60, -1) == 2)
+			{
+				文字列 += "Playing the mid game$";
+				break;
+			}
+			文字列 += "Playing the early game$";
+			break;
+		}
+		Ｒ８キャラランキング();
+		文字列 += "Character Ranking, 1st place = " + Ｃ名前(Ｃ番号取得(FB_C[1]), "") + "$";
+		文字列 += "Character Ranking, 2nd place = " + Ｃ名前(Ｃ番号取得(FB_C[2]), "") + "$";
+		文字列 += "Character Ranking, 3rd place = " + Ｃ名前(Ｃ番号取得(FB_C[3]), "") + "$";
+		文字列 += "Character Ranking, 4th place = " + Ｃ名前(Ｃ番号取得(FB_C[4]), "") + "$";
+		文字列 += "Character Ranking, 5th place = " + Ｃ名前(Ｃ番号取得(FB_C[5]), "") + "$";
+		文字列 += "－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－$";
+		文字列 += "Yankee kill count = " + string(FA[103]) + "$";
+		文字列 += "Pastel rape count = " + string(FA[104]) + "$";
+		文字列 += "Sachiko death count = " + string(FA[105]) + "$";
+		文字列 += "Total sex count = " + string(FA[96]) + "$";
+		return 文字列;
+	}
+	if (no == 51)
+	{
+		文字列 += "Various Records (Completion)$";
+		文字列 += " ※It can be tough to complete everything. Yeah.$";
+		文字列 += " ※It's perfectly normal not to, there's no need to push yourself.$";
+		文字列 += "$";
+		lint abc = マメ／キャラ一覧(0);
+		if (◆プラスキット == 1)
+		{
+			文字列 += "Party members (%d/68)$" % abc;
+		}
+		if (◆プラスキット == 0)
+		{
+			文字列 += "Party members (%d/63)$" % abc;
+		}
+		abc = マメ／クエスト一覧(0);
+		if (◆プラスキット == 1)
+		{
+			文字列 += "Cleared quests (%d/175)$" % abc;
+		}
+		if (◆プラスキット == 0)
+		{
+			文字列 += "Cleared quests (%d/127)$" % abc;
+		}
+		abc = マメ／女の子モンスター一覧(0);
+		文字列 += "Captured gal monsters (%d/18)$" % abc;
+		abc = マメ／レアアイテムＢの数();
+		文字列 += "Rare item B possession (%d/13)$" % abc;
+		文字列 += "$";
+		if (FA[255] == 1)
+		{
+			文字列 += "  Lord of the Abyss (Defeated)$";
+		}
+		if (FA[255] == 2)
+		{
+			文字列 += "  Lord of the Abyss (Defeated 2)$";
+		}
+		if (FA[255] == 3)
+		{
+			文字列 += "  Lord of the Abyss (Defeated 3)$";
+		}
+		if (FA[255] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Lord of the Abyss$";
+		}
+		if (FA[255] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ???? ?? ??? ?????$";
+		}
+		if (FA[16] == 1)
+		{
+			文字列 += "  Black Dragon (Defeated)$";
+		}
+		if (FA[16] == 2)
+		{
+			文字列 += "  Black Dragon (Defeated 2)$";
+		}
+		if (FA[16] == 3)
+		{
+			文字列 += "  Black Dragon (Defeated 3)$";
+		}
+		if (FA[16] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Black Dragon$";
+		}
+		if (FA[16] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ????? ??????$";
+		}
+		if (FA[17] == 1)
+		{
+			文字列 += "  Crazy King (Defeated)$";
+		}
+		if (FA[17] == 2)
+		{
+			文字列 += "  Crazy King (Defeated 2)$";
+		}
+		if (FA[17] == 3)
+		{
+			文字列 += "  Crazy King (Defeated 3)$";
+		}
+		if (FA[17] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Crazy King$";
+		}
+		if (FA[17] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ????? ????$";
+		}
+		if (FA[301] == 1)
+		{
+			文字列 += "  Ammoth (Defeated)$";
+		}
+		if (FA[301] == 2)
+		{
+			文字列 += "  Ammoth (Defeated 2)$";
+		}
+		if (FA[301] == 3)
+		{
+			文字列 += "  Ammoth (Defeated 3)$";
+		}
+		if (FA[301] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Ammoth$";
+		}
+		if (FA[301] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ??????$";
+		}
+		if (FA[18] == 1)
+		{
+			文字列 += "  Gunagan (Defeated)$";
+		}
+		if (FA[18] == 2)
+		{
+			文字列 += "  Gunagan (Defeated 2)$";
+		}
+		if (FA[18] == 3)
+		{
+			文字列 += "  Gunagan (Defeated 3)$";
+		}
+		if (FA[18] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Gunagan$";
+		}
+		if (FA[18] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ???????$";
+		}
+		if (FA[14] == 1)
+		{
+			文字列 += "  Fiend Masuzoe (Defeated)$";
+		}
+		if (FA[14] == 2)
+		{
+			文字列 += "  Fiend Masuzoe (Defeated 2)$";
+		}
+		if (FA[14] == 3)
+		{
+			文字列 += "  Fiend Masuzoe (Defeated 3)$";
+		}
+		if (FA[14] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Fiend Masuzoe$";
+		}
+		if (FA[14] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ????? ???????$";
+		}
+		if (◆プラスキット == 1)
+		{
+			if (FA[15] == 1)
+			{
+				文字列 += "  Fiend Kaito (Defeated)$";
+			}
+			if (FA[15] == 2)
+			{
+				文字列 += "  Fiend Kaito (Defeated 2)$";
+			}
+			if (FA[15] == 3)
+			{
+				文字列 += "  Fiend Kaito (Defeated 3)$";
+			}
+			if (FA[15] == 0 && FA[268] == 1)
+			{
+				文字列 += "  Fiend Kaito$";
+			}
+			if (FA[15] == 0 && FA[268] == 0)
+			{
+				文字列 += "  ????? ?????$";
+			}
+		}
+		if (FA[108] == 1)
+		{
+			文字列 += "  Hanny King (Defeated)$";
+		}
+		if (FA[108] == 2)
+		{
+			文字列 += "  Hanny King (Defeated 2)$";
+		}
+		if (FA[108] == 3)
+		{
+			文字列 += "  Hanny King (Defeated 3)$";
+		}
+		if (FA[108] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Hanny King$";
+		}
+		if (FA[108] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ????? ????$";
+		}
+		if (FA[256] == 1)
+		{
+			文字列 += "  Goddess Alice (Defeated)$";
+		}
+		if (FA[256] == 2)
+		{
+			文字列 += "  Goddess Alice (Defeated 2)$";
+		}
+		if (FA[256] == 3)
+		{
+			文字列 += "  Goddess Alice (Defeated 3)$";
+		}
+		if (FA[256] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Goddess$";
+		}
+		if (FA[256] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ???????$";
+		}
+		if (FA[333] == 1)
+		{
+			文字列 += "  Full Kalar (Defeated)$";
+		}
+		if (FA[333] == 2)
+		{
+			文字列 += "  Full Kalar (Defeated 2)$";
+		}
+		if (FA[333] == 3)
+		{
+			文字列 += "  Full Kalar (Defeated 3)$";
+		}
+		if (FA[333] == 0 && FA[268] == 1)
+		{
+			文字列 += "  Full Kalar$";
+		}
+		if (FA[333] == 0 && FA[268] == 0)
+		{
+			文字列 += "  ???? ?????$";
+		}
+		if (◆プラスキット == 1)
+		{
+			if (FA[332] == 1)
+			{
+				文字列 += "  Am Yisael (Defeated)$";
+			}
+			if (FA[332] == 2)
+			{
+				文字列 += "  Am Yisael (Defeated 2)$";
+			}
+			if (FA[332] == 3)
+			{
+				文字列 += "  Am Yisael (Defeated 3)$";
+			}
+			if (FA[332] == 0 && FA[268] == 1)
+			{
+				文字列 += "  Am$";
+			}
+			if (FA[332] == 0 && FA[268] == 0)
+			{
+				文字列 += "  ??$";
+			}
+		}
+		return 文字列;
+	}
+	if (no == 91)
+	{
+		LOG("■Various Records\n");
+		文字列 += "Various Records $$";
+		if (FA[260] != 0)
+		{
+			文字列 += " Lucky can can encounters (%d)$" % FA[260];
+		}
+		if (FA[93] != 0)
+		{
+			文字列 += " Pocky rock encounters (%d)$" % FA[93];
+		}
+		if (FA[207] != 0)
+		{
+			文字列 += " Treasure dango encounters (%d)$" % FA[207];
+		}
+		if (FA[96] != 0)
+		{
+			文字列 += " Times Rance has had sex (%d)$" % FA[96];
+		}
+		if (FA[94] != 0)
+		{
+			文字列 += " Quests cleared (%d)$" % FA[94];
+		}
+		if (FA[87] != 0)
+		{
+			文字列 += " Battles (%d)$" % FA[87];
+		}
+		if (FA[95] != 0)
+		{
+			文字列 += " Enemies defeated (%d)$" % FA[95];
+		}
+		if (FA[314] != 0)
+		{
+			文字列 += " Humans defeated (%d)$" % FA[314];
+		}
+		if (FA[315] != 0)
+		{
+			文字列 += " Contaminated defeated (%d)$" % FA[315];
+		}
+		if (FA[114] != 0)
+		{
+			文字列 += " Hannies defeated (%d)$" % FA[114];
+		}
+		if (FA[103] != 0)
+		{
+			文字列 += " Yankees defeated (%d)$" % FA[103];
+		}
+		if (FA[98] != 0)
+		{
+			文字列 += " Escapes (%d)$" % FA[98];
+		}
+		if (FA[111] != 0)
+		{
+			文字列 += " Rance Attacks (%d)$" % FA[111];
+		}
+		if (FA[110] != 0)
+		{
+			文字列 += " K.O.s (%d)$" % FA[110];
+		}
+		if (FA[115] != 0)
+		{
+			文字列 += " Aten exits (%d)$" % FA[115];
+		}
+		if (FA[306] != 0)
+		{
+			文字列 += " Highest physical damage dealt (%d)$" % FA[306];
+		}
+		if (FA[307] != 0)
+		{
+			文字列 += " Highest magical damage dealt (%d)$" % FA[307];
+		}
+		文字列 += " Percentage of traps triggered: %d%$" % ％計算関数(FA[313], FA[312]);
+		文字列 += " Percentage of red treasure chests triggered: %d%$" % ％計算関数(FA[311], FA[310]);
+		LOG("   Memo: Traps encountered (%s), Traps set off (%s)\n" % string3(FA[312]) % string3(FA[313]));
+		LOG("   Memo: Red treasure chests encountered (%s), Red treasure chests exploded (%s)\n" % string3(FA[310]) % string3(FA[311]));
+		return 文字列;
+	}
+	if (no == 56)
+	{
+		文字列 += "";
+		文字列 += "Forgot what I'm supposed to be doing, partying in Cidade.$";
+		if (クリア確認(67))
+		{
+			文字列 += "I raped Queen Pastel and got cursed with the Abstinence Morurun.$";
+		}
+		if (クリア確認(60))
+		{
+			文字列 += "Defeated the uglies, recruited Alkanese.$";
+		}
+		if (クリア確認(40))
+		{
+			文字列 += "Met with Kenshin on Mt. Hakkoda.$";
+		}
+		if (クリア確認(63))
+		{
+			文字列 += "Met with Lia in Leazas.$";
+		}
+		if (クリア確認(20))
+		{
+			文字列 += "Rance Castle is complete.$";
+		}
+		if (クリア確認(54))
+		{
+			文字列 += "I recruited Crane, the girl who knows too much.$";
+		}
+		if (クリア確認(71))
+		{
+			文字列 += "We encountered the fiend Kaito at Meg's ranch.$";
+		}
+		if (クリア確認(64))
+		{
+			文字列 += "I went out and got the rising dragon herb so I could heal Magic.$";
+		}
+		if (クリア確認(65))
+		{
+			文字列 += "Searched for the \"curse eraser\" at the Magic Museum, but somebody beat me to it.$";
+		}
+		if (クリア確認(74))
+		{
+			文字列 += "I have a daughter! She's named Reset and she shows up to visit sometimes.$";
+		}
+		if (クリア確認(76))
+		{
+			文字列 += "The Helmanian Army invaded the Kalar Village, but I'll protect them.$";
+		}
+		if (クリア確認(77) == 1 && FA[263] == 0)
+		{
+			文字列 += "I defeated and punished Pastel after she holed herself up in that partially-constructed tower.$";
+			文字列 += "I got my curse lifted! The end.$";
+		}
+		if (クリア確認(165))
+		{
+			文字列 += "I've decided to defeat the evil group calling themselves the \"Shepherds.\"$";
+		}
+		if (クリア確認(169) == 1 && FA[199] == 0)
+		{
+			文字列 += "I punished my stupid son, who was under the Shepherds' bad influence.$";
+		}
+		if (クリア確認(190))
+		{
+			文字列 += "I got into the Shepherds' base and took back Chaos.$";
+		}
+		if (クリア確認(172))
+		{
+			文字列 += "I interfered with Maria's date and now her memories are gone somehow.$";
+		}
+		if (クリア確認(175))
+		{
+			文字列 += "Crook became the pope of the Church of Alicism.$";
+		}
+		if (クリア確認(194) == 1 && FA[181] == 1)
+		{
+			文字列 += "Pastel was abducted from the papal inauguration ceremony.$";
+		}
+		if (クリア確認(176) == 1)
+		{
+			文字列 += "I destroyed the Shepherds' headquarters, but Am got away.$";
+		}
+		if (クリア確認(177) == 1)
+		{
+			文字列 += "Annihilated the Shepherds, who were trying to corrupt the entire world from the Tower of Babel.$";
+			文字列 += "I finally got my curse lifted. The end.$";
+		}
+	}
+	if (no == 52)
+	{
+		文字列 = "The Latest from Cidade$$$$$$$$$";
+		文字列 += "The city is prospering under Copandon's administration.$";
+		文字列 += "Population: roughly %s$" % string3(1200 + FA[94] * 10);
+		文字列 += "$";
+		if (FA[6] == 2)
+		{
+			文字列 += "Rance Castle (private property) is under construction.$";
+		}
+		if (FA[6] == 3)
+		{
+			文字列 += "Rance Castle (private property) has finished construction.$";
+			文字列 += "  Leazish Embassy established inside.$";
+			文字列 += "  Zethan Embassy established inside.$";
+			文字列 += "  Nipponese Embassy established inside.$";
+			if (クリア確認(194))
+			{
+				文字列 += "  Papal annex established inside.$";
+			}
+		}
+		if (Ｑ状態(21, -1) == 2 && Ｑ状態(193, -1) != 2)
+		{
+			文字列 += "Tower of Babel (private property) is under construction.$";
+		}
+		if (Ｑ状態(193, -1) == 2)
+		{
+			文字列 += "Tower of Babel (private property) has finished construction.$";
+		}
+		if (EV("フロスト売店１", -2147483648) == true)
+		{
+			文字列 += "Frostbuy Profits: %s Gold$" % string3(◆売店で使った金);
+		}
+		if (クリア確認(78) == 1)
+		{
+			文字列 += "Bird has settled down in Atago's bar.$";
+		}
+		for (; ; )
+		{
+			if (クリア確認(64) == 1)
+			{
+				文字列 += "Amazusa Group: President is hemorrhaging money due to a mysterious curse.$";
+				break;
+			}
+			if (クリア確認(21) == 1)
+			{
+				文字列 += "Amazusa Group: Contracted to build some super huge tower.$";
+				break;
+			}
+			if (FA[6] == 2)
+			{
+				文字列 += "Amazusa Group: Contracted to build Rance Castle.$";
+				break;
+			}
+			文字列 += "Amazusa Group: Flourishing with contracts to build additions to Cidade.$";
+			break;
+		}
+	}
+	if (no == 54)
+	{
+		文字列 = "The Latest from the Church of Alicism:$";
+		if (FA[188] >= 5)
+		{
+			文字列 += "The new pope has been decided. Congrats.$";
+			文字列 += "  Pope: Mulalaloux (Mofus)$";
+			文字列 += " $";
+			文字列 += "  Bishop: Lordling$";
+			文字列 += "  Bishop: Rob ←Raised$";
+			文字列 += "  Bishop: Municao ←Raised$";
+			文字列 += "  Bishop: -Vacant-$";
+		}
+		if (FA[188] < 5)
+		{
+			文字列 += "The Pope Mulalaloux has died and his successor must be chosen.$";
+			文字列 += "The Mula Test to determine the next pope has commenced.$";
+			文字列 += "The four bishop candidates are undergoing many trials in order to raise their status:$";
+			文字列 += " ・Gathering the support of local congregations$";
+			文字列 += " ・Eliminating devils and other enemies of the Church$";
+			文字列 += " ・Recovering Balance Breakers$";
+			文字列 += " ・Completing strenuous quests$";
+			文字列 += " Etc.$";
+			文字列 += "The final results of the Mula Test will be decided soon in Kaiz.$";
+			文字列 += "The goddess Alice will choose the next pope.$";
+			文字列 += "$";
+			if (クリア確認(63) == 1)
+			{
+				文字列 += "Candidate Oz Tortoise$";
+				文字列 += "  40 years old. With the passing of the last pope, he's now the most influential member of the Church.$";
+			}
+			if (EV("ロードリング／接触１", -2147483648) == true || クリア確認(164) == 1)
+			{
+				文字列 += "Candidate Mi Lordling$";
+				文字列 += "  32 years old. A pious believer who adores the goddess Alice with all his heart.$";
+			}
+			if (クリア確認(164) == 1)
+			{
+				文字列 += "Candidate Lorre Enron$";
+				文字列 += "  166 years old. This is his fourth papal candidacy.$";
+			}
+			if (クリア確認(164) == 1)
+			{
+				文字列 += "Candidate Crook Mofus$";
+				文字列 += "  ×× years old. The previous pope's daughter.$";
+			}
+		}
+	}
+	if (no == 55)
+	{
+		文字列 = "The mysterious organization know as the \"Shepherds.\"$";
+		文字列 += "They're infiltrating communities around the Continent and spreading discord.$";
+		文字列 += "They're a small, well-funded group, but their goal is unclear.$";
+		文字列 += "$";
+		for (; ; )
+		{
+			if (クリア確認(177) == 1)
+			{
+				文字列 += "  They were trying to corrupt the entire world from the Tower of Babel, but Rance stopped them.$  The Shepherds have been annihilated.$";
+				break;
+			}
+			if (クリア確認(197) == 1)
+			{
+				文字列 += "  They've abducted the Kalar Queen Pastel.$  They've made her cast the Diffusion Morurun on concentrated contamination and are projecting its tainted influence across the world.$";
+				break;
+			}
+			if (FA[181] == 1)
+			{
+				文字列 += "  They've abducted the Kalar Queen Pastel.$";
+				break;
+			}
+			if (EV("クレイン／ＢＭ情報", -2147483648) == true)
+			{
+				文字列 += "  They've captured Matilda, who holds Chaos, and are preparing a ceremony to empower the sword somehow.$";
+				break;
+			}
+			break;
+		}
+		if (クリア確認(170) == 1)
+		{
+			作業文字 = "";
+			if (クリア確認(177) == 1)
+			{
+				作業文字 = " (Sealed)";
+			}
+			文字列 += "$  Shepherd\t\tAm" + 作業文字 + "$";
+		}
+		if (クリア確認(170) == 0)
+		{
+			文字列 += "  Shepherd\t\t??$";
+		}
+		if (クリア確認(168) == 1)
+		{
+			作業文字 = "";
+			if (クリア確認(177) == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			文字列 += "  Schachmatt\tCorning Vecdran" + 作業文字 + "$";
+			作業文字 = "";
+			if (FA[195] == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			if (FA[195] == 0 && 発生確認(177) == 1)
+			{
+				作業文字 = "$           (Encountered during quest: Despair Gathering)";
+			}
+			if (クリア確認(177) == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			文字列 += "  Schachmatt\tTerm Salvenaott" + 作業文字 + "$";
+			作業文字 = "";
+			if (FA[196] == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			if (FA[196] == 0 && 発生確認(177) == 1)
+			{
+				作業文字 = "$           (Encountered during quest: Obsidian Princess)";
+			}
+			if (クリア確認(177) == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			文字列 += "  Schachmatt\tSpringer Paluott" + 作業文字 + "$";
+			作業文字 = "";
+			if (FA[197] == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			if (FA[197] == 0 && 発生確認(177) == 1)
+			{
+				作業文字 = "$           (Encountered during quest: The Shepherds and the Darksword)";
+			}
+			if (クリア確認(177) == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			文字列 += "  Schachmatt\tBar Contaott" + 作業文字 + "$";
+			作業文字 = "";
+			if (FA[198] == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			if (FA[198] == 0 && 発生確認(177) == 1)
+			{
+				作業文字 = "$          (Encountered during quest: The Shepherds' Base)";
+			}
+			if (クリア確認(177) == 1)
+			{
+				作業文字 = " (Dead)";
+			}
+			文字列 += "  Schachmatt\tLoafer Seconaott" + 作業文字 + "$";
+		}
+		if (クリア確認(168) == 0)
+		{
+			文字列 += "  Schachmatt\t????$";
+			文字列 += "  Schachmatt\t????$";
+			文字列 += "  Schachmatt\t????$";
+			文字列 += "  Schachmatt\t????$";
+			文字列 += "  Schachmatt\t????$";
+		}
+		if (クリア確認(169) == 0)
+		{
+			文字列 += "  Obsidian Prince\t\t????$";
+		}
+		if (クリア確認(169) == 1)
+		{
+			作業文字 = "  Obsidian Prince\t\tDark Rance (Resigned)";
+			if (FA[199] == 1)
+			{
+				作業文字 = "  Obsidian Princess\t???? (Dead)";
+			}
+			文字列 += 作業文字 + "$";
+		}
+		if (クリア確認(190) == 0)
+		{
+			文字列 += "  Destroyer of Justice\t????$";
+		}
+		if (クリア確認(190) == 1)
+		{
+			文字列 += "  Destroyer of Justice\tMatilda (Resigned)$";
+		}
+		lint ▲人数 = 200;
+		▲人数 -= FA[254];
+		文字列 += "  Hopeful\t\t\t\t%d " % ▲人数;
+	}
+	if (no == 53)
+	{
+		文字列 = "The Latest from Pencilcow (the Kalar Village)$$$$$$$$$";
+		文字列 += "Queen Pastel's conception ceremony was disrupted by a human.$";
+		文字列 += "The next ceremony is pending (following Pastel's emotional recovery).$$";
+		if (クリア確認(75) == 1 && クリア確認(76) == 0)
+		{
+			文字列 += "The sacred items that provide Pencilcow's barrier have been stolen.$";
+			文字列 += "The village is in extreme peril while vulnerable.$";
+		}
+		if (クリア確認(76) == 1)
+		{
+			文字列 += "The Helmanian Army invaded while the barrier was down.$";
+			文字列 += "They began to sack the village but were eventually repelled by Pastel's Massive Morurun and the human, Rance, who came to save them.";
+			文字列 += "$";
+		}
+		if (FA[181] == 1)
+		{
+			文字列 += "Queen Pastel was invited to and attended the Church of Alicism's papal inauguration ceremony, from which someone abducted her.$";
+			文字列 += "$";
+		}
+		lint ▲人数 = 2017;
+		if (クリア確認(70) == 1)
+		{
+			▲人数 = 2016;
+		}
+		if (クリア確認(76) == 1)
+		{
+			▲人数 = 1415;
+		}
+		文字列 += "  Population: %s$" % string3(▲人数);
+		文字列 += "  Prisoners of War: 6 (Human, male, semen tanks)$";
+		return 文字列;
+	}
+	if (no == 92)
+	{
+		文字列 = "Rare Item Inventory$";
+		文字列 += "They're all one-of-a-kind items.$";
+		文字列 += "If donated or sold, they can be picked up again.$";
+		文字列 += "They may be a little stronger every time you reacquire them.$$";
+		string ▲品名 = "";
+		文字列 += "■Rare Items A (Character-specific Equipment)■$";
+		no = 7;
+		▲品名 = "Lia's Clothes";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t";
+		no = 10;
+		▲品名 = "Sailor Uniform";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 27;
+		▲品名 = "Oda Armor";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t\t";
+		no = 70;
+		▲品名 = "Lia's Whip";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 69;
+		▲品名 = "Omikuji Box";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t";
+		no = 84;
+		▲品名 = "Decapitation Blade";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 100;
+		▲品名 = "Chaos the Darksword";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t";
+		no = 169;
+		▲品名 = "Crystal Rod";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 171;
+		▲品名 = "Tulip 1";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t\t\t";
+		no = 178;
+		▲品名 = "Puncher";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 125;
+		▲品名 = "Naginata";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t\t";
+		no = 165;
+		▲品名 = "Queen's Staff";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		文字列 += "$";
+		文字列 += "■Rare Items B■$";
+		no = 54;
+		▲品名 = "Orgarhythm";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t";
+		no = 24;
+		▲品名 = "Emperor's Armor";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 22;
+		▲品名 = "Sacred Tree Armor";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t";
+		no = 64;
+		▲品名 = "Ulaanbaatar";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 40;
+		▲品名 = "Champion";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t\t";
+		no = 52;
+		▲品名 = "Magic Minister";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 83;
+		▲品名 = "Uruncel Blade";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t";
+		no = 97;
+		▲品名 = "Persiom";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 114;
+		▲品名 = "Comet";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t\t\t";
+		no = 129;
+		▲品名 = "Terror Spear";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 144;
+		▲品名 = "Stronger";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "\t\t\t\t";
+		no = 168;
+		▲品名 = "Buddha";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		文字列 += "$";
+		no = 157;
+		▲品名 = "Dragon Gloves";
+		if (Ｉ有無(no, 0, "") != 0)
+		{
+			文字列 += " ★ " + ▲品名;
+		}
+		else
+		{
+			文字列 += " ☆ " + ▲品名;
+		}
+		LOG("\n");
+		LOG("Rare Items (A): Can be picked up from treasure chests\n");
+		LOG("Rare Items (B): Can be picked up from treasure dango or from special events\n");
+		return 文字列;
+	}
+	if (no == 93)
+	{
+		return 文字列;
+	}
+	if (no == 2)
+	{
+		文字列 = "Rance$$$$$$$$$";
+		文字列 += "Adventurer     23$";
+		文字列 += "Special ability: No talent cap$";
+		文字列 += "A talented but selfish warrior. He'd have the potential to be a real hero if he weren't so perverted.$";
+		文字列 += "Saving the world is never on his mind and he hates putting in more work than he needs to, but he still loves to adventure.$";
+		文字列 += "The one thing he'll spare no effort for is sex.$";
+		文字列 += "$";
+		文字列 += "Likes:\t\tSex (with beautiful girls in their teens and 20s)$";
+		文字列 += "\t\t\tShells (he collects them)$";
+		文字列 += "Dislikes:\tUglies, cool guys, popular guys$";
+		文字列 += "Number of women he's fucked: Lots$";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 3)
+	{
+		文字列 = "Sill Plain$$$$$$$$$";
+		文字列 += "Rance's slave     Aging stopped at 20?$";
+		文字列 += "A mage from Zeth, once she was just a normal girl.$";
+		文字列 += "She was captured by a slave trader put up for sale, which is when she met Rance. Rance liked her and paid with his life savings on the spot.$";
+		文字列 += "Since then, and it's been quite a long time now, she's served Rance as a dependable servant, doing everyday tasks, housework, side jobs, combat support, and serving him in bed, too.$";
+		文字列 += "$";
+		文字列 += "She's irreplaceable to Rance, but an incident with the Archfiend a year ago left her encased in ice. So far, Rance hasn't found a way to free her.$";
+		文字列 += "Melting the ice and getting Sill back is Rance's current objective.";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 4)
+	{
+		文字列 = "Bird Lithfie$$$$$$$$$";
+		文字列 += "Adventurer     24$";
+		文字列 += "He might have amounted to something if he hadn't met Rance.$";
+		文字列 += "He's fitted with a prosthetic arm to replace one he lost in an incident many years ago, and he can switch it out for a drill or a robo-arm as well.$";
+		文字列 += "$";
+		文字列 += "19: Sill - Falls in love at first sight, but gets rejected.$";
+		文字列 += "19: Kyouko - Enters a relationship, but forgets about her in no time at all.$";
+		文字列 += "20: Kisara - Was his girlfriend, but was stolen by Rance.$";
+		文字列 += "20: Copandon - Was his girlfriend, but was stolen by Rance.$";
+		文字列 += "23: Arms - Falls in love with her, but she doesn't give him the time.$";
+		文字列 += "24: Matilda - They recently started dating.$";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 5)
+	{
+		文字列 = "Suzume$$$$$$$$$";
+		文字列 += "Kunoichi     19$";
+		文字列 += "A super genius kunoichi who can do just about anything. The most talented in all of Nippon. She came from the Iga Village to assassinate Rance in LP 5, but lost the will to kill him, since he's stupid, perverted, and fun.$";
+		文字列 += "Since being with Rance was so much fun, she joined his army and left her old life behind. She's been by his side since.$";
+		文字列 += "$";
+		文字列 += "She hates the gloomy, dark underworld of the ninja and wants to live a bright, vibrant life.$";
+		文字列 += "She has complete immunity to poisons, but that also means her body's unaffected by medicine.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 6)
+	{
+		文字列 = "Copandon Dot$$$$$$$$$";
+		文字列 += "Leader of the Copan Empire     29$";
+		文字列 += "Born to a shrine in Portugal, in the Free City Zone. It's a long story, but now she's a multi-millionaire.$";
+		文字列 += "Blessed with a talent for fortunes, she mistook how to use her abilities and stumbled upon Rance while on a journey to find a man with great luck. At the time she was a 25-year-old virgin, eager to marry. Instead, she lost her virginity to Rance.$";
+		文字列 += "And as if having sex with Rance gave her luck of her own, she took advantage of the rebellion in Zeth in LP 4 to make a killing on the stock market. She then bought three city-states with the proceeds, uniting them under her banner.$";
+		文字列 += "Now, she's after Rance and only Rance, and has stated her intention to buy him one day for 100 sextillion Gold.$";
+		文字列 += "$";
+		文字列 += "Belongings:\tHigh-speed four-cow coach (gifted one to Rance, too)$";
+		文字列 += "\t\t\t\tMagic Cell Phone (exclusive luxury item)$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 7)
+	{
+		文字列 = "Kouhime (Kou Oda)$$$$$$$$$";
+		文字列 += "Head of the Oda family     XX$";
+		文字列 += "Nobunaga Oda's sister, a dutiful princess. ";
+		文字列 += "She rose up to lead her clan after her brother's death in LP 5. She also suffered through kidnapping and sexual assault around that time, but nevertheless succeeded in unifying Nippon with the help of Rance and the rest of the Oda clan.$";
+		文字列 += "She's currently studying political science, economics, and military strategy to her utmost ability.$";
+		文字列 += "$";
+		文字列 += "She's a kind girl with a friendly personality and a talent for cooking. Only, for some reason, whenever she makes dango, it only comes out as a potent poison.$";
+		文字列 += "It's her goal to replicate the taste of her brother's delicious dango and share them with everyone.$";
+		文字列 += "Rance considers her his precious sister and doesn't yet see her as a sexual object.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 8)
+	{
+		文字列 = "Kenshin Uesugi$$$$$$$$$";
+		文字列 += "Head of the Uesugi clan     19$";
+		文字列 += "Nippon's best sword fighter, known as the \"Goddess of War.\"$";
+		文字列 += "She fell in love with Rance during a battle in LP 5. It was love at first duel. She later fought alongside him after the Uesugi family bowed to the Oda family, using her sword skills to help unify Nippon.$";
+		文字列 += "$";
+		文字列 += "She believes in the teachings of Bishamonten and leads a life free of any immorality so as to not shame herself in front of the Buddha. She acts for justice and truth.$";
+		文字列 += "She's declared that, in the near future, she will pass the leadership of the Uesugi clan to someone else.$";
+		文字列 += "She spends her days training all over Nippon.$";
+		文字列 += "She gets hungry a lot, so she's a real big eater.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 9)
+	{
+		文字列 = "Lia Parapara Leazas$$$$$$$$$";
+		文字列 += "Queen of Leazas     21$";
+		文字列 += "A sadistic woman who used to kidnap, torture, and kill unfortunate girls.$";
+		文字列 += "Rance was investigating a disappearance when he learned of this fact and punished her. After experiencing his anger, she became captive to her love for him and reformed herself.$";
+		文字列 += "$";
+		文字列 += "She takes a spoiled, childlike attitude to her capable attendant, Maris, and her beloved, Rance. But to everyone else, she's a picture-perfect queen, ambitious and ruthless when necessary.$";
+		文字列 += "She calls Rance \"Darling\" and acts like his wife. She urges him to formally wed her every so often, but Rance turns her down, as he doesn't want to tie himself to one woman.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 10)
+	{
+		文字列 = "Athena 2.0$$$$$$$$$";
+		文字列 += "An artificial lifeform created with the amazing techniques of the Great Witch Frostbyne.$";
+		文字列 += "She's on loan to Rance, who assisted with her creation, as a test of her performance. She can fuck and fight, but she's an idiot, so she's usually left to guard Rance's house.$";
+		文字列 += "$";
+		文字列 += "・Created by Frostbyne as her second artificial lifeform$";
+		文字列 += "・Rance collected the ingredients \"angel's nectar\" and \"devil's nectar\"$";
+		文字列 += "   At the time, Rance's semen got mixed in...$";
+		文字列 += "・Nipples added, as per Rance's demands (Athena ver. 2.01)$";
+		文字列 += "・Pussy added, as per Rance's demands (Athena ver. 2.02)$";
+		文字列 += "・Given to Rance as a test prototype$";
+		文字列 += "・Participated in a certain adventure as Rance's partner instead of Sill$";
+		文字列 += "・Was once taken over by dark sunflowers and rebelled...$";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 11)
+	{
+		文字列 = "Magic the Gandhi$$$$$$$$$";
+		文字列 += "Daughter of Zeth's king, one of Zeth's Four Lords     XX$";
+		文字列 += "A top-class mage who succeeds the royal magic bloodline.$";
+		文字列 += "During the chaos of the Monster Army's attack in LP 4, she mistakenly thought she'd had her first time with Rance. Under the impression that a man and a woman who have had sex should marry, she started trying to take Rance as her lover. After she really did have sex with Rance and realized her mistake, she felt like it was already too late and decided she'd just have to correct his bad behavior, marry him, and turn him into a splendid King of Zeth.$";
+		文字列 += "$";
+		文字列 += "She has a serious, managerial personality, so she tends to take on a lot of trouble.$";
+		文字列 += "Though she's also begun shirking her duties in order to be near Rance, since she fell in love with him.";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 39)
+	{
+		文字列 = "Sanakia Drelshkaf$$$$$$$$$";
+		文字列 += "Knight-in-training     21$";
+		文字列 += "A knight of the former country of Dallas that existed 200 years ago, and its only survivor.$";
+		文字列 += "She was captured and petrified by a scientist before being revived in LP 2.$";
+		文字列 += "$";
+		文字列 += "A strait-laced girl who honors the laws of chivalry. She's been struggling to become a knight in the present age, too.$";
+		文字列 += "She suffers a lot because her talent can't keep up with her ambition.$";
+		文字列 += "She hasn't forgotten Rance's promise to her: \"When I become King, I'll make you the captain of an order of knights.\"$";
+		文字列 += "(Rance has.)$";
+		文字列 += "She heard rumors of Rance Castle and raced there to become its Head Knight. ...But everyone there just thinks Rance has a weird friend who likes standing outside the gate.$";
+		文字列 += "Poor Sanakia. Will she ever get her chance at glory?$";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 40)
+	{
+		文字列 = "Kanami Kentou$$$$$$$$$";
+		文字列 += "Lia's personal ninja     20$";
+		文字列 += "She was originally affiliated with the Fuuma ninja group in Nippon, but got separated from them on a training trip to the continent and inadvertently became a runaway ninja.$";
+		文字列 += "She's grateful to Lia, who took her in, and carries out her duties with true devotion.$";
+		文字列 += "She met Rance in LP 1 when she was ordered to obstruct his investigation into a particular disappearance, and now she gets frequently dispatched to Rance's side under direct orders from Lia. The queen even gives him permission to have sex with her.$";
+		文字列 += "She's currently tasked with guarding (monitoring) Rance while he stays in the Copan Empire, and she's residing in the attic above Rance's room.$";
+		文字列 += "Small and quick, she's got some talent as a ninja, but she herself desires to live the happy life of a normal girl.$";
+		文字列 += "She was established(?) in a certain dungeon to be one of \"Rance's fated women.\"$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 41)
+	{
+		文字列 = "Maris Amaryllis$$$$$$$$$";
+		文字列 += "Lia's chief attendant     28$";
+		文字列 += "She's served Lia since she was young, and protected the princess through harsh succession conflicts. It was thanks to her talent that Lia could take the throne.$";
+		文字列 += "$";
+		文字列 += "She dotes on Lia with blind devotion, affirming all her words and deeds and fulfilling all of her desires, even when they're unethical.$";
+		文字列 += "She's exceedingly capable. So much so that there are rumors that Maris is the true ruler of Leazas.$";
+		文字列 += "$";
+		文字列 += "She and Rance have had sex several times since their first meeting in LP 1.";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 42)
+	{
+		文字列 = "Frostbyne and Tama$$$$$$$$$";
+		文字列 += "Great Witch Frostbyne$";
+		文字列 += "A great witch who lived on the floating city of Ylapu.$";
+		文字列 += "She met Rance in LP 2 when he was transported there. At the time, she was attempting to perfect her \"Athena\" series of ideal artificial beings.$";
+		文字列 += "She's currently planning model Athena 4.0.$";
+		文字列 += "$";
+		文字列 += "Monster Cat Tama$";
+		文字列 += "Frostbyne's assistant. She's got a nasty mouth.$";
+		文字列 += "She looks young, but she's actually a monster cat who's been around for many decades. She'll occasionally go into heat, and even slept with Rance once.$";
+		文字列 += "She found a boyfriend after coming to Cidade (Tetsuo).$";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 44)
+	{
+		文字列 = "Kisara Copley$$$$$$$$$";
+		文字列 += "Adventurer     22$";
+		文字列 += "A girl who uses the unusual fighting technique of card sorcery. She has a diligent, serious personality, and because of that, she won't run from her debts. This attitude gets her into deeper and deeper trouble.$";
+		文字列 += "$";
+		文字列 += "Her parents disappeared when she was young, leaving her and her younger sister Rebecca saddled with a 40 million Gold debt. At one point, just the interest on the debt overwhelmed her, but she was fortunate enough to meet Rance, who rescued her by paying it off for her (she's eternally grateful for this).$";
+		文字列 += "She tried repaying the full amount... but was finally forced into prostitution after her tally continued to rise.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 45)
+	{
+		文字列 = "Hikari mi Blanc$$$$$$$$$";
+		文字列 += "Kaiz Church Receptionist     20$";
+		文字列 += "Had a pampered upbringing as the daughter of the prestigious Blanc family of Leazas.$";
+		文字列 += "She started working for the Alicist Church as part of her training to become a proper wife.$";
+		文字列 += "$";
+		文字列 += "While she was attending Paris Academy, she had the misfortune of being kidnapped, and was only saved by Rance after he took a job to rescue her.$";
+		文字列 += "$";
+		文字列 += "Rance was a little preoccupied at the time and didn't lay a hand on Hikari, but she still thinks of him as the prince who saved her.$";
+		文字列 += "She's ridiculously single-minded.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 47)
+	{
+		文字列 = "Feliss$$$$$$$$$";
+		文字列 += "11th Rank Devil$";
+		文字列 += "Was once an elite 6th rank devil, but met Rance and was deceived, raped, and demoted to 9th rank.$";
+		文字列 += "Later, she met Rance again and, of all things, he learned her true name.$";
+		文字列 += "She became his slave, and was summoned ceaselessly as a convenient tool to fight and fuck.$";
+		文字列 += "...Then, unbelievably, she became pregnant with Rance's child.$";
+		文字列 += "She was demoted to 11th rank as punishment for that, living wretched days being raped by low-ranking devils and birthing new soldier devils.$";
+		文字列 += "Finally, she was rescued by Rance, but because of her escape, she and her son now live on the run from both devils and angels.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 48)
+	{
+		文字列 = "Tomato Pur･e$$$$$$$$$";
+		文字列 += "Item shop owner turned treasure chest hunter$";
+		文字列 += "She used to manage an item shop in Custom.$";
+		文字列 += "A strange girl who likes bonsai and haiku.$";
+		文字列 += "A strange girl with a mimic for a pet.$";
+		文字列 += "A strange girl who dreams of becoming a beautiful minstrel.$";
+		文字列 += "$";
+		文字列 += "Frigid due to sexual abuse trauma (veracity unknown).$";
+		文字列 += "She doesn't feel anything even when Rance is doing his best.$";
+		文字列 += "$";
+		文字列 += "A strange girl whose love for treasure chests and mimics drove her to become an adventurer.$";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 50)
+	{
+		文字列 = "Noah Hakobune$$$$$$$$$";
+		文字列 += "An adventurer who specializes in helping people.$";
+		文字列 += "She was part of the famous duo Lark & Noah, who slew the magic beast Curse A. But in their overconfidence, they suffered a terrible defeat when they encountered the fiend Satella. Not only that, but Noah was assaulted by Satella's stone guardian and retired from adventuring, returning to her home in the country, her mind and body in tatters.$";
+		文字列 += "$";
+		文字列 += "However, in a drive to be a role model for young adventures, she decided to return. She hopes that they'll learn from her and not fail and suffer like she and her partner did.$";
+		文字列 += "It's little by little, but she's begun to think positively about her role again.$";
+		文字列 += "$";
+		文字列 += "But she'd probably wet herself if she encountered Satella again.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 59)
+	{
+		文字列 = "Shizuka Masou$$$$$$$$$";
+		文字列 += "Former leader of the Four Witches of Custom     22$";
+		文字列 += "She was once obsessed with taking revenge against Ragarl, who killed her father and abducted her mother, and had devoted her life to that goal. She was making every possible effort, but Rance kept interfering with her plans one way or another.$";
+		文字列 += "She hates Rance, but ends up working with him a lot. Their fates are entangled, unfortunately.$";
+		文字列 += "She's incredibly worried about her best friend Maria, who's fallen for Rance.$";
+		文字列 += "After Ragarl's death, her half-sister Nagi decided to take revenge on her, but Shizuka doesn't want to fight her family and instead spends her days avoiding Nagi's sporadic attacks.$";
+		文字列 += "$";
+		文字列 += "She has a dry personality and doesn't usually take interest in other people, but she can be hot-tempered and loses her cool when she gets mad.";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 58)
+	{
+		文字列 = "Rocky Bank$$$$$$$$$";
+		文字列 += "Former Zethan second-class citizen$";
+		文字列 += "He was born as a second-class citizen in Zeth and forced to work as a slave since his early childhood. It was inside a Death Show observation pen for slaves where he met Rance, and it was because of Rance that he was able to escape.$";
+		文字列 += "He tries to serve Rance as his master out of respect and gratitude, but Rance treats him cruelly, since men are nothing but nuisances to him.$";
+		文字列 += "That said... Rocky still sticks with him.$";
+		文字列 += "$";
+		文字列 += "Rocky can cook and do all sorts of household tasks.$";
+		文字列 += "He can even fight a little.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 60)
+	{
+		文字列 = "Elenoa Ran$$$$$$$$$";
+		文字列 += "Acting Mayor     24$";
+		文字列 += "A master of illusion magic and a skilled fencer.$";
+		文字列 += "During the Sinking of Custom Incident of LP 1, she fell under the influence of the Phiel Ring and kidnapped many young girls from the town. Rance set her free from the ring's control, but she felt so guilty about her actions that she contemplated suicide before finally deciding to use her life to atone instead.$";
+		文字列 += "Later, she assisted in Custom's restoration and currently serves as the town's acting mayor.$";
+		文字列 += "She's a very serious person, so she's easily hurt. She could die if you do something mean to her, so please don't bully her too much.$";
+		文字列 += "No, on second thought, please bully her.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 61)
+	{
+		文字列 = "Mill Yorks$$$$$$$$$";
+		文字列 += "Custom Pharmacist     XX$";
+		文字列 += "A former member of the Four Witches who sank Custom.$";
+		文字列 += "While a member, her appearance was that of an adult's due to magic, and Rance took her virginity when he came to resolve the incident and punish her.$";
+		文字列 += "$";
+		文字列 += "She opened a drug store with her older sister Milli afterwards. Last year, they embarked on a journey around the world to challenge(?) the incurable illness Milli was suffering from. Mill saw her through her final moments.$";
+		文字列 += "For her sister's sake and her own, she's living her life to the fullest.$";
+		文字列 += "$";
+		文字列 += "She has the rare magical talent to control eidolons.$";
+		文字列 += "She's aiming to become a seductress, like her sister was.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 72)
+	{
+		文字列 = "Maria Custard$$$$$$$$$";
+		文字列 += "Custom Defense Force Weapon Developer     22$";
+		文字列 += "A former member of the Four Witches who sank Custom.$";
+		文字列 += "She met Rance when he came to resolve the incident and inadvertently fell in love with him.$";
+		文字列 += "$";
+		文字列 += "Later, after the incident was resolved, she led the Leazish Army's artillery troops and demonstrated her full potential as a weapon development engineer.$";
+		文字列 += "Across the entire Continent, she's earned the respect of everyone in her field.$";
+		文字列 += "Her life is more than her research, however, and she's often dragged around on Rance's adventures (though not against her will). She wields her pride and joy, the Tulip 1.$";
+		文字列 += "$";
+		文字列 += "Her best friend Shizuka chides her for her feelings for Rance, but Maria is a very pure-hearted girl who can't lie about her love.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 62)
+	{
+		文字列 = "Merim Zahl$$$$$$$$$";
+		文字列 += "Freelance Archaeologist     21$";
+		文字列 += "She was born into a wealthy family in Helman, but forced to work as a maid when the family collapsed and she was sold off to the Golccis.$";
+		文字列 += "She was bullied and treated like a slave by the depraved Golcci family, but persevered due to her naturally optimistic personality.$";
+		文字列 += "She appreciates the small joys in life, and is good at finding the silver lining.$";
+		文字列 += "$";
+		文字列 += "She loves archaeology and has a passion for historic relics, so she was a natural choice as an expert for the Ylapu mission. There, she met Rance, was released from service to the Golcci family, and found freedom.$";
+		文字列 += "$";
+		文字列 += "Now, she gets to explore the ruins she's so passionate about on her own.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 63)
+	{
+		文字列 = "Sel Curchgolf$$$$$$$$$";
+		文字列 += "Alicist Priestess     21$";
+		文字列 += "Sel is extremely passionate about her missionary work and believes that her god's teachings are absolute and that everyone must live proper lives.$";
+		文字列 += "She's known Rance for quite a while and has always tried to reform him.$";
+		文字列 += "It's not going very well, but she still hasn't given up.$";
+		文字列 += "$";
+		文字列 += "She's fought directly alongside Rance several times but amazingly is still a virgin.$";
+		文字列 += "(She's done it in the butt, though.)$";
+		文字列 += "Don't get her drunk.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 64)
+	{
+		文字列 = "Wichita Skate$$$$$$$$$";
+		文字列 += "A bodyguard under Gandhi's direct command     XX$";
+		文字列 += "A daughter of the Skate family, who have served Zeth's rulers as bodyguards for generations.$";
+		文字列 += "She specializes in fighting with weapons imbued with fire magic.$";
+		文字列 += "She rose to become King Gandhi's personal guard and is called by the nickname \"Suke-san.\"$";
+		文字列 += "$";
+		文字列 += "She used to have a mission to guard the daughter of the king, Magic, who was her classmate, but started going on serious intelligence missions after she graduated.$";
+		文字列 += "$";
+		文字列 += "She had the misfortune of encountering Rance during her graduation examination and was raped, her virginity stolen. Naturally, she doesn't like him very much.$";
+		文字列 += "However, King Gandhi's taken an interest in him and Magic likes him too, so she feels she has no choice but to put those feelings aside.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 80)
+	{
+		文字列 = "Kaoru Quincy Kagura$$$$$$$$$";
+		文字列 += "A bodyguard under Gandhi's direct command     20$";
+		文字列 += "A daughter of the Quincy family, who have served Zeth's rulers as bodyguards for generations.$";
+		文字列 += "A brilliant girl, sometimes called a genius, who completed her practical schooling at age 10. She went to study abroad in Nippon, learning all sorts of martial arts and ninjutsu while there.$";
+		文字列 += "She then became King Gandhi's personal guard and is called by the nickname \"Kaku-san.\"$";
+		文字列 += "$";
+		文字列 += "She met Rance and slept with him while infiltrating the resistance movement under the king's orders, but the one she truly loves is her master, King Gandhi.$";
+		文字列 += "If it's for her mission, she'll sleep with whichever man she has to.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 76)
+	{
+		文字列 = "Urza Pranaice$$$$$$$$$";
+		文字列 += "Former resistance leader, now one of Zeth's Four Lords     24$";
+		文字列 += "She lost many of her comrades and her precious family while fighting for non-mage rights in Zeth. She was a bright, cheerful child skilled in the literary and military arts, but she suffered heavy wounds in the incident that cost her her family and lost her confidence and her ability to walk.$";
+		文字列 += "During the confusion of the Monster Army's invasion, she learned the truth about the incident from Daniel, who sacrificed himself to save her, and she regained her former self.$";
+		文字列 += "$";
+		文字列 += "After the Monster Army was repelled from Zeth, she was recognized for her achievements and appointed to the new Four Lords by King Gandhi.$";
+		文字列 += "She's always busy with work, and is currently taking a vacation.$";
+		文字列 += "She excels in the use of the shortsword and crossbow, but more than anything else, demonstrates outstanding ability at giving orders in combat.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 78)
+	{
+		文字列 = "Emi Alphorne$$$$$$$$$";
+		文字列 += "Poor Person     21$";
+		文字列 += "Formerly the daughter of a powerful mage in Zeth, she lived a life of luxury thanks to her father's influence.$";
+		文字列 += "Due to her connections, she was appointed the warden of a women's prison and lived selfishly as a rich and powerful girl.$";
+		文字列 += "She was defeated and raped by Rance during the rebellion in Zeth two years ago. Then, when her family was ruined, she fell into poverty.$";
+		文字列 += "$";
+		文字列 += "She was enlightened to her masochistic tendencies when she was raped by Rance.$";
+		文字列 += "She's become poor and unfortunate, but luckily for her, she sort of gets off on that.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 65)
+	{
+		文字列 = "Shitomone Chappie$$$$$$$$$";
+		文字列 += "Adventurer (specialized in lock-picking)     19$";
+		文字列 += "When she was a child, she innocently wandered into a dungeon and found a treasure chest. It was upon opening the chest and retrieving the treasure inside that she became a treasure-hunting addict.$";
+		文字列 += "She's affiliated with the Keith Guild and does lots of simple jobs finding treasures and picking locks.$";
+		文字列 += "$";
+		文字列 += "She encountered Rance while scavenging for treasure chests in a certain dungeon.$";
+		文字列 += "Naturally, she was raped and deflowered.$";
+		文字列 += "Since then, she's run into Rance exploring various dungeons and gotten raped several times for this reason or that...$";
+		文字列 += "Even when she went out of her way to journey to Nippon...$";
+		文字列 += "And this time... She ran into Rance yet again. I wonder how that will turn out.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 66)
+	{
+		文字列 = "Karma Atlanger$$$$$$$$$";
+		文字列 += "Zethan Orphan     XX$";
+		文字列 += "She was adopted and raised by the resistance while Zeth was still discriminatory.$";
+		文字列 += "She met Rance there and was even rescued by him after being abducted, so she admires him as an older brother figure.$";
+		文字列 += "She decided to become a ranger because she wanted to be cool and save people like him (she glorifies Rance pretty hard).$";
+		文字列 += "$";
+		文字列 += "She loves being in the water and has a talent for swimming and diving.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 67)
+	{
+		文字列 = "Nozomi Okita$$$$$$$$$";
+		文字列 += "Master swordsman of Nippon     XX$";
+		文字列 += "Considered a master swordsman, she's had martial talent from a young age.$";
+		文字列 += "However, she has an introverted personality, is easily influenced, and has a propensity for being bullied.$";
+		文字列 += "$";
+		文字列 += "The hannies took a liking to her and she was drawn into fighting as a member of the Shinsengumi.$";
+		文字列 += "She suffers from Cough-Cough Disease, an illness that can be easily treated, but the hannies behave as if she's incurably ill.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 70)
+	{
+		文字列 = "Teru Mouri$$$$$$$$$";
+		文字列 += "Head of the Mouri family     25$";
+		文字列 += "Born as the daughter of the great Motonari Mouri, she is the eldest of three sisters. Her younger sisters are Kiku and Chinu.$";
+		文字列 += "※Chinu died in the war.$";
+		文字列 += "$";
+		文字列 += "Her goal was to take over Nippon with her father and the Mouri clan and go on to overrun the entire world. That goal was cut short when they were defeated by the Oda clan under Rance.$";
+		文字列 += "She has a rambunctious, lively personality like her father and, unsatisfied with the now-peaceful Nippon, she came to the continent to raise some hell.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 73)
+	{
+		文字列 = "Rizna Lanfbit$$$$$$$$$";
+		文字列 += "Zeth-born mage     50$";
+		文字列 += "An extremely gullible girl who will believe anything. She was once trapped in an alternate dimension called Genbu Castle with a scumbag who trained her to be his sex slave. On the 31st year of her confinement, she was rescued by Rance (with the help of some luck).$";
+		文字列 += "$";
+		文字列 += "She has a peculiar propensity for making friends with hannies and learned how to handle a naginata from a mini hanny named Kagekatsu who she met during her stay in Genbu Castle. She even received the special ability of complete magic defense from the Hanny King.$";
+		文字列 += "$";
+		文字列 += "She's lending her abilities to Rance now as thanks for saving her.$";
+		文字列 += "Her current goals are to \"cure her lewd constitution\" and \"not be fooled.\"$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 74)
+	{
+		文字列 = "Yulan Mirage$$$$$$$$$";
+		文字列 += "Arena Fighter     26$";
+		文字列 += "A woman who was taken to an arena when she was little by her father, couldn't forget the sight of the cool female warrior she saw there, and went on to become a gladiator.$";
+		文字列 += "$";
+		文字列 += "She has a special technique called the \"Mirage Sword.\" Her long stretch of victories in the arena proves that she's become a powerful warrior. She became intoxicated by her success and hasn't stopped fighting to this day.$";
+		文字列 += "$";
+		文字列 += "She once fought Rance in a colosseum, promising to have sex with him if he won, and slept with him just like that.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 75)
+	{
+		文字列 = "Noir$$$$$$$$$";
+		文字列 += "A spider youkai living in Nippon$";
+		文字列 += "She's one of Youkai King Masamune's four wives, but she recently questioned his loyalty over something trivial and fought with him, running off.$";
+		文字列 += "$";
+		文字列 += "\"*glance* Nooo, he's not chasing me!\"$";
+		文字列 += "\"I don't believe it! I don't care anymore! I don't care!\"$";
+		文字列 += "That's how she's currently sulking.$";
+		文字列 += "She doesn't plan on returning until Masamune comes to get her.$";
+		文字列 += "Maybe she'll spend her time gobbling up humans?$";
+		文字列 += "$";
+		文字列 += "She is still a scary youkai, you know.$";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 77)
+	{
+		文字列 = "Yuzumi Yuzuhara$$$$$$$$$";
+		文字列 += "Daughter of a Nipponese Tanegashima clan blacksmith$";
+		文字列 += "Her father is a master gunsmith and she inherited the family's love for the weapons.$";
+		文字列 += "She has talent for shooting and became an expert marksman. She participated in Nippon's great war as Tanegashima's ace and fought against Rance's army several times.$";
+		文字列 += "Later, after she surrendered to the Oda clan and started working for Rance, he took advantage of the confusion to have sex with her.$";
+		文字列 += "$";
+		文字列 += "She loves shooting guns, but might love cute things even more.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 79)
+	{
+		文字列 = "Caloria Cricket$$$$$$$$$";
+		文字列 += "The last insect user     XX$";
+		文字列 += "A survivor of the Zethan army's massacre, she used to live quietly in the ruins of the insect user village. After saving Rance once, they began to work together.$";
+		文字列 += "Incidentally, she lost both her first kiss and virginity to Rance.$";
+		文字列 += "Several insects inhabit her body, and they live together like family.$";
+		文字列 += "Insects:$";
+		文字列 += "Swallowtail   Knows the locations of treasure inside dungeons$";
+		文字列 += "Poisonfly      Attacks with needles$";
+		文字列 += "Grandfather  Dotes on Caloria like she's his granddaughter$";
+		文字列 += "Fireboy         Attacks with flamethrowing$";
+		文字列 += "Her insect user skills and boobs come in handy in battle.$";
+		文字列 += "...Her boobs?$";
+		文字列 += " ";
+	}
+	if (no == 12)
+	{
+		文字列 = "Cidade$$$$$$$$$";
+		文字列 += "A city-state founded by the richest person in the world, Copandon Dot.$";
+		文字列 += "It brands itself as an anything-goes adventurer town and makes more than enough for its national budget with casino and hotel earnings.$";
+		文字列 += "Citizens of Cidade live tax-free, but there's no social welfare, so you're on your own whenever something happens. As its leader says, \"If you can't afford to live, die.\"$";
+		文字列 += "Outlaws, adventurers, and fugitives gather here in the hopes of making their fortunes, so the population is growing steadily.$";
+		文字列 += "$";
+		文字列 += "・Countless adventuring and business guilds$";
+		文字列 += "・Fortune Casino, a gambling paradise with prizefighting and the works$";
+		文字列 += "・The Stock Market, which is another kind of gambling$";
+		文字列 += "・A temporary employment center (basically a slave trade)$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 13)
+	{
+		文字列 = "Kalar (Species)$$$$$$$$$";
+		文字列 += "Kalars are a subspecies of human created by the gods as a way to bolster their supply of angels. They're not immortal, but they live long, youthful lives and become either angels or devils when they pass on.$";
+		文字列 += "They're a female-only species, so they have to use human men for breeding. The child of a kalar-human pairing is always another kalar. Their children mature quickly, appearing roughly like 5-year-old human children in only a few months.$";
+		文字列 += "$";
+		文字列 += "The crystal on a kalar's forehead is a powerful magic source and fetches a high price, making it highly sought-after by black market dealers. The crystal starts red, but turns blue if the kalar loses her virginity.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 38)
+	{
+		文字列 = "Kalar Children$$$$$$$$$";
+		文字列 += "Kalars give birth about a month after getting pregnant.$";
+		文字列 += "The children grow quickly, reaching about the maturity of a five-year-old human in just a few months.$";
+		文字列 += "After that, a young kalar can mature either slower or faster than a human, growing up at her own unique pace.$";
+		文字列 += "Their aging stops when they reach full adulthood.$";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 14)
+	{
+		文字列 = "Pencilcow$$$$$$$$$";
+		文字列 += "The hidden village of the kalars. Their sole settlement and home.$";
+		文字列 += "It exists somewhere in the Crystal Forest at the center of the Continent.$";
+		文字列 += "They built the village to hide from mankind, a refuge from those who would attack them for their crystals.$";
+		文字列 += "The forest surrounding the village is full of traps and barriers, preventing all access to the village to those who don't know how to bypass them. Their defenses can even repel invasion forces should the forest be attacked.$";
+		文字列 += "$";
+		文字列 += "Queen: Pastel Kalar$";
+		文字列 += "Total Population: 2,017 (the population is systematically controlled, so it's steady)$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 15)
+	{
+		文字列 = "Morurun (Kalar Curses)$$$$$$$$$";
+		文字列 += "The curses that kalars cast are called Morurun.$";
+		文字列 += "Morurun can have various effects, like instant death, death after a painful three years, bodily malfunctions, and mental anguish.$";
+		文字列 += "$";
+		文字列 += "Abstinence Morurun$";
+		文字列 += "A special Morurun of the highest rank that only the queen can cast.$";
+		文字列 += "Men that are cursed with this...$";
+		文字列 += " 1. Become impotent when touched by women$";
+		文字列 += " 2. Turn gay if they don't have sex with women$";
+		文字列 += " 3. Can, however, have sex with women over LV 35$";
+		文字列 += "It's a terrible curse, made worse for the fact that it leaves a sliver of hope.$";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 16)
+	{
+		文字列 = "Fiends$$$$$$$$$";
+		文字列 += "Fiends are special monsters forged from the Archfiend's blood.$";
+		文字列 += "On top of being overwhelmingly powerful, they have an invincible barrier that deflects any attack by conventional means. They effectively can't be harmed by anyone but the Archfiend, other fiends, and high-ranking gods and devils.$";
+		文字列 += "Humanity, then, has few ways to combat them, and when fiends invade, all they can do is flee.$";
+		文字列 += "There exist two weapons in the world that can break a fiend's barrier. Rance has one of them, Chaos the Darksword.$";
+		文字列 += "$";
+		文字列 += "Existing fiends: 18$";
+		文字列 += "Exterminated fiends: 6 (4 defeated by Rance)$";
+		文字列 += "Captured fiends: 1 (also by Rance)$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 17)
+	{
+		文字列 = "Amazusa Group$$$$$$$$$";
+		文字列 += "A major construction company that operates throughout the Free City Zone.$";
+		文字列 += "They'll do anything from road-laying to land cultivation to constructing housing or fortresses or castles. They're quick and technologically capable, but rumored to cut many corners.$";
+		文字列 += "They occasionally dip into things that don't involve construction at all.$";
+		文字列 += "In short, they'll do anything for money.$";
+		文字列 += "$";
+		文字列 += "The president conducts business with a smile, but he's ruthless to those on his bad side. ";
+		文字列 += "He and his employees don't ruffle too many feathers, so they get along well with the locals.$";
+		文字列 += "$";
+		文字列 += "President: Shacho Amazusa$";
+		文字列 += "Employees: 511$";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 18)
+	{
+		文字列 = "Nippon (Suzerainty of the Oda Family)$$$$$$$$$";
+		文字列 += "An island country in the east of the Continent. It developed a very distinct culture thanks to its distance from the mainland. Samurai, ninja, youkai, miko, buildings made from wood and paper...$";
+		文字列 += "  Head of the Oda Family: Kouhime$";
+		文字列 += "  Population: 200 million$";
+		文字列 += "$";
+		文字列 += "They had a long Warring States period where several lords battled for control over the country, but the foreigner Rance appeared in LP 5 and, in insane battles with no apparent planning at all, conquered power after power until he'd successfully unified Nippon in a shocking single year.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 19)
+	{
+		文字列 = "Kingdom of Leazas$$$$$$$$$";
+		文字列 += "A huge kingdom in the northeast of the Continent.$";
+		文字列 += "It has an abundance of arable land and is known for its productive agriculture and strong economy. The Free City Zone to the south provides lucrative trade, it's far away from the Monster Realm, and its public order is good, making it the most wealthy country on the Continent.$";
+		文字列 += "  Queen: Lia Parapara Leazas$";
+		文字列 += "  Population: 500 million - Standing army: 100,000$";
+		文字列 += "$";
+		文字列 += "The kingdom suffered a surprise attack at the hands of the Helmanian Army in LP 2 and was briefly occupied, but the country was liberated by Rance after he was given control of the Leazas Liberation Army. They suffered damage in the war, but thanks to the country's general stability and Lia's excellent leadership, they're only growing in strength and influence now.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 20)
+	{
+		文字列 = "Kingdom of Zeth$$$$$$$$$";
+		文字列 += "Zeth is a major power with an integral magical culture. They once boasted top-class quality of life thanks to their export of magic power sources and appliances, but the recent revolution has left the country in recession.$";
+		文字列 += "  King: Ragnarokarc Super Gandhi$";
+		文字列 += "  Population: 320 million$";
+		文字列 += "$";
+		文字列 += "The country systematically discriminated against non-mages for much of its history until a revolution broke out amongst the second-class citizens in LP 4. Mankind's natural enemy, the Monster Army, took advantage of the confusion and successfully invaded, taking control of the country. Thrust into a battle for survival, King Gandhi declared that whoever saved the country from this crisis would be named his successor, the next king.$";
+		文字列 += "Rance, who fought with the rebels in the coup d'etat, accomplished this.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 21)
+	{
+		文字列 = "Empire of Helman$$$$$$$$$";
+		文字列 += "A major military power with the longest history of all the current nations.$";
+		文字列 += "Helman is located in a desolate, cold region of the Continent with limited area for farming. It's a restless domain that suffers frequent raids from the neighboring Monster Realm. As a consequence, there are many huge, robust men among its citizens, and its army swells with soldiers.$";
+		文字列 += "They've invaded Leazas several times, typically seeking its bountiful soil.$";
+		文字列 += "$";
+		文字列 += "Rance has yet to take a serious journey through Helmanian territory.$";
+		文字列 += "'Cause it looks so cold and miserable...$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 22)
+	{
+		文字列 = "Church of Alicism$$$$$$$$$";
+		文字列 += "The most prominent religion on the Continent. Over half of the world's population are believers and there are churches in all major cities. There is no religion more closely tied to daily life. Almost all of the Continent's weddings, funerals, and religious etiquette are styled in Alicist traditions.$";
+		文字列 += "$";
+		文字列 += "Pope: Mulalaloux$";
+		文字列 += "Bishops: Mofus, Tortoise, Lordling, Enron$";
+		文字列 += "Ministers: Regional administrators$";
+		文字列 += "Pastors: Local leaders$";
+		文字列 += "Priests: Preachers of Alicism's teachings$";
+		文字列 += "Priest Apprentices: Church hopefuls being mentored$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 89)
+	{
+		文字列 = "About Souls (1)$$";
+		文字列 += "Souls are the energy of life distributed to people by the gods. They are pure and pristine when people are first born (0% contaminated). As individuals go through life and experience hardship, they accumulate contamination.$";
+		文字列 += "The average contamination rate at death is 30-50%.$";
+		文字列 += "$";
+		文字列 += "Souls are returned to the gods when they die, but they must be purified first. They're scrubbed clean in the place called Hell (it's hellish suffering).$";
+		文字列 += "$";
+		文字列 += "It's not evil that dirties souls, but rather negative emotions.$";
+		文字列 += "Rage, worry, and turmoil are the sort of things that lead to contamination.$";
+		文字列 += "$";
+		文字列 += "It's said that contamination can be lowered with highly-priced \"indulgences\" issued by the Alicist Church.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 90)
+	{
+		文字列 = "About Souls (2)$$";
+		文字列 += "Souls accumulate contamination slowly during life, and it doesn't usually rise to 80% or beyond. It's possible for it to do so, but the gods have made it so that those with extreme contamination typically commit suicide before they can deteriorate further.$";
+		文字列 += "$";
+		文字列 += "A soul can no longer be recovered after it reaches 100% contamination. The soul will become an immortal monster, forever separated from the gods.$";
+		文字列 += "$";
+		文字列 += "The Soul Shackles (black bracelets) developed by the organization known as the Shepherds cause the wearer's contamination to rise at a steady rate, and because they remove the will to commit suicide, their victims' souls can eventually reach 100% contamination.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+	}
+	if (no == 46)
+	{
+		文字列 = "Shepherds$$$$$$$$$";
+		文字列 += "You know.$";
+		文字列 = "Mysterious Organization (Shepherds)$";
+		文字列 += "A Continent-wide network that's spreading emotional disturbances all around the world.$";
+		文字列 += "They're a small, well-funded group, and their objective is unknown.$";
+	}
+	if (no == 23)
+	{
+		文字列 = "Monster Battle Info (Hanny)$$$$$$$$$";
+		文字列 += "A species that can be found all around the world. They aren't intelligent creatures, but they are hardy.$";
+		文字列 += "$";
+		文字列 += "・Magic attacks have no effect on them$";
+		文字列 += "$";
+		文字列 += "・Their hanny flash attack ignores defenses$";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 34)
+	{
+		文字列 = "Item Info (Arms, Armor)$$$$$$$$$";
+		文字列 += "Arms and armor have base versions and strengthened versions from Rank ① to ⑨.$";
+		文字列 += "After an item is bought at Frostbuy, the next rank of the item will become available.$";
+		文字列 += "And when the shop receives a strengthened item, you'll find that strengthened item in dungeons, too.$";
+		文字列 += "$";
+		文字列 += "Items found in dungeons have a bonus of 0-9.$";
+		文字列 += "The items will be a little more powerful the higher their bonus is.$";
+		文字列 += "$";
+		文字列 += "In other words, of items that have the same name, the best will be items at Rank ⑨ that were found with a +9 bonus.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 37)
+	{
+		文字列 = "Abstinence Morurun Effects$$$";
+		文字列 += "Anyone who sleeps with Rance while he's under the Abstinence Morurun will experience the following effects:$";
+		文字列 += "$";
+		文字列 += "・Their level will drop to 1$";
+		文字列 += "   (later times will reduce their level by 5 instead)$";
+		文字列 += "・Any item equipped in the \"Special\" slot will be absorbed into their body$";
+		文字列 += "   (up to 5 items)$";
+		文字列 += "・They will receive 2 more starting skill points (Maximum +10)$";
+		文字列 += "・Their base stats will rise slightly$";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 24)
+	{
+		文字列 = "Monster Battle Info (Lucky Can Can)$$$$$$$$$";
+		文字列 += "Special can cans that are rarely encountered.$";
+		文字列 += "$";
+		文字列 += "・They give insane amounts of experience$";
+		文字列 += "・But each party member can only gain one level$";
+		文字列 += "・And reserve party members receive no experience$";
+		文字列 += "$";
+		文字列 += "・They have a very low population, so you won't see them often";
+		return 文字列;
+	}
+	if (no == 25)
+	{
+		文字列 = "Monster Battle Info (Crab Girl)$$$$$$$$$";
+		文字列 += "You'd think these gal monsters would attack by pinching you between their scissor-like claws, but instead, all they do is punch.$";
+		文字列 += "$";
+		文字列 += "・They're clumsy and fall over every so often, but they can make$";
+		文字列 += "   a direct hit on a man's crotch when they do, so be careful$";
+		文字列 += " ";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 26)
+	{
+		文字列 = "Monster Battle Info (Japanese Soldier)$$$$$$$$$";
+		文字列 += "A strange, large, square-shaped creature that nevertheless fights with all its Japanese spirit to protect its homeland and family.$";
+		文字列 += "$";
+		文字列 += "・Their valiant attacks ignore Guard protection$";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 27)
+	{
+		文字列 = "Monster Battle Info (Ghosts)$$$$$$$$$";
+		文字列 += "Lone spirits, ghosts, smile men, and others.$";
+		文字列 += "$";
+		文字列 += "・Physical attacks deal them 1/3 normal damage$";
+		文字列 += "   Only healers can deal them normal damage$";
+		文字列 += "$";
+		文字列 += "・Attacking with magic or healers' purification is recommended";
+		return 文字列;
+	}
+	if (no == 28)
+	{
+		文字列 = "Monster Battle Info (Vevetar)$$$$$$$$$";
+		文字列 += "They're said to appear before those who place lowest in contests.$";
+		文字列 += "Still, they're a kind of devil.$";
+		文字列 += "$";
+		文字列 += "・They aim for the party member with the lowest level";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 29)
+	{
+		文字列 = "Monster Battle Info (Zashiki-Warashi)$$$$$$$$$";
+		文字列 += "Gal monsters who suddenly start living in people's houses.$";
+		文字列 += "They attack by throwing tanuki and fox stuffed animals.$";
+		文字列 += "$";
+		文字列 += "・If attacked by them:$";
+		if (◆ワールド < 2)
+		{
+			文字列 += "   For some reason, characters LV 25 and under die instantly";
+		}
+		if (◆ワールド == 2)
+		{
+			文字列 += "   For some reason, characters LV 45 and under die instantly";
+		}
+		if (◆ワールド == 3)
+		{
+			文字列 += "   For some reason, characters LV 65 and under die instantly";
+		}
+		return 文字列;
+	}
+	if (no == 30)
+	{
+		文字列 = "Monster Battle Info (Asshole)$$$$$$$$$";
+		文字列 += "\"It pisses me off, it pisses me off just seeing it.\"$";
+		文字列 += "\"It's not getting away, I'm gonna kill it.\"$";
+		文字列 += "A monster that irritates the people who see it.$";
+		文字列 += "$";
+		文字列 += "・They can make characters not receive experience for a battle$$";
+		文字列 += "It's recommended to defeat them quickly so that you can keep that experience you worked so hard for.";
+		文字列 += " ";
+		return 文字列;
+	}
+	if (no == 31)
+	{
+		文字列 = "Monster Battle Info (NASU)$$$$$$$$$";
+		文字列 += "An unpleasant monster that injects poison.$";
+		文字列 += "It wriggles.$";
+		文字列 += "$";
+		文字列 += "・NASUs' attacks aren't particularly stronger than$";
+		文字列 += "   similarly-leveled monsters, but if poisoned characters are$";
+		文字列 += "   hit with its poison attack again, they will experience a toxic$";
+		文字列 += "   reaction and take heavy damage";
+		return 文字列;
+	}
+	if (no == 32)
+	{
+		文字列 = "Monster Battle Info (Hugant)$$$$$$$$$";
+		文字列 += "A giant-type monster.$";
+		文字列 += "Their average height is about 4 meters.$";
+		文字列 += "$";
+		文字列 += "・If their giant hammer attack hits,$";
+		if (◆ワールド < 2)
+		{
+			文字列 += "   characters LV 35 and under will be instantly squished to death";
+		}
+		if (◆ワールド == 2)
+		{
+			文字列 += "   characters LV 65 and under will be instantly squished to death";
+		}
+		if (◆ワールド == 3)
+		{
+			文字列 += "   characters LV 85 and under will be instantly squished to death";
+		}
+		return 文字列;
+	}
+	if (no == 33)
+	{
+		文字列 = "Monster Battle Info (Kalar)$$$$$$$$$";
+		文字列 += "Kalars. Cute but dangerous.$";
+		文字列 += "$";
+		文字列 += "・Kalars curse those who defeat them,$";
+		文字列 += "   passing on ▼Attack and ▼Defense effects.$";
+		文字列 += "   Those who already have a higher-level curse on them$";
+		文字列 += "   can only be affected by one curse, however...$";
+		return 文字列;
+	}
+	if (no == 49)
+	{
+		文字列 = "Monster Battle Info (Contaminated)$$$$$$$$$";
+		文字列 += "People with contamination levels far beyond normal.$";
+		文字列 += "When contamination reaches 80%, one becomes truly Contaminated.$";
+		文字列 += "(If it reaches 100%, one becomes Fully Contaminated.)$";
+		文字列 += "They are hostile and their negative thoughts cause them to attack themselves and others.$";
+		文字列 += "$";
+		文字列 += "・They don't feel much pain and are tenacious, so they'll stand firm$";
+		文字列 += "   even at 1 HP$";
+		文字列 += "$";
+		文字列 += "・They'll make even more frenzied attacks at 1 HP,$";
+		文字列 += "   so their attack power doubles (be careful).$";
+		文字列 += "";
+	}
+	if (no == 36)
+	{
+		文字列 = "Monster Battle Info (Gates)$$$$$$$$$";
+		文字列 += "Computer-loving guy monsters.$";
+		文字列 += "$";
+		文字列 += "・They use the powerful move \"Seal\"$";
+		文字列 += "$";
+		文字列 += "・If a character is hit by Seal, they will lose the ability to use one$";
+		文字列 += "   of their skills$";
+		return 文字列;
+	}
+	if (no == 81)
+	{
+		文字列 = "Monster Battle Info (Elastic Grape)$$$$$$$$$";
+		文字列 += "Inedible sour grapes.$";
+		文字列 += "They're also strong and hostile, so they're complete weeds.$";
+		文字列 += "$";
+		文字列 += "・They're elastic, so regular attacks won't affect them$";
+		文字列 += "・Only brawlers' punches are effective against them$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 82)
+	{
+		文字列 = "Monster Battle Info (Uncle Bat)$$$$$$$$$";
+		文字列 += "Giant bats that appear in high-level dungeons.$";
+		文字列 += "$";
+		文字列 += "・Those with evasion under 100 can't avoid their attacks$";
+		文字列 += "$";
+		文字列 += "・If those with resilience under 20 are hit with their attacks,$";
+		文字列 += "   there's a high chance they'll be stunned$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 71)
+	{
+		文字列 = "Monster Battle Info (The Invincible Iron Bird)$$$$$$$$$";
+		文字列 += "Most damage can't get through their tough shells.$";
+		文字列 += "$";
+		文字列 += "・But if you stun them, their shells will shift and you'll be able to$";
+		文字列 += "   land strikes on their unprotected bodies$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 83)
+	{
+		文字列 = "Monster Battle Info (Aimameyas)$$$$$$$$$";
+		文字列 += "$";
+		文字列 += "・Will avoid all attacks from swords and shortswords$";
+		文字列 += "・Attack them with other kinds of weapons$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 86)
+	{
+		文字列 = "Monster Battle Info (Goblin)$$$$$$$$$";
+		文字列 += "A good-for-nothing monster.$";
+		文字列 += "A failure of a monster.$";
+		文字列 += "Because they're so bad, there are impossible bugs in areas where goblins spawn.$";
+		文字列 += "$";
+		文字列 += "    Magic becomes completely unusable.$";
+		文字列 += "$";
+		文字列 += "Everything will return to normal if you defeat the goblin, so find them and defeat them as quickly as you can.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 87)
+	{
+		文字列 = "Monster Battle Info (Troll)$$$$$$$$$";
+		文字列 += "A good-for-nothing monster.$";
+		文字列 += "A failure of a monster.$";
+		文字列 += "Because they're so bad, there are impossible bugs in areas where trolls spawn.$";
+		文字列 += "$";
+		文字列 += "    Physical attacks become completely unusable.$";
+		文字列 += "$";
+		文字列 += "Everything will return to normal if you defeat the troll, so find them and defeat them as quickly as you can.$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 84)
+	{
+		文字列 = "Monster Battle Info (Shadow)$$$$$$$$$";
+		文字列 += "It's a shadow...$";
+		文字列 += "$";
+		文字列 += "It's a reflection...$";
+		文字列 += "$";
+		文字列 += "All of your attacks will come back to you...$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 85)
+	{
+		文字列 = "Serious Sumo$$$$$$$$$";
+		文字列 += "These aren't your average sumo.$";
+		文字列 += "There's no getting past these guys.$";
+		文字列 += "$";
+		文字列 += "Rather than just blocking your path, these sumos will seriously fight you.$";
+		文字列 += "$";
+		文字列 += "・Characters who receive their push attacks will be removed$";
+		文字列 += "   from the party$";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += " ";
+		文字列 += "";
+	}
+	if (no == 35)
+	{
+		文字列 += "Crane's Overheard Info$$$$$$$$$";
+		if (FA[13] != 0)
+		{
+			文字列 += "There's a goddess who can raise talent caps in Naznaz Castle.$";
+		}
+		if (EV("クレイン／志津香情報", -2147483648) == true)
+		{
+			文字列 += "Shizuka Masou was spotted in Malgrid Dungeon Stratum 1.$";
+		}
+		if (EV("クレイン／カロリア情報", -2147483648) == true)
+		{
+			文字列 += "Someone was late to Rance Castle's completion party.$";
+		}
+		if (EV("クレイン／マリア情報", -2147483648) == true)
+		{
+			文字列 += "A scientist with a futuristic weapon is in Malgrid Dungeon Stratum 4.$";
+		}
+		if (EV("クレイン／エレノア情報", -2147483648) == true)
+		{
+			文字列 += "There's a girl scroll in Malgrid Dungeon Stratum 2.$";
+		}
+		if (EV("クレイン／ミル情報", -2147483648) == true)
+		{
+			文字列 += "There's a girl scroll in Malgrid Dungeon Stratum 3.$";
+		}
+		if (EV("クレイン／ノワール情報", -2147483648) == true)
+		{
+			文字列 += "A youkai from Nippon was spotted in Leazas Castle.$";
+		}
+		if (EV("クレイン／柚美情報", -2147483648) == true)
+		{
+			文字列 += "A bear has been approaching smaller adventurer groups in Malgrid Dungeon.$";
+		}
+		if (EV("クレイン／柚美情報", -2147483648) == true)
+		{
+			文字列 += "If you have a cute creature with you, a girl with a rifle will...$";
+		}
+		if (EV("クレイン／カオル情報", -2147483648) == true)
+		{
+			文字列 += "If you visit the same place five times with the shining forehead, its guardian will appear.$";
+		}
+		if (EV("クレイン／ウルザ情報", -2147483648) == true)
+		{
+			文字列 += "Urza's on an extended vacation.$(Ice Flame members may run into her.)$";
+		}
+		return 文字列;
+	}
+	return 文字列;
+}
+
+void マメ知識／起動時登録()
+{
+	MM_DATA(1, "Adventure Notes", 800, 1, 0);
+	int aa = 811;
+	if (クリア確認(18) == 1)
+	{
+		aa = 850;
+	}
+	if (クリア確認(20) == 1)
+	{
+		aa = 851;
+	}
+	if (クリア確認(21) == 1)
+	{
+		aa = 852;
+	}
+	if (FA[200] == 1)
+	{
+		aa = 853;
+	}
+	MM_DATA(52, "Latest: Cidade", aa, 1, 100);
+	MM_DATA(54, "Latest: Alicist Church", 800, 1, 100);
+	MM_DATA(53, "Latest: Kalar Village", 800, 1, 100);
+	MM_DATA(55, "Latest: Shepherds", 800, 1, 100);
+	MM_DATA(43, "Records: Various", 800, 1, 200);
+	MM_DATA(51, "Records: Completion", 800, 1, 200);
+	MM_DATA(91, "Records: Stats", 800, 1, 200);
+	MM_DATA(88, "Records: Game Flags", 800, 1, 200);
+	MM_DATA(56, "Last Time on Rance Quest", 800, 1, 300);
+	MM_DATA(92, "Rare Items", 800, 1, 200);
+	MM_DATA(93, "Records: RQ Full Data", 800, 1, 200);
+	MM_DATA(2, "Profile: Rance", 801, 2, 200);
+	MM_DATA(3, "Profile: Sill", 802, 2, 200);
+	MM_DATA(4, "Profile: Bird", 803, 2, 200);
+	MM_DATA(5, "Profile: Suzume", 804, 2, 200);
+	MM_DATA(6, "Profile: Copandon", 805, 2, 200);
+	MM_DATA(7, "Profile: Kouhime", 806, 2, 200);
+	MM_DATA(8, "Profile: Kenshin Uesugi", 807, 2, 200);
+	MM_DATA(9, "Profile: Lia", 808, 2, 200);
+	MM_DATA(10, "Profile: Athena 2.0", 809, 2, 200);
+	MM_DATA(11, "Profile: Magic", 810, 2, 200);
+	MM_DATA(39, "Profile: Sanakia", 842, 2, 200);
+	MM_DATA(40, "Profile: Kanami", 845, 2, 200);
+	MM_DATA(41, "Profile: Maris", 843, 2, 200);
+	MM_DATA(42, "Profile: Frostbyne", 844, 2, 200);
+	MM_DATA(44, "Profile: Kisara", 854, 2, 200);
+	MM_DATA(45, "Profile: Hikari", 855, 2, 200);
+	MM_DATA(47, "Profile: Feliss", 856, 2, 200);
+	MM_DATA(48, "Profile: Tomato", 857, 2, 200);
+	MM_DATA(50, "Profile: Noah", 858, 2, 200);
+	MM_DATA(58, "Profile: Rocky", 859, 2, 200);
+	MM_DATA(59, "Profile: Shizuka", 860, 2, 200);
+	MM_DATA(60, "Profile: Elenoa", 861, 2, 200);
+	MM_DATA(61, "Profile: Mill", 862, 2, 200);
+	MM_DATA(62, "Profile: Merim", 863, 2, 200);
+	MM_DATA(63, "Profile: Sel", 864, 2, 200);
+	MM_DATA(64, "Profile: Wichita", 865, 2, 200);
+	MM_DATA(65, "Profile: Shitomone", 866, 2, 200);
+	MM_DATA(66, "Profile: Karma", 867, 2, 200);
+	MM_DATA(67, "Profile: Nozomi", 868, 2, 200);
+	MM_DATA(70, "Profile: Teru", 869, 2, 200);
+	MM_DATA(72, "Profile: Maria", 870, 2, 200);
+	MM_DATA(73, "Profile: Rizna", 871, 2, 200);
+	MM_DATA(74, "Profile: Yulan", 872, 2, 200);
+	MM_DATA(75, "Profile: Noir", 873, 2, 200);
+	MM_DATA(76, "Profile: Urza", 874, 2, 200);
+	MM_DATA(77, "Profile: Yuzumi", 875, 2, 200);
+	MM_DATA(78, "Profile: Emi", 876, 2, 200);
+	MM_DATA(79, "Profile: Caloria", 877, 2, 200);
+	MM_DATA(80, "Profile: Kaoru", 878, 2, 200);
+	MM_DATA(17, "Profile: Amazusa Group", 816, 2, 250);
+	MM_DATA(12, "Profile: Cidade", 811, 2, 250);
+	MM_DATA(13, "Profile: Kalar 1", 812, 2, 250);
+	MM_DATA(38, "Profile: Kalar 2", 812, 2, 250);
+	MM_DATA(14, "Profile: Pencilcow", 813, 2, 250);
+	MM_DATA(16, "Profile: Fiends", 815, 2, 250);
+	MM_DATA(18, "Profile: Nippon", 817, 2, 250);
+	MM_DATA(19, "Profile: Leazas", 818, 2, 250);
+	MM_DATA(20, "Profile: Zeth", 819, 2, 250);
+	MM_DATA(21, "Profile: Helman", 820, 2, 250);
+	MM_DATA(22, "Profile: Alicism", 821, 2, 250);
+	MM_DATA(46, "Profile: Shepherds", 800, 2, 250);
+	MM_DATA(89, "Profile: Souls 1", 800, 2, 250);
+	MM_DATA(90, "Profile: Souls 2", 800, 2, 250);
+	MM_DATA(23, "Notes: Hanny", 830, 3, 350);
+	MM_DATA(24, "Notes: Lucky Can Can", 831, 3, 350);
+	MM_DATA(25, "Notes: Crab Girl", 832, 3, 350);
+	MM_DATA(26, "Notes: Japanese Soldier", 833, 3, 350);
+	MM_DATA(27, "Notes: Ghosts", 834, 3, 350);
+	MM_DATA(28, "Notes: Vevetar", 835, 3, 350);
+	MM_DATA(29, "Notes: Zashiki-Warashi", 836, 3, 350);
+	MM_DATA(30, "Notes: Asshole", 837, 3, 350);
+	MM_DATA(31, "Notes: NASU", 838, 3, 350);
+	MM_DATA(32, "Notes: Hugant", 839, 3, 350);
+	MM_DATA(33, "Notes: Kalar", 840, 3, 350);
+	MM_DATA(36, "Notes: Gates", 841, 3, 350);
+	MM_DATA(49, "Notes: Contaminated", 879, 3, 300);
+	MM_DATA(81, "Notes: Elastic Grape", 880, 3, 300);
+	MM_DATA(82, "Notes: Uncle Bat", 881, 3, 300);
+	MM_DATA(83, "Notes: Aimameyas", 882, 3, 300);
+	MM_DATA(84, "Notes: Shadow", 883, 3, 300);
+	MM_DATA(85, "Notes: Serious Sumo", 884, 3, 300);
+	MM_DATA(71, "Notes: The Invincible Iron Bird", 885, 3, 300);
+	MM_DATA(86, "Notes: Goblin", 886, 3, 300);
+	MM_DATA(87, "Notes: Troll", 887, 3, 300);
+	MM_DATA(34, "Items", 822, 3, 300);
+	MM_DATA(35, "Crane's Secrets", 823, 3, 300);
+	MM_DATA(37, "Abstinence Morurun Effects", 800, 3, 300);
+	MM_DATA(15, "Morurun", 814, 3, 300);
+}
+
+void MM_DATA(int no, string 文字列, int cg, int fg, int fg2)
+{
+	MM文字[no] = 文字列;
+	MMcg[no] = cg;
+	MM絞り込み[no] = fg;
+	MMソート[no] = fg2;
+}
+
+lint マメ／キャラ一覧(lint fg)
+{
+	lint no = 0;
+	lint cn = 0;
+	cn = 0;
+	if (fg == 1)
+	{
+		LOG("\nCharacters added to party (× = not recruited)\n");
+	}
+	キャラ確認ログ表示(1, cn, fg);
+	キャラ確認ログ表示(3, cn, fg);
+	キャラ確認ログ表示(16, cn, fg);
+	キャラ確認ログ表示(15, cn, fg);
+	キャラ確認ログ表示(14, cn, fg);
+	キャラ確認ログ表示(13, cn, fg);
+	キャラ確認ログ表示(12, cn, fg);
+	キャラ確認ログ表示(11, cn, fg);
+	キャラ確認ログ表示(10, cn, fg);
+	キャラ確認ログ表示(9, cn, fg);
+	キャラ確認ログ表示(7, cn, fg);
+	キャラ確認ログ表示(6, cn, fg);
+	キャラ確認ログ表示(5, cn, fg);
+	キャラ確認ログ表示(4, cn, fg);
+	キャラ確認ログ表示(40, cn, fg);
+	キャラ確認ログ表示(39, cn, fg);
+	キャラ確認ログ表示(38, cn, fg);
+	キャラ確認ログ表示(36, cn, fg);
+	キャラ確認ログ表示(35, cn, fg);
+	キャラ確認ログ表示(34, cn, fg);
+	キャラ確認ログ表示(33, cn, fg);
+	キャラ確認ログ表示(32, cn, fg);
+	キャラ確認ログ表示(31, cn, fg);
+	キャラ確認ログ表示(30, cn, fg);
+	キャラ確認ログ表示(29, cn, fg);
+	キャラ確認ログ表示(28, cn, fg);
+	キャラ確認ログ表示(27, cn, fg);
+	キャラ確認ログ表示(26, cn, fg);
+	キャラ確認ログ表示(25, cn, fg);
+	キャラ確認ログ表示(24, cn, fg);
+	キャラ確認ログ表示(23, cn, fg);
+	キャラ確認ログ表示(22, cn, fg);
+	キャラ確認ログ表示(21, cn, fg);
+	キャラ確認ログ表示(20, cn, fg);
+	キャラ確認ログ表示(19, cn, fg);
+	キャラ確認ログ表示(18, cn, fg);
+	キャラ確認ログ表示(17, cn, fg);
+	キャラ確認ログ表示(60, cn, fg);
+	キャラ確認ログ表示(59, cn, fg);
+	キャラ確認ログ表示(58, cn, fg);
+	キャラ確認ログ表示(57, cn, fg);
+	キャラ確認ログ表示(56, cn, fg);
+	キャラ確認ログ表示(55, cn, fg);
+	キャラ確認ログ表示(54, cn, fg);
+	キャラ確認ログ表示(53, cn, fg);
+	キャラ確認ログ表示(52, cn, fg);
+	キャラ確認ログ表示(51, cn, fg);
+	キャラ確認ログ表示(50, cn, fg);
+	キャラ確認ログ表示(49, cn, fg);
+	キャラ確認ログ表示(48, cn, fg);
+	キャラ確認ログ表示(47, cn, fg);
+	キャラ確認ログ表示(46, cn, fg);
+	キャラ確認ログ表示(45, cn, fg);
+	キャラ確認ログ表示(44, cn, fg);
+	キャラ確認ログ表示(43, cn, fg);
+	キャラ確認ログ表示(42, cn, fg);
+	キャラ確認ログ表示(41, cn, fg);
+	キャラ確認ログ表示(84, cn, fg);
+	キャラ確認ログ表示(72, cn, fg);
+	キャラ確認ログ表示(71, cn, fg);
+	キャラ確認ログ表示(68, cn, fg);
+	キャラ確認ログ表示(62, cn, fg);
+	キャラ確認ログ表示(61, cn, fg);
+	if (◆プラスキット == 1)
+	{
+		キャラ確認ログ表示(67, cn, fg);
+		キャラ確認ログ表示(70, cn, fg);
+		キャラ確認ログ表示(81, cn, fg);
+		キャラ確認ログ表示(80, cn, fg);
+		キャラ確認ログ表示(73, cn, fg);
+	}
+	return cn;
+}
+
+void キャラ確認ログ表示(lint no, ref lint cn, lint fg)
+{
+	int fx = Ｃ有無(no);
+	if (fx != 0)
+	{
+		cn++;
+		if (fg == 1)
+		{
+			LOG("●　%s\n" % キャラ固有番号文字列(no, 0));
+		}
+	}
+	if (fx == 0 && fg == 1)
+	{
+		if (FA[268] == 1)
+		{
+			LOG("×　%s\n" % キャラ固有番号文字列(no, 0));
+		}
+		if (FA[268] == 0)
+		{
+			LOG("×　?????\n");
+		}
+	}
+}
+
+lint マメ／クエスト一覧(lint fg)
+{
+	lint no = 0;
+	lint cn = 0;
+	cn = 0;
+	if (fg == 1)
+	{
+		LOG("\nQuests cleared (× = uncleared)\n");
+	}
+	if (fg == 1)
+	{
+		LOG("－－－－－－－－－－－\n");
+	}
+	クエスト確認ログ表示(17, cn, fg);
+	クエスト確認ログ表示(18, cn, fg);
+	クエスト確認ログ表示(19, cn, fg);
+	クエスト確認ログ表示(20, cn, fg);
+	クエスト確認ログ表示(21, cn, fg);
+	クエスト確認ログ表示(22, cn, fg);
+	クエスト確認ログ表示(23, cn, fg);
+	クエスト確認ログ表示(25, cn, fg);
+	クエスト確認ログ表示(26, cn, fg);
+	クエスト確認ログ表示(27, cn, fg);
+	クエスト確認ログ表示(28, cn, fg);
+	クエスト確認ログ表示(29, cn, fg);
+	クエスト確認ログ表示(30, cn, fg);
+	クエスト確認ログ表示(31, cn, fg);
+	クエスト確認ログ表示(32, cn, fg);
+	クエスト確認ログ表示(33, cn, fg);
+	クエスト確認ログ表示(34, cn, fg);
+	クエスト確認ログ表示(35, cn, fg);
+	クエスト確認ログ表示(36, cn, fg);
+	クエスト確認ログ表示(37, cn, fg);
+	クエスト確認ログ表示(38, cn, fg);
+	クエスト確認ログ表示(39, cn, fg);
+	クエスト確認ログ表示(40, cn, fg);
+	クエスト確認ログ表示(41, cn, fg);
+	クエスト確認ログ表示(42, cn, fg);
+	クエスト確認ログ表示(43, cn, fg);
+	クエスト確認ログ表示(44, cn, fg);
+	クエスト確認ログ表示(45, cn, fg);
+	クエスト確認ログ表示(46, cn, fg);
+	クエスト確認ログ表示(47, cn, fg);
+	クエスト確認ログ表示(48, cn, fg);
+	クエスト確認ログ表示(49, cn, fg);
+	クエスト確認ログ表示(50, cn, fg);
+	クエスト確認ログ表示(51, cn, fg);
+	クエスト確認ログ表示(52, cn, fg);
+	クエスト確認ログ表示(53, cn, fg);
+	クエスト確認ログ表示(54, cn, fg);
+	クエスト確認ログ表示(55, cn, fg);
+	クエスト確認ログ表示(56, cn, fg);
+	クエスト確認ログ表示(57, cn, fg);
+	クエスト確認ログ表示(58, cn, fg);
+	クエスト確認ログ表示(59, cn, fg);
+	クエスト確認ログ表示(60, cn, fg);
+	クエスト確認ログ表示(61, cn, fg);
+	クエスト確認ログ表示(62, cn, fg);
+	クエスト確認ログ表示(63, cn, fg);
+	クエスト確認ログ表示(64, cn, fg);
+	クエスト確認ログ表示(65, cn, fg);
+	クエスト確認ログ表示(66, cn, fg);
+	クエスト確認ログ表示(67, cn, fg);
+	クエスト確認ログ表示(68, cn, fg);
+	クエスト確認ログ表示(69, cn, fg);
+	クエスト確認ログ表示(70, cn, fg);
+	クエスト確認ログ表示(71, cn, fg);
+	クエスト確認ログ表示(72, cn, fg);
+	クエスト確認ログ表示(73, cn, fg);
+	クエスト確認ログ表示(74, cn, fg);
+	クエスト確認ログ表示(75, cn, fg);
+	クエスト確認ログ表示(76, cn, fg);
+	クエスト確認ログ表示(77, cn, fg);
+	クエスト確認ログ表示(78, cn, fg);
+	クエスト確認ログ表示(79, cn, fg);
+	クエスト確認ログ表示(80, cn, fg);
+	クエスト確認ログ表示(81, cn, fg);
+	クエスト確認ログ表示(82, cn, fg);
+	クエスト確認ログ表示(83, cn, fg);
+	クエスト確認ログ表示(84, cn, fg);
+	クエスト確認ログ表示(85, cn, fg);
+	クエスト確認ログ表示(86, cn, fg);
+	クエスト確認ログ表示(87, cn, fg);
+	クエスト確認ログ表示(88, cn, fg);
+	クエスト確認ログ表示(89, cn, fg);
+	クエスト確認ログ表示(90, cn, fg);
+	クエスト確認ログ表示(91, cn, fg);
+	クエスト確認ログ表示(92, cn, fg);
+	クエスト確認ログ表示(93, cn, fg);
+	クエスト確認ログ表示(94, cn, fg);
+	クエスト確認ログ表示(95, cn, fg);
+	クエスト確認ログ表示(96, cn, fg);
+	クエスト確認ログ表示(97, cn, fg);
+	クエスト確認ログ表示(98, cn, fg);
+	クエスト確認ログ表示(99, cn, fg);
+	クエスト確認ログ表示(100, cn, fg);
+	クエスト確認ログ表示(101, cn, fg);
+	クエスト確認ログ表示(102, cn, fg);
+	クエスト確認ログ表示(103, cn, fg);
+	クエスト確認ログ表示(104, cn, fg);
+	クエスト確認ログ表示(114, cn, fg);
+	クエスト確認ログ表示(115, cn, fg);
+	クエスト確認ログ表示(116, cn, fg);
+	クエスト確認ログ表示(117, cn, fg);
+	クエスト確認ログ表示(118, cn, fg);
+	クエスト確認ログ表示(119, cn, fg);
+	クエスト確認ログ表示(121, cn, fg);
+	クエスト確認ログ表示(122, cn, fg);
+	クエスト確認ログ表示(123, cn, fg);
+	クエスト確認ログ表示(124, cn, fg);
+	クエスト確認ログ表示(125, cn, fg);
+	クエスト確認ログ表示(126, cn, fg);
+	if (fg == 1)
+	{
+		LOG("－－－－－－－－－－－\n");
+	}
+	クエスト確認ログ表示(108, cn, fg);
+	クエスト確認ログ表示(109, cn, fg);
+	クエスト確認ログ表示(111, cn, fg);
+	クエスト確認ログ表示(112, cn, fg);
+	クエスト確認ログ表示(113, cn, fg);
+	クエスト確認ログ表示(127, cn, fg);
+	クエスト確認ログ表示(128, cn, fg);
+	クエスト確認ログ表示(135, cn, fg);
+	クエスト確認ログ表示(136, cn, fg);
+	クエスト確認ログ表示(137, cn, fg);
+	クエスト確認ログ表示(138, cn, fg);
+	クエスト確認ログ表示(139, cn, fg);
+	クエスト確認ログ表示(140, cn, fg);
+	クエスト確認ログ表示(141, cn, fg);
+	クエスト確認ログ表示(142, cn, fg);
+	クエスト確認ログ表示(143, cn, fg);
+	クエスト確認ログ表示(145, cn, fg);
+	クエスト確認ログ表示(146, cn, fg);
+	クエスト確認ログ表示(153, cn, fg);
+	クエスト確認ログ表示(158, cn, fg);
+	クエスト確認ログ表示(206, cn, fg);
+	クエスト確認ログ表示(203, cn, fg);
+	クエスト確認ログ表示(195, cn, fg);
+	if (◆ｅａｓｙモード == 0)
+	{
+		クエスト確認ログ表示(147, cn, fg);
+		クエスト確認ログ表示(199, cn, fg);
+	}
+	クエスト確認ログ表示(179, cn, fg);
+	クエスト確認ログ表示(180, cn, fg);
+	クエスト確認ログ表示(189, cn, fg);
+	if (fg == 1)
+	{
+		LOG("－－－－－－－－－－－\n");
+	}
+	if (◆プラスキット == 1)
+	{
+		クエスト確認ログ表示(24, cn, fg);
+		クエスト確認ログ表示(154, cn, fg);
+		クエスト確認ログ表示(156, cn, fg);
+		クエスト確認ログ表示(148, cn, fg);
+		クエスト確認ログ表示(149, cn, fg);
+		クエスト確認ログ表示(150, cn, fg);
+		クエスト確認ログ表示(151, cn, fg);
+		クエスト確認ログ表示(152, cn, fg);
+		クエスト確認ログ表示(155, cn, fg);
+		クエスト確認ログ表示(157, cn, fg);
+		クエスト確認ログ表示(164, cn, fg);
+		クエスト確認ログ表示(165, cn, fg);
+		クエスト確認ログ表示(166, cn, fg);
+		クエスト確認ログ表示(167, cn, fg);
+		クエスト確認ログ表示(168, cn, fg);
+		クエスト確認ログ表示(169, cn, fg);
+		クエスト確認ログ表示(170, cn, fg);
+		クエスト確認ログ表示(171, cn, fg);
+		クエスト確認ログ表示(172, cn, fg);
+		クエスト確認ログ表示(173, cn, fg);
+		クエスト確認ログ表示(174, cn, fg);
+		クエスト確認ログ表示(175, cn, fg);
+		クエスト確認ログ表示(176, cn, fg);
+		クエスト確認ログ表示(177, cn, fg);
+		クエスト確認ログ表示(181, cn, fg);
+		クエスト確認ログ表示(182, cn, fg);
+		クエスト確認ログ表示(183, cn, fg);
+		クエスト確認ログ表示(185, cn, fg);
+		クエスト確認ログ表示(186, cn, fg);
+		クエスト確認ログ表示(187, cn, fg);
+		クエスト確認ログ表示(188, cn, fg);
+		クエスト確認ログ表示(190, cn, fg);
+		クエスト確認ログ表示(191, cn, fg);
+		クエスト確認ログ表示(192, cn, fg);
+		クエスト確認ログ表示(193, cn, fg);
+		クエスト確認ログ表示(194, cn, fg);
+		クエスト確認ログ表示(197, cn, fg);
+		クエスト確認ログ表示(198, cn, fg);
+		クエスト確認ログ表示(200, cn, fg);
+		クエスト確認ログ表示(201, cn, fg);
+		クエスト確認ログ表示(202, cn, fg);
+		クエスト確認ログ表示(204, cn, fg);
+		クエスト確認ログ表示(205, cn, fg);
+		クエスト確認ログ表示(207, cn, fg);
+		クエスト確認ログ表示(208, cn, fg);
+		クエスト確認ログ表示(209, cn, fg);
+		クエスト確認ログ表示(210, cn, fg);
+		クエスト確認ログ表示(211, cn, fg);
+	}
+	return cn;
+}
+
+void クエスト確認ログ表示(lint iiq, ref lint cn, lint fg)
+{
+	lint aa = 0;
+	if (FA[304] == 1 && iiq == 147)
+	{
+		aa = 1;
+	}
+	if (クリア確認(iiq) != 0 || aa == 1)
+	{
+		cn++;
+		if (fg == 1)
+		{
+			LOG("●　%s\n" % Ｑ名前(iiq, ""));
+		}
+	}
+	if (クリア確認(iiq) == 0 && aa == 0 && fg == 1)
+	{
+		if (FA[268] == 1)
+		{
+			LOG("×　%s\n" % Ｑ名前(iiq, ""));
+		}
+		if (FA[268] == 0)
+		{
+			LOG("×　?????\n");
+		}
+	}
+}
+
+lint マメ／女の子モンスター一覧(lint fg)
+{
+	lint loop = 0;
+	int bb = 1;
+	int ino = 0;
+	int cn = 0;
+	if (fg == 1)
+	{
+		LOG("\nGal monsters captured (× = uncaptured)\n");
+	}
+	ino = 227;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 228;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 229;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 230;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 231;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 232;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 233;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 234;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 235;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 236;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 237;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 238;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 239;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 240;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 241;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 242;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 243;
+	女の子モンスターログ表示(ino, cn, fg);
+	ino = 244;
+	女の子モンスターログ表示(ino, cn, fg);
+	return cn;
+}
+
+void 女の子モンスターログ表示(int ino, ref int cn, int fg)
+{
+	if (Ｉ有無(ino, 0, "") != 0)
+	{
+		cn++;
+		if (fg == 1)
+		{
+			LOG("●　" + Ｉ固有名前(ino) + "　");
+			if (ino == 227)
+			{
+				if (EV("Can Can/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Can Can/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 228)
+			{
+				if (EV("Chi-Ha/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Chi-Ha/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 229)
+			{
+				if (EV("Gecky/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Gecky/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 230)
+			{
+				if (EV("Magisco/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Magisco/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 231)
+			{
+				if (EV("Kraken/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Kraken/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 232)
+			{
+				if (EV("Crab Girl/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Crab Girl/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 233)
+			{
+				if (EV("Splish-Splash/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Splish-Splash/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 234)
+			{
+				if (EV("Frog Lady/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Frog Lady/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 235)
+			{
+				if (EV("Maid Lady/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Maid Lady/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 236)
+			{
+				if (EV("Zashiki-Warashi/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Zashiki-Warashi/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 237)
+			{
+				if (EV("Lantyrn/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Lantyrn/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 238)
+			{
+				if (EV("Tokko/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Tokko/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 239)
+			{
+				if (EV("Majician/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Majician/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 240)
+			{
+				if (EV("Nekomatamata/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Nekomatamata/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 241)
+			{
+				if (EV("Valkyrie/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Valkyrie/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 242)
+			{
+				if (EV("Captain Vanilla/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Captain Vanilla/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			if (ino == 243)
+			{
+				LOG("No character events");
+			}
+			if (ino == 244)
+			{
+				if (EV("Battle Booklet/Switch 1", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 1");
+				}
+				else
+				{
+					LOG("・Dungeon Event 1");
+				}
+				if (EV("Battle Booklet/Switch 2", -2147483648) != false)
+				{
+					LOG("●Dungeon Event 2");
+				}
+				else
+				{
+					LOG("・Dungeon Event 2");
+				}
+			}
+			LOG("\n");
+		}
+	}
+	if (Ｉ有無(ino, 0, "") == 0 && fg == 1)
+	{
+		if (FA[268] == 1)
+		{
+			LOG("×　%s\n" % Ｉ固有名前(ino));
+		}
+		if (FA[268] == 0)
+		{
+			LOG("×　?????\n");
+		}
+	}
+}
+
+int マメ／レアアイテムＢの数()
+{
+	int cn = 0;
+	int no = 0;
+	no = 54;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 24;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 22;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 64;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 40;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 52;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 83;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 97;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 114;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 129;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 144;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 168;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	no = 157;
+	if (Ｉ有無(no, 0, "") != 0)
+	{
+		++cn;
+	}
+	return cn;
+}
+

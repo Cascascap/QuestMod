@@ -1,0 +1,145 @@
+void T_BattleInfo::updateBattleCount()
+{
+	g_bBattleSequenceUpdate = this.m_sCount.update();
+}
+
+int T_BattleInfo::getBattleCount()
+{
+	return this.m_nBattleCount;
+}
+
+int T_BattleInfo::getIconX()
+{
+	return this.m_nBattleCount < 13 ? 12 + 39 * this.m_nBattleCount : 1024;
+}
+
+int T_BattleInfo::getIconY()
+{
+	return 357;
+}
+
+T_BattleInfo::T_BattleInfo()
+{
+	this.clear();
+}
+
+T_BattleInfo::~T_BattleInfo()
+{
+	this.delete();
+}
+
+bool T_BattleInfo::create(int nZ)
+{
+	this.delete();
+	this.m_sCount.create(nZ + 1, true);
+	this.m_sRunaway.create(37, 19, 3, 3, 1, true);
+	this.m_sRunaway.setFontType(258);
+	this.m_sRunaway.setFontSize(22);
+	this.m_sRunaway.setFontColor(255, 255, 255);
+	this.m_sRunaway.setFontBold(太字確認(258, 40));
+	this.m_sRunaway.setZ(nZ + 1);
+	this.m_sRunaway.setPos(953, 652);
+	this.setBattleCount(戦闘行動回数(), false);
+	this.m_spIcon.setCg(10283);
+	this.m_spIcon.setPos(this.getIconX(), this.getIconY());
+	this.m_spIcon.setZ(nZ + 5);
+	this.draw();
+	return true;
+}
+
+void T_BattleInfo::delete()
+{
+	this.m_sCount.delete();
+	this.m_sRunaway.delete();
+	this.m_spIcon.delete();
+	this.clear();
+}
+
+void T_BattleInfo::clear()
+{
+	this.m_nBattleCount = -1;
+	this.m_bShow = false;
+}
+
+bool T_BattleInfo::update()
+{
+	if (this.m_nBattleCount < 0)
+	{
+		return false;
+	}
+	this.draw();
+	this.setIconShow(this.m_bShow);
+	return true;
+}
+
+bool T_BattleInfo::moveIcon()
+{
+	if (this.m_nBattleCount < 0)
+	{
+		return false;
+	}
+	int nStrX = this.m_spIcon.getPosX();
+	int nStrY = this.m_spIcon.getPosY();
+	int nEndX = this.getIconX();
+	int nEndY = this.getIconY();
+	if (nStrX == nEndX && nStrY == nEndY)
+	{
+		return false;
+	}
+	CASTimer sTimer;
+	int nTime = 0;
+	sTimer.Reset();
+label0:
+	if (nTime < 150)
+	{
+		int nX = nStrX + 実数計算(nEndX - nStrX, nTime, 150.0);
+		int nY = nStrY + 実数計算(nEndY - nStrY, nTime, 150.0);
+		this.m_spIcon.setPos(nX, nY);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label0;
+	}
+	this.m_spIcon.setPos(nEndX, nEndY);
+	UPDATE(true);
+	return true;
+}
+
+void T_BattleInfo::deleteIcon()
+{
+	this.m_spIcon.delete();
+	this.m_nBattleCount = -1;
+}
+
+void T_BattleInfo::setShow(bool bShow)
+{
+	this.setIconShow(bShow);
+	this.m_sCount.setShow(bShow);
+	this.m_sRunaway.setShow(bShow);
+	this.m_bShow = bShow;
+}
+
+int T_BattleInfo::setBattleCount(int nValue, bool bAnime)
+{
+	int nRet = this.m_sCount.set(nValue < 999 ? nValue : -1, bAnime);
+	this.m_nBattleCount = nValue;
+	g_bBattleSequenceUpdate = nRet > 0;
+	return nValue;
+}
+
+void T_BattleInfo::draw()
+{
+	this.m_sRunaway.setValue(戦闘逃げる率(), false);
+}
+
+void T_BattleInfo::setIconShow(bool bShow)
+{
+	if (this.m_nBattleCount < 999)
+	{
+		this.m_spIcon.setShow(this.m_nBattleCount < 13 ? bShow : 0);
+	}
+	else
+	{
+		this.m_spIcon.setShow(0);
+	}
+}
+

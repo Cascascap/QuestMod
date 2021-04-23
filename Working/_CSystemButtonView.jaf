@@ -1,0 +1,107 @@
+int _CSystemButtonView::_GetId()
+{
+	return this._m_id;
+}
+
+bool _CSystemButtonView::_IsShow()
+{
+	return this._m_show;
+}
+
+_CSystemButtonView::_CSystemButtonView()
+{
+	this._m_id = -2147483648;
+	this._m_sel_btn = -2147483648;
+	this._m_show = true;
+}
+
+void _CSystemButtonView::_Clear()
+{
+	if (this._m_id == -2147483648)
+	{
+		return;
+	}
+	int _i = 0;
+	for (_i = 0; _i < this._m_tbl.Numof(); ++_i)
+	{
+		this._m_tbl[_i]._Delete();
+	}
+	this._m_tbl.Free();
+	this._m_id = -2147483648;
+	this._m_sel_btn = -2147483648;
+}
+
+void _CSystemButtonView::_Set(int _id)
+{
+	if (_id == this._m_id)
+	{
+		return;
+	}
+	this._Clear();
+	this._m_id = _id;
+	this._Create();
+}
+
+void _CSystemButtonView::_Create()
+{
+	this._m_tbl.Alloc(_g_SystemButtonDocument._GetButtonCount(this._m_id));
+	int _i = 0;
+	for (_i = 0; _i < this._m_tbl.Numof(); ++_i)
+	{
+		this._m_tbl[_i]._Create(_i);
+	}
+}
+
+void _CSystemButtonView::_Update()
+{
+	if (this._m_id == -2147483648)
+	{
+		return;
+	}
+	int _i = 0;
+	for (_i = 0; _i < this._m_tbl.Numof(); ++_i)
+	{
+		this._m_tbl[_i]._Update();
+	}
+	this._m_sel_btn = -2147483648;
+	for (_i = 0; _i < this._m_tbl.Numof(); ++_i)
+	{
+		if (this._m_tbl[_i]._IsSelecting())
+		{
+			this._m_sel_btn = _i;
+			break;
+		}
+	}
+}
+
+sys_btn_fnc_t _CSystemButtonView::_GetSelectedFunc()
+{
+	if (this._m_sel_btn != -2147483648)
+	{
+		return _g_SystemButtonDocument._GetFunc(this._m_id, this._m_sel_btn);
+	}
+	return NULL;
+}
+
+void _CSystemButtonView::_Hide()
+{
+	this._SetShow(false);
+}
+
+void _CSystemButtonView::_Show()
+{
+	this._SetShow(true);
+}
+
+bool _CSystemButtonView::_SetShow(bool _show)
+{
+	bool _r = this._m_show;
+	this._m_show = _show;
+	int _i = 0;
+	for (_i = 0; _i < this._m_tbl.Numof(); ++_i)
+	{
+		this._m_tbl[_i]._SetShow(this._m_show);
+	}
+	return _r;
+}
+

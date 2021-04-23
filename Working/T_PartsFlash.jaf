@@ -1,0 +1,267 @@
+int T_PartsFlash::getEndFrameNo()
+{
+	return this.m_nEndFrameNo;
+}
+
+int T_PartsFlash::getCurrentFrameNo()
+{
+	return this.m_nCurrentFrameNo;
+}
+
+string T_PartsFlash::getFileName()
+{
+	return this.m_szFileName;
+}
+
+int T_PartsFlash::getPosX()
+{
+	return this.m_nNo > 0 ? ÇoÅQÇwç¿ïWéÊìæ(this.m_nNo) : -1;
+}
+
+int T_PartsFlash::getPosY()
+{
+	return this.m_nNo > 0 ? ÇoÅQÇxç¿ïWéÊìæ(this.m_nNo) : -1;
+}
+
+int T_PartsFlash::getZ()
+{
+	return this.m_nNo > 0 ? ÇoÅQÇyç¿ïWéÊìæ(this.m_nNo) : -1;
+}
+
+bool T_PartsFlash::getShow()
+{
+	return this.m_nNo > 0 ? ÇoÅQï\é¶ê›íËéÊìæ(this.m_nNo) : true;
+}
+
+int T_PartsFlash::getNo()
+{
+	return this.m_nNo;
+}
+
+bool T_PartsFlash::isCreated()
+{
+	return this.m_nNo > 0;
+}
+
+bool T_PartsFlash::isPlay()
+{
+	return this.m_nStatus > 0;
+}
+
+bool T_PartsFlash::isLoop()
+{
+	return this.m_nStatus == 2;
+}
+
+T_PartsFlash::T_PartsFlash()
+{
+	this.clear();
+}
+
+T_PartsFlash::~T_PartsFlash()
+{
+	this.delete();
+}
+
+bool T_PartsFlash::create(int nNo)
+{
+	this.delete();
+	nNo = ÉpÅ[Écî‘çÜ_éÊìæ(nNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	this.m_nNo = nNo;
+	return true;
+}
+
+void T_PartsFlash::delete()
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	this.stop(false);
+	ÇoÅQçÌèú(this.m_nNo);
+	ÉpÅ[Écî‘çÜ_âï˙(this.m_nNo);
+	this.clear();
+}
+
+void T_PartsFlash::clear()
+{
+	this.m_nNo = -1;
+	this.m_szFileName = "";
+	this.m_nEndFrameNo = -1;
+	this.m_nStatus = -1;
+	this.m_nCurrentFrameNo = -1;
+	this.m_bEndShow = false;
+}
+
+int T_PartsFlash::update()
+{
+	if (this.m_nStatus <= 0)
+	{
+		return -1;
+	}
+	int nFrameNo = é¿êîåvéZ(30.0, this.m_sTimer.Get(), 1000.0) + 1.0;
+	if (nFrameNo == this.m_nCurrentFrameNo)
+	{
+		return 0;
+	}
+	if (nFrameNo > this.m_nEndFrameNo)
+	{
+		if (this.m_nStatus != 2)
+		{
+			this.stop(this.m_bEndShow);
+			return -1;
+		}
+		nFrameNo = 1;
+		this.m_sTimer.Reset();
+	}
+	AFL_Parts_GoFramePartsFlash(this.m_nNo, nFrameNo, 1);
+	this.m_nCurrentFrameNo = nFrameNo;
+	return 1;
+}
+
+bool T_PartsFlash::play(bool bWait, bool bEndShow)
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	this.setShow(true);
+	this.m_nStatus = 1;
+	this.m_nCurrentFrameNo = 0;
+	this.m_bEndShow = bEndShow;
+	this.m_sTimer.Reset();
+	if (bWait)
+	{
+		this.wait();
+	}
+	return true;
+}
+
+bool T_PartsFlash::loop()
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	if (this.m_nStatus == 2)
+	{
+		return true;
+	}
+	this.setShow(true);
+	this.m_nStatus = 2;
+	this.m_nCurrentFrameNo = 0;
+	this.m_bEndShow = false;
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_PartsFlash::playFromFileName(string szFileName, bool bWait, bool bEndShow)
+{
+	if (!this.setFileName(szFileName))
+	{
+		return false;
+	}
+	return this.play(bWait, bEndShow);
+}
+
+bool T_PartsFlash::stop(bool bEndShow)
+{
+	if (this.m_nStatus <= 0)
+	{
+		return false;
+	}
+	AFL_Parts_StopPartsFlash(this.m_nNo, 1);
+	this.m_nStatus = 0;
+	this.setShow(bEndShow);
+	return true;
+}
+
+void T_PartsFlash::wait()
+{
+	if (this.m_nStatus <= 0)
+	{
+		return;
+	}
+	while (true)
+	{
+		if (this.update() < 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+}
+
+bool T_PartsFlash::setFileName(string szFileName)
+{
+	if (this.m_nNo <= 0)
+	{
+		goto label0;
+	}
+	if (szFileName.Empty())
+	{
+		goto label0;
+	}
+	int nNo = this.m_nNo;
+	if (!AFL_Parts_SetPartsFlashAndStop(nNo, szFileName, 1))
+	{
+		goto label0;
+	}
+	int nEndFrameNo = AFL_Parts_GetPartsFlashEndFrameNumber(nNo, 1);
+	if (nEndFrameNo < 0)
+	{
+		goto label0;
+	}
+	this.m_szFileName = szFileName;
+	this.m_nEndFrameNo = nEndFrameNo;
+	this.m_nStatus = 0;
+	return true;
+label0:
+	this.m_szFileName = "";
+	this.m_nEndFrameNo = -1;
+	this.m_nStatus = -1;
+	this.m_nCurrentFrameNo = -1;
+	this.m_bEndShow = false;
+	return false;
+}
+
+void T_PartsFlash::setPos(int nX, int nY)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	ÇoÅQç¿ïWê›íË(this.m_nNo, nX, nY);
+}
+
+void T_PartsFlash::setZ(int nZ)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	ÇoÅQÇyç¿ïWê›íË(this.m_nNo, nZ);
+}
+
+void T_PartsFlash::setOrigin(int nOrigin)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	ÇoÅQå¥ì_ç¿ïWê›íË(this.m_nNo, nOrigin);
+}
+
+void T_PartsFlash::setShow(bool bShow)
+{
+	if (this.m_nNo <= 0)
+	{
+		return;
+	}
+	ÇoÅQï\é¶ê›íË(this.m_nNo, bShow);
+}
+

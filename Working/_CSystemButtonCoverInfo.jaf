@@ -1,0 +1,38 @@
+string _CSystemButtonCoverInfo::_GetCg()
+{
+	return this._m_cg;
+}
+
+_CSystemButtonCoverInfo::_CSystemButtonCoverInfo()
+{
+	this._m_fn = NULL;
+	this._m_cg = "";
+}
+
+void _CSystemButtonCoverInfo::_Set(sys_btn_fnc_t _fn, string _cg)
+{
+	if (_fn != NULL)
+	{
+		this._m_fn = _fn;
+	}
+	if (!_cg.Empty())
+	{
+		this._m_cg = _cg;
+	}
+}
+
+bool _CSystemButtonCoverInfo::_IsFn(sys_btn_fnc_t _fn)
+{
+	return this._m_fn == _fn;
+}
+
+int _CSystemButtonCoverInfo::_GetX(int _msg_frame_id)
+{
+	return _msg_frame_id < 1 ? -2147483648 : _g_SystemButtonDocument._GetFuncX(_msg_frame_id, this._m_fn);
+}
+
+int _CSystemButtonCoverInfo::_GetY(int _msg_frame_id)
+{
+	return _msg_frame_id < 1 ? -2147483648 : _g_SystemButtonDocument._GetFuncY(_msg_frame_id, this._m_fn);
+}
+

@@ -1,0 +1,14 @@
+void Ｒ８世界地図(int nX, int nY, string szName)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	画面_クリア(true, true);
+	T_WorldMap sWorld;
+	sWorld.run(nX, nY, szName);
+	黒画面(1, 100);
+	画面_クリア(true, true);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+

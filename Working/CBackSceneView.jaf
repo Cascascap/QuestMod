@@ -1,0 +1,558 @@
+CBackSceneView::CBackSceneView()
+{
+	this.m_nBaseZ = 11000;
+	this._m_index = 0;
+	this._m_exit = false;
+	this._m_cur_btn_id = -2147483648;
+	this._m_msg_frame_id = -2147483648;
+	this.m_Focus = 0;
+}
+
+void CBackSceneView::_Execute()
+{
+	if (SYS_GetNumofADVScene() <= 0)
+	{
+		return;
+	}
+	this._Open();
+	this._Loop();
+	this._Close();
+}
+
+void CBackSceneView::_Open()
+{
+	SYS_画面保管(this._m_scene_save);
+	GOAT_ReleaseAllPartsWithoutSystem();
+	SYS_選択肢非表示();
+	this._CreateButton(1);
+	CASRect SceneSliderShowRect;
+	SceneSliderShowRect = g_BackSceneDocument.GetSceneSliderShowRect();
+	if (SceneSliderShowRect.GetWidth() > 0 && SceneSliderShowRect.GetHeight() > 0)
+	{
+		this.m_SceneSliderShowRect = SceneSliderShowRect;
+	}
+	else
+	{
+		this.m_SceneSliderShowRect.Set(600, 0, 200, 600);
+	}
+	this.CreateSceneSliderBackSprite();
+	this.CreateSceneSlider();
+	this._m_msg_frame_id = -2147483648;
+	this._m_exit = false;
+	_g_SystemButtonView._Hide();
+	this.m_bPrevShowMsgKeyWaitAnime = _g_MsgKeyWaitAnime.IsShow();
+	if (this.m_bPrevShowMsgKeyWaitAnime)
+	{
+		_g_MsgKeyWaitAnime._SetShow(false, SYS_Ｍ送モード取得());
+	}
+	this.m_PageNumberTextSprite.SetShow(false);
+	int nFirstIndex = SYS_GetNumofADVScene() - 1;
+	this._SetSceneIndex(nFirstIndex);
+	this.m_LButtonClick.Init(1, true);
+	this.m_RButtonClick.Init(2, true);
+	this.m_EscapeKeyClick.Init(27, true);
+	this.m_SpaceKeyClick.Init(32, true);
+	this.m_BackSpaceKeyClick.Init(8, true);
+	this.m_ZKeyClick.Init(90, true);
+	this.m_HomeKeyRepeat.Init(36, true);
+	this.m_EndKeyRepeat.Init(35, true);
+	this.m_UpKeyRepeat.Init(38, true);
+	this.m_DownKeyRepeat.Init(40, true);
+	this.m_PageUpKeyRepeat.Init(33, true);
+	this.m_PageDownKeyRepeat.Init(34, true);
+	this.m_HomeKeyClick.Init(36, true);
+	this.m_EndKeyClick.Init(35, true);
+	this.m_UpKeyClick.Init(38, true);
+	this.m_DownKeyClick.Init(40, true);
+	this.m_PageUpKeyClick.Init(33, true);
+	this.m_PageDownKeyClick.Init(34, true);
+	this.m_JoyPrevBackScene.Init(AFL_Joystick_GetButtonAssignment(16), true);
+	this.m_JoyNextBackScene.Init(AFL_Joystick_GetButtonAssignment(17), true);
+	this.m_JoyRepeatPrevBackScene.Init(AFL_Joystick_GetButtonAssignment(18), true);
+	this.m_JoyRepeatNextBackScene.Init(AFL_Joystick_GetButtonAssignment(19), true);
+	this.m_JoyCancel.Init(AFL_Joystick_GetButtonAssignment(5), true);
+	this.m_JoyHideWindow.Init(AFL_Joystick_GetButtonAssignment(20), true);
+	this.m_JoyPrevBackSceneClick.Init(AFL_Joystick_GetButtonAssignment(16), true);
+	this.m_JoyNextBackSceneClick.Init(AFL_Joystick_GetButtonAssignment(17), true);
+	this.m_JoyRepeatPrevBackSceneClick.Init(AFL_Joystick_GetButtonAssignment(18), true);
+	this.m_JoyRepeatNextBackSceneClick.Init(AFL_Joystick_GetButtonAssignment(19), true);
+}
+
+void CBackSceneView::_Close()
+{
+	_g_システムボタン変更 = true;
+	if (this.m_bPrevShowMsgKeyWaitAnime)
+	{
+		_g_MsgKeyWaitAnime._SetShow(true, SYS_Ｍ送モード取得());
+	}
+	_g_SystemButtonView._Show();
+	this.m_ButtonList.Free();
+	this.m_SceneSlider.Release();
+	this.m_SceneSliderBackSprite.Release();
+	this.m_PageNumberTextSprite.Release();
+	SYS_StopVoice();
+	GOAT_ReleaseAllPartsWithoutSystem();
+	g_MessageWindowManager.ClearAll();
+	SYS_画面復帰(this._m_scene_save, true);
+	SYS_選択肢表示();
+	全表示(0, 0);
+	SYS_メッセージ全表示();
+	this.m_PageNumberText = "";
+}
+
+void CBackSceneView::_Loop()
+{
+	while (!this._m_exit)
+	{
+		this._Update();
+	}
+}
+
+void CBackSceneView::_Update()
+{
+	_g_MouseCursorPos._Update();
+	_g_MouseWheel._Update(true);
+	this._UpdateButton();
+	if (this.m_RButtonClick.IsClick(-2147483648) || this.m_EscapeKeyClick.IsClick(-2147483648) || this.m_JoyCancel.IsClick(-2147483648))
+	{
+		this._DoExit();
+		return;
+	}
+	int l_DistanceOnScene = 0;
+	if (this.m_SpaceKeyClick.IsClick(-2147483648) || this.m_ZKeyClick.IsClick(-2147483648) || this.m_JoyHideWindow.IsClick(-2147483648))
+	{
+		this.HideMessageWindow();
+	}
+	if (SYS_ホイールフォア確認())
+	{
+		l_DistanceOnScene = 1;
+	}
+	else if (SYS_ホイールバック確認())
+	{
+		if (this._m_index >= SYS_GetNumofADVScene() - 1)
+		{
+			this._DoExit();
+			return;
+		}
+		l_DistanceOnScene = -1;
+	}
+	this.CheckLButtonClick();
+	if (this.m_HomeKeyClick.IsKeyTrigger())
+	{
+		this.m_Focus = 14;
+	}
+	else if (this.m_EndKeyClick.IsKeyTrigger())
+	{
+		this.m_Focus = 15;
+	}
+	else if (this.m_UpKeyClick.IsKeyTrigger())
+	{
+		this.m_Focus = 10;
+	}
+	else if (this.m_DownKeyClick.IsKeyTrigger())
+	{
+		this.m_Focus = 11;
+	}
+	else if (this.m_PageUpKeyClick.IsKeyTrigger())
+	{
+		this.m_Focus = 12;
+	}
+	else if (this.m_PageDownKeyClick.IsKeyTrigger())
+	{
+		this.m_Focus = 13;
+	}
+	if (this.m_JoyPrevBackSceneClick.IsKeyTrigger())
+	{
+		this.m_Focus = 20;
+	}
+	else if (this.m_JoyNextBackSceneClick.IsKeyTrigger())
+	{
+		this.m_Focus = 21;
+	}
+	else if (this.m_JoyRepeatPrevBackSceneClick.IsKeyTrigger())
+	{
+		this.m_Focus = 22;
+	}
+	else if (this.m_JoyRepeatNextBackSceneClick.IsKeyTrigger())
+	{
+		this.m_Focus = 23;
+	}
+	if (this.m_HomeKeyRepeat.IsKeyDown() && this.m_Focus == 14)
+	{
+		l_DistanceOnScene = 1;
+	}
+	else if (this.m_EndKeyRepeat.IsKeyDown() && this.m_Focus == 15)
+	{
+		l_DistanceOnScene = -1;
+	}
+	else if (this.m_UpKeyRepeat.IsKeyDown() && this.m_Focus == 10)
+	{
+		l_DistanceOnScene = 1;
+	}
+	else if (this.m_DownKeyRepeat.IsKeyDown() && this.m_Focus == 11)
+	{
+		l_DistanceOnScene = -1;
+	}
+	else if (this.m_PageUpKeyRepeat.IsKeyDown() && this.m_Focus == 12)
+	{
+		l_DistanceOnScene = 1;
+	}
+	else if (this.m_PageDownKeyRepeat.IsKeyDown() && this.m_Focus == 13)
+	{
+		l_DistanceOnScene = -1;
+	}
+	if (this.m_JoyPrevBackScene.IsKeyDown() && this.m_Focus == 20)
+	{
+		l_DistanceOnScene = 1;
+	}
+	else if (this.m_JoyNextBackScene.IsKeyDown() && this.m_Focus == 21)
+	{
+		l_DistanceOnScene = -1;
+	}
+	else if (this.m_JoyRepeatPrevBackScene.IsKeyDown() && this.m_Focus == 22)
+	{
+		l_DistanceOnScene = 5;
+	}
+	else if (this.m_JoyRepeatNextBackScene.IsKeyDown() && this.m_Focus == 23)
+	{
+		l_DistanceOnScene = -5;
+	}
+	if (this.m_BackSpaceKeyClick.IsClick(-2147483648))
+	{
+		Ｓ＿ボイスリプレイ();
+	}
+	int nMouseX = 0;
+	int nMouseY = 0;
+	bool bInCursor = AFL_Mouse_GetPos(nMouseX, nMouseY);
+	if (this.m_SceneSlider.IsDragging() || bInCursor && this.m_SceneSliderShowRect.IsIn(nMouseX, nMouseY))
+	{
+		this.m_SceneSlider.SetShow(true);
+		this.m_SceneSliderBackSprite.SetShow(true);
+		this.m_SceneSlider.CheckBeginDrag();
+		this.m_SceneSlider.UpdateDraggingBox();
+		this.m_SceneSlider.UpdateState();
+		if (this.m_SceneSlider.IsDragging())
+		{
+			l_DistanceOnScene = 0;
+			this.UpdateIndexBySceneSliderRate();
+		}
+		this.m_PageNumberTextSprite.SetShow(true);
+		int ButtonIndex = 0;
+		for (ButtonIndex = 0; ButtonIndex < this.m_ButtonList.Numof(); ++ButtonIndex)
+		{
+			this.m_ButtonList[ButtonIndex].SetShow(true);
+		}
+	}
+	else
+	{
+		this.m_SceneSlider.SetShow(false);
+		this.m_SceneSliderBackSprite.SetShow(false);
+		this.m_PageNumberTextSprite.SetShow(false);
+		int ButtonIndex = 0;
+		for (ButtonIndex = 0; ButtonIndex < this.m_ButtonList.Numof(); ++ButtonIndex)
+		{
+			this.m_ButtonList[ButtonIndex].SetShow(false);
+		}
+	}
+	if (l_DistanceOnScene > 0)
+	{
+		this._DoPrev(l_DistanceOnScene);
+	}
+	if (l_DistanceOnScene < 0)
+	{
+		this._DoNext(-l_DistanceOnScene);
+	}
+	UpdateView(true);
+}
+
+void CBackSceneView::CreateSceneSliderBackSprite()
+{
+	string BackCG = g_BackSceneDocument.GetSceneSliderBackCG();
+	CASPos Pos;
+	Pos = g_BackSceneDocument.GetSceneSliderBackPos();
+	if (!BackCG.Empty())
+	{
+		this.m_SceneSliderBackSprite.SetType(0);
+		ref CASCGSprite CGSprite = this.m_SceneSliderBackSprite.GetCGSprite();
+		CGSprite.SetCG(BackCG);
+	}
+	else
+	{
+		Pos.Set(752, 50);
+		this.m_SceneSliderBackSprite.SetType(1);
+		ref CASConstructionSprite ConstructionSprite = this.m_SceneSliderBackSprite.GetConstructionSprite();
+		ConstructionSprite.Clear();
+		ConstructionSprite.AddCreate(24, 350);
+		ConstructionSprite.AddFillGradationHorizon(0, 0, 24, 350, 224, 224, 255, 128, 224, 192);
+		ConstructionSprite.AddFillAMap(0, 0, 24, 350, 64);
+		ConstructionSprite.Build();
+	}
+	this.m_SceneSliderBackSprite.SetPos(Pos.GetX(), Pos.GetY());
+	this.m_SceneSliderBackSprite.SetZ(this.m_nBaseZ + 1);
+	this.m_SceneSliderBackSprite.SetShow(false);
+}
+
+void CBackSceneView::CreateSceneSlider()
+{
+	CASRect Rect;
+	Rect = g_BackSceneDocument.GetSceneSliderRect();
+	if (Rect.GetWidth() > 0 && Rect.GetHeight() > 0)
+	{
+		this.m_SceneSlider.SetRect(Rect.GetX(), Rect.GetY(), Rect.GetWidth(), Rect.GetHeight());
+	}
+	else
+	{
+		this.m_SceneSlider.SetRect(752, 50, 24, 350);
+	}
+	this.m_SceneSlider.Init();
+	string BoxCG = g_BackSceneDocument.GetSceneSliderBoxCG();
+	string BoxOnCursorCG = g_BackSceneDocument.GetSceneSliderBoxOnCursorCG();
+	if (!BoxCG.Empty() && !BoxOnCursorCG.Empty())
+	{
+		this.m_SceneSlider.SetCG(BoxCG, BoxOnCursorCG);
+	}
+	else
+	{
+		this.m_SceneSlider.CreateSampleSprite(24, 32);
+	}
+	this.m_SceneSlider.SetZ(this.m_nBaseZ + 2);
+	this.m_SceneSlider.SetShow(false);
+}
+
+void CBackSceneView::_DoNext(int PrevCount)
+{
+	this._m_index += PrevCount;
+	if (this._m_index >= SYS_GetNumofADVScene())
+	{
+		this._m_index = SYS_GetNumofADVScene() - 1;
+	}
+	this._SetSceneIndex(this._m_index);
+}
+
+void CBackSceneView::_DoPrev(int PrevCount)
+{
+	this._m_index -= PrevCount;
+	if (this._m_index < 0)
+	{
+		this._m_index = 0;
+	}
+	this._SetSceneIndex(this._m_index);
+}
+
+void CBackSceneView::_CreateButton(int MessageWindowNumber)
+{
+	this.m_ButtonList.Alloc(6);
+	int _i = 0;
+	for (_i = 0; _i < this.m_ButtonList.Numof(); ++_i)
+	{
+		_CButtonCgInfo ButtonInfo;
+		ButtonInfo = g_BackSceneDocument.GetButtonByMessageWindow(MessageWindowNumber, _i);
+		string KeyUpCG = ButtonInfo._GetCg(false, false, false);
+		string KeyDownCG = ButtonInfo._GetCg(false, true, false);
+		string KeyUpOnCursorCG = ButtonInfo._GetCg(true, false, false);
+		string KeyDownOnCursorCG = ButtonInfo._GetCg(true, true, false);
+		this.m_ButtonList[_i].CreateCGButton(KeyUpCG, KeyDownCG, KeyUpOnCursorCG, KeyDownOnCursorCG, "");
+		this.m_ButtonList[_i].SetPos(ButtonInfo._GetX(), ButtonInfo._GetY());
+		this.m_ButtonList[_i].SetZ(ButtonInfo._GetZ());
+		this.m_ButtonList[_i].SetShow(false);
+	}
+}
+
+void CBackSceneView::_UpdateButton()
+{
+	int _prev_btn_id = this._m_cur_btn_id;
+	this._m_cur_btn_id = -2147483648;
+	int _i = 0;
+	for (_i = 0; _i < this.m_ButtonList.Numof(); ++_i)
+	{
+		this.m_ButtonList[_i].UpdateState();
+		if (_i == 4)
+		{
+			continue;
+		}
+		if (this.m_ButtonList[_i].IsMouseCursorIn())
+		{
+			this._m_cur_btn_id = _i;
+		}
+	}
+	if (this._m_cur_btn_id != _prev_btn_id && this._m_cur_btn_id != -2147483648)
+	{
+		this._PlayCursorSound(this._m_cur_btn_id);
+	}
+}
+
+void CBackSceneView::CheckLButtonClick()
+{
+	if (!this.m_LButtonClick.IsClick(this._m_cur_btn_id))
+	{
+		return;
+	}
+	switch (this._m_cur_btn_id)
+	{
+		case 0:
+			this._PlayClickSound(this._m_cur_btn_id);
+			this._DoNext(1);
+			break;
+		case 1:
+			this._PlayClickSound(this._m_cur_btn_id);
+			this._DoPrev(1);
+			break;
+		case 2:
+			this._PlayClickSound(this._m_cur_btn_id);
+			this._DoExit();
+			break;
+		case 3:
+			this._PlayClickSound(this._m_cur_btn_id);
+			this._DoPlayVoice();
+			break;
+		case 5:
+			this._PlayClickSound(this._m_cur_btn_id);
+			this.HideMessageWindow();
+			break;
+	}
+}
+
+void CBackSceneView::_DoExit()
+{
+	this._m_exit = true;
+}
+
+void CBackSceneView::_DoPlayVoice()
+{
+	SYS_StopVoice();
+	Ｓ＿ボイスリプレイ();
+}
+
+void CBackSceneView::_Redraw()
+{
+	SYS_StopVoiceByMessageClick();
+	画面保管_t ADVScene;
+	if (SYS_GetADVScene(this._m_index, ADVScene))
+	{
+		GOAT_ReleaseAllPartsWithoutSystem();
+		SYS_画面復帰(ADVScene, true);
+		if (ADVScene.ActiveMessageWindowNumber > 0)
+		{
+			this._CreateButton(ADVScene.ActiveMessageWindowNumber);
+			this.UpdatePageNumberTextSprite(ADVScene.ActiveMessageWindowNumber);
+		}
+	}
+	SYS_メッセージ全表示();
+}
+
+void CBackSceneView::_SetSceneIndex(int _index)
+{
+	this._m_index = _index;
+	this.UpdateSceneSliderRateByIndex();
+	this._Redraw();
+}
+
+void CBackSceneView::UpdatePageNumberTextSprite(int MessageWindowNumber)
+{
+	string Text = "%3d / %3d" % (this.GetSceneIndex() + 1) % SYS_GetNumofADVScene();
+	if (this.m_PageNumberText == Text)
+	{
+		return;
+	}
+	CASCharSpriteProperty CharProperty;
+	CharProperty = SYS_TransCharSpriteProperty(g_BackSceneDocument._GetCaptionNumeralTM());
+	int nZ = this.m_nBaseZ + 10;
+	CASPos Pos;
+	Pos = g_BackSceneDocument.GetCaptionNumeralPosByMessageWindow(MessageWindowNumber);
+	this.m_PageNumberTextSprite.SetPos(Pos.GetX(), Pos.GetY());
+	this.m_PageNumberTextSprite.SetZ(nZ + 1);
+	this.m_PageNumberTextSprite.SetCharSpace(g_BackSceneDocument.GetPageNumberCharSpace());
+	this.m_PageNumberTextSprite.SetText(Text, CharProperty);
+	this.m_PageNumberText = Text;
+}
+
+int CBackSceneView::GetSceneIndex()
+{
+	return this._m_index;
+}
+
+void CBackSceneView::_PlayClickSound(int _id)
+{
+	if (_id < 0 || _id >= this.m_ButtonList.Numof())
+	{
+		return;
+	}
+	_CButtonCgInfo Info;
+	Info = g_BackSceneDocument._GetButton(_id);
+	int _sound = Info._GetClickSound();
+	if (_sound > 0)
+	{
+		システム効果音(_sound);
+	}
+}
+
+void CBackSceneView::_PlayCursorSound(int _id)
+{
+	if (_id < 0 || _id >= this.m_ButtonList.Numof())
+	{
+		return;
+	}
+	_CButtonCgInfo Info;
+	Info = g_BackSceneDocument._GetButton(_id);
+	int _sound = Info._GetCursorSound();
+	if (_sound > 0)
+	{
+		システム効果音(_sound);
+	}
+}
+
+float CBackSceneView::GetSceneSliderRateByIndex()
+{
+	int nMaxIndex = SYS_GetNumofADVScene() - 1;
+	if (nMaxIndex <= 0)
+	{
+		return 0.0;
+	}
+	return this.GetSceneIndex() / nMaxIndex;
+}
+
+void CBackSceneView::UpdateSceneSliderRateByIndex()
+{
+	float fRate = this.GetSceneSliderRateByIndex();
+	if (this.m_fSceneSliderRate == fRate)
+	{
+		return;
+	}
+	this.m_fSceneSliderRate = fRate;
+	this.m_SceneSlider.SetBoxPosByRate(fRate);
+}
+
+void CBackSceneView::UpdateIndexBySceneSliderRate()
+{
+	float fRate = this.m_SceneSlider.GetRateByBoxPos();
+	if (this.m_fSceneSliderRate == fRate)
+	{
+		return;
+	}
+	this.m_fSceneSliderRate = fRate;
+	int nNewIndex = Math.Min(SYS_GetNumofADVScene() * fRate, SYS_GetNumofADVScene() - 1);
+	if (this._m_index != nNewIndex)
+	{
+		this._m_index = nNewIndex;
+		this._Redraw();
+	}
+}
+
+void CBackSceneView::HideMessageWindow()
+{
+	int n = 0;
+	for (n = 0; n < this.m_ButtonList.Numof(); ++n)
+	{
+		this.m_ButtonList[n].SetShow(false);
+	}
+	this.m_SceneSlider.SetShow(false);
+	this.m_SceneSliderBackSprite.SetShow(false);
+	this.m_PageNumberTextSprite.SetShow(false);
+	SYS_メッセージウィンドウ非表示();
+	for (n = 0; n < this.m_ButtonList.Numof(); ++n)
+	{
+		this.m_ButtonList[n].SetShow(true);
+	}
+	this.m_PageNumberTextSprite.SetShow(true);
+}
+

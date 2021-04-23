@@ -1,0 +1,19 @@
+void 全体マップ()
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	int nX = 0;
+	int nY = 0;
+	T_MapSmall sMap;
+	if (!sMap.run(nX, nY))
+	{
+		return;
+	}
+	if (デバッグモード())
+	{
+		マップ_位置設定(nX, nY);
+	}
+}
+

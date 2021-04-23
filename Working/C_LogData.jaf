@@ -1,0 +1,108 @@
+void ログデータ_初期化()
+{
+	ログデータ_削除();
+	g_sLogData.add(1);
+	g_sLogData.add(9);
+}
+
+void ログデータ_削除()
+{
+	g_sLogData.delete();
+}
+
+bool ログデータ_開始(int nNo, int nLength, bool bClear)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	if (bClear)
+	{
+		g_sLogData.clear();
+	}
+	rfData.start(nLength, bClear);
+	return true;
+}
+
+bool ログデータ_停止(int nNo, bool bClear)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	rfData.stop(bClear);
+	return true;
+}
+
+bool ログデータ_テキスト追加(int nNo, string szText, int nColor)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	return rfData.addText(szText, nColor);
+}
+
+bool ログデータ_区切り追加(int nNo, int nColor)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	return rfData.addSeparator(nColor);
+}
+
+int ログデータ_数(int nNo)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return -1;
+	}
+	return rfData.getCount();
+}
+
+bool ログデータ_ログ取得中(int nNo)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	return rfData.isLogging();
+}
+
+int ログデータ_タイプ(int nNo, int nIndex)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return -1;
+	}
+	return rfData.getType(nIndex);
+}
+
+string ログデータ_テキスト(int nNo, int nIndex)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return "";
+	}
+	return rfData.getText(nIndex);
+}
+
+int ログデータ_色(int nNo, int nIndex)
+{
+	ref T_LogData rfData = g_sLogData.get(nNo);
+	if (rfData === NULL)
+	{
+		return -1;
+	}
+	return rfData.getColor(nIndex);
+}
+

@@ -1,0 +1,11 @@
+void ＭＥＳ_システム(string szText)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	T_SystemMessage sSysMsg;
+	sSysMsg.run(szText, 0, 0, 0);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+

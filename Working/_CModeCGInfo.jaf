@@ -1,0 +1,64 @@
+_CModeCGInfo::_CModeCGInfo()
+{
+	this._Clear();
+}
+
+void _CModeCGInfo::_Clear()
+{
+	this._m_CGName = "";
+	this._m_nX = 0;
+	this._m_nY = 0;
+	this._m_nZ = 0;
+	this._m_bShow = false;
+}
+
+string _CModeCGInfo::_GetCG()
+{
+	return this._m_CGName;
+}
+
+int _CModeCGInfo::_GetX()
+{
+	return this._m_nX;
+}
+
+int _CModeCGInfo::_GetY()
+{
+	return this._m_nY;
+}
+
+int _CModeCGInfo::_GetZ()
+{
+	return this._m_nZ;
+}
+
+bool _CModeCGInfo::_GetShow()
+{
+	return this._m_bShow;
+}
+
+void _CModeCGInfo::_SetCG(string _CG)
+{
+	this._m_CGName = _CG;
+}
+
+void _CModeCGInfo::_SetX(int _nX)
+{
+	this._m_nX = _nX;
+}
+
+void _CModeCGInfo::_SetY(int _nY)
+{
+	this._m_nY = _nY;
+}
+
+void _CModeCGInfo::_SetZ(int _nZ)
+{
+	this._m_nZ = _nZ;
+}
+
+void _CModeCGInfo::_SetShow(bool _bShow)
+{
+	this._m_bShow = _bShow;
+}
+

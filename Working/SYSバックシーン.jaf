@@ -1,0 +1,28 @@
+void SYS_バックシーン登録()
+{
+	if (!g_bバックシーン登録可能)
+	{
+		return;
+	}
+	if (_Ｍ枠 <= 0)
+	{
+		return;
+	}
+	画面保管_t ADVScene;
+	SYS_画面保管(ADVScene);
+	if (!AnteaterADVEngine.ADVSceneKeeper_AddADVScene(ADVScene))
+	{
+		system.Output("SYS_バックシーン登録() : ADVSceneKeeper_AddADVScene() error\n");
+	}
+}
+
+int SYS_GetNumofADVScene()
+{
+	return AnteaterADVEngine.ADVSceneKeeper_GetNumofADVScene();
+}
+
+bool SYS_GetADVScene(int nIndex, ref 画面保管_t ADVScene)
+{
+	return AnteaterADVEngine.ADVSceneKeeper_GetADVScene(nIndex, ADVScene);
+}
+

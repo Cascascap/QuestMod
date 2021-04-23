@@ -1,0 +1,89 @@
+int ‚R‚cÝ’è_ƒŒƒxƒ‹Žæ“¾()
+{
+	int nLevel = ‚R‚cÝ’èƒŒƒxƒ‹();
+	CReignSetting ReignSetting;
+	bool bRet = system.ExistFile(ReignSetting.GetSaveFileName());
+	if (‚R‚cÝ’è_ƒŒƒxƒ‹Šm”F(nLevel))
+	{
+		if (!bRet)
+		{
+			return ‚R‚cÝ’è_ƒŒƒxƒ‹•Û‘¶(nLevel);
+		}
+		return nLevel;
+	}
+	if (bRet)
+	{
+		nLevel = 5;
+		‚R‚cÝ’èƒŒƒxƒ‹Ý’è(nLevel);
+		return nLevel;
+	}
+	return ‚R‚cÝ’è_ƒŒƒxƒ‹•Û‘¶(3);
+}
+
+int ‚R‚cÝ’è_ƒŒƒxƒ‹•Û‘¶(int nLevel)
+{
+	nLevel = ‚R‚cÝ’è_ƒŒƒxƒ‹Šm”F(nLevel) ? nLevel : 3;
+	CReignSetting ReignSetting;
+	switch (nLevel)
+	{
+		case 1:
+			ReignSetting.SetRenderMode(1);
+			ReignSetting.SetAntiAliasing(0);
+			ReignSetting.SetWaitVSync(0);
+			ReignSetting.SetShadowMode(0);
+			ReignSetting.SetShadowMapResolutionLevel(3);
+			ReignSetting.SetTextureFilterMode(0);
+			ReignSetting.SetVertexBlendMode(0);
+			ReignSetting.SetLightMapMode(1);
+			ReignSetting.SetEdge(0);
+			break;
+		case 2:
+			ReignSetting.SetRenderMode(2);
+			ReignSetting.SetAntiAliasing(0);
+			ReignSetting.SetWaitVSync(0);
+			ReignSetting.SetShadowMode(1);
+			ReignSetting.SetShadowMapResolutionLevel(3);
+			ReignSetting.SetTextureFilterMode(1);
+			ReignSetting.SetVertexBlendMode(2);
+			ReignSetting.SetLightMapMode(1);
+			ReignSetting.SetEdge(0);
+			break;
+		case 3:
+			ReignSetting.SetRenderMode(2);
+			ReignSetting.SetAntiAliasing(0);
+			ReignSetting.SetWaitVSync(1);
+			ReignSetting.SetShadowMode(2);
+			ReignSetting.SetShadowMapResolutionLevel(2);
+			ReignSetting.SetTextureFilterMode(1);
+			ReignSetting.SetVertexBlendMode(2);
+			ReignSetting.SetLightMapMode(1);
+			ReignSetting.SetEdge(1);
+			break;
+		case 4:
+			ReignSetting.SetRenderMode(2);
+			ReignSetting.SetAntiAliasing(2);
+			ReignSetting.SetWaitVSync(1);
+			ReignSetting.SetShadowMode(3);
+			ReignSetting.SetShadowMapResolutionLevel(1);
+			ReignSetting.SetTextureFilterMode(2);
+			ReignSetting.SetVertexBlendMode(2);
+			ReignSetting.SetLightMapMode(1);
+			ReignSetting.SetEdge(2);
+			break;
+		case 5:
+			goto label0;
+		default:
+			break;
+	}
+	ReignSetting.Save();
+	AFL_Config_SetWaitVSync(ReignSetting.GetWaitVSync() != 0);
+label0:
+	‚R‚cÝ’èƒŒƒxƒ‹Ý’è(nLevel);
+	return nLevel;
+}
+
+bool ‚R‚cÝ’è_ƒŒƒxƒ‹Šm”F(int nLevel)
+{
+	return nLevel >= 1 && nLevel <= 5;
+}
+

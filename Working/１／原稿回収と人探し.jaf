@@ -1,0 +1,515 @@
+void ０１Ｂプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'　' R;
+	'     Epiphany Dungeon' A;
+	音楽(93, -1, -1);
+	セリフ(2000, "");
+	'"Alright, let\'s do a new quest today."' A;
+	枠消去();
+	立ち絵表示(1020, 1, 200);
+	セリフ(2022, "");
+	'"Why am I here again..."' A;
+	セリフ(2000, "");
+	'"This is just another new experience for you to learn from.' R;
+	' I\'m sure it\'ll come in handy someday."' A;
+	セリフ(2022, "");
+	'"I\'ll die before then..."' A;
+	セリフ(2000, "");
+	'"I\'ll at least bring back your remains, then."' A;
+	セリフ(2000, "");
+	'"So, what\'s the job?"' A;
+	セリフ(2020, "");
+	'"Just changing the subject..."' A;
+	'"...Haahh... Please wait a moment."' A;
+	ト書き();
+	'Sniffling, Sachiko dutifully took out the request from her pocket.' A;
+	セリフ(2020, "");
+	'"Erm..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ミニイベント表示(4210, 1, 500);
+	セリフ(2020, "");
+	'"Someone who went to pick up Mr. Doessky\'s manuscript went missing in Epiphany Dungeon."' A;
+	'"Please rescue the editor (30 years old with wife and children) as soon as possible."' A;
+	'"If the worst has happened, please at least retrieve the manuscript."' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	立ち絵表示(1020, 1, 200);
+	セリフ(2021, "");
+	'"...That\'s it."' A;
+	'"...The rest is scribbled and I can\'t read it."' A;
+	'"Sounds like trouble..."' A;
+	セリフ(2000, "");
+	'"Well, not my problem.' R;
+	' Let\'s go."' A;
+	セリフ(2022, "");
+	'"*sob* *sob*... Mom, Dad...' R;
+	' It might all be over for Sachiko..."' A;
+	ADVOFF();
+}
+
+void ０１Ｂ来た事があるぞ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(1, -1, -1);
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"I\'ve been here before..."' A;
+	セリフ(2020, "");
+	'"Huh? What do you mean?"' A;
+	セリフ(2005, "");
+	'"Oh, that\'s right.' R;
+	' It\'s where that weird writer lives."' A;
+	セリフ(2020, "");
+	'"Umm, that\'s what I explained earlier..."' A;
+	セリフ(2000, "");
+	'"I\'m not interested in stuff that doesn\'t involve girls."' A;
+	セリフ(2022, "");
+	'"Then what was the point of me explaining things...?"' A;
+	セリフ(2000, "");
+	'"Well, let\'s keep going, anywho."' A;
+	セリフ(2020, "");
+	'"Ahh, he\'s totally full of himself..."' A;
+	ADVOFF();
+}
+
+void ０１Ｂハニーの死体()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(0, 1, 1000);
+	セリフ(2020, "");
+	'"Oh, look, sir."' A;
+	セリフ(2000, "");
+	'"Huh?"' A;
+	枠消去();
+	ミニイベント表示(4000, 1, 500);
+	ト書き();
+	'The newspaper delivery hanny\'s corpse was lying, weather-beaten, in the direction Sachiko pointed.' A;
+	セリフ(2020, "");
+	セリフ(2020, "");
+	'"It looks the same as it did the last time we were here."' A;
+	セリフ(2000, "");
+	'"Well, hannies don\'t rot when they die.' R;
+	' It\'s much nicer."' A;
+	セリフ(2005, "");
+	'"It\'s pretty awful when humans die."' A;
+	セリフ(2021, "");
+	'"Awful...?"' A;
+	音楽(76, -1, -1);
+	セリフ(2005, "");
+	'"Yeah, rotten corpses are super gross."' A;
+	'"First of all, they stink.' R;
+	' And it\'s just disgusting looking at them."' A;
+	'"I\'ll explain from the top.' R;
+	' First, your blood stops moving, so you start changing color, right?"' A;
+	'"Then... Huh?"' A;
+	セリフ(2022, "");
+	'*tremble* *tremble* *tremble* *tremble*...' A;
+	ト書き();
+	'Sachiko had sat down and was covering her ears.' A;
+	セリフ(2002, "");
+	'"Hey! Listen to me!"' A;
+	顔揺れ(3, false);
+	セリフ(2020, "");
+	'"*tremble* *tremble* *tremble* *tremble*"' A;
+	セリフ(2000, "");
+	'"..............."' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	立ち絵表示(1020, 1, 200);
+	セリフ(2022, "");
+	'"*twitch* *twitch*..."' A;
+	セリフ(2001, "");
+	'"And then! Monsters start coming near!"' A;
+	立ち絵揺れ(3, false);
+	セリフ(2022, "");
+	'"Noooooo!"' A;
+	セリフ(2001, "");
+	'"And insects start swarming!' R;
+	' They scarf on your rotting flesh!"' A;
+	立ち絵揺れ(3, false);
+	セリフ(2022, "");
+	'"Nooo, nooo!"' A;
+	セリフ(2001, "");
+	'"Then maggots start growing until your whole body is covered with them writhing around!"' A;
+	立ち絵揺れ(3, false);
+	セリフ(2022, "");
+	'"NOOOOOOOO!!"' A;
+	音楽(0, 1, 1000);
+	セリフ(2000, "");
+	'"Well? You give up?"' A;
+	セリフ(2022, "");
+	'"*sob* *sob*... I give up."' A;
+	'"You\'re right...' R;
+	' That is what happens when humans die."' A;
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"What did you think would happen when you died?"' A;
+	セリフ(2021, "");
+	'"Huh? Well, umm..."' A;
+	'"Like I\'d go into a coffin and you\'d carry me...?"' A;
+	セリフ(2000, "");
+	'"I wouldn\'t do that, you dumbass.' R;
+	' I\'d leave your butt behind."' A;
+	セリフ(2023, "");
+	'"Whaaaaat?!"' A;
+	セリフ(2000, "");
+	'"Gahahaha, if you don\'t want that, then try hard not to die."' A;
+	セリフ(2020, "");
+	'"I-I\'m only here because of you in the first place!"' A;
+	ADVOFF();
+}
+
+void ０１Ｂドエススキー／初()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5550, gＭ, 0, 0);
+	セリフ(2020, "");
+	'"You want to intrude on Mr. Doessky?"' A;
+	セリフ(2000, "");
+	'"Hmm."' A;
+	'"Well, we don\'t really have any business with him, but let\'s go in anyway."' A;
+	枠消去();
+	背景アウト(500);
+	背景イン(5010, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Doessky\'s room' A;
+	音楽(93, -1, -1);
+	セリフ(2801, "");
+	'"Hey, what are you strolling in here for?"' A;
+	'"I already gave the manuscript to the guy yesterday."' A;
+	セリフ(2000, "");
+	'"Don\'t misunderstand.' R;
+	' Our job isn\'t to get your manuscript from you today."' A;
+	'"We came to save the editor who met with disaster because of your cursed manuscript."' A;
+	セリフ(2801, "");
+	'"Don\'t call it cursed, you nincompoop."' A;
+	'"I have no tea to serve you.' R;
+	' Get out of here."' A;
+	セリフ(2000, "");
+	'"Hm? What\'s that you\'re holding?"' A;
+	セリフ(2801, "");
+	'"Oh? I\'m surprised a yankee like you noticed."' A;
+	ト書き();
+	'Doessky was warmly cradling a paper box.' A;
+	セリフ(2801, "");
+	'"I\'ll give you a glance, then."' A;
+	ト書き();
+	'A large piece of castella, sparkling in the light, was inside.' A;
+	'A sweet scent wafted from it.' A;
+	セリフ(2005, "");
+	'"Ooh... That looks good."' A;
+	セリフ(2801, "");
+	'"And it is.' R;
+	' It practically melts in your mouth."' A;
+	'"My editor brought it to me yesterday as a gift."' A;
+	セリフ(2020, "");
+	'"Umm, is this possibly the castella from Suzuran Bakery?"' A;
+	セリフ(2801, "");
+	'"Oh?' R;
+	' You\'re well-informed."' A;
+	セリフ(2005, "");
+	'"What\'s that?"' A;
+	セリフ(2020, "");
+	'"It\'s a world-famous Nipponese bakery."' A;
+	セリフ(2024, "");
+	'"They use only the best ingredients in carefully measured quantities and their bakers are all specially trained."' A;
+	'"Basically their special process creates a miracle in your mouth."' A;
+	セリフ(2000, "");
+	'"How do you know all this?"' A;
+	セリフ(2024, "");
+	'"I like reading travel guide magazines."' A;
+	セリフ(2801, "");
+	'"It\'s been a long while since I\'ve had it, but it\'s a real delight."' A;
+	セリフ(2004, "");
+	'"That sounds nice. Gimme some too."' A;
+	セリフ(2801, "");
+	'"No."' A;
+	セリフ(2005, "");
+	'"Gah! Then why\'d you show it to us?"' A;
+	セリフ(2801, "");
+	'"I just wanted to brag."' A;
+	セリフ(2021, "");
+	'"Oh, I see."' A;
+	セリフ(2000, "");
+	'"Whatever, just give it to me!"' A;
+	セリフ(2801, "");
+	'"Bleh."' A;
+	セリフ(2000, "");
+	'"Hand it over!"' A;
+	セリフ(2801, "");
+	'"I won\'t!"' A;
+	セリフ(2000, "");
+	'"Oh, come on!"' A;
+	セリフ(2801, "");
+	'"Never!"' A;
+	セリフ(2002, "");
+	'"Grrrrrrrr."' A;
+}
+
+void ０１Ｂドエススキー／殺す()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2000, "");
+	'"I am a man who gets everything he wants!"' A;
+	セリフ(2002, "");
+	'"Now give it to me!"' A;
+	セリフ(2801, "");
+	'"Daaah, don\'t touch me!"' A;
+	セリフ(2002, "");
+	'"It\'s mine!"' A;
+	セリフ(2801, "");
+	'"You buffoon!!"' A;
+	ト書き();
+	'The two fought over the box of castella between them.' A;
+	セリフ(2020, "");
+	'"Wawawah, calm down, both of you!"' A;
+	セリフ(2801, "");
+	'"Let go!"' A;
+	セリフ(2000, "");
+	'"No way!"' A;
+	セリフ(2801, "");
+	'"Die!"' A;
+	セリフ(2000, "");
+	'"Are you fucking stupid?!"' A;
+	'"JUST... LET... GO..."' A;
+	セリフ(2002, "");
+	'"Gimme iiiiit!"' A;
+	ト書き();
+	'　' R;
+	' <whoosh!>' A;
+	'Rance forcefully wrested the castella away.' A;
+	全画面揺れ(2, false);
+	ト書き();
+	'　' R;
+	' <clunk!>' A;
+	セリフ(2801, "");
+	'"Augh!"' A;
+	セリフ(2001, "");
+	'"Gahahaha!' R;
+	' He hit the wall like a dumbass!"' A;
+	ト書き();
+	'　' R;
+	' <slide... slide, slide, slide>' A;
+	音楽(0, 1, 1000);
+	セリフ(2000, "");
+	'"? Hey, gramps."' A;
+	ト書き();
+	'　' R;
+	' <thud>' A;
+	セリフ(2801, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2023, "");
+	'"Aaah! He\'s not breathing!"' A;
+	セリフ(2005, "");
+	'"Oops..."' A;
+	セリフ(2801, "");
+	'"........................"' A;
+	セリフ(2023, "");
+	'"Wah! Wah! He\'s getting colder!"' A;
+	セリフ(2022, "");
+	'"S-Sir...' R;
+	' Wh-Wh-Wh-- What do we do...?"' A;
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"How sad.' R;
+	' We\'ve witnessed the final moments of a great author."' A;
+	セリフ(2024, "");
+	'"Huhh?! The final moments?!"' A;
+	セリフ(2000, "");
+	'"Yup, it\'s a real tragedy.' R;
+	' Okay, let\'s go, Sachiko."' A;
+	セリフ(2020, "");
+	'"W-Wait, sir!"' A;
+	セリフ(2000, "");
+	'"Oh, that\'s right.' R;
+	' I feel bad, so I won\'t take the castella."' A;
+	'"If there\'s an afterlife, I hope he fills his stomach with it there."' A;
+	'"Boohoohoo... How sad..."' A;
+	セリフ(2020, "");
+	'"...You\'re acting all serious, but you were--"' A;
+	セリフ(2000, "");
+	'"Even great men have to die when it\'s their time.' R;
+	' It\'s sad, but that\'s how the world works."' A;
+	セリフ(2020, "");
+	'"U-Umm, sir, I\'m telling you, the one responsible is--"' A;
+	セリフ(2000, "");
+	'"Well, let\'s get out of here, Sachiko."' A;
+	セリフ(2023, "");
+	'"Wawawah, don\'t pull my collar--Gweh!"' A;
+	ト書き();
+	'Rance\'s party left the master author\'s room.' A;
+	ADVOFF();
+}
+
+void ０１Ｂドエススキー／立ち去る()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2002, "");
+	'"Gaaah! I don\'t want your shitty cake!"' A;
+	ト書き();
+	'Rance gave up on the castella.' A;
+	セリフ(2801, "");
+	'"Oh yeah?"' A;
+	'"I suppose I\'ll just eat it, then."' A;
+	セリフ(2005, "");
+	'"Tch, do what you want."' A;
+	ト書き();
+	'Doessky bit heartily into the castella.' A;
+	セリフ(2801, "");
+	'"Ooh, this is..."' A;
+	'"It\'s as if it\'s melting in my mouth..."' A;
+	'"The soft flavor of the eggs...' R;
+	' The heroic sweetness of their refined sugar.' R;
+	' Is this the scent of alcohol tickling my nose...?"' A;
+	'"And more, the fact that its soft flavor lasts even though it\'s long past cooling."' A;
+	'"As always, they do only the best work..."' A;
+	ト書き();
+	'Doessky sighed, satisfied.' A;
+	セリフ(2005, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Wait a minute."' A;
+	セリフ(2801, "");
+	'"Hmm?"' A;
+	ト書き();
+	'Rance took a small bottle of salt from nearby.' A;
+	全画面揺れ(2, false);
+	セリフ(2000, "");
+	'"Deryaaaaaaaaaah!!"' C;
+	R();
+	'  ↑  Shake shake shake shake shake shake!!' A;
+	セリフ(2801, "");
+	'"Wh-Wh-Wh-Wh-..."' A;
+	セリフ(2001, "");
+	'"Gahahaha! I bet it\'s even tastier now!"' A;
+	ト書き();
+	'The castella was covered in a mountain of salt.' A;
+	セリフ(2801, "");
+	'"Are you a complete imbecile?!' R;
+	' I can\'t eat this anymore!"' A;
+	セリフ(2000, "");
+	'"It just needed a bit more flavor.' R;
+	' Just try it!"' A;
+	セリフ(2801, "");
+	'"I\'ll kill you, you bastard!"' A;
+	セリフ(2000, "");
+	'"Whoa there!"' A;
+	枠消去();
+	背景アウト(500);
+	背景イン(gＭ, 500, "", false);
+	ト書き();
+	音楽(0, 1, 1000);
+	'Rance\'s party was chased out.' A;
+	セリフ(2001, "");
+	'"Gahahaha, that old geezer\'s face was bright red! He was so pissed!"' A;
+	セリフ(2021, "");
+	'"Actually, I think he was crying..."' A;
+	ADVOFF();
+}
+
+void ０１Ｂドエススキー／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"It\'ll probably just be trouble if we go in.' R;
+	' Let\'s keep away."' A;
+	ト書き();
+	'Rance left.' A;
+	ADVOFF();
+}
+
+void ０１Ｂ原稿拾う()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2020, "");
+	'"Oh, sir, there\'s some sort of bag here."' A;
+	セリフ(2000, "");
+	'"What is it? Check it out."' A;
+	セリフ(2020, "");
+	'"...Is this the manuscript?"' A;
+	ト書き();
+	'Writing paper was inside the paper bag.' A;
+	セリフ(2000, "");
+	'"Looks like it is.' R;
+	' Alright, we\'ve found it!"' A;
+	'"Mission cleared!"' A;
+	セリフ(2020, "");
+	'"Umm...' R;
+	' What do you think happened to the editor who came to pick this up?"' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	ト書き();
+	'Rance glanced around at his surroundings.' A;
+	セリフ(2000, "");
+	'"Don\'t see ’im."' A;
+	セリフ(2020, "");
+	'"He doesn\'t seem to be here."' A;
+	セリフ(2000, "");
+	'"Well, I don\'t really care about that.' R;
+	' Let\'s go home."' A;
+	セリフ(2020, "");
+	'"Huh? But the request was to rescue the editor, wasn\'t it...?"' A;
+	セリフ(2000, "");
+	'"Between editors and manuscripts, aren\'t these more important?"' A;
+	セリフ(2021, "");
+	'"That\'s a little cruel..."' A;
+	セリフ(2005, "");
+	'"And he\'s a dude."' A;
+	セリフ(2023, "");
+	'"That\'s really cruel!"' A;
+	セリフ(2000, "");
+	'"Let\'s go home."' A;
+	セリフ(2024, "");
+	'"Aaah, please wait for me!"' A;
+	ト書き();
+	'Rance\'s party completed their mission and returned to town.' A;
+}
+

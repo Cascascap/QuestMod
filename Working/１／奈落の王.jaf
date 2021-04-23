@@ -1,0 +1,565 @@
+void １８Ａプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	音楽(83, -1, -1);
+	ト書き();
+	'    Long ago, there were' R;
+	'    three bows in this world.' R;
+	C();
+	'~LONG AGO, THERE WERE' R;
+	'  THREE BOWS IN THIS WORLD.~' A;
+	'          The holy bow, Yanku,' R;
+	'          created by the gods.' R;
+	C();
+	'      ~THE HOLY BOW, YANKU,' R;
+	'        CREATED BY THE GODS.~' A;
+	'          The demon bow, Ginod,' R;
+	'          created by the devils.' R;
+	C();
+	'      ~THE DEMON BOW, GINOD,' R;
+	'        CREATED BY THE DEVILS.~' A;
+	'          The divine bow, Charis,' R;
+	'          created by the spirits.' R;
+	C();
+	'      ~THE DIVINE BOW, CHARIS,' R;
+	'        CREATED BY THE SPIRITS.~' A;
+	セリフ(2005, "");
+	'"...Huh?"' A;
+	セリフ(2020, "");
+	'"Wh-What is this...?"' A;
+	ト書き();
+	'They were created to be trump cards in the War of Myths, and thankfully were unneeded for this purpose. All but the demon bow Ginod, that is...' A;
+	セリフ(2021, "");
+	'"Oh, they stopped saying everything twice."' A;
+	セリフ(2005, "");
+	'"Guess it got old."' A;
+	ト書き();
+	'At a stalemate in the war, a lone devil released the might of that bow at a god called Fear.' A;
+	'The god, struck by the arrow, transformed and grew into a terrible beast with no sense of pain or free will.' A;
+	'It is said that this shadow of a god has become a space called the Abyss.' A;
+	枠消去();
+	背景表示(5780, 1, 500, "", false);
+	ト書き();
+	'　' R;
+	'     The Abyss' A;
+	'A world that exists somewhere in this one.' A;
+	'Another world that takes on all the darkness of this one.' A;
+	'There is a reason suffering does not disappear from this world.' A;
+	'That reason is the darkness of destruction that springs from the Abyss.' A;
+	'The god Fear, who became the Abyss, releases its hatred of the world as darkness.' A;
+	'That darkness of destruction is born in the Abyss and it lives in the Abyss, a curse upon the world.' A;
+	'That is why pain does not disappear from the world.' A;
+	'It is a thing that crawls, that devours life.' A;
+	'The darkness of destruction flows, wandering the Abyss.' A;
+	'There is a lord who rules over all of it.' A;
+	'The Lord of the Abyss.' A;
+	音楽(0, 1, 1000);
+	'There are none who have looked upon its form and lived to tell the tale.' A;
+	セリフ(2023, "");
+	'"What?!!"' A;
+	ADVOFF();
+}
+
+void １８Ａ奈落の王()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5780, 0, 0);
+	音楽(83, -1, -1);
+	ト書き();
+	'The Lord of the Abyss emitted an ominous aura.' A;
+	枠消去();
+	立ち絵表示(1460, 1, 200);
+	セリフ(2460, "");
+	'"I am the Lord of the Abyss."' A;
+	ト書き();
+	'Its voice resounded heavily.' A;
+	セリフ(2460, "");
+	'"Nothing can oppose me.' R;
+	' Nothing can kill me."' A;
+	'"I am the Lord of the Abyss."' A;
+	'"I am the one who will lead the world to destruction."' A;
+	'"The power of the darkness of destruction.' R;
+	' It will eliminate all.' R;
+	' It will turn all to nothingness.' R;
+	' It will lead all to chaos."' A;
+	'"I am rage. I am teaching.' R;
+	' I am the world. I am chaos."' A;
+	'"Despair, thus destruction.' R;
+	' History, thus suffering.' R;
+	' I will return all to nothingness."' A;
+	'"An iron hammer to injustice."' A;
+	ト書き();
+	'The area was filled with the scent of death.' A;
+	セリフ(2460, "");
+	'"AN IRON HAMMER TO INJUSTICE!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'The Lord of the Abyss attacked.' A;
+	ADVOFF();
+}
+
+void １８Ａ奈落の王／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5780, 0, 0);
+	音楽(0, -1, -1);
+	ト書き();
+	ト書き();
+	'The Lord of the Abyss had fallen.' A;
+	セリフ(2460, "");
+	'"Agony to peaceful life."' A;
+	'"Chaos even after suffering."' A;
+	'"I am."' A;
+	'"The Lord."' A;
+	'"Of the Abyss."' A;
+	'"The one."' A;
+	'"Who will destroy."' A;
+	'"The world."' A;
+	'"May you suffer."' A;
+	ト書き();
+	'The Lord of the Abyss had been defeated.' A;
+	セリフ(2023, "");
+	'"Nooo!' R;
+	' It\'s going to make us suffer!"' A;
+	セリフ(2005, "");
+	'"...Hmph."' A;
+	セリフ(2001, "");
+	'"I have no idea what the heck it was going on about, but we beat it.' R;
+	' Gahahaha!"' A;
+	セリフ(2927, "");
+	'"Ah, ah, ah..."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2927, "");
+	'"Aiyaaa!"' A;
+	セリフ(2974, "");
+	'"The residents\' plaintive screams resound through the Abyss!"' A;
+	ト書き();
+	'A flustered hanny and a hanny with a microphone skittered out of the shadows.' A;
+	セリフ(2927, "");
+	'"What do we do? What do we do?"' A;
+	セリフ(2974, "");
+	'"Confusion has muddled the darkness of the Abyss, which seeks new calamitous provisions."' A;
+	セリフ(2927, "");
+	'"Body Double #1 got done in!"' A;
+	セリフ(2005, "");
+	'"Body double?"' A;
+	セリフ(2927, "");
+	'"Inform the king!"' A;
+	セリフ(2974, "");
+	'"The foolish humans will one day know the true Lord of the Abyss..."' A;
+	'"In your reunion, you will learn true fear.' R;
+	R();
+	'    ~IN YOUR REUNION,' R;
+	'      YOU WILL LEARN TRUE FEAR.~"' A;
+	ト書き();
+	'The hannies zipped off.' A;
+	セリフ(2002, "");
+	'"So those guys were narrating?!"' A;
+	セリフ(2020, "");
+	'"Oh, I might feel better about this, then..."' A;
+}
+
+void １８Ｂプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	音楽(83, -1, -1);
+	ト書き();
+	'The Archfiend.' A;
+	'The one who leads this world into chaos.' A;
+	'Fiends, created by the Archfiend as servants.' A;
+	'It is said that there are roughly 20 of them.' A;
+	'Most of the fiends are at war in the Monster Realm, divided into the Kayblis and Hornet Factions.' A;
+	'The battle continues even when one of them dies.' R;
+	'There is no end to the slaughter.' A;
+	'But there is a fiend who lives apart from this war.' A;
+	'Where is that?' R;
+	'What does he do there?' R;
+	'His very existence is shrouded in mystery.' A;
+	枠消去();
+	セット表示(0, 5780, 1470, 0);
+	ト書き();
+	'The name of this fiend... is Masuzoe.' A;
+	'A fiend who lives among them, unconcerned with their conflict and with the Archfiend.' A;
+	'A fiend who lives in the Abyss with its residents.' A;
+	'He has another name...' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'The Lord of the Abyss.' A;
+	ADVOFF();
+}
+
+void １８Ｂますぞえ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5780, 1470, 0);
+	音楽(83, -1, -1);
+	ト書き();
+	'The fiend Masuzoe.' A;
+	'A being humans must not meet.' A;
+	'No one knows what era he is from or which Archfiend\'s blood he received.' A;
+	'It is said that a hanny happened upon the blood soul of a deceased fiend and transformed into Masuzoe, but no one knows the truth.' A;
+	'A hanny who obtained entirely too much power for a single being to possess.' A;
+	'Because of this, he lost his reason to live.' A;
+	'He does nothing, remaining imperturbable.' R;
+	'He lives in the Abyss without senselessly unleashing his own power.' A;
+	'He has been contacted in the past by the Archfiend and other fiends.' A;
+	'But they all gave up, seeing how incredibly uncooperative he was.' A;
+	'After becoming entirely too strong, he has no reason to think or to use his power.' A;
+	'But a few days ago, he said...' A;
+	'After 300 years, he will unleash his true power and destroy this world.' A;
+	'He had repeated those words often 300 years ago to a hannette he was particularly close to.' A;
+	'And until that day, he lived in the Abyss, waiting.' R;
+	'That was Masuzoe.' A;
+	セリフ(2957, "");
+	'"You\'re Lord Masuzoe\'s enemies, aren\'t you?"' A;
+	ト書き();
+	'A hannette appeared before them.' A;
+	セリフ(2957, "");
+	'"This is Lord Masuzoe."' A;
+	'"It looks like he\'s in a good mood today, relatively, but..."' A;
+	セリフ(2470, "");
+	'"........."' A;
+	セリフ(2957, "");
+	'"Huh? You\'re surprised I can tell?' R;
+	' Heheh, I\'m the only one who can, you know."' A;
+	'"It seems like all the other hannies think that you don\'t show anything on your face, Lord Masuzoe."' A;
+	'"But you seem a little happy whenever I\'m near you."' A;
+	'"You never say anything, but it\'s true."' A;
+	'"Oh, that\'s right. Do you know about the invincibility field?"' A;
+	'"Today\'s your lucky day!' R;
+	' You can break through it today!"' A;
+	'"Normally, no one can hurt fiends, but it\'s a lucky day today, so he\'s removed his invincibility field."' A;
+	'"Heheh, of course, you\'ll still never be able to win."' A;
+	セリフ(2470, "");
+	'"........."' A;
+	セリフ(2957, "");
+	'"Oh, yes, I know I should get out of the way."' A;
+	'"I understand, my beloved Lord Masuzoe."' A;
+	セリフ(2470, "");
+	'"........."' A;
+	ト書き();
+	'The hannette left the area.' A;
+	セリフ(2470, "");
+	'"........."' A;
+	ト書き();
+	'An ominous aura surrounded Masuzoe!' A;
+	セリフ(2470, "");
+	'"........."' A;
+	ト書き();
+	'Masuzoe attacked!' A;
+	ADVOFF();
+}
+
+void １８Ｂますぞえ／カオス付き()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5780, 1470, 0);
+	音楽(83, -1, -1);
+	ト書き();
+	'The fiend Masuzoe.' A;
+	'A being humans must not meet.' A;
+	'No one knows what era he is from or which Archfiend\'s blood he received.' A;
+	'It is said that a hanny happened upon the blood soul of a deceased fiend and transformed into Masuzoe, but no one knows the truth.' A;
+	'A hanny who obtained entirely too much power for a single being to possess.' A;
+	'Because of this, he lost his reason to live.' A;
+	'He does nothing, remaining imperturbable.' R;
+	'He lives in the Abyss without senselessly unleashing his own power.' A;
+	'He has been contacted in the past by the Archfiend and other fiends.' A;
+	'But they all gave up, seeing how incredibly uncooperative he was.' A;
+	'After becoming entirely too strong, he has no reason to think or to use his power.' A;
+	'But a few days ago, he said...' A;
+	'After 300 years, he would unleash his true power and destroy this world.' A;
+	'He had repeated those words often 300 years ago to a hannette he was particularly close to.' A;
+	'And until that day, he lived in the Abyss, waiting.' R;
+	'That was Masuzoe.' A;
+	セリフ(2957, "");
+	'"You\'re Lord Masuzoe\'s enemies, aren\'t you?"' A;
+	ト書き();
+	'A hannette appeared before them.' A;
+	セリフ(2957, "");
+	'"This is Lord Masuzoe."' A;
+	'"It looks like he\'s in a good mood today, relatively, but..."' A;
+	セリフ(2470, "");
+	'"........."' A;
+	セリフ(2957, "");
+	'"Huh? You\'re surprised I can tell?' R;
+	' Heheh, I\'m the only one who can, you know."' A;
+	'"It seems like all the other hannies think that you don\'t show anything on your face, Lord Masuzoe."' A;
+	'"But you seem a little happy whenever I\'m near you."' A;
+	'"You never say anything, but it\'s true."' A;
+	'"Oh, that\'s right. Do you know about the invincibility field?"' A;
+	'"You\'ll never be able to defeat Lord Masuzoe because of it..."' A;
+	'"Oh? You don\'t know?' R;
+	' Oh, no, it\'s nothing. Please don\'t mind."' A;
+	セリフ(2470, "");
+	'"........."' A;
+	セリフ(2957, "");
+	'"Oh, yes, I know I should get out of the way."' A;
+	'"I understand, my beloved Lord Masuzoe."' A;
+	セリフ(2470, "");
+	'"........."' A;
+	ト書き();
+	'The hannette left the area.' A;
+	セリフ(2470, "");
+	'"........."' A;
+	ト書き();
+	'An ominous aura surrounded Masuzoe!' A;
+	セリフ(2470, "");
+	'"........."' A;
+	ト書き();
+	'Masuzoe attacked!' A;
+	ADVOFF();
+}
+
+void １８Ｂますぞえ／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5780, 0, 0);
+	音楽(0, -1, -1);
+	ト書き();
+	'The Lord of the Abyss, the fiend Masuzoe, fell.' A;
+	'Masuzoe\'s body melted and left something in its place.' A;
+	'What had emerged from Masuzoe\'s body was his essence.' A;
+	枠消去();
+	ミニイベント表示(4280, 1, 500);
+	ト書き();
+	'A blood soul.' A;
+	'Dead fiends took this form.' A;
+	'Rance reached out to the blood soul where it floated in the air.' A;
+	音楽(71, -1, -1);
+	セリフ(2927, "");
+	'"Aiyaaa!"' A;
+	'"That blood soul\'s mine!"' A;
+	セリフ(2974, "");
+	'"No, it\'s miiine!"' A;
+	ト書き();
+	'The hannies swarmed around the blood soul.' A;
+	セリフ(2974, "");
+	'"Toryaaa!"' A;
+	ト書き();
+	'Hanny Punch!' A;
+	セリフ(2927, "");
+	'"Yowch! Waaah!"' A;
+	セリフ(2974, "");
+	'"Toh! The blood soul\'s mine!"' A;
+	セリフ(2927, "");
+	'"Hand it over!' R;
+	' I\'m gonna be the next Lord of the Abyss!"' A;
+	ト書き();
+	'Hanny Tackle!' A;
+	セリフ(2974, "");
+	'"Ah, give that back! I got it first!"' A;
+	ト書き();
+	'Struggle, struggle.' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	セリフ(2927, "");
+	'"Teyaaah!"' R;
+	'  ↑  Munch' A;
+	セリフ(2974, "");
+	'"Ah!"' A;
+	セリフ(2927, "");
+	'"Mm, mmgh!"' R;
+	'  ↑  Gulp' A;
+	セリフ(2974, "");
+	'"Awww..."' A;
+	セリフ(2927, "");
+	'"Hehohoi! I did it! I did it!' R;
+	' I\'m the next fiend of the Abyss!"' A;
+	セリフ(2974, "");
+	'"Waaah, I was almost there!"' A;
+	セリフ(2927, "");
+	'"Woohoo! Woohoo! Woohoo!' C;
+	R();
+	' .........Woo... hoo..."' A;
+	ト書き();
+	'The eyes of the hanny who\'d swallowed the blood soul fell dark.' A;
+	音楽(76, -1, -1);
+	セリフ(2974, "");
+	'"Ah... Could it be...?"' A;
+	セリフ(2927, "");
+	'"........."' A;
+	ト書き();
+	'It suddenly stopped talking.' A;
+	セリフ(2974, "");
+	'"He was taken over by Masuzoe\'s blood soul?"' A;
+	セリフ(2927, "");
+	'"Yeah, he was definitely taken over."' A;
+	セリフ(2974, "");
+	'"It\'s Masuzoe!"' A;
+	セリフ(2927, "");
+	'"Yup, it\'s Masuzoe!"' A;
+	セリフ(2927, "Masuzoe?");
+	'"........."' A;
+	ト書き();
+	'While everyone was watching Masuzoe...' A;
+	セリフ(2927, "Masuzoe?");
+	'"........."' R;
+	'  ↑  Spin, spin, spin, spin, spin' A;
+	ト書き();
+	'He suddenly started spinning around.' A;
+	ト書き();
+	'　' R;
+	' <dig, dig, dig, dig, dig>' A;
+	'The hanny, now Masuzoe, dug into the ground and disappeared somewhere.' A;
+	音楽(0, 1, 1000);
+	セリフ(2974, "");
+	'"Aww...' R;
+	' So he\'s still the Lord of the Abyss..."' A;
+	セリフ(2927, "");
+	'"We won\'t get another chance until somebody else beats the Lord of the Abyss again, huh...?"' A;
+	セリフ(2974, "");
+	'"Aw, whatever. Let\'s go, everyone..."' A;
+	ト書き();
+	'The hannies all scattered.' A;
+	セリフ(2005, "");
+	'"........."' A;
+	'"...The heck was that about?"' A;
+}
+
+void １８Ｂハニーキング()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5780, 0, 0);
+	音楽(83, -1, -1);
+	ト書き();
+	'　' R;
+	'     The Abyss' A;
+	枠消去();
+	立ち絵表示(1470, 1, 200);
+	セリフ(2470, "");
+	'"........."' A;
+	ト書き();
+	'Masuzoe appeared before the party\'s eyes.' A;
+	'Masuzoe unleashed his bloodlust!' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ２(2927, "? ? ?");
+	'"Hanihooo, wait a sec!"' A;
+	'"Where are the amazing humans who have come to this parallel world?"' A;
+	'"Since they\'ve come all this way, I want to fight them!' R;
+	' Lemme do it, Masuzoe!"' A;
+	セリフ(2927, "");
+	'"Th-This voice is..."' A;
+	セリフ(2974, "");
+	'"Our king has come!"' A;
+	セリフ(2927, "");
+	'"Yaaay, yaaay!"' A;
+	セリフ２(2927, "? ? ?");
+	'"Ohoho, let\'s do this, then!"' A;
+	'"Take thiiis!"' A;
+	ADVOFF();
+}
+
+void １８Ｂハニーキング／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5780, 0, 0);
+	ト書き();
+	セリフ(2927, "");
+	'"Aaah! The king got beat!"' A;
+	セリフ(2974, "");
+	'"Nooo, I don\'t believe it!"' A;
+	セリフ２(2927, "Hanny King");
+	'"Eheheheh..."' A;
+	'"Hanihooo... I\'m satisfied..."' A;
+	ト書き();
+	'　' R;
+	'  <thud>' A;
+	'The Hanny King collapsed.' A;
+	セリフ(2927, "");
+	'"Waaah! The Hanny King bit the dust!"' A;
+	音楽(71, -1, -1);
+	セリフ２(2927, "Hanny King");
+	'"I\'m still alive!"' R;
+	'  ↑ Annoyed' A;
+	セリフ(2927, "");
+	'"Oh good, you\'re alive!"' A;
+	セリフ(2974, "");
+	'"I cried a little!"' A;
+	セリフ２(2927, "Hanny King");
+	'"Well, I\'m tired, so let\'s go!"' A;
+	セリフ(2927, "");
+	'"Let\'s go, let\'s go!"' A;
+	セリフ(2974, "");
+	'"Hanihooo, hanihooo!"' A;
+	ト書き();
+	'The Hanny King left, taking the rest of the hannies with him.' A;
+	セリフ(2005, "");
+	'"........."' A;
+	枠消去();
+	立ち絵表示(1470, 1, 200);
+	セリフ(2470, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Oh, then we\'ll go home, too. Yeah."' A;
+	セリフ(2470, "");
+	'"........."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance left, too.' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(1470, 1, 200);
+	セリフ(2470, "");
+	'"..."' A;
+	'"........."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Masuzoe also left.' A;
+	ADVOFF();
+}
+

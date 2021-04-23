@@ -1,0 +1,48 @@
+void ボタンアニメ_初期化()
+{
+	g_sButtonAnime.create();
+	g_bButtonAnimeUpdate = false;
+}
+
+void ボタンアニメ_終了処理()
+{
+	g_bButtonAnimeUpdate = false;
+	g_sButtonAnime.delete();
+}
+
+bool ボタンアニメ_登録(ref T_TextSprite rfSp, int nR, int nG, int nB, int nRate)
+{
+	return g_sButtonAnime.add(rfSp, nR, nG, nB, nRate);
+}
+
+bool ボタンアニメ_消去(ref T_TextSprite rfSp)
+{
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return false;
+	}
+	return g_sButtonAnime.erase(rfSp.getSpNo());
+}
+
+bool ボタンアニメ_開始(ref T_TextSprite rfSp)
+{
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return false;
+	}
+	g_sButtonAnime.start(rfSp.getSpNo());
+	g_bButtonAnimeUpdate = g_sButtonAnime.isUpdate();
+	return true;
+}
+
+bool ボタンアニメ_停止(ref T_TextSprite rfSp)
+{
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return false;
+	}
+	g_sButtonAnime.stop(rfSp.getSpNo());
+	g_bButtonAnimeUpdate = g_sButtonAnime.isUpdate();
+	return true;
+}
+

@@ -1,0 +1,1454 @@
+void T_StoreItem::scrollList(int nID)
+{
+	this.m_sScroll.exec(nID);
+}
+
+bool T_StoreItem::lockList(int nItemNo)
+{
+	return this.m_sList.lock(nItemNo);
+}
+
+bool T_StoreItem::blinkList()
+{
+	return this.m_sList.blink();
+}
+
+void T_StoreItem::updateScroll()
+{
+	this.m_sScroll.setValue(this.m_sList.getTopIndex(), this.m_sList.getListCount(), this.m_sList.getItemCount());
+}
+
+bool T_StoreItem::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_StoreItem::getStoreType()
+{
+	return this.m_nStoreType;
+}
+
+int T_StoreItem::getItemType()
+{
+	return this.m_sList.getItemType();
+}
+
+int T_StoreItem::getCharaNo()
+{
+	return this.m_sList.getCharaNo();
+}
+
+int T_StoreItem::getItemNo(int nIndex)
+{
+	return this.m_sList.getList(this.m_sList.getTopIndex() + nIndex);
+}
+
+int T_StoreItem::getLock(int nIndex)
+{
+	return this.m_sList.getLock(nIndex);
+}
+
+int T_StoreItem::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 500000 + nIndex + 1;
+}
+
+int T_StoreItem::getItemIndex(int nID)
+{
+	int idx = nID + -500001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+bool T_StoreItem::isLimitItemEx()
+{
+	return this.m_sLimitItemEx.getItemType() > 0;
+}
+
+bool T_StoreItem::getDonationFlag()
+{
+	return this.m_bDonationFlag;
+}
+
+bool T_StoreItem::getSellFlag()
+{
+	return this.m_bSellFlag;
+}
+
+bool T_StoreItem::getStatusScroll()
+{
+	return this.m_bStatusScroll;
+}
+
+ref T_StoreListManager T_StoreItem::getList()
+{
+	return this.m_sList;
+}
+
+ref T_LimitItem T_StoreItem::getLimitItem()
+{
+	return this.m_sLimitItem;
+}
+
+ref T_LimitItemEx T_StoreItem::getLimitItemEx()
+{
+	return this.m_sLimitItemEx;
+}
+
+ref T_LimitJob T_StoreItem::getLimitJob()
+{
+	return this.m_sLimitJob;
+}
+
+ref T_LimitEquip T_StoreItem::getLimitEquip()
+{
+	return this.m_sLimitEquip;
+}
+
+ref T_LimitLock T_StoreItem::getLimitLock()
+{
+	return this.m_sLimitLock;
+}
+
+ref T_Sort T_StoreItem::getSort()
+{
+	return this.m_sSort;
+}
+
+int T_StoreItem::getDonationID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 551000 + nIndex + 1;
+}
+
+int T_StoreItem::getDonationIndex(int nID)
+{
+	int idx = nID + -551001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+int T_StoreItem::getSellID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 552000 + nIndex + 1;
+}
+
+int T_StoreItem::getSellIndex(int nID)
+{
+	int idx = nID + -552001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+int T_StoreItem::getLockID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 553000 + nIndex + 1;
+}
+
+int T_StoreItem::getLockIndex(int nID)
+{
+	int idx = nID + -553001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+int T_StoreItem::getUnlockID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 554000 + nIndex + 1;
+}
+
+int T_StoreItem::getUnlockIndex(int nID)
+{
+	int idx = nID + -554001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+int T_StoreItem::getStatusID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 4 ? -1 : 555000 + nIndex + 1;
+}
+
+int T_StoreItem::getStatusIndex(int nID)
+{
+	int idx = nID + -555001;
+	return idx < 0 || idx >= 4 ? -1 : idx;
+}
+
+T_StoreItem::T_StoreItem()
+{
+	this.clear();
+}
+
+T_StoreItem::~T_StoreItem()
+{
+	this.delete();
+}
+
+bool T_StoreItem::create(int nType, int nItemType, int nCharaNo, int nSystemBarMode)
+{
+	this.delete();
+	int nZ = 9211;
+	if (this.m_sList.create(nZ, nType, nItemType, 0, 0, nCharaNo, 0, 0) < 0)
+	{
+		return false;
+	}
+	switch (nType)
+	{
+		case 7:
+			this.m_nStoreType = nCharaNo > 0 ? 2 : 1;
+			break;
+		case 6:
+			this.m_nStoreType = 3;
+			break;
+		default:
+			return false;
+	}
+	this.m_nItemIndex = this.m_nStoreType == 2 ? ステータス_アイテムインデクス(nItemType) : -1;
+	this.m_nSystemBarMode = nSystemBarMode;
+	if (nType != 6)
+	{
+		this.m_sItemCount.create(39, 16, 3, 3, 1, true);
+		this.m_sItemCount.setFontType(258);
+		this.m_sItemCount.setFontSize(20);
+		this.m_sItemCount.setFontBold(1);
+		this.m_sItemCount.setFontColor(255, 255, 255);
+		this.m_sItemCount.setPos(957, 31);
+		this.m_sStockCount.create(39, 16, 3, 3, 1, true);
+		this.m_sStockCount.setFontType(258);
+		this.m_sStockCount.setFontSize(20);
+		this.m_sStockCount.setFontBold(1);
+		this.m_sStockCount.setFontColor(255, 255, 255);
+		this.m_sStockCount.setPos(957, 94);
+	}
+	this.m_spLock.setCg(11416);
+	this.m_sScroll.create(2, 688, 580000, 0, 0);
+	this.m_sScroll.setPos(919, 0);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&scrollStoreItem);
+	this.m_sLimitItem.create(this.m_nStoreType, 945, 154, nZ + 1, 571000);
+	this.m_sLimitItem.setItemType(nItemType);
+	this.m_sLimitItemEx.create(nZ + 20, 574000);
+	this.m_sLimitItemEx.setItemType(nItemType);
+	this.m_sLimitJob.create(2, 945, 344, nZ + 1, 572000);
+	if (this.m_nStoreType == 2)
+	{
+		this.m_sLimitEquip.create(1, 945, 588, nZ + 1, 573000);
+	}
+	if (this.m_nStoreType != 3)
+	{
+		this.m_sLimitLock.create(1, 945, 500, nZ + 1, 575000);
+	}
+	this.m_sSort.create(2, 560000, "Default Sort", アイテム倉庫_ソート名_short(-1), "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+	this.m_sSort.setPos(1020, 764);
+	this.m_sButton.create();
+	int i = 0;
+	bool bDeactive = this.m_nStoreType != 1;
+	if (this.m_nStoreType != 1)
+	{
+		for (i = 0; i < 4; ++i)
+		{
+			ボタン登録_矩形(this.m_sButton, this.getStatusID(i), ステータス_アイテムＸ(i), ステータス_アイテムＹ(i), 100, 100, false);
+		}
+	}
+	if (nType != 6 && !クエスト_攻略中())
+	{
+		for (i = 0; i < 6; ++i)
+		{
+			ボタン登録_ＣＧ(this.m_sButton, this.getDonationID(i), 0, 0, 11406, -1, -1, -2147483648, -2147483648);
+		}
+		this.m_bDonationFlag = true;
+	}
+	if (nType == 7 && nSystemBarMode == 12)
+	{
+		for (i = 0; i < 6; ++i)
+		{
+			ボタン登録_ＣＧ(this.m_sButton, this.getSellID(i), 0, 0, 11409, -1, -1, -2147483648, -2147483648);
+		}
+		this.m_bSellFlag = true;
+	}
+	if (this.m_nStoreType != 3)
+	{
+		for (i = 0; i < 6; ++i)
+		{
+			ボタン登録_ＣＧ(this.m_sButton, this.getLockID(i), 0, 0, 11417, -1, -1, -2147483648, -2147483648);
+			ボタン登録_ＣＧ(this.m_sButton, this.getUnlockID(i), 0, 0, 11418, -1, -1, -2147483648, -2147483648);
+		}
+	}
+	for (i = 0; i < 6; ++i)
+	{
+		ボタン登録_矩形(this.m_sButton, this.getButtonID(i), 0, 0, 381, 128, bDeactive);
+	}
+	ボタン登録_ＣＧ(this.m_sButton, 509991, 945, 51, 11404, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 509999, 994, 4, 10007, -1, -1, -2147483648, -2147483648);
+	this.setZ(nZ);
+	this.setItemCount(nItemType, 0);
+	this.setButtonActive();
+	this.updateScroll();
+	this.setShow(true);
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&アイテム倉庫_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&アイテム倉庫_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&アイテム倉庫_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&アイテム倉庫_右矢印);
+	this.m_sInputKey.setSelectCallback(&アイテム倉庫_選択設定);
+	return true;
+}
+
+void T_StoreItem::delete()
+{
+	this.hideComment(-1);
+	this.m_sItemCount.delete();
+	this.m_sStockCount.delete();
+	this.m_spLock.delete();
+	this.m_sScroll.delete();
+	this.m_sLimitItem.delete();
+	this.m_sLimitItemEx.delete();
+	this.m_sLimitJob.delete();
+	this.m_sLimitEquip.delete();
+	this.m_sLimitLock.delete();
+	this.m_sSort.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.m_sList.delete();
+	this.clear();
+}
+
+void T_StoreItem::clear()
+{
+	this.m_nStoreType = -1;
+	this.m_nItemIndex = -1;
+	this.m_nSystemBarMode = -1;
+	this.m_nCommentID = -1;
+	this.m_bOpenFlag = false;
+	this.m_bDonationFlag = false;
+	this.m_bSellFlag = false;
+	this.m_bStatusScroll = false;
+}
+
+void T_StoreItem::scroll(int nIndex)
+{
+	this.hideComment(-1);
+	this.m_sList.setTopIndex(nIndex);
+	this.setButtonActive();
+	this.setButtonShow(true);
+	this.checkLock(0);
+}
+
+bool T_StoreItem::remake(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	this.hideComment(-1);
+	if (this.m_sList.remake(nType, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType) < 0)
+	{
+		return false;
+	}
+	if (nItemType >= 0)
+	{
+		this.m_sLimitItemEx.setItemType(nItemType);
+		if (nItemTypeEx >= 0)
+		{
+			this.m_sLimitItemEx.setItemTypeEx(nItemTypeEx);
+		}
+	}
+	this.setItemCount(this.m_sList.getItemType(), this.m_sList.getJobType());
+	this.setButtonActive();
+	this.setButtonShow(true);
+	this.updateScroll();
+	return true;
+}
+
+int T_StoreItem::sortList(int nSortMode)
+{
+	if (!this.m_sList.sort(nSortMode, false))
+	{
+		return -1;
+	}
+	this.m_sSort.setButtonText(560002, アイテム倉庫_ソート名_short(nSortMode));
+	this.setButtonActive();
+	this.setButtonShow(true);
+	this.updateScroll();
+	return this.m_sList.getSortMode();
+}
+
+int T_StoreItem::checkSelectWithScroll(int nID)
+{
+	this.m_bStatusScroll = true;
+	int nRet = this.checkSelect(nID);
+	this.m_bStatusScroll = false;
+	return nRet;
+}
+
+int T_StoreItem::checkSelect(int nID)
+{
+	int nRet = 0;
+	int nID2 = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	this.setStatusItemActive();
+	if (キー優先())
+	{
+		nID2 = this.getDefaultID(nID);
+		this.setSelect(nID2, true);
+	}
+	while (true)
+	{
+		int nRet2 = this.checkInput(0, nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel(0);
+		if (キャンセル_確認())
+		{
+			nRet = 509999;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(0, nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		else if (this.checkDrag(nID2))
+		{
+			nRet = nID2;
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_StoreItem::checkInput(int nMode, ref int nSelectID)
+{
+	int nID2 = 0;
+	if (this.m_bStatusScroll)
+	{
+		switch (ステータス_スクロール_入力確認(nID2))
+		{
+			case 0:
+				if (nID2 > 0)
+				{
+					goto label0;
+				}
+				break;
+			case 1:
+			case 2:
+				nSelectID = nID2;
+				return 2;
+			default:
+				break;
+		}
+	}
+	if (nMode == 0)
+	{
+		switch (システムバー_入力確認(nID2))
+		{
+			case 0:
+				if (nID2 > 0)
+				{
+					goto label0;
+				}
+				break;
+			case 1:
+				this.m_sScroll.setInputFlag(false);
+				this.m_sLimitItem.setInputFlag(false);
+				this.m_sLimitItemEx.setInputFlag(false);
+				this.m_sLimitJob.setInputFlag(false);
+				this.m_sLimitEquip.setInputFlag(false);
+				this.m_sLimitLock.setInputFlag(false);
+				this.m_sSort.setInputFlag(false);
+				this.m_sButton.setInputFlag(false);
+				if (this.m_bStatusScroll)
+				{
+					ステータス_スクロール_入力ＯＦＦ();
+				}
+				nSelectID = nID2;
+				return 1;
+			case 2:
+				nSelectID = nID2;
+				return 2;
+			default:
+				break;
+		}
+	}
+	switch (this.m_sScroll.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sLimitItem.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sLimitItemEx.setInputFlag(false);
+			this.m_sLimitJob.setInputFlag(false);
+			this.m_sLimitEquip.setInputFlag(false);
+			this.m_sLimitLock.setInputFlag(false);
+			this.m_sSort.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			if (this.m_bStatusScroll)
+			{
+				ステータス_スクロール_入力ＯＦＦ();
+			}
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sLimitItemEx.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sLimitItem.setInputFlag(false);
+			this.m_sLimitJob.setInputFlag(false);
+			this.m_sLimitEquip.setInputFlag(false);
+			this.m_sLimitLock.setInputFlag(false);
+			this.m_sSort.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			if (this.m_bStatusScroll)
+			{
+				ステータス_スクロール_入力ＯＦＦ();
+			}
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sLimitJob.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sLimitItem.setInputFlag(false);
+			this.m_sLimitItemEx.setInputFlag(false);
+			this.m_sLimitEquip.setInputFlag(false);
+			this.m_sLimitLock.setInputFlag(false);
+			this.m_sSort.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			if (this.m_bStatusScroll)
+			{
+				ステータス_スクロール_入力ＯＦＦ();
+			}
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sLimitEquip.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sLimitItem.setInputFlag(false);
+			this.m_sLimitItemEx.setInputFlag(false);
+			this.m_sLimitJob.setInputFlag(false);
+			this.m_sLimitLock.setInputFlag(false);
+			this.m_sSort.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			if (this.m_bStatusScroll)
+			{
+				ステータス_スクロール_入力ＯＦＦ();
+			}
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sLimitLock.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sLimitItem.setInputFlag(false);
+			this.m_sLimitItemEx.setInputFlag(false);
+			this.m_sLimitJob.setInputFlag(false);
+			this.m_sLimitEquip.setInputFlag(false);
+			this.m_sSort.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			if (this.m_bStatusScroll)
+			{
+				ステータス_スクロール_入力ＯＦＦ();
+			}
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sSort.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sLimitItem.setInputFlag(false);
+			this.m_sLimitItemEx.setInputFlag(false);
+			this.m_sLimitJob.setInputFlag(false);
+			this.m_sLimitEquip.setInputFlag(false);
+			this.m_sLimitLock.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			if (this.m_bStatusScroll)
+			{
+				ステータス_スクロール_入力ＯＦＦ();
+			}
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nID2))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sLimitItem.setInputFlag(false);
+			this.m_sLimitItemEx.setInputFlag(false);
+			this.m_sLimitJob.setInputFlag(false);
+			this.m_sLimitEquip.setInputFlag(false);
+			this.m_sLimitLock.setInputFlag(false);
+			this.m_sSort.setInputFlag(false);
+			システムバー_入力ＯＦＦ();
+			if (this.m_bStatusScroll)
+			{
+				ステータス_スクロール_入力ＯＦＦ();
+			}
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	if (nID2 > 0)
+	{
+		this.showComment(nID2);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+label0:
+	if (nMode > 0)
+	{
+		システムバー_入力ＯＦＦ();
+	}
+	else
+	{
+		システムバー_入力ＯＮ();
+	}
+	this.m_sScroll.setInputFlag(true);
+	this.m_sLimitItem.setInputFlag(true);
+	this.m_sLimitItemEx.setInputFlag(true);
+	this.m_sLimitJob.setInputFlag(true);
+	this.m_sLimitEquip.setInputFlag(true);
+	this.m_sLimitLock.setInputFlag(true);
+	this.m_sSort.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	if (this.m_bStatusScroll)
+	{
+		ステータス_スクロール_入力ＯＮ();
+	}
+	if (nMode > 0)
+	{
+		this.checkLock(0);
+	}
+	else
+	{
+		this.checkLock(nID2);
+	}
+	if (nID2 != nSelectID)
+	{
+		this._setSelect(nSelectID, false);
+	}
+	nSelectID = nID2;
+	return 0;
+}
+
+int T_StoreItem::checkKey(int nMode, int nID)
+{
+	if (this.m_bStatusScroll)
+	{
+		if (nID < 500000)
+		{
+			if (ステータス_スクロール_キー確認())
+			{
+				return 0;
+			}
+		}
+	}
+	int nID2 = this.m_sSort.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sScroll.checkKey())
+	{
+		return 0;
+	}
+	nID2 = this.checkKeyDonation(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.checkKeySell(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nMode == 0)
+	{
+		nID2 = this.checkKeyLock(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		nID2 = システムバー_キー確認(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		if (this.m_sInputKey.check(nID))
+		{
+			return 0;
+		}
+	}
+	return 0;
+}
+
+int T_StoreItem::checkKeyDonation(int nID)
+{
+	if (!this.m_bDonationFlag)
+	{
+		return 0;
+	}
+	if (!キー_押下(68))
+	{
+		return 0;
+	}
+	int idx = -1;
+	if (nID > 554000)
+	{
+		goto label0;
+	}
+	if (nID > 553000)
+	{
+		goto label0;
+	}
+	if (nID > 552000)
+	{
+		idx = this.getSellIndex(nID);
+		goto label0;
+	}
+	if (nID > 551000)
+	{
+		idx = this.getDonationIndex(nID);
+		goto label0;
+	}
+	if (nID > 500000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label0;
+	}
+label0:
+	int nRet = 0;
+	if (idx < 0 || this.getItemNo(idx) <= 0)
+	{
+		効果音_エラー();
+	}
+	else
+	{
+		効果音_クリック();
+		nRet = this.getDonationID(idx);
+	}
+	キー_離し待ち(68, true);
+	return nRet;
+}
+
+int T_StoreItem::checkKeySell(int nID)
+{
+	if (!this.m_bSellFlag)
+	{
+		return 0;
+	}
+	if (!キー_押下(83))
+	{
+		return 0;
+	}
+	int idx = -1;
+	if (nID > 554000)
+	{
+		goto label0;
+	}
+	if (nID > 553000)
+	{
+		goto label0;
+	}
+	if (nID > 552000)
+	{
+		idx = this.getSellIndex(nID);
+		goto label0;
+	}
+	if (nID > 551000)
+	{
+		idx = this.getDonationIndex(nID);
+		goto label0;
+	}
+	if (nID > 500000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label0;
+	}
+label0:
+	int nRet = 0;
+	if (idx < 0 || this.getItemNo(idx) <= 0)
+	{
+		効果音_エラー();
+	}
+	else
+	{
+		効果音_クリック();
+		nRet = this.getSellID(idx);
+	}
+	キー_離し待ち(83, true);
+	return nRet;
+}
+
+int T_StoreItem::checkKeyLock(int nID)
+{
+	if (this.m_nStoreType == 3)
+	{
+		return 0;
+	}
+	if (!キー_押下(76))
+	{
+		return 0;
+	}
+	int idx = -1;
+	if (nID > 554000)
+	{
+		idx = this.getUnlockIndex(nID);
+		goto label0;
+	}
+	if (nID > 553000)
+	{
+		idx = this.getLockIndex(nID);
+		goto label0;
+	}
+	if (nID > 552000)
+	{
+		goto label0;
+	}
+	if (nID > 551000)
+	{
+		goto label0;
+	}
+	if (nID > 500000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label0;
+	}
+label0:
+	int nRet = 0;
+	if (idx < 0 || this.getItemNo(idx) <= 0)
+	{
+		効果音_エラー();
+	}
+	else
+	{
+		効果音_クリック();
+		nRet = this.m_sList.getLock(idx) ? this.getUnlockID(idx) : this.getLockID(idx);
+	}
+	キー_離し待ち(76, true);
+	return nRet;
+}
+
+bool T_StoreItem::checkWheel(int nMode)
+{
+	if (this.m_bStatusScroll)
+	{
+		if (!this.m_sList.mouseInRect())
+		{
+			if (ステータス_スクロール_ホイール確認())
+			{
+				return true;
+			}
+		}
+		else if (this.m_sScroll.checkWheel())
+		{
+			return true;
+		}
+	}
+	else if (this.m_sScroll.checkWheel())
+	{
+		return true;
+	}
+	if (nMode == 0)
+	{
+		ホイール_クリア();
+	}
+	return false;
+}
+
+bool T_StoreItem::checkDrag(int nID)
+{
+	if (画面操作モード確認() != 0)
+	{
+		return false;
+	}
+	if (500000 < nID && nID < 509991)
+	{
+		return this.m_sButton.getButtonActive(nID);
+	}
+	if (555000 < nID && nID < 560000)
+	{
+		return this.m_nItemIndex >= 0 && nID == this.getStatusID(this.m_nItemIndex);
+	}
+	return false;
+}
+
+void T_StoreItem::checkLock(int nID)
+{
+	if (this.m_nStoreType == 3)
+	{
+		return;
+	}
+	int i = 0;
+	int nID1 = 0;
+	if (nID > 555000)
+	{
+		goto label0;
+	}
+	if (nID > 554000)
+	{
+		nID1 = nID;
+		goto label0;
+	}
+	if (nID > 553000)
+	{
+		nID1 = nID;
+		goto label0;
+	}
+	if (nID > 500000)
+	{
+		int idx = this.getItemIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		if (this.getItemNo(idx) <= 0)
+		{
+			goto label0;
+		}
+		nID1 = this.m_sList.getLock(idx) ? this.getUnlockID(idx) : this.getLockID(idx);
+		goto label0;
+	}
+label0:
+	for (i = 0; i < 6; ++i)
+	{
+		int nID2 = this.getLockID(i);
+		int nID3 = this.getUnlockID(i);
+		this.m_sButton.setButtonShow(nID2, nID2 == nID1);
+		this.m_sButton.setButtonShow(nID3, nID3 == nID1);
+	}
+}
+
+void T_StoreItem::resetSelect()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sLimitItem.resetSelect();
+	this.m_sLimitItemEx.resetSelect();
+	this.m_sLimitJob.resetSelect();
+	this.m_sLimitEquip.resetSelect();
+	this.m_sLimitLock.resetSelect();
+	this.m_sSort.resetSelect();
+	this.m_sButton.resetSelect();
+	システムバー_選択解除();
+	this.hideComment(-1);
+	this.checkLock(0);
+}
+
+void T_StoreItem::setSelect(int nID, bool bSelect)
+{
+	this._setSelect(nID, bSelect);
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+	if (this.m_bOpenFlag)
+	{
+		this.checkLock(0);
+	}
+	else
+	{
+		this.checkLock(bSelect ? nID : 0);
+	}
+}
+
+void T_StoreItem::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 900000)
+	{
+		システムバー_カーソル設定(nID);
+		return;
+	}
+	if (nID > 580000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 575000)
+	{
+		this.m_sLimitLock.setCursor(nID);
+		return;
+	}
+	if (nID > 574000)
+	{
+		this.m_sLimitItemEx.setCursor(nID);
+		return;
+	}
+	if (nID > 573000)
+	{
+		this.m_sLimitEquip.setCursor(nID);
+		return;
+	}
+	if (nID > 572000)
+	{
+		this.m_sLimitJob.setCursor(nID);
+		return;
+	}
+	if (nID > 571000)
+	{
+		this.m_sLimitItem.setCursor(nID);
+		return;
+	}
+	if (nID > 560000)
+	{
+		this.m_sSort.setCursor(nID);
+		return;
+	}
+	if (nID > 500000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_StoreItem::setInputFlag(bool bInputFlag)
+{
+	this.m_sScroll.setInputFlag(bInputFlag);
+	this.m_sLimitItem.setInputFlag(bInputFlag);
+	this.m_sLimitItemEx.setInputFlag(bInputFlag);
+	this.m_sLimitJob.setInputFlag(bInputFlag);
+	this.m_sLimitEquip.setInputFlag(bInputFlag);
+	this.m_sLimitLock.setInputFlag(bInputFlag);
+	this.m_sSort.setInputFlag(bInputFlag);
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+void T_StoreItem::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	switch (nID)
+	{
+		case 509991:
+			if (説明_表示(nID, "", "Use for organization", "", 500, false) > 0)
+			{
+				説明_位置設定(this.m_sButton.getButtonPosX(nID), this.m_sButton.getButtonPosY(nID) + this.m_sButton.getButtonHeight(nID));
+			}
+			ステータス_パラメータ消し();
+			goto label0;
+		default:
+			int idx2 = this.getDonationIndex(nID);
+			if (idx2 >= 0)
+			{
+				if (説明_表示(nID, "", "Current Donations [%s]" % 数字_半角テキスト(寄付(), 3, 1), "", 500, false) > 0)
+				{
+					説明_位置設定(this.m_sButton.getButtonPosX(nID), this.m_sButton.getButtonPosY(nID) + this.m_sButton.getButtonHeight(nID));
+				}
+				ステータス_パラメータ消し();
+				goto label0;
+			}
+			break;
+	}
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		this.hideComment(-1);
+		return;
+	}
+	if (this.m_nStoreType == 2 && 画面操作モード確認() == 1)
+	{
+		int nItemNo = this.getItemNo(idx);
+		if (nItemNo > 0)
+		{
+			ステータス_パラメータ表示(this.m_sList.getItemType(), nItemNo);
+		}
+		else
+		{
+			ステータス_パラメータ消し();
+		}
+	}
+	else
+	{
+		ステータス_パラメータ消し();
+	}
+	説明_消し(this.m_nCommentID);
+label0:
+	this.m_nCommentID = nID;
+}
+
+void T_StoreItem::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+		説明_ＩＤクリア();
+		ステータス_パラメータ消し();
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_StoreItem::setZ(int nZ)
+{
+	this.m_sItemCount.setZ(nZ + 1);
+	this.m_sStockCount.setZ(nZ + 1);
+	this.m_spLock.setZ(nZ + 1);
+	this.m_sScroll.setZ(nZ + 1);
+	this.m_sSort.setZ(nZ + 1);
+	this.m_sButton.setZ(nZ + 10);
+	int i = 0;
+	for (i = 0; i < 6; ++i)
+	{
+		this.m_sButton.setButtonZ(this.getDonationID(i), nZ + 30);
+		this.m_sButton.setButtonZ(this.getSellID(i), nZ + 30);
+		this.m_sButton.setButtonZ(this.getLockID(i), nZ + 30);
+		this.m_sButton.setButtonZ(this.getUnlockID(i), nZ + 30);
+	}
+}
+
+void T_StoreItem::setShow(bool bShow)
+{
+	this.m_sItemCount.setShow(bShow);
+	this.m_sList.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+	this.m_sLimitItem.setShow(bShow);
+	this.m_sLimitItemEx.setShow(bShow);
+	this.m_sLimitJob.setShow(bShow);
+	this.m_sLimitEquip.setShow(bShow);
+	this.m_sLimitLock.setShow(bShow);
+	this.m_sSort.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	this.setButtonShow(bShow);
+}
+
+void T_StoreItem::setButtonShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_sList.getItemCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		bool bShow2 = this.getItemNo(i) > 0 ? bShow : 0;
+		if (this.m_sList.getLock(i))
+		{
+			bShow2 = false;
+		}
+		this.m_sButton.setButtonShow(this.getButtonID(i), bShow);
+		this.m_sButton.setButtonShow(this.getDonationID(i), bShow2);
+		this.m_sButton.setButtonShow(this.getSellID(i), bShow2);
+		this.m_sButton.setButtonShow(this.getLockID(i), false);
+		this.m_sButton.setButtonShow(this.getUnlockID(i), false);
+	}
+	for (i = cnt; i < 6; ++i)
+	{
+		this.m_sButton.setButtonShow(this.getButtonID(i), false);
+		this.m_sButton.setButtonShow(this.getDonationID(i), false);
+		this.m_sButton.setButtonShow(this.getSellID(i), false);
+		this.m_sButton.setButtonShow(this.getLockID(i), false);
+		this.m_sButton.setButtonShow(this.getUnlockID(i), false);
+	}
+	bool bShow2 = this.m_nStoreType == 1 ? bShow : 0;
+	this.m_sButton.setButtonShow(509991, bShow2);
+	this.m_sStockCount.setShow(bShow2);
+	switch (this.m_nStoreType)
+	{
+		case 2:
+		case 3:
+			int idx = ステータス_アイテムインデクス(this.m_sList.getItemType());
+			if (idx < 0)
+			{
+				this.m_spLock.setShow(0);
+			}
+			else
+			{
+				this.m_spLock.setPos(ステータス_アイテムＸ(idx) + -8, ステータス_アイテムＹ(idx) + -8);
+				this.m_spLock.setShow(1);
+			}
+			break;
+		case 1:
+		default:
+			this.m_spLock.setShow(0);
+			break;
+	}
+}
+
+void T_StoreItem::setButtonActive()
+{
+	int i = 0;
+	int cnt = this.m_sList.getItemCount();
+	bool bFlag = cnt < 6;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nX = bFlag ? アイテム倉庫_位置Ｘ(i + 1, false) : アイテム倉庫_位置Ｘ(i, false);
+		int nY = bFlag ? アイテム倉庫_位置Ｙ(i + 1, false) : アイテム倉庫_位置Ｙ(i, false);
+		int nItemNo = this.getItemNo(i);
+		this.m_sButton.setButtonPos(this.getButtonID(i), nX, nY);
+		this.m_sButton.setButtonPos(this.getDonationID(i), nX + 335, nY + 7);
+		this.m_sButton.setButtonPos(this.getSellID(i), nX + 285, nY + 7);
+		this.m_sButton.setButtonPos(this.getLockID(i), nX + 204, nY + 1);
+		this.m_sButton.setButtonPos(this.getUnlockID(i), nX + 204, nY + 1);
+		this.m_sButton.setButtonActive(this.getButtonID(i), this.getItemActive(nItemNo));
+		this.m_sButton.setButtonActive(this.getDonationID(i), アイテム_破棄可能(nItemNo));
+		this.m_sButton.setButtonActive(this.getSellID(i), アイテム_破棄可能(nItemNo));
+	}
+	for (i = cnt; i < 6; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getButtonID(i), false);
+	}
+	this.m_sButton.setButtonActive(509991, this.m_nStoreType == 1);
+	this.m_sLimitItem.setButtonActive();
+	this.m_sLimitItemEx.setButtonActive();
+	this.m_sLimitJob.setButtonActive();
+	this.m_sLimitEquip.setButtonActive();
+	this.m_sLimitLock.setButtonActive();
+	int nMode = this.m_sList.getSortMode();
+	if (nMode > 10)
+	{
+		this.m_sSort.setCurrentID(560002, true);
+		return;
+	}
+	this.m_sSort.setCurrentID(nMode > 0 ? 560000 + nMode : 0, false);
+}
+
+void T_StoreItem::setOpenFlag(bool bOpenFlag)
+{
+	if (bOpenFlag == this.m_bOpenFlag)
+	{
+		return;
+	}
+	this.m_bOpenFlag = bOpenFlag;
+	this.setButtonActive();
+	this.setButtonShow(true);
+}
+
+void T_StoreItem::setItemCount(int nItemType, int nJobType)
+{
+	this.m_sItemCount.setValue(this.m_sList.getListCount(), false);
+	this.m_sStockCount.setValue(アイテム倉庫_数(11, nItemType, nJobType), false);
+}
+
+bool T_StoreItem::lockItem(int nItemNo)
+{
+	g_bStoreItemBlink = this.m_sList.lock(nItemNo);
+	return g_bStoreItemBlink;
+}
+
+void T_StoreItem::setStatusItemActive()
+{
+	if (this.m_nStoreType != 2)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getStatusID(i), i == this.m_nItemIndex ? 画面操作モード確認() == 0 : 1);
+	}
+}
+
+void T_StoreItem::_setSelect(int nID, bool bSelect)
+{
+	if (nID > 900000)
+	{
+		システムバー_選択設定(nID, bSelect, true);
+		return;
+	}
+	if (nID > 580000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 575000)
+	{
+		this.m_sLimitLock.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 574000)
+	{
+		this.m_sLimitItemEx.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 573000)
+	{
+		this.m_sLimitEquip.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 572000)
+	{
+		this.m_sLimitJob.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 571000)
+	{
+		this.m_sLimitItem.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 560000)
+	{
+		this.m_sSort.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 500000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+	}
+}
+
+bool T_StoreItem::getItemActive(int nItemNo)
+{
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (クエスト_攻略中() && !this.m_bOpenFlag)
+	{
+		return false;
+	}
+	switch (this.m_nStoreType)
+	{
+		case 1:
+			return true;
+		case 2:
+			return アイテム_装備可能(nItemNo, this.m_sList.getCharaNo());
+		case 3:
+			return アイテム_価格(nItemNo) <= 所持金();
+		default:
+			break;
+	}
+	return false;
+}
+
+int T_StoreItem::getDefaultID(int nID)
+{
+	int idx = -1;
+	if (nID > 554000)
+	{
+		idx = this.getUnlockIndex(nID);
+		goto label0;
+	}
+	if (nID > 553000)
+	{
+		idx = this.getLockIndex(nID);
+		goto label0;
+	}
+	if (nID > 552000)
+	{
+		idx = this.getSellIndex(nID);
+		goto label0;
+	}
+	if (nID > 551000)
+	{
+		idx = this.getDonationIndex(nID);
+		goto label0;
+	}
+	if (nID > 500000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label0;
+	}
+label0:
+	if (idx < 0)
+	{
+		return nID > 0 ? nID : this.getFirstItem();
+	}
+	return this.getButtonID(idx);
+}
+

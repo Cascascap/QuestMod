@@ -1,0 +1,64 @@
+CASFreeSpriteManager::CASFreeSpriteManager()
+{
+}
+
+CASFreeSpriteManager::~CASFreeSpriteManager()
+{
+	return;
+}
+
+int CASFreeSpriteManager::CreateHandle()
+{
+	int nEmptyIndex = this.m_CreatedFlagList.Find(0, this.m_CreatedFlagList.Numof(), 0);
+	if (nEmptyIndex != -1)
+	{
+		this.m_FreeSpriteImpList[nEmptyIndex].Create();
+		this.m_CreatedFlagList[nEmptyIndex] = 1;
+		return nEmptyIndex;
+	}
+	int nNewIndex = this.m_FreeSpriteImpList.Numof();
+	this.m_FreeSpriteImpList.Realloc(this.m_FreeSpriteImpList.Numof() + 1);
+	this.m_CreatedFlagList.Realloc(this.m_CreatedFlagList.Numof() + 1);
+	this.m_FreeSpriteImpList[nNewIndex].Create();
+	this.m_CreatedFlagList[nNewIndex] = 1;
+	return nNewIndex;
+}
+
+void CASFreeSpriteManager::ReleaseHandle(int nHandle)
+{
+	if (!this.CheckHandle(nHandle))
+	{
+		return;
+	}
+	this.m_FreeSpriteImpList[nHandle].Release();
+	this.m_CreatedFlagList[nHandle] = 0;
+}
+
+ref CASFreeSpriteImp CASFreeSpriteManager::GetObject(int nHandle)
+{
+	if (!this.CheckHandle(nHandle))
+	{
+		return NULL;
+	}
+	return this.m_FreeSpriteImpList[nHandle];
+}
+
+bool CASFreeSpriteManager::CheckHandle(int nHandle)
+{
+	if (nHandle < 0 || nHandle >= this.m_CreatedFlagList.Numof() || !this.m_CreatedFlagList[nHandle])
+	{
+		system.Error("AsraFramework内部エラー\nCASFreeSpriteManager\nハンドルエラー");
+		return false;
+	}
+	return true;
+}
+
+void CASFreeSpriteManager::Rebuild()
+{
+	int nHandle = 0;
+	for (nHandle = 0; nHandle < this.m_FreeSpriteImpList.Numof(); ++nHandle)
+	{
+		this.m_FreeSpriteImpList[nHandle].Rebuild();
+	}
+}
+

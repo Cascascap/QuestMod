@@ -1,0 +1,118 @@
+void scrollGirlsRoomList(int nValue)
+{
+	g_sGirlsRoom.scroll(nValue);
+}
+
+int 女の子モンスター部屋_実行()
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	_黒画面(1, 500);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	if (!g_sGirlsRoom.create())
+	{
+		return -1;
+	}
+	３Ｄ女の子部屋_初期化(女の子モンスター_３Ｄ番号(g_sGirlsRoom.getMonsterNo(0)), "");
+	３Ｄ_表示待ち(false);
+	ビュー状態保存モード_ＯＦＦ();
+	int nRet = g_sGirlsRoom.run();
+	ビュー状態保存モード_ＯＮ();
+	_黒画面(1, 500);
+	女の子モンスター部屋_終了処理(false);
+	return nRet;
+}
+
+void 女の子モンスター部屋_終了処理(bool bFadeOut)
+{
+	if (!g_sGirlsRoom.isCreated())
+	{
+		return;
+	}
+	if (bFadeOut)
+	{
+		bool bOld = ビュー状態保存モード_ＯＮ();
+		_黒画面(1, 100);
+		if (!bOld)
+		{
+			ビュー状態保存モード_ＯＦＦ();
+		}
+		画面_クリア(true, true);
+	}
+	３Ｄ女の子部屋_終了処理(false);
+	g_sGirlsRoom.delete();
+}
+
+int 女の子モンスター部屋_上矢印(int nID)
+{
+	return g_sGirlsRoom.moveUp(nID);
+}
+
+int 女の子モンスター部屋_下矢印(int nID)
+{
+	return g_sGirlsRoom.moveDown(nID);
+}
+
+int 女の子モンスター部屋_左矢印(int nID)
+{
+	return g_sGirlsRoom.moveLeft(nID);
+}
+
+int 女の子モンスター部屋_右矢印(int nID)
+{
+	return g_sGirlsRoom.moveRight(nID);
+}
+
+void 女の子モンスター部屋_選択設定(int nID, bool bSelect)
+{
+	g_sGirlsRoom.setSelect(nID, bSelect);
+}
+
+int 女の子モンスター_３Ｄ番号(int nMonsterNo)
+{
+	switch (nMonsterNo)
+	{
+		case 227:
+			return 100003;
+		case 228:
+			return 100075;
+		case 229:
+			return 100001;
+		case 230:
+			return 100004;
+		case 231:
+			return 100011;
+		case 232:
+			return 100026;
+		case 233:
+			return 100005;
+		case 234:
+			return 100010;
+		case 235:
+			return 100002;
+		case 236:
+			return 100007;
+		case 237:
+			return 100009;
+		case 238:
+			return 100012;
+		case 239:
+			return 100154;
+		case 240:
+			return 100006;
+		case 241:
+			return 100008;
+		case 242:
+			return 100060;
+		case 243:
+			return 100185;
+		case 244:
+			return 100293;
+		default:
+			break;
+	}
+	return -1;
+}
+

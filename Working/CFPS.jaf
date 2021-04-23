@@ -1,0 +1,26 @@
+CFPS::CFPS()
+{
+	this.Init();
+}
+
+void CFPS::Init()
+{
+	this.m_nCount = 0;
+	this.m_fFPS = 0.0;
+	this.m_nStartTime = system.GetTime();
+}
+
+float CFPS::Get()
+{
+	this.m_nCount++;
+	int nCurTime = system.GetTime();
+	int nTime = nCurTime - this.m_nStartTime;
+	if (nTime >= 1000)
+	{
+		this.m_fFPS = (this.m_nCount * 1000) / nTime;
+		this.m_nCount = 0;
+		this.m_nStartTime = nCurTime;
+	}
+	return this.m_fFPS;
+}
+

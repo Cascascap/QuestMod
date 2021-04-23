@@ -1,0 +1,739 @@
+void T_Button::setSelectArea(int nX, int nY, int nWidth, int nHeight)
+{
+	this.m_rcSelect.set(nX, nY, nWidth, nHeight);
+}
+
+void T_Button::setSelectArea2(int nSx, int nSy, int nEx, int nEy)
+{
+	this.m_rcSelect.set2(nSx, nSy, nEx, nEy);
+}
+
+void T_Button::clearSelectArea()
+{
+	this.m_rcSelect.clear();
+}
+
+void T_Button::setSoundSelect(int nSoundNo)
+{
+	this.m_nSoundSelect = nSoundNo;
+}
+
+void T_Button::setSoundClick(int nSoundNo)
+{
+	this.m_nSoundClick = nSoundNo;
+}
+
+void T_Button::setSoundError(int nSoundNo)
+{
+	this.m_nSoundError = nSoundNo;
+}
+
+int T_Button::getPosX()
+{
+	return this.getCurrentSp().getPosX();
+}
+
+int T_Button::getPosY()
+{
+	return this.getCurrentSp().getPosY();
+}
+
+int T_Button::getZ()
+{
+	return this.getCurrentSp().getZ();
+}
+
+int T_Button::getWidth()
+{
+	return this.getCurrentSp().getWidth();
+}
+
+int T_Button::getHeight()
+{
+	return this.getCurrentSp().getHeight();
+}
+
+int T_Button::getID()
+{
+	return this.m_nID;
+}
+
+int T_Button::getKey()
+{
+	return this.m_nKey;
+}
+
+int T_Button::getStatus()
+{
+	return this.m_nStatus;
+}
+
+bool T_Button::getShow()
+{
+	return this.m_bShow;
+}
+
+bool T_Button::getSelect()
+{
+	return this.m_bSelect;
+}
+
+bool T_Button::getCheckClickPos()
+{
+	return this.m_bCheckClickPos;
+}
+
+bool T_Button::getInputFlag()
+{
+	return this.m_nInputFlag > 0;
+}
+
+int T_Button::getSoundSelect()
+{
+	return this.m_nSoundSelect;
+}
+
+int T_Button::getSoundClick()
+{
+	return this.m_nSoundClick;
+}
+
+int T_Button::getSoundError()
+{
+	return this.m_nSoundError;
+}
+
+bool T_Button::isActive()
+{
+	return this.m_nStatus >= 0 && this.m_nStatus != 1;
+}
+
+bool T_Button::isKeyDown()
+{
+	return this.m_nDownKey > 0;
+}
+
+bool T_Button::isClick()
+{
+	return this.m_bClick;
+}
+
+bool T_Button::isExec()
+{
+	return this.m_bExec;
+}
+
+bool T_Button::isSuspend()
+{
+	return this.m_aspButton[0].isSuspend();
+}
+
+T_Button::T_Button()
+{
+	this.clear();
+}
+
+T_Button::~T_Button()
+{
+	this.delete();
+}
+
+bool T_Button::create(ref T_Button rfButton)
+{
+	this.delete();
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		this.m_aspButton[i].copy(rfButton.getButtonSp(i));
+	}
+	this.m_nID = rfButton.getID();
+	this.m_nKey = rfButton.getKey();
+	this.m_nStatus = rfButton.getStatus();
+	this.m_bShow = rfButton.getShow();
+	this.m_bSelect = rfButton.getSelect();
+	this.m_bCheckClickPos = rfButton.getCheckClickPos();
+	this.m_nSoundSelect = rfButton.getSoundSelect();
+	this.m_nSoundClick = rfButton.getSoundClick();
+	this.m_nSoundError = rfButton.getSoundError();
+	this.m_nInputFlag = 1;
+	return true;
+}
+
+bool T_Button::createSp(ref T_TextSprite rfSp1, ref T_TextSprite rfSp2, ref T_TextSprite rfSp3)
+{
+	this.delete();
+	int nW = 0;
+	int nH = 0;
+	ref T_ButtonSprite rfButton1;
+	ref T_ButtonSprite rfButton2;
+	ref T_ButtonSprite rfButton3;
+	rfButton1 <- this.m_aspButton[0];
+	if (テキストスプライト_有効(rfSp1))
+	{
+		rfButton1.createSp(rfSp1);
+	}
+	else
+	{
+		if (テキストスプライト_有効(rfSp2))
+		{
+			nW = rfSp2.getWidth();
+			nH = rfSp2.getHeight();
+		}
+		else if (テキストスプライト_有効(rfSp3))
+		{
+			nW = rfSp3.getWidth();
+			nH = rfSp3.getHeight();
+		}
+		else
+		{
+			return false;
+		}
+		rfButton1.create(nW, nH);
+	}
+	rfButton2 <- this.m_aspButton[1];
+	if (テキストスプライト_有効(rfSp2))
+	{
+		rfButton2.createSp(rfSp2);
+	}
+	else if (テキストスプライト_有効(rfSp1))
+	{
+		rfButton2.createSp(rfSp1);
+		rfButton2.getBaseSp().blendColor(0, 0, 0, 128);
+	}
+	else
+	{
+		T_TextSprite spWork;
+		spWork.create(rfButton1.getWidth(), rfButton1.getHeight(), 0, 0, 0, 128);
+		rfButton2.createSp(spWork);
+	}
+	rfButton3 <- this.m_aspButton[2];
+	if (テキストスプライト_有効(rfSp3))
+	{
+		rfButton3.createSp(rfSp3);
+	}
+	this.m_nStatus = 0;
+	this.m_bCheckClickPos = true;
+	this.m_nInputFlag = 1;
+	return true;
+}
+
+bool T_Button::createRect(int nWidth, int nHeight, int nWidth2, int nHeight2, int nWidth3, int nHeight3)
+{
+	this.delete();
+	if (!this.m_aspButton[0].create(nWidth, nHeight))
+	{
+		return false;
+	}
+	this.m_aspButton[1].create(nWidth2, nHeight2);
+	this.m_aspButton[2].create(nWidth3, nHeight3);
+	this.m_nStatus = 0;
+	this.m_bCheckClickPos = true;
+	this.m_nInputFlag = 1;
+	return true;
+}
+
+bool T_Button::createFrame(int nIndex, int nWidth, int nHeight, int nR, int nG, int nB, int nRate, int nX, int nY, int nMode)
+{
+	ref T_ButtonSprite rfButton = this.getButtonSp(nIndex);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrame(nWidth, nHeight, nR, nG, nB, nRate, nX, nY, nMode);
+}
+
+bool T_Button::createFrameSp(int nIndex, ref T_TextSprite rfSp, int nMode)
+{
+	ref T_ButtonSprite rfButton = this.getButtonSp(nIndex);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrameSp(rfSp, nMode);
+}
+
+bool T_Button::createFrameCg(int nIndex, int nCgNo, int nX, int nY, int nMode)
+{
+	ref T_ButtonSprite rfButton = this.getButtonSp(nIndex);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrameCg(nCgNo, nX, nY, nMode);
+}
+
+bool T_Button::createFrameColor(int nIndex, int nR, int nG, int nB, int nRate)
+{
+	ref T_ButtonSprite rfButton = this.getButtonSp(nIndex);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	return rfButton.createFrameColor(nR, nG, nB, nRate);
+}
+
+void T_Button::delete()
+{
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		this.m_aspButton[i].delete();
+	}
+	this.clear();
+}
+
+void T_Button::clear()
+{
+	this.m_nID = -1;
+	this.m_nKey = -1;
+	this.m_nStatus = -1;
+	this.m_bShow = false;
+	this.m_bSelect = false;
+	this.m_bCheckClickPos = false;
+	this.m_nInputFlag = -1;
+	this.m_rcSelect.clear();
+	this.m_nSoundSelect = -1;
+	this.m_nSoundClick = -1;
+	this.m_nSoundError = -1;
+	this.clearInput();
+}
+
+int T_Button::checkInput(int nSelectID)
+{
+	if (this.m_nInputFlag <= 0)
+	{
+		return -1;
+	}
+	if (!this.m_bShow)
+	{
+		return -1;
+	}
+	if (this.m_nDownKey > 0)
+	{
+		if (this.checkClick())
+		{
+			return 1;
+		}
+	}
+	else if (this.checkDown(nSelectID))
+	{
+		return 1;
+	}
+	return this.m_bClick ? 2 : 0;
+}
+
+void T_Button::clearInput()
+{
+	this.m_nDownKey = 0;
+	this.m_bClick = false;
+	this.m_bExec = false;
+}
+
+bool T_Button::enableInput(bool bDeactiveSkip)
+{
+	if (this.m_nInputFlag <= 0)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (bDeactiveSkip && !this.isActive())
+	{
+		return false;
+	}
+	return true;
+}
+
+void T_Button::blink(int nCount, int nTime)
+{
+	this.resetSelect();
+	this.getCurrentSp().blink(nCount, nTime);
+}
+
+void T_Button::click()
+{
+	this.resetSelect();
+	this.setCursor();
+	this.setSelect(true, true);
+	_W(500);
+	this.setExec(true);
+	this.playSoundClick();
+	_W(500);
+	this.setExec(false);
+	this.resetSelect();
+	_W(500);
+}
+
+bool T_Button::checkMouse()
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	if (マウス優先())
+	{
+		if (!this.m_rcSelect.empty())
+		{
+			return this.m_rcSelect.mouseInRect();
+		}
+		return this.getCurrentSp().checkMouse();
+	}
+	return this.m_bSelect;
+}
+
+bool T_Button::checkKey()
+{
+	if (this.m_nInputFlag <= 0)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	return this.m_nKey > 0 ? キー_押下(this.m_nKey) : 0;
+}
+
+int T_Button::spriteIntersect(ref T_Sprite rfsSp)
+{
+	if (!this.m_bShow)
+	{
+		return 0;
+	}
+	if (!this.m_rcSelect.empty())
+	{
+		return this.m_rcSelect.spriteIntersect(rfsSp);
+	}
+	return this.getCurrentSp().spriteIntersect(rfsSp);
+}
+
+void T_Button::playSoundSelect()
+{
+	if (this.m_nSoundSelect > 0)
+	{
+		効果音_再生(this.m_nSoundSelect);
+	}
+	else if (this.m_nSoundSelect < 0)
+	{
+		効果音_選択();
+	}
+}
+
+void T_Button::playSoundClick()
+{
+	if (this.m_nSoundClick > 0)
+	{
+		効果音_再生(this.m_nSoundClick);
+	}
+	else if (this.m_nSoundClick < 0)
+	{
+		効果音_クリック();
+	}
+}
+
+void T_Button::playSoundError()
+{
+	if (this.m_nSoundError > 0)
+	{
+		効果音_再生(this.m_nSoundError);
+	}
+	else if (this.m_nSoundError < 0)
+	{
+		効果音_エラー();
+	}
+}
+
+void T_Button::resetSelect()
+{
+	this.clearInput();
+	this.setSelect(false, true);
+}
+
+void T_Button::setPos(int nX, int nY)
+{
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		this.m_aspButton[i].setPos(nX, nY);
+	}
+}
+
+void T_Button::setZ(int nZ)
+{
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		this.m_aspButton[i].setZ(nZ);
+	}
+}
+
+void T_Button::setBlendRate(int nRate)
+{
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		this.m_aspButton[i].setBlendRate(nRate);
+	}
+}
+
+void T_Button::setShow(bool bShow)
+{
+	if (!bShow)
+	{
+		this.m_bExec = false;
+	}
+	int i = 0;
+	int idx = this.getCurrentIndex();
+	for (i = 0; i < 3; ++i)
+	{
+		this.m_aspButton[i].setShow(i == idx ? bShow : 0);
+	}
+	this.m_bShow = bShow;
+}
+
+void T_Button::setCursor()
+{
+	this.getCurrentSp().setCursor();
+}
+
+int T_Button::setID(int nID)
+{
+	this.m_nID = nID < 0 ? this.m_nID : nID;
+	return this.m_nID;
+}
+
+void T_Button::setKey(int nKey)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	this.m_nKey = nKey > 0 ? nKey : 0;
+}
+
+void T_Button::setSelect(bool bSelect, bool bSound)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	if (bSelect == this.m_bSelect)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		this.m_aspButton[i].setSelect(bSelect);
+	}
+	this.m_bSelect = bSelect;
+	if (!bSelect)
+	{
+		this.m_bExec = false;
+	}
+	this.setShow(this.m_bShow);
+	if (bSelect && bSound)
+	{
+		this.playSoundSelect();
+	}
+}
+
+void T_Button::setStatus(int nStatus)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	this.m_nStatus = nStatus;
+	if (!this.isActive())
+	{
+		this.m_bExec = false;
+	}
+	this.setShow(this.m_bShow);
+}
+
+void T_Button::setCheckClickPos(bool bCheckClickPos)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	this.setSelect(false, true);
+	this.clearInput();
+	this.setShow(this.m_bShow);
+	this.m_bCheckClickPos = bCheckClickPos;
+}
+
+void T_Button::setInputFlag(bool bInputFlag)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	if (!bInputFlag)
+	{
+		this.clearInput();
+		this.setShow(this.m_bShow);
+	}
+	this.m_nInputFlag = bInputFlag ? 1 : 0;
+}
+
+void T_Button::setExec(bool bExec)
+{
+	if (this.m_nInputFlag < 0)
+	{
+		return;
+	}
+	this.m_bExec = bExec;
+	this.setShow(this.m_bShow);
+}
+
+ref T_ButtonSprite T_Button::getButtonSp(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 3)
+	{
+		return NULL;
+	}
+	return this.m_aspButton[nIndex];
+}
+
+ref T_TextSprite T_Button::getSp(int nIndex)
+{
+	ref T_ButtonSprite rfButton = this.getButtonSp(nIndex);
+	if (rfButton === NULL)
+	{
+		return NULL;
+	}
+	return rfButton.getBaseSp();
+}
+
+bool T_Button::getSelectArea(ref T_Rect rcSelect)
+{
+	if (rcSelect === NULL)
+	{
+		return false;
+	}
+	if (this.m_rcSelect.empty())
+	{
+		rcSelect = this.getCurrentSp().getBaseRect();
+	}
+	else
+	{
+		rcSelect = this.m_rcSelect;
+	}
+	return true;
+}
+
+bool T_Button::checkClick()
+{
+	bool bSelect = this.m_bCheckClickPos ? this.checkMouse() : this.m_bSelect;
+	if (!キー_押下(this.m_nDownKey))
+	{
+		this.m_nDownKey = 0;
+		this.m_bClick = this.isActive() && bSelect;
+		return false;
+	}
+	if (this.isActive() && this.m_nDownKey == 1)
+	{
+		if (bSelect)
+		{
+			this.m_bExec = true;
+			this.setSelect(true, false);
+		}
+		else
+		{
+			this.m_bExec = false;
+			this.setSelect(false, true);
+		}
+	}
+	return true;
+}
+
+bool T_Button::checkDown(int nSelectID)
+{
+	this.clearInput();
+	int nKey = キー_決定();
+	if (nKey <= 0)
+	{
+		bool bSelect = this.checkMouse();
+		this.setSelect(nSelectID > 0 ? 0 : bSelect, true);
+		return false;
+	}
+	if (!this.m_bSelect)
+	{
+		return false;
+	}
+	this.m_nDownKey = nKey;
+	if (this.isActive())
+	{
+		this.setExec(true);
+		this.playSoundClick();
+	}
+	else
+	{
+		this.playSoundError();
+	}
+	return true;
+}
+
+int T_Button::getCurrentIndex()
+{
+	int idx = -1;
+	switch (this.m_nStatus)
+	{
+		case 0:
+			idx = this.m_bExec ? 2 : 0;
+			break;
+		case 1:
+		case 2:
+			idx = this.m_nStatus;
+			break;
+		default:
+			break;
+	}
+	if (idx >= 0 && this.m_aspButton[idx].isCreated())
+	{
+		return idx;
+	}
+	return 0;
+}
+
+ref T_ButtonSprite T_Button::getCurrentSp()
+{
+	return this.m_aspButton[this.getCurrentIndex()];
+}
+
+bool T_Button::suspend()
+{
+	bool bRet = false;
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		if (this.m_aspButton[i].suspend())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_Button::resume()
+{
+	bool bRet = false;
+	int i = 0;
+	for (i = 0; i < 3; ++i)
+	{
+		if (this.m_aspButton[i].resume())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+

@@ -1,0 +1,548 @@
+int T_QuestStore::moveUp(int nID)
+{
+	switch (nID)
+	{
+		case 200001:
+			return this.getLastList();
+		case 100008:
+			return クエスト_ソート最終ＩＤ();
+		default:
+			break;
+	}
+	if (nID > 290000)
+	{
+		goto label0;
+	}
+	if (nID > 280000)
+	{
+		return this.getPrevList(nID);
+	}
+	if (nID > 190000)
+	{
+		return 100008;
+	}
+	if (nID > 180000)
+	{
+		int nID2 = クエスト_ソート前ＩＤ(nID);
+		return nID2 > 0 ? nID2 : クエスト_限定最終ＩＤ();
+	}
+	if (nID > 170000)
+	{
+		int nID2 = クエスト_限定前ＩＤ(nID);
+		return nID2 > 0 ? nID2 : 100008;
+	}
+	if (nID > 160000)
+	{
+		return クエスト_一覧前ＩＤ(nID, true);
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_QuestStore::moveDown(int nID)
+{
+	switch (nID)
+	{
+		case 200001:
+			return this.getFirstList();
+		case 100008:
+			return クエスト_限定先頭ＩＤ();
+		default:
+			break;
+	}
+	if (nID > 290000)
+	{
+		goto label0;
+	}
+	if (nID > 280000)
+	{
+		return this.getNextList(nID);
+	}
+	if (nID > 190000)
+	{
+		return 100008;
+	}
+	if (nID > 180000)
+	{
+		int nID2 = クエスト_ソート次ＩＤ(nID);
+		return nID2 > 0 ? nID2 : 100008;
+	}
+	if (nID > 170000)
+	{
+		int nID2 = クエスト_限定次ＩＤ(nID);
+		return nID2 > 0 ? nID2 : クエスト_ソート先頭ＩＤ();
+	}
+	if (nID > 160000)
+	{
+		return クエスト_一覧次ＩＤ(nID, true);
+	}
+label0:
+	return this.getLastList();
+}
+
+int T_QuestStore::moveLeft(int nID)
+{
+	switch (nID)
+	{
+		case 200001:
+			goto label0;
+		case 100008:
+			return クエスト_一覧先頭ＩＤ();
+		default:
+			break;
+	}
+	if (nID > 290000)
+	{
+		goto label0;
+	}
+	if (nID > 280000)
+	{
+		int nID2 = クエスト_一覧インデクス＞ボタン(this.getQuestIndex(nID));
+		return nID2 > 0 ? nID2 : 100008;
+	}
+	if (nID > 190000)
+	{
+		return クエスト_一覧先頭ＩＤ();
+	}
+	if (nID > 180000)
+	{
+		return クエスト_ソート＞一覧(nID);
+	}
+	if (nID > 170000)
+	{
+		return クエスト_限定＞一覧(nID);
+	}
+	if (nID > 160000)
+	{
+		return this.getListFromIndex(クエスト_インデクス(nID));
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_QuestStore::moveRight(int nID)
+{
+	switch (nID)
+	{
+		case 200001:
+			return クエスト_一覧先頭ＩＤ();
+		case 100008:
+			return this.getFirstList();
+		default:
+			break;
+	}
+	if (nID > 290000)
+	{
+		goto label0;
+	}
+	if (nID > 280000)
+	{
+		return クエスト_一覧ＩＤ_インデクス(this.getQuestIndex(nID));
+	}
+	if (nID > 190000)
+	{
+		return 100008;
+	}
+	if (nID > 180000)
+	{
+		int idx = クエスト_ソート＞一覧インデクス(nID);
+		if (this.getListNo(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+		return this.getLastList();
+	}
+	if (nID > 170000)
+	{
+		int idx = クエスト_限定＞一覧インデクス(nID);
+		if (this.getListNo(idx) > 0)
+		{
+			return this.getButtonID(idx);
+		}
+		return this.getFirstList();
+	}
+	if (nID > 160000)
+	{
+		return クエスト_一覧＞ボタン(nID);
+	}
+label0:
+	return this.getLastList();
+}
+
+int T_QuestStore::getPrevList(int nID)
+{
+	int idx = this.getQuestIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	--idx;
+	if (this.getListNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+label0:
+	return this.getLastList();
+}
+
+int T_QuestStore::getNextList(int nID)
+{
+	int idx = this.getQuestIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	++idx;
+	if (this.getListNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_QuestStore::getFirstList()
+{
+	return this.getListNo(0) > 0 ? this.getButtonID(0) : 200001;
+}
+
+int T_QuestStore::getLastList()
+{
+	return this.getListFromIndex(12);
+}
+
+int T_QuestStore::getListFromIndex(int nIndex)
+{
+	if (nIndex >= 13)
+	{
+		nIndex = 12;
+	}
+	int i = 0;
+	for (i = nIndex; i >= 0; --i)
+	{
+		if (this.getListNo(i) > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	return 200001;
+}
+
+bool T_QuestStore::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 100008:
+		case 200001:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 290000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 280000)
+	{
+		return this.execList2(nID);
+	}
+	if (nID > 190000)
+	{
+		クエスト_一覧スクロール(nID);
+		return false;
+	}
+	if (nID > 180000)
+	{
+		return this.execSort(nID);
+	}
+	if (nID > 170000)
+	{
+		return this.execLimit(nID);
+	}
+	if (nID > 160000)
+	{
+		return this.execList1(nID);
+	}
+	return false;
+}
+
+bool T_QuestStore::execSort(int nID)
+{
+	int nMode = クエスト_一覧ソート(nID);
+	if (!this.m_sList.sort(nMode, false))
+	{
+		return false;
+	}
+	this.setButtonActive();
+	this.setButtonShow(true);
+	this.m_sScroll.setValue(this.m_sList.getTopIndex(), -1, -1);
+	return false;
+}
+
+bool T_QuestStore::execLimit(int nID)
+{
+	int nType = クエスト_一覧絞込み(nID);
+	this.remakeList(nType);
+	UPDATE(true);
+	return false;
+}
+
+bool T_QuestStore::execList1(int nID)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execList1_01(nID);
+		case 1:
+			return this.execList1_02(nID);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_QuestStore::execList1_01(int nID)
+{
+	int idx = クエスト_インデクス(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nNo = クエスト_番号(idx);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	if (this.drag(nID, クエスト_一覧項目(nNo)) != 1)
+	{
+		return false;
+	}
+	クエスト倉庫_設定(nNo, 1);
+	クエスト_一覧再作成();
+	this.remakeList(-1);
+	UPDATE(true);
+	return false;
+}
+
+bool T_QuestStore::execList1_02(int nID)
+{
+	int idx = クエスト_インデクス(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.moveQuest(1, クエスト_番号(idx));
+	return false;
+}
+
+bool T_QuestStore::execList2(int nID)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execList2_01(nID);
+		case 1:
+			return this.execList2_02(nID);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_QuestStore::execList2_01(int nID)
+{
+	int idx = this.getQuestIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nNo = this.getListNo(idx);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	if (this.drag(nID, this.m_sList.getItem(nNo)) != 0)
+	{
+		return false;
+	}
+	クエスト倉庫_設定(nNo, 0);
+	クエスト_一覧再作成();
+	this.remakeList(-1);
+	UPDATE(true);
+	return false;
+}
+
+bool T_QuestStore::execList2_02(int nID)
+{
+	int idx = this.getQuestIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.moveQuest(2, this.getListNo(idx));
+	return false;
+}
+
+int T_QuestStore::drag(int nID, ref T_QuestList rfsItem)
+{
+	if (rfsItem === NULL)
+	{
+		return -1;
+	}
+	int nNo = rfsItem.getQuestNo();
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	this.hideComment(-1);
+	this.endDrag();
+	T_Sprite spWork;
+	spWork.setCg(クエスト_ボタンＣＧ番号(nNo));
+	int nW = spWork.getWidth() / 2;
+	int nH = spWork.getHeight();
+	this.m_spIcon.create(nW, nH, 0, 0, 0, 0);
+	this.m_spIcon.copyCg(0, 0, spWork, 0, 0, nW, nH);
+	rfsItem.copyToSprite(this.m_spIcon, 0, 0);
+	this.m_spIcon.setPos(rfsItem.getPosX(), rfsItem.getPosY());
+	this.m_spIcon.setZ(9801);
+	this.m_spIcon.setShow(1);
+	spWork.delete();
+	this.setListButtonShow(nID, false);
+	rfsItem.setShow(false);
+	this.m_sButtonLock.setShow(true);
+	bool bRet = false;
+	T_Rect sRect;
+	T_DragMouse sDrag;
+	sRect.set2(0, 0, 1024, 768);
+	sDrag.create(this.m_spIcon, sRect);
+	sDrag.setDragCallback(&不要クエスト倉庫_ドラッグ);
+	sDrag.setDropCallback(&不要クエスト倉庫_ドロップ);
+	if (キー_押下(1))
+	{
+		bRet = sDrag.run(0);
+	}
+	else
+	{
+		bRet = sDrag.runJoypad(0);
+	}
+	sDrag.delete();
+	int nRet = bRet ? this.m_nTargetNo : -1;
+	this.endDrag();
+	rfsItem.setShow(true);
+	this.setListButtonShow(nID, true);
+	return nRet;
+}
+
+void T_QuestStore::endDrag()
+{
+	this.m_sButtonLock.setShow(false);
+	this.m_spIcon.delete();
+	this.m_nSelectNo = -1;
+	this.m_nTargetNo = -1;
+}
+
+bool T_QuestStore::moveQuest(int nMode, int nQuestNo)
+{
+	if (!this.lockQuest(nMode, nQuestNo))
+	{
+		return false;
+	}
+	this.hideComment(-1);
+	this.m_sButtonLock.setShow(true);
+	switch (nMode)
+	{
+		case 1:
+			this.m_sButtonLock.setButtonShow(200011, false);
+			break;
+		case 2:
+			this.m_sButtonLock.setButtonShow(200012, false);
+			break;
+		default:
+			break;
+	}
+	int nID = this.checkSelectLock(nMode);
+	if (nID <= 0)
+	{
+		goto label0;
+	}
+	switch (nID)
+	{
+		case 200011:
+			クエスト倉庫_設定(nQuestNo, 0);
+			break;
+		case 200012:
+			クエスト倉庫_設定(nQuestNo, 1);
+			break;
+		default:
+			goto label0;
+	}
+	クエスト_一覧再作成();
+	this.remakeList(-1);
+	UPDATE(true);
+label0:
+	this.m_sButtonLock.setShow(false);
+	this.lockQuest(0, -1);
+	return false;
+}
+
+bool T_QuestStore::lockQuest(int nMode, int nQuestNo)
+{
+	bool bRet = false;
+	this.hideComment(-1);
+	this.m_sList.lock(-1);
+	クエスト_一覧ロック(-1);
+	switch (nMode)
+	{
+		case 1:
+			bRet = クエスト_一覧ロック(nQuestNo);
+			break;
+		case 2:
+			bRet = this.m_sList.lock(nQuestNo);
+			break;
+		default:
+			break;
+	}
+	this.m_nLockQuest = bRet ? nQuestNo : 0;
+	g_bQuestStoreBlink = bRet;
+	return bRet;
+}
+
+int T_QuestStore::checkSelectLock(int nMode)
+{
+	int nID = 0;
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		switch (nMode)
+		{
+			case 1:
+				this.m_sButtonLock.setButtonSelect(200012, true, true);
+				break;
+			case 2:
+				this.m_sButtonLock.setButtonSelect(200011, true, true);
+				break;
+			default:
+				break;
+		}
+	}
+	while (true)
+	{
+		int nRet2 = this.m_sButtonLock.checkInput(nID);
+		if (nRet2 == 2)
+		{
+			nRet = nID;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+

@@ -1,0 +1,444 @@
+void マップデータ２_アンロード()
+{
+	g_sMapData2.clear(true);
+}
+
+bool マップデータ２_ロード(int nMapNo)
+{
+	return g_sMapData2.load(nMapNo);
+}
+
+bool マップデータ２_変換(int nMapNo, ref T_MapData sData)
+{
+	return g_sMapData2.conv(nMapNo, sData);
+}
+
+bool マップデータ２_セーブ()
+{
+	return g_sMapData2.save();
+}
+
+void マップデータ２_更新チェック()
+{
+	g_sMapData2.checkUpdate();
+}
+
+int マップデータ２_開始位置Ｘ()
+{
+	return g_sMapData2.getStartX();
+}
+
+int マップデータ２_開始位置Ｙ()
+{
+	return g_sMapData2.getStartY();
+}
+
+int マップデータ２_開始方向()
+{
+	return g_sMapData2.getStartDir();
+}
+
+bool マップデータ２_開始位置(ref int nX, ref int nY, ref int nDir)
+{
+	nX = g_sMapData2.getStartX();
+	nY = g_sMapData2.getStartY();
+	nDir = g_sMapData2.getStartDir();
+	return nX >= 0 && nY >= 0 && nDir > 0;
+}
+
+int マップデータ２_北位置Ｘ()
+{
+	return g_sMapData2.getNorthX();
+}
+
+int マップデータ２_北位置Ｙ()
+{
+	return g_sMapData2.getNorthY();
+}
+
+bool マップデータ２_北位置(ref int nX, ref int nY)
+{
+	nX = g_sMapData2.getNorthX();
+	nY = g_sMapData2.getNorthY();
+	return nX >= 0 && nY >= 0;
+}
+
+int マップデータ２_南位置Ｘ()
+{
+	return g_sMapData2.getSouthX();
+}
+
+int マップデータ２_南位置Ｙ()
+{
+	return g_sMapData2.getSouthY();
+}
+
+bool マップデータ２_南位置(ref int nX, ref int nY)
+{
+	nX = g_sMapData2.getSouthX();
+	nY = g_sMapData2.getSouthY();
+	return nX >= 0 && nY >= 0;
+}
+
+int マップデータ２_東位置Ｘ()
+{
+	return g_sMapData2.getEastX();
+}
+
+int マップデータ２_東位置Ｙ()
+{
+	return g_sMapData2.getEastY();
+}
+
+bool マップデータ２_東位置(ref int nX, ref int nY)
+{
+	nX = g_sMapData2.getEastX();
+	nY = g_sMapData2.getEastY();
+	return nX >= 0 && nY >= 0;
+}
+
+int マップデータ２_西位置Ｘ()
+{
+	return g_sMapData2.getWestX();
+}
+
+int マップデータ２_西位置Ｙ()
+{
+	return g_sMapData2.getWestY();
+}
+
+bool マップデータ２_西位置(ref int nX, ref int nY)
+{
+	nX = g_sMapData2.getWestX();
+	nY = g_sMapData2.getWestY();
+	return nX >= 0 && nY >= 0;
+}
+
+int マップデータ２_発生場所(ref array@int anX, ref array@int anY)
+{
+	if (anX === NULL || anY === NULL)
+	{
+		return -1;
+	}
+	if (!anX.Empty())
+	{
+		anX.Free();
+	}
+	if (!anY.Empty())
+	{
+		anY.Free();
+	}
+	int i = 0;
+	int cnt = g_sMapData2.getOutBreakNumof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = g_sMapData2.getOutBreak(i);
+		anX.PushBack(マップ位置_Ｘ(idx));
+		anY.PushBack(マップ位置_Ｙ(idx));
+	}
+	return cnt;
+}
+
+int マップデータ２_広域場所(ref array@int anX, ref array@int anY)
+{
+	if (anX === NULL || anY === NULL)
+	{
+		return -1;
+	}
+	if (!anX.Empty())
+	{
+		anX.Free();
+	}
+	if (!anY.Empty())
+	{
+		anY.Free();
+	}
+	int i = 0;
+	int cnt = g_sMapData2.getWideAreaNumof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = g_sMapData2.getWideArea(i);
+		anX.PushBack(マップ位置_Ｘ(idx));
+		anY.PushBack(マップ位置_Ｙ(idx));
+	}
+	return cnt;
+}
+
+int マップデータ２_覚書(ref array@int anX, ref array@int anY)
+{
+	if (anX === NULL || anY === NULL)
+	{
+		return -1;
+	}
+	if (!anX.Empty())
+	{
+		anX.Free();
+	}
+	if (!anY.Empty())
+	{
+		anY.Free();
+	}
+	int i = 0;
+	int cnt = g_sMapData2.getMemoNumof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = g_sMapData2.getMemo(i);
+		anX.PushBack(マップ位置_Ｘ(idx));
+		anY.PushBack(マップ位置_Ｙ(idx));
+	}
+	return cnt;
+}
+
+int マップデータ２_発生場所検索(int nX, int nY)
+{
+	return g_sMapData2.searchOutBreak(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_広域場所検索(int nX, int nY)
+{
+	return g_sMapData2.searchWideArea(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_覚書検索(int nX, int nY)
+{
+	return g_sMapData2.searchMemo(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_発生場所数()
+{
+	return g_sMapData2.getOutBreakNumof();
+}
+
+int マップデータ２_広域場所数()
+{
+	return g_sMapData2.getWideAreaNumof();
+}
+
+int マップデータ２_覚書数()
+{
+	return g_sMapData2.getMemoNumof();
+}
+
+bool マップデータ２_開始位置確認(int nX, int nY)
+{
+	if (nX < 0 || nY < 0)
+	{
+		return false;
+	}
+	int nX2 = 0;
+	int nY2 = 0;
+	int nDir2 = 0;
+	if (!マップデータ２_開始位置(nX2, nY2, nDir2))
+	{
+		return false;
+	}
+	return nX2 == nX && nY2 == nY;
+}
+
+bool マップデータ２_北位置確認(int nX, int nY)
+{
+	if (nX < 0 || nY < 0)
+	{
+		return false;
+	}
+	int nX2 = 0;
+	int nY2 = 0;
+	if (!マップデータ２_北位置(nX2, nY2))
+	{
+		return false;
+	}
+	return nX2 == nX && nY2 == nY;
+}
+
+bool マップデータ２_南位置確認(int nX, int nY)
+{
+	if (nX < 0 || nY < 0)
+	{
+		return false;
+	}
+	int nX2 = 0;
+	int nY2 = 0;
+	if (!マップデータ２_南位置(nX2, nY2))
+	{
+		return false;
+	}
+	return nX2 == nX && nY2 == nY;
+}
+
+bool マップデータ２_東位置確認(int nX, int nY)
+{
+	if (nX < 0 || nY < 0)
+	{
+		return false;
+	}
+	int nX2 = 0;
+	int nY2 = 0;
+	if (!マップデータ２_東位置(nX2, nY2))
+	{
+		return false;
+	}
+	return nX2 == nX && nY2 == nY;
+}
+
+bool マップデータ２_西位置確認(int nX, int nY)
+{
+	if (nX < 0 || nY < 0)
+	{
+		return false;
+	}
+	int nX2 = 0;
+	int nY2 = 0;
+	if (!マップデータ２_西位置(nX2, nY2))
+	{
+		return false;
+	}
+	return nX2 == nX && nY2 == nY;
+}
+
+bool マップデータ２_発生場所確認(int nX, int nY)
+{
+	return マップデータ２_発生場所検索(nX, nY) >= 0;
+}
+
+bool マップデータ２_広域場所確認(int nX, int nY)
+{
+	return マップデータ２_広域場所検索(nX, nY) >= 0;
+}
+
+bool マップデータ２_覚書確認(int nX, int nY)
+{
+	return マップデータ２_覚書検索(nX, nY) >= 0;
+}
+
+void マップデータ２_開始位置設定(int nX, int nY, int nDir)
+{
+	g_sMapData2.setStartX(nX);
+	g_sMapData2.setStartY(nY);
+	g_sMapData2.setStartDir(nDir);
+}
+
+void マップデータ２_開始方向設定(int nDir)
+{
+	g_sMapData2.setStartDir(nDir);
+}
+
+void マップデータ２_北位置設定(int nX, int nY)
+{
+	g_sMapData2.setNorthX(nX);
+	g_sMapData2.setNorthY(nY);
+}
+
+void マップデータ２_南位置設定(int nX, int nY)
+{
+	g_sMapData2.setSouthX(nX);
+	g_sMapData2.setSouthY(nY);
+}
+
+void マップデータ２_東位置設定(int nX, int nY)
+{
+	g_sMapData2.setEastX(nX);
+	g_sMapData2.setEastY(nY);
+}
+
+void マップデータ２_西位置設定(int nX, int nY)
+{
+	g_sMapData2.setWestX(nX);
+	g_sMapData2.setWestY(nY);
+}
+
+int マップデータ２_発生場所追加(int nX, int nY)
+{
+	return g_sMapData2.addOutBreak(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_発生場所削除(int nX, int nY)
+{
+	return g_sMapData2.eraseOutBreak(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_広域場所追加(int nX, int nY)
+{
+	return g_sMapData2.addWideArea(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_広域場所削除(int nX, int nY)
+{
+	return g_sMapData2.eraseWideArea(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_覚書追加(int nX, int nY)
+{
+	return g_sMapData2.addMemo(マップ位置_インデクス(nX, nY));
+}
+
+int マップデータ２_覚書削除(int nX, int nY)
+{
+	return g_sMapData2.eraseMemo(マップ位置_インデクス(nX, nY));
+}
+
+string スポット文字列(int nValue)
+{
+	switch (nValue)
+	{
+		case 2:
+			return "発生場所";
+		case 3:
+			return "広域場所";
+		case 9:
+			return "覚書";
+		default:
+			break;
+	}
+	return "？？？";
+}
+
+string スポット文字(int nValue)
+{
+	switch (nValue)
+	{
+		case 2:
+			return "発";
+		case 3:
+			return "広";
+		case 9:
+			return "覚";
+		default:
+			break;
+	}
+	return "？";
+}
+
+int マップ出口_ＣＧ番号(int nDir)
+{
+	switch (nDir)
+	{
+		case 1:
+			return 29911;
+		case 2:
+			return 29912;
+		case 3:
+			return 29913;
+		case 4:
+			return 29914;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int マップスポット_ＣＧ番号(int nType)
+{
+	switch (nType)
+	{
+		case 2:
+			return 29922;
+		case 3:
+			return 29923;
+		case 9:
+			return 29929;
+		default:
+			break;
+	}
+	return 0;
+}
+

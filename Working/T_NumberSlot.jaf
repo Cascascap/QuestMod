@@ -1,0 +1,345 @@
+int T_NumberSlot::getValue()
+{
+	return this.m_nValue;
+}
+
+int T_NumberSlot::getMaxValue()
+{
+	return this.m_nMaxValue;
+}
+
+int T_NumberSlot::getMode()
+{
+	return this.m_nAnimeMode;
+}
+
+bool T_NumberSlot::isAnime()
+{
+	return this.m_nAnimeMode > 0;
+}
+
+T_NumberSlot::T_NumberSlot()
+{
+	this.clear();
+}
+
+T_NumberSlot::~T_NumberSlot()
+{
+	this.delete();
+}
+
+bool T_NumberSlot::create(int nCgNo, int nHyphen, int nCount, int nSpace, bool bZero)
+{
+	this.delete();
+	if (nCount <= 0)
+	{
+		return false;
+	}
+	if (!this.loadCg(nCgNo, nHyphen))
+	{
+		return false;
+	}
+	this.m_aspNumber.Alloc(nCount);
+	this.m_aspNew.Alloc(nCount);
+	int i = 0;
+	for (i = 0; i < nCount; ++i)
+	{
+		this.m_aspNumber[i].create(this.m_nCgW, this.m_nCgH, 0, 0, 0, 0);
+		this.m_aspNew[i].create(this.m_nCgW, this.m_nCgH, 0, 0, 0, 0);
+	}
+	this.m_nCount = nCount;
+	this.m_nSpace = nSpace;
+	this.m_bZero = bZero;
+	this.m_nMaxValue = ç≈ëÂêîíl(this.m_nCount);
+	return true;
+}
+
+void T_NumberSlot::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspNumber[i].delete();
+		this.m_aspNew[i].delete();
+	}
+	if (!this.m_aspNumber.Empty())
+	{
+		this.m_aspNumber.Free();
+	}
+	if (!this.m_aspNew.Empty())
+	{
+		this.m_aspNew.Free();
+	}
+	this.unloadCg();
+	this.clear();
+}
+
+void T_NumberSlot::clear()
+{
+	this.m_nCgNo = 0;
+	this.m_nCgW = 0;
+	this.m_nCgH = 0;
+	this.m_nHyphen = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nValue = -1;
+	this.m_nMaxValue = -1;
+	this.m_nCount = 0;
+	this.m_nSpace = 0;
+	this.m_bZero = false;
+	this.m_nAnimeMode = 0;
+	this.m_nTotalTime = 0;
+	this.m_nOldValue = -1;
+	this.m_nNewValue = -1;
+	this.m_szOld = "";
+	this.m_szNew = "";
+}
+
+bool T_NumberSlot::update(int nValue, int nTotalTime, int nMode)
+{
+	if (!this.animeStart(nValue, nTotalTime, nMode))
+	{
+		return false;
+	}
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (true)
+	{
+		if (this.anime(sTimer.Get()) <= 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	this.animeEnd();
+	return true;
+}
+
+bool T_NumberSlot::animeStart(int nValue, int nTotalTime, int nMode)
+{
+	if (this.m_nCount <= 0)
+	{
+		return false;
+	}
+	this.animeEnd();
+	if (nValue == this.m_nValue)
+	{
+		return false;
+	}
+	if (nTotalTime <= 0)
+	{
+		return false;
+	}
+	if (nMode < 0)
+	{
+		if (nValue > this.m_nValue)
+		{
+			nMode = 1;
+		}
+		else
+		{
+			nMode = 2;
+		}
+	}
+	else if (nMode != 1 && nMode != 2)
+	{
+		return false;
+	}
+	this.m_nAnimeMode = nMode;
+	this.m_nTotalTime = nTotalTime;
+	this.m_nOldValue = this.m_nValue;
+	this.m_nNewValue = êîíl_ï‚ê≥(nValue, 0, this.m_nMaxValue);
+	this.m_szOld = îºäpêîéö(this.m_nOldValue, this.m_nCount, this.m_bZero);
+	this.m_szNew = îºäpêîéö(this.m_nNewValue, this.m_nCount, this.m_bZero);
+	return êîéöÇbÇf_ï°êîÉRÉsÅ[(this.m_nCgNo, this.m_szNew, this.m_aspNew);
+}
+
+void T_NumberSlot::animeEnd()
+{
+	if (this.m_nAnimeMode > 0)
+	{
+		this.setValue(this.m_nNewValue);
+	}
+	this.m_nAnimeMode = 0;
+	this.m_nTotalTime = 0;
+	this.m_nOldValue = -1;
+	this.m_nNewValue = -1;
+	this.m_szOld = "";
+	this.m_szNew = "";
+}
+
+int T_NumberSlot::anime(int nTime)
+{
+	if (this.m_nAnimeMode <= 0)
+	{
+		return -1;
+	}
+	if (nTime >= this.m_nTotalTime)
+	{
+		return 0;
+	}
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	int nNewH = é¿êîåvéZ(this.m_nCgH, nTime, this.m_nTotalTime);
+	int nOldH = this.m_nCgH - nNewH;
+	int nX = this.m_nX;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nOldNum = this.m_szOld[i];
+		int nNewNum = this.m_szNew[i];
+		ref T_Sprite rfsOld = this.m_aspNumber[i];
+		ref T_Sprite rfsNew = this.m_aspNew[i];
+		if (nOldNum == nNewNum)
+		{
+			rfsOld.setPos(nX, this.m_nY);
+			rfsOld.setShow(1);
+			rfsNew.setShow(0);
+			goto label0;
+		}
+		if (nOldH > 0)
+		{
+			if (this.m_nAnimeMode == 1)
+			{
+				rfsOld.setSurfaceArea(0, nNewH, this.m_nCgW, nOldH);
+				rfsOld.setPos(nX, this.m_nY);
+			}
+			else
+			{
+				rfsOld.setSurfaceArea(0, 0, this.m_nCgW, nOldH);
+				rfsOld.setPos(nX, this.m_nY + nNewH);
+			}
+			rfsOld.setShow(1);
+		}
+		else
+		{
+			rfsOld.setShow(0);
+		}
+		if (nNewH > 0)
+		{
+			if (this.m_nAnimeMode == 1)
+			{
+				rfsNew.setSurfaceArea(0, 0, this.m_nCgW, nNewH);
+				rfsNew.setPos(nX, this.m_nY + nOldH);
+			}
+			else
+			{
+				rfsNew.setSurfaceArea(0, nOldH, this.m_nCgW, nNewH);
+				rfsNew.setPos(nX, this.m_nY);
+			}
+			rfsNew.setShow(1);
+		}
+		else
+		{
+			rfsNew.setShow(0);
+		}
+	label0:
+		nX += this.m_nCgW + this.m_nSpace;
+	}
+	return 1;
+}
+
+void T_NumberSlot::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	int nX2 = nX;
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspNumber[i].setPos(nX2, nY);
+		this.m_aspNew[i].setPos(nX2, nY);
+		nX2 += this.m_nCgW + this.m_nSpace;
+	}
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_NumberSlot::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspNumber[i].setZ(nZ);
+		this.m_aspNew[i].setZ(nZ);
+	}
+	this.m_nZ = nZ;
+}
+
+void T_NumberSlot::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspNumber[i].setShow(bShow);
+		this.m_aspNew[i].setShow(0);
+	}
+	this.m_bShow = bShow;
+}
+
+void T_NumberSlot::setValue(int nValue)
+{
+	if (this.m_nCount <= 0)
+	{
+		return;
+	}
+	nValue = êîíl_ï‚ê≥(nValue, 0, this.m_nMaxValue);
+	if (nValue == this.m_nValue)
+	{
+		return;
+	}
+	this.m_nValue = nValue;
+	if (!êîéöÇbÇf_ï°êîÉRÉsÅ[(this.m_nCgNo, îºäpêîéö(nValue, this.m_nCount, this.m_bZero), this.m_aspNumber))
+	{
+		return;
+	}
+	this.setPos(this.m_nX, this.m_nY);
+	this.setZ(this.m_nZ);
+	this.setShow(this.m_bShow);
+}
+
+bool T_NumberSlot::loadCg(int nCgNo, int nHyphen)
+{
+	if (nCgNo == this.m_nCgNo)
+	{
+		return true;
+	}
+	this.unloadCg();
+	if (!êîéöÇbÇf_ÉçÅ[Éh(nCgNo, nHyphen == 0))
+	{
+		return false;
+	}
+	if (nHyphen > 0)
+	{
+		if (!êîéöÇbÇf_ÉnÉCÉtÉìê›íË(this.m_nCgNo, nHyphen))
+		{
+			return false;
+		}
+	}
+	this.m_nCgNo = nCgNo;
+	this.m_nCgW = êîéöÇbÇf_ïù(nCgNo);
+	this.m_nCgH = êîéöÇbÇf_çÇ(nCgNo);
+	this.m_nHyphen = nHyphen;
+	return true;
+}
+
+bool T_NumberSlot::unloadCg()
+{
+	if (this.m_nCgNo <= 0)
+	{
+		return false;
+	}
+	if (!êîéöÇbÇf_ÉAÉìÉçÅ[Éh(this.m_nCgNo))
+	{
+		return false;
+	}
+	this.m_nCgNo = 0;
+	this.m_nCgW = 0;
+	this.m_nCgH = 0;
+	this.m_nHyphen = -1;
+	return true;
+}
+

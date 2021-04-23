@@ -1,0 +1,182 @@
+CEndResult::CEndResult()
+{
+	this.m_BG.SetCG(Ｒ８マグナム確認() ? "10603" : "10602", 1);
+	this.m_BG.SetZ(10);
+}
+
+CEndResult::~CEndResult()
+{
+	this.Release();
+}
+
+void CEndResult::Release()
+{
+	this.m_BG.Release();
+	this.m_Count.Free();
+}
+
+bool CEndResult::IsDownChancelButton()
+{
+	return AFL_IsKeyDown(1);
+}
+
+void CEndResult::CreateContent()
+{
+	int PosY = 235;
+	int PosX = 24;
+	int Width = 500;
+	int Index = 0;
+	int HappinessKyanKyan = 0;
+	if (FA[61] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[62] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[63] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[64] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[65] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[66] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[67] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[68] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[69] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	if (FA[70] == 0)
+	{
+		++HappinessKyanKyan;
+	}
+	Index = this.AddCount("Total cleared quests: ", "%d" % FA[94], PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight() + 16;
+	Index = this.AddCount("Total defeated enemies: ", "%d" % FA[95], PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight() + 16;
+	Index = this.AddCount("Total times Rance had sex: ", "%d" % FA[96], PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight() + 16;
+	Index = this.AddCount("Total items obtained: ", "%d" % FA[97], PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight() + 16;
+	Index = this.AddCount("Times fled: ", "%d" % FA[98], PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight() + 16;
+	Index = this.AddCount("Times started game up: ", "%d" % 起動回数(), PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight() + 16;
+	Index = this.AddCount("Total donations: ", "%d" % ◆寄付, PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight() + 16;
+	Index = this.AddCount("Money spent at Frostbuy: ", "%d G" % ◆売店で使った金, PosX, PosY, Width, true);
+	int PosY = 90;
+	int PosX = 572;
+	int Width = 400;
+	int Index = 0;
+	Index = this.AddCount("Popular Characters", "", PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 1st: %s" % Ｃ短縮名前(人気キャラ[1], ""), "Battles: %d" % 人気キャラポイント[1], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 2nd: %s" % Ｃ短縮名前(人気キャラ[2], ""), "Battles: %d" % 人気キャラポイント[2], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 3rd: %s" % Ｃ短縮名前(人気キャラ[3], ""), "Battles: %d" % 人気キャラポイント[3], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 4th: %s" % Ｃ短縮名前(人気キャラ[4], ""), "Battles: %d" % 人気キャラポイント[4], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 5th: %s" % Ｃ短縮名前(人気キャラ[5], ""), "Battles: %d" % 人気キャラポイント[5], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	PosY += 24;
+	Index = this.AddCount("Defeated characters:", "", PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 1st: %s" % Ｃ短縮名前(死亡キャラ[1], ""), "Deaths: %d" % 死亡キャラポイント[1], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 2nd: %s" % Ｃ短縮名前(死亡キャラ[2], ""), "Deaths: %d" % 死亡キャラポイント[2], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	Index = this.AddCount(" 3rd: %s" % Ｃ短縮名前(死亡キャラ[3], ""), "Deaths: %d" % 死亡キャラポイント[3], PosX, PosY, Width, false);
+	PosY += this.m_Count[Index].GetHeight();
+	PosY += 24;
+	Index = this.AddCount("Uncaptured gal monsters: ", "", PosX, PosY, Width, true);
+	PosY += this.m_Count[Index].GetHeight();
+	if (未捕獲モンスター[1] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[1]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	if (未捕獲モンスター[2] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[2]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	if (未捕獲モンスター[3] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[3]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	if (未捕獲モンスター[4] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[4]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	if (未捕獲モンスター[5] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[5]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	if (未捕獲モンスター[6] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[6]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	if (未捕獲モンスター[7] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[7]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	if (未捕獲モンスター[8] != 0)
+	{
+		Index = this.AddCount(モンスター固有番号文字列(未捕獲モンスター[8]), "", PosX, PosY, Width, false);
+		PosY += this.m_Count[Index].GetHeight();
+	}
+	PosY += 24;
+}
+
+int CEndResult::AddCount(string Title, string Count, int X, int Y, int 幅, bool ShowLine)
+{
+	this.m_Count.Realloc(this.m_Count.Numof() + 1);
+	ref CEndResultCountData CountData = this.m_Count[this.m_Count.Numof() - 1];
+	CountData.Set(Title, Count, 幅);
+	CountData.SetPos(X, Y);
+	CountData.SetZ(20);
+	CountData.ShowLine(ShowLine);
+	return this.m_Count.Numof() - 1;
+}
+
+void CEndResult::Update()
+{
+	Ｔエピローグデータ生成();
+	this.CreateContent();
+	全表示(1, 2000);
+	W強制待ち(2000);
+	for (; ; )
+	{
+		if (this.IsDownChancelButton())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+

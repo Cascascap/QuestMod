@@ -1,0 +1,96 @@
+void 選択データ_登録(int nID, string szText, int nR, int nG, int nB, string szComment, int nCgNo, int nSoundClick)
+{
+	g_sSelectData.add(nID, szText, nR, nG, nB, szComment, nCgNo, nSoundClick);
+}
+
+void 選択データ_解放()
+{
+	g_sSelectData.free();
+}
+
+void 選択データ_位置設定(int nX, int nY)
+{
+	g_sSelectData.setPos(nX, nY);
+}
+
+void 選択データ_カーソル設定(int nID)
+{
+	g_sSelectData.setCursorID(nID);
+}
+
+int 選択データ_位置Ｘ()
+{
+	return g_sSelectData.getPosX();
+}
+
+int 選択データ_位置Ｙ()
+{
+	return g_sSelectData.getPosY();
+}
+
+int 選択データ_カーソル()
+{
+	return g_sSelectData.getCursorID();
+}
+
+int 選択データ_数()
+{
+	return g_sSelectData.getCount();
+}
+
+int 選択データ_有効数()
+{
+	return g_sSelectData.getActiveCount();
+}
+
+int 選択データ_拡張項目数()
+{
+	return g_sSelectData.getSpecialCount();
+}
+
+int 選択データ_先頭ＩＤ()
+{
+	return g_sSelectData.getFirst();
+}
+
+int 選択データ_インデクス(int nID)
+{
+	return g_sSelectData.getIndex(nID);
+}
+
+string 選択データ_説明(int nID)
+{
+	ref T_SelectData rfData = g_sSelectData.get(g_sSelectData.getIndex(nID));
+	if (rfData === NULL)
+	{
+		return "";
+	}
+	return rfData.m_szComment;
+}
+
+int 選択データ_ＩＤ(int nIndex)
+{
+	ref T_SelectData rfData = g_sSelectData.get(nIndex);
+	if (rfData === NULL)
+	{
+		return -1;
+	}
+	return rfData.m_nID;
+}
+
+bool 選択データ_取得(int nIndex, ref T_SelectData sData)
+{
+	if (sData === NULL)
+	{
+		return false;
+	}
+	sData.clear();
+	ref T_SelectData rfData = g_sSelectData.get(nIndex);
+	if (rfData === NULL)
+	{
+		return false;
+	}
+	sData = rfData;
+	return true;
+}
+

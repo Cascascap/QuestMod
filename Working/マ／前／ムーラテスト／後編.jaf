@@ -1,0 +1,1941 @@
+void カイズ３／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5080, 0, 0);
+	ト書き();
+	' ' R;
+	'     Alice\'s Mansion' A;
+	音楽(84, -1, -1);
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Hello, this is Alice."' A;
+	'"Last time on Rance Quest Magnum:"' A;
+	'"Crook found out she was the most likely candidate for the papacy."' A;
+	'"A little worried for her and bent on punishing her, Rance entered the Church Headquarters in Kaiz with his party."' A;
+	'"Wandering around lost, Rance\'s party found a suspicious dark hole and jumped in.' R;
+	' Just where did they end up?"' A;
+	'"Now, let\'s continue where we left off."' A;
+	セリフ(2916, "");
+	'"Caaaaaw!"' A;
+	音楽(0, 1, 1000);
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	' ' R;
+	'  ... ... ...' A;
+	セット表示(5580, 5050, 0, 0);
+	セリフ２(2000, "");
+	'"........."' A;
+	'"...Nngh..."' A;
+	セリフ(2005, "");
+	'"Whoa, where the hell is this?!"' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"...Uh, a forest?"' A;
+	セリフ(2100, "");
+	'"Oh, you awake, Bro?"' A;
+	セリフ(2005, "");
+	'"Huh? Weren\'t we underneath the Church?"' A;
+	セリフ(2100, "");
+	'"I don\'t really know, but we were all here when we woke up."' A;
+	セリフ(2005, "");
+	'"Hmm, well, whatever.' R;
+	' Guess we should get moving."' A;
+	セリフ(2000, "");
+	'"Snff snff, Crook\'s scent is that way."' A;
+	セリフ(2023, "");
+	'"You can tell?!"' A;
+	セリフ(2000, "");
+	'"’Course not, you dumbass."' A;
+	ADVOFF();
+}
+
+void カイズ３／案内板１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"Oh, there\'s a sign."' A;
+	ト書き();
+	' ' R;
+	'     Kaiz Underground   27F' A;
+	セリフ(2005, "");
+	'"So we really are under the Church?"' A;
+	セリフ(2000, "");
+	'"But this is a forest.' R;
+	' I can even see the sky..."' A;
+	'"I don\'t get it..."' A;
+	ADVOFF();
+}
+
+void カイズ３／転移２(int fg)
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	if (fg == 0)
+	{
+		セット表示(0, 5611, 0, 0);
+		セリフ(2000, "");
+		'"What, what?' R;
+		' The scenery\'s changed again."' A;
+		'"...Now it looks like we\'re actually underground."' A;
+		セリフ(2005, "");
+		'"I don\'t get what\'s going on under this Church..."' A;
+		セット表示(5540, 0, 0, 0);
+		ト書き();
+		' ' R;
+		'     Meanwhile' A;
+		枠消去();
+		セット表示(5580, 5370, 0, 0);
+		ト書き();
+		' ' R;
+		'     Church Underground   Goddess Chamber' A;
+		音楽(79, -1, -1);
+		'Crook was not with the other three bishops. ' A;
+		セリフ(2410, "");
+		'"Hrmm..."' A;
+		'"Aaah! I can hardly wait!' R;
+		' I wonder when the goddess will grace us with Her presence!"' A;
+		セリフ(2400, "");
+		'"...Mmm..."' A;
+		思考(2400, "");
+		'(I can\'t say I want Her appearing too soon...' R;
+		' Not until we three are the only candidates...)' A;
+		セリフ(2400, "");
+		'"It\'s been some time.' R;
+		' I think I\'m going to see how Crook\'s purification is coming along."' A;
+		セリフ(2420, "");
+		'"I-I-If you\'re going...' R;
+		' I-I-I think I will, too..."' A;
+		セリフ(2400, "");
+		'"What will you do, Bishop Lordling?"' A;
+		セリフ(2410, "");
+		'"My worrying about her would only be an affront to her faith."' A;
+		'"I don\'t know what she\'s doing, but I will wait for her here."' A;
+		'"I\'m sure Bishop Mofus will be back in no time."' A;
+		セリフ(2400, "");
+		'"I\'d expect nothing less from a man of your caliber.' R;
+		' Then, we shall be back shortly."' A;
+		セリフ(2410, "");
+		'"Right!"' A;
+		ト書き();
+		' ' R;
+		'     The room next door' A;
+		ト書き();
+		'The room was filled with a particular smell.' A;
+		枠消去();
+		セット表示(5540, 0, 0, 0);
+	}
+	イベントＣＧ表示(8060, 1, 1000);
+	ト書きＥ();
+	' ' R;
+	'  <gch... glch... gch...>' A;
+	'In the center of the strange noises was Crook.' A;
+	'Eight naked men stood around her.' A;
+	'Crook\'s petals were pried wide open and a man was making long, repeated pushes into her.' R;
+	'A phallus had been stuffed into her mouth as well.' A;
+	'Each time the man behind her thrust, Crook\'s whole body jumped forward with the movement.' A;
+	セリフＥ(2400, "");
+	'"How is it going, everyone?"' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Ah, Bishop Tortoise, sir.' R;
+	' We swear all eight members of the Calupis Choir will clean the impurity from Bishop Mofus."' A;
+	セリフＥ(2400, "");
+	'"I hope you do.' R;
+	' Only your pure bodies can cleanse the filth of the devil she\'s taken on."' A;
+	セリフＥ(2060, "");
+	'"........."' A;
+	ト書きＥ();
+	'Crook tried to say something to Tortoise when she noticed him, but couldn\'t form the words around the dick in her mouth.' A;
+	セリフＥ(2400, "");
+	'"Heheh, they are the Calupis Choir.' R;
+	' They are God\'s children and have never left this church once since they were born."' A;
+	'"They have been raised without once touching the corruption of the outside world. By laying with them, their purity will cleanse the devil\'s filth from you."' A;
+	'"I\'m so glad you all were here."' A;
+	思考Ｅ(2420, "");
+	'(H-Hmph... I didn\'t know he had proteges like this...' R;
+	' Both a clean freak and a pervert as always, Tortoise...)' A;
+	'(Of course... As long as they\'re useful, I don\'t mind...)' A;
+	セリフＥ(2400, "");
+	'"We\'ll leave things to you."' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Yes, sir! Leave everything to us!"' A;
+	ト書きＥ();
+	'The Calupis Choir intensified their attack on Crook.' A;
+	'Crook was choking on the obstruction in her mouth. Her nostrils flared in desperation for oxygen.' A;
+	セリフＥ(2060, "");
+	'"...Fh... ngh... kh..."' A;
+	ト書きＥ();
+	'The breath coming from her nose tickled the dick\'s owner. Paying no mind to that, the man grabbed Crook\'s face and forced her to stimulate him with her motions.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"May her filth be purified!"' A;
+	'"Begone, impurities ensnaring her!"' A;
+	ト書きＥ();
+	'The Calupis Choir man muttered a prayer, robotically moving Crook in a drive toward his orgasm.' A;
+	'The penis moved back and forth inside her, rubbing against her palette.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Filth of the devil, begone!"' A;
+	ト書きＥ();
+	'The men repeated the words, moving like machines in their assault of Crook.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"...Kh..."' A;
+	ト書きＥ();
+	'But the man in Crook\'s mouth grimaced in pain.' A;
+	'His breathing grew labored and his white skin reddened.' R;
+	'The penis rammed into her mouth grew hotter and swelled and hardened more.' A;
+	'And his slow movements gradually began to quicken.' A;
+	' ' R;
+	'  <squelch, squelch, squelch>' A;
+	'His glans made loud noises as he thrust into the saliva in her mouth.' R;
+	'Drool was pulled from her lips as he moved.' A;
+	'And seeing that, a change came to the man thrusting into her from behind.' A;
+	'He couldn\'t move too passionately in front of Bishop Tortoise, but he was slowly, slowly starting to lose his composure. His own breath was growing ragged.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Fh... kh... uugh..."' A;
+	ト書きＥ();
+	'The two men in front of Crook were panting excitedly, and all the men around her were erect.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Ahh, haahh... kh..."' A;
+	ト書きＥ();
+	'Their handling of Crook was getting more violent as the Calupis Choir started to give in to their lust.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"A-Ahh... Bishop Mofus...!"' A;
+	'"Bishop Mofus, ugh, kh... Bishop Mofus...!"' A;
+	ト書きＥ();
+	'They may have been Tortoise\'s proteges, but their ranking was only as high as priests.' A;
+	'Normally, they wouldn\'t even be able to touch such a holy figure as Bishop Mofus, and being able to do whatever they wanted with her was beginning to drive them mad.' A;
+	'It wasn\'t something they could admit to as ones who served the gods, but their rising excitement was clear enough from their labored breathing.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Ahh... Bishop Mofus... ugh... Bishop Mofus..."' A;
+	ト書きＥ();
+	'Their voices became pitiful, like whining children.' R;
+	'At the same time, their movement intensified.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"...Fh... ugh..."' A;
+	ト書きＥ();
+	'Crook endured their acts, trying to resist as little as possible.' A;
+	'The men began moving faster, perhaps close to orgasm.' R;
+	'Their members grew hotter, throbbing inside her mouth and pussy.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Bishop Mofus... Bishop Mofus...!"' A;
+	ト書きＥ();
+	' ' R;
+	'  <squelch... squelch... squelch...>' A;
+	'Wet noises came from the cock moving inside her fluid-filled hole, the interval between them becoming shorter and shorter.' A;
+	'The man moved hard and fast in short thrusts at the entrance of her vagina.' A;
+	'The man in front moved Crook\'s head violently to match, indulging himself in whatever way felt best.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Ugh... kh... fh..."' A;
+	ト書きＥ();
+	'Crook grimaced in pain as the thing filling her mouth shoved down into her throat.' A;
+	'But he kept moving as hard as he liked inside her, his member pulsing and swelling once more.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Ugh, kh..."' A;
+	ト書きＥ();
+	'Then he reached his limit.' A;
+	枠消去();
+	効果_絶頂(8061);
+	セリフＥ(2060, "");
+	'"--!"' A;
+	ト書きＥ();
+	'The Calupis Choir man\'s penis throbbed and exploded with semen.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Fh... ah, ahh..."' A;
+	ト書きＥ();
+	'The man let out a satisfied sigh, as if heaven were before him.' A;
+	'The penis deep inside her trembled on and off, filling Crook up as it came.' A;
+	'In her mouth, the cum shot deep into her throat, pouring down into her belly.' A;
+	セリフＥ(2060, "");
+	'"..............."' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Agh... phew..."' A;
+	ト書きＥ();
+	'The two men shivered.' A;
+	枠消去();
+	イベントＣＧ表示(8062, 1, 1000);
+	ト書きＥ();
+	'The man drew his orgasming penis out from Crook\'s mouth, rubbing it all over her face.' A;
+	セリフＥ(2060, "");
+	'"..............."' A;
+	ト書きＥ();
+	'The men trembled at the sight of the limp bishop and the semen being rubbed onto her face.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Bishop Mofus... a-ahh... Bishop... haahh..."' A;
+	ト書きＥ();
+	'Semen shot out each time the penis touched her face, dirtying it all the way to her glossy hair.' A;
+	'Still hard even just after climax, the man slid his hot, erect member across Crook\'s nose and cheeks.' A;
+	'And her face was dyed white as he went.' A;
+	'The man behind her rubbed his dick against her butt as well, coating it in whatever cum he had still remaining.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh... Bishop... Receive our holy fluid...' R;
+	' Please wash off the dirt of the devil with this..."' A;
+	セリフＥ(2060, "");
+	'"..............."' A;
+	ト書きＥ();
+	'Crook accepted all of this without resisting.' A;
+	'A penis was still being rubbed against her face.' A;
+	セリフＥ(2060, "");
+	'"........."' A;
+	セット表示(5540, 0, 0, 0);
+	if (fg == 0)
+	{
+		セット表示(5580, 5370, 1400, 0);
+		セリフ(2400, "");
+		'"What do you think, Mofus?"' A;
+		ト書き();
+		'Tortoise asked.' A;
+		セリフ(2400, "");
+		'"I\'ve been training them for something like this, so each one can ejaculate eight times."' A;
+		'"All together, that would be 64."' A;
+		'"If they keep going, either your heart or your body may end up breaking."' A;
+		'"But if you\'ll abdicate your candidacy for the papacy, we can call off this ritual as unnecessary."' A;
+		セリフ２(2060, "");
+		'"........."' A;
+		ト書き();
+		'Crook remained silent.' A;
+		セリフ(2400, "");
+		'"Hmph..."' A;
+		'"...Very well, then.' R;
+		' Carry out a thorough cleansing, everyone."' A;
+		ト書き();
+		'The Calupis Choir gave an enthusiastic response.' A;
+		セリフ(2400, "");
+		'"...Heheheheh."' A;
+	}
+	ADVOFF();
+}
+
+void カイズ３／案内板２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	' ' R;
+	'     Kaiz Underground   28F' A;
+	セリフ(2000, "");
+	'"Hmm... So we do seem to be going down..."' A;
+	セリフ(2120, "");
+	'"........."' A;
+	セリフ(2124, "");
+	'"...Let us hurry."' A;
+	セリフ(2000, "");
+	'"Yeah, let\'s make good time."' A;
+	ADVOFF();
+}
+
+void カイズ３／転移３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5701, 0, 0);
+	セリフ(2005, "");
+	'"Hunh...?"' A;
+	全画面揺れ(1, false);
+	効果音(2027);
+	ト書き();
+	'All of a sudden, the party was in water.' A;
+	セリフ(2002, "");
+	'"G-Glug glug glug?!"' A;
+	'"Urgh!"' A;
+	枠消去();
+	ミニイベント表示(4400, 1, 500);
+	ト書き();
+	'Rance hurried and used the Urashima turtle.' A;
+	セリフ(2005, "");
+	'"Phaahh, I thought we were goners for a second."' A;
+	セリフ(2110, "");
+	'"Ngh, haahh...' R;
+	' That was quick thinking..."' A;
+	セリフ(2000, "");
+	'"Yeah, if we didn\'t have this thing we got from Pastel, we\'da been in real trouble..."' A;
+	セリフ(2005, "");
+	'"What\'s going on under this Church?"' A;
+	ADVOFF();
+}
+
+void カイズ３／案内板３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	' ' R;
+	'     Kaiz Underground   29F' A;
+	セリフ(2000, "");
+	'"So this is also under Kaiz..."' A;
+	セリフ(2301, "");
+	'"What an irritating place."' A;
+	セリフ(2150, "");
+	'"Aww, Lia\'s getting tired..."' A;
+	セリフ(2000, "");
+	'"Come on, we\'re going."' A;
+	セリフ(2150, "");
+	'"Okaaay."' A;
+	ADVOFF();
+}
+
+void カイズ３／転移４()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	効果音(2028);
+	ADVON();
+	セット表示(0, 5731, 0, 0);
+	セリフ(2005, "");
+	'"Ah..."' A;
+	ト書き();
+	'When Rance moved, a field of grass opened up before him.' A;
+	セリフ(2005, "");
+	'"...What the hell..."' A;
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	' ' R;
+	'     Meanwhile' A;
+	枠消去();
+	セット表示(5580, 5370, 0, 0);
+	ト書き();
+	' ' R;
+	'     Goddess Chamber' A;
+	音楽(79, -1, -1);
+	'The three bishops were still waiting for Alice\'s arrival.' A;
+	'And Crook was still receiving her "purification" from the Calupis Choir in the next room.' A;
+	セリフ(2420, "");
+	'"That girl... She still has not d-d-decided to abdicate her claim to the papacy...?"' A;
+	'"Wh-Wh-What do we do...?' R;
+	' A-At this rate...' R;
+	' the goddess will come."' A;
+	枠消去();
+	立ち絵表示(1400, 1, 200);
+	セリフ(2400, "");
+	'"I\'m sure it will be fine."' A;
+	'"Even if the goddess comes now, I\'m sure She won\'t choose that filthy woman as pope."' A;
+	'"And I told the Calupis Choir to purify her in whatever way they want.' R;
+	' That they wouldn\'t be held responsible for whatever happened."' A;
+	'"Normally they are strictly prohibited from releasing the holy fluids that dwell within them. They probably haven\'t ejaculated in months..."' A;
+	'"They\'re young, at the peak of their sexual desire, and eight of them can do what they wish to one woman.' R;
+	' I think it\'s obvious enough what will happen."' A;
+	'"She will break..."' A;
+	'"No, pardon me...' R;
+	' She will flee from purification and submit to the devil soon enough."' A;
+	'"Such a tragic thing."' A;
+	セリフ(2420, "");
+	'"I-I-I see, I see...' R;
+	' Keeheeheehee... heeeheee..."' A;
+	セリフ(2400, "");
+	'"Yes..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Tortoise and Enron exchanged knowing smiles.' A;
+	ADVOFF();
+}
+
+void カイズ３／小屋の神官１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"Oh, what\'s a hut doing in a place like this?' R;
+	' Maybe there\'s a girl changing inside!"' A;
+	セリフ(2002, "");
+	'"Toh!"' A;
+	セリフ(2983, "");
+	'"Huh?"' A;
+	セリフ(2003, "");
+	'"Ghah! It was a dude changing!"' A;
+	セリフ(2983, "");
+	'"P-Pardon me.' R;
+	' What did you need?"' A;
+	'"Hrm...?' R;
+	' Are you all... members of the Church...?"' A;
+	'"If you aren\'t, then you shouldn\'t be here--"' A;
+	全画面揺れ(2, false);
+	ト書き();
+	' ' R;
+	'  <THUNK!>' A;
+	'Rance thrust his sword into the floor.' A;
+	セリフ(2005, "");
+	'"Shut up.' R;
+	' I\'m already pissed after wandering into this annoying place.' R;
+	' I\'ll kill you."' A;
+	セリフ(2983, "");
+	'"E-Eep!"' A;
+	セリフ(2000, "");
+	'"So we\'re under the Church Headquarters, right?"' A;
+	セリフ(2983, "");
+	'"Y-Yes, we are..."' A;
+	セリフ(2005, "");
+	'"But there\'s a sky."' A;
+	セリフ(2983, "");
+	'"That\'s due to God\'s divine work.' R;
+	' We mere priests could never understand it, but it\'s some sort of underground labyrinth that connects to another space."' A;
+	セリフ(2000, "");
+	'"Hrm..."' A;
+	'"So where\'s Crook?"' A;
+	セリフ(2983, "");
+	'"Croo...?"' A;
+	セリフ(2150, "");
+	'"He means Bishop Mofus."' A;
+	セリフ(2983, "");
+	'"Th-The bishops are currently participating in the final ruling of the Mula Test..."' A;
+	セリフ(2002, "");
+	'"And I\'m asking where is that!"' A;
+	セリフ(2983, "");
+	'"E-Eep!"' A;
+	'"Ah--"' A;
+	全画面揺れ(2, false);
+	ト書き();
+	' ' R;
+	'  <whump!>' A;
+	セリフ(2005, "");
+	'"H-Huh?"' A;
+	セリフ(2000, "");
+	'"Heeey, wake up and answer my questions!"' A;
+	セリフ(2005, "");
+	'"Dammit, he fainted in fear."' A;
+	'"Shit, this is why nobody likes wusses."' A;
+	ADVOFF();
+}
+
+void カイズ３／呪縛の前にいる神官()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2983, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Hm, another priest."' A;
+	ト書き();
+	'They followed the eyes of the priest to something that looked like a yellow cloud floating by.' A;
+	セリフ(2000, "");
+	'"Hey, pops.' R;
+	' What is that thing?"' A;
+	セリフ(2983, "");
+	'"The evil god Sunwashipple."' A;
+	'"Four years ago, it infiltrated this holy land, Kaiz."' A;
+	'"The Mulalaloux himself battled it and sealed it here."' A;
+	'"Me?' R;
+	' I\'m just a guard... I am entrusted with observing it."' A;
+	'"I know it\'ll be okay, but I check on it five times a day, just in case."' A;
+	'"Well, I\'ll be going, then."' A;
+	ト書き();
+	'The priest left with a bow.' A;
+	セリフ(2005, "");
+	'"...He seems kinda halfassed."' A;
+}
+
+void カイズ３／呪縛された神()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	'A yellow cloud-like thing floated before Rance\'s party.' A;
+	セリフ(2002, "");
+	'"Outta the waaay!"' A;
+	ト書き();
+	'Rance brandished his sword, but the cloud was unperturbed as it continued to float there.' A;
+	セリフ(2005, "");
+	'"Hm... It\'s not attacking us...' R;
+	' So we can\'t fight it to get it out of the way..."' A;
+	'"It doesn\'t show any signs of budging..."' A;
+	セリフ(2000, "");
+	'"Hmm... How do we get around this thing...?"' A;
+}
+
+void カイズ３／呪縛された神／キック()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2002, "");
+	'"Here we go! Toooooh!"' A;
+	ト書き();
+	'Rance took a running start and sent a flying kick at the cloud.' A;
+	全画面揺れ(2, false);
+	' ' R;
+	'  <boing~>' A;
+	セリフ(2003, "");
+	'"Whoa, you bounce right off it!"' A;
+	セリフ(2005, "");
+	'"Dammit, so kicks don\'t work..."' A;
+	'"Hmmmmm~..."' A;
+	ADVOFF();
+}
+
+void カイズ３／呪縛された神／消しゴム()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2000, "");
+	'"Oh yeah, I\'ve got this thing.' R;
+	' The curse eraser we just got back."' A;
+	セリフ(2000, "");
+	'"Sachiko, the manual."' A;
+	セリフ(2020, "");
+	'"R-Right."' A;
+	'"・This handy tool erases curses and seals.' R;
+	' ・Rub it against the target.' R;
+	' ・Dispose of eraser dust quickly after use as it is toxic."' A;
+	セリフ(2021, "");
+	'"That\'s what it says..."' A;
+	セリフ(2000, "");
+	'"Hm hm, good for everything, that curse eraser.' R;
+	' So we can use this to erase this seal."' A;
+	セリフ(2023, "");
+	'"What?!' R;
+	' It\'s a dark god sealed in here!' R;
+	' That\'s dangerous!"' A;
+	セリフ(2000, "");
+	'"We just have to beat it when it comes out.' R;
+	' Then we can get through."' A;
+	'"Then I can use this thing to get rid of my Abstinence Morurun and Sill\'s ice while I\'m at it.' R;
+	' This is a perfect place to test it out."' A;
+	セリフ(2001, "");
+	'"Rubby rub, rubby rub."' A;
+	セリフ(2022, "");
+	'"Eeee, please don\'t come out, mister evil god..."' A;
+	セリフ(2000, "");
+	'"Oh?"' A;
+	ト書き();
+	'The cloud trembled and disappeared.' A;
+	効果音(2010);
+	' ' R;
+	'  <poof>' A;
+	セリフ(2023, "");
+	'"Aaaaah!"' A;
+	セリフ(2000, "");
+	'"Ooh, it\'s gone."' A;
+	'"...Nothing\'s coming?"' A;
+	セリフ(2024, "");
+	'"H-Huh...?"' A;
+	セリフ(2983, "");
+	'"Aaah... Wh-What is this?!' R;
+	' What did you...?!"' A;
+	セリフ(2000, "");
+	'"Oh, it\'s that priest."' A;
+	セリフ(2023, "");
+	'"Aaah!' R;
+	' I-I\'m sorry, I\'m sorry!"' A;
+	セリフ(2983, "");
+	'"I was curious, so I came back...' R;
+	' I can\'t believe what I\'ve witnessed..."' A;
+	'"Sometime in the four years it was sealed here, the dark god Sunwashipple must have been destroyed.' R;
+	' Ohh... Holy Mulalaloux..."' A;
+	'"This means I\'ve been freed from my guard duty.' R;
+	' Thank the gods."' A;
+	'"Well, if you\'ll excuse me."' A;
+	ト書き();
+	'The priest left.' A;
+	セリフ(2100, "");
+	'"...Did he not care that we\'re intruders?"' A;
+	セリフ(2005, "");
+	'"...What a hard worker."' A;
+	セリフ(2000, "");
+	'"But now we know that the curse eraser works!' R;
+	' Now we\'ve got nothing to fear from Pastel!"' A;
+	セリフ(2001, "");
+	'"Gahahahaha, let\'s hurry and get rid of this--"' A;
+	ト書き();
+	' ' R;
+	'  <pomf>' A;
+	セリフ(2002, "");
+	'"What?! The curse eraser\'s gone?!"' A;
+	セリフ(2003, "");
+	'"I-It could only be used once...?' R;
+	' Gwah, I\'ve done it now..."' A;
+	セリフ(2005, "");
+	'"Sachiko..."' A;
+	セリフ(2022, "");
+	'"U-Umm, the manual didn\'t say anything about...' R;
+	' Umm, erm, umm..."' A;
+	セリフ(2005, "");
+	'"Haaaaaaaahh~~..."' A;
+	セリフ(2024, "");
+	'"Oh geez, he\'s really depressed."' A;
+	ADVOFF();
+}
+
+void カイズ３／案内板４()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	' ' R;
+	'     Kaiz Underground   30F' A;
+	セリフ(2050, "");
+	'"The world is a vast place...' R;
+	' I never knew something like this existed."' A;
+	'"Perhaps there\'s a lot we never discover when we spend our whole lives in the Kalar Village."' A;
+	セリフ(2000, "");
+	'"I didn\'t know about this place either, you know."' A;
+	ADVOFF();
+}
+
+void カイズ３／１／イージス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Hm? What is it?"' A;
+	ト書き();
+	'Rance called out to Aegis when she knelt down by the side of the path.' A;
+	枠消去();
+	立ち絵表示(1050, 1, 200);
+	セリフ(2050, "");
+	'"Mm, I inspected it and all the greenery appears to be real..."' A;
+	セリフ(2000, "");
+	'"So the sun in the sky\'s real too?"' A;
+	セリフ(2050, "");
+	'"Could be..."' A;
+	'"Are we really under the Church Headquarters right now...?"' A;
+	セリフ(2005, "");
+	'"Hmm..."' A;
+	セリフ(2050, "");
+	'"This feels strange...' R;
+	' It\'s like we\'re being shown a malicious illusion..."' A;
+	セリフ(2000, "");
+	'"Wanna go back, then?"' A;
+	セリフ(2050, "");
+	'"You\'re heading forward, aren\'t you, Rance?"' A;
+	セリフ(2000, "");
+	'"Yep, I am."' A;
+	セリフ(2050, "");
+	'"Then I\'ll go, too."' A;
+	セリフ(2000, "");
+	'"Heheheh, I\'m so popular."' A;
+	セリフ(2050, "");
+	'"I didn\'t mean it in that way..."' A;
+	'"I just trust you.' R;
+	' I\'ll leave the decisions to you."' A;
+	セリフ(2000, "");
+	'"Alright, we\'re going, then."' A;
+	セリフ(2050, "");
+	'"Right."' A;
+	ADVOFF();
+}
+
+void カイズ３／２／アルカネーゼ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1100, 1, 200);
+	セリフ(2100, "");
+	'"Hey, Brooo..."' A;
+	セリフ(2000, "");
+	'"Don\'t whine like that. What is it?"' A;
+	セリフ(2100, "");
+	'"Doesn\'t it kinda... seem like there\'s no exit here...?' R;
+	' We\'re not... trapped here, are we...?"' A;
+	セリフ(2005, "");
+	'"Not a lot of guts in that huge body of yours, huh?"' A;
+	セリフ(2104, "");
+	'"Y-You don\'t have to call me huge..."' A;
+	セリフ(2000, "");
+	'"Aww, we\'ll be fine.' R;
+	' Just like before, if we walk around and get into some fights, we\'ll find our way."' A;
+	'"Just leave it to me."' A;
+	セリフ(2102, "");
+	'"........."' A;
+	セリフ(2300, "");
+	'"There\'s no time to blush like that, Alkanese."' A;
+	セリフ(2100, "");
+	'"I-I-I-I wasn\'t...!"' A;
+	'"Gh..."' A;
+	思考(2005, "");
+	'(I know what I told Alkanese, but I\'m actually winging it here.' R;
+	' Hmm... Where the hell are we, anyway?)' A;
+	セリフ(2000, "");
+	'"Well, whatever. Just gotta wander for a bit."' A;
+	ADVOFF();
+}
+
+void カイズ３／３／ビスケッタ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Glug glug, glug glug...' R;
+	' Hmm, it sure is cold in the water..."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	音楽(71, -1, -1);
+	ト書き();
+	'Rance glanced to the side and caught sight of Biscuitta packing something into a cooler.' A;
+	セリフ(2000, "");
+	'"Miss Biscuitta, what are you up to?"' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Pardon me, Master.' R;
+	' I spotted some crabs. I thought it would be pertinent to capture a few."' A;
+	'"I was thinking about making some crabcrab stew tonight, if that\'s alright with you."' A;
+	セリフ(2005, "");
+	'"Crab, huh...? I\'m not crazy about it...' R;
+	' Kinda feels like there\'s never enough."' A;
+	セリフ(2000, "");
+	'"Oh, make ’em into crab cream croquettes.' R;
+	' Then I\'ll eat ’em."' A;
+	セリフ(2450, "");
+	'"Crab... cream... croquettes..."' A;
+	セリフ(2451, "");
+	'"Excuse my rudeness, but...' R;
+	' I think it would be a terrible waste to use these crabs in that way..."' A;
+	セリフ(2005, "");
+	'"Hm?"' A;
+	セリフ(2450, "");
+	'"Crabs in this season are large and plentiful.' R;
+	' If made into stew, they create a thick broth that permeates the vegetables and gives them a very rich flavor."' A;
+	'"Fresh crab meat and vegetables, then a bowl of rice with an egg dropped into it...' R;
+	' It will taste extravagant and warm you to your core."' A;
+	セリフ(2004, "");
+	'"O-Oho..."' A;
+	ト書き();
+	'Rance couldn\'t help gulping.' A;
+	セリフ(2450, "");
+	'"The crabs here are particularly suited to stew. If found in a market, they would no doubt be treated as first-rate goods. I\'m sure I could satisfy you..."' A;
+	セリフ(2000, "");
+	'"M-Mm, that sounds good, I wanna eat it now.' R;
+	' Okay, we\'re definitely having crabcrab stew tonight. It\'s decided."' A;
+	'"I\'ll leave it to you, Miss Biscuitta."' A;
+	セリフ(2450, "");
+	'"Please do, Master."' A;
+	セリフ(2310, "");
+	'"They\'re sure easygoing when we don\'t even know if we\'ll be leaving here..."' A;
+	ADVOFF();
+}
+
+void カイズ３／転移５()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5073, 0, 0);
+	音楽(201, -1, -1);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hrm, another new area."' A;
+	'"........."' A;
+	セリフ(2005, "");
+	'"Gwhoa, it\'s a snowy mountain this time! Cold!' R;
+	' ...Achoo!"' A;
+	セリフ(2000, "");
+	'"Mm? There\'s a snowman...' R;
+	' Who the fuck\'s playing around in here?"' A;
+	セリフ(2050, "");
+	'"No, wait, Rance."' A;
+	セリフ(2005, "");
+	'"Huh?"' A;
+	ト書き();
+	'Aegis reached out to the lumps of snow.' A;
+	セリフ(2050, "");
+	'"This is... the strange creature Crook always had with her..."' A;
+	ト書き();
+	'Troche was collapsed there, drained of energy.' A;
+	セリフ(2005, "");
+	'"Oh yeah, she did have something like this with her.' R;
+	' So what\'s it doing here...?"' A;
+	音楽(85, -1, -1);
+	セリフ(2917, "");
+	'"Y-You all... came for her...?"' A;
+	セリフ(2003, "");
+	'"Whoa, it talked!"' A;
+	セリフ(2050, "");
+	'"I don\'t think that\'s really all that surprising at this point..."' A;
+	セリフ(2918, "");
+	'"Rance... Are you here to save Crook...?"' A;
+	セリフ(2005, "");
+	'"Ah, no.' R;
+	' I\'m here to punish Crook for using me."' A;
+	セリフ(2918, "");
+	'"So you\'re not..."' A;
+	セリフ(2000, "");
+	'"I\'m here to punish her."' A;
+	セリフ(2918, "");
+	'"........."' A;
+	'"...No, you might not do anything too terrible to her..."' A;
+	セリフ(2005, "");
+	'"What are you muttering about?"' A;
+	セリフ(2918, "");
+	'"Please, Crook\'s in danger.' R;
+	' I know I\'m being presumptuous, but..."' A;
+	'"Please... help her..."' A;
+	セリフ(2005, "");
+	'"So she is in danger.' R;
+	' What\'s going on?"' A;
+	セリフ(2918, "");
+	'"Seems like the other papal candidates have accused her of something. Tortoise probably made the accusation and Enron\'s supporting him."' A;
+	'"I can\'t believe they\'d call the Calupis Choir..."' A;
+	'"Crook\'s locked up with a real problematic bunch.' R;
+	' She could be killed at this rate..."' A;
+	セリフ(2005, "");
+	'"Tch, what\'s that girl doing?' R;
+	' Come on, we\'re gonna hurry there. Lead us."' A;
+	セリフ(2918, "");
+	'"........."' A;
+	'"Thank you..."' A;
+	ADVOFF();
+}
+
+void カイズ３／トローチの説明()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2918, "");
+	'"There\'s no time! Please, hurry!"' A;
+	'"Straight down this path, come on!"' A;
+	セリフ(2000, "");
+	'"Ah, wait.' R;
+	' There\'s like a bunch of treasure chests...?"' A;
+	セリフ(2004, "");
+	'"They probably have rare items..."' A;
+	セリフ(2918, "");
+	'"We don\'t have time for that! We need to hurry!"' A;
+	ADVOFF();
+}
+
+void トローチ／イライラ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2923, "");
+	'"Ahh, geez, leave the chests for later!"' A;
+	セリフ(2918, "");
+	'"Please..."' A;
+	セリフ(2000, "");
+	'"Fine, fine.' R;
+	' I get it. Let\'s go."' A;
+	ADVOFF();
+}
+
+void カイズ３／案内板５()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	' ' R;
+	'     Kaiz Underground   31F' A;
+	セリフ(2000, "");
+	'"Hrmph, Floor 31...?"' A;
+	セリフ(2923, "");
+	'"Th-This is no time to be reading signs.' R;
+	' Please, hurry!"' A;
+	セリフ(2000, "");
+	'"I know, I know."' A;
+	ADVOFF();
+}
+
+void カイズ３／転移６()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2918, "");
+	'"This is the deepest layer under the headquarters, the path that leads to the Goddess Chamber."' A;
+	'"It\'ll be at the end of this path, and Crook will be nearby."' A;
+	セリフ(2000, "");
+	'"Hmph, then let\'s hurry."' A;
+	セリフ(2918, "");
+	'"Wait, there\'re all sorts of invisible traps set on this path. Watch out."' A;
+	セリフ(2005, "");
+	'"How am I supposed to watch for things I can\'t see?"' A;
+	セリフ(2918, "");
+	'"Well, bishops and the anointed know the correct route..."' A;
+	セリフ(2000, "");
+	'"And you don\'t?"' A;
+	セリフ(2918, "");
+	'"Sorry."' A;
+	セリフ(2005, "");
+	'"Whatever, we\'ll just have to set them off as we go."' A;
+	セリフ(2918, "");
+	'"We don\'t have much time, either...' R;
+	' I really... don\'t know what might happen to Crook if we don\'t get there soon..."' A;
+	セリフ(2000, "");
+	'"Well, there\'s no point just whining about it!' R;
+	' Let\'s go!"' A;
+	ADVOFF();
+}
+
+void カイズ３／戻された()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"Oh, we\'re back where we started."' A;
+	セリフ(2918, "");
+	'"Kh... So that was the wrong route..."' A;
+	セリフ(2000, "");
+	'"Hmph, one more try."' A;
+	ADVOFF();
+}
+
+void カイズ３／本来のエレベータ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"This is... an elevator...?"' A;
+	セリフ(2650, "");
+	'"You\'re probably normally supposed to use this to get down here."' A;
+	セリフ(2005, "");
+	'"Hrmm, we went through all that work to get here, but this thing has a direct route?"' A;
+	セリフ(2770, "");
+	'"Well, we did take the escape route in."' A;
+	セリフ(2000, "");
+	'"I\'m tired; we\'ll use this to go home."' A;
+	セリフ(2923, "");
+	'"Whoooooa!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, just kidding."' A;
+	セリフ(2923, "");
+	'"Aah, geez, just hurry, would you?!' R;
+	' Come on!"' A;
+	セリフ(2000, "");
+	'"Awright, let\'s go."' A;
+	ADVOFF();
+}
+
+void カイズ３／ＢＳ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2918, "");
+	'"Phew... That was an ordeal...' R;
+	' That\'s the door to the Goddess Chamber."' A;
+	'"But... of course it\'s guarded..."' A;
+	セリフ(2933, "");
+	'"........."' A;
+	セリフ(2918, "");
+	'"And that\'s BS himself...' R;
+	' He\'s the head of the Templars..."' A;
+	セリフ(2000, "");
+	'"He strong?"' A;
+	セリフ(2918, "");
+	'"He is..."' A;
+	セリフ(2933, "");
+	'"Intruders, stop right there!' R;
+	' This is a holy place!' R;
+	' It\'s no place for those like you!"' A;
+	セリフ(2000, "");
+	'"Shut up! Crook\'s my woman, and I hear she\'s in danger.' R;
+	' I won\'t show mercy if you\'re in my way!"' A;
+	セリフ(2933, "");
+	'"What did you say about Bishop Mofus...?!"' A;
+	枠消去();
+	立ち絵表示(1020, 1, 200);
+	セリフ(2021, "");
+	'"Oh, no. Umm... Are we going to have to, err... battle...?"' A;
+	セリフ(2000, "");
+	'"Hunh? Probably?"' A;
+	セリフ(2022, "");
+	'"Ah... I\'m kinda nervous and, uhh..."' A;
+	セリフ(2005, "");
+	'"What, you gotta pee?' R;
+	' I keep telling you to take care of it before we get into any encounters..."' A;
+	セリフ(2000, "");
+	'"Fine, I\'ll give you a minute, so go do it in a corner over there or something."' A;
+	セリフ(2020, "");
+	'"Augh, I\'m sorry..."' A;
+	セリフ(2933, "");
+	'"Sachiko..."' A;
+	セリフ(2021, "");
+	'"Huh...?"' A;
+	セリフ(2020, "");
+	'"What? Why does that person know my name...?"' A;
+	セリフ(2933, "");
+	'"...No parent would not be overjoyed at his child\'s independence...' R;
+	' Whatever path you choose, I will support your decision..."' A;
+	'"But if you\'ve chosen to act with these villains, as your father, I\'ll have no choice but to stop you..."' A;
+	セリフ(2021, "");
+	'"Huh? What? What do you...?"' A;
+	セリフ(2933, "");
+	'"You haven\'t figured it out yet?' R;
+	' You\'re as oblivious as ever, my daughter..."' A;
+	ト書き();
+	'The leader of the Templars removed his helmet.' A;
+	セリフ(2934, "");
+	'"........."' A;
+	セリフ(2021, "");
+	'"Huh...?"' A;
+	セリフ(2023, "");
+	'"WHAAA?!' R;
+	' D-DAD?!"' A;
+	セリフ(2000, "");
+	'"Wait, that\'s your dad?"' A;
+	セリフ(2020, "");
+	'"Y-Yes, he said he worked for the Church, but...' R;
+	' I-I thought he was an office worker, not a soldier..."' A;
+	セリフ(2918, "");
+	'"That guy\'s not anywhere near a mere soldier."' A;
+	'"The head knight of the Templars is on par with a minister, the next rank after bishop.' R;
+	' He\'s the most powerful person in the Church under the pope and the bishops..."' A;
+	セリフ(2023, "");
+	'"What?! My dad\'s amazing!"' A;
+	セリフ(2934, "");
+	'"Haahh... Honestly..."' A;
+	セリフ(2001, "");
+	'"Gahahaha, that\'s good!' R;
+	' Hey, Dad, check this out!"' A;
+	セリフ(2023, "");
+	'"Wahaaaaaa!"' A;
+	ト書き();
+	'Rance pressed his sword to Sachiko\'s neck.' A;
+	セリフ(2934, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Your daughter\'s life is in my hands.' R;
+	' Surrender if you want her to live!"' A;
+	'"Heheheh, I love this trick.' R;
+	' It\'s super easy."' A;
+	セリフ(2022, "");
+	'"Eee!"' A;
+	セリフ(2770, "");
+	'"There\'s his usual tactic..."' A;
+	セリフ(2934, "");
+	'"No..."' A;
+	'"Go ahead and kill her."' A;
+	セリフ(2005, "");
+	'"Huh?"' A;
+	セリフ(2934, "");
+	'"She has chosen evil.' R;
+	' Rather than spend her life under evil\'s thumb, a quick death here would be better for her."' A;
+	セリフ(2005, "");
+	'"Hrmmm, no good, huh...?' R;
+	' Guess that\'s not gonna fly."' A;
+	セリフ(2000, "");
+	'"Oh well, then.' R;
+	' Sachiko\'s dad, prepare to die!"' A;
+	セリフ(2023, "");
+	'"Huh? Wait a second!' R;
+	' Please don\'t kill my dad!"' A;
+	セリフ(2002, "");
+	'"You\'re fighting, too, stupid!"' A;
+	セリフ(2022, "");
+	'"I-I am?!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2934, "");
+	'"I won\'t go easy on you, Sachiko!"' A;
+	'"Prepare yourself!"' A;
+	ADVOFF();
+}
+
+void カイズ３／ＢＳ／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2934, "");
+	'"Gh..."' A;
+	ト書き();
+	'BS fell to his knees.' A;
+	セリフ(2020, "");
+	'"Daaad!"' A;
+	ト書き();
+	'Sachiko ran up to him.' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Just get out of the way.' R;
+	' I need to get through that door behind you."' A;
+	全画面揺れ(2, false);
+	効果音(2004);
+	ト書き();
+	'Rance kicked BS aside.' A;
+	セリフ(2023, "");
+	'"What are you doing?! That\'s my dad!"' A;
+	セリフ(2000, "");
+	'"Yeah, yeah."' A;
+	ト書き();
+	'Rance opened the door.' A;
+	セリフ(2000, "");
+	'"Hm? This is the Goddess Chamber?"' A;
+	セリフ(2918, "");
+	'"This is just the antechamber. We\'re looking for the ceremonial chamber next door. If Crook\'s somewhere, it\'s there!"' A;
+	セリフ(2000, "");
+	'"Alright, this door!"' A;
+	ト書き();
+	'Rance stood before the door and raised his leg.' A;
+	セリフ(2002, "");
+	'"Doryaaa! Rance Kiiiiick!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'The door opened.' A;
+	ADVOFF();
+}
+
+void カイズ３／時間切れ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(79, -1, -1);
+	セット表示(5540, 0, 0, 0);
+	ト書きＥ();
+	'............' A;
+	'.........' A;
+	'......' A;
+	枠消去();
+	イベントＣＧ表示(8071, 1, 1000);
+	ト書きＥ();
+	'The room was filled with men\'s heated breath.' A;
+	'The eight members of the Calupis Choir surrounded the lone Crook.' A;
+	'They\'d already ejaculated several times, but their penises were still erect.' A;
+	'Crook was in a horrible state, slathered in foul-smelling semen.' A;
+	セリフＥ(2060, "");
+	'"........."' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh, haahh... Bishop Mofus... haahh, haahh..."' A;
+	ト書きＥ();
+	'The men surrounding her were drunk on sadistic pleasure, obsessed with Crook and rubbing their members all over her.' A;
+	'There was a puddle of cum beneath her, a clear reflection of just how much had been pumped into her already.' A;
+	'Above that, a man had his hand thrust into Crook\'s vagina.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh... ahh... B-Bishop... haahh..."' A;
+	セリフＥ(2060, "");
+	'"........."' A;
+	ト書きＥ();
+	'Crook accepted all this without resisting.' A;
+	'She did so because she was already dead.' A;
+	セリフＥ(2060, "");
+	'"........."' A;
+	ト書きＥ();
+	'Her eyes had lost their light and focused on nothing.' R;
+	'Still, the surrounding men continued to rape her.' A;
+	'They plunged their members into her again and again, rubbed against her skin, and climaxed. Over and over and over again.' A;
+	枠消去();
+	効果_絶頂(8071);
+	ト書きＥ();
+	' ' R;
+	'  <gluck... gluck... gluck...>' A;
+	'One of the men came again and let his cum fall upon Crook\'s body.' A;
+	'She didn\'t move.' A;
+	音楽(0, 1, 1500);
+	セット表示(5540, 0, 0, 0);
+	ト書きＥ();
+	'............' A;
+	'.........' A;
+	'......' A;
+	セット表示(5580, 5370, 0, 0);
+	セリフ２(2901, "Calupis Choir");
+	'"GYAAAAAAAAA!"' A;
+	ト書き();
+	'One of the men suddenly screamed.' A;
+	セリフ(2000, "");
+	'"Hmph. Die."' A;
+	ト書き();
+	'Rance went around. One by one, the men surrounding Crook fell dead.' A;
+	セリフ(2918, "");
+	'"A-Aaaaaah... Crook..."' A;
+	枠消去();
+	立ち絵表示(1400, 1, 200);
+	セリフ(2400, "");
+	'"Oh, did Mofus die...?' R;
+	' Seems she couldn\'t endure her trial.' R;
+	' What a tragedy..."' A;
+	ト書き();
+	'Tortoise appeared before them.' A;
+	セリフ(2005, "");
+	'"So this was your work?"' A;
+	セリフ(2400, "");
+	'"Mmm, there seems to be some misunderstanding.' R;
+	' This was merely a ceremony.' R;
+	' She was being purified."' A;
+	'"Though in any case, it seems she\'s lost her qualifications to become pope, doesn\'t it?"' A;
+	'"Heheheh..."' A;
+	セリフ(2005, "");
+	'"You bastard..."' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	効果音(2029);
+	白画面(1, 300);
+	ト書き();
+	'Rance stepped forward, but the moment he did, a light filled the area.' A;
+	セリフ２(2005, "");
+	'"Gh, what the...? That\'s bright..."' A;
+	セット表示(0, 5370, 0, 0);
+	ト書き();
+	'When the light dissipated, Tortoise was nowhere to be seen.' A;
+	セリフ(2005, "");
+	'"...Wh-Where\'d he go...?"' A;
+	セリフ(2918, "");
+	'"He was summoned by God...' R;
+	' He\'s somewhere we can\'t touch him anymore..."' A;
+	セリフ(2005, "");
+	'"........."' A;
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	' ' R;
+	'  ... ... ...' A;
+	セット表示(5530, 0, 0, 0);
+	ト書き();
+	'Rance didn\'t make it in time.' A;
+	'He\'d slaughtered all the Calupis Choir members present, but Crook would never live again.' A;
+	'And Oz Tortoise was chosen as the new pope.' A;
+	'With his new authority as pope, Tortoise ordered all adherents of the Church of Alicism to kill Rance.' A;
+	'The few who sided with Rance, including the Leazish royalty, the Zethan royalty, and Nippon, were all set upon by the Alicist faithful.' A;
+	'And when, one year later, the fiends attacked amidst all this chaos, humanity was...' A;
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	' ' R;
+	'  ... ... ...' A;
+	ADVOFF();
+}
+
+void カイズ／ＢＳ／戦闘後(int fg)
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	if (fg == 0)
+	{
+		セット表示(5540, 0, 0, 0);
+		ト書き();
+		'............' A;
+		'.........' A;
+		'......' A;
+		音楽(73, -1, -1);
+		枠消去();
+	}
+	イベントＣＧ表示(8070, 1, 1000);
+	ト書きＥ();
+	'The room was filled with feral panting and a masculine odor.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh, haahh... Bishop... Bishop Mofus..."' A;
+	ト書きＥ();
+	'The men were still violently attacking Crook.' A;
+	セリフＥ(2060, "");
+	'".........Ngh!"' A;
+	ト書きＥ();
+	'They had her legs lifted into the air and were thrusting their hips with the singleminded intent of satisfying their own desires.' A;
+	'They rubbed their members all across her body, coated her with their fluids, and came until they were content.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh... haahh...!"' A;
+	ト書きＥ();
+	'One of the men was thrusting several fingers into Crook\'s tight passageway.' A;
+	セリフＥ(2060, "");
+	'"...Mgh!"' A;
+	ト書きＥ();
+	'With holy water being poured into her mouth, Crook couldn\'t speak, but her eyes were wide from the pain of her violation, and strangled sounds came from her throat.' A;
+	'And during this, the man with his hand inside her was slowly pushing in and spreading his fingers apart.' A;
+	セリフＥ(2060, "");
+	'"...Mh! ...Mh!"' A;
+	ト書きＥ();
+	'Crook\'s whole body was stiffened by the insertion that threatened to break her.' A;
+	セリフＥ(2060, "");
+	'"...Ah, ah... aah..."' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh... Bishop Mofus... It\'s so warm... inside you..."' A;
+	ト書きＥ();
+	'The man with his hand in her let out an ecstatic sigh.' A;
+	'Then his arm tensed.' A;
+	' ' R;
+	'  <shove!!!!>' A;
+	セリフＥ(2060, "");
+	'"----!"' A;
+	ト書きＥ();
+	'A pain intense enough to leave her speechless ran through Crook.' A;
+	'The man thrust his hand into her to his wrist.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh, haahh... B-Bishop... haahh..."' A;
+	ト書きＥ();
+	'The man\'s face went slack in a look of bliss.' A;
+	セリフＥ(2060, "");
+	'"...Ah, ah!"' A;
+	ト書きＥ();
+	'Crook didn\'t mean to resist, but the intense pain was causing her whole body to convulse.' A;
+	' ' R;
+	'  <shove... squelch... shove...>' A;
+	セリフＥ(2060, "");
+	'"Ah... ah, ah, ah..."' A;
+	ト書きＥ();
+	'The man twisted his hand and stirred around inside her.' R;
+	'Crook\'s eyes snapped open again as she felt the pain intensify.' A;
+	'She tried to shut her legs, but the other men were preventing them from moving at all.' A;
+	' ' R;
+	'  <slk... slllk... slk...>' A;
+	'Behind her was another man, this one pushing his cock into her rectum.' A;
+	セリフＥ(2060, "");
+	'"...Ngh...!"' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Haahh... haahh... Bishop Mofus..."' A;
+	ト書きＥ();
+	'One more man was rubbing his dick against the skin between her leg and stomach.' A;
+	'The men were using their abundant ejaculate as lubricant, spreading it around with their penises.' A;
+	' ' R;
+	'  <tug!>' A;
+	セリフＥ(2060, "");
+	'".........Mh!"' A;
+	ト書きＥ();
+	'One of the men had yanked Crook\'s hair back and shoved his penis down her throat. The holy water was still being poured into her.' A;
+	'Each one of them had bloodshot eyes and labored breathing. All the fluids coating Crook\'s body smelled horribly, but no one was bothered by that anymore.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"How long... was the ceremony supposed to last...?"' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Bishop Tortoise said... until we\'re satisfied..."' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Until we\'re... satisfied..."' A;
+	ト書きＥ();
+	'Hearing that, the man\'s penis began to swell again.' R;
+	'His dull eyes took on a beastly glint.' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Then, until we\'re satisfied..."' A;
+	'"Yes, until we can accept that the filth has been cleansed from Bishop Mofus..."' A;
+	セリフＥ(2060, "");
+	'"........."' A;
+	セリフＥ(2901, "Calupis Choir");
+	'"Bishop Mofus... Bishop... haahh... Bishop..."' A;
+	ト書きＥ();
+	'The men became even more violent, handling Crook like a toy.' A;
+	枠消去();
+	効果_絶頂(8070);
+	ト書きＥ();
+	' ' R;
+	'  <gluck... gluck... gluck...>' A;
+	'Once again, a huge stream of semen shot out and dirtied her.' A;
+	セリフＥ(2060, "");
+	'"...Ah, ah... ah..."' A;
+	ト書きＥ();
+	'To the repeated abuses she was suffering, Crook squeezed a small voice out from deep in her throat.' A;
+	音楽(0, 1, 1500);
+	if (fg == 0)
+	{
+		セット表示(5540, 0, 0, 0);
+		'............' A;
+		'.........' A;
+		'......' A;
+		セット表示(5580, 5370, 0, 0);
+		全画面揺れ(2, false);
+		セリフ２(2901, "Calupis Choir");
+		'"GYAAAAAAAAaaaaaaaa!"' A;
+		ト書き();
+		'Suddenly, one of the Calupis Choir screamed.' R;
+		'Blood sprayed across the room.' A;
+		枠消去();
+		立ち絵表示(1000, 1, 200);
+		セリフ(2000, "");
+		'"Hmph..."' A;
+		セリフ２(2901, "Calupis Choir");
+		'"Wha-? Who-? You...!"' A;
+		ト書き();
+		'Every member of the Choir was speechless at the unexpected event.' A;
+		セリフ(2000, "");
+		'"Shut up."' A;
+		ト書き();
+		'Rance swung his sword and killed another of the Calupis Choir.' A;
+		セリフ２(2060, "");
+		'"R... Rance..."' A;
+		セリフ(2005, "");
+		'"Hmph..."' A;
+		ト書き();
+		'In no time, Rance had hacked the entire Calupis Choir to pieces.' A;
+		セリフ(2000, "");
+		'"Hey, somebody take care of Crook."' A;
+		セリフ(2020, "");
+		'"Ah, right!"' A;
+		セリフ(2918, "");
+		'"Kh..."' A;
+		セリフ(2000, "");
+		'"Alright, I\'m heading that way."' A;
+		ト書き();
+		'Rance moved into the neighboring room.' A;
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		背景アウト(500);
+		背景イン(5370, 500, "", false);
+		音楽(99, -1, -1);
+		セリフ(2000, "");
+		'"Hey! You got a visitor, fuckers!"' A;
+		セリフ(2410, "");
+		'"What?!"' A;
+		セリフ(2420, "");
+		'"Ghh! You\'re--!"' A;
+		セリフ(2400, "");
+		'"........."' A;
+		'"Really, what is BS doing?' R;
+		' This is a holy place, the Goddess Chamber."' A;
+		セリフ(2005, "");
+		'"You guys are the ones who sicced those freaks on Crook?"' A;
+		セリフ(2400, "");
+		'"Sicced...?' R;
+		' Ah, you mean the purification ritual."' A;
+		'"...We noticed signs that Bishop Mofus had lain with one of impure heart.' R;
+		' It was just a ceremony to cleanse herself of that influence."' A;
+		'"The Calupis Choir, a properly sanctified, holy entity, was removing Bishop Mofus\'s impurities."' A;
+		セリフ(2005, "");
+		'"Mm? Impure heart? You mean me?"' A;
+		セリフ(2400, "");
+		'"A-Ah, so you were the one who had your way with Mofus.' R;
+		' It\'s exactly as I imagined...' R;
+		' You stole her virginity, then..."' A;
+		'"You took... my..."' A;
+		セリフ(2002, "");
+		'"Quit your muttering!' R;
+		' I\'m gonna kill all of you!"' A;
+		セリフ(2061, "");
+		'"Please wait."' A;
+		枠消去();
+		立ち絵表示(1061, 1, 200);
+		ト書き();
+		'Crook appeared from behind him.' A;
+		セリフ(2000, "");
+		'"Oh, you\'re already okay?"' A;
+		セリフ(2061, "");
+		'"........."' A;
+		'"...Yes, thank you."' A;
+		'"But this is the Goddess Chamber.' R;
+		' It is a holy place.' R;
+		' You cannot commit violence here."' A;
+		'"And it\'s starting."' A;
+		セリフ(2000, "");
+		'"Huh?"' A;
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		音楽(0, -1, -1);
+		効果音(2029);
+		白画面(1, 300);
+		ト書き();
+		'A moment later, the room was filled with light.' A;
+		セリフ２(2005, "");
+		'"Gwah, what the--?!"' A;
+		'"I-It\'s bright... I can\'t see anything..."' A;
+		セリフ２(2400, "");
+		'"Ohh, God\'s light..."' A;
+		セリフ２(2420, "");
+		'"Kehah, kah..."' A;
+		セリフ２(2410, "");
+		'"Lady Aliiiiice!"' A;
+		セリフ２(2061, "");
+		'"...Well, I\'ll be right back."' A;
+		枠消去();
+		セット表示(5580, 5370, 0, 0);
+		ト書き();
+		'The light ceased.' A;
+		セリフ(2005, "");
+		'"Huh?"' A;
+		ト書き();
+		'The four bishops had disappeared.' A;
+		セリフ(2918, "");
+		'"They were called by the goddess...' R;
+		' To the heavens, where we can\'t reach them..."' A;
+		セリフ(2005, "");
+		'"Tch, so they\'re gone...?"' A;
+		'"Then we\'ll wait here until they come back."' A;
+		ト書き();
+		' ' R;
+		'  ... ... ...' A;
+		セリフ(2000, "");
+		'"Hey, white freak."' A;
+		セリフ(2918, "");
+		'"I-Is that me?!"' A;
+		セリフ(2000, "");
+		'"How long\'s this Mula Test thing take?"' A;
+		セリフ(2918, "");
+		'"Dunno... There isn\'t a schedule or anything. It might even go into tomorrow."' A;
+		セリフ(2005, "");
+		'"Ack, that\'s such a pain..."' A;
+		音楽(71, -1, -1);
+		'"Haaaaaahh. I\'m gonna take a nap."' A;
+		セリフ(2000, "");
+		'"Everybody take a break, okay?"' A;
+		セリフ(2050, "");
+		'"...Right. We can\'t fight on an empty stomach.' R;
+		' We should take this chance to eat a little."' A;
+		セリフ(2110, "");
+		'"Ah, you\'re right.' R;
+		' I\'ll get something ready."' A;
+		セリフ(2120, "");
+		'"Let me help."' A;
+		ト書き();
+		'They laid out a sheet and sat down to eat.' A;
+		セリフ(2110, "");
+		'"Umm... Mr. Troche?' R;
+		' Would you like some...?"' A;
+		セリフ(2918, "");
+		'"...No, I\'ll just wait for Crook to come back."' A;
+		'"........."' A;
+		セリフ２(2000, "");
+		'"Zzz, zzz..."' A;
+		ト書き();
+		' ' R;
+		'  ... ... ...' A;
+		セリフ(2000, "");
+		'"Fwaaahh, I\'m so bored..."' A;
+		セリフ(2918, "");
+		'"Yeah, this is taking a while..."' A;
+		セリフ(2000, "");
+		'"Shouldn\'t they be coming back soon?"' A;
+		音楽(0, 1, 1000);
+		枠消去();
+		効果音(2029);
+		白画面(1, 300);
+		ト書き();
+		'As they waited, the room began to fill with light again.' A;
+		セリフ２(2000, "");
+		'"Whoa, that\'s bright..."' A;
+		セリフ２(2918, "");
+		'"Someone\'s back!"' A;
+		枠消去();
+		セット表示(5580, 5370, 1420, 0);
+		ト書き();
+		'As the light pulled away, Bishop Enron was left in its wake.' A;
+		セリフ(2420, "");
+		'"I-I-I-I... I... failed...?' R;
+		' Wh-Wh-Why... Why...?"' A;
+		ト書き();
+		'Enron trembled as if in some sort of shock.' A;
+		音楽(93, -1, -1);
+		セリフ(2000, "");
+		'"Hey."' A;
+		セリフ(2420, "");
+		'"E-E-Ee?!"' A;
+		セリフ(2002, "");
+		'"Hyaaaaaaaaaaah!"' A;
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		全画面揺れ(2, false);
+		セリフ(2420, "");
+		'"Gggyaaaah!"' A;
+		ト書き();
+		'Rance grabbed the wheelchair from behind and shook it wildly.' A;
+		枠消去();
+		立ち絵表示(1000, 1, 200);
+		セリフ(2001, "");
+		'"Gahahaha, you\'ll probably bite it after one hit, so I gotta make this last.' R;
+		' You get the special course!"' A;
+		セリフ(2420, "");
+		'"L-L--L--L-Let gooo!' R;
+		' Koff! Hack! Koff koff!"' A;
+		セリフ(2001, "");
+		'"Gahahahahahahahahaha!' R;
+		' Toh, shake shake shake!"' A;
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		ト書き();
+		'Rance shook the old man for a little while.' A;
+		枠消去();
+		立ち絵表示(1420, 1, 200);
+		セリフ(2420, "");
+		'"........."' A;
+		セリフ(2005, "");
+		'"Oh, he passed out...' R;
+		' I\'ll bully him some more once he\'s awake."' A;
+		セリフ(2000, "");
+		'"Hey, ladies.' R;
+		' I\'ll leave the old dude to you."' A;
+		セリフ(2425, "");
+		'"........."' A;
+		ト書き();
+		'The healcinths nodded to Rance and left.' A;
+		音楽(0, 1, 1000);
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		ト書き();
+		' ' R;
+		'  ... ... ...' A;
+		枠消去();
+		効果音(2029);
+		白画面(1, 300);
+		ト書き();
+		'After a little while, the room filled with light again.' A;
+		セリフ２(2000, "");
+		'"Urgh, it\'s so bright... I can\'t get used to this..."' A;
+		セリフ２(2410, "");
+		'"I met Lady Aliiiiice!"' A;
+		音楽(71, -1, -1);
+		'"Whooooooooooa!' R;
+		' I regret not one drop of my liiife!"' A;
+		セリフ２(2000, "");
+		'"Wh-What?"' A;
+		セリフ２(2918, "");
+		'"...That\'s Bishop Lordling, no doubt about it."' A;
+		枠消去();
+		セット表示(5580, 5370, 0, 0);
+		ト書き();
+		'The light faded.' A;
+		枠消去();
+		立ち絵表示(1410, 1, 200);
+		セリフ(2410, "");
+		'"...Ohh, ohh... ohh..."' A;
+		ト書き();
+		'Lordling stood there, still choked up from the experience.' A;
+		セリフ(2410, "");
+		'"Hrm? You\'re--"' A;
+		セリフ(2002, "");
+		'"Diiiiie!"' A;
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		効果音(2021);
+		全画面揺れ(2, false);
+		セリフ(2410, "");
+		'"Gyaaaaaa!"' A;
+		枠消去();
+		効果音(2006);
+		全画面揺れ(2, false);
+		ト書き();
+		' ' R;
+		'  <thuuud!>' A;
+		立ち絵表示(1000, 1, 200);
+		セリフ(2000, "");
+		'"Justice has been served!"' A;
+		セリフ(2001, "");
+		'"Gahahaha!"' A;
+		セリフ(2918, "");
+		'"Yeesh..."' A;
+		セリフ(2000, "");
+		'"Good, good. Now two out of four are back."' A;
+		'"Which means...' R;
+		' Either Crook or that dude is gonna be pope."' A;
+		セリフ(2918, "");
+		'"Yeah..."' A;
+		セリフ(2000, "");
+		'"So what\'s the deal?' R;
+		' Does Crook have a shot?"' A;
+		セリフ(2918, "");
+		'"...I\'d say... the odds are against her...' R;
+		' Tortoise has a lot of influence..."' A;
+		'".........Haahh..."' A;
+		セリフ(2000, "");
+		'"Hmph."' A;
+		'"So Crook\'ll be back next.' R;
+		' We can at least give her a warm reunion as our party member."' A;
+		セリフ(2004, "");
+		'"I\'ll be punishing her for swiping my things, of course."' A;
+		セリフ(2918, "");
+		'"...Haahh..."' A;
+		音楽(0, 1, 1000);
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		ト書き();
+		' ' R;
+		'  ... ... ...' A;
+		セリフ(2005, "");
+		'"This one\'s taking a really long time..."' A;
+		セリフ(2918, "");
+		'"Well, She\'s making the final choice now."' A;
+		枠消去();
+		効果音(2029);
+		白画面(1, 300);
+		ト書き();
+		'The area was enveloped in light.' A;
+		セリフ２(2000, "");
+		'"Whoa, there it is!"' A;
+		'"Ahh, geez, it\'s just as annoying every time..."' A;
+		セリフ２(2400, "");
+		'"Waaaaaaaaah..."' A;
+		セリフ２(2000, "");
+		'"Wh-What?"' A;
+		枠消去();
+		セット表示(5580, 5370, 0, 0);
+		ト書き();
+		'When the light faded, Tortoise was standing there, devastated.' A;
+		枠消去();
+		立ち絵表示(1400, 1, 200);
+		セリフ(2400, "");
+		'"This can\'t be..."' A;
+		'"What\'s going on...?' R;
+		' H-H-H--How could I...? Why...?"' A;
+		'"Ggguuhheeeeeee...' R;
+		' Eee, eee, eeeeee...!"' A;
+		ト書き();
+		'His bloodshot eyes darted about, his teeth bared, drool spilling from his lips as Tortoise sobbed.' A;
+		セリフ(2005, "");
+		'"Ugh, gross..."' A;
+		セリフ(2400, "");
+		'"Haha, hahaha... i-if that girl becomes pope...' R;
+		' After all that I\'ve done, I... I\'ll..."' A;
+		'"Aaaaaaaaaaaaah..."' A;
+		セリフ(2002, "");
+		'"Whatever, die!!"' A;
+		セリフ(2400, "");
+		'"U-Uwaaaaaaaaaaah!!' R;
+		' UGYAAAAAAAAAA!!!"' A;
+		セリフ(2003, "");
+		'"Ugh, gross!"' A;
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		ト書き();
+		'With Tortoise\'s sudden scream, he flew out of the room.' A;
+		セリフ(2005, "");
+		'"Ah, dammit, he got away..."' A;
+		セリフ(2000, "");
+		'"Well, whatever. I don\'t wanna touch that guy."' A;
+		セリフ(2000, "");
+		'"Hm? Three out of four are out now, right?' R;
+		' So Crook is...?"' A;
+		セリフ(2918, "");
+		'"...I-It couldn\'t be..."' A;
+		セリフ(2023, "");
+		'"Aah! Everyone, look!"' A;
+		セリフ(2003, "");
+		'"Whoa, what\'s that?!"' A;
+		枠消去();
+		音楽(99, -1, -1);
+		立ち絵表示(1791, 1, 200);
+		ト書き();
+		'They all suddenly realized there was a person-shaped light descending into the room.' A;
+		セリフ(2918, "");
+		'"A-A-Ah..."' A;
+		セリフ(2005, "");
+		'"Wh-What is that...?"' A;
+		セリフ(2918, "");
+		'"I-I-It\'s the goddess... It\'s Lady Alice..."' A;
+		セリフ(2000, "");
+		'"What, that is?"' A;
+		セリフ(2791, "");
+		'"I am the Goddess Alice."' A;
+		ト書き();
+		'The being of holy light spoke, and its words echoed directly into the minds of those listening.' A;
+		セリフ(2791, "");
+		'"This is my message to you:"' A;
+		'"I appoint a new pope, the Guardian of Humanity, the Voice of the Gods."' A;
+		'"Her name is Crook Mofus."' A;
+		'"All living beings in this world, revere her words as if they are my own, and obey."' A;
+		音楽(0, 1, 2000);
+		枠消去();
+		立ち絵表示(0, 1, 200);
+		ト書き();
+		'The light faded as if being sucked away somewhere and Alice returned to the heavens.' A;
+		'And in her place was Crook.' A;
+		枠消去();
+		立ち絵表示(1067, 1, 200);
+		セリフ(2067, "");
+		'"........."' A;
+		セリフ(2000, "");
+		'"Oh..."' A;
+		セリフ(2918, "");
+		'"Wh--Wh-Wh--Ah... aaaah..."' A;
+		セリフ(2067, "");
+		'"Uhh..."' A;
+		'"Hello, I\'m the pope now."' A;
+		セリフ(2023, "");
+		'"H-Hwawaaaaaaaaah!"' A;
+		ト書き();
+		'Sachiko prostrated.' A;
+		ト書き();
+		'The Mula Test came to an end and the new highest power of the Alicist Church, Pope Crook Mofus, was born.' A;
+		セリフ(2067, "");
+		'"........."' A;
+		'"I\'ll do my best."' A;
+	}
+	ADVOFF();
+}
+

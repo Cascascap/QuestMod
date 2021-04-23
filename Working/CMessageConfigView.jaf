@@ -1,0 +1,309 @@
+CMessageConfigView::CMessageConfigView()
+{
+	this.m_nBaseZ = 15000;
+	this.m_nTabHeight = 32;
+	this.m_nExitBarHeight = 32;
+	this.m_nOnCursorObject = -1;
+	this.m_DefaultCharProperty.SetSize(20);
+	this.m_DefaultCharProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+	this.m_DefaultCharProperty.SetEdgeWeight(1.0);
+	this.m_DefaultCharProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+}
+
+int CMessageConfigView::Run(ref array@string TabNameList)
+{
+	this.Create(TabNameList);
+	SYS_画面更新(1, 100, 0, 0);
+	this.m_nExitCode = -1;
+	this.RunLoop();
+	this.Release();
+	return this.m_nExitCode;
+}
+
+void CMessageConfigView::Create(ref array@string TabNameList)
+{
+	CConfigCommonViewCreater ConfigCommonViewCreater;
+	ConfigCommonViewCreater.CreateTab(this.m_ConfigTabView, this.m_nBaseZ + 1, 1, TabNameList);
+	ConfigCommonViewCreater.CreateBaseSprite(this.m_BaseSprite, 1, this.m_nBaseZ);
+	ConfigCommonViewCreater.CreateExitBar(this.m_ExitBar, this.m_nBaseZ + 1);
+	this.CreateRestrainScreensaverCheckBoxSprite();
+	this.CreateStopVoiceByMessageClickCheckBoxSprite();
+	this.CreateReleaseMessageModeByClickCheckBoxSprite();
+	this.CreateReleaseMessageModeBySelectCheckBoxSprite();
+	this.CreateReleaseAutoModeBySelectCheckBoxSprite();
+	this.CreateFrameSkipWhileMessageSkipCheckBoxSprite();
+	this.m_SpaceKeyClick.Init(32, true);
+	this.m_LButtonClick.Init(1, true);
+	this.m_RButtonClick.Init(2, true);
+	this.m_EscapeKeyClick.Init(27, true);
+}
+
+void CMessageConfigView::Release()
+{
+	this.m_ReleaseAutoModeBySelectCheckBoxSprite.Release();
+	this.m_ReleaseMessageModeBySelectCheckBoxSprite.Release();
+	this.m_ReleaseMessageModeByClickCheckBoxSprite.Release();
+	this.m_StopVoiceByMessageClickCheckBoxSprite.Release();
+	this.m_RestrainScreensaverCheckBoxSprite.Release();
+	this.m_FrameSkipWhileMessageSkipCheckBoxSprite.Release();
+	this.m_ExitBar.Release();
+	this.m_BaseSprite.Release();
+	this.m_ConfigTabView.Release();
+}
+
+void CMessageConfigView::CreateRestrainScreensaverCheckBoxSprite()
+{
+	this.m_RestrainScreensaverCheckBoxSprite.CreateSampleSprite(20, 64, this.m_nBaseZ + 1, 20, 20);
+	this.m_RestrainScreensaverCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_RestrainScreensaverCheckBoxSprite.SetText("オートモード中はスクリーンセーバーを起動しないようにする", this.m_DefaultCharProperty);
+	this.m_RestrainScreensaverCheckBoxSprite.SetShowCheckMark(g_bRestrainScreensaverWhileAutoMode);
+}
+
+void CMessageConfigView::CreateStopVoiceByMessageClickCheckBoxSprite()
+{
+	this.m_StopVoiceByMessageClickCheckBoxSprite.CreateSampleSprite(20, 94, this.m_nBaseZ + 1, 20, 20);
+	this.m_StopVoiceByMessageClickCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_StopVoiceByMessageClickCheckBoxSprite.SetText("マウス左クリックで音声の再生を停止する", this.m_DefaultCharProperty);
+	this.m_StopVoiceByMessageClickCheckBoxSprite.SetShowCheckMark(g_bConfigStopVoiceByMessageClick);
+}
+
+void CMessageConfigView::CreateReleaseMessageModeByClickCheckBoxSprite()
+{
+	this.m_ReleaseMessageModeByClickCheckBoxSprite.CreateSampleSprite(20, 124, this.m_nBaseZ + 1, 20, 20);
+	this.m_ReleaseMessageModeByClickCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_ReleaseMessageModeByClickCheckBoxSprite.SetText("マウス左クリックでオートモード／既読スキップモードを解除する", this.m_DefaultCharProperty);
+	this.m_ReleaseMessageModeByClickCheckBoxSprite.SetShowCheckMark(g_bConfigReleaseMessageModeByClick);
+}
+
+void CMessageConfigView::CreateReleaseMessageModeBySelectCheckBoxSprite()
+{
+	this.m_ReleaseMessageModeBySelectCheckBoxSprite.CreateSampleSprite(20, 154, this.m_nBaseZ + 1, 20, 20);
+	this.m_ReleaseMessageModeBySelectCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_ReleaseMessageModeBySelectCheckBoxSprite.SetText("選択肢が表示されたとき、既読スキップモードを解除する", this.m_DefaultCharProperty);
+	this.m_ReleaseMessageModeBySelectCheckBoxSprite.SetShowCheckMark(g_ReleaseMessageSkipInSelectMenu);
+}
+
+void CMessageConfigView::CreateReleaseAutoModeBySelectCheckBoxSprite()
+{
+	this.m_ReleaseAutoModeBySelectCheckBoxSprite.CreateSampleSprite(20, 184, this.m_nBaseZ + 1, 20, 20);
+	this.m_ReleaseAutoModeBySelectCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_ReleaseAutoModeBySelectCheckBoxSprite.SetText("選択肢が表示されたとき、オートモードを解除する", this.m_DefaultCharProperty);
+	this.m_ReleaseAutoModeBySelectCheckBoxSprite.SetShowCheckMark(g_ReleaseAutoModeInSelectMenu);
+}
+
+void CMessageConfigView::CreateFrameSkipWhileMessageSkipCheckBoxSprite()
+{
+	this.m_FrameSkipWhileMessageSkipCheckBoxSprite.CreateSampleSprite(20, 234, this.m_nBaseZ + 1, 20, 20);
+	this.m_FrameSkipWhileMessageSkipCheckBoxSprite.SetTextCharSpace(-4);
+	this.m_FrameSkipWhileMessageSkipCheckBoxSprite.SetText("既読・未読スキップ時にフレームスキップして高速化する", this.m_DefaultCharProperty);
+	this.m_FrameSkipWhileMessageSkipCheckBoxSprite.SetShowCheckMark(g_bConfigIsSpeedupForFrameSkip);
+	this.m_FrameSkipWhileMessageSkipTextLine1.SetPos(70, 264);
+	this.m_FrameSkipWhileMessageSkipTextLine1.SetZ(this.m_nBaseZ + 1);
+	this.m_FrameSkipWhileMessageSkipTextLine1.SetCharSpace(-4);
+	this.m_FrameSkipWhileMessageSkipTextLine2.SetPos(70, 294);
+	this.m_FrameSkipWhileMessageSkipTextLine2.SetZ(this.m_nBaseZ + 1);
+	this.m_FrameSkipWhileMessageSkipTextLine2.SetCharSpace(-4);
+	this.m_FrameSkipWhileMessageSkipTextLine3.SetPos(70, 324);
+	this.m_FrameSkipWhileMessageSkipTextLine3.SetZ(this.m_nBaseZ + 1);
+	this.m_FrameSkipWhileMessageSkipTextLine3.SetCharSpace(-4);
+	this.m_FrameSkipWhileMessageSkipTextLine4.SetPos(70, 354);
+	this.m_FrameSkipWhileMessageSkipTextLine4.SetZ(this.m_nBaseZ + 1);
+	this.m_FrameSkipWhileMessageSkipTextLine4.SetCharSpace(-4);
+	this.m_FrameSkipWhileMessageSkipTextLine1.SetText("※この項目にチェックを入れると", this.m_DefaultCharProperty);
+	this.m_FrameSkipWhileMessageSkipTextLine2.SetText("　・メッセージ２　既読スキップ待ち時間", this.m_DefaultCharProperty);
+	this.m_FrameSkipWhileMessageSkipTextLine3.SetText("　・メッセージ２　未読スキップ待ち時間", this.m_DefaultCharProperty);
+	this.m_FrameSkipWhileMessageSkipTextLine4.SetText("　項目の設定は反映されなくなります", this.m_DefaultCharProperty);
+}
+
+void CMessageConfigView::RunLoop()
+{
+	for (; ; )
+	{
+		if (!this.CheckInput())
+		{
+			break;
+		}
+		UpdateView(true);
+	}
+}
+
+bool CMessageConfigView::CheckInput()
+{
+	int nPrevOnCursorObject = this.m_nOnCursorObject;
+	this.m_nOnCursorObject = -1;
+	this.m_ConfigTabView.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ConfigTabView.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 20 + nObject;
+		}
+	}
+	this.m_ExitBar.Update();
+	if (this.m_nOnCursorObject == -1)
+	{
+		int nObject = this.m_ExitBar.GetOnMouseCursorObject();
+		if (nObject != -1)
+		{
+			this.m_nOnCursorObject = 30 + nObject;
+		}
+	}
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_RestrainScreensaverCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 1;
+		}
+	}
+	this.m_RestrainScreensaverCheckBoxSprite.SetShowCursor(this.m_RestrainScreensaverCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_StopVoiceByMessageClickCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 2;
+		}
+	}
+	this.m_StopVoiceByMessageClickCheckBoxSprite.SetShowCursor(this.m_StopVoiceByMessageClickCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ReleaseMessageModeByClickCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 4;
+		}
+	}
+	this.m_ReleaseMessageModeByClickCheckBoxSprite.SetShowCursor(this.m_ReleaseMessageModeByClickCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ReleaseMessageModeBySelectCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 5;
+		}
+	}
+	this.m_ReleaseMessageModeBySelectCheckBoxSprite.SetShowCursor(this.m_ReleaseMessageModeBySelectCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_ReleaseAutoModeBySelectCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 3;
+		}
+	}
+	this.m_ReleaseAutoModeBySelectCheckBoxSprite.SetShowCursor(this.m_ReleaseAutoModeBySelectCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject == -1)
+	{
+		if (this.m_FrameSkipWhileMessageSkipCheckBoxSprite.IsMouseCursorInRect())
+		{
+			this.m_nOnCursorObject = 6;
+		}
+	}
+	this.m_FrameSkipWhileMessageSkipCheckBoxSprite.SetShowCursor(this.m_FrameSkipWhileMessageSkipCheckBoxSprite.IsMouseCursorInRect());
+	if (this.m_nOnCursorObject != -1 && nPrevOnCursorObject != this.m_nOnCursorObject)
+	{
+		this.PlaySoundUnderCursor();
+	}
+	if (this.m_SpaceKeyClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_RButtonClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_EscapeKeyClick.IsClick(-2147483648))
+	{
+		this.PlaySoundCancel();
+		return false;
+	}
+	if (this.m_LButtonClick.IsClick(this.m_nOnCursorObject) && this.m_nOnCursorObject != -1)
+	{
+		if (this.m_nOnCursorObject == 1)
+		{
+			this.PlaySoundDecide();
+			g_bRestrainScreensaverWhileAutoMode = !g_bRestrainScreensaverWhileAutoMode;
+			this.m_RestrainScreensaverCheckBoxSprite.SetShowCheckMark(g_bRestrainScreensaverWhileAutoMode);
+		}
+		else if (this.m_nOnCursorObject == 2)
+		{
+			this.PlaySoundDecide();
+			g_bConfigStopVoiceByMessageClick = !g_bConfigStopVoiceByMessageClick;
+			this.m_StopVoiceByMessageClickCheckBoxSprite.SetShowCheckMark(g_bConfigStopVoiceByMessageClick);
+		}
+		else if (this.m_nOnCursorObject == 4)
+		{
+			this.PlaySoundDecide();
+			g_bConfigReleaseMessageModeByClick = !g_bConfigReleaseMessageModeByClick;
+			this.m_ReleaseMessageModeByClickCheckBoxSprite.SetShowCheckMark(g_bConfigReleaseMessageModeByClick);
+		}
+		else if (this.m_nOnCursorObject == 5)
+		{
+			this.PlaySoundDecide();
+			g_ReleaseMessageSkipInSelectMenu = !g_ReleaseMessageSkipInSelectMenu;
+			this.m_ReleaseMessageModeBySelectCheckBoxSprite.SetShowCheckMark(g_ReleaseMessageSkipInSelectMenu);
+		}
+		else if (this.m_nOnCursorObject == 3)
+		{
+			this.PlaySoundDecide();
+			g_ReleaseAutoModeInSelectMenu = !g_ReleaseAutoModeInSelectMenu;
+			this.m_ReleaseAutoModeBySelectCheckBoxSprite.SetShowCheckMark(g_ReleaseAutoModeInSelectMenu);
+		}
+		else if (this.m_nOnCursorObject == 6)
+		{
+			this.PlaySoundDecide();
+			g_bConfigIsSpeedupForFrameSkip = !g_bConfigIsSpeedupForFrameSkip;
+			ChipmunkSpriteEngine.SYSTEM_SetConfigFrameSkipWhileMessageSkip(g_bConfigIsSpeedupForFrameSkip);
+			this.m_FrameSkipWhileMessageSkipCheckBoxSprite.SetShowCheckMark(g_bConfigIsSpeedupForFrameSkip);
+		}
+		else if (this.m_nOnCursorObject == 30 + 0)
+		{
+			this.PlaySoundDecide();
+			ゲーム終了();
+		}
+		else if (this.m_nOnCursorObject == 30 + 1)
+		{
+			this.PlaySoundDecide();
+			タイトルに戻る();
+		}
+		else if (this.m_nOnCursorObject == 30 + 2)
+		{
+			this.PlaySoundDecide();
+			return false;
+		}
+		else if (this.m_nOnCursorObject >= 20 && this.m_nOnCursorObject < 26 && this.m_nOnCursorObject - 20 != 1)
+		{
+			this.PlaySoundDecide();
+			this.m_nExitCode = this.m_nOnCursorObject - 20;
+			return false;
+		}
+	}
+	return true;
+}
+
+void CMessageConfigView::PlaySoundDecide()
+{
+	if (g_ConfigModeDocument.GetSoundDecide() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundDecide());
+}
+
+void CMessageConfigView::PlaySoundUnderCursor()
+{
+	if (g_ConfigModeDocument.GetSoundUnderCursor() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundUnderCursor());
+}
+
+void CMessageConfigView::PlaySoundCancel()
+{
+	if (g_ConfigModeDocument.GetSoundCancel() == -2147483648)
+	{
+		return;
+	}
+	システム効果音(g_ConfigModeDocument.GetSoundCancel());
+}
+

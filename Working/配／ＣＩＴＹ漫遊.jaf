@@ -1,0 +1,897 @@
+void 町歩き／プロローグ／一人()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 0, 0, 0);
+	ト書き();
+	'　' R;
+	'     Morning' A;
+	枠消去();
+	背景表示(5240, 1, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Cidade   Square' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'".........I\'m bored."' A;
+	音楽(71, -1, -1);
+	ト書き();
+	'Rance was wandering through Cidade with nothing to do.' A;
+	セリフ２(2901, "Young Man's Voice");
+	'"Raise your hands! Lots of energy♪"' A;
+	セリフ(2000, "");
+	'"Hm? Radio calisthenics...?"' A;
+	'"........."' A;
+	セリフ(2005, "");
+	'"Like this...?"' A;
+	ト書き();
+	'For whatever reason, Rance decided to participate.' A;
+	セリフ２(2901, "Young Man's Voice");
+	'"And a deep breath♪ Good work, everyone♪"' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"...That wasted some time.' R;
+	' I\'ll go somewhere else..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	背景アウト(500);
+	背景イン(5030, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Cidade   Macatt Bar' A;
+	セリフ(2016, "");
+	'"Urp..."' A;
+	セリフ(2000, "");
+	'"Phew, that breakfast was tasty.' R;
+	' Very nice."' A;
+	セリフ(2040, "");
+	'"...Not that you\'re planning on paying, I\'m sure..."' A;
+	音楽(0, 1, 2000);
+	枠消去();
+	背景アウト(500);
+	背景イン(5240, 500, "", false);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmm... There\'s really nothing to do today..."' A;
+	セリフ(2005, "");
+	'"I\'m so booored..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	背景アウト(500);
+	背景イン(5040, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Cidade   Keith Guild' A;
+	音楽(93, -1, -1);
+	セリフ(2000, "");
+	'"I\'m bored!"' A;
+	ト書き();
+	'Rance plopped down on the couch in the Keith Guild.' A;
+	セリフ(2800, "");
+	'"What the hell? Go home."' A;
+	セリフ(2000, "");
+	'"You got anything interesting to do?"' A;
+	セリフ(2800, "");
+	'"No. Go home."' A;
+	セリフ(2005, "");
+	'"...You\'re boring."' A;
+	セリフ(2800, "");
+	'"I\'m working, here..."' A;
+	セリフ(2000, "");
+	'"I\'m booored, booored!"' A;
+	セリフ(2800, "");
+	'"Hey, how\'s Sill doing, anyway?' R;
+	' You think you can get her back to normal?"' A;
+	セリフ(2005, "");
+	'"Huh? I dunno. I\'ll figure it out, right?"' A;
+	セリフ(2800, "");
+	'"Sheesh, I can barely believe you..."' A;
+	セリフ(2000, "");
+	'"Haaahh, so bored, so booored..."' A;
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	セリフ２(2000, "");
+	'".........Phew."' A;
+	セリフ(2002, "");
+	'"Fgah!"' A;
+	セリフ(2005, "");
+	'"Mrgh... Shit, I fell asleep..."' A;
+	セリフ(2800, "");
+	'"Hey, wake up already.' R;
+	' I can\'t close up if you\'re there."' A;
+	セリフ(2005, "");
+	'"Wait, it\'s evening already..."' A;
+	ト書き();
+	'When he looked up, Rance found Keith with his coat on, trying to close up the guild.' A;
+	セリフ(2800, "");
+	'"Wanna get something to eat, then?' R;
+	' I know a good bar."' A;
+	セリフ(2005, "");
+	'"Who\'d go out and eat with a guy, dumbass?!' R;
+	' I\'m outta here."' A;
+	音楽(0, 1, 2000);
+	枠消去();
+	背景アウト(500);
+	背景イン(5076, 500, "", false);
+	ト書き();
+	'The sun was setting and the crows were cawing by the time Rance left the guild. ' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"What was this complete waste of a day..."' A;
+	セリフ(2005, "");
+	'".........Guess I\'ll go home..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance wasted some time.' A;
+	ADVOFF();
+}
+
+void 町歩き／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5240, 0, 0);
+	セリフ(2000, "");
+	'"Alriiight, we\'re gonna explore the town today."' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	ト書き();
+	'Rance took ' S(Ｃ短縮名前(◆ＡＡ, ""));
+	' out into town.' A;
+	for (; ; )
+	{
+		if (ＣＳ有無(◆ＡＡ, 373, 0) != 0)
+		{
+			セリフ(2000, "");
+			'"Let\'s play hide and seek!"' A;
+			'"Hide wherever you want.' R;
+			' I\'ll find you even if you go to the ends of the earth.' R;
+			' And then you\'re getting a spanking!"' A;
+			break;
+		}
+		if (Ｃ性別(◆ＡＡ, -1) == 2)
+		{
+			セリフ(2000, "");
+			'"Mm, I think sex would be good. Maybe something embarrassing...' R;
+			' We\'ll get a lot of attention, I\'m sure!"' A;
+			break;
+		}
+		if (Ｃ性別(◆ＡＡ, -1) == 1)
+		{
+			セリフ(2005, "");
+			'"Why am I here with a dude...?"' A;
+			セリフ／総合(◆ＡＡ);
+			'"..."' A;
+			break;
+		}
+		セリフ(2000, "");
+		'"Do something interesting.' R;
+		' Right now.' R;
+		' Something that\'ll amuse me."' A;
+		break;
+	}
+	セリフ(2005, "");
+	'"Hmph... This isn\'t very fun..."' A;
+	ト書き();
+	'Rance took a little stroll around town.' A;
+	セリフ(2000, "");
+	'"...Alright, let\'s go over there."' A;
+	ADVOFF();
+}
+
+void 町歩き／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5076, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Square' A;
+	'　' R;
+	'  <caaaw, caaaw>' A;
+	セリフ(2005, "");
+	'"I wandered around with ' S(Ｃ短縮名前(◆ＡＡ, ""));
+	', but nothing really happened..."' A;
+	'"I thought something fun might happen if we hung out for the day, but..."' A;
+	セリフ(2000, "");
+	'"Well, anyway, did I get any affection points or what?"' A;
+	セリフ／総合(◆ＡＡ);
+	'"??"' A;
+	ト書き();
+	'Unfortunately, looks like this isn\'t that sort of game.' A;
+	'With nothing else to do, they decided to go home.' A;
+	ADVOFF();
+}
+
+void 町歩き／モンスター()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5240, 0, 0);
+	セリフ２(2901, "Merchant");
+	'"Monsters are attacking!"' A;
+	'"Gyaaa! Somebody, heeelp!"' A;
+	ト書き();
+	'Suddenly the square was engulfed in screams.' A;
+	セリフ(2000, "");
+	'"Oh, monsters, huh?' R;
+	' Perfect way to kill time."' A;
+	'"I\'m gonna turn you into experience points!' R;
+	' Let\'s go!"' A;
+	セリフ２(2901, "Merchant");
+	'"This is awful!' R;
+	' They\'re around the outskirts, too!"' A;
+	セリフ(2000, "");
+	'"Hrm, showin\' up in two places at once, huh...?' R;
+	' Alright, you head that way, I\'ll take these ones."' A;
+	セリフ(2002, "");
+	'"Toooooh! Die, monsteeeeers!"' A;
+	ト書き();
+	'Rance went.' A;
+	セリフ(2901, "Merchant");
+	'"H-Hey, you!' R;
+	' You\'re not gonna help?!"' A;
+	'"We can\'t handle them!' R;
+	' Get rid of the monsters, would you?!"' A;
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' headed over to them.' A;
+	セリフ(2901, "Merchant");
+	'"Th-They\'re here!"' A;
+	ト書き();
+	'The monsters began attacking ' S(Ｃ短縮名前(◆ＡＡ, ""));
+	'!' A;
+	ADVOFF();
+}
+
+void 町歩き／モンスター／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5240, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Square' A;
+	セリフ(2000, "");
+	'"Phew, easy win."' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	セリフ(2000, "");
+	'"Oh, ' S(Ｃ短縮名前(◆ＡＡ, ""));
+	'."' A;
+	'"You beat yours, too? Good work."' A;
+	セリフ(2900, "Defense Force Member");
+	'"Thank you so much.' R;
+	' We couldn\'t make it on time. That was impressive."' A;
+	セリフ(2000, "");
+	'"Oh, you guys are the town defense force."' A;
+	セリフ(2900, "Defense Force Member");
+	'"We appreciate you taking care of the monsters when we couldn\'t.' R;
+	' This is a reward for their extermination."' A;
+	セリフ(2000, "");
+	'"Oho, money? I\'ll take it!"' A;
+	ト書き();
+	'Rance accepted the ' NH(◆ＢＢ, 0, 0);
+	' Gold.' A;
+	セリフ(2005, "");
+	'"Only this much...?"' A;
+	セリフ(2900, "Defense Force Member");
+	'"Well, that\'s market price..."' A;
+	ト書き();
+	'Rance fought for the sake of the town just a little bit today.' A;
+	ADVOFF();
+}
+
+void 町歩き／ギルド()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5040, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Keith Guild' A;
+	セリフ(2000, "");
+	'"Hey, I\'m here!"' A;
+	セリフ(2800, "");
+	'"Huh? Whaddya know, it\'s Rance."' A;
+	'"Hm...? And you\'re with ' S(Ｃ短縮名前(◆ＡＡ, ""));
+	', too."' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	セリフ(2000, "");
+	'"D\'you got any work or anything?' R;
+	' I wouldn\'t mind taking a job, since I\'m free."' A;
+	セリフ(2800, "");
+	'"How about this, then?' R;
+	' It\'s not fancy, but you could stand to do some stuff like this every once in a while."' A;
+	セリフ(2005, "");
+	'"Hmmm... It just doesn\'t suit me..."' A;
+	セリフ(2000, "");
+	'"Alright, you can do it, instead."' A;
+	ト書き();
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' accepted the job in Rance\'s place.' A;
+	ADVOFF();
+}
+
+void 町歩き／ギルド／届け物()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5070, 0, 0);
+	Ｃ立ち絵ＣＧ(◆ＡＡ, -1);
+	ト書き();
+	'Today\'s quest was a simple delivery to a honey store in the next town over. The trip would take about six hours to go there and back.' A;
+	A();
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' walked through the town amid the nice weather.' A;
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' walked on, crossing bridges and mountains on the way.' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	if (◆ＢＢ != 0)
+	{
+		ト書き();
+		'Finally, the little store was in sight.' A;
+		セリフ(2904, "Female Client");
+		'"Oh my, oh my, thank you for taking the long trip. It must have been hard work."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' enjoyed the woman\'s barley tea.' A;
+		'The delivery was something important, apparently, and the client was very satisfied.' A;
+		'The work was a success.' A;
+		ADVOFF();
+	}
+	if (◆ＢＢ == 0)
+	{
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' crossed several mountains and walked a long way, but never found the honey store.' A;
+		'Lost, ' S(Ｃ短縮名前(◆ＡＡ, ""));
+		' had no choice but to wander aimlessly.' A;
+		'　' R;
+		'     Wander, wander' A;
+		'In the end, ' S(Ｃ短縮名前(◆ＡＡ, ""));
+		' never made it to the honey store.' A;
+		'The job was a failure.' R;
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' returned to Cidade.' A;
+		セリフ／総合(◆ＡＡ);
+		'"..."' A;
+		ADVOFF();
+	}
+}
+
+void 町歩き／ギルド／探し物()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5240, 0, 0);
+	Ｃ立ち絵ＣＧ(◆ＡＡ, -1);
+	ト書き();
+	'Today\'s quest was searching for a lost item in Cidade.' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	ト書き();
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' searched high and low throughout the city.' A;
+	'　' R;
+	'     Wander, wander' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	if (◆ＢＢ != 0)
+	{
+		セリフ(2968, "Client");
+		'"Ooh, this is it!' R;
+		' Thank you so much! If my wife found out I lost my wedding ring, she\'d kill me!"' A;
+		ト書き();
+		'When the lost item was delivered, the client was overjoyed, thanking ' S(Ｃ短縮名前(◆ＡＡ, ""));
+		' again and again.' A;
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' completed the mission and gained ' NH(◆ＢＢ, 0, 0);
+		' EXP.' A;
+		ADVOFF();
+	}
+	if (◆ＢＢ == 0)
+	{
+		枠消去();
+		背景表示(5076, 1, 500, "", false);
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' must not have been suited for the work.' R;
+		'The lost item was never found.' A;
+		'　' R;
+		'  <caaaw, caaaw>' A;
+		'The sun set and the crows cawed.' A;
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' went home.' A;
+		ADVOFF();
+	}
+}
+
+void 町歩き／ギルド／ウェイトレス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5240, 0, 0);
+	Ｃ立ち絵ＣＧ(◆ＡＡ, -1);
+	ト書き();
+	'Today\'s quest was waitressing.' R;
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' ended up working in a restaurant that was short on hands.' A;
+	セリフ(2904, "Female Client");
+	'"Okay, smile, yeah?"' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	ト書き();
+	'The other employees were busily taking orders and carrying food.' A;
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' ended up working with them.' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	if (◆ＢＢ != 0)
+	{
+		セリフ(2904, "Female Client");
+		'"You were wonderful!"' A;
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' did a great job waitressing.' R;
+		'She was very popular with the customers, too.' A;
+		セリフ(2904, "Female Client");
+		'"I\'d like to hire you on full-time!"' A;
+		ト書き();
+		'The client was greatly pleased.' R;
+		'The quest was a grand success.' A;
+		NH(◆ＢＢ, 0, 0);
+		' EXP gained.' A;
+		ADVOFF();
+	}
+	if (◆ＢＢ == 0)
+	{
+		セリフ(2904, "Female Client");
+		'"You have... no talent..."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' must not have been suited for the job.' R;
+		'She broke plates, mixed up orders, and made mistake after mistake.' A;
+		'None of the customers liked her, either.' A;
+		セリフ(2904, "Female Client");
+		'"Sorry, but you should go home..."' A;
+		セリフ／総合(◆ＡＡ);
+		'"..."' A;
+		ADVOFF();
+	}
+}
+
+void 町歩き／ギルド／家庭教師()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5240, 0, 0);
+	セリフ(2931, "Student");
+	'"Thank you for teaching me!"' A;
+	ト書き();
+	'The student bowed respectfully.' A;
+	'Today\'s quest was tutoring.' R;
+	'The job would be fulfilled as long as the student learned a little more today.' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	ト書き();
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' ended up teaching.' A;
+	'............' A;
+	'.........' A;
+	'......' A;
+	if (◆ＢＢ != 0)
+	{
+		セリフ(2931, "Student");
+		'"Ah! I see, you write it like this."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		'\'s well-explained lessons helped the student fully comprehend the material in the textbook.' A;
+		セリフ(2931, "Student");
+		'"Thank you so much for today.' R;
+		' I think I\'ll do well on my test tomorrow."' A;
+		セリフ／総合(◆ＡＡ);
+		'"..."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' safely cleared the quest.' R;
+		NH(◆ＢＢ, 0, 0);
+		' EXP gained.' A;
+		ADVOFF();
+	}
+	if (◆ＢＢ == 0)
+	{
+		セリフ(2931, "Student");
+		'"Ummm..."' A;
+		'"Please teach me seriously..."' A;
+		セリフ／総合(◆ＡＡ);
+		'"..."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' must not have been suited to it. Class did not go as planned.' A;
+		セリフ(2931, "Student");
+		'"I\'m sorry, I\'ll study on my own..."' A;
+		セリフ／総合(◆ＡＡ);
+		'"..."' A;
+		ADVOFF();
+	}
+}
+
+void 町歩き／ギルド／土木作業()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5070, 0, 0);
+	ト書き();
+	'Today\'s work was construction.' R;
+	S(Ｃ短縮名前(◆ＡＡ, ""));
+	' was handed a shovel.' A;
+	セリフ(2942, "Amazusa Manager");
+	'"Alright, don\'t slack off, now."' A;
+	セリフ(2905, "Amazusa Employee #167");
+	'"Let\'s get to work!"' A;
+	ト書き();
+	'All the men nearby set about their work.' A;
+	セリフ(2942, "Amazusa Manager");
+	'"You get to work, too."' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	if (◆ＢＢ != 0)
+	{
+		セリフ(2942, "Amazusa Manager");
+		'"I\'m glad we had this extra help today."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' was a great help, carrying heavy loads, digging holes, and generally being a jack of all trades.' A;
+		'His employer was very satisfied.' A;
+		セリフ(2942, "Amazusa Manager");
+		'"Looks like it was right to get your help.' R;
+		' If you get tired of adventuring, come work with us. We\'d be happy to have you."' A;
+		セリフ／総合(◆ＡＡ);
+		'"..."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' finished the work and gained ' NH(◆ＢＢ, 0, 0);
+		' EXP.' A;
+		ADVOFF();
+	}
+	if (◆ＢＢ == 0)
+	{
+		セリフ(2942, "Amazusa Manager");
+		'"Hmm... I guess we should have sought help elsewhere..."' A;
+		セリフ／総合(◆ＡＡ);
+		'"..."' A;
+		ト書き();
+		S(Ｃ短縮名前(◆ＡＡ, ""));
+		' must not have been suited for the work.' R;
+		'He wasn\'t of any help at all.' A;
+		セリフ(2942, "Amazusa Manager");
+		'"Guess it wasn\'t something you\'re suited for..."' A;
+		ト書き();
+		'His employer was pretty disappointed, sighing again and again.' A;
+		'The quest was a failure.' A;
+		ADVOFF();
+	}
+}
+
+void 町歩き／酒場１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5030, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Macatt Bar' A;
+	セリフ(2000, "");
+	'"Hey, honeybuns, I\'m here!"' A;
+	音楽(71, -1, -1);
+	枠消去();
+	立ち絵表示(1040, 1, 200);
+	セリフ(2040, "");
+	'"...Augh..."' A;
+	セリフ(2901, "");
+	'"Ack... hey..."' A;
+	セリフ(2902, "");
+	'"Y-Yeah..."' A;
+	ト書き();
+	'Every other customer looked down when Rance arrived at the bar. Most were awkwardly eating; all were trying to avoid his gaze.' A;
+	セリフ(2040, "");
+	'"...Haahh..."' A;
+	セリフ(2000, "");
+	'"Hm? What\'s with the sigh?"' A;
+	セリフ(2040, "");
+	'"...It\'s nothing."' A;
+	セリフ(2000, "");
+	'"I see, I see.' R;
+	' Bring me something off the menu, then!' R;
+	' Whatever!"' A;
+	セリフ(2040, "");
+	'"...Alright, alright."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2001, "");
+	'"Gahahaha, I\'m gonna eat as much as I want and play as much as I want, too!"' A;
+	セリフ(2000, "");
+	'"Oh, that looks good!' R;
+	' Gimme a piece of that meat!"' A;
+	セリフ(2901, "");
+	'"A-Ahh, hey!"' A;
+	ト書き();
+	'　' R;
+	'     Thirty Minutes Later' A;
+	セリフ(2001, "");
+	'"Gahahahahahahahaha!"' A;
+	セリフ(2040, "");
+	'"........."' A;
+	ト書き();
+	'Rance was eating with Atago on his lap.' A;
+	セリフ(2000, "");
+	'"Ahh, *munch* *munch*' R;
+	' This meat really is good..."' A;
+	セリフ(2040, "");
+	'"Well, thanks..."' A;
+	セリフ(2004, "");
+	'"And hey, this meat\'s pretty good, too!"' A;
+	セリフ(2040, "");
+	'".........!"' A;
+	ト書き();
+	'Rance ran his hand over Atago\'s chest and fondled her breasts like he was scooping them up from below.' A;
+	セリフ(2004, "");
+	'"How\'s that? So full♪"' A;
+	セリフ(2040, "");
+	'"H-Hey! The customers are watching...!"' A;
+	セリフ(2001, "");
+	'"Gahahaha!"' A;
+	セリフ(2901, "");
+	'"Kh... He just does whatever he wants..."' A;
+	セリフ(2040, "");
+	'"...Aah...!"' A;
+	セリフ(2000, "");
+	'"Hmm? Something the matter, Atago?"' A;
+	セリフ(2040, "");
+	'"...Something hard is hitting my butt..."' A;
+	セリフ(2001, "");
+	'"Gahahahahahaha!' R;
+	' It got hard!"' A;
+	セリフ(2040, "");
+	'".........You\'re the worst."' A;
+	セリフ(2000, "");
+	'"In which case, let\'s fuck!' R;
+	' Into the kitchen we go!"' A;
+	セリフ(2040, "");
+	'"H-Hey, we can\'t at least go to an inn or something...?' R;
+	' I\'m trying to work right now."' A;
+	セリフ(2001, "");
+	'"Fuck if I care about that!"' A;
+	セリフ(2040, "");
+	'"Seriously! Slow down!"' A;
+	ト書き();
+	'Rance whisked Atago into the kitchen.' A;
+	セリフ２(2000, "");
+	'"Gahahaha! Toooooh!"' A;
+	セリフ２(2040, "");
+	'"Nooooo!"' A;
+	ト書き();
+	'Screams echoed out from the kitchen.' A;
+	セリフ(2902, "");
+	'"Ahh, I\'m so jealous..."' A;
+	セリフ(2901, "");
+	'"He eats, he drinks, he touches Atago\'s boobs...' R;
+	' Khh... what a lucky guy..."' A;
+	ト書き();
+	'　' R;
+	'     Thirty Minutes Later' A;
+	枠消去();
+	背景アウト(500);
+	背景イン(5240, 500, "", false);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2016, "");
+	'"Phew, that was great..."' A;
+	セリフ(2000, "");
+	'"Today was fun as always!' R;
+	' How should I enjoy tomorrow?"' A;
+	セリフ(2001, "");
+	'"Gahahahahahaha!"' A;
+	音楽(0, 1, 2000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance had a fulfilling day.' A;
+	ADVOFF();
+}
+
+void 町歩き／酒場２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景, 5030, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Bar' A;
+	音楽(71, -1, -1);
+	セリフ(2001, "");
+	'"Gahahahahaha!' R;
+	' Good food! Good drink!"' A;
+	枠消去();
+	立ち絵表示(1040, 1, 200);
+	セリフ(2040, "");
+	'"........."' A;
+	セリフ(2004, "");
+	'"And soft titties! Grope, grope!"' A;
+	ト書き();
+	'Rance fondled Atago\'s breasts even while they were surrounded by other customers.' A;
+	セリフ(2040, "");
+	'".........Kh..."' A;
+	ト書き();
+	'Atago\'s breasts changed shape in Rance\'s hands.' A;
+	セリフ(2005, "");
+	'"U-Ugh...' R;
+	' It\'s frustrating, only being able to touch them..."' A;
+	セリフ(2040, "");
+	'"Then why don\'t you stop...?"' A;
+	セリフ(2000, "");
+	'"Well, touching boobs is still fun on its own.' R;
+	' Nothin\' doin\'."' A;
+	ト書き();
+	'Rance pressed them together and scooped them up from below, playing with her breasts like they were toys.' A;
+	セリフ(2001, "");
+	'"So much fun, the most fun!' R;
+	' Boobs are the best♪ Hmhmhmm~"' A;
+	セリフ(2040, "");
+	'"...No weird singing..."' A;
+	セリフ(2000, "");
+	'"Alright, let\'s go to a bath house, Atago.' R;
+	' You\'re coming with me."' A;
+	セリフ(2040, "");
+	'"Hey, no way...' R;
+	' You want to drag me into the men\'s bath...?"' A;
+	'"I\'m not going in there..."' A;
+	セリフ(2004, "");
+	'"Don\'t you think it\'ll be fun?' R;
+	' I bet there are plenty of guys looking forward to seeing you naked, Atago!"' A;
+	セリフ(2040, "");
+	'"Hey, no! Let me go!"' A;
+	セリフ(2001, "");
+	'"Gahahahahahaha! Okay, let\'s gooo!"' A;
+	セリフ(2040, "");
+	'"No, stop!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Atago was dragged off into the men\'s bath.' A;
+	枠消去();
+	背景アウト(500);
+	背景イン(5240, 500, "", false);
+	ト書き();
+	'　' R;
+	'     Thirty Minutes Later' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2004, "");
+	'"Heeheehee... It was so cute seeing you all embarrassed, butt naked, Atago..."' A;
+	セリフ(2000, "");
+	'"Mhm, lots of fun. Now let\'s get back home!"' A;
+	セリフ(2001, "");
+	'"Gahahahahahahahahahaha!"' A;
+	音楽(0, 1, 2000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance had a fulfilling day.' A;
+	ADVOFF();
+}
+
+void 町歩き／酒場３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(g町全景／夜, 5030, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Macatt Bar' A;
+	セリフ(2000, "");
+	'"Heya, I\'m here!"' A;
+	セリフ(2040, "");
+	'"Augh..."' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	ト書き();
+	'Rance and ' S(Ｃ短縮名前(◆ＡＡ, ""));
+	' entered the bar.' A;
+	セリフ(2000, "");
+	'"Alriiight, I\'m in a good mood today. Order whatever you like--my treat!"' A;
+	セリフ(2040, "");
+	'"...Your \'treat\'?' R;
+	' You\'re always on a tab, aren\'t you? One you never plan to pay off."' A;
+	セリフ(2000, "");
+	'"How rude. I\'ll pay one day. Probably..."' A;
+	セリフ(2040, "");
+	'"Ahh, uh huh..."' A;
+	セリフ／総合(◆ＡＡ);
+	'"..."' A;
+	枠消去();
+	背景表示(0, 1, 500, "", false);
+	ト書き();
+	'Rance talked about all sorts of things with ' S(Ｃ短縮名前(◆ＡＡ, ""));
+	' that day.' A;
+	ADVOFF();
+}
+

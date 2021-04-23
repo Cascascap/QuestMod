@@ -1,0 +1,34 @@
+void ゲーム終了()
+{
+	string GameName = "";
+	SystemService.GetGameName(GameName);
+	if (!system.MsgBoxOkCancel("Close %s?\n\n※All unsaved data will be lost." % GameName))
+	{
+		return;
+	}
+	system.Exit(0);
+	for (; ; )
+	{
+		system.Peek();
+	}
+}
+
+void タイトルに戻る()
+{
+	if (!system.MsgBoxOkCancel("Return to title screen?\n\n※All unsaved data will be lost."))
+	{
+		return;
+	}
+	SYS_システム共通セーブ();
+	system.Reset();
+	for (; ; )
+	{
+		system.Peek();
+	}
+}
+
+bool 再起動後確認()
+{
+	return ChipmunkSpriteEngine.SYSTEM_IsResetOnce();
+}
+

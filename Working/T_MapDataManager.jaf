@@ -1,0 +1,476 @@
+T_ColorInfo::T_ColorInfo()
+{
+	this.clear();
+}
+
+void T_ColorInfo::clear()
+{
+	this.m_nPixelColorR = 0;
+	this.m_nPixelColorG = 0;
+	this.m_nPixelColorB = 0;
+	this.m_nAlpha = 0;
+	this.m_nDrawFilter = 0;
+}
+
+int T_MapDataManager::getMapNo()
+{
+	return this.m_nMapNo;
+}
+
+int T_MapDataManager::getVersion()
+{
+	return this.m_nVersion;
+}
+
+ref T_MapData T_MapDataManager::getData()
+{
+	return this.m_sData;
+}
+
+T_MapDataManager::T_MapDataManager()
+{
+	this.clear();
+}
+
+void T_MapDataManager::clear()
+{
+	this.m_sData.clear();
+	this.m_nMapNo = 0;
+	this.m_nFileID = 0;
+	this.m_nVersion = 0;
+	this.m_nMapSizeX = 0;
+	this.m_nMapSizeY = 0;
+	this.m_bUpdate = false;
+}
+
+bool T_MapDataManager::load(int nMapNo)
+{
+	if (nMapNo <= 0)
+	{
+		return false;
+	}
+	if (nMapNo == this.m_nMapNo)
+	{
+		return false;
+	}
+	string szFileName = this.getFileName(nMapNo);
+	string szError = "ファイルの読み込みに失敗しました：" + szFileName;
+	this.unload();
+	if (!this.open(nMapNo, szFileName))
+	{
+		this.m_nMapNo = nMapNo;
+		return false;
+	}
+	if (!this.loadHeader())
+	{
+		goto label0;
+	}
+	if (!this.loadData())
+	{
+		goto label0;
+	}
+	if (!this.loadObject())
+	{
+		goto label0;
+	}
+	if (!this.loadBillboard())
+	{
+		goto label0;
+	}
+	File2.Close();
+	this.m_nMapNo = nMapNo;
+	this.m_bUpdate = false;
+	if (this.m_nFileID != 944652626)
+	{
+		マップ情報_開始位置変換(マップ_名前(nMapNo));
+	}
+	return true;
+label0:
+	File2.Close();
+	system.Error("ファイルの読み込みに失敗しました：" + szFileName);
+	return false;
+}
+
+void T_MapDataManager::unload()
+{
+	g_sBillboardData.unload();
+	g_sObjectData.unload();
+	this.clear();
+}
+
+bool T_MapDataManager::save()
+{
+	return true;
+}
+
+void T_MapDataManager::checkUpdate()
+{
+	return;
+}
+
+void T_MapDataManager::backup(ref T_MapData sData)
+{
+	if (sData === NULL)
+	{
+		return;
+	}
+	sData.copy(this.m_sData);
+}
+
+void T_MapDataManager::restore(ref T_MapData sData)
+{
+	if (sData === NULL)
+	{
+		return;
+	}
+	this.m_sData.copy(sData);
+}
+
+bool T_MapDataManager::setType(int nMapX, int nMapY, int nType)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anType[idx] = nType;
+	this.m_sData.m_anHeight[idx] = 2147483647;
+	this.m_sData.m_abEnterN[idx] = nType >= 101;
+	this.m_sData.m_abEnterS[idx] = nType >= 101;
+	this.m_sData.m_abEnterE[idx] = nType >= 101;
+	this.m_sData.m_abEnterW[idx] = nType >= 101;
+	this.m_sData.m_abBattle[idx] = nType >= 101;
+	this.m_sData.m_anEvent[idx] = 0;
+	this.m_sData.m_anGround[idx] = 0;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setHeight(int nMapX, int nMapY, int nHeight)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anHeight[idx] = nHeight;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setEnterN(int nMapX, int nMapY, bool bFlag)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_abEnterN[idx] = bFlag;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setEnterS(int nMapX, int nMapY, bool bFlag)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_abEnterS[idx] = bFlag;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setEnterE(int nMapX, int nMapY, bool bFlag)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_abEnterE[idx] = bFlag;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setEnterW(int nMapX, int nMapY, bool bFlag)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_abEnterW[idx] = bFlag;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setBattle(int nMapX, int nMapY, bool bFlag)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_abBattle[idx] = bFlag;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setEvent(int nMapX, int nMapY, int nValue)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anEvent[idx] = nValue;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setGround(int nMapX, int nMapY, int nValue)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_sData.m_anGround[idx] = nValue;
+	this.m_bUpdate = true;
+	return true;
+}
+
+bool T_MapDataManager::setColor(ref T_ColorInfo rfsInfo)
+{
+	if (this.m_nMapNo <= 0)
+	{
+		return false;
+	}
+	if (!this.m_sData.setColor(rfsInfo))
+	{
+		return false;
+	}
+	this.m_bUpdate = true;
+	return true;
+}
+
+int T_MapDataManager::getType(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.m_sData.m_anType[idx];
+}
+
+int T_MapDataManager::getHeight(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 2147483647;
+	}
+	return this.m_sData.m_anHeight[idx];
+}
+
+bool T_MapDataManager::getEnterN(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_sData.m_abEnterN[idx];
+}
+
+bool T_MapDataManager::getEnterS(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_sData.m_abEnterS[idx];
+}
+
+bool T_MapDataManager::getEnterE(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_sData.m_abEnterE[idx];
+}
+
+bool T_MapDataManager::getEnterW(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_sData.m_abEnterW[idx];
+}
+
+bool T_MapDataManager::getBattle(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_sData.m_abBattle[idx];
+}
+
+int T_MapDataManager::getEvent(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anEvent[idx];
+}
+
+int T_MapDataManager::getGround(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return 0;
+	}
+	return this.m_sData.m_anGround[idx];
+}
+
+bool T_MapDataManager::getColor(ref T_ColorInfo rfsInfo)
+{
+	if (this.m_nMapNo <= 0)
+	{
+		return false;
+	}
+	return this.m_sData.getColor(rfsInfo);
+}
+
+bool T_MapDataManager::open(int nMapNo, string szFileName)
+{
+	if (nMapNo <= 0)
+	{
+		return false;
+	}
+	bool bRet = false;
+	bRet = File2.OpenArchiveForRead(マップ_アーカイブファイル名(), マップ_名前(nMapNo));
+	if (bRet)
+	{
+		goto label0;
+	}
+label0:
+	this.m_nMapNo = nMapNo;
+	return bRet;
+}
+
+bool T_MapDataManager::loadHeader()
+{
+	int nID = 0;
+	int nVersion = 0;
+	int nX = 0;
+	int nY = 0;
+	if (!File2.ReadInt(nID))
+	{
+		return false;
+	}
+	if (nID != 944652626 && nID != 861097812)
+	{
+		system.Error("マップデータではありません");
+		return false;
+	}
+	if (!File2.ReadInt(nVersion))
+	{
+		return false;
+	}
+	if (nID == 944652626 && nVersion > 102 || nID == 861097812 && nVersion > 5)
+	{
+		system.Error("読み込めないバージョンのマップデータです");
+		return false;
+	}
+	if (!File2.ReadInt(nX))
+	{
+		return false;
+	}
+	if (!File2.ReadInt(nY))
+	{
+		return false;
+	}
+	this.m_nFileID = nID;
+	this.m_nVersion = nVersion;
+	this.m_nMapSizeX = nX;
+	this.m_nMapSizeY = nY;
+	return true;
+}
+
+bool T_MapDataManager::loadData()
+{
+	if (this.m_nFileID == 861097812)
+	{
+		return this.m_sData.loadOld();
+	}
+	if (this.m_nMapSizeX != 50 || this.m_nMapSizeY != 50)
+	{
+		return this.m_sData.loadResize(this.m_nVersion, this.m_nMapSizeX, this.m_nMapSizeY);
+	}
+	return this.m_sData.load(this.m_nVersion, this.m_nMapSizeX * this.m_nMapSizeY);
+}
+
+bool T_MapDataManager::loadObject()
+{
+	if (this.m_nFileID == 861097812)
+	{
+		return g_sObjectData.loadOld();
+	}
+	if (this.m_nMapSizeX != 50 || this.m_nMapSizeY != 50)
+	{
+		return g_sObjectData.loadResize(this.m_nVersion, this.m_nMapSizeX, this.m_nMapSizeY);
+	}
+	return g_sObjectData.load(this.m_nVersion);
+}
+
+bool T_MapDataManager::loadBillboard()
+{
+	if (this.m_nFileID == 861097812)
+	{
+		return g_sBillboardData.loadOld();
+	}
+	if (this.m_nMapSizeX != 50 || this.m_nMapSizeY != 50)
+	{
+		return g_sBillboardData.loadResize(this.m_nVersion, this.m_nMapSizeX, this.m_nMapSizeY);
+	}
+	return g_sBillboardData.load(this.m_nVersion);
+}
+
+bool T_MapDataManager::saveHeader()
+{
+	return true;
+}
+
+bool T_MapDataManager::saveData()
+{
+	return true;
+}
+
+string T_MapDataManager::getFileName(int nMapNo)
+{
+	if (nMapNo <= 0)
+	{
+		return "";
+	}
+	string szName = マップ_名前(nMapNo);
+	if (szName.Empty())
+	{
+		return "";
+	}
+	return "Data\\MapData\\" + szName + ".dat";
+}
+

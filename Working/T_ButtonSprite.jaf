@@ -1,0 +1,412 @@
+ref T_TextSprite T_ButtonSprite::getBaseSp()
+{
+	return this.m_spBase;
+}
+
+ref T_TextSprite T_ButtonSprite::getFrameSp()
+{
+	return this.m_spFrame;
+}
+
+int T_ButtonSprite::getPosX()
+{
+	return this.m_rcBase.m_nSx;
+}
+
+int T_ButtonSprite::getPosY()
+{
+	return this.m_rcBase.m_nSy;
+}
+
+int T_ButtonSprite::getZ()
+{
+	return this.m_nZ;
+}
+
+int T_ButtonSprite::getWidth()
+{
+	return this.m_rcBase.getWidth();
+}
+
+int T_ButtonSprite::getHeight()
+{
+	return this.m_rcBase.getHeight();
+}
+
+bool T_ButtonSprite::isCreated()
+{
+	return !this.m_rcBase.empty();
+}
+
+ref T_Rect T_ButtonSprite::getBaseRect()
+{
+	return this.m_rcBase;
+}
+
+ref T_Point T_ButtonSprite::getFramePos()
+{
+	return this.m_ptFrame;
+}
+
+int T_ButtonSprite::getFrameMode()
+{
+	return this.m_nFrameMode;
+}
+
+bool T_ButtonSprite::getShow()
+{
+	return this.m_bShow;
+}
+
+bool T_ButtonSprite::getSelect()
+{
+	return this.m_bSelect;
+}
+
+void T_ButtonSprite::getFrameColor(ref int nFrameColorR, ref int nFrameColorG, ref int nFrameColorB, ref int nFrameRate)
+{
+	nFrameColorR = this.m_nFrameColorR;
+	nFrameColorG = this.m_nFrameColorG;
+	nFrameColorB = this.m_nFrameColorB;
+	nFrameRate = this.m_nFrameRate;
+}
+
+bool T_ButtonSprite::suspend()
+{
+	this.m_spFrame.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_ButtonSprite::resume()
+{
+	this.m_spFrame.resume();
+	return this.m_spBase.resume();
+}
+
+bool T_ButtonSprite::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+T_ButtonSprite::T_ButtonSprite()
+{
+	this.clear();
+}
+
+T_ButtonSprite::~T_ButtonSprite()
+{
+	this.delete();
+}
+
+bool T_ButtonSprite::create(int nWidth, int nHeight)
+{
+	this.delete();
+	if (nWidth <= 0 || nHeight <= 0)
+	{
+		return false;
+	}
+	this.m_rcBase.set(0, 0, nWidth, nHeight);
+	return true;
+}
+
+bool T_ButtonSprite::createSp(ref T_TextSprite rfSp)
+{
+	this.delete();
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return false;
+	}
+	this.m_spBase.copy(rfSp, false);
+	this.m_spBase.setBlendRate(rfSp.getBlendRate());
+	this.m_rcBase.set(0, 0, rfSp.getWidth(), rfSp.getHeight());
+	return true;
+}
+
+bool T_ButtonSprite::createFrame(int nWidth, int nHeight, int nR, int nG, int nB, int nRate, int nX, int nY, int nMode)
+{
+	if (!this.isCreated())
+	{
+		return false;
+	}
+	int nW = this.m_rcBase.getWidth();
+	int nH = this.m_rcBase.getHeight();
+	nWidth = nWidth < 0 ? nW : nWidth;
+	nHeight = nHeight < 0 ? nH : nHeight;
+	if (this.m_spBase.isCreated() && nW == nWidth && nH == nHeight)
+	{
+		return this.createFrameColor(nR, nG, nB, nRate);
+	}
+	nR = nR < 0 ? 216 : nR;
+	nG = nG < 0 ? 255 : nG;
+	nB = nB < 0 ? 0 : nB;
+	nRate = nRate < 0 ? 102 : nRate;
+	nX = nX == -2147483648 ? (nW - nWidth) / 2 : nX;
+	nY = nY == -2147483648 ? (nH - nHeight) / 2 : nY;
+	this.m_spFrame.create(nWidth, nHeight, nR, nG, nB, nRate);
+	this.m_ptFrame.set(nX, nY);
+	if (nMode == 0)
+	{
+		ボタンアニメ_登録(this.m_spFrame, -1, -1, -1, -1);
+	}
+	this.m_nFrameMode = nMode;
+	return true;
+}
+
+bool T_ButtonSprite::createFrameSp(ref T_TextSprite rfSp, int nMode)
+{
+	if (!this.isCreated())
+	{
+		return false;
+	}
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return false;
+	}
+	this.m_spFrame.copy(rfSp, false);
+	int nW = this.m_rcBase.getWidth();
+	int nH = this.m_rcBase.getHeight();
+	int nW2 = this.m_spFrame.getWidth();
+	int nH2 = this.m_spFrame.getHeight();
+	this.m_ptFrame.set((nW - nW2) / 2, (nH - nH2) / 2);
+	if (nMode == 0)
+	{
+		ボタンアニメ_登録(this.m_spFrame, -1, -1, -1, -1);
+	}
+	this.m_nFrameMode = nMode;
+	return true;
+}
+
+bool T_ButtonSprite::createFrameCg(int nCgNo, int nX, int nY, int nMode)
+{
+	if (!this.isCreated())
+	{
+		return false;
+	}
+	if (this.m_spFrame.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	int nW = this.m_rcBase.getWidth();
+	int nH = this.m_rcBase.getHeight();
+	int nW2 = this.m_spFrame.getWidth();
+	int nH2 = this.m_spFrame.getHeight();
+	nX = nX == -2147483648 ? (nW - nW2) / 2 : nX;
+	nY = nY == -2147483648 ? (nH - nH2) / 2 : nY;
+	this.m_ptFrame.set(nX, nY);
+	this.m_nFrameMode = nMode;
+	return true;
+}
+
+bool T_ButtonSprite::createFrameColor(int nR, int nG, int nB, int nRate)
+{
+	if (!this.isCreated())
+	{
+		return false;
+	}
+	nR = nR < 0 ? 216 : nR;
+	nG = nG < 0 ? 255 : nG;
+	nB = nB < 0 ? 0 : nB;
+	nRate = nRate < 0 ? 102 : nRate;
+	this.m_nFrameMode = 2;
+	this.m_nFrameColorR = nR;
+	this.m_nFrameColorG = nG;
+	this.m_nFrameColorB = nB;
+	this.m_nFrameRate = nRate;
+	this.m_ptFrame.set(0, 0);
+	ボタンアニメ_登録(this.m_spBase, nR, nG, nB, nRate);
+	return true;
+}
+
+void T_ButtonSprite::delete()
+{
+	if (this.m_nFrameMode == 2)
+	{
+		ボタンアニメ_消去(this.m_spBase);
+	}
+	else
+	{
+		ボタンアニメ_消去(this.m_spFrame);
+	}
+	this.m_spBase.delete();
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_ButtonSprite::clear()
+{
+	this.m_nFrameMode = 0;
+	this.m_nFrameColorR = -1;
+	this.m_nFrameColorG = -1;
+	this.m_nFrameColorB = -1;
+	this.m_nFrameRate = -1;
+	this.m_bFrameColor = false;
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_bSelect = false;
+	this.m_rcBase.clear();
+	this.m_ptFrame.clear();
+}
+
+bool T_ButtonSprite::copy(ref T_ButtonSprite rfButtonSp)
+{
+	this.delete();
+	if (rfButtonSp === NULL)
+	{
+		return false;
+	}
+	this.m_spBase.copy(rfButtonSp.getBaseSp(), false);
+	this.m_spFrame.copy(rfButtonSp.getFrameSp(), false);
+	this.m_rcBase = rfButtonSp.getBaseRect();
+	this.m_nFrameMode = rfButtonSp.getFrameMode();
+	this.m_ptFrame = rfButtonSp.getFramePos();
+	this.m_bShow = rfButtonSp.getShow();
+	this.m_bSelect = rfButtonSp.getSelect();
+	rfButtonSp.getFrameColor(this.m_nFrameColorR, this.m_nFrameColorG, this.m_nFrameColorB, this.m_nFrameRate);
+	switch (this.m_nFrameMode)
+	{
+		case 0:
+			ボタンアニメ_登録(this.m_spFrame, -1, -1, -1, -1);
+			break;
+		case 2:
+			ボタンアニメ_登録(this.m_spBase, this.m_nFrameColorR, this.m_nFrameColorG, this.m_nFrameColorB, this.m_nFrameRate);
+			break;
+		case 1:
+		default:
+			break;
+	}
+	return true;
+}
+
+bool T_ButtonSprite::checkMouse()
+{
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	return this.m_rcBase.mouseInRect();
+}
+
+int T_ButtonSprite::spriteIntersect(ref T_Sprite rfsSp)
+{
+	if (!this.m_bShow)
+	{
+		return 0;
+	}
+	return this.m_rcBase.spriteIntersect(rfsSp);
+}
+
+void T_ButtonSprite::blink(int nCount, int nTime)
+{
+	if (nCount <= 0 || nTime <= 0)
+	{
+		return;
+	}
+	if (!this.m_bShow)
+	{
+		return;
+	}
+	int i = 0;
+	CASTimer sTimer;
+	for (i = 0; i < nCount; ++i)
+	{
+		sTimer.Reset();
+		this.setSelect(i % 2 == 0);
+		UPDATE(true);
+		while (sTimer.Get() < nTime)
+		{
+			UPDATE(true);
+		}
+	}
+	this.setSelect(false);
+	UPDATE(true);
+}
+
+void T_ButtonSprite::setPos(int nX, int nY)
+{
+	this.m_spBase.setPos(nX, nY);
+	this.m_spFrame.setPos(nX + this.m_ptFrame.m_nX, nY + this.m_ptFrame.m_nY);
+	this.m_rcBase.set(nX, nY, this.m_rcBase.getWidth(), this.m_rcBase.getHeight());
+}
+
+void T_ButtonSprite::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ, nZ + 10);
+	this.m_spFrame.setZ(nZ + 9, -1);
+	this.m_nZ = nZ;
+}
+
+void T_ButtonSprite::setBlendRate(int nRate)
+{
+	this.m_spBase.setBlendRate(nRate);
+	this.m_spFrame.setBlendRate(nRate);
+}
+
+void T_ButtonSprite::setShow(bool bShow)
+{
+	switch (this.m_nFrameMode)
+	{
+		case 1:
+			this.m_spBase.setShow(!this.m_bSelect && bShow);
+			this.m_spFrame.setShow(this.m_bSelect && bShow);
+			break;
+		case 2:
+			if (this.m_bFrameColor != this.m_bSelect)
+			{
+				if (this.m_bSelect)
+				{
+					this.m_spBase.coverColor3D(this.m_nFrameColorR, this.m_nFrameColorG, this.m_nFrameColorB, this.m_nFrameRate, true);
+					ボタンアニメ_開始(this.m_spBase);
+				}
+				else
+				{
+					this.m_spBase.coverColor3D(-1, -1, -1, -1, true);
+					ボタンアニメ_停止(this.m_spBase);
+				}
+				this.m_bFrameColor = this.m_bSelect;
+			}
+			else if (bShow != this.m_bShow)
+			{
+				if (bShow && this.m_bFrameColor)
+				{
+					ボタンアニメ_開始(this.m_spBase);
+				}
+				else
+				{
+					ボタンアニメ_停止(this.m_spBase);
+				}
+			}
+			this.m_spBase.setShow(bShow);
+			break;
+		case 0:
+		default:
+			bool bOld = this.m_spFrame.getShow();
+			bool bNew = this.m_bSelect ? bShow : 0;
+			this.m_spBase.setShow(bShow);
+			this.m_spFrame.setShow(bNew);
+			if (bOld != bNew)
+			{
+				if (bNew)
+				{
+					ボタンアニメ_開始(this.m_spFrame);
+				}
+				else
+				{
+					ボタンアニメ_停止(this.m_spFrame);
+				}
+			}
+			break;
+	}
+	this.m_bShow = bShow;
+}
+
+void T_ButtonSprite::setCursor()
+{
+	this.m_rcBase.setMouseCenter();
+}
+
+void T_ButtonSprite::setSelect(bool bSelect)
+{
+	this.m_bSelect = bSelect;
+	this.setShow(this.m_bShow);
+}
+

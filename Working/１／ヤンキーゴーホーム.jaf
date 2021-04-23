@@ -1,0 +1,130 @@
+void １３Ｅプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'　' R;
+	'     Near Cidade   Highway' A;
+	'A single elderly man stood unmoving on the highway.' A;
+	セリフ(2903, "Crying Old Man");
+	'"My... My granddaughter..."' A;
+	'"She was attacked by yankees on this highway a few days ago..."' A;
+	'"Ohhh, ohhh..."' A;
+	セリフ(2000, "");
+	'"Hmm..."' A;
+	エフェクトセット表示(1, 5540, 0, 0, 0, 0);
+	イベントＣＧ表示(3410, 1, 1000);
+	思考Ｅ(2000, "");
+	'(I do get pissed off every time I remember that.)' A;
+	'(The yankees need to be punished.)' A;
+	セット表示(5540, 0, 0, 0);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"So, you know where the yankees are?"' A;
+	セリフ(2903, "Crying Old Man");
+	'"They hang out in a cave just ahead on Route 13..."' A;
+	セリフ(2000, "");
+	'"Alright. Leave the rest to me, geezer.' R;
+	' I\'ll take revenge for your granddaughter."' A;
+	セリフ(2903, "Crying Old Man");
+	'"Wait, why are you rooting through my bag?!"' A;
+	セリフ(2000, "");
+	'"I need a reward, don\'t I?' R;
+	' I\'m takin\' this pension book and your wallet, ’kay?"' A;
+	セリフ(2903, "Crying Old Man");
+	'"My money... My money... My retirement funds...' R;
+	' Boohoohoo..."' A;
+	セリフ(2000, "");
+	'"Alright, let\'s go find those yankees!"' A;
+	ADVOFF();
+}
+
+void １３Ｅヤンキーの穴()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Hrm, this must be the yankees\' cave."' A;
+	'"Compared to a graceful hero like myself, yankees and ham bambaras are so crude, I can\'t even abide their existence."' A;
+	'"We\'ll exterminate them."' A;
+	セリフ(2005, "");
+	'"Oh, come to think of it..."' A;
+	'"On that previous quest, the boss of the yankees was wearing a weird black bracelet, wasn\'t he?"' A;
+	'"It looked kinda valuable.' R;
+	' Maybe it was worth something.' R;
+	' If I see another one, I\'ll grab it."' A;
+	セリフ(2000, "");
+	'"Alright, let\'s head in."' A;
+	ADVOFF();
+}
+
+void １３Ｅヤンキーボス／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ２(2925, "Gates 95");
+	'"Freeeeze..."' A;
+	'"I can\'t believe ME was defeated..."' A;
+	セリフ(2000, "");
+	'"Hmph, good."' A;
+	ト書き();
+	'The apparent leader, a Gates 95, lay at Rance\'s feet.' A;
+	セリフ２(2925, "Gates 95");
+	'"You didn\'t come... to bring ME a black bracelet...?"' A;
+	セリフ(2000, "");
+	'"What are you muttering about?"' A;
+	セリフ２(2925, "Gates 95");
+	'"Oh... What a fatal error...' R;
+	' I see a blue screen... *thud*"' A;
+	セリフ(2000, "");
+	'"Oh, he\'s dead."' A;
+	ト書き();
+	'The nearby yankees all ran off when the Gates 95 died.' A;
+	セリフ(2000, "");
+	'"Well, we took revenge, so I\'m sure that girl will feel better now. Mm, mm."' A;
+	'"Alright, mission completed."' A;
+}
+
+void １３Ｅ導く者()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2961, "? ? ?");
+	'"Now, take this..."' A;
+	セリフ２(2925, "Yankee");
+	'"OH YEAH! NEATO!"' A;
+	ト書き();
+	'A man was handing a yankee a bracelet.' A;
+	セリフ(2005, "");
+	'"? Hey, what are you up to?"' A;
+	セリフ(2961, "? ? ?");
+	'"..."' A;
+	セリフ(2002, "");
+	'"Ah! Hey!"' A;
+	ト書き();
+	'The man swiftly disappeared when he noticed Rance.' A;
+	セリフ(2005, "");
+	'"The heck was that about?"' A;
+	ADVOFF();
+}
+

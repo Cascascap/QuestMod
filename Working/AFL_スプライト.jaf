@@ -1,0 +1,140 @@
+bool AFL_Sprite_SetCG(int SpriteNumber, string CGName)
+{
+	return ChipmunkSpriteEngine.SP_SetCG(SpriteNumber, CGName);
+}
+
+bool AFL_Sprite_SetCGFile(int SpriteNumber, string CGFileName)
+{
+	return ChipmunkSpriteEngine.SP_SetCGFromFile(SpriteNumber, CGFileName);
+}
+
+bool AFL_Sprite_Create(int SpriteNumber, int Width, int Height)
+{
+	return ChipmunkSpriteEngine.SP_Create(SpriteNumber, Width, Height, 0, 0, 0, 0);
+}
+
+bool AFL_Sprite_CreatePixelOnly(int SpriteNumber, int Width, int Height)
+{
+	if (!ChipmunkSpriteEngine.SP_CreatePixelOnly(SpriteNumber, Width, Height))
+	{
+		return false;
+	}
+	DrawGraph.FillWithAlpha(SpriteNumber, 0, 0, Width, Height, 0, 0, 0, 0);
+	return true;
+}
+
+bool AFL_Sprite_SetPos(int SpriteNumber, int X, int Y)
+{
+	return ChipmunkSpriteEngine.SP_SetPos(SpriteNumber, X, Y);
+}
+
+bool AFL_Sprite_SetZ(int SpriteNumber, int Z)
+{
+	return ChipmunkSpriteEngine.SP_SetZ(SpriteNumber, Z);
+}
+
+bool AFL_Sprite_SetAlpha(int SpriteNumber, int Alpha)
+{
+	return ChipmunkSpriteEngine.SP_SetBlendRate(SpriteNumber, Alpha);
+}
+
+bool AFL_Sprite_SetMultipleColor(int SpriteNumber, int ColorR, int ColorG, int ColorB)
+{
+	return ChipmunkSpriteEngine.SP_SetMultipleColor(SpriteNumber, ColorR, ColorG, ColorB);
+}
+
+bool AFL_Sprite_SetAddColor(int SpriteNumber, int ColorR, int ColorG, int ColorB, int ColorA)
+{
+	return ChipmunkSpriteEngine.SP_SetAddColor(SpriteNumber, ColorR, ColorG, ColorB, ColorA);
+}
+
+bool AFL_Sprite_SetDrawFilter(int SpriteNumber, int DrawFilter)
+{
+	return ChipmunkSpriteEngine.SP_SetDrawMethod(SpriteNumber, DrawFilter);
+}
+
+bool AFL_Sprite_SetShow(int SpriteNumber, bool Show)
+{
+	return ChipmunkSpriteEngine.SP_SetShow(SpriteNumber, Show);
+}
+
+int AFL_Sprite_GetX(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_GetPosX(SpriteNumber);
+}
+
+int AFL_Sprite_GetY(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_GetPosY(SpriteNumber);
+}
+
+int AFL_Sprite_GetZ(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_GetZ(SpriteNumber);
+}
+
+int AFL_Sprite_GetWidth(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_GetWidth(SpriteNumber);
+}
+
+int AFL_Sprite_GetHeight(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_GetHeight(SpriteNumber);
+}
+
+int AFL_Sprite_GetAlpha(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_GetBlendRate(SpriteNumber);
+}
+
+bool AFL_Sprite_GetShow(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_GetShow(SpriteNumber);
+}
+
+bool AFL_Sprite_SetTransformMode(int SpriteNumber, int TransformMode)
+{
+	return ChipmunkSpriteEngine.SP_SetSpriteTransformMode(SpriteNumber, TransformMode);
+}
+
+bool AFL_Sprite_SetTransformPos(int SpriteNumber, float X0, float Y0, float Z0, float W0, float U0, float V0, float X1, float Y1, float Z1, float W1, float U1, float V1, float X2, float Y2, float Z2, float W2, float U2, float V2, float X3, float Y3, float Z3, float W3, float U3, float V3)
+{
+	return ChipmunkSpriteEngine.SP_SetSpriteTransformPos(SpriteNumber, X0, Y0, Z0, W0, U0, V0, X1, Y1, Z1, W1, U1, V1, X2, Y2, Z2, W2, U2, V2, X3, Y3, Z3, W3, U3, V3);
+}
+
+bool AFL_Sprite_SetTextureFilterType(int SpriteNumber, int TextureFilterType)
+{
+	return ChipmunkSpriteEngine.Sprite_SetTextureFilerType(SpriteNumber, TextureFilterType);
+}
+
+int AFL_Sprite_GetTextureFilterType(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.Sprite_GetTextureFilterType(SpriteNumber);
+}
+
+bool AFL_Sprite_Suspend(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_Suspend(SpriteNumber);
+}
+
+bool AFL_Sprite_Resume(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_Resume(SpriteNumber);
+}
+
+bool AFL_Sprite_IsSuspend(int SpriteNumber)
+{
+	return ChipmunkSpriteEngine.SP_IsSuspend(SpriteNumber);
+}
+
+void AFL_CombineTexture()
+{
+	ChipmunkSpriteEngine.CombineTexture();
+}
+
+void AFL_ReleaseCombinedTexture()
+{
+	ChipmunkSpriteEngine.ReleaseCombinedTexture();
+}
+

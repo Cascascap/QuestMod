@@ -1,0 +1,850 @@
+int T_ConfigSound::getSliderID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 5 ? -1 : 230000 + nIndex + 1;
+}
+
+int T_ConfigSound::getSliderIndex(int nID)
+{
+	int idx = nID + -230001;
+	return idx < 0 || idx >= 5 ? -1 : idx;
+}
+
+int T_ConfigSound::getDefaultID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 5 ? -1 : 210000 + nIndex + 1;
+}
+
+int T_ConfigSound::getDefaultIndex(int nID)
+{
+	int idx = nID + -210001;
+	return idx < 0 || idx >= 5 ? -1 : idx;
+}
+
+int T_ConfigSound::getCheckID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 220000 + nIndex + 1;
+}
+
+int T_ConfigSound::getCheckIndex(int nID)
+{
+	int idx = nID + -220001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+T_ConfigSound::T_ConfigSound()
+{
+	this.clear();
+}
+
+T_ConfigSound::~T_ConfigSound()
+{
+	this.delete();
+}
+
+int T_ConfigSound::run()
+{
+	int nRet = 0;
+	int nID = this.getFirstSlider();
+	if (!this.create())
+	{
+		return -1;
+	}
+	UPDATE(true);
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+bool T_ConfigSound::update()
+{
+	return this.updateSampleVoice();
+}
+
+int T_ConfigSound::moveUp(int nID)
+{
+	if (nID > 230000)
+	{
+		return this.getPrevSlider(nID);
+	}
+	if (nID > 220000)
+	{
+		return this.getPrevCheckBox(nID);
+	}
+	if (nID > 210000)
+	{
+		return this.getPrevDefault(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_上矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID2 == 0)
+	{
+		return this.getLastCheckBox();
+	}
+label0:
+	return this.getFirstSlider();
+}
+
+int T_ConfigSound::moveDown(int nID)
+{
+	if (nID > 230000)
+	{
+		return this.getNextSlider(nID);
+	}
+	if (nID > 220000)
+	{
+		return this.getNextCheckBox(nID);
+	}
+	if (nID > 210000)
+	{
+		return this.getNextDefault(nID);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+			return this.getFirstSlider();
+		case 100003:
+		case 100004:
+			return this.getFirstDefault();
+		case 100005:
+		case 100006:
+		case 100007:
+		case 100008:
+		case 100019:
+			return this.getFirstCheckBox();
+		case 100011:
+		case 100012:
+		case 100013:
+			return コンフィグ共通_下矢印(nID);
+		default:
+			break;
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+int T_ConfigSound::moveLeft(int nID)
+{
+	if (nID > 230000)
+	{
+		int idx = this.getSliderIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return this.getCheckID(idx);
+	}
+	if (nID > 220000)
+	{
+		int idx = this.getCheckIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return idx == 5 ? nID : this.getDefaultID(idx);
+	}
+	if (nID > 210000)
+	{
+		int idx = this.getDefaultIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return this.getSliderID(idx);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_左矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getFirstSlider();
+}
+
+int T_ConfigSound::moveRight(int nID)
+{
+	if (nID > 230000)
+	{
+		int idx = this.getSliderIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return this.getDefaultID(idx);
+	}
+	if (nID > 220000)
+	{
+		int idx = this.getCheckIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return idx == 5 ? nID : this.getSliderID(idx);
+	}
+	if (nID > 210000)
+	{
+		int idx = this.getDefaultIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		return this.getCheckID(idx);
+	}
+	if (nID > 200000)
+	{
+		goto label0;
+	}
+	int nID2 = コンフィグ共通_右矢印(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+label0:
+	return this.getLastCheckBox();
+}
+
+bool T_ConfigSound::create()
+{
+	this.delete();
+	this.m_spBase.setCg(40002);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(15000);
+	this.m_spBase.setShow(1);
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsCheck = this.m_aspCheck[i];
+		rfsCheck.setCg(40037);
+		rfsCheck.setZ(15001);
+	}
+	this.m_sButton.create();
+	this.createSlider(0, 320, 115, 15001);
+	this.createSlider(1, 320, 165, 15001);
+	this.createSlider(2, 320, 215, 15001);
+	this.createSlider(3, 320, 265, 15001);
+	this.createSlider(4, 320, 315, 15001);
+	this.m_asSlider[0].setCallback(&コンフィグ_マスターボリューム設定);
+	this.m_asSlider[1].setCallback(&コンフィグ_ＢＧＭボリューム設定);
+	this.m_asSlider[2].setCallback(&コンフィグ_効果音ボリューム設定);
+	this.m_asSlider[3].setCallback(&コンフィグ_ジングルボリューム設定);
+	this.m_asSlider[4].setCallback(&コンフィグ_ピコピコ音ボリューム設定);
+	this.createCheckBox(0, 640, 105, 40046);
+	this.createCheckBox(1, 640, 155, 40046);
+	this.createCheckBox(2, 640, 205, 40046);
+	this.createCheckBox(3, 640, 255, 40046);
+	this.createCheckBox(4, 640, 305, 40046);
+	this.createCheckBox(5, 70, 365, 40047);
+	コンフィグ共通_作成(this.m_sButton);
+	this.m_sButton.setButtonActive(100002, false);
+	this.m_sButton.setZ(15010);
+	this.m_sButton.setShow(true);
+	this.setValue();
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&コンフィグ_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&コンフィグ_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&コンフィグ_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&コンフィグ_右矢印);
+	this.m_sInputKey.setSelectCallback(&コンフィグ_選択設定);
+	this.createSampleVoice();
+	return true;
+}
+
+void T_ConfigSound::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspCheck.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspCheck[i].delete();
+	}
+	cnt = this.m_asSlider.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSlider[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.deleteSampleVoice();
+	this.clear();
+}
+
+void T_ConfigSound::clear()
+{
+	return;
+}
+
+bool T_ConfigSound::createSlider(int nIndex, int nX, int nY, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	ref T_ConfigSlider rfsSlider = this.m_asSlider[nIndex];
+	if (!rfsSlider.create(nZ, nX, nY, 200, 15))
+	{
+		return false;
+	}
+	rfsSlider.setShow(true);
+	int nID = this.getSliderID(nIndex);
+	T_Rect rcArea;
+	rcArea = rfsSlider.getArea();
+	this.m_sButton.addButtonRect(nID, rcArea.getWidth(), rcArea.getHeight(), -1, -1, -1, -1);
+	this.m_sButton.setButtonPos(nID, rcArea.m_nSx, rcArea.m_nSy);
+	return コンフィグ共通_ボタン作成(this.m_sButton, this.getDefaultID(nIndex), nX + 240, nY + -10, 40041, 40042);
+}
+
+bool T_ConfigSound::createCheckBox(int nIndex, int nX, int nY, int nCgNo)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspCheck.Numof())
+	{
+		return false;
+	}
+	if (!コンフィグ共通_チェックＢＯＸ作成(this.m_sButton, this.getCheckID(nIndex), nX, nY, nCgNo))
+	{
+		return false;
+	}
+	this.m_aspCheck[nIndex].setPos(nX, nY);
+	return true;
+}
+
+bool T_ConfigSound::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (nID > 230000)
+	{
+		return this.execSlider(this.getSliderIndex(nID));
+	}
+	if (nID > 220000)
+	{
+		return this.execCheckBox(this.getCheckIndex(nID));
+	}
+	if (nID > 210000)
+	{
+		return this.execDefaultButton(this.getDefaultIndex(nID));
+	}
+	int nRet2 = コンフィグ共通_処理(nID);
+	if (nRet2 != 0)
+	{
+		nRet = nRet2 > 0 ? nRet2 : 0;
+		return true;
+	}
+	return false;
+}
+
+bool T_ConfigSound::execDefaultButton(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	this.setVolume(nIndex, 0.800000011920929, true);
+	this.setValue();
+	return false;
+}
+
+bool T_ConfigSound::execSlider(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	if (!this.m_asSlider[nIndex].drag())
+	{
+		return false;
+	}
+	if (!this.setVolume(nIndex, this.m_asSlider[nIndex].getValue(), true))
+	{
+		return false;
+	}
+	this.setValue();
+	return false;
+}
+
+bool T_ConfigSound::execCheckBox(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			this.setMute(nIndex, !this.getMute(nIndex));
+			break;
+		case 5:
+			AFL_Config_SetSoundGlobalFocus(!AFL_Config_GetSoundGlobalFocus());
+			break;
+		default:
+			return false;
+	}
+	this.setValue();
+	return false;
+}
+
+int T_ConfigSound::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		int nID4 = this.checkWheel();
+		if (nID4 > 0)
+		{
+			nRet = nID4;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			nRet = 100019;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		else if (this.getSliderIndex(nID2) >= 0)
+		{
+			nRet = nID2;
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_ConfigSound::checkInput(ref int nSelectID)
+{
+	int nRet = this.m_sButton.checkInput(nSelectID);
+	int idx = this.getSliderIndex(nSelectID);
+	int i = 0;
+	int cnt = this.m_asSlider.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSlider[i].setSelect(i == idx);
+	}
+	return nRet;
+}
+
+int T_ConfigSound::checkKey(int nID)
+{
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (nID > 230000)
+	{
+		if (this.checkKeySlider(this.getSliderIndex(nID)))
+		{
+			return 0;
+		}
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+bool T_ConfigSound::checkKeySlider(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	if (!this.m_asSlider[nIndex].checkKey())
+	{
+		return false;
+	}
+	if (!this.setVolume(nIndex, this.m_asSlider[nIndex].getValue(), true))
+	{
+		return false;
+	}
+	this.setValue();
+	return true;
+}
+
+int T_ConfigSound::checkWheel()
+{
+	switch (ホイール_確認(true))
+	{
+		case 9991:
+			return 100001;
+		case 9992:
+			return 100003;
+		default:
+			break;
+	}
+	ホイール_クリア();
+	return 0;
+}
+
+void T_ConfigSound::resetSelect()
+{
+	int i = 0;
+	int cnt = this.m_asSlider.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asSlider[i].setSelect(false);
+	}
+	this.m_sButton.resetSelect();
+}
+
+void T_ConfigSound::setSelect(int nID, bool bSelect)
+{
+	int idx = this.getSliderIndex(nID);
+	if (idx >= 0)
+	{
+		this.m_asSlider[idx].setSelect(bSelect);
+	}
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_ConfigSound::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_ConfigSound::setValue()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.setSliderValue(i, this.getVolume(i));
+		this.m_aspCheck[i].setShow(this.getMute(i));
+	}
+	this.m_aspCheck[5].setShow(!AFL_Config_GetSoundGlobalFocus());
+}
+
+bool T_ConfigSound::setSliderValue(int nIndex, float fRate)
+{
+	if (nIndex < 0 || nIndex >= this.m_asSlider.Numof())
+	{
+		return false;
+	}
+	this.m_asSlider[nIndex].setValue(fRate);
+	return true;
+}
+
+bool T_ConfigSound::setVolume(int nIndex, float fVolume, bool bSample)
+{
+	int nNo = this.getGroupNumber(nIndex);
+	if (nNo < 0)
+	{
+		return false;
+	}
+	AFL_Config_SetVolume(nNo, 数値_補正(数値変換(fVolume), 0, 100));
+	if (bSample)
+	{
+		switch (nIndex)
+		{
+			case 2:
+				システム効果音(5012);
+				break;
+			case 3:
+				システム効果音(406);
+				break;
+			case 4:
+				this.startSampleVoice();
+				break;
+			case 0:
+			case 1:
+			default:
+				break;
+		}
+	}
+	return true;
+}
+
+bool T_ConfigSound::setMute(int nIndex, bool bMute)
+{
+	int nNo = this.getGroupNumber(nIndex);
+	if (nNo < 0)
+	{
+		return false;
+	}
+	AFL_Config_SetMute(nNo, bMute);
+	return true;
+}
+
+float T_ConfigSound::getVolume(int nIndex)
+{
+	int nNo = this.getGroupNumber(nIndex);
+	if (nNo < 0)
+	{
+		return 0.0;
+	}
+	return 実数変換(数値_補正(AFL_Config_GetVolume(nNo), 0, 100));
+}
+
+bool T_ConfigSound::getMute(int nIndex)
+{
+	int nNo = this.getGroupNumber(nIndex);
+	if (nNo < 0)
+	{
+		return false;
+	}
+	return AFL_Config_GetMute(nNo);
+}
+
+int T_ConfigSound::getGroupNumber(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return 0;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		case 3:
+			return 4;
+		case 4:
+			return 5;
+		default:
+			break;
+	}
+	return -1;
+}
+
+void T_ConfigSound::createSampleVoice()
+{
+	this.deleteSampleVoice();
+	int nWaitTime1 = 0;
+	int nWaitTime2 = 0;
+	int nSoundNo = メッセージ効果音番号(2000, nWaitTime1, nWaitTime2);
+	if (nSoundNo <= 0)
+	{
+		return;
+	}
+	this.m_anSoundNo[0] = nSoundNo;
+	this.m_anSoundNo[1] = nSoundNo + 1;
+	this.m_anWaitTime[0] = nWaitTime1;
+	this.m_anWaitTime[1] = nWaitTime2;
+}
+
+void T_ConfigSound::deleteSampleVoice()
+{
+	this.m_anSoundNo.Fill(0, this.m_anSoundNo.Numof(), 0);
+	this.m_anWaitTime.Fill(0, this.m_anWaitTime.Numof(), -1);
+	this.m_nCurrentIndex = -1;
+	this.m_nCount = -1;
+}
+
+bool T_ConfigSound::startSampleVoice()
+{
+	this.stopSampleVoice();
+	if (this.m_anSoundNo[0] <= 0 || this.m_anSoundNo[1] <= 0 || this.m_anWaitTime[0] < 0 || this.m_anWaitTime[1] < 0)
+	{
+		return false;
+	}
+	効果音_再生(this.m_anSoundNo[0]);
+	this.m_sTimer.Reset();
+	this.m_nCurrentIndex = 0;
+	this.m_nCount = 0;
+	return true;
+}
+
+void T_ConfigSound::stopSampleVoice()
+{
+	this.m_nCurrentIndex = -1;
+	this.m_nCount = -1;
+}
+
+bool T_ConfigSound::updateSampleVoice()
+{
+	if (this.m_nCurrentIndex < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < this.m_anWaitTime[this.m_nCurrentIndex])
+	{
+		return false;
+	}
+	this.m_nCurrentIndex++;
+	if (this.m_nCurrentIndex >= this.m_anSoundNo.Numof())
+	{
+		this.m_nCurrentIndex = 0;
+		this.m_nCount++;
+	}
+	if (this.m_nCount >= 2)
+	{
+		this.stopSampleVoice();
+		return false;
+	}
+	効果音_再生(this.m_anSoundNo[this.m_nCurrentIndex]);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+int T_ConfigSound::getPrevCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastCheckBox();
+	}
+	if (idx == 5)
+	{
+		return this.getLastSlider();
+	}
+	--idx;
+	if (idx < 0)
+	{
+		return 100006;
+	}
+	return this.getCheckID(idx);
+}
+
+int T_ConfigSound::getNextCheckBox(int nID)
+{
+	int idx = this.getCheckIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstCheckBox();
+	}
+	++idx;
+	if (idx >= 6)
+	{
+		return 100011;
+	}
+	return this.getCheckID(idx);
+}
+
+int T_ConfigSound::getFirstCheckBox()
+{
+	return this.getCheckID(0);
+}
+
+int T_ConfigSound::getLastCheckBox()
+{
+	return this.getCheckID(5);
+}
+
+int T_ConfigSound::getPrevSlider(int nID)
+{
+	int idx = this.getSliderIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastSlider();
+	}
+	--idx;
+	if (idx < 0)
+	{
+		return 100001;
+	}
+	return this.getSliderID(idx);
+}
+
+int T_ConfigSound::getNextSlider(int nID)
+{
+	int idx = this.getSliderIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstSlider();
+	}
+	++idx;
+	if (idx >= 5)
+	{
+		return this.getLastCheckBox();
+	}
+	return this.getSliderID(idx);
+}
+
+int T_ConfigSound::getFirstSlider()
+{
+	return this.getSliderID(0);
+}
+
+int T_ConfigSound::getLastSlider()
+{
+	return this.getSliderID(4);
+}
+
+int T_ConfigSound::getPrevDefault(int nID)
+{
+	int idx = this.getDefaultIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastDefault();
+	}
+	--idx;
+	if (idx < 0)
+	{
+		return 100003;
+	}
+	return this.getDefaultID(idx);
+}
+
+int T_ConfigSound::getNextDefault(int nID)
+{
+	int idx = this.getDefaultIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstDefault();
+	}
+	++idx;
+	if (idx >= 5)
+	{
+		return this.getLastCheckBox();
+	}
+	return this.getDefaultID(idx);
+}
+
+int T_ConfigSound::getFirstDefault()
+{
+	return this.getDefaultID(0);
+}
+
+int T_ConfigSound::getLastDefault()
+{
+	return this.getDefaultID(4);
+}
+

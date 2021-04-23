@@ -1,0 +1,300 @@
+void 異常１／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(71, -1, -1);
+	ト書き();
+	'Rance\'s party had set out for a certain dungeon.' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"This is it."' A;
+	セリフ(2000, "");
+	'Alright, Crook. You\'re up."' A;
+	セリフ(2060, "");
+	'"Yes, I\'ll explain."' A;
+	'"There are strange squidmen here."' A;
+	セリフ(2000, "");
+	'"Strange?' R;
+	' What do you mean by that?"' A;
+	セリフ(2060, "");
+	'"A few things.' R;
+	' In any case, their behavior is different from normal squidmen."' A;
+	'"And our job is to defeat them."' A;
+	セリフ(2000, "");
+	'"No matter how weird they are, they\'re still just squidmen, aren\'t they?' R;
+	' Can\'t we just leave ’em alone?"' A;
+	セリフ(2060, "");
+	'"We cannot.' R;
+	' There\'s a possibility they could have an effect on the whole ecosystem. They\'re being regarded as a threat."' A;
+	セリフ(2000, "");
+	'"Hmph."' A;
+	セリフ(2005, "");
+	'"What an underwhelming quest, though...' R;
+	' We shouldn\'t have taken this..."' A;
+	セリフ(2060, "");
+	'"I did hear that we\'ll receive a good item for clearing it."' A;
+	セリフ(2000, "");
+	'"Oh yeah? Then let\'s just get it over with.' R;
+	' With a single Rance Attack."' A;
+	セリフ(2060, "");
+	'"No, we won\'t be able to do that."' A;
+	セリフ(2060, "");
+	'"These squidmen can only be approached by rangers. They flee from any other class that comes close.' R;
+	' That\'s part of what makes them unusual."' A;
+	セリフ(2005, "");
+	'"Tch, picky bastards..."' A;
+	セリフ(2060, "");
+	'"There\'s nothing we can do about that.' R;
+	' Let\'s get started."' A;
+	ADVOFF();
+}
+
+void 異常１／失敗()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"Ah, no good, they got away."' A;
+	セリフ(2005, "");
+	'"Huh?"' A;
+	セリフ(2060, "");
+	'"The squidmen we\'re supposed to be defeating flee whenever they\'re approached by any class other than rangers."' A;
+	'"They\'re too quick on their feet.' R;
+	' We\'ll need to fight them with a full party of rangers if we want to defeat them."' A;
+	'"There\'s nothing more we can do today.' R;
+	' We\'ll have to head home."' A;
+	セリフ(2005, "");
+	'"Urgh... what a pain..."' A;
+}
+
+void 異常１／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'The strange squidmen were twitching.' A;
+	セリフ(2000, "");
+	'"What\'s with these things...?"' A;
+	セリフ(2005, "");
+	'"Whoa, they\'re smoking!"' A;
+	ト書き();
+	'The squidmen spewed purple smoke and melted away.' A;
+	セリフ(2005, "");
+	'"...What was that...?"' A;
+	セリフ(2060, "");
+	'"I have no idea."' A;
+	'"Academics are researching them, but it\'s unclear at this point how they\'ve become so abnormal."' A;
+	'"I can guess that someone might be modifying them... but it\'s only conjecture at this point. I have no leads as to a possible suspect."' A;
+	'"But... these abnormal squidmen have been defeated, so our quest is complete.' R;
+	' Nice work."' A;
+	'"All that\'s left is to accept our reward and head home."' A;
+	セリフ(2000, "");
+	'"Oh yeah?' R;
+	' Why are we waiting around, then?"' A;
+}
+
+void 異常２／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'Kouhime, Mill, Karma, and Onoha had come to a certain dungeon.' A;
+	音楽(72, -1, -1);
+	セリフ(2730, "");
+	'"Mm, this should be it."' A;
+	'"Do you know what we\'re supposed to do, Princess Kouhime?"' A;
+	枠消去();
+	立ち絵表示(1110, 1, 200);
+	セリフ(2110, "");
+	'"Yes. It seems that there are abnormal bones here that someone has biologically modified."' A;
+	'"Our mission today is to defeat them."' A;
+	セリフ(2670, "");
+	'"\'Abnormal\'?"' A;
+	セリフ(2110, "");
+	'"Apparently they flee from anyone who isn\'t a small girl."' A;
+	セリフ(2730, "");
+	'"..."' A;
+	'"Are they pedos?"' A;
+	セリフ(2110, "");
+	'"Huh? Ah, w-well..."' A;
+	セリフ(2670, "");
+	'"They\'re pedos, right?"' A;
+	セリフ(2110, "");
+	'"Err..."' A;
+	セリフ(2520, "");
+	'"? ? ?"' A;
+	セリフ(2110, "");
+	'"Oh, but it could just be that they\'re afraid of adults..."' A;
+	セリフ(2730, "");
+	'"........."' A;
+	'"Isn\'t that what you\'d call a pedo...?"' A;
+	セリフ(2670, "");
+	'"Right?' R;
+	' I\'m preeetty sure that\'s what\'s going on."' A;
+	セリフ(2110, "");
+	'"A-Ahh..."' A;
+	セリフ(2520, "");
+	'"A... Are they... going to eat us...?"' A;
+	セリフ(2670, "");
+	'"..."' A;
+	セリフ(2671, "");
+	'"They just might."' A;
+	セリフ(2521, "");
+	'"Awwwww..."' A;
+	セリフ(2730, "");
+	'"W-Well, it\'ll all be okay if we just beat them up, right?"' A;
+	セリフ(2110, "");
+	'"Y-Yes, that\'s right. Let\'s do our best."' A;
+	セリフ(2730, "");
+	'"Alright! We can do this, everybody!' R;
+	' Let\'s gooo!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ２(2110, "Everyone");
+	'"Yeaaah!"' A;
+	ADVOFF();
+}
+
+void 異常２／プロローグ／失敗()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Hmmmm..."' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"I\'m here ’cause I heard there were strange bones here, but..."' A;
+	セリフ(2060, "");
+	'"They ran away..."' A;
+	セリフ(2005, "");
+	'"Why...?"' A;
+	セリフ(2060, "");
+	'"According to our information, they\'ll flee if they see anyone other than small girls."' A;
+	セリフ(2000, "");
+	'"What, so they\'re pedos?"' A;
+	セリフ(2060, "");
+	'"That\'s unclear.' R;
+	' Maybe they\'ve just been modified to fear anyone other than immature members of a species."' A;
+	セリフ(2005, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"...So they\'re pedos, right?"' A;
+	セリフ(2060, "");
+	'"...We don\'t know that."' A;
+	'"In any case, we\'ll have to come back later."' A;
+	セリフ(2005, "");
+	'"Tch, guess there\'s nothing we can do about it..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance\'s party retreated.' A;
+}
+
+void 異常２／エピローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(72, -1, -1);
+	セリフ(2730, "");
+	'"Yeaah! We wooon!"' A;
+	セリフ２(2925, "Abnormal Bone");
+	'"UGIGI..."' A;
+	ト書き();
+	'The defeated bones spewed purple smoke.' A;
+	セリフ(2670, "");
+	'"Blehh... I feel gross..."' A;
+	セリフ(2521, "");
+	'"Wah, wahh... awawah..."' A;
+	ト書き();
+	'And the strange bones melted away.' A;
+	セリフ(2730, "");
+	'"...They disappeared..."' A;
+	セリフ(2110, "");
+	'"What were they...?"' A;
+	セリフ(2000, "");
+	'"Hey, good work, little shrimps.' R;
+	' You did good!"' A;
+	セリフ(2730, "");
+	'"Oh, Rance."' A;
+	枠消去();
+	立ち絵表示(1670, 1, 200);
+	セリフ(2671, "");
+	'"Eheh! How about a reward, then?"' A;
+	セリフ(2005, "");
+	'"Oh?"' A;
+	ト書き();
+	'Mill sidled up to Rance.' A;
+	セリフ(2110, "");
+	'"Wah... wah..."' A;
+	セリフ(2730, "");
+	'"Yeah! I want something, too!"' A;
+	セリフ(2005, "");
+	'"Ah... sure, sure. Just stop clinging."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2060, "");
+	'"........."' A;
+	'"...Rance.' R;
+	' Are you interested in little girls?"' A;
+	セリフ(2000, "");
+	'"No."' A;
+	セリフ(2060, "");
+	'"...I\'m relieved."' A;
+	効果音(2011);
+	全画面揺れ(1, false);
+	ト書き();
+	'Smack!' R;
+	'A chop to Crook!' A;
+	セリフ(2060, "");
+	'"...Pardon me."' R;
+	'  ↑  Rubbing her head' A;
+	セリフ(2005, "");
+	'"Hmph, it\'s ’cause you say such stupid shit."' A;
+	セリフ(2000, "");
+	'"Anyway, let\'s get back, kids."' A;
+	セリフ(2730, "");
+	'"Okaaay!"' A;
+	セリフ(2670, "");
+	'"Damn..."' A;
+	セリフ(2060, "");
+	'"Let\'s collect our reward and head home, then."' A;
+	セリフ(2000, "");
+	'"Right."' A;
+	ADVOFF();
+}
+

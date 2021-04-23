@@ -1,0 +1,2322 @@
+int CInstance::GetInstance()
+{
+	return this.m_nInstance;
+}
+
+bool CInstance::Exist()
+{
+	return this.m_nInstance != -1;
+}
+
+float CInstance::GetDiffuseR()
+{
+	return this.m_fDiffuseR;
+}
+
+float CInstance::GetDiffuseG()
+{
+	return this.m_fDiffuseG;
+}
+
+float CInstance::GetDiffuseB()
+{
+	return this.m_fDiffuseB;
+}
+
+float CInstance::GetAmbientR()
+{
+	return this.m_fAmbientR;
+}
+
+float CInstance::GetAmbientG()
+{
+	return this.m_fAmbientG;
+}
+
+float CInstance::GetAmbientB()
+{
+	return this.m_fAmbientB;
+}
+
+float CInstance::GetPosX()
+{
+	return this.m_fX;
+}
+
+float CInstance::GetPosY()
+{
+	return this.m_fY;
+}
+
+float CInstance::GetPosZ()
+{
+	return this.m_fZ;
+}
+
+float CInstance::GetVecX()
+{
+	return this.m_fVecX;
+}
+
+float CInstance::GetVecY()
+{
+	return this.m_fVecY;
+}
+
+float CInstance::GetVecZ()
+{
+	return this.m_fVecZ;
+}
+
+float CInstance::GetAngle()
+{
+	return this.m_fAngle;
+}
+
+float CInstance::GetAngleP()
+{
+	return this.m_fAngleP;
+}
+
+CInstance::CInstance()
+{
+	this.m_nInstance = -1;
+	this.m_fDiffuseR = 1.0;
+	this.m_fDiffuseG = 1.0;
+	this.m_fDiffuseB = 1.0;
+	this.m_fAmbientR = 0.0;
+	this.m_fAmbientG = 0.0;
+	this.m_fAmbientB = 0.0;
+}
+
+CInstance::~CInstance()
+{
+	this.Release();
+}
+
+bool CInstance::Create(int nPlugin)
+{
+	this.Release();
+	this.m_nInstance = TapirEngine.CreateInstance(nPlugin);
+	if (this.m_nInstance == -1)
+	{
+		return false;
+	}
+	this.m_nPlugin = nPlugin;
+	return true;
+}
+
+void CInstance::Release()
+{
+	if (this.m_nInstance != -1)
+	{
+		TapirEngine.ReleaseInstance(this.m_nPlugin, this.m_nInstance);
+		this.m_nInstance = -1;
+	}
+	this.m_nPlugin = -1;
+}
+
+bool CInstance::SetType(int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceType(this.m_nPlugin, this.m_nInstance, nType);
+	return true;
+}
+
+bool CInstance::Load(string Name)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.LoadInstance(this.m_nPlugin, this.m_nInstance, Name);
+}
+
+bool CInstance::SetPos(float fX, float fY, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstancePos(this.m_nPlugin, this.m_nInstance, fX, fY, fZ);
+	this.m_fX = fX;
+	this.m_fY = fY;
+	this.m_fZ = fZ;
+	return true;
+}
+
+bool CInstance::SetPosX(float fX)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	this.m_fX = fX;
+	return TapirEngine.SetInstancePos(this.m_nPlugin, this.m_nInstance, this.m_fX, this.m_fY, this.m_fZ);
+}
+
+bool CInstance::SetPosY(float fY)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	this.m_fY = fY;
+	return TapirEngine.SetInstancePos(this.m_nPlugin, this.m_nInstance, this.m_fX, this.m_fY, this.m_fZ);
+}
+
+bool CInstance::SetPosZ(float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	this.m_fZ = fZ;
+	return TapirEngine.SetInstancePos(this.m_nPlugin, this.m_nInstance, this.m_fX, this.m_fY, this.m_fZ);
+}
+
+bool CInstance::SetMapPos(float fX, float fY, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return this.SetPos(fX * 4.0, fY * 4.0, fZ * -4.0);
+}
+
+bool CInstance::SetVector(float fX, float fY, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceVector(this.m_nPlugin, this.m_nInstance, fX, fY, fZ);
+	this.m_fVecX = fX;
+	this.m_fVecY = fY;
+	this.m_fVecZ = fZ;
+	return true;
+}
+
+bool CInstance::SetAngle(float fAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceAngle(this.m_nPlugin, this.m_nInstance, fAngle);
+	this.m_fAngle = fAngle;
+	return true;
+}
+
+bool CInstance::SetAngleP(float fAngleP)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceAngleP(this.m_nPlugin, this.m_nInstance, fAngleP);
+	this.m_fAngleP = fAngleP;
+	return true;
+}
+
+bool CInstance::SetAngleB(float fAngleB)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceAngleB(this.m_nPlugin, this.m_nInstance, fAngleB);
+	return true;
+}
+
+float CInstance::GetScaleX()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceScaleX(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetScaleY()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceScaleY(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetScaleZ()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceScaleZ(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetScaleX(float fScaleX)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceScaleX(this.m_nPlugin, this.m_nInstance, fScaleX);
+	return true;
+}
+
+bool CInstance::SetScaleY(float fScaleY)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceScaleY(this.m_nPlugin, this.m_nInstance, fScaleY);
+	return true;
+}
+
+bool CInstance::SetScaleZ(float fScaleZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceScaleZ(this.m_nPlugin, this.m_nInstance, fScaleZ);
+	return true;
+}
+
+bool CInstance::SetScale(float fScale)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	if (!this.SetScaleX(fScale))
+	{
+		return false;
+	}
+	if (!this.SetScaleY(fScale))
+	{
+		return false;
+	}
+	if (!this.SetScaleZ(fScale))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CInstance::SetZBias(float fZBias)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceZBias(this.m_nPlugin, this.m_nInstance, fZBias);
+}
+
+float CInstance::GetZBias()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceZBias(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetVertexPos(int nIndex, float fX, float fY, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceVertexPos(this.m_nPlugin, this.m_nInstance, nIndex, fX, fY, fZ);
+	return true;
+}
+
+bool CInstance::SetDiffuse(float fR, float fG, float fB)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	this.m_fDiffuseR = fR;
+	this.m_fDiffuseG = fG;
+	this.m_fDiffuseB = fB;
+	return TapirEngine.SetInstanceDiffuse(this.m_nPlugin, this.m_nInstance, fR, fG, fB);
+}
+
+bool CInstance::SetGlobeDiffuse(float fR, float fG, float fB)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceGlobeDiffuse(this.m_nPlugin, this.m_nInstance, fR, fG, fB);
+}
+
+bool CInstance::SetAmbient(float fR, float fG, float fB)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	this.m_fAmbientR = fR;
+	this.m_fAmbientG = fG;
+	this.m_fAmbientB = fB;
+	return TapirEngine.SetInstanceAmbient(this.m_nPlugin, this.m_nInstance, fR, fG, fB);
+}
+
+bool CInstance::SetSpecular(float fSpecular)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceSpecular(this.m_nPlugin, this.m_nInstance, fSpecular);
+}
+
+bool CInstance::SetAlpha(float fAlpha)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceAlpha(this.m_nPlugin, this.m_nInstance, fAlpha);
+}
+
+bool CInstance::SetAttenuationNear(float fNear)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceAttenuationNear(this.m_nPlugin, this.m_nInstance, fNear);
+}
+
+bool CInstance::SetAttenuationFar(float fFar)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceAttenuationFar(this.m_nPlugin, this.m_nInstance, fFar);
+}
+
+bool CInstance::SetDraw(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceDraw(this.m_nPlugin, this.m_nInstance, bFlag);
+	return true;
+}
+
+bool CInstance::GetDraw()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceDraw(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetDrawShadow(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceDrawShadow(this.m_nPlugin, this.m_nInstance, bFlag);
+}
+
+bool CInstance::SetDrawBackShadow(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceDrawBackShadow(this.m_nPlugin, this.m_nInstance, bFlag);
+}
+
+bool CInstance::SetDrawMakeShadow(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceDrawMakeShadow(this.m_nPlugin, this.m_nInstance, bFlag);
+	return true;
+}
+
+bool CInstance::SetDrawBump(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceDrawBump(this.m_nPlugin, this.m_nInstance, bFlag);
+	return true;
+}
+
+bool CInstance::GetDrawShadow()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceDrawShadow(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetDrawBackShadow()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceDrawBackShadow(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetDrawMakeShadow()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceDrawMakeShadow(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetDrawBump()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceDrawBump(this.m_nPlugin, this.m_nInstance);
+}
+
+int CInstance::GetDrawType()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetInstanceDrawType(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetDrawType(int nDrawType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceDrawType(this.m_nPlugin, this.m_nInstance, nDrawType);
+}
+
+bool CInstance::SetDrawParam(int DrawParam, int Value)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceDrawParam(this.m_nPlugin, this.m_nInstance, DrawParam, Value);
+}
+
+int CInstance::GetMotionState()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetInstanceMotionState(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetMotionFrame()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceMotionFrame(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::LoadMotion(string Name)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.LoadInstanceMotion(this.m_nPlugin, this.m_nInstance, Name);
+}
+
+bool CInstance::SetMotionFrame(float fFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceMotionFrame(this.m_nPlugin, this.m_nInstance, fFrame);
+	return true;
+}
+
+bool CInstance::SetMotionState(int nState)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceMotionState(this.m_nPlugin, this.m_nInstance, nState);
+	return true;
+}
+
+bool CInstance::SetMotionFrameRange(float fBeginFrame, float fEndFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceMotionFrameRange(this.m_nPlugin, this.m_nInstance, fBeginFrame, fEndFrame);
+	return true;
+}
+
+bool CInstance::SetMotionLoopFrameRange(float fBeginFrame, float fEndFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	TapirEngine.SetInstanceMotionLoopFrameRange(this.m_nPlugin, this.m_nInstance, fBeginFrame, fEndFrame);
+	return true;
+}
+
+bool CInstance::LoadNextMotion(string Name)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.LoadInstanceNextMotion(this.m_nPlugin, this.m_nInstance, Name);
+}
+
+bool CInstance::SetNextMotionState(int nState)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceNextMotionState(this.m_nPlugin, this.m_nInstance, nState);
+}
+
+bool CInstance::SetNextMotionFrame(float fFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceNextMotionFrame(this.m_nPlugin, this.m_nInstance, fFrame);
+}
+
+bool CInstance::SetNextMotionFrameRange(float fBeginFrame, float fEndFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceNextMotionFrameRange(this.m_nPlugin, this.m_nInstance, fBeginFrame, fEndFrame);
+}
+
+bool CInstance::SetNextMotionLoopFrameRange(float fBeginFrame, float fEndFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceNextMotionLoopFrameRange(this.m_nPlugin, this.m_nInstance, fBeginFrame, fEndFrame);
+}
+
+bool CInstance::SetMotionBlendRate(float fRate)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceMotionBlendRate(this.m_nPlugin, this.m_nInstance, fRate);
+}
+
+bool CInstance::SetMotionBlend(bool bMotionBlend)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceMotionBlend(this.m_nPlugin, this.m_nInstance, bMotionBlend);
+}
+
+bool CInstance::IsMotionBlend()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.IsInstanceMotionBlend(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetMotionBlendPutTime()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceMotionBlendPutTime(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetMotionBlendPutTime(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceMotionBlendPutTime(this.m_nPlugin, this.m_nInstance, bFlag);
+}
+
+bool CInstance::SwapMotion()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SwapInstanceMotion(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::FreeNextMotion()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.FreeInstanceNextMotion(this.m_nPlugin, this.m_nInstance);
+}
+
+int CInstance::GetNumofMaterial()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetInstanceNumofMaterial(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetMaterialName(int nNum, ref string Name)
+{
+	if (this.m_nInstance < 0)
+	{
+		Name = "";
+		return false;
+	}
+	return TapirEngine.GetInstanceMaterialName(this.m_nPlugin, this.m_nInstance, nNum, Name);
+}
+
+float CInstance::GetMaterialParam(int nMaterial, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceMaterialParam(this.m_nPlugin, this.m_nInstance, nMaterial, nType);
+}
+
+bool CInstance::SetMaterialParam(int nMaterial, int nType, float fParam)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceMaterialParam(this.m_nPlugin, this.m_nInstance, nMaterial, nType, fParam);
+}
+
+bool CInstance::SaveAddMaterialData()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SaveInstanceAddMaterialData(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetPointPos(int nIndex, float fX, float fY, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstancePointPos(this.m_nPlugin, this.m_nInstance, nIndex, fX, fY, fZ);
+}
+
+bool CInstance::GetPointPos(int nIndex, ref float pfX, ref float pfY, ref float pfZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfX = 0.0;
+		pfY = 0.0;
+		pfZ = 0.0;
+		return false;
+	}
+	return TapirEngine.GetInstancePointPos(this.m_nPlugin, this.m_nInstance, nIndex, pfX, pfY, pfZ);
+}
+
+bool CInstance::SetColumnPos(float fX, float fY, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceColumnPos(this.m_nPlugin, this.m_nInstance, fX, fY, fZ);
+}
+
+bool CInstance::SetColumnHeight(float fHeight)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceColumnHeight(this.m_nPlugin, this.m_nInstance, fHeight);
+}
+
+bool CInstance::SetColumnRadius(float fRadius)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceColumnRadius(this.m_nPlugin, this.m_nInstance, fRadius);
+}
+
+bool CInstance::SetColumnAngle(float fAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceColumnAngle(this.m_nPlugin, this.m_nInstance, fAngle);
+}
+
+bool CInstance::SetColumnAngleP(float fAngleP)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceColumnAngleP(this.m_nPlugin, this.m_nInstance, fAngleP);
+}
+
+bool CInstance::SetColumnAngleB(float fAngleB)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceColumnAngleB(this.m_nPlugin, this.m_nInstance, fAngleB);
+}
+
+bool CInstance::GetColumnPos(ref float fX, ref float fY, ref float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		fX = 0.0;
+		fY = 0.0;
+		fZ = 0.0;
+		return false;
+	}
+	return TapirEngine.GetInstanceColumnPos(this.m_nPlugin, this.m_nInstance, fX, fY, fZ);
+}
+
+float CInstance::GetColumnHeight()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceColumnHeight(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetColumnRadius()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceColumnRadius(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetColumnAngle()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceColumnAngle(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetColumnAngleP()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceColumnAngleP(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetColumnAngleB()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceColumnAngleB(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetDrawColumn()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceDrawColumn(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetDrawColumn(bool bDraw)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceDrawColumn(this.m_nPlugin, this.m_nInstance, bDraw);
+}
+
+bool CInstance::SetTarget(int nIndex, int nTarget)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceTarget(this.m_nPlugin, this.m_nInstance, nIndex, nTarget);
+}
+
+int CInstance::GetTarget(int nIndex)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetInstanceTarget(this.m_nPlugin, this.m_nInstance, nIndex);
+}
+
+float CInstance::GetFPS()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceFPS(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetFPS(float fFPS)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceFPS(this.m_nPlugin, this.m_nInstance, fFPS);
+}
+
+int CInstance::GetBoneIndex(string pIName)
+{
+	if (this.m_nInstance < 0)
+	{
+		return -1;
+	}
+	return TapirEngine.GetInstanceBoneIndex(this.m_nPlugin, this.m_nInstance, pIName);
+}
+
+bool CInstance::TransLocalPosToWorldPosByBone(int nBone, float fOffsetX, float fOffsetY, float fOffsetZ, ref float pfX, ref float pfY, ref float pfZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfX = 0.0;
+		pfY = 0.0;
+		pfZ = 0.0;
+		return false;
+	}
+	return TapirEngine.TransInstanceLocalPosToWorldPosByBone(this.m_nPlugin, this.m_nInstance, nBone, fOffsetX, fOffsetY, fOffsetZ, pfX, pfY, pfZ);
+}
+
+int CInstance::GetNumofPolygon()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetInstanceNumofPolygon(this.m_nPlugin, this.m_nInstance);
+}
+
+int CInstance::GetTextureMemorySize()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetInstanceTextureMemorySize(this.m_nPlugin, this.m_nInstance);
+}
+
+string CInstance::GetInfoText()
+{
+	if (this.m_nInstance < 0)
+	{
+		return "";
+	}
+	string Text = "";
+	TapirEngine.GetInstanceInfoText(this.m_nPlugin, this.m_nInstance, Text);
+	return Text;
+}
+
+string CInstance::GetMaterialInfoText()
+{
+	if (this.m_nInstance < 0)
+	{
+		return "";
+	}
+	string Text = "";
+	TapirEngine.GetInstanceMaterialInfoText(this.m_nPlugin, this.m_nInstance, Text);
+	return Text;
+}
+
+float CInstance::CalcHeightDetection(float fX, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.CalcInstanceHeightDetection(this.m_nPlugin, this.m_nInstance, fX, fZ);
+}
+
+float CInstance::GetSoftFogEdgeLength()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceSoftFogEdgeLength(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetSoftFogEdgeLength(float fLength)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceSoftFogEdgeLength(this.m_nPlugin, this.m_nInstance, fLength);
+}
+
+float CInstance::GetShadowVolumeBoneRadius()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceShadowVolumeBoneRadius(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetShadowVolumeBoneRadius(float fRadius)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceShadowVolumeBoneRadius(this.m_nPlugin, this.m_nInstance, fRadius);
+}
+
+bool CInstance::SetMeshShow(string MeshName, bool Show)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceMeshShow(this.m_nPlugin, this.m_nInstance, MeshName, Show);
+}
+
+bool CInstance::GetDebugDrawShadowVolume()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstanceDebugDrawShadowVolume(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetDebugDrawShadowVolume(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceDebugDrawShadowVolume(this.m_nPlugin, this.m_nInstance, bFlag);
+}
+
+bool CInstance::SaveEffect()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SaveEffect(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetEffectFrameRange(ref int pnBeginFrame, ref int pnEndFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		pnBeginFrame = 0;
+		pnEndFrame = 0;
+		return false;
+	}
+	return TapirEngine.GetEffectFrameRange(this.m_nPlugin, this.m_nInstance, pnBeginFrame, pnEndFrame);
+}
+
+int CInstance::GetEffectObjectType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectMoveType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectMoveType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectUpVecType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectUpVecType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectMoveCurve(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectMoveCurve(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+void CInstance::GetEffectObjectFrame(int nObject, ref int pnBeginFrame, ref int pnEndFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		pnBeginFrame = -1;
+		pnEndFrame = -1;
+		return;
+	}
+	TapirEngine.GetEffectObjectFrame(this.m_nPlugin, this.m_nInstance, nObject, pnBeginFrame, pnEndFrame);
+}
+
+int CInstance::GetEffectObjectStopFrame(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return -1;
+	}
+	return TapirEngine.GetEffectObjectStopFrame(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectNumofObject()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObject(this.m_nPlugin, this.m_nInstance);
+}
+
+string CInstance::GetEffectObjectName(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return "";
+	}
+	string Name = "";
+	TapirEngine.GetEffectObjectName(this.m_nPlugin, this.m_nInstance, nObject, Name);
+	return Name;
+}
+
+int CInstance::GetEffectNumofObjectPos(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectPos(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectNumofObjectPosUnit(int nObject, int nPos)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectPosUnit(this.m_nPlugin, this.m_nInstance, nObject, nPos);
+}
+
+int CInstance::GetEffectObjectPosUnitType(int nObject, int nPos, int nPosUnit)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectPosUnitType(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit);
+}
+
+int CInstance::GetEffectObjectPosUnitIndex(int nObject, int nPos, int nPosUnit)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectPosUnitIndex(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit);
+}
+
+int CInstance::GetEffectNumofObjectPosUnitParam(int nObject, int nPos, int nPosUnit)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectPosUnitParam(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit);
+}
+
+float CInstance::GetEffectObjectPosUnitParam(int nObject, int nPos, int nPosUnit, int nParam)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectPosUnitParam(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit, nParam);
+}
+
+int CInstance::GetEffectNumofObjectPosUnitString(int nObject, int nPos, int nPosUnit)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectPosUnitString(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit);
+}
+
+string CInstance::GetEffectObjectPosUnitString(int nObject, int nPos, int nPosUnit, int nParam)
+{
+	if (this.m_nInstance < 0)
+	{
+		return "";
+	}
+	string Result = "";
+	TapirEngine.GetEffectObjectPosUnitString(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit, nParam, Result);
+	return Result;
+}
+
+int CInstance::GetEffectNumofObjectTexture(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectTexture(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+string CInstance::GetEffectObjectTexture(int nObject, int nTexture)
+{
+	if (this.m_nInstance < 0)
+	{
+		return "";
+	}
+	string Name = "";
+	TapirEngine.GetEffectObjectTexture(this.m_nPlugin, this.m_nInstance, nObject, nTexture, Name);
+	return Name;
+}
+
+bool CInstance::GetEffectObjectSize(int nObject, ref float pfBeginSize, ref float pfEndSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginSize = 0.0;
+		pfEndSize = 0.0;
+		return false;
+	}
+	return TapirEngine.GetEffectObjectSize(this.m_nPlugin, this.m_nInstance, nObject, pfBeginSize, pfEndSize);
+}
+
+bool CInstance::GetEffectObjectSize2(int nObject, int nFrame, ref float pfSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfSize = 0.0;
+		return false;
+	}
+	return TapirEngine.GetEffectObjectSize2(this.m_nPlugin, this.m_nInstance, nObject, nFrame, pfSize);
+}
+
+bool CInstance::GetEffectObjectSizeX(int nObject, int nFrame, ref float pfSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfSize = 0.0;
+		return false;
+	}
+	return TapirEngine.GetEffectObjectSizeX(this.m_nPlugin, this.m_nInstance, nObject, nFrame, pfSize);
+}
+
+bool CInstance::GetEffectObjectSizeY(int nObject, int nFrame, ref float pfSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfSize = 0.0;
+		return false;
+	}
+	return TapirEngine.GetEffectObjectSizeY(this.m_nPlugin, this.m_nInstance, nObject, nFrame, pfSize);
+}
+
+bool CInstance::GetEffectObjectSizeType(int nObject, int nFrame, ref int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		nType = 0;
+		return false;
+	}
+	return TapirEngine.GetEffectObjectSizeType(this.m_nPlugin, this.m_nInstance, nObject, nFrame, nType);
+}
+
+bool CInstance::GetEffectObjectSizeXType(int nObject, int nFrame, ref int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		nType = 0;
+		return false;
+	}
+	return TapirEngine.GetEffectObjectSizeXType(this.m_nPlugin, this.m_nInstance, nObject, nFrame, nType);
+}
+
+bool CInstance::GetEffectObjectSizeYType(int nObject, int nFrame, ref int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		nType = 0;
+		return false;
+	}
+	return TapirEngine.GetEffectObjectSizeYType(this.m_nPlugin, this.m_nInstance, nObject, nFrame, nType);
+}
+
+int CInstance::GetEffectNumofObjectSize2(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectSize2(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectNumofObjectSizeX(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectSizeX(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectNumofObjectSizeY(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectSizeY(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectNumofObjectSizeType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectSizeType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectNumofObjectSizeXType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectSizeXType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectNumofObjectSizeYType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectSizeYType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectTextureAnimeTime(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectTextureAnimeTime(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectTextureAnimeFrame(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectTextureAnimeFrame(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectBlendType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectBlendType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+string CInstance::GetEffectObjectPolygonName(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return "";
+	}
+	string String = "";
+	TapirEngine.GetEffectObjectPolygonName(this.m_nPlugin, this.m_nInstance, nObject, String);
+	return String;
+}
+
+int CInstance::GetEffectNumofObjectParticle(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectParticle(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectAlphaFadeInTime(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectAlphaFadeInTime(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectAlphaFadeOutTime(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectAlphaFadeOutTime(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectAlphaFadeInFrame(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectAlphaFadeInFrame(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectAlphaFadeOutFrame(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectAlphaFadeOutFrame(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectFrameReferenceType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectFrameReferenceType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectFrameReferenceParam(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectFrameReferenceParam(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+void CInstance::GetEffectObjectXRotationAngle(int nObject, ref float pfBeginAngle, ref float pfEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginAngle = 0.0;
+		pfEndAngle = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectXRotationAngle(this.m_nPlugin, this.m_nInstance, nObject, pfBeginAngle, pfEndAngle);
+}
+
+void CInstance::GetEffectObjectYRotationAngle(int nObject, ref float pfBeginAngle, ref float pfEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginAngle = 0.0;
+		pfEndAngle = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectYRotationAngle(this.m_nPlugin, this.m_nInstance, nObject, pfBeginAngle, pfEndAngle);
+}
+
+void CInstance::GetEffectObjectZRotationAngle(int nObject, ref float pfBeginAngle, ref float pfEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginAngle = 0.0;
+		pfEndAngle = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectZRotationAngle(this.m_nPlugin, this.m_nInstance, nObject, pfBeginAngle, pfEndAngle);
+}
+
+void CInstance::GetEffectObjectXRevolutionAngle(int nObject, ref float pfBeginAngle, ref float pfEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginAngle = 0.0;
+		pfEndAngle = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectXRevolutionAngle(this.m_nPlugin, this.m_nInstance, nObject, pfBeginAngle, pfEndAngle);
+}
+
+void CInstance::GetEffectObjectXRevolutionDistance(int nObject, ref float pfBeginDistance, ref float pfEndDistance)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginDistance = 0.0;
+		pfEndDistance = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectXRevolutionDistance(this.m_nPlugin, this.m_nInstance, nObject, pfBeginDistance, pfEndDistance);
+}
+
+void CInstance::GetEffectObjectYRevolutionAngle(int nObject, ref float pfBeginAngle, ref float pfEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginAngle = 0.0;
+		pfEndAngle = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectYRevolutionAngle(this.m_nPlugin, this.m_nInstance, nObject, pfBeginAngle, pfEndAngle);
+}
+
+void CInstance::GetEffectObjectYRevolutionDistance(int nObject, ref float pfBeginDistance, ref float pfEndDistance)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginDistance = 0.0;
+		pfEndDistance = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectYRevolutionDistance(this.m_nPlugin, this.m_nInstance, nObject, pfBeginDistance, pfEndDistance);
+}
+
+void CInstance::GetEffectObjectZRevolutionAngle(int nObject, ref float pfBeginAngle, ref float pfEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginAngle = 0.0;
+		pfEndAngle = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectZRevolutionAngle(this.m_nPlugin, this.m_nInstance, nObject, pfBeginAngle, pfEndAngle);
+}
+
+void CInstance::GetEffectObjectZRevolutionDistance(int nObject, ref float pfBeginDistance, ref float pfEndDistance)
+{
+	if (this.m_nInstance < 0)
+	{
+		pfBeginDistance = 0.0;
+		pfEndDistance = 0.0;
+		return;
+	}
+	TapirEngine.GetEffectObjectZRevolutionDistance(this.m_nPlugin, this.m_nInstance, nObject, pfBeginDistance, pfEndDistance);
+}
+
+bool CInstance::AddEffectObject()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.AddEffectObject(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::DeleteEffectObject(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.DeleteEffectObject(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+bool CInstance::SetEffectObjectName(int nObject, string pIName)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectName(this.m_nPlugin, this.m_nInstance, nObject, pIName);
+}
+
+bool CInstance::SetEffectObjectType(int nObject, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectType(this.m_nPlugin, this.m_nInstance, nObject, nType);
+}
+
+bool CInstance::SetEffectObjectMoveType(int nObject, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectMoveType(this.m_nPlugin, this.m_nInstance, nObject, nType);
+}
+
+bool CInstance::SetEffectObjectUpVecType(int nObject, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectUpVecType(this.m_nPlugin, this.m_nInstance, nObject, nType);
+}
+
+bool CInstance::SetEffectObjectMoveCurve(int nObject, float fCurve)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectMoveCurve(this.m_nPlugin, this.m_nInstance, nObject, fCurve);
+}
+
+bool CInstance::SetEffectObjectFrame(int nObject, int nBeginFrame, int nEndFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectFrame(this.m_nPlugin, this.m_nInstance, nObject, nBeginFrame, nEndFrame);
+}
+
+bool CInstance::SetEffectObjectStopFrame(int nObject, int nStopFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectStopFrame(this.m_nPlugin, this.m_nInstance, nObject, nStopFrame);
+}
+
+bool CInstance::SetEffectObjectPosUnitType(int nObject, int nPos, int nPosUnit, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectPosUnitType(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit, nType);
+}
+
+bool CInstance::SetEffectObjectPosUnitIndex(int nObject, int nPos, int nPosUnit, int nIndex)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectPosUnitIndex(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit, nIndex);
+}
+
+bool CInstance::SetEffectObjectPosUnitParam(int nObject, int nPos, int nPosUnit, int nParam, float fData)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectPosUnitParam(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit, nParam, fData);
+}
+
+bool CInstance::SetEffectObjectPosUnitString(int nObject, int nPos, int nPosUnit, int nParam, string String)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectPosUnitString(this.m_nPlugin, this.m_nInstance, nObject, nPos, nPosUnit, nParam, String);
+}
+
+bool CInstance::SetEffectObjectSize(int nObject, float fBeginSize, float fEndSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectSize(this.m_nPlugin, this.m_nInstance, nObject, fBeginSize, fEndSize);
+}
+
+bool CInstance::SetEffectObjectSize2(int nObject, int nFrame, float fSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectSize2(this.m_nPlugin, this.m_nInstance, nObject, nFrame, fSize);
+}
+
+bool CInstance::SetEffectObjectSizeX(int nObject, int nFrame, float fSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectSizeX(this.m_nPlugin, this.m_nInstance, nObject, nFrame, fSize);
+}
+
+bool CInstance::SetEffectObjectSizeY(int nObject, int nFrame, float fSize)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectSizeY(this.m_nPlugin, this.m_nInstance, nObject, nFrame, fSize);
+}
+
+bool CInstance::SetEffectObjectSizeType(int nObject, int nFrame, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectSizeType(this.m_nPlugin, this.m_nInstance, nObject, nFrame, nType);
+}
+
+bool CInstance::SetEffectObjectSizeXType(int nObject, int nFrame, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectSizeXType(this.m_nPlugin, this.m_nInstance, nObject, nFrame, nType);
+}
+
+bool CInstance::SetEffectObjectSizeYType(int nObject, int nFrame, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectSizeYType(this.m_nPlugin, this.m_nInstance, nObject, nFrame, nType);
+}
+
+bool CInstance::SetEffectObjectTexture(int nObject, int nTexture, string pIName)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectTexture(this.m_nPlugin, this.m_nInstance, nObject, nTexture, pIName);
+}
+
+bool CInstance::SetEffectObjectTextureAnimeTime(int nObject, int nTime)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectTextureAnimeTime(this.m_nPlugin, this.m_nInstance, nObject, nTime);
+}
+
+bool CInstance::SetEffectObjectTextureAnimeFrame(int nObject, float fFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectTextureAnimeFrame(this.m_nPlugin, this.m_nInstance, nObject, fFrame);
+}
+
+bool CInstance::SetEffectObjectBlendType(int nObject, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectBlendType(this.m_nPlugin, this.m_nInstance, nObject, nType);
+}
+
+bool CInstance::SetEffectObjectPolygonName(int nObject, string pIName)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectPolygonName(this.m_nPlugin, this.m_nInstance, nObject, pIName);
+}
+
+bool CInstance::SetEffectNumofObjectParticle(int nObject, int nNumof)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectNumofObjectParticle(this.m_nPlugin, this.m_nInstance, nObject, nNumof);
+}
+
+bool CInstance::SetEffectObjectAlphaFadeInTime(int nObject, int nTime)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectAlphaFadeInTime(this.m_nPlugin, this.m_nInstance, nObject, nTime);
+}
+
+bool CInstance::SetEffectObjectAlphaFadeOutTime(int nObject, int nTime)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectAlphaFadeOutTime(this.m_nPlugin, this.m_nInstance, nObject, nTime);
+}
+
+bool CInstance::SetEffectObjectAlphaFadeInFrame(int nObject, float fFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectAlphaFadeInFrame(this.m_nPlugin, this.m_nInstance, nObject, fFrame);
+}
+
+bool CInstance::SetEffectObjectAlphaFadeOutFrame(int nObject, float fFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectAlphaFadeOutFrame(this.m_nPlugin, this.m_nInstance, nObject, fFrame);
+}
+
+bool CInstance::SetEffectObjectFrameReferenceType(int nObject, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectFrameReferenceType(this.m_nPlugin, this.m_nInstance, nObject, nType);
+}
+
+bool CInstance::SetEffectObjectFrameReferenceParam(int nObject, int nParam)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectFrameReferenceParam(this.m_nPlugin, this.m_nInstance, nObject, nParam);
+}
+
+bool CInstance::SetEffectObjectXRotationAngle(int nObject, float fBeginAngle, float fEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectXRotationAngle(this.m_nPlugin, this.m_nInstance, nObject, fBeginAngle, fEndAngle);
+}
+
+bool CInstance::SetEffectObjectYRotationAngle(int nObject, float fBeginAngle, float fEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectYRotationAngle(this.m_nPlugin, this.m_nInstance, nObject, fBeginAngle, fEndAngle);
+}
+
+bool CInstance::SetEffectObjectZRotationAngle(int nObject, float fBeginAngle, float fEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectZRotationAngle(this.m_nPlugin, this.m_nInstance, nObject, fBeginAngle, fEndAngle);
+}
+
+bool CInstance::SetEffectObjectXRevolutionAngle(int nObject, float fBeginAngle, float fEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectXRevolutionAngle(this.m_nPlugin, this.m_nInstance, nObject, fBeginAngle, fEndAngle);
+}
+
+bool CInstance::SetEffectObjectXRevolutionDistance(int nObject, float fBeginDistance, float fEndDistance)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectXRevolutionDistance(this.m_nPlugin, this.m_nInstance, nObject, fBeginDistance, fEndDistance);
+}
+
+bool CInstance::SetEffectObjectYRevolutionAngle(int nObject, float fBeginAngle, float fEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectYRevolutionAngle(this.m_nPlugin, this.m_nInstance, nObject, fBeginAngle, fEndAngle);
+}
+
+bool CInstance::SetEffectObjectYRevolutionDistance(int nObject, float fBeginDistance, float fEndDistance)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectYRevolutionDistance(this.m_nPlugin, this.m_nInstance, nObject, fBeginDistance, fEndDistance);
+}
+
+bool CInstance::SetEffectObjectZRevolutionAngle(int nObject, float fBeginAngle, float fEndAngle)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectZRevolutionAngle(this.m_nPlugin, this.m_nInstance, nObject, fBeginAngle, fEndAngle);
+}
+
+bool CInstance::SetEffectObjectZRevolutionDistance(int nObject, float fBeginDistance, float fEndDistance)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectZRevolutionDistance(this.m_nPlugin, this.m_nInstance, nObject, fBeginDistance, fEndDistance);
+}
+
+bool CInstance::GetEffectObjectCurveLength(int nObject, ref float pfX, ref float pfY, ref float pfZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetEffectObjectCurveLength(this.m_nPlugin, this.m_nInstance, nObject, pfX, pfY, pfZ);
+}
+
+bool CInstance::SetEffectObjectCurveLength(int nObject, float fX, float fY, float fZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectCurveLength(this.m_nPlugin, this.m_nInstance, nObject, fX, fY, fZ);
+}
+
+int CInstance::GetEffectObjectChildFrame(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return -1;
+	}
+	return TapirEngine.GetEffectObjectChildFrame(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectChildLength(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectChildLength(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectChildBeginSlope(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectChildBeginSlope(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectChildEndSlope(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectChildEndSlope(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectChildCreateBeginFrame(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectChildCreateBeginFrame(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectChildCreateEndFrame(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectChildCreateEndFrame(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectChildMoveDirType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectChildMoveDirType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+bool CInstance::SetEffectObjectChildFrame(int nObject, int nFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectChildFrame(this.m_nPlugin, this.m_nInstance, nObject, nFrame);
+}
+
+bool CInstance::SetEffectObjectChildLength(int nObject, float fLength)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectChildLength(this.m_nPlugin, this.m_nInstance, nObject, fLength);
+}
+
+bool CInstance::SetEffectObjectChildBeginSlope(int nObject, float fSlope)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectChildBeginSlope(this.m_nPlugin, this.m_nInstance, nObject, fSlope);
+}
+
+bool CInstance::SetEffectObjectChildEndSlope(int nObject, float fSlope)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectChildEndSlope(this.m_nPlugin, this.m_nInstance, nObject, fSlope);
+}
+
+bool CInstance::SetEffectObjectChildCreateBeginFrame(int nObject, float fFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectChildCreateBeginFrame(this.m_nPlugin, this.m_nInstance, nObject, fFrame);
+}
+
+bool CInstance::SetEffectObjectChildCreateEndFrame(int nObject, float fFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectChildCreateEndFrame(this.m_nPlugin, this.m_nInstance, nObject, fFrame);
+}
+
+bool CInstance::SetEffectObjectChildMoveDirType(int nObject, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectChildMoveDirType(this.m_nPlugin, this.m_nInstance, nObject, nType);
+}
+
+int CInstance::GetEffectObjectDirType(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectDirType(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+bool CInstance::SetEffectObjectDirType(int nObject, int nType)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectDirType(this.m_nPlugin, this.m_nInstance, nObject, nType);
+}
+
+int CInstance::GetEffectNumofObjectDamage(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectNumofObjectDamage(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+int CInstance::GetEffectObjectDamage(int nObject, int nFrame)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0;
+	}
+	return TapirEngine.GetEffectObjectDamage(this.m_nPlugin, this.m_nInstance, nObject, nFrame);
+}
+
+bool CInstance::SetEffectObjectDamage(int nObject, int nFrame, int nData)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectDamage(this.m_nPlugin, this.m_nInstance, nObject, nFrame, nData);
+}
+
+bool CInstance::GetEffectObjectDraw(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetEffectObjectDraw(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+bool CInstance::SetEffectObjectDraw(int nObject, bool bDraw)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectDraw(this.m_nPlugin, this.m_nInstance, nObject, bDraw);
+}
+
+float CInstance::GetEffectObjectOffsetX(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectOffsetX(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+float CInstance::GetEffectObjectOffsetY(int nObject)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetEffectObjectOffsetY(this.m_nPlugin, this.m_nInstance, nObject);
+}
+
+bool CInstance::SetEffectObjectOffsetX(int nObject, float fOffsetX)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectOffsetX(this.m_nPlugin, this.m_nInstance, nObject, fOffsetX);
+}
+
+bool CInstance::SetEffectObjectOffsetY(int nObject, float fOffsetY)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetEffectObjectOffsetY(this.m_nPlugin, this.m_nInstance, nObject, fOffsetY);
+}
+
+bool CInstance::GetCameraQuakeEffectFlag()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetCameraQuakeEffectFlag(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::SetCameraQuakeEffectFlag(bool bFlag)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetCameraQuakeEffectFlag(this.m_nPlugin, this.m_nInstance, bFlag);
+}
+
+bool CInstance::SetSpecularReflectRate(float fRate)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceSpecularReflectRate(this.m_nPlugin, this.m_nInstance, fRate);
+}
+
+bool CInstance::SetFresnelReflectRate(float fRate)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.SetInstanceFresnelReflectRate(this.m_nPlugin, this.m_nInstance, fRate);
+}
+
+float CInstance::GetSpecularReflectRate()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceSpecularReflectRate(this.m_nPlugin, this.m_nInstance);
+}
+
+float CInstance::GetFresnelReflectRate()
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.GetInstanceFresnelReflectRate(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::CalcIntersectEyeVec(int nMouseX, int nMouseY, ref float pfX, ref float pfY, ref float pfZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.CalcIntersectEyeVec(this.m_nPlugin, this.m_nInstance, nMouseX, nMouseY, pfX, pfY, pfZ);
+}
+
+float CInstance::Calc2DDetectionHeight(float X, float Z)
+{
+	if (this.m_nInstance < 0)
+	{
+		return 0.0;
+	}
+	return TapirEngine.CalcInstance2DDetectionHeight(this.m_nPlugin, this.m_nInstance, X, Z);
+}
+
+bool CInstance::CalcInstance2DDetection(float X0, float Y0, float Z0, float X1, float Y1, float Z1, ref float X2, ref float Y2, ref float Z2, float Radius)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.CalcInstance2DDetection(this.m_nPlugin, this.m_nInstance, X0, Y0, Z0, X1, Y1, Z1, X2, Y2, Z2, Radius);
+}
+
+bool CInstance::FindInstancePath(float StartX, float StartY, float StartZ, float GoalX, float GoalY, float GoalZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.FindInstancePath(this.m_nPlugin, this.m_nInstance, StartX, StartY, StartZ, GoalX, GoalY, GoalZ);
+}
+
+bool CInstance::CalcPathFinderIntersectEyeVec(int nMouseX, int nMouseY, ref float pfX, ref float pfY, ref float pfZ)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.CalcPathFinderIntersectEyeVec(this.m_nPlugin, this.m_nInstance, nMouseX, nMouseY, pfX, pfY, pfZ);
+}
+
+bool CInstance::OptimizePathLine()
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.OptimizeInstancePathLine(this.m_nPlugin, this.m_nInstance);
+}
+
+bool CInstance::GetPathLine(ref array@float pIXArray, ref array@float pIYArray, ref array@float pIZArray)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.GetInstancePathLine(this.m_nPlugin, this.m_nInstance, pIXArray, pIYArray, pIZArray);
+}
+
+bool CInstance::CreateInstancePathLineList(ref CInstance PathInstance)
+{
+	if (this.m_nInstance < 0)
+	{
+		return false;
+	}
+	return TapirEngine.CreateInstancePathLineList(this.m_nPlugin, this.m_nInstance, PathInstance.GetInstance());
+}
+

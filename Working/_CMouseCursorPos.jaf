@@ -1,0 +1,50 @@
+_CMouseCursorPos::_CMouseCursorPos()
+{
+	this._m_Point.Set(-2147483648, -2147483648);
+	this._m_PointPrev.Set(-2147483648, -2147483648);
+	this._Update();
+}
+
+void _CMouseCursorPos::_Update()
+{
+	this._m_PointPrev = this._m_Point;
+	int _x = 0;
+	int _y = 0;
+	if (!AFL_Mouse_GetPos(_x, _y))
+	{
+		_x = -2147483648;
+		_y = -2147483648;
+	}
+	this._m_Point.Set(_x, _y);
+}
+
+bool _CMouseCursorPos::_IsMoved()
+{
+	return this._m_Point.GetX() != this._m_PointPrev.GetX() || this._m_Point.GetY() != this._m_PointPrev.GetY();
+}
+
+CASPos _CMouseCursorPos::_Get()
+{
+	return this._m_Point;
+}
+
+int _CMouseCursorPos::_GetX()
+{
+	return this._m_Point.GetX();
+}
+
+int _CMouseCursorPos::_GetY()
+{
+	return this._m_Point.GetY();
+}
+
+bool _CMouseCursorPos::_IsInSp(int _sp)
+{
+	return PtIsInSprite(_sp, this._m_Point.GetX(), this._m_Point.GetY());
+}
+
+bool _CMouseCursorPos::_IsInSpRc(int _sp)
+{
+	return PtIsInSpriteRect(_sp, this._m_Point.GetX(), this._m_Point.GetY());
+}
+

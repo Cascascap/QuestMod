@@ -1,0 +1,91 @@
+void マルグリッドＢＧＭチェンジ()
+{
+	◆マップ曲 = 6;
+	if (◆クエスト進行率 >= 50)
+	{
+		◆マップ曲 = 1;
+	}
+	if (◆クエスト進行率 >= 70)
+	{
+		◆マップ曲 = 4;
+	}
+}
+
+void マルグリッドＢＧＭチェンジX()
+{
+	int i = quest_areas_seen(147);
+	◆マップ曲 = 6;
+	if (i >= 6)
+	{
+		◆マップ曲 = 1;
+	}
+	if (i >= 12)
+	{
+		◆マップ曲 = 4;
+	}
+}
+
+int ５で割り切りるか確認(int aa)
+{
+	if (aa % 5 == 0)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void 新中抜き／選択()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Hello! Sorry to surprise you like this.' R;
+	' I\'m here to make some adjustments, if you\'d like."' A;
+	'"Anyone who\'s already cleared this quest can choose how they would like to proceed this time.' R;
+	' What would you like to do?"' A;
+	ADVOFF();
+}
+
+void 新中抜き／Ａ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"You\'d like to climb every floor.' R;
+	' Got it.' R;
+	' I\'ll set it up for that."' A;
+	'"Alright, good luck on your adventure!' R;
+	' Take your time on your way up."' A;
+	ADVOFF();
+}
+
+void 新中抜き／Ｂ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"You\'d like to take the shortest route to the top.' R;
+	' Got it.' R;
+	' I\'ll set it up for that."' A;
+	'"Okay, let\'s set our sights on Pastel and get up there!"' A;
+	ADVOFF();
+}
+

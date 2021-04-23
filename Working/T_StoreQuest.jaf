@@ -1,0 +1,750 @@
+int T_StoreQuest::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 110000 + nIndex + 1;
+}
+
+int T_StoreQuest::getItemIndex(int nID)
+{
+	int idx = nID + -110001;
+	return idx < 0 || idx >= 15 ? -1 : idx;
+}
+
+int T_StoreQuest::getEraseID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 120000 + nIndex + 1;
+}
+
+int T_StoreQuest::getEraseIndex(int nID)
+{
+	int idx = nID + -120001;
+	return idx < 0 || idx >= 15 ? -1 : idx;
+}
+
+int T_StoreQuest::getIconX(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 482 + (nIndex % 5) * 106;
+}
+
+int T_StoreQuest::getIconY(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 15 ? -1 : 204 + (nIndex / 5) * 106;
+}
+
+T_StoreQuest::T_StoreQuest()
+{
+	this.clear();
+}
+
+T_StoreQuest::~T_StoreQuest()
+{
+	this.delete();
+}
+
+int T_StoreQuest::run(int nMode, int nZ)
+{
+	int nRet = 0;
+	if (!this.create(nMode, nZ))
+	{
+		return -1;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID = 0;
+	if (this.m_nMode == 2)
+	{
+		Ａ＿メッセージウィンドウＺ座標設定(nZ + 1);
+		ト書き();
+		'Unfortunately, the items in [quest storage] will be discarded.' B;
+	}
+	while (true)
+	{
+		nID = this.checkSelect(this.getDefaultID(nID));
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	if (this.m_nMode == 2)
+	{
+		メッセージ_枠消去();
+		Ａ＿メッセージウィンドウＺ座標設定(8101);
+	}
+	this.delete();
+	return nRet;
+}
+
+int T_StoreQuest::moveUp(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+			return 100002;
+		case 100002:
+			return 100001;
+		case 100009:
+			return this.getLastList();
+		default:
+			break;
+	}
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nRow = クエスト倉庫_行番号(idx);
+	int nCol = クエスト倉庫_列番号(idx);
+	int i = 0;
+	for (i = nRow - 1; i >= 0; --i)
+	{
+		int idx2 = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+	for (i = 2; i >= nRow; --i)
+	{
+		int idx2 = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_StoreQuest::moveDown(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+			return 100002;
+		case 100002:
+			return 100001;
+		case 100009:
+			return this.getFirstList();
+		default:
+			break;
+	}
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nRow = クエスト倉庫_行番号(idx);
+	int nCol = クエスト倉庫_列番号(idx);
+	int i = 0;
+	for (i = nRow + 1; i < 3; ++i)
+	{
+		int idx2 = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+	for (i = 0; i <= nRow; ++i)
+	{
+		int idx2 = クエスト倉庫_インデクス(i, nCol);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+label0:
+	return this.getLastList();
+}
+
+int T_StoreQuest::moveLeft(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+		case 100009:
+			return this.getLastList();
+		default:
+			break;
+	}
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nRow = クエスト倉庫_行番号(idx);
+	int nCol = クエスト倉庫_列番号(idx);
+	int j = 0;
+	for (j = nCol - 1; j >= 0; --j)
+	{
+		int idx2 = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+	if (this.m_nMode == 1)
+	{
+		return 100002;
+	}
+	for (j = 4; j >= nCol; --j)
+	{
+		int idx2 = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_StoreQuest::moveRight(int nID)
+{
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+		case 100009:
+			return this.getFirstList();
+		default:
+			break;
+	}
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int nRow = クエスト倉庫_行番号(idx);
+	int nCol = クエスト倉庫_列番号(idx);
+	int j = 0;
+	for (j = nCol + 1; j < 5; ++j)
+	{
+		int idx2 = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+	if (this.m_nMode == 1)
+	{
+		return 100002;
+	}
+	for (j = 0; j <= nCol; ++j)
+	{
+		int idx2 = クエスト倉庫_インデクス(nRow, j);
+		if (this.m_sList.get(idx2) > 0)
+		{
+			return this.getButtonID(idx2);
+		}
+	}
+label0:
+	return this.getLastList();
+}
+
+void T_StoreQuest::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+	this.checkErase(bSelect ? nID : 0);
+}
+
+bool T_StoreQuest::create(int nMode, int nZ)
+{
+	this.delete();
+	int nCount = this.m_sList.create(8, 0, 0, 0, 0, 0, 0);
+	switch (nMode)
+	{
+		case 0:
+			if (nCount < 0)
+			{
+				return false;
+			}
+			break;
+		case 1:
+		case 2:
+			if (nCount <= 0)
+			{
+				return false;
+			}
+			break;
+		default:
+			return false;
+	}
+	this.m_nMode = nMode;
+	switch (nMode)
+	{
+		case 0:
+			this.m_spBase.setCg(11335);
+			this.m_spBase.setPos(473, 165);
+			break;
+		case 1:
+			this.m_spBase.setCg(11319);
+			this.m_spBase.setPos(0, 0);
+			break;
+		case 2:
+			this.m_spBase.setCg(11320);
+			this.m_spBase.setPos(0, 0);
+			break;
+		default:
+			break;
+	}
+	this.m_sButton.create();
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createButton(i);
+	}
+	this.createIcon();
+	switch (nMode)
+	{
+		case 0:
+		case 2:
+			ボタン登録_ＣＧ(this.m_sButton, 100009, 985, 171, 10007, -1, -1, -2147483648, -2147483648);
+			break;
+		case 1:
+			選択ボタン登録_大(this.m_sButton, 100001, "Yes", 70, 349, true);
+			選択ボタン登録_大(this.m_sButton, 100002, "No", 70, 415, true);
+			break;
+		default:
+			break;
+	}
+	this.setZ(nZ);
+	this.setButtonActive();
+	this.setShow(true);
+	this.m_sInputKey.create(1, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&クエスト倉庫_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&クエスト倉庫_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&クエスト倉庫_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&クエスト倉庫_右矢印);
+	this.m_sInputKey.setSelectCallback(&クエスト倉庫_選択設定);
+	return true;
+}
+
+void T_StoreQuest::delete()
+{
+	this.hideComment(-1);
+	this.deleteIcon();
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_StoreQuest::clear()
+{
+	this.m_sList.clear();
+	this.m_nMode = -1;
+	this.m_nCommentID = -1;
+}
+
+bool T_StoreQuest::createIcon()
+{
+	this.deleteIcon();
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nItemNo = this.m_sList.get(i);
+		if (nItemNo <= 0)
+		{
+			continue;
+		}
+		ref T_ItemIcon rfsIcon = this.m_asIcon[i];
+		if (!rfsIcon.create(nItemNo, アイテム_確定済(nItemNo)))
+		{
+			continue;
+		}
+		rfsIcon.setPos(this.getIconX(i), this.getIconY(i));
+	}
+	return true;
+}
+
+void T_StoreQuest::deleteIcon()
+{
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asIcon[i].delete();
+	}
+}
+
+bool T_StoreQuest::createButton(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asIcon.Numof())
+	{
+		return false;
+	}
+	int nX = this.getIconX(nIndex);
+	int nY = this.getIconY(nIndex);
+	int nID = this.getButtonID(nIndex);
+	if (this.m_nMode == 0)
+	{
+		ボタン登録_ＣＧ(this.m_sButton, this.getEraseID(nIndex), nX + 12, nY + 68, 11334, -1, -1, -2147483648, -2147483648);
+	}
+	ボタン登録_矩形(this.m_sButton, nID, nX, nY, 100, 100, false);
+	this.m_sButton.setButtonActive(nID, false);
+	return true;
+}
+
+bool T_StoreQuest::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 100001:
+			nRet = 1;
+			return true;
+		case 100002:
+		case 100009:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 120000)
+	{
+		return this.execErase(nID);
+	}
+	return false;
+}
+
+bool T_StoreQuest::execErase(int nID)
+{
+	int idx = this.getEraseIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nItemNo = this.m_sList.get(idx);
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	if (!アイテム_破棄(nItemNo))
+	{
+		return false;
+	}
+	this.m_sList.create(8, 0, 0, 0, 0, 0, 0);
+	this.createIcon();
+	this.setZ(this.m_spBase.getZ());
+	this.setButtonActive();
+	this.setShow(true);
+	return false;
+}
+
+int T_StoreQuest::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	else
+	{
+		this.m_sButton.setButtonCursor(nID);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_StoreQuest::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+	this.checkErase(nSelectID);
+	return 0;
+}
+
+int T_StoreQuest::checkKey(int nID)
+{
+	int nID2 = this.checkKeyErase(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_nMode != 1)
+	{
+		if (キャンセル_確認())
+		{
+			return 100009;
+		}
+	}
+	if (this.m_nMode == 2)
+	{
+		if (nID <= 0)
+		{
+			int nKey = キー_決定();
+			if (nKey > 0)
+			{
+				効果音_クリック();
+				キー_離し待ち(nKey, true);
+				return 100009;
+			}
+		}
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+int T_StoreQuest::checkKeyErase(int nID)
+{
+	if (this.m_nMode != 0)
+	{
+		return 0;
+	}
+	if (!キー_押下(46))
+	{
+		return 0;
+	}
+	int nID2 = 0;
+	int idx = -1;
+	if (nID > 120000)
+	{
+		idx = this.getEraseIndex(nID);
+		goto label0;
+	}
+	if (nID > 110000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label0;
+	}
+label0:
+	if (idx < 0 || this.m_sList.get(idx) <= 0)
+	{
+		goto label1;
+	}
+	nID2 = this.getEraseID(idx);
+	if (!this.m_sButton.getButtonActive(nID2))
+	{
+		goto label1;
+	}
+	効果音_クリック();
+	キー_離し待ち(46, true);
+	return nID2;
+label1:
+	効果音_エラー();
+	キー_離し待ち(46, true);
+	return 0;
+}
+
+void T_StoreQuest::checkErase(int nID)
+{
+	if (this.m_nMode != 0)
+	{
+		return;
+	}
+	int nID1 = 0;
+	if (nID > 120000)
+	{
+		nID1 = nID;
+		goto label0;
+	}
+	if (nID > 110000)
+	{
+		int idx = this.getItemIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		if (this.m_sList.get(idx) <= 0)
+		{
+			goto label0;
+		}
+		nID1 = this.getEraseID(idx);
+		goto label0;
+	}
+label0:
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nID2 = this.getEraseID(i);
+		this.m_sButton.setButtonShow(nID2, nID2 == nID1);
+	}
+}
+
+void T_StoreQuest::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	this.hideComment(-1);
+	this.checkErase(0);
+}
+
+void T_StoreQuest::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_StoreQuest::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	int idx = this.getItemIndex(nID);
+	int nItemNo = this.m_sList.get(idx);
+	if (nItemNo <= 0)
+	{
+		this.hideComment(-1);
+		return;
+	}
+	if (アイテム説明_表示(nItemNo, this.m_asIcon[idx].getJudge(), 500) >= 0)
+	{
+		int nX = this.m_sButton.getButtonPosX(nID);
+		int nY = this.m_sButton.getButtonPosY(nID);
+		int nW = アイテム説明_幅();
+		アイテム説明_位置設定(nX - nW, nY);
+	}
+	this.m_nCommentID = nID;
+}
+
+void T_StoreQuest::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		アイテム説明_消し();
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_StoreQuest::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asIcon[i].setZ(nZ + 1);
+	}
+	this.m_spBase.setZ(nZ);
+	this.m_sButton.setZ(nZ + 10);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonZ(this.getEraseID(i), nZ + 30);
+	}
+}
+
+void T_StoreQuest::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asIcon[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonShow(this.getEraseID(i), false);
+	}
+}
+
+void T_StoreQuest::setButtonActive()
+{
+	if (this.m_nMode != 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_asIcon.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nItemNo = this.m_sList.get(i);
+		this.m_sButton.setButtonActive(this.getEraseID(i), アイテム_破棄可能(nItemNo));
+	}
+}
+
+int T_StoreQuest::getFirstList()
+{
+	int cnt = this.m_sList.getCount();
+	return cnt > 0 ? this.getButtonID(0) : 100009;
+}
+
+int T_StoreQuest::getLastList()
+{
+	int cnt = this.m_sList.getCount();
+	return cnt > 0 ? this.getButtonID(cnt - 1) : 100009;
+}
+
+int T_StoreQuest::getDefaultID(int nID)
+{
+	int idx = -1;
+	if (nID > 120000)
+	{
+		idx = this.getEraseIndex(nID);
+		goto label0;
+	}
+	if (nID > 110000)
+	{
+		idx = this.getItemIndex(nID);
+		goto label0;
+	}
+label0:
+	if (idx >= 0)
+	{
+		return this.m_sList.get(idx) > 0 ? this.getButtonID(idx) : this.getLastList();
+	}
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return this.m_nMode == 1 ? 100002 : this.getFirstList();
+}
+

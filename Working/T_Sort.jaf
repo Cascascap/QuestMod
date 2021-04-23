@@ -1,0 +1,393 @@
+int T_Sort::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_Sort::checkKey()
+{
+	return this.m_sButton.checkKey();
+}
+
+void T_Sort::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_Sort::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_Sort::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_Sort::setActive(int nID, bool bActive)
+{
+	this.m_sButton.setButtonActive(nID, bActive);
+}
+
+void T_Sort::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+int T_Sort::getMode()
+{
+	return this.m_nMode;
+}
+
+int T_Sort::getPosX(int nID)
+{
+	return this.m_sButton.getButtonPosX(nID);
+}
+
+int T_Sort::getPosY(int nID)
+{
+	return this.m_sButton.getButtonPosY(nID);
+}
+
+int T_Sort::getWidth(int nID)
+{
+	return this.m_sButton.getButtonWidth(nID);
+}
+
+int T_Sort::getHeight(int nID)
+{
+	return this.m_sButton.getButtonHeight(nID);
+}
+
+bool T_Sort::getActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_Sort::getKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_Sort::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_Sort::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_Sort::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_Sort::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_Sort::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+bool T_Sort::suspend()
+{
+	this.m_sButton.suspend();
+	this.m_spFrame.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_Sort::resume()
+{
+	this.m_sButton.resume();
+	this.m_spFrame.suspend();
+	return this.m_spBase.resume();
+}
+
+bool T_Sort::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+T_Sort::T_Sort()
+{
+	this.clear();
+}
+
+T_Sort::~T_Sort()
+{
+	this.delete();
+}
+
+bool T_Sort::create(int nMode, int nButtonID, string szText01, string szText02, string szText03, string szText04, string szText05, string szText06, string szText07, string szText08, string szText09, string szText10, string szText11, string szText12, string szText13, string szText14, string szText15, string szText16)
+{
+	this.delete();
+	this.m_sButton.create();
+	this.createButton(nButtonID + 1, szText01);
+	this.createButton(nButtonID + 2, szText02);
+	this.createButton(nButtonID + 3, szText03);
+	this.createButton(nButtonID + 4, szText04);
+	this.createButton(nButtonID + 5, szText05);
+	this.createButton(nButtonID + 6, szText06);
+	this.createButton(nButtonID + 7, szText07);
+	this.createButton(nButtonID + 8, szText08);
+	this.createButton(nButtonID + 9, szText09);
+	this.createButton(nButtonID + 10, szText10);
+	this.createButton(nButtonID + 11, szText11);
+	this.createButton(nButtonID + 12, szText12);
+	this.createButton(nButtonID + 13, szText13);
+	this.createButton(nButtonID + 14, szText14);
+	this.createButton(nButtonID + 15, szText15);
+	this.createButton(nButtonID + 16, szText16);
+	int cnt = this.m_sButton.getButtonCount();
+	if (nMode == 1)
+	{
+		if (!this.createBaseH(cnt))
+		{
+			return false;
+		}
+		this.m_spFrame.setCg(10017);
+	}
+	else
+	{
+		if (!this.createBaseV(cnt))
+		{
+			return false;
+		}
+		this.m_spFrame.setCg(10018);
+	}
+	this.m_nMode = nMode;
+	this.m_nButtonID = nButtonID;
+	return true;
+}
+
+void T_Sort::delete()
+{
+	this.m_spBase.delete();
+	this.m_spFrame.delete();
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_Sort::clear()
+{
+	this.m_nMode = 0;
+	this.m_nButtonID = -1;
+	this.m_nCurrentID = 0;
+}
+
+bool T_Sort::setButtonText(int nID, string szText)
+{
+	ref T_Button rfButton = this.m_sButton.getButton(nID);
+	if (rfButton === NULL)
+	{
+		return false;
+	}
+	this.drawText(rfButton.getSp(0), szText);
+	this.drawText(rfButton.getSp(1), szText);
+	this.drawText(rfButton.getSp(2), szText);
+	return true;
+}
+
+void T_Sort::setCurrentID(int nID, bool bActive)
+{
+	this.m_sButton.setButtonActive(this.m_nCurrentID, true);
+	if (nID > 0)
+	{
+		int nX = this.m_sButton.getButtonPosX(nID);
+		int nY = this.m_sButton.getButtonPosY(nID);
+		this.m_sButton.setButtonActive(nID, bActive);
+		this.m_spFrame.setPos(nX + -2, nY + -2);
+		this.m_spFrame.setShow(1);
+		this.m_nCurrentID = nID;
+	}
+	else
+	{
+		this.m_spFrame.setShow(0);
+		this.m_nCurrentID = 0;
+	}
+}
+
+void T_Sort::setPos(int nX, int nY)
+{
+	int nX1 = nX - this.m_spBase.getWidth();
+	int nY1 = nY - this.m_spBase.getHeight();
+	int i = 0;
+	int cnt = this.m_sButton.getButtonCount();
+	this.m_spBase.setPos(nX1, nY1);
+	if (this.m_nMode == 1)
+	{
+		int nX2 = nX1 + 57;
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_sButton.setButtonPos(this.m_sButton.getButtonID(i), nX2, nY1);
+			nX2 += 81;
+		}
+	}
+	else
+	{
+		int nY2 = nY1 + 21;
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_sButton.setButtonPos(this.m_sButton.getButtonID(i), nX1, nY2);
+			nY2 += 30;
+		}
+	}
+}
+
+void T_Sort::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_spFrame.setZ(nZ + 20);
+	this.m_sButton.setZ(nZ + 1);
+}
+
+void T_Sort::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_spFrame.setShow(this.m_nCurrentID > 0 ? bShow : 0);
+	this.m_sButton.setShow(bShow);
+}
+
+int T_Sort::getPrev(int nID)
+{
+	if (this.m_nButtonID < 0)
+	{
+		return -1;
+	}
+	return this.m_sButton.getPrevButton(nID, false, false);
+}
+
+int T_Sort::getNext(int nID)
+{
+	if (this.m_nButtonID < 0)
+	{
+		return -1;
+	}
+	return this.m_sButton.getNextButton(nID, false, false);
+}
+
+int T_Sort::getFirst()
+{
+	if (this.m_nButtonID < 0)
+	{
+		return -1;
+	}
+	return this.m_sButton.getFirstButton(false);
+}
+
+int T_Sort::getLast()
+{
+	if (this.m_nButtonID < 0)
+	{
+		return -1;
+	}
+	return this.m_sButton.getLastButton(false);
+}
+
+bool T_Sort::createBaseH(int nCount)
+{
+	if (nCount <= 0)
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	if (spWork.setCg(10041) < 0)
+	{
+		return false;
+	}
+	int nW = 57 + 81 * nCount;
+	int nH = 26;
+	this.m_spBase.create(nW + 1, nH, 0, 0, 0, 0);
+	this.m_spBase.copyCg(0, 0, spWork, 0, 0, nW, nH);
+	this.m_spBase.copyCg(nW, 0, spWork, spWork.getWidth() - 1, 0, 1, nH);
+	spWork.delete();
+	return true;
+}
+
+bool T_Sort::createBaseV(int nCount)
+{
+	if (nCount <= 0)
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	if (spWork.setCg(10042) < 0)
+	{
+		return false;
+	}
+	int nW = 77;
+	int nH = 21 + 30 * nCount;
+	this.m_spBase.create(nW, nH + 1, 0, 0, 0, 0);
+	this.m_spBase.copyCg(0, 0, spWork, 0, 0, nW, nH);
+	this.m_spBase.copyCg(0, nH, spWork, 0, spWork.getHeight() - 1, nW, 1);
+	spWork.delete();
+	return true;
+}
+
+bool T_Sort::createButton(int nID, string szText)
+{
+	if (szText.Empty())
+	{
+		return false;
+	}
+	T_Button sButton;
+	array@T_Sprite aspWork[2];
+	if (ＣＧ_分割_横(10043, aspWork) != aspWork.Numof())
+	{
+		return false;
+	}
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	spWork1.attachSp(aspWork[0].detach());
+	spWork2.attachSp(aspWork[1].detach());
+	this.drawText(spWork1, szText);
+	this.drawText(spWork2, szText);
+	sButton.createSp(spWork1, spWork1, spWork2);
+	int nW = spWork1.getWidth();
+	int nH = spWork1.getHeight();
+	T_TextSprite spFrame1;
+	T_TextSprite spFrame2;
+	T_TextSprite spFrame3;
+	spFrame1.create(nW, nH, 216, 255, 0, 102);
+	spFrame2.create(nW, nH, 255, 0, 0, 128);
+	spFrame3.create(nW, nH, 216, 255, 0, 102);
+	sButton.createFrameSp(0, spFrame1, 0);
+	sButton.createFrameSp(1, spFrame2, 0);
+	sButton.createFrameSp(2, spFrame3, 0);
+	this.m_sButton.addButton(nID, sButton);
+	return true;
+}
+
+bool T_Sort::drawText(ref T_TextSprite rfSp, string szText)
+{
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return false;
+	}
+	sact_text_metrics_t tmText;
+	tmText.nSize = 18;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	tmText.nColorR = 0;
+	tmText.nColorG = 0;
+	tmText.nColorB = 0;
+	tmText.nShadowPixelL = 0;
+	tmText.nShadowPixelR = 1;
+	tmText.nShadowPixelU = 0;
+	tmText.nShadowPixelD = 1;
+	tmText.nShadowColorR = 255;
+	tmText.nShadowColorG = 255;
+	tmText.nShadowColorB = 255;
+	float spacing = 0.0;
+	SetFixedWidthSpacing(-6);
+	FitText2(szText, 73, tmText.nFace, 18, 12, tmText.nSize, 0.949999988079071, 0.5, spacing);
+	rfSp.textDrawCenter2(1, szText, tmText, -6, spacing);
+	rfSp.setBlendRate(204);
+	rfSp.setShadowRate(64, -1);
+	return true;
+}
+

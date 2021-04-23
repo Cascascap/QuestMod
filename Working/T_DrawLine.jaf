@@ -1,0 +1,724 @@
+bool T_DrawLine::isSuspend()
+{
+	return this.m_nTextSpNo > 0 ? AFL_Sprite_IsSuspend(this.m_nTextSpNo) : 0;
+}
+
+int T_DrawLine::getTextSpNo()
+{
+	return this.m_nTextSpNo;
+}
+
+int T_DrawLine::getShadowSpNo()
+{
+	return this.m_nShadowSpNo;
+}
+
+int T_DrawLine::getWidth()
+{
+	return this.m_nWidth;
+}
+
+int T_DrawLine::getHeight()
+{
+	return this.m_nHeight;
+}
+
+int T_DrawLine::getShadowBlendRate()
+{
+	return this.m_nShadowBlendRate;
+}
+
+int T_DrawLine::getShadowX()
+{
+	return this.m_nShadowPixelL > 0 ? -this.m_nShadowPixelL : (this.m_nShadowPixelR > 0 ? this.m_nShadowPixelR : 0);
+}
+
+int T_DrawLine::getShadowY()
+{
+	return this.m_nShadowPixelU > 0 ? -this.m_nShadowPixelU : (this.m_nShadowPixelD > 0 ? this.m_nShadowPixelD : 0);
+}
+
+bool T_DrawLine::isCreated()
+{
+	return this.m_nTextSpNo > 0;
+}
+
+bool T_DrawLine::existShadow()
+{
+	return this.m_nShadowSpNo > 0;
+}
+
+T_DrawLine::T_DrawLine()
+{
+	this.clear();
+}
+
+bool T_DrawLine::create(int nType, string szText, int nFontType, int nFontSize, int nColorR, int nColorG, int nColorB, int nWeight, int nEdgeR, int nEdgeG, int nEdgeB, int nEdgeWeight, int nTextSpace)
+{
+	this.delete();
+	if (szText.Empty())
+	{
+		szText = " ";
+	}
+	this.m_nTextSpNo = テキスト_行作成(nType, szText, nFontType, nFontSize, nColorR, nColorG, nColorB, nWeight, nEdgeR, nEdgeG, nEdgeB, nEdgeWeight, nTextSpace);
+	if (nType == 1)
+	{
+		T_Sprite spWork;
+		spWork.attach(this.m_nTextSpNo);
+		this.m_nWidth = spWork.getWidth();
+		this.m_nHeight = spWork.getHeight();
+		spWork.detach();
+	}
+	else
+	{
+		this.m_nWidth = テキスト_幅(nFontSize, szText, nTextSpace);
+		this.m_nHeight = nFontSize;
+	}
+	return true;
+}
+
+bool T_DrawLine::create2(int nType, string szText, int nFontType, int nFontSize, int nColorR, int nColorG, int nColorB, int nWeight, int nEdgeR, int nEdgeG, int nEdgeB, int nEdgeWeight, int nTextSpace, float fSpacing)
+{
+	this.delete();
+	if (szText.Empty())
+	{
+		szText = " ";
+	}
+	this.m_nTextSpNo = DrawTextNew(nType, szText, nFontType, nFontSize, nColorR, nColorG, nColorB, nWeight, nEdgeR, nEdgeG, nEdgeB, nEdgeWeight, nTextSpace, fSpacing);
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	this.m_nWidth = spWork.getWidth();
+	this.m_nHeight = spWork.getHeight();
+	spWork.detach();
+	return true;
+}
+
+bool T_DrawLine::createFromTextMetrics(int nType, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace)
+{
+	if (sTextMetrics === NULL)
+	{
+		return false;
+	}
+	int nShadowPixelL = sTextMetrics.nShadowPixelL;
+	int nShadowPixelR = sTextMetrics.nShadowPixelR;
+	int nShadowPixelU = sTextMetrics.nShadowPixelU;
+	int nShadowPixelD = sTextMetrics.nShadowPixelD;
+	if (nShadowPixelL > 0 && nShadowPixelR > 0 && nShadowPixelU > 0 && nShadowPixelD > 0)
+	{
+		int nEdgeWeight = _max(nShadowPixelL, _max(nShadowPixelR, _max(nShadowPixelU, nShadowPixelD)));
+		return this.create(nType, szText, sTextMetrics.nFace, sTextMetrics.nSize, sTextMetrics.nColorR, sTextMetrics.nColorG, sTextMetrics.nColorB, sTextMetrics.nWeight, sTextMetrics.nShadowColorR, sTextMetrics.nShadowColorG, sTextMetrics.nShadowColorB, nEdgeWeight * 100 + sTextMetrics.nWeight, nTextSpace);
+	}
+	if (!this.create(nType, szText, sTextMetrics.nFace, sTextMetrics.nSize, sTextMetrics.nColorR, sTextMetrics.nColorG, sTextMetrics.nColorB, sTextMetrics.nWeight, 0, 0, 0, 0, nTextSpace))
+	{
+		return false;
+	}
+	if (nShadowPixelL > 0 || nShadowPixelR > 0 || nShadowPixelU > 0 || nShadowPixelD > 0)
+	{
+		this.m_nShadowSpNo = テキスト_行作成(nType, szText, sTextMetrics.nFace, sTextMetrics.nSize, sTextMetrics.nShadowColorR, sTextMetrics.nShadowColorG, sTextMetrics.nShadowColorB, sTextMetrics.nWeight, 0, 0, 0, 0, nTextSpace);
+	}
+	this.m_nShadowPixelL = nShadowPixelL;
+	this.m_nShadowPixelR = nShadowPixelR;
+	this.m_nShadowPixelU = nShadowPixelU;
+	this.m_nShadowPixelD = nShadowPixelD;
+	return true;
+}
+
+bool T_DrawLine::createFromTextMetrics2(int nType, string szText, ref sact_text_metrics_t sTextMetrics, int nTextSpace, float fSpacing)
+{
+	if (sTextMetrics === NULL)
+	{
+		return false;
+	}
+	int nShadowPixelL = sTextMetrics.nShadowPixelL;
+	int nShadowPixelR = sTextMetrics.nShadowPixelR;
+	int nShadowPixelU = sTextMetrics.nShadowPixelU;
+	int nShadowPixelD = sTextMetrics.nShadowPixelD;
+	if (nShadowPixelL > 0 && nShadowPixelR > 0 && nShadowPixelU > 0 && nShadowPixelD > 0)
+	{
+		int nEdgeWeight = _max(nShadowPixelL, _max(nShadowPixelR, _max(nShadowPixelU, nShadowPixelD)));
+		return this.create2(nType, szText, sTextMetrics.nFace, sTextMetrics.nSize, sTextMetrics.nColorR, sTextMetrics.nColorG, sTextMetrics.nColorB, sTextMetrics.nWeight, sTextMetrics.nShadowColorR, sTextMetrics.nShadowColorG, sTextMetrics.nShadowColorB, nEdgeWeight * 100 + sTextMetrics.nWeight, nTextSpace, fSpacing);
+	}
+	if (!this.create2(nType, szText, sTextMetrics.nFace, sTextMetrics.nSize, sTextMetrics.nColorR, sTextMetrics.nColorG, sTextMetrics.nColorB, sTextMetrics.nWeight, 0, 0, 0, 0, nTextSpace, fSpacing))
+	{
+		return false;
+	}
+	if (nShadowPixelL > 0 || nShadowPixelR > 0 || nShadowPixelU > 0 || nShadowPixelD > 0)
+	{
+		this.m_nShadowSpNo = DrawTextNew(nType, szText, sTextMetrics.nFace, sTextMetrics.nSize, sTextMetrics.nShadowColorR, sTextMetrics.nShadowColorG, sTextMetrics.nShadowColorB, sTextMetrics.nWeight, 0, 0, 0, 0, nTextSpace, fSpacing);
+	}
+	this.m_nShadowPixelL = nShadowPixelL;
+	this.m_nShadowPixelR = nShadowPixelR;
+	this.m_nShadowPixelU = nShadowPixelU;
+	this.m_nShadowPixelD = nShadowPixelD;
+	return true;
+}
+
+void T_DrawLine::delete()
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	spWork.delete();
+	spWork.detach();
+	spWork.attach(this.m_nShadowSpNo);
+	spWork.delete();
+	spWork.detach();
+	this.clear();
+}
+
+void T_DrawLine::clear()
+{
+	this.m_nTextSpNo = -1;
+	this.m_nShadowSpNo = -1;
+	this.m_nWidth = 0;
+	this.m_nHeight = 0;
+	this.m_nShadowPixelL = 0;
+	this.m_nShadowPixelR = 0;
+	this.m_nShadowPixelU = 0;
+	this.m_nShadowPixelD = 0;
+	this.m_nShadowBlendRate = 255;
+	this.m_nCoverColorR = -1;
+	this.m_nCoverColorG = -1;
+	this.m_nCoverColorB = -1;
+	this.m_nCoverRate = -1;
+}
+
+bool T_DrawLine::copy(ref T_DrawLine spSrc, bool bCopyState)
+{
+	if (spSrc === NULL)
+	{
+		return false;
+	}
+	this.delete();
+	T_Sprite spWork1;
+	T_Sprite spWork2;
+	spWork2.attach(spSrc.getTextSpNo());
+	spWork1.copy(spWork2, bCopyState);
+	spWork1.setBlendRate(spWork2.getBlendRate());
+	spWork2.detach();
+	this.m_nTextSpNo = spWork1.detach();
+	spWork2.attach(spSrc.getShadowSpNo());
+	spWork1.copy(spWork2, bCopyState);
+	spWork1.setBlendRate(spWork2.getBlendRate());
+	spWork2.detach();
+	this.m_nShadowSpNo = spWork1.detach();
+	this.m_nWidth = spSrc.getWidth();
+	this.m_nHeight = spSrc.getHeight();
+	spSrc.getShadowPixel(this.m_nShadowPixelL, this.m_nShadowPixelR, this.m_nShadowPixelU, this.m_nShadowPixelD);
+	this.m_nShadowBlendRate = spSrc.getShadowBlendRate();
+	return true;
+}
+
+bool T_DrawLine::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY, int nMode)
+{
+	if (!スプライト_有効(rfsDst))
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	spWork.attach(this.m_nShadowSpNo);
+	spWork.copyToSprite(rfsDst, nDstX + this.getShadowX(), nDstY + this.getShadowY(), -1, -1, nMode);
+	spWork.detach();
+	spWork.attach(this.m_nTextSpNo);
+	spWork.copyToSprite(rfsDst, nDstX, nDstY, -1, -1, nMode);
+	spWork.detach();
+	return true;
+}
+
+void T_DrawLine::coverColor3D(int nR, int nG, int nB, int nRate, bool bMask)
+{
+	if (nR == this.m_nCoverColorR && nG == this.m_nCoverColorG && nB == this.m_nCoverColorB && nRate == this.m_nCoverRate)
+	{
+		return;
+	}
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	spWork.coverColor3D(nR, nG, nB, nRate, bMask);
+	spWork.detach();
+	spWork.attach(this.m_nShadowSpNo);
+	spWork.coverColor3D(nR, nG, nB, nRate, bMask);
+	spWork.detach();
+	this.m_nCoverColorR = nR;
+	this.m_nCoverColorG = nG;
+	this.m_nCoverColorB = nB;
+	this.m_nCoverRate = nRate;
+}
+
+void T_DrawLine::setPos(int nX, int nY)
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	spWork.setPos(nX, nY);
+	spWork.detach();
+	spWork.attach(this.m_nShadowSpNo);
+	spWork.setPos(nX + this.getShadowX(), nY + this.getShadowY());
+	spWork.detach();
+}
+
+void T_DrawLine::setZ(int nZ)
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	spWork.setZ(nZ + 1);
+	spWork.detach();
+	spWork.attach(this.m_nShadowSpNo);
+	spWork.setZ(nZ);
+	spWork.detach();
+}
+
+void T_DrawLine::setShow(bool bShow)
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	spWork.setShow(bShow);
+	spWork.detach();
+	spWork.attach(this.m_nShadowSpNo);
+	spWork.setShow(bShow);
+	spWork.detach();
+}
+
+void T_DrawLine::setBlendRate(int nRate)
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	spWork.setBlendRate(nRate);
+	spWork.detach();
+	this.setShadowRate(this.m_nShadowBlendRate);
+}
+
+void T_DrawLine::setShadowRate(int nRate)
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	int nRate2 = 実数計算(nRate, spWork.getBlendRate(), 255.0);
+	spWork.detach();
+	spWork.attach(this.m_nShadowSpNo);
+	spWork.setBlendRate(nRate2);
+	spWork.detach();
+	this.m_nShadowBlendRate = nRate;
+}
+
+int T_DrawLine::getRealWidth()
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	int nW = spWork.getWidth();
+	spWork.detach();
+	return nW;
+}
+
+int T_DrawLine::getRealHeight()
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	int nH = spWork.getHeight();
+	spWork.detach();
+	return nH;
+}
+
+int T_DrawLine::getPosX()
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	int nX = spWork.getPosX();
+	spWork.detach();
+	return nX;
+}
+
+int T_DrawLine::getPosY()
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	int nY = spWork.getPosY();
+	spWork.detach();
+	return nY;
+}
+
+int T_DrawLine::getZ()
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	int nZ = spWork.getZ();
+	spWork.detach();
+	return nZ;
+}
+
+bool T_DrawLine::getShow()
+{
+	T_Sprite spWork;
+	spWork.attach(this.m_nTextSpNo);
+	bool bShow = spWork.getShow();
+	spWork.detach();
+	return bShow;
+}
+
+void T_DrawLine::getShadowPixel(ref int nL, ref int nR, ref int nU, ref int nD)
+{
+	nL = this.m_nShadowPixelL;
+	nR = this.m_nShadowPixelR;
+	nU = this.m_nShadowPixelU;
+	nD = this.m_nShadowPixelD;
+}
+
+bool T_DrawLine::suspend()
+{
+	if (this.m_nShadowSpNo > 0)
+	{
+		AFL_Sprite_Suspend(this.m_nShadowSpNo);
+	}
+	return this.m_nTextSpNo > 0 ? AFL_Sprite_Suspend(this.m_nTextSpNo) : 0;
+}
+
+bool T_DrawLine::resume()
+{
+	if (this.m_nShadowSpNo > 0)
+	{
+		AFL_Sprite_Resume(this.m_nShadowSpNo);
+	}
+	return this.m_nTextSpNo > 0 ? AFL_Sprite_Resume(this.m_nTextSpNo) : 0;
+}
+
+int T_DrawLineManager::getCount()
+{
+	return this.m_asLine.Numof();
+}
+
+T_DrawLineManager::T_DrawLineManager()
+{
+	this.clear();
+}
+
+T_DrawLineManager::~T_DrawLineManager()
+{
+	this.delete();
+}
+
+void T_DrawLineManager::create()
+{
+	this.delete();
+}
+
+void T_DrawLineManager::delete()
+{
+	this.eraseAll();
+	this.clear();
+}
+
+void T_DrawLineManager::clear()
+{
+	this.m_nZ = 0;
+	this.m_bShow = false;
+}
+
+int T_DrawLineManager::add(ref T_DrawLine rfsLine, int nIndex)
+{
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	int idx = 0;
+	if (nIndex < 0)
+	{
+		this.m_asLine.PushBack(rfsLine);
+		idx = this.m_asLine.Numof() - 1;
+	}
+	else
+	{
+		this.m_asLine.Insert(nIndex, rfsLine);
+		idx = nIndex;
+	}
+	rfsLine.clear();
+	ref T_DrawLine rfsLine2 = this.m_asLine[idx];
+	rfsLine2.setZ(this.m_nZ);
+	rfsLine2.setShow(this.m_bShow);
+	return idx;
+}
+
+int T_DrawLineManager::erase(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	rfsLine.delete();
+	this.m_asLine.Erase(nIndex);
+	return nIndex;
+}
+
+void T_DrawLineManager::eraseAll()
+{
+	int i = 0;
+	int cnt = this.m_asLine.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLine[i].delete();
+	}
+	if (!this.m_asLine.Empty())
+	{
+		this.m_asLine.Free();
+	}
+}
+
+bool T_DrawLineManager::copy(ref T_DrawLineManager spSrc, bool bCopyState)
+{
+	if (spSrc === NULL)
+	{
+		return false;
+	}
+	this.delete();
+	int i = 0;
+	int cnt = spSrc.getCount();
+	if (cnt <= 0)
+	{
+		return true;
+	}
+	this.m_asLine.Alloc(cnt);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLine[i].copy(spSrc.get(i), bCopyState);
+	}
+	return true;
+}
+
+bool T_DrawLineManager::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY, int nMode)
+{
+	int i = 0;
+	int cnt = this.m_asLine.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsLine = this.get(i);
+		if (rfsLine === NULL)
+		{
+			continue;
+		}
+		rfsLine.copyToSprite(rfsDst, nDstX + rfsLine.getPosX(), nDstY + rfsLine.getPosY(), nMode);
+	}
+	return true;
+}
+
+void T_DrawLineManager::coverColor3D(int nR, int nG, int nB, int nRate, bool bMask)
+{
+	int i = 0;
+	int cnt = this.m_asLine.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLine[i].coverColor3D(nR, nG, nB, nRate, bMask);
+	}
+}
+
+void T_DrawLineManager::setPos(int nIndex, int nX, int nY)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return;
+	}
+	rfsLine.setPos(nX, nY);
+}
+
+void T_DrawLineManager::setZ(int nZ, int nIndex)
+{
+	if (nIndex < 0)
+	{
+		int i = 0;
+		int cnt = this.m_asLine.Numof();
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_asLine[i].setZ(nZ);
+		}
+		this.m_nZ = nZ;
+		return;
+	}
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return;
+	}
+	rfsLine.setZ(nZ);
+}
+
+void T_DrawLineManager::setShow(bool bShow, int nIndex)
+{
+	if (nIndex < 0)
+	{
+		int i = 0;
+		int cnt = this.m_asLine.Numof();
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_asLine[i].setShow(bShow);
+		}
+		this.m_bShow = bShow;
+		return;
+	}
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return;
+	}
+	rfsLine.setShow(bShow);
+}
+
+void T_DrawLineManager::setBlendRate(int nRate, int nIndex)
+{
+	if (nIndex < 0)
+	{
+		int i = 0;
+		int cnt = this.m_asLine.Numof();
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_asLine[i].setBlendRate(nRate);
+		}
+		return;
+	}
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return;
+	}
+	rfsLine.setBlendRate(nRate);
+}
+
+void T_DrawLineManager::setShadowRate(int nRate, int nIndex)
+{
+	if (nIndex < 0)
+	{
+		int i = 0;
+		int cnt = this.m_asLine.Numof();
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_asLine[i].setShadowRate(nRate);
+		}
+		return;
+	}
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return;
+	}
+	rfsLine.setShadowRate(nRate);
+}
+
+int T_DrawLineManager::getWidth(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	return rfsLine.getWidth();
+}
+
+int T_DrawLineManager::getHeight(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	return rfsLine.getHeight();
+}
+
+int T_DrawLineManager::getRealWidth(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	return rfsLine.getRealWidth();
+}
+
+int T_DrawLineManager::getRealHeight(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	return rfsLine.getRealHeight();
+}
+
+int T_DrawLineManager::getPosX(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	return rfsLine.getPosX();
+}
+
+int T_DrawLineManager::getPosY(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	return rfsLine.getPosY();
+}
+
+int T_DrawLineManager::getZ(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return -1;
+	}
+	return rfsLine.getZ();
+}
+
+bool T_DrawLineManager::getShow(int nIndex)
+{
+	ref T_DrawLine rfsLine = this.get(nIndex);
+	if (rfsLine === NULL)
+	{
+		return true;
+	}
+	return rfsLine.getShow();
+}
+
+ref T_DrawLine T_DrawLineManager::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asLine.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asLine[nIndex];
+}
+
+bool T_DrawLineManager::suspend()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asLine.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asLine[i].suspend())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_DrawLineManager::resume()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asLine.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asLine[i].resume())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_DrawLineManager::isSuspend()
+{
+	return this.m_asLine.Numof() > 0 ? this.m_asLine[0].isSuspend() : 0;
+}
+

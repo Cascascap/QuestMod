@@ -1,0 +1,110 @@
+T_WorldMap::T_WorldMap()
+{
+	this.clear();
+}
+
+T_WorldMap::~T_WorldMap()
+{
+	this.delete();
+}
+
+bool T_WorldMap::run(int nX, int nY, string szName)
+{
+	if (!this.create(nX, nY, szName))
+	{
+		return false;
+	}
+	_EFFECT(1, 1000);
+	this.wait(-1);
+	this.delete();
+	return true;
+}
+
+bool T_WorldMap::create(int nX, int nY, string szName)
+{
+	this.delete();
+	this.m_spBase.setCg(5530);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(8001);
+	this.m_spBase.setShow(1);
+	this.m_sName.create(216, 32, -1, 0, 1, 1);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setMinMaxSpacing(0.0, 1.0);
+	this.m_sName.setFontSize(24);
+	this.m_sName.setFontType(257);
+	this.m_sName.setFontBold(1);
+	this.m_sName.setFontColor(255, 255, 255);
+	this.m_sName.setShadowPixel(0, 1, 0, 1);
+	this.m_sName.setShadowColor(0, 0, 0);
+	this.m_sName.setShadowRate(255);
+	this.m_sName.setText(szName, false);
+	this.m_sName.setZ(8003);
+	this.m_sName.setShow(false);
+	bool bLeft = nX < 512;
+	int nX2 = bLeft ? nX + 0 : nX + -244;
+	int nY2 = nY + -34;
+	this.m_sFlash.create(-1);
+	this.m_sFlash.setFileName(bLeft ? Ｆｌａｓｈファイル名("場所名札左向き") : Ｆｌａｓｈファイル名("場所名札右向き"));
+	nX2 = 数値_補正(nX2, 0, 780);
+	nY2 = 数値_補正(nY2, 0, 734);
+	this.m_sName.setPos(bLeft ? nX2 + 22 : nX2 + -15, nY2 + 0);
+	this.m_sFlash.setPos(nX2, nY2);
+	this.m_sFlash.setZ(8002);
+	return true;
+}
+
+void T_WorldMap::delete()
+{
+	this.m_spBase.delete();
+	this.m_sName.delete();
+	this.m_sFlash.delete();
+	this.clear();
+}
+
+void T_WorldMap::clear()
+{
+	return;
+}
+
+void T_WorldMap::wait(int nWaitTime)
+{
+	if (メッセージスキップ中())
+	{
+		return;
+	}
+	int nKey = 0;
+	CASTimer sTimer;
+	this.m_sFlash.loop();
+	this.m_sName.setShow(true);
+	UPDATE(true);
+	sTimer.Reset();
+	while (true)
+	{
+		if (未読スキップ中確認())
+		{
+			break;
+		}
+		if (ホイール_確認(true) == 9992)
+		{
+			break;
+		}
+		int nKey2 = キー_メッセージ送り();
+		if (nKey2 > 0)
+		{
+			nKey = nKey2;
+		}
+		else if (nKey > 0)
+		{
+			break;
+		}
+		if (nWaitTime > 0 && sTimer.Get() > nWaitTime)
+		{
+			break;
+		}
+		this.m_sFlash.update();
+		UPDATE(true);
+	}
+	this.m_sFlash.stop(false);
+}
+

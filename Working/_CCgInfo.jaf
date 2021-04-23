@@ -1,0 +1,68 @@
+string _CCgInfo::_GetCg()
+{
+	return this._m_cg;
+}
+
+int _CCgInfo::_GetX()
+{
+	return this._m_x;
+}
+
+int _CCgInfo::_GetY()
+{
+	return this._m_y;
+}
+
+int _CCgInfo::_GetZ()
+{
+	return this._m_z;
+}
+
+bool _CCgInfo::_IsSetCg()
+{
+	return !this._m_cg.Empty();
+}
+
+_CCgInfo::_CCgInfo()
+{
+	this._m_cg = "";
+	this._m_x = -2147483648;
+	this._m_y = -2147483648;
+	this._m_z = -2147483648;
+}
+
+void _CCgInfo::_Set(int _x, int _y, int _z, string _cg)
+{
+	this._SetPos(_x, _y);
+	this._SetZ(_z);
+	this._SetCg(_cg);
+}
+
+void _CCgInfo::_SetCg(string _cg)
+{
+	if (!_cg.Empty())
+	{
+		this._m_cg = _cg;
+	}
+}
+
+void _CCgInfo::_SetPos(int _x, int _y)
+{
+	if (_x != -2147483648)
+	{
+		this._m_x = _x;
+	}
+	if (_y != -2147483648)
+	{
+		this._m_y = _y;
+	}
+}
+
+void _CCgInfo::_SetZ(int _z)
+{
+	if (_z != -2147483648)
+	{
+		this._m_z = _z;
+	}
+}
+

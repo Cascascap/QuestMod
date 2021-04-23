@@ -1,0 +1,127 @@
+void 親心／センターズ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(0, -1, -1);
+	セット表示(5510, 5072, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Hallway' A;
+	'That night, a lone man slipped into Rance Castle.' A;
+	セリフ(2934, "");
+	'"..."' A;
+	ト書き();
+	'The man moved stealthily toward one room.' A;
+	セリフ(2934, "");
+	'"This is it..."' A;
+	ト書き();
+	'　' R;
+	'     Rance Castle   Sachiko\'s Room' A;
+	'B.S., Batting Senters, headed slowly toward Sachiko\'s bed.' A;
+	セリフ(2934, "");
+	'"..."' A;
+	'"To think... I\'d find her in a place like this..."' A;
+	'"I was surprised when I saw her in Leazas Castle, but...' R;
+	' she\'s really adventuring..."' A;
+	'"Hrm..."' A;
+	ト書き();
+	'Sachiko\'s father B.S. sighed quietly.' A;
+	思考(2934, "");
+	'(I was shocked when we received that letter saying she wanted to work as a guard...)' A;
+	'(I\'d normally be against such a dangerous job...)' A;
+	'(But I also feel some joy that she\'d choose the same profession as me...)' A;
+	'(Hmm...)' A;
+	'(I had thought that she was still a child...)' A;
+	ト書き();
+	'Closing his eyes, B.S. thought for a moment.' A;
+	'Then he slowly opened them as if having made a decision.' A;
+	セリフ(2934, "");
+	'"Those Healing Marks...' R;
+	' I originally gave them to you to protect you, but if you\'re going to be a guard, I\'m sure they\'ll be useful to you."' A;
+	'"I shall grant you the Chivalric Gift of powerful marks of protection."' A;
+	ト書き();
+	'Senters looked around the room and sighed.' A;
+	セリフ(2934, "");
+	'"...It looks like you\'re still not very good at keeping tidy."' A;
+	'"I can\'t start the ritual like this.' R;
+	' I\'ll have to clean up first..."' A;
+	'"Oh...?' R;
+	' These are... her finals..."' A;
+}
+
+void 親心／センターズ／赤点()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2934, "");
+	'"Hrmmm..."' A;
+	'"Language arts, math, social studies, science..."' A;
+	'"She\'s failing all of them..."' A;
+	'"My fool of a daughter...' R;
+	' If you can\'t balance your work with your studies..."' A;
+	'"...This is no time for me to be granting her marks."' A;
+	ト書き();
+	'Senters dug through his bag to find a school workbook.' A;
+	セリフ(2934, "");
+	'"Use this to do a little studying."' A;
+	ト書き();
+	'Senters left quietly.' A;
+	セット表示(5510, 5323, 0, 0);
+	ト書き();
+	'　' R;
+	'     ...   The Next Day' A;
+	セリフ(2021, "");
+	'"...Why is there a workbook on my pillow?"' A;
+}
+
+void 親心／センターズ／合格()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2934, "");
+	'"Hrmmm..."' A;
+	'"Language arts, math, social studies, science..."' A;
+	'"Hmm, they can\'t be called good grades, but she\'s at least focusing on both her work and her studies."' A;
+	'"Mm, I\'m glad she understands that."' A;
+	ト書き();
+	'Senters rolled up Sachiko\'s sleeve and started the ritual on her marks.' A;
+	'　' R;
+	'     ...   30 Minutes Later' A;
+	音楽(94, -1, -1);
+	セリフ(2934, "");
+	'"...Phew."' A;
+	'"Alright, the ritual succeeded.' R;
+	' I hope her adventures are safer now."' A;
+	'"Though..."' A;
+	セリフ２(2020, "");
+	'"Hmm... mmn, mmn..."' A;
+	セリフ(2934, "");
+	'"She\'s still as heavy a sleeper as always, I see."' A;
+	'"Such a restless sleeper, too.' R;
+	' She should try to be more composed..."' A;
+	ト書き();
+	'Senters pulled Sachiko\'s covers up to her shoulders.' A;
+	セリフ(2934, "");
+	'"...Hm?"' A;
+	セリフ２(2020, "");
+	'"...Mmn, eheheh..."' A;
+	ト書き();
+	'Sachiko smiled a little in her sleep.' A;
+	セリフ(2934, "");
+	'"Heh..."' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'Senters left quietly.' A;
+}
+

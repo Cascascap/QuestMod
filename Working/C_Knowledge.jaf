@@ -1,0 +1,73 @@
+void scrollKnowledgeList(int nValue)
+{
+	g_sKnowledge.scroll(nValue);
+}
+
+void Ｒ８マメ知識表示(int nNo)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	g_sKnowledge.run(nNo);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+
+int Ｒ８まめ知識()
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	画面_クリア(true, true);
+	ミニステータス_ボタン表示設定(false);
+	int nRet = g_sKnowledge.run(0);
+	ミニステータス_ボタン表示設定(true);
+	システム情報_マーク表示設定(true);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	return nRet;
+}
+
+int まめ知識_上矢印(int nID)
+{
+	return g_sKnowledge.moveUp(nID);
+}
+
+int まめ知識_下矢印(int nID)
+{
+	return g_sKnowledge.moveDown(nID);
+}
+
+int まめ知識_左矢印(int nID)
+{
+	return g_sKnowledge.moveLeft(nID);
+}
+
+int まめ知識_右矢印(int nID)
+{
+	return g_sKnowledge.moveRight(nID);
+}
+
+void まめ知識_選択設定(int nID, bool bSelect)
+{
+	g_sKnowledge.setSelect(nID, bSelect);
+}
+
+int まめ知識一覧_Ｘ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 24)
+	{
+		return -1;
+	}
+	return 727;
+}
+
+int まめ知識一覧_Ｙ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 24)
+	{
+		return -1;
+	}
+	return 72 + 27 * nIndex;
+}
+

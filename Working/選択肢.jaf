@@ -1,0 +1,440 @@
+void 選択エリア(int Ｓ番号, int Ｘ, int Ｙ, int Ｚ, string ＣＧ名, int 幅フラグ, int 高フラグ, int 座標フラグ, int 枠太)
+{
+	SYS_ASSERTE_AREA_ID(Ｓ番号);
+	if (!ＣＧ名.Empty())
+	{
+		SYS_ASSERTE_CG(ＣＧ名);
+	}
+	if (Ｚ != -2147483648)
+	{
+		SYS_ASSERTE_Z(Ｚ);
+	}
+	_選択エリア[Ｓ番号].Ｓ番号 = Ｓ番号;
+	if (Ｘ != -2147483648)
+	{
+		_選択エリア[Ｓ番号].Ｘ = Ｘ;
+	}
+	if (Ｙ != -2147483648)
+	{
+		_選択エリア[Ｓ番号].Ｙ = Ｙ;
+	}
+	if (Ｚ != -2147483648)
+	{
+		_選択エリア[Ｓ番号].Ｚ = Ｚ;
+	}
+	if (!ＣＧ名.Empty())
+	{
+		_選択エリア[Ｓ番号].ＣＧ名 = ＣＧ名;
+	}
+	if (幅フラグ != -2147483648)
+	{
+		_選択エリア[Ｓ番号].幅フラグ = 幅フラグ;
+	}
+	if (高フラグ != -2147483648)
+	{
+		_選択エリア[Ｓ番号].高フラグ = 高フラグ;
+	}
+	if (座標フラグ != -2147483648)
+	{
+		_選択エリア[Ｓ番号].座標フラグ = 座標フラグ;
+	}
+	if (枠太 != -2147483648)
+	{
+		_選択エリア[Ｓ番号].枠太 = 枠太;
+	}
+}
+
+void 選択エリア２(int Ｓ番号, int 幅, int 高, int 塗Ｒ, int 塗Ｇ, int 塗Ｂ, int 塗率, int 枠タイプ, int 枠Ｒ, int 枠Ｇ, int 枠Ｂ)
+{
+	if (幅 != -2147483648 && 高 != -2147483648)
+	{
+		SYS_ASSERTE_SIZE(幅, 高);
+	}
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択エリア２(Ｓ番号, 幅, 高, 塗Ｒ, 塗Ｇ, 塗Ｂ, 塗率, 枠タイプ, 枠Ｒ, 枠Ｇ, 枠Ｂ);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択エリア２(Ｓ番号, 幅, 高, 塗Ｒ, 塗Ｇ, 塗Ｂ, 塗率, 枠タイプ, 枠Ｒ, 枠Ｇ, 枠Ｂ);
+	}
+}
+
+void 選択エリア余白(int Ｓ番号, int t, int r, int b, int l)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択エリア余白(Ｓ番号, t, r, b, l);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択エリア余白(Ｓ番号, t, r, b, l);
+	}
+}
+
+void 選択文字設定(int Ｓ番号, int フォント, int サイズ, int Ｒ, int Ｇ, int Ｂ)
+{
+	if (サイズ < 1)
+	{
+		ERROR("サイズ = %d" % サイズ, 0);
+		サイズ = 20;
+	}
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択文字設定(Ｓ番号, フォント, サイズ, Ｒ, Ｇ, Ｂ);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択文字設定(Ｓ番号, フォント, サイズ, Ｒ, Ｇ, Ｂ);
+	}
+}
+
+void 選択文字配置設定(int Ｓ番号, int 配置, int 行間)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択文字配置設定(Ｓ番号, 配置, 行間);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択文字配置設定(Ｓ番号, 配置, 行間);
+	}
+}
+
+void 選択文字飾り設定(int Ｓ番号, int 上太さ, int 右太さ, int 下太さ, int 左太さ, int Ｒ, int Ｇ, int Ｂ)
+{
+	if (上太さ != -2147483648 && (上太さ < 0 || 上太さ > 9))
+	{
+		ERROR("上太さ = %d" % 上太さ, 0);
+		上太さ = 0;
+	}
+	if (右太さ != -2147483648 && (右太さ < 0 || 右太さ > 9))
+	{
+		ERROR("右太さ = %d" % 右太さ, 0);
+		右太さ = 0;
+	}
+	if (下太さ != -2147483648 && (下太さ < 0 || 下太さ > 9))
+	{
+		ERROR("下太さ = %d" % 下太さ, 0);
+		下太さ = 0;
+	}
+	if (左太さ != -2147483648 && (左太さ < 0 || 左太さ > 9))
+	{
+		ERROR("左太さ = %d" % 左太さ, 0);
+		左太さ = 0;
+	}
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択文字飾り設定(Ｓ番号, 上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択文字飾り設定(Ｓ番号, 上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+	}
+}
+
+void 選択文字太字幅設定(int Ｓ番号, float fBoldWeight)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択文字太字幅設定(Ｓ番号, fBoldWeight);
+	}
+	else
+	{
+		for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+		{
+			SYS_選択文字太字幅設定(Ｓ番号, fBoldWeight);
+		}
+	}
+}
+
+void 選択文字字間隔設定(int Ｓ番号, int nCharSpace)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択文字字間隔設定(Ｓ番号, nCharSpace);
+	}
+	else
+	{
+		for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+		{
+			SYS_選択文字字間隔設定(Ｓ番号, nCharSpace);
+		}
+	}
+}
+
+void 選択不可文字設定(int Ｓ番号, int フォント, int Ｒ, int Ｇ, int Ｂ)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択不可文字設定(Ｓ番号, フォント, Ｒ, Ｇ, Ｂ);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択不可文字設定(Ｓ番号, フォント, Ｒ, Ｇ, Ｂ);
+	}
+}
+
+void 選択不可文字飾り設定(int Ｓ番号, int 上太さ, int 右太さ, int 下太さ, int 左太さ, int Ｒ, int Ｇ, int Ｂ)
+{
+	SYS_字飾りパラメータチェック(上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択不可文字飾り設定(Ｓ番号, 上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択不可文字飾り設定(Ｓ番号, 上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+	}
+}
+
+void 選択不可文字太字幅設定(int Ｓ番号, float fBoldWeight)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択不可文字太字幅設定(Ｓ番号, fBoldWeight);
+	}
+	else
+	{
+		for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+		{
+			SYS_選択不可文字太字幅設定(Ｓ番号, fBoldWeight);
+		}
+	}
+}
+
+void 選択不可文字字間隔設定(int Ｓ番号, int nCharSpace)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択不可文字字間隔設定(Ｓ番号, nCharSpace);
+	}
+	else
+	{
+		for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+		{
+			SYS_選択不可文字字間隔設定(Ｓ番号, nCharSpace);
+		}
+	}
+}
+
+void 選択カーソル設定(int Ｓ番号, int タイプ, int Ｒ, int Ｇ, int Ｂ, int 字Ｒ, int 字Ｇ, int 字Ｂ)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択カーソル設定(Ｓ番号, タイプ, Ｒ, Ｇ, Ｂ, 字Ｒ, 字Ｇ, 字Ｂ);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択カーソル設定(Ｓ番号, タイプ, Ｒ, Ｇ, Ｂ, 字Ｒ, 字Ｇ, 字Ｂ);
+	}
+}
+
+void 選択カーソル文字飾り設定(int Ｓ番号, int 上太さ, int 右太さ, int 下太さ, int 左太さ, int Ｒ, int Ｇ, int Ｂ)
+{
+	SYS_字飾りパラメータチェック(上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択カーソル文字飾り設定(Ｓ番号, 上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択カーソル文字飾り設定(Ｓ番号, 上太さ, 右太さ, 下太さ, 左太さ, Ｒ, Ｇ, Ｂ);
+	}
+}
+
+void 選択カーソル文字太字幅設定(int Ｓ番号, float fBoldWeight)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択カーソル文字太字幅設定(Ｓ番号, fBoldWeight);
+	}
+	else
+	{
+		for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+		{
+			SYS_選択カーソル文字太字幅設定(Ｓ番号, fBoldWeight);
+		}
+	}
+}
+
+void 選択カーソル文字字間隔設定(int Ｓ番号, int nCharSpace)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択カーソル文字字間隔設定(Ｓ番号, nCharSpace);
+	}
+	else
+	{
+		for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+		{
+			SYS_選択カーソル文字字間隔設定(Ｓ番号, nCharSpace);
+		}
+	}
+}
+
+void 選択ＣＧカーソル設定(int Ｓ番号, string ＣＧ名, int Ｘ, int Ｙ, int Ｚ)
+{
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		_選択エリア[Ｓ番号].CursorCG = ＣＧ名;
+		_選択エリア[Ｓ番号].nCursorOffsetX = Ｘ;
+		_選択エリア[Ｓ番号].nCursorOffsetY = Ｙ;
+		_選択エリア[Ｓ番号].nCursorOffsetZ = Ｚ;
+	}
+	else
+	{
+		for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+		{
+			_選択エリア[Ｓ番号].CursorCG = ＣＧ名;
+			_選択エリア[Ｓ番号].nCursorOffsetX = Ｘ;
+			_選択エリア[Ｓ番号].nCursorOffsetY = Ｙ;
+			_選択エリア[Ｓ番号].nCursorOffsetZ = Ｚ;
+		}
+	}
+}
+
+void 選択エリア音設定(int Ｓ番号, int 決定, int 無効, int 移動１, int 移動２)
+{
+	SYS_ASSERTE_SOUND(決定);
+	SYS_ASSERTE_SOUND(無効);
+	SYS_ASSERTE_SOUND(移動１);
+	SYS_ASSERTE_SOUND(移動２);
+	if (Ｓ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｓ番号);
+		SYS_選択エリア音設定(Ｓ番号, 決定, 無効, 移動１, 移動２);
+		return;
+	}
+	for (Ｓ番号 = 1; Ｓ番号 < 40; ++Ｓ番号)
+	{
+		SYS_選択エリア音設定(Ｓ番号, 決定, 無効, 移動１, 移動２);
+	}
+}
+
+void 選択枠(int Ｓ番号)
+{
+	SYS_ASSERTE_AREA_ID(Ｓ番号);
+	_選択枠 = Ｓ番号;
+}
+
+void 選択肢開始()
+{
+	if (g_bBeginSelect)
+	{
+		system.Error("既に選択肢開始()コマンドは呼び出されています");
+	}
+	g_bBeginSelect = true;
+	SYS_状態セーブ(-2, _ゲーム時間, "");
+	if (SYS_セーブファイル存在(-3))
+	{
+		SYS_セーブファイルコピー(-4, -3);
+	}
+	SYS_セーブファイルコピー(-3, -2);
+	g_bCanReturnBackSelect = true;
+}
+
+void 選択肢(int 登録番号, string テキスト, int キーコード)
+{
+	選択肢_t SelectItem;
+	SelectItem.番号 = 登録番号;
+	SelectItem.テキスト = テキスト;
+	SelectItem.キーコード = キーコード;
+	_選択肢.PushBack(SelectItem);
+}
+
+int 選択(bool _キャンセルあり, int _キャンセル値)
+{
+	if (g_bInSelect)
+	{
+		system.Error("既に選択()コマンドは呼び出されています");
+	}
+	g_bInSelect = true;
+	if (既読スキップ選択肢解除確認())
+	{
+		既読スキップモード解除();
+	}
+	if (オートモード選択肢解除確認())
+	{
+		オートモード解除();
+	}
+	SYS_システムボタン変更確認();
+	SYS_選択_result_t result;
+	for (; ; )
+	{
+		result = g_MenuViewManager._Execute(_キャンセルあり, _キャンセル値);
+		if (result.fnc == NULL)
+		{
+			_選択肢.Free();
+			break;
+		}
+		result.fnc();
+	}
+	g_bInSelect = false;
+	g_bBeginSelect = false;
+	SYS_セーブファイル削除(-2);
+	return result.値;
+}
+
+int テスト選択()
+{
+	if (!system.IsDebugMode())
+	{
+		for (; ; )
+		{
+			UpdateView(true);
+		}
+	}
+	SYS_選択_result_t Result;
+	SYS_テスト選択(Result);
+	return Result.値;
+}
+
+void 選択右クリック関数登録(_menu_rbutton_callback_t _f)
+{
+	_g_menu_rbutton_callback_fnc = _f;
+}
+
+void 前の選択肢に戻る()
+{
+	if (g_bInSelect && SYS_セーブファイル存在(-4))
+	{
+		SYS_ロード実行(-4);
+	}
+	if (SYS_セーブファイル存在(-3))
+	{
+		SYS_ロード実行(-3);
+	}
+	system.Error("前の選択肢に戻る()コマンドにおいて、ロード処理がおこなわれませんでした");
+}
+
+bool 前の選択肢に戻る実行可能確認()
+{
+	return g_bCanReturnBackSelect;
+}
+

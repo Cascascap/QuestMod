@@ -1,0 +1,439 @@
+void システムバー_作成(int nMode, int nMapNo, bool bShow)
+{
+	システムバー_削除();
+	switch (nMode)
+	{
+		case 10:
+		case 11:
+		case 12:
+		case 14:
+		case 18:
+		case 20:
+			システム情報_作成(811);
+			ミニステータス_作成(801);
+			break;
+		case 13:
+		case 15:
+		case 19:
+		case 21:
+			システム情報_作成(811);
+			break;
+		case 30:
+		case 40:
+		default:
+			break;
+	}
+	g_sSystemBar.create(nMode, nMapNo);
+	システムバー_表示設定(bShow);
+	システムバー_有効設定(true);
+	システムバー音楽_クリア();
+}
+
+void システムバー_削除()
+{
+	ミニステータス_削除();
+	システム情報_削除();
+	g_sSystemBar.delete();
+	システムバー音楽_クリア();
+}
+
+int システムバー_モード変更(int nMode, int nMapNo)
+{
+	int nOld = システムバー_モード();
+	nMapNo = nMapNo < 0 ? システムバー_マップ番号() : nMapNo;
+	if (nOld < 0)
+	{
+		システムバー_作成(nMode, nMapNo, true);
+	}
+	else if (nMode < 0)
+	{
+		システムバー_削除();
+	}
+	else
+	{
+		switch (nMode)
+		{
+			case 18:
+			case 19:
+				g_sSystemBar.setMode(nMode, nMapNo);
+				break;
+			default:
+				システムバー_作成(nMode, nMapNo, true);
+				break;
+		}
+	}
+	return nOld;
+}
+
+int システムバー_入力確認(ref int nSelectID)
+{
+	switch (ミニステータス_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			g_sSystemBar.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (g_sSystemBar.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			ミニステータス_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+label0:
+	g_sSystemBar.setInputFlag(true);
+	ミニステータス_入力ＯＮ();
+	return 0;
+}
+
+int システムバー_キー確認(int nID)
+{
+	int nKey = ミニステータス_キー確認(nID);
+	if (nKey > 0)
+	{
+		return nKey;
+	}
+	return g_sSystemBar.checkKey();
+}
+
+void システムバー_選択解除()
+{
+	g_sSystemBar.resetSelect();
+	ミニステータス_選択解除();
+}
+
+void システムバー_選択設定(int nID, bool bSelect, bool bSound)
+{
+	if (nID > 920000)
+	{
+		ミニステータス_選択設定(nID, bSelect);
+		return;
+	}
+	g_sSystemBar.setSelect(nID, bSelect, bSound);
+}
+
+void システムバー_カーソル設定(int nID)
+{
+	if (nID > 920000)
+	{
+		ミニステータス_カーソル設定(nID);
+		return;
+	}
+	g_sSystemBar.setCursor(nID);
+}
+
+void システムバー_メニュー設定(bool bActive)
+{
+	g_sSystemBar.setStatus(900001, bActive ? 0 : 1);
+}
+
+void システムバー_倉庫設定(bool bActive)
+{
+	g_sSystemBar.setStatus(900002, bActive ? 0 : 1);
+}
+
+void システムバー_まめ知識設定(bool bActive)
+{
+	g_sSystemBar.setStatus(900003, bActive ? 0 : 1);
+}
+
+void システムバー_実行設定(int nID, bool bExecute)
+{
+	g_sSystemBar.setExecute(nID, bExecute);
+}
+
+void システムバー_表示設定(bool bShow)
+{
+	g_sSystemBar.setShow(bShow);
+	システム情報_表示設定(bShow);
+	ミニステータス_表示設定(bShow);
+}
+
+bool システムバー_有効設定(bool bActive)
+{
+	bool bOld = g_sSystemBar.getActive();
+	g_sSystemBar.setActive(bActive);
+	return bOld;
+}
+
+void システムバー_ボタン有効設定()
+{
+	g_sSystemBar.setButtonActive(システムバー_モード(), システムバー_マップ番号());
+	ミニステータス_ボタン有効設定();
+}
+
+void システムバー_ボタン無効設定()
+{
+	g_sSystemBar.setButtonActive(0, 0);
+}
+
+void システムバー_入力ＯＮ()
+{
+	g_sSystemBar.setInputFlag(true);
+	ミニステータス_入力ＯＮ();
+}
+
+void システムバー_入力ＯＦＦ()
+{
+	g_sSystemBar.setInputFlag(false);
+	ミニステータス_入力ＯＦＦ();
+}
+
+bool システムバー_ボタン有効(int nID)
+{
+	if (nID > 920000)
+	{
+		return ミニステータス_ボタン有効(nID);
+	}
+	return g_sSystemBar.getButtonActive(nID);
+}
+
+int システムバー_ショートカット(int nID)
+{
+	if (nID > 920000)
+	{
+		return ミニステータス_ショートカット(nID);
+	}
+	return g_sSystemBar.getButtonKey(nID);
+}
+
+int システムバー_モード()
+{
+	return g_sSystemBar.getMode();
+}
+
+int システムバー_マップ番号()
+{
+	return g_sSystemBar.getMapNo();
+}
+
+bool システムバー_表示中()
+{
+	return g_sSystemBar.getShow();
+}
+
+bool システムバー_有効()
+{
+	return g_sSystemBar.getActive();
+}
+
+int システムバー_選択ＩＤ()
+{
+	int nID = ミニステータス_選択ＩＤ();
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return g_sSystemBar.getSelectID();
+}
+
+int システムバー_押下ＩＤ()
+{
+	int nID = ミニステータス_押下ＩＤ();
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return g_sSystemBar.getKeyDownID();
+}
+
+int システムバー_クリックＩＤ()
+{
+	int nID = ミニステータス_クリックＩＤ();
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return g_sSystemBar.getClickID();
+}
+
+bool システムバー_押下中()
+{
+	if (ミニステータス_押下中())
+	{
+		return true;
+	}
+	return g_sSystemBar.isKeyDown();
+}
+
+bool システムバー_クリック()
+{
+	if (ミニステータス_クリック())
+	{
+		return true;
+	}
+	return g_sSystemBar.isClick();
+}
+
+bool システムバー_サスペンド()
+{
+	システム情報_サスペンド();
+	ミニステータス_サスペンド();
+	return g_sSystemBar.suspend();
+}
+
+bool システムバー_レジューム()
+{
+	システム情報_レジューム();
+	ミニステータス_レジューム();
+	return g_sSystemBar.resume();
+}
+
+bool システムバー_サスペンド状態()
+{
+	return g_sSystemBar.isSuspend();
+}
+
+void システムバー_設定()
+{
+	システム情報_更新(0, -1);
+	ミニステータス_更新(false, 250);
+	システムバー_ボタン有効設定();
+}
+
+void システムバー_更新(int nMode, int nTotalTime)
+{
+	システム情報_更新(nMode, nTotalTime);
+	ミニステータス_更新(nMode == 1, nTotalTime);
+	システムバー_ボタン有効設定();
+}
+
+void システムバー_再表示()
+{
+	システムバー_表示設定(システムバー_表示中());
+}
+
+void システムバー_キー離し待ち(int nID)
+{
+	int nKey = システムバー_ショートカット(nID);
+	if (nKey > 0)
+	{
+		キー_離し待ち(nKey, true);
+	}
+}
+
+int システムバー_先頭ボタン()
+{
+	return システムバー_ボタン群().getFirstButton(false);
+}
+
+int システムバー_最終ボタン()
+{
+	return システムバー_ボタン群().getLastButton(false);
+}
+
+int システムバー_前ボタン(int nID)
+{
+	if (nID > 920000)
+	{
+		return ミニステータス_前ボタン(nID);
+	}
+	return システムバー_ボタン群().getPrevButton(nID, false, true);
+}
+
+int システムバー_次ボタン(int nID)
+{
+	if (nID > 920000)
+	{
+		return ミニステータス_次ボタン(nID);
+	}
+	return システムバー_ボタン群().getNextButton(nID, false, true);
+}
+
+ref T_ButtonGroup システムバー_ボタン群()
+{
+	return g_sSystemBar.getButton();
+}
+
+int システムバー_実行(int nID)
+{
+	int nRet = -1;
+	システムバー_実行前();
+	while (nID > 0)
+	{
+		int nID2 = 0;
+		if (システムバー_処理(nID, nRet))
+		{
+			break;
+		}
+		nID = nRet;
+		システムバー_ボタン有効設定();
+	}
+	システムバー_実行後();
+	return nRet;
+}
+
+void システムバー_実行前()
+{
+	システムバー_実行クリア();
+	システムバー音楽_退避();
+	説明_消し(-1);
+	g_nシステムバー_モード = システムバー_モード();
+	g_nシステムバー_マップ番号 = システムバー_マップ番号();
+	g_bシステムバー退避_主人公 = Ｒ８キャラ停止();
+}
+
+void システムバー_実行後()
+{
+	int nMode = システムバー_モード();
+	if (g_nシステムバー_モード > 0)
+	{
+		if (g_nシステムバー_モード != nMode)
+		{
+			システムバー_作成(g_nシステムバー_モード, g_nシステムバー_マップ番号, true);
+		}
+	}
+	システムバー音楽_復元();
+	if (g_bシステムバー退避_主人公)
+	{
+		Ｒ８キャラ停止解除();
+	}
+	システムバー_実行クリア();
+}
+
+void システムバー_実行クリア()
+{
+	g_nシステムバー_モード = 0;
+	g_nシステムバー_マップ番号 = -1;
+	g_bシステムバー退避_主人公 = 0;
+}
+
+void システムバー音楽_退避()
+{
+	if (g_nシステムバー退避_音楽 >= 0)
+	{
+		return;
+	}
+	g_nシステムバー退避_音楽 = 音楽_番号();
+}
+
+void システムバー音楽_復元()
+{
+	if (g_nシステムバー退避_音楽 < 0)
+	{
+		return;
+	}
+	音楽_再生(g_nシステムバー退避_音楽);
+	システムバー音楽_クリア();
+}
+
+void システムバー音楽_クリア()
+{
+	g_nシステムバー退避_音楽 = -1;
+}
+

@@ -1,0 +1,180 @@
+void T_MiniMiniCard::setDeadShow(bool bDeadShow)
+{
+	this.m_bDeadShow = bDeadShow;
+}
+
+void T_MiniMiniCard::setMarkShow(bool bMarkShow)
+{
+	this.m_bMarkShow = bMarkShow;
+}
+
+int T_MiniMiniCard::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_MiniMiniCard::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_MiniMiniCard::getZ()
+{
+	return this.m_spBase.getZ();
+}
+
+int T_MiniMiniCard::getFaceX()
+{
+	return this.m_sFace.getPosX();
+}
+
+int T_MiniMiniCard::getFaceY()
+{
+	return this.m_sFace.getPosY();
+}
+
+int T_MiniMiniCard::getFaceZ()
+{
+	return this.m_sFace.getZ();
+}
+
+bool T_MiniMiniCard::getShow()
+{
+	return this.m_sFace.getShow();
+}
+
+int T_MiniMiniCard::getCharaNo()
+{
+	return this.m_sSkill.getCharaNo();
+}
+
+bool T_MiniMiniCard::getDeadShow()
+{
+	return this.m_bDeadShow;
+}
+
+bool T_MiniMiniCard::getMarkShow()
+{
+	return this.m_bMarkShow;
+}
+
+T_Rect T_MiniMiniCard::getBaseRect()
+{
+	return this.m_spBase.getRect();
+}
+
+ref T_CharaFace T_MiniMiniCard::getFace()
+{
+	return this.m_sFace;
+}
+
+ref T_JobIcon T_MiniMiniCard::getJob()
+{
+	return this.m_sJob.getIcon();
+}
+
+ref T_MiniMiniSkill T_MiniMiniCard::getSkill()
+{
+	return this.m_sSkill;
+}
+
+T_MiniMiniCard::T_MiniMiniCard()
+{
+	this.clear();
+}
+
+T_MiniMiniCard::~T_MiniMiniCard()
+{
+	this.delete();
+}
+
+bool T_MiniMiniCard::create(int nCharaNo)
+{
+	this.delete();
+	if (!this.m_sFace.create(nCharaNo, 4))
+	{
+		return false;
+	}
+	this.m_spBase.setCg(11054);
+	this.m_spNonSkill.setCg(10134);
+	this.m_spDead.setCg(10128);
+	this.m_spMark.setCg(10093);
+	this.m_sJob.create(キャラ_職業(nCharaNo), 1);
+	this.m_sSkill.create(nCharaNo);
+	return true;
+}
+
+void T_MiniMiniCard::delete()
+{
+	this.m_spBase.delete();
+	this.m_spNonSkill.delete();
+	this.m_spDead.delete();
+	this.m_spMark.delete();
+	this.m_sFace.delete();
+	this.m_sJob.delete();
+	this.m_sSkill.delete();
+	this.clear();
+}
+
+void T_MiniMiniCard::clear()
+{
+	this.m_bDeadShow = false;
+	this.m_bMarkShow = false;
+}
+
+bool T_MiniMiniCard::update()
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	this.m_sJob.setLevel(キャラ_レベル(nCharaNo), キャラ_レベル最大(nCharaNo));
+	this.m_sSkill.update();
+	this.setShow(this.m_spBase.getShow());
+	return true;
+}
+
+void T_MiniMiniCard::setPos(int nX, int nY)
+{
+	this.m_spBase.setPos(nX, nY);
+	this.m_spNonSkill.setPos(nX + 0, nY + 0);
+	this.m_spDead.setPos(nX + 0, nY + 0);
+	this.m_spMark.setPos(nX, nY);
+	this.m_sFace.setPos(nX + 3, nY + 3);
+	this.m_sJob.setPos(nX + 53, nY + 8);
+	this.m_sSkill.setPos(nX + 101, nY + 3);
+}
+
+void T_MiniMiniCard::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ + 1);
+	this.m_sFace.setZ(nZ + 2);
+	this.m_sJob.setZ(nZ + 2);
+	this.m_sSkill.setZ(nZ);
+	this.m_spNonSkill.setZ(nZ + 5);
+	this.m_spDead.setZ(nZ + 4);
+	this.m_spMark.setZ(nZ + 20);
+}
+
+void T_MiniMiniCard::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sFace.setShow(bShow);
+	this.m_sJob.setShow(bShow);
+	this.m_sSkill.setShow(bShow);
+	this.m_spNonSkill.setShow(this.m_sSkill.getActiveCount() > 0 ? 0 : bShow);
+	this.m_spDead.setShow(this.m_bMarkShow ? 0 : this.m_bDeadShow && bShow);
+	this.m_spMark.setShow(this.m_bMarkShow && bShow);
+}
+
+void T_MiniMiniCard::setBlendRate(int nBlendRate)
+{
+	this.m_spBase.setBlendRate(nBlendRate);
+	this.m_spNonSkill.setBlendRate(nBlendRate);
+	this.m_spDead.setBlendRate(nBlendRate);
+	this.m_sFace.setBlendRate(nBlendRate);
+	this.m_sJob.setBlendRate(nBlendRate);
+	this.m_sSkill.setBlendRate(nBlendRate);
+}
+

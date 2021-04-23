@@ -1,0 +1,513 @@
+int T_LogWindow::checkInput(ref int nSelectID)
+{
+	return this.m_sScroll.checkInput(nSelectID);
+}
+
+bool T_LogWindow::checkWheel()
+{
+	return this.m_sScroll.checkWheel();
+}
+
+void T_LogWindow::exec(int nID)
+{
+	this.m_sScroll.exec(nID);
+}
+
+void T_LogWindow::setInputFlag(bool bInputFlag)
+{
+	this.m_sScroll.setInputFlag(bInputFlag);
+}
+
+int T_LogWindow::getLogNo()
+{
+	return this.m_nLogNo;
+}
+
+int T_LogWindow::getTextX()
+{
+	return this.m_nTextX;
+}
+
+int T_LogWindow::getTextY()
+{
+	return this.m_nTextY;
+}
+
+int T_LogWindow::getTextCount()
+{
+	return this.m_nTextCount;
+}
+
+int T_LogWindow::getLineCount()
+{
+	return this.m_nLineCount;
+}
+
+int T_LogWindow::getLogCount()
+{
+	return this.m_nLogCount;
+}
+
+int T_LogWindow::getLogIndex()
+{
+	return this.m_nLogIndex;
+}
+
+int T_LogWindow::getFontSize()
+{
+	return this.m_tmLog.nSize;
+}
+
+int T_LogWindow::getFontType()
+{
+	return this.m_tmLog.nFace;
+}
+
+bool T_LogWindow::getFontBold()
+{
+	return this.m_bFontBold;
+}
+
+bool T_LogWindow::getShow()
+{
+	return this.m_spBase.getShow();
+}
+
+T_LogWindow::T_LogWindow()
+{
+	this.clear();
+}
+
+T_LogWindow::~T_LogWindow()
+{
+	this.delete();
+}
+
+bool T_LogWindow::create(int nLogNo, int nWidth, int nHeight, int nColorR, int nColorG, int nColorB, int nColorRate, int nEdgeSize, int nEdgeColorR, int nEdgeColorG, int nEdgeColorB, int nEdgeColorRate)
+{
+	this.delete();
+	if (nWidth <= 0 || nHeight <= 0)
+	{
+		return false;
+	}
+	int nW = nWidth - nEdgeSize * 2;
+	int nH = nHeight - nEdgeSize * 2;
+	this.m_spBase.create(nWidth, nHeight, nEdgeColorR, nEdgeColorG, nEdgeColorB, nEdgeColorRate);
+	this.m_spBase.fill(nEdgeSize, nEdgeSize, nW, nH, nColorR, nColorG, nColorB, nColorRate);
+	this.m_spScrollBase.createPixelOnly(20, nHeight);
+	this.m_spScrollBase.fill(0, 0, 20, nHeight, nColorR, nColorG, nColorB, 255);
+	this.m_sScroll.create(2, nH - 80, 0, 0, 0);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&scrollLogWindow);
+	this.m_nLogNo = nLogNo;
+	this.m_nLogCount = 0;
+	this.m_nLogIndex = -1;
+	return true;
+}
+
+bool T_LogWindow::createCg(int nLogNo, int nCgNo)
+{
+	this.delete();
+	if (this.m_spBase.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	int nH = this.m_spBase.getHeight();
+	this.m_spScrollBase.createPixelOnly(20, nH);
+	this.m_spScrollBase.fill(0, 0, 20, nH, 0, 0, 0, 255);
+	this.m_sScroll.create(2, nH - 80, 0, 0, 0);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&scrollLogWindow);
+	this.m_nLogNo = nLogNo;
+	this.m_nLogCount = 0;
+	this.m_nLogIndex = -1;
+	return true;
+}
+
+void T_LogWindow::delete()
+{
+	this.m_spBase.delete();
+	this.m_sLine.delete();
+	this.m_spScrollBase.delete();
+	this.m_sScroll.delete();
+	this.clear();
+}
+
+void T_LogWindow::clear()
+{
+	this.m_nLogNo = -1;
+	this.m_nTextX = -1;
+	this.m_nTextY = -1;
+	this.m_nTextCount = -1;
+	this.m_nLineCount = -1;
+	this.m_nLineSpace = 0;
+	this.m_nLogCount = -1;
+	this.m_nLogIndex = -1;
+	this.m_tmLog.nSize = 20;
+	this.m_tmLog.nColorR = 255;
+	this.m_tmLog.nColorG = 255;
+	this.m_tmLog.nColorB = 255;
+	this.m_tmLog.nWeight = 40;
+	this.m_tmLog.nFace = 0;
+	this.m_tmLog.nShadowPixelL = 0;
+	this.m_tmLog.nShadowPixelR = 0;
+	this.m_tmLog.nShadowPixelU = 0;
+	this.m_tmLog.nShadowPixelD = 0;
+	this.m_tmLog.nShadowColorR = 0;
+	this.m_tmLog.nShadowColorG = 0;
+	this.m_tmLog.nShadowColorB = 0;
+}
+
+void T_LogWindow::update()
+{
+	if (this.m_nLogNo <= 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = ログデータ_数(this.m_nLogNo);
+	if (cnt <= this.m_nLogCount)
+	{
+		return;
+	}
+	if (this.m_nLogCount > this.m_nLineCount)
+	{
+		this.m_nLogIndex = this.m_nLogCount - this.m_nLineCount;
+	}
+	else
+	{
+		this.m_nLogIndex = 0;
+	}
+	this.resetLine();
+	for (i = this.m_nLogCount; i < cnt; ++i)
+	{
+		if (!this.addLine(i))
+		{
+			break;
+		}
+	}
+	this.m_nLogCount = cnt;
+	this.m_sScroll.setValue(this.m_nLogIndex, _max(this.m_nLogCount, this.m_nLineCount), this.m_nLineCount);
+}
+
+void T_LogWindow::scroll(int nValue)
+{
+	this.m_nLogIndex = 数値_補正(nValue, 0, this.m_nLogCount > 0 ? this.m_nLogCount - 1 : 0);
+	this.resetLine();
+	this.setLinePos();
+}
+
+void T_LogWindow::redraw()
+{
+	if (this.m_nLogNo <= 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = ログデータ_数(this.m_nLogNo);
+	if (cnt < 0)
+	{
+		return;
+	}
+	this.m_nLogCount = cnt;
+	if (this.m_nLogCount > this.m_nLineCount)
+	{
+		this.m_nLogIndex = this.m_nLogCount - this.m_nLineCount;
+	}
+	else
+	{
+		this.m_nLogIndex = 0;
+	}
+	this.resetLine();
+	this.setLinePos();
+	this.m_sScroll.setValue(this.m_nLogIndex, _max(this.m_nLogCount, this.m_nLineCount), this.m_nLineCount);
+}
+
+void T_LogWindow::wait()
+{
+	if (this.m_nLogNo < 0)
+	{
+		return;
+	}
+	while (true)
+	{
+		int nID = this.checkSelect();
+		if (nID < 0)
+		{
+			break;
+		}
+		if (nID > 0)
+		{
+			this.m_sScroll.exec(nID);
+		}
+	}
+	マウス_フラグクリア();
+}
+
+void T_LogWindow::setPos(int nX, int nY)
+{
+	int nW = this.m_spBase.getWidth();
+	this.m_spBase.setPos(nX, nY);
+	this.m_spScrollBase.setPos(nX + nW, nY);
+	this.m_sScroll.setPos(nX + nW, nY);
+	this.setLinePos();
+}
+
+void T_LogWindow::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_sLine.setZ(nZ + 1, -1);
+	this.m_spScrollBase.setZ(nZ);
+	this.m_sScroll.setZ(nZ + 1);
+}
+
+void T_LogWindow::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sLine.setShow(bShow, -1);
+	this.m_spScrollBase.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+}
+
+void T_LogWindow::setFontType(int nFontType)
+{
+	this.m_tmLog.nFace = nFontType;
+	this.m_tmLog.nWeight = 文字の太さ(this.m_bFontBold, this.m_tmLog.nFace);
+}
+
+void T_LogWindow::setFontSize(int nFontSize)
+{
+	this.m_tmLog.nSize = nFontSize;
+}
+
+void T_LogWindow::setFontBold(bool bFontBold)
+{
+	this.m_bFontBold = bFontBold;
+	this.m_tmLog.nWeight = 文字の太さ(this.m_bFontBold, this.m_tmLog.nFace);
+}
+
+void T_LogWindow::setShadowPixel(int nL, int nR, int nU, int nD)
+{
+	影ピクセル_補正(nL, nR, nU, nD);
+	this.m_tmLog.nShadowPixelL = nL;
+	this.m_tmLog.nShadowPixelR = nR;
+	this.m_tmLog.nShadowPixelU = nU;
+	this.m_tmLog.nShadowPixelD = nD;
+}
+
+void T_LogWindow::setShadowColor(int nR, int nG, int nB)
+{
+	色_補正(nR, nG, nB);
+	this.m_tmLog.nShadowColorR = nR;
+	this.m_tmLog.nShadowColorG = nG;
+	this.m_tmLog.nShadowColorB = nB;
+}
+
+void T_LogWindow::setDrawArea(int nTextX, int nTextY, int nTextWidth, int nTextHeight, int nLineSpace)
+{
+	if (this.m_nLogNo <= 0)
+	{
+		return;
+	}
+	this.m_nTextX = nTextX;
+	this.m_nTextY = nTextY;
+	this.m_nTextCount = nTextWidth / this.m_tmLog.nSize;
+	this.m_nLineCount = (nTextHeight + nLineSpace) / (this.m_tmLog.nSize + nLineSpace);
+	this.m_nLineSpace = nLineSpace;
+}
+
+void T_LogWindow::getShadowPixel(ref int nL, ref int nR, ref int nU, ref int nD)
+{
+	nL = this.m_tmLog.nShadowPixelL;
+	nR = this.m_tmLog.nShadowPixelR;
+	nU = this.m_tmLog.nShadowPixelU;
+	nD = this.m_tmLog.nShadowPixelD;
+}
+
+void T_LogWindow::getShadowColor(ref int nR, ref int nG, ref int nB)
+{
+	nR = this.m_tmLog.nShadowColorR;
+	nG = this.m_tmLog.nShadowColorG;
+	nB = this.m_tmLog.nShadowColorB;
+}
+
+int T_LogWindow::checkSelect()
+{
+	int nID = 0;
+	while (true)
+	{
+		switch (this.m_sScroll.checkInput(nID))
+		{
+			case 1:
+			case 2:
+				return nID;
+			case 0:
+			default:
+				break;
+		}
+		if (this.m_sScroll.checkWheel())
+		{
+			continue;
+		}
+		UPDATE(true);
+		if (nID <= 0)
+		{
+			if (this.checkKey())
+			{
+				return -1;
+			}
+		}
+	}
+	return 0;
+}
+
+bool T_LogWindow::checkKey()
+{
+	int nKey = 0;
+	if (this.m_sScroll.checkKey())
+	{
+		return false;
+	}
+	if (!this.m_spBase.getShow())
+	{
+		nKey = キー_メッセージ枠復帰();
+		if (nKey > 0)
+		{
+			this.setShow(true);
+			キー_離し待ち(nKey, true);
+		}
+	}
+	else
+	{
+		nKey = キー_未読スキップ();
+		if (nKey > 0)
+		{
+			return true;
+		}
+		nKey = キー_メッセージ送り();
+		if (nKey > 0)
+		{
+			キー_離し待ち(nKey, true);
+			return true;
+		}
+		nKey = キー_メッセージ枠消去();
+		if (nKey > 0)
+		{
+			this.setShow(false);
+			キー_離し待ち(nKey, true);
+		}
+	}
+	return false;
+}
+
+void T_LogWindow::scrollUp(string szText, int nColor)
+{
+	this.m_sLine.erase(this.m_sLine.getCount() - 1);
+	this.drawText(0, szText, nColor);
+	this.m_nLogIndex--;
+}
+
+void T_LogWindow::scrollDown(string szText, int nColor)
+{
+	this.m_sLine.erase(0);
+	this.drawText(-1, szText, nColor);
+	this.m_nLogIndex++;
+}
+
+void T_LogWindow::resetLine()
+{
+	int i = 0;
+	int cnt = this.m_nLogCount > this.m_nLineCount ? this.m_nLineCount : this.m_nLogCount;
+	this.m_sLine.eraseAll();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!this.drawLine(this.m_nLogIndex + i))
+		{
+			break;
+		}
+	}
+}
+
+bool T_LogWindow::addLine(int nLogIndex)
+{
+	switch (ログデータ_タイプ(this.m_nLogNo, nLogIndex))
+	{
+		case 1:
+			this.addText(ログデータ_テキスト(this.m_nLogNo, nLogIndex), ログデータ_色(this.m_nLogNo, nLogIndex));
+			break;
+		case 2:
+			this.addSeparator(ログデータ_色(this.m_nLogNo, nLogIndex));
+			break;
+		default:
+			return false;
+	}
+	this.setLinePos();
+	UPDATE(true);
+	return true;
+}
+
+void T_LogWindow::addText(string szText, int nColor)
+{
+	if (this.m_sLine.getCount() < this.m_nLineCount)
+	{
+		this.drawText(-1, szText, nColor);
+	}
+	else
+	{
+		this.scrollDown(szText, nColor);
+	}
+}
+
+void T_LogWindow::addSeparator(int nColor)
+{
+	this.addText(全角区切り(this.m_nTextCount), nColor);
+}
+
+bool T_LogWindow::drawLine(int nLogIndex)
+{
+	switch (ログデータ_タイプ(this.m_nLogNo, nLogIndex))
+	{
+		case 1:
+			this.drawText(-1, ログデータ_テキスト(this.m_nLogNo, nLogIndex), ログデータ_色(this.m_nLogNo, nLogIndex));
+			break;
+		case 2:
+			this.drawSeparator(-1, ログデータ_色(this.m_nLogNo, nLogIndex));
+			break;
+		default:
+			return false;
+	}
+	return true;
+}
+
+void T_LogWindow::drawText(int nLineIndex, string szText, int nColor)
+{
+	this.setColor(nColor);
+	T_DrawLine sLine;
+	sLine.createFromTextMetrics(0, szText, this.m_tmLog, 0);
+	this.m_sLine.add(sLine, nLineIndex);
+}
+
+void T_LogWindow::drawSeparator(int nLineIndex, int nColor)
+{
+	this.drawText(nLineIndex, 全角区切り(this.m_nTextCount), nColor);
+}
+
+void T_LogWindow::setLinePos()
+{
+	int i = 0;
+	int cnt = this.m_sLine.getCount();
+	int nX = this.m_spBase.getPosX() + this.m_nTextX;
+	int nY = this.m_spBase.getPosY() + this.m_nTextY;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsLine = this.m_sLine.get(i);
+		rfsLine.setPos(nX, nY);
+		nY += rfsLine.getHeight() + this.m_nLineSpace;
+	}
+}
+
+void T_LogWindow::setColor(int nColor)
+{
+	ログテキスト_色(nColor, this.m_tmLog.nColorR, this.m_tmLog.nColorG, this.m_tmLog.nColorB);
+}
+

@@ -1,0 +1,86 @@
+int T_SkillList::getCharaNo()
+{
+	return this.m_nCharaNo;
+}
+
+int T_SkillList::get(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anSkillNo.Numof() ? -1 : this.m_anSkillNo[nIndex];
+}
+
+int T_SkillList::getIndex(int nSkillNo)
+{
+	return nSkillNo > 0 ? this.m_anSkillNo.Find(0, this.m_anSkillNo.Numof(), nSkillNo) : -1;
+}
+
+int T_SkillList::getCount()
+{
+	return this.m_anSkillNo.Numof();
+}
+
+int T_SkillList::getSpace()
+{
+	return this.m_anSkillNo.Find(0, this.m_anSkillNo.Numof(), 0);
+}
+
+T_SkillList::T_SkillList()
+{
+	this.clear();
+}
+
+T_SkillList::~T_SkillList()
+{
+	this.free();
+}
+
+bool T_SkillList::create(int nCharaNo, int nType)
+{
+	this.free();
+	int cnt = 0;
+	switch (nType)
+	{
+		case 0:
+			cnt = キャラスキル_実装一覧(nCharaNo, this.m_anSkillNo);
+			break;
+		case 1:
+			cnt = キャラスキル_保有一覧(nCharaNo, this.m_anSkillNo);
+			break;
+		case 2:
+			cnt = キャラスキル_追加一覧(nCharaNo, this.m_anSkillNo);
+			break;
+		default:
+			return false;
+	}
+	if (cnt < 0)
+	{
+		return false;
+	}
+	this.m_nCharaNo = nCharaNo;
+	return true;
+}
+
+void T_SkillList::free()
+{
+	this.clear();
+	if (!this.m_anSkillNo.Empty())
+	{
+		this.m_anSkillNo.Free();
+	}
+}
+
+void T_SkillList::clear()
+{
+	this.m_nCharaNo = -1;
+	this.m_anSkillNo.Fill(0, this.m_anSkillNo.Numof(), 0);
+}
+
+bool T_SkillList::set(int nIndex, int nSkillNo)
+{
+	if (nIndex < 0 || nIndex >= this.m_anSkillNo.Numof())
+	{
+		return false;
+	}
+	this.m_anSkillNo[nIndex] = nSkillNo;
+	return true;
+}
+

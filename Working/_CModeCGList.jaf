@@ -1,0 +1,51 @@
+void _CModeCGList::_Create(array@_CModeCGInfo _aModeCGInfo)
+{
+	if (this._m_aModeCG.Numof() != _aModeCGInfo.Numof())
+	{
+		this._Release();
+		if (_aModeCGInfo.Empty())
+		{
+			return;
+		}
+		this._m_aModeCG.Alloc(_aModeCGInfo.Numof());
+	}
+	int _n = 0;
+	for (_n = 0; _n < this._m_aModeCG.Numof(); ++_n)
+	{
+		this._m_aModeCG[_n]._Create(_aModeCGInfo[_n]);
+	}
+}
+
+void _CModeCGList::_Release()
+{
+	int _n = 0;
+	for (_n = 0; _n < this._m_aModeCG.Numof(); ++_n)
+	{
+		this._m_aModeCG[_n]._Release();
+	}
+	this._m_aModeCG.Free();
+}
+
+void _CModeCGList::_SetShow(int _nIndex)
+{
+	int _n = 0;
+	for (_n = 0; _n < this._m_aModeCG.Numof(); ++_n)
+	{
+		this._m_aModeCG[_n]._SetShow(_nIndex == _n);
+	}
+}
+
+void _CModeCGList::_HideAll()
+{
+	int _n = 0;
+	for (_n = 0; _n < this._m_aModeCG.Numof(); ++_n)
+	{
+		this._m_aModeCG[_n]._SetShow(false);
+	}
+}
+
+int _CModeCGList::_Numof()
+{
+	return this._m_aModeCG.Numof();
+}
+

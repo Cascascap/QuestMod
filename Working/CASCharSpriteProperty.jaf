@@ -1,0 +1,139 @@
+CASCharSpriteProperty::CASCharSpriteProperty()
+{
+	this.m_nType = 0;
+	this.m_nSize = 16;
+	this.m_Color.Set(255, 255, 255, 255);
+	this.m_fBoldWeight = 0.0;
+	this.m_fEdgeWeight = 0.0;
+	this.m_EdgeColor.Set(0, 0, 0, 255);
+}
+
+void CASCharSpriteProperty::SetType(int nType)
+{
+	this.m_nType = nType;
+}
+
+void CASCharSpriteProperty::SetSize(int nSize)
+{
+	this.m_nSize = nSize;
+}
+
+void CASCharSpriteProperty::SetColor(CASColor Color)
+{
+	this.m_Color = Color;
+}
+
+void CASCharSpriteProperty::SetBoldWeight(float fBoldWeight)
+{
+	this.m_fBoldWeight = fBoldWeight;
+}
+
+void CASCharSpriteProperty::SetEdgeWeight(float fEdgeWeight)
+{
+	this.m_fEdgeWeight = fEdgeWeight;
+}
+
+void CASCharSpriteProperty::SetEdgeColor(CASColor EdgeColor)
+{
+	this.m_EdgeColor = EdgeColor;
+}
+
+int CASCharSpriteProperty::GetType()
+{
+	return this.m_nType;
+}
+
+int CASCharSpriteProperty::GetSize()
+{
+	return this.m_nSize;
+}
+
+CASColor CASCharSpriteProperty::GetColor()
+{
+	return this.m_Color;
+}
+
+float CASCharSpriteProperty::GetBoldWeight()
+{
+	return this.m_fBoldWeight;
+}
+
+float CASCharSpriteProperty::GetEdgeWeight()
+{
+	return this.m_fEdgeWeight;
+}
+
+CASColor CASCharSpriteProperty::GetEdgeColor()
+{
+	return this.m_EdgeColor;
+}
+
+bool CASCharSpriteProperty::Equal(ref CASCharSpriteProperty Obj)
+{
+	if (this.m_nType != Obj.m_nType)
+	{
+		return false;
+	}
+	if (this.m_nSize != Obj.m_nSize)
+	{
+		return false;
+	}
+	if (!this.m_Color.Equal(Obj.m_Color))
+	{
+		return false;
+	}
+	if (this.m_fBoldWeight != Obj.m_fBoldWeight)
+	{
+		return false;
+	}
+	if (this.m_fEdgeWeight != Obj.m_fEdgeWeight)
+	{
+		return false;
+	}
+	if (!this.m_EdgeColor.Equal(Obj.m_EdgeColor))
+	{
+		return false;
+	}
+	return true;
+}
+
+void CASCharSpriteProperty::SetProperty()
+{
+	ChipmunkSpriteEngine.SP_SetTextSpriteType(this.m_nType);
+	ChipmunkSpriteEngine.SP_SetTextSpriteSize(this.m_nSize);
+	ChipmunkSpriteEngine.SP_SetTextSpriteColor(this.m_Color.GetR(), this.m_Color.GetG(), this.m_Color.GetB());
+	ChipmunkSpriteEngine.SP_SetTextSpriteBoldWeight(this.m_fBoldWeight);
+	ChipmunkSpriteEngine.SP_SetTextSpriteEdgeWeight(this.m_fEdgeWeight);
+	ChipmunkSpriteEngine.SP_SetTextSpriteEdgeColor(this.m_EdgeColor.GetR(), this.m_EdgeColor.GetG(), this.m_EdgeColor.GetB());
+}
+
+int CASCharSpriteProperty::GetPixelWidth()
+{
+	int nWidth = this.m_nSize;
+	if (nWidth % 2 != 0)
+	{
+		++nWidth;
+	}
+	nWidth += Math.Max(Math.Ceil(this.m_fBoldWeight), Math.Ceil(this.m_fEdgeWeight)) * 2;
+	return nWidth;
+}
+
+int CASCharSpriteProperty::GetPixelHeight()
+{
+	int nHeight = this.m_nSize;
+	if (nHeight % 2 != 0)
+	{
+		++nHeight;
+	}
+	nHeight += Math.Max(Math.Ceil(this.m_fBoldWeight), Math.Ceil(this.m_fEdgeWeight)) * 2;
+	return nHeight;
+}
+
+int CASCharSpriteProperty::GetFontWidth(string Char)
+{
+	this.SetProperty();
+	int Width = 0;
+	ChipmunkSpriteEngine.SP_GetFontWidth(Char, Width);
+	return Width;
+}
+

@@ -1,0 +1,212 @@
+bool 味方パーティ_登録(int nNo, int nCharaNo)
+{
+	if (!味方パーティ_確認(nNo))
+	{
+		return false;
+	}
+	PTA[nNo] = nCharaNo > 0 ? nCharaNo : 0;
+	return true;
+}
+
+int 味方パーティ_外し(int nCharaNo)
+{
+	int nNo = 味方パーティ_検索(nCharaNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	PTA[nNo] = 0;
+	return nNo;
+}
+
+int 味方パーティ_番号(int nNo)
+{
+	if (!味方パーティ_確認(nNo))
+	{
+		return -1;
+	}
+	return PTA[nNo];
+}
+
+void 味方パーティ_クリア()
+{
+	PTA.Fill(0, PTA.Numof(), 0);
+}
+
+int 味方パーティ_検索(int nCharaNo)
+{
+	return PTA.Find(1, PTA.Numof(), nCharaNo);
+}
+
+int 味方パーティ_登録数()
+{
+	int i = 0;
+	int cnt = 味方パーティ_数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (味方パーティ_番号(i) > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+bool 味方パーティ_登録済(int nNo)
+{
+	return 味方パーティ_番号(nNo) > 0;
+}
+
+bool 味方パーティ_存在確認(int nCharaNo)
+{
+	return 味方パーティ_検索(nCharaNo) > 0;
+}
+
+bool 味方パーティ_確認(int nNo)
+{
+	return nNo > 0 && nNo < PTA.Numof();
+}
+
+int 味方パーティ_数()
+{
+	return PTA.Numof() - 1;
+}
+
+int 味方パーティ_取得経験値(int nNo)
+{
+	if (!味方パーティ_確認(nNo))
+	{
+		return -1;
+	}
+	return PTA_EXP[nNo];
+}
+
+bool 味方パーティ_経験値補正_才能限界(int nNo)
+{
+	return PTA_EXP_B1[nNo] == 1;
+}
+
+bool 味方パーティ_経験値補正_敵弱すぎ(int nNo)
+{
+	return PTA_EXP_B2[nNo] == 1;
+}
+
+bool 味方パーティ_経験値補正_ＬＶ制限(int nNo)
+{
+	return PTA_EXP_B2[nNo] == 2;
+}
+
+bool 味方パーティ_経験値補正_スキル効果(int nNo)
+{
+	return PTA_EXP_A1[nNo] == 1;
+}
+
+bool 味方パーティ_経験値補正_アイテム効果(int nNo)
+{
+	return PTA_EXP_A2[nNo] == 1;
+}
+
+bool 敵パーティ_登録(int nNo, int nMonsterNo)
+{
+	if (!敵パーティ_確認(nNo))
+	{
+		return false;
+	}
+	PTB[nNo] = nMonsterNo;
+	return true;
+}
+
+int 敵パーティ_番号(int nNo)
+{
+	if (!敵パーティ_確認(nNo))
+	{
+		return -1;
+	}
+	return PTB[nNo];
+}
+
+void 敵パーティ_クリア()
+{
+	PTB.Fill(0, PTB.Numof(), 0);
+}
+
+int 敵パーティ_検索(int nMonsterNo)
+{
+	return PTB.Find(1, PTB.Numof(), nMonsterNo);
+}
+
+bool 敵パーティ_存在確認(int nMonsterNo)
+{
+	return 敵パーティ_検索(nMonsterNo) >= 0;
+}
+
+bool 敵パーティ_確認(int nNo)
+{
+	return nNo > 0 && nNo < PTB.Numof();
+}
+
+int 敵パーティ_数()
+{
+	return PTB.Numof() - 1;
+}
+
+bool 敵パーティ_番号確認(int nMonsterNo)
+{
+	if (nMonsterNo <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = 敵パーティ_数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nNo = 敵パーティ_番号(i);
+		if (nNo > 0 && キャラ_番号(nNo) == nMonsterNo)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+int 従魔_番号()
+{
+	return PTC[1];
+}
+
+bool 従魔_存在確認()
+{
+	return 従魔_番号() >= 0;
+}
+
+int 従魔_オーナー番号()
+{
+	return ◆従魔オーナー番号;
+}
+
+int 従魔_ポリゴン番号()
+{
+	return ◆従魔ポリゴン番号;
+}
+
+int 従魔_アイテム番号()
+{
+	return ◆従魔アイテム番号;
+}
+
+int 味方パーティ_参加数()
+{
+	int i = 0;
+	int cnt = 味方パーティ_数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (味方パーティ_番号(i) > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+

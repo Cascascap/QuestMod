@@ -1,0 +1,201 @@
+bool T_ButtonAnimeData::isUpdate()
+{
+	return this.m_nStatus > 0;
+}
+
+T_ButtonAnimeData::T_ButtonAnimeData()
+{
+	this.clear();
+}
+
+void T_ButtonAnimeData::clear()
+{
+	this.m_nSpNo = -1;
+	this.m_nStatus = -1;
+	this.m_nColorR = -1;
+	this.m_nColorG = -1;
+	this.m_nColorB = -1;
+	this.m_nRate = -1;
+}
+
+bool T_ButtonAnimeData::update(float fMag)
+{
+	if (this.m_nStatus <= 0)
+	{
+		return false;
+	}
+	T_Sprite sWork;
+	sWork.attach(this.m_nSpNo);
+	if (this.m_nRate < 0)
+	{
+		int nRate = 数値_補正(fMag * 128.0 + 128.0, 0, 255);
+		sWork.setBlendRate(nRate);
+	}
+	else
+	{
+		int nRate0 = this.m_nRate / 2;
+		int nRate1 = 数値_補正(fMag * nRate0 + nRate0, 0, 255);
+		sWork.coverColor3D(this.m_nColorR, this.m_nColorG, this.m_nColorB, nRate1, true);
+	}
+	sWork.detach();
+	return true;
+}
+
+bool T_ButtonAnimeData::start()
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	this.m_nStatus = 1;
+	return true;
+}
+
+bool T_ButtonAnimeData::stop()
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	this.m_nStatus = 0;
+	return true;
+}
+
+T_ButtonAnime::T_ButtonAnime()
+{
+	this.clear();
+}
+
+T_ButtonAnime::~T_ButtonAnime()
+{
+	this.delete();
+}
+
+bool T_ButtonAnime::create()
+{
+	this.delete();
+	return true;
+}
+
+void T_ButtonAnime::delete()
+{
+	if (!this.m_asData.Empty())
+	{
+		this.m_asData.Free();
+	}
+	this.clear();
+}
+
+void T_ButtonAnime::clear()
+{
+	return;
+}
+
+bool T_ButtonAnime::update()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	float fMag = (Math.Cos((this.m_sTimer.Get() / 2000.0) * 360.0) + 1.0) / 2.0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].update(fMag))
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_ButtonAnime::add(ref T_TextSprite rfSp, int nR, int nG, int nB, int nRate)
+{
+	if (!テキストスプライト_有効(rfSp))
+	{
+		return false;
+	}
+	if (rfSp.getCgNo() > 0)
+	{
+		return false;
+	}
+	int nSpNo = rfSp.getSpNo();
+	if (this.search(nSpNo) >= 0)
+	{
+		return false;
+	}
+	T_ButtonAnimeData sData;
+	if (nR >= 0 && nG >= 0 && nB >= 0 && nRate > 0)
+	{
+		sData.m_nColorR = nR;
+		sData.m_nColorG = nG;
+		sData.m_nColorB = nB;
+		sData.m_nRate = nRate;
+	}
+	sData.m_nSpNo = nSpNo;
+	sData.m_nStatus = 0;
+	this.m_asData.PushBack(sData);
+	return true;
+}
+
+bool T_ButtonAnime::erase(int nSpNo)
+{
+	int idx = this.search(nSpNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_asData.Erase(idx);
+	return true;
+}
+
+bool T_ButtonAnime::start(int nSpNo)
+{
+	int idx = this.search(nSpNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_asData[idx].start();
+}
+
+bool T_ButtonAnime::stop(int nSpNo)
+{
+	int idx = this.search(nSpNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_asData[idx].stop();
+}
+
+bool T_ButtonAnime::isUpdate()
+{
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].isUpdate())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+int T_ButtonAnime::search(int nSpNo)
+{
+	if (nSpNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].m_nSpNo == nSpNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

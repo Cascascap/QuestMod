@@ -1,0 +1,699 @@
+void T_DrawText::setLineSpace(int nLineSpace)
+{
+	this.m_nLineSpace = nLineSpace;
+	this.activeLineSpace = nLineSpace;
+}
+
+void T_DrawText::setTextSpace(int nTextSpace)
+{
+	this.m_nTextSpace = nTextSpace;
+}
+
+void T_DrawText::setDrawType(int nDrawType)
+{
+	this.m_nDrawType = nDrawType;
+	if (this.m_nLineMode == 1 && nDrawType == 2)
+	{
+		this.useOpticalTop = 1;
+	}
+}
+
+int T_DrawText::getWidth()
+{
+	return this.m_nWidth;
+}
+
+int T_DrawText::getHeight()
+{
+	return this.m_nHeight;
+}
+
+int T_DrawText::getCharCount()
+{
+	return this.m_nCharCount > 0 ? this.m_nCharCount : this.m_nWidth / (this.m_sTextMetrics.nSize + this.m_nTextSpace);
+}
+
+int T_DrawText::getLineSpace()
+{
+	return this.m_nLineSpace;
+}
+
+int T_DrawText::getCharSpace()
+{
+	return this.m_nTextSpace;
+}
+
+int T_DrawText::getDrawMode()
+{
+	return this.m_nDrawMode;
+}
+
+int T_DrawText::getLineMode()
+{
+	return this.m_nLineMode;
+}
+
+int T_DrawText::getDrawType()
+{
+	return this.m_nDrawType;
+}
+
+int T_DrawText::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_DrawText::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_DrawText::getZ()
+{
+	return this.m_nZ;
+}
+
+bool T_DrawText::getShow()
+{
+	return this.m_bShow;
+}
+
+int T_DrawText::getBlendRate()
+{
+	return this.m_nBlendRate;
+}
+
+int T_DrawText::getShadowRate()
+{
+	return this.m_nShadowRate;
+}
+
+string T_DrawText::getText()
+{
+	return this.m_szText;
+}
+
+int T_DrawText::getFontSize()
+{
+	return this.m_sTextMetrics.nSize;
+}
+
+int T_DrawText::getFontType()
+{
+	return this.m_sTextMetrics.nFace;
+}
+
+bool T_DrawText::getFontBold()
+{
+	return this.m_bFontBold;
+}
+
+int T_DrawText::getLineCount()
+{
+	return this.m_sLine.getCount();
+}
+
+ref T_DrawLine T_DrawText::getLine(int nIndex)
+{
+	return this.m_sLine.get(nIndex);
+}
+
+bool T_DrawText::isCreated()
+{
+	return this.m_nWidth > 0 && this.m_nHeight > 0;
+}
+
+bool T_DrawText::suspend()
+{
+	return this.m_sLine.suspend();
+}
+
+bool T_DrawText::resume()
+{
+	return this.m_sLine.resume();
+}
+
+bool T_DrawText::isSuspend()
+{
+	return this.m_sLine.isSuspend();
+}
+
+T_DrawText::T_DrawText()
+{
+	this.clear();
+}
+
+T_DrawText::~T_DrawText()
+{
+	this.delete();
+}
+
+void T_DrawText::create(int nWidth, int nHeight, int nCharCount, int nLineSpace, int nDrawMode, int nLineMode)
+{
+	this.delete();
+	this.m_nWidth = nWidth;
+	this.m_nHeight = nHeight;
+	this.m_nCharCount = nCharCount;
+	this.m_nLineSpace = nLineSpace;
+	this.activeLineSpace = nLineSpace;
+	this.m_nTextSpace = 0;
+	this.m_nDrawMode = nDrawMode;
+	this.m_nLineMode = nLineMode;
+	this.m_nDrawType = 0;
+	this.minSpacing = 0.5;
+	this.maxSpacing = 1.0;
+	this.maxNumberOfLines = 0;
+	this.useOpticalTop = 0;
+}
+
+void T_DrawText::delete()
+{
+	this.m_sLine.delete();
+	this.clear();
+}
+
+void T_DrawText::clear()
+{
+	this.m_nWidth = -1;
+	this.m_nHeight = -1;
+	this.m_nCharCount = 0;
+	this.m_nLineSpace = 0;
+	this.m_nTextSpace = 0;
+	this.m_nDrawMode = -1;
+	this.m_nLineMode = -1;
+	this.m_nDrawType = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nBlendRate = 255;
+	this.m_nShadowRate = 255;
+	this.m_szText = "";
+	this.m_bFontBold = false;
+	this.m_sTextMetrics.nSize = 16;
+	this.m_sTextMetrics.nColorR = 255;
+	this.m_sTextMetrics.nColorG = 255;
+	this.m_sTextMetrics.nColorB = 255;
+	this.m_sTextMetrics.nWeight = 0;
+	this.m_sTextMetrics.nFace = 258;
+	this.m_sTextMetrics.nShadowPixelL = 0;
+	this.m_sTextMetrics.nShadowPixelR = 0;
+	this.m_sTextMetrics.nShadowPixelU = 0;
+	this.m_sTextMetrics.nShadowPixelD = 0;
+	this.m_sTextMetrics.nShadowColorR = 0;
+	this.m_sTextMetrics.nShadowColorG = 0;
+	this.m_sTextMetrics.nShadowColorB = 0;
+}
+
+bool T_DrawText::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	return this.m_sLine.copyToSprite(rfsDst, nDstX - this.m_nX, nDstY - this.m_nY, 0);
+}
+
+void T_DrawText::setText(string szText, bool bCompulsory)
+{
+	if (!this.isCreated())
+	{
+		return;
+	}
+	PreprocessString(szText);
+	if (this.m_szText == szText && !bCompulsory)
+	{
+		return;
+	}
+	array@string aszText;
+	this.m_szText = szText;
+	if (this.m_nDrawType < 2)
+	{
+		テキスト分割_強制改行(szText, this.getCharCount(), aszText);
+	}
+	else
+	{
+		aszText.PushBack(szText);
+	}
+	this.drawLine(aszText, aszText.Numof());
+}
+
+void T_DrawText::setTexts(ref array@string aszText, int nLineCount)
+{
+	if (!this.isCreated())
+	{
+		return;
+	}
+	string szText = テキスト統合_改行あり(aszText, -1);
+	if (this.m_szText == szText)
+	{
+		return;
+	}
+	if (nLineCount < 0)
+	{
+		nLineCount = aszText.Numof();
+	}
+	int cnt = this.drawLine(aszText, nLineCount);
+	if (cnt <= 0)
+	{
+		return;
+	}
+	this.m_szText = szText;
+}
+
+void T_DrawText::setPos(int nX, int nY)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+	this.setLinePos(nX, nY);
+}
+
+void T_DrawText::setPos2(int nX, int nY)
+{
+	this.setPos(this.m_nX + nX, this.m_nY + nY);
+}
+
+void T_DrawText::setZ(int nZ)
+{
+	this.m_nZ = nZ;
+	this.m_sLine.setZ(nZ, -1);
+}
+
+void T_DrawText::setShow(bool bShow)
+{
+	this.m_bShow = bShow;
+	this.m_sLine.setShow(bShow, -1);
+}
+
+void T_DrawText::setBlendRate(int nRate)
+{
+	this.m_nBlendRate = nRate;
+	this.m_sLine.setBlendRate(nRate, -1);
+}
+
+void T_DrawText::setShadowRate(int nRate)
+{
+	this.m_nShadowRate = nRate;
+	this.m_sLine.setShadowRate(nRate, -1);
+}
+
+void T_DrawText::setFontType(int nFontType)
+{
+	switch (nFontType)
+	{
+		case 0:
+		case 1:
+		case 256:
+		case 257:
+		case 258:
+			this.m_sTextMetrics.nFace = nFontType;
+			break;
+		default:
+			this.m_sTextMetrics.nFace = 258;
+			break;
+	}
+	this.m_sTextMetrics.nWeight = 文字の太さ(this.m_bFontBold, this.m_sTextMetrics.nFace);
+}
+
+void T_DrawText::setFontSize(int nFontSize)
+{
+	this.m_sTextMetrics.nSize = nFontSize < 0 ? 16 : nFontSize;
+	this.activeFontSize = this.m_sTextMetrics.nSize;
+}
+
+void T_DrawText::setFontColor(int nR, int nG, int nB)
+{
+	nR = nR < 0 ? 255 : nR;
+	nG = nG < 0 ? 255 : nG;
+	nB = nB < 0 ? 255 : nB;
+	色_補正(nR, nG, nB);
+	this.m_sTextMetrics.nColorR = nR;
+	this.m_sTextMetrics.nColorG = nG;
+	this.m_sTextMetrics.nColorB = nB;
+}
+
+void T_DrawText::setFontBold(int nFontBold)
+{
+	this.m_bFontBold = nFontBold < 0 ? 0 : nFontBold > 0;
+	this.m_sTextMetrics.nWeight = 文字の太さ(this.m_bFontBold, this.m_sTextMetrics.nFace);
+}
+
+void T_DrawText::setShadowPixel(int nL, int nR, int nU, int nD)
+{
+	nL = nL < 0 ? 0 : nL;
+	nR = nR < 0 ? 0 : nR;
+	nU = nU < 0 ? 0 : nU;
+	nD = nD < 0 ? 0 : nD;
+	影ピクセル_補正(nL, nR, nU, nD);
+	this.m_sTextMetrics.nShadowPixelL = nL;
+	this.m_sTextMetrics.nShadowPixelR = nR;
+	this.m_sTextMetrics.nShadowPixelU = nU;
+	this.m_sTextMetrics.nShadowPixelD = nD;
+}
+
+void T_DrawText::setShadowColor(int nR, int nG, int nB)
+{
+	nR = nR < 0 ? 0 : nR;
+	nG = nG < 0 ? 0 : nG;
+	nB = nB < 0 ? 0 : nB;
+	色_補正(nR, nG, nB);
+	this.m_sTextMetrics.nShadowColorR = nR;
+	this.m_sTextMetrics.nShadowColorG = nG;
+	this.m_sTextMetrics.nShadowColorB = nB;
+}
+
+void T_DrawText::setTextMetrics(ref sact_text_metrics_t sTextMetrics)
+{
+	this.m_sTextMetrics = sTextMetrics;
+}
+
+int T_DrawText::getRealWidth()
+{
+	int i = 0;
+	int cnt = this.m_sLine.getCount();
+	int nMax = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsLine = this.m_sLine.get(i);
+		if (rfsLine === NULL)
+		{
+			continue;
+		}
+		nMax = _max(rfsLine.getRealWidth(), nMax);
+	}
+	return nMax;
+}
+
+int T_DrawText::getRealHeight()
+{
+	int i = 0;
+	int cnt = this.m_sLine.getCount();
+	int nH = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsLine = this.m_sLine.get(i);
+		if (rfsLine === NULL)
+		{
+			continue;
+		}
+		nH += rfsLine.getRealHeight() + this.m_nLineSpace;
+	}
+	return nH;
+}
+
+void T_DrawText::getFontColor(ref int nR, ref int nG, ref int nB)
+{
+	nR = this.m_sTextMetrics.nColorR;
+	nG = this.m_sTextMetrics.nColorG;
+	nB = this.m_sTextMetrics.nColorB;
+}
+
+void T_DrawText::getShadowPixel(ref int nL, ref int nR, ref int nU, ref int nD)
+{
+	nL = this.m_sTextMetrics.nShadowPixelL;
+	nR = this.m_sTextMetrics.nShadowPixelR;
+	nU = this.m_sTextMetrics.nShadowPixelU;
+	nD = this.m_sTextMetrics.nShadowPixelD;
+}
+
+void T_DrawText::getShadowColor(ref int nR, ref int nG, ref int nB)
+{
+	nR = this.m_sTextMetrics.nShadowColorR;
+	nG = this.m_sTextMetrics.nShadowColorG;
+	nB = this.m_sTextMetrics.nShadowColorB;
+}
+
+void T_DrawText::getTextMetrics(ref sact_text_metrics_t sTextMetrics)
+{
+	sTextMetrics = this.m_sTextMetrics;
+}
+
+int T_DrawText::drawLine(ref array@string aszText, int nLineCount)
+{
+	if (!this.isCreated())
+	{
+		return -1;
+	}
+	if (aszText === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = _min(nLineCount, aszText.Numof());
+	if (cnt < 0)
+	{
+		return -1;
+	}
+	this.m_sLine.delete();
+	if (cnt == 0)
+	{
+		return 0;
+	}
+	this.activeFontSize = this.m_sTextMetrics.nSize;
+	this.activeLineSpace = this.m_nLineSpace;
+	if (this.m_nDrawType < 2)
+	{
+		int nY = 0;
+		for (i = 0; i < cnt; ++i)
+		{
+			T_DrawLine sLine;
+			sLine.createFromTextMetrics(this.m_nDrawType, aszText[i], this.m_sTextMetrics, this.m_nTextSpace);
+			if (this.m_sLine.add(sLine, -1) < 0)
+			{
+				break;
+			}
+			nY += sLine.getHeight() + this.m_nLineSpace;
+			if (nY > this.m_nHeight)
+			{
+				break;
+			}
+		}
+		this.setLinePos(this.m_nX, this.m_nY);
+	}
+	else
+	{
+		int oldFontSize = this.m_sTextMetrics.nSize;
+		int oldLineSpace = this.m_nLineSpace;
+		int nY = 0;
+		array@string lines;
+		array@float spacings;
+		SetFontSize(this.m_sTextMetrics.nSize);
+		SetFontFace(this.m_sTextMetrics.nFace);
+		SetFixedWidthSpacing(this.m_nTextSpace);
+		cnt = aszText.Numof();
+		if (this.maxNumberOfLines == 1)
+		{
+			string line = aszText[0];
+			if (cnt > 1)
+			{
+				for (i = 0; i < cnt; ++i)
+				{
+					line += " " + aszText[i];
+				}
+			}
+			this.FitText_(line, this.m_sTextMetrics.nSize);
+			T_DrawLine sLine;
+			sLine.createFromTextMetrics2(this.m_nDrawType, line, this.m_sTextMetrics, this.m_nTextSpace, this._spacing);
+			this.activeFontSize = this.m_sTextMetrics.nSize;
+			if (this.m_sLine.add(sLine, -1) < 0)
+			{
+			}
+		}
+		else
+		{
+			int fontSize = 0;
+			int lineCount = 0;
+			int maxLines = 0;
+			for (fontSize = oldFontSize; fontSize >= 12; fontSize -= 2)
+			{
+				this.m_nLineSpace = (oldLineSpace * fontSize) / oldFontSize;
+				maxLines = GetMaxLines(this.m_nHeight, this.m_sTextMetrics.nFace, fontSize, this.m_nLineSpace, this.useOpticalTop == 2);
+				if (cnt > maxLines)
+				{
+					continue;
+				}
+				SetFontSize(fontSize);
+				lines.Free();
+				spacings.Free();
+				for (i = 0; i < cnt; ++i)
+				{
+					string line = aszText[i];
+					WordWrapText(line, lines, spacings, this.m_nWidth, this.maxSpacing, this.minSpacing);
+				}
+				lineCount = lines.Numof();
+				if (lineCount > maxLines)
+				{
+					continue;
+				}
+				break;
+			}
+			if (fontSize < 12)
+			{
+				fontSize = 12;
+				SetFontSize(fontSize);
+				lines.Free();
+				spacings.Free();
+				for (i = 0; i < cnt; ++i)
+				{
+					string line = aszText[i];
+					WordWrapText(line, lines, spacings, this.m_nWidth, this.maxSpacing, this.minSpacing);
+				}
+			}
+			nY = 0;
+			SetFontSize(fontSize);
+			this.activeFontSize = fontSize;
+			this.m_sTextMetrics.nSize = fontSize;
+			this.m_nLineSpace = (oldLineSpace * fontSize) / oldFontSize;
+			this.activeLineSpace = this.m_nLineSpace;
+			lineCount = lines.Numof();
+			for (i = 0; i < lineCount; ++i)
+			{
+				T_DrawLine sLine;
+				sLine.createFromTextMetrics2(this.m_nDrawType, lines[i], this.m_sTextMetrics, this.m_nTextSpace, spacings[i]);
+				if (this.m_sLine.add(sLine, -1) < 0)
+				{
+					break;
+				}
+				nY += sLine.getHeight() + this.m_nLineSpace;
+				if (nY > this.m_nHeight)
+				{
+					break;
+				}
+				if (i + 1 >= maxLines)
+				{
+					break;
+				}
+			}
+		}
+		this.m_sTextMetrics.nSize = oldFontSize;
+		this.m_nLineSpace = oldLineSpace;
+		this.setLinePos(this.m_nX, this.m_nY);
+	}
+	this.m_sLine.setZ(this.m_nZ, -1);
+	this.m_sLine.setShow(this.m_bShow, -1);
+	this.m_sLine.setBlendRate(this.m_nBlendRate, -1);
+	this.m_sLine.setShadowRate(this.m_nShadowRate, -1);
+	return cnt;
+}
+
+void T_DrawText::setLinePos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_sLine.getCount();
+	if (cnt <= 0)
+	{
+		return;
+	}
+	int nX2 = 0;
+	int nY2 = 0;
+	int oT = 0;
+	int oB = this.activeFontSize;
+	if (this.useOpticalTop)
+	{
+		float opticalTop = 0.0;
+		float opticalBottom = 0.0;
+		GetFontOpticalTopBottom(this.m_sTextMetrics.nFace, this.activeFontSize, opticalTop, opticalBottom, this.useOpticalTop == 2);
+		oT = opticalTop + 0.5;
+		oB = opticalBottom + 0.5;
+	}
+	if (this.m_nLineMode == 1)
+	{
+		int nH = this.m_sLine.getHeight(0);
+		for (i = 1; i < cnt; ++i)
+		{
+			nH += this.m_sLine.getHeight(i) + this.m_nLineSpace;
+		}
+		int opticalHeight = (nH - oT) - (this.activeFontSize - oB);
+		nY2 = ((this.m_nHeight - opticalHeight) + 1) / 2 - oT;
+	}
+	else
+	{
+		nY2 = -oT;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsLine = this.m_sLine.get(i);
+		int nW = rfsLine.getWidth();
+		switch (this.m_nDrawMode)
+		{
+			case 1:
+				nX2 = (this.m_nWidth - nW) / 2;
+				break;
+			case 2:
+				nX2 = this.m_nWidth - nW;
+				break;
+			case 0:
+			default:
+				nX2 = 0;
+				break;
+		}
+		rfsLine.setPos(nX + nX2, nY + nY2);
+		nY2 += rfsLine.getHeight() + this.activeLineSpace;
+	}
+}
+
+void T_DrawText::setMaxNumberOfLines(int _maxNumberOfLines)
+{
+	this.maxNumberOfLines = _maxNumberOfLines;
+	if (this.maxNumberOfLines < 0)
+	{
+		this.maxNumberOfLines = 0;
+	}
+}
+
+int T_DrawText::getMaxNumberOfLines()
+{
+	return this.maxNumberOfLines;
+}
+
+void T_DrawText::setMaxLines(int _maxNumberOfLines)
+{
+	this.maxNumberOfLines = _maxNumberOfLines;
+	if (this.maxNumberOfLines < 0)
+	{
+		this.maxNumberOfLines = 0;
+	}
+}
+
+void T_DrawText::setSpacing(float spacing)
+{
+	this.setMinMaxSpacing(this.minSpacing, spacing);
+}
+
+void T_DrawText::setMinMaxSpacing(float _minSpacing, float _maxSpacing)
+{
+	this.minSpacing = _minSpacing;
+	this.maxSpacing = _maxSpacing;
+	if (this.minSpacing < 0.0)
+	{
+		this.minSpacing = 0.0;
+	}
+	if (this.maxSpacing < 0.0)
+	{
+		this.maxSpacing = 0.0;
+	}
+	if (this.minSpacing > 10.0)
+	{
+		this.minSpacing = 10.0;
+	}
+	if (this.maxSpacing > 10.0)
+	{
+		this.maxSpacing = 10.0;
+	}
+	if (this.minSpacing > this.maxSpacing)
+	{
+		this.maxSpacing = this.minSpacing;
+	}
+}
+
+void T_DrawText::getMinMaxSpacing(ref float _minSpacing, ref float _maxSpacing)
+{
+	_minSpacing = this.minSpacing;
+	_maxSpacing = this.maxSpacing;
+}
+
+bool T_DrawText::FitText_(string text, int maxFontSize)
+{
+	return FitText2(text, this.m_nWidth, this.m_sTextMetrics.nFace, maxFontSize, 12, this.m_sTextMetrics.nSize, this.maxSpacing, this.minSpacing, this._spacing);
+}
+

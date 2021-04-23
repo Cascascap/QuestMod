@@ -1,0 +1,28 @@
+int AFL_CreateFreeSpriteHandle()
+{
+	return g_ASFreeSpriteManager.CreateHandle();
+}
+
+void AFL_ReleaseFreeSpriteHandle(int nHandle)
+{
+	g_ASFreeSpriteManager.ReleaseHandle(nHandle);
+}
+
+int AFL_GetFreeSpriteNum(int nHandle)
+{
+	ref CASFreeSpriteImp FreeSpriteImp = g_ASFreeSpriteManager.GetObject(nHandle);
+	return FreeSpriteImp.GetSpriteNum();
+}
+
+bool AFL_IsExistFreeSprite(int nHandle)
+{
+	ref CASFreeSpriteImp FreeSpriteImp = g_ASFreeSpriteManager.GetObject(nHandle);
+	return FreeSpriteImp.GetSpriteNum() != -1;
+}
+
+void AFL_RecreateFreeSprite(int nHandle)
+{
+	ref CASFreeSpriteImp FreeSpriteImp = g_ASFreeSpriteManager.GetObject(nHandle);
+	FreeSpriteImp.Create();
+}
+

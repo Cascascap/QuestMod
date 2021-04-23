@@ -1,0 +1,172 @@
+T_MusicModeVolume::T_MusicModeVolume()
+{
+	this.m_rcDrag.set2(605, 720, 787, 753);
+	this.clear();
+}
+
+T_MusicModeVolume::~T_MusicModeVolume()
+{
+	this.delete();
+}
+
+bool T_MusicModeVolume::create(int nZ)
+{
+	this.delete();
+	this.createMeter(nZ, 0, 190, 255, 30);
+	this.createMeter(nZ, 1, 255, 5, 0);
+	this.setVolume(-1);
+	this.setMute(-1);
+	return true;
+}
+
+void T_MusicModeVolume::delete()
+{
+	int i = 0;
+	int j = 0;
+	int cnt1 = this.m_aspMeter.Numof();
+	int cnt2 = this.m_aspMeter.Numof(2);
+	for (i = 0; i < cnt1; ++i)
+	{
+		for (j = 0; j < cnt2; ++j)
+		{
+			this.m_aspMeter[i][j].delete();
+		}
+	}
+	this.clear();
+}
+
+void T_MusicModeVolume::clear()
+{
+	this.m_nVolume = -1;
+	this.m_bMute = false;
+	this.m_bShow = false;
+}
+
+bool T_MusicModeVolume::checkDrag()
+{
+	if (this.m_nVolume < 0)
+	{
+		return false;
+	}
+	if (!this.m_rcDrag.mouseInRect())
+	{
+		return false;
+	}
+	if (!キー_押下(1))
+	{
+		return false;
+	}
+	int nMx = 0;
+	int nMy = 0;
+	bool bRet = false;
+	効果音_ドラッグ();
+	while (キー_押下(1))
+	{
+		if (!マウス_位置取得(nMx, nMy))
+		{
+			break;
+		}
+		if (this.m_rcDrag.ptInRect(nMx, nMy))
+		{
+			nMx = 数値_補正(nMx, 607, 786);
+			int nVolume = 実数計算(100.0, nMx - 607, 179.0);
+			this.setVolume(nVolume);
+			bRet = true;
+		}
+		else
+		{
+			nMx = nMx < this.m_rcDrag.m_nSx ? this.m_rcDrag.m_nSx : (nMx > this.m_rcDrag.m_nEx ? this.m_rcDrag.m_nEx : nMx);
+			nMy = nMy < this.m_rcDrag.m_nSy ? this.m_rcDrag.m_nSy : (nMy > this.m_rcDrag.m_nEy ? this.m_rcDrag.m_nEy : nMy);
+			マウス_位置設定_強制(nMx, nMy);
+		}
+		UPDATE(true);
+	}
+	if (bRet)
+	{
+		効果音_ドロップ();
+	}
+	キー_離し待ち(1, true);
+	return bRet;
+}
+
+void T_MusicModeVolume::setVolume(int nVolume)
+{
+	if (nVolume < 0)
+	{
+		this.m_nVolume = 音楽モード音量();
+	}
+	else
+	{
+		this.m_nVolume = 数値_補正(nVolume, 0, 100);
+		AFL_Config_SetVolume(1, this.m_nVolume);
+	}
+	this.setShow(this.m_bShow);
+}
+
+void T_MusicModeVolume::setMute(int nMute)
+{
+	if (nMute < 0)
+	{
+		this.m_bMute = 音楽モードミュート();
+	}
+	else
+	{
+		this.m_bMute = nMute > 0;
+		AFL_Config_SetMute(1, this.m_bMute);
+	}
+	this.setShow(this.m_bShow);
+}
+
+void T_MusicModeVolume::setShow(bool bShow)
+{
+	this.m_bShow = bShow;
+	int i = 0;
+	int j = 0;
+	int cnt1 = this.m_aspMeter.Numof();
+	int cnt2 = this.m_aspMeter.Numof(2);
+	for (i = 0; i < cnt1; ++i)
+	{
+		for (j = 0; j < cnt2; ++j)
+		{
+			this.m_aspMeter[i][j].setShow(0);
+		}
+	}
+	if (this.m_nVolume < 0)
+	{
+		return;
+	}
+	int nCount = 実数計算(26.0, this.m_nVolume, 100.0);
+	int idx = this.m_bMute ? 1 : 0;
+	for (j = 0; j < nCount; ++j)
+	{
+		this.m_aspMeter[idx][j].setShow(bShow);
+	}
+}
+
+bool T_MusicModeVolume::createMeter(int nZ, int nIndex, int nR, int nG, int nB)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspMeter.Numof())
+	{
+		return false;
+	}
+	色_補正(nR, nG, nB);
+	int j = 0;
+	int cnt2 = this.m_aspMeter.Numof(2);
+	int nX = 607;
+	int nY = 747;
+	int nW = 4;
+	int nH = 5;
+	for (j = 0; j < cnt2; ++j)
+	{
+		ref T_Sprite rfsMeter = this.m_aspMeter[nIndex][j];
+		rfsMeter.createPixelOnly(nW, nH);
+		rfsMeter.fill(0, 0, nW, nH, nR, nG, nB, 255);
+		rfsMeter.setPos(nX, nY);
+		rfsMeter.setZ(nZ);
+		nX += 7;
+		nY += -1;
+		nH += 1;
+	}
+	return true;
+}
+

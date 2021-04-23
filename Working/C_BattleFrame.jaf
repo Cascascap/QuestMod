@@ -1,0 +1,50 @@
+bool í“¬‘I‘ğ˜g_ì¬(int nZ)
+{
+	if (!g_sBattleFrame.create())
+	{
+		return false;
+	}
+	g_sBattleFrame.setZ(nZ);
+	return true;
+}
+
+void í“¬‘I‘ğ˜g_íœ()
+{
+	g_sBattleFrame.delete();
+}
+
+void í“¬‘I‘ğ˜g_•\¦İ’è(bool bShow, int nNo)
+{
+	g_sBattleFrame.setShow(bShow, nNo);
+}
+
+void í“¬‘I‘ğ˜g_ˆÊ’u•ÏX()
+{
+	g_sBattleFrame.changePos();
+}
+
+ref T_Sprite í“¬‘I‘ğ˜g_æ“¾(int nNo)
+{
+	return g_sBattleFrame.get(nNo);
+}
+
+int í“¬‘I‘ğ˜g_‚w(int nNo)
+{
+	ref T_Sprite rfsFrame = í“¬‘I‘ğ˜g_æ“¾(nNo);
+	if (rfsFrame === NULL)
+	{
+		return -1;
+	}
+	return rfsFrame.getPosX();
+}
+
+int í“¬‘I‘ğ˜g_‚x(int nNo)
+{
+	ref T_Sprite rfsFrame = í“¬‘I‘ğ˜g_æ“¾(nNo);
+	if (rfsFrame === NULL)
+	{
+		return -1;
+	}
+	return rfsFrame.getPosY();
+}
+

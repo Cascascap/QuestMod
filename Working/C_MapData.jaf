@@ -1,0 +1,262 @@
+bool マップ_通行可(int nX, int nY, int nDir)
+{
+	switch (nDir)
+	{
+		case 1:
+			if (!マップデータ_移動Ｎ(nX, nY))
+			{
+				return false;
+			}
+			return マップデータ_移動Ｓ(nX, nY + 1);
+		case 3:
+			if (!マップデータ_移動Ｓ(nX, nY))
+			{
+				return false;
+			}
+			return マップデータ_移動Ｎ(nX, nY - 1);
+		case 2:
+			if (!マップデータ_移動Ｅ(nX, nY))
+			{
+				return false;
+			}
+			return マップデータ_移動Ｗ(nX + 1, nY);
+		case 4:
+			if (!マップデータ_移動Ｗ(nX, nY))
+			{
+				return false;
+			}
+			return マップデータ_移動Ｅ(nX - 1, nY);
+		default:
+			break;
+	}
+	return false;
+}
+
+void マップ_通行可設定(int nX, int nY, int nDir, bool bFlag)
+{
+	switch (nDir)
+	{
+		case 1:
+			マップデータ_移動Ｎ設定(nX, nY, bFlag);
+			マップデータ_移動Ｓ設定(nX, nY + 1, bFlag);
+			break;
+		case 3:
+			マップデータ_移動Ｓ設定(nX, nY, bFlag);
+			マップデータ_移動Ｎ設定(nX, nY - 1, bFlag);
+			break;
+		case 2:
+			マップデータ_移動Ｅ設定(nX, nY, bFlag);
+			マップデータ_移動Ｗ設定(nX + 1, nY, bFlag);
+			break;
+		case 4:
+			マップデータ_移動Ｗ設定(nX, nY, bFlag);
+			マップデータ_移動Ｅ設定(nX - 1, nY, bFlag);
+			break;
+		default:
+			break;
+	}
+}
+
+bool マップ_床(int nX, int nY)
+{
+	return マップデータ_タイプ(nX, nY) >= 101;
+}
+
+bool マップ_壁(int nX, int nY)
+{
+	int nType = マップデータ_タイプ(nX, nY);
+	return nType >= 1 && nType < 101;
+}
+
+int 当たり判定(int nX, int nY, int nEnterFlag)
+{
+	int nNo = 0;
+	nNo = 置物番号(nX, nY);
+	if (nNo > 0)
+	{
+		return 置物データ_移動フラグ(nX, nY) == nEnterFlag ? nNo : 0;
+	}
+	nNo = ＢＢ番号(nX, nY);
+	if (nNo > 0)
+	{
+		return ＢＢデータ_移動フラグ(nX, nY) == nEnterFlag ? nNo : 0;
+	}
+	return 0;
+}
+
+int 当たり判定_距離(float fX, float fY, ref int nObjectX, ref int nObjectY)
+{
+	int nRet = 0;
+	int nX = 0;
+	int nY = 0;
+	int nX0 = 0;
+	int nY0 = 0;
+	float fMin = 3.40282346638529E+38;
+	array@float afDst;
+	３Ｄマップ_変換_座標＞位置(nX, nY, fX, fY);
+	for (nY0 = -1; nY0 <= 1; ++nY0)
+	{
+		for (nX0 = -1; nX0 <= 1; ++nX0)
+		{
+			int nX2 = nX + nX0;
+			int nY2 = nY + nY0;
+			float fDst = 0.0;
+			int nNo = 当たり判定_距離確認(nX2, nY2, fX, fY, fDst);
+			if (nNo <= 0)
+			{
+				continue;
+			}
+			if (fDst < fMin)
+			{
+				nRet = nNo;
+				nObjectX = nX2;
+				nObjectY = nY2;
+				fMin = fDst;
+			}
+		}
+	}
+	return nRet;
+}
+
+int 当たり判定_距離確認(int nX, int nY, float fX, float fY, ref float fDst)
+{
+	int nNo = 置物番号(nX, nY);
+	if (nNo > 0)
+	{
+		if (置物_距離確認(nX, nY, fX, fY, fDst))
+		{
+			return nNo;
+		}
+	}
+	nNo = ＢＢ番号(nX, nY);
+	if (nNo > 0)
+	{
+		if (ＢＢ_距離確認(nX, nY, fX, fY, fDst))
+		{
+			return nNo;
+		}
+	}
+	return 0;
+}
+
+void マップデータ_ロード(int nMapNo)
+{
+	g_sMapData.load(nMapNo);
+	マップデータ２_ロード(nMapNo);
+}
+
+void マップデータ_アンロード()
+{
+	g_sMapData.unload();
+	マップデータ２_アンロード();
+}
+
+bool マップデータ_セーブ()
+{
+	g_sBillboardInfo.save();
+	マップデータ２_セーブ();
+	return g_sMapData.save();
+}
+
+void マップデータ_更新チェック()
+{
+	g_sMapData.checkUpdate();
+	g_sBillboardInfo.checkUpdate();
+	マップデータ２_更新チェック();
+}
+
+int マップデータ_タイプ(int nX, int nY)
+{
+	return g_sMapData.getType(nX, nY);
+}
+
+int マップデータ_高さ(int nX, int nY)
+{
+	return g_sMapData.getHeight(nX, nY);
+}
+
+bool マップデータ_移動Ｎ(int nX, int nY)
+{
+	return g_sMapData.getEnterN(nX, nY);
+}
+
+bool マップデータ_移動Ｓ(int nX, int nY)
+{
+	return g_sMapData.getEnterS(nX, nY);
+}
+
+bool マップデータ_移動Ｅ(int nX, int nY)
+{
+	return g_sMapData.getEnterE(nX, nY);
+}
+
+bool マップデータ_移動Ｗ(int nX, int nY)
+{
+	return g_sMapData.getEnterW(nX, nY);
+}
+
+int マップデータ_イベント(int nX, int nY)
+{
+	return g_sMapData.getEvent(nX, nY);
+}
+
+int マップデータ_地形(int nX, int nY)
+{
+	return g_sMapData.getGround(nX, nY);
+}
+
+bool マップデータ_戦闘(int nX, int nY)
+{
+	return g_sMapData.getBattle(nX, nY);
+}
+
+void マップデータ_高さ設定(int nX, int nY, int nHeight)
+{
+	g_sMapData.setHeight(nX, nY, nHeight);
+}
+
+void マップデータ_移動Ｎ設定(int nX, int nY, bool bFlag)
+{
+	g_sMapData.setEnterN(nX, nY, bFlag);
+}
+
+void マップデータ_移動Ｓ設定(int nX, int nY, bool bFlag)
+{
+	g_sMapData.setEnterS(nX, nY, bFlag);
+}
+
+void マップデータ_移動Ｅ設定(int nX, int nY, bool bFlag)
+{
+	g_sMapData.setEnterE(nX, nY, bFlag);
+}
+
+void マップデータ_移動Ｗ設定(int nX, int nY, bool bFlag)
+{
+	g_sMapData.setEnterW(nX, nY, bFlag);
+}
+
+void マップデータ_イベント設定(int nX, int nY, int nFlag)
+{
+	g_sMapData.setEvent(nX, nY, nFlag);
+}
+
+void マップデータ_地形設定(int nX, int nY, int nFlag)
+{
+	g_sMapData.setGround(nX, nY, nFlag);
+}
+
+void マップデータ_戦闘設定(int nX, int nY, bool bFlag)
+{
+	g_sMapData.setBattle(nX, nY, bFlag);
+}
+
+bool マップデータ_色情報(ref T_ColorInfo rfsInfo)
+{
+	return g_sMapData.getColor(rfsInfo);
+}
+
+bool マップデータ_色情報設定(ref T_ColorInfo rfsInfo)
+{
+	return g_sMapData.setColor(rfsInfo);
+}
+

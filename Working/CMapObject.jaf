@@ -1,0 +1,294 @@
+void CMapObject::Align()
+{
+	if (!this.m_szObjectName.Empty())
+	{
+		this.SetPos(this.m_fX, ３Ｄマップ_高さ(this.m_fX, this.m_fZ), this.m_fZ);
+	}
+}
+
+void CMapObject::SetPos(float fX, float fY, float fZ)
+{
+	this.m_fX = fX;
+	this.m_fY = fY;
+	this.m_fZ = fZ;
+	this.m_Instance.SetPos(fX, fY, fZ);
+}
+
+bool CMapObject::SetDraw(bool bFlag)
+{
+	return this.m_Instance.SetDraw(bFlag);
+}
+
+bool CMapObject::SetFPS(float fFPS)
+{
+	return this.m_Instance.SetFPS(fFPS);
+}
+
+int CMapObject::GetMapX()
+{
+	return this.m_nMapX;
+}
+
+int CMapObject::GetMapZ()
+{
+	return this.m_nMapZ;
+}
+
+float CMapObject::GetHoseiX()
+{
+	return this.m_fHoseiX;
+}
+
+float CMapObject::GetHoseiY()
+{
+	return this.m_fHoseiY;
+}
+
+float CMapObject::GetHoseiZ()
+{
+	return this.m_fHoseiZ;
+}
+
+float CMapObject::GetPosX()
+{
+	return this.m_fX;
+}
+
+float CMapObject::GetPosY()
+{
+	return this.m_fY;
+}
+
+float CMapObject::GetPosZ()
+{
+	return this.m_fZ;
+}
+
+bool CMapObject::GetDraw()
+{
+	return this.m_Instance.GetDraw();
+}
+
+float CMapObject::GetFPS()
+{
+	return this.m_Instance.GetFPS();
+}
+
+int CMapObject::GetMotionState()
+{
+	return this.m_Instance.GetMotionState();
+}
+
+float CMapObject::GetMotionFrame()
+{
+	return this.m_Instance.GetMotionFrame();
+}
+
+CMapObject::CMapObject()
+{
+	this.Clear();
+}
+
+CMapObject::~CMapObject()
+{
+	this.Release();
+}
+
+void CMapObject::Clear()
+{
+	this.m_nMapX = 0;
+	this.m_nMapZ = 0;
+	this.m_fHoseiX = 0.0;
+	this.m_fHoseiY = 0.0;
+	this.m_fHoseiZ = 0.0;
+	this.m_fX = 0.0;
+	this.m_fY = 0.0;
+	this.m_fZ = 0.0;
+	this.m_szObjectName = "";
+	this.m_szMotion = "";
+	this.m_szNextMotion = "";
+}
+
+bool CMapObject::Create(ref CReignPlugin rfPlugin, int nType)
+{
+	if (rfPlugin === NULL)
+	{
+		return false;
+	}
+	this.m_Instance.Create(rfPlugin.GetPlugin());
+	this.m_Instance.SetType(nType);
+	this.m_Instance.SetDrawShadow(false);
+	this.m_Instance.SetDrawMakeShadow(false);
+	this.m_Instance.SetDrawBackShadow(false);
+	this.m_Instance.SetDrawBump(false);
+	this.m_Instance.SetDiffuse(1.0, 1.0, 1.0);
+	this.m_Instance.SetAmbient(0.0, 0.0, 0.0);
+	return true;
+}
+
+void CMapObject::Release()
+{
+	this.m_Instance.Release();
+	this.Clear();
+}
+
+bool CMapObject::Set(string szObjectName, bool bFlag, string szDirName)
+{
+	if (szObjectName.Empty())
+	{
+		return false;
+	}
+	if (this.m_szObjectName != szObjectName)
+	{
+		if (!this.m_Instance.Load(szDirName + szObjectName))
+		{
+			this.m_szObjectName = "";
+			return false;
+		}
+		this.m_szObjectName = szObjectName;
+	}
+	this.m_Instance.SetDraw(bFlag);
+	this.m_Instance.SetMotionState(0);
+	this.m_Instance.SetMotionFrame(0.0);
+	return true;
+}
+
+bool CMapObject::SetMotion(string szMotionName, float fBeginFrame, float fEndFrame, bool bWait)
+{
+	if (this.m_szMotion != szMotionName)
+	{
+		if (!this.m_Instance.LoadMotion(szMotionName))
+		{
+			this.m_szMotion = "";
+			return false;
+		}
+		this.m_szMotion = szMotionName;
+	}
+	else
+	{
+		bWait = false;
+	}
+	this.m_Instance.SetMotionState(0);
+	this.m_Instance.SetMotionFrameRange(fBeginFrame, fEndFrame);
+	this.m_Instance.SetMotionFrame(fBeginFrame);
+	if (bWait)
+	{
+		３Ｄマップ_ロード待ち(-1);
+	}
+	return true;
+}
+
+void CMapObject::SetMotionState(int nState)
+{
+	this.m_Instance.SetMotionState(nState);
+}
+
+void CMapObject::SetMotionFrame(float fFrame)
+{
+	this.m_Instance.SetMotionFrame(fFrame);
+}
+
+void CMapObject::SetMotionLoopFrameRange(float fBeginFrame, float fEndFrame)
+{
+	this.m_Instance.SetMotionLoopFrameRange(fBeginFrame, fEndFrame);
+}
+
+bool CMapObject::SetNextMotion(string szMotionName, float fBeginFrame, float fEndFrame, bool bWait)
+{
+	if (this.m_szNextMotion != szMotionName)
+	{
+		if (!this.m_Instance.LoadNextMotion(szMotionName))
+		{
+			this.m_szNextMotion = "";
+			return false;
+		}
+		this.m_szNextMotion = szMotionName;
+	}
+	else
+	{
+		bWait = false;
+	}
+	this.m_Instance.SetNextMotionState(0);
+	this.m_Instance.SetNextMotionFrameRange(fBeginFrame, fEndFrame);
+	this.m_Instance.SetNextMotionFrame(fBeginFrame);
+	if (bWait)
+	{
+		３Ｄマップ_ロード待ち(-1);
+	}
+	return true;
+}
+
+void CMapObject::SetNextMotionState(int nState)
+{
+	this.m_Instance.SetNextMotionState(nState);
+}
+
+void CMapObject::SetNextMotionFrame(float fFrame)
+{
+	this.m_Instance.SetNextMotionFrame(fFrame);
+}
+
+void CMapObject::SetNextMotionLoopFrameRange(float fBeginFrame, float fEndFrame)
+{
+	this.m_Instance.SetNextMotionLoopFrameRange(fBeginFrame, fEndFrame);
+}
+
+bool CMapObject::SwapMotion()
+{
+	if (this.m_szNextMotion.Empty())
+	{
+		return false;
+	}
+	this.m_Instance.SetMotionBlend(false);
+	this.m_Instance.SwapMotion();
+	this.m_szMotion <=> this.m_szNextMotion;
+	return true;
+}
+
+void CMapObject::SetMapPos(int nX, int nZ)
+{
+	float fX = 0.0;
+	float fY = 0.0;
+	float fZ = 0.0;
+	this.m_nMapX = nX;
+	this.m_nMapZ = nZ;
+	３Ｄマップ_変換_位置＞座標(fX, fZ, nX, nZ);
+	this.m_fX = fX + this.m_fHoseiX;
+	this.m_fY = ３Ｄマップ_高さ(fX, fZ) + this.m_fHoseiY;
+	this.m_fZ = fZ + this.m_fHoseiZ;
+	this.m_Instance.SetPos(this.m_fX, this.m_fY, this.m_fZ);
+}
+
+void CMapObject::SetHoseiX(float fHoseiX)
+{
+	this.m_fHoseiX = fHoseiX;
+	this.SetMapPos(this.m_nMapX, this.m_nMapZ);
+}
+
+void CMapObject::SetHoseiY(float fHoseiY)
+{
+	this.m_fHoseiY = fHoseiY;
+	this.SetMapPos(this.m_nMapX, this.m_nMapZ);
+}
+
+void CMapObject::SetHoseiZ(float fHoseiZ)
+{
+	this.m_fHoseiZ = fHoseiZ;
+	this.SetMapPos(this.m_nMapX, this.m_nMapZ);
+}
+
+void CMapObject::SetScale(float fScale)
+{
+	this.m_Instance.SetScale(fScale);
+}
+
+void CMapObject::SetAngle(float fAngle)
+{
+	this.m_Instance.SetAngle(fAngle);
+}
+
+void CMapObject::SetSpecular(float fSpecular)
+{
+	this.m_Instance.SetSpecular(fSpecular);
+}
+

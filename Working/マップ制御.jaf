@@ -1,0 +1,355 @@
+void Ｒ８マップロード(int nMapNo, int nWalkNo, bool bPlayerShow, bool bBattle)
+{
+	if (!bBattle)
+	{
+		_黒画面(1, 500);
+	}
+	マップ制御_終了(true);
+	マップイベント_クリア();
+	if (!bBattle)
+	{
+		システムバー_作成(20, nMapNo, false);
+	}
+	マップ_初期化(nMapNo, nWalkNo, -1, -1, -1, false, false);
+	マップ_状態設定(bBattle ? 1 : 0);
+	マップ_キャラ表示フラグ設定(bPlayerShow);
+	◆ＸＸ = Ｒ８キャラＸ();
+	◆ＹＹ = Ｒ８キャラＹ();
+	◆ＮＮ = Ｒ８キャラＮ();
+	◆復帰値 = 0;
+	◆当たり = 0;
+}
+
+void Ｒ８マップ終了()
+{
+	マップ制御_終了(false);
+}
+
+void Ｒ８マップ表示(int nフラグ, int nX, int nY, int nDir)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	nDir = nDir < 0 ? ◆ＮＮ : nDir;
+	マップ_位置設定(nX, nY);
+	キャラ_方向設定(nDir);
+	システムバー_表示設定(true);
+	システムバー_有効設定(true);
+	マップ部品_表示設定(true);
+	if (マップ_ロード直後())
+	{
+		マップ制御_ロード後(nフラグ);
+	}
+	else
+	{
+		bool bFlag = 画面_表示中();
+		マップ_表示設定(true, nフラグ < 0 ? Ｒ８キャラ表示中() : nフラグ, 0);
+		画面_クリア(true, true);
+		if (bFlag)
+		{
+			_EFFECT(1, 500);
+		}
+		else
+		{
+			UPDATE(true);
+		}
+	}
+	◆ＸＸ = Ｒ８キャラＸ();
+	◆ＹＹ = Ｒ８キャラＹ();
+	◆ＮＮ = Ｒ８キャラＮ();
+	◆復帰値 = 0;
+}
+
+void Ｒ８マップ非表示()
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	bool bFlag = 画面_表示中();
+	マップ_表示設定(false, -1, -1);
+	システムバー_表示設定(false);
+	システムバー_有効設定(false);
+	マップ部品_表示設定(false);
+	if (bFlag)
+	{
+		_EFFECT(1, 500);
+	}
+	else
+	{
+		UPDATE(true);
+	}
+	◆ＸＸ = Ｒ８キャラＸ();
+	◆ＹＹ = Ｒ８キャラＹ();
+	◆ＮＮ = Ｒ８キャラＮ();
+	◆復帰値 = 0;
+}
+
+void Ｒ８スクロール(int nDir, int nCount)
+{
+	キャラ_スクロール(nDir, nCount);
+}
+
+void Ｒ８スクロール戻し()
+{
+	キャラ_スクロール戻し();
+}
+
+void Ｒ８置物配置(int nX, int nY, int nNo, int nDraw)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	bool bDraw = nDraw < 0 ? マップ_表示中() : nDraw > 0;
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	if (nNo <= 0)
+	{
+		置物_設定(nX, nY, 0, true);
+		ＢＢ_設定(nX, nY, 0, true);
+	}
+	else if (nNo < 20001)
+	{
+		ＢＢ_設定(nX, nY, 0, true);
+		置物_設定(nX, nY, nNo, bDraw);
+	}
+	else
+	{
+		置物_設定(nX, nY, 0, true);
+		ＢＢ_設定(nX, nY, nNo, bDraw);
+	}
+	if (nNo > 0 && bDraw)
+	{
+		３Ｄマップ_ロード待ち(-1);
+	}
+}
+
+void Ｒ８置物高さ補正(int nX, int nY, int nHeight)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	if (置物あり(nX, nY))
+	{
+		置物_高さ補正(nX, nY, nHeight);
+	}
+	if (ＢＢあり(nX, nY))
+	{
+		ＢＢ_高さ補正(nX, nY, nHeight);
+	}
+}
+
+void Ｒ８置物再生(int nX, int nY)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	枠消去();
+	if (置物あり(nX, nY))
+	{
+		置物_再生(nX, nY, true);
+		return;
+	}
+	if (ＢＢあり(nX, nY))
+	{
+		ＢＢ_再生(nX, nY, true);
+		return;
+	}
+}
+
+void Ｒ８置物ループ(int nX, int nY)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	枠消去();
+	if (置物あり(nX, nY))
+	{
+		置物_ループ(nX, nY);
+		return;
+	}
+	if (ＢＢあり(nX, nY))
+	{
+		ＢＢ_ループ(nX, nY);
+		return;
+	}
+}
+
+void Ｒ８置物戻し(int nX, int nY)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	枠消去();
+	if (置物あり(nX, nY))
+	{
+		置物_戻し(nX, nY);
+		return;
+	}
+	if (ＢＢあり(nX, nY))
+	{
+		ＢＢ_戻し(nX, nY);
+		return;
+	}
+}
+
+void Ｒ８置物停止(int nX, int nY, int nFrameNo)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	if (置物あり(nX, nY))
+	{
+		置物_停止(nX, nY, nFrameNo);
+		return;
+	}
+	if (ＢＢあり(nX, nY))
+	{
+		ＢＢ_停止(nX, nY, nFrameNo);
+		return;
+	}
+}
+
+int Ｒ８置物状態(int nX, int nY)
+{
+	if (!マップ_ロード中())
+	{
+		return -1;
+	}
+	nX = ＴＸ＞ＭＸ(nX < 0 ? ◆ＸＸ : nX);
+	nY = ＴＹ＞ＭＹ(nY < 0 ? ◆ＹＹ : nY);
+	if (置物あり(nX, nY))
+	{
+		return 置物_状態(nX, nY);
+	}
+	if (ＢＢあり(nX, nY))
+	{
+		return ＢＢ_状態(nX, nY);
+	}
+	return -1;
+}
+
+void Ｒ８戻し()
+{
+	Ｒ８自動移動(9);
+}
+
+void Ｒ８自動移動(int nフラグ)
+{
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	bool bOld = マップ_更新再開();
+	キャラ_移動(nフラグ);
+	if (!bOld)
+	{
+		マップ_更新停止();
+	}
+	◆ＸＸ = Ｒ８キャラＸ();
+	◆ＹＹ = Ｒ８キャラＹ();
+	◆ＮＮ = Ｒ８キャラＮ();
+	◆復帰値 = 0;
+}
+
+void Ｒ８キャラ配置(int nX, int nY, int nDir)
+{
+	マップ_位置設定(ＴＸ＞ＭＸ(nX), ＴＹ＞ＭＹ(nY));
+	キャラ_方向設定(nDir);
+	◆ＸＸ = Ｒ８キャラＸ();
+	◆ＹＹ = Ｒ８キャラＹ();
+	◆ＮＮ = Ｒ８キャラＮ();
+	◆復帰値 = 0;
+}
+
+int Ｒ８キャラＸ()
+{
+	return ＭＸ＞ＴＸ(キャラ_位置Ｘ());
+}
+
+int Ｒ８キャラＹ()
+{
+	return ＭＹ＞ＴＹ(キャラ_位置Ｙ());
+}
+
+int Ｒ８キャラＮ()
+{
+	return キャラ_方向();
+}
+
+bool Ｒ８キャラ表示中()
+{
+	return キャラ_表示();
+}
+
+void Ｒ８キャラ表示設定(bool bShow)
+{
+	キャラ_表示設定(bShow);
+}
+
+void Ｒ８キャラ動作設定(int nMotion)
+{
+	bool bOld = Ｒ８キャラ停止();
+	キャラ_モーション設定(nMotion);
+	if (bOld)
+	{
+		Ｒ８キャラ停止解除();
+	}
+}
+
+int Ｒ８キャラ動作()
+{
+	return キャラ_モーション();
+}
+
+bool Ｒ８キャラ標準動作()
+{
+	return キャラ_モーション() == 1;
+}
+
+bool Ｒ８キャラ停止()
+{
+	キャラ_停止(true);
+	return キャラ_更新設定(false);
+}
+
+void Ｒ８キャラ停止解除()
+{
+	キャラ_停止(true);
+	キャラ_更新設定(true);
+}
+
+void Ｒ８プレイヤーマーカー切り替え(int nフラグ)
+{
+	bool bOld = Ｒ８キャラ停止();
+	キャラ_ポリゴン変更(nフラグ);
+	if (bOld)
+	{
+		Ｒ８キャラ停止解除();
+	}
+}
+
+void Ｒ８エンカウント進行(int n歩数)
+{
+	キャラ_エンカウント進行(n歩数);
+}
+

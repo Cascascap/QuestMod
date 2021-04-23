@@ -1,0 +1,219 @@
+CASConstructionData::CASConstructionData()
+{
+	this.m_nCommand = -1;
+}
+
+void CASConstructionData::SetCreate(int nWidth, int nHeight)
+{
+	this.m_nCommand = 0;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+}
+
+void CASConstructionData::SetCreatePixelOnly(int nWidth, int nHeight)
+{
+	this.m_nCommand = 1;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+}
+
+void CASConstructionData::SetFill(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB)
+{
+	this.m_nCommand = 2;
+	this.m_nDestX = nX;
+	this.m_nDestY = nY;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+	this.m_nR = nR;
+	this.m_nG = nG;
+	this.m_nB = nB;
+}
+
+void CASConstructionData::SetFillAlphaColor(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nA)
+{
+	this.m_nCommand = 3;
+	this.m_nDestX = nX;
+	this.m_nDestY = nY;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+	this.m_nR = nR;
+	this.m_nG = nG;
+	this.m_nB = nB;
+	this.m_nA = nA;
+}
+
+void CASConstructionData::SetFillAMap(int nX, int nY, int nWidth, int nHeight, int nAlpha)
+{
+	this.m_nCommand = 4;
+	this.m_nDestX = nX;
+	this.m_nDestY = nY;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+	this.m_nA = nAlpha;
+}
+
+void CASConstructionData::SetFillWithAlpha(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nA)
+{
+	this.m_nCommand = 5;
+	this.m_nDestX = nX;
+	this.m_nDestY = nY;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+	this.m_nR = nR;
+	this.m_nG = nG;
+	this.m_nB = nB;
+	this.m_nA = nA;
+}
+
+void CASConstructionData::SetDrawText(int nX, int nY, string Text, sact_text_metrics_t tm, int CharSpace)
+{
+	this.m_nCommand = 6;
+	this.m_nDestX = nX;
+	this.m_nDestY = nY;
+	this.m_Text = Text;
+	this.m_tm = tm;
+	this.m_Space = CharSpace;
+}
+
+void CASConstructionData::SetFillGradationHorizon(int nX, int nY, int nWidth, int nHeight, int nTopR, int nTopG, int nTopB, int nBottomR, int nBottomG, int nBottomB)
+{
+	this.m_nCommand = 7;
+	this.m_nDestX = nX;
+	this.m_nDestY = nY;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+	this.m_nR = nTopR;
+	this.m_nG = nTopG;
+	this.m_nB = nTopB;
+	this.m_nR2 = nBottomR;
+	this.m_nG2 = nBottomG;
+	this.m_nB2 = nBottomB;
+}
+
+void CASConstructionData::SetDrawRect(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB)
+{
+	this.m_nCommand = 8;
+	this.m_nDestX = nX;
+	this.m_nDestY = nY;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+	this.m_nR = nR;
+	this.m_nG = nG;
+	this.m_nB = nB;
+}
+
+void CASConstructionData::SetDrawLine(int nX0, int nY0, int nX1, int nY1, int nR, int nG, int nB)
+{
+	this.m_nCommand = 9;
+	this.m_nDestX = nX0;
+	this.m_nDestY = nY0;
+	this.m_nDestX2 = nX1;
+	this.m_nDestY2 = nY1;
+	this.m_nR = nR;
+	this.m_nG = nG;
+	this.m_nB = nB;
+}
+
+void CASConstructionData::SetCreateDashChar(int nWidth, int nHeight, CASCharSpriteProperty Property)
+{
+	this.m_nCommand = 10;
+	this.m_nDestWidth = nWidth;
+	this.m_nDestHeight = nHeight;
+	this.m_CharSpriteProperty = Property;
+}
+
+int CASConstructionData::GetCommand()
+{
+	return this.m_nCommand;
+}
+
+int CASConstructionData::GetDestX()
+{
+	return this.m_nDestX;
+}
+
+int CASConstructionData::GetDestY()
+{
+	return this.m_nDestY;
+}
+
+int CASConstructionData::GetDestWidth()
+{
+	return this.m_nDestWidth;
+}
+
+int CASConstructionData::GetDestHeight()
+{
+	return this.m_nDestHeight;
+}
+
+int CASConstructionData::GetDestX2()
+{
+	return this.m_nDestX2;
+}
+
+int CASConstructionData::GetDestY2()
+{
+	return this.m_nDestY2;
+}
+
+int CASConstructionData::GetR()
+{
+	return this.m_nR;
+}
+
+int CASConstructionData::GetG()
+{
+	return this.m_nG;
+}
+
+int CASConstructionData::GetB()
+{
+	return this.m_nB;
+}
+
+int CASConstructionData::GetA()
+{
+	return this.m_nA;
+}
+
+int CASConstructionData::GetR2()
+{
+	return this.m_nR2;
+}
+
+int CASConstructionData::GetG2()
+{
+	return this.m_nG2;
+}
+
+int CASConstructionData::GetB2()
+{
+	return this.m_nB2;
+}
+
+int CASConstructionData::GetA2()
+{
+	return this.m_nA2;
+}
+
+int CASConstructionData::GetSpace()
+{
+	return this.m_Space;
+}
+
+string CASConstructionData::GetText()
+{
+	return this.m_Text;
+}
+
+sact_text_metrics_t CASConstructionData::GetTextMetrics()
+{
+	return this.m_tm;
+}
+
+CASCharSpriteProperty CASConstructionData::GetCharSpriteProperty()
+{
+	return this.m_CharSpriteProperty;
+}
+

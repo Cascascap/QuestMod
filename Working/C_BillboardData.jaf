@@ -1,0 +1,35 @@
+int ‚a‚a”Ô†(int nX, int nY)
+{
+	return g_sBillboardData.getCgNo(nX, nY);
+}
+
+bool ‚a‚a‚ ‚è(int nX, int nY)
+{
+	return ‚a‚a”Ô†(nX, nY) > 0;
+}
+
+int ‚a‚aƒf[ƒ^_•â³‚x(int nX, int nY)
+{
+	int nValue = g_sBillboardData.getHoseiY(nX, nY);
+	if (nValue != 2147483647)
+	{
+		return nValue;
+	}
+	ref T_BillboardInfo rfInfo = g_sBillboardInfo.get(‚a‚a”Ô†(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return 0;
+	}
+	return rfInfo.m_nHoseiY;
+}
+
+int ‚a‚aƒf[ƒ^_ˆÚ“®ƒtƒ‰ƒO(int nX, int nY)
+{
+	return g_sBillboardData.getEnterFlag(nX, nY);
+}
+
+void ‚a‚aƒf[ƒ^_ˆÚ“®ƒtƒ‰ƒOİ’è(int nX, int nY, int nEnterFlag)
+{
+	g_sBillboardData.setEnterFlag(nX, nY, nEnterFlag);
+}
+

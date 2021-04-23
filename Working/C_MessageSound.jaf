@@ -1,0 +1,23 @@
+void メッセージ効果音_準備(int nNo, int nFaceCgNo)
+{
+	int nTime1 = 0;
+	int nTime2 = 0;
+	int nSoundNo = メッセージ効果音番号(nFaceCgNo, nTime1, nTime2);
+	g_sMessageSound.create(nSoundNo, nTime1, nSoundNo + 1, nTime2);
+}
+
+void メッセージ効果音_準備Ｆ(int nNo, int nCharaNo)
+{
+	g_sMessageSound.delete();
+}
+
+void メッセージ効果音_解放()
+{
+	g_sMessageSound.delete();
+}
+
+void メッセージ効果音_再生(string szText)
+{
+	g_sMessageSound.play(szText);
+}
+

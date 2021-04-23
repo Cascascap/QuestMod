@@ -1,0 +1,51 @@
+CRootConfigView::CRootConfigView()
+{
+	this.m_TabNameList.PushBack("メッセージ速度");
+	this.m_TabNameList.PushBack("メッセージ");
+	this.m_TabNameList.PushBack("サウンド");
+	this.m_TabNameList.PushBack("入力");
+	this.m_TabNameList.PushBack("ウィンドウ");
+	this.m_TabNameList.PushBack("デバッグ");
+}
+
+void CRootConfigView::Run(int nRunConfig)
+{
+	for (; ; )
+	{
+		switch (nRunConfig)
+		{
+			case -1:
+				SYS_システム共通セーブ();
+				_g_MouseWheel._Clear();
+				return;
+			case 0:
+				CMessageSpeedConfigView MessageSpeedConfigView;
+				nRunConfig = MessageSpeedConfigView.Run(this.m_TabNameList);
+				break;
+			case 1:
+				CMessageConfigView MessageConfigView;
+				nRunConfig = MessageConfigView.Run(this.m_TabNameList);
+				break;
+			case 2:
+				CVolumeConfigView VolumeConfigView;
+				nRunConfig = VolumeConfigView.Open(g_VolumeConfigModel, this.m_TabNameList);
+				break;
+			case 3:
+				CInputConfigView InputConfigView;
+				nRunConfig = InputConfigView.Run(this.m_TabNameList);
+				break;
+			case 4:
+				CWindowConfigView WindowConfigView;
+				nRunConfig = WindowConfigView.Run(this.m_TabNameList);
+				break;
+			case 5:
+				CDebugConfigView DebugConfigView;
+				nRunConfig = DebugConfigView.Run(this.m_TabNameList);
+				break;
+			default:
+				_g_MouseWheel._Clear();
+				return;
+		}
+	}
+}
+

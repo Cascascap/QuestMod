@@ -1,0 +1,252 @@
+int T_SystemMenu::getMode()
+{
+	return this.m_nMode;
+}
+
+bool T_SystemMenu::isCreated()
+{
+	return this.m_spBase.isCreated();
+}
+
+T_SystemMenu::T_SystemMenu()
+{
+	this.clear();
+}
+
+T_SystemMenu::~T_SystemMenu()
+{
+	this.delete();
+}
+
+void T_SystemMenu::create(int nZ, int nMode)
+{
+	this.delete();
+	this.m_spBase.setCg(10051);
+	this.m_spBase.setZ(nZ);
+	this.m_sButton.create();
+	this.createButton(910002, "Load");
+	this.createButton(910012, "CG Mode");
+	this.createButton(910013, "Music Mode");
+	this.createButton(910091, "To title screen");
+	this.createButton(910092, "End game");
+	this.createButton(910014, "Website");
+	this.createButton(910011, "Settings");
+	this.createButton(910015, "Backlog");
+	if (クエスト_攻略中())
+	{
+		this.createButton(910009, "Suspend Save");
+	}
+	else
+	{
+		this.createButton(910001, "Save");
+	}
+	this.m_sButton.setZ(nZ + 10);
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setDeactiveSkip(true);
+	this.m_nMode = nMode;
+}
+
+void T_SystemMenu::delete()
+{
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_SystemMenu::clear()
+{
+	this.m_nMode = -1;
+}
+
+void T_SystemMenu::open()
+{
+	if (this.m_nMode <= 0)
+	{
+		return;
+	}
+	int nX = 0;
+	int nY = 0;
+	this.setActive();
+	this.setShow(true);
+	nX = 2;
+	nY = 740 - this.m_spBase.getHeight();
+	this.moveBase(nX, 768, nX, nY);
+}
+
+void T_SystemMenu::close()
+{
+	if (this.m_nMode <= 0)
+	{
+		return;
+	}
+	if (!this.m_spBase.getShow())
+	{
+		return;
+	}
+	int nX = this.m_spBase.getPosX();
+	int nY = this.m_spBase.getPosY();
+	this.moveBase(nX, nY, nX, 768);
+	this.setShow(false);
+	this.resetSelect();
+	this.clear();
+}
+
+int T_SystemMenu::select()
+{
+	int nRet = 0;
+	int nID = 0;
+	int nSelectID = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	this.setSelect(this.setCursor(910001), true);
+	UPDATE(true);
+	while (true)
+	{
+		int nRet2 = this.m_sButton.checkInput(nSelectID);
+		if (nRet2 == 2)
+		{
+			nRet = nSelectID;
+			break;
+		}
+		UPDATE(true);
+		if (nRet2 != 1)
+		{
+			nSelectID = this.m_sButton.getSelectID();
+			int nID2 = this.checkKey(nSelectID);
+			if (nID2 > 0)
+			{
+				nRet = nID2;
+				break;
+			}
+			if (this.checkCancel(nSelectID))
+			{
+				nRet = 910099;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+void T_SystemMenu::createButton(int nID, string szText)
+{
+	int nX = 0;
+	int nY = 30 * this.m_sButton.getButtonCount();
+	T_Button sButton;
+	if (nID == 910009)
+	{
+		this.m_spBase.blendCg(nX + 104, nY + 4, 10053, 255);
+		if (!システムメニュー_ボタン作成(sButton, nX, nY, 10052, 104, 4, 10054))
+		{
+			return;
+		}
+	}
+	else if (!システムメニュー_ボタン作成(sButton, nX, nY, 10052, 0, 0, 0))
+	{
+		return;
+	}
+	this.m_sButton.addButton(nID, sButton);
+}
+
+void T_SystemMenu::moveBase(int nStrX, int nStrY, int nEndX, int nEndY)
+{
+	this.setPos(nEndX, nEndY);
+}
+
+int T_SystemMenu::checkKey(int nID)
+{
+	int nKey = システムバー_ショートカット(900001);
+	if (キー_押下(nKey))
+	{
+		効果音_クリック();
+		キー_離し待ち(nKey, true);
+		return 900001;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+bool T_SystemMenu::checkCancel(int nID)
+{
+	if (キャンセル_確認())
+	{
+		return true;
+	}
+	int nKey = 0;
+	if (nID <= 0)
+	{
+		nKey = キー_決定();
+		if (nKey > 0)
+		{
+			goto label0;
+		}
+	}
+	return false;
+label0:
+	効果音_キャンセル();
+	キー_離し待ち(nKey, true);
+	return true;
+}
+
+void T_SystemMenu::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_SystemMenu::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+int T_SystemMenu::setCursor(int nID)
+{
+	if (nID <= 0)
+	{
+		nID = this.m_sButton.getFirstButton(true);
+	}
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return nID;
+	}
+	this.m_sButton.setButtonCursor(nID);
+	return nID;
+}
+
+void T_SystemMenu::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+}
+
+void T_SystemMenu::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_sButton.getButtonCount();
+	int nX2 = nX + 0;
+	int nY2 = nY + 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonPos(this.m_sButton.getButtonID(i), nX2, nY2);
+		nY2 += 30;
+	}
+	this.m_spBase.setPos(nX, nY);
+}
+
+void T_SystemMenu::setActive()
+{
+	int i = 0;
+	int cnt = this.m_sButton.getButtonCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nID = this.m_sButton.getButtonID(i);
+		this.m_sButton.setButtonActive(nID, システムメニュー_有効確認(this.m_nMode, nID));
+	}
+}
+

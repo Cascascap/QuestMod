@@ -1,0 +1,282 @@
+T_ResultLevelUp::T_ResultLevelUp()
+{
+	this.clear();
+}
+
+T_ResultLevelUp::~T_ResultLevelUp()
+{
+	this.delete();
+}
+
+bool T_ResultLevelUp::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.createList();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	this.m_spBase.setCg(10358);
+	this.m_spBase.setZ(nZ);
+	this.m_spLabel.setCg(10364);
+	this.m_spLabel.setZ(nZ + 1);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createName(i, this.m_anCharaNo[i], nZ + 10);
+	}
+	return true;
+}
+
+void T_ResultLevelUp::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspFrame.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspFrame[i].delete();
+		this.m_asName[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spLabel.delete();
+	this.clear();
+}
+
+void T_ResultLevelUp::clear()
+{
+	this.m_nMode = -1;
+	this.m_nStrX = -1;
+	this.m_nStrY = -1;
+	this.m_nEndX = -1;
+	this.m_nEndY = -1;
+	this.m_nTotalTime = -1;
+	if (!this.m_anMoveTime.Empty())
+	{
+		this.m_anMoveTime.Free();
+	}
+	if (!this.m_anWaitTime.Empty())
+	{
+		this.m_anWaitTime.Free();
+	}
+	if (!this.m_anCharaNo.Empty())
+	{
+		this.m_anCharaNo.Free();
+	}
+}
+
+bool T_ResultLevelUp::start(int nMode, int nTotalTime)
+{
+	if (this.m_anCharaNo.Empty())
+	{
+		return false;
+	}
+	this.m_nStrX = 0;
+	this.m_nStrY = 768;
+	this.m_nEndX = 0;
+	this.m_nEndY = 0;
+	this.m_nMode = nMode;
+	this.m_nTotalTime = nTotalTime;
+	int i = 0;
+	int cnt = this.m_anCharaNo.Numof() + 1;
+	this.m_anMoveTime.Alloc(cnt);
+	this.m_anWaitTime.Alloc(cnt);
+	int nMoveTime = (nTotalTime * 3) / 4;
+	int nInterval = nMoveTime / (cnt + 1);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_anMoveTime[i] = nMoveTime;
+		this.m_anWaitTime[i] = nTotalTime - nMoveTime;
+		nMoveTime -= nInterval;
+	}
+	this.setPos(this.m_nStrX, this.m_nStrY);
+	this.setShow(true);
+	return true;
+}
+
+void T_ResultLevelUp::end()
+{
+	if (this.m_nTotalTime < 0)
+	{
+		return;
+	}
+	this.setPos(this.m_nEndX, this.m_nEndY);
+	this.m_nMode = -1;
+	this.m_nStrX = -1;
+	this.m_nStrY = -1;
+	this.m_nEndX = -1;
+	this.m_nEndY = -1;
+	this.m_nTotalTime = -1;
+}
+
+bool T_ResultLevelUp::update(int nTime)
+{
+	if (this.m_nTotalTime < 0)
+	{
+		return false;
+	}
+	int nX1 = this.m_nStrX + À”ŒvZ(this.m_nEndX - this.m_nStrX, nTime, this.m_nTotalTime);
+	int nY1 = this.m_nStrY + À”ŒvZ(this.m_nEndY - this.m_nStrY, nTime, this.m_nTotalTime);
+	if (this.m_nMode != 1)
+	{
+		this.m_spBase.setPos(nX1, nY1);
+	}
+	int i = 0;
+	int cnt = this.m_anMoveTime.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nTime2 = nTime - this.m_anWaitTime[i];
+		if (nTime2 > 0)
+		{
+			ref int nMoveTime = this.m_anMoveTime[i];
+			int nX2 = this.m_nStrX + À”ŒvZ(this.m_nEndX - this.m_nStrX, nTime2, nMoveTime);
+			int nY2 = this.m_nStrY + À”ŒvZ(this.m_nEndY - this.m_nStrY, nTime2, nMoveTime);
+			this.setNamePos(i - 1, nX2, nY2);
+		}
+		else
+		{
+			this.setNamePos(i - 1, this.m_nStrX, this.m_nStrY);
+		}
+	}
+	return true;
+}
+
+int T_ResultLevelUp::createList()
+{
+	int i = 0;
+	int cnt = Ÿ‚m‚d‚vCsƒLƒƒƒ‰.Numof();
+	int nCount = 0;
+	for (i = 1; i < cnt; ++i)
+	{
+		int nCharaNo = Ÿ‚m‚d‚vCsƒLƒƒƒ‰[i];
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		this.m_anCharaNo.PushBack(nCharaNo);
+		++nCount;
+		if (nCount >= 11)
+		{
+			break;
+		}
+	}
+	if (Ÿ‚m‚d‚vCsƒLƒƒƒ‰”Ô† > cnt)
+	{
+		this.m_anCharaNo.PushBack(2147483647);
+		++nCount;
+	}
+	return nCount;
+}
+
+bool T_ResultLevelUp::createName(int nIndex, int nCharaNo, int nZ)
+{
+	if (nCharaNo == 2147483647)
+	{
+		return this.createEtc(nIndex, nZ);
+	}
+	if (nIndex < 0 || nIndex >= this.m_asName.Numof())
+	{
+		return false;
+	}
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	string szName = ƒLƒƒƒ‰_–¼‘O(nCharaNo);
+	if (szName.Empty())
+	{
+		return false;
+	}
+	ref T_Sprite rfFrame = this.m_aspFrame[nIndex];
+	ref T_DrawLine rfName = this.m_asName[nIndex];
+	rfFrame.setCg(10360);
+	rfFrame.setZ(nZ);
+	sact_text_metrics_t tmName;
+	tmName.nSize = 20;
+	tmName.nColorR = 255;
+	tmName.nColorG = 245;
+	tmName.nColorB = 100;
+	tmName.nWeight = 0;
+	tmName.nFace = 257;
+	tmName.nShadowPixelL = 0;
+	tmName.nShadowPixelR = 1;
+	tmName.nShadowPixelU = 0;
+	tmName.nShadowPixelD = 1;
+	tmName.nShadowColorR = 0;
+	tmName.nShadowColorG = 0;
+	tmName.nShadowColorB = 0;
+	rfName.createFromTextMetrics(0, szName, tmName, -4);
+	rfName.setZ(nZ + 1);
+	this.m_anNameX[nIndex] = (rfFrame.getWidth() - rfName.getWidth()) / 2;
+	this.m_anNameY[nIndex] = 9;
+	return true;
+}
+
+bool T_ResultLevelUp::createEtc(int nIndex, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspFrame.Numof())
+	{
+		return false;
+	}
+	int cnt = Ÿ‚m‚d‚vCsƒLƒƒƒ‰”Ô† - Ÿ‚m‚d‚vCsƒLƒƒƒ‰.Numof();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	ref T_Sprite rfFrame = this.m_aspFrame[nIndex];
+	int nSpNo = ƒeƒLƒXƒg_sì¬(1, "‘¼%D–¼" % cnt, 257, 20, 255, 245, 100, 0, 0, 0, 0, 0, 0);
+	rfFrame.attach(nSpNo);
+	rfFrame.setZ(nZ);
+	return true;
+}
+
+void T_ResultLevelUp::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_anCharaNo.Numof();
+	int nHH = 38 + 65 * cnt;
+	int nYY = (768 - nHH) / 2;
+	this.m_spBase.setPos(nX, nY);
+	this.m_spLabel.setPos(nX + 6, nY + nYY);
+	int nX2 = nX + 3;
+	int nY2 = nY + nYY + 38;
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspFrame[i].setPos(nX2, nY2);
+		this.m_asName[i].setPos(nX2 + this.m_anNameX[i], nY2 + this.m_anNameY[i]);
+		nY2 += 65;
+	}
+}
+
+void T_ResultLevelUp::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_anCharaNo.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspFrame[i].setShow(bShow);
+		this.m_asName[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_spLabel.setShow(bShow);
+}
+
+void T_ResultLevelUp::setNamePos(int nIndex, int nX, int nY)
+{
+	int cnt = this.m_anCharaNo.Numof();
+	if (nIndex >= cnt)
+	{
+		return;
+	}
+	int nHH = 38 + 65 * cnt;
+	int nYY = (768 - nHH) / 2;
+	if (nIndex < 0)
+	{
+		this.m_spLabel.setPos(nX + 6, nY + nYY);
+		return;
+	}
+	int nX2 = nX + 3;
+	int nY2 = nY + nYY + 38 + 65 * nIndex;
+	this.m_aspFrame[nIndex].setPos(nX2, nY2);
+	this.m_asName[nIndex].setPos(nX2 + this.m_anNameX[nIndex], nY2 + this.m_anNameY[nIndex]);
+}
+

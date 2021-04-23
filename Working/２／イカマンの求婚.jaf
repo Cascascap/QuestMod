@@ -1,0 +1,241 @@
+void イカマンクエ／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'　' R;
+	'     Squidsquidsquid Dungeon' A;
+	音楽(93, -1, -1);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"This it?"' A;
+	セリフ(2959, "");
+	'"Yes it is, Boss, squid."' A;
+	ト書き();
+	'Rance had come to Squidsquidsquid Dungeon, home of many squidmen, in response to a certain request.' A;
+	セリフ(2959, "");
+	'"Thanks for taking my request, strong human boss, squid."' A;
+	セリフ(2005, "");
+	'"Mm, uh huh..."' A;
+	思考(2005, "");
+	'(Why am I taking a squidman\'s request...)' A;
+	セリフ(2005, "");
+	'"What a bother."' A;
+	セリフ(2959, "");
+	'"? Did you say something, squid?"' A;
+	セリフ(2000, "");
+	'"Nothing.' R;
+	' Just hurry up and explain to me the quest."' A;
+	セリフ(2959, "");
+	'"Well, there\'s a kraken at the waterside up ahead."' A;
+	'"...*blush*, she\'s so charming.' R;
+	' She\'s really cute and all of us squidmen admire her."' A;
+	セリフ(2000, "");
+	'"Hmm?"' A;
+	セリフ(2959, "");
+	'"Ahh, I want to marry her and have her lay my eggs..."' A;
+	'"But... I\'m a huge loser even for a squidman..."' A;
+	'"I can\'t compare to the cool kid squidmen, so I just watch them from the sidelines every day..."' A;
+	'"But I can\'t go on like this!' R;
+	' I have to do something, with my own power!' R;
+	' Squid!"' A;
+	セリフ(2000, "");
+	'"So, what\'re you gonna do?"' A;
+	セリフ(2959, "");
+	'"Please half-kill Kraken, Mr. Rance."' A;
+	セリフ(2005, "");
+	'"Huhh?"' A;
+	セリフ(2959, "");
+	'"Then I\'ll make my gallant entrance!' R;
+	' I\'ll defeat you, Mr. Rance, and I\'ll rescue Kraken!"' A;
+	'"Kraken will swoon from my manliness!"' A;
+	'"Th-Then I\'ll finally be able to copulate...' R;
+	' *thump* *thump*"' A;
+	セリフ(2005, "");
+	'"...Yeah, yeah. I got it, I got it."' A;
+	'"Fuck, why do I gotta go along with this lower lifeform\'s stupid-ass ass-plan..."' A;
+	セリフ(2959, "");
+	'"Let\'s do this!' R;
+	' Woohoo!"' A;
+	セリフ(2005, "");
+	'"Uh huh..."' A;
+	ADVOFF();
+}
+
+void イカマンクエ／ヒント()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(1, -1, -1);
+	セット表示(0, 5700, 0, 0);
+	セリフ(2959, "");
+	'"Oh, that\'s right, Mr. Rance."' A;
+	ト書き();
+	'　' R;
+	' <squish>' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2003, "");
+	'"Nwhoa!"' A;
+	セリフ(2002, "");
+	'"Hey, don\'t touch me with your slimy tentacles!' R;
+	' That\'s gross!' R;
+	' You inferior being!"' A;
+	セリフ(2959, "");
+	'"Th-That\'s not very nice..."' A;
+	'"But I\'ve got something important to tell you, so please listen, squid."' A;
+	セリフ(2005, "");
+	'"What is it? I forgive you. Tell me."' A;
+	セリフ(2959, "");
+	'"There\'ll be four good-looking cool kid squids around the popular kraken."' A;
+	'"I\'m sure they\'re even around her now, unfortunately..."' A;
+	セリフ(2000, "");
+	'"I see. So I should kill those guys, too, huh?"' A;
+	セリフ(2959, "");
+	'"Yes, but Kraken has a special ability."' A;
+	'"It\'s the ability to make any nearby squidman three times as strong."' A;
+	セリフ(2005, "");
+	'"Well, they\'re weaklings, but three times might be annoying..."' A;
+	セリフ(2959, "");
+	'"So you should defeat the four cool kid squidmen before you run into Kraken, squid."' A;
+	'"If you don\'t, I bet they\'ll jump right to Kraken\'s side."' A;
+	思考(2005, "");
+	'(...Hmm.)' A;
+	'(I bet these four squidmen who are trying to get a girlfriend for themselves are much better than this coward...)' A;
+	セリフ(2000, "");
+	'"Well, they\'re just lower lifeforms, so what do I care?"' A;
+	セリフ(2959, "");
+	'"Squid?"' A;
+	ADVOFF();
+}
+
+void イカマンクエ／クラーケン()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5702, 0, 0);
+	セリフ(2959, "");
+	'"Aaaah, it\'s her!"' A;
+	'"She\'s so c-c-c-cuuute!"' A;
+	'"My tentacle is rock hard right now, squid!"' A;
+	ト書き();
+	'The squidman\'s tentacle pointed toward a gal monster, a kraken.' A;
+	セリフ(2000, "");
+	'"Alright, let\'s do this."' A;
+	ADVOFF();
+}
+
+void イカマンクエ／クラーケン／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5702, 0, 0);
+	セリフ(2959, "");
+	'"That\'s far enough!"' A;
+	セリフ(2005, "");
+	'"Hey, who\'re you?!"' A;
+	セリフ(2959, "");
+	'"Get away from my Kraken!"' A;
+	ト書き();
+	'The client squidman stood in Rance\'s way.' A;
+	セリフ(2959, "");
+	'"I will fight you, villain!' R;
+	' I\'m strong, you know! You won\'t last one hit!' R;
+	' If you\'re gonna run, you\'d better do it now!"' A;
+	'"Everything\'s alright now, Krake..."' A;
+	'"Huh...?"' A;
+	ト書き();
+	'The squidman drew closer to the collapsed kraken.' A;
+	セリフ(2959, "");
+	'"Oh, Kraken\'s dead."' A;
+	音楽(71, -1, -1);
+	'"--Wait, whaaaaat?!' R;
+	' Why\'s she dead?!!"' A;
+	ト書き();
+	'The kraken lay unmoving and cold.' A;
+	セリフ(2959, "");
+	'"Wh-Wh-What\'s going on, Boss?!"' A;
+	セリフ(2005, "");
+	'"That\'s weird, I thought I was going easy on her..."' A;
+	セリフ(2000, "");
+	'"Sorry, looks like I\'m too strong."' A;
+	'"Bury her and have a service or something."' A;
+	音楽(0, 1, 1000);
+	セリフ(2959, "");
+	'"B... But..."' A;
+	'"Th-This is all my fault...' R;
+	' It\'s all because I had such a weird idea..."' A;
+	'"Kraken... Kraken..."' A;
+	音楽(76, -1, -1);
+	'"Youuuuuuu!!"' A;
+	セリフ(2003, "");
+	'"Whoa?!"' A;
+	ト書き();
+	'The squidman rushed at Rance.' A;
+	'He was shy, a loser, and a coward.' A;
+	'He could never put effort into anything on his own, and envied others a lot because of it.' A;
+	'Until now, all he could do was grind his teeth in frustration at all the handsome squidmen...' A;
+	'But in this moment, he stood up for something for the first time.' A;
+	音楽(0, 1, 1000);
+	セット表示(5540, 0, 0, 0);
+	ト書き();
+	'............' A;
+	'.........' A;
+	'......' A;
+	セット表示(g町全景, gランスの部屋, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Rance\'s Room' A;
+	音楽(93, -1, -1);
+	枠消去();
+	立ち絵表示(1030, 1, 200);
+	セリフ(2030, "");
+	'"Oh, just ’cause he attacked you doesn\'t mean you gotta go and kill him."' A;
+	セリフ(2000, "");
+	'"Hmph, it\'s only natural for a guy like him to die. Having to get somebody else\'s help to get a girl."' A;
+	'"Men should learn from my example and use their own strength to get women!"' A;
+	セリフ(2001, "");
+	'"Gahahahaha!"' A;
+	セリフ(2033, "");
+	'"I think it\'d be pretty scary if there were a bunch of squidmen like you, Rance."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'And so the squidman\'s death was in vain.' A;
+	ADVOFF();
+}
+
+void イカマンクエ／勝ち組イカマン()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2959, "");
+	'"That\'s a cool kid squidman.' R;
+	' He thinks he\'s so fresh just because he\'s a little good-looking. It pisses me off!"' A;
+	'"Take the fucker down, Boss!"' A;
+	ADVOFF();
+}
+

@@ -1,0 +1,202 @@
+T_PartyStatus::T_PartyStatus()
+{
+	this.clear();
+}
+
+T_PartyStatus::~T_PartyStatus()
+{
+	this.delete();
+}
+
+int T_PartyStatus::run(int nZ)
+{
+	int nRet = -1;
+	if (!this.create(nZ))
+	{
+		return -1;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID = 100009;
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		while (nID > 0)
+		{
+			if (this.exec(nID, nRet))
+			{
+				goto label0;
+			}
+			nID = nRet;
+		}
+	}
+label0:
+	this.delete();
+	return nRet;
+}
+
+bool T_PartyStatus::create(int nZ)
+{
+	this.delete();
+	this.m_spBase.setCg(10091);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.createChara(i, 味方パーティ_番号(i + 1), nZ + 1);
+	}
+	this.m_sButton.create();
+	ボタン登録_ＣＧ(this.m_sButton, 100001, 413, 720, 10092, -1, -1, -2147483648, -2147483648);
+	ボタン登録_ＣＧ(this.m_sButton, 100009, 998, 65, 10007, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(nZ + 1);
+	this.setShow(true);
+	return true;
+}
+
+void T_PartyStatus::delete()
+{
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_PartyStatus::clear()
+{
+	return;
+}
+
+bool T_PartyStatus::createChara(int nIndex, int nCharaNo, int nZ)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return false;
+	}
+	int nX0 = 戦闘味方_位置Ｘ(nIndex);
+	int nY0 = 戦闘味方_位置Ｙ(nIndex);
+	int nX = 0;
+	int nY = 0;
+	int nX2 = 0;
+	int nY2 = 0;
+	nX = nX0;
+	nX2 = nX0;
+	if (戦闘配置_前衛(nIndex))
+	{
+		nY = nY0 + -299;
+		nY2 = nY0 + -129;
+	}
+	else
+	{
+		nY = nY0 + -200;
+		nY2 = nY0 + -30;
+	}
+	T_CharaCard sChara;
+	T_BattleExp sExp;
+	if (!sChara.create(nCharaNo, 0))
+	{
+		return false;
+	}
+	if (!sExp.create(戦闘番号_味方(nIndex), 0, 0, 0))
+	{
+		return false;
+	}
+	sChara.copyToSprite(this.m_spBase, nX, nY);
+	sExp.copyToSprite(this.m_spBase, nX2, nY2);
+	数字_ブレンド(this.m_spBase, nX + 226, nY + 232, キャラ_スキルポイント(nCharaNo), 10321, false, 3, 3);
+	return true;
+}
+
+bool T_PartyStatus::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 100001:
+		case 100009:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+int T_PartyStatus::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			nRet = 100009;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_PartyStatus::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+void T_PartyStatus::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+int T_PartyStatus::checkKey(int nID)
+{
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	return 0;
+}
+
+void T_PartyStatus::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_PartyStatus::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_PartyStatus::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+}
+

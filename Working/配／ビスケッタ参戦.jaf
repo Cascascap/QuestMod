@@ -1,0 +1,201 @@
+void ビスケッタ参戦()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, 5322, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Hallway' A;
+	音楽(93, -1, -1);
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Are you alright, Master?"' A;
+	セリフ(2005, "");
+	'"Mm, this is no problem..."' A;
+	ト書き();
+	'The maids were treating Rance\'s party\'s injuries after they\'d returned from a failed quest.' A;
+	セリフ(2450, "");
+	'"Allow me to disinfect this, Master.' R;
+	' It will sting a little."' A;
+	セリフ(2000, "");
+	'"Ouch..."' A;
+	セリフ(2450, "");
+	'"You really have been working hard to be injured like this."' A;
+	セリフ(2005, "");
+	'"Hmmm, injuries are just proof that I\'ve messed up a bit."' A;
+	セリフ(2450, "");
+	'"Right."' A;
+	セリフ(2000, "");
+	'"Oh, but don\'t misinterpret that.' R;
+	' I really just mean a tiny little mistake."' A;
+	セリフ(2450, "");
+	'"Certainly."' A;
+	セリフ(2000, "");
+	'"Mm, I woulda been fine on my own.' R;
+	' But it\'s not true for everybody else.' R;
+	' That\'s why we retreated."' A;
+	セリフ(2450, "");
+	'"Right."' A;
+	セリフ(2000, "");
+	'"I\'m the leader, after all.' R;
+	' I\'ve gotta always be thinking about the party.' R;
+	' Isn\'t that right, Miss Biscuitta?"' A;
+	セリフ(2450, "");
+	'"It is exactly as you say."' A;
+	セリフ(2005, "");
+	'"And that stupid dungeon was full of traps, too!' R;
+	' It\'s no fair! I won\'t allow it. I fuckin\' hate locked, trapped chests."' A;
+	セリフ(2451, "");
+	'"..."' A;
+	セリフ(2450, "");
+	'"Master, may I make a suggestion?"' A;
+	'"Would you consider allowing me to accompany you on your adventures?"' A;
+	セリフ(2000, "");
+	'"Heh?"' A;
+	'"Huh? You wanna come with, Miss Biscuitta?"' A;
+	セリフ(2450, "");
+	'"Yes. I\'d like you to allow me to tidy up the dungeons that give you trouble, Master."' A;
+	セリフ(2000, "");
+	'"But you\'re just a maid..."' A;
+	セリフ(2450, "");
+	'"I may not look it, but I have the training of a brawler."' A;
+	セリフ(2005, "");
+	'"...That\'s... Why a brawler...?"' A;
+	セリフ(2450, "");
+	'"It\'s just in case I need to protect my Master.' R;
+	' Only a natural skill for a maid."' A;
+	セリフ(2005, "");
+	'"Hmm..."' A;
+	セリフ(2000, "");
+	'"Alright, I\'ll leave it to you!' R;
+	' I\'ll be counting on you even more from now on, Miss Biscuitta."' A;
+	セリフ(2450, "");
+	'"Yes, please leave it to me.' R;
+	' I will attend to your needs outside of the castle, as well, Master."' A;
+}
+
+void ビスケッタ／迷宮清掃()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'　' R;
+	'  Biscuitta\'s Dungeon Cleaning skill activated.' R;
+	'　' R;
+	'  Beginning cleaning.' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"...It\'s a bit of a mess, isn\'t it..."' A;
+	'"Please wait a moment, Master."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'　' R;
+	'     Ten Minutes Later' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"I apologize for the wait."' A;
+	'"There was no time to do a perfect job, but I\'ve removed several obstacles."' A;
+	'"Let us proceed."' A;
+	ADVOFF();
+}
+
+void ビスケッタ／切り替え１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(0, 1, 2000);
+	セリフ(2005, "");
+	'"Hmm..."' A;
+	'"There\'s just... something... wrong here..."' A;
+	'"Hmmmm?"' A;
+	音楽(71, -1, -1);
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"Master, if you\'d like, please have a drink."' A;
+	セリフ(2000, "");
+	'"Ooh, ooh, that\'s right, I was thirsty.' R;
+	' Thanks!"' A;
+	'"But I\'m surprised you knew I was thirsty, Miss Biscuitta."' A;
+	セリフ(2450, "");
+	'"It is my work to pay the utmost attention to your mental state, as you are my master."' A;
+	'"In fact... I\'ve acted too late if you were wanting by the time I realized..."' A;
+	'"I cannot be counted as efficient until I fulfill my master\'s desires before even he is aware of them."' A;
+	セリフ(2005, "");
+	'"Nah, you\'re doing good enough..."' A;
+	セリフ(2450, "");
+	'"Please excuse me, then."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'With a deep bow to Rance, Biscuitta pulled away to a distance where she wouldn\'t bother him, but would still be able to respond at a moment\'s notice to his needs.' A;
+	セリフ(2000, "");
+	'"Miss Biscuitta sure is something..."' A;
+	ト書き();
+	'Rance muttered and put his hand on his hip, then suddenly noticed that something was different than usual.' A;
+	セリフ(2005, "");
+	'"Hm?"' A;
+	ト書き();
+	'Rance inspected the source of the strange sensation.' A;
+	セリフ(2003, "");
+	'"...Th-"' A;
+	'"...There are tissues and a handkerchief in my clothes..."' A;
+	枠消去();
+	立ち絵表示(1450, 1, 200);
+	セリフ(2450, "");
+	'"I added them the last time I washed your clothes.' R;
+	' If they are in your way, I will hold on to them for you."' A;
+	セリフ(2005, "");
+	'"...They\'ve been in here this whole time?"' A;
+	セリフ(2450, "");
+	'"Yes."' A;
+	セリフ(2005, "");
+	'"...Seriously?"' A;
+	セリフ(2450, "");
+	'"Yes."' A;
+	セリフ(2003, "");
+	'"Whoooa, my clothes are super crisp!"' A;
+	セリフ(2450, "");
+	'"I took the liberty of ironing them as well."' A;
+	セリフ(2003, "");
+	'"Whoooa, my socks are thicker than usual!"' A;
+	セリフ(2450, "");
+	'"It\'s been chilly lately.' R;
+	' Please take care to stay warm."' A;
+	セリフ(2005, "");
+	'"C... Could it be that I\'ve been sleeping strangely well lately because..."' A;
+	セリフ(2450, "");
+	'"I took the liberty of changing your pillow, thinking it might not suit your physique, Master."' A;
+	'"In addition, I changed your silk sheets to the same sort of sheets you were using at your old residence."' A;
+	'"If you have any other requests or are dissatisfied with any aspects of your daily life, please let me know at any time."' A;
+	セリフ(2005, "");
+	'"........."' A;
+	'"Miss Biscuitta really is impressive...' R;
+	' I never noticed any of that before..."' A;
+	セリフ(2450, "");
+	'"I\'m still improving my discipline."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2030, "");
+	'"I think it\'s pretty impressive that you missed all that stuff before now, too, Rance."' A;
+	ADVOFF();
+}
+

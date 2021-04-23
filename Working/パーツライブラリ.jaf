@@ -1,0 +1,571 @@
+void Ｐ＿ＣＧ設定(int パーツ番号, string ＣＧ名, int 状態)
+{
+	if (!GoatGUIEngine.SetPartsCG(パーツ番号, ＣＧ名, 0, 状態))
+	{
+		GOAT_Warning("Ｐ＿ＣＧ名(パーツ番号 = %d, ＣＧ名 = %s, 状態 = %d)\n" % パーツ番号 % ＣＧ名 % 状態);
+	}
+	ＣＧモード登録(ＣＧ名);
+}
+
+void Ｐ＿左右反転ＣＧ設定(int パーツ番号, string ＣＧ名, int 状態)
+{
+	GoatGUIEngine.SetPartsCG(パーツ番号, ＣＧ名, 1, 状態);
+	ＣＧモード登録(ＣＧ名);
+}
+
+void Ｐ＿上下反転ＣＧ設定(int パーツ番号, string ＣＧ名, int 状態)
+{
+	GoatGUIEngine.SetPartsCG(パーツ番号, ＣＧ名, 2, 状態);
+	ＣＧモード登録(ＣＧ名);
+}
+
+string Ｐ＿ＣＧ名取得(int パーツ番号, int 状態)
+{
+	string CGName = "";
+	GoatGUIEngine.GetPartsCGName(パーツ番号, CGName, 状態);
+	return CGName;
+}
+
+void Ｐ＿ループＣＧ設定(int パーツ番号, string 基本ＣＧ名, int 開始番号, int 枚数, int 時間, int 状態)
+{
+	if (!GoatGUIEngine.SetLoopCG(パーツ番号, 基本ＣＧ名, 開始番号, 枚数, 時間, 状態))
+	{
+		GOAT_Warning("Ｐ＿ループＣＧ設定(パーツ番号 = %d, 基本ＣＧ名 = %s, 開始番号 = %d, 枚数 = %d, 時間 = %d, 状態 = %d)\n" % パーツ番号 % 基本ＣＧ名 % 開始番号 % 枚数 % 時間 % 状態);
+	}
+}
+
+void Ｐ＿テキスト設定(int パーツ番号, string テキスト, int 状態)
+{
+	GoatGUIEngine.SetText(パーツ番号, テキスト, 状態);
+}
+
+void Ｐ＿テキスト追加(int パーツ番号, string テキスト, int 状態)
+{
+	GoatGUIEngine.AddPartsText(パーツ番号, テキスト, 状態);
+}
+
+void Ｐ＿テキスト追加表示(int パーツ番号, string テキスト, int 時間, int 状態)
+{
+	int TotalTime = テキスト.Length() * 時間;
+	int EndIndex = 0;
+	CASTimer Timer;
+	Timer.Reset();
+	for (; ; )
+	{
+		int Time = Timer.Get();
+		int Index = (テキスト.Length() * Time) / TotalTime;
+		if (Index >= テキスト.Length())
+		{
+			Index = テキスト.Length() - 1;
+		}
+		while (Index >= EndIndex)
+		{
+			string OneChar = テキスト.GetPart(EndIndex, 1);
+			if (!OneChar.Empty())
+			{
+				Ｐ＿テキスト追加(パーツ番号, OneChar, 状態);
+			}
+			++EndIndex;
+		}
+		UpdateView(true);
+		if (Time >= TotalTime)
+		{
+			break;
+		}
+	}
+}
+
+void Ｐ＿フォント設定(int パーツ番号, int 種類, int サイズ, int Ｒ, int Ｇ, int Ｂ, float 太字幅, int 縁取りＲ, int 縁取りＧ, int 縁取りＢ, float 縁取り幅, int 状態)
+{
+	GoatGUIEngine.SetFont(パーツ番号, 種類, サイズ, Ｒ, Ｇ, Ｂ, 太字幅, 縁取りＲ, 縁取りＧ, 縁取りＢ, 縁取り幅, 状態);
+}
+
+void Ｐ＿テキスト先頭行削除(int パーツ番号, int 状態)
+{
+	GoatGUIEngine.DeletePartsTopTextLine(パーツ番号, 状態);
+}
+
+void Ｐ＿フォント種類設定(int パーツ番号, int 種類, int 状態)
+{
+	GoatGUIEngine.SetPartsFontType(パーツ番号, 種類, 状態);
+}
+
+void Ｐ＿フォントサイズ設定(int パーツ番号, int サイズ, int 状態)
+{
+	GoatGUIEngine.SetPartsFontSize(パーツ番号, サイズ, 状態);
+}
+
+void Ｐ＿フォント色設定(int パーツ番号, int Ｒ, int Ｇ, int Ｂ, int 状態)
+{
+	GoatGUIEngine.SetPartsFontColor(パーツ番号, Ｒ, Ｇ, Ｂ, 状態);
+}
+
+void Ｐ＿フォント太字幅設定(int パーツ番号, float 太字幅, int 状態)
+{
+	GoatGUIEngine.SetPartsFontBoldWeight(パーツ番号, 太字幅, 状態);
+}
+
+void Ｐ＿フォント縁取り色設定(int パーツ番号, int Ｒ, int Ｇ, int Ｂ, int 状態)
+{
+	GoatGUIEngine.SetPartsFontEdgeColor(パーツ番号, Ｒ, Ｇ, Ｂ, 状態);
+}
+
+void Ｐ＿フォント縁取り幅設定(int パーツ番号, float 縁取り幅, int 状態)
+{
+	GoatGUIEngine.SetPartsFontEdgeWeight(パーツ番号, 縁取り幅, 状態);
+}
+
+void Ｐ＿テキスト字間隔設定(int パーツ番号, int _字間隔, int 状態)
+{
+	GoatGUIEngine.SetTextCharSpace(パーツ番号, _字間隔, 状態);
+}
+
+void Ｐ＿テキスト行間隔設定(int パーツ番号, int _行間隔, int 状態)
+{
+	GoatGUIEngine.SetTextLineSpace(パーツ番号, _行間隔, 状態);
+}
+
+void Ｐ＿数字ＣＧ設定(int パーツ番号, string ＣＧ名, int 状態)
+{
+	if (!GoatGUIEngine.SetNumeralCG(パーツ番号, ＣＧ名, 状態))
+	{
+		GOAT_Warning("Ｐ＿数字ＣＧ設定(パーツ番号 = %d, ＣＧ名 = %s, 状態 = %d)\n" % パーツ番号 % ＣＧ名 % 状態);
+	}
+}
+
+void Ｐ＿数字連結ＣＧ設定(int パーツ番号, string ＣＧ名, int 幅０, int 幅１, int 幅２, int 幅３, int 幅４, int 幅５, int 幅６, int 幅７, int 幅８, int 幅９, int 幅マイナス, int 幅コンマ, int 状態)
+{
+	GoatGUIEngine.SetNumeralLinkedCGNumberWidthWidthList(パーツ番号, ＣＧ名, 幅０, 幅１, 幅２, 幅３, 幅４, 幅５, 幅６, 幅７, 幅８, 幅９, 幅マイナス, 幅コンマ, 状態);
+}
+
+void Ｐ＿数字設定(int パーツ番号, int 数, int 状態)
+{
+	GoatGUIEngine.SetNumeralNumber(パーツ番号, 数, 状態);
+}
+
+void Ｐ＿数字コンマ表示設定(int パーツ番号, bool 表示フラグ, int 状態)
+{
+	GoatGUIEngine.SetNumeralShowComma(パーツ番号, 表示フラグ, 状態);
+}
+
+void Ｐ＿数字字間隔設定(int パーツ番号, int _字間隔, int 状態)
+{
+	GoatGUIEngine.SetNumeralSpace(パーツ番号, _字間隔, 状態);
+}
+
+void Ｐ＿横ゲージＣＧ設定(int パーツ番号, string ＣＧ名, int 状態)
+{
+	if (!GoatGUIEngine.SetHGaugeCG(パーツ番号, ＣＧ名, 状態))
+	{
+		GOAT_Warning("Ｐ＿横ゲージＣＧ設定(パーツ番号 = %d, ＣＧ名 = %s, 状態 = %d)\n" % パーツ番号 % ＣＧ名 % 状態);
+	}
+}
+
+void Ｐ＿横ゲージ率設定(int パーツ番号, int 分子, int 分母, int 状態)
+{
+	GoatGUIEngine.SetHGaugeRate(パーツ番号, 分子, 分母, 状態);
+}
+
+void Ｐ＿縦ゲージＣＧ設定(int パーツ番号, string ＣＧ名, int 状態)
+{
+	if (!GoatGUIEngine.SetVGaugeCG(パーツ番号, ＣＧ名, 状態))
+	{
+		GOAT_Warning("Ｐ＿縦ゲージＣＧ設定(パーツ番号 = %d, ＣＧ名 = %s, 状態 = %d)\n" % パーツ番号 % ＣＧ名 % 状態);
+	}
+}
+
+void Ｐ＿縦ゲージ率設定(int パーツ番号, int 分子, int 分母, int 状態)
+{
+	GoatGUIEngine.SetVGaugeRate(パーツ番号, 分子, 分母, 状態);
+}
+
+void Ｐ＿矩形判定設定(int パーツ番号, int Ｘ, int Ｙ, int 幅, int 高さ)
+{
+	GoatGUIEngine.SetPos(パーツ番号, Ｘ, Ｙ);
+	GoatGUIEngine.SetPartsRectangleDetectionSize(パーツ番号, 幅, 高さ, 1);
+}
+
+void Ｐ＿フラッシュ設定(int パーツ番号, string フラッシュファイル名, int 状態)
+{
+	if (!GoatGUIEngine.SetPartsFlash(パーツ番号, フラッシュファイル名, 状態))
+	{
+		GOAT_Warning("Ｐ＿フラッシュ設定(パーツ番号 = %d, フラッシュファイル名 = \"%s\", 状態 = %d\n" % パーツ番号 % フラッシュファイル名 % 状態);
+	}
+}
+
+bool Ｐ＿フラッシュ終了確認(int パーツ番号, int 状態)
+{
+	return GoatGUIEngine.IsPartsFlashEnd(パーツ番号, 状態);
+}
+
+void Ｐ＿フラッシュ開始フレーム移動(int パーツ番号, int 状態)
+{
+	GoatGUIEngine.BackPartsFlashBeginFrame(パーツ番号, 状態);
+}
+
+void Ｐ＿フラッシュ最終フレームステップ(int パーツ番号, int 状態)
+{
+	GoatGUIEngine.StepPartsFlashFinalFrame(パーツ番号, 状態);
+}
+
+void Ｐ＿削除(int パーツ番号)
+{
+	GoatGUIEngine.ReleaseParts(パーツ番号);
+}
+
+void Ｐ＿座標設定(int パーツ番号, int Ｘ, int Ｙ)
+{
+	GoatGUIEngine.SetPos(パーツ番号, Ｘ, Ｙ);
+}
+
+void Ｐ＿原点座標設定(int パーツ番号, int 原点座標)
+{
+	GoatGUIEngine.SetPartsOriginPosMode(パーツ番号, 原点座標);
+}
+
+void Ｐ＿Ｚ座標設定(int パーツ番号, int Ｚ)
+{
+	GoatGUIEngine.SetZ(パーツ番号, Ｚ);
+}
+
+void Ｐ＿表示設定(int パーツ番号, bool 表示フラグ)
+{
+	GoatGUIEngine.SetShow(パーツ番号, 表示フラグ);
+}
+
+void Ｐ＿アルファ値設定(int パーツ番号, int アルファ値)
+{
+	GoatGUIEngine.SetAlpha(パーツ番号, アルファ値);
+}
+
+void Ｐ＿加算色設定(int パーツ番号, int 赤, int 緑, int 青)
+{
+	GoatGUIEngine.SetAddColor(パーツ番号, 赤, 緑, 青);
+}
+
+void Ｐ＿乗算色設定(int パーツ番号, int 赤, int 緑, int 青)
+{
+	GoatGUIEngine.SetMultiplyColor(パーツ番号, 赤, 緑, 青);
+}
+
+void Ｐ＿描画フィルタ設定(int パーツ番号, int 描画フィルタ)
+{
+	GoatGUIEngine.SetPartsDrawFilter(パーツ番号, 描画フィルタ);
+}
+
+void Ｐ＿ピクセル判定設定(int パーツ番号, bool ピクセル判定)
+{
+	GoatGUIEngine.SetPartsPixelDecide(パーツ番号, ピクセル判定);
+}
+
+int Ｐ＿Ｘ座標取得(int パーツ番号)
+{
+	return GoatGUIEngine.GetPartsX(パーツ番号);
+}
+
+int Ｐ＿Ｙ座標取得(int パーツ番号)
+{
+	return GoatGUIEngine.GetPartsY(パーツ番号);
+}
+
+int Ｐ＿Ｚ座標取得(int パーツ番号)
+{
+	return GoatGUIEngine.GetPartsZ(パーツ番号);
+}
+
+bool Ｐ＿表示設定取得(int パーツ番号)
+{
+	return GoatGUIEngine.GetPartsShow(パーツ番号);
+}
+
+int Ｐ＿アルファ値取得(int パーツ番号)
+{
+	return GoatGUIEngine.GetPartsAlpha(パーツ番号);
+}
+
+void Ｐ＿加算色取得(int パーツ番号, ref int 赤, ref int 緑, ref int 青)
+{
+	GoatGUIEngine.GetAddColor(パーツ番号, 赤, 緑, 青);
+}
+
+void Ｐ＿乗算色取得(int パーツ番号, ref int 赤, ref int 緑, ref int 青)
+{
+	GoatGUIEngine.GetMultiplyColor(パーツ番号, 赤, 緑, 青);
+}
+
+void Ｐ＿オンカーソル効果音設定(int パーツ番号, int 効果音番号)
+{
+	GoatGUIEngine.SetPartsOnCursorSoundNumber(パーツ番号, 効果音番号);
+}
+
+void Ｐ＿クリック効果音設定(int パーツ番号, int 効果音番号)
+{
+	GoatGUIEngine.SetPartsClickSoundNumber(パーツ番号, 効果音番号);
+}
+
+void Ｐ＿親設定(int パーツ番号, int 親パーツ番号)
+{
+	GoatGUIEngine.SetParentPartsNumber(パーツ番号, 親パーツ番号);
+}
+
+void Ｐ＿オンカーソル表示連動設定(int パーツ番号, int 参照パーツ番号)
+{
+	GoatGUIEngine.SetOnCursorShowLinkPartsNumber(パーツ番号, 参照パーツ番号);
+}
+
+void Ｐ＿グループ設定(int パーツ番号, int グループ番号)
+{
+	GoatGUIEngine.SetPartsGroupNumber(パーツ番号, グループ番号);
+}
+
+void Ｐ＿グループカーソル判定設定(int グループ番号, bool 判定フラグ)
+{
+	GoatGUIEngine.SetPartsGroupDecideOnCursor(グループ番号, 判定フラグ);
+}
+
+void Ｐ＿グループクリック設定(int グループ番号, bool 判定フラグ)
+{
+	GoatGUIEngine.SetPartsGroupDecideClick(グループ番号, 判定フラグ);
+}
+
+void Ｐ＿メッセージウィンドウ表示連動設定(int パーツ番号, bool 表示連動設定)
+{
+	GoatGUIEngine.SetPartsMessageWindowShowLink(パーツ番号, 表示連動設定);
+}
+
+void Ｐ＿クリック可能設定(int パーツ番号, bool 選択可能)
+{
+	GoatGUIEngine.SetClickable(パーツ番号, 選択可能);
+}
+
+bool Ｐ＿クリック可能設定取得(int パーツ番号)
+{
+	return GoatGUIEngine.GetPartsClickable(パーツ番号);
+}
+
+void Ｐ＿クリックミス効果音設定(int 効果音番号)
+{
+	GoatGUIEngine.SetClickMissSoundNumber(効果音番号);
+}
+
+int Ｐ＿クリック実行(bool キーキャンセル)
+{
+	return GOAT_WaitForClick(NULL, キーキャンセル);
+}
+
+void Ｐ＿モーション移動設定(int パーツ番号, int 開始Ｘ座標, int 開始Ｙ座標, int 終了Ｘ座標, int 終了Ｙ座標, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionPos(パーツ番号, 開始Ｘ座標, 開始Ｙ座標, 終了Ｘ座標, 終了Ｙ座標, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションアルファ設定(int パーツ番号, int 開始アルファ値, int 終了アルファ値, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionAlpha(パーツ番号, 開始アルファ値, 終了アルファ値, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションＣＧ設定(int パーツ番号, string 基準ＣＧ名, int 開始番号, int 枚数, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionCG(パーツ番号, 基準ＣＧ名, 開始番号, 枚数, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションＣＧエフェクト設定(int パーツ番号, string 基準ＣＧ名, int 開始番号, int 枚数, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionCG(パーツ番号, 基準ＣＧ名, 開始番号, 枚数, 開始時間, 終了時間);
+	GoatGUIEngine.AddMotionCG(パーツ番号, "", 0, 1, 終了時間, 終了時間);
+}
+
+void Ｐ＿モーション横ゲージ率設定(int パーツ番号, int 開始分子, int 開始分母, int 終了分子, int 終了分母, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionHGaugeRate(パーツ番号, 開始分子, 開始分母, 終了分子, 終了分母, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーション縦ゲージ率設定(int パーツ番号, int 開始分子, int 開始分母, int 終了分子, int 終了分母, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionVGaugeRate(パーツ番号, 開始分子, 開始分母, 終了分子, 終了分母, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーション数字設定(int パーツ番号, int 開始数, int 終了数, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionNumeralNumber(パーツ番号, 開始数, 終了数, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションＸ拡大率設定(int パーツ番号, float 開始Ｘ拡大率, float 終了Ｘ拡大率, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionMagX(パーツ番号, 開始Ｘ拡大率, 終了Ｘ拡大率, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションＹ拡大率設定(int パーツ番号, float 開始Ｙ拡大率, float 終了Ｙ拡大率, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionMagY(パーツ番号, 開始Ｙ拡大率, 終了Ｙ拡大率, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションＸ回転角度設定(int パーツ番号, float 開始Ｘ回転角度, float 終了Ｘ回転角度, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionRotateX(パーツ番号, 開始Ｘ回転角度, 終了Ｘ回転角度, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションＹ回転角度設定(int パーツ番号, float 開始Ｙ回転角度, float 終了Ｙ回転角度, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionRotateY(パーツ番号, 開始Ｙ回転角度, 終了Ｙ回転角度, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーションＺ回転角度設定(int パーツ番号, float 開始Ｚ回転角度, float 終了Ｚ回転角度, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionRotateZ(パーツ番号, 開始Ｚ回転角度, 終了Ｚ回転角度, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーション振動設定(int パーツ番号, int 開始幅, int 開始高さ, int 開始時間, int 終了時間)
+{
+	GoatGUIEngine.AddMotionVibrationSize(パーツ番号, 開始幅, 開始高さ, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーション画面振動設定(int 横振幅, int 縦振幅, int 開始時間, int 終了時間)
+{
+	AFL_View_AddMotionVibrationSize(横振幅, 縦振幅, 開始時間, 終了時間);
+}
+
+void Ｐ＿モーション効果音設定(int 効果音番号, int 開始時間)
+{
+	GoatGUIEngine.AddMotionSound(効果音番号, 開始時間);
+}
+
+void Ｐ＿モーション実行(bool 未読既読スキップ)
+{
+	GOAT_BeginMotion();
+	for (; ; )
+	{
+		GOAT_UpdateMotion(未読既読スキップ);
+		UpdateView(未読既読スキップ);
+		if (!GOAT_IsMotion())
+		{
+			break;
+		}
+	}
+	GOAT_EndMotion();
+}
+
+void Ｐ＿モーション実行キャンセル可能()
+{
+	CASClick LButtonClick;
+	CASClick RButtonClick;
+	CASClick SpaceKeyClick;
+	CASClick EnterKeyClick;
+	LButtonClick.Init(1, true);
+	RButtonClick.Init(2, true);
+	SpaceKeyClick.Init(32, true);
+	EnterKeyClick.Init(13, true);
+	GOAT_BeginMotion();
+	for (; ; )
+	{
+		_g_MouseWheel._Update(true);
+		if (LButtonClick.IsClick(-2147483648) || RButtonClick.IsClick(-2147483648) || SpaceKeyClick.IsClick(-2147483648) || EnterKeyClick.IsClick(-2147483648) || 未読スキップ中確認() || 既読スキップ中確認() || SYS_ホイールバック確認())
+		{
+			GOAT_EndMotionFociby();
+			break;
+		}
+		GOAT_UpdateMotion(false);
+		UpdateView(true);
+		if (!GOAT_IsMotion())
+		{
+			break;
+		}
+	}
+	GOAT_EndMotion();
+}
+
+void Ｐ＿Ｘ拡大率設定(int パーツ番号, float Ｘ拡大率)
+{
+	GoatGUIEngine.SetPartsMagX(パーツ番号, Ｘ拡大率);
+}
+
+void Ｐ＿Ｙ拡大率設定(int パーツ番号, float Ｙ拡大率)
+{
+	GoatGUIEngine.SetPartsMagY(パーツ番号, Ｙ拡大率);
+}
+
+void Ｐ＿Ｘ回転角度設定(int パーツ番号, float Ｘ回転角度)
+{
+	GoatGUIEngine.SetPartsRotateX(パーツ番号, Ｘ回転角度);
+}
+
+void Ｐ＿Ｙ回転角度設定(int パーツ番号, float Ｙ回転角度)
+{
+	GoatGUIEngine.SetPartsRotateY(パーツ番号, Ｙ回転角度);
+}
+
+void Ｐ＿Ｚ回転角度設定(int パーツ番号, float Ｚ回転角度)
+{
+	GoatGUIEngine.SetPartsRotateZ(パーツ番号, Ｚ回転角度);
+}
+
+void Ｐ＿アルファクリッパー設定(int パーツ番号, int アルファクリッパーパーツ番号)
+{
+	GoatGUIEngine.SetPartsAlphaClipperPartsNumber(パーツ番号, アルファクリッパーパーツ番号);
+}
+
+void Ｐ＿構築手順＿作成(int パーツ番号, int 幅, int 高さ, int 状態)
+{
+	GoatGUIEngine.AddCreateToPartsConstructionProcess(パーツ番号, 幅, 高さ, 状態);
+}
+
+void Ｐ＿構築手順＿ピクセル作成(int パーツ番号, int 幅, int 高さ, int 状態)
+{
+	GoatGUIEngine.AddCreatePixelOnlyToPartsConstructionProcess(パーツ番号, 幅, 高さ, 状態);
+}
+
+void Ｐ＿構築手順＿色塗り(int パーツ番号, int Ｘ, int Ｙ, int 幅, int 高さ, int Ｒ, int Ｇ, int Ｂ, int アルファ, int 状態)
+{
+	if (アルファ == -1)
+	{
+		GoatGUIEngine.AddFillToPartsConstructionProcess(パーツ番号, Ｘ, Ｙ, 幅, 高さ, Ｒ, Ｇ, Ｂ, 状態);
+	}
+	else
+	{
+		GoatGUIEngine.AddFillWithAlphaToPartsConstructionProcess(パーツ番号, Ｘ, Ｙ, 幅, 高さ, Ｒ, Ｇ, Ｂ, アルファ, 状態);
+	}
+}
+
+void Ｐ＿構築手順＿アルファ塗り(int パーツ番号, int Ｘ, int Ｙ, int 幅, int 高さ, int アルファ, int 状態)
+{
+	GoatGUIEngine.AddFillAMapToPartsConstructionProcess(パーツ番号, Ｘ, Ｙ, 幅, 高さ, アルファ, 状態);
+}
+
+void Ｐ＿構築手順＿ブレンド塗り(int パーツ番号, int Ｘ, int Ｙ, int 幅, int 高さ, int Ｒ, int Ｇ, int Ｂ, int アルファ, int 状態)
+{
+	GoatGUIEngine.AddFillAlphaColorToPartsConstructionProcess(パーツ番号, Ｘ, Ｙ, 幅, 高さ, Ｒ, Ｇ, Ｂ, アルファ, 状態);
+}
+
+void Ｐ＿構築手順＿グラデーション(int パーツ番号, int Ｘ, int Ｙ, int 幅, int 高さ, int 上Ｒ, int 上Ｇ, int 上Ｂ, int 下Ｒ, int 下Ｇ, int 下Ｂ, int 状態)
+{
+	GoatGUIEngine.AddFillGradationHorizonToPartsConstructionProcess(パーツ番号, Ｘ, Ｙ, 幅, 高さ, 上Ｒ, 上Ｇ, 上Ｂ, 下Ｒ, 下Ｇ, 下Ｂ, 状態);
+}
+
+void Ｐ＿構築手順＿テキスト(int パーツ番号, int Ｘ, int Ｙ, string テキスト, CASCharSpriteProperty フォント, int 文字間隔, int 行間隔, int 状態)
+{
+	CASCharSpriteProperty Property;
+	Property = フォント;
+	CASColor Color;
+	Color = Property.GetColor();
+	CASColor EdgeColor;
+	EdgeColor = Property.GetEdgeColor();
+	GoatGUIEngine.AddDrawTextToPartsConstructionProcess(パーツ番号, Ｘ, Ｙ, テキスト, Property.GetType(), Property.GetSize(), Color.GetR(), Color.GetG(), Color.GetB(), Property.GetBoldWeight(), EdgeColor.GetR(), EdgeColor.GetG(), EdgeColor.GetB(), Property.GetEdgeWeight(), 文字間隔, 行間隔, 状態);
+}
+
+void Ｐ＿構築手順＿矩形(int パーツ番号, int Ｘ, int Ｙ, int 幅, int 高さ, int Ｒ, int Ｇ, int Ｂ, int 状態)
+{
+	GoatGUIEngine.AddDrawRectToPartsConstructionProcess(パーツ番号, Ｘ, Ｙ, 幅, 高さ, Ｒ, Ｇ, Ｂ, 状態);
+}
+
+void Ｐ＿構築手順＿初期化(int パーツ番号, int 状態)
+{
+	GoatGUIEngine.ClearPartsConstructionProcess(パーツ番号, 状態);
+}
+
+void Ｐ＿構築ビルド(int パーツ番号, int 状態)
+{
+	if (!GoatGUIEngine.BuildPartsConstructionProcess(パーツ番号, 状態))
+	{
+		GOAT_Warning("Ｐ＿構築ビルド(パーツ番号 = %d, 状態 = %d　ビルド中にエラーが発生しました。正しくビルドされていない可能性があります\n" % パーツ番号 % 状態);
+	}
+}
+

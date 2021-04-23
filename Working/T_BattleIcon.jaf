@@ -1,0 +1,142 @@
+T_BattleIconManager::T_BattleIconManager()
+{
+	this.clear();
+}
+
+T_BattleIconManager::~T_BattleIconManager()
+{
+	this.delete();
+}
+
+bool T_BattleIconManager::create()
+{
+	this.delete();
+	this.createChara();
+	int i = 0;
+	int cnt = this.m_aspMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMonster[i].setCg(10282);
+	}
+	this.m_spAttendant.setCg(10282);
+	this.m_spAttendant.blendColor(255, 0, 255, 128);
+	return true;
+}
+
+void T_BattleIconManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspMonster[i].delete();
+	}
+	this.m_spAttendant.delete();
+	this.deleteChara();
+	this.clear();
+}
+
+void T_BattleIconManager::clear()
+{
+	return;
+}
+
+bool T_BattleIconManager::remake()
+{
+	return this.createChara();
+}
+
+int T_BattleIconManager::getSpNo(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		int idx = 戦闘番号_味方インデクス(nNo);
+		if (idx < 0)
+		{
+			return -1;
+		}
+		return this.m_aspChara[idx].getSpNo();
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		int idx = 戦闘番号_敵インデクス(nNo);
+		if (idx < 0)
+		{
+			return -1;
+		}
+		return this.m_aspMonster[idx].getSpNo();
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		return this.m_spAttendant.getSpNo();
+	}
+	return -1;
+}
+
+bool T_BattleIconManager::createChara()
+{
+	this.deleteChara();
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_aspChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this._createChara(i, 味方パーティ_番号(i + 1)))
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+void T_BattleIconManager::deleteChara()
+{
+	int i = 0;
+	int cnt = this.m_aspChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspChara[i].delete();
+	}
+}
+
+bool T_BattleIconManager::_createChara(int nIndex, int nCharaNo)
+{
+	if (nIndex < 0 || nIndex >= this.m_aspChara.Numof())
+	{
+		return false;
+	}
+	bool bRet = false;
+	T_Sprite spWork;
+	T_Sprite spWork2;
+	ref T_Sprite rfsIcon = this.m_aspChara[nIndex];
+	rfsIcon.setCg(10281);
+	string szFileName = キャラ_顔ＣＧ文字列(nCharaNo);
+	if (!szFileName.Empty())
+	{
+		bRet = spWork.setCgFromFile(キャラ生成_顔ＣＧファイル名(szFileName));
+	}
+	else
+	{
+		bRet = spWork.setCg(キャラ_顔ＣＧ(nCharaNo)) > 0;
+	}
+	if (bRet)
+	{
+		spWork2.copyStretch(24, 29, spWork);
+		if (spWork.existAlpha())
+		{
+			drawGraph_BlendAMap(rfsIcon, 1, 1, spWork2, 0, 0, 24, 29);
+			drawGraph_AddDA_DAxSA(rfsIcon, 1, 1, spWork2, 0, 0, 24, 29);
+		}
+		else
+		{
+			rfsIcon.copyCg(1, 1, spWork2, 0, 0, 24, 29);
+		}
+	}
+	else
+	{
+		drawGraph_Fill(rfsIcon, 1, 1, 24, 29, 0, 0, 255);
+		drawGraph_FillAMap(rfsIcon, 1, 1, 24, 29, 255);
+	}
+	return true;
+}
+

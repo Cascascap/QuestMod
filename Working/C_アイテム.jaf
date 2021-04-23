@@ -1,0 +1,1297 @@
+int アイテム_存在(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ存在(nItemNo, -1);
+}
+
+int アイテム_固有番号(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ固有番号(nItemNo, -1);
+}
+
+int アイテム_ＣＧ番号(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return ＩＣＧ番号(nItemNo, -1);
+}
+
+string アイテム_名前(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return "";
+	}
+	return Ｉ名前(nItemNo, "");
+}
+
+int アイテム_種類(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ種類(nItemNo, -1);
+}
+
+int アイテム_種類詳細(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ種類詳細(nItemNo, -1);
+}
+
+string アイテム_種類文字列(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return "";
+	}
+	return Ｉ種類文字列(Ｉ種類(nItemNo, -1));
+}
+
+int アイテム_種類ランク(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ種類ランク(nItemNo, -1);
+}
+
+bool アイテム_未確定(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	return Ｉ未確定(nItemNo, -1) == 1;
+}
+
+bool アイテム_確定済(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	return Ｉ未確定(nItemNo, -1) == 0;
+}
+
+bool アイテム_ＬＯＣＫ中(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	return Ｉ未確定(nItemNo, -1) == 2;
+}
+
+int アイテム_価格(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ価格(nItemNo, -1);
+}
+
+int アイテム_レアランク(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉレアランク(nItemNo, -1);
+}
+
+int アイテム_外せません(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ外せません(nItemNo, -1);
+}
+
+int アイテム_消滅します(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ消滅します(nItemNo, -1);
+}
+
+string アイテム_情報(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return "";
+	}
+	return Ｉ情報(nItemNo, "");
+}
+
+string アイテム_情報テキスト(int nItemNo, int nCount)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return "";
+	}
+	array@string aszInfo;
+	int i = 0;
+	int cnt = _テキスト分割_強制改行(アイテム_情報(nItemNo), "$", -1, aszInfo);
+	if (cnt <= 0)
+	{
+		return "";
+	}
+	return テキスト統合_改行あり(aszInfo, nCount);
+}
+
+string アイテム_実装条件(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return "";
+	}
+	return Ｉ実装条件(nItemNo, "");
+}
+
+int アイテム_機能(int nItemNo, int nNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	if (!アイテム_機能確認(nNo))
+	{
+		return -1;
+	}
+	return Ｉ機能(nItemNo, nNo, -1);
+}
+
+int アイテム_効果(int nItemNo, int nNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	if (!アイテム_効果確認(nNo))
+	{
+		return -1;
+	}
+	return Ｉ効果(nItemNo, nNo, -1);
+}
+
+int アイテム_装備レベル(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	return Ｉ装備ＬＶ(nItemNo, -1);
+}
+
+int アイテム_装備職業(int nItemNo, int nNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	if (!アイテム_装備職業確認(nNo))
+	{
+		return -1;
+	}
+	return Ｉ装備職業(nItemNo, nNo, -1);
+}
+
+int アイテム_装備キャラ(int nItemNo, int nNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	if (!アイテム_装備キャラ確認(nNo))
+	{
+		return -1;
+	}
+	return ItemEquippedCharacter(nItemNo, nNo, -1);
+}
+
+int アイテム_存在設定(int nItemNo, int nValue)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	Ｉ存在(nItemNo, nValue);
+	return Ｉ存在(nItemNo, -1);
+}
+
+int アイテム_レアランク設定(int nItemNo, int nValue)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	Ｉレアランク(nItemNo, 数値_補正(nValue, 0, 9));
+	return Ｉレアランク(nItemNo, -1);
+}
+
+int アイテム_レアランク＋(int nItemNo, int nValue)
+{
+	return アイテム_レアランク設定(nItemNo, 数値_加算(アイテム_レアランク(nItemNo), nValue));
+}
+
+bool アイテム_ＬＯＣＫ(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	Ｉ未確定(nItemNo, 2);
+	return true;
+}
+
+bool アイテム_ＵＮＬＯＣＫ(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	Ｉ未確定(nItemNo, 0);
+	return true;
+}
+
+bool アイテム_初期化(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	Ｉ初期化(nItemNo);
+	return true;
+}
+
+bool アイテム_鑑定(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	効果音_鑑定();
+	Ｉ鑑定(nItemNo);
+	Ｉ存在(nItemNo, 8);
+	return true;
+}
+
+bool アイテム_寄付(int nItemNo, bool bFlag)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	if (!アイテム_破棄可能(nItemNo))
+	{
+		選択_通知(テキスト_アイテム名(nItemNo) + "@cannot be donated.", "OK", false);
+		return false;
+	}
+	if (bFlag)
+	{
+		string itemName = テキスト_アイテム名(nItemNo);
+		if (!選択_確認_拡張(31, "Donate " + itemName.GetPart(1, itemName.Length() - 2) + "?", 1, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+	}
+	効果音_寄付();
+	Ｔアイテム寄付売却捨てる前(nItemNo);
+	アイテム_存在設定(nItemNo, 0);
+	アイテム_補充(nItemNo);
+	寄付＋();
+	Ｔ寄付した物(nItemNo);
+	return true;
+}
+
+bool アイテム_売却(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	string itemName = テキスト_アイテム名(nItemNo);
+	if (!アイテム_破棄可能(nItemNo))
+	{
+		選択_通知(itemName + "@cannot be sold.", "OK", false);
+		return false;
+	}
+	if (!選択_確認_拡張(14, "Sell@" + itemName.GetPart(1, itemName.Length() - 2) + "?", 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	効果音_売却();
+	Ｔアイテム寄付売却捨てる前(nItemNo);
+	アイテム_存在設定(nItemNo, 0);
+	アイテム_補充(nItemNo);
+	int nGold = Ｉ価格(nItemNo, -1);
+	所持金＋(nGold > 1000 ? 100 : 10);
+	return true;
+}
+
+bool アイテム_破棄(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	if (!アイテム_破棄可能(nItemNo))
+	{
+		選択_通知(テキスト_アイテム名(nItemNo) + "@cannot be discarded.", "OK", false);
+		return false;
+	}
+	string itemName = テキスト_アイテム名(nItemNo);
+	if (!選択_確認_拡張(15, "Discard " + itemName.GetPart(1, itemName.Length() - 2) + "?", 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	効果音_スキル削除();
+	Ｔアイテム寄付売却捨てる前(nItemNo);
+	アイテム_存在設定(nItemNo, 0);
+	return true;
+}
+
+bool アイテム_破棄可能(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	if (アイテム_固有番号(nItemNo) == 100)
+	{
+		return false;
+	}
+	if (アイテム種類_クエスト品(nItemNo))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool アイテム_装備外し確認(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	if (アイテム_外せません(nItemNo) > 0)
+	{
+		選択_通知(テキスト_アイテム名(nItemNo) + "@cannot be removed.", "OK", false);
+		return false;
+	}
+	if (アイテム_消滅します(nItemNo) > 0)
+	{
+		if (!選択_確認(テキスト_アイテム名(nItemNo) + "@will disappear if removed.@Remove?", 1, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+		if (!選択_確認(テキスト_アイテム名(nItemNo) + "@will disappear.@Really remove?", 1, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool アイテム_補充(int nItemNo)
+{
+	return false;
+}
+
+bool アイテム_所持確認(int n固有番号)
+{
+	if (n固有番号 <= 0)
+	{
+		return false;
+	}
+	return Ｉ有無(n固有番号, 0, "") > 0;
+}
+
+int アイテム_有無(int n固有番号, int nType)
+{
+	if (n固有番号 <= 0)
+	{
+		return -1;
+	}
+	return Ｉ有無(n固有番号, nType, "");
+}
+
+string アイテム_固有名(int n固有番号)
+{
+	if (n固有番号 <= 0)
+	{
+		return "";
+	}
+	int nItemNo = アイテム_検索(n固有番号);
+	return nItemNo > 0 ? Ｉ名前(nItemNo, "") : Ｉ固有名前(n固有番号);
+}
+
+int アイテム_検索(int n固有番号)
+{
+	if (n固有番号 <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = アイテム_数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (Ｉ固有番号(i, -1) == n固有番号)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool アイテム_確認(int nItemNo)
+{
+	return nItemNo > 0 && nItemNo < Ｉ.Numof();
+}
+
+bool アイテム_機能確認(int nNo)
+{
+	return nNo > 0 && nNo < Ｉ[0].機能.Numof();
+}
+
+bool アイテム_効果確認(int nNo)
+{
+	return nNo > 0 && nNo < Ｉ[0].効果.Numof();
+}
+
+bool アイテム_装備職業確認(int nNo)
+{
+	return nNo > 0 && nNo < Ｉ[0].装備職業.Numof();
+}
+
+bool アイテム_装備キャラ確認(int nNo)
+{
+	return nNo > 0 && nNo < Ｉ[0].装備キャラ.Numof();
+}
+
+int アイテム_数()
+{
+	return Ｉ.Numof() - 1;
+}
+
+int アイテム_機能数()
+{
+	return Ｉ[0].機能.Numof() - 1;
+}
+
+int アイテム_効果数()
+{
+	return Ｉ[0].効果.Numof() - 1;
+}
+
+int アイテム_装備職業数()
+{
+	return Ｉ[0].装備職業.Numof() - 1;
+}
+
+int アイテム_装備キャラ数()
+{
+	return Ｉ[0].装備キャラ.Numof() - 1;
+}
+
+bool アイテム種類_武器(int nItemNo)
+{
+	return アイテム_種類(nItemNo) == 1;
+}
+
+bool アイテム種類_防具(int nItemNo)
+{
+	return アイテム_種類(nItemNo) == 11;
+}
+
+bool アイテム種類_持ち物(int nItemNo)
+{
+	return アイテム_種類(nItemNo) == 17;
+}
+
+bool アイテム種類_オプション(int nItemNo)
+{
+	return アイテム_種類(nItemNo) == 21;
+}
+
+bool アイテム種類_装備不可(int nItemNo)
+{
+	return アイテム_種類(nItemNo) == 23;
+}
+
+bool アイテム種類_クエスト品(int nItemNo)
+{
+	return アイテム_種類(nItemNo) == 22;
+}
+
+bool アイテム種類_武器_剣(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 2;
+}
+
+bool アイテム種類_武器_短剣(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 3;
+}
+
+bool アイテム種類_武器_槌(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 4;
+}
+
+bool アイテム種類_武器_弓(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 5;
+}
+
+bool アイテム種類_武器_槍(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 7;
+}
+
+bool アイテム種類_武器_杖(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 8;
+}
+
+bool アイテム種類_武器_グローブ(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 9;
+}
+
+bool アイテム種類_武器_その他(int nItemNo)
+{
+	int nType = アイテム_種類詳細(nItemNo);
+	if (nType <= 0)
+	{
+		return false;
+	}
+	switch (nType)
+	{
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 7:
+		case 8:
+		case 9:
+			return false;
+		case 6:
+		case 10:
+		default:
+			break;
+	}
+	return true;
+}
+
+bool アイテム種類_防具_革鎧(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 13;
+}
+
+bool アイテム種類_防具_鉄鎧(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 14;
+}
+
+bool アイテム種類_防具_布鎧(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 15;
+}
+
+bool アイテム種類_防具_道着(int nItemNo)
+{
+	return アイテム_種類詳細(nItemNo) == 16;
+}
+
+bool アイテム種類_防具_その他(int nItemNo)
+{
+	int nType = アイテム_種類詳細(nItemNo);
+	if (nType <= 0)
+	{
+		return false;
+	}
+	switch (nType)
+	{
+		case 13:
+		case 14:
+		case 15:
+		case 16:
+			return false;
+		case 12:
+		default:
+			break;
+	}
+	return true;
+}
+
+bool アイテム種類_オプション_Ｓ(int nItemNo)
+{
+	return アイテム_種類ランク(nItemNo) == 4;
+}
+
+bool アイテム種類_オプション_Ａ(int nItemNo)
+{
+	return アイテム_種類ランク(nItemNo) == 3;
+}
+
+bool アイテム種類_オプション_Ｂ(int nItemNo)
+{
+	return アイテム_種類ランク(nItemNo) == 2;
+}
+
+bool アイテム種類_オプション_Ｃ(int nItemNo)
+{
+	return アイテム_種類ランク(nItemNo) == 1;
+}
+
+bool アイテム種類_オプション_その他(int nItemNo)
+{
+	switch (アイテム_種類ランク(nItemNo))
+	{
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			return false;
+		default:
+			break;
+	}
+	return true;
+}
+
+bool アイテム存在_保管倉庫(int nItemNo)
+{
+	return アイテム_存在(nItemNo) == 7;
+}
+
+bool アイテム存在_クエスト倉庫(int nItemNo)
+{
+	return アイテム_存在(nItemNo) == 8;
+}
+
+bool アイテム存在_保存庫(int nItemNo)
+{
+	return アイテム_存在(nItemNo) == 11;
+}
+
+int アイテム存在_装備中(int nItemNo)
+{
+	int nNo = アイテム_存在(nItemNo);
+	return キャラ_確認(nNo) ? nNo : 0;
+}
+
+int アイテム_効果_攻撃力(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 2:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 3:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_防御力(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 4:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 5:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_回避率(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 6:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 7:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_命中率(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 8:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 9:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_耐性率(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 10:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 11:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_魔抵力(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 12:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 13:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_魔法力(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 14:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 15:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_素早さ(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 16:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			case 17:
+				nRet -= Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_必殺率(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 18:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_衝撃率(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 19:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_ＨＰ(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 20:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_炎耐性(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 21:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_氷耐性(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 22:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_雷耐性(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 23:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_光耐性(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 24:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+int アイテム_効果_闇耐性(int nItemNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return -2147483648;
+	}
+	int i = 0;
+	int cnt = アイテム_機能数();
+	int nRet = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		switch (Ｉ機能(nItemNo, i, -1))
+		{
+			case 25:
+				nRet += Ｉ効果(nItemNo, i, -1);
+				break;
+			default:
+				break;
+		}
+	}
+	return nRet;
+}
+
+string アイテム_説明(int nItemNo)
+{
+	string szComment = "Type: " + アイテム_種類文字列(nItemNo);
+	szComment += "@Item Info: ";
+	array@string aszInfo;
+	int i = 0;
+	int cnt = _テキスト分割_強制改行(アイテム_情報(nItemNo), "$", -1, aszInfo);
+	for (i = 0; i < cnt; ++i)
+	{
+		szComment += "@　" + aszInfo[i];
+	}
+	szComment += "@Level Needed: %DLV" % アイテム_装備レベル(nItemNo);
+	array@int anList;
+	cnt = アイテム_装備職業一覧(nItemNo, anList);
+	if (cnt > 0)
+	{
+		szComment += "@Equippable classes: ";
+		for (i = 0; i < cnt; ++i)
+		{
+			szComment += 職業_短縮名(anList[i]) + ", ";
+		}
+	}
+	cnt = アイテム_装備キャラ一覧(nItemNo, anList);
+	if (cnt > 0)
+	{
+		szComment += "@Equippable characters: ";
+		for (i = 0; i < cnt; ++i)
+		{
+			szComment += キャラ固有番号文字列(anList[i], 0) + ", ";
+		}
+	}
+	return szComment;
+}
+
+int アイテム_装備職業一覧(int nItemNo, ref array@int anList)
+{
+	if (anList === NULL)
+	{
+		return -1;
+	}
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	if (!anList.Empty())
+	{
+		anList.Free();
+	}
+	int i = 0;
+	int cnt = アイテム_装備職業数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (アイテム_装備職業(nItemNo, i) > 0)
+		{
+			anList.PushBack(i);
+		}
+	}
+	return anList.Numof();
+}
+
+int アイテム_装備キャラ一覧(int nItemNo, ref array@int anList)
+{
+	if (anList === NULL)
+	{
+		return -1;
+	}
+	if (!アイテム_確認(nItemNo))
+	{
+		return -1;
+	}
+	if (!anList.Empty())
+	{
+		anList.Free();
+	}
+	int i = 0;
+	int cnt = アイテム_装備キャラ数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nNo = アイテム_装備キャラ(nItemNo, i);
+		if (nNo > 0)
+		{
+			anList.PushBack(nNo);
+		}
+	}
+	return anList.Numof();
+}
+
+bool アイテム_装備可能(int nItemNo, int nCharaNo)
+{
+	if (!アイテム_確認(nItemNo))
+	{
+		return false;
+	}
+	int nLevel = アイテム_装備レベル(nItemNo);
+	if (nLevel > 0 && キャラ_レベル(nCharaNo) < nLevel)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = アイテム_装備キャラ数();
+	int nCharaNo2 = キャラ_番号(nCharaNo);
+	bool bFlag = false;
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nNo = アイテム_装備キャラ(nItemNo, i);
+		if (nNo > 0)
+		{
+			if (nNo == nCharaNo2)
+			{
+				return true;
+			}
+			bFlag = true;
+		}
+	}
+	if (bFlag)
+	{
+		return false;
+	}
+	return アイテム_装備職業(nItemNo, キャラ_職業(nCharaNo)) > 0;
+}
+
+int アイテム_強化ランク(int nItemNo)
+{
+	string szName = アイテム_名前(nItemNo);
+	if (szName.Empty())
+	{
+		return -1;
+	}
+	switch (szName.GetPart(szName.Length() - 1, 1))
+	{
+		case "①":
+			return 1;
+		case "②":
+			return 2;
+		case "③":
+			return 3;
+		case "④":
+			return 4;
+		case "⑤":
+			return 5;
+		case "⑥":
+			return 6;
+		case "⑦":
+			return 7;
+		case "⑧":
+			return 8;
+		case "⑨":
+			return 9;
+		default:
+			break;
+	}
+	return 0;
+}
+
+bool 女の子モンスター_所持確認(int nMonsterNo)
+{
+	if (!女の子モンスター_確認(nMonsterNo))
+	{
+		return false;
+	}
+	return アイテム_所持確認(nMonsterNo);
+}
+
+string 女の子モンスター_名前(int nMonsterNo)
+{
+	if (!女の子モンスター_確認(nMonsterNo))
+	{
+		return "";
+	}
+	return アイテム_固有名(nMonsterNo);
+}
+
+bool 女の子モンスター_確認(int nMonsterNo)
+{
+	return nMonsterNo >= 227 && nMonsterNo < 246;
+}
+
+bool 女の子モンスター_数()
+{
+	return true;
+}
+
+int 女の子モンスター_一覧(ref array@int anList)
+{
+	if (anList === NULL)
+	{
+		return -1;
+	}
+	if (!anList.Empty())
+	{
+		anList.Free();
+	}
+	int i = 0;
+	for (i = 227; i < 246; ++i)
+	{
+		if (女の子モンスター_所持確認(i) > false)
+		{
+			anList.PushBack(i);
+		}
+	}
+	return anList.Numof();
+}
+

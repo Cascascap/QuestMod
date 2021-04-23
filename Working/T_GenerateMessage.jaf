@@ -1,0 +1,91 @@
+void T_GenerateMessage::setUpdate(bool bUpdate)
+{
+	this.m_bUpdate = bUpdate;
+}
+
+bool T_GenerateMessage::getUpdate()
+{
+	return this.m_bUpdate;
+}
+
+T_GenerateMessage::T_GenerateMessage()
+{
+	this.clear();
+}
+
+T_GenerateMessage::~T_GenerateMessage()
+{
+	this.delete();
+}
+
+bool T_GenerateMessage::create(int nX, int nY, int nZ)
+{
+	this.delete();
+	ref T_BattleMessageData rfsData = 戦闘台詞データ_取得(戦闘台詞データ_インデクス(1));
+	if (rfsData === NULL)
+	{
+		return false;
+	}
+	int nTextCount = rfsData.m_nTextWidth / (rfsData.m_nFontSize + rfsData.m_nTextSpace);
+	if (nTextCount <= 0)
+	{
+		return false;
+	}
+	this.m_sText.create(rfsData.m_nTextWidth, rfsData.m_nTextHeight, nTextCount, rfsData.m_nLineSpace, 0, 0);
+	this.m_sText.setDrawType(2);
+	this.m_sText.setTextSpace(rfsData.m_nTextSpace);
+	this.m_sText.setFontSize(rfsData.m_nFontSize);
+	this.m_sText.setFontType(rfsData.m_nFontFace);
+	this.m_sText.setFontBold(rfsData.m_bFontBold);
+	this.m_sText.setFontColor(rfsData.m_nFontColorR, rfsData.m_nFontColorG, rfsData.m_nFontColorB);
+	this.m_sText.setShadowPixel(rfsData.m_nShadowPixelL, rfsData.m_nShadowPixelR, rfsData.m_nShadowPixelU, rfsData.m_nShadowPixelD);
+	this.m_sText.setShadowColor(rfsData.m_nShadowColorR, rfsData.m_nShadowColorG, rfsData.m_nShadowColorB);
+	this.m_sText.setPos(nX + rfsData.m_nTextX, (nY + rfsData.m_nTextY) - 6);
+	this.m_sText.setZ(nZ);
+	this.m_sText.setShow(true);
+	this.m_spCover.setCg(12303);
+	this.m_spCover.setPos(nX, nY);
+	this.m_spCover.setZ(nZ + 1);
+	this.m_spCover.setShow(1);
+	this.m_nTextCount = nTextCount;
+	return true;
+}
+
+void T_GenerateMessage::delete()
+{
+	this.m_sText.delete();
+	this.m_spCover.delete();
+	this.clear();
+}
+
+void T_GenerateMessage::clear()
+{
+	this.m_nTextCount = -1;
+	this.m_bUpdate = false;
+}
+
+bool T_GenerateMessage::set(string szMessage, bool bUpdate)
+{
+	if (this.m_nTextCount <= 0)
+	{
+		return false;
+	}
+	array@string aszMessage;
+	int cnt = _テキスト分割_強制改行(szMessage, "$", this.m_nTextCount, aszMessage);
+	if (cnt > 0)
+	{
+		this.m_sText.setTexts(aszMessage, cnt > 3 ? 3 : cnt);
+	}
+	else
+	{
+		this.m_sText.setText("", false);
+	}
+	this.m_bUpdate = bUpdate;
+	return true;
+}
+
+void T_GenerateMessage::setCoverShow(bool bShow)
+{
+	this.m_spCover.setShow(bShow);
+}
+

@@ -1,0 +1,162 @@
+CASButtonSprite::CASButtonSprite()
+{
+}
+
+void CASButtonSprite::CreateTextButton(int nWidth, int nHeight, string Text, int CharSpace)
+{
+	this.m_Sprite.SetType(3);
+	ref CASConstructionStateSprite StateSprite = this.m_Sprite.GetConstructionStateSprite();
+	StateSprite.Alloc(5);
+	int nState = 0;
+	for (nState = 0; nState < 5; ++nState)
+	{
+		ref CASConstructionSprite Sprite = StateSprite.GetSprite(nState);
+		Sprite.AddCreate(nWidth, nHeight);
+		Sprite.AddFillGradationHorizon(0, 0, nWidth, nHeight, 240, 240, 240, 190, 190, 190);
+		Sprite.AddDrawRect(0, 0, nWidth, nHeight, 0, 0, 0);
+		Sprite.AddFill(nWidth - 2, 1, 1, nHeight - 2, 96, 96, 96);
+		Sprite.AddFill(1, nHeight - 2, nWidth - 2, 1, 96, 96, 96);
+		if (nState == 0 || nState == 2 || nState == 4)
+		{
+			Sprite.AddFill(1, 1, nWidth - 3, 1, 255, 255, 255);
+			Sprite.AddFill(1, 1, 1, nHeight - 3, 255, 255, 255);
+			Sprite.AddFill(nWidth - 3, 2, 1, nHeight - 3, 96, 96, 96);
+			Sprite.AddFill(2, nHeight - 3, nWidth - 2, 1, 96, 96, 96);
+		}
+		else
+		{
+			Sprite.AddFill(1, 1, nWidth - 2, 1, 96, 96, 96);
+			Sprite.AddFill(1, 1, 1, nHeight - 2, 96, 96, 96);
+		}
+		sact_text_metrics_t tm;
+		tm.nSize = nHeight - 12;
+		tm.nColorR = nState >= 2 ? 96 : 0;
+		tm.nColorG = nState >= 2 ? 96 : 0;
+		tm.nColorB = nState >= 2 ? 96 : 0;
+		tm.nShadowColorR = 255;
+		tm.nShadowColorG = 255;
+		tm.nShadowColorB = 255;
+		tm.nShadowPixelL = 1;
+		tm.nShadowPixelR = 1;
+		tm.nShadowPixelU = 1;
+		tm.nShadowPixelD = 1;
+		int nTextX = (nWidth - (((tm.nSize + 2) * Text.LengthByte()) / 2 + CharSpace * (Text.Length() - 1))) / 2;
+		int nTextY = (nHeight - (tm.nSize + 2)) / 2;
+		if (nState == 1 || nState == 3)
+		{
+			nTextX += 1;
+			nTextY += 1;
+		}
+		if (nState == 4)
+		{
+			tm.nColorR = 128;
+			tm.nColorG = 128;
+			tm.nColorB = 128;
+		}
+		Sprite.AddDrawText(nTextX, nTextY, Text, tm, CharSpace);
+		if (nState == 2 || nState == 3)
+		{
+			Sprite.AddFillAlphaColor(0, 0, nWidth, nHeight, 255, 255, 255, 128);
+		}
+		Sprite.Build();
+	}
+	this.m_Sprite.SetActiveState(0);
+	this.m_bKeyDown = false;
+	this.m_bOnCursor = false;
+	this.m_bEnable = true;
+}
+
+void CASButtonSprite::CreateCGButton(string KeyUpCG, string KeyDownCG, string KeyUpOnCursorCG, string KeyDownOnCursorCG, string DisableCG)
+{
+	this.m_Sprite.SetType(2);
+	ref CASCGStateSprite StateSprite = this.m_Sprite.GetCGStateSprite();
+	StateSprite.Alloc(5);
+	ref CASCGSprite CGSprite0 = StateSprite.GetSprite(0);
+	ref CASCGSprite CGSprite1 = StateSprite.GetSprite(1);
+	ref CASCGSprite CGSprite2 = StateSprite.GetSprite(2);
+	ref CASCGSprite CGSprite3 = StateSprite.GetSprite(3);
+	ref CASCGSprite CGSprite4 = StateSprite.GetSprite(4);
+	CGSprite0.SetCG(KeyUpCG);
+	CGSprite1.SetCG(KeyDownCG);
+	CGSprite2.SetCG(KeyUpOnCursorCG);
+	CGSprite3.SetCG(KeyDownOnCursorCG);
+	if (DisableCG.Empty() == false)
+	{
+		CGSprite4.SetCG(DisableCG);
+	}
+	this.m_Sprite.SetActiveState(0);
+	this.m_bKeyDown = false;
+	this.m_bOnCursor = false;
+	this.m_bEnable = true;
+}
+
+void CASButtonSprite::Release()
+{
+	this.m_Sprite.Release();
+}
+
+void CASButtonSprite::SetPos(int nX, int nY)
+{
+	this.m_Sprite.SetPos(nX, nY);
+}
+
+void CASButtonSprite::SetZ(int nZ)
+{
+	this.m_Sprite.SetZ(nZ);
+}
+
+void CASButtonSprite::SetShow(bool Show)
+{
+	this.m_Sprite.SetShow(Show);
+}
+
+void CASButtonSprite::SetEnable(bool bEnable)
+{
+	this.m_bEnable = bEnable;
+	if (!bEnable)
+	{
+		this.m_Sprite.SetActiveState(4);
+	}
+}
+
+void CASButtonSprite::UpdateState()
+{
+	if (!this.m_bEnable)
+	{
+		this.m_Sprite.SetActiveState(4);
+		return;
+	}
+	bool bKeyDown = AFL_IsKeyDown(1);
+	bool bOnCursor = this.m_Sprite.IsMouseCursorIn();
+	if (bKeyDown && bOnCursor)
+	{
+		this.m_Sprite.SetActiveState(3);
+	}
+	else if (!bKeyDown && bOnCursor)
+	{
+		this.m_Sprite.SetActiveState(2);
+	}
+	else
+	{
+		this.m_Sprite.SetActiveState(0);
+	}
+}
+
+bool CASButtonSprite::IsMouseCursorIn()
+{
+	if (!this.m_bEnable)
+	{
+		return false;
+	}
+	return this.m_Sprite.IsMouseCursorIn();
+}
+
+bool CASButtonSprite::IsMouseCursorInRect()
+{
+	if (!this.m_bEnable)
+	{
+		return false;
+	}
+	return this.m_Sprite.IsMouseCursorInRect();
+}
+

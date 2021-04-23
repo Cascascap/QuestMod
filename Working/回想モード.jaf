@@ -1,0 +1,32 @@
+void 回想登録(int _登録番号)
+{
+	PassRegister.RegistNumber(1, _登録番号);
+}
+
+bool 回想確認(int _登録番号)
+{
+	return PassRegister.ExistNumber(1, _登録番号);
+}
+
+bool 回想モード実行中確認()
+{
+	return _g_回想中;
+}
+
+void 回想復帰()
+{
+	SYS_StopSE();
+	SYS_StopVoice();
+	SYS_ロード実行(-5);
+}
+
+void 回想前実行関数登録(sys_btn_fnc_t _fn)
+{
+	return;
+}
+
+void 回想実行()
+{
+	return;
+}
+

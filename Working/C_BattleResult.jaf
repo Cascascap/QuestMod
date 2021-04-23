@@ -1,0 +1,121 @@
+void 戦闘リザルト_金袋入手(int nRet)
+{
+	switch (nRet)
+	{
+		case 1:
+		case 4:
+			break;
+		default:
+			return;
+	}
+	戦闘リザルト_待ち();
+	◆取得金袋数 = 戦闘データ_金袋ＧＥＴ数();
+	int cnt = Ｔ戦闘後の取得経験値算出(nRet);
+	g_sBattleResult.create(191, cnt, 戦闘データ_味方参加数());
+	g_sBattleResult.setShow(true);
+}
+
+void 戦闘リザルト_表示(int nRet)
+{
+	switch (nRet)
+	{
+		case 1:
+		case 4:
+			break;
+		default:
+			return;
+	}
+	戦闘味方_マーク消し();
+	戦闘敵_マーク消し();
+	戦闘従魔_消し();
+	戦闘行動順_消し();
+	戦闘台詞_消去();
+	戦闘選択_ボタン消し();
+	array@int anExp[5];
+	g_sBattleExp.create(211);
+	g_sBattleExp.setShow(true);
+	UPDATE(true);
+	g_sBattleResult.showCoin();
+	戦闘リザルト_ＥＸＰ加算(nRet, anExp);
+	g_sBattleExp.updateAll(anExp, 500);
+	int i = 0;
+	bool bFlag = true;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘データ_レベルアップ可能(nNo))
+		{
+			continue;
+		}
+		if (bFlag)
+		{
+			戦闘選択_キー待ち(-1, nRet);
+		}
+		g_sBattleExp.levelUp(nNo, 500);
+		戦闘リザルト_レベルアップ(nNo);
+		戦闘味方_レベルアップ(nNo);
+		g_sBattleExp.setExp(nNo, 戦闘データ_ＥＸＰ(nNo), 戦闘データ_ＥＸＰ最大(nNo));
+		bFlag = false;
+	}
+	戦闘選択_閉じる待ち(nRet);
+}
+
+void 戦闘リザルト_削除()
+{
+	g_sBattleExp.delete();
+	g_sBattleResult.delete();
+}
+
+void 戦闘リザルト_メッセージ表示(int nRet)
+{
+	int nCgNo = 0;
+	switch (nRet)
+	{
+		case 5:
+			nCgNo = 10341;
+			break;
+		case 6:
+			nCgNo = 10342;
+			break;
+		default:
+			return;
+	}
+	T_Sprite spResult;
+	spResult.setCg(nCgNo);
+	spResult.setPos(0, 0);
+	spResult.setZ(301);
+	spResult.setShow(1);
+	効果音_逃走();
+	画面_クリア(true, true);
+	_EFFECT(1, 500);
+	_W(1000);
+	spResult.delete();
+}
+
+void 戦闘リザルト_ＥＸＰ加算(int nRet, ref array@int anExp)
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		anExp[i] = 戦闘データ_ＥＸＰ加算(戦闘番号_味方(i), 味方パーティ_取得経験値(i + 1));
+	}
+}
+
+void 戦闘リザルト_レベルアップ(int nNo)
+{
+	ステータス_実行(20, 戦闘番号_ＩＩＣ(nNo), -1, 0);
+}
+
+void 戦闘リザルト_待ち()
+{
+	switch (戦闘速度())
+	{
+		case 1:
+			_W(1000);
+			break;
+		case 0:
+		default:
+			break;
+	}
+}
+

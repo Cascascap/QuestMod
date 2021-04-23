@@ -1,0 +1,94 @@
+void 選択_初期化()
+{
+	選択データ_解放();
+}
+
+void 選択_終了処理()
+{
+	選択データ_解放();
+	選択_枠消去ＯＦＦ();
+}
+
+int 選択_ＯＰＥＮ(bool bCancel, int nEffectNo, int nSpeed, bool bAuto)
+{
+	if (選択_枠消去())
+	{
+		枠消去();
+	}
+	int nRet = 0;
+	bool bOld = Ｒ８キャラ停止();
+	nRet = g_sSelect.open(bCancel, nEffectNo, nSpeed, bAuto);
+	if (bOld)
+	{
+		Ｒ８キャラ停止解除();
+	}
+	return nRet;
+}
+
+void 選択_表示設定(bool bShow)
+{
+	g_sSelect.setShow(bShow);
+}
+
+bool 選択_枠消去ＯＮ()
+{
+	return 選択_枠消去設定(true);
+}
+
+bool 選択_枠消去ＯＦＦ()
+{
+	return 選択_枠消去設定(false);
+}
+
+bool 選択_枠消去設定(bool bFlag)
+{
+	bool bOld = g_b選択_枠消去;
+	g_b選択_枠消去 = bFlag;
+	return bOld;
+}
+
+bool 選択_枠消去()
+{
+	return g_b選択_枠消去;
+}
+
+void ダイアログ_メッセージ追加(string szMessage)
+{
+	選択_テキスト追加(szMessage, -1, -1, -1);
+}
+
+string ダイアログ_メッセージ作成(string szMessage)
+{
+	array@string aszText;
+	テキスト分割_強制改行(szMessage, 17, aszText);
+	int i = 0;
+	int cnt = aszText.Numof();
+	string szText = "";
+	for (i = 0; i < cnt; ++i)
+	{
+		szText += ダイアログ_メッセージ補正(aszText[i]);
+	}
+	return szText;
+}
+
+string ダイアログ_メッセージ補正(string szMessage)
+{
+	int len = szMessage.Length();
+label0:
+	if (len < 17)
+	{
+		if (17 - len > 1)
+		{
+			szMessage = "　" + szMessage + "　";
+			len += 2;
+		}
+		else
+		{
+			szMessage = " " + szMessage + " ";
+			++len;
+		}
+		goto label0;
+	}
+	return szMessage;
+}
+

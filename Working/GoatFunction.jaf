@@ -1,0 +1,127 @@
+void GOAT_Init()
+{
+	if (!GoatGUIEngine.Init())
+	{
+		return;
+	}
+	GOAT_InitTimer();
+}
+
+void GOAT_InitTimer()
+{
+	g_GOAT_PrevTime = system.GetTime();
+}
+
+void GOAT_Update(bool SpeedupByMessageSkip)
+{
+	int CurrentTime = system.GetTime();
+	int PassedTime = CurrentTime - g_GOAT_PrevTime;
+	g_GOAT_PrevTime = CurrentTime;
+	if (SpeedupByMessageSkip && (未読スキップ中確認() || 既読スキップ中確認()))
+	{
+		PassedTime *= 3;
+	}
+	GoatGUIEngine.Update(PassedTime, g_MessageWindowManager.IsShowAll());
+}
+
+void GOAT_ReleaseAllPartsWithoutSystem()
+{
+	GoatGUIEngine.ReleaseAllPartsWithoutSystem();
+}
+
+int GOAT_WaitForClick(FTGOAT_WaitForClickCallback Func, bool キーキャンセル)
+{
+	GOAT_EndMotionFociby();
+	CASClick RButtonClick;
+	CASClick SpaceKeyClick;
+	RButtonClick.Init(2, true);
+	SpaceKeyClick.Init(32, true);
+	GoatGUIEngine.BeginClick();
+	int ClickPartsNumber = 0;
+	for (; ; )
+	{
+		if (Func != NULL)
+		{
+			Func();
+		}
+		UpdateView(true);
+		if (キーキャンセル)
+		{
+			if (RButtonClick.IsClick(-2147483648))
+			{
+				break;
+			}
+			if (SpaceKeyClick.IsClick(-2147483648))
+			{
+				break;
+			}
+		}
+		ClickPartsNumber = GoatGUIEngine.GetClickPartsNumber();
+		if (ClickPartsNumber != 0)
+		{
+			break;
+		}
+	}
+	GoatGUIEngine.EndClick();
+	return ClickPartsNumber;
+}
+
+void GOAT_BeginMotion()
+{
+	GoatGUIEngine.BeginMotion();
+	g_GOAT_MotionTimer.Reset();
+	g_GOAT_CurrentMotionTime = 0;
+	g_GOAT_PrevMotionTime = g_GOAT_MotionTimer.Get();
+}
+
+void GOAT_UpdateMotion(bool 未読既読スキップ)
+{
+	int CurrentTime = g_GOAT_MotionTimer.Get();
+	int PassedTime = CurrentTime - g_GOAT_PrevMotionTime;
+	g_GOAT_PrevMotionTime = CurrentTime;
+	if (未読既読スキップ && (未読スキップ中確認() || 既読スキップ中確認()))
+	{
+		PassedTime *= 3;
+	}
+	g_GOAT_CurrentMotionTime += PassedTime;
+	GoatGUIEngine.SetMotionTime(g_GOAT_CurrentMotionTime);
+}
+
+bool GOAT_IsMotion()
+{
+	return GoatGUIEngine.IsMotion();
+}
+
+void GOAT_EndMotionFociby()
+{
+	if (GOAT_IsMotion())
+	{
+		GoatGUIEngine.SetMotionTime(GoatGUIEngine.GetMotionEndTime());
+		UpdateView(true);
+	}
+	GoatGUIEngine.EndMotion();
+}
+
+void GOAT_EndMotion()
+{
+	GoatGUIEngine.EndMotion();
+}
+
+void GOAT_SetThumbnailReductionSize(int ReductionSize)
+{
+	GoatGUIEngine.SetThumbnailReductionSize(ReductionSize);
+}
+
+void GOAT_SetThumbnailMode(bool Mode)
+{
+	if (!GoatGUIEngine.SetThumbnailMode(Mode))
+	{
+		system.Error("サムネイルモードの移行に失敗しました");
+	}
+}
+
+void GOAT_Warning(string Text)
+{
+	system.Output("警告 : " + Text);
+}
+

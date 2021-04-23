@@ -1,0 +1,47 @@
+T_SaveMessage::T_SaveMessage()
+{
+	this.clear();
+}
+
+T_SaveMessage::~T_SaveMessage()
+{
+	this.delete();
+}
+
+void T_SaveMessage::create(int nMode)
+{
+	this.delete();
+	if (this.m_spMessage.setCg(nMode == 1 ? 10044 : 10040) <= 0)
+	{
+		return;
+	}
+	this.m_spMessage.setPos(nMode == 1 ? 0 : 371, nMode == 1 ? 540 : 542);
+	this.m_spMessage.setZ(9601);
+	this.m_spMessage.setShow(1);
+	Œø‰Ê‰¹_ƒZ[ƒu();
+	this.m_nMode = nMode;
+	this.m_sTimer.Reset();
+}
+
+void T_SaveMessage::delete()
+{
+	this.m_spMessage.delete();
+	this.clear();
+}
+
+void T_SaveMessage::clear()
+{
+	this.m_nMode = -1;
+}
+
+void T_SaveMessage::wait()
+{
+	if (this.m_nMode > 0)
+	{
+		while (this.m_sTimer.Get() < 700)
+		{
+			UPDATE(true);
+		}
+	}
+}
+

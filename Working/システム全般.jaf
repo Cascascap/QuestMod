@@ -1,0 +1,38 @@
+void Ｒ８システム情報更新(int nMode)
+{
+	システムバー_更新(nMode, -1);
+	UPDATE(true);
+}
+
+void Ｒ８マップ情報更新(int nMode)
+{
+	マップ部品_状態更新(nMode, 0, -1);
+	UPDATE(true);
+}
+
+void Ｒ８エンディングロール()
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	音楽(0, -1, -1);
+	マップ_終了処理(false);
+	戦闘_終了処理(false);
+	_黒画面(1, 1000);
+	画面_クリア(true, true);
+	エンドロール();
+	ＥＤ見たＯＮ();
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+
+void Ｒ８不要クエストへ移動(int nQuestNo)
+{
+	クエスト倉庫_設定(nQuestNo, 1);
+}
+
+bool Ｒ８マグナム確認()
+{
+	return g_nMagnumMode > 0;
+}
+

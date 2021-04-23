@@ -1,0 +1,396 @@
+void 異常の巣／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5070, 0, 0);
+	ト書き();
+	'　' R;
+	'     Evolution Laboratory' A;
+	音楽(93, -1, -1);
+	'Rance\'s party stood before the cave.' A;
+	セリフ(2000, "");
+	'"This it...? The place where that nutcase is modifying monsters?"' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"Yes."' A;
+	'"We learned of this location thanks to Crane\'s eavesdropping."' A;
+	セリフ(2220, "");
+	'".........' R;
+	' ...It\'s not... eavesdropping."' A;
+	セリフ(2000, "");
+	'"Yeah, it\'s that people just happened to be talking about this secret stuff when Crane just happened to be hiding nearby."' A;
+	セリフ(2001, "");
+	'"And I just happened to hear it, too.' R;
+	' Gahahaha, it just happened!"' A;
+	セリフ(2220, "");
+	'".........' R;
+	' ......Really..."' A;
+	セリフ(2060, "");
+	'"Excuse me.' R;
+	' We learned the location of this place thanks to the information Crane just happened to hear."' A;
+	セリフ(2060, "");
+	'"The scientist responsible for those unusual monsters we\'ve encountered lately is here."' A;
+	'"This is a dangerous person who\'s wanted by the Alicist Church and must be apprehended."' A;
+	セリフ(2000, "");
+	'"Mm."' A;
+	'"So, is this Darwon a pretty lady?"' A;
+	セリフ(2060, "");
+	'"........."' A;
+	'"Hm."' A;
+	セリフ(2002, "");
+	'"Hey! Don\'t avert your eyes!"' A;
+	セリフ(2005, "");
+	'"...Hmph, there goes some motivation..."' A;
+	セリフ(2000, "");
+	'"Well... it could still be a pretty girl. Let\'s go, I guess."' A;
+	ADVOFF();
+}
+
+void 異常の巣／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"What\'s going on here...?' R;
+	' They\'re all weird!"' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"They must have been modified by Darwon.' R;
+	' Each monster\'s strengths, weaknesses, and attacks are completely random."' A;
+	'"It\'s a shame that we can\'t use our past experience as reference."' A;
+	'"And anyone making monster encyclopedias of the world will be in trouble, too.' R;
+	' We have to put a stop to this."' A;
+	セリフ(2000, "");
+	'"Mm, strong enemies need to be strong. They can\'t go betraying their images."' A;
+	'"Darwon, eh...?' R;
+	' He\'s becoming annoying.' R;
+	' Let\'s kill him."' A;
+	セリフ(2060, "");
+	'"I see we\'re in agreement on this."' A;
+	セリフ(2000, "");
+	'"But if he\'s a pretty girl, she\'s getting dirty punishment."' A;
+	セリフ(2060, "");
+	'"........."' A;
+	'"Yes, please keep up the good work."' A;
+	セリフ(2005, "");
+	'"What was that pause just now...?"' A;
+	セリフ(2060, "");
+	'"Hm."' A;
+	セリフ(2002, "");
+	'"I keep telling you not to look away from me!"' A;
+	ADVOFF();
+}
+
+void 異常の巣／エリア切り替え()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5000, 0, 0);
+	ト書き();
+	'　' R;
+	'     Camp' A;
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"Hm? Whatcha readin\', Crook?"' A;
+	枠消去();
+	立ち絵表示(1060, 1, 200);
+	セリフ(2060, "");
+	'"It\'s the \'Book of Evolution,\' written by Favre Dyne."' A;
+	セリフ(2005, "");
+	'"F... Fav...?' R;
+	' What was that?"' A;
+	セリフ(2060, "");
+	'"Favre Dyne."' A;
+	'"It\'s prohibited by the Alicist Church, but it has to do with Darwon. I borrowed it from the Church\'s restricted library to investigate."' A;
+	セリフ(2000, "");
+	'"What\'s it about?"' A;
+	セリフ(2060, "");
+	'"It\'s nonsense."' A;
+	'"It says things like monsters and gal monsters grow and evolve to suit their environments..."' A;
+	'"That even humans and kalars were once the same species, but evolved into divergent species as time went on..."' A;
+	セリフ(2000, "");
+	'"I don\'t really get it, but is that true?"' A;
+	セリフ(2060, "");
+	'"No. In actuality, God created all living beings, and monsters were birthed by the holy gal monsters."' A;
+	'"It\'s almost like it\'s about another world."' A;
+	セリフ(2000, "");
+	'"Hmm?"' A;
+	セリフ(2060, "");
+	'"However, it appears that Darwon is a fanatic believer of this writing."' A;
+	'"He\'s an ignoramus who won\'t accept the existence of God.' R;
+	' He must prefer this book since it lines up with his own beliefs."' A;
+	セリフ(2005, "");
+	'"I don\'t really get it, but this Darwon sounds like trouble and that\'s enough for me."' A;
+	ADVOFF();
+}
+
+void 異常の巣／道が見つからない()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(◆マップ曲, -1, -1);
+	セリフ(2005, "");
+	'"Hmm..."' A;
+	'"Where is this Darwon guy...?"' A;
+	セリフ(2060, "");
+	'"We\'ve been looking for a while and can\'t seem to find him, huh?"' A;
+	セリフ(2005, "");
+	'"Was the stuff Crane overheard a lie...?"' A;
+	セリフ(2220, "");
+	'".........' R;
+	' ...Unfortunately... that\'s... impossible."' A;
+	'"The secrets that find their way to me...' R;
+	' are always true...' R;
+	' That\'s why so many people are after me."' A;
+	セリフ(2005, "");
+	'"I see.' R;
+	' Where\'s he hiding, then, I wonder..."' A;
+	セリフ(2030, "");
+	'"...Hmm...?"' A;
+	セリフ(2031, "");
+	'"Do you hear something?"' A;
+	セリフ(2005, "");
+	'"Huh?"' A;
+	セリフ(2060, "");
+	'"........."' A;
+	ト書き();
+	'Crook got down on her hands and knees, placing her ear against the ground.' A;
+	セリフ(2060, "");
+	'"..."' A;
+	'"There\'s something underground..."' A;
+	セリフ(2030, "");
+	'"Oui."' A;
+	セリフ(2000, "");
+	'"Oho, a hidden room. Sneaky.' R;
+	' Alright, let\'s look for some stairs."' A;
+	セリフ(2060, "");
+	'"Stairs... Have we seen any?"' A;
+	セリフ(2005, "");
+	'"Ah, not yet..."' A;
+	セリフ(2000, "");
+	'"Well, as long as we can get down from here, anything\'s okay I guess.' R;
+	' I\'d take a hole too."' A;
+	セリフ(2060, "");
+	'"A hole... huh...?"' A;
+	ADVOFF();
+}
+
+void 異常の巣／落とし穴の底()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	全画面揺れ(2, false);
+	ト書き();
+	'　' R;
+	'  <thud thud thud!>' A;
+	セリフ(2005, "");
+	'"Owwww..."' A;
+	'"Hey, what\'s this?"' A;
+	セリフ(2000, "");
+	'"Ooh..."' A;
+	枠消去();
+	背景表示(5650, 1, 500, "", false);
+	ト書き();
+	'Before their eyes was a sight like that of a castle.' A;
+	セリフ(2000, "");
+	'"This must be his underground fortress."' A;
+	'"This Darwon must be here.' R;
+	' Heheh, we\'re getting close."' A;
+	ADVOFF();
+}
+
+void 異常の巣／ダーロィン()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	枠消去();
+	音楽(76, -1, -1);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Oh! Found you, Darwon!"' A;
+	セリフ(2901, "Darwon");
+	'"Wh-What do you people want?!"' A;
+	セリフ(2000, "");
+	'"I\'ll punish you, you vile monster-modifying villain!"' A;
+	セリフ(2060, "");
+	'"Remolding life is sacrilege against God.' R;
+	' Please stop."' A;
+	セリフ(2901, "Darwon");
+	'"God..."' A;
+	'"You\'re from the Church!"' A;
+	セリフ(2060, "");
+	'"That I am."' A;
+	セリフ(2901, "Darwon");
+	'"Hmph, there\'s no God in this world, sycophant!' R;
+	' That\'s just a lie the Church tells people!"' A;
+	'"It\'s all recorded in the \'Book of Evolution\' Favre Dyne wrote!"' A;
+	'"The seed of life was a natural phenomenon, not something created by God!"' A;
+	'"For Dyne\'s part, I\'ll prove that!"' A;
+	セリフ(2005, "");
+	'"G-Geez.' R;
+	' This is getting heated, isn\'t it..."' A;
+	セリフ(2060, "");
+	'"..."' A;
+	セリフ(2030, "");
+	'"Incidentally, how\'re you creating new life, exactly?"' A;
+	セリフ(2901, "Darwon");
+	'"Heh, listen closely."' A;
+	'"Look here.' R;
+	' This is an egg I\'ve stolen from a gal monster."' A;
+	'"I drill a small hole in it and insert a syringe.' R;
+	' Inside the injection is snips and snails and puppy doggy tails..."' A;
+	'"And then you shake and shake and shake and shake it!"' A;
+	'"And when the egg incubates, a completely different monster emerges!"' A;
+	'"...Though it only succeeds some one time for every hundred attempts..."' A;
+	'"But this is the correct way for life to evolve!"' A;
+	セリフ(2033, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"That\'s not evolution, it\'s modification..."' A;
+	セリフ(2901, "Darwon");
+	'"Argh, shut up!"' A;
+	'"Go, my monsters!' R;
+	' Tear them to pieces!"' A;
+	セリフ(2002, "");
+	'"Humph! We\'ll turn the tables on ’em!"' A;
+	ADVOFF();
+}
+
+void 異常の巣／ダーロィン／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Heh, I win."' A;
+	セリフ(2060, "");
+	'"Good work."' A;
+	'"I\'ll be taking him in to the Church."' A;
+	セリフ(2000, "");
+	'"Sure, I\'ll leave that to you."' A;
+	セリフ(2005, "");
+	'"Too bad, he didn\'t end up being a beautiful girl or anything at all...' R;
+	' No fun."' A;
+	'"Haaahh,  I should get outta here, eat something, and go to bed."' A;
+}
+
+void 異常の巣／異常ブルマー()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(93, -1, -1);
+	セリフ(2000, "");
+	'"Hm? This is..."' A;
+	ト書き();
+	'Rance dug through the cupboard.' A;
+	セリフ(2000, "");
+	'"Oh, bloomers."' A;
+	ト書き();
+	'Rance found some abnormal bloomers.' A;
+	セリフ(2000, "");
+	'"What\'s this? They\'ve got a tag on them."' A;
+	'"Oho, oho, these have quite an effect attached to them."' A;
+	セリフ(2060, "");
+	'"Excuse me, please let me see those."' A;
+	'"........."' A;
+	'"...These are dangerous.' R;
+	' I\'ll have to take them..."' A;
+	セリフ(2000, "");
+	'"Hey, wait a second."' A;
+	枠消去();
+	効果音(2011);
+	全画面揺れ(1, false);
+	ト書き();
+	'Clonk.' R;
+	'Rance gave Crook a chop.' A;
+	セリフ(2060, "");
+	'"What is it?"' R;
+	'  ↑  Rubbing her head' A;
+	セリフ(2000, "");
+	'"I found them!"' A;
+	セリフ(2060, "");
+	'"But they\'re dangerous. I\'ll have to..."' A;
+	セリフ(2000, "");
+	'"I\'m not gonna let you do that, stupid."' A;
+	セリフ(2060, "");
+	'"No, I have to take these bloomers."' A;
+	セリフ(2000, "");
+	'"No! They\'re mine!"' A;
+	セリフ(2060, "");
+	'"No, please allow me to take these bloomers."' A;
+	セリフ(2002, "");
+	'"Stop being ridiculous!' R;
+	' These are my bloomers! They were made for me!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	思考(2917, "");
+	'(...Is this conversation real?)' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'　' R;
+	'     Five Minutes Later' A;
+	セリフ(2000, "");
+	'"...Y-You want ’em that bad?"' A;
+	セリフ(2060, "");
+	'"...Yes, I want them."' A;
+	セリフ(2000, "");
+	'"Hmm... well, fine.' R;
+	' We\'ll make these Crook\'s personal bloomers."' A;
+	セリフ(2060, "");
+	'"No, that\'s not what I..."' A;
+	セリフ(2000, "");
+	'"Don\'t be modest, now.' R;
+	' They\'re my present to you."' A;
+	セリフ(2060, "");
+	'"...Right."' A;
+	セリフ(2000, "");
+	'"You wanna put ’em on now?"' A;
+	セリフ(2060, "");
+	'"No, that\'s fine."' A;
+	セリフ(2000, "");
+	'"Heheh. You can equip ’em later, then."' A;
+	'"Heheheheh..."' A;
+	ADVOFF();
+}
+

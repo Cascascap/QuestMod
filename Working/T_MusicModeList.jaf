@@ -1,0 +1,425 @@
+int T_MusicModeList::getMusicNo()
+{
+	return this.m_nMusicNo;
+}
+
+T_MusicModeList::T_MusicModeList()
+{
+	this.clear();
+}
+
+T_MusicModeList::~T_MusicModeList()
+{
+	this.delete();
+}
+
+bool T_MusicModeList::create()
+{
+	this.delete();
+	this.m_sName.create(420, 26, -1, 0, 0, 1);
+	this.m_sName.setTextSpace(-6);
+	this.m_sName.setFontSize(24);
+	this.m_sName.setFontType(258);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setFontColor(255, 245, 100);
+	this.m_sName.setSpacing(0.949999988079071);
+	this.m_sNumber.create(48, 26, -1, 0, 1, 1);
+	this.m_sNumber.setTextSpace(-6);
+	this.m_sNumber.setFontSize(24);
+	this.m_sNumber.setFontType(257);
+	this.m_sNumber.setFontBold(0);
+	this.m_sNumber.setFontColor(255, 255, 255);
+	this.m_sNumber.setDrawType(2);
+	return true;
+}
+
+void T_MusicModeList::delete()
+{
+	this.m_sName.delete();
+	this.m_sNumber.delete();
+	this.clear();
+}
+
+void T_MusicModeList::clear()
+{
+	this.m_nMusicNo = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+}
+
+bool T_MusicModeList::set(int nNo, int nMusicNo, bool bActive)
+{
+	if (nNo <= 0 || nMusicNo <= 0)
+	{
+		this.m_nMusicNo = -1;
+		this.m_sName.setText("", false);
+		this.m_sNumber.setText("", false);
+		return false;
+	}
+	this.m_nMusicNo = nMusicNo;
+	if (bActive)
+	{
+		this.m_sName.setText(音楽モード_名前(nMusicNo), false);
+	}
+	else
+	{
+		this.m_sName.setText("?????", false);
+	}
+	this.m_sNumber.setText("%02d." % nNo, false);
+	return true;
+}
+
+void T_MusicModeList::setPos(int nX, int nY)
+{
+	this.m_sName.setPos(nX + 48, nY + 1);
+	this.m_sNumber.setPos(nX + 0, nY + 1);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_MusicModeList::setZ(int nZ)
+{
+	this.m_sName.setZ(nZ);
+	this.m_sNumber.setZ(nZ);
+}
+
+void T_MusicModeList::setShow(bool bShow)
+{
+	if (this.m_nMusicNo > 0)
+	{
+		this.m_sName.setShow(bShow);
+		this.m_sNumber.setShow(bShow);
+	}
+	else
+	{
+		this.m_sName.setShow(false);
+		this.m_sNumber.setShow(false);
+	}
+}
+
+int T_MusicModeListManager::getIndex(int nMusicNo)
+{
+	return this.search(nMusicNo);
+}
+
+int T_MusicModeListManager::getTopIndex()
+{
+	return this.m_nTopIndex;
+}
+
+int T_MusicModeListManager::getLockNo()
+{
+	return this.m_nLockNo;
+}
+
+int T_MusicModeListManager::getListCount()
+{
+	return this.m_anMusicList.Numof();
+}
+
+int T_MusicModeListManager::getList(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anMusicList.Numof() ? -1 : this.m_anMusicList[nIndex];
+}
+
+bool T_MusicModeListManager::getActive(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_abActive.Numof() ? -1 : this.m_abActive[nIndex];
+}
+
+ref T_MusicModeList T_MusicModeListManager::get(int nMusicNo)
+{
+	return this.getFromIndex(this.search(nMusicNo));
+}
+
+ref T_MusicModeList T_MusicModeListManager::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asItem.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asItem[nIndex];
+}
+
+int T_MusicModeListManager::searchMusicList(int nMusicNo)
+{
+	return nMusicNo > 0 ? this.m_anMusicList.Find(0, this.m_anMusicList.Numof(), nMusicNo) : -1;
+}
+
+T_MusicModeListManager::T_MusicModeListManager()
+{
+	this.clear();
+}
+
+T_MusicModeListManager::~T_MusicModeListManager()
+{
+	this.delete();
+}
+
+bool T_MusicModeListManager::create(int nMusicNo)
+{
+	this.delete();
+	int nCount = this.createMusicList();
+	if (nCount < 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_MusicModeList rfsItem = this.m_asItem[i];
+		rfsItem.create();
+		rfsItem.setPos(音楽モード一覧_Ｘ(i), 音楽モード一覧_Ｙ(i));
+	}
+	this.m_spFrame.setCg(12283);
+	int idx = this.searchMusicList(nMusicNo);
+	this.setTopIndex(idx < 0 ? 0 : idx);
+	if (idx >= 0)
+	{
+		this.setLockNo(nMusicNo);
+	}
+	return true;
+}
+
+void T_MusicModeListManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].delete();
+	}
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_MusicModeListManager::clear()
+{
+	if (!this.m_anMusicList.Empty())
+	{
+		this.m_anMusicList.Free();
+	}
+	if (!this.m_abActive.Empty())
+	{
+		this.m_abActive.Free();
+	}
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nTopIndex = -1;
+	this.m_nLockNo = -1;
+}
+
+bool T_MusicModeListManager::play(int nMusicNo)
+{
+	int idx = this.searchMusicList(nMusicNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	if (!this.m_abActive[idx])
+	{
+		return false;
+	}
+	int idx2 = this.search(nMusicNo);
+	if (idx2 < 0)
+	{
+		if (idx < this.m_nTopIndex)
+		{
+			this.setTopIndex(idx);
+		}
+		else
+		{
+			this.setTopIndex(idx + -19);
+		}
+	}
+	if (this.setLockNo(nMusicNo) < 0)
+	{
+		return false;
+	}
+	音楽_再生(nMusicNo);
+	音楽モード_再生回数＋(nMusicNo);
+	return true;
+}
+
+int T_MusicModeListManager::setTopIndex(int nIndex)
+{
+	int cnt = this.m_anMusicList.Numof();
+	int cnt2 = this.m_asItem.Numof();
+	nIndex = cnt > cnt2 ? 数値_補正(nIndex, 0, cnt - cnt2) : 0;
+	int i = 0;
+	for (i = 0; i < cnt2; ++i)
+	{
+		int idx = i + nIndex;
+		if (idx < cnt)
+		{
+			this.m_asItem[i].set(idx + 1, this.m_anMusicList[idx], this.m_abActive[idx]);
+		}
+		else
+		{
+			this.m_asItem[i].set(idx + 1, 0, false);
+		}
+	}
+	this.m_nTopIndex = nIndex;
+	if (this.m_nZ > 0)
+	{
+		this.setZ(this.m_nZ);
+	}
+	this.setShow(this.m_bShow);
+	this.setLockNo(this.m_nLockNo);
+	return nIndex;
+}
+
+int T_MusicModeListManager::setLockNo(int nMusicNo)
+{
+	if (nMusicNo < 0)
+	{
+		this.unlock();
+		return 0;
+	}
+	if (!this.lock(nMusicNo))
+	{
+		return -1;
+	}
+	return this.m_nLockNo;
+}
+
+void T_MusicModeListManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setZ(nZ);
+	}
+	this.m_spFrame.setZ(nZ + 20);
+	this.m_nZ = nZ;
+}
+
+void T_MusicModeListManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setShow(bShow);
+	}
+	this.m_spFrame.setShow(this.m_nLockNo > 0 ? bShow : 0);
+	this.m_bShow = bShow;
+}
+
+int T_MusicModeListManager::getPrevMusic()
+{
+	int idx = this.searchMusicList(this.m_nLockNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anMusicList.Numof();
+	for (i = idx - 1; i >= 0; --i)
+	{
+		if (this.m_abActive[i])
+		{
+			return this.m_anMusicList[i];
+		}
+	}
+	for (i = cnt - 1; i > idx; --i)
+	{
+		if (this.m_abActive[i])
+		{
+			return this.m_anMusicList[i];
+		}
+	}
+	return this.m_nLockNo;
+}
+
+int T_MusicModeListManager::getNextMusic()
+{
+	int idx = this.searchMusicList(this.m_nLockNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_anMusicList.Numof();
+	for (i = idx + 1; i < cnt; ++i)
+	{
+		if (this.m_abActive[i])
+		{
+			return this.m_anMusicList[i];
+		}
+	}
+	for (i = 0; i < idx; ++i)
+	{
+		if (this.m_abActive[i])
+		{
+			return this.m_anMusicList[i];
+		}
+	}
+	return this.m_nLockNo;
+}
+
+int T_MusicModeListManager::createMusicList()
+{
+	int i = 0;
+	int cnt = 音楽モード_一覧(this.m_anMusicList);
+	if (cnt < 0)
+	{
+		return -1;
+	}
+	this.m_abActive.Alloc(cnt);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_abActive[i] = 音楽モード_確認(this.m_anMusicList[i]);
+	}
+	return cnt;
+}
+
+int T_MusicModeListManager::search(int nMusicNo)
+{
+	if (nMusicNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asItem[i].getMusicNo() == nMusicNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool T_MusicModeListManager::lock(int nMusicNo)
+{
+	int idx = this.searchMusicList(nMusicNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int idx2 = this.search(nMusicNo);
+	if (idx2 >= 0)
+	{
+		this.m_spFrame.setPos(音楽モード一覧_Ｘ(idx2) + -5, 音楽モード一覧_Ｙ(idx2) + -1);
+		this.m_spFrame.setShow(this.m_bShow);
+		this.m_asItem[idx2].setShow(this.m_bShow);
+	}
+	else
+	{
+		this.m_spFrame.setShow(0);
+	}
+	this.m_nLockNo = nMusicNo;
+	return true;
+}
+
+void T_MusicModeListManager::unlock()
+{
+	this.m_spFrame.setShow(0);
+	this.m_nLockNo = -1;
+}
+

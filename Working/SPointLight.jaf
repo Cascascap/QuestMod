@@ -1,0 +1,41 @@
+SPointLight::SPointLight()
+{
+	this.Diffuse.Set(0.0, 0.0, 0.0, 1.0);
+	this.GlobeDiffuse.Set(0.0, 0.0, 0.0, 1.0);
+	this.fAttenuationNear = 0.0;
+	this.fAttenuationFar = 0.0;
+}
+
+void SPointLight::SetPos(float fX_, float fY_, float fZ_)
+{
+	this.fX = fX_;
+	this.fY = fY_;
+	this.fZ = fZ_;
+}
+
+void SPointLight::SetDiffuse(float fR, float fG, float fB)
+{
+	this.Diffuse.Set(fR, fG, fB, 1.0);
+}
+
+void SPointLight::SetGlobeDiffuse(float fR, float fG, float fB)
+{
+	this.GlobeDiffuse.Set(fR, fG, fB, 1.0);
+}
+
+void SPointLight::SetAttenuationNear(float fNear)
+{
+	this.fAttenuationNear = fNear;
+}
+
+void SPointLight::SetAttenuationFar(float fFar)
+{
+	this.fAttenuationFar = fFar;
+}
+
+void SPointLight::SetAttenuation(float fNear, float fFar)
+{
+	this.fAttenuationNear = fNear;
+	this.fAttenuationFar = fFar;
+}
+

@@ -1,0 +1,460 @@
+int T_BattleExp::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_BattleExp::getExp()
+{
+	return this.m_nExp;
+}
+
+int T_BattleExp::getExpMax()
+{
+	return this.m_nExpMax;
+}
+
+bool T_BattleExp::isCreated()
+{
+	return this.m_nNo > 0;
+}
+
+T_BattleExp::T_BattleExp()
+{
+	this.clear();
+}
+
+T_BattleExp::~T_BattleExp()
+{
+	this.delete();
+}
+
+bool T_BattleExp::create(int nNo, int nX, int nY, int nZ)
+{
+	this.delete();
+	this.m_spBase.setCg(10301);
+	this.m_spBase.setPos(nX, nY);
+	this.m_spBase.setZ(nZ);
+	this.m_sBar.createCg(1, 10302, 0, 0);
+	this.m_sBar.setPos(nX + 17, nY + 42);
+	this.m_sBar.setZ(nZ + 1);
+	this.m_sExp.create(24, 10303, 8, 201, 24, 0, 0);
+	this.m_sExp.setPos(nX + 70, nY + 19);
+	this.m_sExp.setZ(nZ + 1);
+	this.createLevelMax(戦闘データ_レベル最大(nNo), nX + 76, nY + 0, nZ + 1);
+	this.setExp(戦闘データ_ＥＸＰ(nNo), 戦闘データ_ＥＸＰ最大(nNo));
+	this.m_nNo = nNo;
+	return true;
+}
+
+void T_BattleExp::delete()
+{
+	int i = 0;
+	int cnt = this.m_asLevelMax.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLevelMax[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sBar.delete();
+	this.m_sExp.delete();
+	this.m_spInfinity.delete();
+	this.clear();
+}
+
+void T_BattleExp::clear()
+{
+	this.m_nNo = -1;
+	this.m_nExp = -1;
+	this.m_nExpMax = -1;
+	this.m_nInfinity = -1;
+}
+
+bool T_BattleExp::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!this.m_sBar.copyToSprite(rfsDst, nDstX + 17, nDstY + 42))
+	{
+		return false;
+	}
+	if (!this.m_sExp.copyToSprite(rfsDst, nDstX + 70, nDstY + 19))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asLevelMax.Numof();
+	int nX = this.m_spBase.getPosX();
+	int nY = this.m_spBase.getPosY();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (i != this.m_nInfinity)
+		{
+			T_DrawLine rfsLine;
+			rfsLine = this.m_asLevelMax[i];
+			rfsLine.copyToSprite(rfsDst, (nDstX + rfsLine.getPosX()) - nX, (nDstY + rfsLine.getPosY()) - nY, 0);
+		}
+		else
+		{
+			this.m_spInfinity.copyToSprite(rfsDst, (nDstX + this.m_spInfinity.getPosX()) - nX, (nDstY + this.m_spInfinity.getPosY()) - nY, -1, -1, 0);
+		}
+	}
+	return true;
+}
+
+void T_BattleExp::update(int nValue, int nTotalTime)
+{
+	if (this.m_nNo < 0)
+	{
+		return;
+	}
+	this.m_sBar.update(nValue, nTotalTime);
+	this.m_sExp.update(this.m_sBar.getValue(), nTotalTime > 0, nTotalTime);
+}
+
+bool T_BattleExp::animeStart(int nValue, int nTotalTime)
+{
+	if (this.m_nNo < 0)
+	{
+		return false;
+	}
+	nValue = 数値_補正(nValue, 0, this.m_nExpMax);
+	if (!this.m_sBar.animeStart(nValue, nTotalTime))
+	{
+		return false;
+	}
+	if (!this.m_sExp.animeStart(nValue, nTotalTime))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_BattleExp::animeEnd()
+{
+	if (this.m_nNo < 0)
+	{
+		return false;
+	}
+	this.m_sBar.animeEnd();
+	this.m_sExp.animeEnd();
+	return true;
+}
+
+bool T_BattleExp::anime(int nTime)
+{
+	if (this.m_nNo < 0)
+	{
+		return false;
+	}
+	this.m_sBar.anime(nTime);
+	this.m_sExp.anime(nTime);
+	return true;
+}
+
+void T_BattleExp::effect(int nX, int nY)
+{
+	this.m_sBar.setShow(false, -1);
+	効果音_レベルアップ();
+	効果_フラッシュ_待ちあり("ＬＶアップ", nX, nY, 9601);
+}
+
+void T_BattleExp::setExp(int nValue, int nMax)
+{
+	this.m_sBar.setValue(nValue, nMax);
+	this.m_sExp.setValue(nValue, nMax);
+	this.m_nExpMax = nMax;
+}
+
+void T_BattleExp::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asLevelMax.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLevelMax[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_sBar.setShow(bShow, -1);
+	this.m_sExp.setShow(bShow);
+	this.m_spInfinity.setShow(this.m_nInfinity < 0 ? 0 : bShow);
+}
+
+void T_BattleExp::createLevelMax(int nLevelMax, int nX, int nY, int nZ)
+{
+	int idx = -1;
+	sact_text_metrics_t tmLevelMax;
+	tmLevelMax.nSize = 18;
+	tmLevelMax.nColorR = 220;
+	tmLevelMax.nColorG = 200;
+	tmLevelMax.nColorB = 80;
+	tmLevelMax.nWeight = 0;
+	tmLevelMax.nFace = 258;
+	float spacing = 0.949999988079071;
+	this.m_asLevelMax[0].createFromTextMetrics2(1, "[ Talent Cap ", tmLevelMax, -4, spacing);
+	this.m_asLevelMax[2].createFromTextMetrics2(1, "]", tmLevelMax, -4, spacing);
+	if (nLevelMax == 2147483647)
+	{
+		this.m_spInfinity.setCg(11499);
+		idx = 1;
+	}
+	else
+	{
+		tmLevelMax.nColorR = 255;
+		tmLevelMax.nColorG = 255;
+		tmLevelMax.nColorB = 255;
+		this.m_asLevelMax[1].createFromTextMetrics(0, "%D" % nLevelMax, tmLevelMax, -4);
+	}
+	int i = 0;
+	int cnt = this.m_asLevelMax.Numof();
+	int nW = 0;
+	int nH = 0;
+	array@int anW[3];
+	array@int anH[3];
+	for (i = 0; i < cnt; ++i)
+	{
+		if (i != idx)
+		{
+			T_DrawLine rfsLine;
+			rfsLine = this.m_asLevelMax[i];
+			anW[i] = rfsLine.getWidth();
+			anH[i] = rfsLine.getHeight();
+		}
+		else
+		{
+			anW[i] = this.m_spInfinity.getWidth() * 2;
+			anH[i] = this.m_spInfinity.getHeight();
+		}
+		nW += anW[i];
+		nH = _max(anH[i], nH);
+	}
+	int nTx = nX + (182 - nW) / 2;
+	int nTy = nY + (19 - nH) / 2;
+	int nTx2 = 0;
+	int nTy2 = 0;
+	nTx2 = nTx;
+	nTy2 = (nTy + nH) - anH[0];
+	this.m_asLevelMax[0].setPos(nTx2 + 1, nTy2 + 1);
+	nTx += anW[0];
+	if (idx != 1)
+	{
+		nTx2 = nTx;
+		nTy2 = (nTy + nH) - anH[1];
+		this.m_asLevelMax[1].setPos(nTx2 + 1, nTy2 + 1);
+	}
+	else
+	{
+		nTx2 = nTx + this.m_spInfinity.getWidth() / 2;
+		nTy2 = nTy + (nH - anH[1]) / 2;
+		this.m_spInfinity.setPos(nTx2 + 1, nTy2 + 1);
+	}
+	nTx += anW[1];
+	nTx2 = nTx;
+	nTy2 = (nTy + nH) - anH[2];
+	this.m_asLevelMax[2].setPos(nTx2 + 1, nTy2 + 1);
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asLevelMax[i].setZ(nZ);
+	}
+	this.m_spInfinity.setZ(nZ);
+	this.m_nInfinity = idx;
+}
+
+T_BattleExpManager::T_BattleExpManager()
+{
+	this.clear();
+}
+
+T_BattleExpManager::~T_BattleExpManager()
+{
+	this.delete();
+}
+
+bool T_BattleExpManager::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createExp(i, 戦闘番号_味方(i), nZ);
+	}
+	return true;
+}
+
+void T_BattleExpManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asExp[i].delete();
+		this.m_asAdjust[i].delete();
+	}
+}
+
+void T_BattleExpManager::clear()
+{
+	return;
+}
+
+void T_BattleExpManager::update(int nNo, int nExp, int nTotalTime)
+{
+	ref T_BattleExp rfsExp = this.get(nNo);
+	if (rfsExp === NULL)
+	{
+		return;
+	}
+	rfsExp.update(nExp, nTotalTime);
+}
+
+void T_BattleExpManager::updateAll(ref array@int anExp, int nTotalTime)
+{
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	if (anExp === NULL || anExp.Numof() != cnt)
+	{
+		return;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asExp[i].animeStart(anExp[i], nTotalTime);
+	}
+	UPDATE(true);
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (nTime < nTotalTime)
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_asExp[i].anime(nTime);
+		}
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asExp[i].animeEnd();
+	}
+	UPDATE(true);
+}
+
+void T_BattleExpManager::levelUp(int nNo, int nTotalTime)
+{
+	ref T_BattleExp rfsExp = this.get(nNo);
+	if (rfsExp === NULL)
+	{
+		return;
+	}
+	this.setLevelUp(nNo);
+	UPDATE(true);
+}
+
+void T_BattleExpManager::levelUpAll(ref array@bool abFlag, int nTotalTime)
+{
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	if (abFlag === NULL || abFlag.Numof() != cnt)
+	{
+		return;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (abFlag[i])
+		{
+			this.setLevelUp(戦闘番号_味方(i));
+		}
+	}
+	UPDATE(true);
+}
+
+bool T_BattleExpManager::setExp(int nNo, int nValue, int nMax)
+{
+	ref T_BattleExp rfsExp = this.get(nNo);
+	if (rfsExp === NULL)
+	{
+		return false;
+	}
+	rfsExp.setExp(nValue, nMax);
+	return true;
+}
+
+bool T_BattleExpManager::setLevelUp(int nNo)
+{
+	ref T_BattleExp rfsExp = this.get(nNo);
+	if (rfsExp === NULL)
+	{
+		return false;
+	}
+	ref T_BattleChara rfsChara = 戦闘味方_取得(nNo);
+	if (rfsChara === NULL || rfsChara.getNo() <= 0)
+	{
+		return false;
+	}
+	rfsExp.effect(rfsChara.getPosX(), rfsChara.getPosY());
+	return true;
+}
+
+void T_BattleExpManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asExp[i].setShow(bShow);
+		this.m_asAdjust[i].setShow(bShow);
+	}
+}
+
+ref T_BattleExp T_BattleExpManager::get(int nNo)
+{
+	int idx = 戦闘番号_味方インデクス(nNo);
+	if (idx < 0 || idx >= this.m_asExp.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asExp[idx];
+}
+
+bool T_BattleExpManager::createExp(int nIndex, int nNo, int nZ)
+{
+	if (nIndex < 0 || nIndex >= this.m_asExp.Numof())
+	{
+		return false;
+	}
+	if (!戦闘番号_存在確認(nNo))
+	{
+		return false;
+	}
+	ref T_BattleChara rfsChara = 戦闘味方_取得(nNo);
+	if (rfsChara === NULL || rfsChara.getNo() <= 0)
+	{
+		return false;
+	}
+	ref T_BattleSkill rfsSkill = 戦闘選択_スキル(nNo);
+	if (rfsSkill === NULL)
+	{
+		return false;
+	}
+	int nX = rfsChara.getPosX();
+	int nY = rfsChara.getPosY();
+	int nX2 = nX + 0;
+	int nY2 = nY + 110;
+	int nX3 = nX;
+	int nY3 = nY + -60;
+	ref T_BattleExp rfsExp = this.m_asExp[nIndex];
+	ref T_BattleAdjust rfsAdjust = this.m_asAdjust[nIndex];
+	if (戦闘データ_味方前衛(nNo) && 戦闘データ_味方後衛存在())
+	{
+		nY2 = nY + 50;
+		nY3 = nY + -120;
+	}
+	rfsExp.create(nNo, nX2, nY2, nZ);
+	rfsChara.setPos(nX3, nY3);
+	rfsSkill.setSkillPos(nX3, nY3);
+	rfsAdjust.create(nNo, nX3, nY3, rfsChara.getZ() + 50);
+	return true;
+}
+

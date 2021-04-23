@@ -1,0 +1,303 @@
+void InitSystem()
+{
+	DrawPluginManager.Load("DrawGraph");
+	if (!CGManager.Init(NULL, 16))
+	{
+		system.Error("CGManagerの初期化に失敗しました");
+		for (; ; )
+		{
+			system.Peek();
+			system.Sleep(1);
+		}
+	}
+	if (!ChipmunkSpriteEngine.Init(NULL))
+	{
+		system.Error("ChipmunkSpriteEngineの初期化に失敗しました");
+		for (; ; )
+		{
+			system.Peek();
+			system.Sleep(1);
+		}
+	}
+	MsgSkip.Init(system.GetSaveFolderName() + "\\" + "MsgSkip3000.msk");
+	g_MessageSkipMode = false;
+	AFL_SetRandSeedByCurrentTime();
+	g_KeepPreviousViewMode = true;
+	ChipmunkSpriteEngine.KeepPreviousView_SetMode(g_KeepPreviousViewMode);
+	GOAT_Init();
+}
+
+void ShowSprite(int sp, bool show)
+{
+	ChipmunkSpriteEngine.SP_SetShow(sp, show);
+}
+
+void HideSprite(int sp)
+{
+	ChipmunkSpriteEngine.SP_SetShow(sp, 0);
+}
+
+bool GetSpriteShowFlag(int sp)
+{
+	return ChipmunkSpriteEngine.SP_GetShow(sp);
+}
+
+int GetScreenWidth()
+{
+	return ChipmunkSpriteEngine.GetScreenWidth();
+}
+
+int GetScreenHeight()
+{
+	return ChipmunkSpriteEngine.GetScreenHeight();
+}
+
+void UpdateView(bool 未読既読スキップ)
+{
+	g_BGMVolumeCapManager.UpdateBGMFade();
+	ChipmunkSpriteEngine.SYSTEM_SetReadMessageSkipping(g_b既読スキップ中);
+	if (system.IsDebugMode())
+	{
+		g_DebugFPS.Update();
+		g_DebugMemorySize.Update();
+		g_DebugFillRate.Update();
+		g_DebugVoicePlaying.Update();
+		g_DebugVideoMemorySize.Update();
+	}
+	MarmotModelEngine.Update();
+	GOAT_Update(未読既読スキップ);
+	SYS_PlayTime_Update();
+	ChipmunkSpriteEngine.Update();
+	system.Peek();
+	SYS_PostCallUpdateView();
+	IbisInputEngine.Joystick_ClearCaptureFlag();
+}
+
+void TransitionUpdateView(float TransitionRate)
+{
+	g_BGMVolumeCapManager.UpdateBGMFade();
+	ChipmunkSpriteEngine.SYSTEM_SetReadMessageSkipping(g_b既読スキップ中);
+	if (system.IsDebugMode())
+	{
+		g_DebugFPS.Update();
+		g_DebugMemorySize.Update();
+	}
+	GOAT_Update(false);
+	ChipmunkSpriteEngine.TRANS_Update(TransitionRate);
+	system.Peek();
+	SYS_PostCallUpdateView();
+	IbisInputEngine.Joystick_ClearCaptureFlag();
+}
+
+void CreateSprite(int sp, int w, int h, int r, int g, int b, int blend)
+{
+	ChipmunkSpriteEngine.SP_Create(sp, w, h, r, g, b, blend);
+}
+
+void CreateSpritePixelMapOnly(int sp, int w, int h)
+{
+	ChipmunkSpriteEngine.SP_CreatePixelOnly(sp, w, h);
+}
+
+void DeleteSprite(int sp)
+{
+	ChipmunkSpriteEngine.SP_Delete(sp);
+}
+
+void SetSpritePos(int sp, int x, int y)
+{
+	ChipmunkSpriteEngine.SP_SetPos(sp, x, y);
+}
+
+void GetSpritePos(int sp, ref int x, ref int y)
+{
+	x = ChipmunkSpriteEngine.SP_GetPosX(sp);
+	y = ChipmunkSpriteEngine.SP_GetPosY(sp);
+}
+
+int GetSpriteWidth(int sp)
+{
+	return ChipmunkSpriteEngine.SP_GetWidth(sp);
+}
+
+int GetSpriteHeight(int sp)
+{
+	return ChipmunkSpriteEngine.SP_GetHeight(sp);
+}
+
+void SetSpriteZ(int sp, int z)
+{
+	SYS_ASSERTE_Z(z);
+	ChipmunkSpriteEngine.SP_SetZ(sp, z);
+}
+
+void SetSpriteBlendRate(int sp, int rate)
+{
+	ChipmunkSpriteEngine.SP_SetBlendRate(sp, rate);
+}
+
+int GetUnuseSpriteNum(int start)
+{
+	return ChipmunkSpriteEngine.SP_GetUnuseNum(start);
+}
+
+bool SetSpriteCg(int sp, string cg)
+{
+	return ChipmunkSpriteEngine.SP_SetCG(sp, cg);
+}
+
+bool ExistAlphaMap(int sp)
+{
+	return ChipmunkSpriteEngine.SP_ExistAlpha(sp);
+}
+
+bool PtIsInSpriteRect(int sp, int x, int y)
+{
+	return ChipmunkSpriteEngine.SP_IsPtInRect(sp, x, y);
+}
+
+bool PtIsInSprite(int sp, int x, int y)
+{
+	return ChipmunkSpriteEngine.SP_IsPtIn(sp, x, y);
+}
+
+bool ExistCg(string cg)
+{
+	return ChipmunkSpriteEngine.CG_IsExist(cg);
+}
+
+void FillPixelMap(int sp, int x, int y, int w, int h, int r, int g, int b)
+{
+	DrawGraph.Fill(sp, x, y, w, h, r, g, b);
+}
+
+void FillGradationPixelMapTB(int sp, int x, int y, int w, int h, int tr, int tg, int tb, int br, int bg, int bb)
+{
+	int nLine = 0;
+	for (nLine = 0; nLine < h; ++nLine)
+	{
+		int r = tr + ((br - tr) * nLine) / h;
+		int g = tg + ((bg - tg) * nLine) / h;
+		int b = tb + ((bb - tb) * nLine) / h;
+		DrawGraph.Fill(sp, x, y + nLine, w, 1, r, g, b);
+	}
+}
+
+void FillAlphaMap(int sp, int x, int y, int w, int h, int a)
+{
+	DrawGraph.FillAMap(sp, x, y, w, h, a);
+}
+
+void FillDualMap(int sp, int x, int y, int w, int h, int r, int g, int b, int a)
+{
+	DrawGraph.Fill(sp, x, y, w, h, r, g, b);
+	DrawGraph.FillAMap(sp, x, y, w, h, a);
+}
+
+void CopyPixelMap(int ds, int dx, int dy, int ss, int sx, int sy, int sw, int sh)
+{
+	DrawGraph.Copy(ds, dx, dy, ss, sx, sy, sw, sh);
+}
+
+void CopyAlphaMap(int ds, int dx, int dy, int ss, int sx, int sy, int sw, int sh)
+{
+	DrawGraph.CopyAMap(ds, dx, dy, ss, sx, sy, sw, sh);
+}
+
+int Rand()
+{
+	return Math.Rand();
+}
+
+float Log10(float v)
+{
+	return Math.Log10(v);
+}
+
+float Pow(float base, float exp)
+{
+	return Math.Pow(base, exp);
+}
+
+int GetTickCount()
+{
+	return system.GetTime();
+}
+
+void ERROR(string tx, int nest)
+{
+	array@string f[2];
+	int i = 0;
+	for (i = 0; i < f.Numof(); ++i)
+	{
+		f[i] = system.GetFuncStackName(i + 1 + nest);
+		int j = f[i].Find("@");
+		if (j != -1)
+		{
+			f[i] = f[i].GetPart(0, j) + "::" + f[i].GetPart(j + 1, f[i].Length() - 1);
+		}
+	}
+	system.Output("警告 %s ＠ %s ＠ %s\n" % tx % f[0] % f[1]);
+}
+
+void WARNING(string Text)
+{
+	system.Output("【警告】" + Text + "\n");
+}
+
+void DebugErrorMB(string _t)
+{
+	system.Error(_t);
+}
+
+string GetFuncStackName(int nest)
+{
+	string _r = system.GetFuncStackName(nest + 1);
+	int _i = _r.Find("@");
+	if (_i != -1)
+	{
+		_r = _r.GetPart(0, _i) + "::" + _r.GetPart(_i + 1, _r.Length() - (_i + 1));
+	}
+	return _r;
+}
+
+void _Warning(string _s, int nest_add)
+{
+	system.Output("%s @ %s @ %s @ %s\n" % _s % GetFuncStackName(1 + nest_add) % GetFuncStackName(2 + nest_add) % GetFuncStackName(3 + nest_add));
+}
+
+bool ExistSaveFile(string file_name)
+{
+	return system.ExistSaveFile(file_name);
+}
+
+bool SaveGroupData(string key, string file_name, string group_name, ref int done_num)
+{
+	return system.GroupSave(key, file_name, group_name, done_num);
+}
+
+bool LoadGroupData(string key, string file_name, string group_name, ref int done_num)
+{
+	return system.GroupLoad(key, file_name, group_name, done_num);
+}
+
+void ExitSystem(int code)
+{
+	system.Exit(code);
+}
+
+void Sleep(int time)
+{
+	system.Sleep(time);
+}
+
+void Peek()
+{
+	system.Peek();
+}
+
+bool GetCgMetrics(string CGName, ref cg_metrics_t cm)
+{
+	return ChipmunkSpriteEngine.CG_GetMetrics(CGName, cm) != 0;
+}
+

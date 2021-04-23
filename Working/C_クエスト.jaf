@@ -1,0 +1,553 @@
+string クエスト_名前(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	return Ｑ名前(nQuestNo, "");
+}
+
+int クエスト_状態(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｑ状態(nQuestNo, -1);
+}
+
+bool クエスト_発生中(int nQuestNo)
+{
+	return クエスト_状態(nQuestNo) == 1;
+}
+
+bool クエスト_クリア済み(int nQuestNo)
+{
+	return クエスト_状態(nQuestNo) == 2;
+}
+
+int クエスト_種類(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｑ種類(nQuestNo, -1);
+}
+
+bool クエスト_戦闘あり(int nQuestNo)
+{
+	switch (クエスト_種類(nQuestNo))
+	{
+		case 0:
+		case 2:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool クエスト_マップあり(int nQuestNo)
+{
+	return クエスト_種類(nQuestNo) == 0;
+}
+
+bool クエスト_メイン(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return false;
+	}
+	return Ｑメイン(nQuestNo, -1) == 1;
+}
+
+bool クエスト_サブ(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return false;
+	}
+	return Ｑメイン(nQuestNo, -1) == 9;
+}
+
+int クエスト_難易度(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｑ難易度(nQuestNo, -1);
+}
+
+int クエスト_キット(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｑキット(nQuestNo, -1);
+}
+
+int クエスト_参加回数(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｑ参加回数(nQuestNo, -1);
+}
+
+int クエスト_クリア回数(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｑクリア回数(nQuestNo, -1);
+}
+
+int クエスト_取得名声値(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return Ｑ取得名声値(nQuestNo, -1);
+}
+
+string クエスト_説明文(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	int i = 0;
+	int cnt = クエスト_説明文数();
+	string szText = "";
+	for (i = 1; i <= cnt; ++i)
+	{
+		szText = テキスト連結(szText, Ｑ説明文(nQuestNo, i, ""));
+	}
+	return szText;
+}
+
+string クエスト_発生場所(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	return Ｑ発生場所(nQuestNo, "");
+}
+
+int クエスト_参加条件Ａ(int nQuestNo, int nNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	if (!クエスト_参加条件確認(nNo))
+	{
+		return -1;
+	}
+	return Ｑ参加条件Ａ(nQuestNo, nNo, -1);
+}
+
+int クエスト_参加条件Ｂ(int nQuestNo, int nNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	if (!クエスト_参加条件確認(nNo))
+	{
+		return -1;
+	}
+	return Ｑ参加条件Ｂ(nQuestNo, nNo, -1);
+}
+
+int クエスト_参加条件Ｃ(int nQuestNo, int nNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	if (!クエスト_参加条件確認(nNo))
+	{
+		return -1;
+	}
+	return Ｑ参加条件Ｃ(nQuestNo, nNo, -1);
+}
+
+string クエスト_特殊な条件(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	return Ｑ特殊な条件(nQuestNo, "");
+}
+
+int クエスト_定員数(int nQuestNo)
+{
+	int i = 0;
+	int cnt = クエスト_参加条件数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (クエスト_参加条件Ａ(nQuestNo, i) == 1)
+		{
+			return クエスト_参加条件Ｂ(nQuestNo, i);
+		}
+	}
+	return 5;
+}
+
+int クエスト_エリア表示(int nQuestNo, int nAreaNo, int nNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	if (!クエスト_エリア番号確認(nAreaNo))
+	{
+		return -1;
+	}
+	if (!クエスト_エリア表示確認(nNo))
+	{
+		return -1;
+	}
+	return Ｑエリア表示(nQuestNo, nAreaNo, nNo, -1);
+}
+
+int quest_areas_seen(int nQuestNo)
+{
+	int nAreaNo = 0;
+	int count = 0;
+	for (nAreaNo = 1; nAreaNo < 17; ++nAreaNo)
+	{
+		if (クエスト_エリア表示_フラグ(nQuestNo, nAreaNo))
+		{
+			count += 1;
+		}
+	}
+	return count;
+}
+
+bool クエスト_エリア表示_フラグ(int nQuestNo, int nAreaNo)
+{
+	return クエスト_エリア表示(nQuestNo, nAreaNo, 0) > 0;
+}
+
+bool クエスト_エリア表示_北(int nQuestNo, int nAreaNo)
+{
+	if (クエスト_エリア表示(nQuestNo, nAreaNo, 1) > 0)
+	{
+		return true;
+	}
+	return クエスト_エリア表示(nQuestNo, nAreaNo - 4, 3) > 0;
+}
+
+bool クエスト_エリア表示_東(int nQuestNo, int nAreaNo)
+{
+	if (クエスト_エリア表示(nQuestNo, nAreaNo, 2) > 0)
+	{
+		return true;
+	}
+	return クエスト_エリア表示(nQuestNo, nAreaNo + 1, 4) > 0;
+}
+
+bool クエスト_エリア表示_南(int nQuestNo, int nAreaNo)
+{
+	if (クエスト_エリア表示(nQuestNo, nAreaNo, 3) > 0)
+	{
+		return true;
+	}
+	return クエスト_エリア表示(nQuestNo, nAreaNo + 4, 1) > 0;
+}
+
+bool クエスト_エリア表示_西(int nQuestNo, int nAreaNo)
+{
+	if (クエスト_エリア表示(nQuestNo, nAreaNo, 4) > 0)
+	{
+		return true;
+	}
+	return クエスト_エリア表示(nQuestNo, nAreaNo - 1, 2) > 0;
+}
+
+int クエスト_ゴールエリア表示(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	return FA[253];
+}
+
+int クエスト_状態設定(int nQuestNo, int nValue)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	Ｑ状態(nQuestNo, nValue);
+	return Ｑ状態(nQuestNo, -1);
+}
+
+int クエスト_クリア回数設定(int nQuestNo, int nValue)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return -1;
+	}
+	Ｑクリア回数(nQuestNo, nValue);
+	return Ｑクリア回数(nQuestNo, -1);
+}
+
+int クエスト_クリア回数＋(int nQuestNo)
+{
+	return クエスト_クリア回数設定(nQuestNo, 数値_加算(クエスト_クリア回数(nQuestNo), 1));
+}
+
+bool クエスト_確認(int nQuestNo)
+{
+	return nQuestNo > 0 && nQuestNo < Ｑ.Numof();
+}
+
+bool クエスト_参加条件確認(int nNo)
+{
+	return nNo > 0 && nNo < Ｑ[0].参加条件Ａ.Numof();
+}
+
+bool クエスト_エリア番号確認(int nAreaNo)
+{
+	return nAreaNo > 0 && nAreaNo < Ｑ[0].エリア表示.Numof();
+}
+
+bool クエスト_エリア表示確認(int nNo)
+{
+	return nNo >= 0 && nNo < Ｑ[0].エリア表示.Numof(2);
+}
+
+int クエスト_数()
+{
+	return Ｑ.Numof() - 1;
+}
+
+int クエスト_説明文数()
+{
+	return Ｑ[0].説明文.Numof() - 1;
+}
+
+int クエスト_参加条件数()
+{
+	return Ｑ[0].参加条件Ａ.Numof() - 1;
+}
+
+int クエスト_エリア数()
+{
+	return Ｑ[0].エリア表示.Numof() - 1;
+}
+
+ref sＱ クエスト_データ参照(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return NULL;
+	}
+	return Ｑ[nQuestNo];
+}
+
+bool クエスト_有効(int nQuestNo)
+{
+	if (味方パーティ_登録数() < 1)
+	{
+		return false;
+	}
+	if (!クエスト_確認(nQuestNo))
+	{
+		return false;
+	}
+	if (クエスト_参加条件Ａ(nQuestNo, 1) == 0)
+	{
+		return true;
+	}
+	int i = 0;
+	int cnt = クエスト_参加条件数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (!クエスト_参加条件_有効(nQuestNo, i))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool クエスト_参加条件_有効(int nQuestNo, int nNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return false;
+	}
+	if (!クエスト_参加条件確認(nNo))
+	{
+		return false;
+	}
+	int nCharaNo = 0;
+	switch (クエスト_参加条件Ａ(nQuestNo, nNo))
+	{
+		case 1:
+			return 味方パーティ_参加数() <= クエスト_参加条件Ｂ(nQuestNo, nNo);
+		case 2:
+			nCharaNo = キャラ_検索(クエスト_参加条件Ｂ(nQuestNo, nNo));
+			return nCharaNo > 0 ? 味方パーティ_存在確認(nCharaNo) : 0;
+		case 3:
+			int nCharaNo1 = キャラ_検索(クエスト_参加条件Ｂ(nQuestNo, nNo));
+			if (nCharaNo1 <= 0)
+			{
+				return false;
+			}
+			int nCharaNo2 = キャラ_検索(クエスト_参加条件Ｃ(nQuestNo, nNo));
+			if (nCharaNo2 <= 0)
+			{
+				return false;
+			}
+			return キャラ_保有(nCharaNo1) && キャラ_保有(nCharaNo2);
+		case 4:
+			nCharaNo = キャラ_検索(クエスト_参加条件Ｂ(nQuestNo, nNo));
+			if (nCharaNo <= 0)
+			{
+				return false;
+			}
+			if (!味方パーティ_存在確認(nCharaNo))
+			{
+				return false;
+			}
+			return キャラ_レベル(nCharaNo) >= クエスト_参加条件Ｃ(nQuestNo, nNo);
+		case 5:
+			return アイテム_所持確認(クエスト_参加条件Ｂ(nQuestNo, nNo));
+		case 6:
+			return false;
+		default:
+			break;
+	}
+	return true;
+}
+
+string クエスト_倉庫説明(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	int i = 0;
+	string szComment = "[Quest Details]@";
+	szComment += テキスト改行変換(クエスト_説明文(nQuestNo), "$");
+	szComment += "@@[Quest Location]@";
+	szComment += クエスト_発生場所(nQuestNo);
+	szComment += "@@[Quest Conditions]";
+	if (クエスト_参加条件Ａ(nQuestNo, 1) == 0)
+	{
+		szComment += "@No conditions";
+	}
+	else
+	{
+		for (i = 1; i <= 3; ++i)
+		{
+			string szText = クエスト_参加条件(nQuestNo, i);
+			if (szText.Empty())
+			{
+				continue;
+			}
+			szComment += "@" + szText;
+		}
+	}
+	szComment += "@@[Quest Information]@";
+	szComment += クエスト_情報(nQuestNo);
+	szComment += "@[%s] [%s]" % (クエスト_戦闘あり(nQuestNo) ? "Combat" : "No combat") % (クエスト_マップあり(nQuestNo) ? "Map" : "No Map");
+	return szComment;
+}
+
+string クエスト_参加条件(int nQuestNo, int nNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	if (!クエスト_参加条件確認(nNo))
+	{
+		return "";
+	}
+	switch (クエスト_参加条件Ａ(nQuestNo, nNo))
+	{
+		case 1:
+			return " %d or fewer party members" % クエスト_参加条件Ｂ(nQuestNo, nNo);
+		case 2:
+			return "%s must participate" % テキスト_固有キャラ短縮名(クエスト_参加条件Ｂ(nQuestNo, nNo));
+		case 3:
+			return "Must have %s and %s" % テキスト_固有キャラ短縮名(クエスト_参加条件Ｂ(nQuestNo, nNo)) % テキスト_固有キャラ短縮名(クエスト_参加条件Ｃ(nQuestNo, nNo));
+		case 4:
+			return "%s must participate, and be level %d+" % テキスト_固有キャラ短縮名(クエスト_参加条件Ｂ(nQuestNo, nNo)) % クエスト_参加条件Ｃ(nQuestNo, nNo);
+		case 5:
+			return "Must have %s" % テキスト_固有アイテム名(クエスト_参加条件Ｂ(nQuestNo, nNo));
+		case 6:
+			return クエスト_特殊な条件(nQuestNo);
+		default:
+			break;
+	}
+	return "";
+}
+
+string クエスト_情報(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	string szComment = "";
+	int nFlag = マグナム_設置フラグ(nQuestNo);
+	if (nFlag > 0)
+	{
+		szComment = "Cleared          \t%d time(s)" % クエスト_クリア回数(nQuestNo);
+		szComment += "@Difficulty:     \t%d" % クエスト_難易度(nQuestNo);
+		szComment += "@Reputation:     \t%d" % クエスト_取得名声値(nQuestNo);
+		szComment += "@Magnum Bonus";
+		if (nFlag > 1)
+		{
+			szComment += "\t[Clear]";
+		}
+		return szComment;
+	}
+	szComment = "Cleared      \t%d time(s)" % クエスト_クリア回数(nQuestNo);
+	szComment += "@Difficulty:  \t%d" % クエスト_難易度(nQuestNo);
+	szComment += "@Reputation:\t%d" % クエスト_取得名声値(nQuestNo);
+	return szComment;
+}
+
+string クエスト_情報2(int nQuestNo)
+{
+	if (!クエスト_確認(nQuestNo))
+	{
+		return "";
+	}
+	string szComment = "";
+	int nFlag = マグナム_設置フラグ(nQuestNo);
+	if (nFlag > 0)
+	{
+		szComment = "Cleared          \t%d time(s)" % クエスト_クリア回数(nQuestNo);
+		szComment += "@Difficulty:     \t%d" % クエスト_難易度(nQuestNo);
+		szComment += "@Reputation:     \t%d" % クエスト_取得名声値(nQuestNo);
+		szComment += "@Magnum Bonus";
+		if (nFlag > 1)
+		{
+			szComment += "\t[Clear]";
+		}
+		return szComment;
+	}
+	szComment = "Cleared      \t%d time(s)" % クエスト_クリア回数(nQuestNo);
+	szComment += "@Difficulty:  \t%d" % クエスト_難易度(nQuestNo);
+	szComment += "@Reputation:\t%d" % クエスト_取得名声値(nQuestNo);
+	return szComment;
+}
+

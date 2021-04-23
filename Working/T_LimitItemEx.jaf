@@ -1,0 +1,338 @@
+int T_LimitItemEx::checkInput(ref int nSelectID)
+{
+	return this.m_sButton.checkInput(nSelectID);
+}
+
+int T_LimitItemEx::checkKey(int nID)
+{
+	return this.m_sButton.checkKey();
+}
+
+void T_LimitItemEx::resetSelect()
+{
+	this.m_sButton.resetSelect();
+}
+
+void T_LimitItemEx::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+void T_LimitItemEx::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_LimitItemEx::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+int T_LimitItemEx::getItemType()
+{
+	return this.m_nItemType;
+}
+
+int T_LimitItemEx::getItemTypeEx()
+{
+	return this.m_nItemTypeEx;
+}
+
+bool T_LimitItemEx::getShow()
+{
+	return this.m_bShow;
+}
+
+bool T_LimitItemEx::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_LimitItemEx::getButtonKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_LimitItemEx::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_LimitItemEx::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_LimitItemEx::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_LimitItemEx::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_LimitItemEx::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+int T_LimitItemEx::getPrev(int nID)
+{
+	return this.m_sButton.getPrevButton(nID, false, false);
+}
+
+int T_LimitItemEx::getNext(int nID)
+{
+	return this.m_sButton.getNextButton(nID, false, false);
+}
+
+int T_LimitItemEx::getFirst()
+{
+	return this.m_sButton.getFirstButton(false);
+}
+
+int T_LimitItemEx::getLast()
+{
+	return this.m_sButton.getLastButton(false);
+}
+
+int T_LimitItemEx::getButtonX(int nItemTypeEx)
+{
+	return nItemTypeEx < 1 || nItemTypeEx > 8 ? -1 : 872 + -47 * (nItemTypeEx - 1);
+}
+
+int T_LimitItemEx::getButtonY(int nItemTypeEx)
+{
+	return nItemTypeEx < 1 || nItemTypeEx > 8 ? -1 : 33;
+}
+
+T_LimitItemEx::T_LimitItemEx()
+{
+	this.clear();
+}
+
+T_LimitItemEx::~T_LimitItemEx()
+{
+	this.delete();
+}
+
+bool T_LimitItemEx::create(int nZ, int nButtonID)
+{
+	this.delete();
+	this.m_spBase.setCg(11200);
+	this.m_spBase.setPos(538, 1);
+	this.m_spBase.setZ(nZ);
+	this.m_sTitle.create(381, 32, -1, 0, 1, 1);
+	this.m_sTitle.setTextSpace(-6);
+	this.m_sTitle.setFontSize(22);
+	this.m_sTitle.setSpacing(0.949999988079071);
+	this.m_sTitle.setFontType(258);
+	this.m_sTitle.setDrawType(2);
+	this.m_sTitle.setFontBold(1);
+	this.m_sTitle.setFontColor(193, 193, 193);
+	this.m_sTitle.setPos(538, 1);
+	this.m_sTitle.setZ(nZ + 1);
+	this.m_nButtonID = nButtonID;
+	return true;
+}
+
+void T_LimitItemEx::delete()
+{
+	this.m_spBase.delete();
+	this.m_sTitle.delete();
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_LimitItemEx::clear()
+{
+	this.m_nItemType = -1;
+	this.m_nItemTypeEx = -1;
+	this.m_nButtonID = -1;
+	this.m_bShow = false;
+}
+
+bool T_LimitItemEx::setItemType(int nItemType)
+{
+	if (this.m_nButtonID < 0)
+	{
+		return false;
+	}
+	switch (nItemType)
+	{
+		case 21:
+			this.createButtonOption();
+			break;
+		case 1:
+			this.createButtonWeapon();
+			break;
+		case 11:
+			this.createButtonArmor();
+			break;
+		case 17:
+		default:
+			this.deleteButton();
+			break;
+	}
+	this.m_sTitle.setText(this.getTitle(this.m_nItemType), false);
+	this.setShow(this.m_bShow);
+	return true;
+}
+
+bool T_LimitItemEx::setItemTypeEx(int nItemTypeEx)
+{
+	if (this.m_nItemType <= 0)
+	{
+		return false;
+	}
+	if (nItemTypeEx < 1 || nItemTypeEx >= this.getItemTypeExMax(this.m_nItemType))
+	{
+		return false;
+	}
+	if (nItemTypeEx != this.m_nItemTypeEx)
+	{
+		this.m_nItemTypeEx = nItemTypeEx;
+	}
+	else
+	{
+		this.m_nItemTypeEx = 0;
+	}
+	return true;
+}
+
+void T_LimitItemEx::setButtonActive()
+{
+	int i = 0;
+	int cnt = this.getItemTypeExMax(this.m_nItemType);
+	for (i = 1; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonStatus(this.m_nButtonID + i, this.checkItemTypeEx(i) ? 0 : 2);
+	}
+}
+
+bool T_LimitItemEx::checkItemTypeEx(int nItemTypeEx)
+{
+	if (nItemTypeEx < 1 || nItemTypeEx >= this.getItemTypeExMax(this.m_nItemType))
+	{
+		return false;
+	}
+	return this.m_nItemTypeEx > 0 ? nItemTypeEx == this.m_nItemTypeEx : 1;
+}
+
+void T_LimitItemEx::setShow(bool bShow)
+{
+	if (this.m_nItemType > 0)
+	{
+		this.m_spBase.setShow(bShow);
+		this.m_sTitle.setShow(bShow);
+		this.m_sButton.setShow(bShow);
+	}
+	else
+	{
+		this.m_spBase.setShow(0);
+		this.m_sTitle.setShow(false);
+		this.m_sButton.setShow(false);
+	}
+	this.m_bShow = bShow;
+}
+
+bool T_LimitItemEx::createButtonOption()
+{
+	if (this.m_nItemType == 21)
+	{
+		return false;
+	}
+	int i = 0;
+	this.m_sButton.create();
+	for (i = 1; i < 6; ++i)
+	{
+		ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, this.m_nButtonID + i, this.getButtonX(i), this.getButtonY(i), (11221 + i) - 1, -1, -1, -2147483648, -2147483648);
+	}
+	ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, this.m_nButtonID + 5, this.getButtonX(5), this.getButtonY(5), 11210, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(this.m_spBase.getZ() + 1);
+	this.m_nItemType = 21;
+	this.m_nItemTypeEx = 0;
+	return true;
+}
+
+bool T_LimitItemEx::createButtonWeapon()
+{
+	if (this.m_nItemType == 1)
+	{
+		return false;
+	}
+	int i = 0;
+	this.m_sButton.create();
+	for (i = 1; i < 8; ++i)
+	{
+		ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, this.m_nButtonID + i, this.getButtonX(i), this.getButtonY(i), (11201 + i) - 1, -1, -1, -2147483648, -2147483648);
+	}
+	ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, this.m_nButtonID + 8, this.getButtonX(8), this.getButtonY(8), 11210, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(this.m_spBase.getZ() + 1);
+	this.m_nItemType = 1;
+	this.m_nItemTypeEx = 0;
+	return true;
+}
+
+bool T_LimitItemEx::createButtonArmor()
+{
+	if (this.m_nItemType == 11)
+	{
+		return false;
+	}
+	int i = 0;
+	this.m_sButton.create();
+	for (i = 1; i < 5; ++i)
+	{
+		ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, this.m_nButtonID + i, this.getButtonX(i), this.getButtonY(i), (11211 + i) - 1, -1, -1, -2147483648, -2147483648);
+	}
+	ƒ{ƒ^ƒ““o˜^_“§‰ß‚b‚f(this.m_sButton, this.m_nButtonID + 5, this.getButtonX(5), this.getButtonY(5), 11210, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setZ(this.m_spBase.getZ() + 1);
+	this.m_nItemType = 11;
+	this.m_nItemTypeEx = 0;
+	return true;
+}
+
+void T_LimitItemEx::deleteButton()
+{
+	this.m_sButton.delete();
+	this.m_nItemType = -1;
+	this.m_nItemTypeEx = -1;
+}
+
+int T_LimitItemEx::getItemTypeExMax(int nItemType)
+{
+	switch (nItemType)
+	{
+		case 21:
+			return 6;
+		case 1:
+			return 9;
+		case 11:
+			return 6;
+		case 17:
+		default:
+			break;
+	}
+	return -1;
+}
+
+string T_LimitItemEx::getTitle(int nItemType)
+{
+	switch (nItemType)
+	{
+		case 21:
+			return "Special Items: click buttons to filter by rank";
+		case 1:
+			return "Weapons: click buttons to filter by type";
+		case 11:
+			return "Armor: click buttons to filter by type";
+		case 17:
+		default:
+			break;
+	}
+	return "";
+}
+

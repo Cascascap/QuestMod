@@ -1,0 +1,75 @@
+#ゲーム_ランス城()
+{
+	int nRet2 = Ｒ８ランス城／前処理(0);
+	if (nRet2 > 0)
+	{
+		jump ゲーム_メイン;
+	}
+	int nRet = ランス城_選択();
+	if (nRet > 0)
+	{
+		Ｒ８ランス城／入室(nRet);
+	}
+	jump ゲーム_メイン;
+}
+
+void Ｒ８女の子モンスターの部屋()
+{
+	女の子モンスター部屋_実行();
+}
+
+int ランス城_上矢印(int nID)
+{
+	return g_sCastle.moveUp(nID);
+}
+
+int ランス城_下矢印(int nID)
+{
+	return g_sCastle.moveDown(nID);
+}
+
+int ランス城_左矢印(int nID)
+{
+	return g_sCastle.moveLeft(nID);
+}
+
+int ランス城_右矢印(int nID)
+{
+	return g_sCastle.moveRight(nID);
+}
+
+void ランス城_選択設定(int nID, bool bSelect)
+{
+	g_sCastle.setSelect(nID, bSelect);
+}
+
+int ランス城_選択()
+{
+	while (true)
+	{
+		画面_クリア(true, true);
+		仮字枠非表示();
+		音楽_再生(89);
+		int nRet = g_sCastle.run();
+		switch (nRet)
+		{
+			case 600001:
+				jump ゲーム_メイン;
+			case 600014:
+				jump ゲーム_クエスト;
+			case 600012:
+				jump ゲーム_アイテム屋;
+			case 600013:
+				jump ゲーム_パーティ編成;
+			default:
+				return nRet;
+		}
+	}
+	return 0;
+}
+
+void ランス城_削除()
+{
+	g_sCastle.delete();
+}
+

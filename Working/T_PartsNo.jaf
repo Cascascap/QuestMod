@@ -1,0 +1,84 @@
+T_PartsNo::T_PartsNo()
+{
+	this.clear();
+}
+
+T_PartsNo::~T_PartsNo()
+{
+	this.clear();
+}
+
+void T_PartsNo::clear()
+{
+	if (!this.m_anNo.Empty())
+	{
+		this.m_anNo.Free();
+	}
+	if (!this.m_abUsed.Empty())
+	{
+		this.m_abUsed.Free();
+	}
+	this.m_nNextNo = -1;
+}
+
+int T_PartsNo::get()
+{
+	int idx = this.m_abUsed.Find(0, this.m_abUsed.Numof(), 0);
+	if (idx >= 0)
+	{
+		this.m_abUsed[idx] = true;
+		return this.m_anNo[idx];
+	}
+	int i = 0;
+	int nNo = this.m_nNextNo < 0 ? 1000 : this.m_nNextNo;
+	for (i = 0; i < 999999000; ++i)
+	{
+		int nNextNo = nNo < 999999999 ? nNo + 1 : 1000;
+		if (this.add(nNo))
+		{
+			this.m_nNextNo = nNextNo;
+			return nNo;
+		}
+		nNo = nNextNo;
+	}
+	return -1;
+}
+
+bool T_PartsNo::add(int nNo)
+{
+	if (nNo < 1000 || nNo > 999999999)
+	{
+		return false;
+	}
+	int idx = this.m_anNo.Find(0, this.m_anNo.Numof(), nNo);
+	if (idx < 0)
+	{
+		this.m_anNo.PushBack(nNo);
+		this.m_abUsed.PushBack(1);
+	}
+	else
+	{
+		if (this.m_abUsed[idx])
+		{
+			return false;
+		}
+		this.m_abUsed[idx] = true;
+	}
+	return true;
+}
+
+bool T_PartsNo::erase(int nNo)
+{
+	if (nNo < 1000 || nNo > 999999999)
+	{
+		return false;
+	}
+	int idx = this.m_anNo.Find(0, this.m_anNo.Numof(), nNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	this.m_abUsed[idx] = false;
+	return true;
+}
+

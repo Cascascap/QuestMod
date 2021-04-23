@@ -1,0 +1,136 @@
+void ３Ｄ女の子部屋_初期化(int nMonsterNo, string szBackName)
+{
+	if (szBackName.Empty())
+	{
+		szBackName = "omr01a";
+	}
+	if (szBackName == g_szAppreciationBackName)
+	{
+		if (g_sAppreciationMode.Resume(nMonsterNo))
+		{
+			goto label0;
+		}
+	}
+	g_sAppreciationMode.Create(nMonsterNo, szBackName);
+label0:
+	３Ｄモード_女の子部屋();
+	AFL_DebugFPS_SetShow(g_bFPSShow);
+	g_szAppreciationBackName = szBackName;
+	g_b3DAppreciationUpdate = true;
+}
+
+void ３Ｄ女の子部屋_終了処理(bool bSuspend)
+{
+	if (bSuspend && !g_szAppreciationBackName.Empty())
+	{
+		if (g_sAppreciationMode.Suspend())
+		{
+			goto label0;
+		}
+	}
+	g_sAppreciationMode.Release();
+	g_szAppreciationBackName = "";
+label0:
+	３Ｄモード_設定(0);
+	g_b3DAppreciationUpdate = false;
+}
+
+void ３Ｄ女の子部屋_設定更新()
+{
+	g_sAppreciationMode.RealtimeSettingUpdate();
+}
+
+void ３Ｄ女の子部屋_ロード待ち(bool bThreadLoadingMode)
+{
+	g_sAppreciationMode.WaitLoading(bThreadLoadingMode);
+}
+
+void ３Ｄ女の子部屋_モンスター変更(int nMonsterNo)
+{
+	g_sAppreciationMode.ChangeMonster(nMonsterNo);
+}
+
+void ３Ｄ女の子部屋_モーション変更(int nMotionNo)
+{
+	g_sAppreciationMode.ChangeMonsterMotion(nMotionNo);
+}
+
+void ３Ｄ女の子部屋_モーション開始(int nMotionNo)
+{
+	g_sAppreciationMode.StartMonsterMotion(nMotionNo);
+}
+
+void ３Ｄ女の子部屋_モーション終了待ち()
+{
+	g_sAppreciationMode.WaitMonsterMotion();
+}
+
+void ３Ｄ女の子部屋_回転()
+{
+	g_sAppreciationMode.RotateView();
+}
+
+void ３Ｄ女の子部屋_ズーム()
+{
+	g_sAppreciationMode.ZoomView();
+}
+
+void ３Ｄ女の子部屋_平行移動()
+{
+	g_sAppreciationMode.MoveView();
+}
+
+void ３Ｄ女の子部屋_マウスクリア()
+{
+	g_sAppreciationMode.ClearMouse();
+}
+
+void ３Ｄ女の子部屋_カメラ距離設定(float fLength)
+{
+	g_sAppreciationMode.SetCameraLength(fLength);
+}
+
+void ３Ｄ女の子部屋_位置戻し()
+{
+	g_sAppreciationMode.ResetCamera();
+}
+
+int ３Ｄ女の子部屋_ビュー位置Ｘ()
+{
+	return g_sAppreciationMode.GetViewX();
+}
+
+int ３Ｄ女の子部屋_ビュー位置Ｙ()
+{
+	return g_sAppreciationMode.GetViewY();
+}
+
+int ３Ｄ女の子部屋_ビュー幅()
+{
+	return g_sAppreciationMode.GetViewWidth();
+}
+
+int ３Ｄ女の子部屋_ビュー高()
+{
+	return g_sAppreciationMode.GetViewHeight();
+}
+
+string ３Ｄ女の子部屋_背景名()
+{
+	return g_sAppreciationMode.GetMapName();
+}
+
+float ３Ｄ女の子部屋_カメラ距離()
+{
+	return g_sAppreciationMode.GetCameraLength();
+}
+
+ref CReignPlugin ３Ｄ女の子部屋_プラグイン()
+{
+	if (!g_sAppreciationMode.IsCreated())
+	{
+		return NULL;
+	}
+	return g_sAppreciationMode.GetPlugin();
+}
+

@@ -1,0 +1,981 @@
+T_PartyList::T_PartyList()
+{
+	this.clear();
+}
+
+T_PartyList::~T_PartyList()
+{
+	this.delete();
+}
+
+bool T_PartyList::create(int nCharaNo, int nLayout)
+{
+	this.delete();
+	bool bRet = false;
+	switch (nLayout)
+	{
+		case 2:
+			break;
+		case 0:
+			bRet = this.m_sMiniCard.create(nCharaNo);
+			break;
+		case 1:
+			bRet = this.m_sMiniMiniCard.create(nCharaNo);
+			break;
+		default:
+			break;
+	}
+	if (!bRet)
+	{
+		return false;
+	}
+	this.m_nLayout = nLayout;
+	this.update();
+	return true;
+}
+
+void T_PartyList::delete()
+{
+	this.m_sMiniCard.delete();
+	this.m_sMiniMiniCard.delete();
+	this.clear();
+}
+
+void T_PartyList::clear()
+{
+	this.m_nLayout = -1;
+	this.m_nBlendRate = 255;
+	this.m_bShow = false;
+}
+
+bool T_PartyList::remake(int nZ)
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	int nX = this.getPosX();
+	int nY = this.getPosY();
+	int nBlendRate = this.m_nBlendRate;
+	bool bShow = this.m_bShow;
+	bool bMarkShow = this.getMarkShow();
+	bool bDeadShow = this.getDeadShow();
+	if (!this.create(nCharaNo, this.m_nLayout))
+	{
+		return false;
+	}
+	this.setPos(nX, nY);
+	this.setZ(nZ);
+	this.setBlendRate(nBlendRate);
+	this.setMarkShow(bMarkShow);
+	this.setShow(bShow, bDeadShow);
+	return true;
+}
+
+void T_PartyList::update()
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return;
+	}
+	bool bDeadShow = false;
+	switch (this.m_nLayout)
+	{
+		case 2:
+			break;
+		case 0:
+			this.m_sMiniCard.update(false, 250);
+			bDeadShow = this.m_sMiniCard.getDeadShow();
+			break;
+		case 1:
+			this.m_sMiniMiniCard.update();
+			bDeadShow = this.m_sMiniMiniCard.getDeadShow();
+			break;
+		default:
+			break;
+	}
+	this.setBlendRate(this.m_nBlendRate);
+	this.setShow(this.m_bShow, bDeadShow);
+}
+
+void T_PartyList::setLayout(int nLayout)
+{
+	if (this.m_nLayout < 0)
+	{
+		return;
+	}
+	this.m_nLayout = nLayout;
+}
+
+void T_PartyList::setPos(int nX, int nY)
+{
+	switch (this.m_nLayout)
+	{
+		case 2:
+			break;
+		case 0:
+			this.m_sMiniCard.setPos(nX, nY);
+			break;
+		case 1:
+			this.m_sMiniMiniCard.setPos(nX, nY);
+			break;
+		default:
+			break;
+	}
+}
+
+void T_PartyList::setZ(int nZ)
+{
+	this.m_sMiniCard.setZ(nZ);
+	this.m_sMiniMiniCard.setZ(nZ);
+}
+
+void T_PartyList::setShow(bool bShow, bool bDeadShow)
+{
+	this.m_sMiniCard.setDeadShow(bDeadShow);
+	this.m_sMiniCard.setShow(bShow);
+	this.m_sMiniMiniCard.setDeadShow(bDeadShow);
+	this.m_sMiniMiniCard.setShow(bShow);
+	this.m_bShow = bShow;
+}
+
+int T_PartyList::getPosX()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return this.m_sMiniCard.getPosX();
+		case 1:
+		case 2:
+			return this.m_sMiniMiniCard.getPosX();
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyList::getPosY()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return this.m_sMiniCard.getPosY();
+		case 1:
+		case 2:
+			return this.m_sMiniMiniCard.getPosY();
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyList::getCharaNo()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return this.m_sMiniCard.getCharaNo();
+		case 1:
+		case 2:
+			return this.m_sMiniMiniCard.getCharaNo();
+		default:
+			break;
+	}
+	return -1;
+}
+
+void T_PartyList::setBlendRate(int nBlendRate)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			this.m_sMiniCard.setBlendRate(nBlendRate);
+			break;
+		case 2:
+			break;
+		case 1:
+			this.m_sMiniMiniCard.setBlendRate(nBlendRate);
+			break;
+		default:
+			break;
+	}
+	this.m_nBlendRate = nBlendRate;
+}
+
+void T_PartyList::setMarkShow(bool bMarkShow)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			this.m_sMiniCard.setMarkShow(bMarkShow);
+			break;
+		case 2:
+			break;
+		case 1:
+			this.m_sMiniMiniCard.setMarkShow(bMarkShow);
+			break;
+		default:
+			break;
+	}
+}
+
+bool T_PartyList::getMarkShow()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return this.m_sMiniCard.getMarkShow();
+		case 1:
+		case 2:
+			return this.m_sMiniMiniCard.getMarkShow();
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_PartyList::getDeadShow()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return this.m_sMiniCard.getDeadShow();
+		case 1:
+		case 2:
+			return this.m_sMiniMiniCard.getDeadShow();
+		default:
+			break;
+	}
+	return false;
+}
+
+ref T_CharaFace T_PartyList::getFace()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return this.m_sMiniCard.getFace();
+		case 1:
+		case 2:
+			return this.m_sMiniMiniCard.getFace();
+		default:
+			break;
+	}
+	return NULL;
+}
+
+int T_PartyListManager::getIndex(int nCharaNo)
+{
+	return this.searchChara(nCharaNo);
+}
+
+int T_PartyListManager::getCount()
+{
+	return this.m_asChara.Numof();
+}
+
+int T_PartyListManager::getMode()
+{
+	return this.m_nMode;
+}
+
+int T_PartyListManager::getLayout()
+{
+	return this.m_nLayout;
+}
+
+int T_PartyListManager::getTopIndex()
+{
+	return this.m_nTopIndex;
+}
+
+int T_PartyListManager::getLockCharaNo()
+{
+	return this.m_nLockCharaNo;
+}
+
+int T_PartyListManager::getLockIndex()
+{
+	return this.m_nLockIndex;
+}
+
+int T_PartyListManager::getSortMode()
+{
+	return this.m_sList.getSortMode();
+}
+
+int T_PartyListManager::getJobType()
+{
+	return this.m_sList.getJobType();
+}
+
+int T_PartyListManager::getListCount()
+{
+	return this.m_sList.getCount();
+}
+
+bool T_PartyListManager::isNormal()
+{
+	return this.m_nMode == 1;
+}
+
+bool T_PartyListManager::isMap()
+{
+	return this.m_nMode == 2;
+}
+
+bool T_PartyListManager::isBattle()
+{
+	return this.m_nMode == 3;
+}
+
+bool T_PartyListManager::isCustom()
+{
+	return this.m_nMode == 1 && this.m_sList.getSortMode() == 9;
+}
+
+T_PartyListManager::T_PartyListManager()
+{
+	this.clear();
+}
+
+T_PartyListManager::~T_PartyListManager()
+{
+	this.delete();
+}
+
+bool T_PartyListManager::create(int nMode, int nLayout, int nSortMode, int nJobType)
+{
+	this.delete();
+	if (!this.createChara(nLayout))
+	{
+		return false;
+	}
+	nSortMode = nSortMode > 0 ? nSortMode : パーティソートモード();
+	if (this.m_sList.create(nMode == 9 ? 2 : 0, nSortMode, nJobType) < 0)
+	{
+		return false;
+	}
+	this.m_nMode = nMode;
+	this.m_nLayout = nLayout;
+	this.setTopIndex(0);
+	return true;
+}
+
+void T_PartyListManager::delete()
+{
+	this.deleteChara(true);
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_PartyListManager::clear()
+{
+	this.m_nMode = -1;
+	this.m_nLayout = -1;
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nTopIndex = -1;
+	this.m_nLockCharaNo = 0;
+	this.m_nLockIndex = -1;
+	this.m_sList.clear();
+}
+
+int T_PartyListManager::scroll(int nValue)
+{
+	int nRet = 0;
+	switch (this.m_nLayout)
+	{
+		case 0:
+			nRet = this.setTopIndex(nValue * 2);
+			break;
+		case 2:
+			nRet = this.setTopIndex(nValue);
+			break;
+		case 1:
+			nRet = this.setTopIndex(nValue * 4);
+			break;
+		default:
+			return -1;
+	}
+	this.lock(this.m_nLockCharaNo);
+	return nRet;
+}
+
+bool T_PartyListManager::sort(int nSortMode, bool bCompulsory)
+{
+	if (this.m_nMode < 0)
+	{
+		return false;
+	}
+	if (!bCompulsory && nSortMode == this.m_sList.getSortMode())
+	{
+		return false;
+	}
+	if (!this.m_sList.remake(nSortMode, -1))
+	{
+		return false;
+	}
+	this.setTopIndex(0);
+	return true;
+}
+
+bool T_PartyListManager::remake(int nLayout, int nJobType)
+{
+	if (this.m_nMode < 0)
+	{
+		return false;
+	}
+	int nTopIndex = this.m_nTopIndex;
+	if (nLayout >= 0 && nLayout != this.m_nLayout)
+	{
+		if (!this.createChara(nLayout))
+		{
+			return false;
+		}
+		this.m_nLayout = nLayout;
+	}
+	if (!this.m_sList.remake(-1, nJobType))
+	{
+		return false;
+	}
+	this.setTopIndex(nTopIndex);
+	return true;
+}
+
+bool T_PartyListManager::remakeChara()
+{
+	if (this.m_nMode < 0)
+	{
+		return false;
+	}
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asChara[i].remake(this.m_nZ))
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+void T_PartyListManager::update(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asChara.Numof())
+	{
+		return;
+	}
+	this.m_asChara[nIndex].update();
+}
+
+bool T_PartyListManager::drop(int nIndex, int nCharaNo)
+{
+	if (this.m_nMode != 1)
+	{
+		return false;
+	}
+	if (this.m_sList.getSortMode() != 9)
+	{
+		return false;
+	}
+	ref T_PartyList rfsChara = this.getFromIndex(nIndex);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	int nCharaNo2 = rfsChara.getCharaNo();
+	if (nCharaNo2 > 0)
+	{
+		if (nCharaNo2 == nCharaNo)
+		{
+			return false;
+		}
+		switch (選択_３択("Switch", "Displace", "Cancel"))
+		{
+			case 1:
+				if (!キャラデータ一覧_並替(nCharaNo, キャラ_番号(nCharaNo), nCharaNo2, キャラ_番号(nCharaNo2)))
+				{
+					return false;
+				}
+				break;
+			case 2:
+				if (!キャラデータ一覧_割込(nCharaNo, キャラ_番号(nCharaNo), nCharaNo2, キャラ_番号(nCharaNo2)))
+				{
+					return false;
+				}
+				break;
+			default:
+				return false;
+		}
+	}
+	else if (!キャラデータ一覧_最後尾(nCharaNo, キャラ_番号(nCharaNo)))
+	{
+		return false;
+	}
+	this.remake(-1, -1);
+	return true;
+}
+
+bool T_PartyListManager::erase(int nCharaNo)
+{
+	this.m_sList.erase(nCharaNo);
+	this.setTopIndex(this.m_nTopIndex);
+	return true;
+}
+
+bool T_PartyListManager::lock(int nCharaNo)
+{
+	if (this.m_sList.getIndex(nCharaNo) < 0)
+	{
+		this.m_spFrame.setShow(0);
+		this.m_nLockCharaNo = 0;
+		this.m_nLockIndex = -1;
+		return false;
+	}
+	int idx = this.searchChara(nCharaNo);
+	bool bAdjust = this.m_nMode == 9;
+	if (idx < 0)
+	{
+		this.m_spFrame.setShow(0);
+	}
+	else
+	{
+		this.m_spFrame.setPos(パーティ一覧_キャラＸ(idx, bAdjust, this.m_nLayout), パーティ一覧_キャラＹ(idx, bAdjust, this.m_nLayout));
+		this.m_spFrame.setShow(1);
+		this.m_sTimer.Reset();
+	}
+	this.m_nLockCharaNo = nCharaNo;
+	this.m_nLockIndex = idx;
+	return true;
+}
+
+bool T_PartyListManager::blink()
+{
+	if (this.m_nLockIndex < 0)
+	{
+		return this.m_nLockCharaNo > 0;
+	}
+	if (this.m_sTimer.Get() < 350)
+	{
+		return true;
+	}
+	bool bShow = this.m_spFrame.getShow();
+	this.m_spFrame.setShow(!bShow);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+int T_PartyListManager::setTopIndex(int nIndex)
+{
+	this.deleteChara(false);
+	int cnt = this.m_sList.getCount();
+	int cnt2 = this.m_asChara.Numof();
+	int nMax = 0;
+	switch (this.m_nLayout)
+	{
+		case 0:
+			nMax = ((cnt + 1) / 2) * 2 - cnt2;
+			break;
+		case 2:
+			nMax = cnt - cnt2;
+			break;
+		case 1:
+			nMax = ((cnt + 3) / 4) * 4 - cnt2;
+			break;
+		default:
+			return -1;
+	}
+	nIndex = cnt > cnt2 ? 数値_補正(nIndex, 0, nMax) : 0;
+	switch (this.m_nLayout)
+	{
+		case 0:
+			nIndex = (nIndex / 2) * 2;
+			break;
+		case 1:
+			nIndex = (nIndex / 4) * 4;
+			break;
+		case 2:
+		default:
+			break;
+	}
+	int i = 0;
+	bool bAdjust = this.m_nMode == 9;
+	for (i = 0; i < cnt2; ++i)
+	{
+		int idx = i + nIndex;
+		if (idx >= cnt)
+		{
+			break;
+		}
+		int nCharaNo = this.m_sList.get(idx);
+		ref T_PartyList rfsChara = this.m_asChara[i];
+		if (rfsChara.create(nCharaNo, this.m_nLayout))
+		{
+			rfsChara.setPos(パーティ一覧_キャラＸ(i, bAdjust, this.m_nLayout), パーティ一覧_キャラＹ(i, bAdjust, this.m_nLayout));
+			rfsChara.setMarkShow(キャラ_配置不可(nCharaNo));
+		}
+	}
+	this.m_nTopIndex = nIndex;
+	if (this.m_nZ > 0)
+	{
+		this.setZ(this.m_nZ);
+	}
+	this.setShow(this.m_bShow);
+	return nIndex;
+}
+
+void T_PartyListManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].setZ(nZ);
+	}
+	this.m_spFrame.setZ(nZ + 20);
+	this.m_nZ = nZ;
+}
+
+void T_PartyListManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_PartyList rfsChara = this.m_asChara[i];
+		bool bDeadShow = false;
+		if (this.m_nMode == 3)
+		{
+			bDeadShow = キャラ_状態変化(rfsChara.getCharaNo()) == 3;
+		}
+		rfsChara.setShow(bShow, bDeadShow);
+	}
+	this.m_spFrame.setShow(0);
+	this.m_bShow = bShow;
+}
+
+void T_PartyListManager::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_PartyList rfsChara = this.m_asChara[i];
+		rfsChara.setBlendRate(nBlendRate < 0 ? this.getBlendRate(rfsChara.getCharaNo()) : nBlendRate);
+	}
+}
+
+int T_PartyListManager::getScrollMax()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return (this.m_sList.getCount() + 1) / 2;
+		case 2:
+			return this.m_sList.getCount();
+		case 1:
+			return (this.m_sList.getCount() + 3) / 4;
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyListManager::getScrollPage()
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+			return 5;
+		case 2:
+			return 3;
+		case 1:
+			return 8;
+		default:
+			break;
+	}
+	return -1;
+}
+
+ref T_PartyList T_PartyListManager::get(int nCharaNo)
+{
+	int idx = this.searchChara(nCharaNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asChara[idx];
+}
+
+ref T_PartyList T_PartyListManager::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asChara.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asChara[nIndex];
+}
+
+int T_PartyListManager::moveUp(int nMode, int nRow, int nCol)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+		case 1:
+			int i = 0;
+			for (i = nRow - 1; i >= 0; --i)
+			{
+				int idx = パーティ一覧_インデクス(i, nCol, this.m_nLayout);
+				if (this.checkMove(nMode, idx))
+				{
+					return idx;
+				}
+			}
+			break;
+		case 2:
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyListManager::moveDown(int nMode, int nRow, int nCol)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+		case 1:
+			int i = 0;
+			int nRowCount = パーティ一覧_行数(-1);
+			for (i = nRow + 1; i < nRowCount; ++i)
+			{
+				int idx = パーティ一覧_インデクス(i, nCol, this.m_nLayout);
+				if (this.checkMove(nMode, idx))
+				{
+					return idx;
+				}
+			}
+			break;
+		case 2:
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyListManager::moveLeft(int nMode, int nRow, int nCol)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+		case 1:
+			int j = 0;
+			int nColCount = パーティ一覧_列数(-1);
+			for (j = nCol - 1; j >= 0; --j)
+			{
+				int idx = パーティ一覧_インデクス(nRow, j, this.m_nLayout);
+				if (this.checkMove(nMode, idx))
+				{
+					return idx;
+				}
+			}
+			for (j = nColCount - 1; j > nCol; --j)
+			{
+				int idx = パーティ一覧_インデクス(nRow, j, this.m_nLayout);
+				if (this.checkMove(nMode, idx))
+				{
+					return idx;
+				}
+			}
+			break;
+		case 2:
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyListManager::moveRight(int nMode, int nRow, int nCol)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+		case 1:
+			int j = 0;
+			int nColCount = パーティ一覧_列数(-1);
+			for (j = nCol + 1; j < nColCount; ++j)
+			{
+				int idx = パーティ一覧_インデクス(nRow, j, this.m_nLayout);
+				if (this.checkMove(nMode, idx))
+				{
+					return idx;
+				}
+			}
+			for (j = 0; j < nCol; ++j)
+			{
+				int idx = パーティ一覧_インデクス(nRow, j, this.m_nLayout);
+				if (this.checkMove(nMode, idx))
+				{
+					return idx;
+				}
+			}
+			break;
+		case 2:
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyListManager::getFirst(int nMode)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+		case 1:
+			int i = 0;
+			int j = 0;
+			int nRowCount = パーティ一覧_行数(-1);
+			int nColCount = パーティ一覧_列数(-1);
+			for (j = 0; j < nColCount; ++j)
+			{
+				for (i = 0; i < nRowCount; ++i)
+				{
+					int idx = パーティ一覧_インデクス(i, j, this.m_nLayout);
+					if (this.checkMove(nMode, idx))
+					{
+						return idx;
+					}
+				}
+			}
+			break;
+		case 2:
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyListManager::getLast(int nMode)
+{
+	switch (this.m_nLayout)
+	{
+		case 0:
+		case 1:
+			int i = 0;
+			int j = 0;
+			int nRowCount = パーティ一覧_行数(-1);
+			int nColCount = パーティ一覧_列数(-1);
+			for (j = nColCount - 1; j >= 0; --j)
+			{
+				for (i = nRowCount - 1; i >= 0; --i)
+				{
+					int idx = パーティ一覧_インデクス(i, j, this.m_nLayout);
+					if (this.checkMove(nMode, idx))
+					{
+						return idx;
+					}
+				}
+			}
+			break;
+		case 2:
+		default:
+			break;
+	}
+	return -1;
+}
+
+int T_PartyListManager::getCharaNo(int nIndex)
+{
+	if (this.m_nTopIndex < 0)
+	{
+		return -1;
+	}
+	if (nIndex < 0 || nIndex >= this.m_asChara.Numof())
+	{
+		return -1;
+	}
+	return this.m_sList.get(nIndex + this.m_nTopIndex);
+}
+
+bool T_PartyListManager::createChara(int nLayout)
+{
+	this.deleteChara(true);
+	switch (nLayout)
+	{
+		case 2:
+			this.m_asChara.Alloc(3);
+			break;
+		case 0:
+			this.m_asChara.Alloc(10);
+			break;
+		case 1:
+			this.m_asChara.Alloc(32);
+			break;
+		default:
+			return false;
+	}
+	this.m_spFrame.create(パーティ一覧_幅(nLayout), パーティ一覧_高(nLayout), 0, 255, 255, 128);
+	return true;
+}
+
+void T_PartyListManager::deleteChara(bool bFree)
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].delete();
+	}
+	if (bFree)
+	{
+		if (!this.m_asChara.Empty())
+		{
+			this.m_asChara.Free();
+		}
+	}
+}
+
+int T_PartyListManager::searchChara(int nCharaNo)
+{
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asChara[i].getCharaNo() == nCharaNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool T_PartyListManager::checkMove(int nMode, int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_asChara.Numof();
+}
+
+int T_PartyListManager::getBlendRate(int nCharaNo)
+{
+	switch (キャラ_登録状態(nCharaNo))
+	{
+		case 1:
+			return 90;
+		case 2:
+		case 3:
+		case 4:
+		default:
+			break;
+	}
+	return 255;
+}
+

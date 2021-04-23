@@ -1,0 +1,397 @@
+void クレイン／アンデル情報()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5000, 0, 0);
+	ト書き();
+	' ' R;
+	'     --During a Break' A;
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hm? Wait...' R;
+	' *sniff* *sniff*... *sniff *sniff *sniff*"' A;
+	セリフ(2005, "");
+	'"Crane\'s gone.' R;
+	' Is she resting somewhere away from the group again?' R;
+	' Sheesh..."' A;
+	セリフ(2000, "");
+	'"Alright, I\'ll go get her.' R;
+	' I might hear something interesting, too."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	背景アウト(500);
+	背景イン(gＭ, 500, "", false);
+	ト書き();
+	' ' R;
+	'     At that time' A;
+	枠消去();
+	ミニイベント表示(4240, 1, 500);
+	ト書き();
+	'Some unfamiliar men began sharing secrets near where Crane was resting.' A;
+	セリフ２(2900, "Man");
+	'"Hey, listen to this...' R;
+	' I hear there\'s an illegal level god who\'ll let you level past your talent cap."' A;
+	セリフ２(2900, "Man");
+	'"It\'s some high level god, way above a regular one, who loves jewels.' R;
+	' You can get your talent cap raised just by trading a gem."' A;
+	セリフ２(2900, "Man");
+	'"They\'re in this eastern Helmanian town, Genisar･.' R;
+	' I heard somebody spotted ’em in this ruined castle; a place called Naznaz."' A;
+	セリフ(2220, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"Oh, there you are, Crane.' R;
+	' Our break\'s ending soon."' A;
+	セリフ(2220, "");
+	'"...Ah..."' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	立ち絵表示(1220, 1, 200);
+	セリフ(2220, "");
+	'".........' R;
+	' ...Did you hear?"' A;
+	セリフ(2000, "");
+	'"No, nothing."' A;
+	セリフ(2220, "");
+	'"...I see..."' A;
+	ト書き();
+	'Rance walked off with Crane in tow.' A;
+	思考(2000, "");
+	'(Hoo, I just heard something good.' R;
+	' I\'m so smart, making use of Crane like this.)' A;
+	思考(2004, "");
+	'(A god who loves jewels and will raise your talent cap for one...' R;
+	' It\'s gotta be a beautiful woman! We\'ll have to go look for her.)' A;
+	セリフ(2220, "");
+	'".........' R;
+	' ...You heard, didn\'t you?"' A;
+	セリフ(2000, "");
+	'"Nope, nothing."' A;
+	ADVOFF();
+}
+
+void ０５Ｃプロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5071, 0, 0);
+	ト書き();
+	' ' R;
+	'     Eastern Helman   Town of Genisar･' A;
+	' ' R;
+	'     Naznaz Castle' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmm... this is the place...?"' A;
+	ト書き();
+	'The remains of a once fearsome castle stood before Rance.' A;
+	セリフ(2000, "");
+	'"According to the secret Crane picked up, there should be a level god here who illegally raises talent caps..."' A;
+	セリフ(2000, "");
+	'"I bet it\'s true, since it went to Crane.' R;
+	' This should be good."' A;
+	セリフ(2001, "");
+	'"Alright, we\'re gonna find ’er!' R;
+	' Go go go!"' A;
+	ADVOFF();
+}
+
+void ０５Ｃアンデルミィル()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(93, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Hmm..."' A;
+	'"The heck is this...?"' A;
+	枠消去();
+	立ち絵表示(1321, 1, 200);
+	ト書き();
+	'There was a window floating above them in the air.' A;
+	セリフ(2000, "");
+	'"What a mysterious phenomenon."' A;
+	'"...It\'s just floating there. I don\'t see anything it\'s attached to..."' A;
+	ト書き();
+	'Rance reached out.' A;
+	セリフ(2005, "");
+	'"Hmmm?"' R;
+	'  ↑ Pat pat, touch touch' A;
+	'"It\'s not hanging by piano wires..."' A;
+	セリフ(2000, "");
+	'"Well, if you see something strange, you need to investigate it.' R;
+	' That\'s an ironclad rule of adventuring."' A;
+	セリフ(2001, "");
+	'"Toooh! Open Sesame!"' A;
+	枠消去();
+	立ち絵表示(1322, 1, 200);
+	ト書き();
+	' ' R;
+	'  <clack!>' A;
+	セリフ(2005, "");
+	'"There\'s nothing..."' A;
+	セリフ(2000, "");
+	'"Haahh, how boring.' R;
+	' Seriously, what is this thing?"' A;
+	ト書き();
+	'And when Rance went to close the window...' A;
+	枠消去();
+	立ち絵表示(1320, 1, 200);
+	Ｒ８ジングル(413, true);
+	セリフ(2320, "");
+	'"Weeeelcome!"' A;
+	セリフ(2003, "");
+	'"Whoa! Who the hell are you?!"' A;
+	セリフ(2320, "");
+	'"Oh my! I haven\'t had a customer in quite some time!"' A;
+	セリフ(2001, "");
+	'"Oooh! Never mind that, you\'re hot!"' A;
+}
+
+void ０５Ｃアンデルミィル／扉を閉じる()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2001, "");
+	'"Boob Graaaaaab!"' A;
+	ト書き();
+	'Rance suddenly squeezed the woman\'s breasts.' A;
+	セリフ(2320, "");
+	'"Hwha?"' A;
+	セリフ(2004, "");
+	'"Ooh, nice and soft."' A;
+	ト書き();
+	' ' R;
+	'  <grope grope grope grope grope>' A;
+	セリフ(2320, "");
+	'"Uh, errr..."' R;
+	'  ↑ Unable to comprehend the situation' A;
+	'"Ah..."' R;
+	'  ↑ Realization dawning' A;
+	セリフ(2001, "");
+	'"Gahahahahahahahahahahahahaha!"' R;
+	'  ↑ Groping' A;
+	セリフ(2320, "");
+	'"Excuse me, I--!"' A;
+	枠消去();
+	立ち絵表示(1321, 1, 200);
+	ト書き();
+	' ' R;
+	'  <bam!>' A;
+	セリフ(2001, "");
+	'"Gahahaha, I closed it before she could get a word in."' A;
+	枠消去();
+	立ち絵表示(1320, 1, 200);
+	セリフ(2320, "");
+	'"Hey, wait!"' A;
+	枠消去();
+	立ち絵表示(1321, 1, 200);
+	ト書き();
+	' ' R;
+	'  <slam!>' A;
+	セリフ(2000, "");
+	'"There we go."' A;
+	セリフ(2001, "");
+	'"Gahahaha, successful boob grab!' R;
+	' Mission complete!"' A;
+	セリフ(2020, "");
+	'"Err... I\'m pretty sure that wasn\'t the mission..."' A;
+}
+
+void ０５Ｃアンデルミィル／話す＋クルックー()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2004, "");
+	'"Ooh, it\'s a pretty lady.' R;
+	' Okay, how about you and me..."' A;
+	セリフ(2060, "");
+	'"I\'m sorry. Please let me speak with her."' A;
+	セリフ(2320, "");
+	'"Oh? A slave to the gods, aren\'t you?"' A;
+	セリフ(2060, "");
+	'"Yes, and you are a level goddess... a fairly high-ranking one as well.' R;
+	' Could I have your name?"' A;
+	セリフ(2320, "");
+	'"Why hide it?' R;
+	' I am Andelmille, High Level Goddess."' A;
+	セリフ(2060, "");
+	'"It\'s nice to meet you. My name is Crook Mofus."' A;
+	ト書き();
+	'Crook gave a deep bow.' A;
+	セリフ(2060, "");
+	'"Will you allow me a question, then, Lady Andelmille?"' A;
+	セリフ(2320, "");
+	'"Yes, yes, of course."' A;
+	セリフ(2060, "");
+	'"Are you the high level god who is going against God\'s laws and illictly raising talent caps?"' A;
+	セリフ(2320, "");
+	'"Ooh, the secret\'s out.' R;
+	' Keep it quiet, would you? Shh!"' A;
+	セリフ(2320, "");
+	'"...Oh come on, don\'t make that face.' R;
+	' I just wanted some gems."' A;
+	'"I\'ve got an angel friend I\'m racing right now to see who can collect the most jewels--"' A;
+	'"Wait a second... what are you planning?"' A;
+	ト書き();
+	'Crook swung her hammer.' A;
+	セリフ(2320, "");
+	'"Aah! Put that thing down!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	' ' R;
+	'  <crunch! smash smash!>' A;
+	セリフ(2003, "");
+	'"H-Hey now..."' A;
+	セリフ(2060, "");
+	'"Phew, I\'m finished."' A;
+	枠消去();
+	立ち絵表示(1323, 1, 200);
+	ト書き();
+	'When she\'d finished, all that was left of the window was a pile of splinters.' A;
+	セリフ(2005, "");
+	'"Hey Crook, you didn\'t kill her, did you?' R;
+	' That pretty lady... er, level goddess, I guess."' A;
+	セリフ(2060, "");
+	'"No, I just had her return home."' A;
+	'"She was acting out of line for her position as a god."' A;
+	セリフ(2005, "");
+	'"The window\'s broken... Can we not see her anymore?"' A;
+	セリフ(2060, "");
+	'"No. The window seemed to be the medium for summoning the goddess, so she shouldn\'t appear anymore now."' A;
+	セリフ(2005, "");
+	'"Hmmmm..."' A;
+	セリフ(2060, "");
+	'"Mission complete.' R;
+	' Congratulations."' A;
+	セリフ(2000, "");
+	'"Wait wait wait."' A;
+	'"The mission\'s failed!' R;
+	' We were after those illegal level ups!"' A;
+	セリフ(2060, "");
+	'"No, this is fine.' R;
+	' This is right."' A;
+	セリフ(2005, "");
+	'"...Who decided that?!"' A;
+}
+
+void ０５Ｃアンデルミィル／話す()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2000, "");
+	'"Let\'s have sex, beautiful lady."' A;
+	セリフ(2320, "");
+	'"My, do you mean me?"' A;
+	'"But I have to say I prefer a man with common sense.' R;
+	' I\'ll have to turn you down, I\'m afraid."' A;
+	セリフ(2000, "");
+	'"Hmm, playing hard to get, huh?' R;
+	' But you can\'t say you\'re the one with common sense, appearing from a mysterious floating window like that. So let\'s fuck!"' A;
+	セリフ(2320, "");
+	'"...Quite the logical one, you are."' A;
+	'"You couldn\'t have summoned me without knowing who I am, could you? Listen up. I am--"' A;
+	セリフ(2001, "");
+	'"A special-order window prostitute!"' A;
+	セリフ(2320, "");
+	'"No! I\'m Andelmille, High Level Goddess."' A;
+	'"I bear the highest rank of the level gods who manage you humans\' levels."' A;
+	'"Heheheh, are you surprised?"' A;
+	セリフ(2000, "");
+	'"A level god that illicitly raises talent caps?"' A;
+	セリフ(2000, "");
+	'"...Come to think of it, that was why we were here, wasn\'t it?"' A;
+	セリフ(2000, "");
+	'"Alright, raise my level, then."' A;
+	セリフ(2320, "");
+	'"What, you already knew?' R;
+	' Oh, fine then, let\'s get this over with."' A;
+	'"Hm? Wait... Huh...?"' A;
+	セリフ(2004, "");
+	'"What are you staring at me like that for...?' R;
+	' Aha! You\'ve fallen for me, haven\'t you?"' A;
+	セリフ(2320, "");
+	'"You\'re not my type."' A;
+	セリフ(2005, "");
+	'"Urgh..."' A;
+	セリフ(2320, "");
+	'"But you don\'t have a talent cap...' R;
+	' That\'s awfully rare... or rather, I\'ve never seen it before..."' A;
+	'"Are you a bug... or just defective...?"' A;
+	'"Hmmmmm...?"' A;
+	セリフ(2000, "");
+	'"What are you mumbling about?"' A;
+	セリフ(2320, "");
+	'"...Alright."' A;
+	'"I\'ll just pretend I didn\'t see that."' A;
+	セリフ(2005, "");
+	'"? ? ?"' A;
+	セリフ(2320, "");
+	'"So, since you summoned me knowing who I am, I should just raise the talent cap of someone else in your party, right?"' A;
+	'"I can do that, though it\'s a secret, since it\'s actually illegal."' A;
+	セリフ(2000, "");
+	'"Oho, alright."' A;
+	セリフ(2320, "");
+	'"It\'s just, heheh, I do have a condition, you know?"' A;
+	セリフ(2000, "");
+	'"Just tell me already."' A;
+	セリフ(2320, "");
+	'"Give me a gem, would you?"' A;
+	'"...Ooh, that\'s a nice one you\'ve got there. I\'ll take it!"' A;
+	セリフ(2002, "");
+	'"Ah! Hey, don\'t just grab it!"' A;
+	セリフ(2320, "");
+	'"Aaaah, it\'s a gem! A gem!"' A;
+	'"Haahh, wonderful... I love it..."' R;
+	'  ↑ Rubbing it on her cheek' A;
+	'"I\'ll just exchange that for this, then."' A;
+	ト書き();
+	'Rance received a forbidden talent.' A;
+	セリフ(2320, "");
+	'"And that\'s the deal done!' R;
+	' Let\'s meet again, okay? Bye-bye!"' A;
+	セリフ(2002, "");
+	'"Hey, wait a minute, have sex with meee!"' A;
+	枠消去();
+	立ち絵表示(1321, 1, 200);
+	ト書き();
+	' ' R;
+	'  <slaaam!>' A;
+	セリフ(2005, "");
+	'"...Urgh."' A;
+	枠消去();
+	立ち絵表示(1322, 1, 200);
+	ト書き();
+	'All that could be seen beyond the window was the dungeon.' A;
+	セリフ(2000, "");
+	'"Hmph, so she\'s gone... Dammit."' A;
+	'"Well, we\'ve got what we came for.' R;
+	' I guess it\'s alright."' A;
+}
+

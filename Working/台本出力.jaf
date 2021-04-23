@@ -1,0 +1,10 @@
+void 台本出力開始(int _開始番号)
+{
+	return;
+}
+
+void 台本出力終了()
+{
+	return;
+}
+

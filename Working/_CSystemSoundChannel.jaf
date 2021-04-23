@@ -1,0 +1,55 @@
+bool _CSystemSoundChannel::_IsSound(int _snd)
+{
+	return _snd == this._m_snd;
+}
+
+_CSystemSoundChannel::_CSystemSoundChannel()
+{
+	this._m_chn = -2147483648;
+	this._m_snd = -2147483648;
+}
+
+void _CSystemSoundChannel::_SetChannel(int _ch)
+{
+	this._m_chn = _ch;
+}
+
+void _CSystemSoundChannel::_Prepare(int _snd)
+{
+	this._m_snd = _snd;
+	if (this._m_chn == -2147483648)
+	{
+		return;
+	}
+	KiwiSoundEngine.Sound_Prepare(this._m_chn, this._m_snd);
+}
+
+bool _CSystemSoundChannel::_IsPlay()
+{
+	if (this._m_chn == -2147483648)
+	{
+		return false;
+	}
+	return KiwiSoundEngine.Sound_IsPlay(this._m_chn);
+}
+
+void _CSystemSoundChannel::_Play()
+{
+	if (this._m_snd == -2147483648)
+	{
+		return;
+	}
+	KiwiSoundEngine.Sound_Play(this._m_chn);
+	g_BGMVolumeCapManager.BeginBGMFade(this._m_chn, this._m_snd);
+}
+
+void _CSystemSoundChannel::_Unprepare()
+{
+	if (this._m_snd == -2147483648)
+	{
+		return;
+	}
+	KiwiSoundEngine.Sound_Unprepare(this._m_chn);
+	this._m_snd = -2147483648;
+}
+

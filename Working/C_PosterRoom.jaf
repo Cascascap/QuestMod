@@ -1,0 +1,62 @@
+void Ｒ８ポスター部屋表示()
+{
+	ポスター部屋_作成(8001);
+}
+
+void Ｒ８ポスター部屋閲覧()
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	ポスター部屋_実行();
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+}
+
+bool ポスター部屋_作成(int nZ)
+{
+	画面_クリア(true, true);
+	return g_sPosterRoom.createBase(nZ);
+}
+
+void ポスター部屋_削除()
+{
+	g_sPosterRoom.deleteBase();
+}
+
+int ポスター部屋_実行()
+{
+	画面_クリア(true, true);
+	return g_sPosterRoom.run();
+}
+
+int ポスター部屋_上矢印(int nID)
+{
+	return g_sPosterRoom.moveUp(nID);
+}
+
+int ポスター部屋_下矢印(int nID)
+{
+	return g_sPosterRoom.moveDown(nID);
+}
+
+int ポスター部屋_左矢印(int nID)
+{
+	return g_sPosterRoom.moveLeft(nID);
+}
+
+int ポスター部屋_右矢印(int nID)
+{
+	return g_sPosterRoom.moveRight(nID);
+}
+
+void ポスター部屋_選択設定(int nID, bool bSelect)
+{
+	g_sPosterRoom.setSelect(nID, bSelect);
+}
+
+bool ポスター_確認(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 20 ? 0 : FA[155 + nIndex] > 0;
+}
+

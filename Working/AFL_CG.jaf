@@ -1,0 +1,32 @@
+bool AFL_AddArchive(string ArchiveName)
+{
+	return CGManager.LoadArchive(ArchiveName);
+}
+
+int AFL_SearchTitleFromArchive(string Title)
+{
+	return CGManager.SearchTitleFromArchive(Title);
+}
+
+int AFL_PrefixSearchTitleFromArchive(string Title)
+{
+	return CGManager.PrefixSearchTitleFromArchive(Title);
+}
+
+int AFL_SuffixSearchTitleFromArchive(string Title)
+{
+	return CGManager.SuffixSearchTitleFromArchive(Title);
+}
+
+int AFL_GetCountOfSearchDataFromArchive()
+{
+	return CGManager.GetCountOfSearchDataFromArchive();
+}
+
+string AFL_GetSearchTitleByIndexFromArchive(int Index)
+{
+	string Title = "";
+	CGManager.GetSearchTitleByIndexFromArchive(Index, Title);
+	return Title;
+}
+

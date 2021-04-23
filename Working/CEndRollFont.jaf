@@ -1,0 +1,71 @@
+CEndRollFont::CEndRollFont()
+{
+	this.m_FontType = 0;
+	this.m_FontSize = 14;
+	this.m_BaseR = 0;
+	this.m_BaseG = 0;
+	this.m_BaseB = 0;
+	this.m_ShiftR = 0;
+	this.m_ShiftG = 0;
+	this.m_ShiftB = 0;
+	this.m_ShiftSize = 0;
+}
+
+CEndRollFont::~CEndRollFont()
+{
+	this.Release();
+}
+
+void CEndRollFont::Release()
+{
+	this.m_Top.Release();
+	this.m_BG.Release();
+}
+
+void CEndRollFont::SetFont(int FontType, int FontSize, int BaseR, int BaseG, int BaseB, int ShiftR, int ShiftG, int ShiftB)
+{
+	this.m_FontType = FontType;
+	this.m_FontSize = FontSize;
+	this.m_BaseR = BaseR;
+	this.m_BaseG = BaseG;
+	this.m_BaseB = BaseB;
+	this.m_ShiftR = ShiftR;
+	this.m_ShiftG = ShiftG;
+	this.m_ShiftB = ShiftB;
+	ÇoÅQÉtÉHÉìÉgê›íË(this.m_Top.GetPartsNumber(), FontType, FontSize, BaseR, BaseG, BaseB, 0.0, 0, 0, 0, 0.0, 1);
+	ÇoÅQÉtÉHÉìÉgê›íË(this.m_BG.GetPartsNumber(), FontType, FontSize, ShiftR, ShiftG, ShiftB, 0.0, 0, 0, 0, 0.0, 1);
+}
+
+void CEndRollFont::SetText(string Text, string BackText)
+{
+	if (BackText.Empty())
+	{
+		BackText = Text;
+	}
+	this.m_Top.SetText(Text, 1);
+	this.m_BG.SetText(BackText, 1);
+}
+
+void CEndRollFont::SetShiftSize(int Shift)
+{
+	this.m_ShiftSize = Shift;
+}
+
+void CEndRollFont::SetPos(int X, int Y)
+{
+	this.m_Top.SetPos(X, Y);
+	this.m_BG.SetPos(X + this.m_ShiftSize, Y + this.m_ShiftSize);
+}
+
+void CEndRollFont::SetZ(int Z)
+{
+	this.m_Top.SetZ(Z + 1);
+	this.m_BG.SetZ(Z);
+}
+
+void CEndRollFont::SetOriginPosMode(int Mode)
+{
+	this.m_Top.SetOriginPosMode(Mode);
+	this.m_BG.SetOriginPosMode(Mode);
+}
+

@@ -1,0 +1,41 @@
+void 戦闘通知_奇襲(string szName)
+{
+	効果_フラッシュ_待ちあり(szName, 0, 0, 9601);
+}
+
+void 戦闘通知_先制攻撃(int nNo)
+{
+	int idx = 戦闘番号_味方インデクス(nNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	効果_フラッシュ_待ちあり("先制攻撃", 戦闘味方_位置Ｘ(idx), 戦闘味方_位置Ｙ(idx), 9601);
+}
+
+void 戦闘通知_行動不可(int nCgNo)
+{
+	戦闘エフェクト_再生待ち(true);
+	戦闘台詞_消去();
+	int nTime = 0;
+	int nTotalTime = 250;
+	CASTimer sTimer;
+	g_spBattleNotice.setCg(nCgNo);
+	g_spBattleNotice.setPos(0, 224);
+	g_spBattleNotice.setZ(301);
+	g_spBattleNotice.setShow(1);
+	sTimer.Reset();
+	while (nTime < nTotalTime)
+	{
+		g_spBattleNotice.setBlendRate(実数計算(255.0, nTime, nTotalTime));
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	_W(1000);
+}
+
+void 戦闘通知_削除()
+{
+	g_spBattleNotice.delete();
+}
+

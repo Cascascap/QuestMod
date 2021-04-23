@@ -1,0 +1,413 @@
+int T_BattleMark::getMarkNo()
+{
+	return this.m_nMarkNo;
+}
+
+int T_BattleMark::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_BattleMark::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_BattleMark::getZ()
+{
+	return this.m_nZ;
+}
+
+bool T_BattleMark::getShow()
+{
+	return this.m_bShow;
+}
+
+T_BattleMark::T_BattleMark()
+{
+	this.clear();
+}
+
+T_BattleMark::~T_BattleMark()
+{
+	this.delete();
+}
+
+bool T_BattleMark::create()
+{
+	this.delete();
+	this.m_nMarkNo = 0;
+	return true;
+}
+
+void T_BattleMark::delete()
+{
+	this.m_sMark.delete();
+	this.clear();
+}
+
+void T_BattleMark::clear()
+{
+	this.m_nMarkNo = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+	this.m_bShow = false;
+}
+
+bool T_BattleMark::update()
+{
+	if (this.m_nMarkNo <= 0)
+	{
+		return false;
+	}
+	return this.m_sMark.update() > 0;
+}
+
+bool T_BattleMark::set(int nMarkNo)
+{
+	if (nMarkNo > 0 && nMarkNo == this.m_nMarkNo)
+	{
+		return true;
+	}
+	this.m_sMark.delete();
+	this.m_nMarkNo = 0;
+	string szName = "";
+	switch (nMarkNo)
+	{
+		case 1:
+			szName = "攻アップマーク";
+			break;
+		case 2:
+			szName = "攻ダウンマーク";
+			break;
+		case 11:
+			szName = "防アップマーク";
+			break;
+		case 12:
+			szName = "防ダウンマーク";
+			break;
+		case 21:
+			szName = "毒マーク";
+			break;
+		case 22:
+			szName = "ぴよりマーク";
+			break;
+		case 23:
+			szName = "瀕死マーク";
+			break;
+		case 31:
+			szName = "タメマーク";
+			break;
+		case 32:
+			szName = "守護率マーク";
+			break;
+		case 33:
+			szName = "狂戦士マーク";
+			break;
+		case 34:
+			szName = "隠密マーク";
+			break;
+		case 35:
+			szName = "全体加護マーク";
+			break;
+		case 36:
+			szName = "マジックバリアマーク";
+			break;
+		default:
+			return false;
+	}
+	this.m_sMark.create(-1);
+	this.m_sMark.setPos(this.m_nX, this.m_nY);
+	this.m_sMark.setZ(this.m_nZ);
+	this.m_sMark.setFileName(Ｆｌａｓｈファイル名(szName));
+	this.m_nMarkNo = nMarkNo;
+	this.setShow(this.m_bShow);
+	return true;
+}
+
+void T_BattleMark::setPos(int nX, int nY)
+{
+	this.m_sMark.setPos(nX, nY);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_BattleMark::setZ(int nZ)
+{
+	this.m_sMark.setZ(nZ);
+	this.m_nZ = nZ;
+}
+
+void T_BattleMark::setShow(bool bShow)
+{
+	if (this.m_nMarkNo > 0)
+	{
+		if (bShow)
+		{
+			this.m_sMark.loop();
+		}
+		else
+		{
+			this.m_sMark.stop(false);
+		}
+	}
+	this.m_bShow = bShow;
+}
+
+int T_BattleMarkManager::getStatus(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anStatus.Numof() ? -1 : this.m_anStatus[nIndex];
+}
+
+bool T_BattleMarkManager::getFlag(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_abFlag.Numof() ? 0 : this.m_abFlag[nIndex];
+}
+
+ref T_BattleMark T_BattleMarkManager::get(int nMarkNo)
+{
+	return this.getFromIndex(this.search(nMarkNo));
+}
+
+T_BattleMarkManager::T_BattleMarkManager()
+{
+	this.clear();
+}
+
+T_BattleMarkManager::~T_BattleMarkManager()
+{
+	this.delete();
+}
+
+bool T_BattleMarkManager::create(int nMode)
+{
+	this.delete();
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMark[i].create();
+	}
+	this.m_nMode = nMode;
+	return true;
+}
+
+void T_BattleMarkManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMark[i].delete();
+	}
+	this.clear();
+}
+
+void T_BattleMarkManager::clear()
+{
+	this.m_nMode = -1;
+	this.m_anStatus.Fill(0, this.m_anStatus.Numof(), -1);
+	this.m_abFlag.Fill(0, this.m_abFlag.Numof(), 0);
+}
+
+void T_BattleMarkManager::update()
+{
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMark[i].update();
+	}
+}
+
+void T_BattleMarkManager::reset()
+{
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMark[i].set(0);
+	}
+	this.m_anStatus.Fill(0, this.m_anStatus.Numof(), -1);
+	this.m_abFlag.Fill(0, this.m_abFlag.Numof(), 0);
+}
+
+void T_BattleMarkManager::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	if (this.m_nMode == 0)
+	{
+		this.m_asMark[0].setPos(nX, nY);
+		this.m_asMark[1].setPos(nX, nY + 26);
+		this.m_asMark[2].setPos(nX, nY - 26);
+	}
+	else
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_asMark[i].setPos(nX, nY + 26 * i);
+		}
+	}
+}
+
+void T_BattleMarkManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMark[i].setZ(nZ);
+	}
+}
+
+void T_BattleMarkManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	bool bDead = this.getFlag(2);
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleMark rfsMark = this.m_asMark[i];
+		if (rfsMark.getMarkNo() != 23)
+		{
+			rfsMark.setShow(!bDead ? bShow : 0);
+		}
+		else
+		{
+			rfsMark.setShow(bDead ? bShow : 0);
+		}
+	}
+}
+
+int T_BattleMarkManager::setStatus(int nIndex, int nStatus, int nMarkNo1, int nMarkNo2)
+{
+	if (nIndex < 0 || nIndex >= this.m_anStatus.Numof())
+	{
+		return -1;
+	}
+	ref int rfnStatus = this.m_anStatus[nIndex];
+	if (nStatus == rfnStatus)
+	{
+		return rfnStatus;
+	}
+	switch (nStatus)
+	{
+		case 1:
+			this.add(nMarkNo1);
+			this.erase(nMarkNo2);
+			break;
+		case 2:
+			this.add(nMarkNo2);
+			this.erase(nMarkNo1);
+			break;
+		default:
+			this.erase(nMarkNo1);
+			this.erase(nMarkNo2);
+			nStatus = 0;
+			break;
+	}
+	rfnStatus = nStatus;
+	return nStatus;
+}
+
+bool T_BattleMarkManager::setFlag(int nIndex, bool bFlag, int nMarkNo)
+{
+	if (nIndex < 0 || nIndex >= this.m_abFlag.Numof())
+	{
+		return false;
+	}
+	ref bool rfbFlag = this.m_abFlag[nIndex];
+	if (bFlag == rfbFlag)
+	{
+		return rfbFlag;
+	}
+	if (bFlag)
+	{
+		this.add(nMarkNo);
+	}
+	else
+	{
+		this.erase(nMarkNo);
+	}
+	rfbFlag = bFlag;
+	return bFlag;
+}
+
+int T_BattleMarkManager::getMarkNo(int nIndex)
+{
+	ref T_BattleMark rfsMark = this.get(nIndex);
+	if (rfsMark === NULL)
+	{
+		return -1;
+	}
+	return rfsMark.getMarkNo();
+}
+
+ref T_BattleMark T_BattleMarkManager::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asMark.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asMark[nIndex];
+}
+
+bool T_BattleMarkManager::add(int nMarkNo)
+{
+	if (this.search(nMarkNo) >= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	int idx = -1;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_BattleMark rfsMark = this.m_asMark[i];
+		if (rfsMark.getMarkNo() > 0)
+		{
+			continue;
+		}
+		rfsMark.set(nMarkNo);
+		return true;
+	}
+	return false;
+}
+
+bool T_BattleMarkManager::erase(int nMarkNo)
+{
+	int idx = this.search(nMarkNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	for (i = idx; i < cnt - 1; ++i)
+	{
+		this.m_asMark[i].set(this.m_asMark[i + 1].getMarkNo());
+	}
+	this.m_asMark[cnt - 1].set(0);
+	return true;
+}
+
+int T_BattleMarkManager::search(int nMarkNo)
+{
+	if (nMarkNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asMark.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asMark[i].getMarkNo() == nMarkNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

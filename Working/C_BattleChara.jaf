@@ -1,0 +1,457 @@
+bool 戦闘味方_作成(int nZ)
+{
+	g_bBattleCharaUpdate = false;
+	if (!g_sBattleChara.create(nZ))
+	{
+		return false;
+	}
+	システムバー_作成(30, -1, true);
+	戦闘選択_作成(nZ + 20);
+	return true;
+}
+
+void 戦闘味方_削除()
+{
+	g_bBattleCharaUpdate = false;
+	戦闘選択_削除();
+	システムバー_削除();
+	g_sBattleChara.delete();
+}
+
+bool 戦闘味方_再作成()
+{
+	g_bBattleCharaUpdate = false;
+	if (!g_sBattleChara.remake())
+	{
+		return false;
+	}
+	return 戦闘選択_再作成();
+}
+
+void 戦闘味方_消去(int nNo)
+{
+	g_sBattleChara.erase(nNo);
+	戦闘選択_消去(nNo);
+}
+
+void 戦闘味方_ＨＰ更新(int nNo, int nHp, int nTotalTime)
+{
+	g_sBattleChara.updateHp(nNo, nHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘味方_ＨＰ更新開始(int nNo, int nHp, int nTotalTime)
+{
+	g_sBattleChara.startHp(nNo, nHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘味方_ＨＰ更新終了待ち(int nNo)
+{
+	g_sBattleChara.waitHp(nNo);
+}
+
+void 戦闘味方_ＨＰ更新_複数(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	g_sBattleChara.updateHpAll(anNo, anHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘味方_ＨＰ更新開始_複数(ref array@int anNo, ref array@int anHp, int nTotalTime)
+{
+	g_sBattleChara.startHpAll(anNo, anHp, nTotalTime < 0 ? 戦闘バー_総時間() : nTotalTime);
+}
+
+void 戦闘味方_ＨＰ更新終了待ち_複数(ref array@int anNo)
+{
+	g_sBattleChara.waitHpAll(anNo);
+}
+
+void 戦闘味方_点滅(int nNo, int nBlinkTime)
+{
+	g_sBattleChara.blink(nNo, nBlinkTime);
+}
+
+void 戦闘味方_点滅_複数(ref array@int anNo, int nBlinkTime)
+{
+	g_sBattleChara.blinkAll(anNo, nBlinkTime);
+}
+
+void 戦闘味方_マスク(int nNo)
+{
+	g_sBattleChara.setMask(nNo);
+}
+
+void 戦闘味方_マスク_複数(ref array@int anNo)
+{
+	g_sBattleChara.setMaskAll(anNo);
+}
+
+void 戦闘味方_マスク消し()
+{
+	g_sBattleChara.clearMaskAll();
+}
+
+void 戦闘味方_マーク消し()
+{
+	g_sBattleChara.resetMarkAll();
+}
+
+void 戦闘味方_顔揺らし(int nNo, int nQuakeX, int nQuakeY, int nQuakeTime)
+{
+	if (戦闘速度() == 2)
+	{
+		g_sBattleChara.flashFace(nNo, 100);
+		return;
+	}
+	g_sBattleChara.quakeFace(nNo, nQuakeX, nQuakeY, nQuakeTime);
+}
+
+void 戦闘味方_顔揺らし_複数(ref array@int anNo, int nQuakeX, int nQuakeY, int nQuakeTime)
+{
+	if (戦闘速度() == 2)
+	{
+		g_sBattleChara.flashFaceAll(anNo, 100);
+		return;
+	}
+	g_sBattleChara.quakeFaceAll(anNo, nQuakeX, nQuakeY, nQuakeTime);
+}
+
+void 戦闘味方_顔移動_守護(int nNo, int nTargetNo)
+{
+	g_sBattleChara.moveGuard(nNo, nTargetNo);
+}
+
+void 戦闘味方_顔戻し(int nNo)
+{
+	g_sBattleChara.moveGuard(nNo, -1);
+}
+
+void 戦闘味方_顔移動_押し出し(int nNo)
+{
+	g_sBattleChara.movePush(nNo);
+}
+
+void 戦闘味方_レベルアップ(int nNo)
+{
+	g_sBattleChara.levelUp(nNo);
+}
+
+int 戦闘味方_行動状態設定(int nNo, int nStatus)
+{
+	int nRet = g_sBattleChara.setStatus(nNo, nStatus);
+	if (nRet < 0)
+	{
+		return -1;
+	}
+	if (nRet == 1)
+	{
+		戦闘選択_スキルブレンド率設定(nNo, 255);
+	}
+	else
+	{
+		戦闘選択_スキルブレンド率設定(nNo, 76);
+	}
+	return nRet;
+}
+
+void 戦闘味方_表示設定(bool bShow, int nBaseShow)
+{
+	if (!g_sBattleChara.isCreated())
+	{
+		return;
+	}
+	g_sBattleChara.setShow(bShow, nBaseShow);
+	戦闘選択_表示設定(bShow, nBaseShow);
+	g_bBattleCharaUpdate = bShow;
+}
+
+ref T_BattleChara 戦闘味方_取得(int nNo)
+{
+	return g_sBattleChara.get(nNo);
+}
+
+bool 戦闘味方_再表示(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	rfsChara.setShow(nNo);
+	return true;
+}
+
+void 戦闘味方_選択設定(int nNo, bool bSelect)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return;
+	}
+	rfsChara.setSelect(bSelect);
+}
+
+int 戦闘味方_攻撃付与設定(int nNo, int nStatus)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.setAttackStatus(nStatus);
+}
+
+int 戦闘味方_防御付与設定(int nNo, int nStatus)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.setDefenseStatus(nStatus);
+}
+
+bool 戦闘味方_毒設定(int nNo, bool bFlag)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	return rfsChara.setPoison(bFlag);
+}
+
+bool 戦闘味方_ぴより設定(int nNo, bool bFlag)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	return rfsChara.setPiyori(bFlag);
+}
+
+bool 戦闘味方_瀕死設定(int nNo, bool bFlag)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	return rfsChara.setDead(bFlag);
+}
+
+int 戦闘味方_守護率設定(int nNo, int nGuard)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getMark2().setGuard(nGuard);
+}
+
+bool 戦闘味方_狂戦士設定(int nNo, bool bFlag)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	return rfsChara.getMark2().setBurster(bFlag);
+}
+
+bool 戦闘味方_隠密設定(int nNo, bool bFlag)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	return rfsChara.getMark2().setStealth(bFlag);
+}
+
+bool 戦闘味方_全体加護設定(int nNo, bool bFlag)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	return rfsChara.getMark2().setProtect(bFlag);
+}
+
+int 戦闘味方_バリア設定(int nNo, int nBarrier)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getMark2().setBarrier(nBarrier);
+}
+
+int 戦闘味方_顔位置Ｘ(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getFaceX();
+}
+
+int 戦闘味方_顔位置Ｙ(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getFaceY();
+}
+
+int 戦闘味方_顔Ｚ(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getFaceY();
+}
+
+int 戦闘味方_行動状態(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getStatus();
+}
+
+int 戦闘味方_体力表示値(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getHpBar().getHp();
+}
+
+ref T_Sprite 戦闘味方_土台(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return NULL;
+	}
+	return rfsChara.getBase();
+}
+
+ref T_CharaSkill 戦闘味方_スキル(int nNo)
+{
+	ref T_BattleChara rfsChara = g_sBattleChara.get(nNo);
+	if (rfsChara === NULL)
+	{
+		return NULL;
+	}
+	return rfsChara.getSkill();
+}
+
+void 戦闘味方_初期状態確認(int nNo)
+{
+	戦闘味方_攻撃付与設定(nNo, 戦闘データ_攻撃付与(nNo));
+	戦闘味方_防御付与設定(nNo, 戦闘データ_防御付与(nNo));
+	戦闘味方_毒設定(nNo, 戦闘データ_毒状態(nNo));
+	戦闘味方_守護率設定(nNo, 戦闘データ_守護率(nNo));
+	戦闘味方_狂戦士設定(nNo, 戦闘データ_狂戦士(nNo));
+	戦闘味方_隠密設定(nNo, 戦闘データ_隠密(nNo));
+	戦闘味方_全体加護設定(nNo, 戦闘データ_全体加護(nNo));
+	戦闘味方_バリア設定(nNo, 戦闘データ_バリア(nNo));
+}
+
+void 戦闘味方_状態確認(int nNo, int nDamage, int nHeal)
+{
+	戦闘味方_マスク消し();
+	戦闘味方_攻撃付与設定(nNo, 戦闘データ_攻撃付与(nNo));
+	戦闘味方_防御付与設定(nNo, 戦闘データ_防御付与(nNo));
+	戦闘味方_毒設定(nNo, 戦闘データ_毒状態(nNo));
+	戦闘味方_ぴより設定(nNo, 戦闘データ_ぴより状態(nNo));
+	戦闘味方_瀕死設定(nNo, 戦闘データ_瀕死状態(nNo));
+	戦闘味方_守護率設定(nNo, 戦闘データ_守護率(nNo));
+	戦闘味方_狂戦士設定(nNo, 戦闘データ_狂戦士(nNo));
+	戦闘味方_隠密設定(nNo, 戦闘データ_隠密(nNo));
+	戦闘味方_全体加護設定(nNo, 戦闘データ_全体加護(nNo));
+	戦闘味方_バリア設定(nNo, 戦闘データ_バリア(nNo));
+	if (nDamage > 0)
+	{
+		戦闘味方_ダメージ(nNo, nDamage, 0, false, 戦闘データ_体力(nNo) == 0, -1, false, false);
+	}
+	if (nHeal > 0)
+	{
+		戦闘エフェクト_味方単体(nNo, "自動回復", false);
+		戦闘味方_回復(nNo, nHeal, -1);
+	}
+}
+
+void 戦闘味方_状態確認_全()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		戦闘味方_状態確認(nNo, 0, 0);
+	}
+}
+
+int 戦闘味方_位置Ｘ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	if (戦闘配置_前衛(nIndex))
+	{
+		return 7 + 338 * nIndex;
+	}
+	return 176 + 338 * (nIndex - 3);
+}
+
+int 戦闘味方_位置Ｙ(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	if (戦闘配置_前衛(nIndex))
+	{
+		return 390;
+	}
+	return 564;
+}
+
+int 戦闘味方_顔Ｘ計算(int nIndex)
+{
+	int nX = 戦闘味方_位置Ｘ(nIndex);
+	if (nX < 0)
+	{
+		return -1;
+	}
+	return nX + 9;
+}
+
+int 戦闘味方_顔Ｙ計算(int nIndex)
+{
+	int nY = 戦闘味方_位置Ｙ(nIndex);
+	if (nY < 0)
+	{
+		return -1;
+	}
+	return nY + 25;
+}
+

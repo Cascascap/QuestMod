@@ -1,0 +1,3901 @@
+void ‚s‘äŒŠ„‚è‚İ^–À‹{()
+{
+	Ÿí“¬ƒZƒŠƒtƒ^ƒCƒv = 0;
+	Ÿí“¬‘äŒ = "";
+	Ÿí“¬‘äŒ”­ºÒ = 0;
+	Ÿí“¬‘äŒ”­ºÒ = ‚o‚s‚`ƒ‰ƒ“ƒ_ƒ€(0, 0);
+	if (FA[267] == 0)
+	{
+		‚s‘äŒ¶¬(Ÿí“¬‘äŒ”­ºÒ, 0, "–À‹{^•’Ê");
+	}
+	if (FA[267] == 1)
+	{
+		‚s‘äŒ¶¬(Ÿí“¬‘äŒ”­ºÒ, 0, "–À‹{^‹Ù”—");
+	}
+	if (Ÿí“¬‘äŒ == "")
+	{
+		Ÿí“¬‘äŒ”­ºÒ = 0;
+	}
+}
+
+void ‚b‘äŒ“o˜^(lint iic, lint no, lint iis, string ğŒ)
+{
+	lint £‰ñ•œŒns“® = 0;
+	lint fg = 0;
+	lint ra = RAND(3);
+	if (iis == 221 || iis == 222 || iis == 223)
+	{
+		£‰ñ•œŒns“® = 1;
+	}
+	if (iis == 224 || iis == 225)
+	{
+		£‰ñ•œŒns“® = 1;
+	}
+	if (iis == 227)
+	{
+		£‰ñ•œŒns“® = 1;
+	}
+	if (no == 1)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "It's my turn now!$What'll I do to you?");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "My name is Rance!$Remember it.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hey, hurry it up!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "This'd better end things!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Don't go easy now.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Finish 'em! Got it?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Daaaaah!$Diiie!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Damn small fry!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Whooooooa!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Take this!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Gahahahaha!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You picked a fight with the wrong guy!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hurry up and die!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Haha! Dumbass!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'll crush you!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Cry! Scream!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Here!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'm the best!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Slash! Slash!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'll cut you in two!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'll cut until you cry!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Want me to go easy on you?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You idiot!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "If you don't know your place, then die!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You're gonna die, you know.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Take my special attack!!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Whoooa!!$Full power!!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Hiyaaah!!$I'll blow you all away!!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Take this!$Me Attatack!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I can pull this off too!$Gahahahaha!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "You should thank me for this.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Gahahahahaha!$Easy win, easy win!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Shit!$Lost a source of experience.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Aha!$Tch, nothing there.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmph, monsters are no match for me.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Gahahahaha,$full speed ahead!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmm,$this way'd better be right...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Geheheh...$ Should I make the girls$ battle underwear-less?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I kinda want a snack...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmm...$I wanna do something sexy...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hrm...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Huh?$It was this way, right?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...I sense sexiness in this direction!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ah...$I'm kinda horny.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Toooh!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Ah~...$ I gotta piss.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "One boob...$Two boobs...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Gahahahahaha!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Watch!$My splendid strut!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ahh... Achoo!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Look, treasure!$No, wait... Damn.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Tch, why's there doggy shit here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Whooooooooa!$ªJust wanted to shout");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "The girls all better stay by my side.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "You guys'd better get pumped up.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Don't worry,$I'm in top condition!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Gahahahaha,$straight to the boss!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 147)
+		{
+			Ÿí“¬‘äŒ = "Everybody dies!$Be ready!$Rance Attack!";
+		}
+		if (iis == 148)
+		{
+			Ÿí“¬‘äŒ = "You're all gonna die!$This is my strongest attack!$Brute Attataaack!";
+		}
+		if (ğŒ == "“Åó‘Ô")
+		{
+			Ÿí“¬‘äŒ = "Gwehh, I feel gross...$Hurry up and cure my poison...";
+		}
+	}
+	if (no == 3)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "We'll do this quick!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Leave this t' me!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "You guys'd better be ready for this.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Somethin' wrong?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'm gonna send you flyin'!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Crumble!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "You're goin' down!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Go to hell!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Time out for a sec'.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "It's our win!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We did it, Bro!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Phew... That was close.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Wait a second, where are we?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You can never be too careful...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Any time you're ready!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Do we have to line up by height...?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(My shirt feels tight...$ Did they get bigger again?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "There's nothing good about being big...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I always wanted a big brother.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Yeah, they've been big since I was a kid... People always hit on me.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's get pumped up!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This is kinda exciting.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "L-Let's talk about something.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Just leave this to me.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...*gulp*");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 132)
+		{
+			Ÿí“¬‘äŒ = "I can't stand this!";
+		}
+		if (iis == 133)
+		{
+			Ÿí“¬‘äŒ = "Everybody die!";
+		}
+	}
+	if (no == 4)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Anyone who wants to die, step forward.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "...Mm.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hahh!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Bishamonten protects me!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "...Hmm.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I must thank you all...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "How tough...$I must be more diligent.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "That's... a rice ball?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I sense the enemy...$They're close...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Nom, nom...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm hungry...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Hrm...$ This direction is right...$ right?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I sense the enemy...$Everyone, keep your guard up.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This is where the true fight begins...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 233)
+		{
+			Ÿí“¬‘äŒ = "Bishamonten protects me!";
+		}
+		if (iis == 460)
+		{
+			Ÿí“¬‘äŒ = "Bishamonten protects me!";
+		}
+	}
+	if (no == 5)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Please watch me,$Kenshin-sama!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hey, is that enemy glaring at me...?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Shall I step in?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I won't lose to Torako!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Full power!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "This is my chance.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Were you watching,$Kenshin-sama?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "The \"katsu\" in Katsuko is for victory!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh... They're tough...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Anyway, this is all Torako's fault!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If Torako weren't here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You did NOT just call me Torako.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Let's go!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Walk faster!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Finally.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(This is a chance to$ show Kenshin-sama my$ skills!)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's be cautious here.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I won't allow you to get in Kenshin-sama's way.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 6)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Tilde Sharp gracefully takes the stage!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "This is my time to shine!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Oh no!$My hair is all messed up.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Would you move faster?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Now,$dance for me.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'll bring you down!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Gracefully,$as dancing leaves!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You're so slow,$I'm yawning!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "This is the end!$Take your rest!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Fall, damn you,$yaaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Like a gust of wind!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Attacking isn't all that battle is about.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "It's only natural.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Of course.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "How inelegant.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Loitering is not my policy.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Rushing is so unsightly.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(My breasts... just won't grow.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's so dusty.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I've got to practice$ fluttering my cape...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It's time for a true test of strength.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'll be fine if I just do as I practiced.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Calm down and take a deep breath...$ In... Out...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Stress isn't good for the skin.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It's fine. I'm calm.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 7 || no == 112)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Phew...$What should I do?");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I'm ready to put my skills to use.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Let's see...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I'll see through your weak point.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Want to switch with me?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'll let you deal the finishing blow.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Ready?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Haaah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Let's go!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Take this!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Don't run away, now!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "How about this?");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is it!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Remember my name!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I will destroy you!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Now then...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "That's it...?$Shameful.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "They're strong...$No, I'm just not strong enough.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Now, in this moment...$No, it's nothing.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It'd be nice if there were a legendary weapon somewhere around here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hrm...$I haven't gotten my fill yet.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ah, don't forget the treasure chests.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Aren't there any enemies yet?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Now then...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Heh...$The air's tense. This is nice.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Heheh...$I'm getting excited.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This tension...$It really makes me feel alive.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It's just about time for the climax, don't you think?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Trembling?$It's out of excitement.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 93 || no == 8)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I go.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Leave this to me.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "How should I do this...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "There!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Raaaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is it!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Sorry.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Alright.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Well, good enough.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Not there yet...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hurry up and come out...$I don't care what it is...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "This isn't like a battlefield...$This exploration doesn't suit me.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This sort of thing...$...isn't too bad.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 459)
+		{
+			Ÿí“¬‘äŒ = "I'll annihilate you!$By La Way!";
+		}
+	}
+	if (no == 10)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "It's my turn...$Carefully now...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Calmly...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Let's go.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "(Watch the enemy closely...$ Figure out their patterns...)");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Sink!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Yah!!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "There we go!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Yah!$How's this?!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is it!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I hope you're ready!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Hm...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We won somehow...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Phew...$That was an annoying battle.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I hope everyone makes$ it back okay...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Everyone,$be careful.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Stronger...$ I have to be stronger...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I feel like we've been walking around in circles...$Am I imagining it?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This is when it's important to be calm...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I have a bad feeling about this...$Be careful.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 122)
+		{
+			Ÿí“¬‘äŒ = "Now,$look into my eyes...";
+		}
+	}
+	if (no == 12)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I go.$I'm nervous...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I'll be as much help as I can.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Let's do our best!$We can do this!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Just be careful not to get hurt.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Here!$Yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Now's my chance!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Full power...$Yaaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Ngh...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We did it!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Did I go overboard?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I-Is this my fault?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Are there any hannies here?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(.........)$  ªFidget, fidget");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "My only advantage is how sturdy I am, so...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm used to pain.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I definitely prefer Nipponese food now.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's easy to move in Nipponese clothes when you get used to them.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(My body might be$ getting a little hot.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "With a quick thrust and a jab...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This is kind of exciting.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I won't be fooled by the atmosphere here.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(I'm nervous...$ It's like back then...)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 11)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "(I'd rather be by his$ side than adventuring in$ a place like this...)");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "We can defeat this enemy if we're calm.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "The enemy hasn't been defeated yet.$Don't let down your guard.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "There!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Sink!$Hah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "This is...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "This is the taste of victory.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Justice will prevail!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ack, I let my guard down...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's okay, leave it to me!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I want to see him...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm not really good at mapping.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm used to walking.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Come on... Gotta stop shaking.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...*gulp*");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...!$Oh, just seeing things...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 126)
+		{
+			Ÿí“¬‘äŒ = "Burn!$Taaah!!";
+		}
+	}
+	if (no == 13)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Koff, koff...$Oh, it's my turn...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Ngh... H-Here I go...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "U-Umm...$Are you alright...?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'll do...$as much as I can...$As much as I can...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Yaaah...!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Y-Yaaah...!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "O... Okay...!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Wah... Waaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Ah... Excuse me...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Huh?$We won?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Koff, koff...$I-I might die...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "U-Umm...$Please don't leave me behind...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh, where are my glasses...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "When I'm happy, my glasses fog up...$A-Aah, I can't see anything...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Koff, koff...$*hack*...!!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Koff, my medicine...$I need my medicine...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I'm too nervous...$I might puke...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I might die...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Haahh, haahh...$The pressure...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 154)
+		{
+			Ÿí“¬‘äŒ = "Koff, koff...!$I'm sorry, ngh,$I'm okay!";
+		}
+	}
+	if (no == 14)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "...Mmn.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "...Zzz.$ªSleeping");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "It's fine.$...I'm awake.$...Zzz.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Mmn.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "...Ohh!!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "...Ohh?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Glad that's over.$...Zzz.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "We'll continue this in my dreams.$...Zzz.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Zzz. ...Zzz.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Sometimes I'm awake.$...Mmn.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Become...$a body pillow.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...Zzz.$...$...Ohh?!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm awake...$ ªSleep-talking");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......Ohh!$...Something woke me up.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 15)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Heh,$this'll be fun...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I guess this is pretty fun, too...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I can't stand this.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Sure kill, certain death!$Haaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Wait just a moment.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "There's a nice wind blowing here.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Sure is a big world out here.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Marriageable age...$ Sure is a terrible$ phrase.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Heh.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I get more confident when I show a little skin.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Do you know why birds have wings?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "The shining of the moon...$The sparkling of the stars...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This tension in the air...$It's not bad.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'll leave watching my back to you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "There's something not quite right here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I've got goosebumps...$...It's nice.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 125)
+		{
+			Ÿí“¬‘äŒ = "The arc of the blade is naught but a mirage.";
+		}
+	}
+	if (no == 16)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Leave the rest of this fight to Bernard Ceramit¥.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Francesca...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hm, is it my turn?!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You're a rotten egg!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Float like a butterfly,$sting like a bee!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Repent in hell!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Heh...$ªComposed smirk");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "This victory goes...$to him, in heaven.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "You guys were lucky.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I've let go of my past...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Only battle understands me.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm always wavering.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "The smell of the battlefield...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Be careful of traps, partner.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "The air here has changed...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My old wounds ache.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Do I sense the specter of death...?$...Couldn't be.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It's no big deal...$People die when they die.");
+		if (iis == 117)
+		{
+			Ÿí“¬‘äŒ = "I'll annihilate you!$Burning Slash!";
+		}
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 17)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Just kill 'em?");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Get away from me, weaklings.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "...Slowpoke.$Hurry it up.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Don't dilly-dally.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "...Die.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Disappear...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "This is the end.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Stop wasting air.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'll kill you!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'll destroy you!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "You really piss me off!$Die!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "...Hmph.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Hmph, you're too weak. This is boring.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I didn't quite kill you...$Damn it!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Manju are scary... They are.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm kinda pissed.$I'm really pissed!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Just spin this spider's thread...$...No?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "*staaare*...$I want that.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Where's my next prey?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "......Hm.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Hey, I'm gonna kill you. So come out.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'll kill my enemies.$I will.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...I know you're there.$...I mean it.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 202)
+		{
+			Ÿí“¬‘äŒ = "Hmph,$take this...$thread...";
+		}
+	}
+	if (no == 18)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Hehehô$Lalaô");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Eheheh,$this is fun.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Mm, mm...$This is good.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hiyaaah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Boo, boo.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Popon.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Kyahahahaha!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Oh my gewdness!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Go bald!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Kaboom!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Roly-poly...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "V for victoryô");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Boo, boo.$Boooriiing.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Sell, sell.$That was today's broadcastô");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Buy your items at Tomato's shop~");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh my gewdness.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I am...$already dead...$...Oh, I was just joking.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Chalala~ô$Chachacha~nô$Dalala, dalalala~ô");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Even if it's really scary~ô$don't worry about it,$don't worry about itô");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...Teehee.$ªCan't take the nervous tension");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "See the next episode on MV~ô");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Mr. Monster~,$give me experience, please~");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 71)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Your foe is Sanakia!$En garde!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Be on your guard.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hiyaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "You'd best be ready!!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Give me a moment.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "W... We won!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "If only I were stronger...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "What's wrong with the way I speak?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I wonder if everyone from the wargod city is okay...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm still growing.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "W-Wait a second!$This armor is heavy...$ ªQuiet");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Maybe I should try skirts...$ *gasp*! No, no.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Back line, get behind me!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I'm not nervous.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I'm not scared!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 19)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Oh, erm...$It's my turn, isn't it?$Umm, umm.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Eee, our eyes met.$I'm scared...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "(H-Huh...?$ Now that I think of it,$ what am I doing here...?)");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Aah, get away from me!$No, wait, I have to guard.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hiyah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Y-Yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Yaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Haaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "W-We can do this!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Uhh...$We can do it?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "D... Did we win?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Wah, wah, experience?!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "L-Let's get away while we can.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Midterms...$Finals...$Placement tests...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Mr. Hiroshi (my shield)$is heavy.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "My allowance is 30 Gold.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Why are dungeons always mazes?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If you leave me here,$I'll die!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "We'll be arrested if they find us here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ugh... How does this keep happening to me...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "W-Wait!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Umm, I'll leave this to you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Mom...$ are you taking care$ of the flower bed?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Ugh...$I should be a normal student...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(I feel like he'll be mad$ at me if I sneeze.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "D-Don't scare me,$okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm nervous...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (ğŒ == "‘Ì—Íƒsƒ“ƒ`")
+		{
+			Ÿí“¬‘äŒ = "Huh? Could I be in trouble...?";
+		}
+		if (iis == 212)
+		{
+			Ÿí“¬‘äŒ = "I've got a sturdy shield, so I'm okay...$I'm... okay.";
+		}
+	}
+	if (no == 20)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I go.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "We can't lose...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'll be your shield!$You can do this!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "If I can do anything to help...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "H-Haah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Haah!$Yaah!$Taaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Stay back, everyone!$Yaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "...Phew.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We did it, we won, we wonô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Phew,$that was tough...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Maybe we should put a mark somewhere so that we don't get lost...?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I made some snacks, so please tell me if you get hungry.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Let's all be lively, everyone.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Please watch me,$Rance!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(This is when I need to$ be calm...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I'm scared,$but I'll do my best...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It's alright.$I'll protect you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Check right, check left... Phew.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This is where I show my stuff...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 212)
+		{
+			Ÿí“¬‘äŒ = "I'm raising my guard rate.$I can handle this.$Nothing will get past me.";
+		}
+		if (iis == 234)
+		{
+			Ÿí“¬‘äŒ = "Please concentrate on both attack and defense.";
+		}
+		if (iis == 235)
+		{
+			Ÿí“¬‘äŒ = "Everyone!$This is our chance!$Let's attack!";
+		}
+		if (iis == 236)
+		{
+			Ÿí“¬‘äŒ = "Everyone,$please watch out for attacks!";
+		}
+		if (iis == 237)
+		{
+			Ÿí“¬‘äŒ = "The enemy is right before us.$We can do this.";
+		}
+	}
+	if (no == 21)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "H-Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I can do it, I can do it.$I'll protect everyone!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "H-Hey, over here!$I-If yer gonna attack, attack me!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Are ya okay?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'm useful too.$Yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I-I'm gonna get serious too.$Taaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Eee!$Pomade, pomade!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "W-We did it!$It's our victory!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh...$I'm still just a novice...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll do my best fer everyone.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hee, fuu...$Fighting is tough...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I-I'm so glad to be together with ya again...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "P-Pomade, pomade...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Ugh...$I-I'm scared...$I'm nervous...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(If it comes to it,$ I'll shield everyone...$ Ugh...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I can't run away...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 212)
+		{
+			Ÿí“¬‘äŒ = "I'll protect everyone.$Hide behind me.";
+		}
+	}
+	if (no == 9)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Heheheh...$How shall I burn you down...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Heheheh...$My Mouri blood boils...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Don't dilly-dally.$It's time to clean up.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "What are you waiting around for?$Do you want to die?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Stop breathing!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Why are you alive?!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is the end.$Give up.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Get out of here!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "The eldest Mouri daughter, Teru.$To the battle!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Heheheh...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Hmph, is that all?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Shit. I got too into it.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I will take the front position.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Just walk like you own the place.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Walk with your head held high.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's great to cut up your enemies.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm getting excited.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My blood... boils.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I cannot hold back any longer.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I won't let you run or hide.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I sense something strong.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Kiku will be jealous.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Come forward if you'd like to be split in two.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 212)
+		{
+			Ÿí“¬‘äŒ = "Now, come...$Heheheh...";
+		}
+	}
+	if (no == 51)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "What should I do?$I'm nervous...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "What should we do next, Grandfather?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Lame.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We can do it, we can do it, everyone.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hiyah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Yaaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Hiyaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Like this...?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Yaaay,$we winô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Grandfather,$I hurt all over...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Munch, munch... Nom, nom.$We can do it, everyone.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It sure is fun being together with everyone...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Eheheh...$I'm okay.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Mm, mm...$Candy's yummy.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "~~~ô$Hey, can I sing?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Augh,$ I need to pee...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'll protect everyone!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Nom, nom...$Make me strong, Grandfather.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I won't run away!$Even if I'm scared...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I feel like...$something's up ahead...$...Is it just my imagination?");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 212)
+		{
+			Ÿí“¬‘äŒ = "I'll do my best to protect you.";
+		}
+		if (iis == 238)
+		{
+			Ÿí“¬‘äŒ = "I'll do my best to be tough.";
+		}
+		if (iis == 127)
+		{
+			Ÿí“¬‘äŒ = "Fireboy,$time for fwoosh, okay?";
+		}
+		if (iis == 151)
+		{
+			Ÿí“¬‘äŒ = "Poisonfly, launch needles!";
+		}
+	}
+	if (no == 22)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Take it easy, take it easy.$Take a breather, take a breather.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "It's Suzume's turn-turn!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Nyohohoho.$Leaving this to Suzume?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "It's somebody else's turn-turn!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Choiyaaa!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Ni-nin-nin!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "It's okay!$I won't make it hurt.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Time for Suzume to get a little serious.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Gimme a second.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "It's best to quit while you're ahead.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Gozaaaru de gozaaaruô");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "These things happen, too.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Watch out for traps!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I came over the Tenma Bridgeô!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I haven't the ninjaest clue.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ninja Art: Run around!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm in a good mood.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Shutatata!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm not too good with bras.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Can't get ninja insurance.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I see monster tracks.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Please game for no more than 23 hours a day.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Just stay cool.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Time for Suzume's a-little-serious mode.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Well, it'll be$what it'll be.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 121)
+		{
+			Ÿí“¬‘äŒ = "Shuriken shu shu!";
+		}
+		if (iis == 120)
+		{
+			Ÿí“¬‘äŒ = "Swift assassination!";
+		}
+	}
+	if (no == 24)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "If I don't show my stuff here, I don't know what I'll be in for later...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Leazish ninja,$Kanami Kentou,$here I go!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "(Just in case, I'll make$ sure I've got an escape$ route...)");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Got my shuriken.$I'm ready to go any time.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "--Now!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "This is it!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hiyah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Don't take me lightly!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I can do it too--!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You--!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm pretty impressive when I get serious, too!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm getting serious!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is it for you!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Here!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Phew...$Got out of that somehow...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh...$I've got to keep training.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Nothing out of the ordinary here...$Let's move on.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "There's a heart under the blade...$That's right, there's a heart under the blade!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Her clothes are so nice...$ I want cute clothes too...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "What's my fortune today...$Wh-Why is it bad again?!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I've got a bad feeling about this...$Let's hope it doesn't come true.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Everyone, be vigilant, okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(I've got to do everything$ I can so that I don't lose$ to Suzume...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Yeah!$This is when a ninja shows her stuff!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 121)
+		{
+			Ÿí“¬‘äŒ = "Calmly... strike!";
+		}
+		if (iis == 120)
+		{
+			Ÿí“¬‘äŒ = "I'm afraid this is where you die.";
+		}
+	}
+	if (no == 25)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "We can do thiiis!$Yeaaah!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I'm okay! I'm not scared!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "You can do it! Okay?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'm a little scared...$...maybe?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hiyah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Aaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I-I can do it too!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Backing out for a sec'!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Woohooooo!!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "This feels greatô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh... Too bad.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Aah! Aah!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Adventuuureô! Adventuuureô!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "This is pretty fun.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Wow! What's that!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm still good!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I wonder if my boobs'll$ get bigger.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Eheheh...$Ranceô");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Sorry I'm so flat.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I brought snacks!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I want a new pencil box...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I... I can do this!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm already a grownup!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm sure it'll be fine.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(I won't cry...)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 121)
+		{
+			Ÿí“¬‘äŒ = "I've practiced!$Hiiit!";
+		}
+		if (iis == 120)
+		{
+			Ÿí“¬‘äŒ = "Aah, aah, aah...";
+		}
+	}
+	if (no == 23)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", ".........$...My turn?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", ".........$I can't... just go?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", ".........$...Yah.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", ".........$...An enemy...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", ".........$...Mm.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", ".........$...Sorry.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", ".........$...Disappear.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", ".........$This is to survive...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", ".........$...I survived...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "......Phew.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(.........$ Can I disappear?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Ermm...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I hope we don't$ come across any secrets.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...............$...I won't say anything.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...It's getting dangerous...$Be watchful.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...Over here?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Is that... a trap?");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 121)
+		{
+			Ÿí“¬‘äŒ = "...Yah. Yah.";
+		}
+		if (iis == 120)
+		{
+			Ÿí“¬‘äŒ = "I'm sorry.";
+		}
+		if (iis == 215)
+		{
+			Ÿí“¬‘äŒ = "...$(Phew...)$ ªDisappeared";
+		}
+	}
+	if (no == 70)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'll cheer you onô!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "H-Hiyah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Take that!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "H-Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "It's not my fault if you get hurt!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm mad!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Geez, stupid, stupid!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm gonna be serious!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Fight hard!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We did it! We wonô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh... That's too bad.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmhmhm~ô$Oh, it isn't really the time for humming, huh?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh...$I think those grasses are edible.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I think it's about time for a break.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmm, any traps around here...?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I-Is it okay?$It probably is...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My heart's pounding...$I-I'm nervous.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Awawah, it's dangerous up ahead.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...*glance* *glance*");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "What does \"search and destroy\" mean?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...Haahh.$It's suffocating here...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 121)
+		{
+			Ÿí“¬‘äŒ = "H-Hiyah!$Hit!";
+		}
+		if (iis == 218 || iis == 219)
+		{
+			Ÿí“¬‘äŒ = "Wait a second,$I'll heal you right away.";
+		}
+	}
+	if (no == 86)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Well now...$What should I do with this...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Hahah!$My blood's boiling!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We're gonna do this quick.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Show me what you got.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Gimme a nice spurt of that blood of yours!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I can't stop laughing!$Hahahahaha!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Second daughter of Mouri, Kiku!$This is gonna be flashy!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm gonna chop you up!$Yah, yah, yah, yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Here,$this okay?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "What, over already?$I haven't had enough fun.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Tch, I'm not feelin' it.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Yeah, it's nice to have the family together.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Should we eat soon?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You really wanna die, huh?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Sheesh, really?$Fine.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Enemies, enemies, enemies.$Come out, come out, wherever you are. ");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Is this really the right direction?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...I'm looking forward to some action.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Now then, this is when things get serious.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I like a place like this.$Really exciting.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Heheh.$Any monster or beast shows up, just cut it to pieces.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This is getting fun.$I know this scent.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'll leave you behind if you waste time.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 121)
+		{
+			Ÿí“¬‘äŒ = "Ooh, it tingles!$Here we go!";
+		}
+		if (iis == 120)
+		{
+			Ÿí“¬‘äŒ = "Stick out your throat!$I've got a nice sickle for it!";
+		}
+	}
+	if (no == 26)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Time to finish this.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "First, look with your eyes.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'm here, too.$Take your time and think about this.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "It's alright.$Calm down and think about it.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Aim and shoot.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Dodge or you're dead.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Bullseye!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Yah!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "As long as we're safe.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Hm, got 'em?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Not perfect yet...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "There's no need to rush.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "We'll be fine if we don't let our guard down.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hey!$Don't touch my ears!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Guess I was just seeing things...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Guess I should start hunting down some lunch.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Mail order sure is convenient...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I sense an enemy...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmm...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "This is truly interesting.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's brace ourselves.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "There's no time for chatter.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Do everything you can.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 27)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Jing-a-ling!$It's time for the age of Athena!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "The forecast is: be nice to Athena!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "What izzit?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We'll be okay 'long as we got butterflies.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Athena uses splaaash!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Bleeeh~");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Athena uses Fire Blast!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Ka-ba-bam!$Ba-ba-boom!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Boink!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Nyogerooon!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Kill the men and rape the women?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Hyahaaaô!$Lalalaô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hunh? That's strange.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Bananas're tasty.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "My panties is black today.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I like to draw pixures!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Let's rest an' have sex!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Time to take a break?$Time to take a log off?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I caught a buncha beetles!$I'm gonna let 'em fly!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You use your right hand to put rice in your bowl.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "With no hair, you're bald$and with hair, you're hald.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Life is dandy pantyô!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You could walk faster$if you had four legs!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Loo la laaaô!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's have a staring contest!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "No signs of the enemy on the starboard side!$Aye-aye!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 28)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "(What should I break...?)");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Let's move swiftly...$but cautiously.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Well, what should we do?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We don't have time to be indecisive.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I can hit!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I won't miss.$Prepare yourself!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "These are the basics of war.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I'm impressed, everyone.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Phew... What troublesome enemies.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Any monsters nearby...?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I can't see even if you're bent down like that...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "This quest...$Let's succeed no matter what it takes.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Everyone's so relaxed...$ Am I the only one$ who's nervous?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It will be soon...$Stay vigilant, everyone!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......Around here?");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 234)
+		{
+			Ÿí“¬‘äŒ = "Maximum concentration, please!";
+		}
+		if (iis == 235)
+		{
+			Ÿí“¬‘äŒ = "Annihilate them!$Everyone focus on attack!";
+		}
+		if (iis == 236)
+		{
+			Ÿí“¬‘äŒ = "Be on your guard!$Everyone, please focus on defense!";
+		}
+		if (iis == 237)
+		{
+			Ÿí“¬‘äŒ = "Everyone on your guard!";
+		}
+	}
+	if (no == 29)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Ermm,$what should I do?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Everyone, be careful.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I should take the opportunity to do some maintenance.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Come on, Tulip!$Gooooo!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Fiiire!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "You're the strongest, Tulip!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is the power of my Tulip!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Yah!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Heheh,$we did it, everyoneô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Haahh, haahh...$So tired...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmm, is there anything useful for my research here?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hm, hm.$This is an interesting place, in a few different ways.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Walking around like this$ probably counts as$ exercise...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Heheh, it's fun adventuring with everyone like this.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I've been holing up in my research lab and now my stamina is...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Ugh,$I'm not so good with places like this...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "L-Let's do our best, yeah...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "We can't let our guard down here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "The traps in these kinds of places are annoying, aren't they?");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if ((ğŒ == "UŒ‚’Êí" || ğŒ == "UŒ‚‘å‹Z") && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 171)
+		{
+			Ÿí“¬‘äŒ = "I can fight even without my Tulip.";
+		}
+	}
+	if (no == 30)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "...My turn...?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "...Not yet...?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "...Hiyah.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "...Hit... like this...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Here I go.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'll hit.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Mm...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Easy win...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "No way... I can't believe it.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Are there any cute animals... anywhere?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "A little boar...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll shoot anyone...$who gets in my way.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...What?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", ".........There?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", ".........I see it.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", ".........Really?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......This isn't good.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 31)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Okaaayô!$Is it time for Moromi to shine?");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Hmm, who should I start with™?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "If you make me wait five more seconds, I'll shoot you™!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hurry it up™!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Boyooong!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "It's the Moromi Special!$Fuckin' die.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "How's that?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Moromi wins™!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Woohoo™!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "We'll discuss this later.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Forward, forward!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I said call me Moromi!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Prima's got a sexy butt,$don't you think?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Don't call me flat™");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Are we making progress?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Do you want to carry me?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Let's race to the next corner™!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Haha™!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Moromi wants to go north.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's 1,000 Gold if you want to lick Moromi's feet, okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm getting tired.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I don't like places like this...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Boohoo...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 32)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I'm gonna do it!$Watch!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I'm gonna do it!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "What are you spacing out for?!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I wonder what everyone...$from my country is doing now...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "He who shoots first wins!$Die!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "One hit, sure kill!$Give up!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Hmm...$I really don't like stuff like this, actually.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We did it!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Let's keep going at this pace!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Don't worry about it!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Alekino's a paradise!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Pick up the pace.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Come on, move your feet, not your lips!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Want Alekino citizenship?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Yes, we can!$Yes, we can!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If you dawdle,$I'll shoot you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Don't say we're deserted!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Alright, let's dash!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "No water until we take a break!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oink!$ ªSneeze");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Stop freaking out and get a move on!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Come on, stand up straight!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "No loser attitudes!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 138)
+		{
+			Ÿí“¬‘äŒ = "Hi-yaaah!$Take a powerful one!";
+		}
+	}
+	if (no == 33)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I go.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Let's go.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Do you need some healing?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hurry up, please.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", ".........");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Goodbye.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Excuse me.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Good work...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "...They've gone, hm?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "............$...Let's hurry.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "......?$Did someone call me?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "......Oh. Yeah.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Let's check to see if there are any traps.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Up ahead is...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Everyone, we must remain calm at times like this...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...What a bother...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's move forward with caution.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...I have a bad feeling about this.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "Please recover.";
+		}
+		if (iis == 205)
+		{
+			Ÿí“¬‘äŒ = "Purifying.";
+		}
+	}
+	if (no == 34)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Leave this to me...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "If you need me.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Please don't push yourself,$Your Majesty.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Pardon me.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Out of my way, please.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Haaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "This should be...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I dedicate this victory to Her Majesty.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "As long as Her Majesty is safe, it's our victory.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I believe following orders would be the best plan here.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll leave everything to you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I am both Her Majesty's weapon and her shield.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Everything that is mine is Her Majesty's as well.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Your Majesty...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "We should be spending on the military rather than welfare now.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(If it comes to it,$ I must make sure Her Majesty$ survives.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Please be careful,$Your Majesty.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I would say we're at a danger level of about 4.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "Please be at your best.";
+		}
+	}
+	if (no == 35)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I go...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I go...$under God's name...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Just don't push yourselves, alright, everyone?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "We cannot lose...$Yah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I can't do much, but...$Yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "If we deal with this calmly...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Phew...$I just can't get used to combat.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Everyone,$are you alright?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Our Mother,$who art in heaven...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm still inexperienced...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll get angry if you don't take this seriously.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's times like these when we need to be calm most...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Evil spirits?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "O God, give us courage.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "O God,$protect us.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......O God.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Up ahead... it couldn't be...!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "O God...$give your protection...!";
+		}
+	}
+	if (no == 36)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Just give me a minute.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Everyone,$watch our foes closely...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hi-yah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "It's far from a decisive blow, but...$--Hi-yah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "This is enough for now...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Heheh, this is our power.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hahh...$Is everyone alright?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I have to make sure I don't drag everyone down.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If I can be of use...!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Please tell me right away if you get hurt, okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hm...$I'm all out of practice...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Should we stop for lunch?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's proceed carefully...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm scared...$but all we can do is press forward.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Mm... I'll do everything I can.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "I'll heal you right away.";
+		}
+	}
+	if (no == 56)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "How cruel...$Making an old lady like me fight...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Young folks nowadays,$so useless.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hrmm...$My back's really hurting now...$Ouch, ouch ouch ouch...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "You're not moving...$Have you gone senile?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hohoho.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Well, that should do it.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I'll leave the rest to you young folks.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "*huff* *puff*$Guess I'm still goin' strong.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hey,$be kind to your elders!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hoho, are there any nice, generous treasure chests nearby?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "*huff* *puff*$I haven't gotten to show off like this in a while.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Take my Sexy Beam!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh, Tama...$Is it time for dinner yet...?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "What, you want to see my butt?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Hmm... When you get old, you gotta make pit stops a lot more often...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...This is rough going for the elderly...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Oh no, I can feel Death calling for me...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Oof... That sure went to my back.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "Here, take this!$Frostbyne's *special* healing!";
+		}
+	}
+	if (no == 67)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Please watch me,$my prince...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Haahh...$You're all so amazing, everyone.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "H-Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Take thaaat!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "(I'll stab you...)");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "(Heh... Heheheh...)");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "My love will never waver!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is my love,$my prince!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "(I'll curse you...)");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "(Bow down...)");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "(I'll make it so that$ you'll never laugh or$ cry again.)");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Please wait a moment!$I'll be right there!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Phew...$We won.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "A-Are you unhurt, everyone?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(My prince...$ there are too many girls$ here.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm so happy, my prince.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Ahh...$ I want to stab something...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "......Heheh.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Let's all get along,$alright, everyone?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Heh... heheh...$ You can't cheat on me,$ my prince...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I wonder if we can just keep going...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm sort of nervous...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Protect me...$my prince...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Is this my chance?$ ...Heh, heheheh...)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "Oh no!$Take this!";
+		}
+	}
+	if (no == 85)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here goes Chinu™!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I have delicious cookies™$and delicious tea™$Would you like some?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Tired?$Chinu'll heal you right up!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Want me to kiss it better?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Eheheh...™");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Girls are made of sugar, you know.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm the third Mouri daughter, Chinu!$Please diiie™!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Ahaha!$Time to die~!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Yaaah™!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Aha™!$This feels great™!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Aww, too bad™$Heeheehee...™");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh no, my arm's coming off™!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Would anyone like some tea™?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Guts™!$Guts™!$Guts™!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Mm, mm...$Delicious...™");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ah, ah, ah...$It came out...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Mm, mm,$right™?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Eheheh...™$This is so fun...™");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "The air's tingling here...$Eheheh...™");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'll give the front to you, Rance-sama.$Tear them up, okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm getting cold...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My heart's pounding today...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My brain's gonna melt!$How fun...™");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "Drink this tea and start feeling better™!";
+		}
+	}
+	if (no == 73)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Let's all do our best,$okay, everyone?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We can do it, we can do it!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I can do this too, you know!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Don't underestimate me just because I'm small!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Good job,$everyoneô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh...$Is everyone okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh, don't stand in front of me...$I can't see...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I have some rice balls, so tell me if you get hungry, okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I don't like the sound of those footsteps... Sounds to me like, \"flat, flat\"...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I feel like haniwa come after me a lot...$...Is it because of my glasses?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Girls won't like you if you're too perverted, you know.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Phew...$My heart's pounding...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This feeling...$It's like back then...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'd better get serious soon. Yeah.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It's alright.$I may look like this,$but I'm used to battlefields.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "If it comes to battle,$I'll concentrate on healing.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "It's okay,$I'll heal you right away.";
+		}
+	}
+	if (no == 94)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Come here...$I'll pamper you...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Now, let's dance a twisted rondo, together.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Heheheh...$What a scary face...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Oh...?$The stars are beautiful tonight...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "What a pained expression...$I'll make things better soon...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "It's fine...$Everything's alright...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You had a bad dream, didn't you?$It's alright, you'll be awake soon...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Why make such a scary face...?$Heheh, how cute...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Don't be scared...$Now, look into my eyes...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Do you like pain...?$Heheheh...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "The principle of dawn,$howl sagaciously$and turn to insanity...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Sea of life, flood with eternal peace in whirlpools of chaos,$schlach...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "The sign of a honeymoon,$an invitation to chaos with a one-word conviction,$schlach...");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "It's alright...$I'm here...");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Heheheh...$Do your best...");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "How awful.$I'm cheering for you...$Heehee...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "My beloved child...$Sleep atop my breast...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "What a good child...$Let's meet again at the demise of all things.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "How wonderful.$To think that we'll be able to meet again...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Out of time...$Honeymoons are always short...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I hear a voice...$Yes, how wonderful...$Heheheh...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You had a bad dream, didn't you?$It's alright, I'm here with you...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Heeheeheehee...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I see it...$Yes, the end is near...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "The light is shining that way...$It's close...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Heehee...$I hear the footsteps of tragedy...$Heeheeheehee...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My right eye aches...$Heheheh, it's close...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Chains of pain, insects flying in the sky, the sky, a cracked shell...$Heehee...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This feeling...$I see...$It's finally come...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It's alright,$I'll end it all...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (£‰ñ•œŒns“® == 1)
+		{
+			Ÿí“¬‘äŒ = "Come here...$I'll be so gentle, you won't be able to make a sound...";
+		}
+		if (iis == 546)
+		{
+			Ÿí“¬‘äŒ = "Sleep, embraced by gentle cloth...$Forever...";
+		}
+		if (iis == 519)
+		{
+			Ÿí“¬‘äŒ = "Now, relax...$Heheheh, it's alright...$There's nothing to be frightened of...";
+		}
+	}
+	if (no == 38)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Hmph, I'll beat all of you!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Torako Uesugi springs into action,$for Kenshin-sama!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "(If I move here,$ will someone get mad at$ me?)");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "H-Huh?$What are you waiting for?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Defeat Katsuko!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I won't let you do as you please anymore!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Mm! There we go!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Did you see that,$Kenshin-sama?!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "R... Rawr!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Whatever.$I'm pretty sure it's Katsuko's fault.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hmm... Too bad.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If only Katsuko weren't here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Grrr...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hey!$Don't blow your nose in my shikigami!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "We're all squeezed together back here.$Can you hurry it up in front?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "These clothes are pretty expensive, you know.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Haah, haah... Kenshin-sama...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ikkyuu told me to get into a folding screen once.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "We can do this!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I can't relax$ without tatami underneath$ me.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(This is a chance to show$ off to Kenshin-sama!)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I won't forgive you if you get in Kenshin-sama's way.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I should have some onigiri ready.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 533)
+		{
+			Ÿí“¬‘äŒ = "Dance!$Bird shikigami!";
+		}
+		if (iis == 534)
+		{
+			Ÿí“¬‘äŒ = "Crawl!$Snake shikigami!";
+		}
+		if (iis == 535)
+		{
+			Ÿí“¬‘äŒ = "Maul!$Tiger shikigami!";
+		}
+	}
+	if (no == 39)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Now then...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Mm, let's go.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "What are you doing?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "If we're gonna fight, I'm gonna get serious.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You won't get away!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Haaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Hmph!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Easy.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Well, that's about that.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hmph!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(...Shut up.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Haahh...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Can't you just shut up and walk?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If you're cold,$I could set you on fire?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You'd better know where you're going.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(It must be rough for Maria, too...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(What the heck am I doing...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Yeah, yeah.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmph!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", ".........$ ªCompletely ignoring");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "The air's heavy here.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(I've gotten wrapped up in something again...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Yeah, yeah.$I'll stick with you to the bitter end.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(What a pain...)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 40)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Ah...$I forgot to breathe...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Ahh...$What a pain...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'm gonna go home once this battle's over...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I've got nothing to do...$I wanna go home and space out.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I can't... go on...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I just want it to be over...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This was about three months' worth of work...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "It's over now...$Me, that is...");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I wanna go home...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "...I'm tired...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "...I'm beat...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...I have to hurry back and order the new volumes...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Someone...$support me, please...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Haahh... People aren't built for work...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm a fan of little magical girls, personally...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Heh... Heheh...$Can I say something inappropriate?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", ".........Silence is 18+.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...I'll do my best starting tomorrow...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...*glance*$ªWants a little attention");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...Just a little...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 41)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Don't miss Kapalla's great achievements!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I goooô!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Huh? Does your tummy hurt?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "The enemy's looking this way...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hi-yah™!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Kapalla's gonna do her best!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is my full strength!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Eheheh...$The mischievous Kapalla does things like this, too!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Thank you, everyone!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I'll sing a song, then!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "It's because I wasn't front and center!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Protect me if we get attacked, okayô?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm tired!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Can you call a makeup artist?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I don't like weird stuff.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll have to do some acting work soon, tooô");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Want an autograph?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I disinfect my hands after handshake sessions.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Do enemies attack because I'm just so charming?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm an idol, but I'll be your friend, okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I wonder if there are any super rich sponsors out there.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My throat might not be doing too well.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My office doesn't allow me to do dangerous things.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(If it comes to it$ I can use them as a$ shield...)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 42)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Hmph, I just have to kick their butts, right?");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I go.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Don't space out in battle!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "You okay?$Feeling alright?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Haaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Full power!$Die!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "That about does it.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Well, it's only natural, right? Yeah.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I miscalculated?!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I don't really care,$but there are a lot of girls in this party, aren't there...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Wh-What?$You don't have to stare at me!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmph, I could handle a place like this on my own, easily.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...If you're gonna come,$then come!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Oh, wait!$We have to be more cautious!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "H-Hmph,$who would be scared?!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Stupid Rance...$ Come be by my side...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Huh...? Could that have been...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 43)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "What should I do?$Heheh!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Heheheh,$I'm ready to go at any time!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hi-yah! Hi-yah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Take that~!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Watch me, sis!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This attack is a little sexy.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "No, you pervert!$Dieô!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Kaboom!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Getting ready...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Rance~!$Fuck me as a reward~ô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hrmm...$I won't accept that!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Oh,$I saw everybody's panties.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Wowô! That lady's not wearing underwear!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I wanna grope that lady's boobs...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Flat boobs feel pretty good too, you know?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You can do it, you can do it~ô!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm not scared, I'm not scared...$I have my eidolons.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Hrmm... I don't like it here.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Oh...$ Did I wet myself a$ little?)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This is the perfect time to show offô!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm tired...$Somebody carry me...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 153)
+		{
+			Ÿí“¬‘äŒ = "Do it, everybody!";
+		}
+	}
+	if (no == 44)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Aah, how terrible!$What an ugly face you're making.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Hmph, Emi Alphorne won't be beaten in a place like this.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hurry it up.$I'm tired of waiting.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "This is nothing.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Is that all?");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Wait a moment.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Kneel before me.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "How exciting this is.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I'd like a do-over.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm getting excited...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(If I'm assaulted$ in a place like this,$ I...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Are you proceeding toward an area with less people?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Where are you planning on taking me?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(There are so many$ monsters.$ ...Haahh, haahh.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll show you the power of former nobility.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Oh no, I'm drooling...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It seems more dangerous over there.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Don't we have a carriage?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I like this tension.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I don't mind if you'd like to rely on me.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 45)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Now, what shall I do...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We have time...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Suffer.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Perish.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Disappear.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "At least peacefully...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "No enemies shall stand in my way!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Battles are not won with offense alone...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We cannot fret about how we advance.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Victory does not bring me joy.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hrm?$Looks like I wasn't thorough enough.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "No need to be timid.$Let's proceed.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Those who do not know sadness cannot know joy.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Fall back if you're fatigued.$You'll only be in the way in a fight.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Do not let your soul spoil.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I will not stop...$Not until I see my fatherland restored.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Advance.$There is no path behind us.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Hide behind me if you're feeling timid.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I have no time to rest.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(.........$ ...Watch over me.)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 46)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "U-Urgh...!$I-I won't lose...!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "(I've...$ trained a little, too...)");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Die!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Break!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Hmph,$we need things like this!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Did we get some treasure?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We split the treasure equally.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh... My treasure...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm not used to parties.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Which way are we going?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Treasure chests are wonderful, aren't they?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Treasure is the real fun of adventuring, isn't it?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmm?$We're going that way?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I guess they didn't get a good crop of return bonsai this year.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "What do you think about grinding parties?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Want some chocolate?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Must be nice to be a musclehead.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm gonna build a house and live with my parents.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Well... everything is an experience.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Ugh... I'm  nervous.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "High risk, high reward, huh...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 84)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "We'll teach you your place.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Listen...$Do not bother us.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Begone!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hmph.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "There...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "You will not get away with this!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Out of our sight, scum!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "You were a fool to bare your fangs at us!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Be thankful for this.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "This is only natural...$We can't possibly be defeated.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ngh...$What a disgrace.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Reset...$ why do you so adore$ that man...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Argh!$Do not get in our way!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Haahh...$ªA little down");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hrmm...?$D-Do you have some complaint for us?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmph...$We could handle this alone.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "You would do well not to anger us.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......Urgh.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Hmph... Would you like to be cursed?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Hmph...$It's shameful to be frightened by something like this.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 433)
+		{
+			Ÿí“¬‘äŒ = "Fool!$Kneel before us!";
+		}
+		if (iis == 198)
+		{
+			Ÿí“¬‘äŒ = "It's over!$Black Destruction Beam!";
+		}
+	}
+	if (no == 72)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I'm so excited!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Eheheh.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "All ready!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Leave it to meô!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We can do this, yeahô!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'm gonna hit it!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Yah, yah, yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Aiiim, and...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm gonna do my best!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Watch me, Daddy!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Gahaha!$Toooh!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "You can do it, everyone!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Yaaay, we did it, Daddyô!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh...$That was frustrating...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Adventure! Adventure!$This is so much fun!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Eheheh...$Let's all work together, okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Watch me, watch me, Daddyô!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Fidget, fidget, fidget.$Looks like fun.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I'll do my best, yeah...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Awawa, there was something there!$There was something there!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "We'll be okay... right?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Ugh...$ I'm kinda scared...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "It'll be okay!$I know it will!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 47)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Now is the time for justice!$Let us go!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Let's begin!$It is time to wager our lives!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'm putting everything into this blow!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Whoooooooooa!$Obliterate evil!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "For justice!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Justice will prevail!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "V, V, V!$For victory!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "We wouldn't have gotten much experience anyway.$I'm sure of it.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Sacrifices must be made for justice.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I seize those snacks,$in the name of justice!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If I have a son,$I'll name him Justice!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Are there any sprays that kill evil people on contact?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hm! A response on my villain radar!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I have no interest in heroes.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "An old person holding seed rice is a sure sign of death.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Let's run toward the setting sun!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Is there any magic that'll make my eyes burn like flames?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Whoooooooooa!$...I just wanted to shout a little.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I feel an extraordinary amount of evil.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I've got goosebumps...$No, it's my Justice Radar.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Show yourselves, cowards!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 48)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "My turn now, eh?$What'll I do?");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Heh! Come at me however ya like, ya punk!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Now, let's get this over with quick, eh?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Want me to enter this into the account book?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Tama Kiiick!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Tama Puuunch!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Tama Shoot!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Tama Roll!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "It's time to throw a curveball!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Thanks fer the business!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I'll take payment in experience points.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "It's a hard-knock life...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You know, I'm not really suited for battle.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Want some sweets?$They're not free, 'course.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You don't go through heat?$Poor you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm not a doggy, y'know.$My nose isn't that great.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ermm, who were you?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I get all embarrassed when people call me pet names.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Do your shopping at Frostbuy!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Maybe we should get a commercial on MV.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "This baby's just 39.99 right now!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's dangerous to stand downwind a' the old hag.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I'm about to wet my pants...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Sneak... sneak...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "My wild instincts are tellin' me that danger is near!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 49)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Well met!");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I sense fighting spirit...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I should focus my mind now.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Concentrate...$This is where it counts!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hi-yah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hmph!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Body and soul!$...Ohh!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Here.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "It's my... win.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "...Alright.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Foolish...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Gh... I still have much to learn...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I still need more training...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Is it love...$that I'm lacking?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "One day I'd like a daughter...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hmm...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I must calm my mind...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I cannot let my guard down...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Once this battle is over,$I'll...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Phew...$Makes you thirsty...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Now is the time... to be calm!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 50)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Rrh, rrh, rrh.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Grrrrrr!$ªGuarded");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Rr?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Grrrrrr!$ªHostile");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Raaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Rrh! Raaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Heh...!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Rr?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Rrrrh...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Rr rr?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...Rrh.$ªHungry");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "*sniff* *sniff*$ªSmelling");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Rawr...$ªSleepy");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "...Rr...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Grrrrr!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Rr, rr...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 68)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Biscuitta Berns,$meeting the enemy.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Anything that could impede my master will be eliminated.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Is anything the matter?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I know we have no time to delay.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "(The biggest possible effect$ from the most simple$ action...)");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I will slay you for my master.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'll aim for the vitals.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Please excuse me.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Is that alright, Master?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Was that acceptable?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I've been negligent in my cleaning.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Would you care for a cold beverage?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Please give me any order.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I am a devil of a maid, you see.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I have never witnessed a crime.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Please watch your step.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Here, have a hot towel.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(The maids' shifts next$ week are...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I have a change of clothes here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Come to think of it,$we're almost out of tea leaves.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Disheveled clothes are a$ sign of a disheveled$ mind.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Shall I wipe off your sweat?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'll prepare something energizing for dinner.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Would you care for some tea?$It will relax you.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 52)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I will not make any mistakes that would disappoint him.$Here I go.");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Heheh,$how shall I deal with you?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Now,$let's move.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "You'll have to focus a bit more than that.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Yah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Pardon me!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Please die.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I will not go easy on you.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I beg your pardon!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I expected nothing less from all of you!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Is anyone hurt?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Oh my...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll scold you if you do that.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's dangerous to look away now!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll leave the way we proceed to you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Are we all prepared?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Does everyone have their handkerchief?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I should write this down$ just in case...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "We mustn't run.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's been that long?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You mustn't pry into a lady's past.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I sense... something.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's be cautious.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's brace ourselves.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 53)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "NYAI!$ªIntimidation");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Reclaiming love stance!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "My heart does not fear death!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Pine! Bamboo! Plum!$Kshaaaa!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Salmon Fist!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Ultimate Move:$NEW Salmon Fist!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Fo' shizzle?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "It's my... win!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Tuna salmon?!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If I'm sane...$Tonight is salmon stew!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll be the stew!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "This is a trap!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Kshaaaaaa!$I'm the trap!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm Bear!$I'm not *a* bear!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "HYAH! (Intimidation)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Daaah!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Jwach--");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Fnnnn!!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Shall we have a death match?!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 80)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Calm down...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "It's my turn now.$Here I go.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Let's do our best!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Haaah!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Here I go!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Are you ready?");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Excuse me.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "We did it!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I guarantee our victory.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "They got away...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I trust you...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I sense... a presence.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "It's wonderful to be free, isn't it?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "When I was a dealer, I'd watch the money go back and forth...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I-If you say so,$Rance...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You can read books for free at the library, you know.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I've gotten good at pretending I'm not home...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Let's be cautious.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(If I can at least protect$ Rance...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm alright.$I was prepared a long time ago...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 54)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Lia will fight too if it's for her darling!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hmm?$Lia's scary when she's angry, you know.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Let's do our best, Harumaki!$(Harumaki: Grr, grr!)");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hi-yah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Heheh!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Teehee!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "That's what you get!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "This is a queen's power.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Awww, no fair!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Mariiis, make some tea.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh no! My hem will get dirty!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Darling, you idiot...$ but I love you.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Darling's huge mouth is$ so wonderful.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If Darling became the King of Leazas, we'd mint new currency.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I'm sleepy.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I broke a nail...$Boohoo.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Is it... dangerous here?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "You'll be fine, Darling.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(If I raise my level,$ Darling and I can...)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 152)
+		{
+			Ÿí“¬‘äŒ = "Be a dear, Harumaki.$(Harumaki: Roar!)";
+		}
+	}
+	if (no == 55)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here she comes!$We're gonna do this with pluck!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'm kinda bored.$Guess I'll buy some stocks.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "This's gonna hurt if it hits ya!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "He-yaaah!$Don't come cryin' ta me if this hurts!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Money opens all doors.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Awright!$Easy money!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Time to collect some cash!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Aw, nuts. Lost some money there.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Penny pinchin'...$What an awful phrase.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Communication infrastructure's so fascinatin', ain't it?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "A magic railway, eh...?$It's still just the stuff a' dreams now.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm thinkin' about next gen energy.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Ya only pay what ya walk!$That's why it's good adventurin' insurance!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Tupperware?$Yeah, I always got some.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Walkin' around too much will only wear out your shoes.$It's wasteful.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "When ya get rich,$ya get more relatives.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(That hotel...$ Yeah, I should buy it.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Kinda... makes ya laugh, huh?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This kinda place...$I can't stand it.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Any pinch is a chance!$...Or somethin'.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 448)
+		{
+			Ÿí“¬‘äŒ = "Now then, what'll we get?";
+		}
+	}
+	if (no == 57)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Here I gooo!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Eheheh!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'll do my beeest!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Yaaay!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Oh...?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Eheheh, we won.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Oh my...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "<Boing, boing>$ªBounce with each step");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh my...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Eheheh...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Would anyone like some cookies?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I wonder if I'll be of any use to you...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm getting a little nervous.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 217)
+		{
+			Ÿí“¬‘äŒ = "Let's all dance the Mayim Mayim.";
+		}
+	}
+	if (no == 58)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Oh, what a bother...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Why am I here...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Hey, is something the matter?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "If you're going to do something, be quick about it.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I've never even done anything like this before!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Why me?!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Urgh, you--!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I just have to do it, right?$Just...$.........Hmph!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Could you just pay your tab, please?");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I told you,$I'm not fit for combat!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Haahh... Why am I in a place like this?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Phew... I guess the bar's on a break again today...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I really am unlucky...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Why is a civilian like me...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Hey! Seriously, please don't make me walk in front.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......*gulp*");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 232)
+		{
+			Ÿí“¬‘äŒ = "Y-Yah!";
+		}
+	}
+	if (no == 59)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Is anyone hurt?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Injured people, step forward!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'm not really good at this, but...$There!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This about right...?$Okay!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "What I can do is...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I'm feeling pretty good today.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Alright, let's keep going.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Haahh...$Couldn't finish 'em...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Bandages... Do I have enough?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "The air's kind of different in battle, huh?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'll have to find a normal place to work...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Hey!$Don't touch my butt!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "A nurse, eh...?$I hear it's exhausting work.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm counting on you.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Anything that could be used as a landmark...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Should I... start working out?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(Ugh... My hands smell$ like disinfectant...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(Let me check what I've$ got in my first aid kit.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "A-Are we in trouble?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "(It... It's hard to breathe.)");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 218 || iis == 219)
+		{
+			Ÿí“¬‘äŒ = "Don't push yourselves.";
+		}
+	}
+	if (no == 60)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Wawah...$I'll try not to die...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Aah...$Can I at least get out of this alive...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Y-Yaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Ugh,$I-I'm scared!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I-I won't be defeated.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Phew...$Looks like things worked out.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Ugh,$is everyone okay?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...H-Huh?$My glasses are all fogged up.$I can't see anything...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Ah... I think I'm going to end up dying first...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 226)
+		{
+			Ÿí“¬‘äŒ = "Mirror, mirror,$help everyone.";
+		}
+	}
+	if (no == 62)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "H... Here I... go...$I'll be okay...$I'll be okay...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Monsters... enemy...$Humans... allies...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "A-Augh...$I-I'm... scared...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "D-Don't get... mad...$enemies...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "I'm so...rry!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Yaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "*shudder*...$Here I go...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "W... We won, but...$P-Please don't... be angry.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I-I'm... sorr...$D-Don't be... angry...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "A... Augh...$I'm s-scared...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "D... Don't look...$I'm scared... when people look at me...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Okay, monsters...$D-Don't come out... now.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I-I want to... go home.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Augh... Augh, augh.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Eeee... I'm scared, I'm scared!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 61)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "W-Watch the enemies carefully...");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I-It's my turn...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "(Can I be of help$ to everyone...?)");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "E-Everyone...$please be careful.");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Ah, I'm sorry!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Eeeek!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Yaaaah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Aaah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I-I'll do this!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "I-I did it,$Mister!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I-I've got to do better...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I guess you can make money by defeating monsters.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "*peek* *peek*...$Right, clear. Left, clear.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Oh, good...$Everyone's alright...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Phew...$I'm a little tired...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Am I...$being helpful?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Ugh...$I can't run away.$I can't run away...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I'm scared,$Mister...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm a little excited...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I-I've got to get it together...");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 234)
+		{
+			Ÿí“¬‘äŒ = "P-Please be the focus of this battle!";
+		}
+		if (iis == 235)
+		{
+			Ÿí“¬‘äŒ = "F-Focus on offense!$Please move exactly as I tell you to!";
+		}
+		if (iis == 236)
+		{
+			Ÿí“¬‘äŒ = "F-Focus on defense!$I-I'll direct everyone!";
+		}
+		if (iis == 237)
+		{
+			Ÿí“¬‘äŒ = "Is everyone alright?!$Please be strong!";
+		}
+	}
+	if (no == 81)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", ".........$ ªStare");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", ".........$ ªGlance");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "......Yah.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "......Tah!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", ".........$ ªNod");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "......Victory...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", ".........$ ªA little pained");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", ".........");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "......Okay.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", ".........Meow.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", ".........Understood.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "...I like...$...doggies.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", ".........No.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......I'm okay.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "......Yeah.");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 63)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I-I might...$die here...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I want to finish this experiment and go home...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Please stay away!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm definitely going to make this experiment a success.");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Oh, I'm sorry...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 64)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Ah, so tired...$Why do I have to suffer this...$(Grumble, grumble, grumble...)");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "Oh, how annoying.$Hurry and defeat them!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "What strong sword skills...");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "M... My back...!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Hurry and let me rest!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 92)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "I can see it...$The seal of darkness shows me everything!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "(The darkness is shadows...$ Seize all of creation,$ guides who lead us to the end...)");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "...Hmph!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Darkness like an eternal shadow, a path to eternity...$The darkness will capture you!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "The darkness creates a path, telling us of our demise...!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "A-Are you alright?!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Freeing me from resentment and giving me true freedom...$The sin of destruction leaves a mark--");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "(I think I've managed to$ keep the power from$ going out of control...)");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Hmph...$A narrow escape.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Looks like you don't need my power yet.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "You're over there, right?$Come out...!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Tch...$It aches...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Be silent...$Be silent, my stigma!");
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+		if (iis == 500)
+		{
+			Ÿí“¬‘äŒ = "Demise is an endless cycle that weighs all things--$Respond...!";
+		}
+	}
+	if (no == 87)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Let's see, which one...");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "We're all packed together back here.$Hurry up!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Toooh!");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Yah! Yah!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is gonna hurt a lot!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Don't make me mad!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Come on,$cry, wail!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "That's dangerous...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Our complete victory,$of course!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "(Oh, I know I was the$ MVP in that one.)");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "We came out alive, so it's our win, right?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "What should I have for dinner?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "We'll keep walking~$to wherever and ever~");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Is there anything on the ground?$Preferably something dirty.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I've got a cold sweat...$I-It's so slimy...$Haah... Haah...");
+		if (iis == 489)
+		{
+			Ÿí“¬‘äŒ = "I can't stop.$I won't stop!$Yah! Yah!";
+		}
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 88)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Heheheh, slow...$Everyone's so slow...!");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'll take the time to put some poison on...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "*fwoosh*!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "Real quick now.");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "I'm proud of this one!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "The eyes!$Aim for the eyes!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Leave this to me!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "After me!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Man, what a let down.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "(They would have lost$ if I weren't here...)");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "Take that!$We're alive!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "I'm in a club that looks for glasses girls who are caught in traps.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "There's one there!$A beloved glasses girl!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Dirty Stuff Search Mode!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "I'm getting kinda horny...?");
+		if (iis == 121)
+		{
+			Ÿí“¬‘äŒ = "Shuriken shu shu!";
+		}
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 89)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "Gimme a minute.$I have to polish my staff.");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "What's wrong?$Does your stomach hurt?");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "There! *slap* *slap*!");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "It hurts!$You can cry!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Treat me to hanny food later!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "I'm gonna heal you!$Don't move, 'kay?");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "That looks painful!$I can't look!");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "Well done, everyone.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "(If I hadn't been here,$ they'd all have been$ wiped out...)");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "It wouldn't have ended like this if I'd been serious.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I'm gonna have some$ hanny food with a side$ of Merim tonight.)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Who'll do this if we don't?");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "If my memory's right, there should be a dirty book around here...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "This aura...$There's a sexy event happening somewhere nearby...?!");
+		if (iis == 225)
+		{
+			Ÿí“¬‘äŒ = "Ah... It's overflowing!$My special...!";
+		}
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 90)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", "You gonna get in our way?$Huh?");
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", "I'll take the opportunity to look at the adult book I just picked up...");
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", "Hey! Hey!$What's the hold up?");
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", "This is my killer...$Hanny Attack!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Black hannies won't break...!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "Not yet!$It's not over yet!");
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", "No...$I'll get hard...");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "There's no way we'll lose with me here.");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", "(I've brought us all$ victory again...)");
+		ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", "I went easy on you.$Be thankful.");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "(I'm the president of$ the Observe Nozomi's$ Bloomers Club...)");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Go, go, Hanny Adventure Squad!");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", "Why do we search for dirty books?$That is because dirty books exist...");
+		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "Are there any girls around who want to do dirty stuff with me...?!");
+		if (iis == 212)
+		{
+			Ÿí“¬‘äŒ = "Step on me!";
+		}
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	if (no == 2)
+	{
+		ƒZƒŠƒt“o˜^(iic, "ŠJn", "");
+		ƒZƒŠƒt“o˜^(iic, "©•ª‘Ò‹@", ‚b‘äŒ(iic, 1, ""));
+		ƒZƒŠƒt“o˜^(iic, "‘¼l‘Ò‹@", ‚b‘äŒ(iic, 2, ""));
+		ƒZƒŠƒt“o˜^(iic, "Šî–{UŒ‚", ‚b‘äŒ(iic, 3, ""));
+		ƒZƒŠƒt“o˜^(iic, "•KEUŒ‚", ‚b‘äŒ(iic, 4, ""));
+		ƒZƒŠƒt“o˜^(iic, "x‰‡s“®", ‚b‘äŒ(iic, 5, ""));
+		int no = ƒƒCƒNƒLƒƒƒ‰‘äŒ”z—ñ”Ô†æ“¾(iic);
+		if (no != 0)
+		{
+			ƒZƒŠƒt“o˜^(iic, "í“¬Œã^Ÿ—˜", Ÿ‘äŒ^í“¬ŒãŸ—˜[no]);
+			ƒZƒŠƒt“o˜^(iic, "í“¬Œã^ˆø‚«•ª‚¯", Ÿ‘äŒ^í“¬Œãˆø‚«•ª‚¯[no]);
+			ƒZƒŠƒt“o˜^(iic, "–À‹{^•’Ê", Ÿ‘äŒ^–À‹{•’Ê[no]);
+			ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", Ÿ‘äŒ^–À‹{‹Ù”—[no]);
+		}
+		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
+	}
+	‚b‘äŒ“o˜^^“G“Áê(iic, no, iis, ğŒ);
+}
+
+void ƒZƒŠƒt“o˜^(lint iic, string •ª—Ş, string •¶š—ñ)
+{
+	lint loop = 0;
+	lint aa = 0;
+	if (•ª—Ş == "ŠJn")
+	{
+		for (loop = 1; loop < 21; loop++)
+		{
+			Ÿ©•ª‘Ò‹@[loop] = "";
+			Ÿ‘¼l‘Ò‹@[loop] = "";
+			ŸŠî–{UŒ‚[loop] = "";
+			Ÿ•KEUŒ‚[loop] = "";
+			Ÿx‰‡s“®[loop] = "";
+			Ÿí“¬Œã^Ÿ—˜[loop] = "";
+			Ÿí“¬Œã^ˆø‚«•ª‚¯[loop] = "";
+			Ÿ–À‹{^•’Ê[loop] = "";
+			Ÿ–À‹{^‹Ù”—[loop] = "";
+		}
+		Ÿ©•ª‘Ò‹@^‰ñ” = 0;
+		Ÿ‘¼l‘Ò‹@^‰ñ” = 0;
+		ŸŠî–{UŒ‚^‰ñ” = 0;
+		Ÿ•KEUŒ‚^‰ñ” = 0;
+		Ÿx‰‡s“®^‰ñ” = 0;
+		Ÿí“¬Œã^Ÿ—˜^‰ñ” = 0;
+		Ÿí“¬Œã^ˆø‚«•ª‚¯^‰ñ” = 0;
+		Ÿ–À‹{^•’Ê^‰ñ” = 0;
+		Ÿ–À‹{^‹Ù”—^‰ñ” = 0;
+		return;
+	}
+	if (•ª—Ş == "I—¹")
+	{
+		aa = Ÿ©•ª‘Ò‹@^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			‚b‘äŒ(iic, 1, Ÿ©•ª‘Ò‹@[RAND(aa)]);
+		}
+		aa = Ÿ‘¼l‘Ò‹@^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			‚b‘äŒ(iic, 2, Ÿ‘¼l‘Ò‹@[RAND(aa)]);
+		}
+		aa = ŸŠî–{UŒ‚^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			‚b‘äŒ(iic, 3, ŸŠî–{UŒ‚[RAND(aa)]);
+		}
+		aa = Ÿ•KEUŒ‚^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			‚b‘äŒ(iic, 4, Ÿ•KEUŒ‚[RAND(aa)]);
+		}
+		aa = Ÿx‰‡s“®^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			‚b‘äŒ(iic, 5, Ÿx‰‡s“®[RAND(aa)]);
+		}
+		aa = Ÿí“¬Œã^Ÿ—˜^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			Ÿí“¬Œã^Ÿ—˜[1] = Ÿí“¬Œã^Ÿ—˜[RAND(aa)];
+		}
+		aa = Ÿí“¬Œã^ˆø‚«•ª‚¯^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			Ÿí“¬Œã^ˆø‚«•ª‚¯[1] = Ÿí“¬Œã^ˆø‚«•ª‚¯[RAND(aa)];
+		}
+		aa = Ÿ–À‹{^•’Ê^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			Ÿ–À‹{^•’Ê[1] = Ÿ–À‹{^•’Ê[RAND(aa)];
+		}
+		aa = Ÿ–À‹{^‹Ù”—^‰ñ”;
+		if (aa > 0 && aa < 21)
+		{
+			Ÿ–À‹{^‹Ù”—[1] = Ÿ–À‹{^‹Ù”—[RAND(aa)];
+		}
+		return;
+	}
+	if (•ª—Ş == "©•ª‘Ò‹@")
+	{
+		if (Ÿ©•ª‘Ò‹@^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿ©•ª‘Ò‹@^‰ñ”++;
+		Ÿ©•ª‘Ò‹@[Ÿ©•ª‘Ò‹@^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "‘¼l‘Ò‹@")
+	{
+		if (Ÿ‘¼l‘Ò‹@^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿ‘¼l‘Ò‹@^‰ñ”++;
+		Ÿ‘¼l‘Ò‹@[Ÿ‘¼l‘Ò‹@^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "Šî–{UŒ‚")
+	{
+		if (ŸŠî–{UŒ‚^‰ñ” >= 20)
+		{
+			return;
+		}
+		ŸŠî–{UŒ‚^‰ñ”++;
+		ŸŠî–{UŒ‚[ŸŠî–{UŒ‚^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "•KEUŒ‚")
+	{
+		if (Ÿ•KEUŒ‚^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿ•KEUŒ‚^‰ñ”++;
+		Ÿ•KEUŒ‚[Ÿ•KEUŒ‚^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "x‰‡s“®")
+	{
+		if (Ÿx‰‡s“®^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿx‰‡s“®^‰ñ”++;
+		Ÿx‰‡s“®[Ÿx‰‡s“®^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "í“¬Œã^Ÿ—˜")
+	{
+		if (Ÿí“¬Œã^Ÿ—˜^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿí“¬Œã^Ÿ—˜^‰ñ”++;
+		Ÿí“¬Œã^Ÿ—˜[Ÿí“¬Œã^Ÿ—˜^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "í“¬Œã^ˆø‚«•ª‚¯")
+	{
+		if (Ÿí“¬Œã^ˆø‚«•ª‚¯^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿí“¬Œã^ˆø‚«•ª‚¯^‰ñ”++;
+		Ÿí“¬Œã^ˆø‚«•ª‚¯[Ÿí“¬Œã^ˆø‚«•ª‚¯^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "–À‹{^•’Ê")
+	{
+		if (Ÿ–À‹{^•’Ê^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿ–À‹{^•’Ê^‰ñ”++;
+		Ÿ–À‹{^•’Ê[Ÿ–À‹{^•’Ê^‰ñ”] = •¶š—ñ;
+		return;
+	}
+	if (•ª—Ş == "–À‹{^‹Ù”—")
+	{
+		if (Ÿ–À‹{^‹Ù”—^‰ñ” >= 20)
+		{
+			return;
+		}
+		Ÿ–À‹{^‹Ù”—^‰ñ”++;
+		Ÿ–À‹{^‹Ù”—[Ÿ–À‹{^‹Ù”—^‰ñ”] = •¶š—ñ;
+		return;
+	}
+}
+
+void ‚s‘äŒ¶¬(lint iic, lint iis, string •¶š—ñ)
+{
+	Ÿí“¬ƒZƒŠƒtƒ^ƒCƒv = 0;
+	Ÿí“¬‘äŒ”­ºÒ = iic;
+	Ÿí“¬‘äŒ = "";
+	lint no = ‚b”Ô†(iic, -1);
+	if (•¶š—ñ == "©•ª‘Ò‹@")
+	{
+		Ÿí“¬‘äŒ = ‚b‘äŒ(iic, 1, "");
+		if (‚bó‘Ô•Ï‰»(iic, -1) == 1)
+		{
+			‚b‘äŒ“o˜^(iic, no, iis, "“Åó‘Ô");
+		}
+		if (‚b‘Ì—Í(iic, -1) < ‚b‘Ì—ÍÅ‘å(iic, -1) / 3)
+		{
+			‚b‘äŒ“o˜^(iic, no, iis, "‘Ì—Íƒsƒ“ƒ`");
+		}
+	}
+	if (•¶š—ñ == "‘¼ls“®")
+	{
+		Ÿí“¬‘äŒ = ‚b‘äŒ(iic, 2, "");
+		if (‚bó‘Ô•Ï‰»(iic, -1) == 1)
+		{
+			‚b‘äŒ“o˜^(iic, no, iis, "“Åó‘Ô");
+		}
+		if (‚b‘Ì—Í(iic, -1) < ‚b‘Ì—ÍÅ‘å(iic, -1) / 3)
+		{
+			‚b‘äŒ“o˜^(iic, no, iis, "‘Ì—Íƒsƒ“ƒ`");
+		}
+	}
+	if (•¶š—ñ == "UŒ‚’Êí")
+	{
+		Ÿí“¬‘äŒ = ‚b‘äŒ(iic, 3, "");
+		‚b‘äŒ“o˜^(iic, no, iis, •¶š—ñ);
+	}
+	if (•¶š—ñ == "UŒ‚‘å‹Z")
+	{
+		Ÿí“¬‘äŒ = ‚b‘äŒ(iic, 4, "");
+		‚b‘äŒ“o˜^(iic, no, iis, •¶š—ñ);
+	}
+	if (•¶š—ñ == "–‚–@–¼‘O")
+	{
+		Ÿí“¬‘äŒ = "$@" + ‚r–¼‘O(iis, "") + "$";
+	}
+	if (•¶š—ñ == "“Áê")
+	{
+		Ÿí“¬‘äŒ = ‚b‘äŒ(iic, 5, "");
+		‚b‘äŒ“o˜^(iic, no, iis, •¶š—ñ);
+	}
+	if (•¶š—ñ == "•â•")
+	{
+		Ÿí“¬‘äŒ = ‚b‘äŒ(iic, 5, "");
+		if (iis == 384)
+		{
+			Ÿí“¬‘äŒ = "...$...$...";
+		}
+		‚b‘äŒ“o˜^(iic, no, iis, •¶š—ñ);
+	}
+	if (•¶š—ñ == "‚Ò‚æ‚è‰ñ•œ")
+	{
+		Ÿí“¬ƒZƒŠƒtƒ^ƒCƒv = 1;
+		Ÿí“¬‘äŒ = "...*gasp*!...$ ª Recovered from stun";
+	}
+	if (•¶š—ñ == "í“¬Œã^Ÿ—˜")
+	{
+		Ÿí“¬‘äŒ = "";
+		Ÿí“¬Œã^Ÿ—˜[1] = "";
+		‚b‘äŒ“o˜^(iic, no, iis, "í“¬Œã^Ÿ—˜");
+		Ÿí“¬‘äŒ = Ÿí“¬Œã^Ÿ—˜[1];
+	}
+	if (•¶š—ñ == "í“¬Œã^ˆø‚«•ª‚¯")
+	{
+		Ÿí“¬‘äŒ = "";
+		Ÿí“¬Œã^ˆø‚«•ª‚¯[1] = "";
+		‚b‘äŒ“o˜^(iic, no, iis, "í“¬Œã^ˆø‚«•ª‚¯");
+		Ÿí“¬‘äŒ = Ÿí“¬Œã^ˆø‚«•ª‚¯[1];
+	}
+	if (•¶š—ñ == "–À‹{^•’Ê")
+	{
+		Ÿí“¬‘äŒ = "";
+		Ÿ–À‹{^•’Ê[1] = "";
+		‚b‘äŒ“o˜^(iic, no, iis, "–À‹{^•’Ê");
+		Ÿí“¬‘äŒ = Ÿ–À‹{^•’Ê[1];
+	}
+	if (•¶š—ñ == "–À‹{^‹Ù”—")
+	{
+		Ÿí“¬‘äŒ = "";
+		Ÿ–À‹{^‹Ù”—[1] = "";
+		‚b‘äŒ“o˜^(iic, no, iis, "–À‹{^‹Ù”—");
+		Ÿí“¬‘äŒ = Ÿ–À‹{^‹Ù”—[1];
+	}
+	Ÿí“¬ƒZƒŠƒtƒ^ƒCƒv = 0;
+	string Å‰•¶š = Ÿí“¬‘äŒ.GetPart(0, 1);
+	if (Å‰•¶š == "(")
+	{
+		Ÿí“¬ƒZƒŠƒtƒ^ƒCƒv = 1;
+	}
+}
+
+void ”Ä—p‘äŒ(string ğŒ, string ğŒ‚Q)
+{
+	int iic = ‚o‚s‚`ƒ‰ƒ“ƒ_ƒ€(0, 0);
+	int no = ‚b”Ô†(iic, -1);
+	LOG_TADA("‘äŒˆ—@" + ğŒ + " " + ğŒ‚Q + " " + ‚b–¼‘O(iic, "") + "\n");
+	if (ğŒ == "æ‚És‚±‚¤")
+	{
+		if (no == 1)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Aren\'t there any sweet, cute girls around who\'ll let me fuck fem...?' R;
+			' Guess I\'ll have to look somewhere else."' A;
+			return;
+		}
+		if (no == 19)
+		{
+			ƒZƒŠƒt(2020, "");
+			'"Oh, should we take a break here?"' A;
+			ƒZƒŠƒt(2000, "");
+			'"No, we\'re going on ahead."' A;
+			ƒZƒŠƒt(2021, "");
+			'"I thought so... Haahh..."' A;
+			return;
+		}
+		if (no == 22)
+		{
+			ƒZƒŠƒt(2030, "");
+			'"There\'s nothing here, y\'know.' R;
+			' We\'re not gonna keep going?"' A;
+			return;
+		}
+		if (no == 3)
+		{
+			ƒZƒŠƒt(2100, "");
+			'"What is it?' R;
+			' Let\'s keep going."' A;
+			return;
+		}
+		if (no == 5)
+		{
+			ƒZƒŠƒt(2130, "");
+			'"We don\'t have time to sit around.' R;
+			' Please hurry up."' A;
+			return;
+		}
+		if (no == 4)
+		{
+			ƒZƒŠƒt(2120, "");
+			'"...I\'m a little hungry."' A;
+			return;
+		}
+		if (no == 6)
+		{
+			ƒZƒŠƒt(2300, "");
+			'"What is it?' R;
+			' I don\'t see anything here..."' A;
+			return;
+		}
+		if (no == 9)
+		{
+			ƒZƒŠƒt(2630, "");
+			'"Do not bore me. I\'m going on ahead."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Hey, don\'t go off on your own!"' A;
+			return;
+		}
+		if (no == 10)
+		{
+			ƒZƒŠƒt(2560, "");
+			'"Is there... something here?' R;
+			' I think we should keep going if there isn\'t."' A;
+		}
+		if (no == 11)
+		{
+			ƒZƒŠƒt(2570, "");
+			'"I don\'t have time for this... I\'m going."' A;
+			return;
+		}
+		if (no == 14)
+		{
+			ƒZƒŠƒt(2943, "");
+			'".........Wanna sleep?"' A;
+			ƒZƒŠƒt(2000, "");
+			'"No."' A;
+			ƒZƒŠƒt(2975, "");
+			'"...Zzz..."' A;
+			ƒZƒŠƒt(2005, "");
+			'"........."' A;
+			return;
+		}
+		if (no == 13)
+		{
+			ƒZƒŠƒt(2590, "");
+			'"...Oh, let\'s... rest..."' A;
+			ƒZƒŠƒt(2000, "");
+			'"No."' A;
+			ƒZƒŠƒt(2590, "");
+			'"...Ugh..."' A;
+			return;
+		}
+		if (no == 12)
+		{
+			ƒZƒŠƒt(2580, "");
+			'"I don\'t think we need to rest yet.' R;
+			' Let\'s keep going for now."' A;
+			return;
+		}
+		if (no == 15)
+		{
+			ƒZƒŠƒt(2550, "");
+			'"There might be stronger foes.' R;
+			' We don\'t have time to stop here."' A;
+			return;
+		}
+		if (no == 16)
+		{
+			ƒZƒŠƒt(2963, "");
+			'"........."' A;
+			return;
+		}
+		if (no == 17)
+		{
+			ƒZƒŠƒt(2600, "");
+			'"Don\'t stop. We\'re going."' A;
+			return;
+		}
+		if (no == 18)
+		{
+			ƒZƒŠƒt(2610, "");
+			'"I don\'t think there\'s anything here."' A;
+			return;
+		}
+		if (no == 20)
+		{
+			ƒZƒŠƒt(2110, "");
+			'"Is there something here?' R;
+			' If there isn\'t, should we be stopping?"' A;
+			return;
+		}
+		if (no == 23)
+		{
+			ƒZƒŠƒt(2220, "");
+			'"Why...' R;
+			' stop here...?' R;
+			' Let\'s press forward."' A;
+			return;
+		}
+		if (no == 24)
+		{
+			ƒZƒŠƒt(2090, "");
+			'"What are you doing? Hurry up."' A;
+			return;
+		}
+		if (no == 26)
+		{
+			ƒZƒŠƒt(2050, "");
+			'"There\'s no point staying here.' R;
+			' Let\'s keep going."' A;
+			return;
+		}
+		if (no == 27)
+		{
+			ƒZƒŠƒt(2200, "");
+			'"Athena has a good idea!' R;
+			' We\'re gonna camp here today!"' A;
+			ƒZƒŠƒt(2000, "");
+			'"Yeah, a campfire!' R;
+			' Go, Athena!"' A;
+			ƒZƒŠƒt(2202, "");
+			'"Yaaaaay!"' A;
+			ƒZƒŠƒt(2200, "");
+			'"Mmkay, first we gotta get firewood,' R;
+			' mfh, mfh."' A;
+			'"...H-Hunh?' R;
+			' Master\'s not here?"' A;
+			ƒZƒŠƒt‚Q(2000, "");
+			'"Hey, what are you doing?' R;
+			' I\'ll leave you behind!"' A;
+			ƒZƒŠƒt(2200, "");
+			'"Hunh?"' A;
+			vl(2001, "");
+			'(Gahahaha, fooled her.)' A;
+			return;
+		}
+		if (no == 28)
+		{
+			ƒZƒŠƒt(2690, "");
+			'"Our time is limited.' R;
+			' Let\'s hurry onward."' A;
+			return;
+		}
+		if (no == 32)
+		{
+			ƒZƒŠƒt(2540, "");
+			'"What are you doing? Let\'s go."' A;
+			return;
+		}
+		if (no == 33)
+		{
+			ƒZƒŠƒt(2060, "");
+			'"Why have you stopped?' R;
+			' ...I\'ll be continuing."' A;
+			ƒZƒŠƒt(2002, "");
+			'"Hey! No acting on your own!"' A;
+			return;
+		}
+		if (no == 38)
+		{
+			ƒZƒŠƒt(2140, "");
+			'"Geez, why are you stopping?' R;
+			' There\'s nothing to do here.' R;
+			' Let\'s keep going!"' A;
+			return;
+		}
+		if (no == 40)
+		{
+			ƒZƒŠƒt(2510, "");
+			'"Alright, let\'s rest."' A;
+			ƒZƒŠƒt(2000, "");
+			'"No."' A;
+			return;
+		}
+		if (no == 41)
+		{
+			ƒZƒŠƒt(2530, "");
+			'"What\'s the matter, Rancey?' R;
+			' It doesn\'t look like there\'s anything here."' A;
+			return;
+		}
+		if (no == 48)
+		{
+			ƒZƒŠƒt(2280, "");
+			'"Come on, let\'s take a break.' R;
+			' Could ya rub my shoulders, Boss?"' A;
+			ƒZƒŠƒt(2000, "");
+			'"Sure, sure."' R;
+			' ª Rub, rub' A;
+			ƒZƒŠƒt(2280, "");
+			'"Ahhh, that feels good..."' A;
+			ƒZƒŠƒt(2005, "");
+			'"........."' A;
+			'"Wait, why would I do this?!"' R;
+			' ª Thwack' A;
+			ƒZƒŠƒt(2281, "");
+			'"Owww!"' A;
+			return;
+		}
+		if (no == 52)
+		{
+			ƒZƒŠƒt(2760, "");
+			'"Doesn\'t seem like there\'s anything for us here.' R;
+			' Let\'s hurry on."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Yeah, okay."' A;
+			vl(2760, "");
+			'(Heheh, restless as always.)' R;
+			' ' A;
+			ƒZƒŠƒt(2000, "");
+			'"?' R;
+			' You say somethin\'?"' A;
+			ƒZƒŠƒt(2760, "");
+			'"No, nothing."' A;
+		}
+		if (no == 53)
+		{
+			ƒZƒŠƒt(2965, "");
+			'"Salmon!!"' A;
+			ƒZƒŠƒt(2000, "");
+			'"No, it isn\'t."' A;
+			return;
+		}
+		if (no == 55)
+		{
+			ƒZƒŠƒt(2290, "");
+			'"What\'s the point a\' stoppin\' here?' R;
+			' Let\'s get movin\'."' A;
+			return;
+		}
+		if (no == 56)
+		{
+			ƒZƒŠƒt(2803, "");
+			'"Resting already?' R;
+			' You young folks are so pathetic."' A;
+			return;
+		}
+		if (no == 58)
+		{
+			ƒZƒŠƒt(2040, "");
+			'"Uh, if there\'s nothing to do here, I\'d really rather hurry and finish this."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Nope. This place is for me and Atago to do a bunch of dirty stuff in.' R;
+			' Now let\'s go in."' A;
+			ƒZƒŠƒt(2040, "");
+			'"If that\'s the case, then I\'ll just continue on my own."' A;
+			ƒZƒŠƒt(2001, "");
+			'"Gahahaha, you\'re so shy, Atago."' A;
+			return;
+		}
+		if (no == 31)
+		{
+			ƒZƒŠƒt(2945, "");
+			'"Whatcha stoppin\' for?' R;
+			' Moromi wants to finish this job up quick™' R;
+			' Let\'s go!"' A;
+			return;
+		}
+		if (no == 59)
+		{
+			ƒZƒŠƒt(2944, "");
+			'"Nothing unusual here, is there...?' R;
+			' Let\'s keep going."' A;
+			return;
+		}
+		if (no == 61)
+		{
+			ƒZƒŠƒt(2750, "");
+			'"U-Umm... Mister...? I don\'t think there\'s anything useful here...' R;
+			' If there\'s nothing to do here, should we keep going?"' A;
+			return;
+		}
+	}
+	if (ğŒ == "’Ê‚¹‚ñ‚Ú")
+	{
+		if (no == 1)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Forcing myself into places I\'m not supposed to is my policy, but I don\'t really care about this one."' A;
+		}
+		if (no == 19)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Alright, Sachiko. Force your way in."' A;
+			ƒZƒŠƒt(2020, "");
+			'"Huh?! I can\'t do that!"' A;
+			ƒZƒŠƒt(2005, "");
+			'"Tch, giving up before you even try?' R;
+			' Pathetic."' A;
+			ƒZƒŠƒt(2021, "");
+			'"Errr...?"' A;
+			return;
+		}
+		if (no == 3)
+		{
+			ƒZƒŠƒt(2100, "");
+			'"Want me to break this thing?"' A;
+			ƒZƒŠƒt(2000, "");
+			'"Nah."' A;
+			ƒZƒŠƒt(2100, "");
+			'"Well, let\'s keep going, then."' A;
+			return;
+		}
+		if (no == 4)
+		{
+			ƒZƒŠƒt(2120, "");
+			'"As the Buddha wills, we cannot pass here...' R;
+			' Let\'s look for a different path."' A;
+			return;
+		}
+		if (no == 22)
+		{
+			ƒZƒŠƒt(2030, "");
+			'"Hmm, no way through here.' R;
+			' Guess we should find another way."' A;
+			return;
+		}
+		if (no == 6)
+		{
+			ƒZƒŠƒt(2300, "");
+			'"We can\'t get through...' R;
+			' It pains me to say it, but we\'ll have to give up."' A;
+			return;
+		}
+		if (no == 9)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"A barricade? How impudent.' R;
+			' Maybe I should kick it down."' A;
+			ƒZƒŠƒt(2630, "");
+			'"Don\'t. I won\'t allow you to make messes."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Whoa, you don\'t have to make that face..."' A;
+			return;
+		}
+		if (no == 14)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Hmm, blocked by a wall.' R;
+			' What would you do, Cessna?"' A;
+			ƒZƒŠƒt(2943, "");
+			'".........Uhh..."' R;
+			' ª Cessna\'s not home' A;
+			'"...Hwha? What\'d you say?"' A;
+			ƒZƒŠƒt(2005, "");
+			'"Nevermind."' A;
+			return;
+		}
+		if (no == 16)
+		{
+			ƒZƒŠƒt(2963, "");
+			'"........."' A;
+			return;
+		}
+		if (no == 21)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Hey, Rocky.' R;
+			' Get rid of this barricade somehow."' A;
+			ƒZƒŠƒt(2964, "");
+			'"G-Got it.' R;
+			' Urgh, urgh...' R;
+			' H-heavy..."' A;
+			'"H-Huh, Master...?' R;
+			' Where\'re ya going?!"' A;
+			ƒZƒŠƒt(2005, "");
+			'"Tch, almost lost him that time..."' A;
+			return;
+		}
+		if (no == 23)
+		{
+			ƒZƒŠƒt(2220, "");
+			'"...How to get through here...?' R;
+			' Even if you ask... I won\'t tell you."' A;
+			return;
+		}
+		if (no == 26)
+		{
+			ƒZƒŠƒt(2005, "");
+			'"We can\'t get through...? That\'s annoying."' A;
+			ƒZƒŠƒt(2050, "");
+			'"Well, there\'s nothing we can do here.' R;
+			' We\'ll just have to take another route."' A;
+			return;
+		}
+		if (no == 29)
+		{
+			ƒZƒŠƒt(2770, "");
+			'"Okay, leave this to me!' R;
+			' Go, Tulip!"' A;
+			ƒg‘‚«();
+			' ' R;
+			' <booom!>' A;
+			ƒZƒŠƒt(2770, "");
+			'"H-Huh? It didn\'t break...?"' A;
+			ƒZƒŠƒt(2005, "");
+			'"...Useless."' A;
+			ƒZƒŠƒt(2770, "");
+			'"Heeey..."' A;
+			return;
+		}
+		if (no == 33)
+		{
+			ƒZƒŠƒt(2060, "");
+			'"No point in forcing our way through.' R;
+			' Let\'s take the other path."' A;
+			return;
+		}
+		if (no == 38)
+		{
+			ƒZƒŠƒt(2140, "");
+			'"Okay, I\'ll use my shikigami..."' A;
+			ƒZƒŠƒt(2000, "");
+			'"We can just go around. No need."' A;
+			ƒZƒŠƒt(2143, "");
+			'"Why do you say things like that?!' R;
+			' Don\'t ask me if you need help later!"' A;
+			return;
+		}
+		if (no == 39)
+		{
+			ƒZƒŠƒt(2650, "");
+			'"Doesn\'t look like we can get through here.' R;
+			' Let\'s take another path."' A;
+			return;
+		}
+		if (no == 40)
+		{
+			ƒZƒŠƒt(2510, "");
+			'"...Can\'t get through."' A;
+			'"Alright, let\'s rest."' A;
+			ƒZƒŠƒt(2000, "");
+			'"No."' A;
+			return;
+		}
+		if (no == 42)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Kick kick, kick kiiick.' R;
+			' It\'s not budging, huh."' A;
+			ƒZƒŠƒt(2310, "");
+			'"It\'s not happening.' R;
+			' Let\'s just take another route."' A;
+			return;
+		}
+	}
+	if (ğŒ == "Œ©‚½")
+	{
+		if (no == 1)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Ooh, this is...' R;
+			' I mean, like I would be impressed.' R;
+			' I don\'t care about it."' A;
+			return;
+		}
+		if (no == 19)
+		{
+			ƒZƒŠƒt(2023, "");
+			'"This is amazing.' R;
+			' I bet it\'s rare.' R;
+			' I\'m gonna brag to my friends."' A;
+		}
+		if (no == 55)
+		{
+			ƒZƒŠƒt(2290, "");
+			'"Hmm, second-rate stuff.' R;
+			' Not that there\'s anythin\' wrong with that."' A;
+			return;
+		}
+		if (no == 4)
+		{
+			ƒZƒŠƒt(2120, "");
+			'"Hmm, is this...?' R;
+			' I\'ll write a letter to Ai about it."' A;
+			return;
+		}
+		if (no == 23)
+		{
+			vl(2220, "");
+			'(I know why this is here...' R;
+			' Not that I particularly wanted to.)' A;
+			return;
+		}
+		if (no == 3)
+		{
+			ƒZƒŠƒt(2100, "");
+			'"Oh, it\'s kind of cute..."' A;
+			return;
+		}
+		if (no == 22)
+		{
+			ƒZƒŠƒt(2030, "");
+			'"This thing\'s cool!"' A;
+			return;
+		}
+		if (no == 5)
+		{
+			ƒZƒŠƒt(2130, "");
+			'"Something like this...' R;
+			' The world sure is a big place..."' A;
+			return;
+		}
+		if (no == 6)
+		{
+			ƒZƒŠƒt(2300, "");
+			'"Hmm? I\'ve got no interest in such things."' A;
+			return;
+		}
+		if (no == 7)
+		{
+			ƒZƒŠƒt(2500, "");
+			'"Sorry, but I don\'t care about litter."' A;
+			return;
+		}
+		if (no == 9)
+		{
+			ƒZƒŠƒt(2630, "");
+			'"Hey, look at this mess.' R;
+			' Who\'s in charge of this place?"' A;
+			return;
+		}
+		if (no == 10)
+		{
+			ƒZƒŠƒt(2560, "");
+			'"Wow..."' A;
+			return;
+		}
+		if (no == 11)
+		{
+			ƒZƒŠƒt(2570, "");
+			'"I think I\'ve seen this exact thing...' R;
+			' in Lord Gandhi\'s room..."' A;
+			return;
+		}
+		if (no == 12)
+		{
+			ƒZƒŠƒt(2580, "");
+			'"Oh, how nostalgic.' R;
+			' I collected these when I was young."' A;
+			return;
+		}
+		if (no == 13)
+		{
+			ƒZƒŠƒt(2590, "");
+			'"Oh... wow..."' A;
+			return;
+		}
+		if (no == 15)
+		{
+			ƒZƒŠƒt(2550, "");
+			'"Hmm...?' R;
+			' This isn\'t particularly rare."' A;
+			return;
+		}
+		if (no == 16)
+		{
+			ƒZƒŠƒt(2963, "");
+			'"........."' A;
+			return;
+		}
+		if (no == 17)
+		{
+			ƒZƒŠƒt(2600, "");
+			'"Do you think that...' R;
+			' Masamune would like it...?"' A;
+			return;
+		}
+		if (no == 18)
+		{
+			ƒZƒŠƒt(2610, "");
+			'"Oh, I bet Mimi would love this!"' A;
+			return;
+		}
+		if (no == 20)
+		{
+			ƒZƒŠƒt(2110, "");
+			'"Ooh, there are a lot of interesting things here..."' A;
+			return;
+		}
+		if (no == 21)
+		{
+			ƒZƒŠƒt(2964, "");
+			'"I-I kinda... want somethin\' like this."' A;
+			return;
+		}
+		if (no == 26)
+		{
+			ƒZƒŠƒt(2050, "");
+			'"I don\'t really understand this sort of thing...' R;
+			' Sorry..."' A;
+			return;
+		}
+		if (no == 24)
+		{
+			ƒZƒŠƒt(2090, "");
+			'"What? This isn\'t really noteworthy.' R;
+			' Let\'s push forward."' A;
+			return;
+		}
+		if (no == 25)
+		{
+			ƒZƒŠƒt(2730, "");
+			'"Eheheh, it\'s kinda funny."' A;
+			return;
+		}
+		if (no == 27)
+		{
+			ƒZƒŠƒt(2200, "");
+			'"Athena\'s a hunnerd times cuter \'an this thing.' R;
+			' Mmhmm."' R;
+			' ª Flirting' A;
+			return;
+		}
+		if (no == 28)
+		{
+			ƒZƒŠƒt(2690, "");
+			'"Something unusual...? Not really.' R;
+			' Let\'s hurry on."' A;
+			return;
+		}
+		if (no == 29)
+		{
+			ƒZƒŠƒt(2770, "");
+			'"I\'ll just use this time to do some maintenance on my Tulip..."' A;
+			return;
+		}
+		if (no == 30)
+		{
+			ƒZƒŠƒt(2680, "");
+			'"What\'s important is... is it cute...' R;
+			' or is it not... Just that."' A;
+			return;
+		}
+		if (no == 31)
+		{
+			ƒZƒŠƒt(2945, "");
+			'"Moromi wants to go home early today.' R;
+			' So let\'s not stop to gawk at stuff."' A;
+			return;
+		}
+		if (no == 32)
+		{
+			ƒZƒŠƒt(2540, "");
+			'"This reminds me of the face of an old pharmacist from my country..."' R;
+			' ª Teary-eyed' A;
+			return;
+		}
+		if (no == 33)
+		{
+			ƒZƒŠƒt(2060, "");
+			'"Let\'s hurry on."' A;
+			return;
+		}
+		if (no == 38)
+		{
+			ƒZƒŠƒt(2140, "");
+			'"H-Hmm...?' R;
+			' Guess there\'s a lot here..."' A;
+			return;
+		}
+		if (no == 39)
+		{
+			ƒZƒŠƒt(2650, "");
+			'"Come on, let\'s continue."' A;
+			return;
+		}
+		if (no == 40)
+		{
+			ƒZƒŠƒt(2510, "");
+			'"Working... sure is hard..."' A;
+			return;
+		}
+		if (no == 41)
+		{
+			ƒZƒŠƒt(2530, "");
+			'"Ooh, I kinda want this!' R;
+			' C\'mon, Rancey, get it for me!"' A;
+			return;
+		}
+		if (no == 42)
+		{
+			ƒZƒŠƒt(2310, "");
+			'"It doesn\'t look very unusual, but...' R;
+			' What, is it rare...?"' A;
+			return;
+		}
+		if (no == 45)
+		{
+			ƒZƒŠƒt(2947, "");
+			'"Heh... nothing particularly unusual."' A;
+			return;
+		}
+		if (no == 48)
+		{
+			ƒZƒŠƒt(2280, "");
+			'"Linin\' this up in the shop...' R;
+			' Nah, it wouldn\'t sell, would it..."' A;
+			return;
+		}
+		if (no == 50)
+		{
+			ƒZƒŠƒt(2490, "");
+			'"Rr?"' R;
+			' ª Sniffing' A;
+			return;
+		}
+		if (no == 51)
+		{
+			ƒZƒŠƒt(2620, "");
+			'"Hm, hm, hm. What is this?"' A;
+			return;
+		}
+		if (no == 52)
+		{
+			ƒZƒŠƒt(2760, "");
+			'"It doesn\'t look very unusual to me?"' A;
+			return;
+		}
+		if (no == 53)
+		{
+			ƒZƒŠƒt(2965, "");
+			'"It\'ll explode!"' A;
+			return;
+		}
+		if (no == 54)
+		{
+			ƒZƒŠƒt(2150, "");
+			'"Nothing worth looking at here.' R;
+			' Let\'s hurry on, Darling."' A;
+			return;
+		}
+		if (no == 56)
+		{
+			ƒZƒŠƒt(2803, "");
+			'"Oh, I can use this!' R;
+			' Eeheehee, what a good find!"' A;
+			return;
+		}
+		if (no == 57)
+		{
+			ƒZƒŠƒt(2180, "");
+			'"Myyy, veeery cuuute, isn\'t it?"' A;
+			return;
+		}
+		if (no == 58)
+		{
+			ƒZƒŠƒt(2040, "");
+			'"Oh, who cares about that?' R;
+			' Let\'s just hurry and finish the job."' A;
+			return;
+		}
+		if (no == 59)
+		{
+			ƒZƒŠƒt(2944, "");
+			'"...What the heck\'s this?"' A;
+			return;
+		}
+		if (no == 60)
+		{
+			ƒZƒŠƒt(2740, "");
+			'"Hmm, hmm...' R;
+			' Well, I\'ll make a note of it for now."' A;
+			return;
+		}
+		if (no == 61)
+		{
+			ƒZƒŠƒt(2750, "");
+			'"Oh... looking at it kinda...' R;
+			' gets me motivated..."' A;
+			return;
+		}
+		if (no == 62)
+		{
+			ƒZƒŠƒt(2521, "");
+			'"Eee... I\'m, kinda... scared..."' A;
+			return;
+		}
+	}
+	if (ğŒ == "’²‚×‚é")
+	{
+		if (no == 1)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Oh, what\'s this? Looks like a dirty magazine!' R;
+			' ...But it\'s too filthy...' R;
+			' No thanks."' A;
+			return;
+		}
+		if (no == 19)
+		{
+			ƒZƒŠƒt(2021, "");
+			'"Oh, somebody threw a can away here...' R;
+			' Geez, who would do this? I\'ll pick it up."' A;
+			return;
+		}
+		if (no == 22)
+		{
+			ƒZƒŠƒt(2030, "");
+			'"Oh, there\'s a shuriken here.' R;
+			' Lucky~"' A;
+			ƒZƒŠƒt(2005, "");
+			'"You\'re taking it...?"' A;
+			return;
+		}
+		if (no == 3)
+		{
+			ƒZƒŠƒt(2100, "");
+			'"Oh, found a wallet.' R;
+			' And it\'s pretty stuffed."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Alright, give it here."' A;
+			ƒZƒŠƒt(2100, "");
+			'"Nah, the guy who lost it is probably in trouble. We should return it."' A;
+			ƒZƒŠƒt(2005, "");
+			'"........."' A;
+			return;
+		}
+		if (no == 55)
+		{
+			ƒZƒŠƒt(2290, "");
+			'"Hm? Oh, a losin\' cow ticket for a cow race?' R;
+			' This is a lotta money...' R;
+			' That guy\'s life is over."' A;
+			return;
+		}
+		if (no == 4)
+		{
+			ƒZƒŠƒt(2120, "");
+			'"...I thought there was some mochi on the ground, but... I guess I was wrong."' A;
+			return;
+		}
+		if (no == 23)
+		{
+			vl(2220, "");
+			'(...Th-That\'s...' R;
+			' I feel like I may learn another secret if I pick it up.' R;
+			' I\'ll keep quiet.)' A;
+			return;
+		}
+		if (no == 6)
+		{
+			ƒZƒŠƒt(2300, "");
+			'"Oh, there\'s money here."' A;
+			ƒZƒŠƒt(2001, "");
+			'"Gahahaha, ka-ching!"' A;
+			ƒZƒŠƒt(2301, "");
+			'"Really, now.' R;
+			' Could you refrain from picking it up so eagerly?' R;
+			' How pathetic."' A;
+			return;
+		}
+		if (no == 9)
+		{
+			ƒZƒŠƒt(2630, "");
+			'"Hrm, trash, here...?"' R;
+			' What scoundrel would litter like this?' R;
+			' When I find him I\'ll have his hide."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Whoa, you don\'t have to get so mad..."' A;
+			ƒZƒŠƒt(2630, "");
+			'"...Was this your work?"' A;
+			ƒZƒŠƒt(2000, "");
+			'"...No, ma\'am."' A;
+			return;
+		}
+		if (no == 12)
+		{
+			vl(2580, "");
+			'(I-Is that a vibrator...?' R;
+			' Why... in a place like this...)' A;
+			ƒZƒŠƒt(2580, "");
+			'"........."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Rizna?"' A;
+			ƒZƒŠƒt(2580, "");
+			'"Aah! I\'m fine!"' A;
+			ƒZƒŠƒt(2005, "");
+			'"...Huh?"' A;
+			return;
+		}
+		if (no == 16)
+		{
+			ƒZƒŠƒt(2963, "");
+			'"........."' A;
+			return;
+		}
+	}
+	if (ğŒ == "”íŠQÒ")
+	{
+		if (no == 1 && ğŒ‚Q == "ƒC[ƒWƒX")
+		{
+			ƒZƒŠƒt(2004, "");
+			'"Mmm, you\'re looking good, Aegis...' R;
+			' It\'s your fault for not running away."' A;
+			˜gÁ‹();
+			ƒ~ƒjƒCƒxƒ“ƒg•\¦(4020, 1, 500);
+			ƒg‘‚«();
+			'Rance pounced on the immobile Aegis and shot a round off.' A;
+			˜gÁ‹();
+			ƒ~ƒjƒCƒxƒ“ƒg•\¦(0, 1, 500);
+			ƒZƒŠƒt(2016, "");
+			'"Phew...... I\'m satisfied."' A;
+			return;
+		}
+		if (no == 22 && ğŒ‚Q == "ƒC[ƒWƒX")
+		{
+			ƒZƒŠƒt(2030, "");
+			'"I went too far.' R;
+			' I\'m sorry."' A;
+			return;
+		}
+		if (no == 19)
+		{
+			ƒZƒŠƒt(2022, "");
+			'"S-Sorry..."' A;
+			return;
+		}
+		if (no == 26)
+		{
+			vl(2050, "");
+			'(What is this...?' R;
+			' Me??)' A;
+			return;
+		}
+	}
+	if (ğŒ == "’jqƒgƒCƒŒ")
+	{
+		if (no == 1)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Oh, perfect.' R;
+			' I\'ll take care of some business."' R;
+			'*shhhh*' A;
+			ƒg‘‚«();
+			'Rance relieved himself.' A;
+			return;
+		}
+		if (no == 19)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Sachiko. Hey, Sachiko."' A;
+			ƒZƒŠƒt(2020, "");
+			'"Yes? What is it?"' A;
+			ƒZƒŠƒt(2004, "");
+			'"You\'ve gotta pee now, right?"' A;
+			ƒZƒŠƒt(2024, "");
+			'"No, not really..."' A;
+			ƒZƒŠƒt(2004, "");
+			'"Oh, it\'s fine.' R;
+			' Don\'t be so reserved. Just do it here."' A;
+			ƒZƒŠƒt(2024, "");
+			'"........."' A;
+			ƒZƒŠƒt(2023, "");
+			'"Whaaa?!' R;
+			' N-No, I don\'t want to, I won\'t!"' A;
+			ƒZƒŠƒt(2001, "");
+			'"Gahahahahaha!' R;
+			' I wanna see a girl pee standing up.' R;
+			' C\'mon, take off your panties!"' A;
+			ƒZƒŠƒt(2022, "");
+			'"I-I don\'t want to!' R;
+			' Mommyyy!"' A;
+			ƒg‘‚«();
+			'Rance tried to rip Sachiko\'s panties off, but unfortunately, she escaped from the bathroom.' A;
+			ƒZƒŠƒt(2005, "");
+			'"Tch, damn."' A;
+			return;
+		}
+		if (no == 17)
+		{
+			ƒZƒŠƒt(2600, "");
+			'"How disgusting."' A;
+			'"...Grr."' A;
+			ƒZƒŠƒt(2005, "");
+			'"Oh, hey, don\'t go off by yourself."' A;
+			return;
+		}
+		if (no == 9)
+		{
+			ƒZƒŠƒt(2016, "");
+			'"Phew. I feel better."' A;
+			ƒZƒŠƒt(2630, "");
+			'"Hey, you made a mess.' R;
+			' Here\'s some tissue paper. Wipe it off."' A;
+			ƒZƒŠƒt(2005, "");
+			'"Whaaa...?"' A;
+			ƒZƒŠƒt(2630, "");
+			'"I won\'t allow you to do such an ill-mannered thing as leaving it dirty."' A;
+			'"Just do it."' A;
+			ƒZƒŠƒt(2005, "");
+			'".........Right..."' A;
+			ƒg‘‚«();
+			'Rance was forced to clean the toilet.' A;
+			return;
+		}
+		if (no == 21)
+		{
+			ƒZƒŠƒt(2964, "");
+			'"Oh, I\'ve gotta..."' A;
+			ƒZƒŠƒt(2005, "");
+			'"Pee? Hurry it up."' A;
+			ƒZƒŠƒt(2964, "");
+			'"Sorry, Master."' A;
+			ƒg‘‚«();
+			'When the girls had left, Rocky turned to the urinal.' A;
+			ƒZƒŠƒt(2964, "");
+			'"...Phew."' A;
+			ƒZƒŠƒt(2002, "");
+			'"Toooooooh!"' A;
+			ƒg‘‚«();
+			'*shake* *shake* *shake* *shake*!' R;
+			'Rance grabbed Rocky by the shoulders and shook him.' A;
+			ƒZƒŠƒt(2964, "");
+			'"Wawawawaaaaah!' R;
+			' P-Please stop, Masteeer!"' A;
+			ƒZƒŠƒt(2001, "");
+			'"Gahahahahahaha!"' A;
+			return;
+		}
+		if (no == 33)
+		{
+			ƒZƒŠƒt(2004, "");
+			'"Look, Crook.' R;
+			' Men pee in here every day."' A;
+			ƒZƒŠƒt(2060, "");
+			'"I suppose you\'re right.' R;
+			' It isn\'t good to hold it in.' R;
+			' You should go if you need to, Rance."' A;
+			ƒZƒŠƒt(2005, "");
+			'"........."' A;
+			'"You\'re no fun."' A;
+			ƒZƒŠƒt(2060, "");
+			'"??"' A;
+			return;
+		}
+		if (no == 39)
+		{
+			ƒZƒŠƒt(2650, "");
+			'"........."' A;
+			'"I\'ll be outside."' A;
+			ƒZƒŠƒt(2002, "");
+			'"Hey, don\'t fade out on your own!"' A;
+			return;
+		}
+		if (no == 50)
+		{
+			ƒZƒŠƒt(2490, "");
+			'"U-Ugh..."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Hm?"' A;
+			ƒZƒŠƒt(2490, "");
+			'"Rrrrh!"' A;
+			ƒg‘‚«();
+			'*thud* *thud* *thud*' R;
+			'Kibako rushed out of the men\'s bathroom.' A;
+			ƒZƒŠƒt(2005, "");
+			'"...Maybe it smells bad?"' A;
+			return;
+		}
+		if (no == 16)
+		{
+			ƒZƒŠƒt(2963, "");
+			'"........."' A;
+			return;
+		}
+		if (no == 55)
+		{
+			ƒZƒŠƒt(2290, "");
+			'"Hmm, betcha there are some business opportunities to be had here...' R;
+			' Hmm, towels... a clerk... memberships...? That\'s it!"' A;
+			ƒZƒŠƒt(2004, "");
+			'"Ooh, is the clerk a cute girl?' R;
+			' I bet she is!"' A;
+			return;
+		}
+		if (no == 4)
+		{
+			ƒZƒŠƒt(2120, "");
+			'"...Erm, wouldn\'t I be a bother...' R;
+			' in a men\'s restroom?"' A;
+			ƒZƒŠƒt(2000, "");
+			'"I could pee and you could see for yourself?"' A;
+			ƒZƒŠƒt(2123, "");
+			'"...Ugh..."' A;
+			return;
+		}
+		if (no == 23)
+		{
+			vl(2220, "");
+			'(...Oh... private graffiti. I shouldn\'t look at it.' R;
+			' I\'ll pretend I didn\'t see it.)' A;
+			return;
+		}
+	}
+	if (ğŒ == "—qƒgƒCƒŒ")
+	{
+		if (no == 1)
+		{
+			ƒZƒŠƒt(2005, "");
+			'"Hmm, same as the toilets in guy bathrooms, huh? I was kinda expecting more eroticism."' A;
+			return;
+		}
+		if (no == 42)
+		{
+			ƒZƒŠƒt(2313, "");
+			'"Hey, Rance!' R;
+			' Stop looking around in here!' R;
+			' You pervert!"' A;
+			return;
+		}
+		if (no == 19)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Hmm? So this is what girls\' bathrooms are like. Not that different, huh?"' A;
+			ƒZƒŠƒt(2020, "");
+			'"U-Umm... Let\'s get out of here already..."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Well, there\'s no rush."' A;
+			ƒZƒŠƒt(2020, "");
+			'".........Ugh..."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Hmm? Uh huh? I see, I see."' A;
+			ƒg‘‚«();
+			'*stare* *stare* *stare* *stare*' R;
+			'Rance observed the girls\' bathroom.' A;
+			ƒZƒŠƒt(2022, "");
+			'"This is making me really uncomfortable!"' A;
+			ƒZƒŠƒt(2001, "");
+			'"Gahahaha!"' A;
+			return;
+		}
+		if (no == 3)
+		{
+			ƒZƒŠƒt(2000, "");
+			'"Hmmm... Mmhmm..."' A;
+			ƒZƒŠƒt(2100, "");
+			'"........."' A;
+			ƒZƒŠƒt(2000, "");
+			'"So this is a girls\' bathroom, huh...?' R;
+			' Hmmmm...?"' A;
+			ƒZƒŠƒt(2100, "");
+			'"G-Geez, Bro...' R;
+			' Let\'s go somewhere else..."' A;
+			ƒZƒŠƒt(2102, "");
+			'"...I\'m kind nervous in here."' A;
+			return;
+		}
+		if (no == 55)
+		{
+			ƒZƒŠƒt(2290, "");
+			'"...Oh, couldn\'t ya just use some contraption to make water noises in the girls\' bathroom?!' R;
+			' Could ya save on your water bill?"' A;
+			ƒZƒŠƒt(2005, "");
+			'"...I don\'t get it.' R;
+			' What are you talking about?"' A;
+			return;
+		}
+		if (no == 4)
+		{
+			ƒZƒŠƒt(2120, "");
+			'"...Mainland-type..."' A;
+			return;
+		}
+		if (no == 23)
+		{
+			ƒZƒŠƒt(2220, "");
+			'"...Toilets are...' R;
+			' a secret place..."' A;
+			return;
+		}
+		if (no == 16)
+		{
+			ƒZƒŠƒt(2963, "");
+			'"........."' A;
+			return;
+		}
+		if (no == 21)
+		{
+			ƒZƒŠƒt(2964, "");
+			'"I-I-I..."' A;
+			'"I\'ll be outside!"' A;
+			ƒg‘‚«();
+			'Rocky ran out of the girls\' bathroom.' A;
+			ƒZƒŠƒt(2005, "");
+			'"...What are you, a blushing maiden?"' A;
+			return;
+		}
+		if (no == 48)
+		{
+			ƒZƒŠƒt(2280, "");
+			'"Hey, Boss.' R;
+			' fScuse me for a sec."' A;
+			ƒZƒŠƒt(2005, "");
+			'"Huh?"' A;
+			ƒg‘‚«();
+			'Tama gave a cursory wave and entered a stall.' A;
+			' ' R;
+			' <piss piss piss flusssh!>' A;
+			' ' R;
+			' <clack>' A;
+			ƒZƒŠƒt(2280, "");
+			'"Phew, that felt good."' A;
+			ƒZƒŠƒt(2005, "");
+			'"...You..."' A;
+			ƒZƒŠƒt(2280, "");
+			'"What?"' A;
+			return;
+		}
+		if (no == 25)
+		{
+			ƒZƒŠƒt(2730, "");
+			'"No, Rance."' A;
+			ƒZƒŠƒt(2000, "");
+			'"Oh? Oh? Oh?"' A;
+			ƒZƒŠƒt(2730, "");
+			'"No, no, no."' A;
+			ƒg‘‚«();
+			'Karma pushed Rance away.' A;
+			return;
+		}
+	}
+	if (no == 33)
+	{
+		ƒZƒŠƒt(2060, "");
+		'"What about it?' R;
+		' I don\'t think there\'s anything here.' R;
+		' Let\'s not waste time."' A;
+		return;
+	}
+	if (no == 2)
+	{
+		ƒZƒŠƒt^‘‡(iic);
+		'"........."' A;
+		return;
+	}
+}
+

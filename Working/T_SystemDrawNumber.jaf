@@ -1,0 +1,229 @@
+bool T_SystemDrawNumber::isSuspend()
+{
+	return this.m_spSlash.isSuspend();
+}
+
+bool T_SystemDrawNumber::isCreated()
+{
+	return this.m_spSlash.isCreated();
+}
+
+int T_SystemDrawNumber::getValue()
+{
+	return this.m_sValue.getValue();
+}
+
+int T_SystemDrawNumber::getMax()
+{
+	return this.m_sMax.getValue();
+}
+
+ref T_DrawNumber T_SystemDrawNumber::getNumber()
+{
+	return this.m_sValue;
+}
+
+ref T_DrawNumber T_SystemDrawNumber::getMaxNumber()
+{
+	return this.m_sMax;
+}
+
+T_SystemDrawNumber::T_SystemDrawNumber()
+{
+	this.clear();
+}
+
+T_SystemDrawNumber::~T_SystemDrawNumber()
+{
+	this.delete();
+}
+
+void T_SystemDrawNumber::create(int nFontSize, int nSlashCgNo, int nMax, int nWidth, int nHeight, int nValueMode, int nMaxMode)
+{
+	this.delete();
+	nValueMode = nValueMode < 0 ? 3 : nValueMode;
+	nMaxMode = nMaxMode < 0 ? nValueMode : nMaxMode;
+	this.m_spSlash.setCg(nSlashCgNo);
+	bool bBold = ‘¾ŽšŠm”F(258, 40);
+	int nW = (nWidth - this.m_spSlash.getWidth()) / 2;
+	int nH = nHeight;
+	this.m_sValue.create(nW, nH, nMax, nValueMode, 1, true);
+	this.m_sValue.setFontType(258);
+	this.m_sValue.setFontSize(nFontSize);
+	this.m_sValue.setFontBold(bBold);
+	this.m_sValue.setFontColor(255, 255, 255);
+	this.m_sMax.create(nW, nH, nMax, nMaxMode, 1, true);
+	this.m_sMax.setFontType(258);
+	this.m_sMax.setFontSize(nFontSize);
+	this.m_sMax.setFontBold(bBold);
+	this.m_sMax.setFontColor(255, 255, 255);
+	this.m_nWidth = nWidth;
+	this.m_nHeight = nHeight;
+}
+
+void T_SystemDrawNumber::delete()
+{
+	this.m_sValue.delete();
+	this.m_sMax.delete();
+	this.m_spSlash.delete();
+	this.clear();
+}
+
+void T_SystemDrawNumber::clear()
+{
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nWidth = -1;
+	this.m_nHeight = -1;
+}
+
+bool T_SystemDrawNumber::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY)
+{
+	if (rfsDst === NULL)
+	{
+		return false;
+	}
+	if (!this.m_sValue.copyToSprite(rfsDst, (nDstX + this.m_sValue.getPosX()) - this.m_nX, (nDstY + this.m_sValue.getPosY()) - this.m_nY))
+	{
+		return false;
+	}
+	if (!this.m_spSlash.copyToSprite(rfsDst, (nDstX + this.m_spSlash.getPosX()) - this.m_nX, (nDstY + this.m_spSlash.getPosY()) - this.m_nY, -1, -1, 0))
+	{
+		return false;
+	}
+	if (!this.m_sMax.copyToSprite(rfsDst, (nDstX + this.m_sMax.getPosX()) - this.m_nX, (nDstY + this.m_sMax.getPosY()) - this.m_nY))
+	{
+		return false;
+	}
+	return true;
+}
+
+void T_SystemDrawNumber::update(int nValue, bool bAnime, int nTotalTime)
+{
+	if (!this.m_spSlash.isCreated())
+	{
+		return;
+	}
+	if (bAnime)
+	{
+		this.m_sValue.update(nValue, nTotalTime);
+	}
+	else
+	{
+		this.m_sValue.setValue(nValue, false);
+	}
+	this.setPos(this.m_nX, this.m_nY);
+}
+
+bool T_SystemDrawNumber::animeStart(int nValue, int nTotalTime)
+{
+	if (!this.m_sValue.slotStart(nValue, nTotalTime))
+	{
+		return false;
+	}
+	this.setPos(this.m_nX, this.m_nY);
+	return true;
+}
+
+void T_SystemDrawNumber::animeEnd()
+{
+	this.m_sValue.slotEnd();
+	this.setPos(this.m_nX, this.m_nY);
+}
+
+int T_SystemDrawNumber::anime(int nTime)
+{
+	int nValue = this.m_sValue.slot(nTime);
+	this.setPos(this.m_nX, this.m_nY);
+	return nValue;
+}
+
+void T_SystemDrawNumber::setValue(int nValue, int nMaxValue)
+{
+	if (nValue < 0)
+	{
+		this.m_sValue.setValue(0, false);
+		this.m_sMax.setValue(0, false);
+		this.m_sValue.getText().setText("--", false);
+		this.m_sMax.getText().setText("--", false);
+	}
+	else
+	{
+		this.m_sValue.setValue(nValue, false);
+		if (nMaxValue >= 0)
+		{
+			this.m_sMax.setValue(nMaxValue, false);
+		}
+	}
+	this.setPos(this.m_nX, this.m_nY);
+}
+
+void T_SystemDrawNumber::setPos(int nX, int nY)
+{
+	if (this.m_nWidth <= 0 || this.m_nHeight <= 0)
+	{
+		return;
+	}
+	this.m_nX = nX;
+	this.m_nY = nY;
+	int nW2 = this.m_spSlash.getWidth();
+	if (nW2 <= 0)
+	{
+		return;
+	}
+	int nH1 = this.m_sValue.getHeight();
+	int nH2 = this.m_spSlash.getHeight();
+	int nH3 = this.m_sMax.getHeight();
+	int nX1 = 0;
+	int nX2 = 0;
+	int nX3 = 0;
+	int nY1 = nH1 > this.m_nHeight ? (nY + this.m_nHeight) - nH1 : nY + ((this.m_nHeight - nH1) + 1) / 2;
+	int nY2 = nH2 > this.m_nHeight ? (nY + this.m_nHeight) - nH2 : nY + ((this.m_nHeight - nH2) + 1) / 2;
+	int nY3 = nH3 > this.m_nHeight ? (nY + this.m_nHeight) - nH3 : nY + ((this.m_nHeight - nH3) + 1) / 2;
+	if (this.m_sValue.getMode() == 0)
+	{
+		nX1 = nX;
+		nX2 = nX1 + this.m_sValue.getRealWidth();
+		nX3 = nX2 + nW2;
+	}
+	else
+	{
+		int nW1 = this.m_sValue.getWidth();
+		int nW3 = this.m_sMax.getWidth();
+		nX1 = nX + (this.m_nWidth - nW1 - nW2 - nW3) / 2;
+		nX2 = nX1 + nW1;
+		nX3 = nX2 + nW2;
+	}
+	this.m_sValue.setPos(nX1, nY1);
+	this.m_spSlash.setPos(nX2, nY2);
+	this.m_sMax.setPos(nX3, nY3);
+}
+
+void T_SystemDrawNumber::setZ(int nZ)
+{
+	this.m_sValue.setZ(nZ);
+	this.m_sMax.setZ(nZ);
+	this.m_spSlash.setZ(nZ);
+}
+
+void T_SystemDrawNumber::setShow(bool bShow)
+{
+	this.m_sValue.setShow(bShow);
+	this.m_sMax.setShow(bShow);
+	this.m_spSlash.setShow(bShow);
+}
+
+bool T_SystemDrawNumber::suspend()
+{
+	this.m_sValue.suspend();
+	this.m_sMax.suspend();
+	return this.m_spSlash.suspend();
+}
+
+bool T_SystemDrawNumber::resume()
+{
+	this.m_sValue.resume();
+	this.m_sMax.resume();
+	return this.m_spSlash.resume();
+}
+

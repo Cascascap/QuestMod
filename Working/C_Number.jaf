@@ -1,0 +1,119 @@
+void ”š‚b‚f_‰Šú‰»()
+{
+	g_sNumberCg.free();
+}
+
+void ”š‚b‚f_I—¹ˆ—()
+{
+	g_sNumberCg.free();
+}
+
+bool ”š‚b‚f_ƒ[ƒh(int nCgNo, bool bHyphen)
+{
+	return g_sNumberCg.load(nCgNo, bHyphen);
+}
+
+bool ”š‚b‚f_ƒAƒ“ƒ[ƒh(int nCgNo)
+{
+	return g_sNumberCg.unload(nCgNo);
+}
+
+bool ”š‚b‚f_ƒnƒCƒtƒ“İ’è(int nCgNo, int nHyphenCgNo)
+{
+	return g_sNumberCg.setHyphen(nCgNo, nHyphenCgNo);
+}
+
+int ”š‚b‚f_•(int nCgNo)
+{
+	return g_sNumberCg.getWidth(nCgNo);
+}
+
+int ”š‚b‚f_‚(int nCgNo)
+{
+	return g_sNumberCg.getHeight(nCgNo);
+}
+
+bool ”š‚b‚f_•¡”ƒRƒs[(int nCgNo, string szText, ref array@T_Sprite aspNumber)
+{
+	if (nCgNo <= 0)
+	{
+		return false;
+	}
+	if (aspNumber === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = aspNumber.Numof();
+	if (szText.Empty() || szText.Length() != cnt)
+	{
+		return false;
+	}
+	int nW = ”š‚b‚f_•(nCgNo);
+	int nH = ”š‚b‚f_‚(nCgNo);
+	if (nW <= 0 || nH <= 0)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsNum = aspNumber[i];
+		rfsNum.setSurfaceArea(0, 0, nW, nH);
+		if (!”š‚b‚f_ƒRƒs[(rfsNum, 0, 0, nCgNo, szText[i], 0, 0, nW, nH))
+		{
+			drawGraph_FillAMap(rfsNum, 0, 0, nW, nH, 0);
+		}
+	}
+	return true;
+}
+
+bool ”š‚b‚f_ƒRƒs[(ref T_Sprite spDst, int nDx, int nDy, int nCgNo, int nNumber, int nSrcX, int nSrcY, int nWidth, int nHeight)
+{
+	if (!ƒXƒvƒ‰ƒCƒg_—LŒø(spDst))
+	{
+		return false;
+	}
+	int nSpNo = -1;
+	if (nNumber == 45)
+	{
+		nSpNo = g_sNumberCg.getHyphen(nCgNo);
+	}
+	else if (nNumber != 32)
+	{
+		nSpNo = g_sNumberCg.getSpNo(nCgNo, •¶š_”’l_•ÏŠ·(nNumber));
+	}
+	if (nSpNo < 0)
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	spWork.attach(nSpNo);
+	spDst.copyCg(nDx, nDy, spWork, nSrcX, nSrcY, nWidth, nHeight);
+	spWork.detach();
+	return true;
+}
+
+void ”š_ƒRƒs[(ref T_Sprite spDst, int nDx, int nDy, int nValue, int nCgNo, bool bHyphen, int nCount, int nMode)
+{
+	T_Number sNumber;
+	ref T_Sprite spNum;
+	sNumber.create(nCgNo, bHyphen, nCount, nMode, 0);
+	sNumber.setValue(nValue, 0, false);
+	spNum <- sNumber.getSp();
+	spDst.copyCg(nDx, nDy, spNum, 0, 0, spNum.getWidth(), spNum.getHeight());
+	sNumber.delete();
+}
+
+void ”š_ƒuƒŒƒ“ƒh(ref T_Sprite spDst, int nDx, int nDy, int nValue, int nCgNo, bool bHyphen, int nCount, int nMode)
+{
+	T_Number sNumber;
+	ref T_Sprite spNum;
+	sNumber.create(nCgNo, bHyphen, nCount, nMode, 0);
+	sNumber.setValue(nValue, 0, false);
+	spNum <- sNumber.getSp();
+	int nW = spNum.getWidth();
+	int nH = spNum.getHeight();
+	drawGraph_BlendAMap(spDst, nDx, nDy, spNum, 0, 0, nW, nH);
+	sNumber.delete();
+}
+

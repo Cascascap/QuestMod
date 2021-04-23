@@ -1,0 +1,132 @@
+CASConstructionStateSprite::CASConstructionStateSprite()
+{
+	this.m_nActiveIndex = -1;
+	this.m_bShow = true;
+}
+
+void CASConstructionStateSprite::Release()
+{
+	this.m_SpriteList.Free();
+}
+
+void CASConstructionStateSprite::Alloc(int nNumof)
+{
+	this.m_SpriteList.Alloc(nNumof);
+}
+
+ref CASConstructionSprite CASConstructionStateSprite::GetSprite(int nIndex)
+{
+	return this.m_SpriteList[nIndex];
+}
+
+void CASConstructionStateSprite::SetPos(int nX, int nY)
+{
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_SpriteList.Numof(); ++nIndex)
+	{
+		this.m_SpriteList[nIndex].SetPos(nX, nY);
+	}
+}
+
+void CASConstructionStateSprite::SetZ(int nZ)
+{
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_SpriteList.Numof(); ++nIndex)
+	{
+		this.m_SpriteList[nIndex].SetZ(nZ);
+	}
+}
+
+void CASConstructionStateSprite::SetShow(bool bShow)
+{
+	int nData = 0;
+	for (nData = 0; nData < this.m_SpriteList.Numof(); ++nData)
+	{
+		this.m_SpriteList[nData].SetShow(this.m_nActiveIndex == nData ? bShow : 0);
+	}
+	this.m_bShow = bShow;
+}
+
+bool CASConstructionStateSprite::GetShow()
+{
+	return this.m_bShow;
+}
+
+int CASConstructionStateSprite::GetX()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetX();
+}
+
+int CASConstructionStateSprite::GetY()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetY();
+}
+
+int CASConstructionStateSprite::GetZ()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetZ();
+}
+
+int CASConstructionStateSprite::GetWidth()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetWidth();
+}
+
+int CASConstructionStateSprite::GetHeight()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetHeight();
+}
+
+void CASConstructionStateSprite::SetActive(int nIndex)
+{
+	this.m_nActiveIndex = nIndex;
+	int nData = 0;
+	for (nData = 0; nData < this.m_SpriteList.Numof(); ++nData)
+	{
+		this.m_SpriteList[nData].SetShow(nIndex == nData);
+	}
+}
+
+int CASConstructionStateSprite::GetActive()
+{
+	return this.m_nActiveIndex;
+}
+
+bool CASConstructionStateSprite::IsMouseCursorIn()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return false;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].IsMouseCursorIn();
+}
+
+bool CASConstructionStateSprite::IsMouseCursorInRect()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return false;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].IsMouseCursorInRect();
+}
+

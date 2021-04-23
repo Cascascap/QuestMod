@@ -1,0 +1,15 @@
+void AFL_SetInvalidateFrameSkipWhileMessageSkip(bool bInvalidateFrameSkipWhileMessageSkip)
+{
+	ChipmunkSpriteEngine.SYSTEM_SetInvalidateFrameSkipWhileMessageSkip(bInvalidateFrameSkipWhileMessageSkip);
+}
+
+bool AFL_GetInvalidateFrameSkipWhileMessageSkip()
+{
+	return ChipmunkSpriteEngine.SYSTEM_GetInvalidateFrameSkipWhileMessageSkip();
+}
+
+void AFL_SetDrawMessageCharFunction(FTDrawMessageChar DrawMessageCharFunction)
+{
+	g_DrawMessageCharFunction = DrawMessageCharFunction;
+}
+

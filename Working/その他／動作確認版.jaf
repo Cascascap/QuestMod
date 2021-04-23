@@ -1,0 +1,348 @@
+void 動作確認／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ２(2945, "? ? ?");
+	'"........."' A;
+	'"...Hello! Hello?"' A;
+	'"Is it working? Can you hear me?"' A;
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2944, "");
+	'"Oh, there we are!"' A;
+	'"You can see us, right?"' A;
+	セリフ(2945, "");
+	'"Hello hello! This is the spec test for Rance Quest!"' A;
+	セリフ(2944, "");
+	'"Since there are probably computers that can\'t handle the 3D graphics and 1024x768 resolution."' A;
+	セリフ(2945, "");
+	'"Yep, so please play this and make sure the game runs and stuff☆"' A;
+	セリフ(2944, "");
+	'"But if you\'re seeing this right now, it means it at least runs."' A;
+	'"But if it\'s running really slow, then..."' A;
+	セリフ(2945, "");
+	'"Then...?"' A;
+	セリフ(2944, "");
+	'"Ugh... Well, we\'d be happy if you bought a new computer and played it... or something..."' A;
+	セリフ(2945, "");
+	'"Haha."' A;
+	セリフ(2944, "");
+	'"--Wait, where is he..."' A;
+	セリフ２(2001, "? ? ?");
+	'"Gahahaha!"' A;
+	セリフ(2944, "");
+	'"That voice..."' A;
+	ト書き();
+	'Prime and Megadeth turned around to see Rance attacking a sleeping Cessna.' A;
+	ミニイベント表示(0, 1, 500);
+	音楽(71, -1, -1);
+	セリフ２(2001, "");
+	'"Toooooh!' R;
+	' Gahahahahahahahahaha!"' A;
+	ト書き();
+	'We can\'t show all the gritty details, but he\'s got her XXX and is XXXing this and XXXing that and there may even be some XXXing involved.' A;
+	セリフ２(2943, "");
+	'"Zzz, zzz..."' A;
+	セリフ(2945, "");
+	'"Aww...' R;
+	' He really has sex wherever he wants, huh..."' A;
+	セリフ(2944, "");
+	'"Cessna won\'t even wake up when he\'s doing all that, huh..."' A;
+	セリフ２(2944, "");
+	'"Heeey! Cut it out already!"' A;
+	セリフ２(2002, "");
+	'"Oh! You wanna join in, Prima?!"' A;
+	セリフ２(2944, "");
+	'"Huh? H-Hey! Get off me!"' A;
+	セリフ２(2943, "");
+	'"...Ohh!"' R;
+	'  ↑ Woke up' A;
+	セリフ(2945, "");
+	'"What the heck are they doing..."' A;
+	エフェクトセット表示(7001, 0, gＭ, 0, 0, 0);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2001, "");
+	'"Gahahaha, that was great♪"' A;
+	セリフ(2944, "");
+	'"Ugh..."' A;
+	セリフ(2943, "");
+	'"...That was awful."' A;
+	セリフ(2945, "");
+	'"Okay, now that Captain Nympho\'s feeling better, let\'s get to work☆"' A;
+	セリフ(2000, "");
+	'"Yeah, leave it to me!' R;
+	' What are we doing?"' A;
+	セリフ(2945, "");
+	'"We\'re testing the specs!' R;
+	' We\'ll move around a bit and battle a bit and see if everything runs right."' A;
+	セリフ(2000, "");
+	'"Gotcha, gotcha.' R;
+	' Easy peasy for me, then."' A;
+	'"Okay, let\'s get going!"' A;
+	'"........."' A;
+	セリフ(2005, "");
+	'"...Wait, so how do we move?"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2945, "");
+	'"Okaaay, let\'s do a little map movement tutorial~"' A;
+	セリフ(2944, "");
+	'"If you left click, you\'ll walk in that direction, so you can just hold it down to move."' A;
+	セリフ(2945, "");
+	'"And if you right click, you can set a destination and you\'ll automatically head there!' R;
+	' That works too!"' A;
+	セリフ(2943, "");
+	'"You can use... the arrow keys too...' R;
+	' Use whichever... you prefer..."' A;
+	セリフ(2944, "");
+	'"You\'ll figure it out while you go.' R;
+	' Just try it out and you\'ll see."' A;
+	セリフ(2945, "");
+	'"That\'s it!"' A;
+	セリフ(2943, "");
+	'"...Oh. Are we... done?"' A;
+	セリフ(2945, "");
+	'"We\'re just getting started, hon☆"' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Okay, let\'s get this over with."' A;
+	'"Onward!"' A;
+	ADVOFF();
+}
+
+void 動作確認／Ａポイント()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"...What\'s this green mark?"' A;
+	セリフ(2944, "");
+	'"This shows where events occur."' A;
+	'"I guess there are gonna be a bunch of different marks like this around dungeons in Rance Quest."' A;
+	セリフ(2000, "");
+	'"Oho."' A;
+	セリフ(2944, "");
+	'"Events, battles, treasure, traps..."' A;
+	セリフ(2000, "");
+	'"What about a woman mark?"' A;
+	セリフ(2944, "");
+	'"A woman mark?"' A;
+	セリフ(2000, "");
+	'"Something that indicates that a woman will fall from the sky and we\'ll have sex there."' A;
+	セリフ(2945, "");
+	'"Dream on☆"' A;
+	セリフ(2944, "");
+	'"Actually, that\'ll probably happen at these event marks..."' A;
+	セリフ(2943, "");
+	'"Oh, and... look at the top right..."' A;
+	セリフ(2000, "");
+	'"Hm? The top right?"' A;
+	セリフ(2943, "");
+	'"Is there a little... number labeled \'FPS\'...?"' A;
+	セリフ(2000, "");
+	'"Mhm. What about it?"' A;
+	セリフ(2943, "");
+	'"That indicates... the graphic speed..."' A;
+	'"The bigger that number... the better the display... I guess?"' A;
+	'"I hear if you\'ve got XXX...' R;
+	' you\'re probably... good..."' A;
+	セリフ(2000, "");
+	'"Hmm..."' A;
+	ADVOFF();
+}
+
+void 動作確認／宝箱／開封後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Oh, picked up some kinda item.' R;
+	' Heheheh, lucky me."' A;
+	セリフ(2943, "");
+	'"Ah..."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2943, "");
+	'"This is an easy treasure chest...' R;
+	' without a lock or a trap or anything..."' A;
+	セリフ(2000, "");
+	'"Mm."' A;
+	セリフ(2943, "");
+	'"But some have dangerous traps...' R;
+	' so you... should be careful..."' A;
+	セリフ(2001, "");
+	'"Gahahaha, I\'ll be fine, since I can just make Sill open all those!"' A;
+	セリフ(2000, "");
+	'"Ah..."' A;
+	ト書き();
+	'Rance shut his mouth.' A;
+	セリフ(2005, "");
+	'"Uh, never mind.' R;
+	' Forget I said that."' A;
+	セリフ(2943, "");
+	'"..."' A;
+	'"I hope Sill... goes back to normal... soon..."' A;
+	セリフ(2000, "");
+	'"...Urgh."' A;
+	セリフ(2005, "");
+	'"No, I don\'t really care.' R;
+	' It\'s just a little inconvenient not having my slave around."' A;
+	'"Mm. I don\'t care either way, but I shouldn\'t just leave her, I guess.' R;
+	' Yeah, that\'s all. That\'s all it is."' A;
+	セリフ(2975, "");
+	'"...Zzz."' A;
+	セリフ(2002, "");
+	'"Ah! Hey, wake up!' R;
+	' Listen to me!"' A;
+	セリフ(2943, "");
+	'"...Ohh?"' A;
+	ADVOFF();
+}
+
+void 動作確認／戦闘前()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セット表示(0, gＭ, 0, 0);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"The heck is this super suspicious-looking thing?"' A;
+	セリフ(2000, "");
+	'"Could it be any more obvious that it\'s an enemy?"' A;
+	セリフ(2945, "");
+	'"Yep, the red, spiky guys are the enemies."' A;
+	'"Stuff like mid-bosses, that are a bit of a bother."' A;
+	セリフ(2944, "");
+	'"By the way, there aren\'t any in the spec test, but in the real game, there will be random encounters too."' A;
+	セリフ(2000, "");
+	'"So if we touch this, it\'s a battle, eh?' R;
+	' Poke, poke."' A;
+	セリフ(2944, "");
+	'"Hey, don\'t just poke it without telling us!"' A;
+	セリフ(2945, "");
+	'"Ack! There are the monsters!"' A;
+	セリフ(2000, "");
+	'"Hmph, we\'ll turn the tables on ’em!"' A;
+	ADVOFF();
+}
+
+void 動作確認／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セット表示(0, gＭ, 0, 0);
+	音楽(71, -1, -1);
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Oh, already over?' R;
+	' I wanted to fight more..."' A;
+	セリフ(2944, "");
+	'"Well, you\'ll get to in the real thing."' A;
+	セリフ(2000, "");
+	'"That\'s stupid."' A;
+	セリフ(2945, "");
+	'"Yeah, this is only a spec test, after all."' A;
+	'"Our work\'s pretty much over now."' A;
+	セリフ(2000, "");
+	'"We\'re done with this too?' R;
+	' That was quick..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2945, "");
+	'"So how was it?' R;
+	' I wonder if everything ran like it was supposed to."' A;
+	セリフ(2944, "");
+	'"It should be good as long as it runs without crashing, even if it\'s a little slow."' A;
+	セリフ(2943, "");
+	'"...Mm."' A;
+	'"If you keep going a bit past this... then that\'s it..."' A;
+	'"Thanks... for playing..."' A;
+	ADVOFF();
+}
+
+void 動作確認／ゴール()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セット表示(0, 5080, 0, 0);
+	音楽(84, -1, -1);
+	ト書き();
+	' ' R;
+	'     Alice\'s Mansion' A;
+	枠消去();
+	立ち絵表示(1080, 1, 200);
+	セリフ(2080, "");
+	'"Thank you so much!"' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+	セリフ(2080, "");
+	'"The test is over now.' R;
+	' I hope it all worked."' A;
+	'"Though if you got this far, I\'m sure it did."' A;
+	'"We\'re working hard on Rance Quest right now.' R;
+	' I hope you enjoy it!"' A;
+	セリフ(2916, "");
+	'"Caw, caw!"' A;
+}
+
+void 動作確認／ネット接続()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"Oh yes, one more thing before you go."' A;
+	'"We\'re thinking of putting some online features into Rance Quest."' A;
+	'"Would you help us do a little test of that now?"' A;
+	'"There are three pieces of data we\'re looking to collect."' A;
+	'"1. The answers to the questions we\'re about to ask.' C;
+	R();
+	' 2. The version of this test.' C;
+	R();
+	' 3. Your current FPS."' A;
+	'"We will not take any personal or other data."' A;
+	'"And we won\'t use it for anything other than game development."' A;
+	'"Oh, also, we\'ll only be using data we receive before XX/XX/2011."' A;
+}
+
+void 動作確認／ゴール／終了()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	セリフ(2080, "");
+	'"Well, I\'m looking forward to meeting you in the real thing."' A;
+	セリフ(2916, "");
+	'"Caaaw!"' A;
+	セリフ(2080, "");
+	'"Bye-bye!"' A;
+}
+

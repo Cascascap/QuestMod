@@ -1,0 +1,611 @@
+int スキルボタン_登録(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, bool bLongSkill, int nCharaNo, int nSkillNo, bool bActive)
+{
+	if (sButtonGroup === NULL)
+	{
+		return -1;
+	}
+	T_Button sButton;
+	int nType = スキル_ボタン種別(0, bLongSkill, nCharaNo, nSkillNo);
+	int nCgNo = nType == 10 ? 延長スキルボタン_ＣＧ番号(nSkillNo) : スキルボタン_ＣＧ番号(nSkillNo);
+	string szText = スキル_名前(nSkillNo);
+	int nRank = キャラスキル_ランク(nCharaNo, nSkillNo);
+	int nW = nType == 10 ? 167 : 142;
+	int nH = nType == 10 ? 24 : 24;
+	if (!スキルボタン_作成(nCgNo, nW, nH, szText, nRank, sButton))
+	{
+		return -1;
+	}
+	int nH2 = nH + 2;
+	int nX2 = nType == 10 ? nX + -25 : nX;
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX2, nY);
+	sButtonGroup.setButtonActive(nID, bActive);
+	sButtonGroup.setButtonSelectArea(nID, nX2, nY, nW, nH2);
+	return nH2;
+}
+
+bool スキルボタン_作成(int nCgNo, int nWidth, int nHeight, string szText, int nRank, ref T_Button sButton)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	sButton.delete();
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	T_TextSprite spWork3;
+	if (ＣＧ_幅(nCgNo) == nWidth * 2)
+	{
+		array@T_Sprite aspWork[2];
+		if (ＣＧ_分割_横(nCgNo, aspWork) != aspWork.Numof())
+		{
+			return false;
+		}
+		spWork1.attachSp(aspWork[0].detach());
+		spWork3.attachSp(aspWork[1].detach());
+	}
+	else
+	{
+		spWork1.setCg(nCgNo);
+		spWork3.setCg(nCgNo);
+	}
+	spWork2.copy(spWork1, false);
+	spWork2.blendColor(0, 0, 0, 128);
+	sact_text_metrics_t tmSkill;
+	int nTextWidth = スキルボタン_テキスト描画情報(nCgNo, tmSkill);
+	sButton.createSp(spWork1, spWork2, spWork3);
+	スキルボタン_スプライト描画(szText, nRank, nTextWidth, tmSkill, sButton.getSp(0), nHeight);
+	スキルボタン_スプライト描画(szText, nRank, nTextWidth, tmSkill, sButton.getSp(2), nHeight);
+	tmSkill.nColorR /= 2;
+	tmSkill.nColorG /= 2;
+	tmSkill.nColorB /= 2;
+	スキルボタン_スプライト描画(szText, nRank, nTextWidth, tmSkill, sButton.getSp(1), nHeight);
+	sButton.createFrame(0, nWidth, nHeight, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButton.createFrame(1, nWidth, nHeight, 255, 0, 0, 128, -2147483648, -2147483648, 0);
+	sButton.createFrame(2, nWidth, nHeight, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	return true;
+}
+
+int 戦闘スキル_登録(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, string szText, bool bActive)
+{
+	if (sButtonGroup === NULL)
+	{
+		return -1;
+	}
+	T_Button sButton;
+	if (!戦闘スキル_作成(nCgNo, szText, sButton))
+	{
+		return -1;
+	}
+	sButtonGroup.addButton(nID, sButton);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	sButtonGroup.setButtonActive(nID, bActive);
+	return sButton.getHeight();
+}
+
+bool 戦闘スキル_作成(int nCgNo, string szText, ref T_Button sButton)
+{
+	if (sButton === NULL)
+	{
+		return false;
+	}
+	sButton.delete();
+	T_TextSprite spWork1;
+	T_TextSprite spWork2;
+	T_TextSprite spWork3;
+	array@T_Sprite aspWork[2];
+	int i = 0;
+	int cnt = aspWork.Numof();
+	if (ＣＧ_分割_横(nCgNo, aspWork) != cnt)
+	{
+		return false;
+	}
+	int nH = aspWork[0].getHeight();
+	int nH2 = nH + 2;
+	spWork1.create(142, nH2, 0, 0, 0, 0);
+	spWork1.copyCg(0, 0, aspWork[0], 0, 0, 142, nH);
+	spWork2.copy(spWork1, false);
+	spWork2.blendColor(0, 0, 0, 128);
+	spWork3.create(142, nH2, 0, 0, 0, 0);
+	spWork3.copyCg(0, 0, aspWork[1], 0, 0, 142, nH);
+	for (i = 0; i < cnt; ++i)
+	{
+		aspWork[i].delete();
+	}
+	sact_text_metrics_t tmSkill;
+	int nTextWidth = スキルボタン_テキスト描画情報(nCgNo, tmSkill);
+	sButton.createSp(spWork1, spWork2, spWork3);
+	スキルボタン_スプライト描画(szText, 0, nTextWidth, tmSkill, sButton.getSp(0), nH);
+	スキルボタン_スプライト描画(szText, 0, nTextWidth, tmSkill, sButton.getSp(2), nH);
+	tmSkill.nColorR /= 2;
+	tmSkill.nColorG /= 2;
+	tmSkill.nColorB /= 2;
+	スキルボタン_スプライト描画(szText, 0, nTextWidth, tmSkill, sButton.getSp(1), nH);
+	sButton.createFrameColor(0, 216, 255, 0, 102);
+	sButton.createFrameColor(1, 255, 0, 0, 128);
+	sButton.createFrameColor(2, 216, 255, 0, 102);
+	return true;
+}
+
+bool スキルボタン_スプライト作成(int nSkillNo, int nRank, ref T_TextSprite spSkill)
+{
+	return _スキルボタン_スプライト作成(nSkillNo, nRank, スキルボタン_ＣＧ番号(nSkillNo), 142, 24, spSkill);
+}
+
+bool スキルボタン_スプライト作成_延長(int nSkillNo, int nRank, ref T_TextSprite spSkill)
+{
+	return _スキルボタン_スプライト作成(nSkillNo, nRank, 延長スキルボタン_ＣＧ番号(nSkillNo), 167, 24, spSkill);
+}
+
+bool _スキルボタン_スプライト作成(int nSkillNo, int nRank, int nCgNo, int nWidth, int nHeight, ref T_TextSprite spSkill)
+{
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	if (nCgNo <= 0)
+	{
+		return false;
+	}
+	if (spSkill === NULL)
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	spSkill.create(nWidth, nHeight, 0, 0, 0, 0);
+	spSkill.copyCg(0, 0, spWork, 0, 0, nWidth, nHeight);
+	spWork.delete();
+	sact_text_metrics_t tmSkill;
+	int nTextWidth = スキルボタン_テキスト描画情報(nCgNo, tmSkill);
+	return スキルボタン_スプライト描画(スキル_名前(nSkillNo), nRank, nTextWidth, tmSkill, spSkill, -1);
+}
+
+bool スキルボタン_スプライト描画(string szText, int nRank, int nTextWidth, ref sact_text_metrics_t tmSkill, ref T_TextSprite spSkill, int nHeight)
+{
+	if (szText.Empty() || tmSkill === NULL)
+	{
+		return false;
+	}
+	if (!テキストスプライト_有効(spSkill))
+	{
+		return false;
+	}
+	T_Sprite spWork;
+	int i = 0;
+	int cnt = nRank > 1 ? nRank - 1 : 0;
+	int nMarkW = 0;
+	int nMarkH = 0;
+	if (cnt > 0)
+	{
+		spWork.setCg(10123);
+		nMarkW = spWork.getWidth();
+		nMarkH = spWork.getHeight();
+	}
+	int nTextSpace = -4;
+	int nW1 = 0;
+	int nW2 = 0;
+	float spacing = 1.0;
+	tmSkill.nFace = 258;
+	SelectFontNumber(tmSkill.nFace);
+	SetFixedWidthSpacing(nTextSpace);
+	for (; ; )
+	{
+		spacing = 0.949999988079071;
+		if (tmSkill.nSize == 18)
+		{
+			spacing = 1.0;
+		}
+		SetSpacing(spacing);
+		SetFontSize(tmSkill.nSize);
+		nW1 = MeasureText(szText, true);
+		nW2 = nW1 + nMarkW * cnt + (cnt != 0 ? 2 : 0);
+		if (nW2 <= nTextWidth)
+		{
+			break;
+		}
+		spacing = 0.75;
+		nW1 = MeasureText(szText, true);
+		nW2 = nW1 + nMarkW * cnt + (cnt != 0 ? 2 : 0);
+		if (nW2 <= nTextWidth)
+		{
+			break;
+		}
+		spacing = 0.5;
+		nW1 = MeasureText(szText, true);
+		nW2 = nW1 + nMarkW * cnt + (cnt != 0 ? 2 : 0);
+		if (nW2 <= nTextWidth)
+		{
+			break;
+		}
+		if (tmSkill.nSize <= 12)
+		{
+			break;
+		}
+		tmSkill.nSize -= 2;
+	}
+	int nH = nHeight > 0 ? nHeight : spSkill.getHeight();
+	int nTx = 4 + (nTextWidth < nW2 ? 0 : (nTextWidth - nW2) / 2);
+	int nTy = CenterTextGetY(0, nH, tmSkill.nFace, tmSkill.nSize, false);
+	spSkill.textDrawPos2(1, nTx, nTy, szText, tmSkill, nTextSpace, spacing, true, false);
+	spSkill.setShadowRate(128, -1);
+	int nMarkX = nTx + nW1 + 2;
+	int nMarkY = (nH - nMarkH) / 2;
+	ref T_Sprite rfsBase = spSkill.getSp();
+	for (i = 0; i < cnt; ++i)
+	{
+		drawGraph_BlendAMap(rfsBase, nMarkX, nMarkY, spWork, 0, 0, nMarkW, nMarkH);
+		nMarkX += nMarkW;
+	}
+	return true;
+}
+
+bool スキルボタン_背景作成(int nX, int nY, string szText, ref T_Sprite spBack)
+{
+	return _スキルボタン_背景作成(nX, nY, 10121, szText, spBack);
+}
+
+bool _スキルボタン_背景作成(int nX, int nY, int nCgNo, string szText, ref T_Sprite spBack)
+{
+	if (!スプライト_有効(spBack))
+	{
+		return false;
+	}
+	T_TextSprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	sact_text_metrics_t tmBack;
+	tmBack.nSize = 18;
+	tmBack.nColorR = 205;
+	tmBack.nColorG = 255;
+	tmBack.nColorB = 86;
+	tmBack.nWeight = 0;
+	tmBack.nFace = 257;
+	spWork.textDrawCenter(0, szText, tmBack, 0);
+	drawGraph_BlendAMap(spBack, nX, nY, spWork.getSp(), 0, 0, spWork.getWidth(), spWork.getHeight());
+	ref T_DrawLineManager sText = spWork.getText();
+	int i = 0;
+	int cnt = sText.getCount();
+	int nAlpha = 153;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine sLine = sText.get(i);
+		int nX2 = 0;
+		int nY2 = 0;
+		int nW2 = 0;
+		int nH2 = 0;
+		T_Sprite spWork2;
+		spWork2.attach(sLine.getShadowSpNo());
+		nX2 = nX + spWork2.getPosX();
+		nY2 = nY + spWork2.getPosY();
+		nW2 = spWork2.getWidth();
+		nH2 = spWork2.getHeight();
+		drawGraph_BlendAMapAlpha(spBack, nX2, nY2, spWork2, 0, 0, nW2, nH2, nAlpha);
+		drawGraph_AddDA_DAxSA(spBack, nX2, nY2, spWork2, 0, 0, nW2, nH2);
+		spWork2.detach();
+		spWork2.attach(sLine.getTextSpNo());
+		nX2 = nX + spWork2.getPosX();
+		nY2 = nY + spWork2.getPosY();
+		nW2 = spWork2.getWidth();
+		nH2 = spWork2.getHeight();
+		drawGraph_BlendAMapAlpha(spBack, nX2, nY2, spWork2, 0, 0, nW2, nH2, nAlpha);
+		drawGraph_AddDA_DAxSA(spBack, nX2, nY2, spWork2, 0, 0, nW2, nH2);
+		spWork2.detach();
+	}
+	return true;
+}
+
+int スキルボタン_ＣＧ番号(int nSkillNo)
+{
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	switch (スキル_パネル色(nSkillNo))
+	{
+		case 100:
+			return 10112;
+		case 101:
+			return 10113;
+		case 102:
+			return 10115;
+		case 103:
+		case 105:
+			return 10116;
+		case 104:
+			return スキル_アイテム使用(nSkillNo) ? 10117 : 10118;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int ミニスキルボタン_ＣＧ番号(int nSkillNo)
+{
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	switch (スキル_パネル色(nSkillNo))
+	{
+		case 100:
+			return 10192;
+		case 101:
+			return 10193;
+		case 102:
+			return 10195;
+		case 104:
+			return スキル_アイテム使用(nSkillNo) ? 10197 : 10198;
+		case 103:
+		case 105:
+		default:
+			break;
+	}
+	return 0;
+}
+
+int ミニミニスキルボタン_ＣＧ番号(int nSkillNo)
+{
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	switch (スキル_パネル色(nSkillNo))
+	{
+		case 100:
+			return 10202;
+		case 101:
+			return 10203;
+		case 102:
+			return 10205;
+		case 104:
+			return スキル_アイテム使用(nSkillNo) ? 10207 : 10208;
+		case 103:
+		case 105:
+		default:
+			break;
+	}
+	return 0;
+}
+
+int 戦闘スキルＣＧ_番号(int nSkillNo, int nCount)
+{
+	if (nSkillNo <= 0 || nCount <= 0)
+	{
+		return -1;
+	}
+	switch (スキル_パネル色(nSkillNo))
+	{
+		case 100:
+			switch (nCount)
+			{
+				case 1:
+					return 10262;
+				case 2:
+					return 10252;
+				case 3:
+					return 10242;
+				case 4:
+					return 10232;
+				case 5:
+					return 10222;
+				default:
+			}
+			return 10172;
+		case 101:
+			switch (nCount)
+			{
+				case 1:
+					return 10263;
+				case 2:
+					return 10253;
+				case 3:
+					return 10243;
+				case 4:
+					return 10233;
+				case 5:
+					return 10223;
+				default:
+			}
+			return 10173;
+		case 104:
+			switch (nCount)
+			{
+				case 1:
+					return 10267;
+				case 2:
+					return 10257;
+				case 3:
+					return 10247;
+				case 4:
+					return 10237;
+				case 5:
+					return 10227;
+				default:
+			}
+			return 10177;
+		case 102:
+		case 103:
+		case 105:
+		default:
+			break;
+	}
+	return 0;
+}
+
+int 延長スキルボタン_ＣＧ番号(int nSkillNo)
+{
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	switch (スキル_パネル色(nSkillNo))
+	{
+		case 100:
+			return 10212;
+		case 101:
+			return 10213;
+		case 104:
+			return スキル_アイテム使用(nSkillNo) ? 10217 : 0;
+		case 102:
+		case 103:
+		case 105:
+		default:
+			break;
+	}
+	return 0;
+}
+
+int スキルボタン_テキスト描画情報(int nCgNo, ref sact_text_metrics_t tmSkill)
+{
+	if (tmSkill === NULL)
+	{
+		return -1;
+	}
+	int nTextWidth = 115;
+	tmSkill.nSize = 18;
+	tmSkill.nWeight = 0;
+	tmSkill.nFace = 258;
+	switch (nCgNo)
+	{
+		case 10112:
+		case 10212:
+			tmSkill.nColorR = 255;
+			tmSkill.nColorG = 200;
+			tmSkill.nColorB = 200;
+			break;
+		case 10113:
+		case 10213:
+			tmSkill.nColorR = 200;
+			tmSkill.nColorG = 255;
+			tmSkill.nColorB = 255;
+			break;
+		case 10117:
+		case 10217:
+			tmSkill.nColorR = 255;
+			tmSkill.nColorG = 220;
+			tmSkill.nColorB = 170;
+			break;
+		case 10118:
+			tmSkill.nColorR = 255;
+			tmSkill.nColorG = 220;
+			tmSkill.nColorB = 170;
+			break;
+		case 10115:
+		case 10116:
+			nTextWidth = 134;
+			tmSkill.nColorR = 140;
+			tmSkill.nColorG = 0;
+			tmSkill.nColorB = 0;
+			break;
+		case 10172:
+		case 10222:
+		case 10232:
+		case 10242:
+		case 10252:
+		case 10262:
+			tmSkill.nColorR = 255;
+			tmSkill.nColorG = 200;
+			tmSkill.nColorB = 200;
+			break;
+		case 10173:
+		case 10223:
+		case 10233:
+		case 10243:
+		case 10253:
+		case 10263:
+			tmSkill.nColorR = 200;
+			tmSkill.nColorG = 255;
+			tmSkill.nColorB = 255;
+			break;
+		case 10177:
+		case 10227:
+		case 10237:
+		case 10247:
+		case 10257:
+		case 10267:
+			tmSkill.nColorR = 255;
+			tmSkill.nColorG = 220;
+			tmSkill.nColorB = 170;
+			break;
+		default:
+			tmSkill.nColorR = 255;
+			tmSkill.nColorG = 200;
+			tmSkill.nColorB = 200;
+			break;
+	}
+	return nTextWidth;
+}
+
+int スキル_アイテム種別(int nSkillNo)
+{
+	switch (nSkillNo)
+	{
+		case 206:
+		case 207:
+		case 208:
+		case 209:
+		case 215:
+		case 226:
+			return 2;
+		case 166:
+		case 167:
+		case 451:
+			return 1;
+		default:
+			break;
+	}
+	return 0;
+}
+
+bool スキル_アイテム使用(int nSkillNo)
+{
+	return スキル_アイテム種別(nSkillNo) > 0;
+}
+
+bool スキル_アイテム使用_攻撃(int nSkillNo)
+{
+	return スキル_アイテム種別(nSkillNo) == 1;
+}
+
+bool スキル_アイテム使用_補助(int nSkillNo)
+{
+	return スキル_アイテム種別(nSkillNo) == 2;
+}
+
+int スキル_ボタン種別(int nType, bool bLongSkill, int nCharaNo, int nSkillNo)
+{
+	if (nCharaNo <= 0 || nSkillNo <= 0)
+	{
+		return nType;
+	}
+	if (nType != 0 && nType != 2)
+	{
+		return nType;
+	}
+	if (!bLongSkill)
+	{
+		return nType;
+	}
+	if (!スキル_行動(nSkillNo))
+	{
+		return nType;
+	}
+	int nCount = キャラスキル_使用回数(nCharaNo, nSkillNo);
+	int nMax = キャラスキル_使用回数最大(nCharaNo, nSkillNo);
+	if (nCount < 0 || nMax < 0)
+	{
+		return nType;
+	}
+	if (nCount >= nMax)
+	{
+		return nType;
+	}
+	return nType == 2 ? 12 : 10;
+}
+

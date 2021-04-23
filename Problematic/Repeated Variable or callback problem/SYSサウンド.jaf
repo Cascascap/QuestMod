@@ -1,0 +1,219 @@
+void SYS_PlaySE(int _効果音番号, bool WaitEnd, bool KeyOrReadSkip)
+{
+	if (_効果音番号 != 0 && !KiwiSoundEngine.Sound_IsExist(_効果音番号))
+	{
+		ERROR("効果音[%d]ロード失敗" % _効果音番号, 0);
+		_効果音番号 = 0;
+	}
+	if (_効果音番号 == 0)
+	{
+		KiwiSoundEngine.Sound_Stop(1);
+		return;
+	}
+	if (KeyOrReadSkip)
+	{
+		if (SYS_未読スキップ中確認())
+		{
+			return;
+		}
+	}
+	SYS_Ｍ送モード更新();
+	if (KeyOrReadSkip)
+	{
+		if (SYS_Ｍ送モード取得() == 1002)
+		{
+			return;
+		}
+	}
+	KiwiSoundEngine.Sound_Prepare(1, _効果音番号);
+	KiwiSoundEngine.Sound_Play(1);
+	g_BGMVolumeCapManager.BeginBGMFade(1, _効果音番号);
+	if (!WaitEnd)
+	{
+		return;
+	}
+	CASClick LButtonClick;
+	CASClick RButtonClick;
+	CASClick SpaceKeyClick;
+	CASClick ReturnKeyClick;
+	LButtonClick.Init(1, true);
+	RButtonClick.Init(2, true);
+	SpaceKeyClick.Init(32, true);
+	ReturnKeyClick.Init(13, true);
+	for (; ; )
+	{
+		if (!KiwiSoundEngine.Sound_IsPlay(1))
+		{
+			break;
+		}
+		if (KeyOrReadSkip)
+		{
+			if (SYS_未読スキップ中確認())
+			{
+				break;
+			}
+			if (SYS_既読スキップ中確認())
+			{
+				break;
+			}
+			if (LButtonClick.IsClick(-2147483648))
+			{
+				break;
+			}
+			if (RButtonClick.IsClick(-2147483648))
+			{
+				break;
+			}
+			if (SpaceKeyClick.IsClick(-2147483648))
+			{
+				break;
+			}
+			if (ReturnKeyClick.IsClick(-2147483648))
+			{
+				break;
+			}
+		}
+		UpdateView(true);
+	}
+	KiwiSoundEngine.Sound_Stop(1);
+}
+
+void SYS_StopSE()
+{
+	KiwiSoundEngine.Sound_Stop(1);
+}
+
+bool SYS_IsMuteVoice(int VoiceNumber)
+{
+	bool Mute = false;
+	if (SystemService.GetMixerMute(0, Mute) && Mute)
+	{
+		return true;
+	}
+	bool Mute = false;
+	if (SystemService.GetMixerMute(3, Mute) && Mute)
+	{
+		return true;
+	}
+	int nGroup = KiwiSoundEngine.Sound_GetGroupNumFromDataNum(VoiceNumber);
+	bool Mute = false;
+	if (SystemService.GetMixerMute(nGroup, Mute) && Mute)
+	{
+		return true;
+	}
+	return false;
+}
+
+void SYS_PlayVoice(int VoiceNumber)
+{
+	if (SYS_IsMuteVoice(VoiceNumber))
+	{
+		return;
+	}
+	KiwiSoundEngine.Sound_Prepare(2, VoiceNumber);
+	KiwiSoundEngine.Sound_Play(2);
+	g_BGMVolumeCapManager.BeginBGMFade(2, VoiceNumber);
+}
+
+void SYS_StopVoice()
+{
+	KiwiSoundEngine.Sound_Stop(2);
+}
+
+void SYS_StopVoiceByMessageClick()
+{
+	if (!g_bConfigStopVoiceByMessageClick)
+	{
+		return;
+	}
+	KiwiSoundEngine.Sound_Stop(2);
+}
+
+bool SYS_IsPlayVoice()
+{
+	return KiwiSoundEngine.Sound_IsPlay(2);
+}
+
+void SYS_PlayBGM(int 音楽番号, int LoopCount, int 効果タイプ, int 効果時間, int Volume)
+{
+	if (音楽番号 != 0 && !KiwiSoundEngine.Music_IsExist(音楽番号))
+	{
+		ERROR("音楽[%d]ロード失敗" % 音楽番号, 0);
+		音楽番号 = 0;
+	}
+	if (効果タイプ == -1)
+	{
+		効果タイプ = _音楽効果;
+	}
+	if (効果時間 == -1)
+	{
+		効果時間 = _音楽効果時間;
+	}
+	if (効果タイプ == 0)
+	{
+		効果時間 = 0;
+	}
+	if (_音楽 == 音楽番号)
+	{
+		if (g_BGMVolume != Volume)
+		{
+			SYS_BGM_SetVolume(Volume);
+			SYS_BGM_BeginFade(効果時間);
+		}
+		return;
+	}
+	g_BGMVolumeCapManager.ResetBGMFade();
+	KiwiSoundEngine.Music_Fade(ch音楽[ch音楽i], 効果時間, 0, 1);
+	ch音楽i = 1 - ch音楽i;
+	SYS_BGM_SetVolume(Volume);
+	if (音楽番号 != 0)
+	{
+		if (!KiwiSoundEngine.Music_Prepare(ch音楽[ch音楽i], 音楽番号))
+		{
+			system.Output("音楽【 %d 】番の準備に失敗しました" % 音楽番号);
+		}
+		KiwiSoundEngine.Music_Fade(ch音楽[ch音楽i], 0, 0, 0);
+		SYS_BGM_BeginFade(効果時間);
+		KiwiSoundEngine.Music_SetLoopCount(ch音楽[ch音楽i], LoopCount);
+		KiwiSoundEngine.Music_Play(ch音楽[ch音楽i]);
+	}
+	else
+	{
+		KiwiSoundEngine.Music_Stop(ch音楽[ch音楽i]);
+	}
+	PassRegister.RegistNumber(2, 音楽番号);
+	_音楽 = 音楽番号;
+}
+
+void SYS_BGM_SetVolume(int Volume)
+{
+	g_BGMVolume = Volume;
+}
+
+void SYS_BGM_BeginFade(int TotalTime)
+{
+	int VolumeCapRate = g_BGMVolumeCapManager.GetCurrentBGMVolumeCapRate();
+	int Volume = (g_BGMVolume * VolumeCapRate) / 100;
+	KiwiSoundEngine.Music_Fade(ch音楽[ch音楽i], TotalTime, Volume, 0);
+}
+
+int SYS_BGM_GetPlayingNumber()
+{
+	return _音楽;
+}
+
+bool SYS_IsPlayBGM()
+{
+	return KiwiSoundEngine.Music_IsPlay(ch音楽[ch音楽i]);
+}
+
+int SYS_BGM_GetPlayLength()
+{
+	return KiwiSoundEngine.Music_GetLength(ch音楽[ch音楽i]);
+}
+
+int SYS_BGM_GetPlayPos()
+{
+	return KiwiSoundEngine.Music_GetPos(ch音楽[ch音楽i]);
+}
+

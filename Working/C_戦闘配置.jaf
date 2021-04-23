@@ -1,0 +1,78 @@
+bool 戦闘データ_味方前衛(int nNo)
+{
+	return 戦闘配置_前衛(戦闘番号_味方インデクス(nNo));
+}
+
+bool 戦闘データ_味方後衛(int nNo)
+{
+	return 戦闘配置_後衛(戦闘番号_味方インデクス(nNo));
+}
+
+int 戦闘データ_味方配置(int nNo)
+{
+	return 戦闘配置(戦闘番号_味方インデクス(nNo));
+}
+
+bool 戦闘データ_敵前衛(int nNo)
+{
+	return 戦闘配置_前衛(戦闘番号_敵インデクス(nNo));
+}
+
+bool 戦闘データ_敵後衛(int nNo)
+{
+	return 戦闘配置_後衛(戦闘番号_敵インデクス(nNo));
+}
+
+int 戦闘データ_敵配置(int nNo)
+{
+	return 戦闘配置(戦闘番号_敵インデクス(nNo));
+}
+
+int 戦闘データ_敵並び(int nNo)
+{
+	return 戦闘配置_敵並び(戦闘番号_敵インデクス(nNo));
+}
+
+bool 戦闘配置_前衛(int nIndex)
+{
+	return nIndex == 0 || nIndex == 1 || nIndex == 2;
+}
+
+bool 戦闘配置_後衛(int nIndex)
+{
+	return nIndex == 3 || nIndex == 4;
+}
+
+int 戦闘配置(int nIndex)
+{
+	if (戦闘配置_前衛(nIndex))
+	{
+		return 1;
+	}
+	if (戦闘配置_後衛(nIndex))
+	{
+		return 2;
+	}
+	return -1;
+}
+
+int 戦闘配置_敵並び(int nIndex)
+{
+	switch (nIndex)
+	{
+		case 0:
+			return 0;
+		case 1:
+			return 2;
+		case 2:
+			return 4;
+		case 3:
+			return 1;
+		case 4:
+			return 3;
+		default:
+			break;
+	}
+	return -1;
+}
+

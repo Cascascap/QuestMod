@@ -1,0 +1,178 @@
+T_BattleMessage::T_BattleMessage()
+{
+}
+
+T_BattleMessage::~T_BattleMessage()
+{
+	this.delete();
+}
+
+void T_BattleMessage::create(int nZ)
+{
+	this.delete();
+	this.m_sFrame.create(nZ);
+}
+
+void T_BattleMessage::delete()
+{
+	this.m_sFrame.delete();
+	this.clear();
+}
+
+void T_BattleMessage::clear()
+{
+	this.m_nCharaNo = -1;
+	this.m_nType = -1;
+	this.m_nCheckTime = -1;
+}
+
+bool T_BattleMessage::update()
+{
+	if (this.m_nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_sWaitTimer.Get() < 2000)
+	{
+		return true;
+	}
+	this.hide();
+	return false;
+}
+
+bool T_BattleMessage::check(int nNo)
+{
+	if (this.m_nCharaNo > 0)
+	{
+		return false;
+	}
+	if (!戦闘番号_味方確認(nNo))
+	{
+		return false;
+	}
+	return this.m_sCheckTimer.Get() > 3000;
+}
+
+bool T_BattleMessage::checkResult()
+{
+	if (this.m_nCharaNo > 0)
+	{
+		return false;
+	}
+	int nTime = this.m_sCheckTimer.Get() + this.m_nCheckTime;
+	return nTime > 3000;
+}
+
+bool T_BattleMessage::show(int nCharaNo, int nType, string szMessage)
+{
+	if (!this.showFrame(nCharaNo, nType, szMessage))
+	{
+		return false;
+	}
+	this.m_nCharaNo = nCharaNo;
+	this.m_nType = nType;
+	this.m_sWaitTimer.Reset();
+	g_bBattleMessageCheck = false;
+	g_bBattleMessageUpdate = true;
+	return true;
+}
+
+void T_BattleMessage::hide()
+{
+	if (this.m_nCharaNo > 0)
+	{
+		this.m_sFrame.set(0, "");
+		this.m_nCharaNo = -1;
+		this.m_nType = -1;
+	}
+	this.resetCheckTimer(0);
+	g_bBattleMessageCheck = true;
+	g_bBattleMessageUpdate = false;
+}
+
+void T_BattleMessage::resetCheckTimer(int nTime)
+{
+	this.m_sCheckTimer.Reset();
+	this.m_nCheckTime = nTime > 0 ? nTime : 0;
+}
+
+bool T_BattleMessage::showFrame(int nCharaNo, int nType, string szMessage)
+{
+	if (szMessage.Empty())
+	{
+		goto label0;
+	}
+	int nNo = 戦闘番号_取得(nCharaNo);
+	if (nNo <= 0)
+	{
+		goto label0;
+	}
+	if (!戦闘データ_有効(nNo))
+	{
+		goto label0;
+	}
+	if (戦闘番号_味方確認(nNo))
+	{
+		int nX = 戦闘味方_顔位置Ｘ(nNo);
+		int nY = 戦闘味方_顔位置Ｙ(nNo);
+		switch (nNo)
+		{
+			case 1:
+			case 2:
+			case 4:
+			case 5:
+				if (this.m_sFrame.set(nType == 1 ? 3 : 1, szMessage))
+				{
+					this.m_sFrame.setPos(nX + 98, nY);
+					return true;
+				}
+				break;
+			case 3:
+				if (this.m_sFrame.set(nType == 1 ? 4 : 2, szMessage))
+				{
+					this.m_sFrame.setPos(nX - this.m_sFrame.getWidth(), nY);
+					return true;
+				}
+				break;
+			default:
+				break;
+		}
+		goto label0;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		int nX = 戦闘敵_位置Ｘ(nNo);
+		int nY = 戦闘敵_位置Ｙ(nNo) + 126;
+		switch (nNo)
+		{
+			case 11:
+			case 12:
+			case 14:
+				if (this.m_sFrame.set(nType == 1 ? 3 : 1, szMessage))
+				{
+					this.m_sFrame.setPos(nX + 196, nY);
+					return true;
+				}
+				break;
+			case 13:
+			case 15:
+				if (this.m_sFrame.set(nType == 1 ? 4 : 2, szMessage))
+				{
+					this.m_sFrame.setPos(nX - this.m_sFrame.getWidth(), nY);
+					return true;
+				}
+				break;
+			default:
+				break;
+		}
+		goto label0;
+	}
+	if (戦闘番号_従魔確認(nNo))
+	{
+		goto label0;
+	}
+label0:
+	this.hide();
+	return false;
+}
+

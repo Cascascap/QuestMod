@@ -1,0 +1,8 @@
+void SColorF::Set(float fR_, float fG_, float fB_, float fA_)
+{
+	this.fR = fR_;
+	this.fG = fG_;
+	this.fB = fB_;
+	this.fA = fA_;
+}
+

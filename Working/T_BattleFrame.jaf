@@ -1,0 +1,182 @@
+T_BattleFrame::T_BattleFrame()
+{
+	this.clear();
+}
+
+T_BattleFrame::~T_BattleFrame()
+{
+	this.delete();
+}
+
+bool T_BattleFrame::create()
+{
+	this.delete();
+	T_Sprite spCg;
+	if (spCg.setCg(10131) < 0)
+	{
+		return false;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_味方(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		ref T_Sprite rfsFrame = this.m_aspChara[i];
+		rfsFrame.copy(spCg, false);
+		rfsFrame.setPos(this.getFrameX(nNo), this.getFrameY(nNo, false));
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_敵(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		ref T_Sprite rfsFrame = this.m_aspMonster[i];
+		rfsFrame.copy(spCg, false);
+		rfsFrame.setPos(this.getFrameX(nNo), this.getFrameY(nNo, false));
+	}
+	spCg.delete();
+	return true;
+}
+
+void T_BattleFrame::delete()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_aspChara[i].delete();
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_aspMonster[i].delete();
+	}
+	this.clear();
+}
+
+void T_BattleFrame::clear()
+{
+	return;
+}
+
+void T_BattleFrame::changePos()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = 戦闘番号_敵(i);
+		if (!戦闘番号_存在確認(nNo))
+		{
+			continue;
+		}
+		ref T_Sprite rfsFrame = this.m_aspMonster[i];
+		rfsFrame.setPos(rfsFrame.getPosX(), this.getFrameY(nNo, true));
+	}
+}
+
+void T_BattleFrame::setZ(int nZ)
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_aspChara[i].setZ(nZ);
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_aspMonster[i].setZ(nZ);
+	}
+}
+
+void T_BattleFrame::setShow(bool bShow, int nNo)
+{
+	int i = 0;
+	if (nNo < 0)
+	{
+		for (i = 0; i < 5; ++i)
+		{
+			this.m_aspChara[i].setShow(bShow);
+		}
+		for (i = 0; i < 5; ++i)
+		{
+			this.m_aspMonster[i].setShow(bShow);
+		}
+		return;
+	}
+	ref T_Sprite rfsFrame = this.get(nNo);
+	if (rfsFrame !== NULL)
+	{
+		rfsFrame.setShow(bShow);
+	}
+}
+
+ref T_Sprite T_BattleFrame::get(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		return this.getChara(nNo);
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		return this.getMonster(nNo);
+	}
+	return NULL;
+}
+
+ref T_Sprite T_BattleFrame::getChara(int nNo)
+{
+	int idx = 戦闘番号_味方インデクス(nNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_aspChara[idx];
+}
+
+ref T_Sprite T_BattleFrame::getMonster(int nNo)
+{
+	int idx = 戦闘番号_敵インデクス(nNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_aspMonster[idx];
+}
+
+int T_BattleFrame::getFrameX(int nNo)
+{
+	int nX = 戦闘選択領域_Ｘ(nNo);
+	if (nX < 0)
+	{
+		return -1;
+	}
+	if (戦闘番号_味方確認(nNo))
+	{
+		return nX + 33;
+	}
+	return nX + (戦闘番号_敵インデクス(nNo) == 0 ? 30 : 28);
+}
+
+int T_BattleFrame::getFrameY(int nNo, bool bChange)
+{
+	int nY = 戦闘選択領域_Ｙ(nNo);
+	if (nY < 0)
+	{
+		return -1;
+	}
+	if (戦闘番号_味方確認(nNo))
+	{
+		return nY + -15;
+	}
+	if (!bChange)
+	{
+		if (戦闘データ_敵後衛(nNo))
+		{
+			return nY + 141;
+		}
+	}
+	return nY + 191;
+}
+

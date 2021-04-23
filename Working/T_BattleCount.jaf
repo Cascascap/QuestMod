@@ -1,0 +1,237 @@
+T_BattleCount::T_BattleCount()
+{
+	this.clear();
+}
+
+T_BattleCount::~T_BattleCount()
+{
+	this.delete();
+}
+
+bool T_BattleCount::create(int nIndex, int nX, int nY)
+{
+	ref T_Number rfsNumber = this.get(nIndex);
+	if (rfsNumber === NULL)
+	{
+		return false;
+	}
+	rfsNumber.create(10122, false, 2, 2, 0);
+	rfsNumber.setPos(nX + 120, nY + 5);
+	return true;
+}
+
+bool T_BattleCount::createTarget(int nNo, int nIndex, int nX, int nY, int nHeight)
+{
+	ref T_Number rfsNumber = this.getTarget(nNo, nIndex);
+	if (rfsNumber === NULL)
+	{
+		return false;
+	}
+	rfsNumber.create(10122, false, 2, 2, 0);
+	rfsNumber.setPos(nX + 120, nY + 5 + (nHeight > 24 ? (nHeight - 24) / 2 : 0));
+	return true;
+}
+
+void T_BattleCount::delete()
+{
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_asNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asNumber[i].delete();
+	}
+	for (i = 0; i < 10; ++i)
+	{
+		for (j = 0; j < cnt; ++j)
+		{
+			this.m_asTarget[i][j].delete();
+		}
+	}
+	this.clear();
+}
+
+void T_BattleCount::clear()
+{
+	return;
+}
+
+bool T_BattleCount::update(int nIndex, int nValue)
+{
+	int i = 0;
+	int cnt = this.m_asNumber.Numof();
+	if (nIndex < 0 || nIndex >= cnt)
+	{
+		return false;
+	}
+	this.m_asNumber[nIndex].setValue(nValue, 0, false);
+	for (i = 0; i < 10; ++i)
+	{
+		this.m_asTarget[i][nIndex].setValue(nValue, 0, false);
+	}
+	return true;
+}
+
+void T_BattleCount::setZ(int nZ)
+{
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_asNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asNumber[i].setZ(nZ);
+	}
+	for (i = 0; i < 10; ++i)
+	{
+		for (j = 0; j < cnt; ++j)
+		{
+			this.m_asTarget[i][j].setZ(nZ);
+		}
+	}
+}
+
+void T_BattleCount::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asNumber[i].setShow(bShow);
+	}
+	this.setTargetShow(false, -1, -1);
+}
+
+void T_BattleCount::setBlendRate(int nBlendRate)
+{
+	int i = 0;
+	int cnt = this.m_asNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asNumber[i].setBlendRate(nBlendRate);
+	}
+}
+
+bool T_BattleCount::setTargetPos(int nNo, int nIndex, int nX, int nY, int nHeight)
+{
+	ref T_Number rfsNumber = this.getTarget(nNo, nIndex);
+	if (rfsNumber === NULL)
+	{
+		return false;
+	}
+	rfsNumber.setPos(nX + 120, nY + 5 + (nHeight > 24 ? (nHeight - 24) / 2 : 0));
+	return true;
+}
+
+void T_BattleCount::setTargetZ(int nNo, int nZ)
+{
+	int idx = this.getTagetIndex(nNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_asNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asTarget[idx][i].setZ(nZ);
+	}
+}
+
+void T_BattleCount::setTargetShow(bool bShow, int nNo, int nIndex)
+{
+	int i = 0;
+	int j = 0;
+	int cnt = this.m_asNumber.Numof();
+	if (nNo > 0)
+	{
+		if (nIndex < 0)
+		{
+			int idx = this.getTagetIndex(nNo);
+			if (idx < 0)
+			{
+				return;
+			}
+			for (j = 0; j < cnt; ++j)
+			{
+				this.m_asTarget[idx][j].setShow(bShow);
+			}
+			return;
+		}
+		ref T_Number rfsNumber = this.getTarget(nNo, nIndex);
+		if (rfsNumber !== NULL)
+		{
+			rfsNumber.setShow(bShow);
+		}
+		return;
+	}
+	if (nIndex < 0)
+	{
+		for (i = 0; i < 10; ++i)
+		{
+			for (j = 0; j < cnt; ++j)
+			{
+				this.m_asTarget[i][j].setShow(bShow);
+			}
+		}
+		return;
+	}
+	for (i = 0; i < 10; ++i)
+	{
+		for (j = 0; j < cnt; ++j)
+		{
+			this.m_asTarget[i][j].setShow(j == nIndex ? bShow : 0);
+		}
+	}
+}
+
+void T_BattleCount::setNumberPos(int nIndex, int nX, int nY)
+{
+	ref T_Number rfsNumber = this.get(nIndex);
+	if (rfsNumber === NULL)
+	{
+		return;
+	}
+	rfsNumber.setPos(nX + 120, nY + 5);
+}
+
+ref T_Number T_BattleCount::get(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asNumber.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asNumber[nIndex];
+}
+
+ref T_Number T_BattleCount::getTarget(int nNo, int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asTarget.Numof(2))
+	{
+		return NULL;
+	}
+	int idx = this.getTagetIndex(nNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asTarget[idx][nIndex];
+}
+
+int T_BattleCount::getTagetIndex(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		return 戦闘番号_味方インデクス(nNo);
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		int idx = 戦闘番号_敵インデクス(nNo);
+		if (idx < 0)
+		{
+			return -1;
+		}
+		return idx + 5;
+	}
+	return -1;
+}
+

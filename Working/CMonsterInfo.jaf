@@ -1,0 +1,182 @@
+bool CMonsterInfo::Load(string FileName)
+{
+	if (!MonsterInfo.Load(FileName))
+	{
+		system.Error("ÉÇÉìÉXÉ^Å[ÉfÅ[É^Åy %s ÅzÇÃì«Ç›çûÇ›Ç…é∏îsÇµÇ‹ÇµÇΩ" % FileName);
+		return false;
+	}
+	return true;
+}
+
+void CMonsterInfo::Release()
+{
+	MonsterInfo.Release();
+}
+
+int CMonsterInfo::GetNumof()
+{
+	return MonsterInfo.GetNumof();
+}
+
+string CMonsterInfo::GetViewName(int nMonster)
+{
+	string Name = "";
+	MonsterInfo.GetViewName(nMonster, Name);
+	return Name;
+}
+
+string CMonsterInfo::GetPolyName(int nMonster)
+{
+	string Name = "";
+	MonsterInfo.GetPolyName(nMonster, Name);
+	return Name;
+}
+
+float CMonsterInfo::GetSpecular(int nMonster)
+{
+	return MonsterInfo.GetSpecular(nMonster);
+}
+
+float CMonsterInfo::GetScale(int nMonster)
+{
+	return MonsterInfo.GetScale(nMonster);
+}
+
+float CMonsterInfo::GetPosX(int nMonster)
+{
+	return MonsterInfo.GetPosX(nMonster);
+}
+
+float CMonsterInfo::GetPosY(int nMonster)
+{
+	return MonsterInfo.GetPosY(nMonster);
+}
+
+float CMonsterInfo::GetPosZ(int nMonster)
+{
+	return MonsterInfo.GetPosZ(nMonster);
+}
+
+float CMonsterInfo::GetShadowOffsetX(int nMonster)
+{
+	return MonsterInfo.GetShadowOffsetX(nMonster);
+}
+
+float CMonsterInfo::GetShadowOffsetY(int nMonster)
+{
+	return MonsterInfo.GetShadowOffsetY(nMonster);
+}
+
+float CMonsterInfo::GetShadowOffsetZ(int nMonster)
+{
+	return MonsterInfo.GetShadowOffsetZ(nMonster);
+}
+
+float CMonsterInfo::GetShadowBoxSizeX(int nMonster)
+{
+	return MonsterInfo.GetShadowBoxSizeX(nMonster);
+}
+
+float CMonsterInfo::GetShadowBoxSizeY(int nMonster)
+{
+	return MonsterInfo.GetShadowBoxSizeY(nMonster);
+}
+
+float CMonsterInfo::GetShadowBoxSizeZ(int nMonster)
+{
+	return MonsterInfo.GetShadowBoxSizeZ(nMonster);
+}
+
+string CMonsterInfo::GetWearEffectName(int nMonster)
+{
+	string Name = "";
+	MonsterInfo.GetWearEffectName(nMonster, Name);
+	return Name;
+}
+
+int CMonsterInfo::GetCameraSetting(int nMonster)
+{
+	return MonsterInfo.GetCameraSetting(nMonster);
+}
+
+int CMonsterInfo::GetNumofMotion(int nMonster)
+{
+	return MonsterInfo.GetNumofMotion(nMonster);
+}
+
+string CMonsterInfo::GetMotionName(int nMonster, int nMotion)
+{
+	string Name = "";
+	MonsterInfo.GetMotionName(nMonster, nMotion, Name);
+	return Name;
+}
+
+string CMonsterInfo::GetMotionDataName(int nMonster, int nMotion)
+{
+	string Name = "";
+	MonsterInfo.GetMotionDataName(nMonster, nMotion, Name);
+	return Name;
+}
+
+int CMonsterInfo::GetMotionType(int nMonster, int nMotion)
+{
+	return MonsterInfo.GetMotionType(nMonster, nMotion);
+}
+
+string CMonsterInfo::GetMotionEffectName(int nMonster, int nMotion)
+{
+	string Name = "";
+	MonsterInfo.GetMotionEffectName(nMonster, nMotion, Name);
+	return Name;
+}
+
+float CMonsterInfo::GetBeginFrame(int nMonster, int nMotion)
+{
+	return MonsterInfo.GetBeginFrame(nMonster, nMotion);
+}
+
+float CMonsterInfo::GetEndFrame(int nMonster, int nMotion)
+{
+	return MonsterInfo.GetEndFrame(nMonster, nMotion);
+}
+
+float CMonsterInfo::GetBeginLoopFrame(int nMonster, int nMotion)
+{
+	return MonsterInfo.GetBeginLoopFrame(nMonster, nMotion);
+}
+
+float CMonsterInfo::GetEndLoopFrame(int nMonster, int nMotion)
+{
+	return MonsterInfo.GetEndLoopFrame(nMonster, nMotion);
+}
+
+bool CMonsterInfo::GetColumnPos(int nMonster, ref float pfPosX, ref float pfPosY, ref float pfPosZ)
+{
+	return MonsterInfo.GetColumnPos(nMonster, pfPosX, pfPosY, pfPosZ);
+}
+
+float CMonsterInfo::GetColumnHeight(int nMonster)
+{
+	return MonsterInfo.GetColumnHeight(nMonster);
+}
+
+float CMonsterInfo::GetColumnRadius(int nMonster)
+{
+	return MonsterInfo.GetColumnRadius(nMonster);
+}
+
+int CMonsterInfo::GetDrawShadow(int nMonster)
+{
+	return MonsterInfo.GetDrawShadow(nMonster);
+}
+
+int CMonsterInfo::GetMakeShadow(int nMonster)
+{
+	return MonsterInfo.GetMakeShadow(nMonster);
+}
+
+float CMonsterInfo::GetShadowVolumeBoneRadius(int nMonster)
+{
+	return MonsterInfo.GetShadowVolumeBoneRadius(nMonster);
+}
+

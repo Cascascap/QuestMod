@@ -1,0 +1,509 @@
+void 戦闘_味方エフェクト終了(int nTargetNo)
+{
+	if (nTargetNo <= 0)
+	{
+		return;
+	}
+	if (戦闘データ_瀕死状態(nTargetNo))
+	{
+		return;
+	}
+	int nNo = 戦闘_敵モーション番号(0, 0);
+	if (nNo != 0)
+	{
+		３Ｄ戦闘_モーション開始(戦闘番号_敵インデクス(nTargetNo), nNo);
+	}
+}
+
+void 戦闘_味方エフェクト終了_複数(ref array@int anTargetNo)
+{
+	if (anTargetNo === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = anTargetNo.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		戦闘_味方エフェクト終了(anTargetNo[i]);
+	}
+}
+
+void 戦闘_味方エフェクト_状態変化(int nNo, bool bPiyori, bool bDead, bool bPoison, bool bBarrier, bool bShield, bool bBreak, bool bRemain)
+{
+	戦闘エフェクト_再生待ち(false);
+	if (bPiyori)
+	{
+		戦闘エフェクト_味方補助(nNo, "ぴより・味方", false);
+		戦闘行動順_ぴより設定(nNo, true);
+	}
+	if (bPoison)
+	{
+		戦闘エフェクト_味方補助(nNo, "毒", false);
+	}
+	if (bBarrier)
+	{
+		戦闘エフェクト_味方補助(nNo, "マジックバリア・消費", false);
+	}
+	if (bShield)
+	{
+		戦闘エフェクト_味方補助(nNo, "盾反らし", false);
+	}
+	if (bBreak)
+	{
+		戦闘エフェクト_味方補助(nNo, "武器壊し", false);
+	}
+	if (bRemain)
+	{
+		戦闘エフェクト_味方補助(nNo, "踏ん張り", false);
+	}
+}
+
+void 戦闘_味方エフェクト_状態変化_複数(ref array@int anNo, ref array@bool abPiyori, ref array@bool abDead, ref array@bool abPoison, ref array@bool abBarrier, ref array@bool abShield, ref array@bool abBreak, ref array@bool abRemain)
+{
+	戦闘エフェクト_再生待ち(false);
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return;
+	}
+	if (abPiyori === NULL || abPiyori.Numof() < 5)
+	{
+		return;
+	}
+	if (abDead === NULL || abDead.Numof() < 5)
+	{
+		return;
+	}
+	if (abPoison === NULL || abPoison.Numof() < 5)
+	{
+		return;
+	}
+	if (abBarrier === NULL || abBarrier.Numof() < 5)
+	{
+		return;
+	}
+	if (abShield === NULL || abShield.Numof() < 5)
+	{
+		return;
+	}
+	if (abBreak === NULL || abBreak.Numof() < 5)
+	{
+		return;
+	}
+	if (abRemain === NULL || abRemain.Numof() < 5)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = anNo[i];
+		if (abPiyori[i])
+		{
+			戦闘エフェクト_味方補助(nNo, "ぴより・味方", false);
+			戦闘行動順_ぴより設定(nNo, true);
+		}
+		if (abPoison[i])
+		{
+			戦闘エフェクト_味方補助(nNo, "毒", false);
+		}
+		if (abBarrier[i])
+		{
+			戦闘エフェクト_味方補助(nNo, "マジックバリア・消費", false);
+		}
+		if (abShield[i])
+		{
+			戦闘エフェクト_味方補助(nNo, "盾反らし", false);
+		}
+		if (abBreak[i])
+		{
+			戦闘エフェクト_味方補助(nNo, "武器壊し", false);
+		}
+		if (abRemain[i])
+		{
+			戦闘エフェクト_味方補助(nNo, "踏ん張り", false);
+		}
+	}
+}
+
+void 戦闘_味方エフェクト_呪い発動(int nNo, bool bCurse)
+{
+	戦闘エフェクト_再生待ち(false);
+	if (bCurse)
+	{
+		戦闘エフェクト_味方単体(nNo, "死の呪い", false);
+	}
+}
+
+void 戦闘_敵エフェクト_状態変化(int nNo, bool bPiyori, bool bDead, bool bPoison, bool bCancel, bool bShield, bool bRemain)
+{
+	戦闘エフェクト_再生待ち(false);
+	if (bPiyori)
+	{
+		戦闘エフェクト_敵補助(nNo, "ぴより", false);
+		戦闘行動順_ぴより設定(nNo, true);
+	}
+	if (bPoison)
+	{
+		戦闘エフェクト_敵補助(nNo, "毒", false);
+	}
+	if (bShield)
+	{
+		戦闘エフェクト_敵補助(nNo, "盾反らし", false);
+	}
+	if (bRemain)
+	{
+		戦闘エフェクト_敵補助(nNo, "踏ん張り", false);
+	}
+}
+
+void 戦闘_敵エフェクト_状態変化_複数(ref array@int anNo, ref array@bool abPiyori, ref array@bool abDead, ref array@bool abPoison, ref array@bool abCancel, ref array@bool abShield, ref array@bool abRemain)
+{
+	戦闘エフェクト_再生待ち(false);
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return;
+	}
+	if (abPiyori === NULL || abPiyori.Numof() < 5)
+	{
+		return;
+	}
+	if (abDead === NULL || abDead.Numof() < 5)
+	{
+		return;
+	}
+	if (abPoison === NULL || abPoison.Numof() < 5)
+	{
+		return;
+	}
+	if (abCancel === NULL || abCancel.Numof() < 5)
+	{
+		return;
+	}
+	if (abShield === NULL || abShield.Numof() < 5)
+	{
+		return;
+	}
+	if (abRemain === NULL || abRemain.Numof() < 5)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = anNo[i];
+		if (abPiyori[i])
+		{
+			戦闘エフェクト_敵補助(nNo, "ぴより", false);
+			戦闘行動順_ぴより設定(nNo, true);
+		}
+		if (abPoison[i])
+		{
+			戦闘エフェクト_敵補助(nNo, "毒", false);
+		}
+		if (abShield[i])
+		{
+			戦闘エフェクト_敵補助(nNo, "盾反らし", false);
+		}
+		if (abRemain[i])
+		{
+			戦闘エフェクト_敵補助(nNo, "踏ん張り", false);
+		}
+	}
+}
+
+void 戦闘_敵エフェクト_呪い発動(int nNo, bool bCurse)
+{
+	戦闘エフェクト_再生待ち(false);
+	if (bCurse)
+	{
+		戦闘エフェクト_敵単体(nNo, "死の呪い", false);
+	}
+}
+
+void 戦闘_敵モーション実行(int nNo, int nMotionNo, bool bDead)
+{
+	bool bWait = true;
+	if (戦闘速度() == 2)
+	{
+		bWait = false;
+	}
+	int idx = 戦闘番号_敵インデクス(nNo);
+	３Ｄ戦闘_モーション開始(idx, nMotionNo);
+	３Ｄ戦闘_モーション終了(idx, 戦闘_敵モーション番号(0, 0), bWait, bDead);
+}
+
+void 戦闘_敵モーション実行_複数(int nMotionNo, ref array@int anNo, ref array@int anHp, ref array@bool abDead)
+{
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return;
+	}
+	if (anHp === NULL || anHp.Numof() < 5)
+	{
+		return;
+	}
+	if (abDead === NULL || abDead.Numof() < 5)
+	{
+		return;
+	}
+	int i = 0;
+	bool bWait = true;
+	if (戦闘速度() == 2)
+	{
+		bWait = false;
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = anNo[i];
+		if (nNo <= 0)
+		{
+			continue;
+		}
+		if (abDead[i])
+		{
+			break;
+		}
+	}
+	３Ｄ戦闘_モーション開始_複数(anNo, nMotionNo);
+	３Ｄ戦闘_モーション終了_複数(anNo, 戦闘_敵モーション番号(0, 0), bWait, abDead);
+}
+
+void 戦闘_敵モーション開始(int nNo, int nSkillNo)
+{
+	int nMotionNo = 戦闘_敵モーション番号(nNo, nSkillNo);
+	３Ｄ戦闘_モーション開始(戦闘番号_敵インデクス(nNo), nMotionNo);
+	string szEffectName = "";
+	int nType = 戦闘_敵エフェクト(nNo, nSkillNo, szEffectName);
+	モンスターエフェクト_再生(nNo, nType, szEffectName, false);
+}
+
+void 戦闘_敵モーション終了(int nNo, bool bNextMotion)
+{
+	bool bWait = true;
+	if (戦闘速度() == 2)
+	{
+		bWait = false;
+		モンスターエフェクト_停止();
+	}
+	３Ｄ戦闘_モーション終了(戦闘番号_敵インデクス(nNo), bNextMotion ? 戦闘_敵モーション番号(0, 0) : -1, bWait, false);
+}
+
+void 戦闘_敵モーション当たり待ち(int nNo, int nSkillNo)
+{
+	int nMonsterNo = 戦闘データ_モンスター番号(nNo);
+	int nMotionNo = 戦闘データ_スキルモーション(nNo, nSkillNo);
+	３Ｄ戦闘_モーション当たり待ち(戦闘番号_敵インデクス(nNo), 戦闘_敵モーション当たり待ち率(nMonsterNo, nMotionNo));
+}
+
+int 戦闘_敵モーション当たり待ち率(int nMonsterNo, int nMotionNo)
+{
+	if (戦闘速度() == 2)
+	{
+		return 0;
+	}
+	switch (nMonsterNo)
+	{
+		case 100034:
+		case 100048:
+		case 100195:
+		case 100196:
+		case 100197:
+		case 100198:
+		case 100227:
+		case 100235:
+		case 100276:
+			return 85;
+		case 100220:
+			return nMotionNo == 2 ? 85 : 60;
+		default:
+			break;
+	}
+	return 60;
+}
+
+int 戦闘_敵モーション番号(int nNo, int nSkillNo)
+{
+	if (nNo <= 0 || nSkillNo <= 0)
+	{
+		return 0;
+	}
+	return _戦闘_敵モーション番号(戦闘データ_スキルモーション(nNo, nSkillNo), 0);
+}
+
+int _戦闘_敵モーション番号(int nMotionType, int nMonsterNo)
+{
+	switch (nMotionType)
+	{
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	return 0;
+}
+
+bool 戦闘_敵フラッシュ(int nNo, int nTime)
+{
+	int idx = 戦闘番号_敵インデクス(nNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return ３Ｄ戦闘_モンスターフラッシュ(idx, nTime);
+}
+
+bool 戦闘_敵フラッシュ_複数(ref array@int anNo, int nTime)
+{
+	if (anNo === NULL)
+	{
+		return false;
+	}
+	return ３Ｄ戦闘_モンスターフラッシュ_複数(anNo, nTime);
+}
+
+bool 戦闘_敵点滅(int nNo, int nCount, int nTime)
+{
+	int idx = 戦闘番号_敵インデクス(nNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return ３Ｄ戦闘_モンスター点滅(idx, nCount, nTime);
+}
+
+void 戦闘_モンスター消し(int nNo)
+{
+	int idx = 戦闘番号_敵インデクス(nNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	３Ｄ戦闘_モンスター消し(idx);
+	if (戦闘データ_金袋ＧＥＴ(idx))
+	{
+		３Ｄ戦闘_金袋表示設定(idx, true);
+	}
+}
+
+void 戦闘_モンスター消し_複数(ref array@int anNo)
+{
+	if (anNo === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = anNo.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = 戦闘番号_敵インデクス(anNo[i]);
+		if (idx < 0)
+		{
+			continue;
+		}
+		３Ｄ戦闘_モンスター消し(idx);
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = 戦闘番号_敵インデクス(anNo[i]);
+		if (idx < 0)
+		{
+			continue;
+		}
+		if (戦闘データ_金袋ＧＥＴ(idx))
+		{
+			３Ｄ戦闘_金袋表示設定(idx, true);
+		}
+	}
+}
+
+void 戦闘_モンスター再表示(int nNo)
+{
+	int idx = 戦闘番号_敵インデクス(nNo);
+	if (idx < 0)
+	{
+		return;
+	}
+	３Ｄ戦闘_金袋表示設定(idx, false);
+	３Ｄ戦闘_モンスター再表示(idx, 500);
+}
+
+void 戦闘_モンスター再表示_複数(ref array@int anNo)
+{
+	if (anNo === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = anNo.Numof();
+	array@int anIndex;
+	for (i = 0; i < cnt; ++i)
+	{
+		int idx = 戦闘番号_敵インデクス(anNo[i]);
+		if (idx < 0)
+		{
+			continue;
+		}
+		３Ｄ戦闘_金袋表示設定(idx, false);
+		anIndex.PushBack(idx);
+	}
+	３Ｄ戦闘_モンスター再表示_複数(anIndex, 500);
+}
+
+void 戦闘_エフェクト_ぴより解除(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		return;
+	}
+}
+
+void 戦闘_エフェクト_カウンター(int nNo)
+{
+	if (戦闘番号_味方確認(nNo))
+	{
+		戦闘エフェクト_味方補助(nNo, "カウンター", false);
+		return;
+	}
+	if (戦闘番号_敵確認(nNo))
+	{
+		戦闘エフェクト_敵補助(nNo, "カウンター", false);
+		return;
+	}
+}
+
+void 戦闘_エフェクト_敵消滅(int nNo, bool bDead)
+{
+	if (!bDead)
+	{
+		return;
+	}
+	戦闘エフェクト_敵補助(nNo, "敵消滅", false);
+}
+
+void 戦闘_エフェクト_敵消滅_複数(ref array@int anNo, ref array@bool abDead)
+{
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return;
+	}
+	if (abDead === NULL || abDead.Numof() < 5)
+	{
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		if (abDead[i])
+		{
+			戦闘エフェクト_敵補助(anNo[i], "敵消滅", false);
+		}
+	}
+}
+

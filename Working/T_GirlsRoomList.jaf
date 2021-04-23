@@ -1,0 +1,288 @@
+int T_GirlsRoomList::getMonsterNo()
+{
+	return this.m_nMonsterNo;
+}
+
+T_GirlsRoomList::T_GirlsRoomList()
+{
+	this.clear();
+}
+
+T_GirlsRoomList::~T_GirlsRoomList()
+{
+	this.delete();
+}
+
+bool T_GirlsRoomList::create()
+{
+	this.delete();
+	this.m_sName.create(230, 27, -1, 0, 0, 1);
+	this.m_sName.setMaxLines(1);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setFontSize(22);
+	this.m_sName.setFontType(258);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setFontColor(255, 245, 100);
+	this.m_sNumber.create(37, 27, -1, 0, 1, 1);
+	this.m_sNumber.setTextSpace(-6);
+	this.m_sNumber.setFontSize(24);
+	this.m_sNumber.setFontType(258);
+	this.m_sNumber.setFontBold(太字確認(258, 40));
+	this.m_sNumber.setFontColor(255, 255, 255);
+	return true;
+}
+
+void T_GirlsRoomList::delete()
+{
+	this.m_sName.delete();
+	this.m_sNumber.delete();
+	this.clear();
+}
+
+void T_GirlsRoomList::clear()
+{
+	this.m_nMonsterNo = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+}
+
+bool T_GirlsRoomList::set(int nMonsterNo)
+{
+	if (!女の子モンスター_所持確認(nMonsterNo))
+	{
+		this.m_nMonsterNo = -1;
+		this.m_sName.setText("", false);
+		this.m_sNumber.setText("", false);
+		return false;
+	}
+	this.m_nMonsterNo = nMonsterNo;
+	this.m_sName.setText(女の子モンスター_名前(nMonsterNo), false);
+	this.m_sNumber.setText("・", false);
+	return true;
+}
+
+void T_GirlsRoomList::setPos(int nX, int nY)
+{
+	this.m_sName.setPos(nX + 37, nY + 0);
+	this.m_sNumber.setPos(nX + 0, nY + 0);
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_GirlsRoomList::setZ(int nZ)
+{
+	this.m_sName.setZ(nZ);
+	this.m_sNumber.setZ(nZ);
+}
+
+void T_GirlsRoomList::setShow(bool bShow)
+{
+	this.m_sName.setShow(bShow);
+	this.m_sNumber.setShow(bShow);
+}
+
+int T_GirlsRoomListManager::getIndex(int nMonsterNo)
+{
+	return this.searchItem(nMonsterNo);
+}
+
+int T_GirlsRoomListManager::getTopIndex()
+{
+	return this.m_nTopIndex;
+}
+
+int T_GirlsRoomListManager::getLockNo()
+{
+	return this.m_nLockNo;
+}
+
+int T_GirlsRoomListManager::getListCount()
+{
+	return this.m_anGirlsRoomList.Numof();
+}
+
+int T_GirlsRoomListManager::getList(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anGirlsRoomList.Numof() ? -1 : this.m_anGirlsRoomList[nIndex];
+}
+
+int T_GirlsRoomListManager::searchGirlsRoomList(int nMonsterNo)
+{
+	return nMonsterNo > 0 ? this.m_anGirlsRoomList.Find(0, this.m_anGirlsRoomList.Numof(), nMonsterNo) : -1;
+}
+
+T_GirlsRoomListManager::T_GirlsRoomListManager()
+{
+	this.clear();
+}
+
+T_GirlsRoomListManager::~T_GirlsRoomListManager()
+{
+	this.delete();
+}
+
+bool T_GirlsRoomListManager::create()
+{
+	this.delete();
+	int nCount = 女の子モンスター_一覧(this.m_anGirlsRoomList);
+	if (nCount <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_GirlsRoomList rfsItem = this.m_asItem[i];
+		rfsItem.create();
+		rfsItem.setPos(まめ知識一覧_Ｘ(i), まめ知識一覧_Ｙ(i));
+	}
+	this.m_spFrame.setCg(20003);
+	this.setTopIndex(0);
+	if (nCount > 0)
+	{
+		this.lock(this.m_anGirlsRoomList[0]);
+	}
+	return true;
+}
+
+void T_GirlsRoomListManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].delete();
+	}
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_GirlsRoomListManager::clear()
+{
+	if (!this.m_anGirlsRoomList.Empty())
+	{
+		this.m_anGirlsRoomList.Free();
+	}
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nTopIndex = -1;
+	this.m_nLockNo = -1;
+}
+
+int T_GirlsRoomListManager::setTopIndex(int nIndex)
+{
+	int cnt = this.m_anGirlsRoomList.Numof();
+	int cnt2 = this.m_asItem.Numof();
+	nIndex = cnt > cnt2 ? 数値_補正(nIndex, 0, cnt - cnt2) : 0;
+	int i = 0;
+	for (i = 0; i < cnt2; ++i)
+	{
+		int idx = i + nIndex;
+		this.m_asItem[i].set(idx < cnt ? this.m_anGirlsRoomList[idx] : 0);
+	}
+	this.m_nTopIndex = nIndex;
+	if (this.m_nZ > 0)
+	{
+		this.setZ(this.m_nZ);
+	}
+	this.setShow(this.m_bShow);
+	this.setLockNo(this.m_nLockNo);
+	return nIndex;
+}
+
+int T_GirlsRoomListManager::setLockNo(int nMonsterNo)
+{
+	if (nMonsterNo < 0)
+	{
+		this.unlock();
+		return 0;
+	}
+	if (!this.lock(nMonsterNo))
+	{
+		return -1;
+	}
+	return this.m_nLockNo;
+}
+
+void T_GirlsRoomListManager::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setZ(nZ);
+	}
+	this.m_spFrame.setZ(nZ + 20);
+	this.m_nZ = nZ;
+}
+
+void T_GirlsRoomListManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asItem[i].setShow(bShow);
+	}
+	this.m_spFrame.setShow(this.m_nLockNo > 0 ? bShow : 0);
+	this.m_bShow = bShow;
+}
+
+ref T_GirlsRoomList T_GirlsRoomListManager::getItem(int nMonsterNo)
+{
+	int idx = this.searchItem(nMonsterNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asItem[idx];
+}
+
+int T_GirlsRoomListManager::searchItem(int nMonsterNo)
+{
+	if (nMonsterNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asItem.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asItem[i].getMonsterNo() == nMonsterNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool T_GirlsRoomListManager::lock(int nMonsterNo)
+{
+	int idx = this.searchGirlsRoomList(nMonsterNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int idx2 = this.searchItem(nMonsterNo);
+	if (idx2 >= 0)
+	{
+		this.m_spFrame.setPos(まめ知識一覧_Ｘ(idx2) + 0, まめ知識一覧_Ｙ(idx2) + -1);
+		this.m_spFrame.setShow(this.m_bShow);
+		this.m_asItem[idx2].setShow(this.m_bShow);
+	}
+	else
+	{
+		this.m_spFrame.setShow(0);
+	}
+	this.m_nLockNo = nMonsterNo;
+	return true;
+}
+
+void T_GirlsRoomListManager::unlock()
+{
+	this.m_spFrame.setShow(0);
+	this.m_nLockNo = -1;
+}
+

@@ -1,0 +1,223 @@
+void チハ／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(◆マップ曲, -1, -1);
+	ト書き();
+	'This was Guatalcanal Field.' A;
+	'The fuse of a fated battle had just been lit.' A;
+	'97 Chi-Ha gal monsters were amassing troops to battle their longtime enemy, the yankees.' A;
+	セリフ２(2120, "97 Chi-Ha");
+	'"Thank you for gathering here today, everyone."' A;
+	ト書き();
+	'The 97 Chi-Ha, who were a little slow, were beaten up, disgraced, and bullied every time they were spotted by yankees.' A;
+	セリフ２(2120, "97 Chi-Ha");
+	'"But there are so many of us here now.' R;
+	' Justice is on our side!"' A;
+	'"Attack, my brethren!"' A;
+	'"Whoooa!"' A;
+	エフェクトセット表示(7001, 0, gＭ, 0, 0, 0);
+	ト書き();
+	'Someone watched the battle from atop a hill.' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmmm."' A;
+	'"It\'s rare to see battles between different kinds of monsters."' A;
+	'"Looks fun.' R;
+	' Let\'s go do a military intervention."' A;
+	セリフ(2001, "");
+	'"Gahahaha, toh!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance leapt down from the hill.' A;
+	ADVOFF();
+}
+
+void チハ／ｖｓチハ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"Oh, it\'s a platoon of Chi-Ha."' A;
+	セリフ２(2120, "97 Chi-Ha");
+	'"Everyone, in preparation for our battle with the yankees, begin your calisthenics!"' A;
+	'"One, two, three, four!"' A;
+	'"Oh, there\'s a human there!"' A;
+	'"Humans are on the yankees\' side! Fight!"' A;
+	セリフ(2003, "");
+	'"Yikes, they\'re coming this way."' A;
+	ト書き();
+	'The Chi-Ha attacked!' A;
+	ADVOFF();
+}
+
+void チハ／ｖｓヤンキー()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2000, "");
+	'"Oh, it\'s a platoon of yankees."' A;
+	セリフ２(2925, "Yankee");
+	'"HAHAHAHA!' R;
+	' You Chi-Ha won\'t accomplish anything no matter how many of you there are!"' A;
+	'"We\'ll strangle you to death again today!"' A;
+	'"This\'d be even easier if that shaman lady were here too."' A;
+	'"We\'ll still win!"' A;
+	セリフ(2002, "");
+	'"GO TO HELL, YANKEES!"' A;
+	セリフ２(2925, "Yankee");
+	'"WHAT?!"' A;
+	ADVOFF();
+}
+
+void チハ／エピローグ／ヤンキー勝利()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(75, -1, -1);
+	ト書き();
+	'　' R;
+	' <BWOOO~ BWOOO~~!>' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"Was that a conch?"' A;
+	ト書き();
+	'　' R;
+	' <ruuummmble!>' A;
+	セリフ(2000, "");
+	'"Whoa, tremors... It looks like the battle between the Chi-Ha and yankees has begun in earnest."' A;
+	'"Let\'s get out of here for now."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'　' R;
+	'     ... ... ...' A;
+	'The fierce battle raged on, both camps gradually sustaining losses.' A;
+	'The battle started with more than a hundred combatants, but their numbers had been whittled down to about 30.' A;
+	'And the battle reached its conclusion.' A;
+	'Those that remained were the...' A;
+	'　' R;
+	'     ... ... ...' A;
+	エフェクトセット表示(7001, 0, gＭ, 1000, 0, 0);
+	セリフ(2005, "");
+	'"The yankees, huh...?"' A;
+	ト書き();
+	'The yankees raised a victory cry on the field.' A;
+	セリフ(2005, "");
+	'"Well, I guess it\'s no surprise if they were up against Chi-Ha..."' A;
+	セリフ(2000, "");
+	'"Oh, one\'s got a Chi-Ha by the hair..."' A;
+	'"Ah, yeesh, he\'s draggin\' her away..."' A;
+	セリフ(2005, "");
+	'"Ah... She got pulled into a cave..."' A;
+	'"I bet they\'re gonna rape the crap out of her...' R;
+	' Poor thing..."' A;
+	セリフ(2000, "");
+	'"Well, it\'s survival of the fittest in the monster world.' R;
+	' That\'s just how this world is. Yup."' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance got bored and left.' A;
+}
+
+void チハ／エピローグ／チハ勝利()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(75, -1, -1);
+	ト書き();
+	'　' R;
+	' <BWOOO~ BWOOO~~!>' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2005, "");
+	'"Was that a conch?"' A;
+	ト書き();
+	'　' R;
+	' <ruuummmble!>' A;
+	セリフ(2000, "");
+	'"Whoa, tremors... It looks like the battle between the Chi-Ha and yankees has begun in earnest."' A;
+	'"Let\'s get out of here for now."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'　' R;
+	'     ... ... ...' A;
+	'The fierce battle raged on, both camps gradually sustaining losses.' A;
+	'The battle started with more than a hundred combatants, but their numbers had been whittled down to about 30.' A;
+	'And the battle reached its conclusion.' A;
+	'Those that remained were the...' A;
+	音楽(0, 1, 1000);
+	'　' R;
+	'     ... ... ...' A;
+	エフェクトセット表示(7001, 0, gＭ, 1000, 0, 0);
+	セリフ(2000, "");
+	'"Oh, the Chi-Ha won."' A;
+	音楽(93, -1, -1);
+	セリフ２(2120, "97 Chi-Ha");
+	'"We did it! We won!"' A;
+	'"Banzai! Banzai! Banzai!"' A;
+	ト書き();
+	'The 97 Chi-Ha on the field were hopping about, raising three cheers.' A;
+	セリフ(2000, "");
+	'"Mm. They look happy."' A;
+	'"Hm?"' A;
+	ト書き();
+	'The Chi-Ha rushed over to Rance.' A;
+	セリフ２(2120, "97 Chi-Ha");
+	'"We saw you, human.' R;
+	' We managed to win because you reduced the number of yankees."' A;
+	'"Thank you so much."' A;
+	'"Give thanks!"' A;
+	'"--Salute!"' A;
+	'"Bow!!"' A;
+	ト書き();
+	'　' R;
+	' <bam! bam bam!>' A;
+	ト書き();
+	'The thirty or so Chi-Ha all bowed at once.' A;
+	セリフ(2000, "");
+	'"Yeah, be grateful!"' A;
+	セリフ(2001, "");
+	'"Gahahaha!"' A;
+	セリフ２(2120, "97 Chi-Ha");
+	'"Accept this from us as thanks!"' A;
+	セリフ(2001, "");
+	'"Sure, I\'ll take it! Gahahahaha!"' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'That was how the Chi-Ha vs. yankee war ended.' A;
+}
+

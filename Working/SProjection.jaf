@@ -1,0 +1,23 @@
+void SProjection::Set(float fWidth_, float fHeight_, float fNear_, float fFar_, float fDeg_)
+{
+	this.fWidth = fWidth_;
+	this.fHeight = fHeight_;
+	this.fNear = fNear_;
+	this.fFar = fFar_;
+	this.fDeg = fDeg_;
+}
+
+SMatrix SProjection::GetMatrix()
+{
+	float dN = this.fNear;
+	float dF = this.fFar;
+	float dPI = 3.14159274101257;
+	float dHalfDeg = this.fDeg * 0.5;
+	float dTan = Math.Tan(dHalfDeg);
+	float dW = 1.0 / dTan;
+	float dH = this.fWidth / (dTan * this.fHeight);
+	SMatrix Matrix;
+	Matrix.Set(dW, 0.0, 0.0, 0.0, 0.0, dH, 0.0, 0.0, 0.0, 0.0, dF / (dF - dN), 1.0, 0.0, 0.0, (-dN * dF) / (dF - dN), 0.0);
+	return Matrix;
+}
+

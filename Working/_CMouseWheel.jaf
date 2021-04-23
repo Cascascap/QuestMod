@@ -1,0 +1,47 @@
+bool _CMouseWheel::_IsFore()
+{
+	return this._m_fore != 0;
+}
+
+bool _CMouseWheel::_IsBack()
+{
+	return this._m_back != 0;
+}
+
+int _CMouseWheel::GetForeCount()
+{
+	return this._m_fore;
+}
+
+int _CMouseWheel::GetBackCount()
+{
+	return this._m_back;
+}
+
+int _CMouseWheel::_GetDelta()
+{
+	return this._m_back - this._m_fore;
+}
+
+_CMouseWheel::_CMouseWheel()
+{
+	this._m_fore = 0;
+	this._m_back = 0;
+}
+
+void _CMouseWheel::_Update(bool _bClear)
+{
+	AFL_MouseWheel_GetCount(this._m_fore, this._m_back);
+	if (_bClear)
+	{
+		AFL_MouseWheel_ClearCount();
+	}
+}
+
+void _CMouseWheel::_Clear()
+{
+	AFL_MouseWheel_ClearCount();
+	this._m_fore = 0;
+	this._m_back = 0;
+}
+

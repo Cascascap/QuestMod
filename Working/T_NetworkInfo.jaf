@@ -1,0 +1,160 @@
+T_NetworkInfo::T_NetworkInfo()
+{
+	this.clear();
+}
+
+T_NetworkInfo::~T_NetworkInfo()
+{
+	this.delete();
+}
+
+void T_NetworkInfo::create(int nZ)
+{
+	this.delete();
+	this.m_spBase.setCg(10551);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_spBase.setShow(1);
+	sact_text_metrics_t tmTime;
+	tmTime.nSize = 28;
+	tmTime.nColorR = 80;
+	tmTime.nColorG = 250;
+	tmTime.nColorB = 190;
+	tmTime.nWeight = 0;
+	tmTime.nFace = 258;
+	this.m_sTime.createFromTextMetrics(1, this.getTotalPlayTime(), tmTime, -8);
+	this.m_sTime.setPos((1014 - this.m_sTime.getWidth()) + 1, (758 - this.m_sTime.getHeight()) + 1);
+	this.m_sTime.setZ(nZ + 1);
+	this.m_sTime.setShow(true);
+}
+
+void T_NetworkInfo::delete()
+{
+	this.m_spBase.delete();
+	this.m_spText.delete();
+	this.m_sTime.delete();
+	this.clear();
+}
+
+void T_NetworkInfo::clear()
+{
+	return;
+}
+
+bool T_NetworkInfo::show(string szTitle, string szComment, ref array@string aszText)
+{
+	this.hide();
+	if (aszText === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = aszText.Numof();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	this.createText(540, 412);
+	string szSeparator = ‘SŠp‹æØ‚è(20);
+	sact_text_metrics_t tmText;
+	tmText.nSize = 26;
+	tmText.nColorR = 80;
+	tmText.nColorG = 250;
+	tmText.nColorB = 190;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	int nTx = 416;
+	int nTy = 26;
+	int nIncY = 28;
+	this.m_spText.textDrawWidthCenter(1, nTy, szTitle, tmText, 0, false);
+	nTy += nIncY;
+	this.m_spText.textDrawWidthCenter(1, nTy, szComment, tmText, 0, false);
+	nTy += nIncY;
+	tmText.nWeight = •¶Žš‚Ì‘¾‚³(true, 258);
+	this.m_spText.textDrawWidthCenter(1, nTy, szSeparator, tmText, 0, false);
+	nTy += nIncY;
+	tmText.nWeight = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (aszText[i].Length() > 0)
+		{
+			array@string leftRight;
+			SplitTabs(aszText[i], leftRight);
+			this.m_spText.textDrawPos2(1, 104, nTy, leftRight[0], tmText, -8, 1.0, false, false);
+			this.m_spText.textDrawPos2(1, 442, nTy, leftRight[1], tmText, -8, 1.0, false, true);
+		}
+		nTy += nIncY;
+	}
+	this.m_spText.setPosCenter();
+	this.m_spText.setShow(true);
+	return true;
+}
+
+void T_NetworkInfo::hide()
+{
+	this.m_spText.delete();
+}
+
+void T_NetworkInfo::createText(int nWidth, int nHeight)
+{
+	this.m_spText.delete();
+	int nXX = 0;
+	int nYY = 0;
+	this.m_spText.create(nWidth, nHeight, 0, 0, 0, 102);
+	nXX += 10;
+	nYY += 10;
+	ref T_Sprite spWork = this.m_spText.getSp();
+	drawGraph_FillAMap(spWork, nXX, nYY, nWidth - nXX * 2, nHeight - nYY * 2, 255);
+	nXX += 2;
+	nYY += 2;
+	drawGraph_Fill(spWork, nXX, nYY, nWidth - nXX * 2, nHeight - nYY * 2, 0, 95, 255);
+	nXX += 1;
+	nYY += 1;
+	drawGraph_Fill(spWork, nXX, nYY, nWidth - nXX * 2, nHeight - nYY * 2, 80, 250, 190);
+	nXX += 1;
+	nYY += 1;
+	drawGraph_Fill(spWork, nXX, nYY, nWidth - nXX * 2, nHeight - nYY * 2, 0, 95, 255);
+	nXX += 1;
+	nYY += 1;
+	drawGraph_Fill(spWork, nXX, nYY, nWidth - nXX * 2, nHeight - nYY * 2, 0, 0, 0);
+	nXX += 2;
+	nYY += 2;
+	this.m_spText.fill(nXX, nYY, nWidth - nXX * 2, nHeight - nYY * 2, 14, 12, 40, 204);
+	this.m_spText.setZ(this.m_spBase.getZ() + 10, -1);
+}
+
+string T_NetworkInfo::getTotalPlayTime()
+{
+	int nTime = AFL_TotalPlayTime_GetMinuteTime();
+	int nMinute = nTime % 60;
+	nTime /= 60;
+	int nHour = nTime % 24;
+	int nDay = nTime / 24;
+	string response = "Play time: ";
+	if (nDay > 1)
+	{
+		response += "%d days " % nDay;
+	}
+	else if (nDay == 1)
+	{
+		response += "%d day " % nDay;
+	}
+	if (nHour > 1 || nDay > 0 && nHour != 1)
+	{
+		response += "%d hours " % nHour;
+	}
+	else if (nHour == 1)
+	{
+		response += "%d hour " % nHour;
+	}
+	if (nMinute != 1)
+	{
+		response += "%d minutes" % nMinute;
+	}
+	else
+	{
+		response += "%d minute" % nMinute;
+	}
+	return response;
+}
+

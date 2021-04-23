@@ -1,0 +1,372 @@
+CASConstructionSpriteImp::CASConstructionSpriteImp()
+{
+	this.m_bShow = true;
+	this.m_nSpriteNum = -1;
+	this.m_nAlpha = 255;
+	this.m_nWidth = 0;
+	this.m_nHeight = 0;
+}
+
+CASConstructionSpriteImp::~CASConstructionSpriteImp()
+{
+	this.Release();
+}
+
+void CASConstructionSpriteImp::Release()
+{
+	this.ReleaseSprite();
+	this.Clear();
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nZ = 0;
+	this.m_nAlpha = 255;
+	this.m_bShow = true;
+	this.m_nWidth = 0;
+	this.m_nHeight = 0;
+}
+
+void CASConstructionSpriteImp::ReleaseSprite()
+{
+	if (this.m_nSpriteNum != -1)
+	{
+		DeleteSprite(this.m_nSpriteNum);
+		this.m_nSpriteNum = -1;
+	}
+}
+
+void CASConstructionSpriteImp::Clear()
+{
+	this.m_ConstructionDataList.Free();
+}
+
+void CASConstructionSpriteImp::AddCreate(int nWidth, int nHeight)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetCreate(nWidth, nHeight);
+}
+
+void CASConstructionSpriteImp::AddCreatePixelOnly(int nWidth, int nHeight)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetCreatePixelOnly(nWidth, nHeight);
+}
+
+void CASConstructionSpriteImp::AddFill(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetFill(nX, nY, nWidth, nHeight, nR, nG, nB);
+}
+
+void CASConstructionSpriteImp::AddFillAlphaColor(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nA)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetFillAlphaColor(nX, nY, nWidth, nHeight, nR, nG, nB, nA);
+}
+
+void CASConstructionSpriteImp::AddFillAMap(int nX, int nY, int nWidth, int nHeight, int nAlpha)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetFillAMap(nX, nY, nWidth, nHeight, nAlpha);
+}
+
+void CASConstructionSpriteImp::AddFillWithAlpha(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nA)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetFillWithAlpha(nX, nY, nWidth, nHeight, nR, nG, nB, nA);
+}
+
+void CASConstructionSpriteImp::AddDrawText(int nX, int nY, string Text, sact_text_metrics_t tm, int CharSpace)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetDrawText(nX, nY, Text, tm, CharSpace);
+}
+
+void CASConstructionSpriteImp::AddFillGradationHorizon(int nX, int nY, int nWidth, int nHeight, int nTopR, int nTopG, int nTopB, int nBottomR, int nBottomG, int nBottomB)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetFillGradationHorizon(nX, nY, nWidth, nHeight, nTopR, nTopG, nTopB, nBottomR, nBottomG, nBottomB);
+}
+
+void CASConstructionSpriteImp::AddDrawRect(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetDrawRect(nX, nY, nWidth, nHeight, nR, nG, nB);
+}
+
+void CASConstructionSpriteImp::AddDrawLine(int nX0, int nY0, int nX1, int nY1, int nR, int nG, int nB)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetDrawLine(nX0, nY0, nX1, nY1, nR, nG, nB);
+}
+
+void CASConstructionSpriteImp::AddCreateDashChar(int nWidth, int nHeight, CASCharSpriteProperty Property)
+{
+	this.m_ConstructionDataList.Realloc(this.m_ConstructionDataList.Numof() + 1);
+	this.m_ConstructionDataList[this.m_ConstructionDataList.Numof() - 1].SetCreateDashChar(nWidth, nHeight, Property);
+}
+
+void CASConstructionSpriteImp::Build()
+{
+	this.ReleaseSprite();
+	this.m_nWidth = 0;
+	this.m_nHeight = 0;
+	if (this.m_ConstructionDataList.Empty())
+	{
+		return;
+	}
+	int nData = 0;
+	for (nData = 0; nData < this.m_ConstructionDataList.Numof(); ++nData)
+	{
+		ref CASConstructionData Data = this.m_ConstructionDataList[nData];
+		switch (Data.GetCommand())
+		{
+			case 0:
+				this.ReleaseSprite();
+				this.m_nSpriteNum = GetUnuseSpriteNum(1000);
+				CreateSprite(this.m_nSpriteNum, Data.GetDestWidth(), Data.GetDestHeight(), 0, 0, 0, 255);
+				this.m_nWidth = Data.GetDestWidth();
+				this.m_nHeight = Data.GetDestHeight();
+				break;
+			case 1:
+				this.ReleaseSprite();
+				this.m_nSpriteNum = GetUnuseSpriteNum(1000);
+				ChipmunkSpriteEngine.SP_CreatePixelOnly(this.m_nSpriteNum, Data.GetDestWidth(), Data.GetDestHeight());
+				this.m_nWidth = Data.GetDestWidth();
+				this.m_nHeight = Data.GetDestHeight();
+				break;
+			case 2:
+				if (this.m_nSpriteNum != -1)
+				{
+					DrawGraph.Fill(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY(), Data.GetDestWidth(), Data.GetDestHeight(), Data.GetR(), Data.GetG(), Data.GetB());
+				}
+				break;
+			case 3:
+				if (this.m_nSpriteNum != -1)
+				{
+					DrawGraph.FillAlphaColor(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY(), Data.GetDestWidth(), Data.GetDestHeight(), Data.GetR(), Data.GetG(), Data.GetB(), Data.GetA());
+				}
+				break;
+			case 4:
+				if (this.m_nSpriteNum != -1)
+				{
+					DrawGraph.FillAMap(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY(), Data.GetDestWidth(), Data.GetDestHeight(), Data.GetA());
+				}
+				break;
+			case 5:
+				if (this.m_nSpriteNum != -1)
+				{
+					DrawGraph.FillWithAlpha(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY(), Data.GetDestWidth(), Data.GetDestHeight(), Data.GetR(), Data.GetG(), Data.GetB(), Data.GetA());
+				}
+				break;
+			case 6:
+				this.BuildText(Data);
+				break;
+			case 7:
+				if (this.m_nSpriteNum != -1)
+				{
+					int nOffsetY = 0;
+					for (nOffsetY = 0; nOffsetY < Data.GetDestHeight(); ++nOffsetY)
+					{
+						int nR = Data.GetR() + ((Data.GetR2() - Data.GetR()) * nOffsetY) / Data.GetDestHeight();
+						int nG = Data.GetG() + ((Data.GetG2() - Data.GetG()) * nOffsetY) / Data.GetDestHeight();
+						int nB = Data.GetB() + ((Data.GetB2() - Data.GetB()) * nOffsetY) / Data.GetDestHeight();
+						DrawGraph.Fill(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY() + nOffsetY, Data.GetDestWidth(), 1, nR, nG, nB);
+					}
+				}
+				break;
+			case 8:
+				if (this.m_nSpriteNum != -1 && Data.GetDestWidth() > 0 && Data.GetDestHeight() > 0)
+				{
+					DrawGraph.Fill(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY(), Data.GetDestWidth(), 1, Data.GetR(), Data.GetG(), Data.GetB());
+					DrawGraph.Fill(this.m_nSpriteNum, Data.GetDestX(), (Data.GetDestY() + Data.GetDestHeight()) - 1, Data.GetDestWidth(), 1, Data.GetR(), Data.GetG(), Data.GetB());
+					DrawGraph.Fill(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY(), 1, Data.GetDestHeight(), Data.GetR(), Data.GetG(), Data.GetB());
+					DrawGraph.Fill(this.m_nSpriteNum, (Data.GetDestX() + Data.GetDestWidth()) - 1, Data.GetDestY(), 1, Data.GetDestHeight(), Data.GetR(), Data.GetG(), Data.GetB());
+				}
+				break;
+			case 9:
+				if (this.m_nSpriteNum != -1)
+				{
+					DrawGraph.DrawLine(this.m_nSpriteNum, Data.GetDestX(), Data.GetDestY(), Data.GetDestX2(), Data.GetDestY2(), Data.GetR(), Data.GetG(), Data.GetB());
+				}
+				break;
+			case 10:
+				this.ReleaseSprite();
+				this.m_nSpriteNum = GetUnuseSpriteNum(1000);
+				CASCharSpriteProperty Property;
+				Property = Data.GetCharSpriteProperty();
+				Property.SetProperty();
+				ChipmunkSpriteEngine.SP_SetDashTextSprite(this.m_nSpriteNum, Data.GetDestWidth(), Data.GetDestHeight());
+				this.m_nWidth = Data.GetDestWidth();
+				this.m_nHeight = Data.GetDestHeight();
+				break;
+		}
+	}
+	if (this.m_nSpriteNum != -1)
+	{
+		SetSpritePos(this.m_nSpriteNum, this.m_nX, this.m_nY);
+		SetSpriteZ(this.m_nSpriteNum, this.m_nZ);
+		SetSpriteBlendRate(this.m_nSpriteNum, this.m_nAlpha);
+		ShowSprite(this.m_nSpriteNum, this.m_bShow);
+	}
+}
+
+void CASConstructionSpriteImp::BuildText(ref CASConstructionData Data)
+{
+	if (this.m_nSpriteNum == -1)
+	{
+		return;
+	}
+	string Text = Data.GetText();
+	int TextLength = Text.Length();
+	int CharSpace = Data.GetSpace();
+	int X = Data.GetDestX();
+	int Y = Data.GetDestY();
+	CASCharSpriteProperty Property;
+	Property = SYS_TransCharSpriteProperty(Data.GetTextMetrics());
+	Property.SetProperty();
+	int TempCharSprite = GetUnuseSpriteNum(1000);
+	int Char = 0;
+	for (Char = 0; Char < TextLength; ++Char)
+	{
+		ChipmunkSpriteEngine.SP_SetTextSprite(TempCharSprite, Text.GetPart(Char, 1));
+		int CharSpriteWidth = ChipmunkSpriteEngine.SP_GetWidth(TempCharSprite);
+		int CharSpriteHeight = ChipmunkSpriteEngine.SP_GetHeight(TempCharSprite);
+		DrawGraph.BlendAMap(this.m_nSpriteNum, X, Y, TempCharSprite, 0, 0, CharSpriteWidth, CharSpriteHeight);
+		X += CharSpriteWidth;
+		X += CharSpace;
+	}
+	DeleteSprite(TempCharSprite);
+}
+
+void CASConstructionSpriteImp::SetPos(int nX, int nY)
+{
+	if (this.m_nX == nX && this.m_nY == nY)
+	{
+		return;
+	}
+	this.m_nX = nX;
+	this.m_nY = nY;
+	if (this.m_nSpriteNum != -1)
+	{
+		SetSpritePos(this.m_nSpriteNum, this.m_nX, this.m_nY);
+	}
+}
+
+void CASConstructionSpriteImp::SetZ(int nZ)
+{
+	if (this.m_nZ == nZ)
+	{
+		return;
+	}
+	this.m_nZ = nZ;
+	if (this.m_nSpriteNum != -1)
+	{
+		SetSpriteZ(this.m_nSpriteNum, this.m_nZ);
+	}
+}
+
+void CASConstructionSpriteImp::SetAlpha(int nAlpha)
+{
+	if (this.m_nAlpha == nAlpha)
+	{
+		return;
+	}
+	this.m_nAlpha = nAlpha;
+	if (this.m_nSpriteNum != -1)
+	{
+		SetSpriteBlendRate(this.m_nSpriteNum, this.m_nAlpha);
+	}
+}
+
+void CASConstructionSpriteImp::SetShow(bool bShow)
+{
+	if (this.m_bShow == bShow)
+	{
+		return;
+	}
+	this.m_bShow = bShow;
+	if (this.m_nSpriteNum != -1)
+	{
+		ShowSprite(this.m_nSpriteNum, this.m_bShow);
+	}
+}
+
+bool CASConstructionSpriteImp::GetShow()
+{
+	return this.m_bShow;
+}
+
+bool CASConstructionSpriteImp::IsMouseCursorIn()
+{
+	if (this.m_nSpriteNum == -1)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	int nX = 0;
+	int nY = 0;
+	if (!AFL_Mouse_GetPos(nX, nY))
+	{
+		return false;
+	}
+	return ChipmunkSpriteEngine.SP_IsPtIn(this.m_nSpriteNum, nX, nY);
+}
+
+bool CASConstructionSpriteImp::IsMouseCursorInRect()
+{
+	if (this.m_nSpriteNum == -1)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	int nX = 0;
+	int nY = 0;
+	if (!AFL_Mouse_GetPos(nX, nY))
+	{
+		return false;
+	}
+	return ChipmunkSpriteEngine.SP_IsPtInRect(this.m_nSpriteNum, nX, nY);
+}
+
+void CASConstructionSpriteImp::Rebuild()
+{
+	this.m_nSpriteNum = -1;
+	this.Build();
+}
+
+int CASConstructionSpriteImp::GetX()
+{
+	return this.m_nX;
+}
+
+int CASConstructionSpriteImp::GetY()
+{
+	return this.m_nY;
+}
+
+int CASConstructionSpriteImp::GetZ()
+{
+	return this.m_nZ;
+}
+
+int CASConstructionSpriteImp::GetAlpha()
+{
+	return this.m_nAlpha;
+}
+
+int CASConstructionSpriteImp::GetWidth()
+{
+	return this.m_nWidth;
+}
+
+int CASConstructionSpriteImp::GetHeight()
+{
+	return this.m_nHeight;
+}
+

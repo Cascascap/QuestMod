@@ -1,0 +1,470 @@
+bool T_StoreStock::blinkList()
+{
+	return this.m_sList.blink();
+}
+
+int T_StoreStock::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 6 ? -1 : 590000 + nIndex + 1;
+}
+
+int T_StoreStock::getItemIndex(int nID)
+{
+	int idx = nID + -590001;
+	return idx < 0 || idx >= 6 ? -1 : idx;
+}
+
+int T_StoreStock::getPrevItem(int nIndex)
+{
+	return this.getButtonID(this.m_sList.getPrev(nIndex));
+}
+
+int T_StoreStock::getNextItem(int nIndex)
+{
+	return this.getButtonID(this.m_sList.getNext(nIndex));
+}
+
+int T_StoreStock::getFirstItem()
+{
+	return this.getButtonID(this.m_sList.getFirst());
+}
+
+int T_StoreStock::getLastItem()
+{
+	return this.getButtonID(this.m_sList.getLast());
+}
+
+void T_StoreStock::updateScroll()
+{
+	this.m_sScroll.setValue(this.m_sList.getTopIndex(), this.m_sList.getListCount(), 6);
+}
+
+int T_StoreStock::getItemNo(int nIndex)
+{
+	return this.m_sList.getList(this.m_sList.getTopIndex() + nIndex);
+}
+
+T_StoreStock::T_StoreStock()
+{
+	this.clear();
+	this.m_rcArea1.set(538, 0, 381, 768);
+	this.m_rcArea2.set(101, 0, 381, 768);
+}
+
+T_StoreStock::~T_StoreStock()
+{
+	this.delete();
+}
+
+int T_StoreStock::run(int nZ, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	int nRet = 0;
+	if (!this.create(nZ, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType))
+	{
+		return -1;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID = アイテム倉庫_先頭アイテム();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+void T_StoreStock::scroll(int nValue)
+{
+	アイテム倉庫_選択解除();
+	this.m_sList.setTopIndex(nValue);
+	this.setButtonActive();
+	this.setButtonShow(true);
+}
+
+bool T_StoreStock::remake(int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	if (this.m_sList.remake(-1, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType) < 0)
+	{
+		return false;
+	}
+	this.setButtonActive();
+	this.setButtonShow(true);
+	this.updateScroll();
+	return true;
+}
+
+void T_StoreStock::execDrag(int nX, int nY)
+{
+	if (!this.m_spIcon.isCreated())
+	{
+		return;
+	}
+	this.m_spIcon.setPos(nX, nY);
+	int nID = this.m_sButtonLock.checkIntersect(this.m_spIcon.getSp());
+	switch (nID)
+	{
+		case 590001:
+			this.m_nSelectNo = 0;
+			break;
+		case 590002:
+			this.m_nSelectNo = 1;
+			break;
+		default:
+			this.m_nSelectNo = -1;
+			break;
+	}
+}
+
+bool T_StoreStock::execDrop(int nX, int nY)
+{
+	if (!this.m_spIcon.isCreated())
+	{
+		return false;
+	}
+	this.m_spIcon.setPos(nX, nY);
+	bool bRet = false;
+	if (this.m_nSelectNo < 0)
+	{
+		goto label0;
+	}
+	bRet = true;
+	this.m_nTargetNo = this.m_nSelectNo;
+label0:
+	return bRet;
+}
+
+void T_StoreStock::setSelect(int nID, bool bSelect)
+{
+	if (nID > 593000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 590000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+		return;
+	}
+	アイテム倉庫_選択設定(nID, bSelect);
+}
+
+bool T_StoreStock::create(int nZ, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
+{
+	this.delete();
+	if (this.m_sList.create(nZ, 11, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType) < 0)
+	{
+		return false;
+	}
+	this.m_sScroll.create(2, 688, 593000, 0, 0);
+	this.m_sScroll.setPos(482, 0);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&scrollStoreStok);
+	this.m_sButton.create();
+	this.m_sButtonLock.create();
+	int i = 0;
+	for (i = 0; i < 6; ++i)
+	{
+		ボタン登録_矩形(this.m_sButton, this.getButtonID(i), アイテム倉庫_位置Ｘ(i, true), アイテム倉庫_位置Ｙ(i, true), 381, 128, true);
+	}
+	ボタン登録_ＣＧ(this.m_sButton, 590999, 506, 4, 10007, -1, -1, -2147483648, -2147483648);
+	ボタン登録_矩形(this.m_sButtonLock, 590001, 538, 0, 381, 768, true);
+	ボタン登録_矩形(this.m_sButtonLock, 590002, 101, 0, 381, 768, true);
+	this.setZ(nZ);
+	this.setButtonActive();
+	this.updateScroll();
+	this.setShow(true);
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&アイテム保存庫_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&アイテム保存庫_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&アイテム保存庫_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&アイテム保存庫_右矢印);
+	this.m_sInputKey.setSelectCallback(&アイテム保存庫_選択設定);
+	return true;
+}
+
+void T_StoreStock::delete()
+{
+	this.endDrag();
+	this.m_sList.delete();
+	this.m_sScroll.delete();
+	this.m_sButton.delete();
+	this.m_sButtonLock.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_StoreStock::clear()
+{
+	this.m_nLockItem = 0;
+}
+
+int T_StoreStock::checkSelect(int nID)
+{
+	int nRet = 0;
+	int nID2 = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		nID2 = nID;
+		this.setSelect(nID2, true);
+	}
+	while (true)
+	{
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 590999;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		else if (this.checkDrag(nID2))
+		{
+			nRet = nID2;
+			break;
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_StoreStock::checkInput(ref int nSelectID)
+{
+	int nID2 = 0;
+	switch (this.m_sScroll.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			アイテム倉庫_入力ＯＦＦ();
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (アイテム倉庫_入力確認(nID2))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+label0:
+	this.m_sScroll.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	アイテム倉庫_入力ＯＮ();
+	if (nID2 != nSelectID)
+	{
+		this.setSelect(nSelectID, false);
+	}
+	nSelectID = nID2;
+	return 0;
+}
+
+int T_StoreStock::checkKey(int nID)
+{
+	int nID2 = 0;
+	switch (this.checkSelectArea(nID))
+	{
+		case 1:
+			nID2 = アイテム倉庫_キー確認(nID);
+			if (nID2 > 0)
+			{
+				return nID2;
+			}
+			break;
+		case 2:
+			if (this.m_sScroll.checkKey())
+			{
+				return 0;
+			}
+			break;
+		default:
+			break;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	return 0;
+}
+
+bool T_StoreStock::checkWheel()
+{
+	if (this.m_rcArea1.mouseInRect())
+	{
+		if (アイテム倉庫_ホイール確認())
+		{
+			return true;
+		}
+	}
+	if (this.m_rcArea2.mouseInRect())
+	{
+		if (this.m_sScroll.checkWheel())
+		{
+			return true;
+		}
+	}
+	ホイール_クリア();
+	return false;
+}
+
+bool T_StoreStock::checkDrag(int nID)
+{
+	if (画面操作モード確認() != 0)
+	{
+		return false;
+	}
+	if (500000 < nID && nID < 509991)
+	{
+		return アイテム倉庫_ボタン有効(nID);
+	}
+	if (590000 < nID && nID < 590999)
+	{
+		return this.m_sButton.getButtonActive(nID);
+	}
+	return false;
+}
+
+int T_StoreStock::checkSelectArea(int nID)
+{
+	if (キー優先())
+	{
+		if (nID > 590000)
+		{
+			return 2;
+		}
+		if (nID > 500000)
+		{
+			return 1;
+		}
+	}
+	else
+	{
+		if (this.m_rcArea1.mouseInRect())
+		{
+			return 1;
+		}
+		if (this.m_rcArea2.mouseInRect())
+		{
+			return 2;
+		}
+	}
+	return 0;
+}
+
+void T_StoreStock::resetSelect()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sButton.resetSelect();
+	this.m_sButtonLock.resetSelect();
+	アイテム倉庫_選択解除();
+}
+
+void T_StoreStock::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 593000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 590000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+	アイテム倉庫_カーソル設定(nID);
+}
+
+void T_StoreStock::setZ(int nZ)
+{
+	this.m_sScroll.setZ(nZ + 1);
+	this.m_sButton.setZ(nZ + 10);
+	this.m_sButtonLock.setZ(nZ + 50);
+}
+
+void T_StoreStock::setShow(bool bShow)
+{
+	this.m_sList.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+	this.m_sButtonLock.setShow(false);
+	this.setButtonShow(bShow);
+}
+
+void T_StoreStock::setButtonShow(bool bShow)
+{
+	int i = 0;
+	for (i = 0; i < 6; ++i)
+	{
+		bool bShow2 = this.getItemNo(i) > 0 ? bShow : 0;
+		this.m_sButton.setButtonShow(this.getButtonID(i), bShow);
+	}
+	this.m_sButton.setButtonShow(590999, bShow);
+}
+
+void T_StoreStock::setButtonActive()
+{
+	int i = 0;
+	for (i = 0; i < 6; ++i)
+	{
+		int nItemNo = this.getItemNo(i);
+		this.m_sButton.setButtonActive(this.getButtonID(i), nItemNo > 0);
+	}
+}
+

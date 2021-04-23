@@ -1,0 +1,1535 @@
+void カオル／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2310, "");
+	'"Hey..."' A;
+	セリフ(2000, "");
+	'"Hmm?"' A;
+	セリフ(2310, "");
+	'"This is the fifth time we\'ve come here...' R;
+	' You\'re not getting bored of it?"' A;
+	セリフ(2000, "");
+	'"Hmm, I mean I guess so, but..."' A;
+	セリフ(2760, "");
+	'"It\'s been a long time, Rance."' A;
+	セリフ(2000, "");
+	'"Yo!"' A;
+	'"........."' A;
+	セリフ(2003, "");
+	'"...Wait, what?!"' A;
+	セリフ(2310, "");
+	'"K-Kaoru?!"' A;
+	'"What are you doing here?!"' A;
+	セリフ(2760, "");
+	'"I came to see your face, Lady Magic."' A;
+	'"You can\'t just leave the country with only a short note to explain yourself."' A;
+	セリフ(2310, "");
+	'"Eep..."' A;
+	セリフ(2760, "");
+	'"I have a message for you from King Gandhi."' A;
+	セリフ(2310, "");
+	'"Wh-What is it...?"' A;
+	セリフ(2760, "");
+	'"..."' A;
+	'"\'The world is vast!\'"' A;
+	セリフ(2310, "");
+	'"Hm...?"' A;
+	'"Huh? Is that it?"' A;
+	セリフ(2760, "");
+	'"Yes. I would guess that he means to say, \'See the world and broaden your horizons.\'"' A;
+	セリフ(2310, "");
+	'"...M-Mm, well, if I\'m allowed to, that\'s good."' A;
+	セリフ(2000, "");
+	'"And you came all the way to tell her this, Kaoru?"' A;
+	セリフ(2760, "");
+	'"No.' R;
+	' King Gandhi said that there was nothing he could do if his daughter was caught up in some worldly troubles and lost her life."' A;
+	'"But he declared the need for someone to see the results with their own eyes and sent me after her to collect her ashes should I need to."' A;
+	セリフ(2000, "");
+	'"Hmph..."' A;
+	セリフ(2760, "");
+	'"So, Lady Magic, I hope you don\'t mind if I remain nearby so that I may fulfill my purpose, if the need arises."' A;
+	セリフ(2310, "");
+	'"D-Don\'t say something so morbid!"' A;
+	セリフ(2760, "");
+	'"Heheheh..."' A;
+	セリフ(2310, "");
+	'"...A-Are you mad about something...?"' A;
+	セリフ(2760, "");
+	'"..."' A;
+	'"Do you really think King Gandhi didn\'t worry at all when his only daughter suddenly disappeared?"' A;
+	セリフ(2310, "");
+	'"...Ugh."' A;
+	セリフ(2760, "");
+	'"Heheh."' A;
+	'"So, do you mind if I accompany you for a while, Rance?"' A;
+	セリフ(2000, "");
+	'"Sure, I don\'t mind.' R;
+	' Girls are always welcome!"' A;
+	セリフ(2760, "");
+	'"Then I\'ll be in your care, Captain."' A;
+	ADVOFF();
+}
+
+void 仲間追加／アールコート()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(94, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ２(2750, "Mysterious Voice");
+	'"...U-Umm."' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hm?"' A;
+	ト書き();
+	'A faint voice had called out to Rance.' A;
+	セリフ(2005, "");
+	'"Huh? Did I just hear someone...?"' A;
+	セリフ(2750, "");
+	'"...U-Umm!"' A;
+	セリフ(2000, "");
+	'"Whoa!"' A;
+	ト書き();
+	'From a nearby hiding place, a timid girl appeared.' A;
+	セリフ(2000, "");
+	'"Who\'re you...?"' A;
+	セリフ(2750, "");
+	'"Oh... umm... uh..."' A;
+	ト書き();
+	'The girl was fidgeting.' A;
+	セリフ(2005, "");
+	'"...Uhh, can I help you?"' A;
+	セリフ(2750, "");
+	'"Oh, yes... U-Umm...' R;
+	' It--"' A;
+	'"It\'s nice to meet you, I\'m...' R;
+	' My name is Arlcoate."' A;
+	'"...Umm, I... wanted...' R;
+	' to thank you, Mister..."' A;
+	セリフ(2005, "");
+	'"\'Mister\'...?"' A;
+	セリフ(2750, "");
+	'"Y-Yes..."' A;
+	'"You\'re the one who made the donation, right?' R;
+	' With... the reddish feather..."' A;
+	セリフ(2000, "");
+	'"Hm? Donation?' R;
+	' I may have done something like that..."' A;
+	セリフ(2750, "");
+	'"It was thanks to your aid that I was able to graduate..."' A;
+	セリフ(2000, "");
+	'"Oh? You were the student I was supporting, huh?"' A;
+	セリフ(2750, "");
+	'"Y-Yes... I believe so...' R;
+	' I\'m sorry..."' A;
+	'"S-So, umm..."' A;
+	ト書き();
+	'Arlcoate suddenly covered her face with her hands.' A;
+	セリフ(2750, "");
+	'"...I-I\'m sorry!"' A;
+	'"Th-There was nothing for you to gain...' R;
+	' by paying for someone like me to graduate..."' A;
+	'"S-So today... umm...' R;
+	' I wanted to thank you for your donation...' R;
+	' and... umm... as an apology..."' A;
+	セリフ(2000, "");
+	'"What? Were you a dunce or something?"' A;
+	セリフ(2750, "");
+	'"N-No... actually... I was the head of my class..."' A;
+	セリフ(2000, "");
+	'"Huh? That\'s great, isn\'t it?"' A;
+	セリフ(2750, "");
+	'"I-I\'m sorry."' A;
+	セリフ(2000, "");
+	'"What kinda school were you at?"' A;
+	セリフ(2750, "");
+	'"Oh, the Leazish military academy..."' A;
+	セリフ(2000, "");
+	'"Hrm, top of the class at the military academy, eh?' R;
+	' That\'s something to be proud of, isn\'t it?"' A;
+	セリフ(2750, "");
+	'"But...' R;
+	' I\'m awful at everything I do..."' A;
+	思考(2005, "");
+	'(She\'s got no self-confidence at all...)' A;
+	セリフ(2000, "");
+	'"Then come with me on my adventures."' A;
+	セリフ(2750, "");
+	'"H-Huhh?"' A;
+	セリフ(2000, "");
+	'"And help me out.' R;
+	' Then I\'ll see what you\'re worth."' A;
+	セリフ(2750, "");
+	'"B-But... I\'m sure...' R;
+	' I\'d cause you trouble, Mister..."' A;
+	セリフ(2000, "");
+	'"It\'s okay. I\'m a super genius, so it won\'t be a problem even if you\'re worthless."' A;
+	セリフ(2001, "");
+	'"Just come along for the ride."' A;
+	セリフ(2750, "");
+	'"...Oh..."' A;
+	思考(2750, "");
+	'(...He\'s so confident...' R;
+	' I\'d like to be like him... someday...)' A;
+	セリフ(2000, "");
+	'"What do you say?"' A;
+	セリフ(2750, "");
+	'"Y-Yes, I\'ll try not to cause any problems for you at least..."' A;
+	'"I\'ll do my best."' A;
+	セリフ(2000, "");
+	'"Sweet. It\'ll be fun."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ(2750, "");
+	'"..."' A;
+	思考(2750, "");
+	'(...Mister...)' A;
+	ADVOFF();
+}
+
+void メリム／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Koff, koff...' R;
+	' Exploded again..."' A;
+	'"Hmm, our luck could be better today."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	ト書き();
+	'A girl was sprawled out in front of Rance.' A;
+	セリフ(2005, "");
+	'"Was she surprised from the explosion just now?' R;
+	' What a clumsy girl."' A;
+	セリフ(2000, "");
+	'"Hey, you okay?"' A;
+	セリフ２(2740, "");
+	'"*gasp*!"' A;
+	'"Oh, yes, I\'m sorry, please pay me no mind!"' A;
+	セリフ(2740, "");
+	'"Wait, you\'re..."' A;
+	セリフ(2000, "");
+	'"Hm...?"' A;
+	'"Oh, you\'re Merim!"' A;
+	セリフ(2740, "");
+	'"Aah, Rance!"' A;
+	'"Hahhh~, thank goodness..."' A;
+	'"Thank you, God...' R;
+	' What would I have done if it had been a scary bandit..."' A;
+	セリフ(2000, "");
+	'"What are you doing here, anyway?"' A;
+	セリフ(2740, "");
+	'"Oh, well, I\'m exploring.' R;
+	' I have unconfirmed information that there are some ruins around here."' A;
+	セリフ(2000, "");
+	'"Hmm, still dedicated to exploring stuff?"' A;
+	セリフ(2740, "");
+	'"If it\'s true, it could be an amazing discovery."' A;
+	'"If my speculation is correct, it could be from back when the Holy Magic Sect was still calling itself the Magic Sect--"' A;
+	セリフ(2000, "");
+	'"No, I don\'t need to hear all about that."' A;
+	セリフ(2740, "");
+	'"Oh, okay..."' A;
+	思考(2005, "");
+	'(She\'s as prone to danger as always, though.)' A;
+	セリフ(2000, "");
+	'"Hmm, then you wanna go together?"' A;
+	セリフ(2740, "");
+	'"Heh?"' A;
+	'"Y-You don\'t mind?"' A;
+	セリフ(2000, "");
+	'"Nope. And if I leave you alone, you\'ll probably just get yourself killed."' A;
+	セリフ(2740, "");
+	'"I\'d feel safer with you, too, Rance, but..."' A;
+	'"But won\'t I be a bother...?"' A;
+	セリフ(2000, "");
+	'"Don\'t worry about shit like that.' R;
+	' Come on, let\'s go."' A;
+	セリフ(2740, "");
+	'"O-Okay! Thank you!"' A;
+	思考(2000, "");
+	'(I\'m not gonna look for those ruins, though; I don\'t give a shit.)' A;
+	セリフ(2740, "");
+	'"Ruins, ruins, ru ru ru~♪"' A;
+	'"What\'ll they be like~?' R;
+	' Like this~? Like that~?"' A;
+	思考(2000, "");
+	'(But I\'m not going to mention that to avoid trouble.)' A;
+	セリフ(2740, "");
+	'"Oh, I\'m so excited~♪"' A;
+	ADVOFF();
+}
+
+void ウルザ／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"H-Huh?"' A;
+	セリフ(2690, "");
+	'"Oh, Rance."' A;
+	ト書き();
+	'Urza seemed to appear from out of nowhere.' A;
+	セリフ(2000, "");
+	'"Wow, I haven\'t seen you in a while.' R;
+	' Who could have guessed we\'d meet somewhere like this?"' A;
+	セリフ(2690, "");
+	'"Not me."' A;
+	'"So what\'s happened this time?"' A;
+	セリフ(2000, "");
+	'"Don\'t act like I\'m always in the middle of some trouble.' R;
+	' There\'s nothing like that going on now."' A;
+	セリフ(2690, "");
+	'"Heheh, there usually is, though, isn\'t there?"' A;
+	セリフ(2005, "");
+	'"Hmph..."' A;
+	セリフ(2000, "");
+	'"And what are you doing in a place like this, Urza?"' A;
+	セリフ(2690, "");
+	'"I got a bit of an extended vacation, so I thought I\'d travel a bit..."' A;
+	ト書き();
+	'Urza looked over Rance\'s party members.' A;
+	セリフ(2690, "");
+	'"Rance, your party...' R;
+	' All of us used to work together in Ice Flame, didn\'t we?"' A;
+	セリフ(2000, "");
+	'"Oh, now that you mention it, yeah."' A;
+	セリフ(2690, "");
+	'"Do you mind if I join you?"' A;
+	セリフ(2000, "");
+	'"You\'re super welcome, Urza!' R;
+	' I mean, you\'re really strong!"' A;
+	セリフ(2690, "");
+	'"You think so? I\'m glad."' A;
+	'"Heheheh, adventuring with Rance again, huh?"' A;
+	セリフ(2001, "");
+	'"Gahahahaha, I\'m looking forward to it."' A;
+	思考(2004, "");
+	'(And I\'m looking forward to your level rising, too...)' A;
+	セリフ(2690, "");
+	'"My level?"' A;
+	セリフ(2000, "");
+	'"No, it\'s nothing. Just talking to myself."' A;
+	セリフ(2690, "");
+	'"...?"' A;
+	ADVOFF();
+}
+
+void 柚美／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(71, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2020, "");
+	'"........."' A;
+	セリフ(2965, "");
+	'"..."' A;
+	セリフ(2020, "");
+	'"........."' A;
+	セリフ(2965, "");
+	'"..."' A;
+	ト書き();
+	'Sachiko and Bear had ended up alone together.' A;
+	セリフ(2021, "");
+	'"Umm..."' A;
+	セリフ(2965, "");
+	'"..."' A;
+	セリフ(2021, "");
+	'"Would you like... a rice ball, or something?"' A;
+	セリフ(2965, "");
+	'"..."' A;
+	ト書き();
+	'Bear silently thrust out his paw.' A;
+	セリフ(2021, "");
+	'"Oh... here you go..."' A;
+	セリフ(2965, "");
+	'"It\'s salmon!"' A;
+	セリフ(2020, "");
+	'"Y-Yes! It is!"' A;
+	ト書き();
+	'Bear happily(?) dug in.' A;
+	セリフ(2020, "");
+	'"M... Maybe I\'ll have one, too..."' A;
+	セリフ(2965, "");
+	'　' R;
+	'←Munch munch' A;
+	セリフ(2020, "");
+	'"Hamh... mgh, mgh..."' A;
+	ト書き();
+	'As the two of them ate their onigiri--' A;
+	ト書き();
+	'　' R;
+	' <thud thud thud thud thud!>' A;
+	セリフ(2021, "");
+	'"Heh? What\'s that sound?"' A;
+	セリフ(2965, "");
+	'"Hmm..."' A;
+	ト書き();
+	'The noise was drawing closer to the two!' A;
+	セリフ(2022, "");
+	'"Huhh?! What?! What is it?! What\'s going on?!"' A;
+	セリフ(2965, "");
+	'"...She\'s coming!"' A;
+	セリフ(2681, "");
+	'"Aaaaaaah!"' A;
+	'"A beeear! So cuuuuute!"' A;
+	ト書き();
+	'Yuzumi Yuzuhara burst forth.' A;
+	セリフ(2023, "");
+	'"Aaah!"' A;
+	セリフ(2681, "");
+	'"Mr. Beeear! I love youuu!"' A;
+	ト書き();
+	'Yuzumi pounced on Bear.' A;
+	セリフ(2681, "");
+	'"Haah, haah, I can\'t take this..."' A;
+	セリフ(2965, "");
+	'"..."' A;
+	ト書き();
+	'Yuzumi rubbed her cheek against Bear\'s.' A;
+	セリフ(2681, "");
+	'"Heheh... Eheheheheh..."' A;
+	'"Haahh... I\'m gonna melt... I\'m melting...' R;
+	' Ahh..."' A;
+	セリフ(2965, "");
+	'"..."' A;
+	セリフ(2021, "");
+	'"U... Ummm..."' A;
+	'"Wh... Who might you be...?"' A;
+	セリフ(2680, "");
+	'"..."' A;
+	'"...Yuzumi... Yuzuhara..."' A;
+	'"Is this bear... yours...?"' A;
+	セリフ(2021, "");
+	'"N-No... Not really...' R;
+	' He\'s... a party member..."' A;
+	セリフ(2680, "");
+	'"Party..."' A;
+	'"..."' A;
+	'"I hope we\'ll be together... a long time, then..."' A;
+	セリフ(2020, "");
+	'"Huh?"' A;
+	セリフ(2681, "");
+	'"Haah, haah... Mr. Bear... Mr. Bear..."' A;
+	'"Here! You\'re up so high, aren\'t you!"' A;
+	'"Oh, is it scary up there?"' A;
+	'"We\'ll go back down, then!"' A;
+	セリフ(2020, "");
+	'"U-Ummm..."' A;
+	セリフ(2681, "");
+	'"Haah... So c... So cute..."' A;
+	ト書き();
+	'Yuzumi ignored Sachiko, engrossed in Bear.' A;
+	セリフ(2965, "");
+	'　' R;
+	'←Munch munch' A;
+	'"It\'s salmon!"' A;
+	セリフ(2020, "");
+	'"U-Umm! Umm!"' A;
+	セリフ(2022, "");
+	'"Please listen to me..."' A;
+	ト書き();
+	'Yuzumi joined the party.' A;
+	ADVOFF();
+}
+
+void クマ／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Hm? There\'s something nearby..."' A;
+	ト書き();
+	'Sensing some presence, Rance stopped.' A;
+	'He looked and listened in case someone was hiding nearby.' A;
+	セリフ(2005, "");
+	'"........."' A;
+	セリフ(2002, "");
+	'"There!"' A;
+	セリフ(2965, "");
+	'"Here!"' A;
+	セリフ(2003, "");
+	'"Whoa! What the heck is this?!"' A;
+	セリフ(2965, "");
+	'"I am Bear! I\'m gluten-free!"' A;
+	ト書き();
+	'Bear appeared with a flash!' A;
+	セリフ(2005, "");
+	'"..."' A;
+	セリフ(2000, "");
+	'"Mhm."' A;
+	'"It\'s best not to approach things you don\'t understand."' A;
+	'"Ignore it."' A;
+	セリフ(2965, "");
+	'"*staaare*..."' R;
+	'  ↑  Staring at Rance' A;
+	セリフ(2005, "");
+	'"Wh-What do you want? Stay away from me.' R;
+	' Shoo, shoo."' A;
+	セリフ(2965, "");
+	'"I\'m Bear!"' A;
+	セリフ(2002, "");
+	'"I can see that!"' A;
+	セリフ(2965, "");
+	'"Nice to be working with you..."' A;
+	'"Pal!"' A;
+	セリフ(2000, "");
+	'"Heh?"' A;
+	ト書き();
+	'Bear nonchalantly moved to the back row of the group.' A;
+	セリフ(2000, "");
+	'"Heh? Heh?"' A;
+	ト書き();
+	'Bear joined the party!' R;
+	' ' R;
+	'(Officially when the quest is cleared)' A;
+	セリフ(2005, "");
+	'"I\'m not sure what to say about this..."' A;
+	セリフ(2965, "");
+	'"...Hmm."' A;
+	ADVOFF();
+}
+
+void エミ／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"...Phew, we managed to flee, huh?"' A;
+	セリフ(2000, "");
+	'"No, we didn\'t flee.' R;
+	' It was a strategic retreat. Mm."' A;
+	ト書き();
+	'Rance said, sitting down.' A;
+	セリフ(2660, "");
+	'"Haah... haah... I got away somehow..."' A;
+	セリフ(2660, "");
+	'"Really now, how am I supposed to deal with such crowds of monsters...?"' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2660, "");
+	'"Oh?"' A;
+	セリフ(2660, "");
+	'"Y-You\'re the barbarian from back then!"' A;
+	セリフ(2005, "");
+	'"........."' A;
+	'"Ermm...?"' A;
+	セリフ(2660, "");
+	'"It\'s Emi! You know, from Zeth!' R;
+	' The noble\'s daughter! Remember, you oaf!"' A;
+	セリフ(2005, "");
+	'"Ah, right, right... There was...' R;
+	' someone like that... right..."' A;
+	セリフ(2000, "");
+	'"Oh! Emi the maso-slut!"' A;
+	セリフ(2660, "");
+	'"Why would you remember me like that..."' A;
+	セリフ(2000, "");
+	'"So what\'s up? Are you adventuring?"' A;
+	セリフ(2660, "");
+	'"Y-Yes, that\'s right. Zeth has changed and now actual skill is valued more highly than lineage."' A;
+	'"I concluded that adventuring would be the best way to temper myself."' A;
+	セリフ(2000, "");
+	'"And in the meantime, you could enjoy being attacked by bandits and such, too."' A;
+	セリフ(2660, "");
+	'"I-I do no such thing!"' A;
+	'"If I had to say, sometimes I am attacked and ravaged by monsters..."' A;
+	'"That is the worst that... umm..."' A;
+	'"...Ah!"' A;
+	セリフ(2005, "");
+	'"Yeah, you haven\'t changed."' A;
+	セリフ(2000, "");
+	'"Well, whatever.' R;
+	' Just make sure you don\'t get so distracted that you get killed."' A;
+	セリフ(2660, "");
+	'"Huh?! Y-You\'re leaving...?"' A;
+	セリフ(2000, "");
+	'"Hm? Yeah...?"' A;
+	セリフ(2660, "");
+	'"It\'s fun to be with you.' R;
+	' Err, in umm, various ways."' A;
+	'"So I will be joining your party as a mage."' A;
+	'"I\'m happy to be working with you."' A;
+	セリフ(2005, "");
+	'"Uhhh...?"' A;
+	思考(2660, "");
+	'(If I go with this savage... I\'m sure one day... I\'ll be...)' A;
+	'(He\'ll... force it in...' R;
+	' When I scream out in pain, he\'ll only be more forceful...)' A;
+	'(He\'ll slap me from behind, telling me to stop screaming...' R;
+	' The pain will throb...' R;
+	' Tears will flow from my eyes...)' A;
+	'(Ah, how pitiful I will be...)' A;
+	ト書き();
+	'Emi\'s underwear was already wet.' A;
+	セリフ(2660, "");
+	'"...Heh, heheh... heheheheh..."' A;
+	ト書き();
+	'Emi was having wild delusions.' A;
+	セリフ(2005, "");
+	'"...She looks like she\'s enjoying herself."' A;
+	ADVOFF();
+}
+
+void ０６Ａゼス兵／汎用／てる()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2630, "");
+	'"Hahahah..."' A;
+	セリフ(2005, "");
+	'"I-Isn\'t that Teru?"' A;
+	ト書き();
+	'Mixed in with the Zethan soldiers, Teru was there, staring at a point in the distance.' A;
+	セリフ(2630, "");
+	'"Hm?"' A;
+	セリフ(2000, "");
+	'"What are you doing here, Teru...?"' A;
+	セリフ(2630, "");
+	'"Don\'t you know it\'s impolite to stare?"' A;
+	'"Is Teru Mouri, eldest sister of the Mouri family, really so strange a sight?"' A;
+	'"We saw each other many times in Nippon, did we not?"' A;
+	セリフ(2000, "");
+	'"Uh, that\'s not it, it\'s more a question of the place..."' A;
+	セリフ(2630, "");
+	'"Well, it is our first meeting in a long while.' R;
+	' I forgive your rudeness."' A;
+	セリフ(2000, "");
+	'"So why are you here?"' A;
+	セリフ(2630, "");
+	'"Mm, well, there\'s been one thing I\'ve always longed to see, if only for a moment, since childhood."' A;
+	'"A fiend."' A;
+	セリフ(2000, "");
+	'"Ah, I hear that Kaito one\'s around here somewhere."' A;
+	セリフ(2630, "");
+	'"Heheheh, I must be lucky to have this opportunity so soon after crossing to the continent.' R;
+	' Don\'t you think so?"' A;
+	セリフ(2000, "");
+	'"You seem like... you\'re in a really good mood."' A;
+	セリフ(2630, "");
+	'"Mmh, my whole body throbs with excitement."' A;
+	'"A flame catches in my heart, urging me to do battle."' A;
+	'"Hahahahah..."' A;
+	セリフ(2000, "");
+	'"Well, okay."' A;
+	セリフ(2000, "");
+	'"It was fate that we met here.' R;
+	' Come adventure with me."' A;
+	セリフ(2630, "");
+	'"I must decline."' A;
+	セリフ(2005, "");
+	'"Hm, why...?"' A;
+	セリフ(2630, "");
+	'"I plan to ambush the fiend here."' A;
+	'"Depending on how that concludes, I will make my way to your residence."' A;
+	'"Wait for me."' A;
+	ト書き();
+	'Teru finished with a smirk.' A;
+	ADVOFF();
+}
+
+void ノア／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2005, "");
+	'"Kh, so many party members were defeated..."' A;
+	'"How annoying..."' A;
+	セリフ(2720, "");
+	'"Looks like you\'re in need of some assistance, Rance."' A;
+	セリフ(2000, "");
+	'"Heh?"' A;
+	ト書き();
+	'A woman had appeared before him.' A;
+	セリフ(2720, "");
+	'"...Have you forgotten me?"' A;
+	セリフ(2005, "");
+	'"Uh... Uhh..."' A;
+	セリフ(2000, "");
+	'"Oh! You\'re Noah, aren\'t you!"' A;
+	セリフ(2720, "");
+	'"I\'m glad you remember."' A;
+	'"Heheh, it\'s been a while."' A;
+	セリフ(2000, "");
+	'"Erm, didn\'t you go back home to the countryside?"' A;
+	セリフ(2720, "");
+	'"I\'m impressed you remember that."' A;
+	セリフ(2000, "");
+	'"I never forget a woman."' A;
+	セリフ(2720, "");
+	'"I did go back home for a time, but in the end, I just couldn\'t forget adventuring..."' A;
+	セリフ(2000, "");
+	'"Hm, hm."' A;
+	セリフ(2720, "");
+	'"Would you mind if I help you out, Rance?"' A;
+	セリフ(2000, "");
+	'"Oh, you\'d do that?"' A;
+	セリフ(2720, "");
+	'"Of course."' A;
+	'"I still haven\'t paid you back for saving my life."' A;
+	セリフ(2000, "");
+	'"Mm, you\'re quite welcome here."' A;
+	セリフ(2720, "");
+	'"I look forward to it, then."' A;
+	セリフ(2001, "");
+	'"Don\'t worry about a thing, just follow me!' R;
+	' Gahahahahaha!"' A;
+	セリフ(2720, "");
+	'"Heheh, I\'ll make sure I keep up."' A;
+	ADVOFF();
+}
+
+void カロリア／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(93, -1, -1);
+	セット表示(g町全景／夜, 0, 0, 0);
+	セリフ(2620, "");
+	'"I\'ll be late! I\'ll be late!"' A;
+	ト書き();
+	'Caloria Cricket ran through the late night streets of Cidade.' A;
+	枠消去();
+	立ち絵表示(tカロリア, 1, 200);
+	セリフ(2620, "");
+	'"Rance even sent me that invitation and..."' A;
+	'"I\'m not gonna make it... if I don\'t hurry... augh..."' A;
+	セリフ２(2030, "Swallowtail");
+	'"You\'re wrong, Calo.' R;
+	' You\'re already late."' A;
+	セリフ２(2030, "Poisonfly");
+	'"It\'s already past midnight!"' A;
+	セリフ２(2901, "Grandfather");
+	'"Mm... Everyone was sleeping, after all..."' A;
+	セリフ(2620, "");
+	'"Augh...' R;
+	' Don\'t say that..."' A;
+	ト書き();
+	'Caloria the insect user conversed with the insects who lived inside her body as she ran.' A;
+	セリフ２(2030, "Poisonfly");
+	'"Geez, it\'s ’cause you slept in the ox cart!"' A;
+	セリフ(2620, "");
+	'"But, but...' R;
+	' ox carts are... all shaky...' R;
+	' It was so comfy..."' A;
+	'"Gotta hurry, gotta hurry..."' A;
+	セリフ２(2901, "Grandfather");
+	'"Hmph, I think we\'re better off not seeing that deviant man..."' A;
+	セリフ２(2030, "Swallowtail");
+	'"I might sort of be looking forward to it a little..."' A;
+	セリフ２(2901, "Grandfather");
+	'"Wha-?! Swallowtail, you traitor!"' A;
+	セリフ(2620, "");
+	'"Wawah, don\'t fight, Grandfather!"' A;
+	'"But Calo... wants to see him again...' R;
+	' Sorry... Grandfather..."' A;
+	セリフ２(2901, "Grandfather");
+	'"Mmmm..."' A;
+	セリフ２(2030, "Poisonfly");
+	'"It\'s rare for Caloria to be assertive like this!"' A;
+	セリフ(2620, "");
+	'"Oh, but, but...' R;
+	' If you really don\'t want to, Grandfather...' R;
+	' we don\'t have to..."' A;
+	ト書き();
+	'Caloria hung her head, dejected.' A;
+	セリフ２(2901, "Grandfather");
+	'"A-Argh..."' A;
+	'"V-Very well... Do as you like..."' A;
+	セリフ(2620, "");
+	'"...Phew."' A;
+	'"Thank you...' R;
+	' I\'m sorry, Grandfather..."' A;
+	セリフ２(2030, "Swallowtail");
+	'"Aaah!' R;
+	' What a bad girl you are, Calo!"' A;
+	'"A little devil who bends men to her will with one sad look!"' A;
+	セリフ(2620, "");
+	'"Huh? Huh?"' A;
+	セリフ２(2030, "Swallowtail");
+	'"Ah, right at the next corner, Calo!"' A;
+	セリフ(2620, "");
+	'"O-Okay."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'*tap* *tap* *tap*' R;
+	'Caloria ran toward Rance Castle.' A;
+	枠消去();
+	セット表示(5511, 5310, tカロリア, 0);
+	セリフ(2620, "");
+	'"Made it!"' A;
+	セリフ２(2030, "Swallowtail");
+	'"And nobody\'s here!"' A;
+	セリフ(2620, "");
+	'"Ugh... We\'re late..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'12:27 A.M.' R;
+	'Caloria Cricket arrived late.' A;
+}
+
+void トマト／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(5550, 0, 0, 4471);
+	ト書き();
+	'  It\'s a trapped treasure chest.' R;
+	'  ' R;
+	'  It will open with some good luck. Let\'s do it.' AA;
+	ミニイベント表示(4481, 1, 500);
+	Ｒ８ジングル(452, false);
+	'(clack)' R;
+	'  ' R;
+	'Wow! You succeeded in opening the chest!' A;
+	セリフ(2610, "");
+	'"Mimiiiiic!"' A;
+	セリフ(2005, "");
+	'"........."' A;
+	ト書き();
+	'A girl leapt out from the treasure chest.' A;
+	セリフ(2000, "");
+	'"...T-Tomato?"' A;
+	セリフ(2610, "");
+	'"It\'s been a while, Rance."' A;
+	セリフ(2000, "");
+	'"What the... heck were you doing in a treasure chest...?"' A;
+	セリフ(2610, "");
+	'"Playing mimic?"' A;
+	枠消去();
+	ミニイベント表示(4471, 1, 500);
+	ト書き();
+	'　' R;
+	' <wham!>' A;
+	'Rance closed the treasure chest.' A;
+	セリフ２(2610, "");
+	'"Aah! Aah! Aah!"' A;
+	ト書き();
+	'Panicked noises could be heard from inside the chest.' A;
+	枠消去();
+	ミニイベント表示(4481, 1, 500);
+	ト書き();
+	'　' R;
+	' <clack>' A;
+	セリフ(2610, "");
+	'"Heheh, that was shocking."' A;
+	セリフ(2005, "");
+	'"I\'m surprised too."' A;
+	セリフ(2610, "");
+	'"Oh yeah, actually, I\'ve become an adventurer too.' R;
+	' We\'re colleagues now!"' A;
+	セリフ(2005, "");
+	'"Come to think of it... I think I remember you saying something like that way back then..."' A;
+	セリフ(2610, "");
+	'"Wow, I can\'t believe you remember that!"' A;
+	'"Well, let\'s meet again!"' A;
+	セリフ(2000, "");
+	'"Heh?"' A;
+	ト書き();
+	'Tomato left, smiling cheerily.' A;
+	セリフ(2000, "");
+	'"Huh? Huh? Huh?"' A;
+	ト書き();
+	'Tomato will join the party after the quest.' A;
+	セリフ(2000, "");
+	'"Huuh? Huuuh?"' A;
+	ADVOFF();
+}
+
+void ノワール／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(93, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Huh...?"' A;
+	枠消去();
+	立ち絵表示(1600, 1, 200);
+	セリフ(2600, "");
+	'"Hmm..."' A;
+	セリフ(2000, "");
+	'"Oh, if it isn\'t Noir!' R;
+	' It\'s been a while."' A;
+	ト書き();
+	'There stood Noir, the spider youkai.' A;
+	セリフ(2600, "");
+	'"Oh, it\'s Rance."' A;
+	セリフ(2000, "");
+	'"What are you even doing here...?"' A;
+	セリフ(2600, "");
+	'"I can\'t catch the Yudain."' A;
+	セリフ(2000, "");
+	'"Heh?"' A;
+	セリフ(2005, "");
+	'"...Ah, right, the Yudain."' A;
+	セリフ(2600, "");
+	'"It pisses me off...' R;
+	' He keeps running away..."' A;
+	セリフ(2000, "");
+	'"So you can\'t get out of here, huh?"' A;
+	セリフ(2600, "");
+	'"That\'s not true."' A;
+	セリフ(2000, "");
+	'"Don\'t lie. You\'re stuck in here ’cause you can\'t beat the Yudain."' A;
+	セリフ(2600, "");
+	'"I told you that\'s not true."' A;
+	セリフ(2000, "");
+	'"Well, not that I care."' A;
+	セリフ(2600, "");
+	'"..."' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2600, "");
+	'"...*stare*"' A;
+	ト書き();
+	'Noir was peering at Rance.' A;
+	セリフ(2005, "");
+	'"Wh-What do you want...?"' A;
+	セリフ(2600, "");
+	'"Later..."' A;
+	セリフ(2000, "");
+	'"Mm..."' A;
+	セリフ(2600, "");
+	'"Later, I\'ll go to your house."' A;
+	セリフ(2005, "");
+	'"Huh...?"' A;
+	セリフ(2600, "");
+	'"See ya."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Noir left.' A;
+	セリフ(2005, "");
+	'"Inscrutable as always."' A;
+	ADVOFF();
+}
+
+void リズナ／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Take that! And that!"' A;
+	ト書き();
+	'Rance was picking on a hanny.' A;
+	セリフ(2927, "");
+	'"Aiyaaa!"' A;
+	ト書き();
+	'　' R;
+	' <craaash!>' A;
+	'The hanny shattered.' A;
+	セリフ(2000, "");
+	'"It\'s best to kill these guys quick, yep."' A;
+	セリフ２(2580, "? ? ?");
+	'"Hannies, it\'s time for lunch!"' A;
+	枠消去();
+	立ち絵表示(1580, 1, 200);
+	セリフ(2580, "");
+	'"Oh?"' A;
+	セリフ(2000, "");
+	'"Oho."' A;
+	'"If it isn\'t Rizna!"' A;
+	セリフ(2580, "");
+	'"Rance, what are you doing here...?"' A;
+	セリフ(2000, "");
+	'"And what are you doing..."' A;
+	セリフ(2580, "");
+	'"I\'ve made lunch for the hannies, so I was calling them..."' A;
+	セリフ(2005, "");
+	'"Why are you living with hannies...?' R;
+	' I know. They must have tricked you into this."' A;
+	セリフ(2000, "");
+	'"You believe anything you hear, after all."' A;
+	セリフ(2580, "");
+	'"That\'s not true."' A;
+	'"I\'m getting along quite well with all of the hannies now."' A;
+	セリフ(2000, "");
+	'"Hmm?"' A;
+	セリフ(2580, "");
+	'"It\'s true. It\'s very peaceful here."' A;
+	'"We all danced together yesterday."' A;
+	セリフ(2005, "");
+	'"...Sounds like you\'re having fun."' A;
+	セリフ(2000, "");
+	'"Well, whatever."' A;
+	'"Come on, let\'s go."' A;
+	セリフ(2580, "");
+	'"Huh? \'Go\'...?"' A;
+	セリフ(2000, "");
+	'"It must have been fate that I ran into you here. Come along on my adventure."' A;
+	セリフ(2580, "");
+	'"U-Umm, umm..."' A;
+	セリフ(2000, "");
+	'"Let\'s get outta here!"' A;
+	ト書き();
+	'Rance had already started walking away from Rizna.' A;
+	セリフ(2927, "");
+	'"Rizna, you\'re leaving?"' A;
+	セリフ(2974, "");
+	'"You\'re leaving?"' A;
+	セリフ(2580, "");
+	'"H-Hmm... What should I do...?"' A;
+	ト書き();
+	'Rizna was flustered, at a loss.' A;
+	セリフ２(2000, "");
+	'"Come on! What are you doing?' R;
+	' I\'ll leave you behind!"' A;
+	セリフ(2580, "");
+	'"Ah..."' A;
+	'"..."' A;
+	'"Right."' A;
+	'"I\'m sorry, everyone.' R;
+	' Let\'s meet again, alright?"' A;
+	'"Please wait, Rance!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'*tap* *tap* *tap* *tap*' R;
+	'Rizna ran off after Rance.' A;
+	セリフ(2927, "");
+	'"..."' A;
+	セリフ(2927, "");
+	'"*sob* *sob* *sob*...' R;
+	' I hate NTR!"' A;
+	ADVOFF();
+}
+
+void ユラン／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2000, "");
+	'"Hmph, as if wannabe adventurers could stand up to me."' A;
+	ト書き();
+	'Rance boasted after defeating the enemy.' A;
+	セリフ２(2550, "");
+	'"Huh, you\'re pretty good."' A;
+	ト書き();
+	'Someone said from behind him.' A;
+	セリフ(2000, "");
+	'"Hm?"' A;
+	セリフ(2550, "");
+	'"Long time no see."' A;
+	セリフ(2000, "");
+	'"Oh, it\'s Yulan!"' A;
+	ト書き();
+	'Rance turned around to find Yulan Mirage.' A;
+	思考(2000, "");
+	'(I once fought this woman in a Leazish arena.)' A;
+	'(I remember her, but I haven\'t met her since then...)' A;
+	セリフ(2000, "");
+	'"I haven\'t seen you since our bout in Leazas Castle."' A;
+	セリフ(2550, "");
+	'"You seem to have been pretty busy."' A;
+	思考(2000, "");
+	'(Hm, hm, since I figured she was only a woman from my past, I hadn\'t thought about her in a while. But sometimes it\'s important to look back at the past.)' A;
+	思考(2004, "");
+	'(...The more babes, the better.)' A;
+	セリフ(2000, "");
+	'"Alright Yulan, join my party.' R;
+	' I\'ll take you on my fabulous adventures."' A;
+	セリフ(2550, "");
+	'"Hmmm, I think it\'s easier for me to be alone..."' A;
+	セリフ(2000, "");
+	'"Oh, don\'t say that.' R;
+	' I won\'t bore you for a minute."' A;
+	セリフ(2550, "");
+	'"What are you up to right now, anyway?"' A;
+	セリフ(2000, "");
+	'"A grand adventure, spanning the whole world!"' A;
+	セリフ(2550, "");
+	'"...Oh?"' A;
+	'"The whole world, eh?' R;
+	' That does sound a little fun."' A;
+	セリフ(2000, "");
+	'"Come to my place later."' A;
+	セリフ(2550, "");
+	'"...Sure thing."' A;
+	'"If I feel like it."' A;
+	ト書き();
+	'Yulan left.' A;
+	セリフ(2005, "");
+	'"You\'d better..."' A;
+	ADVOFF();
+}
+
+void 仲間追加／カーマ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2730, "");
+	'"It\'s been a while, Rance."' A;
+	'"Eheheh, Cidade has a lot going on, doesn\'t it?"' A;
+	'"I\'ll be heading to your place, okay?"' A;
+}
+
+void 仲間追加／シトモネ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2640, "");
+	'"I\'m Shitomone Chappie."' A;
+	'"I strive to become a stronger mage."' A;
+	'"I won\'t lose to anyone, okay?!"' A;
+}
+
+void 仲間追加／のぞみ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2590, "");
+	'"Koff, koff..."' A;
+	'"U-Umm, it\'s been a while... koff..."' A;
+	セリフ(2005, "");
+	'"...Didn\'t that get cured...?"' A;
+	セリフ(2590, "");
+	'"I had a relapse..."' A;
+	'"...Koff koff, I-I\'m sorry."' A;
+}
+
+void 仲間追加／ウィチタ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	セリフ(2570, "");
+	'"Wichita Skate, magic swordsman."' A;
+	'"My special move is the Flame Slash.' R;
+	' My role model is the King of Zeth."' A;
+	'"Ermm..."' A;
+	'"That\'ll do for an introduction, I think."' A;
+}
+
+void 仲間追加／ミル()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	枠消去();
+	立ち絵表示(1670, 1, 200);
+	セリフ(2670, "");
+	'"Eheheh, it\'s been a while, my first!"' A;
+	'"I\'ve grown, haven\'t I?"' A;
+	セリフ(2005, "");
+	'"Uh... Uh huh..."' A;
+	セリフ(2000, "");
+	'"You shot right up, didn\'t you?"' A;
+	セリフ(2671, "");
+	'"Eheheh!"' A;
+	'"I\'m ready to give you a bunch more of my firsts, okay~? I\'m excited!"' A;
+	セリフ(2000, "");
+	'"Umm, you\'re not in my strike zone yet."' A;
+	セリフ(2670, "");
+	'"Aww..."' A;
+}
+
+void 仲間追加／エレノア()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	音楽(71, -1, -1);
+	枠消去();
+	立ち絵表示(1560, 1, 200);
+	セリフ(2560, "");
+	'"Actually, I\'ve always wanted to travel and see the world..."' A;
+	'"And I could probably stand to take a vacation every once in a while..."' A;
+	'"I\'m looking forward to working with you..."' A;
+}
+
+void 志津香／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'Sachiko was walking through the dungeon when she ran into an adventurer.' A;
+	セリフ(2020, "");
+	'"Oh, hello."' A;
+	枠消去();
+	立ち絵表示(1650, 1, 200);
+	Ｒ８ジングル(413, true);
+	セリフ(2650, "");
+	'"Yeah, hi."' A;
+	思考(2020, "");
+	'(Wow, she\'s pretty...)' A;
+	'(Is she a mage...?)' A;
+	セリフ(2650, "");
+	'"Wait a second."' A;
+	セリフ(2020, "");
+	'"Y-Yes?"' A;
+	セリフ(2650, "");
+	'"There are a number of traps that way."' A;
+	'"Be careful."' A;
+	セリフ(2023, "");
+	'"Tra...' R;
+	' Wow, thank you so much for the warning."' A;
+	ト書き();
+	'Sachiko bowed her head.' A;
+	セリフ(2650, "");
+	'"Huh? Sure..."' A;
+	ト書き();
+	'Shizuka stared closely at Sachiko.' A;
+	セリフ(2650, "");
+	'"...You don\'t really seem like an adventurer, you know."' A;
+	セリフ(2020, "");
+	'"Huh? I don\'t...?"' A;
+	セリフ(2650, "");
+	'"I\'m not gonna help you if some terrible man finds you wandering around in here, okay?"' A;
+	セリフ(2000, "");
+	'"Oh...? And who might you be talking about?"' A;
+	セリフ(2650, "");
+	'"Ack!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, long time no see, Shizuka!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'　' R;
+	' <dash>' A;
+	セリフ(2001, "");
+	'"Huh?"' A;
+	ト書き();
+	'Shizuka ran off and disappeared in a flash.' A;
+	セリフ(2003, "");
+	'"Wha..."' A;
+	セリフ(2005, "");
+	'"Th-That bitch, taking off as soon as she saw my face...' R;
+	' I\'ll get her for this..."' A;
+	セリフ(2021, "");
+	'"Do you know each other...?"' A;
+	セリフ(2000, "");
+	'"Yeah, she\'s one of my women."' A;
+	'"Heheheh, there\'s no use in running.' R;
+	' You\'re already in the party."' A;
+	ADVOFF();
+}
+
+void マリア／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	ト書き();
+	'A shadow crept away from Rance\'s party during the adventure.' A;
+	枠消去();
+	立ち絵表示(1650, 1, 200);
+	セリフ(2650, "");
+	'"..."' A;
+	ト書き();
+	'It was Shizuka.' A;
+	セリフ(2650, "");
+	'"There\'s no reason for me to stick around with that moron."' A;
+	'"...Well, where should I go next?"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Shizuka surveyed her surroundings.' A;
+	枠消去();
+	立ち絵表示(1770, 1, 200);
+	セリフ(2770, "");
+	'"Oh, it\'s Shizuka!"' A;
+	セリフ(2650, "");
+	'"Huh? M-Maria...?"' A;
+	ト書き();
+	'Maria seemed to appear out of nowhere.' A;
+	セリフ(2650, "");
+	'"What the heck are you doing here?"' A;
+	セリフ(2770, "");
+	'"You never come home, so I went to look for you. I was worried."' A;
+	'"And Ran and Mill went off somewhere, too."' A;
+	'"Geez, I finally found you."' A;
+	'"So? Where\'ve you been?' R;
+	' What\'ve you been up to?"' A;
+	セリフ(2650, "");
+	'"Ah... Well--"' A;
+	セリフ(2001, "");
+	'"Gahahahaha, found a Maria!"' A;
+	セリフ(2650, "");
+	'"Aaah!"' A;
+	セリフ(2770, "");
+	'"R-Rance?!"' A;
+	セリフ(2000, "");
+	'"Yup, you don\'t need to say anything."' A;
+	セリフ(2004, "");
+	'"I understand. You longed for my man meat so much you came all the way here looking for me."' A;
+	セリフ(2770, "");
+	'"Wh-What is coming out of your mouth?"' A;
+	'"..."' A;
+	'"....Wait, what?' R;
+	' Were you two here together?"' A;
+	セリフ(2650, "");
+	'"Don\'t be stupid.' R;
+	' He\'s forcing me to go along with him."' A;
+	セリフ(2000, "");
+	'"Anyway, I see you\'ve got a new look, Maria."' A;
+	セリフ(2004, "");
+	'"Heeheehee, really gets me in the mood..."' A;
+	セリフ(2770, "");
+	'"Aah! Wait a second, Rance!"' A;
+	ト書き();
+	'Rance groped Maria\'s breasts from behind.' A;
+	Ｒ８ジングル(405, false);
+	ト書き();
+	'　' R;
+	' <wilt>' A;
+	セリフ(2005, "");
+	'"...You\'re under level 35, aren\'t you, Maria...?"' A;
+	セリフ(2770, "");
+	'"Y-Yeah...?"' A;
+	セリフ(2005, "");
+	'"...Haahh~"' A;
+	'"...So useless~"' A;
+	セリフ(2770, "");
+	'"Wh-What\'s that supposed to mean?' R;
+	' Is it just me or are you really disappointed?"' A;
+	セリフ(2000, "");
+	'"Whatever, just come with me.' R;
+	' I\'ll train you up."' A;
+	セリフ(2770, "");
+	'"Ah, hey, don\'t pull my hand like that!"' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	セリフ２(2770, "");
+	'"Wah~~~"' A;
+	ト書き();
+	'Rance dragged Maria off.' A;
+	枠消去();
+	立ち絵表示(1650, 1, 200);
+	セリフ(2650, "");
+	'"...Haahh."' A;
+	セリフ(2650, "");
+	'"...So it\'s just the same as always."' A;
+	セリフ２(2002, "");
+	'"Hey! You get back here too, Shizuka!"' A;
+	セリフ(2650, "");
+	'"...Haahh."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Shizuka missed her chance to escape.' A;
+	ADVOFF();
+}
+
+void イカマンクエ／バーナード()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(86, -1, -1);
+	セット表示(g町全景／夜, 5030, 0, 0);
+	ト書き();
+	'　' R;
+	'     Cidade   Bar' A;
+	'A lone man entered Cidade under darkness.' A;
+	セリフ(2963, "");
+	'"..."' A;
+	ト書き();
+	'His name was Bernard.' R;
+	'A man who made a humble living as a mercenary.' A;
+	'　' R;
+	' <clink>' A;
+	'With a twist of the man\'s hand, the ice in his glass rang out.' A;
+	セリフ(2963, "");
+	'"The man who defeated that guarded kraken is in this town..."' A;
+	'"And he went out of his way to fight with them fair and square, even knowing they would be strengthened..."' A;
+	ト書き();
+	'*gulp*' R;
+	'Bernard drained his alcohol in one motion.' A;
+	'He wanted to meet this man.' R;
+	'That was what his eyes seemed to say.' A;
+	枠消去();
+	立ち絵表示(1040, 1, 200);
+	セリフ(2040, "");
+	'"Umm..."' A;
+	'"He\'s not that great a man, you know..."' A;
+	ト書き();
+	'"Do you know him?"' R;
+	'Bernard\'s eyes seem to ask.' A;
+	セリフ(2040, "");
+	'"His name is, uh, Rance..."' A;
+	'"Well, in this town, he\'s pretty famous...' R;
+	' or should I say infamous..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Bernard\'s eyes looked down at his empty glass.' A;
+	セリフ(2963, "");
+	'"Heh..."' A;
+	'"...This must be fate as well."' A;
+}
+
+void ロッキー／出会い()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2020, "");
+	'"Huh? Sir, look over there."' A;
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"Hmm, who\'s that?"' A;
+	セリフ(2021, "");
+	'"He\'s fighting with the soil pollutions."' A;
+	セリフ(2000, "");
+	'"Yeah, he\'s covered in shit."' A;
+	セリフ(2021, "");
+	'"Oh, he fell over."' A;
+	セリフ(2000, "");
+	'"What a sad sack."' A;
+	セリフ(2020, "");
+	'"Oh, now he\'s up."' A;
+	セリフ(2000, "");
+	'"Heh? He\'s coming this way..."' A;
+	ト書き();
+	'The mysterious figure was running toward Rance.' A;
+	音楽(71, -1, -1);
+	セリフ(2964, "");
+	'"Master Rance, I looked all over for ya!"' A;
+	ト書き();
+	'Rocky sprinted over, waving his arms.' A;
+	セリフ(2964, "");
+	'"I missed ya so much, Master Rance!"' A;
+	セリフ(2002, "");
+	'"DIIIIIIIE!!"' A;
+	ト書き();
+	'Rance swung his sword without hesitating!' A;
+	顔揺れ(3, false);
+	セリフ(2964, "");
+	'"Gyaaaaaaaaa!"' A;
+	セリフ(2023, "");
+	'"Aaaaaaaah!"' A;
+	セリフ(2000, "");
+	'"Don\'t worry, I used the back of my sword. Probably."' A;
+	セリフ(2021, "");
+	'"N-No you didn\'t."' A;
+	セリフ(2000, "");
+	'"Come on, leave the poop man alone. Let\'s go."' A;
+	セリフ(2020, "");
+	'"Huh-- Wait-- Sir!"' A;
+	'"Uhhhh...?"' A;
+	ADVOFF();
+}
+

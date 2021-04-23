@@ -1,0 +1,684 @@
+bool 戦闘敵_初期化(int nZ)
+{
+	if (!戦闘敵_作成(nZ))
+	{
+		return false;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		戦闘敵_初期状態確認(戦闘番号_敵(i));
+	}
+	return true;
+}
+
+void 戦闘敵_単体攻撃(int nSkillNo, int nNo, int nTargetNo)
+{
+	int nTargetNo2 = 戦闘味方_守護確認(nSkillNo, nNo, nTargetNo);
+	bool bGuard = nTargetNo2 != nTargetNo;
+	int nDamage = Ｔ戦闘_行動(nNo, nTargetNo2, nSkillNo, true);
+	if (nDamage < 0)
+	{
+		return;
+	}
+	戦闘味方_マスク(nTargetNo);
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	if (bGuard)
+	{
+		戦闘味方_顔移動_守護(nTargetNo2, nTargetNo);
+	}
+	if (◆攻撃外れた == 0)
+	{
+		戦闘エフェクト_味方単体(nTargetNo, 戦闘エフェクト名(), false);
+		戦闘エフェクト_再生待ち_途中(true);
+		戦闘味方_ダメージ(nTargetNo2, nDamage, ◆ダメージ数字サイズ, ◆クリティカル出た, ◆死んだよ, bGuard ? nTargetNo : -1, ◆盾反らし発動, ◆押し出された);
+	}
+	else
+	{
+		戦闘味方_回避(nTargetNo);
+	}
+	if (◆押し出された > 0)
+	{
+		戦闘味方_押し出し(nTargetNo2);
+		戦闘_敵モーション終了(nNo, true);
+		return;
+	}
+	if (bGuard)
+	{
+		戦闘味方_守護後処理(nTargetNo2);
+	}
+	戦闘_味方エフェクト_状態変化(nTargetNo2, ◆ぴよりました, ◆死んだよ, ◆毒りました, ◆バリア割れる, false, ◆武器壊し発動, ◆踏ん張り発動);
+	戦闘_敵エフェクト_呪い発動(nNo, ◆死の呪い発動);
+	戦闘味方_蘇生(nTargetNo2, ◆死んだよ && ◆死んだ直後に蘇生したよ);
+	戦闘表示_状態確認(nTargetNo2, 0, 0);
+	戦闘_敵モーション終了(nNo, true);
+}
+
+void 戦闘敵_全体攻撃(int nSkillNo, int nNo)
+{
+	int i = 0;
+	array@bool abFlag[5];
+	for (i = 0; i < 5; ++i)
+	{
+		abFlag[i] = 戦闘データ_有効(戦闘番号_味方(i));
+	}
+	戦闘敵_複数攻撃(3, nSkillNo, nNo, abFlag);
+}
+
+void 戦闘敵_横一列攻撃(int nSkillNo, int nNo)
+{
+	int i = 0;
+	array@bool abFlag[5];
+	if (戦闘データ_味方前衛_有効(abFlag) > 0)
+	{
+		戦闘敵_複数攻撃(1, nSkillNo, nNo, abFlag);
+		return;
+	}
+	if (戦闘データ_味方後衛_有効(abFlag) > 0)
+	{
+		戦闘敵_複数攻撃(2, nSkillNo, nNo, abFlag);
+		return;
+	}
+}
+
+void 戦闘敵_複数攻撃(int nType, int nSkillNo, int nNo, ref array@bool abFlag)
+{
+	if (abFlag === NULL || abFlag.Numof() < 5)
+	{
+		return;
+	}
+	int i = 0;
+	int nHit = -1;
+	bool bCurse = false;
+	bool bMessage = true;
+	array@int anTargetNo[5];
+	array@int anDamage[5];
+	array@int anSize[5];
+	array@bool abCritical[5];
+	array@bool abDead[5];
+	array@bool abPiyori[5];
+	array@bool abPoison[5];
+	array@bool abBarrier[5];
+	array@bool abShield[5];
+	array@bool abBreak[5];
+	array@bool abRemain[5];
+	array@bool abRevive[5];
+	anDamage.Fill(0, 5, -2147483648);
+	for (i = 0; i < 5; ++i)
+	{
+		if (!abFlag[i])
+		{
+			continue;
+		}
+		int nTargetNo = 戦闘番号_味方(i);
+		int nDamage = Ｔ戦闘_行動(nNo, nTargetNo, nSkillNo, bMessage);
+		if (nDamage < 0)
+		{
+			goto label0;
+		}
+		if (◆攻撃外れた == 0)
+		{
+			anDamage[i] = nDamage;
+			anSize[i] = ◆ダメージ数字サイズ;
+			abCritical[i] = ◆クリティカル出た;
+			abDead[i] = ◆死んだよ;
+			abPiyori[i] = ◆ぴよりました;
+			abPoison[i] = ◆毒りました;
+			abBarrier[i] = ◆バリア割れる;
+			abShield[i] = ◆盾反らし発動;
+			abBreak[i] = ◆武器壊し発動;
+			abRemain[i] = ◆踏ん張り発動;
+			abRevive[i] = ◆死んだよ && ◆死んだ直後に蘇生したよ;
+			nHit = 1;
+		}
+		else
+		{
+			anDamage[i] = -1;
+			nHit = nHit > 0 ? nHit : 0;
+		}
+		bCurse = ◆死の呪い発動 ? 1 : bCurse;
+		anTargetNo[i] = nTargetNo;
+	label0:
+		bMessage = false;
+	}
+	if (nHit < 0)
+	{
+		return;
+	}
+	戦闘味方_マスク_複数(anTargetNo);
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	戦闘エフェクト_味方全体(戦闘エフェクト名(), false);
+	戦闘エフェクト_再生待ち_途中(true);
+	戦闘味方_ダメージ_複数(anTargetNo, anDamage, anSize, abCritical, abDead, -1);
+	戦闘_味方エフェクト_状態変化_複数(anTargetNo, abPiyori, abDead, abPoison, abBarrier, abShield, abBreak, abRemain);
+	戦闘_敵エフェクト_呪い発動(nNo, bCurse);
+	戦闘味方_蘇生_複数(anTargetNo, abRevive);
+	for (i = 0; i < 5; ++i)
+	{
+		戦闘表示_状態確認(anTargetNo[i], 0, 0);
+	}
+	戦闘_敵モーション終了(nNo, true);
+}
+
+void 戦闘敵_単体特殊(int nSkillNo, int nNo, int nTargetNo)
+{
+	if (Ｔ戦闘_行動(nNo, nTargetNo, nSkillNo, true) < 0)
+	{
+		return;
+	}
+	戦闘味方_マスク(nTargetNo);
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	戦闘エフェクト_味方単体(nTargetNo, 戦闘エフェクト名(), false);
+	戦闘味方_瀕死処理(nTargetNo, ◆死んだよ);
+	戦闘_味方エフェクト_状態変化(nTargetNo, ◆ぴよりました, ◆死んだよ, ◆毒りました, ◆バリア割れる, ◆盾反らし発動, ◆武器壊し発動, ◆踏ん張り発動);
+	戦闘_敵エフェクト_呪い発動(nNo, ◆死の呪い発動);
+	戦闘表示_状態確認(nTargetNo, 0, 0);
+	戦闘_敵モーション終了(nNo, true);
+}
+
+void 戦闘敵_全体特殊(int nSkillNo, int nNo)
+{
+	int i = 0;
+	array@bool abFlag[5];
+	for (i = 0; i < 5; ++i)
+	{
+		abFlag[i] = 戦闘データ_有効(戦闘番号_味方(i));
+	}
+	戦闘敵_複数特殊(3, nSkillNo, nNo, abFlag);
+}
+
+void 戦闘敵_横一列特殊(int nSkillNo, int nNo)
+{
+	int i = 0;
+	array@bool abFlag[5];
+	if (戦闘データ_味方前衛_有効(abFlag) > 0)
+	{
+		戦闘敵_複数特殊(1, nSkillNo, nNo, abFlag);
+		return;
+	}
+	if (戦闘データ_味方後衛_有効(abFlag) > 0)
+	{
+		戦闘敵_複数特殊(2, nSkillNo, nNo, abFlag);
+		return;
+	}
+}
+
+void 戦闘敵_複数特殊(int nType, int nSkillNo, int nNo, ref array@bool abFlag)
+{
+	if (abFlag === NULL || abFlag.Numof() < 5)
+	{
+		return;
+	}
+	int i = 0;
+	int nHit = -1;
+	bool bCurse = false;
+	bool bMessage = true;
+	array@int anTargetNo[5];
+	array@bool abDead[5];
+	array@bool abPiyori[5];
+	array@bool abPoison[5];
+	array@bool abBarrier[5];
+	array@bool abShield[5];
+	array@bool abBreak[5];
+	array@bool abRemain[5];
+	for (i = 0; i < 5; ++i)
+	{
+		if (!abFlag[i])
+		{
+			continue;
+		}
+		int nTargetNo = 戦闘番号_味方(i);
+		if (Ｔ戦闘_行動(nNo, nTargetNo, nSkillNo, bMessage) < 0)
+		{
+			goto label0;
+		}
+		anTargetNo[i] = nTargetNo;
+		abDead[i] = ◆死んだよ;
+		abPiyori[i] = ◆ぴよりました;
+		abPoison[i] = ◆毒りました;
+		abBarrier[i] = ◆バリア割れる;
+		abShield[i] = ◆盾反らし発動;
+		abBreak[i] = ◆武器壊し発動;
+		abRemain[i] = ◆踏ん張り発動;
+		nHit = 1;
+		bCurse = ◆死の呪い発動 ? 1 : bCurse;
+	label0:
+		bMessage = false;
+	}
+	if (nHit < 0)
+	{
+		return;
+	}
+	戦闘味方_マスク_複数(anTargetNo);
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	戦闘エフェクト_味方全体(戦闘エフェクト名(), false);
+	戦闘味方_瀕死処理_複数(anTargetNo, abDead);
+	戦闘_味方エフェクト_状態変化_複数(anTargetNo, abPiyori, abDead, abPoison, abBarrier, abShield, abBreak, abRemain);
+	戦闘_敵エフェクト_呪い発動(nNo, bCurse);
+	for (i = 0; i < 5; ++i)
+	{
+		戦闘表示_状態確認(anTargetNo[i], 0, 0);
+	}
+	戦闘_敵モーション終了(nNo, true);
+}
+
+void 戦闘敵_単体補助(int nSkillNo, int nNo, int nTargetNo)
+{
+	if (Ｔ戦闘_行動(nNo, nTargetNo, nSkillNo, true) < 0)
+	{
+		return;
+	}
+	bool bMotion = false;
+	if (◆味方ガード率変化あり > 0)
+	{
+		goto label0;
+	}
+	if (◆体力回復あり > 0)
+	{
+		戦闘敵_単体回復(nSkillNo, nNo, nTargetNo, ◆体力回復あり, ◆蘇生したよ > 0);
+		goto label0;
+	}
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	戦闘エフェクト_敵単体(nTargetNo, 戦闘エフェクト名(), false);
+	bMotion = true;
+	if (nSkillNo == 530)
+	{
+		戦闘行動順_総入れ替え(nNo);
+	}
+label0:
+	戦闘表示_状態確認(nTargetNo, 0, 0);
+	if (bMotion)
+	{
+		戦闘_敵モーション終了(nNo, true);
+	}
+}
+
+void 戦闘敵_全体補助(int nSkillNo, int nNo)
+{
+	int i = 0;
+	int nHit = -1;
+	bool bMessage = true;
+	bool bHeal = false;
+	bool bRevive = false;
+	bool bMotion = false;
+	array@int anTargetNo[5];
+	array@int anHeal[5];
+	anHeal.Fill(0, 5, -1);
+	for (i = 0; i < 5; ++i)
+	{
+		int nTargetNo = 戦闘番号_敵(i);
+		if (!戦闘データ_有効(nTargetNo))
+		{
+			continue;
+		}
+		if (Ｔ戦闘_行動(nNo, nTargetNo, nSkillNo, bMessage) < 0)
+		{
+			goto label0;
+		}
+		if (◆味方ガード率変化あり > 0)
+		{
+			nHit = 0;
+			break;
+		}
+		if (◆体力回復あり > 0)
+		{
+			anHeal[i] = ◆体力回復あり;
+			bHeal = true;
+		}
+		if (◆蘇生したよ > 0)
+		{
+			bRevive = true;
+		}
+		anTargetNo[i] = nTargetNo;
+		nHit = 1;
+	label0:
+		bMessage = false;
+	}
+	if (nHit < 0)
+	{
+		return;
+	}
+	if (nHit == 0)
+	{
+		goto label1;
+	}
+	if (bHeal)
+	{
+		戦闘敵_全体回復(nSkillNo, nNo, anTargetNo, anHeal, bRevive);
+		goto label1;
+	}
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	戦闘エフェクト_敵全体(戦闘エフェクト名(), false);
+	bMotion = true;
+label1:
+	for (i = 0; i < 5; ++i)
+	{
+		戦闘表示_状態確認(anTargetNo[i], 0, 0);
+	}
+	if (bMotion)
+	{
+		戦闘_敵モーション終了(nNo, true);
+	}
+}
+
+void 戦闘敵_単体回復(int nSkillNo, int nNo, int nTargetNo, int nHeal, bool bRevive)
+{
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	戦闘エフェクト_敵単体(nTargetNo, 戦闘エフェクト名(), false);
+	戦闘敵_回復(nTargetNo, nHeal, -1);
+	戦闘_敵モーション終了(nNo, true);
+	if (bRevive)
+	{
+		戦闘行動順_総入れ替え(nNo);
+	}
+}
+
+void 戦闘敵_全体回復(int nSkillNo, int nNo, ref array@int anTargetNo, ref array@int anHeal, bool bRevive)
+{
+	戦闘_敵モーション開始(nNo, nSkillNo);
+	戦闘_敵モーション当たり待ち(nNo, nSkillNo);
+	戦闘エフェクト_敵全体(戦闘エフェクト名(), false);
+	戦闘敵_回復_複数(anTargetNo, anHeal, -1);
+	戦闘_敵モーション終了(nNo, true);
+	if (bRevive)
+	{
+		戦闘行動順_総入れ替え(nNo);
+	}
+}
+
+int 戦闘敵_逃走(int nSkillNo, int nNo)
+{
+	return 0;
+}
+
+int 戦闘敵_ダメージ(int nNo, int nDamage, int nSize, bool bCritical, bool bDead, bool bShield, int nNo2, int nTime)
+{
+	int nHp = 戦闘データ_体力(nNo);
+	if (bShield)
+	{
+		戦闘エフェクト_再生待ち(false);
+		戦闘エフェクト_敵単体(nNo2 > 0 ? nNo2 : nNo, "盾反らし", true);
+		return nHp;
+	}
+	if (nNo2 > 0)
+	{
+		戦闘_敵フラッシュ(nNo, 150);
+		戦闘敵_ＨＰ更新開始(nNo, nHp, nTime);
+		戦闘_エフェクト_敵消滅(nNo2, bDead);
+		戦闘数値_ダメージ(nNo2, nDamage, nSize, bCritical);
+	}
+	else
+	{
+		戦闘_敵モーション実行(nNo, 4, bDead);
+		戦闘敵_ＨＰ更新開始(nNo, nHp, nTime);
+		戦闘_エフェクト_敵消滅(nNo, bDead);
+		戦闘数値_ダメージ(nNo, nDamage, nSize, bCritical);
+	}
+	戦闘敵_ＨＰ更新終了待ち(nNo);
+	戦闘敵_瀕死処理(nNo, bDead);
+	return nHp;
+}
+
+bool 戦闘敵_ダメージ_複数(ref array@int anNo, ref array@int anDamage, ref array@int anSize, ref array@bool abCritical, ref array@bool abDead, int nTime)
+{
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return false;
+	}
+	if (anDamage === NULL || anDamage.Numof() < 5)
+	{
+		return false;
+	}
+	if (anSize === NULL || anSize.Numof() < 5)
+	{
+		return false;
+	}
+	if (abCritical === NULL || abCritical.Numof() < 5)
+	{
+		return false;
+	}
+	if (abDead === NULL || abDead.Numof() < 5)
+	{
+		return false;
+	}
+	int i = 0;
+	array@int anHp[5];
+	bool bCritical = false;
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = anNo[i];
+		if (nNo <= 0)
+		{
+			continue;
+		}
+		if (abCritical[i])
+		{
+			bCritical = true;
+		}
+		anHp[i] = 戦闘データ_体力(nNo);
+	}
+	戦闘_敵モーション実行_複数(4, anNo, anHp, abDead);
+	戦闘敵_ＨＰ更新開始_複数(anNo, anHp, nTime);
+	戦闘_エフェクト_敵消滅_複数(anNo, abDead);
+	戦闘数値_ダメージ_敵複数(anNo, anDamage, anSize, abCritical);
+	戦闘敵_ＨＰ更新終了待ち_複数(anNo);
+	戦闘敵_瀕死処理_複数(anNo, abDead);
+	return true;
+}
+
+int 戦闘敵_回復(int nNo, int nHeal, int nTime)
+{
+	int nHp = 戦闘データ_体力(nNo);
+	戦闘敵_ＨＰ更新開始(nNo, nHp, nTime);
+	戦闘数値_回復(nNo, nHeal);
+	戦闘敵_ＨＰ更新終了待ち(nNo);
+	return nHp;
+}
+
+bool 戦闘敵_回復_複数(ref array@int anNo, ref array@int anHeal, int nTime)
+{
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return false;
+	}
+	if (anHeal === NULL || anHeal.Numof() < 5)
+	{
+		return false;
+	}
+	int i = 0;
+	array@int anHp[5];
+	for (i = 0; i < 5; ++i)
+	{
+		int nNo = anNo[i];
+		if (nNo <= 0)
+		{
+			continue;
+		}
+		anHp[i] = 戦闘データ_体力(nNo);
+	}
+	戦闘敵_ＨＰ更新開始_複数(anNo, anHp, nTime);
+	戦闘数値_回復_敵複数(anNo, anHeal);
+	戦闘敵_ＨＰ更新終了待ち_複数(anNo);
+	return true;
+}
+
+void 戦闘敵_瀕死処理(int nNo, bool bDead)
+{
+	if (!bDead)
+	{
+		return;
+	}
+	戦闘データ_体力設定(nNo, 0);
+	戦闘データ_状態変化設定(nNo, 3);
+	戦闘敵_ＨＰ更新(nNo, 0, 0);
+	戦闘敵_瀕死設定(nNo, true);
+	戦闘_モンスター消し(nNo);
+	戦闘行動順_瀕死設定(nNo);
+}
+
+void 戦闘敵_瀕死処理_複数(ref array@int anNo, ref array@bool abDead)
+{
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return;
+	}
+	if (abDead === NULL || abDead.Numof() < 5)
+	{
+		return;
+	}
+	int i = 0;
+	array@int anNo2;
+	for (i = 0; i < 5; ++i)
+	{
+		if (!abDead[i])
+		{
+			continue;
+		}
+		ref int rfnNo = anNo[i];
+		戦闘データ_体力設定(rfnNo, 0);
+		戦闘データ_状態変化設定(rfnNo, 3);
+		戦闘敵_ＨＰ更新(rfnNo, 0, 0);
+		戦闘敵_瀕死設定(rfnNo, true);
+		anNo2.PushBack(rfnNo);
+	}
+	戦闘_モンスター消し_複数(anNo2);
+	戦闘行動順_瀕死設定_複数(anNo2);
+}
+
+void 戦闘敵_守護設定(int nNo, int nGuard)
+{
+	if (nGuard < 0)
+	{
+		nGuard = 戦闘データ_守護率(nNo);
+	}
+	else
+	{
+		nGuard = 戦闘データ_守護率設定(nNo, nGuard);
+	}
+	戦闘敵_守護率設定(nNo, nGuard);
+}
+
+void 戦闘敵_守護解除(int nNo)
+{
+	戦闘データ_守護率設定(nNo, 0);
+	戦闘敵_守護率設定(nNo, 0);
+}
+
+int 戦闘敵_守護確認(int nSkillNo, int nNo, int nTargetNo)
+{
+	if (!戦闘_守護確認_スキル(nSkillNo, nTargetNo))
+	{
+		return nTargetNo;
+	}
+	if (nTargetNo <= 0)
+	{
+		return nTargetNo;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nTargetNo2 = 戦闘番号_敵(i);
+		if (nTargetNo2 == nTargetNo)
+		{
+			continue;
+		}
+		if (戦闘_守護確認(nTargetNo2))
+		{
+			return nTargetNo2;
+		}
+	}
+	return nTargetNo;
+}
+
+void 戦闘敵_守護後処理(int nNo)
+{
+	３Ｄ戦闘_モンスター位置戻し(戦闘番号_敵インデクス(nNo));
+	if (戦闘データ_守護率(nNo) > 0)
+	{
+		戦闘敵_守護設定(nNo, -1);
+	}
+	else
+	{
+		戦闘敵_守護解除(nNo);
+	}
+}
+
+bool 戦闘敵_蘇生(int nNo, bool bRevive)
+{
+	if (!bRevive)
+	{
+		return false;
+	}
+	戦闘エフェクト_再生待ち(false);
+	int nHp = 戦闘データ_体力設定(nNo, 戦闘データ_体力最大(nNo));
+	戦闘データ_状態変化設定(nNo, 0);
+	戦闘敵_瀕死設定(nNo, false);
+	戦闘エフェクト_敵単体(nNo, "蘇生", false);
+	戦闘敵_回復(nNo, nHp, -1);
+	戦闘_モンスター再表示(nNo);
+	return true;
+}
+
+bool 戦闘敵_蘇生_複数(ref array@int anNo, ref array@bool abRevive)
+{
+	if (anNo === NULL || anNo.Numof() < 5)
+	{
+		return false;
+	}
+	if (abRevive === NULL || abRevive.Numof() < 5)
+	{
+		return false;
+	}
+	戦闘エフェクト_再生待ち(false);
+	int i = 0;
+	array@int anNo2;
+	array@int anHp[5];
+	for (i = 0; i < 5; ++i)
+	{
+		if (!abRevive[i])
+		{
+			continue;
+		}
+		ref int rfnNo = anNo[i];
+		anHp[i] = 戦闘データ_体力設定(rfnNo, 戦闘データ_体力最大(rfnNo));
+		戦闘データ_状態変化設定(rfnNo, 0);
+		戦闘敵_瀕死設定(rfnNo, false);
+		戦闘エフェクト_敵補助(rfnNo, "蘇生", false);
+		anNo2.PushBack(rfnNo);
+	}
+	if (anNo2.Empty())
+	{
+		return false;
+	}
+	戦闘敵_回復_複数(anNo, anHp, -1);
+	戦闘_モンスター再表示_複数(anNo2);
+	return true;
+}
+
+bool 戦闘敵_反射(int nNo)
+{
+	if (◆反射発動 <= 0)
+	{
+		return false;
+	}
+	if (!戦闘番号_味方確認(nNo))
+	{
+		return false;
+	}
+	戦闘エフェクト_再生待ち(false);
+	戦闘データ_体力設定(nNo, 数値_減算(戦闘データ_体力(nNo), ◆反射発動));
+	戦闘エフェクト_味方単体(nNo, "物理攻撃基本", false);
+	戦闘エフェクト_再生待ち_途中(true);
+	戦闘味方_ダメージ(nNo, ◆反射発動, 0, false, false, -1, false, false);
+	戦闘表示_状態確認(nNo, 0, 0);
+	◆反射発動 = 0;
+	return true;
+}
+

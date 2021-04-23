@@ -1,0 +1,132 @@
+void T_BattleWeakPoint::setShowWeakPoint(bool bShow)
+{
+	this.m_bShowWeakPoint = bShow;
+}
+
+bool T_BattleWeakPoint::getShow()
+{
+	return this.m_bShow;
+}
+
+bool T_BattleWeakPoint::getShowWeakPoint()
+{
+	return this.m_bShowWeakPoint;
+}
+
+T_BattleWeakPoint::T_BattleWeakPoint()
+{
+	this.clear();
+}
+
+T_BattleWeakPoint::~T_BattleWeakPoint()
+{
+	this.delete();
+}
+
+bool T_BattleWeakPoint::create(int nCharaNo)
+{
+	this.delete();
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	ref T_DrawLine rfsText;
+	sact_text_metrics_t tmText;
+	tmText.nSize = 18;
+	tmText.nColorR = 255;
+	tmText.nColorG = 255;
+	tmText.nColorB = 255;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	tmText.nShadowPixelL = 0;
+	tmText.nShadowPixelR = 1;
+	tmText.nShadowPixelU = 0;
+	tmText.nShadowPixelD = 1;
+	tmText.nShadowColorR = 0;
+	tmText.nShadowColorG = 0;
+	tmText.nShadowColorB = 0;
+	rfsText <- this.m_aspText[1];
+	string weakpoint = 属性文字列(キャラ_弱点属性(nCharaNo));
+	string weakpoint2 = 種族文字列(キャラ_種族(nCharaNo));
+	if (weakpoint2 != "___")
+	{
+		weakpoint += ", " + weakpoint2;
+	}
+	string weakpoint3 = タイプ文字列(キャラ_タイプ(nCharaNo));
+	if (weakpoint3 != "___")
+	{
+		weakpoint += ", " + weakpoint3;
+	}
+	float spacing = 0.0;
+	FitText2(weakpoint, 192, tmText.nFace, 18, 18, tmText.nSize, 1.0, 0.5, spacing);
+	rfsText.createFromTextMetrics2(2, weakpoint, tmText, 0, spacing);
+	this.m_bShowWeakPoint = キャラ_弱点把握(nCharaNo);
+	return true;
+}
+
+void T_BattleWeakPoint::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspText.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspText[i].delete();
+	}
+	this.clear();
+}
+
+void T_BattleWeakPoint::clear()
+{
+	this.m_bShow = false;
+	this.m_bShowWeakPoint = false;
+}
+
+void T_BattleWeakPoint::setPos(int nX, int nY)
+{
+	int i = 0;
+	int cnt = this.m_aspText.Numof();
+	int nW = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsText = this.m_aspText[i];
+		int realWidth = rfsText.getRealWidth();
+		if (realWidth > 0)
+		{
+			nW += realWidth + 16;
+		}
+	}
+	nW -= 16;
+	int nX2 = nX + (196 - nW) / 2;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawLine rfsText = this.m_aspText[i];
+		rfsText.setPos(nX2, nY);
+		int realWidth = rfsText.getRealWidth();
+		if (realWidth > 0)
+		{
+			nX2 += realWidth + 16;
+		}
+	}
+}
+
+void T_BattleWeakPoint::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspText.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspText[i].setZ(nZ);
+	}
+}
+
+void T_BattleWeakPoint::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspText.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspText[i].setShow(bShow && this.m_bShowWeakPoint);
+	}
+	this.m_bShow = bShow;
+}
+

@@ -1,0 +1,186 @@
+void ハニー２／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5530, 5090, 0, 0);
+	ト書き();
+	' ' R;
+	'     Hanny Secret Base' A;
+	'Somewhere in this world, there is a secret hanny base.' A;
+	'Hannies were gathered there again today, playing and having fun.' A;
+	音楽(57, -1, -1);
+	セリフ(2974, "");
+	'"Yay! Yay!"' A;
+	セリフ(2927, "");
+	'"Let\'s play duck, duck, goose!"' A;
+	セリフ(2974, "");
+	'"Nooo, I wanna play hide and seeeek!"' A;
+	ト書き();
+	'They lived there in peace with some gal monsters from a nearby dungeon.' A;
+	セリフ(2974, "");
+	'"But is it okay for us to have so much fun...?"' A;
+	セリフ(2927, "");
+	'"You\'re worried humans will come, right?"' R;
+	'  ↑ Smirking' A;
+	セリフ(2974, "");
+	'"Yeah..."' A;
+	セリフ(2927, "");
+	'"Don\'t be."' A;
+	'"Humans are creatures bound by rules and regulations."' A;
+	'"Look at the sign we\'ve got out front."' A;
+	セリフ(2974, "");
+	'"Oh! It says only people with levels divisible by 5!"' A;
+	'"...What does that mean?"' A;
+	セリフ(2927, "");
+	'"Heheheh, we have a secret weapon, remember?"' A;
+	セリフ(2974, "");
+	'"Oh yeah, you\'re right!"' A;
+	'"Yaaay! Even we can win if we do that!' R;
+	' Wow, you\'re a genius! Haniho!"' A;
+	セリフ(2927, "");
+	'"Hohoho, I\'m not just brown for show."' A;
+	'"Alright! This is where we\'ll start our glorious thousand-year hanny dynasty!"' A;
+	セリフ(2974, "");
+	'"Yaaay! Cooool!"' A;
+	ト書き();
+	'Thus, the hanny secret base was a peaceful paradise for hannies for all time...' A;
+	音楽(0, 1, 1000);
+	'...Or rather, it should have been.' A;
+	エフェクトセット表示(7001, 5530, 5090, 1000, 0, 0);
+	音楽(75, -1, -1);
+	セリフ(2001, "");
+	'"Gahahaha, I\'m here, I\'m here!' R;
+	' Here I am!"' A;
+	セリフ(2000, "");
+	'"Is this where that hanny secret base is supposed to be...?"' A;
+	'"All secret bases exist to be obliterated by me!"' A;
+	'"Well then, let\'s go..."' A;
+	セリフ(2005, "");
+	'"Wait, what\'s with this sign?' R;
+	' Only people with levels divisible by 5...?"' A;
+	セリフ(2002, "");
+	'"What?! Those hannies think they can just write whatever nonsense they want!"' A;
+	セリフ(2000, "");
+	'"...Tch, it\'s a pain, but we\'ll follow their stupid rule."' A;
+	セリフ(2002, "");
+	'"Give me whatever conditions you want! Those hannies are going down!"' A;
+	ADVOFF();
+}
+
+void ハニー２／お断り()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	セリフ(2927, "");
+	'"Aaah, no, no, no!"' A;
+	ト書き();
+	'The hanny stuck its finger(?) out.' A;
+	セリフ(2927, "");
+	'"That\'s against the rules! Against the rules!"' A;
+	'"There\'re people with levels not divisible by 5 in your party!"' A;
+	'"You have to follow the rules or you\'re out!"' A;
+	'"Get outta here!"' A;
+	ト書き();
+	'The hannies all grouped up and shoved Rance away.' A;
+	ADVOFF();
+}
+
+void ハニー２／ボス()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	セリフ(2927, "");
+	'"Grr, damn dirty humans!' R;
+	' To come so brazenly into our secret base..."' A;
+	'"But you\'ve fallen into our trap..."' A;
+	'"Your levels are all divisible by 5, and we have a very cute zashiki-warashi with us!"' A;
+	枠消去();
+	ミニイベント表示(4909, 1, 500);
+	ト書き();
+	'A gal monster came forward from deeper in the room.' A;
+	セリフ２(2120, "Zashiki-Warashi");
+	'"Just leave the rest to me."' A;
+	セリフ(2974, "");
+	'"So cute! Haniho! We love you!"' A;
+	セリフ(2927, "");
+	'"Heh heh heh, this zashiki-warashi\'s attacks deal instant death to those with levels divisible by 5!"' A;
+	'"She\'s gonna turn you humans into toast!' R;
+	' Meheheh, we don\'t even have to do any work!"' A;
+	セリフ(2974, "");
+	'"Yaaay! We win!"' A;
+	'"You rule, Zashiki-Warashi!' R;
+	' Woohoo! You\'re so cuuute!"' A;
+	セリフ２(2120, "Zashiki-Warashi");
+	'"Yay! Praise me more!"' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	セリフ(2005, "");
+	'"Grrr, you cocky hannies!"' A;
+	セリフ(2002, "");
+	'"We\'ll show you the difference between humans and mere pottery!"' A;
+	セリフ(2927, "");
+	'"Aiyaaa! Kill the humans!"' A;
+	ADVOFF();
+}
+
+void ハニー２／ボス／戦闘後()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, gＭ, 0, 0);
+	音楽(75, -1, -1);
+	セリフ(2927, "");
+	'"...Wh--"' A;
+	'"Whaaa, whaaa, whaaa?"' A;
+	'"B-But... our strategy was perfect...' R;
+	' and we still lost...?"' A;
+	セリフ(2974, "");
+	'"Waaaah, that\'s mean! Humans are meeean!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, have you learned your lesson, hannies?!' R;
+	' Now you know how strong humans are!"' A;
+	セリフ(2002, "");
+	'"So, now that you know! DIIIIIE!"' A;
+	全画面揺れ(2, false);
+	ト書き();
+	' ' R;
+	'  <smaaaashhh!>' A;
+	枠消去();
+	ミニイベント表示(4000, 1, 500);
+	セリフ(2927, "");
+	'"Eeeeee, how terrifying!"' A;
+	セリフ(2002, "");
+	'"Shut up! I\'ll grind you to dust!"' A;
+	セリフ(2927, "");
+	'"This place is done for!' R;
+	' Everybody, retreeeat!"' A;
+	セリフ(2002, "");
+	'"Hey, don\'t run from me!"' A;
+	セリフ(2974, "");
+	'"Aaaah, save yourselves!"' A;
+	枠消去();
+	ミニイベント表示(0, 1, 500);
+	ト書き();
+	'The hannies scattered like dust in the wind.' A;
+	音楽(0, 1, 1000);
+	'Thus, like so many others, another hanny\'s ambitions were crushed...' A;
+}
+

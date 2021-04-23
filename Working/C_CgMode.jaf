@@ -1,0 +1,78 @@
+void scrollCgMode(int nValue)
+{
+	g_sCgMode.scroll(nValue);
+}
+
+int ＣＧモード_実行(int nMode)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	画面_クリア(true, true);
+	if (nMode == 0)
+	{
+		ミニステータス_ボタン表示設定(false);
+		ミニステータス_表示設定(false);
+	}
+	ＴＣＧモード初期化();
+	int nRet = g_sCgMode.run(nMode);
+	if (nMode == 0)
+	{
+		ミニステータス_表示設定(true);
+		ミニステータス_ボタン表示設定(true);
+	}
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	return nRet;
+}
+
+int ＣＧモード_上矢印(int nID)
+{
+	return g_sCgMode.moveUp(nID);
+}
+
+int ＣＧモード_下矢印(int nID)
+{
+	return g_sCgMode.moveDown(nID);
+}
+
+int ＣＧモード_左矢印(int nID)
+{
+	return g_sCgMode.moveLeft(nID);
+}
+
+int ＣＧモード_右矢印(int nID)
+{
+	return g_sCgMode.moveRight(nID);
+}
+
+void ＣＧモード_選択設定(int nID, bool bSelect)
+{
+	g_sCgMode.setSelect(nID, bSelect);
+}
+
+int ＣＧモード_位置Ｘ(int nIndex)
+{
+	return 16 + 200 * ＣＧモード_列位置(nIndex);
+}
+
+int ＣＧモード_位置Ｙ(int nIndex)
+{
+	return 102 + 152 * ＣＧモード_行位置(nIndex);
+}
+
+int ＣＧモード_インデクス(int nRow, int nCol)
+{
+	return nRow < 0 || nRow >= 4 || nCol < 0 || nCol >= 5 ? -1 : nCol * 4 + nRow;
+}
+
+int ＣＧモード_行位置(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 20 ? -1 : nIndex % 4;
+}
+
+int ＣＧモード_列位置(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 20 ? -1 : nIndex / 4;
+}
+

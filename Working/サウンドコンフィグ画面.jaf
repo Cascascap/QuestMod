@@ -1,0 +1,42 @@
+void サウンドコンフィグ画面＿ボリューム要素全削除()
+{
+	g_VolumeConfigModel.Clear();
+}
+
+void サウンドコンフィグ画面＿ボリューム要素追加(int グループ番号, string 名前)
+{
+	CVolumeElement VolumeElement;
+	VolumeElement.SetGroup(グループ番号);
+	VolumeElement.SetName(名前);
+	g_VolumeConfigModel.AddVolumeElement(VolumeElement);
+}
+
+void サウンドコンフィグ画面＿ボリュームボックスＣＧ(string ＣＧ名, string カーソル下ＣＧ名)
+{
+	g_VolumeConfigModel.SetVolumeBoxCG(ＣＧ名);
+	g_VolumeConfigModel.SetVolumeBoxUnderCursorCG(カーソル下ＣＧ名);
+}
+
+void サウンドコンフィグ画面＿ボリュームエリア矩形(int グループ番号, int Ｘ, int Ｙ, int Ｗ, int Ｈ)
+{
+	g_VolumeConfigModel.SetVolumeAreaRect(グループ番号, Ｘ, Ｙ, Ｗ, Ｈ);
+}
+
+void サウンドコンフィグ画面＿ミュートボタンＣＧ(string ＣＧ名, string カーソル下ＣＧ名, string チェックＣＧ名, string チェックカーソル下ＣＧ名)
+{
+	g_VolumeConfigModel.SetMuteButtonCG(ＣＧ名);
+	g_VolumeConfigModel.SetMuteButtonUnderCursorCG(カーソル下ＣＧ名);
+	g_VolumeConfigModel.SetMuteButtonCheckCG(チェックＣＧ名);
+	g_VolumeConfigModel.SetMuteButtonCheckUnderCursorCG(チェックカーソル下ＣＧ名);
+}
+
+void サウンドコンフィグ画面＿ミュートボタン位置(int グループ番号, int Ｘ, int Ｙ)
+{
+	g_VolumeConfigModel.SetMuteButtonPos(グループ番号, Ｘ, Ｙ);
+}
+
+void サウンドコンフィグ画面＿テスト音(int nElement, int nSound)
+{
+	g_VolumeConfigModel.SetTestSound(nElement, nSound);
+}
+

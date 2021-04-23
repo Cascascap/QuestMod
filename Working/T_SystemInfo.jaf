@@ -1,0 +1,216 @@
+bool T_SystemInfo::isSuspend()
+{
+	return this.m_sGold.isSuspend();
+}
+
+T_SystemInfo::T_SystemInfo()
+{
+	this.clear();
+}
+
+T_SystemInfo::~T_SystemInfo()
+{
+	this.delete();
+}
+
+void T_SystemInfo::create(int nZ)
+{
+	this.delete();
+	this.m_sGold.create(105, 22, 7, 3, 1, true);
+	this.m_sGold.setFontType(258);
+	this.m_sGold.setFontSize(30);
+	this.m_sGold.setFontColor(255, 255, 255);
+	this.m_sGold.setFontBold(1);
+	this.m_sGold.setPos(379, 741);
+	this.m_sGold.setZ(nZ);
+	this.m_sRank.create(32, 22, 2, 3, 1, true);
+	this.m_sRank.setFontType(258);
+	this.m_sRank.setFontSize(30);
+	this.m_sRank.setFontColor(255, 255, 255);
+	this.m_sRank.setFontBold(1);
+	this.m_sRank.setPos(562, 741);
+	this.m_sRank.setZ(nZ);
+	this.m_sPoint.create(10096, 10014, 6, 125, 12, 1, 0);
+	this.m_sPoint.setPos(595, 746);
+	this.m_sPoint.setZ(nZ);
+	this.m_sBar.createCg(1, 10013, 0, 0);
+	this.m_sBar.setPos(596, 759);
+	this.m_sBar.setZ(nZ);
+	this.m_sDonation.create(57, 22, 7, 3, 1, true);
+	this.m_sDonation.setFontType(258);
+	this.m_sDonation.setFontSize(30);
+	this.m_sDonation.setFontColor(255, 255, 255);
+	this.m_sDonation.setFontBold(1);
+	this.m_sDonation.setPos(812, 741);
+	this.m_sDonation.setZ(nZ);
+	this.m_spMark.setCg(20000);
+	this.m_spMark.setPos(273, 751);
+	this.m_spMark.setZ(nZ + 50);
+	数値点滅_作成(9701);
+}
+
+void T_SystemInfo::delete()
+{
+	数値点滅_削除();
+	this.m_sGold.delete();
+	this.m_sRank.delete();
+	this.m_sPoint.delete();
+	this.m_sBar.delete();
+	this.m_sDonation.delete();
+	this.m_spMark.delete();
+	this.clear();
+}
+
+void T_SystemInfo::clear()
+{
+	return;
+}
+
+bool T_SystemInfo::update(int nMode, int nTotalTime)
+{
+	if (!this.m_sPoint.isCreated())
+	{
+		return false;
+	}
+	bool bRet = false;
+	this.setMarkShow(this.m_sGold.getShow());
+	switch (nMode)
+	{
+		case 2:
+			bRet = this.blinkStart();
+			this._update(0);
+			break;
+		case 1:
+			this._update(nTotalTime);
+			break;
+		case 0:
+		default:
+			this._update(0);
+			break;
+	}
+	return bRet;
+}
+
+void T_SystemInfo::setShow(bool bShow)
+{
+	this.m_sGold.setShow(bShow);
+	this.m_sRank.setShow(bShow);
+	this.m_sPoint.setShow(bShow);
+	this.m_sBar.setShow(bShow, -1);
+	this.m_sDonation.setShow(bShow);
+	this.setMarkShow(bShow);
+}
+
+void T_SystemInfo::setMarkShow(bool bShow)
+{
+	if (システムバー_ボタン有効(900003))
+	{
+		this.m_spMark.setShow(まめ知識_新規あり() ? bShow : 0);
+	}
+	else
+	{
+		this.m_spMark.setShow(0);
+	}
+}
+
+bool T_SystemInfo::suspend()
+{
+	数値点滅_サスペンド();
+	this.m_sRank.suspend();
+	this.m_sPoint.suspend();
+	this.m_sBar.suspend();
+	this.m_sDonation.suspend();
+	this.m_spMark.suspend();
+	return this.m_sGold.suspend();
+}
+
+bool T_SystemInfo::resume()
+{
+	数値点滅_レジューム();
+	this.m_sRank.resume();
+	this.m_sPoint.resume();
+	this.m_sBar.resume();
+	this.m_sDonation.resume();
+	this.m_spMark.resume();
+	return this.m_sGold.resume();
+}
+
+bool T_SystemInfo::blinkStart()
+{
+	bool bRet = false;
+	if (数値点滅_登録_数字テキスト(this.m_sGold, 所持金()))
+	{
+		bRet = true;
+	}
+	if (数値点滅_登録_数字テキスト(this.m_sDonation, 寄付()))
+	{
+		bRet = true;
+	}
+	if (数値点滅_登録_数字テキスト(this.m_sRank, 名声_ランク()))
+	{
+		bRet = true;
+	}
+	else if (数値点滅_登録_数字(this.m_sPoint.getNumber(), 名声_ポイント()))
+	{
+		bRet = true;
+	}
+	return bRet;
+}
+
+void T_SystemInfo::_update(int nTotalTime)
+{
+	int nGold = 所持金();
+	if (nGold > 9999999)
+	{
+		nGold = 9999999;
+	}
+	int nRank = 名声_ランク();
+	int nPoint = 名声_ポイント();
+	int nPointMax = 名声_ポイント最大();
+	int nCount = 寄付();
+	if (nCount > 9999)
+	{
+		nCount = 9999;
+	}
+	nTotalTime = nTotalTime < 0 ? 250 : nTotalTime;
+	if (nTotalTime <= 0)
+	{
+		this.m_sGold.setValue(nGold, false);
+		this.m_sRank.setValue(nRank, false);
+		this.m_sPoint.setValue(nPoint, nPointMax);
+		this.m_sBar.setValue(nPoint, nPointMax);
+		this.m_sDonation.setValue(nCount, false);
+		return;
+	}
+	int nOldRank = this.m_sRank.getValue();
+	int nValue = nRank > nOldRank ? this.m_sPoint.getValue() : nPoint;
+	int nMax = nRank > nOldRank ? this.m_sPoint.getMax() : nPointMax;
+	this.m_sGold.slotStart(nGold, nTotalTime);
+	this.m_sRank.slotStart(nRank, nTotalTime);
+	this.m_sPoint.animeStart(nValue, nTotalTime);
+	this.m_sBar.animeStart(nValue, nTotalTime);
+	this.m_sDonation.slotStart(nCount, nTotalTime);
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (nTime < nTotalTime)
+	{
+		this.m_sGold.slot(nTime);
+		this.m_sRank.slot(nTime);
+		this.m_sPoint.anime(nTime);
+		this.m_sBar.anime(nTime);
+		this.m_sDonation.slot(nTime);
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	this.m_sGold.slotEnd();
+	this.m_sRank.slotEnd();
+	this.m_sPoint.animeEnd();
+	this.m_sBar.animeEnd();
+	this.m_sDonation.slotEnd();
+	UPDATE(true);
+	this.m_sPoint.setValue(nPoint, nPointMax);
+	this.m_sBar.setValue(nPoint, nPointMax);
+	UPDATE(true);
+}
+

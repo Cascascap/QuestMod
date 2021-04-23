@@ -1,0 +1,413 @@
+string スキル_名前(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return "";
+	}
+	return Ｓ名前(nSkillNo, "");
+}
+
+bool スキル_基本技(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return true;
+	}
+	return Ｓ基本技(nSkillNo, -1) > 0;
+}
+
+bool スキル_大技(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return true;
+	}
+	return Ｓ大技(nSkillNo, -1) > 0;
+}
+
+int スキル_機能(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ機能(nSkillNo, -1);
+}
+
+int スキル_効果(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ効果(nSkillNo, -1);
+}
+
+int スキル_効果２(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ効果２(nSkillNo, -1);
+}
+
+int スキル_効果３(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ効果３(nSkillNo, -1);
+}
+
+int スキル_効果４(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ効果４(nSkillNo, -1);
+}
+
+bool スキル_削除不可(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return false;
+	}
+	return Ｓ削除不可(nSkillNo, -1) > 0;
+}
+
+int スキル_タイプ(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓタイプ(nSkillNo, -1);
+}
+
+int スキル_行動種類(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ行動種類(nSkillNo, -1);
+}
+
+int スキル_パネル色(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓパネル色(nSkillNo, -1);
+}
+
+int スキル_対象(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ対象(nSkillNo, -1);
+}
+
+int スキル_倍率(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ倍率(nSkillNo, -1);
+}
+
+int スキル_ダメージ上限(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓダメージ上限(nSkillNo, -1);
+}
+
+int スキル_属性(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ属性(nSkillNo, -1);
+}
+
+int スキル_付与ダメージ(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ付与ダメージ(nSkillNo, -1);
+}
+
+bool スキル_初ターン使用禁止技(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return false;
+	}
+	return Ｓ初ターン使用禁止技(nSkillNo, -1) > 0;
+}
+
+bool スキル_同一戦闘一度のみ技(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return false;
+	}
+	return Ｓ同一戦闘一度のみ技(nSkillNo, -1) > 0;
+}
+
+int スキル_要溜め(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return -1;
+	}
+	return Ｓ要溜め(nSkillNo, -1);
+}
+
+string スキル_ＥＦ(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return "";
+	}
+	return ＳＥＦ(nSkillNo, "");
+}
+
+string スキル_説明文１(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return "";
+	}
+	return テキスト改行変換(Ｓ説明文１(nSkillNo, ""), "$");
+}
+
+string スキル_説明文２(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return "";
+	}
+	return テキスト改行変換(Ｓ説明文２(nSkillNo, ""), "$");
+}
+
+string スキル_表示文(int nSkillNo)
+{
+	if (!スキル_確認(nSkillNo))
+	{
+		return "";
+	}
+	return Ｓ表示文(nSkillNo, "");
+}
+
+bool スキル_確認(int nSkillNo)
+{
+	return nSkillNo > 0 && nSkillNo < Ｓ.Numof();
+}
+
+bool スキル_行動(int nSkillNo)
+{
+	return スキル_タイプ(nSkillNo) == 10;
+}
+
+bool スキル_能力(int nSkillNo)
+{
+	switch (スキル_タイプ(nSkillNo))
+	{
+		case 20:
+		case 30:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool スキル_回復技(int nSkillNo)
+{
+	switch (nSkillNo)
+	{
+		case 206:
+		case 207:
+		case 208:
+			return true;
+		default:
+			break;
+	}
+	return スキル_機能(nSkillNo) == 48;
+}
+
+bool スキル_攻撃(int nSkillNo)
+{
+	return スキル_行動種類(nSkillNo) == 1;
+}
+
+bool スキル_魔法(int nSkillNo)
+{
+	return スキル_行動種類(nSkillNo) == 2;
+}
+
+bool スキル_特殊(int nSkillNo)
+{
+	return スキル_行動種類(nSkillNo) == 3;
+}
+
+bool スキル_補助(int nSkillNo)
+{
+	return スキル_行動種類(nSkillNo) == 4;
+}
+
+bool スキル_対象_前衛(int nSkillNo)
+{
+	switch (スキル_対象(nSkillNo))
+	{
+		case 1:
+		case 4:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool スキル_対象_複数攻撃(int nSkillNo)
+{
+	switch (スキル_対象(nSkillNo))
+	{
+		case 3:
+		case 4:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool スキル_対象_瀕死味方(int nSkillNo)
+{
+	switch (スキル_対象(nSkillNo))
+	{
+		case 13:
+		case 14:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool スキル_対象_要ターゲット(int nSkillNo)
+{
+	switch (スキル_対象(nSkillNo))
+	{
+		case 1:
+		case 2:
+		case 11:
+		case 13:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool スキル_近距離(int nSkillNo)
+{
+	return スキル_対象(nSkillNo) == 1;
+}
+
+bool スキル_遠距離(int nSkillNo)
+{
+	return スキル_対象(nSkillNo) == 2;
+}
+
+bool スキル_全体(int nSkillNo)
+{
+	return スキル_対象(nSkillNo) == 3;
+}
+
+bool スキル_横一列(int nSkillNo)
+{
+	return スキル_対象(nSkillNo) == 4;
+}
+
+bool スキル_自分(int nSkillNo)
+{
+	return スキル_対象(nSkillNo) == 10;
+}
+
+bool スキル_味方(int nSkillNo)
+{
+	switch (スキル_対象(nSkillNo))
+	{
+		case 11:
+		case 13:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool スキル_味方全体(int nSkillNo)
+{
+	switch (スキル_対象(nSkillNo))
+	{
+		case 12:
+		case 14:
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool スキル_ターゲット不可(int nSkillNo)
+{
+	return スキル_対象(nSkillNo) == 30;
+}
+
+bool スキル_手加減(int nSkillNo)
+{
+	return スキル_機能(nSkillNo) == 46;
+}
+
+bool スキル_連続行動(int nSkillNo)
+{
+	return スキル_機能(nSkillNo) == 45;
+}
+
+bool スキル_衝撃１００(int nSkillNo)
+{
+	return スキル_機能(nSkillNo) == 64;
+}
+
+bool スキル_即死５０(int nSkillNo)
+{
+	return スキル_機能(nSkillNo) == 65;
+}
+
+bool スキル_即死７５(int nSkillNo)
+{
+	return スキル_機能(nSkillNo) == 66;
+}
+
+bool スキル_守護抜け(int nSkillNo)
+{
+	return スキル_機能(nSkillNo) == 52;
+}
+

@@ -1,0 +1,206 @@
+void 画面_初期化(int nMode)
+{
+	メッセージ_初期化(nMode);
+	顔枠準備(50006);
+	汎用エロ顔枠準備(50006);
+	数字ＣＧ_初期化();
+	効果キャンセル停止解除();
+}
+
+void 画面_終了処理()
+{
+	画面_クリア(true, true);
+	顔枠準備(0);
+	汎用エロ顔枠準備(0);
+	メッセージ_終了処理();
+	数字ＣＧ_終了処理();
+	効果キャンセル停止解除();
+}
+
+void 画面_クリア(bool bFrameClear, bool bFlashClear)
+{
+	顔クリア();
+	立ち絵クリア();
+	背景クリア();
+	マスク壁紙クリア();
+	壁紙クリア();
+	イベントＣＧクリア();
+	ミニイベントクリア();
+	汎用エロクリア();
+	全画面色(-2147483648, -2147483648, -2147483648);
+	スクロール_削除();
+	if (bFrameClear)
+	{
+		メッセージ_枠消去();
+	}
+	if (bFlashClear)
+	{
+		Ｆｌａｓｈ_削除();
+		Ｆｌａｓｈ_通知クリア();
+	}
+	ポスター部屋_削除();
+}
+
+void 画面_準備(bool bFrameClear)
+{
+	if (bFrameClear)
+	{
+		枠消去();
+	}
+	全画面色(-2147483648, -2147483648, -2147483648);
+	スクロール_削除();
+}
+
+bool 画面_表示中()
+{
+	return 顔表示中() || 立ち絵表示中() || 背景表示中() || マスク壁紙表示中() || 壁紙表示中() || イベントＣＧ表示中() || スクロール表示中() || ミニイベント表示中() || 汎用エロ表示中();
+	return false;
+}
+
+int ＣＧ番号_顔()
+{
+	return パーツ_ＣＧ番号(31);
+}
+
+int ＣＧ番号_立ち絵()
+{
+	return パーツ_ＣＧ番号(21);
+}
+
+int ＣＧ番号_背景()
+{
+	return パーツ_ＣＧ番号(11);
+}
+
+int ＣＧ番号_マスク壁紙()
+{
+	return パーツ_ＣＧ番号(2);
+}
+
+int ＣＧ番号_壁紙()
+{
+	return パーツ_ＣＧ番号(1);
+}
+
+int ＣＧ番号_イベントＣＧ()
+{
+	return パーツ_ＣＧ番号(41);
+}
+
+int ＣＧ番号_スクロール()
+{
+	return パーツ_ＣＧ番号(49);
+}
+
+int ＣＧ番号_ミニイベント()
+{
+	return パーツ_ＣＧ番号(51);
+}
+
+int ＣＧ番号_汎用エロ()
+{
+	return パーツ_ＣＧ番号(52);
+}
+
+int ＣＧ番号_汎用エロ顔()
+{
+	return パーツ_ＣＧ番号(33);
+}
+
+int パーツ_ＣＧ番号(int nNo)
+{
+	string szCgName = Ｐ＿ＣＧ名取得(nNo, 1);
+	if (szCgName.Empty())
+	{
+		return 0;
+	}
+	int nCgNo = 文字列_数値_変換(szCgName);
+	return nCgNo > 0 ? nCgNo : 0;
+}
+
+string ＣＧファイル名_顔()
+{
+	return パーツ_ＣＧファイル名(31);
+}
+
+string ＣＧファイル名_汎用エロ()
+{
+	return パーツ_ＣＧファイル名(52);
+}
+
+string パーツ_ＣＧファイル名(int nNo)
+{
+	return Ｐ＿ＣＧ名取得(nNo, 1);
+}
+
+void _黒画面(int nEffectNo, int nEffectTime)
+{
+	_色画面(0, 0, 0, nEffectNo, nEffectTime);
+}
+
+void _白画面(int nEffectNo, int nEffectTime)
+{
+	_色画面(255, 255, 255, nEffectNo, nEffectTime);
+}
+
+void _色画面(int nR, int nG, int nB, int nEffectNo, int nEffectTime)
+{
+	画面色設定(nR, nG, nB, true);
+	_EFFECT(nEffectNo, nEffectTime);
+}
+
+void 画面色設定(int nR, int nG, int nB, bool bClear)
+{
+	if (bClear)
+	{
+		画面_クリア(true, true);
+	}
+	全画面色(nR, nG, nB);
+	g_ColorLayerSprite.SetZ(8001);
+}
+
+bool ビュー状態保存モード_設定(bool bKeepPreviousViewMode)
+{
+	bool bOld = ビュー状態保存モード();
+	if (bKeepPreviousViewMode != bOld)
+	{
+		AFL_KeepPreviousView_SetMode(bKeepPreviousViewMode);
+	}
+	return bOld;
+}
+
+bool ビュー状態保存モード()
+{
+	return AFL_KeepPreviousView_GetMode();
+}
+
+bool ビュー状態保存モード_ＯＮ()
+{
+	bool bOld = ビュー状態保存モード_設定(true);
+	if (!bOld)
+	{
+		_UPDATE(true);
+	}
+	return bOld;
+}
+
+bool ビュー状態保存モード_ＯＦＦ()
+{
+	return ビュー状態保存モード_設定(false);
+}
+
+void 効果キャンセル停止()
+{
+	g_b効果キャンセル停止 = true;
+}
+
+void 効果キャンセル停止解除()
+{
+	g_b効果キャンセル停止 = false;
+}
+
+bool 効果キャンセル有効()
+{
+	return !g_b効果キャンセル停止;
+}
+

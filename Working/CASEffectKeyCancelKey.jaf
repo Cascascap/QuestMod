@@ -1,0 +1,42 @@
+CASEffectKeyCancelKey::CASEffectKeyCancelKey()
+{
+	this.m_nKey = -1;
+	this.m_bFirstKeyDownCancel = false;
+}
+
+bool CASEffectKeyCancelKey::Init(int nKey, bool bFirstKeyDownCancel)
+{
+	this.m_nKey = nKey;
+	if (bFirstKeyDownCancel)
+	{
+		this.m_bFirstKeyDownCancel = AFL_IsKeyDown(nKey);
+	}
+	else
+	{
+		this.m_bFirstKeyDownCancel = false;
+	}
+	return true;
+}
+
+bool CASEffectKeyCancelKey::IsKeyDown()
+{
+	if (AFL_IsKeyDown(this.m_nKey))
+	{
+		if (!this.m_bFirstKeyDownCancel)
+		{
+			return true;
+		}
+		return false;
+	}
+	else
+	{
+		this.m_bFirstKeyDownCancel = false;
+	}
+	return false;
+}
+
+int CASEffectKeyCancelKey::GetKey()
+{
+	return this.m_nKey;
+}
+

@@ -1,0 +1,103 @@
+int T_SkillLarge::getCharaNo()
+{
+	return this.m_sList.getCharaNo();
+}
+
+int T_SkillLarge::getSkillIndex(int nSkillNo)
+{
+	return this.m_sList.getIndex(nSkillNo);
+}
+
+int T_SkillLarge::getSkillCount()
+{
+	return this.m_sList.getCount();
+}
+
+ref T_SkillList T_SkillLarge::getList()
+{
+	return this.m_sList;
+}
+
+T_SkillLarge::T_SkillLarge()
+{
+	this.clear();
+}
+
+T_SkillLarge::~T_SkillLarge()
+{
+	this.delete();
+}
+
+bool T_SkillLarge::create(int nCharaNo)
+{
+	this.delete();
+	if (!this.m_sList.create(nCharaNo, 0))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_arcArea.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_arcArea[i].set(ステータス_実装スキルＸ(i), ステータス_実装スキルＹ(i), 142, 26);
+	}
+	this.m_spFrame.create(142, 24, 216, 255, 0, 102);
+	return true;
+}
+
+void T_SkillLarge::delete()
+{
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_SkillLarge::clear()
+{
+	this.m_sList.clear();
+}
+
+int T_SkillLarge::check(ref T_Sprite rfsSp)
+{
+	if (!スプライト_有効(rfsSp))
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.getSkillCount();
+	int idx = -1;
+	int nMax = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		int nSize = this.m_arcArea[i].spriteIntersect(rfsSp);
+		if (nSize > nMax)
+		{
+			idx = i;
+			nMax = nSize;
+		}
+	}
+	return idx;
+}
+
+void T_SkillLarge::setZ(int nZ)
+{
+	this.m_spFrame.setZ(nZ + 10);
+}
+
+void T_SkillLarge::setShow(bool bShow)
+{
+	this.m_spFrame.setShow(0);
+}
+
+bool T_SkillLarge::setSelect(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.getSkillCount())
+	{
+		this.m_spFrame.setShow(0);
+		return false;
+	}
+	ref T_Rect rcArea = this.m_arcArea[nIndex];
+	this.m_spFrame.setPos(rcArea.m_nSx, rcArea.m_nSy);
+	this.m_spFrame.setShow(1);
+	return true;
+}
+

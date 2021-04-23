@@ -1,0 +1,172 @@
+CASMultiLineTextSprite::CASMultiLineTextSprite()
+{
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nZ = 0;
+	this.m_nWidth = 0;
+	this.m_nHeight = 0;
+	this.m_nCharSpace = 0;
+	this.m_nLineSpace = 0;
+	this.m_bShow = true;
+}
+
+void CASMultiLineTextSprite::Release()
+{
+	this.m_TextSpriteList.Free();
+	this.m_Text = "";
+}
+
+void CASMultiLineTextSprite::SetText(string Text, CASCharSpriteProperty Property)
+{
+	if (this.m_Text == Text && this.m_CharSpriteProperty.Equal(Property))
+	{
+		return;
+	}
+	this.Release();
+	array@string TextList;
+	this.GetTextList(Text, TextList);
+	this.m_TextSpriteList.Alloc(TextList.Numof());
+	int nLine = 0;
+	for (nLine = 0; nLine < this.m_TextSpriteList.Numof(); ++nLine)
+	{
+		ref CASTextSprite TextSprite = this.m_TextSpriteList[nLine];
+		TextSprite.SetCharSpace(-1);
+		TextSprite.SetText(TextList[nLine], Property);
+	}
+	this.m_Text = Text;
+	this.m_CharSpriteProperty = Property;
+	this.UpdatePos();
+	this.UpdateSize();
+	this.UpdateZ();
+	this.UpdateShow();
+}
+
+void CASMultiLineTextSprite::SetPos(int nX, int nY)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+	this.UpdatePos();
+}
+
+void CASMultiLineTextSprite::SetZ(int nZ)
+{
+	this.m_nZ = nZ;
+	this.UpdateZ();
+}
+
+void CASMultiLineTextSprite::SetShow(bool bShow)
+{
+	if (this.m_bShow == bShow)
+	{
+		return;
+	}
+	this.m_bShow = bShow;
+	this.UpdateShow();
+}
+
+void CASMultiLineTextSprite::SetCharSpace(int nCharSpace)
+{
+	this.m_nCharSpace = nCharSpace;
+	if (!this.m_Text.Empty())
+	{
+		this.SetText(this.m_Text, this.m_CharSpriteProperty);
+	}
+}
+
+void CASMultiLineTextSprite::SetLineSpace(int nLineSpace)
+{
+	this.m_nLineSpace = nLineSpace;
+	this.UpdatePos();
+}
+
+int CASMultiLineTextSprite::GetX()
+{
+	return this.m_nX;
+}
+
+int CASMultiLineTextSprite::GetY()
+{
+	return this.m_nY;
+}
+
+int CASMultiLineTextSprite::GetWidth()
+{
+	return this.m_nWidth;
+}
+
+int CASMultiLineTextSprite::GetHeight()
+{
+	return this.m_nHeight;
+}
+
+void CASMultiLineTextSprite::GetTextList(string Text, ref array@string TextList)
+{
+	TextList.Free();
+	while (!Text.Empty())
+	{
+		int nIndex = Text.Find("\n");
+		if (nIndex == -1)
+		{
+			TextList.PushBack(Text);
+			break;
+		}
+		else
+		{
+			TextList.PushBack(Text.GetPart(0, nIndex));
+			Text = Text.GetPart(nIndex + 1, Text.Length() - (nIndex + 1));
+		}
+	}
+}
+
+void CASMultiLineTextSprite::UpdatePos()
+{
+	int nOffsetY = 0;
+	int nLine = 0;
+	for (nLine = 0; nLine < this.m_TextSpriteList.Numof(); ++nLine)
+	{
+		this.m_TextSpriteList[nLine].SetPos(this.m_nX, this.m_nY + nOffsetY);
+		nOffsetY += this.m_TextSpriteList[nLine].GetHeight() + this.m_nLineSpace;
+	}
+}
+
+void CASMultiLineTextSprite::UpdateSize()
+{
+	int nMaxWidth = 0;
+	int nTotalHeight = 0;
+	int nLine = 0;
+	for (nLine = 0; nLine < this.m_TextSpriteList.Numof(); ++nLine)
+	{
+		int nWidth = this.m_TextSpriteList[nLine].GetWidth();
+		int nHeight = this.m_TextSpriteList[nLine].GetHeight();
+		if (nMaxWidth < nWidth)
+		{
+			nMaxWidth = nWidth;
+		}
+		nTotalHeight += nHeight;
+		if (nLine < this.m_TextSpriteList.Numof() - 1)
+		{
+			nTotalHeight += this.m_nLineSpace;
+		}
+	}
+	this.m_nWidth = nMaxWidth;
+	this.m_nHeight = nTotalHeight;
+}
+
+void CASMultiLineTextSprite::UpdateZ()
+{
+	int nLine = 0;
+	for (nLine = 0; nLine < this.m_TextSpriteList.Numof(); ++nLine)
+	{
+		this.m_TextSpriteList[nLine].SetZ(this.m_nZ);
+	}
+}
+
+void CASMultiLineTextSprite::UpdateShow()
+{
+	int nLine = 0;
+	for (nLine = 0; nLine < this.m_TextSpriteList.Numof(); ++nLine)
+	{
+		this.m_TextSpriteList[nLine].SetShow(this.m_bShow);
+	}
+}
+

@@ -1,0 +1,101 @@
+void ＣＧエフェクト(string BaseCGName, int StartNomber, int _numofcg, int _time, int _x, int _y, int _z, int _width, int _height, int _se)
+{
+	if (_z == -2147483648)
+	{
+		_z = 12000;
+	}
+	int _nViewSprite = -1;
+	int _nTempSprite = -1;
+	_nViewSprite = GetUnuseSpriteNum(1000);
+	ShowSprite(_nViewSprite, true);
+	SetSpritePos(_nViewSprite, _x, _y);
+	SetSpriteZ(_nViewSprite, _z);
+	bool _bStretch = false;
+	if (_width != -2147483648 && _height != -2147483648)
+	{
+		_bStretch = true;
+		_nTempSprite = GetUnuseSpriteNum(1000);
+		HideSprite(_nTempSprite);
+		SetSpritePos(_nTempSprite, _x, _y);
+		SetSpriteZ(_nTempSprite, _z);
+		CreateSprite(_nViewSprite, _width, _height, 0, 0, 0, 255);
+	}
+	int _totaltime = _time * _numofcg;
+	bool bSkipMode = false;
+	int _cgindex = 0;
+	string _loadedcg = "";
+	if (_se != -2147483648)
+	{
+		システム効果音(_se);
+	}
+	int _begintime = GetTickCount();
+	for (; ; )
+	{
+		int _currenttime = GetTickCount() - _begintime;
+		if (_currenttime >= _totaltime)
+		{
+			break;
+		}
+		if (!bSkipMode && SYS_未読スキップ中確認())
+		{
+			bSkipMode = true;
+		}
+		if (bSkipMode)
+		{
+			++_cgindex;
+			if (_cgindex >= _numofcg)
+			{
+				break;
+			}
+		}
+		else
+		{
+			_cgindex = (_currenttime * _numofcg) / _totaltime;
+		}
+		string _loadcg = BaseCGName + "%d" % (StartNomber + _cgindex);
+		if (_loadedcg != _loadcg)
+		{
+			if (_bStretch)
+			{
+				SetSpriteCg(_nTempSprite, _loadcg);
+				int _srcwidth = GetSpriteWidth(_nTempSprite);
+				int _srcheight = GetSpriteHeight(_nTempSprite);
+				if (_srcwidth == _width && _srcheight == _height)
+				{
+					ShowSprite(_nTempSprite, true);
+					HideSprite(_nViewSprite);
+				}
+				else
+				{
+					HideSprite(_nTempSprite);
+					ShowSprite(_nViewSprite, true);
+					DrawGraph.CopyStretchInterp(_nViewSprite, 0, 0, _width, _height, _nTempSprite, 0, 0, _srcwidth, _srcheight);
+					if (ExistAlphaMap(_nTempSprite))
+					{
+						DrawGraph.CopyStretchAMapInterp(_nViewSprite, 0, 0, _width, _height, _nTempSprite, 0, 0, _srcwidth, _srcheight);
+					}
+				}
+			}
+			else
+			{
+				SetSpriteCg(_nViewSprite, _loadcg);
+			}
+			_loadedcg = _loadcg;
+		}
+		UpdateView(true);
+		if (bSkipMode)
+		{
+			system.Sleep(20);
+		}
+	}
+	if (_nViewSprite != -1)
+	{
+		DeleteSprite(_nViewSprite);
+	}
+	if (_nTempSprite != -1)
+	{
+		DeleteSprite(_nTempSprite);
+	}
+	UpdateView(true);
+}
+

@@ -1,0 +1,180 @@
+T_BattleResult::T_BattleResult()
+{
+	this.clear();
+}
+
+T_BattleResult::~T_BattleResult()
+{
+	this.delete();
+}
+
+bool T_BattleResult::create(int nZ, int nMonsterCount, int nCharaCount)
+{
+	this.delete();
+	this.m_spBase.setCg(10300);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	sact_text_metrics_t tmNumber;
+	tmNumber.nSize = 28;
+	tmNumber.nColorR = 75;
+	tmNumber.nColorG = 255;
+	tmNumber.nColorB = 223;
+	tmNumber.nWeight = 40;
+	tmNumber.nFace = 258;
+	tmNumber.nShadowPixelL = 0;
+	tmNumber.nShadowPixelR = 1;
+	tmNumber.nShadowPixelU = 0;
+	tmNumber.nShadowPixelD = 1;
+	tmNumber.nShadowColorR = 24;
+	tmNumber.nShadowColorG = 94;
+	tmNumber.nShadowColorB = 235;
+	this.m_sCount.createFromTextMetrics(0, "%D" % nMonsterCount, tmNumber, 0);
+	this.m_sCount.setPos(339, 54);
+	this.m_sCount.setZ(nZ + 1);
+	this.m_sGold.create(10321, false, 10, 1, 0);
+	this.m_sGold.setPos(540, 230);
+	this.m_sGold.setZ(nZ + 5);
+	this.m_sGold.setValue(ÅüéÊìæã‡äz, 0, false);
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Number rfsExp = this.m_asExp[i];
+		rfsExp.create(10321, false, 8, 3, 0);
+		rfsExp.setPos(525, i == 0 ? 16 : 156);
+		rfsExp.setZ(nZ + 1);
+	}
+	this.m_asExp[0].setValue(ÅüêÌì¨å„Å^åoå±ílÇP, 0, false);
+	this.m_asExp[1].setValue(ÅüêÌì¨å„Å^åoå±ílÇT, 0, false);
+	cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_DrawNumber rfsBonus = this.m_asBonus[i];
+		rfsBonus.create(46, 30, 3, 3, 1, true);
+		rfsBonus.setPos(565, (54 + 30 * i) - 2);
+		rfsBonus.setZ(nZ + 1);
+		rfsBonus.setFontType(258);
+		rfsBonus.setFontSize(30);
+		rfsBonus.setFontColor(75, 255, 223);
+		rfsBonus.setShadowPixel(0, 1, 0, 1);
+		rfsBonus.setShadowColor(24, 94, 235);
+		rfsBonus.setFontBold(1);
+	}
+	this.m_asBonus[0].setValue(this.getBonus1(nMonsterCount), false);
+	this.m_asBonus[1].setValue(ÅüÉNÉGÉXÉgÇdÇwÇoÉ{Å[ÉiÉX, false);
+	this.m_asBonus[2].setValue(this.getBonus2(nCharaCount), false);
+	cnt = _min(ÅüéÊìæã‡ë‹êî, this.m_aspCoin.Numof());
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_Sprite rfsCoin = this.m_aspCoin[i];
+		rfsCoin.setCg(10304);
+		rfsCoin.setPos(253 + 80 * i, 204);
+		rfsCoin.setZ(nZ + 1);
+	}
+	this.m_nCoinCount = cnt;
+	return true;
+}
+
+void T_BattleResult::delete()
+{
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asExp[i].delete();
+	}
+	cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[i].delete();
+	}
+	cnt = this.m_aspCoin.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspCoin[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_sCount.delete();
+	this.m_sGold.delete();
+	this.clear();
+}
+
+void T_BattleResult::clear()
+{
+	this.m_nCoinCount = -1;
+}
+
+void T_BattleResult::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asExp.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asExp[i].setShow(bShow);
+	}
+	cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_sCount.setShow(bShow);
+	this.m_sGold.setShow(bShow);
+}
+
+void T_BattleResult::showCoin()
+{
+	int i = 0;
+	å¯â âπ_ã‡ë‹ÇfÇdÇs(this.m_nCoinCount);
+	for (i = 0; i < this.m_nCoinCount; ++i)
+	{
+		CASTimer sTimer;
+		sTimer.Reset();
+		this.m_aspCoin[i].setShow(1);
+		while (sTimer.Get() < 100)
+		{
+			UPDATE(true);
+		}
+	}
+}
+
+int T_BattleResult::getBonus1(int nMonsterCount)
+{
+	switch (nMonsterCount)
+	{
+		case 1:
+			return 100;
+		case 2:
+			return 120;
+		case 3:
+			return 150;
+		case 4:
+			return 200;
+		case 5:
+			return 300;
+		default:
+			break;
+	}
+	return 0;
+}
+
+int T_BattleResult::getBonus2(int nCharaCount)
+{
+	if (ÅüêÌì¨íÜÇÃì¸ÇÍë÷Ç¶î≠ê∂ > 0)
+	{
+		return 0;
+	}
+	switch (nCharaCount)
+	{
+		case 3:
+			return 20;
+		case 2:
+			return 50;
+		case 1:
+			return 100;
+		default:
+			break;
+	}
+	return 0;
+}
+

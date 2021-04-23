@@ -1,0 +1,42 @@
+void ‚e‚o‚r_ì¬(int nMapNo, int nX, int nY)
+{
+	‚e‚o‚r_íœ();
+	if (!ƒfƒoƒbƒOƒ‚[ƒh())
+	{
+		return;
+	}
+	if (nMapNo <= 0)
+	{
+		return;
+	}
+	g_sFPSInfo.Create(nX, nY, 8001);
+	g_sFPSInfo.SetMapName(ƒ}ƒbƒv_–¼‘O(nMapNo));
+	g_sFPSInfo.SetShow(g_bFPSShow);
+	g_bFPSUpdate = g_bFPSShow;
+}
+
+void ‚e‚o‚r_íœ()
+{
+	g_sFPSInfo.Release();
+	g_bFPSUpdate = false;
+}
+
+void ‚e‚o‚r_•\¦İ’è(bool bShow)
+{
+	if (!ƒfƒoƒbƒOƒ‚[ƒh())
+	{
+		return;
+	}
+	g_bFPSShow = bShow;
+	if (g_sFPSInfo.IsCreated())
+	{
+		g_sFPSInfo.SetShow(bShow);
+		g_bFPSUpdate = bShow;
+	}
+}
+
+bool ‚e‚o‚r_•\¦()
+{
+	return g_bFPSShow;
+}
+

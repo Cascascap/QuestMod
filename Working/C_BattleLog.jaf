@@ -1,0 +1,90 @@
+bool 戦闘ログ_作成(int nZ)
+{
+	if (!ログデータ_開始(1, 47, true))
+	{
+		return false;
+	}
+	ログテキスト_クリア();
+	戦闘ログ_窓作成();
+	if (!g_sBattleLog.create(nZ))
+	{
+		return false;
+	}
+	g_bBattleLogUpdate = false;
+	return true;
+}
+
+void 戦闘ログ_削除()
+{
+	g_bBattleLogUpdate = false;
+	g_sBattleLog.delete();
+	戦闘ログ_窓削除();
+	ログテキスト_クリア();
+	ログデータ_停止(1, true);
+}
+
+void 戦闘ログ_更新開始()
+{
+	g_bBattleLogUpdate = g_sBattleLog.setUpdate(true);
+}
+
+bool 戦闘ログ_追加(string szText, int nColor, bool bEndMsg)
+{
+	if (szText.Empty())
+	{
+		return false;
+	}
+	if (bEndMsg)
+	{
+		ログデータ_区切り追加(1, nColor);
+	}
+	if (!ログデータ_テキスト追加(1, szText, nColor))
+	{
+		return false;
+	}
+	return g_sBattleLog.add(szText, bEndMsg);
+}
+
+bool 戦闘ログ_終了メッセージ(int nRet)
+{
+	switch (nRet)
+	{
+		case 1:
+			return 戦闘ログ_追加("★★★ Victory ★★★", 5, true);
+		case 2:
+		case 3:
+			return 戦闘ログ_追加("★★★ Defeat ★★★", 5, true);
+		case 4:
+			return 戦闘ログ_追加("★★★ Time exceeded ★★★", 5, true);
+		case 5:
+			return 戦闘ログ_追加("★★★ Successfully escaped ★★★", 5, true);
+		case 6:
+			return 戦闘ログ_追加("★★★ Enemy escaped ★★★", 5, true);
+		case 99:
+			break;
+		default:
+			break;
+	}
+	return false;
+}
+
+void 戦闘ログ_窓作成()
+{
+	g_sBattleLogWindow.create(1);
+}
+
+void 戦闘ログ_窓削除()
+{
+	g_sBattleLogWindow.delete();
+}
+
+void 戦闘ログ_窓スクロール(int nValue)
+{
+	g_sBattleLogWindow.scroll(nValue);
+}
+
+void 戦闘ログ_窓表示()
+{
+	g_sBattleLogWindow.run();
+}
+

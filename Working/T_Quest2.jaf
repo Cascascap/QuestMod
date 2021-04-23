@@ -1,0 +1,581 @@
+int T_Quest::moveUp(int nID)
+{
+	if (this.isLocked())
+	{
+		return nID == 100001 ? 100002 : 100001;
+	}
+	if (nID > 920000)
+	{
+		switch (ミニステータス_遷移インデクス(nID))
+		{
+			case 0:
+				return this.m_sButton.getButtonActive(600011) ? 600011 : 600012;
+			case 1:
+				return 600012;
+			case 4:
+				return this.m_sSort.getLast();
+			case 2:
+			case 3:
+			default:
+				break;
+		}
+		return this.getLastList();
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞ミニステータス(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ＞システムバー(nID);
+	}
+	if (nID > 190000)
+	{
+		return 100008;
+	}
+	if (nID > 180000)
+	{
+		int nID2 = this.m_sSort.getPrev(nID);
+		return nID2 > 0 ? nID2 : this.m_sLimit.getLast();
+	}
+	if (nID > 170000)
+	{
+		int nID2 = this.m_sLimit.getPrev(nID);
+		return nID2 > 0 ? nID2 : 100008;
+	}
+	if (nID > 160000)
+	{
+		return this.getPrevList(nID, false);
+	}
+	switch (nID)
+	{
+		case 100001:
+			return 100002;
+		case 100002:
+			return 100001;
+		case 100008:
+			return ミニステータス_次ボタン_遷移(4);
+		default:
+			break;
+	}
+	return this.getFirstList();
+}
+
+int T_Quest::moveDown(int nID)
+{
+	if (this.isLocked())
+	{
+		return nID == 100001 ? 100002 : 100001;
+	}
+	if (nID > 920000)
+	{
+		switch (ミニステータス_遷移インデクス(nID))
+		{
+			case 4:
+				return 100008;
+			default:
+				break;
+		}
+		return カーソル移動_ミニステータス＞システムバー(nID);
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞街マップ(nID, this.m_sButton2);
+	}
+	if (nID > 600000)
+	{
+		switch (nID)
+		{
+			case 600011:
+				return ミニステータス_次ボタン_遷移(0);
+			case 600012:
+				return ミニステータス_次ボタン_遷移(1);
+			case 600013:
+			default:
+				break;
+		}
+		return this.getFirstList();
+	}
+	if (nID > 190000)
+	{
+		return ミニステータス_次ボタン_遷移(3);
+	}
+	if (nID > 180000)
+	{
+		int nID2 = this.m_sSort.getNext(nID);
+		return nID2 > 0 ? nID2 : ミニステータス_次ボタン_遷移(4);
+	}
+	if (nID > 170000)
+	{
+		int nID2 = this.m_sLimit.getNext(nID);
+		return nID2 > 0 ? nID2 : this.m_sSort.getFirst();
+	}
+	if (nID > 160000)
+	{
+		return this.getNextList(nID, false);
+	}
+	switch (nID)
+	{
+		case 100001:
+			return 100002;
+		case 100002:
+			return 100001;
+		case 100008:
+			return this.m_sLimit.getFirst();
+		default:
+			break;
+	}
+	return this.getLastList();
+}
+
+int T_Quest::moveLeft(int nID)
+{
+	if (this.isLocked())
+	{
+		switch (nID)
+		{
+			case 100001:
+				return 100001;
+			case 100002:
+				int nQuestNo = this.m_sList.getSelectNo();
+				return クエスト倉庫_お気に入り(nQuestNo) ? 100004 : 100003;
+			case 100003:
+			case 100004:
+				return 100002;
+			default:
+				break;
+		}
+		return 100001;
+	}
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ左(nID, this.m_sButton2);
+	}
+	if (nID > 190000)
+	{
+		return this.getFirstList();
+	}
+	if (nID > 180000)
+	{
+		return this.moveFromSortToList(nID);
+	}
+	if (nID > 170000)
+	{
+		return this.moveFromLimitToList(nID);
+	}
+	if (nID > 160000)
+	{
+		return this.moveFromListToButton(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+			return nID;
+		case 100008:
+		default:
+			break;
+	}
+	return this.getFirstList();
+}
+
+int T_Quest::moveRight(int nID)
+{
+	if (this.isLocked())
+	{
+		switch (nID)
+		{
+			case 100001:
+				return 100001;
+			case 100002:
+				int nQuestNo = this.m_sList.getSelectNo();
+				return クエスト倉庫_お気に入り(nQuestNo) ? 100004 : 100003;
+			case 100003:
+			case 100004:
+				return 100002;
+			default:
+				break;
+		}
+		return 100001;
+	}
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ右(nID, this.m_sButton2);
+	}
+	if (nID > 190000)
+	{
+		return this.getLastList();
+	}
+	if (nID > 180000)
+	{
+		return this.moveFromSortToList(nID);
+	}
+	if (nID > 170000)
+	{
+		return this.moveFromLimitToList(nID);
+	}
+	if (nID > 160000)
+	{
+		return this.moveFromListToButton(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+			return nID;
+		case 100008:
+			return this.getFirstList();
+		default:
+			break;
+	}
+	return this.getLastList();
+}
+
+int T_Quest::moveFromSortToList(int nID)
+{
+	int idx = クエスト_ソート＞一覧インデクス(nID);
+	if (this.getListNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+	return this.getLastList();
+}
+
+int T_Quest::moveFromLimitToList(int nID)
+{
+	int idx = クエスト_限定＞一覧インデクス(nID);
+	if (this.getListNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+	return this.getFirstList();
+}
+
+int T_Quest::moveFromListToButton(int nID)
+{
+	int nID2 = クエスト_一覧インデクス＞ボタン(this.getQuestIndex(nID));
+	return nID2 > 0 ? nID2 : 100008;
+}
+
+int T_Quest::getPrevList(int nID, bool bLoop)
+{
+	int idx = this.getQuestIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	--idx;
+	if (this.getListNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+label0:
+	return bLoop ? this.getLastList() : 600013;
+}
+
+int T_Quest::getNextList(int nID, bool bLoop)
+{
+	int idx = this.getQuestIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	++idx;
+	if (this.getListNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+label0:
+	return bLoop ? this.getFirstList() : ミニステータス_次ボタン_遷移(3);
+}
+
+int T_Quest::getFirstList()
+{
+	return this.getListNo(0) > 0 ? this.getButtonID(0) : 100008;
+}
+
+int T_Quest::getLastList()
+{
+	return this.getListFromIndex(12);
+}
+
+int T_Quest::getListFromIndex(int nIndex)
+{
+	if (nIndex >= 13)
+	{
+		nIndex = 12;
+	}
+	int i = 0;
+	for (i = nIndex; i >= 0; --i)
+	{
+		if (this.getListNo(i) > 0)
+		{
+			return this.getButtonID(i);
+		}
+	}
+	return 100008;
+}
+
+bool T_Quest::exec(ref int nID, ref int nRet)
+{
+	nRet = 0;
+	this.m_sShortcutInfo.setShow(false);
+	switch (nID)
+	{
+		case 100001:
+			return this.execOk(nRet);
+		case 100002:
+			return this.execMove();
+		case 100003:
+			return this.execAddFavorite();
+		case 100004:
+			return this.execEraseFavorite();
+		case 100008:
+			return this.execOpen();
+		case 100009:
+			return this.execUnlock(nID);
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.execSystemBar(nID);
+	}
+	if (nID > 600000)
+	{
+		switch (nID)
+		{
+			case 600001:
+			case 600011:
+			case 600012:
+			case 600013:
+				nRet = nID;
+				return true;
+			default:
+				break;
+		}
+		return false;
+	}
+	if (nID > 190000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 180000)
+	{
+		return this.execSort(nID);
+	}
+	if (nID > 170000)
+	{
+		return this.execLimit(nID);
+	}
+	if (nID > 160000)
+	{
+		return this.execLock(nID);
+	}
+	return false;
+}
+
+bool T_Quest::execSystemBar(int nID)
+{
+	int nRet = システムバー_実行(nID);
+	if (nRet == 910002)
+	{
+		システムメニュー_ロード();
+	}
+	return false;
+}
+
+bool T_Quest::execSort(int nID)
+{
+	switch (nID)
+	{
+		case 180001:
+		case 180002:
+		case 180003:
+		case 180004:
+		case 180005:
+		case 180006:
+		case 180007:
+			this.m_sList.sort(nID - 180000, false);
+			break;
+		default:
+			return false;
+	}
+	this.setButtonActive();
+	this.setButtonShow(true);
+	this.m_sScroll.setValue(this.m_sList.getTopIndex(), -1, -1);
+	return false;
+}
+
+bool T_Quest::execLimit(int nID)
+{
+	if (!this.m_sLimit.setQuestType(nID - 170000))
+	{
+		return false;
+	}
+	this.remakeList(-1, this.m_sLimit.getQuestType());
+	UPDATE(true);
+	return false;
+}
+
+bool T_Quest::execLock(ref int nID)
+{
+	int idx = this.getQuestIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nNo = this.getListNo(idx);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	if (nNo == this.m_sList.getSelectNo())
+	{
+		return this.execUnlock(nID);
+	}
+	this.lock(nNo);
+	nID = 100001;
+	this.setCursor(nID);
+	効果_フラッシュ_待ちあり("でかボタン出現", 393, 502, 9601);
+	return false;
+}
+
+bool T_Quest::execUnlock(ref int nID)
+{
+	int nNo = this.unlock();
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	nID = this.getButtonID(this.m_sList.getIndex(nNo));
+	this.setCursor(nID);
+	効果_フラッシュ_待ちあり("でかボタン隠れ", 393, 502, 9601);
+	return false;
+}
+
+bool T_Quest::execOk(ref int nRet)
+{
+	int nNo = this.m_sList.getSelectNo();
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	string questName = テキスト_名前(クエスト_名前(nNo));
+	if (選択_確認_拡張(11, "Take Quest@" + questName.GetPart(1, questName.Length() - 2) + "?", 1, "Yes", "No", 5012, -1, false))
+	{
+		nRet = nNo;
+		return true;
+	}
+	return false;
+}
+
+bool T_Quest::execMove()
+{
+	int nNo = this.unlock();
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	クエスト倉庫_設定(nNo, 1);
+	this.remakeList(-1, -1);
+	UPDATE(true);
+	return false;
+}
+
+bool T_Quest::execAddFavorite()
+{
+	int nNo = this.unlock();
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	クエスト倉庫_お気に入り設定(nNo, true);
+	this.remakeList(nNo, -1);
+	this.showComment(this.getButtonID(this.m_sList.getIndex(nNo)));
+	this.lock(nNo);
+	UPDATE(true);
+	return false;
+}
+
+bool T_Quest::execEraseFavorite()
+{
+	int nNo = this.unlock();
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	クエスト倉庫_お気に入り設定(nNo, false);
+	this.remakeList(nNo, -1);
+	this.showComment(this.getButtonID(this.m_sList.getIndex(nNo)));
+	this.lock(nNo);
+	UPDATE(true);
+	return false;
+}
+
+bool T_Quest::execOpen()
+{
+	this.resetSelect();
+	不要クエスト倉庫_実行(this.m_spBase.getZ() + 50, this.m_sList.getSortMode(), this.m_sLimit.getQuestType());
+	return false;
+}
+
+bool T_Quest::lock(int nQuestNo)
+{
+	if (this.m_sList.setSelectNo(nQuestNo) <= 0)
+	{
+		return false;
+	}
+	this.m_sButton.setButtonShow(100001, true);
+	this.m_sButton.setButtonActive(100001, クエスト_有効(nQuestNo));
+	this.m_sButton.setButtonShow(100002, true);
+	this.m_sButton.setButtonActive(100002, true);
+	if (クエスト倉庫_お気に入り(nQuestNo))
+	{
+		this.m_sButton.setButtonShow(100003, false);
+		this.m_sButton.setButtonActive(100003, false);
+		this.m_sButton.setButtonShow(100004, true);
+		this.m_sButton.setButtonActive(100004, true);
+	}
+	else
+	{
+		this.m_sButton.setButtonShow(100003, true);
+		this.m_sButton.setButtonActive(100003, true);
+		this.m_sButton.setButtonShow(100004, false);
+		this.m_sButton.setButtonActive(100004, false);
+	}
+	this.m_spMarkBattle.setShow(クエスト_戦闘あり(nQuestNo));
+	this.m_spMarkMap.setShow(クエスト_マップあり(nQuestNo));
+	return true;
+}
+
+int T_Quest::unlock()
+{
+	int nNo = this.m_sList.getSelectNo();
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	this.m_sList.setSelectNo(-1);
+	this.m_sButton.setButtonShow(100001, false);
+	this.m_sButton.setButtonActive(100001, false);
+	this.m_sButton.setButtonShow(100002, false);
+	this.m_sButton.setButtonActive(100002, false);
+	this.m_sButton.setButtonShow(100003, false);
+	this.m_sButton.setButtonActive(100003, false);
+	this.m_sButton.setButtonShow(100004, false);
+	this.m_sButton.setButtonActive(100004, false);
+	this.m_spMarkBattle.setShow(0);
+	this.m_spMarkMap.setShow(0);
+	return nNo;
+}
+

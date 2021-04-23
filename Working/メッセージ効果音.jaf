@@ -1,0 +1,192 @@
+int ƒƒbƒZ[ƒWŒø‰Ê‰¹”Ô†(int Šç‚b‚f”Ô†, ref int ‘Ò‚¿ŠÔ‚P, ref int ‘Ò‚¿ŠÔ‚Q)
+{
+	switch (Šç‚b‚f”Ô†)
+	{
+		case 0:
+		case 2470:
+			‘Ò‚¿ŠÔ‚P = ‘Ò‚¿ŠÔ‚Q = -1;
+			return 0;
+		case 2420:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 934;
+		case 2020:
+		case 2021:
+		case 2022:
+		case 2023:
+		case 2024:
+			‘Ò‚¿ŠÔ‚P = 140;
+			‘Ò‚¿ŠÔ‚Q = 140;
+			return 903;
+		case 2060:
+		case 2061:
+		case 2063:
+		case 2067:
+		case 2068:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 905;
+		case 2030:
+		case 2031:
+		case 2032:
+		case 2033:
+		case 2034:
+		case 2035:
+		case 2036:
+		case 2928:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 35;
+			return 907;
+		case 2070:
+		case 2071:
+		case 2072:
+		case 2073:
+		case 2074:
+		case 2340:
+		case 2343:
+		case 2705:
+		case 2707:
+		case 2708:
+		case 2709:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 909;
+		case 2000:
+		case 2001:
+		case 2002:
+		case 2003:
+		case 2004:
+		case 2005:
+		case 2006:
+		case 2010:
+		case 2011:
+		case 2012:
+		case 2013:
+		case 2014:
+		case 2015:
+		case 2016:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 915;
+		case 2927:
+		case 2974:
+		case 2994:
+		case 2995:
+		case 2996:
+		case 2997:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 919;
+		case 2925:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 921;
+		case 2912:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 913;
+		case 2904:
+		case 2907:
+		case 2908:
+		case 2909:
+		case 2910:
+		case 2911:
+		case 2931:
+		case 2940:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 911;
+		case 2126:
+		case 2127:
+		case 2400:
+		case 2410:
+		case 2415:
+		case 2416:
+		case 2417:
+		case 2418:
+		case 2419:
+		case 2440:
+		case 2460:
+		case 2800:
+		case 2801:
+		case 2802:
+		case 2804:
+		case 2805:
+		case 2808:
+		case 2813:
+		case 2814:
+		case 2816:
+		case 2900:
+		case 2901:
+		case 2902:
+		case 2903:
+		case 2905:
+		case 2906:
+		case 2913:
+		case 2915:
+		case 2916:
+		case 2917:
+		case 2918:
+		case 2919:
+		case 2920:
+		case 2921:
+		case 2922:
+		case 2923:
+		case 2924:
+		case 2926:
+		case 2930:
+		case 2932:
+		case 2933:
+		case 2934:
+		case 2935:
+		case 2936:
+		case 2937:
+		case 2938:
+		case 2939:
+		case 2941:
+		case 2942:
+		case 2946:
+		case 2948:
+		case 2952:
+		case 2953:
+		case 2954:
+		case 2955:
+		case 2958:
+		case 2959:
+		case 2960:
+		case 2961:
+		case 2963:
+		case 2964:
+		case 2965:
+		case 2966:
+		case 2967:
+		case 2968:
+		case 2969:
+		case 2970:
+		case 2975:
+		case 2976:
+		case 2980:
+		case 2981:
+		case 2982:
+		case 2983:
+		case 2984:
+		case 2985:
+		case 2986:
+		case 2987:
+		case 2988:
+		case 2989:
+		case 2990:
+		case 2991:
+		case 2992:
+		case 2993:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 917;
+		default:
+			‘Ò‚¿ŠÔ‚P = 70;
+			‘Ò‚¿ŠÔ‚Q = 70;
+			return 901;
+	}
+	return 0;
+}
+

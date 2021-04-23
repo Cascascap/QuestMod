@@ -1,0 +1,53 @@
+void 効果音画面揺れ(int sound, int shakeType)
+{
+	if (メッセージスキップ中())
+	{
+		UPDATE(true);
+		return;
+	}
+	枠消去();
+	int soundTime = 効果音長さ取得(sound);
+	効果音(sound);
+	int x = 0;
+	int y = 0;
+	int time = 0;
+	画面揺らし幅取得(shakeType, x, y, time);
+	画面揺らし(x, y, time);
+	if (time < soundTime)
+	{
+		W(soundTime - time);
+	}
+}
+
+int 効果音長さ取得(int sound)
+{
+	return KiwiSoundEngine.Sound_GetTimeLength(sound);
+}
+
+void 画面揺らし幅取得(int nMode, ref int nX, ref int nY, ref int nTime)
+{
+	switch (nMode)
+	{
+		case 1:
+			nX = 0;
+			nY = 20;
+			nTime = 100;
+			break;
+		case 2:
+			nX = 50;
+			nY = 50;
+			nTime = 300;
+			break;
+		case 3:
+			nX = 100;
+			nY = 100;
+			nTime = 800;
+			break;
+		default:
+			nX = 20;
+			nY = 0;
+			nTime = 200;
+			break;
+	}
+}
+

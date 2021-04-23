@@ -1,0 +1,444 @@
+void ’u•¨_ì¬(bool bWait)
+{
+	g_sMapObject.create();
+	g_sBillboard.create();
+	if (bWait)
+	{
+		‚R‚cƒ}ƒbƒv_ƒ[ƒh‘Ò‚¿(0);
+	}
+}
+
+void ’u•¨_íœ()
+{
+	g_sBillboard.delete();
+	g_sMapObject.delete();
+}
+
+void ’u•¨_•\¦İ’è(bool bDrawFlag)
+{
+	g_sMapObject.setDraw(bDrawFlag);
+	g_sBillboard.setDraw(bDrawFlag);
+}
+
+void ’u•¨_Ä”z’u()
+{
+	g_sMapObject.align();
+	g_sBillboard.align();
+}
+
+void ’u•¨_İ’è(int nX, int nY, int nNo, bool bDraw)
+{
+	g_sObjectData.set(nX, nY, nNo);
+	g_sMapObject.set(nX, nY, bDraw);
+}
+
+void ’u•¨_‚‚³•â³(int nX, int nY, int nHeight)
+{
+	int nHoseiY = ’u•¨ƒf[ƒ^_•â³‚x(nX, nY) + nHeight;
+	g_sObjectData.setHoseiY(nX, nY, nHoseiY);
+	g_sMapObject.setHoseiY(nX, nY, nHoseiY);
+}
+
+void ’u•¨_Ä¶(int nX, int nY, bool bWait)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(’u•¨”Ô†(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return;
+	}
+	if (rfInfo.m_nBegin >= rfInfo.m_nEnd)
+	{
+		return;
+	}
+	if (!g_sMapObject.setMotionState(nX, nY, 1))
+	{
+		return;
+	}
+	if (!g_sMapObject.setMotionFrame(nX, nY, rfInfo.m_nBegin))
+	{
+		return;
+	}
+	Œø‰Ê‰¹_Ä¶(’u•¨_Œø‰Ê‰¹(rfInfo.m_nNo));
+	if (bWait)
+	{
+		_W(Ä¶ŠÔ(rfInfo.m_nEnd - rfInfo.m_nBegin, g_sMapObject.getFPS(nX, nY)));
+	}
+}
+
+void ’u•¨_’â~(int nX, int nY, int nFrameNo)
+{
+	if (!g_sMapObject.setMotionState(nX, nY, 0))
+	{
+		return;
+	}
+	g_sMapObject.setMotionFrame(nX, nY, nFrameNo);
+}
+
+void ’u•¨_ƒ‹[ƒv(int nX, int nY)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(’u•¨”Ô†(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return;
+	}
+	if (rfInfo.m_nLoopBegin >= rfInfo.m_nLoopEnd)
+	{
+		return;
+	}
+	if (!g_sMapObject.setMotionState(nX, nY, 2))
+	{
+		return;
+	}
+	g_sMapObject.setMotionFrame(nX, nY, rfInfo.m_nLoopBegin);
+}
+
+void ’u•¨_–ß‚µ(int nX, int nY)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(’u•¨”Ô†(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return;
+	}
+	if (rfInfo.m_nState == 2)
+	{
+		’u•¨_ƒ‹[ƒv(nX, nY);
+	}
+	else
+	{
+		’u•¨_’â~(nX, nY, rfInfo.m_nBegin);
+	}
+}
+
+int ’u•¨_•ûŒü(int nX, int nY)
+{
+	if (!’u•¨‚ ‚è(nX, nY))
+	{
+		return 0;
+	}
+	float fAngle = À”•ÏŠ·(’u•¨ƒf[ƒ^_Šp“x(nX, nY) % 36000);
+	if (fAngle == 0.0)
+	{
+		return 3;
+	}
+	if (fAngle == 90.0)
+	{
+		return 4;
+	}
+	if (fAngle == 180.0)
+	{
+		return 1;
+	}
+	if (fAngle == 270.0)
+	{
+		return 2;
+	}
+	return 0;
+}
+
+int ’u•¨_ó‘Ô(int nX, int nY)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(’u•¨”Ô†(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return -1;
+	}
+	switch (g_sMapObject.getMotionState(nX, nY))
+	{
+		case 0:
+			int nFrameNo = g_sMapObject.getMotionFrame(nX, nY);
+			return nFrameNo == rfInfo.m_nBegin ? 0 : 1;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	return -1;
+}
+
+bool ’u•¨_‹——£Šm”F(int nX, int nY, float fX, float fZ, ref float fDst)
+{
+	ref T_MapObject rfObj1 = g_sMapObject.get(nX, nY);
+	if (rfObj1 === NULL)
+	{
+		return false;
+	}
+	ref CMapObject rfObj2 = rfObj1.get();
+	float fDst1 = ‹——£(rfObj2.GetPosX(), rfObj2.GetPosZ(), fX, fZ);
+	if (fDst1 > rfObj1.getDistance())
+	{
+		return false;
+	}
+	fDst = fDst1;
+	return true;
+}
+
+float ’u•¨_À•W‚w(int nX, int nY)
+{
+	ref CMapObject rfObj = g_sMapObject.getObject(nX, nY);
+	if (rfObj === NULL)
+	{
+		return 3.40282346638529E+38;
+	}
+	return rfObj.GetPosX();
+}
+
+float ’u•¨_À•W‚x(int nX, int nY)
+{
+	ref CMapObject rfObj = g_sMapObject.getObject(nX, nY);
+	if (rfObj === NULL)
+	{
+		return 3.40282346638529E+38;
+	}
+	return rfObj.GetPosY();
+}
+
+float ’u•¨_À•W‚y(int nX, int nY)
+{
+	ref CMapObject rfObj = g_sMapObject.getObject(nX, nY);
+	if (rfObj === NULL)
+	{
+		return 3.40282346638529E+38;
+	}
+	return rfObj.GetPosZ();
+}
+
+void ‚a‚a_İ’è(int nX, int nY, int nCgNo, bool bDraw)
+{
+	g_sBillboardData.set(nX, nY, nCgNo);
+	g_sBillboard.set(nX, nY, bDraw);
+}
+
+void ‚a‚a_‚‚³•â³(int nX, int nY, int nHeight)
+{
+	int nHoseiY = ‚a‚aƒf[ƒ^_•â³‚x(nX, nY) + nHeight;
+	g_sBillboardData.setHoseiY(nX, nY, nHoseiY);
+	g_sBillboard.setHoseiY(nX, nY, nHoseiY);
+}
+
+void ‚a‚a_Ä¶(int nX, int nY, bool bWait)
+{
+	T_BillboardInfo sInfo;
+	if (!‚a‚aî•ñ_æ“¾(nX, nY, sInfo))
+	{
+		return;
+	}
+	if (sInfo.m_nCgCount <= 1)
+	{
+		return;
+	}
+	if (!g_sBillboard.setMotionState(nX, nY, 1))
+	{
+		return;
+	}
+	if (!g_sBillboard.setMotionFrame(nX, nY, sInfo.m_nBegin))
+	{
+		return;
+	}
+	if (bWait)
+	{
+		_W(Ä¶ŠÔ(sInfo.m_nCgCount, g_sBillboard.getFPS(nX, nY)));
+	}
+}
+
+void ‚a‚a_’â~(int nX, int nY, int nFrameNo)
+{
+	T_BillboardInfo sInfo;
+	if (!‚a‚aî•ñ_æ“¾(nX, nY, sInfo))
+	{
+		return;
+	}
+	if (sInfo.m_nCgCount <= 1)
+	{
+		return;
+	}
+	if (!g_sBillboard.setMotionState(nX, nY, 0))
+	{
+		return;
+	}
+	int nCgNo = sInfo.m_nBegin + nFrameNo;
+	nCgNo = ”’l_•â³(nCgNo, sInfo.m_nBegin, sInfo.m_nEnd);
+	g_sBillboard.setMotionFrame(nX, nY, nCgNo);
+}
+
+void ‚a‚a_ƒ‹[ƒv(int nX, int nY)
+{
+	T_BillboardInfo sInfo;
+	if (!‚a‚aî•ñ_æ“¾(nX, nY, sInfo))
+	{
+		return;
+	}
+	if (sInfo.m_nCgCount <= 1)
+	{
+		return;
+	}
+	if (!g_sBillboard.setMotionState(nX, nY, 2))
+	{
+		return;
+	}
+	g_sBillboard.setMotionFrame(nX, nY, sInfo.m_nLoopBegin);
+}
+
+void ‚a‚a_–ß‚µ(int nX, int nY)
+{
+	T_BillboardInfo sInfo;
+	if (!‚a‚aî•ñ_æ“¾(nX, nY, sInfo))
+	{
+		return;
+	}
+	if (sInfo.m_nCgCount <= 1)
+	{
+		return;
+	}
+	if (sInfo.m_nState == 2)
+	{
+		‚a‚a_ƒ‹[ƒv(nX, nY);
+	}
+	else
+	{
+		‚a‚a_’â~(nX, nY, sInfo.m_nBegin);
+	}
+}
+
+int ‚a‚a_ó‘Ô(int nX, int nY)
+{
+	T_BillboardInfo sInfo;
+	if (!‚a‚aî•ñ_æ“¾(nX, nY, sInfo))
+	{
+		return -1;
+	}
+	switch (g_sBillboard.getMotionState(nX, nY))
+	{
+		case 0:
+			int nFrameNo = g_sBillboard.getMotionFrame(nX, nY);
+			return nFrameNo == sInfo.m_nBegin ? 0 : 1;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	return -1;
+}
+
+bool ‚a‚a_‹——£Šm”F(int nX, int nY, float fX, float fZ, ref float fDst)
+{
+	ref CBillboard rfBoard = g_sBillboard.get(nX, nY);
+	if (rfBoard === NULL)
+	{
+		return false;
+	}
+	float fDst1 = ‹——£(rfBoard.GetPosX(), rfBoard.GetPosZ(), fX, fZ);
+	if (fDst1 > g_sBillboard.getDistance(nX, nY))
+	{
+		return false;
+	}
+	fDst = fDst1;
+	return true;
+}
+
+float ‚a‚a_À•W‚w(int nX, int nY)
+{
+	ref CBillboard rfBoard = g_sBillboard.get(nX, nY);
+	if (rfBoard === NULL)
+	{
+		return 3.40282346638529E+38;
+	}
+	return rfBoard.GetPosX();
+}
+
+float ‚a‚a_À•W‚x(int nX, int nY)
+{
+	ref CBillboard rfBoard = g_sBillboard.get(nX, nY);
+	if (rfBoard === NULL)
+	{
+		return 3.40282346638529E+38;
+	}
+	return rfBoard.GetPosY();
+}
+
+float ‚a‚a_À•W‚y(int nX, int nY)
+{
+	ref CBillboard rfBoard = g_sBillboard.get(nX, nY);
+	if (rfBoard === NULL)
+	{
+		return 3.40282346638529E+38;
+	}
+	return rfBoard.GetPosZ();
+}
+
+int ’u•¨_í•Ê(int nX, int nY)
+{
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(’u•¨”Ô†(nX, nY));
+	if (rfInfo === NULL)
+	{
+		return -1;
+	}
+	return rfInfo.m_nNo;
+	return 0;
+}
+
+bool ’u•¨_•ó” (int nX, int nY)
+{
+	return ’u•¨_í•Ê(nX, nY) == 202;
+}
+
+bool ’u•¨_ƒ[ƒv(int nX, int nY)
+{
+	return ’u•¨_í•Ê(nX, nY) == 201;
+}
+
+float “–‚è‹——£ŒvZ(int nNo, int nEnterFlag)
+{
+	if (nNo <= 0)
+	{
+		return 3.40282346638529E+38;
+	}
+	switch (nNo)
+	{
+		case 205:
+		case 208:
+		case 211:
+		case 215:
+		case 216:
+		case 218:
+			return nEnterFlag > 0 ? 3.0 : 5.0;
+		default:
+			break;
+	}
+	return nEnterFlag > 0 ? 2.0 : 4.0;
+}
+
+int Ä¶ŠÔ(int nCount, float fFPS)
+{
+	return À”ŒvZ(nCount, 1000.0, fFPS);
+}
+
+int is•ûŒü(int nX, int nY, int nNextX, int nNextY)
+{
+	if (nNextY > nY)
+	{
+		return 1;
+	}
+	if (nNextY < nY)
+	{
+		return 3;
+	}
+	if (nNextX > nX)
+	{
+		return 2;
+	}
+	if (nNextX < nX)
+	{
+		return 4;
+	}
+	return -1;
+}
+
+int ’u•¨_Œø‰Ê‰¹(int nNo)
+{
+	return 0;
+}
+

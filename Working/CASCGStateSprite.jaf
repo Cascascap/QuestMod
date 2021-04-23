@@ -1,0 +1,132 @@
+CASCGStateSprite::CASCGStateSprite()
+{
+	this.m_nActiveIndex = -1;
+	this.m_bShow = true;
+}
+
+void CASCGStateSprite::Release()
+{
+	this.m_SpriteList.Free();
+}
+
+void CASCGStateSprite::Alloc(int nNumof)
+{
+	this.m_SpriteList.Alloc(nNumof);
+}
+
+ref CASCGSprite CASCGStateSprite::GetSprite(int nIndex)
+{
+	return this.m_SpriteList[nIndex];
+}
+
+void CASCGStateSprite::SetPos(int nX, int nY)
+{
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_SpriteList.Numof(); ++nIndex)
+	{
+		this.m_SpriteList[nIndex].SetPos(nX, nY);
+	}
+}
+
+void CASCGStateSprite::SetZ(int nZ)
+{
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_SpriteList.Numof(); ++nIndex)
+	{
+		this.m_SpriteList[nIndex].SetZ(nZ);
+	}
+}
+
+void CASCGStateSprite::SetShow(bool bShow)
+{
+	int nData = 0;
+	for (nData = 0; nData < this.m_SpriteList.Numof(); ++nData)
+	{
+		this.m_SpriteList[nData].SetShow(this.m_nActiveIndex == nData ? bShow : 0);
+	}
+	this.m_bShow = bShow;
+}
+
+bool CASCGStateSprite::GetShow()
+{
+	return this.m_bShow;
+}
+
+int CASCGStateSprite::GetX()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetX();
+}
+
+int CASCGStateSprite::GetY()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetY();
+}
+
+int CASCGStateSprite::GetZ()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetZ();
+}
+
+int CASCGStateSprite::GetCGWidth()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetCGWidth();
+}
+
+int CASCGStateSprite::GetCGHeight()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return 0;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].GetCGHeight();
+}
+
+void CASCGStateSprite::SetActive(int nIndex)
+{
+	this.m_nActiveIndex = nIndex;
+	int nData = 0;
+	for (nData = 0; nData < this.m_SpriteList.Numof(); ++nData)
+	{
+		this.m_SpriteList[nData].SetShow(nIndex == nData);
+	}
+}
+
+int CASCGStateSprite::GetActive()
+{
+	return this.m_nActiveIndex;
+}
+
+bool CASCGStateSprite::IsMouseCursorIn()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return false;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].IsMouseCursorIn();
+}
+
+bool CASCGStateSprite::IsMouseCursorInRect()
+{
+	if (this.m_nActiveIndex < 0 || this.m_nActiveIndex >= this.m_SpriteList.Numof())
+	{
+		return false;
+	}
+	return this.m_SpriteList[this.m_nActiveIndex].IsMouseCursorInRect();
+}
+

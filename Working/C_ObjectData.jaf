@@ -1,0 +1,45 @@
+int 置物番号(int nX, int nY)
+{
+	return g_sObjectData.getObjectNo(nX, nY);
+}
+
+bool 置物あり(int nX, int nY)
+{
+	return 置物番号(nX, nY) > 0;
+}
+
+int 置物データ_補正Ｘ(int nX, int nY)
+{
+	return g_sObjectData.getHoseiX(nX, nY);
+}
+
+int 置物データ_補正Ｙ(int nX, int nY)
+{
+	return g_sObjectData.getHoseiY(nX, nY);
+}
+
+int 置物データ_補正Ｚ(int nX, int nY)
+{
+	return g_sObjectData.getHoseiZ(nX, nY);
+}
+
+int 置物データ_サイズ(int nX, int nY)
+{
+	return g_sObjectData.getScale(nX, nY);
+}
+
+int 置物データ_角度(int nX, int nY)
+{
+	return g_sObjectData.getAngle(nX, nY);
+}
+
+int 置物データ_移動フラグ(int nX, int nY)
+{
+	return g_sObjectData.getEnterFlag(nX, nY);
+}
+
+void 置物データ_移動フラグ設定(int nX, int nY, int nEnterFlag)
+{
+	g_sObjectData.setEnterFlag(nX, nY, nEnterFlag);
+}
+

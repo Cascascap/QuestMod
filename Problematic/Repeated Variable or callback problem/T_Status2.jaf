@@ -1,0 +1,426 @@
+bool T_Status::exec(ref int nID, ref int nRet)
+{
+	nRet = 0;
+	this.m_sShortcutInfo.setShow(false);
+	switch (nID)
+	{
+		case 100011:
+			this.execEntrySkill();
+			return false;
+		case 100012:
+			this.execLoadSkill();
+			break;
+		case 100013:
+			this.execClearSkill();
+			return false;
+		case 100002:
+			this.execSkillUp();
+			return false;
+		case 100009:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		nRet = nID;
+		return true;
+	}
+	if (nID > 140000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 139000)
+	{
+		return this.execRemoveItem(nID, nRet);
+	}
+	if (nID > 130000)
+	{
+		return this.execItem(nID, nRet);
+	}
+	if (nID > 120000)
+	{
+		return this.execHold(nID, nRet);
+	}
+	if (nID > 110000)
+	{
+		return this.execEquip(nID, nRet);
+	}
+	return false;
+}
+
+bool T_Status::execEquip(ref int nID, ref int nRet)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execEquip01(nID, nRet);
+		case 1:
+			return this.execEquip02(nID, nRet);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_Status::execEquip01(ref int nID, ref int nRet)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	int idx = this.getEquipSkillIndex(nID);
+	ref T_SkillButton rfsSkill = this.m_sCard.getEquipSkill().getFromIndex(idx);
+	キャラスキル_外し(nCharaNo, idx);
+	this.resetSelect();
+	int idx2 = スキル_ドラッグ実行(nCharaNo, idx, rfsSkill);
+	if (idx2 < 0)
+	{
+		効果音_ドロップ();
+		goto label0;
+	}
+	int nSkillNo = rfsSkill.getSkillNo();
+	int nSkillNo2 = this.m_sCard.getEquipSkillNo(idx2);
+	キャラスキル_登録(nCharaNo, idx2, nSkillNo);
+	キャラスキル_登録(nCharaNo, idx, nSkillNo2);
+label0:
+	キャラ_再計算(nCharaNo, !クエスト_攻略中());
+	this.setChara(nCharaNo, true);
+	効果音_スキル装備(idx2 < 0 ? 0 : nSkillNo);
+	UPDATE(true);
+	return false;
+}
+
+bool T_Status::execEquip02(ref int nID, ref int nRet)
+{
+	int nID2 = this.moveSkill(1, this.getEquipSkillIndex(nID));
+	if (nID2 > 0)
+	{
+		nID = nID2;
+	}
+	return false;
+}
+
+bool T_Status::execHold(ref int nID, ref int nRet)
+{
+	switch (画面操作モード確認())
+	{
+		case 0:
+			return this.execHold01(nID, nRet);
+		case 1:
+			return this.execHold02(nID, nRet);
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_Status::execHold01(ref int nID, ref int nRet)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	int idx = this.getHoldSkillIndex(nID);
+	ref T_SkillButton rfsSkill = this.m_sCard.getHoldSkill().getFromIndex(idx);
+	this.resetSelect();
+	int idx2 = スキル_ドラッグ実行(nCharaNo, -1, rfsSkill);
+	if (idx2 < 0)
+	{
+		効果音_ドロップ();
+		return false;
+	}
+	int nSkillNo = rfsSkill.getSkillNo();
+	キャラスキル_登録(nCharaNo, idx2, nSkillNo);
+	キャラ_再計算(nCharaNo, !クエスト_攻略中());
+	this.setChara(nCharaNo, true);
+	効果音_スキル装備(nSkillNo);
+	UPDATE(true);
+	return false;
+}
+
+bool T_Status::execHold02(ref int nID, ref int nRet)
+{
+	int nID2 = this.moveSkill(2, this.getHoldSkillIndex(nID));
+	if (nID2 > 0)
+	{
+		nID = nID2;
+	}
+	return false;
+}
+
+bool T_Status::execItem(int nID, ref int nRet)
+{
+	bool bRet = false;
+	int nIndex = this.getItemIndex(nID);
+	int nType = ステータス_アイテム種別(nIndex);
+	if (nType <= 0)
+	{
+		return false;
+	}
+	this.resetSelect();
+	this.showItemComment(nIndex);
+	if (!アイテム倉庫_作成(7, nType, this.m_sCard.getCharaNo(), 0))
+	{
+		return false;
+	}
+	this.m_bItemOpen = true;
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID2 = アイテム倉庫_先頭アイテム();
+	while (true)
+	{
+		if (this.m_bScroll)
+		{
+			nID2 = アイテム倉庫_選択確認_スクロール付(nID2);
+		}
+		else
+		{
+			nID2 = アイテム倉庫_選択確認(nID2);
+		}
+		if (this._execItem(nID2, nIndex, nRet))
+		{
+			break;
+		}
+	}
+	アイテム倉庫_削除();
+	this.m_bItemOpen = false;
+	this.showItemComment(-1);
+	return bRet;
+}
+
+bool T_Status::_execItem(int nID, ref int nIndex, ref int nRet)
+{
+	int nRet2 = 0;
+	if (nID > 900000)
+	{
+		nRet = nID;
+		return true;
+	}
+	if (nID < 500000 && nID > 140000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (アイテム倉庫_実行(nID, nRet2))
+	{
+		nRet = nRet2;
+		return true;
+	}
+	if (555000 < nID && nID < 560000)
+	{
+		if (nRet2 > 0)
+		{
+			int idx2 = nID + -555001;
+			if (idx2 == nIndex)
+			{
+				if (this.equipItem(nIndex, 0))
+				{
+					UPDATE(true);
+				}
+			}
+			else
+			{
+				this.showItemComment(idx2);
+				nIndex = idx2;
+			}
+		}
+		return false;
+	}
+	if (nRet2 > 0)
+	{
+		if (this.equipItem(nIndex, nRet2))
+		{
+			UPDATE(true);
+		}
+	}
+	return false;
+}
+
+bool T_Status::equipItem(int nIndex, int nItemNo)
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	int nItemType = ステータス_アイテム種別(nIndex);
+	if (nItemType <= 0)
+	{
+		return false;
+	}
+	if (!キャラ_装備変更(nCharaNo, nItemType, nItemNo))
+	{
+		return false;
+	}
+	this.setChara(nCharaNo, true);
+	アイテム倉庫_再作成(-1, -1, -1, -1, -1);
+	this.showItemComment(nIndex);
+	効果音_アイテム装備(nItemNo);
+	UPDATE(true);
+	return true;
+}
+
+bool T_Status::execRemoveItem(ref int nID, ref int nRet)
+{
+	int nIndex = this.getItemRemoveIndex(nID);
+	int nType = ステータス_アイテム種別(nIndex);
+	if (nType <= 0)
+	{
+		return false;
+	}
+	int nCharaNo = this.m_sCard.getCharaNo();
+	if (!キャラ_装備変更(nCharaNo, nType, 0))
+	{
+		return false;
+	}
+	this.setChara(nCharaNo, true);
+	this.hideComment(-1);
+	効果音_アイテム装備(0);
+	UPDATE(true);
+	nID = this.getItemID(nIndex);
+	return false;
+}
+
+void T_Status::execSkillUp()
+{
+	this.hideComment(-1);
+	this.setShow(false);
+	int nCharaNo = this.m_sCard.getCharaNo();
+	Ｃログ情報(nCharaNo);
+	nCharaNo = スキルポイント_取得(nCharaNo, this.m_bScroll);
+	this.setChara(nCharaNo, true);
+	UPDATE(true);
+}
+
+void T_Status::execEntrySkill()
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	array@int anSkillNo;
+	int i = 0;
+	int cnt = キャラスキル_実装一覧(nCharaNo, anSkillNo);
+	if (cnt <= 0)
+	{
+		this.execClearSkill();
+		return;
+	}
+	キャラ_登録スキル設定(nCharaNo, anSkillNo);
+	this.m_bEntrySkill = キャラ_登録スキルあり(nCharaNo);
+	this.setButtonActive(true);
+	this.setButtonShow(true);
+	UPDATE(true);
+}
+
+void T_Status::execLoadSkill()
+{
+	int nCharaNo = this.m_sCard.getCharaNo();
+	array@int anSkillNo[6];
+	if (!キャラ_登録スキル(nCharaNo, anSkillNo))
+	{
+		return;
+	}
+	キャラスキル_全登録(nCharaNo, anSkillNo);
+	キャラ_再計算(nCharaNo, !クエスト_攻略中());
+	this.setChara(nCharaNo, true);
+	効果音_スキル装備(1);
+	UPDATE(true);
+}
+
+void T_Status::execClearSkill()
+{
+	if (!キャラ_登録スキルクリア(this.m_sCard.getCharaNo()))
+	{
+		return;
+	}
+	this.m_bEntrySkill = false;
+	this.setButtonActive(true);
+	this.setButtonShow(true);
+	UPDATE(true);
+}
+
+int T_Status::moveSkill(int nMode, int nSkillIndex)
+{
+	if (!this.m_sCard.lockSkill(nMode, nSkillIndex))
+	{
+		return -1;
+	}
+	int nRet = 0;
+	int nSkillNo = 0;
+	this.m_sButtonLock.setShow(true);
+	if (nMode == 1)
+	{
+		this.m_sButtonLock.setButtonShow(this.getEquipSkillID(nSkillIndex), false);
+		nSkillNo = this.m_sCard.getEquipSkillNo(nSkillIndex);
+	}
+	else if (nMode == 2)
+	{
+		this.m_sButtonLock.setButtonShow(100001, false);
+		nSkillNo = this.m_sCard.getHoldSkillNo(nSkillIndex);
+	}
+	int nID = this.checkSelectLock(this.getFirstEquipLock());
+	if (nID <= 0)
+	{
+		goto label0;
+	}
+	int nSkillNo2 = 0;
+	int nCharaNo = this.m_sCard.getCharaNo();
+	switch (nID)
+	{
+		case 100001:
+			if (nMode != 1)
+			{
+				goto label0;
+			}
+			キャラスキル_外し(nCharaNo, nSkillIndex);
+			int idx = this.m_sCard.getHoldSkillIndex(nSkillNo);
+			nRet = idx < 0 ? this.getFirstHold() : this.getHoldSkillID(idx);
+			break;
+		default:
+			int idx = this.getEquipSkillIndex(nID);
+			if (idx < 0)
+			{
+				goto label0;
+			}
+			nSkillNo2 = this.m_sCard.getEquipSkillNo(idx);
+			キャラスキル_登録(nCharaNo, idx, nSkillNo);
+			if (nMode == 1)
+			{
+				キャラスキル_登録(nCharaNo, nSkillIndex, nSkillNo2);
+			}
+			nRet = nID;
+			break;
+	}
+	キャラ_再計算(nCharaNo, !クエスト_攻略中());
+	this.setChara(nCharaNo, true);
+	効果音_スキル装備(nSkillNo2);
+	UPDATE(true);
+label0:
+	this.m_sButtonLock.setShow(false);
+	this.m_sCard.lockSkill(0, -1);
+	this.setButtonActive(true);
+	this.setButtonShow(true);
+	return nRet;
+}
+
+int T_Status::checkSelectLock(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.m_sButtonLock.setButtonSelect(nID, true, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.m_sButtonLock.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			this.m_sInputKeyLock.check(nID2);
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+

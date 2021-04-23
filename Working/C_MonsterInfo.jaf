@@ -1,0 +1,70 @@
+void モンスター情報_初期化()
+{
+	g_sMonsterInfo.Load("Data\\MonsterInfo.txt");
+}
+
+string モンスター表示名(int nMonsterNo)
+{
+	return g_sMonsterInfo.GetViewName(nMonsterNo -= 100000);
+}
+
+int モーション番号(int nMonsterNo, string szName)
+{
+	nMonsterNo -= 100000;
+	int i = 0;
+	int cnt = g_sMonsterInfo.GetNumofMotion(nMonsterNo);
+	for (i = 0; i < cnt; ++i)
+	{
+		if (g_sMonsterInfo.GetMotionName(nMonsterNo, i) == szName)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+bool 大攻撃モーションあり(int nMonsterNo)
+{
+	return モーションあり(nMonsterNo, 2);
+}
+
+bool モーションあり(int nMonsterNo, int nMotionNo)
+{
+	nMonsterNo -= 100000;
+	string szName = g_sMonsterInfo.GetMotionName(nMonsterNo, nMotionNo);
+	return szName.Length() > 0;
+}
+
+int モンスター_カメラ位置(int nMonsterNo)
+{
+	nMonsterNo -= 100000;
+	return g_sMonsterInfo.GetCameraSetting(nMonsterNo);
+}
+
+string モンスター_モーションエフェクト名(int nMonsterNo, int nMotionNo)
+{
+	nMonsterNo -= 100000;
+	string szEffectName = g_sMonsterInfo.GetMotionEffectName(nMonsterNo, モンスター_モーション確認(nMonsterNo, nMotionNo));
+	if (!szEffectName.Empty())
+	{
+		return szEffectName;
+	}
+	return "";
+}
+
+int モンスター_モーション確認(int nMonsterNo, int nMotionNo)
+{
+	nMonsterNo += 100000;
+	switch (nMotionNo)
+	{
+		case 2:
+			return モーションあり(nMonsterNo, 2) ? 2 : 1;
+		case 0:
+		case 1:
+		case 4:
+		default:
+			break;
+	}
+	return nMotionNo;
+}
+

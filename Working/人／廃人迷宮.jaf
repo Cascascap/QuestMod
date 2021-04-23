@@ -1,0 +1,43 @@
+void 廃人迷宮／プロローグ()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(◆マップ曲, -1, -1);
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	'　' R;
+	'     Cripple Dungeon' A;
+	'A strange space that exhibits a mysterious magnetic force.' A;
+	'Only one person may enter it, and they receive 1/3 experience while there.' A;
+	'But they won\'t ever expend their basic skills.' A;
+	'Once a battle ends, their basic skill usage is refreshed.' A;
+	'They can fight endlessly, gaining experience with each battle.' A;
+	'That\'s Cripple Dungeon.' A;
+	': Warning                             :' R;
+	':                                     :' R;
+	': This quest exists only for grinding.:' A;
+	': The exit is just nearby.:' R;
+	': Leave from there when:' R;
+	': you want it to end.:' A;
+	ADVOFF();
+}
+
+void 廃人迷宮／出口()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	マスク壁紙表示(5550, 1, 500);
+	ト書き();
+	':This is the exit of the dungeon.:' A;
+	':There is no goal to this quest.:' A;
+	':Using this exit will fulfill the quest.:' A;
+}
+

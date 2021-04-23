@@ -1,0 +1,86 @@
+void コパンドン／切り替え１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5230, 0, 0);
+	音楽(93, -1, -1);
+	立ち絵表示(1290, 1, 200);
+	セリフ(2290, "");
+	'"Hmm..."' A;
+	ト書き();
+	'Copandon groaned, holding her head.' A;
+	セリフ(2000, "");
+	'"Hm? Something wrong?"' A;
+	セリフ(2290, "");
+	'"Just a bit, yeah."' A;
+	ト書き();
+	'Copandon held a bandage in her hand.' A;
+	セリフ(2290, "");
+	'"Well, I was thinkin\', you can make a fortune just by stickin\' an eraser on the end of a pencil, right? Maybe there\'s somethin\' you can do with bandages, then."' A;
+	セリフ(2000, "");
+	'"Ah, trying to think of some new product, is that it?"' A;
+	セリフ(2290, "");
+	'"Adventurers buy bandages a lot, right?' R;
+	' I think there\'s potential here."' A;
+	'"Hmmm~~~~~"' A;
+	'"Maybe if we soaked ’em in disinfectant first?"' A;
+	セリフ(2005, "");
+	'"Who\'s gonna buy sopping wet bandages...?"' A;
+	ADVOFF();
+}
+
+void コパンドン／切り替え２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(0, 5230, 0, 0);
+	音楽(93, -1, -1);
+	立ち絵表示(1290, 1, 200);
+	セリフ(2290, "");
+	'"Hey, Rance.' R;
+	' How many kids ya want?"' A;
+	セリフ(2005, "");
+	'"Huh? What\'s this all about?"' A;
+	セリフ(2290, "");
+	'"It\'s about kids.' R;
+	' If you wanted kids, how many would ya want?"' A;
+	セリフ(2000, "");
+	'"Kids are just trouble.' R;
+	' I don\'t want any."' A;
+	セリフ(2290, "");
+	'"Huhh?' R;
+	' Ain\'t it lonely not havin\' any, though?"' A;
+	セリフ(2000, "");
+	'"No...' R;
+	' Why would I be lonely without kids?"' A;
+	セリフ(2291, "");
+	'"You\'d want ’em at your bedside when you died, wouldn\'t you?!"' A;
+	'"Women usually live longer than men, so if my husband died, I\'d be all alone, wouldn\'t I?!"' A;
+	セリフ(2290, "");
+	'"...Well, I plan on buyin\' you, Rance, and I kinda want you to live longer than me."' A;
+	セリフ(2005, "");
+	'"That\'s stupid.' R;
+	' Then you don\'t need to know how many kids I want, do you?"' A;
+	セリフ(2290, "");
+	'"Huhh? I want some, though...' R;
+	' But I don\'t want fighting over the inheritance, so only one or two."' A;
+	セリフ(2000, "");
+	'"I\'ve decided I\'m gonna die having sex.' R;
+	' And I don\'t need kids at that bedside."' A;
+	セリフ(2290, "");
+	'"Ah, I hear ya.' R;
+	' That sounds good too!"' A;
+	'"I\'ll make sure I\'m right under you when I die, then, Rance. Make room for me, okay?"' A;
+	セリフ(2002, "");
+	'"You can\'t decide that!"' A;
+	ADVOFF();
+}
+

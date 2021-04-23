@@ -1,0 +1,5890 @@
+void ‚p‹N“®“o˜^^ƒ}ƒOƒiƒ€(lint fg)
+{
+	int iiq = 0;
+	iiq = 11;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 0, 0, 3);
+	‚p–¼‘O(iiq, "Favor: Survey");
+	‚pà–¾•¶(iiq, 1, "It's a survey about this and future games.");
+	‚pà–¾•¶(iiq, 2, "Please take it if you'd like to participate.");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "¦Unrelated to game progress");
+	‚p”­¶êŠ(iiq, "Alice's Mansion");
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 154;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 0, 0, 3);
+	‚p–¼‘O(iiq, "Relaxing Bust");
+	‚pà–¾•¶(iiq, 1, "So soothing~");
+	‚pà–¾•¶(iiq, 2, "So healing~");
+	‚pà–¾•¶(iiq, 3, "Siiiiigh~");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle");
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 181;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 40, 0, 3);
+	‚p–¼‘O(iiq, "Challenging the Torture Device Part 4");
+	‚pà–¾•¶(iiq, 1, "It's said that uniting the three parts of the Kugu Torture Device will give you one chance to save the subject inside.");
+	‚pà–¾•¶(iiq, 2, "...You must answer with the subject's name.");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, " ");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Cidade   Rance's Room");
+	‚pQ‰ÁğŒ(iiq, 5, 259, 0);
+	‚pQ‰ÁğŒ(iiq, 5, 260, 0);
+	‚pQ‰ÁğŒ(iiq, 5, 261, 0);
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	iiq = 185;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Shining Cock");
+	‚pà–¾•¶(iiq, 1, "I wanna buy some sexy toys and have wet and wild fun with 'em!");
+	‚pà–¾•¶(iiq, 2, "Anything good in here?");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "¦Someone will fall victim to the Abstinence Morurun");
+	‚pà–¾•¶(iiq, 5, " ");
+	‚p”­¶êŠ(iiq, "Cidade   Frostbuy");
+	‚pQ‰ÁğŒ(iiq, 4, 51, 35);
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 208;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Dangerous Fellatio");
+	‚pà–¾•¶(iiq, 1, "Kibako saw someone giving a blowjob.");
+	‚pà–¾•¶(iiq, 2, "Now her wild instincts are flaring up!");
+	‚pà–¾•¶(iiq, 3, "Awooo!");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "¦Someone will fall victim to the Abstinence Morurun");
+	‚p”­¶êŠ(iiq, "Rance Castle   Rance's Room");
+	‚pQ‰ÁğŒ(iiq, 4, 50, 35);
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 209;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Punishing the Pope");
+	‚pà–¾•¶(iiq, 1, "She may be the pope of the world's biggest religion, but she used me, and it's time to punish her!");
+	‚pà–¾•¶(iiq, 2, " ");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "¦Someone will fall victim to the Abstinence Morurun");
+	‚pà–¾•¶(iiq, 5, " ");
+	‚p”­¶êŠ(iiq, "Rance Castle   Rance's Room");
+	‚pQ‰ÁğŒ(iiq, 4, 33, 35);
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 210;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "As a Priestess...");
+	‚pà–¾•¶(iiq, 1, "Waaah, I want to have sex!");
+	‚pà–¾•¶(iiq, 2, "I'm gonna break!");
+	‚pà–¾•¶(iiq, 3, "I'm gonna burst!");
+	‚pà–¾•¶(iiq, 4, "Better call Sel!");
+	‚pà–¾•¶(iiq, 5, "¦Someone will fall victim to the Abstinence Morurun");
+	‚p”­¶êŠ(iiq, "Rance Castle   Rance's Room");
+	‚pQ‰ÁğŒ(iiq, 4, 35, 35);
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 164;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 43, 0);
+	‚p–¼‘O(iiq, "To Kawanakajima We Go");
+	‚pà–¾•¶(iiq, 1, "An island in the middle of the continent's largest waterway...");
+	‚pà–¾•¶(iiq, 2, "That's Kawanakajima.");
+	‚pà–¾•¶(iiq, 3, "It's where the Church of Alicism HQ, Kaiz, is.");
+	‚pà–¾•¶(iiq, 4, "It's got nothin' to do with Kenshin.");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kawanakajima");
+	‚pQ‰ÁğŒ(iiq, 2, 33, 0);
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 165;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Rumors of the Shepherds");
+	‚pà–¾•¶(iiq, 1, "Lately there have been rumors of suspicious guys doing suspicious things in suspicious places.");
+	‚pà–¾•¶(iiq, 2, "Hmm? Don't see what that has to do with me...");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kaiz   Church of Alicism HQ");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 207;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 43, 0);
+	‚p–¼‘O(iiq, "The Lord's Rebellion");
+	‚pà–¾•¶(iiq, 1, "Lia's given us some information about acquiring a Soul Shackle.");
+	‚pà–¾•¶(iiq, 2, "Guess we're heading off to Leazas for a bit.");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Leazas");
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 156;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "The Father's Present");
+	‚pà–¾•¶(iiq, 1, "Father: Batting Senters");
+	‚pà–¾•¶(iiq, 2, "Daughter: Sachiko Senters");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "The father always worries for his daughter.");
+	‚pà–¾•¶(iiq, 5, "Even now that she's all grown up.");
+	‚p”­¶êŠ(iiq, "Kaiz   Church of Alicism HQ");
+	‚pQ‰ÁğŒ(iiq, 4, 19, 50);
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	iiq = 155;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Looking for a Lucklady?");
+	‚pà–¾•¶(iiq, 1, "Pluepet Company's biggest sucker...");
+	‚pà–¾•¶(iiq, 2, "--I mean customer, Mr. Rance!");
+	‚pà–¾•¶(iiq, 3, "We've got a wonderful offer for you!");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle   Rance's Room");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	iiq = 166;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Gift Exchange at the Church");
+	‚pà–¾•¶(iiq, 1, "Wandering around Kaiz...");
+	‚pà–¾•¶(iiq, 2, "Is there anything fun going on?");
+	‚pà–¾•¶(iiq, 3, "Yup!");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kaiz   Alicist Church");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 167;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 45, 0);
+	‚p–¼‘O(iiq, "Quest for Hikari");
+	‚pà–¾•¶(iiq, 1, "I do what I want.");
+	‚pà–¾•¶(iiq, 2, "So I'm gonna do that cute nun, since my instincts are telling me to!");
+	‚pà–¾•¶(iiq, 3, "...Wait, have I met this girl before...?");
+	‚pà–¾•¶(iiq, 4, " ");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kaiz   Alicist Church");
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 186;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 43, 0);
+	‚p–¼‘O(iiq, "Erotech Hermit");
+	‚pà–¾•¶(iiq, 1, "You wanna see my ero technique?!");
+	‚pà–¾•¶(iiq, 2, "Fine!");
+	‚pà–¾•¶(iiq, 3, "You'll be amazed!");
+	‚pà–¾•¶(iiq, 4, "You'll be astonished!");
+	‚pà–¾•¶(iiq, 5, "You'll bow down!!");
+	‚p”­¶êŠ(iiq, "Strange Dimension");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 2, 1, 0);
+	‚pQ‰ÁğŒ(iiq, 2, 12, 0);
+	‚pQ‰ÁğŒ(iiq, 1, 4, 0);
+	iiq = 182;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 43, 0);
+	‚p–¼‘O(iiq, "Gay Fried Chicken");
+	‚pà–¾•¶(iiq, 1, "I don't really get it, but I guess I'm going to a fucking freezing mountain in Nippon to save somebody.");
+	‚pà–¾•¶(iiq, 2, "It's a pain and I have a bad feeling about it...");
+	‚pà–¾•¶(iiq, 3, "I'm going home, first chance I get. ");
+	‚pà–¾•¶(iiq, 4, " ");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Nippon   Kanto Snowy Mountain");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 2, 1, 0);
+	‚pQ‰ÁğŒ(iiq, 1, 4, 0);
+	iiq = 187;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 43, 0);
+	‚p–¼‘O(iiq, "Love Hermit");
+	‚pà–¾•¶(iiq, 1, "Love...?");
+	‚pà–¾•¶(iiq, 2, "Romance...?");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "Uhh...");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Strange Dimension");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 2, 1, 0);
+	‚pQ‰ÁğŒ(iiq, 2, 39, 0);
+	‚pQ‰ÁğŒ(iiq, 1, 2, 0);
+	iiq = 188;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "The Bishops' Day");
+	‚pà–¾•¶(iiq, 1, "The pope is the highest authority in the Alicist Church.");
+	‚pà–¾•¶(iiq, 2, "These four bishops are the candidates for his replacement...");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "???");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 205;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Pencilcow Conference");
+	‚pà–¾•¶(iiq, 1, "Without its queen, the Kalar Village Pencilcow is in chaos!");
+	‚pà–¾•¶(iiq, 2, "Apparently they're really struggling. ");
+	‚pà–¾•¶(iiq, 3, "Let's go see how they're doing.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Pencilcow");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 183;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Late Night with Mill Yorks");
+	‚pà–¾•¶(iiq, 1, "Mill's come to my bedroom...");
+	‚pà–¾•¶(iiq, 2, "Does she want to sleep next to me?");
+	‚pà–¾•¶(iiq, 3, "What a cute kid.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "¦Someone will fall victim to the Abstinence Morurun");
+	‚p”­¶êŠ(iiq, "Rance Castle   Rance's Room");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 4, 43, 35);
+	iiq = 191;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 0, 3);
+	‚p–¼‘O(iiq, "Matilda, Confined");
+	‚pà–¾•¶(iiq, 1, "Naturally, my castle has a sexy torture room.");
+	‚pà–¾•¶(iiq, 2, "I'll have Matilda think about what she's done.");
+	‚pà–¾•¶(iiq, 3, "If I'm gonna do this, I'm gonna do it right.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle   Torture Room");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 201;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 30, 60, 2);
+	‚p–¼‘O(iiq, "Angel Hunting");
+	‚pà–¾•¶(iiq, 1, "Some angels are on a mission to exterminate a devil, and they won't hesitate to eliminate any obstacles between them and their goal.");
+	‚pà–¾•¶(iiq, 2, " ");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle   Dungeon");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	iiq = 168;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 45, 0);
+	‚p–¼‘O(iiq, "Despair Gathering");
+	‚pà–¾•¶(iiq, 1, ":\t\tDespair Gathering Now Recruiting\t\t  :");
+	‚pà–¾•¶(iiq, 2, "This world is rotten. There's no point in living.");
+	‚pà–¾•¶(iiq, 3, "If you feel dissatisfaction, rage, or resignation, why not mope with us?");
+	‚pà–¾•¶(iiq, 4, " ");
+	‚p”­¶êŠ(iiq, "Despair Gathering Cave");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 169;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 46, 0);
+	‚p–¼‘O(iiq, "Obsidian Princess");
+	‚pà–¾•¶(iiq, 1, "Rance has come to a church after hearing rumors of a beautiful woman.");
+	‚pà–¾•¶(iiq, 2, "But something terrible is happening inside...");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Peperon Church");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 190;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 50, 0);
+	‚p–¼‘O(iiq, "The Shepherds and the Darksword");
+	‚pà–¾•¶(iiq, 1, "Crane's information has led us to the Shepherds' base.");
+	‚pà–¾•¶(iiq, 2, "We're annihilating the bastards!");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "A Forest   The Shepherds' Base");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 170;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "The Leader of the Shepherds");
+	‚pà–¾•¶(iiq, 1, "Who are the Shepherds?");
+	‚pà–¾•¶(iiq, 2, "What is their goal?");
+	‚pà–¾•¶(iiq, 3, "What are they doing with the Soul Shackles?");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Free City Zone   Gatan Forest");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 171;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 46, 0);
+	‚p–¼‘O(iiq, "The Bishop's Trap");
+	‚pà–¾•¶(iiq, 1, "A request from the Church, accepted by Crook.");
+	‚pà–¾•¶(iiq, 2, "Just some cleaning... ");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Abandoned Church");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 2, 33, 0);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 172;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 50, 0);
+	‚p–¼‘O(iiq, "Maria's Marriage Meeting");
+	‚pà–¾•¶(iiq, 1, "What?!");
+	‚pà–¾•¶(iiq, 2, "Don't be ridiculous!");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "¦Someone will fall victim to the Abstinence Morurun");
+	‚p”­¶êŠ(iiq, "Zeth   Snicker Limestone Cave");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	‚pQ‰ÁğŒ(iiq, 4, 29, 35);
+	iiq = 193;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Papal Candidates");
+	‚pà–¾•¶(iiq, 1, "There are only a few more days until the final ruling of the Mula Test.");
+	‚pà–¾•¶(iiq, 2, "The papal candidates all wait for that moment, each with different feelings hidden in their hearts.");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "???");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 173;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 52, 2);
+	‚p–¼‘O(iiq, "Mula Test Part 1");
+	‚pà–¾•¶(iiq, 1, "Confession, parting, battle.");
+	‚pà–¾•¶(iiq, 2, "@");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 174;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 52, 0);
+	‚p–¼‘O(iiq, "Mula Test Part 2");
+	‚pà–¾•¶(iiq, 1, "Fuckin' Crook, disappearing like that!");
+	‚pà–¾•¶(iiq, 2, "I'm gonna catch her and punish her!");
+	‚pà–¾•¶(iiq, 3, "Anyway, to the Church HQ we go.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kawanakajima");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 175;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 53, 0);
+	‚p–¼‘O(iiq, "Mula Test Part 3");
+	‚pà–¾•¶(iiq, 1, "Where are we?");
+	‚pà–¾•¶(iiq, 2, "And where's Crook?!");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Church of Alicism HQ   Underground");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 204;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 0, 3);
+	‚p–¼‘O(iiq, "Crook's Returns");
+	‚pà–¾•¶(iiq, 1, "The Alicist Church's new pope has decided what to do with all the Balance Breakers that were collected during the Mula Test.");
+	‚pà–¾•¶(iiq, 2, " ");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "???");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 194;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 50, 0, 3);
+	‚p–¼‘O(iiq, "Papal Inauguration Ceremony");
+	‚pà–¾•¶(iiq, 1, "Important people from all over the world are attending the new pope's inauguration ceremony.");
+	‚pà–¾•¶(iiq, 2, "One of them is Rance.");
+	‚pà–¾•¶(iiq, 3, "And one of them...");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kawanakajima   Kaiz");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 200;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 0, 3);
+	‚p–¼‘O(iiq, "The Truth of the Goddess");
+	‚pà–¾•¶(iiq, 1, "The goddess Alice...");
+	‚pà–¾•¶(iiq, 2, "The object of the Alicist Church's faith...");
+	‚pà–¾•¶(iiq, 3, "and the savior who guides humanity.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kaiz   Church of Alicism HQ");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 197;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 0, 3);
+	‚p–¼‘O(iiq, "Am's Experiment 1");
+	‚pà–¾•¶(iiq, 1, "HeartHeartHeartHeartHeartHeartHeartHeart");
+	‚pà–¾•¶(iiq, 2, "DarknessDarknessDarknessDarknessDarkness");
+	‚pà–¾•¶(iiq, 3, "AttackAttackAttackAttackAttackAttackAttack");
+	‚pà–¾•¶(iiq, 4, "KillKillKillKillKillKillKillKillKillKillKillKillKillKillKillKill");
+	‚pà–¾•¶(iiq, 5, "DestroyDestroyDestroyDestroyDestroyDestroy");
+	‚p”­¶êŠ(iiq, "Free City Zone   Zuka Village");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 198;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 30, 55, 0);
+	‚p–¼‘O(iiq, "Am's Experiment 2");
+	‚pà–¾•¶(iiq, 1, "A threat approaches the villages on the outskirts of Zeth.");
+	‚pà–¾•¶(iiq, 2, "The objective is to stop it.");
+	‚pà–¾•¶(iiq, 3, "Normally Rance would find such a request to be a bother, but when he hears what the threat is...");
+	‚pà–¾•¶(iiq, 4, " ");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Zeth   Meg's Ranch");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 176;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 30, 55, 0);
+	‚p–¼‘O(iiq, "The Shepherds' Base");
+	‚pà–¾•¶(iiq, 1, "The stronghold of the Shepherds has finally been found.");
+	‚pà–¾•¶(iiq, 2, "Rance, Crook, and Reset...");
+	‚pà–¾•¶(iiq, 3, "A ship sails for Kawanakajima, laden with their thoughts.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Kawanakajima");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 177;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 30, 58, 0);
+	‚p–¼‘O(iiq, "Tower of Babel");
+	‚pà–¾•¶(iiq, 1, "Chaos, strife, and despair run rampant throughout the world...");
+	‚pà–¾•¶(iiq, 2, "And...");
+	‚pà–¾•¶(iiq, 3, "¦This is the final quest. This will clear the game");
+	‚pà–¾•¶(iiq, 4, "   Infinite party switches allowed on this quest");
+	‚pà–¾•¶(iiq, 5, " ");
+	‚p”­¶êŠ(iiq, "Right Next Door   Tower of Babel");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	iiq = 192;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 55, 0);
+	‚p–¼‘O(iiq, "Green Village");
+	‚pà–¾•¶(iiq, 1, "Just thinking about that muscled freak pisses me off!");
+	‚pà–¾•¶(iiq, 2, "But hey, I've got Chaos now...");
+	‚pà–¾•¶(iiq, 3, "Time to go get my revenge.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "¦No female characters other than Crook may participate");
+	‚p”­¶êŠ(iiq, "Green Village");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 1);
+	‚pQ‰ÁğŒ(iiq, 2, 1, 0);
+	‚pQ‰ÁğŒ(iiq, 2, 33, 0);
+	iiq = 24;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "The Head Maid's School Uniform");
+	‚pà–¾•¶(iiq, 1, "Miss Biscuitta, the head maid...");
+	‚pà–¾•¶(iiq, 2, "Rance, the lord of the castle, has tried all sorts of things to enjoy sex with her, but they all seem to lack something.");
+	‚pà–¾•¶(iiq, 3, "Until one day, she just happened to have a school uniform...");
+	‚pà–¾•¶(iiq, 4, "¦Someone will fall victim to the Abstinence Morurun");
+	‚pà–¾•¶(iiq, 5, " ");
+	‚p”­¶êŠ(iiq, "Rance Castle   Hallway");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 4, 68, 35);
+	iiq = 148;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Body Natto");
+	‚pà–¾•¶(iiq, 1, "Green onion.");
+	‚pà–¾•¶(iiq, 2, "Bonito.");
+	‚pà–¾•¶(iiq, 3, "Egg.");
+	‚pà–¾•¶(iiq, 4, "There are many ways to enjoy natto, but...");
+	‚pà–¾•¶(iiq, 5, "¦Someone will fall victim to the Abstinence Morurun");
+	‚p”­¶êŠ(iiq, "Rance Castle   Classroom");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 4, 45, 35);
+	iiq = 149;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Her Reason to Live");
+	‚pà–¾•¶(iiq, 1, "Elenoa Ran.");
+	‚pà–¾•¶(iiq, 2, "She's too serious.");
+	‚pà–¾•¶(iiq, 3, "Her past sins continue to torment her.");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "¦Someone will fall victim to the Abstinence Morurun");
+	‚p”­¶êŠ(iiq, "Rance Castle   Hallway");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pQ‰ÁğŒ(iiq, 4, 10, 35);
+	iiq = 151;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Let's Play with the Emperor's Armor");
+	‚pà–¾•¶(iiq, 1, "This is a rare item?");
+	‚pà–¾•¶(iiq, 2, "It doesn't really look like it...");
+	‚pà–¾•¶(iiq, 3, "But let's have someone test it out!");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle   Treasure Vault");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	‚pQ‰ÁğŒ(iiq, 5, 24, 0);
+	‚pQ‰ÁğŒ(iiq, 4, 24, 45);
+	iiq = 152;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Let's Play with the Orgarhythm");
+	‚pà–¾•¶(iiq, 1, "I got my hands on some ugly armor a while ago.");
+	‚pà–¾•¶(iiq, 2, "It's taking up space in the vault, so maybe I'll just throw it away.");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "¦Someone will fall victim to the Abstinence Morurun");
+	‚pà–¾•¶(iiq, 5, " ");
+	‚p”­¶êŠ(iiq, "Rance Castle   Treasure Vault");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	‚pQ‰ÁğŒ(iiq, 4, 39, 35);
+	‚pQ‰ÁğŒ(iiq, 5, 54, 0);
+	iiq = 150;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "The Three Ice Flame Girls");
+	‚pà–¾•¶(iiq, 1, "I've been waiting for all three of them to hit");
+	‚pà–¾•¶(iiq, 2, "level 35 together...");
+	‚pà–¾•¶(iiq, 3, "We're gonna have a foursome, of course!");
+	‚pà–¾•¶(iiq, 4, "¦Someone will fall victim to the Abstinence Morurun");
+	‚pà–¾•¶(iiq, 5, " ");
+	‚p”­¶êŠ(iiq, "Rance Castle   Rance's Room");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	‚pQ‰ÁğŒ(iiq, 4, 31, 35);
+	‚pQ‰ÁğŒ(iiq, 4, 59, 35);
+	‚pQ‰ÁğŒ(iiq, 4, 14, 35);
+	iiq = 211;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "Thunder Claus");
+	‚pà–¾•¶(iiq, 1, "If you believe, he's sure to come.");
+	‚pà–¾•¶(iiq, 2, "The legend, the superman, Thunder Claus!");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle");
+	‚pQ‰ÁğŒ(iiq, 2, 84, 0);
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 214;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 50, 0);
+	‚p–¼‘O(iiq, "Letter from Nippon");
+	‚pà–¾•¶(iiq, 1, "The dead don't come back to life.");
+	‚pà–¾•¶(iiq, 2, "Her body and soul are both gone.");
+	‚pà–¾•¶(iiq, 3, " However...");
+	‚pà–¾•¶(iiq, 4, "  had they been preserved...");
+	‚pà–¾•¶(iiq, 5, " Do you believe in miracles?");
+	‚p”­¶êŠ(iiq, "Nippon   Yomotsu Hirasaka");
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 215;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 0, 3);
+	‚p–¼‘O(iiq, "The Siblings' Day");
+	‚pà–¾•¶(iiq, 1, "Reset and Dark Rance.");
+	‚pà–¾•¶(iiq, 2, "Though their mothers may be different, they are siblings with the same father.");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "What will happen when they meet again?");
+	‚pà–¾•¶(iiq, 5, "@");
+	‚p”­¶êŠ(iiq, "Rance Castle");
+	‚pƒLƒbƒg(iiq, 2);
+	iiq = 227;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 100, 0);
+	‚p–¼‘O(iiq, "Boss 100");
+	‚pà–¾•¶(iiq, 1, "I wanna fight a boss.");
+	‚pà–¾•¶(iiq, 2, "There's gotta be a boss around here somewhere.");
+	‚pà–¾•¶(iiq, 3, "Here we go!");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "  Fun for World 3");
+	‚p”­¶êŠ(iiq, "???");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	iiq = 228;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 100, 0);
+	‚p–¼‘O(iiq, "Boss 200");
+	‚pà–¾•¶(iiq, 1, "For anyone who thought that Kaito guy was weaker than he looked...");
+	‚pà–¾•¶(iiq, 2, "How about now?");
+	‚pà–¾•¶(iiq, 3, " ");
+	‚pà–¾•¶(iiq, 4, "  Fun for World 3");
+	‚pà–¾•¶(iiq, 5, " ");
+	‚p”­¶êŠ(iiq, "???");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	iiq = 229;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 100, 0);
+	‚p–¼‘O(iiq, "Red Death");
+	‚pà–¾•¶(iiq, 1, "Red Death and Green Angel");
+	‚pà–¾•¶(iiq, 2, "...No, they're not related.");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, " 1 platoon   55");
+	‚pà–¾•¶(iiq, 5, "  Fun for World 3");
+	‚p”­¶êŠ(iiq, "???");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+	iiq = 230;
+	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 100, 0);
+	‚p–¼‘O(iiq, "She's Here Too");
+	‚pà–¾•¶(iiq, 1, "It's a What If world, after all.");
+	‚pà–¾•¶(iiq, 2, "It's good that it makes no sense.");
+	‚pà–¾•¶(iiq, 3, "@");
+	‚pà–¾•¶(iiq, 4, "@");
+	‚pà–¾•¶(iiq, 5, "  Fun for World 3");
+	‚p”­¶êŠ(iiq, "???");
+	‚pƒLƒbƒg(iiq, 2);
+	‚pƒƒCƒ“(iiq, 9);
+}
+
+void ƒNƒŠƒAƒtƒ‰ƒOˆ—^ƒ}ƒOƒiƒ€()
+{
+	int iiq = 0;
+	LOG_TADA("„ƒNƒŠƒAƒtƒ‰ƒOˆ—^‚b\n");
+	if (Ÿiiq == 165)
+	{
+		‚pó‘Ô(166, 1);
+		‚pó‘Ô(207, 1);
+	}
+	if (Ÿiiq == 166)
+	{
+		‚pó‘Ô(168, 1);
+	}
+	if (Ÿiiq == 167)
+	{
+		‚b¶¬(67);
+	}
+	if (Ÿiiq == 168)
+	{
+		‚pó‘Ô(169, 1);
+		‚pó‘Ô(188, 1);
+		‚pó‘Ô(187, 1);
+	}
+	if (Ÿiiq == 169)
+	{
+		‚pó‘Ô(170, 1);
+	}
+	if (Ÿiiq == 190)
+	{
+		‚pó‘Ô(191, 1);
+		‚pó‘Ô(192, 1);
+	}
+	if (Ÿiiq == 171)
+	{
+		‚pó‘Ô(172, 1);
+	}
+	if (Ÿiiq == 172)
+	{
+		‚pó‘Ô(182, 1);
+	}
+	if (Ÿiiq == 192 && QD[1] == 1)
+	{
+		‚b¶¬(70);
+	}
+	if (Ÿiiq == 193)
+	{
+		‚pó‘Ô(173, 1);
+	}
+	if (Ÿiiq == 173)
+	{
+		‚pó‘Ô(174, 1);
+	}
+	if (Ÿiiq == 174)
+	{
+		‚pó‘Ô(175, 1);
+	}
+	if (Ÿiiq == 175)
+	{
+		‚pó‘Ô(204, 1);
+		if (FA[188] == 4)
+		{
+			FA[188] = 5;
+		}
+	}
+	if (Ÿiiq == 204)
+	{
+		‚pó‘Ô(194, 1);
+	}
+	if (Ÿiiq == 194)
+	{
+		‚pó‘Ô(200, 1);
+		‚pó‘Ô(205, 1);
+	}
+	if (Ÿiiq == 205)
+	{
+		‚b¶¬(72);
+		if (FA[223] == 0)
+		{
+			FA[223] = 1;
+		}
+	}
+	if (Ÿiiq == 177)
+	{
+		‚b¶¬(84);
+	}
+	if (Ÿiiq == 155 && EV("ƒtƒNƒ}ƒ“^”ƒ‚¢æ‚è", -2147483648) == true)
+	{
+		‚b¶¬(80);
+		‚b¶¬(81);
+	}
+	if (Ÿiiq == 202)
+	{
+		‚b¶¬(34);
+	}
+	if (Ÿiiq == 214)
+	{
+		‚b¶¬(85);
+	}
+	if (Ÿiiq == 229)
+	{
+		‚b¶¬(93);
+	}
+	if (Ÿiiq == 230)
+	{
+		‚b¶¬(94);
+	}
+	iiq = 165;
+	if (ƒNƒŠƒAŠm”F(164) == 1 && ‚b”Ô†æ“¾(5) != 0 && ‚b”Ô†æ“¾(6) != 0 && ‚b”Ô†æ“¾(55) != 0 && ‚b”Ô†æ“¾(7) != 0 && ‚b”Ô†æ“¾(10) != 0 && ‚b”Ô†æ“¾(43) != 0 && ‚b”Ô†æ“¾(29) != 0 && ‚b”Ô†æ“¾(27) != 0 && ƒNƒŠƒAŠm”F(49) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 11;
+	iiq = 164;
+	if (FA[263] == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	if (FA[42] >= 10 && ƒNƒŠƒAŠm”F(166) == 1)
+	{
+		‚pó‘Ô(167, 1);
+	}
+	iiq = 171;
+	if (ƒNƒŠƒAŠm”F(188) == 1 && ƒNƒŠƒAŠm”F(170) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 193;
+	if (ƒNƒŠƒAŠm”F(172) == 1 && ƒNƒŠƒAŠm”F(192) == 1 && ƒNƒŠƒAŠm”F(170) == 1 && ƒNƒŠƒAŠm”F(191) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 197;
+	if (ƒNƒŠƒAŠm”F(194) == 1 && FA[181] == 1 && ƒNƒŠƒAŠm”F(205) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 198;
+	if (ƒNƒŠƒAŠm”F(197) == 1 && ƒNƒŠƒAŠm”F(192) == 1 && FA[258] == 0)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 176;
+	if (ƒNƒŠƒAŠm”F(200) == 1 && ƒNƒŠƒAŠm”F(205) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 177;
+	if (ƒNƒŠƒAŠm”F(176) == 1 && ƒNƒŠƒAŠm”F(197) == 1 && (‚pó‘Ô(198, -1) == 2 || FA[258] == 1))
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 190;
+	if (EV("ƒNƒŒƒCƒ“^‚a‚lî•ñ", -2147483648) == true)
+	{
+		‚pó‘Ô(190, 1);
+	}
+	int iic = ‚b”Ô†æ“¾(51);
+	if (iic != 0 && ‚b‚k‚u(iic, -1) >= 30 && Ÿƒ‰ƒ“ƒXéƒI[ƒvƒ“ != 0)
+	{
+		‚pó‘Ô(185, 1);
+	}
+	iiq = 201;
+	if (ƒNƒŠƒAŠm”F(191) == 1 && FA[199] == 0)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 183;
+	if (‚b”Ô†æ“¾(43) != 0 && FA[154] == 1 && FA[188] >= 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 186;
+	if (ƒNƒŠƒAŠm”F(168) == 1 && ‚b”Ô†æ“¾(12) != 0)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 24;
+	if (ƒNƒŠƒAŠm”F(138) == 1 && ‚b‚k‚u(‚b”Ô†æ“¾(68), -1) >= 35)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 202;
+	if (ƒNƒŠƒAŠm”F(164) == 1 && FA[257] == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 208;
+	iic = ‚b”Ô†æ“¾(50);
+	if (iic != 0 && ‚b‚k‚u(iic, -1) >= 25 && Ÿƒ‰ƒ“ƒXéƒI[ƒvƒ“ != 0)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 210;
+	iic = ‚b”Ô†æ“¾(35);
+	if (iic != 0 && ‚b‚k‚u(iic, -1) >= 25 && ‚pó‘Ô(194, -1) == 2)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	if (FA[201] == 1)
+	{
+		iiq = 209;
+		‚pó‘Ô(iiq, 1);
+		iiq = 211;
+		‚pó‘Ô(iiq, 1);
+		iiq = 156;
+		if (ƒNƒŠƒAŠm”F(29) == 1)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+		iiq = 215;
+		if (EV("ƒtƒFƒŠƒX^é”Ä—p", -2147483648) == true)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+	}
+	iiq = 157;
+	if (ƒNƒŠƒAŠm”F(95) == 1 && ƒNƒŠƒAŠm”F(190) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	if (FA[188] >= 2)
+	{
+		iiq = 149;
+		if (EV("ƒGƒŒƒmƒA^Ø‚è‘Ö‚¦‚P", -2147483648) == true && ‚b”Ô†æ“¾(29) != 0 && ‚b”Ô†æ“¾(43) != 0)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+		iiq = 148;
+		if (‚pó‘Ô(99, -1) == 2 && ‚b‚k‚u(‚b”Ô†æ“¾(45), -1) >= 35)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+		iiq = 151;
+		if (ƒNƒŠƒAŠm”F(59) == 1 && Ÿƒ‰ƒ“ƒXéƒI[ƒvƒ“ != 0 && ‚h—L–³(24, 0, "") != 0)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+		iiq = 152;
+		if (‚b”Ô†æ“¾(39) != 0 && Ÿƒ‰ƒ“ƒXéƒI[ƒvƒ“ != 0 && ‚h—L–³(54, 0, "") != 0)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+		iiq = 150;
+		if (‚b”Ô†æ“¾(31) != 0 && ‚b”Ô†æ“¾(14) != 0 && ‚b”Ô†æ“¾(59) != 0 && Ÿƒ‰ƒ“ƒXéƒI[ƒvƒ“ != 0)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+		iiq = 154;
+		iic = ‚b—L–³(57);
+		if (iic != 0 && EV("ƒƒO^‰ƒGƒbƒ`", -2147483648) == true)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+		iiq = 155;
+		if (Ÿ‹à > 20000 && FA[154] == 1 && Ÿƒ‰ƒ“ƒXéƒI[ƒvƒ“ != 0)
+		{
+			‚pó‘Ô(iiq, 1);
+		}
+	}
+	iiq = 181;
+	if (ƒNƒŠƒAŠm”F(119) == 1 && ƒNƒŠƒAŠm”F(190) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 214;
+	if (ƒNƒŠƒAŠm”F(182) == 1 && ‚b—L–³(9) != 0)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 227;
+	if (Ÿƒ[ƒ‹ƒh == 3 && FA[200] == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 228;
+	if (ƒNƒŠƒAŠm”F(227) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 229;
+	if (ƒNƒŠƒAŠm”F(227) == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	iiq = 230;
+	if (Ÿƒ[ƒ‹ƒh == 3 && FA[201] == 1)
+	{
+		‚pó‘Ô(iiq, 1);
+	}
+	if (Ÿiiq == 168)
+	{
+		if (EV("â–]W’c^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿", -2147483648) == true)
+		{
+			FA[195] = 1;
+		}
+		else
+		{
+			FA[195] = 0;
+		}
+	}
+	if (Ÿiiq == 169)
+	{
+		if (EV("‚c‚o^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿", -2147483648) == true)
+		{
+			FA[196] = 1;
+		}
+		else
+		{
+			FA[196] = 0;
+		}
+	}
+	if (Ÿiiq == 190)
+	{
+		if (EV("‚a‚l^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿", -2147483648) == true)
+		{
+			FA[197] = 1;
+		}
+		else
+		{
+			FA[197] = 0;
+		}
+	}
+	if (Ÿiiq == 176)
+	{
+		if (EV("–{•”^iŒ‚‚Ì‹l‚İè^í“¬Œã^Œ‚”j", -2147483648) == true)
+		{
+			FA[198] = 1;
+		}
+		else
+		{
+			FA[198] = 0;
+		}
+	}
+}
+
+lint ƒNƒGƒXƒgˆ—^ƒ}ƒOƒiƒ€(lint dd, lint no, lint fg)
+{
+	lint rr = 0;
+	lint bre = 0;
+	lint re = 0;
+	lint ra = 0;
+	lint £ƒNƒŠƒA = 0;
+	lint iic = 0;
+	lint aa = 0;
+	lint loop = 0;
+	if (Ÿiiq == 11)
+	{
+		if (dd == 8)
+		{
+			ƒAƒŠƒX^ƒAƒ“ƒP[ƒgà–¾();
+			ƒg‘‚«();
+			'Please choose.' B;
+			if (FA[277] != 0)
+			{
+				ƒƒO•\¦^ƒAƒ“ƒP(277);
+				ƒƒO•\¦^ƒAƒ“ƒP(278);
+				ƒƒO•\¦^ƒAƒ“ƒP(279);
+				ƒƒO•\¦^ƒAƒ“ƒP(280);
+				ƒƒO•\¦^ƒAƒ“ƒP(281);
+				ƒƒO•\¦^ƒAƒ“ƒP(282);
+				ƒƒO•\¦^ƒAƒ“ƒP(283);
+				ƒƒO•\¦^ƒAƒ“ƒP(284);
+				ƒƒO•\¦^ƒAƒ“ƒP(285);
+				ƒƒO•\¦^ƒAƒ“ƒP(286);
+				ƒƒO•\¦^ƒAƒ“ƒP(287);
+				ƒƒO•\¦^ƒAƒ“ƒP(288);
+				ƒƒO•\¦^ƒAƒ“ƒP(289);
+				ƒƒO•\¦^ƒAƒ“ƒP(290);
+				ƒƒO•\¦^ƒAƒ“ƒP(291);
+				ƒƒO•\¦^ƒAƒ“ƒP(292);
+				ƒƒO•\¦^ƒAƒ“ƒP(293);
+				ƒƒO•\¦^ƒAƒ“ƒP(294);
+				ƒƒO•\¦^ƒAƒ“ƒP(295);
+				ƒƒO•\¦^ƒAƒ“ƒP(296);
+				ƒƒO•\¦^ƒAƒ“ƒP(298);
+				ƒƒO•\¦^ƒAƒ“ƒP(299);
+				ƒƒO•\¦^ƒAƒ“ƒP(300);
+				ƒƒO•\¦^ƒAƒ“ƒP(297);
+			}
+			‘I‘ğ‰Šú();
+			‘I‘ğ_€–Ú’Ç‰Á(1, "Answer survey", -1, -1, -1, "", -1);
+			‘I‘ğ_€–Ú’Ç‰Á(9, "Leave", -1, -1, -1, "", -1);
+			rr = ‘I‘ğ_Às(false, 0, 0, false);
+			if (rr == 1)
+			{
+				ƒZƒŠƒt(2080, "");
+				'"Umm, okay...' R;
+				' I\'ll ask about you."' A;
+				ƒg‘‚«();
+				'¡Question (1/24)' R;
+				'Please tell me your age.' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Under 20", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "20~24", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "25~29", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "30~34", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(5, "35~39", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(6, "40 or over", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[277] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(277);
+				ƒg‘‚«();
+				'¡Question (2/24)' R;
+				'Are you male? Female?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Male", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Female", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "Other", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[278] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(278);
+				ƒg‘‚«();
+				'¡Question (3/24)' R;
+				'How long have you been playing eroge?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Under 1 year", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "1~2 years", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "3~4 years", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "5~9 years", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(5, "10 or more years", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(6, "20 or more years", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[279] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(279);
+				ƒg‘‚«();
+				'¡Question (4/24)' R;
+				'What do you like on your ribs? Salt? Sauce?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Salt", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Sauce", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[280] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(280);
+				ƒZƒŠƒt(2080, "");
+				'"Barbecue\'s good, isn\'t it?"' A;
+				'"...Okay.' R;
+				' Now I know about you.' R;
+				' Next I\'ll ask about Rance Quest Magnum."' A;
+				ƒg‘‚«();
+				'¡Question (5/24)' R;
+				'Please tell me how satisfied you are with Rance Quest Magnum.' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Awesome, I'm super satisfied!", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Fine, I had fun.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "It was okay.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "Not quite what I was expecting...", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(5, "No good at all, boring.", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[281] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(281);
+				ƒg‘‚«();
+				'¡Question (6/24)' R;
+				'How did you find the game\'s difficulty?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I haven't finished it yet.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "I finished it, but it was too hard!", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "It was the perfect difficulty.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "Too easy. Harder would have been better.", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[282] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(282);
+				ƒg‘‚«();
+				'¡Question (7/24)' R;
+				'What do you think about the price of the game?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Expensive", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Normal", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "Cheap", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "I don't like buying extras...", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[283] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(283);
+				ƒg‘‚«();
+				'¡Question (8/24)' R;
+				'What got you interested in Rance Quest Magnum?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "ver.1.6 was fun, so", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "I was interested in the new characters.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I was interested in the new quests.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "I was interested in the new items.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(5, "I was interested in the new system.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(6, "No particular reason ", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[284] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(284);
+				ƒg‘‚«();
+				'¡Question (9/24)' R;
+				'Before purchasing this game, did you play the original Rance Quest?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I was playing it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "I bought it with \"Magnum\"", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[285] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(285);
+				ƒg‘‚«();
+				'¡Question (10/24)' R;
+				'Do you~ believe~ in God~?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I believe", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "I don't believe", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I was disappointed", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[286] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(286);
+				ƒZƒŠƒt(2080, "");
+				'"Thank you.' R;
+				' You\'re half done.' R;
+				' Next are specific questions about the game."' A;
+				ƒg‘‚«();
+				'¡Question (11/24)' R;
+				'About the art.' R;
+				'Did you like the character designs and CG composition?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[287] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(287);
+				ƒg‘‚«();
+				'¡Question (12/24)' R;
+				'About the CGs.' R;
+				'What did you think of the quality of the CGs?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[288] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(288);
+				ƒg‘‚«();
+				'¡Question (13/24)' R;
+				'About the game system.' R;
+				'What did you think of the game system?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[289] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(289);
+				ƒg‘‚«();
+				'¡Question (14/24)' R;
+				'About the interface.' R;
+				'What did you think of the interface?' R;
+				'Was it easy to use?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[290] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(290);
+				ƒg‘‚«();
+				'¡Question (15/24)' R;
+				'About the script.' R;
+				'Did you like the characters\' personalities and the overall story?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[291] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(291);
+				ƒg‘‚«();
+				'¡Question (16/24)' R;
+				'About the ero.' R;
+				'Did you like the dialogue, writing, and content of the ero scenes?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[292] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(292);
+				ƒg‘‚«();
+				'¡Question (17/24)' R;
+				'About the 3D models.' R;
+				'How were the appearances and movement of the enemies?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[293] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(293);
+				ƒg‘‚«();
+				'¡Question (18/24)' R;
+				'About the music.' R;
+				'What did you think of the music in this game?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I really liked it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's fine", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd like you to try a little harder", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[294] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(294);
+				ƒg‘‚«();
+				'¡Question (19/24)' R;
+				'Are you interested in Alice\'s sound team, ASTLYRE?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I'm interested in the concert and want the original CD too", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "I can't go to the concert but I want the original CD", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I want AliVo 3", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "A music CD for the game is enough", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(5, "I don't know \"ASTLYRE\"", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[295] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(295);
+				ƒg‘‚«();
+				'¡Question (20/24)' R;
+				'Do you look at Alicesoft\'s twitter?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Yes", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "No", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[296] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(296);
+				ƒg‘‚«();
+				'¡Question (21/24)' R;
+				'Would you like to play other games with  Rance Quest\'s system?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I want to play it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "If it's Rance, I want to play it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd want to play it depending on content if it's something else", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "A different game system would be better", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[298] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(298);
+				ƒg‘‚«();
+				'¡Question (22/24)' R;
+				'Do you know about the game Oyako Rankan?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I know about it. I'm thinking of buying it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "I just know the name", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "Never heard of it", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[299] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(299);
+				ƒg‘‚«();
+				'¡Question (23/24)' R;
+				'Do you know about the game Pastel Chime 3?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I know about it. I'm thinking of buying it", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "I just know the name", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "Never heard of it", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[300] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(300);
+				ƒg‘‚«();
+				'¡Question (24/24)' R;
+				'A monster appeared.' R;
+				'What do you use to fight it?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "The Combined Fleet", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "It's a battle! I'll use my fists.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "I'd fight with a sword.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "I'd summon something.", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(5, "I'd speak of my love.", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				FA[297] = rr;
+				ƒƒO•\¦^ƒAƒ“ƒP(297);
+				ƒZƒŠƒt(2080, "");
+				'"...Okay. Thank you.' R;
+				' That\'s all for the survey.' R;
+				' You were a great help."' A;
+				ƒZƒŠƒt(2080, "");
+				'"We\'ll use your survey response to help us with future game development."' A;
+				ƒZƒŠƒt(2080, "");
+				'"Thank you again."' A;
+			}
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 164)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(13);
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 10;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 14);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 5, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(98, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(6, 6, 3);
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima #14";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 0, 2, 0, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima #20";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 0, 1, 4, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima TeroTero";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 1, 1, 1, 0, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 7)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima #30";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 4, 2, 4, 0);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 9)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima #41";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 0, 0, 4, 2);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 10)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima #42";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 3, 1, 4, 0);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 14)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima #21";
+				‚l‚`‚o“Ç‚İ‚İ(no, 63, 1, 0, 0, 0, 4, 0, 0, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(14, 34, 8, 90, 0);
+					‚l‚cŒÅ’è(26, 13, 18, 80, 0);
+					‚q‚W’u•¨”z’u(36, 25, 213, -1);
+					‚q‚W’u•¨”z’u(36, 26, 213, -1);
+					‚q‚W’u•¨”z’u(35, 26, 213, -1);
+					‚q‚W’u•¨”z’u(37, 25, 213, -1);
+					‚q‚W’u•¨”z’u(37, 26, 213, -1);
+					‚q‚W’u•¨”z’u(36, 27, 213, -1);
+					if (FA[202] == 0)
+					{
+						‚l‚cŒÅ’è(40, 32, 10, 105, 0);
+					}
+				}
+			}
+			if (no == 11)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima #31";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 3, 0, 0);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 15, 0, 0, 1);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 14;
+			}
+			EV("ì’†“‡^–À˜H", 0);
+			ì’†“‡^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(2);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 6)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 5)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 9 && EV("ì’†“‡^–À˜H", -2147483648) == false)
+			{
+				ì’†“‡^–À˜H();
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 10)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 14)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(80);
+			}
+			if (no == 80)
+			{
+				ì’†“‡^ƒ_ƒCƒRƒ“();
+				bre = ƒ{ƒXí“¬ˆ—(3000, 359, 232, 359, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (no == 90)
+			{
+				ì’†“‡^ƒGƒsƒ[ƒO();
+				return 1;
+			}
+			if (no == 105)
+			{
+				í“¬ƒCƒxƒ“ƒg–¼ = "K•Ÿ‚«‚á‚ñ";
+				bre = “Á’èí“¬ˆ—(100000, 0, 143, 0, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				FA[202] = 1;
+				return 0;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 207)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(5);
+			Ÿ‚l‚`‚o–¼‘O = "Tringer's Castle";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 11;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 4);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(62, 58, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				‚l‚`‚o“Ç‚İ‚İ(no, 308, 0, 0, 0, 0, 5, 0, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(33, 35, 8, 10, 0);
+					‚l‚cŒÅ’è(33, 23, 8, 20, 0);
+					‚l‚cŒÅ’è(27, 16, 10, 30, 0);
+					‚l‚cŒÅ’è(21, 23, 10, 40, 0);
+					‚l‚cŒÅ’è(18, 29, 18, 90, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			—Ìå‚Ì”½—^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(1);
+			ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (no == 10)
+			{
+				—Ìå‚Ì”½—^“¦‚°‚Ä‚«‚½l‚P();
+				if (FA[235] == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+				{
+					‚q‚WƒAƒCƒeƒ€æ“¾(142, 5);
+				}
+				return 0;
+			}
+			if (no == 20)
+			{
+				—Ìå‚Ì”½—^“¦‚°‚Ä‚«‚½l‚Q();
+				if (FA[236] == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+				{
+					‚q‚WƒAƒCƒeƒ€æ“¾(36, 5);
+				}
+				return 0;
+			}
+			if (no == 30)
+			{
+				int £¬—§ = 1;
+				int loop = 0;
+				int no = 0;
+				for (loop = 1; loop < 6; ++loop)
+				{
+					if (PTA[loop] != 0)
+					{
+						no = ‚b”Ô†(PTA[loop], -1);
+						for (; ; )
+						{
+							if (no == 54 || no == 55 || no == 22 || no == 29 || no == 26 || no == 72 || no == 84)
+							{
+								break;
+							}
+							£¬—§ = 0;
+							break;
+						}
+					}
+				}
+				if (£¬—§ == 0)
+				{
+					—Ìå‚Ì”½—^•ó•¨ŒÉ();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				if (£¬—§ == 1)
+				{
+					—Ìå‚Ì”½—^•ó•¨ŒÉ^ŠJ‚­();
+					if (FA[237] == 0)
+					{
+						if (‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+						{
+							‚q‚WƒAƒCƒeƒ€æ“¾(271, 0);
+						}
+						if (‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+						{
+							‚q‚WƒAƒCƒeƒ€æ“¾(283, 0);
+						}
+						if (‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+						{
+							‚q‚WƒAƒCƒeƒ€æ“¾(295, 0);
+						}
+					}
+					if (FA[238] == 0)
+					{
+						FA[238] = 1;
+						‚¨‹à‘‚¦‚½(10000, "");
+						Œø‰Ê_ƒtƒ‰ƒbƒVƒ…("‚¨‹àGET", 0, 0, 9601);
+						‚r‚`‚c‚u^”wŒi–³‚µ("¡ Picked up   10,000 Gold", "", "");
+					}
+				}
+				return 0;
+			}
+			if (no == 40)
+			{
+				—Ìå‚Ì”½—^—Ìå‚ÌÑ‘œ();
+				return 0;
+			}
+			if (no == 90)
+			{
+				—Ìå‚Ì”½—^‰˜õlŠÔ();
+				bre = ƒ{ƒXí“¬ˆ—(1000, 363, 363, 363, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				—Ìå‚Ì”½—^‰˜õlŠÔ^í“¬Œã();
+				if (‚pƒNƒŠƒA‰ñ”(Ÿiiq, -1) == 0)
+				{
+					if (‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+					{
+						‚q‚WƒAƒCƒeƒ€æ“¾(209, 0);
+					}
+					if (‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+					{
+						‚q‚WƒAƒCƒeƒ€æ“¾(209, 0);
+					}
+					if (‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+					{
+						‚q‚WƒAƒCƒeƒ€æ“¾(209, 0);
+					}
+				}
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 156)
+	{
+		if (dd == 8)
+		{
+			•ƒ‚©‚ç‚ÌƒvƒŒƒ[ƒ“ƒg();
+			iic = ‚b”Ô†æ“¾(19);
+			aa = ‚b‚r—L–³^ƒ‰ƒ“ƒN(iic, 298, 0);
+			if (aa < 3)
+			{
+				g‚l = 5070;
+				‚r‚`‚c‚u("¡Sachiko   Skill rank up", "¡", "¡Skill: Holy Healing Marks š¨šš");
+				‚b‚r’Ç‰Á(iic, 298, 3);
+			}
+			g‚l = 5070;
+			‚r‚`‚c‚u("¡Sachiko   Mr. Hiroshi power up", "¡", "¡Item: Mr. Hiroshi was strengthened");
+			lint ii = 0;
+			ii = ‚b‚¿•¨(iic, -1);
+			if (‚hŒÅ—L”Ô†(ii, -1) == 215)
+			{
+				‚h¶¬^ƒf[ƒ^‚P(ii, 215, 0, "Mr. Hiroshi MkII", 17, 0, 0, 10, 20, 7, 30, 4, 100, 0, 0, 0, 0);
+				‚hî•ñ(ii, "ƒK[ƒhE‚É‚È‚Á‚Ä‚µ‚Ü‚¤ô‚í‚ê‚½‚");
+				‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
+			}
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 165)
+	{
+		if (dd == 8)
+		{
+			“±‚­Ò‚Ì‰\^ƒvƒƒ[ƒO();
+			MM[55] = 1;
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 166)
+	{
+		if (dd == 8)
+		{
+			Œi•i^ƒvƒƒ[ƒO();
+			FA[309] = 1;
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 167)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(19);
+			Ÿ‚l‚`‚o–¼‘O = "Acetal Passageway";
+			ƒNƒGƒXƒgŠî–{“o˜^(550, 11, 14);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(99, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Boarding Passageway 1-1";
+				‚l‚`‚o“Ç‚İ‚İ(no, 77, 0, 0, 1, 0, 0, 0, 0, 0);
+			}
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Boarding Passageway 1-2";
+				‚l‚`‚o“Ç‚İ‚İ(no, 78, 0, 0, 1, 1, 0, 0, 0, 0);
+			}
+			if (no == 3)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Boarding Passageway 1-3";
+				‚l‚`‚o“Ç‚İ‚İ(no, 77, 0, 0, 1, 1, 0, 0, 0, 0);
+			}
+			if (no == 4)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Boarding Passageway 1-4";
+				‚l‚`‚o“Ç‚İ‚İ(no, 78, 0, 0, 0, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(41, 24, 8, 90, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 4;
+			}
+			EV("‘D’…‚«ê^’†ƒ{ƒX", 0);
+			‘D’…‚«ê^ƒvƒƒ[ƒO();
+			‚bg—pÏ‚İó‘Ô‚É‚·‚é(‚b”Ô†æ“¾(33));
+			if (‚o‚s‚`‘”() == 0)
+			{
+				if (‚o‚s‚`’N‚©‹­§’Ç‰Á() == 0)
+				{
+					return 2;
+				}
+			}
+			MM[45] = 1;
+			‚p‚l“o˜^(1);
+			‚q‚WƒLƒƒƒ‰”z’u(9, 26, 2);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 2)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 3 && EV("‘D’…‚«ê^’†ƒ{ƒX", -2147483648) == false)
+			{
+				‘D’…‚«ê^’†ƒ{ƒX();
+				bre = ƒ{ƒXí“¬ˆ—(10, 304, 304, 304, 304, 304, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (no == 90)
+			{
+				‘D’…‚«ê^ƒGƒsƒ[ƒO(0);
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 186)
+	{
+		if (dd == 7)
+		{
+			ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 1;
+			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+			‚l‚`‚oŠî‘bŒ^“o˜^(17);
+			Ÿ‚l‚`‚o–¼‘O = "";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 11;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(550, 31, 73);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 5, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(121, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Snicker World 1";
+				‚l‚`‚o“Ç‚İ‚İ(no, 71, 0, 0, 0, 0, 10, 0, 5, 0);
+			}
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Snicker World 2";
+				‚l‚`‚o“Ç‚İ‚İ(no, 71, 0, 0, 0, 0, 10, 0, 5, 0);
+			}
+			if (no == 3)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Snicker World 3";
+				‚l‚`‚o“Ç‚İ‚İ(no, 71, 0, 0, 0, 0, 10, 0, 5, 0);
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			ƒGƒƒeƒN^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(1);
+			‚q‚WƒLƒƒƒ‰”z’u(24, 41, 1);
+			if (‚o‚s‚`‘”() != 4)
+			{
+				‚r‚`‚c‚u("¡Snicker World   Secret Rules", "¡Parties under 4 members will be disqualified", "¡Hence you are disqualified");
+				return 2;
+			}
+			lint loop = 0;
+			lint iic = 0;
+			for (loop = 1; loop < 6; loop++)
+			{
+				if (PTA[loop] != 0 && ‚b”Ô†(PTA[loop], -1) != 1)
+				{
+					if (QD[2] == 0)
+					{
+						QD[2] = PTA[loop];
+						continue;
+					}
+					if (QD[3] == 0)
+					{
+						QD[3] = PTA[loop];
+						continue;
+					}
+					if (QD[4] == 0)
+					{
+						QD[4] = PTA[loop];
+						continue;
+					}
+				}
+			}
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 8)
+			{
+				if (‚o‚s‚`‘”() != 4)
+				{
+					‚r‚`‚c‚u("¡Snicker World   Secret Rules", "¡Parties under 4 members will be disqualified", "¡Hence you are disqualified");
+					return 2;
+				}
+				if (Ÿ‚a‚l‚`‚o == 1 && ŸƒNƒGƒXƒgí“¬‰ñ”^‚l‚`‚o“à >= 3 && QD[1] == 0)
+				{
+					QD[1] = 1;
+					‚l‚cŒÅ’è(17, 9, 8, 20, 0);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+					LOG("EEvent (Teleport mark spawned somewhere)\n");
+				}
+				if (Ÿ‚a‚l‚`‚o == 2 && ŸƒNƒGƒXƒgí“¬‰ñ”^‚l‚`‚o“à >= 3 && QD[1] == 0)
+				{
+					QD[1] = 1;
+					‚l‚cŒÅ’è(35, 36, 8, 30, 0);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+					LOG("EEvent (Teleport mark spawned somewhere)\n");
+				}
+				if (Ÿ‚a‚l‚`‚o == 3 && ŸƒNƒGƒXƒgí“¬‰ñ”^‚l‚`‚o“à >= 3 && QD[1] == 0)
+				{
+					QD[1] = 1;
+					‚l‚cŒÅ’è(25, 40, 8, 40, 0);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+					LOG("EEvent (Teleport mark spawned somewhere)\n");
+				}
+			}
+			if (no == 20)
+			{
+				Ÿiic = ƒGƒƒeƒN‘ÎÛÒŒˆ’è(1);
+				aa = 0;
+				if (‚b«•Ê(Ÿiic, -1) == 2 && ‚b‚e‚`(Ÿiic, 13, -1) == 1 && ‚b‚r—L–³(‚b”Ô†æ“¾(1), 364, 0) != 0)
+				{
+					aa = 1;
+				}
+				if (‚b”Ô†(Ÿiic, -1) == 80 || ‚b”Ô†(Ÿiic, -1) == 24 || ‚b”Ô†(Ÿiic, -1) == 23)
+				{
+					aa = 1;
+				}
+				if (‚b”Ô†(Ÿiic, -1) == 60 || ‚b”Ô†(Ÿiic, -1) == 68)
+				{
+					aa = 1;
+				}
+				if (‚b‚r—L–³(Ÿiic, 373, 0) != 0)
+				{
+					aa = 0;
+				}
+				if (aa == 1)
+				{
+					ƒGƒƒeƒN^‚`^¬Œ÷();
+					‚p‚l“o˜^(2);
+					‚q‚WƒLƒƒƒ‰”z’u(34, 40, 1);
+					QD[1] = 0;
+					return 0;
+				}
+				if (‚b«•Ê(Ÿiic, -1) == 2 && ‚b‚r—L–³(Ÿiic, 373, 0) == 0)
+				{
+					ƒGƒƒeƒN^‚`^¸”s();
+					return 2;
+				}
+				ƒGƒƒeƒN^‚`‚a‚b^¸”s();
+				return 2;
+			}
+			if (no == 30)
+			{
+				Ÿiic = ƒGƒƒeƒN‘ÎÛÒŒˆ’è(2);
+				lint no = ‚b”Ô†(Ÿiic, -1);
+				if (no == 29 || no == 22 || no == 27 || no == 42 || no == 54 || no == 55 || no == 12)
+				{
+					ƒGƒƒeƒN^‚a^¬Œ÷();
+					‚p‚l“o˜^(3);
+					‚q‚WƒLƒƒƒ‰”z’u(35, 8, 3);
+					QD[1] = 0;
+					return 0;
+				}
+				if (‚b«•Ê(Ÿiic, -1) == 2 && ‚b‚r—L–³(Ÿiic, 373, 0) == 0)
+				{
+					ƒGƒƒeƒN^‚a^¸”s();
+					return 2;
+				}
+				ƒGƒƒeƒN^‚`‚a‚b^¸”s();
+				return 2;
+			}
+			if (no == 40)
+			{
+				Ÿiic = ƒGƒƒeƒN‘ÎÛÒŒˆ’è(3);
+				lint no = ‚b”Ô†(Ÿiic, -1);
+				if (no == 12)
+				{
+					ƒGƒƒeƒN^‚b^ƒGƒsƒ[ƒO(0);
+					return 1;
+				}
+				if (‚b«•Ê(Ÿiic, -1) == 2 && ‚b‚r—L–³(Ÿiic, 373, 0) == 0)
+				{
+					ƒGƒƒeƒN^‚b^¸”s();
+					return 2;
+				}
+				ƒGƒƒeƒN^‚`‚a‚b^¸”s();
+				return 2;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 187)
+	{
+		if (dd == 7)
+		{
+			ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 1;
+			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+			‚l‚`‚oŠî‘bŒ^“o˜^(17);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 13;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(550, 31, 73);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(102, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Chortle World 1";
+				‚l‚`‚o“Ç‚İ‚İ(no, 72, 0, 0, 1, 0, 0, 0, 0, 0);
+			}
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Chortle World 2";
+				‚l‚`‚o“Ç‚İ‚İ(no, 72, 0, 0, 1, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+				}
+			}
+			if (no == 3)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Chortle World 3";
+				‚l‚`‚o“Ç‚İ‚İ(no, 72, 0, 0, 0, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 90, 0, 1);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			EV("—ölål^ƒGƒŠƒAØ‚è‘Ö‚¦", 0);
+			‚p‚l“o˜^(1);
+			—ölål^ƒvƒƒ[ƒO();
+			—ölål^ƒXƒLƒ‹‹Ö~ˆ—();
+			ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(0);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 2 && EV("—ölål^ƒGƒŠƒAØ‚è‘Ö‚¦", -2147483648) == false)
+			{
+				—ölål^ƒGƒŠƒAØ‚è‘Ö‚¦();
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 3)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (fg == 8 && ‚o‚s‚`—L–³^ŒÅ—L(1) == 0)
+			{
+				return 2;
+			}
+			if (fg == 8 && ‚o‚s‚`—L–³^ŒÅ—L(39) == 0)
+			{
+				return 2;
+			}
+			if (no == 90)
+			{
+				—ölål^ƒGƒsƒ[ƒO(0);
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 188)
+	{
+		if (dd == 8)
+		{
+			i‹³’B‚Ìˆê“ú();
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 183)
+	{
+		if (dd == 8)
+		{
+			ƒ~ƒ‹^–é”‡‚¢ƒGƒ(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(43);
+			iic = ‚b”Ô†æ“¾(43);
+			‚b‚ríœ(iic, 373);
+			‚bÄŒvZ(iic);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 168)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(1);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 10;
+			}
+			Ÿ“]ˆÚ‹Ö~^¼ = 0;
+			Ÿ“]ˆÚ‹Ö~^“ì = 0;
+			ƒNƒGƒXƒgŠî–{“o˜^(600, 32, 5);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(2, 0, 2, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(100, 100, 49, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 3)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Despair Entrance";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 4, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 10, 0, 1);
+				}
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Despair West Mall";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 4, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 209, 0, 1);
+				}
+			}
+			if (no == 7)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Despair Square";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 1, 4, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 20, 0, 1);
+				}
+			}
+			if (no == 8)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Despair East Mall";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 4, 0, 0, 0);
+			}
+			if (no == 11)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Despair Meeting Hall";
+				‚l‚`‚o“Ç‚İ‚İ(no, 61, 1, 1, 1, 1, 4, 0, 2, 0);
+				Ÿ“]ˆÚ‹Ö~^“ì = 1;
+				Ÿ“]ˆÚ‹Ö~^¼ = 1;
+				‚l’u•¨(15, 36, 307);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(30, 24, 8, 50, 0);
+					‚l‚cŒÅ’è(22, 26, 8, 60, 0);
+					‚l‚cŒÅ’è(15, 37, 8, 80, 0);
+					if (‚pƒNƒŠƒA‰ñ”(Ÿiiq, -1) == 0 || RAND(2) == 1)
+					{
+						‚l‚cŒÅ’è(12, 39, 2, 344, 0);
+					}
+				}
+			}
+			if (no == 12)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Despair Ramen Shop";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 4, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 209, 0, 1);
+				}
+			}
+			if (no == 15)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Despair Organization HQ";
+				ƒNƒGƒXƒgŠî–{“o˜^(300, 32, 4);
+				ŸƒLƒƒƒ‰ˆÊ’u = 13;
+				Ÿ“]ˆÚ‹Ö~^¼ = 1;
+				‚l‚`‚o“Ç‚İ‚İ(no, 1001, 0, 0, 0, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(22, 27, 18, 85, 0);
+					‚l‚cŒÅ’è(22, 28, 18, 85, 0);
+					‚l‚cŒÅ’è(40, 30, 8, 90, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 15;
+			}
+			EV("â–]W’c^ŠïP‚·‚éÒ", 0);
+			EV("â–]W’c^’n‰ºº‘O^ˆÚ“®•s‰Â", 0);
+			EV("â–]W’c^iŒ‚‚Ì‹l‚İè", 0);
+			EV("â–]W’c^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿", 0);
+			EV("â–]W’c^â–]—‚Ì€‘Ì", 0);
+			FA[267] = 1;
+			â–]W’c^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(3);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 7)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 11)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+			}
+			if (no == 10)
+			{
+				â–]W’c^€‘Ì‚ÌR();
+				return 0;
+			}
+			if (no == 20)
+			{
+				â–]W’c^â–]—‚Ì€‘Ì();
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 7 && EV("â–]W’c^ŠïP‚·‚éÒ", -2147483648) == false)
+			{
+				â–]W’c^ŠïP‚·‚éÒ();
+				return 0;
+			}
+			if (fg == 6 && Ÿ‚a‚l‚`‚o == 15)
+			{
+				–ß‚é•K—v–³‚µ();
+				return 0;
+			}
+			if (fg == 6 && Ÿ‚w‚w == 19 && Ÿ‚x‚x == 24)
+			{
+				â–]W’c^‚`‚k‹³‚ªç‚é“ü‚èŒû();
+			}
+			if (no == 50)
+			{
+				â–]W’c^À‚è‚Ş’j();
+				return 0;
+			}
+			if (no == 60)
+			{
+				â–]W’c^ƒKƒ\ƒŠƒ“();
+				return 0;
+			}
+			if (no == 80)
+			{
+				if (‚h—L–³(317, 8, "") != 0)
+				{
+					â–]W’c^’n‰ºº‘O^ˆÚ“®‰Â();
+					ŸƒLƒƒƒ‰ˆÊ’u = 0;
+					‚p‚l“o˜^(15);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(80);
+					return 0;
+				}
+				â–]W’c^’n‰ºº‘O^ˆÚ“®•s‰Â();
+				LOG("   Information: This door requires a specific key.\n");
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			if (fg == 8 && EV("â–]W’c^’n‰ºº‘O^ˆÚ“®•s‰Â", -2147483648) == true && EV("â–]W’c^â–]—‚Ì€‘Ì", -2147483648) == true)
+			{
+				QD[1]++;
+				if (QD[1] >= 3 && QD[2] == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+				{
+					‚q‚WƒAƒCƒeƒ€æ“¾(317, 0);
+					QD[2] = 1;
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+					LOG("EItem Acquired (Despair Key)   Think you can use it there?\n");
+				}
+				return 0;
+			}
+			if (no == 85)
+			{
+				‚l‚cŒÅ’è(22, 27, 0, 0, 0);
+				‚l‚cŒÅ’è(22, 28, 0, 0, 0);
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				â–]W’c^iŒ‚‚Ì‹l‚İè();
+				if (Ÿƒ[ƒ‹ƒh != 3)
+				{
+					bre = “Á’èí“¬ˆ—(3000, 0, 380, 170, 359, 359);
+				}
+				if (Ÿƒ[ƒ‹ƒh == 3)
+				{
+					bre = “Á’èí“¬ˆ—(9000, 0, 380, 461, 359, 359);
+				}
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 1)
+				{
+					â–]W’c^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿();
+					if (‚h—L–³(172, 0, "") == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+					{
+						‚q‚WƒAƒCƒeƒ€æ“¾(172, 0);
+					}
+				}
+				if (bre != 1)
+				{
+					â–]W’c^iŒ‚‚Ì‹l‚İè^í“¬Œã^“¦‚°‚ç‚ê‚½();
+				}
+				return 0;
+			}
+			if (no == 90)
+			{
+				‚q‚Wƒ}ƒbƒvI—¹();
+				â–]W’c^ƒGƒsƒ[ƒO();
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 169)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(5);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			ƒNƒGƒXƒgŠî–{“o˜^(650, 33, 4);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(100, 101, 111, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 9, 9);
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Peperon Inner Area";
+				‚l‚`‚o“Ç‚İ‚İ(no, 5302, 0, 1, 0, 0, 3, 3, 3, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(26, 31, 12, 60, 0);
+					‚l‚cŒÅ’è(24, 27, 10, 70, 0);
+					‚l‚cŒÅ’è(24, 29, 10, 70, 0);
+					‚l‚cŒÅ’è(28, 27, 10, 70, 0);
+					‚l‚cŒÅ’è(28, 29, 10, 70, 0);
+					if (QD[1] == 0)
+					{
+						‚l‚cŒÅ’è(26, 28, 8, 90, 0);
+					}
+					if (QD[1] == 1)
+					{
+						‚l‚cŒÅ’è(26, 28, 18, 90, 0);
+					}
+					‚l‚cŒÅ’è(30, 14, 10, 85, 0);
+				}
+			}
+			if (no == 9)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Peperon B Area";
+				if (QD[5] == 1)
+				{
+					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				}
+				‚l‚`‚o“Ç‚İ‚İ(no, 5203, 1, 1, 0, 0, 2, 4, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(31, 28, 18, 20, 0);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 12, 30, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 12, 30, 0, 1);
+					‚l‚cŒÅ’è(21, 20, 10, 8, 0);
+				}
+			}
+			if (no == 13)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Peperon C Area";
+				if (QD[4] == 1)
+				{
+					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				}
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 2, 0, 6, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 12, 30, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 12, 30, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 8, 0, 1);
+					if (FA[226] == 0)
+					{
+						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 344, 0, 1);
+					}
+				}
+			}
+			if (no == 14)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Peperon E Area";
+				if (QD[3] == 1)
+				{
+					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				}
+				‚l‚`‚o“Ç‚İ‚İ(no, 5201, 0, 0, 1, 1, 2, 2, 6, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 12, 30, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 12, 30, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 13, 0, 0, 1);
+					‚l‚cŒÅ’è(24, 37, 10, 8, 0);
+				}
+			}
+			if (no == 15)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Peperon Entrance";
+				if (QD[2] == 1)
+				{
+					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				}
+				‚l‚`‚o“Ç‚İ‚İ(no, 307, 0, 0, 0, 1, 5, 1, 4, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(40, 27, 10, 8, 0);
+					‚l‚cŒÅ’è(33, 24, 2, 308, 0);
+					‚l‚cŒÅ’è(33, 25, 2, 308, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 5;
+			}
+			EV("‚c‚o^ƒGƒ“ƒƒ“‰ÚG", 0);
+			EV("‚c‚o^½•‚Ì‰¤—‚ğl‚¦‚é", 0);
+			EV("‚c‚o^Á–Å‚·‚éƒ_[ƒNƒ‰ƒ“ƒX", 0);
+			EV("‚c‚o^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿", 0);
+			EV("‚c‚o^Œ‹ŠEu–Ø", 0);
+			EV("‚c‚o^Œ‹ŠEu–Ø^í“¬Œã", 0);
+			FA[267] = 1;
+			‚c‚o^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(15);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 14)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 13)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 9)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 5)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+			}
+			if (fg == 11)
+			{
+				if (Ÿ‚a‚l‚`‚o == 15 && QD[2] == 1)
+				{
+					return 0;
+				}
+				if (Ÿ‚a‚l‚`‚o == 14 && QD[3] == 1)
+				{
+					return 0;
+				}
+				if (Ÿ‚a‚l‚`‚o == 13 && QD[4] == 1)
+				{
+					return 0;
+				}
+				if (Ÿ‚a‚l‚`‚o == 9 && QD[5] == 1)
+				{
+					return 0;
+				}
+				ŸŠïP^ƒCƒxƒ“ƒg‹­§ = 11;
+				‚c‚o^ŠïP‚³‚ê‚½();
+				bre = “Á’èí“¬ˆ—(2000, 0, 0, 0, 239, 239);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 14 && EV("‚c‚o^ƒGƒ“ƒƒ“‰ÚG", -2147483648) == false)
+			{
+				‚c‚o^ƒGƒ“ƒƒ“‰ÚG();
+				bre = ƒ{ƒXí“¬ˆ—(1800, 304, 304, 304, 304, 304, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 13 && EV("‚c‚o^½•‚Ì‰¤—‚ğl‚¦‚é", -2147483648) == false)
+			{
+				‚c‚o^½•‚Ì‰¤—‚ğl‚¦‚é();
+				return 0;
+			}
+			if (no == 8)
+			{
+				‚c‚o^‚éšâ”j‰ó();
+				if (Ÿ‚a‚l‚`‚o == 15)
+				{
+					QD[2] = 1;
+				}
+				if (Ÿ‚a‚l‚`‚o == 14)
+				{
+					QD[3] = 1;
+				}
+				if (Ÿ‚a‚l‚`‚o == 13)
+				{
+					QD[4] = 1;
+				}
+				if (Ÿ‚a‚l‚`‚o == 9)
+				{
+					QD[5] = 1;
+				}
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				LOG("     You defeated the crucible, so no more monsters will spawn in this area.\n");
+				return 0;
+			}
+			if (no == 10)
+			{
+				‚r‚`‚c‚u("Some sort of event planned", "", "");
+				return 0;
+			}
+			if (no == 20)
+			{
+				‚c‚o^iŒ‚‚Ì‹l‚İè();
+				if (Ÿƒ[ƒ‹ƒh != 3)
+				{
+					bre = “Á’èí“¬ˆ—(4000, 0, 381, 0, 344, 344);
+				}
+				if (Ÿƒ[ƒ‹ƒh == 3)
+				{
+					bre = “Á’èí“¬ˆ—(8000, 239, 381, 0, 461, 344);
+				}
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 1)
+				{
+					‚c‚o^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿();
+					return 0;
+				}
+				if (bre != 1)
+				{
+					‚c‚o^iŒ‚‚Ì‹l‚İè^í“¬Œã^“¦‚°‚ç‚ê‚½();
+					return 0;
+				}
+			}
+			if (no == 30)
+			{
+				‚o‚s‚`ƒ_ƒ[ƒW("‚Q‚T“Œ¸");
+				‚q‚WƒVƒXƒeƒ€î•ñXV(2);
+				‚c‚o^ƒgƒ‰ƒbƒv();
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 5 && EV("‚c‚o^ƒGƒ“ƒƒ“‚ÌŸ—˜ŠmM", -2147483648) == false)
+			{
+				‚c‚o^ƒGƒ“ƒƒ“‚ÌŸ—˜ŠmM();
+				return 0;
+			}
+			if (no == 60)
+			{
+				‚c‚o^Œ‹ŠE‘O();
+				return 0;
+			}
+			if (no == 70)
+			{
+				if (EV("‚c‚o^Œ‹ŠEu–Ø", -2147483648) == false)
+				{
+					‚c‚o^Œ‹ŠEu–Ø();
+				}
+				else
+				{
+					‚c‚o^Œ‹ŠEu–Ø^”Ä—p();
+				}
+				bre = ƒ{ƒXí“¬ˆ—(10, 304, 304, 304, 304, 304, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (EV("‚c‚o^Œ‹ŠEu–Ø^í“¬Œã", -2147483648) == false)
+				{
+					‚c‚o^Œ‹ŠEu–Ø^í“¬Œã();
+				}
+				else
+				{
+					‚c‚o^Œ‹ŠEu–Ø^í“¬Œã^”Ä—p();
+				}
+				‚l‚cŒÅ’è(26, 28, 18, 90, 0);
+				QD[1] = 1;
+				return 0;
+			}
+			if (no == 85)
+			{
+				‚c‚o^ƒyƒyƒ[ƒ“_•ƒ();
+				return 0;
+			}
+			if (no == 90)
+			{
+				if (QD[1] == 0)
+				{
+					‚c‚o^Á–Å‚·‚éƒ_[ƒNƒ‰ƒ“ƒX();
+					FA[199] = 1;
+					return 1;
+				}
+				‚c‚o^ƒ_[ƒNƒ‰ƒ“ƒX();
+				bre = ƒ{ƒXí“¬ˆ—(6000, 0, 368, 0, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				‚c‚o^ƒ_[ƒNƒ‰ƒ“ƒX^í“¬Œã();
+				FA[199] = 0;
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 170)
+	{
+		if (dd == 8)
+		{
+			“±‚­Ò‚ÌƒŠ[ƒ_[(0);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 171)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(7);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 14);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 5, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(92, 92, 31, 0, 0);
+			ƒ{[ƒiƒX“o˜^(3, 6, 0);
+			if (no == 8)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Mountain North";
+				‚l‚`‚o“Ç‚İ‚İ(no, 7101, 0, 1, 0, 0, 0, 0, 0, 3);
+			}
+			if (no == 12)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Mountain Inside";
+				‚l‚`‚o“Ç‚İ‚İ(no, 7201, 1, 1, 0, 1, 0, 0, 0, 0);
+			}
+			if (no == 9)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Route 3";
+				‚l‚`‚o“Ç‚İ‚İ(no, 62, 0, 0, 1, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(21, 39, 12, 20, 0);
+					‚l‚cŒÅ’è(25, 27, 18, 30, 0);
+					‚l‚cŒÅ’è(17, 34, 16, 0, 0);
+					‚l‚cŒÅ’è(16, 20, 16, 0, 0);
+					‚l‚cŒÅ’è(20, 16, 16, 0, 0);
+					‚l‚cŒÅ’è(25, 18, 18, 90, 0);
+					‚l‚cŒÅ’è(28, 24, 13, 0, 0);
+					‚l‚cŒÅ’è(22, 23, 10, 35, 0);
+					if (‚h—L–³(258, 0, "") == 0)
+					{
+						‚l‚cŒÅ’è(25, 20, 2, 258, 0);
+					}
+					if (FA[203] == 0)
+					{
+						‚l‚cŒÅ’è(31, 14, 10, 105, 0);
+					}
+				}
+			}
+			if (no == 10)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Route 2";
+				‚l‚`‚o“Ç‚İ‚İ(no, 7002, 0, 0, 1, 1, 0, 0, 0, 0);
+			}
+			if (no == 11)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Route 1";
+				‚l‚`‚o“Ç‚İ‚İ(no, 7001, 0, 0, 1, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(28, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(29, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(30, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(31, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(32, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(33, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(34, 22, 16, 1, 0);
+				}
+			}
+			if (no == 16)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Mountain Bottom";
+				ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ = 1;
+				‚l‚`‚o“Ç‚İ‚İ(no, 311, 1, 0, 0, 0, 5, 5, 5, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					if (FA[239] == 0)
+					{
+						‚l‚cŒÅ’è(16, 27, 1, 344, 0);
+					}
+					‚l‚cŒÅ’è(17, 28, 2, 209, 0);
+					‚l‚cŒÅ’è(30, 44, 2, 139, 7);
+					‚l‚cŒÅ’è(34, 44, 20, 0, 0);
+					‚l‚cŒÅ’è(35, 42, 20, 0, 0);
+					‚l‚cŒÅ’è(35, 43, 20, 0, 0);
+					‚l‚cŒÅ’è(35, 44, 20, 0, 0);
+					‚l‚cŒÅ’è(37, 43, 20, 0, 0);
+					‚l‚cŒÅ’è(38, 43, 20, 0, 0);
+					‚l‚cŒÅ’è(37, 44, 20, 0, 0);
+					‚l‚cŒÅ’è(38, 44, 13, 0, 0);
+				}
+			}
+			ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ = 0;
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 9;
+			}
+			EV("i‹³‚Ìã©^Še‘‚Æi‹³‚Ì˜b", 0);
+			EV("i‹³‚Ìã©^‚a’n“_", 0);
+			EV("i‹³‚Ìã©^–Ú“I’n", 0);
+			EV("i‹³‚Ìã©^ƒSƒuƒŠƒ“", 0);
+			i‹³‚Ìã©^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(16);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 11)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 10)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 9)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+				FA[143] = 1;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 10 && EV("i‹³‚Ìã©^Še‘‚Æi‹³‚Ì˜b", -2147483648) == false)
+			{
+				i‹³‚Ìã©^Še‘‚Æi‹³‚Ì˜b();
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 9 && EV("i‹³‚Ìã©^‚a’n“_", -2147483648) == false)
+			{
+				i‹³‚Ìã©^‚a’n“_();
+				return 0;
+			}
+			if (no == 20 && QD[1] == 0)
+			{
+				i‹³‚Ìã©^‘|œ‚ªæ‚Å‚·();
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			if (no == 30 && QD[1] == 0)
+			{
+				QD[1] = 1;
+				‚l‚cŒÅ’è(25, 32, 12, 31, 0);
+				‚l‚cŒÅ’è(26, 32, 12, 31, 0);
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				Ÿ“]ˆÚ‹Ö~^“Œ = 1;
+				i‹³‚Ìã©^–Ú“I’n();
+				bre = ƒ{ƒXí“¬ˆ—(5000, 0, 0, 0, 429, 429, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				i‹³‚Ìã©^–Ú“I’n^‚»‚ÌŒã‚P();
+				bre = ƒ{ƒXí“¬ˆ—(5000, 429, 429, 429, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				i‹³‚Ìã©^–Ú“I’n^‚»‚ÌŒã‚Q();
+				int iic1 = 0;
+				int iic2 = 0;
+				int iic3 = 0;
+				iic1 = ‚bƒ‰ƒ“ƒ_ƒ€æ“¾("’j^ƒ‰ƒ“ƒXˆÈŠO");
+				iic2 = ‚bƒ‰ƒ“ƒ_ƒ€æ“¾("’j^ƒ‰ƒ“ƒXˆÈŠO");
+				if (iic1 == iic2)
+				{
+					iic2 = 0;
+				}
+				iic3 = ‚bƒ‰ƒ“ƒ_ƒ€æ“¾("’j^ƒ‰ƒ“ƒXˆÈŠO");
+				if (iic1 == iic3)
+				{
+					iic3 = 0;
+				}
+				if (iic2 == iic3)
+				{
+					iic3 = 0;
+				}
+				vl(2000, "");
+				'(We\'ll have to leave someone behind...' R;
+				' What do we do?)' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "I'll stay", -1, -1, -1, "", -1);
+				if (iic1 != 0)
+				{
+					‘I‘ğ_€–Ú’Ç‰Á(11, ‚b–¼‘O(iic1, "") + "'ll stay", -1, -1, -1, "", -1);
+				}
+				if (iic2 != 0)
+				{
+					‘I‘ğ_€–Ú’Ç‰Á(12, ‚b–¼‘O(iic2, "") + "'ll stay", -1, -1, -1, "", -1);
+				}
+				if (iic3 != 0)
+				{
+					‘I‘ğ_€–Ú’Ç‰Á(13, ‚b–¼‘O(iic3, "") + "'ll stay", -1, -1, -1, "", -1);
+				}
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				if (rr == 1)
+				{
+					i‹³‚Ìã©^–Ú“I’n^‰´‚ªc‚é();
+					return 2;
+				}
+				if (rr == 11)
+				{
+					Ÿiic = iic1;
+				}
+				if (rr == 12)
+				{
+					Ÿiic = iic2;
+				}
+				if (rr == 13)
+				{
+					Ÿiic = iic3;
+				}
+				if (‚b”Ô†æ“¾(24) != 0)
+				{
+					i‹³‚Ìã©^–Ú“I’n^’j‚ğ’u‚¢‚Ä‚¢‚­^‚©‚È‚İ();
+					‚q‚WƒLƒƒƒ‰”z’u(25, 35, 3);
+					‚q‚Wƒ}ƒbƒv•\¦(-1, -1, -1, -1);
+					return 0;
+				}
+				i‹³‚Ìã©^–Ú“I’n^’j‚ğ’u‚¢‚Ä‚¢‚­();
+				‚o‚s‚`‰ğœ(Ÿiic);
+				‚bíœ(Ÿiic);
+				‚q‚WƒLƒƒƒ‰”z’u(25, 35, 3);
+				‚q‚Wƒ}ƒbƒv•\¦(-1, -1, -1, -1);
+				return 0;
+			}
+			if (no == 35)
+			{
+				i‹³‚Ìã©^ƒqƒ“ƒg();
+				return 0;
+			}
+			if (no == 31)
+			{
+				iÕ‚Ìã©^‚à‚¤‘|œ‚ÍI‚í‚è‚Ü‚µ‚½();
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			if (fg == 6 && Ÿ‚a‚l‚`‚o == 9)
+			{
+				i‹³‚Ìã©^ƒSƒuƒŠƒ“‚ğ“|‚»‚¤();
+				return 0;
+			}
+			if (fg == 10 && Ÿ‚a‚l‚`‚o == 11)
+			{
+				QD[2]++;
+				bre = “Á’èí“¬ˆ—(50, 0, 242, 0, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒNƒGƒXƒgƒ{[ƒiƒX^”z’u“G^‰ÁZ(bre);
+				if (QD[2] == 7)
+				{
+					‚l‚cŒÅ’è(28, 22, 19, 0, 0);
+					‚q‚Wƒ}ƒbƒv•\¦(1, -1, -1, -1);
+					‚l‚cŒÅ’è(29, 22, 19, 0, 0);
+					‚q‚Wƒ}ƒbƒv•\¦(1, -1, -1, -1);
+					‚l‚cŒÅ’è(30, 22, 19, 0, 0);
+					‚q‚Wƒ}ƒbƒv•\¦(1, -1, -1, -1);
+					‚l‚cŒÅ’è(31, 22, 19, 0, 0);
+					‚q‚Wƒ}ƒbƒv•\¦(1, -1, -1, -1);
+					‚l‚cŒÅ’è(32, 22, 19, 0, 0);
+					‚q‚Wƒ}ƒbƒv•\¦(1, -1, -1, -1);
+					‚l‚cŒÅ’è(33, 22, 19, 0, 0);
+					‚q‚Wƒ}ƒbƒv•\¦(1, -1, -1, -1);
+					‚l‚cŒÅ’è(34, 22, 19, 0, 0);
+					‚q‚Wƒ}ƒbƒv•\¦(1, -1, -1, -1);
+				}
+				return 0;
+			}
+			if (no == 90)
+			{
+				i‹³‚Ìã©^ƒSƒuƒŠƒ“();
+				bre = ƒ{ƒXí“¬ˆ—(4000, 0, 369, 0, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				i‹³‚Ìã©^ƒSƒuƒŠƒ“^í“¬Œã(0);
+				return 1;
+			}
+			if (no == 105)
+			{
+				í“¬ƒCƒxƒ“ƒg–¼ = "K•Ÿ‚«‚á‚ñ";
+				bre = “Á’èí“¬ˆ—(999999, 0, 143, 0, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				FA[203] = 1;
+				return 0;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 190)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(2);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 11;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(700, 31, 4);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 2);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(89, 90, 103, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Primeval Mushroom Forest 1";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(111, 0, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
+				}
+			}
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Primeval Mushroom Forest 2";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(111, 0, 0, 0, 0);
+				ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 5, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					if (FA[144] == 1 && ‚b—L–³(29) != 0)
+					{
+						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 8, 0, 1);
+					}
+				}
+			}
+			if (no == 3)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Primeval Mushroom Forest 3";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(111, 0, 0, 0, 0);
+				ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 3, 0, 6, 0);
+			}
+			if (no == 4)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Primeval Mushroom Forest 4";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(111, 0, 0, 0, 0);
+				ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 4, 3, 6, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 10, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					if (FA[204] == 0)
+					{
+						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+					}
+				}
+			}
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Secret Base B1F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(22);
+				ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+				‚l‚`‚o“Ç‚İ‚İ(no, 74, 0, 0, 0, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(25, 19, 17, 0, 0);
+					‚l‚cŒÅ’è(24, 24, 17, 0, 0);
+					‚l‚cŒÅ’è(25, 28, 17, 0, 0);
+					‚l‚cŒÅ’è(22, 30, 17, 0, 0);
+					‚l‚cŒÅ’è(24, 33, 17, 0, 0);
+					‚l‚cŒÅ’è(15, 14, 6, 0, 0);
+					‚l‚cŒÅ’è(16, 17, 6, 0, 0);
+					‚l‚cŒÅ’è(14, 16, 6, 0, 0);
+					‚l‚cŒÅ’è(18, 40, 3, 50, 0);
+					‚l‚cŒÅ’è(23, 24, 12, 20, 0);
+					‚l‚cŒÅ’è(39, 34, 1, 209, 0);
+					‚l‚cŒÅ’è(38, 35, 1, 209, 0);
+					‚l‚cŒÅ’è(37, 34, 10, 15, 0);
+					‚l‚cŒÅ’è(22, 12, 10, 18, 0);
+					‚l‚cŒÅ’è(23, 14, 10, 18, 0);
+					‚l‚cŒÅ’è(33, 26, 10, 18, 0);
+					‚l‚cŒÅ’è(26, 15, 10, 18, 0);
+				}
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Secret Base B2F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(22);
+				ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+				‚l‚`‚o“Ç‚İ‚İ(no, 74, 0, 0, 0, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(25, 19, 17, 0, 0);
+					‚l‚cŒÅ’è(24, 24, 17, 0, 0);
+					‚l‚cŒÅ’è(25, 28, 17, 0, 0);
+					‚l‚cŒÅ’è(22, 30, 17, 0, 0);
+					‚l‚cŒÅ’è(24, 33, 17, 0, 0);
+					‚l‚cŒÅ’è(29, 36, 6, 0, 0);
+					‚l‚cŒÅ’è(30, 36, 6, 0, 0);
+					‚l‚cŒÅ’è(14, 17, 3, 50, 0);
+					‚l‚cŒÅ’è(25, 36, 10, 18, 0);
+					‚l‚cŒÅ’è(25, 37, 10, 18, 0);
+					‚l‚cŒÅ’è(25, 40, 10, 18, 0);
+					‚l‚cŒÅ’è(37, 34, 19, 0, 0);
+					‚l‚cŒÅ’è(39, 34, 19, 0, 0);
+					‚l‚cŒÅ’è(38, 35, 19, 0, 0);
+				}
+			}
+			if (no == 7)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Secret Base B3F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(22);
+				ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+				ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 5, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 74, 0, 0, 0, 0, 10, 2, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(25, 19, 17, 0, 0);
+					‚l‚cŒÅ’è(24, 24, 17, 0, 0);
+					‚l‚cŒÅ’è(25, 28, 17, 0, 0);
+					‚l‚cŒÅ’è(22, 30, 17, 0, 0);
+					‚l‚cŒÅ’è(24, 33, 17, 0, 0);
+					‚l‚cŒÅ’è(28, 15, 18, 80, 0);
+					‚l‚cŒÅ’è(36, 35, 18, 90, 0);
+					‚l‚cŒÅ’è(20, 17, 10, 75, 0);
+					‚l‚cŒÅ’è(32, 18, 6, 0, 0);
+					‚l‚cŒÅ’è(31, 19, 6, 0, 0);
+					‚l‚cŒÅ’è(32, 19, 6, 0, 0);
+					‚l‚cŒÅ’è(33, 19, 6, 0, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 7;
+			}
+			EV("‚a‚l^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿", 0);
+			FA[267] = 1;
+			‚p‚l“o˜^(1);
+			‚a‚l^ƒvƒƒ[ƒO();
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && (Ÿ‚a‚l‚`‚o == 1 || Ÿ‚a‚l‚`‚o == 2 || Ÿ‚a‚l‚`‚o == 3 || Ÿ‚a‚l‚`‚o == 4))
+			{
+				iic = ƒGƒŠƒAØ‚è‘Ö‚¦^‹­§–³‹C—ÍƒLƒmƒR();
+				LOG("E%s had to drop out due to unavoidable mushrooms.\n" % ‚b–¼‘O(iic, ""));
+				if (Ÿ‚a‚l‚`‚o == 2)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+				}
+				if (Ÿ‚a‚l‚`‚o == 3)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+				}
+				if (Ÿ‚a‚l‚`‚o == 4)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+				}
+				return 0;
+			}
+			if (no == 8)
+			{
+				‚a‚l^‹L‰¯‘r¸‚Ìƒ}ƒŠƒA();
+				return 0;
+			}
+			if (no == 10)
+			{
+				‚a‚l^”é–§Šî’n“ü‚èŒû();
+				‚p‚l“o˜^(5);
+				‚q‚WƒLƒƒƒ‰”z’u(19, 9, 3);
+				if (Ÿ‚a‚l‚`‚o == 2)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+				}
+				return 0;
+			}
+			if (no == 15)
+			{
+				‚a‚l^•”‰º‚Ì˜b‚P();
+				bre = “Á’èí“¬ˆ—(500, 0, 0, 0, 344, 344);
+				‚l‚cŒÅ’è(20, 17, 10, 16, 0);
+				return 0;
+			}
+			if (no == 16)
+			{
+				‚a‚l^•”‰º‚Ì˜b‚Q();
+				bre = “Á’èí“¬ˆ—(500, 0, 0, 0, 344, 344);
+				‚l‚cŒÅ’è(15, 14, 6, 0, 0);
+				‚l‚cŒÅ’è(16, 17, 6, 0, 0);
+				‚l‚cŒÅ’è(14, 16, 6, 0, 0);
+				return 0;
+			}
+			if (no == 75)
+			{
+				‚a‚l^•”‰º‚Ì˜b‚R();
+				bre = “Á’èí“¬ˆ—(500, 0, 0, 0, 344, 344);
+				return 0;
+			}
+			if (no == 18)
+			{
+				‚a‚l^”z’u“G^u–]‚·‚éÒ();
+				bre = “Á’èí“¬ˆ—(500, 0, 0, 0, 344, 241);
+				return 0;
+			}
+			if (no == 20)
+			{
+				‚a‚l^“G‚¾‚ç‚¯‚¾‚È();
+				return 0;
+			}
+			if (fg == 6 && Ÿ‚a‚l‚`‚o == 5)
+			{
+				‚p‚l“o˜^(6);
+				‚q‚WƒLƒƒƒ‰”z’u(18, 40, 2);
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+				return 0;
+			}
+			if (fg == 6 && Ÿ‚a‚l‚`‚o == 6)
+			{
+				‚p‚l“o˜^(7);
+				‚q‚WƒLƒƒƒ‰”z’u(14, 17, 2);
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (no == 80)
+			{
+				‚a‚l^iŒ‚‚Ì‹l‚İè();
+				bre = “Á’èí“¬ˆ—(4000, 170, 382, 170, 170, 170);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 1)
+				{
+					‚a‚l^iŒ‚‚Ì‹l‚İè^í“¬Œã^Ÿ‚¿();
+				}
+				if (bre != 1)
+				{
+					‚a‚l^iŒ‚‚Ì‹l‚İè^í“¬Œã^“¦‚°‚ç‚ê‚½();
+				}
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (no == 90)
+			{
+				‚a‚l^ƒ}ƒ`ƒ‹ƒ_‚Ì•”‰®();
+				ƒ}ƒ’m¯•\¦‘I‘ğ(47);
+				‚a‚l^ƒ}ƒ`ƒ‹ƒ_‚Ì•”‰®^‘±‚«(0);
+				bre = ƒ{ƒXí“¬ˆ—(9000, 0, 484, 0, 344, 344, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				‚a‚l^ƒ}ƒ`ƒ‹ƒ_‚Ì•”‰®^í“¬Œã();
+				if (‚h—L–³(100, 0, "") == 0)
+				{
+					‚q‚WƒAƒCƒeƒ€æ“¾(100, 0);
+				}
+				return 1;
+			}
+			if (no == 105)
+			{
+				í“¬ƒCƒxƒ“ƒg–¼ = "K•Ÿ‚«‚á‚ñ";
+				bre = “Á’èí“¬ˆ—(999999, 0, 143, 0, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				FA[204] = 1;
+				return 0;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 191)
+	{
+		if (dd == 8)
+		{
+			ƒ}ƒ`ƒ‹ƒ_ŠÄ‹Ö(0);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 201)
+	{
+		if (dd == 8)
+		{
+			if (‚o‚s‚`—L–³^ŒÅ—L(33) != 0 && FA[188] < 5)
+			{
+				“Vgë‚è^ƒNƒ‹ƒbƒN[‚ª‚¢‚éê‡();
+				return 2;
+			}
+			“Vgë‚è^í“¬‘O();
+			Ÿí“¬”wŒi”Ô† = 30;
+			bre = ƒ{ƒXí“¬ˆ—(10000, 0, 0, 0, 374, 374, "");
+			if (bre == 2)
+			{
+				return 2;
+			}
+			“Vgë‚è^í“¬Œã();
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 192)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(2);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 13;
+			}
+			Ÿ“]ˆÚ‹Ö~^“Œ = 0;
+			ƒNƒGƒXƒgŠî–{“o˜^(700, 31, 14);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(112, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 9)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+				}
+			}
+			if (no == 10)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 305, 0, 1);
+				}
+			}
+			if (no == 11)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 305, 0, 1);
+				}
+			}
+			if (no == 7)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(112, 104, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 90, 0, 1);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 7;
+			}
+			EV("—Î‚Ì—¢^ƒJƒCƒg‚Ì—lq", 0);
+			‚p‚l“o˜^(9);
+			—Î‚Ì—¢^ƒvƒƒ[ƒO();
+			‘SƒLƒƒƒ‰‚ğg—pÏ‚İ‚É‚·‚é("ƒNƒ‹ƒbƒN[ˆÈŠO‚Ì—q");
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 11 && EV("—Î‚Ì—¢^ƒJƒCƒg‚Ì—lq", -2147483648) == false)
+			{
+				—Î‚Ì—¢^ƒJƒCƒg‚Ì—lq();
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 10)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 11)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 7)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+			}
+			if (no == 90)
+			{
+				—Î‚Ì—¢^ƒJƒCƒg‘˜‹ö();
+				LOG("   Memo: There are two branches after this fiend fight depending on whether you win or lose.\n");
+				LOG("     The one where you lose is nice and easy.\n");
+				bre = ƒ{ƒXí“¬ˆ—(5000, 0, 376, 0, 0, 0, "");
+				if (bre == 2)
+				{
+					—Î‚Ì—¢^ƒJƒCƒg‘˜‹ö^í“¬Œã(0);
+					QD[1] = 1;
+					FA[258] = 0;
+					return 1;
+				}
+				—Î‚Ì—¢^ƒJƒCƒg‘˜‹ö^í“¬Ÿ—˜();
+				¡ƒ{ƒXŒ‚”j‹L˜^(15);
+				FA[258] = 1;
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 172)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(9);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 13;
+			}
+			Ÿ“]ˆÚ‹Ö~^“Œ = 0;
+			ƒNƒGƒXƒgŠî–{“o˜^(700, 32, 13);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 9, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(105, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Sightseeing Course 1";
+				Ÿ“]ˆÚ‹Ö~^“Œ = 1;
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				‚l‚`‚oŠî‘bŒ^“o˜^(1);
+				‚l‚`‚o“Ç‚İ‚İ(no, 25, 0, 0, 1, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(24, 37, 8, 10, 0);
+				}
+			}
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Patrol Course B Other side";
+				‚l‚`‚oŠî‘bŒ^“o˜^(1);
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(118, 0, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 64, 0, 1, 0, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(28, 12, 8, 20, 0);
+					‚l‚cŒÅ’è(15, 27, 18, 22, 0);
+					‚l‚cŒÅ’è(29, 25, 2, 307, 0);
+					‚l‚cŒÅ’è(25, 23, 6, 0, 0);
+					‚l‚cŒÅ’è(26, 23, 6, 0, 0);
+					‚l‚cŒÅ’è(27, 23, 6, 0, 0);
+					‚l‚cŒÅ’è(28, 23, 6, 0, 0);
+					‚l‚cŒÅ’è(28, 22, 6, 0, 0);
+					‚l‚cŒÅ’è(29, 22, 6, 0, 0);
+					‚l‚cŒÅ’è(27, 24, 6, 0, 0);
+				}
+			}
+			if (no == 4)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Sightseeing Course C Other side";
+				‚l‚`‚oŠî‘bŒ^“o˜^(1);
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(118, 0, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 64, 0, 1, 0, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(28, 12, 8, 80, 0);
+					‚l‚cŒÅ’è(15, 27, 18, 82, 0);
+				}
+			}
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 10301, 1, 0, 1, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(15, 27, 1, 344, 0);
+					‚l‚cŒÅ’è(23, 37, 1, 344, 0);
+				}
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 10201, 1, 0, 1, 1, 0, 0, 0, 0);
+				if (QD[5] == 0)
+				{
+					‚l‚cŒÅ’è(37, 26, 3, 50, 0);
+				}
+				if (QD[5] == 1)
+				{
+					‚l‚cŒÅ’è(37, 26, 3, 2, 0);
+				}
+			}
+			if (no == 7)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 10002, 0, 0, 1, 1, 0, 0, 0, 0);
+			}
+			if (no == 8)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 10202, 1, 0, 0, 1, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(18, 24, 6, 0, 0);
+					‚l‚cŒÅ’è(19, 24, 6, 0, 0);
+					‚l‚cŒÅ’è(18, 25, 6, 0, 0);
+					‚l‚cŒÅ’è(19, 25, 6, 0, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			EV("Œ©‡‚¢^æ‰ñ‚è‚·‚é‚Ì‚¾", 0);
+			‚bg—pÏ‚İó‘Ô‚É‚·‚é(‚b”Ô†æ“¾(29));
+			if (‚o‚s‚`‘”() == 0)
+			{
+				if (‚o‚s‚`’N‚©‹­§’Ç‰Á() == 0)
+				{
+					return 2;
+				}
+			}
+			Œ©‡‚¢^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(1);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 5)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 6)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 7)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 8)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(80);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 4)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+			}
+			if (fg == 6 && Ÿ‚a‚l‚`‚o == 1)
+			{
+				if (EV("Œ©‡‚¢^æ‰ñ‚è‚·‚é‚Ì‚¾", -2147483648) == false)
+				{
+					Œ©‡‚¢^æ‰ñ‚è‚·‚é‚Ì‚¾();
+					return 0;
+				}
+				”Ä—p^‚»‚Á‚¿‚¶‚á‚È‚¢();
+				return 0;
+			}
+			if (no == 10)
+			{
+				ADVON();
+				ƒZƒbƒg•\¦(0, 0, 0, 0);
+				ƒg‘‚«();
+				'Shallow water.' R;
+				'It\'s easy to head into deeper water here.' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Enter water", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Don't enter", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				if (rr == 2)
+				{
+					ADVOFF();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				‚l‚c–ß‚µ();
+				‚r‚`‚c‚u("Entering water", "", "");
+				ŸƒLƒƒƒ‰ˆÊ’u = 10;
+				‚p‚l“o˜^(5);
+				return 0;
+			}
+			if (fg == 6 && Ÿ‚a‚l‚`‚o == 6)
+			{
+				”Ä—p^‚»‚Á‚¿‚¶‚á‚È‚¢();
+				return 0;
+			}
+			if (no == 20)
+			{
+				if (QD[5] == 1)
+				{
+					Œ©‡‚¢^ŠÏŒõ’n‚P^Ä‚Ñ();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				QD[5] = 1;
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+				Œ©‡‚¢^ŠÏŒõ’n‚P();
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			if (no == 22)
+			{
+				bre = “Á’èí“¬ˆ—(4000, 146, 360, 146, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 9)
+				{
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				return 0;
+			}
+			if (no == 82)
+			{
+				bre = “Á’èí“¬ˆ—(4000, 0, 146, 0, 360, 360);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 9)
+				{
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 8 && QD[6] == 0)
+			{
+				QD[6] = 1;
+				Œ©‡‚¢^ˆÚ“®’†‚É‚Ä();
+				return 0;
+			}
+			if (no == 80)
+			{
+				Œ©‡‚¢^ŠÏŒõ’n‚Q(0);
+				if (FA[144] == 0)
+				{
+					FA[144] = 1;
+				}
+				ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(29);
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 182)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(4);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 11;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(750, 21, 14);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(130, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 1;
+			if (no == 13)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 4102, 1, 0, 0, 0, 3, 0, 5, 0);
+			}
+			if (no == 9)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 3, 0, 2, 0);
+			}
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 3, 0, 2, 0);
+			}
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "";
+				‚l‚`‚o“Ç‚İ‚İ(no, 18, 0, 1, 0, 0, 3, 4, 4, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(20, 8, 8, 90, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 1;
+			}
+			EV("Ä‚«’¹^á•ö’ˆÓ", 0);
+			EV("Ä‚«’¹^‹YŠ[‚Ìv‚¢o", 0);
+			EV("Ä‚«’¹^á•ö—\’›", 0);
+			Ä‚«’¹^ƒvƒƒ[ƒO();
+			ƒQƒXƒg’Ç‰Á(79);
+			‚p‚l“o˜^(13);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 9 && EV("Ä‚«’¹^á•ö’ˆÓ", -2147483648) == false)
+			{
+				Ä‚«’¹^á•ö’ˆÓ();
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 5 && EV("Ä‚«’¹^‹YŠ[‚Ìv‚¢o", -2147483648) == false)
+			{
+				Ä‚«’¹^‹YŠ[‚Ìv‚¢o();
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 1)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+			}
+			if (fg == 8)
+			{
+				if (QD[10] != 0 && EV("Ä‚«’¹^á•ö—\’›", -2147483648) == false)
+				{
+					Ä‚«’¹^á•ö—\’›();
+					return 0;
+				}
+				if (QD[10] >= 20)
+				{
+					Ä‚«’¹^á•ö”­¶();
+					return 2;
+				}
+			}
+			if (no == 90)
+			{
+				Ä‚«’¹^R¬‰®(0);
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 193)
+	{
+		if (dd == 8)
+		{
+			ƒ€[ƒ‰ƒeƒXƒg‘O–é();
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 173)
+	{
+		‚bg—pÏ‚İó‘Ô‚É‚·‚é(‚b”Ô†æ“¾(33));
+		if (‚o‚s‚`‘”() == 0)
+		{
+			if (‚o‚s‚`’N‚©‹­§’Ç‰Á() == 0)
+			{
+				return 2;
+			}
+		}
+		if (dd == 8)
+		{
+			ƒJƒCƒY^ƒvƒƒ[ƒO();
+			Ÿí“¬”wŒi”Ô† = 58;
+			bre = ƒ{ƒXí“¬ˆ—(1000, 223, 240, 247, 483, 373, "");
+			if (bre == 2)
+			{
+				return 2;
+			}
+			ƒJƒCƒY^ƒvƒƒ[ƒO‚Q();
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 174)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(13);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 13;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(850, 31, 14);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 5, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(98, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(5, 5, 9);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Somewhere on Kawanakajima";
+				‚l‚`‚o“Ç‚İ‚İ(no, 14201, 0, 0, 1, 0, 0, 0, 0, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Somewhere on Kawanakajima";
+				‚l‚`‚o“Ç‚İ‚İ(no, 317, 0, 0, 0, 1, 0, 0, 0, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(37, 16, 8, 10, 0);
+				}
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground 10F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(18);
+				ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 4);
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(89, 111, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 65, 0, 1, 0, 0, 1, 2, 4, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(26, 19, 10, 11, 0);
+					‚l‚cŒÅ’è(35, 23, 5, 0, 0);
+					‚l‚cŒÅ’è(30, 34, 20, 0, 0);
+					‚l‚cŒÅ’è(30, 35, 20, 0, 0);
+					‚l‚cŒÅ’è(31, 35, 20, 0, 0);
+					‚l‚cŒÅ’è(15, 22, 10, 12, 0);
+					‚l‚cŒÅ’è(16, 22, 10, 12, 0);
+					‚l‚cŒÅ’è(15, 23, 10, 12, 0);
+					‚l‚cŒÅ’è(16, 23, 10, 12, 0);
+				}
+			}
+			if (no == 10)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground 12F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(18);
+				ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 4);
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(89, 111, 90, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 66, 1, 0, 1, 0, 0, 1, 3, 2);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(24, 33, 18, 20, 0);
+					‚l‚cŒÅ’è(18, 33, 16, 1, 0);
+					‚l‚cŒÅ’è(19, 33, 16, 1, 0);
+					‚l‚cŒÅ’è(17, 34, 16, 1, 0);
+					‚l‚cŒÅ’è(17, 35, 16, 1, 0);
+					‚l‚cŒÅ’è(20, 34, 16, 1, 0);
+					‚l‚cŒÅ’è(20, 35, 16, 1, 0);
+					‚l‚cŒÅ’è(18, 36, 16, 1, 0);
+					‚l‚cŒÅ’è(19, 36, 16, 1, 0);
+				}
+			}
+			if (no == 11)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground 14F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(18);
+				ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 4);
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(119, 0, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 67, 0, 0, 1, 1, 6, 1, 6, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(31, 11, 18, 30, 0);
+				}
+			}
+			if (no == 12)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground 16F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(18);
+				ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 4);
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(106, 90, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 68, 0, 1, 0, 1, 0, 0, 8, 2);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(35, 31, 11, 40, 0);
+					‚l‚cŒÅ’è(31, 24, 16, 0, 0);
+					‚l‚cŒÅ’è(31, 25, 16, 0, 0);
+					‚l‚cŒÅ’è(31, 26, 16, 0, 0);
+					‚l‚cŒÅ’è(31, 27, 16, 0, 0);
+					‚l‚cŒÅ’è(31, 28, 16, 0, 0);
+					‚l‚cŒÅ’è(30, 27, 16, 0, 0);
+					‚l‚cŒÅ’è(30, 28, 16, 0, 0);
+					‚l‚cŒÅ’è(29, 29, 16, 0, 0);
+					‚l‚cŒÅ’è(25, 21, 1, 110, 0);
+					‚l‚cŒÅ’è(36, 22, 1, 336, 0);
+				}
+			}
+			if (no == 16)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground 20F";
+				‚l‚`‚oŠî‘bŒ^“o˜^(18);
+				ƒNƒGƒXƒgŠî–{“o˜^(500, 31, 4);
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 70, 1, 0, 0, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(16, 24, 3, 50, 0);
+					‚l‚cŒÅ’è(16, 27, 3, 50, 0);
+					‚l‚cŒÅ’è(16, 30, 3, 50, 0);
+					‚l‚cŒÅ’è(23, 16, 10, 51, 0);
+					‚l‚cŒÅ’è(28, 16, 10, 52, 0);
+					‚l‚cŒÅ’è(33, 16, 8, 53, 0);
+					‚l‚cŒÅ’è(29, 41, 8, 80, 0);
+					‚l‚cŒÅ’è(22, 33, 13, 0, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			EV("ƒJƒCƒY‚Q^’†ƒ{ƒX‚P", 0);
+			EV("ƒJƒCƒY‚Q^‚»‚Ì ‚P", 0);
+			EV("ƒJƒCƒY‚Q^‚»‚Ì ‚Q", 0);
+			EV("ƒJƒCƒY‚Q^’†ƒ{ƒX‚Q", 0);
+			EV("ƒJƒCƒY‚Q^‚»‚Ì ‚R", 0);
+			EV("ƒJƒCƒY‚Q^ô‚¢‚Ì•Ç", 0);
+			EV("ƒJƒCƒY‚Q^ÅIƒ‹[ƒg‚Ìà–¾", 0);
+			EV("ƒJƒCƒY‚Q^ƒgƒ[ƒ‹à–¾", 0);
+			g‚l = 5741;
+			ƒJƒCƒY‚Q^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(1);
+			‚bg—pÏ‚İó‘Ô‚É‚·‚é(‚b”Ô†æ“¾(33));
+			if (‚o‚s‚`‘”() == 0)
+			{
+				if (‚o‚s‚`’N‚©‹­§’Ç‰Á() == 0)
+				{
+					return 2;
+				}
+			}
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 2)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 6)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 10)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 11)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+				if (QD[3] == 0)
+				{
+					FA[230] = 1;
+				}
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 12)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+			}
+			if (no == 10)
+			{
+				ƒJƒCƒY‚Q^‘ê‘O();
+				‚p‚l“o˜^(6);
+				‚q‚WƒLƒƒƒ‰”z’u(24, 14, 3);
+				‚l‚`‚oŠî‘bŒ^“o˜^(18);
+				return 0;
+			}
+			if (no == 11)
+			{
+				ƒJƒCƒY‚Q^’n‰ºà–¾();
+				return 0;
+			}
+			if (no == 12)
+			{
+				QD[2]++;
+				if (QD[2] == 4 && FA[322] == 0)
+				{
+					FA[322] = 1;
+					í“¬ƒCƒxƒ“ƒg–¼ = "‹@XŠBX‚Æí“¬";
+					bre = “Á’èí“¬ˆ—(1000, 0, 347, 0, 0, 0);
+					if (bre == 2)
+					{
+						return 2;
+					}
+					return 0;
+				}
+				bre = “Á’èí“¬ˆ—(1000, 0, 224, 0, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				return 0;
+			}
+			if (no == 20)
+			{
+				bre = ƒ{ƒXí“¬ˆ—(1000, 0, 0, 0, 387, 387, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒJƒCƒY‚Q^’†ƒ{ƒX‚P^í“¬Œã();
+				return 0;
+			}
+			if (fg == 10 && Ÿ‚a‚l‚`‚o == 10)
+			{
+				ŸŠïP^ƒCƒxƒ“ƒg‹­§ = 1;
+				bre = “Á’èí“¬ˆ—(1000, 246, 246, 246, 249, 249);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 1)
+				{
+					ƒNƒGƒXƒgƒ{[ƒiƒX^”z’u“G^‰ÁZ(bre);
+					‚l‚cŒÅ’è(Ÿ‚w‚w, Ÿ‚x‚x, 1, 308, 0);
+				}
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 11 && EV("ƒJƒCƒY‚Q^ƒgƒ[ƒ‹à–¾", -2147483648) == false)
+			{
+				ƒJƒCƒY‚Q^ƒgƒ[ƒ‹à–¾();
+				return 0;
+			}
+			if (no == 30)
+			{
+				bre = ƒ{ƒXí“¬ˆ—(1000, 0, 451, 0, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒJƒCƒY‚Q^ƒgƒ[ƒ‹Œ‚”j();
+				FA[230] = 0;
+				QD[3] = 1;
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 10 && EV("ƒJƒCƒY‚Q^‚»‚Ì ‚P", -2147483648) == false)
+			{
+				ƒJƒCƒY‚Q^‚»‚Ì ‚P();
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 12 && EV("ƒJƒCƒY‚Q^‚»‚Ì ‚Q", -2147483648) == false)
+			{
+				ƒJƒCƒY‚Q^‚»‚Ì ‚Q(0);
+				return 0;
+			}
+			if (no == 40)
+			{
+				ƒJƒCƒY‚Q^’†ƒ{ƒX‚Q();
+				bre = ƒ{ƒXí“¬ˆ—(0, 397, 0, 0, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+				return 0;
+			}
+			if (fg == 6)
+			{
+				ƒJƒCƒY‚Q^“]ˆÚ‘•’u();
+				return 0;
+			}
+			if (no == 51)
+			{
+				ƒJƒCƒY‚Q^‹Ö’f•ÛŠÇŒÉ‚P();
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			if (no == 52)
+			{
+				ƒJƒCƒY‚Q^‹Ö’f•ÛŠÇŒÉ‚Q();
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			if (no == 53)
+			{
+				QD[1]++;
+				if (QD[1] == 1)
+				{
+					ƒJƒCƒY‚Q^•ÛŠÇŒÉ‚P();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					‚l‚cŒÅ’è(34, 17, 10, 55, 0);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(80);
+					return 0;
+				}
+				if (QD[1] == 2)
+				{
+					ƒJƒCƒY‚Q^•ÛŠÇŒÉ‚Q();
+					‚o‚s‚`ƒ_ƒ[ƒW("‘Ì—Í”¼Œ¸");
+					bre = “Á’èí“¬ˆ—(3000, 0, 387, 0, 0, 0);
+					if (bre == 2)
+					{
+						return 2;
+					}
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+					LOG("\n     Obtained Curse Eraser\n");
+					LOG("   This is the item that disappeared all of a sudden\n");
+					LOG("   in the quest you cleared way earlier (the one at the museum).\n");
+					LOG("   It can erase any curse.\n");
+					return 0;
+				}
+				if (QD[1] == 3)
+				{
+					ƒJƒCƒY‚Q^•ÛŠÇŒÉ‚R();
+					‚o‚s‚`ƒ_ƒ[ƒW("‘Ì—Í”¼Œ¸");
+					bre = “Á’èí“¬ˆ—(3000, 0, 387, 0, 0, 0);
+					if (bre == 2)
+					{
+						return 2;
+					}
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					LOG("\n     Took back Maria's memories\n");
+					LOG("   Someone took the memories of Maria's inventions from her\n");
+					LOG("   back in the quest Maria's Marriage Meeting.\n");
+					return 0;
+				}
+				if (QD[1] == 4)
+				{
+					ƒJƒCƒY‚Q^•ÛŠÇŒÉ‚S();
+					‚o‚s‚`ƒ_ƒ[ƒW("‘Ì—Í”¼Œ¸");
+					bre = “Á’èí“¬ˆ—(3000, 0, 387, 0, 0, 0);
+					if (bre == 2)
+					{
+						return 2;
+					}
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				ƒJƒCƒY‚Q^•ÛŠÇŒÉ^”Ä—p();
+				‚o‚s‚`ƒ_ƒ[ƒW("‘Ì—Í”¼Œ¸");
+				bre = “Á’èí“¬ˆ—(3000, 0, 387, 0, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			if (no == 55)
+			{
+				ƒJƒCƒY‚Q^‹Câ‚µ‚½l();
+				return 0;
+			}
+			if (no == 80)
+			{
+				ƒJƒCƒY‚Q^“ä‚ÌŒŠ();
+				vl(2000, "");
+				'(A suspicious hole...' R;
+				' Should we go in?)' B;
+				‘I‘ğ‰Šú();
+				if (QD[1] >= 2)
+				{
+					‘I‘ğ_€–Ú’Ç‰Á(1, "Full speed ahead", -1, -1, -1, "", -1);
+				}
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Hold off for now", -1, -1, -1, "", -1);
+				‚q‚WƒWƒ“ƒOƒ‹(5013, false);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				‚q‚WƒWƒ“ƒOƒ‹(5014, false);
+				if (rr == 1)
+				{
+					ƒJƒCƒY^“ä‚ÌŒŠ^“ü‚é();
+					if (EV("ƒJƒCƒY‚Q^•ÛŠÇŒÉ‚R", -2147483648) == true && FA[144] == 1)
+					{
+						FA[144] = 2;
+					}
+					return 1;
+				}
+				ƒJƒCƒY^“ä‚ÌŒŠ^“ü‚ç‚È‚¢();
+				‚l‚c–ß‚µ();
+				‚q‚W–ß‚µ();
+				return 0;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 175)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(1);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+			ƒNƒGƒXƒgŠî–{“o˜^(850, 33, 4);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground ? Forest";
+				QD[1] = 1;
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(104, 112, 0, 0, 0);
+				‚l‚`‚oŠî‘bŒ^“o˜^(2);
+				‚l‚`‚o“Ç‚İ‚İ(no, 125, 0, 0, 0, 0, 3, 1, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(29, 33, 10, 12, 0);
+					‚l‚cŒÅ’è(24, 16, 12, 5, 0);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 10, 10, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 11, 0, 1);
+				}
+			}
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground ? Dungeon";
+				QD[1] = 2;
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(106, 54, 0, 0, 0);
+				‚l‚`‚oŠî‘bŒ^“o˜^(1);
+				‚l‚`‚o“Ç‚İ‚İ(no, 104, 0, 0, 0, 0, 3, 1, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(26, 22, 12, 5, 0);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 10, 20, 0, 1);
+					‚l‚cŒÅ’è(33, 12, 10, 21, 0);
+				}
+			}
+			if (no == 3)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground ? Underwater";
+				QD[1] = 3;
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(105, 61, 0, 0, 0);
+				‚l‚`‚oŠî‘bŒ^“o˜^(9);
+				‚l‚`‚o“Ç‚İ‚İ(no, 24, 0, 0, 0, 0, 3, 1, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(25, 35, 12, 5, 0);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 10, 30, 0, 1);
+					if (‚b—L–³(68) != 0)
+					{
+						‚l‚cŒÅ’è(33, 14, 10, 31, 0);
+					}
+				}
+			}
+			if (no == 4)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground ? Plain";
+				QD[1] = 4;
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(107, 0, 0, 0, 0);
+				‚l‚`‚oŠî‘bŒ^“o˜^(6);
+				‚l‚`‚o“Ç‚İ‚İ(no, 73, 0, 0, 0, 0, 3, 1, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(14, 38, 8, 41, 0);
+					‚l‚cŒÅ’è(11, 32, 8, 42, 0);
+					‚l‚cŒÅ’è(8, 29, 8, 45, 0);
+					‚l‚cŒÅ’è(9, 29, 8, 45, 0);
+					‚l‚cŒÅ’è(12, 20, 10, 40, 0);
+					‚l‚cŒÅ’è(30, 28, 19, 0, 0);
+					‚l‚cŒÅ’è(31, 28, 19, 0, 0);
+					‚l‚cŒÅ’è(32, 28, 19, 0, 0);
+					‚l‚cŒÅ’è(33, 28, 19, 0, 0);
+					‚l‚cŒÅ’è(34, 28, 19, 0, 0);
+					‚q‚W’u•¨”z’u(8, 27, 308, -1);
+					‚l‚cŒÅ’è(31, 18, 12, 5, 0);
+					‚l‚cŒÅ’è(31, 19, 12, 5, 0);
+					‚l‚cŒÅ’è(31, 20, 12, 5, 0);
+				}
+			}
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground ? Snowy Mountain";
+				QD[1] = 5;
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(66, 0, 0, 0, 0);
+				‚l‚`‚oŠî‘bŒ^“o˜^(4);
+				‚l‚`‚o“Ç‚İ‚İ(no, 161, 0, 0, 0, 0, 3, 1, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(29, 25, 10, 50, 0);
+					‚l‚cŒÅ’è(19, 26, 8, 51, 0);
+					‚l‚cŒÅ’è(27, 14, 3, 50, 0);
+					‚l‚cŒÅ’è(22, 27, 1, 0, 0);
+					‚l‚cŒÅ’è(23, 27, 1, 0, 0);
+					‚l‚cŒÅ’è(21, 32, 1, 0, 0);
+					‚l‚cŒÅ’è(27, 23, 1, 0, 0);
+					‚l‚cŒÅ’è(32, 29, 1, 0, 0);
+					‚l‚cŒÅ’è(36, 24, 1, 0, 0);
+					‚l‚cŒÅ’è(32, 19, 1, 0, 0);
+					‚l‚cŒÅ’è(18, 15, 13, 0, 0);
+				}
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kaiz Underground ? ?";
+				QD[1] = 6;
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+				‚l‚`‚oŠî‘bŒ^“o˜^(18);
+				ƒNƒGƒXƒgŠî–{“o˜^(500, 33, 79);
+				‚l‚`‚o“Ç‚İ‚İ(no, 69, 0, 0, 0, 0, 3, 1, 2, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(25, 8, 18, 69, 0);
+					‚l‚cŒÅ’è(13, 35, 10, 68, 0);
+					if (FA[120] != 3)
+					{
+						‚l‚cŒÅ’è(29, 34, 12, 66, 0);
+						‚l‚cŒÅ’è(29, 24, 12, 66, 0);
+						‚l‚cŒÅ’è(33, 18, 12, 66, 0);
+						‚l‚cŒÅ’è(26, 20, 12, 66, 0);
+						‚l‚cŒÅ’è(16, 14, 12, 66, 0);
+					}
+					if (FA[120] == 3)
+					{
+						‚l‚cŒÅ’è(35, 34, 12, 66, 0);
+						‚l‚cŒÅ’è(25, 25, 12, 66, 0);
+						‚l‚cŒÅ’è(17, 23, 12, 66, 0);
+						‚l‚cŒÅ’è(23, 23, 12, 66, 0);
+						‚l‚cŒÅ’è(25, 13, 12, 66, 0);
+					}
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			EV("ƒJƒCƒY‚R^ô”›‚Ì‘O‚É‚¢‚é_Š¯", 0);
+			FA[267] = 1;
+			ƒJƒCƒY‚R^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(1);
+			‚bg—pÏ‚İó‘Ô‚É‚·‚é(‚b”Ô†æ“¾(33));
+			if (‚o‚s‚`‘”() == 0)
+			{
+				if (‚o‚s‚`’N‚©‹­§’Ç‰Á() == 0)
+				{
+					return 2;
+				}
+			}
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 8 && ŸƒNƒGƒXƒgí“¬‰ñ”^‚l‚`‚o“à >= 3 && QD[1] < 5)
+			{
+				‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 12, 5, 0, 1);
+				return 0;
+			}
+			if (no == 5)
+			{
+				if (QD[1] == 1)
+				{
+					LOG("EEvent (Transported by mysterious power)\n");
+					‚p‚l“o˜^(2);
+					ƒJƒCƒY‚R^“]ˆÚ‚Q(0);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+					return 0;
+				}
+				if (QD[1] == 2)
+				{
+					LOG("EEvent (Transported by mysterious power)\n");
+					‚p‚l“o˜^(3);
+					ƒJƒCƒY‚R^“]ˆÚ‚R();
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+					return 0;
+				}
+				if (QD[1] == 3)
+				{
+					LOG("EEvent (Transported by mysterious power)\n");
+					‚p‚l“o˜^(4);
+					ƒJƒCƒY‚R^“]ˆÚ‚S();
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+					return 0;
+				}
+				if (QD[1] == 4)
+				{
+					LOG("EEvent (Transported by mysterious power)\n");
+					‚p‚l“o˜^(5);
+					‚q‚WƒLƒƒƒ‰”z’u(17, 15, 3);
+					ƒJƒCƒY‚R^“]ˆÚ‚T();
+					QD[10] = 5;
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+					return 0;
+				}
+			}
+			if (no == 10)
+			{
+				ƒJƒCƒY‚R^ˆÄ“à”Â‚P();
+				return 0;
+			}
+			if (no == 11)
+			{
+				ƒJƒCƒY‚R^‚P^ƒC[ƒWƒX();
+				return 0;
+			}
+			if (no == 12)
+			{
+				ƒJƒCƒY‚R^ô‚¢Á‚µƒSƒ€();
+				vl(2000, "");
+				'(Should I use the curse eraser now, or save it for later...?' R;
+				' I\'m a little concerned about Crook, too.)' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Following Crook is more important", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Return to the castle right away", -1, -1, -1, "", -1);
+				‚q‚WƒWƒ“ƒOƒ‹(5013, false);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				‚q‚WƒWƒ“ƒOƒ‹(5014, false);
+				if (rr == 1)
+				{
+					ƒJƒCƒY‚R^ô‚¢Á‚µƒSƒ€^Œã‰ñ‚µ();
+					return 0;
+				}
+				ƒJƒCƒY‚R^ô‚¢Á‚µƒSƒ€^é‚É–ß‚é();
+				return 2;
+			}
+			if (no == 20)
+			{
+				ƒJƒCƒY‚R^ˆÄ“à”Â‚Q();
+				return 0;
+			}
+			if (no == 21)
+			{
+				ƒJƒCƒY‚R^‚Q^ƒAƒ‹ƒJƒl[ƒ[();
+				return 0;
+			}
+			if (no == 30)
+			{
+				ƒJƒCƒY‚R^ˆÄ“à”Â‚R();
+				return 0;
+			}
+			if (no == 31)
+			{
+				ƒJƒCƒY‚R^‚R^ƒrƒXƒPƒbƒ^();
+				return 0;
+			}
+			if (no == 40)
+			{
+				ƒJƒCƒY‚R^ˆÄ“à”Â‚S();
+				return 0;
+			}
+			if (no == 41)
+			{
+				ƒJƒCƒY‚R^¬‰®‚Ì_Š¯‚P();
+				return 0;
+			}
+			if (no == 42)
+			{
+				ƒJƒCƒY‚R^ô”›‚Ì‘O‚É‚¢‚é_Š¯();
+				return 0;
+			}
+			if (no == 45)
+			{
+				ƒJƒCƒY‚R^ô”›‚³‚ê‚½_();
+				vl(2000, "");
+				'(What should I do with this cloud thingy?)' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Kick", -1, -1, -1, "", -1);
+				if (EV("ƒJƒCƒY‚R^ô”›‚Ì‘O‚É‚¢‚é_Š¯", -2147483648) == true)
+				{
+					‘I‘ğ_€–Ú’Ç‰Á(2, "Use Curse Eraser", -1, -1, -1, "", -1);
+				}
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				if (rr == 1)
+				{
+					ƒJƒCƒY‚R^ô”›‚³‚ê‚½_^ƒLƒbƒN();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				ƒJƒCƒY‚R^ô”›‚³‚ê‚½_^Á‚µƒSƒ€();
+				‚l‚cŒÅ’è(8, 29, 0, 0, 0);
+				‚l‚cŒÅ’è(9, 29, 0, 0, 0);
+				‚q‚W’u•¨”z’u(8, 27, 0, -1);
+				return 0;
+			}
+			if (no == 50)
+			{
+				ƒJƒCƒY‚R^ˆÄ“à”Â‚T();
+				QD[10]--;
+				LOG("ETime remaining: %s-ish? (unit unknown)\n" % string3(QD[10]));
+				return 0;
+			}
+			if (no == 51)
+			{
+				ƒJƒCƒY‚R^ƒgƒ[ƒ`‚Ìà–¾();
+				return 0;
+			}
+			if (fg == 9 && Ÿ‚a‚l‚`‚o == 5)
+			{
+				ƒgƒ[ƒ`^ƒCƒ‰ƒCƒ‰();
+				QD[10]--;
+				LOG("ETime remaining: %s-ish? (unit unknown)\n" % string3(QD[10]));
+				return 0;
+			}
+			if (fg == 6)
+			{
+				‚p‚l“o˜^(6);
+				ƒJƒCƒY‚R^“]ˆÚ‚U();
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (no == 66)
+			{
+				‚l‚c–ß‚µ();
+				‚q‚WƒLƒƒƒ‰”z’u(38, 39, 1);
+				ƒJƒCƒY‚R^–ß‚³‚ê‚½();
+				QD[10]--;
+				LOG("ETime remaining: %s-ish? (unit unknown)\n" % string3(QD[10]));
+				return 0;
+			}
+			if (no == 68)
+			{
+				ƒJƒCƒY‚R^–{—ˆ‚ÌƒGƒŒƒx[ƒ^();
+				return 0;
+			}
+			if (no == 69)
+			{
+				ƒJƒCƒY‚R^‚a‚r();
+				bre = ƒ{ƒXí“¬ˆ—(0, 452, 383, 452, 452, 452, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒJƒCƒY‚R^‚a‚r^í“¬Œã();
+				if (QD[10] == 0)
+				{
+					ƒJƒCƒY‚R^ŠÔØ‚ê();
+					return 2;
+				}
+				ƒJƒCƒY^‚a‚r^í“¬Œã(0);
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 204)
+	{
+		if (dd == 8)
+		{
+			ƒNƒ‹ƒbƒN[‚Ì•ÔŠÒ();
+			if (FA[144] == 1)
+			{
+				FA[144] = 2;
+			}
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 194)
+	{
+		if (dd == 8)
+		{
+			®“T^‚`(0);
+			®“T^‚a();
+			®“T^‚b();
+			FA[181] = 1;
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 200)
+	{
+		if (dd == 8)
+		{
+			“Vg^ƒvƒƒ[ƒO(0);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 205)
+	{
+		if (dd == 8)
+		{
+			ƒyƒ“ƒVƒ‹ƒJƒE‰ï‹c();
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 197)
+	{
+		if (dd == 8)
+		{
+			ƒAƒ€‚ÌÀŒ±‚P^ƒvƒƒ[ƒO();
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 198)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(6);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 10;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(850, 31, 14);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(108, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 2)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Meg's Ranch North";
+				‚l‚`‚o“Ç‚İ‚İ(no, 21, 0, 1, 0, 0, 0, 0, 0, 0);
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Meg's Ranch Center";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(108, 85, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 49, 1, 0, 0, 1, 0, 0, 0, 0);
+			}
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Meg's Ranch Road";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(89, 66, 0, 0, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 40, 0, 0, 1, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(9, 25, 18, 90, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 5;
+			}
+			EV("ƒAƒ€‚ÌÀŒ±‚Q^ƒJƒCƒg‚ÌS", 0);
+			EV("ƒAƒ€‚ÌÀŒ±‚Q^ƒ[ƒX•”‘à", 0);
+			FA[267] = 1;
+			‚p‚l“o˜^(2);
+			ƒAƒ€‚ÌÀŒ±‚Q^ƒvƒƒ[ƒO();
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 6 && EV("ƒAƒ€‚ÌÀŒ±‚Q^ƒJƒCƒg‚ÌS", -2147483648) == false)
+			{
+				ƒAƒ€‚ÌÀŒ±‚Q^ƒJƒCƒg‚ÌS();
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+				return 0;
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 5 && EV("ƒAƒ€‚ÌÀŒ±‚Q^ƒ[ƒX•”‘à", -2147483648) == false)
+			{
+				ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 1;
+				ƒAƒ€‚ÌÀŒ±‚Q^ƒ[ƒX•”‘à();
+				‚o‚s‚`‘Ò”ğ();
+				‚o‚s‚`‘S“o˜^(75, 76, 77, 74, 78);
+				bre = ƒ{ƒXí“¬ˆ—(0, 0, 377, 0, 0, 0, "");
+				‚o‚s‚`•œ‹A();
+				ƒQƒXƒg‘Síœ();
+				ƒAƒ€‚ÌÀŒ±‚Q^ƒ[ƒX•”‘à^‰ó–ÅŒã();
+				ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 0;
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (no == 90)
+			{
+				ƒAƒ€‚ÌÀŒ±‚Q^–‚lƒJƒCƒg();
+				bre = ƒ{ƒXí“¬ˆ—(8000, 0, 377, 0, 0, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒAƒ€‚ÌÀŒ±‚Q^–‚lƒJƒCƒg^í“¬Œã();
+				¡ƒ{ƒXŒ‚”j‹L˜^(15);
+				LOG("\n");
+				LOG("Lore: ¡Blood Souls\n");
+				LOG("   Fiends are created when the Archfiend shares their blood with them.\n");
+				LOG("   When a fiend dies, it becomes a sphere of blood known as a Blood Soul.\n");
+				LOG("   This is the blood of the Archfiend and it cannot be destroyed.\n");
+				LOG("   The deceased fiend's soul remains inside the Blood Soul.\n");
+				LOG("@\n");
+				LOG("   If the Archfiend finds the Blood Soul, they can take it back into their own body.\n");
+				LOG("@\n");
+				LOG("   If the Blood Soul can parasitize another vessel (a living being),\n");
+				LOG("   the fiend can be revived with its memories intact.");
+				LOG("   ¦However, if the vessel's will wins out over the fiend's, the vessel will become a fiend instead.\n");
+				LOG("@\n");
+				LOG("   There is a maximum number of 24 fiends at any given time due to the number of Blood Souls the Archfiend can separate from their body.\n");
+				LOG("@\n");
+				LOG("   Fiends that have recently become Blood Souls that I can remember\n");
+				LOG("   Nos (Defeated by Rance, Blood Soul absorbed by Archfiend Miki)\n");
+				LOG("   Aizel (Defeated by Rance, Blood Soul missing... probably lying around Leazas Castle somewhere)\n");
+				LOG("   Xavier (Defeated by Rance, Blood Soul absorbed by Archfiend Miki)\n");
+				LOG("   Sieg (Defeated by Rance, Blood Soul then became the fiend Abert, defeated again, Blood Soul under Zeth's management)\n");
+				LOG("   Berksham (Defeated by Kentarou, Blood Soul absorbed by Archfiend Gai)\n");
+				LOG("   Lexington (Defeated in the Fiend War, Blood Soul under his apostle Atlanta's safekeeping)\n");
+				LOG("   Kaito (Defeated by Rance, Contaminated Blood Soul sealed by the Alicist Church)\n");
+				LOG("TADA \"Doesn't have much to do with the story, but... that's the lore.\n");
+				LOG("            It's not enough to put in the trivia...\n");
+				LOG("            I'm kinda worried about whether I made any mistakes, though...\"\n");
+				return 1;
+			}
+			if (fg == 8)
+			{
+				if (‚o‚s‚`‘”() < 2)
+				{
+					return 0;
+				}
+				Ÿiic = ‚o‚s‚`ƒ‰ƒ“ƒ_ƒ€(0, 0);
+				if (Ÿiic == 0)
+				{
+					return 0;
+				}
+				if (‚b”Ô†(Ÿiic, -1) == 1 || ‚b”Ô†(Ÿiic, -1) == 33)
+				{
+					return 0;
+				}
+				ƒAƒ€‚ÌÀŒ±‚Q^’E—Ò();
+				‚o‚s‚`‰ğœ(Ÿiic);
+				return 0;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 176)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(13);
+			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
+			if (ŸƒLƒƒƒ‰ˆÊ’u == 0)
+			{
+				ŸƒLƒƒƒ‰ˆÊ’u = 10;
+			}
+			ƒNƒGƒXƒgŠî–{“o˜^(900, 40, 2);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(98, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(7, 9, 9);
+			if (no == 1)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima Canal";
+				‚l‚`‚o“Ç‚İ‚İ(no, 14101, 0, 1, 0, 0, 0, 2, 0, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima Canal";
+				‚l‚`‚o“Ç‚İ‚İ(no, 14202, 1, 0, 1, 0, 0, 2, 0, 0);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+			}
+			if (no == 6)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima Canal";
+				‚l‚`‚o“Ç‚İ‚İ(no, 76, 0, 0, 1, 1, 0, 0, 0, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(24, 33, 8, 10, 0);
+					‚l‚cŒÅ’è(31, 30, 18, 20, 0);
+				}
+			}
+			if (no == 7)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Kawanakajima Canal";
+				‚l‚`‚o“Ç‚İ‚İ(no, 317, 0, 0, 0, 1, 2, 0, 6, 1);
+				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(37, 16, 8, 50, 0);
+				}
+			}
+			if (no == 8)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Shepherds' Headquarters";
+				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(109, 109, 66, 0, 0);
+				ƒNƒGƒXƒgŠî–{“o˜^(500, 40, 95);
+				‚l‚`‚oŠî‘bŒ^“o˜^(22);
+				‚l‚`‚o“Ç‚İ‚İ(no, 75, 0, 0, 0, 0, 6, 0, 6, 4);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(25, 12, 18, 90, 0);
+					‚l‚cŒÅ’è(27, 31, 18, 80, 0);
+					‚l‚cŒÅ’è(37, 16, 8, 70, 0);
+					‚l‚cŒÅ’è(15, 24, 8, 60, 0);
+					‚l‚cŒÅ’è(27, 36, 8, 51, 0);
+					‚l‚cŒÅ’è(30, 22, 2, 335, 0);
+					if (FA[231] == 0)
+					{
+						‚l‚cŒÅ’è(38, 38, 2, 344, 0);
+					}
+					‚l‚cŒÅ’è(16, 40, 2, 113, 6);
+					‚l‚cŒÅ’è(38, 41, 16, 1, 0);
+					‚l‚cŒÅ’è(14, 21, 13, 0, 0);
+					‚l‚cŒÅ’è(15, 21, 13, 0, 0);
+					‚l‚cŒÅ’è(16, 21, 13, 0, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 1)
+			{
+				FA[253] = 8;
+			}
+			EV("–{•”^iŒ‚‚Ì‹l‚İè^í“¬Œã^Œ‚”j", 0);
+			EV("–{•”^iŒ‚‚Ì‹l‚İè^í“¬Œã^“¦‚°‚½", 0);
+			FA[267] = 1;
+			g‚l = 5740;
+			–{•”^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(1);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 6)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+			}
+			if (fg == 5 && Ÿ‚a‚l‚`‚o == 7)
+			{
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+			}
+			if (no == 10)
+			{
+				–{•”^ƒnƒj[();
+				return 0;
+			}
+			if (no == 20)
+			{
+				–{•”^ƒnƒj[–C();
+				í“¬ƒCƒxƒ“ƒg–¼ = "ƒnƒj[–C‘ä";
+				bre = ƒ{ƒXí“¬ˆ—(0, 400, 400, 400, 400, 400, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				í“¬ƒCƒxƒ“ƒg–¼ = "";
+				return 0;
+			}
+			if (no == 50)
+			{
+				–{•”^’n‰º‚Ö‚Ì“ü‚èŒû();
+				‚p‚l“o˜^(8);
+				‚q‚WƒLƒƒƒ‰”z’u(28, 41, 1);
+				return 0;
+			}
+			if (no == 51)
+			{
+				–{•”^N“ü();
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+				return 0;
+			}
+			if (fg == 10 && Ÿ‚a‚l‚`‚o == 8)
+			{
+				bre = ƒ{ƒXí“¬ˆ—(0, 314, 235, 314, 314, 314, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				ƒNƒGƒXƒgƒ{[ƒiƒX^”z’u“G^‰ÁZ(bre);
+				return 0;
+			}
+			if (no == 60)
+			{
+				–{•”^‘O–@‰¤‚Ìà–¾();
+				return 0;
+			}
+			if (no == 70)
+			{
+				–{•”^‰˜õƒJƒvƒZƒ‹();
+				return 0;
+			}
+			if (no == 80)
+			{
+				–{•”^iŒ‚‚Ì‹l‚İè();
+				bre = “Á’èí“¬ˆ—(9000, 438, 379, 438, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 1)
+				{
+					–{•”^iŒ‚‚Ì‹l‚İè^í“¬Œã^Œ‚”j();
+				}
+				if (bre != 1)
+				{
+					–{•”^iŒ‚‚Ì‹l‚İè^í“¬Œã^“¦‚°‚½();
+				}
+				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				return 0;
+			}
+			if (no == 90)
+			{
+				–{•”^ƒAƒ€‘˜‹ö();
+				bre = ƒ{ƒXí“¬ˆ—(9000, 0, 427, 428, 426, 0, "");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				–{•”^ƒAƒ€‘˜‹ö^í“¬Œã();
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 177)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(11);
+			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+			if (QD[1] == 5)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 5F";
+			}
+			if (QD[1] == 10)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 10F";
+			}
+			if (QD[1] == 15)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 15F";
+			}
+			if (QD[1] == 20)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 20F";
+			}
+			if (QD[1] == 25)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 25F";
+			}
+			if (QD[1] == 30)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 30F";
+			}
+			if (QD[1] == 35)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 35F";
+			}
+			if (QD[1] == 40)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 40F";
+			}
+			if (QD[1] == 45)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 45F";
+			}
+			if (QD[1] == 50)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 50F";
+			}
+			if (QD[1] == 55)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 55F";
+			}
+			if (QD[1] == 60)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 60F";
+			}
+			if (QD[1] == 65)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 65F";
+			}
+			if (QD[1] == 70)
+			{
+				Ÿ‚l‚`‚o–¼‘O = "Babel 70F";
+			}
+			ŸƒLƒƒƒ‰ˆÊ’u = 11;
+			ƒNƒGƒXƒgŠî–{“o˜^(1000, 11, 10);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			if (no == 1)
+			{
+				‚l‰Šú‰»(1);
+				‚p‚lŒÅ—L”Ô†‹L‰¯(Ÿiiq, no, 0);
+				‚l‚`‚o“Ç‚İ‚İ(no, 34, 0, 0, 0, 0, 0, 0, 0, 0);
+				‚l‚cŒÅ’è(25, 24, 18, 10, 0);
+				‚l‚cŒÅ’è(25, 11, 3, 50, 0);
+				‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			Ÿí“¬”wŒi”Ô† = 56;
+			g‚l = 5720;
+			ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 2;
+			FA[267] = 1;
+			if (ƒNƒŠƒAŠm”F(Ÿiiq) == 0 && FA[261] == 70)
+			{
+				ƒAƒŠƒX^’†”²‚«ˆÄ“à();
+				ƒg‘‚«();
+				'You can skip all events up to the last boss.' R;
+				'Would you like to?' B;
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Skip events", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Play normally", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				if (rr == 1)
+				{
+					QD[1] = 65;
+					‚p‚l“o˜^(1);
+					‚q‚WƒLƒƒƒ‰”z’u(25, 41, 1);
+					return 0;
+				}
+			}
+			ƒoƒxƒ‹^ƒvƒƒ[ƒO();
+			QD[1] = 0;
+			ƒoƒxƒ‹^“¹’†ˆÚ“®();
+			if (‚o‚s‚`‘”() == 0)
+			{
+				ƒoƒxƒ‹^“¹’†ˆÚ“®^‘S–Å();
+				return 2;
+			}
+			‚p‚l“o˜^(1);
+			‚q‚WƒLƒƒƒ‰”z’u(25, 41, 1);
+			if (QD[1] == 5 && FA[261] >= 5)
+			{
+				LOG("   Mid-boss: Contaminated\n");
+			}
+			return 0;
+		}
+		if (dd == 9)
+		{
+			LOG_TADA("FA[ƒoƒxƒ‹Å‘å“¥”jŠK”]" + string(FA[261]) + "\n");
+			if (no == 10)
+			{
+				if (QD[1] == 5)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 363, 363, 363, 0, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+					return 0;
+				}
+				if (QD[1] == 10)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 158, 237, 158, 0, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					return 0;
+				}
+				if (QD[1] == 15)
+				{
+					ƒoƒxƒ‹^ƒVƒƒƒ`ƒ‡ƒE();
+					bre = ƒ{ƒXí“¬ˆ—(5000, 0, 423, 0, 344, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					ƒoƒxƒ‹^ƒVƒƒƒ`ƒ‡ƒE^í“¬Œã();
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(30);
+					return 0;
+				}
+				if (QD[1] == 20)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 217, 386, 217, 217, 217, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					return 0;
+				}
+				if (QD[1] == 25)
+				{
+					ƒoƒxƒ‹^iŒ‚‚Ì‹l‚İè();
+					lint a1 = 0;
+					lint a2 = 0;
+					lint a3 = 0;
+					lint a4 = 0;
+					lint a5 = 0;
+					a1 = 378;
+					if (FA[197] == 0)
+					{
+						a2 = 382;
+					}
+					if (FA[195] == 0)
+					{
+						a3 = 380;
+					}
+					if (FA[196] == 0)
+					{
+						a4 = 381;
+					}
+					if (FA[198] == 0)
+					{
+						a5 = 379;
+					}
+					bre = ƒ{ƒXí“¬ˆ—(5000, a1, a2, a3, a4, a5, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					ƒoƒxƒ‹^iŒ‚‚Ì‹l‚İè^í“¬Œã();
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+					return 0;
+				}
+				if (QD[1] == 30)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 140, 247, 140, 0, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					return 0;
+				}
+				if (QD[1] == 35)
+				{
+					if (FA[199] == 0)
+					{
+						ƒoƒxƒ‹^ƒ_[ƒNƒ‰ƒ“ƒX();
+						bre = ƒ{ƒXí“¬ˆ—(5000, 0, 368, 0, 0, 0, "");
+						if (bre == 2)
+						{
+							return 2;
+						}
+						ƒoƒxƒ‹^ƒ_[ƒNƒ‰ƒ“ƒX^í“¬Œã();
+						if (FA[261] < QD[1])
+						{
+							FA[261] = QD[1];
+						}
+						return 0;
+					}
+					bre = ƒ{ƒXí“¬ˆ—(5000, 239, 175, 239, 344, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
+					return 0;
+				}
+				if (QD[1] == 40)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 0, 397, 0, 0, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					return 0;
+				}
+				if (QD[1] == 45)
+				{
+					ƒoƒxƒ‹^ƒGƒ“ƒƒ“();
+					bre = ƒ{ƒXí“¬ˆ—(5000, 223, 240, 240, 483, 373, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					ƒoƒxƒ‹^ƒGƒ“ƒƒ“^í“¬Œã();
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+					return 0;
+				}
+				if (QD[1] == 50)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 0, 396, 0, 0, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					return 0;
+				}
+				if (QD[1] == 55)
+				{
+					ƒoƒxƒ‹^‰˜õƒpƒXƒeƒ‹();
+					bre = ƒ{ƒXí“¬ˆ—(5000, 0, 375, 0, 0, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					ƒoƒxƒ‹^‰˜õƒpƒXƒeƒ‹^í“¬Œã();
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(80);
+					return 0;
+				}
+				if (QD[1] == 60)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 0, 344, 232, 232, 0, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					return 0;
+				}
+				if (QD[1] == 65)
+				{
+					bre = ƒ{ƒXí“¬ˆ—(5000, 240, 240, 240, 344, 188, "");
+					if (bre == 2)
+					{
+						return 2;
+					}
+					if (FA[261] < QD[1])
+					{
+						FA[261] = QD[1];
+					}
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+					return 0;
+				}
+			}
+			if (fg == 6)
+			{
+				ƒoƒxƒ‹^“¹’†ˆÚ“®();
+				if (‚o‚s‚`‘”() == 0)
+				{
+					ƒoƒxƒ‹^“¹’†ˆÚ“®^‘S–Å();
+					return 2;
+				}
+				‚p‚l“o˜^(1);
+				if (QD[1] == 5 && FA[261] >= 5)
+				{
+					LOG("   Mid-boss: Contaminated\n");
+				}
+				if (QD[1] == 10 && FA[261] >= 10)
+				{
+					LOG("   Mid-boss: Super Hanny\n");
+				}
+				if (QD[1] == 15 && FA[261] >= 15)
+				{
+					LOG("   Mid-boss: Shacho\n");
+				}
+				if (QD[1] == 20 && FA[261] >= 20)
+				{
+					LOG("   Mid-boss: Hexapillar\n");
+				}
+				if (QD[1] == 25 && FA[261] >= 25)
+				{
+					LOG("   Mid-boss: Schachmatt\n");
+				}
+				if (QD[1] == 30 && FA[261] >= 30)
+				{
+					LOG("   Mid-boss: The Invincible Iron Bird\n");
+				}
+				if (QD[1] == 35 && FA[261] >= 35 && FA[199] == 0)
+				{
+					LOG("   Mid-boss: Dark Rance\n");
+				}
+				if (QD[1] == 35 && FA[261] >= 35 && FA[199] == 1)
+				{
+					LOG("   Mid-boss: Splish-Splash\n");
+				}
+				if (QD[1] == 40 && FA[261] >= 40)
+				{
+					LOG("   Mid-boss: One-Fanged Puryo\n");
+				}
+				if (QD[1] == 45 && FA[261] >= 45)
+				{
+					LOG("   Mid-boss: Bishops\n");
+				}
+				if (QD[1] == 50 && FA[261] >= 50)
+				{
+					LOG("   Mid-boss: Destroyer\n");
+				}
+				if (QD[1] == 55 && FA[261] >= 55)
+				{
+					LOG("   Mid-boss: Pastel\n");
+				}
+				if (QD[1] == 60 && FA[261] >= 60)
+				{
+					LOG("   Mid-boss: Radish\n");
+				}
+				if (QD[1] == 65 && FA[261] >= 65)
+				{
+					LOG("   Mid-boss: Valkyrie\n");
+				}
+				‚q‚WƒLƒƒƒ‰”z’u(25, 41, 1);
+				if (QD[1] == 60)
+				{
+					ƒoƒxƒ‹^‚U‚O();
+				}
+				if (QD[1] == 70)
+				{
+					‚b‘Sˆõ•œ‹A();
+					FA[261] = 70;
+					ƒoƒxƒ‹^ƒAƒ€();
+					bre = ƒ{ƒXí“¬ˆ—(5000, 0, 430, 0, 0, 0, "");
+					if (bre == 2)
+					{
+						if (ƒNƒŠƒAŠm”F(Ÿiiq) == 0)
+						{
+							LOG("     Bummer... Am won.\n");
+							LOG("     You can choose to head straight for 65F to try again.\n");
+						}
+						return 2;
+					}
+					ƒoƒxƒ‹^ƒAƒ€^í“¬Œã(0);
+					ƒ‰ƒ“ƒX‚WƒGƒsƒ[ƒO‚a(0);
+					FA[201] = 1;
+					¡ƒ{ƒXŒ‚”j‹L˜^(332);
+					‚sƒGƒ“ƒhƒ[ƒ‹^‰Šú‰»();
+					‚q‚WƒGƒ“ƒfƒBƒ“ƒOƒ[ƒ‹();
+					LOG("\n");
+					LOG("     Congrats! You cleared Rance Quest Magnum!\n");
+					LOG("\n");
+					LOG("     Thanks for playing.\n");
+					LOG("     You can keep playing after this as if the final quest hasn't happened yet.\n");
+					LOG("@@ó‹µ‚ÅƒvƒŒƒC‚ğ‘±‚¯‚é–‚ªo—ˆ‚Ü‚·\n");
+					LOG("\n");
+					return 1;
+				}
+				return 0;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 185)
+	{
+		if (dd == 8)
+		{
+			Ÿ‚`‚` = 0;
+			lint iic = ‚b”Ô†æ“¾(51);
+			if (‚b‚r—L–³(iic, 461, 0) != 0)
+			{
+				Ÿ‚`‚` = 1;
+			}
+			if (Ÿ‚`‚` == 0)
+			{
+				Œõ‚éƒ`ƒ“ƒR(0);
+			}
+			if (Ÿ‚`‚` == 1)
+			{
+				Œõ‚éƒ`ƒ“ƒR^“û(0);
+			}
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(51);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 208)
+	{
+		if (dd == 8)
+		{
+			ŠëŒ¯‚ÈƒtƒFƒ‰ƒ`ƒI(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(50);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 209)
+	{
+		if (dd == 8)
+		{
+			–@‰¤ÜŸB(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(33);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 210)
+	{
+		if (dd == 8)
+		{
+			¹EÒ‚Æ‚µ‚Ä(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(35);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 24)
+	{
+		if (dd == 8)
+		{
+			ƒrƒXƒPƒbƒ^ƒT[ƒrƒX‚Q(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(68);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 148)
+	{
+		if (dd == 8)
+		{
+			”[“¤—‘Ì·‚è(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(45);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 149)
+	{
+		if (dd == 8)
+		{
+			ƒGƒŒƒmƒA^ƒGƒ(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(10);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 151)
+	{
+		if (dd == 8)
+		{
+			ŠZƒ‰ƒ\ƒEƒRƒE‚Å—V‚Ô(0);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 152)
+	{
+		if (dd == 8)
+		{
+			ŠZƒIƒ‹ƒKƒŠƒYƒ€‚Å—V‚Ô(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(39);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 150)
+	{
+		if (dd == 8)
+		{
+			ƒAƒCƒXƒtƒŒ[ƒ€‚Rl–º(0);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(31);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(59);
+			ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(14);
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 211)
+	{
+		if (dd == 8)
+		{
+			ƒTƒ“ƒ_[ƒNƒƒX(0);
+			if (ƒNƒŠƒAŠm”F(211) == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+			{
+				‚q‚WƒAƒCƒeƒ€æ“¾(324, 0);
+			}
+			if (ƒNƒŠƒAŠm”F(211) == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+			{
+				‚q‚WƒAƒCƒeƒ€æ“¾(326, 0);
+			}
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 215)
+	{
+		if (dd == 8)
+		{
+			ŒZ–…’B‚Ìˆê“ú();
+			return 1;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 155)
+	{
+		if (dd == 8)
+		{
+			EV("ƒtƒNƒ}ƒ“^”ƒ‚¢æ‚è", 0);
+			lint £”ƒ‚¢æ‚èŠz = 8000000;
+			ƒtƒNƒ}ƒ“^ƒvƒƒ[ƒO();
+			ƒ}ƒ’m¯•\¦‘I‘ğ(44);
+			ƒtƒNƒ}ƒ“^ƒvƒƒ[ƒO^‘±‚«();
+			if (‚o‚s‚`—L–³^ŒÅ—L(55) != 0)
+			{
+				lint iic = ‚b”Ô†æ“¾(55);
+				Ÿ‚`‚` = 500 - ‚b‚k‚u(iic, -1) * 8;
+				if (Ÿ‚`‚` < 5)
+				{
+					Ÿ‚`‚` = 5;
+				}
+				ƒtƒNƒ}ƒ“^ƒvƒƒ[ƒO^‘±‚«^ƒRƒpƒ“ƒhƒ“();
+				£”ƒ‚¢æ‚èŠz = Ÿ‚`‚` * 10000;
+			}
+			vl(2000, "");
+			'(Expensive sisters. Sisters, but expensive...' R;
+			' What should I do?)' B;
+			‘I‘ğ‰Šú();
+			‘I‘ğ_€–Ú’Ç‰Á(1, "30,000: buy one night", -1, -1, -1, "", -1);
+			‘I‘ğ_€–Ú’Ç‰Á(2, string3(£”ƒ‚¢æ‚èŠz) + ": buy", -1, -1, -1, "", -1);
+			‘I‘ğ_€–Ú’Ç‰Á(9, "Don't buy today", -1, -1, -1, "", -1);
+			rr = ‘I‘ğ_Às(false, 0, 0, false);
+			if (rr == 1)
+			{
+				if (Ÿ‹à < 30000)
+				{
+					ƒtƒNƒ}ƒ“^‹à‘«‚è‚È‚¢();
+					return 2;
+				}
+				‚¨‹àŒ¸‚Á‚½(30000);
+				ƒtƒNƒ}ƒ“^ˆê”Ó”ƒ‚¤();
+				FA[96]++;
+				FA[96]++;
+				return 1;
+			}
+			if (rr == 2)
+			{
+				if (Ÿ‹à < £”ƒ‚¢æ‚èŠz)
+				{
+					ƒtƒNƒ}ƒ“^‹à‘«‚è‚È‚¢();
+					return 2;
+				}
+				‚¨‹àŒ¸‚Á‚½(£”ƒ‚¢æ‚èŠz);
+				ƒtƒNƒ}ƒ“^”ƒ‚¢æ‚è(0);
+				return 1;
+			}
+			ƒtƒNƒ}ƒ“^”ƒ‚í‚È‚¢();
+			if (£”ƒ‚¢æ‚èŠz == 8000000)
+			{
+				LOG("\nTADA:\n           They're really stupidly pricey, huh?\n");
+				LOG("           This is just when you need that businesswoman.\n");
+				LOG("           Try again with her around.\n");
+				LOG("           Also, the higher her level is...\n");
+			}
+			return 2;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 181)
+	{
+		if (dd == 8)
+		{
+			ƒNƒO‚Ì‰–â‹@ŠB‚S(0);
+			return 1;
+		}
+	}
+	if (Ÿiiq == 154)
+	{
+		if (dd == 8)
+		{
+			ƒŠƒ‰ƒbƒNƒXƒoƒXƒg^ƒvƒƒ[ƒO();
+			if (‚b”Ô†æ“¾(72) != 0)
+			{
+				ƒŠƒ‰ƒbƒNƒXƒoƒXƒg^ƒGƒsƒ[ƒO();
+				return 1;
+			}
+			ƒŠƒ‰ƒbƒNƒXƒoƒXƒg^”pl();
+			return 2;
+		}
+		return 0;
+	}
+	if (Ÿiiq == 214)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(1);
+			Ÿ‚l‚`‚o–¼‘O = "Yomotsu Hirasaka 7F";
+			ƒNƒGƒXƒgŠî–{“o˜^(700, 32, 13);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 9, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(133, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(6, 6, 6);
+			if (no == 1)
+			{
+				‚l‚`‚o“Ç‚İ‚İ(no, 104, 0, 1, 0, 0, 3, 0, 3, 3);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 250, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 251, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 0, 0, 1);
+					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 0, 0, 1);
+				}
+			}
+			if (no == 5)
+			{
+				‚l‚`‚o“Ç‚İ‚İ(no, 302, 1, 0, 0, 0, 4, 0, 2, 3);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(12, 30, 1, 247, 0);
+					‚l‚cŒÅ’è(27, 24, 1, 248, 0);
+					‚l‚cŒÅ’è(26, 17, 1, 249, 0);
+					‚l‚cŒÅ’è(16, 27, 18, 20, 0);
+					‚l‚cŒÅ’è(37, 29, 8, 90, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			EV("‰©ò^ˆâ•iW‚Ü‚Á‚½", 0);
+			EV("‰©ò^Å‰‚Ìˆâ•i", 0);
+			‰©ò^ƒvƒƒ[ƒO();
+			‚p‚l“o˜^(5);
+			LOG("     Ran Nanjou was a character who appeared in Sengoku Rance.");
+			LOG("     She was Souun Houjou's childhood friend and they were getting along great until...\n");
+			LOG("     Well, Rance came along, and etc etc.\n");
+			LOG("     There was an apostle hiding inside her and she exploded and died.\n");
+			LOG("     She was cute and I really liked her, so I'm full of regrets, too.\n");
+			LOG("\n");
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (fg == 9)
+			{
+				QD[6] = 0;
+				if (‚h—L–³(247, 8, "") != 0)
+				{
+					QD[1] = 1;
+					QD[6]++;
+				}
+				if (‚h—L–³(248, 8, "") != 0)
+				{
+					QD[2] = 1;
+					QD[6]++;
+				}
+				if (‚h—L–³(249, 8, "") != 0)
+				{
+					QD[3] = 1;
+					QD[6]++;
+				}
+				if (‚h—L–³(250, 8, "") != 0)
+				{
+					QD[4] = 1;
+					QD[6]++;
+				}
+				if (‚h—L–³(251, 8, "") != 0)
+				{
+					QD[5] = 1;
+					QD[6]++;
+				}
+				if (QD[6] == 1)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+				}
+				if (QD[6] == 2)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+				}
+				if (QD[6] == 3)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+				}
+				if (QD[6] == 4)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(70);
+				}
+				if (QD[6] == 5)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				}
+				if (QD[1] == 1 && QD[2] == 1 && QD[3] == 1 && QD[4] == 1 && QD[5] == 1 && EV("‰©ò^ˆâ•iW‚Ü‚Á‚½", -2147483648) == false)
+				{
+					‰©ò^ˆâ•iW‚Ü‚Á‚½();
+					return 0;
+				}
+				if ((QD[1] == 1 || QD[2] == 1 || QD[3] == 1 || QD[4] == 1 || QD[5] == 1) && EV("‰©ò^Å‰‚Ìˆâ•i", -2147483648) == false)
+				{
+					‰©ò^Å‰‚Ìˆâ•i();
+					return 0;
+				}
+			}
+			if (no == 90)
+			{
+				if (QD[6] != 5)
+				{
+					‰©ò^‚¨“°^ğŒ–¢’B();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				‰©ò^‚¨“°^ğŒƒNƒŠƒA();
+				‘I‘ğ‰Šú();
+				‘I‘ğ_€–Ú’Ç‰Á(1, "Answer Ran Nanjou", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(2, "Answer Suzume", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(3, "Answer Lavender", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(4, "Answer Alaska Pollock", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(5, "Answer Hanako Kobayashi", -1, -1, -1, "", -1);
+				‘I‘ğ_€–Ú’Ç‰Á(9, "Answer Chinu Kobayakawa", -1, -1, -1, "", -1);
+				rr = ‘I‘ğ_Às(false, 0, 0, false);
+				if (rr == 1)
+				{
+					‰©ò^‚¨“°^—–‚ÆŒ¾‚¤();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 2;
+				}
+				if (rr == 2 || rr == 3 || rr == 4 || rr == 5)
+				{
+					‰©ò^‚¨“°^‚»‚êˆÈŠO‚Ì–¼();
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 2;
+				}
+				‰©ò^‚¨“°^‚¿‚Ê•œŠˆ();
+				return 1;
+			}
+			if (no == 20)
+			{
+				ŸŠïP^ƒCƒxƒ“ƒg‹­§ = 11;
+				bre = “Á’èí“¬ˆ—(4000, 473, 473, 473, 473, 473);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 9)
+				{
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				bre = “Á’èí“¬ˆ—(4000, 473, 473, 473, 473, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 9)
+				{
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				bre = “Á’èí“¬ˆ—(4000, 473, 473, 473, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 9)
+				{
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				bre = “Á’èí“¬ˆ—(4000, 0, 0, 0, 473, 473);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 9)
+				{
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				bre = “Á’èí“¬ˆ—(4000, 0, 473, 0, 0, 0);
+				if (bre == 2)
+				{
+					return 2;
+				}
+				if (bre == 9)
+				{
+					‚l‚c–ß‚µ();
+					‚q‚W–ß‚µ();
+					return 0;
+				}
+				return 0;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 227)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(11);
+			Ÿ‚l‚`‚o–¼‘O = "????";
+			ƒNƒGƒXƒgŠî–{“o˜^(500, 0, 6);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(85, 0, 0, 0, 0);
+			Ÿƒ‰ƒ“ƒ_ƒ€ƒGƒ“ƒJƒEƒ“ƒg—L–³ = 0;
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ = 1;
+			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+			if (no == 1)
+			{
+				‚l‚`‚o“Ç‚İ‚İ(no, 315, 0, 0, 0, 0, 0, 4, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(30, 14, 16, 1, 0);
+					‚l‚cŒÅ’è(37, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(37, 30, 16, 1, 0);
+					‚l‚cŒÅ’è(31, 36, 16, 1, 0);
+					‚l‚cŒÅ’è(18, 34, 16, 1, 0);
+					‚l‚cŒÅ’è(16, 19, 16, 1, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			FA[267] = 1;
+			‚p‚l“o˜^(1);
+			ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (no == 90)
+			{
+				bre = ƒ{ƒXí“¬ˆ—(8000, 0, 468, 0, 194, 194, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				return 1;
+			}
+			if (fg == 10)
+			{
+				int ra = RAND(4);
+				if (ra == 1)
+				{
+					bre = “Á’èí“¬ˆ—(3000, 358, 358, 358, 358, 358);
+				}
+				if (ra == 2)
+				{
+					bre = “Á’èí“¬ˆ—(4500, 0, 0, 0, 425, 425);
+				}
+				if (ra == 3)
+				{
+					bre = “Á’èí“¬ˆ—(9000, 0, 393, 0, 0, 0);
+				}
+				if (ra == 4)
+				{
+					bre = “Á’èí“¬ˆ—(3000, 202, 0, 202, 210, 206);
+				}
+				QD[1]++;
+				if (QD[1] == 1)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+				}
+				if (QD[1] == 2)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+				}
+				if (QD[1] == 3)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+				}
+				if (QD[1] >= 4 && QD[2] == 0)
+				{
+					QD[2] = 1;
+					‚l‚cŒÅ’è(25, 26, 18, 90, 0);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				}
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 228)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(11);
+			Ÿ‚l‚`‚o–¼‘O = "????";
+			ƒNƒGƒXƒgŠî–{“o˜^(500, 0, 6);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(85, 0, 0, 0, 0);
+			Ÿƒ‰ƒ“ƒ_ƒ€ƒGƒ“ƒJƒEƒ“ƒg—L–³ = 0;
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ = 1;
+			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+			if (no == 1)
+			{
+				‚l‚`‚o“Ç‚İ‚İ(no, 315, 0, 0, 0, 0, 0, 4, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(30, 14, 16, 1, 0);
+					‚l‚cŒÅ’è(37, 22, 16, 1, 0);
+					‚l‚cŒÅ’è(37, 30, 16, 1, 0);
+					‚l‚cŒÅ’è(31, 36, 16, 1, 0);
+					‚l‚cŒÅ’è(18, 34, 16, 1, 0);
+					‚l‚cŒÅ’è(16, 19, 16, 1, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			FA[267] = 1;
+			‚p‚l“o˜^(1);
+			ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(10);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (no == 90)
+			{
+				‚o‚s‚aƒJƒXƒ^ƒ€“o˜^("True Kaito", "", "", "", "");
+				bre = ƒ{ƒXí“¬ˆ—(8000, 0, 491, 0, 194, 194, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				return 1;
+			}
+			if (fg == 10)
+			{
+				int ra = RAND(4);
+				if (ra == 1)
+				{
+					bre = “Á’èí“¬ˆ—(3000, 393, 358, 393, 358, 358);
+				}
+				if (ra == 2)
+				{
+					bre = “Á’èí“¬ˆ—(4500, 0, 0, 0, 425, 425);
+				}
+				if (ra == 3)
+				{
+					bre = “Á’èí“¬ˆ—(9000, 0, 393, 0, 0, 0);
+				}
+				if (ra == 4)
+				{
+					bre = “Á’èí“¬ˆ—(3000, 202, 0, 202, 210, 206);
+				}
+				QD[1]++;
+				if (QD[1] == 1)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(20);
+				}
+				if (QD[1] == 2)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(40);
+				}
+				if (QD[1] == 3)
+				{
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(60);
+				}
+				if (QD[1] >= 4 && QD[2] == 0)
+				{
+					QD[2] = 1;
+					‚l‚cŒÅ’è(25, 26, 18, 90, 0);
+					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+				}
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 229)
+	{
+		if (dd == 7)
+		{
+			‚l‚`‚oŠî‘bŒ^“o˜^(16);
+			Ÿ‚l‚`‚o–¼‘O = "????";
+			ƒNƒGƒXƒgŠî–{“o˜^(500, 0, 3);
+			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
+			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
+			ƒ{[ƒiƒX“o˜^(0, 0, 0);
+			ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ = 1;
+			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
+			if (no == 1)
+			{
+				‚l‚`‚o“Ç‚İ‚İ(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
+				if (‚l[no].‰“o˜^ == 0)
+				{
+					‚l‚cŒÅ’è(25, 20, 18, 10, 0);
+				}
+			}
+			return 0;
+		}
+		if (dd == 8)
+		{
+			FA[267] = 1;
+			‚p‚l“o˜^(1);
+			ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
+			return 0;
+		}
+		if (dd == 9)
+		{
+			if (no == 10)
+			{
+				bre = ƒ{ƒXí“¬ˆ—(800, 201, 485, 201, 201, 201, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 201, 485, 201, 201, 201, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 183, 201, 183, 183, 183, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 183, 201, 183, 183, 183, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 204, 485, 204, 204, 204, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 204, 485, 204, 204, 204, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 176, 137, 176, 176, 176, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 176, 137, 176, 176, 176, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 171, 171, 171, 171, 171, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 171, 171, 171, 171, 171, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				bre = ƒ{ƒXí“¬ˆ—(800, 168, 485, 168, 168, 168, "‚Q”{‘Ì—Í");
+				if (bre == 2)
+				{
+					return 2;
+				}
+				return 1;
+			}
+			return Š„‚è‚İ‚Q(fg);
+		}
+		return 0;
+	}
+	if (Ÿiiq == 230)
+	{
+		if (dd == 8)
+		{
+			ƒAƒ€Qí();
+			return 1;
+		}
+		return 0;
+	}
+	return 0;
+}
+

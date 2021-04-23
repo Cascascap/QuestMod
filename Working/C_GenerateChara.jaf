@@ -1,0 +1,126 @@
+int Ｒ８キャラ生成(int nCharaNo)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	画面_クリア(true, true);
+	仮字枠非表示();
+	システム曲_再生();
+	T_GenerateChara sGenerateChara;
+	bool bRet = sGenerateChara.run(nCharaNo, 1);
+	_黒画面(1, 500);
+	画面_クリア(true, true);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	return bRet;
+}
+
+bool Ｒ８／台詞入力(int nCharaNo, string szComment, ref string szMessage)
+{
+	bool bOld = ビュー状態保存モード_ＯＮ();
+	T_GenerateChara sGenerateChara;
+	bool bRet = sGenerateChara.input(nCharaNo, 8901, szComment, szMessage);
+	if (!bOld)
+	{
+		ビュー状態保存モード_ＯＦＦ();
+	}
+	return bRet;
+}
+
+int キャラ生成_選択実行(int nID)
+{
+	T_GenerateSelect sSelect;
+	return sSelect.run(nID);
+}
+
+int キャラ生成_入力領域位置Ｘ(int nWidth)
+{
+	if (nWidth <= 0)
+	{
+		return 550;
+	}
+	if (nWidth > 431)
+	{
+		return (980 - nWidth) + 1;
+	}
+	return 550 + (431 - nWidth) / 2;
+}
+
+int キャラ生成_入力領域位置Ｙ(int nHeight)
+{
+	if (nHeight <= 0)
+	{
+		return 417;
+	}
+	return (710 - nHeight) + 1;
+}
+
+string キャラ生成_顔ＣＧフォルダ名()
+{
+	return セーブ_フォルダ名() + "\\" + "Face CG";
+}
+
+string キャラ生成_顔ＣＧファイル名(string szFileName)
+{
+	if (szFileName.Empty())
+	{
+		return "";
+	}
+	return キャラ生成_顔ＣＧフォルダ名() + "\\" + szFileName;
+}
+
+bool キャラ生成_顔ＣＧ複写()
+{
+	string szDstFolder = キャラ生成_顔ＣＧフォルダ名();
+	string szSrcFolder = ゲーム_顔ＣＧフォルダ名();
+	if (FileOperation.ExistFolder(szDstFolder))
+	{
+		return true;
+	}
+	array@string aszName;
+	if (!FileOperation.GetFileList(szSrcFolder, aszName))
+	{
+		system.MsgBox("Folder cannot be found.\n%s" % szSrcFolder);
+		return true;
+	}
+	int i = 0;
+	int cnt = aszName.Numof();
+	if (cnt <= 0)
+	{
+		system.MsgBox("Face CG cannot be found.\n%s" % szSrcFolder);
+		return true;
+	}
+	if (!FileOperation.CreateFolder(szDstFolder))
+	{
+		system.MsgBox("Failed to create folder.\n%s" % szDstFolder);
+		return false;
+	}
+	bool bRet = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		string szDstName = szDstFolder + "\\" + aszName[i];
+		string szSrcName = szSrcFolder + "\\" + aszName[i];
+		if (FileOperation.CopyFile(szDstName, szSrcName))
+		{
+			bRet = true;
+		}
+		else
+		{
+			system.MsgBox("Failed to copy file.\nCopy original: %s\nCopy destination: %s" % szSrcName % szDstName);
+		}
+	}
+	return bRet;
+}
+
+string ゲーム_顔ＣＧフォルダ名()
+{
+	return ゲーム_フォルダ名() + "\\" + "Face CG";
+}
+
+string ゲーム_フォルダ名()
+{
+	string szName = "";
+	SystemService.GetGameFolderPath(szName);
+	return szName;
+}
+

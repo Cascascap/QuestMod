@@ -1,0 +1,228 @@
+void CBillboard::Align()
+{
+	if (this.m_nCgNo > 0)
+	{
+		this.SetPos(this.m_fX, ÇRÇcÉ}ÉbÉv_çÇÇ≥(this.m_fX, this.m_fZ), this.m_fZ);
+	}
+}
+
+void CBillboard::SetPos(float fX, float fY, float fZ)
+{
+	this.m_fX = fX;
+	this.m_fY = fY;
+	this.m_fZ = fZ;
+	this.m_Instance.SetPos(fX, fY, fZ);
+}
+
+bool CBillboard::SetDraw(bool bFlag)
+{
+	return this.m_Instance.SetDraw(bFlag);
+}
+
+bool CBillboard::SetFPS(float fFPS)
+{
+	return this.m_Instance.SetFPS(fFPS);
+}
+
+bool CBillboard::SetDrawType(int nDrawType)
+{
+	return this.m_Instance.SetDrawType(nDrawType);
+}
+
+bool CBillboard::SetSoftFogEdgeLength(float fLength)
+{
+	return this.m_Instance.SetSoftFogEdgeLength(fLength);
+}
+
+int CBillboard::GetMapX()
+{
+	return this.m_nMapX;
+}
+
+int CBillboard::GetMapZ()
+{
+	return this.m_nMapZ;
+}
+
+float CBillboard::GetHoseiX()
+{
+	return this.m_fHoseiX;
+}
+
+float CBillboard::GetHoseiY()
+{
+	return this.m_fHoseiY;
+}
+
+float CBillboard::GetHoseiZ()
+{
+	return this.m_fHoseiZ;
+}
+
+float CBillboard::GetPosX()
+{
+	return this.m_fX;
+}
+
+float CBillboard::GetPosY()
+{
+	return this.m_fY;
+}
+
+float CBillboard::GetPosZ()
+{
+	return this.m_fZ;
+}
+
+bool CBillboard::GetDraw()
+{
+	return this.m_Instance.GetDraw();
+}
+
+float CBillboard::GetFPS()
+{
+	return this.m_Instance.GetFPS();
+}
+
+int CBillboard::GetMotionState()
+{
+	return this.m_Instance.GetMotionState();
+}
+
+float CBillboard::GetMotionFrame()
+{
+	return this.m_Instance.GetMotionFrame();
+}
+
+float CBillboard::GetSoftFogEdgeLength()
+{
+	return this.m_Instance.GetSoftFogEdgeLength();
+}
+
+CBillboard::CBillboard()
+{
+	this.Clear();
+}
+
+CBillboard::~CBillboard()
+{
+	this.Release();
+}
+
+void CBillboard::Clear()
+{
+	this.m_nMapX = 0;
+	this.m_nMapZ = 0;
+	this.m_fHoseiX = 0.0;
+	this.m_fHoseiY = 0.0;
+	this.m_fHoseiZ = 0.0;
+	this.m_fX = 0.0;
+	this.m_fY = 0.0;
+	this.m_fZ = 0.0;
+	this.m_nCgNo = 0;
+}
+
+bool CBillboard::Create(ref CReignPlugin rfPlugin)
+{
+	if (rfPlugin === NULL)
+	{
+		return false;
+	}
+	this.m_Instance.Create(rfPlugin.GetPlugin());
+	this.m_Instance.SetType(3);
+	this.m_Instance.SetDrawShadow(false);
+	this.m_Instance.SetDrawMakeShadow(false);
+	this.m_Instance.SetDrawBump(false);
+	return true;
+}
+
+void CBillboard::Release()
+{
+	this.m_Instance.Release();
+	this.Clear();
+}
+
+bool CBillboard::Set(int nCgNo, int nNumof, bool bFlag)
+{
+	if (nCgNo <= 0)
+	{
+		return false;
+	}
+	if (nCgNo != this.m_nCgNo)
+	{
+		this.m_Instance.SetMotionFrameRange(nCgNo, nCgNo + nNumof);
+		this.m_Instance.SetMotionLoopFrameRange(nCgNo, nCgNo + nNumof);
+		this.m_nCgNo = nCgNo;
+	}
+	this.m_Instance.SetDraw(bFlag);
+	this.m_Instance.SetMotionState(0);
+	this.m_Instance.SetMotionFrame(nCgNo);
+	return true;
+}
+
+void CBillboard::SetMotionState(int nState)
+{
+	this.m_Instance.SetMotionState(nState);
+}
+
+void CBillboard::SetMotionFrameRange(float fBeginFrame, float fEndFrame)
+{
+	this.m_Instance.SetMotionFrameRange(fBeginFrame, fEndFrame);
+	ÇRÇcÉ}ÉbÉv_ÉçÅ[Éhë“Çø(-1);
+}
+
+void CBillboard::SetMotionFrame(float fFrame)
+{
+	this.m_Instance.SetMotionFrame(fFrame);
+}
+
+void CBillboard::SetMotionLoopFrameRange(float fBeginFrame, float fEndFrame)
+{
+	this.m_Instance.SetMotionLoopFrameRange(fBeginFrame, fEndFrame);
+	ÇRÇcÉ}ÉbÉv_ÉçÅ[Éhë“Çø(-1);
+}
+
+void CBillboard::SetMapPos(int nX, int nZ)
+{
+	float fX = 0.0;
+	float fY = 0.0;
+	float fZ = 0.0;
+	this.m_nMapX = nX;
+	this.m_nMapZ = nZ;
+	ÇRÇcÉ}ÉbÉv_ïœä∑_à íuÅÑç¿ïW(fX, fZ, nX, nZ);
+	fZ -= 1.0;
+	this.m_fX = fX + this.m_fHoseiX;
+	this.m_fY = ÇRÇcÉ}ÉbÉv_çÇÇ≥(fX, fZ) + this.m_fHoseiY;
+	this.m_fZ = fZ + this.m_fHoseiZ;
+	this.m_Instance.SetPos(this.m_fX, this.m_fY, this.m_fZ);
+}
+
+void CBillboard::SetSize(float fSize)
+{
+	float fAspect = 1.0;
+	float fWidth = fSize * 2.0;
+	float fHeight = fWidth * fAspect;
+	this.m_Instance.SetVertexPos(0, -fWidth, fHeight * 2.0, 0.0);
+	this.m_Instance.SetVertexPos(1, fWidth, fHeight * 2.0, 0.0);
+	this.m_Instance.SetVertexPos(2, -fWidth, 0.0, 0.0);
+	this.m_Instance.SetVertexPos(3, fWidth, 0.0, 0.0);
+}
+
+void CBillboard::SetHoseiX(float fHoseiX)
+{
+	this.m_fHoseiX = fHoseiX;
+	this.SetMapPos(this.m_nMapX, this.m_nMapZ);
+}
+
+void CBillboard::SetHoseiY(float fHoseiY)
+{
+	this.m_fHoseiY = fHoseiY;
+	this.SetMapPos(this.m_nMapX, this.m_nMapZ);
+}
+
+void CBillboard::SetHoseiZ(float fHoseiZ)
+{
+	this.m_fHoseiZ = fHoseiZ;
+	this.SetMapPos(this.m_nMapX, this.m_nMapZ);
+}
+

@@ -1,0 +1,8 @@
+void アリスロゴ()
+{
+	画面_クリア(true, true);
+	仮字枠非表示();
+	T_AliceLogo sLogo;
+	sLogo.run();
+}
+

@@ -1,0 +1,30 @@
+void リザルト鑑定_実行()
+{
+	g_sResultItem.run(9001);
+}
+
+int リザルト鑑定_上矢印(int nID)
+{
+	return g_sResultItem.moveUp(nID);
+}
+
+int リザルト鑑定_下矢印(int nID)
+{
+	return g_sResultItem.moveDown(nID);
+}
+
+int リザルト鑑定_左矢印(int nID)
+{
+	return g_sResultItem.moveLeft(nID);
+}
+
+int リザルト鑑定_右矢印(int nID)
+{
+	return g_sResultItem.moveRight(nID);
+}
+
+void リザルト鑑定_選択設定(int nID, bool bSelect)
+{
+	g_sResultItem.setSelect(nID, bSelect);
+}
+

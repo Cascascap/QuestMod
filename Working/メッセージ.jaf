@@ -1,0 +1,145 @@
+void セリフ(int nFaceCgNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得(nFaceCgNo);
+	}
+	メッセージ_枠表示(1, nFaceCgNo, szName, true);
+}
+
+void セリフ２(int nFaceCgNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得(nFaceCgNo);
+	}
+	メッセージ_枠表示(1, nFaceCgNo, szName, false);
+}
+
+void 思考(int nFaceCgNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得(nFaceCgNo);
+	}
+	メッセージ_枠表示(2, nFaceCgNo, szName, true);
+}
+
+void 思考２(int nFaceCgNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得(nFaceCgNo);
+	}
+	メッセージ_枠表示(2, nFaceCgNo, szName, false);
+}
+
+void ト書き()
+{
+	メッセージ_枠表示(3, 0, "", false);
+}
+
+void ト書き_paper()
+{
+	メッセージ_枠表示(4, 0, "", false);
+}
+
+void セリフＥ(int nFaceCgNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得(nFaceCgNo);
+	}
+	メッセージ_枠表示(6, nFaceCgNo, szName, true);
+}
+
+void 思考Ｅ(int nFaceCgNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得(nFaceCgNo);
+	}
+	メッセージ_枠表示(7, nFaceCgNo, szName, true);
+}
+
+void ト書きＥ()
+{
+	メッセージ_枠表示(8, 0, "", false);
+}
+
+void セリフＦ(int nCharaNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得Ｆ(nCharaNo);
+	}
+	メッセージ_枠表示Ｆ(1, nCharaNo, szName, true);
+}
+
+void セリフ２Ｆ(int nCharaNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得Ｆ(nCharaNo);
+	}
+	メッセージ_枠表示Ｆ(1, nCharaNo, szName, false);
+}
+
+void 思考Ｆ(int nCharaNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得Ｆ(nCharaNo);
+	}
+	メッセージ_枠表示Ｆ(2, nCharaNo, szName, true);
+}
+
+void 思考２Ｆ(int nCharaNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得Ｆ(nCharaNo);
+	}
+	メッセージ_枠表示Ｆ(2, nCharaNo, szName, false);
+}
+
+void セリフＥＦ(int nCharaNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得Ｆ(nCharaNo);
+	}
+	メッセージ_枠表示Ｆ(6, nCharaNo, szName, true);
+}
+
+void 思考ＥＦ(int nCharaNo, string szName)
+{
+	if (szName.Empty())
+	{
+		szName = 名札文字取得Ｆ(nCharaNo);
+	}
+	メッセージ_枠表示Ｆ(7, nCharaNo, szName, true);
+}
+
+void 枠消去()
+{
+	メッセージ_枠消去();
+	顔クリア();
+	UPDATE(true);
+}
+
+void 枠非表示()
+{
+	メッセージ枠_退避();
+}
+
+void 枠再表示()
+{
+	メッセージ枠_復元();
+}
+
+void 枠クリア()
+{
+	メッセージ_枠消去();
+}
+

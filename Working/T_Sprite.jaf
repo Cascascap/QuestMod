@@ -1,0 +1,978 @@
+void T_Sprite::setCgNo(int nCgNo)
+{
+	this.m_nCgNo = nCgNo;
+}
+
+int T_Sprite::getSpNo()
+{
+	return this.m_nSpNo;
+}
+
+int T_Sprite::getCgNo()
+{
+	return this.m_nCgNo;
+}
+
+int T_Sprite::getAlpha()
+{
+	return this.m_nAlpha;
+}
+
+bool T_Sprite::isCreated()
+{
+	return this.m_nSpNo > 0;
+}
+
+bool T_Sprite::suspend()
+{
+	return this.m_nSpNo > 0 ? AFL_Sprite_Suspend(this.m_nSpNo) : 0;
+}
+
+bool T_Sprite::resume()
+{
+	return this.m_nSpNo > 0 ? AFL_Sprite_Resume(this.m_nSpNo) : 0;
+}
+
+bool T_Sprite::isSuspend()
+{
+	return this.m_nSpNo > 0 ? AFL_Sprite_IsSuspend(this.m_nSpNo) : 0;
+}
+
+T_Sprite::T_Sprite()
+{
+	this.clear();
+}
+
+T_Sprite::~T_Sprite()
+{
+	this.delete();
+}
+
+int T_Sprite::setCg(int nCgNo)
+{
+	if (this.m_nSpNo > 0 && nCgNo > 0 && nCgNo == this.m_nCgNo)
+	{
+		return 0;
+	}
+	this.delete();
+	if (!ＣＧ_あり(nCgNo))
+	{
+		return -1;
+	}
+	int nSpNo = スプライト_番号();
+	if (!ChipmunkSpriteEngine.SP_SetCG(nSpNo, "%d" % nCgNo))
+	{
+		return -1;
+	}
+	this.m_nSpNo = nSpNo;
+	this.m_nCgNo = nCgNo;
+	this.setShow(0);
+	return nSpNo;
+}
+
+int T_Sprite::setCg2(string cgName)
+{
+	if (this.m_nSpNo > 0 && this.m_nCgNo == -2)
+	{
+		return 0;
+	}
+	this.delete();
+	int nSpNo = スプライト_番号();
+	if (!ChipmunkSpriteEngine.SP_SetCG(nSpNo, cgName))
+	{
+		return -1;
+	}
+	this.m_nSpNo = nSpNo;
+	this.m_nCgNo = -2;
+	this.setShow(0);
+	return nSpNo;
+}
+
+int T_Sprite::setCgFromFile(string pIStringFileName)
+{
+	this.delete();
+	int nSpNo = スプライト_番号();
+	if (!ChipmunkSpriteEngine.SP_SetCGFromFile(nSpNo, pIStringFileName))
+	{
+		return 0;
+	}
+	this.m_nSpNo = nSpNo;
+	this.setShow(0);
+	return 1;
+}
+
+int T_Sprite::saveCg(string pIStringFileName)
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SaveCG(this.m_nSpNo, pIStringFileName);
+}
+
+int T_Sprite::create(int nWidth, int nHeight, int nR, int nG, int nB, int nRate)
+{
+	this.delete();
+	if (!this.normalizeSize(nWidth, nHeight))
+	{
+		return 0;
+	}
+	色_補正(nR, nG, nB);
+	α値_補正(nRate);
+	int nSpNo = スプライト_番号();
+	if (!ChipmunkSpriteEngine.SP_Create(nSpNo, nWidth, nHeight, nR, nG, nB, nRate))
+	{
+		return 0;
+	}
+	this.m_nSpNo = nSpNo;
+	this.m_nR = nR;
+	this.m_nG = nG;
+	this.m_nB = nB;
+	this.m_nAlpha = nRate;
+	this.setShow(0);
+	return 1;
+}
+
+int T_Sprite::createPixelOnly(int nWidth, int nHeight)
+{
+	this.delete();
+	if (!this.normalizeSize(nWidth, nHeight))
+	{
+		return 0;
+	}
+	int nSpNo = スプライト_番号();
+	if (!ChipmunkSpriteEngine.SP_CreatePixelOnly(nSpNo, nWidth, nHeight))
+	{
+		return 0;
+	}
+	this.m_nSpNo = nSpNo;
+	this.m_nAlpha = -1;
+	this.setShow(0);
+	return 1;
+}
+
+int T_Sprite::createCustom()
+{
+	this.delete();
+	int nSpNo = スプライト_番号();
+	if (!ChipmunkSpriteEngine.SP_CreateCustom(nSpNo))
+	{
+		return 0;
+	}
+	this.m_nSpNo = nSpNo;
+	return 1;
+}
+
+int T_Sprite::delete()
+{
+	int nRet = 1;
+	if (this.m_nSpNo > 0)
+	{
+		nRet = ChipmunkSpriteEngine.SP_Delete(this.m_nSpNo);
+	}
+	this.clear();
+	return nRet;
+}
+
+int T_Sprite::setPos(int nX, int nY)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SetPos(this.m_nSpNo, nX, nY);
+}
+
+int T_Sprite::setPosRB(int nX, int nY)
+{
+	return this.setPos((nX - this.getWidth()) + 1, (nY - this.getHeight()) + 1);
+}
+
+int T_Sprite::setPosCenter()
+{
+	return this.setPos((1024 - this.getWidth()) / 2, (768 - this.getHeight()) / 2);
+}
+
+int T_Sprite::setX(int nX)
+{
+	this.m_nX = nX;
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SetX(this.m_nSpNo, nX);
+}
+
+int T_Sprite::setY(int nY)
+{
+	this.m_nY = nY;
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SetY(this.m_nSpNo, nY);
+}
+
+int T_Sprite::setZ(int nZ)
+{
+	this.m_nZ = nZ < 0 ? スプライト_Ｚ順序最大() : nZ;
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SetZ(this.m_nSpNo, this.m_nZ);
+}
+
+int T_Sprite::setShow(int nShow)
+{
+	this.m_bShow = nShow;
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SetShow(this.m_nSpNo, nShow);
+}
+
+int T_Sprite::setBlendRate(int nBlendRate)
+{
+	α値_補正(nBlendRate);
+	this.m_nBlendRate = nBlendRate;
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SetBlendRate(this.m_nSpNo, nBlendRate);
+}
+
+int T_Sprite::setDrawMethod(int nMethod)
+{
+	this.m_nDrawMethod = nMethod;
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_SetDrawMethod(this.m_nSpNo, nMethod);
+}
+
+bool T_Sprite::setSurfaceArea(int nX, int nY, int nWidth, int nHeight)
+{
+	if (this.m_nSpNo < 1)
+	{
+		return false;
+	}
+	int nW = this.getWidth();
+	int nH = this.getHeight();
+	if (nWidth < 0 || nWidth > nW)
+	{
+		nWidth = nW;
+	}
+	if (nHeight < 0 || nHeight > nH)
+	{
+		nHeight = nH;
+	}
+	return ChipmunkSpriteEngine.SP_SetSurfaceArea(this.m_nSpNo, nX, nY, nWidth, nHeight);
+}
+
+int T_Sprite::existAlpha()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_ExistAlpha(this.m_nSpNo);
+}
+
+int T_Sprite::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_Sprite::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_Sprite::getWidth()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_GetWidth(this.m_nSpNo);
+}
+
+int T_Sprite::getHeight()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_GetHeight(this.m_nSpNo);
+}
+
+int T_Sprite::getZ()
+{
+	return this.m_nZ;
+}
+
+bool T_Sprite::getShow()
+{
+	return this.m_bShow;
+}
+
+int T_Sprite::getBlendRate()
+{
+	return this.m_nBlendRate;
+}
+
+int T_Sprite::getDrawMethod()
+{
+	return this.m_nDrawMethod;
+}
+
+bool T_Sprite::getSurfaceArea(ref int nX, ref int nY, ref int nWidth, ref int nHeight)
+{
+	if (nX === NULL || nY === NULL || nWidth === NULL || nHeight === NULL)
+	{
+		return false;
+	}
+	if (this.m_nSpNo < 1)
+	{
+		return false;
+	}
+	return ChipmunkSpriteEngine.SP_GetSurfaceArea(this.m_nSpNo, nX, nY, nWidth, nHeight);
+}
+
+int T_Sprite::isPtIn(int nX, int nY)
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_IsPtIn(this.m_nSpNo, nX, nY);
+}
+
+int T_Sprite::isPtInRect(int nX, int nY)
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	return ChipmunkSpriteEngine.SP_IsPtInRect(this.m_nSpNo, nX, nY);
+}
+
+void T_Sprite::clear()
+{
+	this.m_nSpNo = 0;
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nZ = 0;
+	this.m_bShow = false;
+	this.m_nBlendRate = 255;
+	this.m_nDrawMethod = 0;
+	this.m_nCgNo = 0;
+	this.m_nR = 0;
+	this.m_nG = 0;
+	this.m_nB = 0;
+	this.m_nAlpha = 0;
+	this.m_nCoverColorR = -1;
+	this.m_nCoverColorG = -1;
+	this.m_nCoverColorB = -1;
+	this.m_nCoverRate = -1;
+}
+
+bool T_Sprite::stretchCg(int nCgNo, int nWidth, int nHeight)
+{
+	T_Sprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	if (spWork.getWidth() != nWidth || spWork.getHeight() != nHeight)
+	{
+		this.copyStretch(nWidth, nHeight, spWork);
+	}
+	else
+	{
+		this.attach(spWork.detach());
+	}
+	this.m_nCgNo = nCgNo;
+	return true;
+}
+
+bool T_Sprite::copy(ref T_Sprite spSrc, bool bCopyState)
+{
+	if (!スプライト_有効(spSrc))
+	{
+		return false;
+	}
+	int nWidth = spSrc.getWidth();
+	int nHeight = spSrc.getHeight();
+	if (spSrc.existAlpha())
+	{
+		this.create(nWidth, nHeight, 0, 0, 0, 0);
+	}
+	else
+	{
+		this.createPixelOnly(nWidth, nHeight);
+	}
+	this.copyCg(0, 0, spSrc, 0, 0, nWidth, nHeight);
+	this.m_nCgNo = spSrc.getCgNo();
+	this.m_nAlpha = spSrc.getAlpha();
+	spSrc.getColor(this.m_nR, this.m_nG, this.m_nB);
+	if (bCopyState)
+	{
+		this.setPos(spSrc.getPosX(), spSrc.getPosY());
+		this.setZ(spSrc.getZ());
+		this.setShow(spSrc.getShow());
+		this.setBlendRate(spSrc.getBlendRate());
+		this.setDrawMethod(spSrc.getDrawMethod());
+	}
+	return true;
+}
+
+void T_Sprite::copyStretch(int nWidth, int nHeight, ref T_Sprite spSrc)
+{
+	if (!スプライト_有効(spSrc))
+	{
+		return;
+	}
+	int nSrcW = spSrc.getWidth();
+	int nSrcH = spSrc.getHeight();
+	bool bAlpha = spSrc.existAlpha();
+	if (nSrcW == nWidth && nSrcH == nHeight)
+	{
+		this.copy(spSrc, false);
+		return;
+	}
+	int nPerW = ％計算(nSrcW, nWidth);
+	int nPerH = ％計算(nSrcH, nHeight);
+	int nPer = 0;
+	int nW = 0;
+	int nH = 0;
+	T_Sprite spWork;
+	if (nPerW > nPerH)
+	{
+		nPer = nPerW;
+		nW = nWidth;
+		nH = ％数値(nSrcH, nPer);
+		if (nH < nHeight)
+		{
+			nH = nHeight;
+		}
+	}
+	else
+	{
+		nPer = nPerH;
+		nH = nHeight;
+		nW = ％数値(nSrcW, nPer);
+		if (nW < nWidth)
+		{
+			nW = nWidth;
+		}
+	}
+	if (bAlpha)
+	{
+		spWork.create(nW, nH, 0, 0, 0, 0);
+	}
+	else
+	{
+		spWork.createPixelOnly(nW, nH);
+	}
+	if (nPer == 100)
+	{
+		int nX = (nSrcW - nW) / 2;
+		int nY = (nSrcH - nH) / 2;
+		spWork.copyCg(0, 0, spSrc, nX, nY, nW, nH);
+		this.attach(spWork.detach());
+		return;
+	}
+	if (nPer > 100)
+	{
+		drawGraph_CopyStretchInterp(spWork, 0, 0, nW, nH, spSrc, 0, 0, nSrcW, nSrcH);
+		drawGraph_CopyStretchAMapInterp(spWork, 0, 0, nW, nH, spSrc, 0, 0, nSrcW, nSrcH);
+	}
+	else
+	{
+		drawGraph_CopyReduce(spWork, 0, 0, nW, nH, spSrc, 0, 0, nSrcW, nSrcH);
+		drawGraph_CopyReduceAMap(spWork, 0, 0, nW, nH, spSrc, 0, 0, nSrcW, nSrcH);
+	}
+	int nX = (nW - nWidth) / 2;
+	int nY = (nH - nHeight) / 2;
+	if (bAlpha)
+	{
+		this.create(nWidth, nHeight, 0, 0, 0, 0);
+	}
+	else
+	{
+		this.createPixelOnly(nWidth, nHeight);
+	}
+	this.copyCg(0, 0, spWork, nX, nY, nWidth, nHeight);
+	spWork.delete();
+}
+
+void T_Sprite::copyReverseLR(ref T_Sprite spSrc)
+{
+	if (!スプライト_有効(spSrc))
+	{
+		return;
+	}
+	int nW = spSrc.getWidth();
+	int nH = spSrc.getHeight();
+	bool bAlpha = spSrc.existAlpha();
+	if (bAlpha)
+	{
+		this.create(nW, nH, 0, 0, 0, 0);
+	}
+	else
+	{
+		this.createPixelOnly(nW, nH);
+	}
+	drawGraph_CopyReverseLR(this, 0, 0, spSrc, 0, 0, nW, nH);
+	drawGraph_CopyReverseAMapLR(this, 0, 0, spSrc, 0, 0, nW, nH);
+}
+
+void T_Sprite::copyReverseUD(ref T_Sprite spSrc)
+{
+	if (!スプライト_有効(spSrc))
+	{
+		return;
+	}
+	int nW = spSrc.getWidth();
+	int nH = spSrc.getHeight();
+	bool bAlpha = spSrc.existAlpha();
+	if (bAlpha)
+	{
+		this.create(nW, nH, 0, 0, 0, 0);
+	}
+	else
+	{
+		this.createPixelOnly(nW, nH);
+	}
+	drawGraph_CopyReverseUD(this, 0, 0, spSrc, 0, 0, nW, nH);
+	drawGraph_CopyReverseAMapUD(this, 0, 0, spSrc, 0, 0, nW, nH);
+}
+
+void T_Sprite::copyRotZoom(ref T_Sprite spSrc, float fRotate, float fMag)
+{
+	if (!スプライト_有効(spSrc))
+	{
+		return;
+	}
+	int nW = spSrc.getWidth();
+	int nH = spSrc.getHeight();
+	int nSrc = spSrc.getSpNo();
+	bool bAlpha = spSrc.existAlpha();
+	if (bAlpha)
+	{
+		this.create(nW, nH, 0, 0, 0, 0);
+	}
+	else
+	{
+		this.createPixelOnly(nW, nH);
+	}
+	DrawGraph.CopyRotZoom(this.m_nSpNo, nSrc, 0, 0, nW, nH, fRotate, fMag);
+	if (bAlpha)
+	{
+		DrawGraph.CopyRotZoomAMap(this.m_nSpNo, nSrc, 0, 0, nW, nH, fRotate, fMag);
+	}
+}
+
+void T_Sprite::copyCg(int nDstX, int nDstY, ref T_Sprite spSrc, int nSrcX, int nSrcY, int nWidth, int nHeight)
+{
+	drawGraph_Copy(this, nDstX, nDstY, spSrc, nSrcX, nSrcY, nWidth, nHeight);
+	if (this.existAlpha())
+	{
+		if (spSrc.existAlpha())
+		{
+			drawGraph_CopyAMap(this, nDstX, nDstY, spSrc, nSrcX, nSrcY, nWidth, nHeight);
+		}
+		else
+		{
+			drawGraph_FillAMap(this, nDstX, nDstY, nWidth, nHeight, 255);
+		}
+	}
+}
+
+bool T_Sprite::copyToSprite(ref T_Sprite rfsDst, int nDstX, int nDstY, int nWidth, int nHeight, int nMode)
+{
+	if (!スプライト_有効(rfsDst))
+	{
+		return false;
+	}
+	int nW = nWidth < 0 ? this.getWidth() : nWidth;
+	int nH = nHeight < 0 ? this.getHeight() : nHeight;
+	int nAlpha = this.getBlendRate();
+	if (nMode == 1)
+	{
+		rfsDst.copyCg(nDstX, nDstY, this, 0, 0, nW, nH);
+		return true;
+	}
+	if (this.existAlpha())
+	{
+		if (nAlpha < 255)
+		{
+			drawGraph_BlendAMapAlpha(rfsDst, nDstX, nDstY, this, 0, 0, nW, nH, nAlpha);
+		}
+		else
+		{
+			drawGraph_BlendAMap(rfsDst, nDstX, nDstY, this, 0, 0, nW, nH);
+		}
+	}
+	else if (nAlpha < 255)
+	{
+		drawGraph_Blend(rfsDst, nDstX, nDstY, this, 0, 0, nW, nH, nAlpha);
+	}
+	else
+	{
+		drawGraph_Copy(rfsDst, nDstX, nDstY, this, 0, 0, nW, nH);
+	}
+	return true;
+}
+
+bool T_Sprite::blendCg(int nDstX, int nDstY, int nCgNo, int nAlpha)
+{
+	T_Sprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	if (spWork.existAlpha())
+	{
+		if (nAlpha < 255)
+		{
+			drawGraph_BlendAMapAlpha(this, nDstX, nDstY, spWork, 0, 0, nW, nH, nAlpha);
+		}
+		else
+		{
+			drawGraph_BlendAMap(this, nDstX, nDstY, spWork, 0, 0, nW, nH);
+		}
+	}
+	else if (nAlpha < 255)
+	{
+		drawGraph_Blend(this, nDstX, nDstY, spWork, 0, 0, nW, nH, nAlpha);
+	}
+	else
+	{
+		drawGraph_Copy(this, nDstX, nDstY, spWork, 0, 0, nW, nH);
+	}
+	spWork.delete();
+	return true;
+}
+
+bool T_Sprite::blendCgWidthAMap(int nDstX, int nDstY, int nCgNo)
+{
+	T_Sprite spWork;
+	if (spWork.setCg(nCgNo) < 0)
+	{
+		return false;
+	}
+	int nW = spWork.getWidth();
+	int nH = spWork.getHeight();
+	if (!spWork.existAlpha())
+	{
+		this.copyCg(nDstX, nDstY, spWork, 0, 0, nW, nH);
+	}
+	else
+	{
+		drawGraph_BlendAMap(this, nDstX, nDstY, spWork, 0, 0, nW, nH);
+		drawGraph_SpriteCopyAMap(this, nDstX, nDstY, spWork, 0, 0, nW, nH, 0);
+	}
+	spWork.delete();
+	return true;
+}
+
+bool T_Sprite::attach(int nSpNo)
+{
+	if (nSpNo < 1)
+	{
+		return false;
+	}
+	this.delete();
+	this.m_nSpNo = nSpNo;
+	this.m_nX = ChipmunkSpriteEngine.SP_GetPosX(nSpNo);
+	this.m_nY = ChipmunkSpriteEngine.SP_GetPosY(nSpNo);
+	this.m_nZ = ChipmunkSpriteEngine.SP_GetZ(nSpNo);
+	this.m_bShow = ChipmunkSpriteEngine.SP_GetShow(nSpNo);
+	this.m_nBlendRate = ChipmunkSpriteEngine.SP_GetBlendRate(nSpNo);
+	this.m_nDrawMethod = ChipmunkSpriteEngine.SP_GetDrawMethod(nSpNo);
+	this.m_nCgNo = 0;
+	this.m_nR = 0;
+	this.m_nG = 0;
+	this.m_nB = 0;
+	this.m_nAlpha = 0;
+	this.m_nCoverColorR = -1;
+	this.m_nCoverColorG = -1;
+	this.m_nCoverColorB = -1;
+	this.m_nCoverRate = -1;
+	return true;
+}
+
+int T_Sprite::detach()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	int nSpNo = this.m_nSpNo;
+	this.m_nSpNo = 0;
+	this.m_nCgNo = 0;
+	this.m_nR = 0;
+	this.m_nG = 0;
+	this.m_nB = 0;
+	this.m_nAlpha = 0;
+	this.m_nCoverColorR = -1;
+	this.m_nCoverColorG = -1;
+	this.m_nCoverColorB = -1;
+	this.m_nCoverRate = -1;
+	return nSpNo;
+}
+
+int T_Sprite::mouseSetPosCenter()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	T_Rect rcWork;
+	rcWork = this.getRect();
+	return rcWork.setMouseCenter();
+}
+
+int T_Sprite::mouseSetPosRB()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return 0;
+	}
+	T_Rect rcWork;
+	rcWork = this.getRect();
+	return rcWork.setMouseRB();
+}
+
+int T_Sprite::mouseIn()
+{
+	if (!this.existAlpha())
+	{
+		return this.mouseInRect();
+	}
+	int nX = 0;
+	int nY = 0;
+	if (!マウス_位置取得(nX, nY))
+	{
+		return 0;
+	}
+	return this.isPtIn(nX, nY);
+}
+
+int T_Sprite::mouseInRect()
+{
+	int nX = 0;
+	int nY = 0;
+	if (!マウス_位置取得(nX, nY))
+	{
+		return 0;
+	}
+	return this.isPtInRect(nX, nY);
+}
+
+bool T_Sprite::spriteInRect(ref T_Sprite rfsSp)
+{
+	if (!スプライト_有効(rfsSp))
+	{
+		return false;
+	}
+	T_Rect rcWork;
+	rcWork = this.getRect();
+	return rcWork.spriteInRect(rfsSp);
+}
+
+bool T_Sprite::spriteOverlap(ref T_Sprite rfsSp)
+{
+	if (!スプライト_有効(rfsSp))
+	{
+		return false;
+	}
+	T_Rect rcWork;
+	rcWork = this.getRect();
+	return rcWork.spriteOverlap(rfsSp);
+}
+
+void T_Sprite::blendBlack(int nRate)
+{
+	this.blendColor(0, 0, 0, nRate);
+}
+
+void T_Sprite::blendWhite(int nRate)
+{
+	this.blendColor(255, 255, 255, nRate);
+}
+
+void T_Sprite::blendColor(int nR, int nG, int nB, int nRate)
+{
+	drawGraph_FillAlphaColor(this, 0, 0, -1, -1, nR, nG, nB, nRate);
+}
+
+void T_Sprite::blendColorWidthAMap(int nR, int nG, int nB, int nRate)
+{
+	if (!this.existAlpha())
+	{
+		this.blendCg(nR, nG, nB, nRate);
+		return;
+	}
+	int nW = this.getWidth();
+	int nH = this.getHeight();
+	T_Sprite spWork;
+	spWork.create(nW, nH, nR, nG, nB, nRate);
+	drawGraph_BlendAMap(this, 0, 0, spWork, 0, 0, nW, nH);
+	drawGraph_AddDA_DAxSA(this, 0, 0, spWork, 0, 0, nW, nH);
+	spWork.delete();
+}
+
+void T_Sprite::coverColor3D(int nR, int nG, int nB, int nRate, bool bMask)
+{
+	if (this.m_nSpNo < 1)
+	{
+		return;
+	}
+	if (nR < 0 || nG < 0 || nB < 0 || nRate < 0)
+	{
+		AFL_Sprite_SetMultipleColor(this.m_nSpNo, 255, 255, 255);
+		AFL_Sprite_SetAddColor(this.m_nSpNo, 0, 0, 0, 0);
+		this.m_nCoverColorR = -1;
+		this.m_nCoverColorG = -1;
+		this.m_nCoverColorB = -1;
+		this.m_nCoverRate = -1;
+		return;
+	}
+	色_補正(nR, nG, nB);
+	α値_補正(nRate);
+	if (nR == this.m_nCoverColorR && nG == this.m_nCoverColorG && nB == this.m_nCoverColorB && nRate == this.m_nCoverRate)
+	{
+		return;
+	}
+	AFL_Sprite_SetMultipleColor(this.m_nSpNo, 255 - nRate, 255 - nRate, 255 - nRate);
+	AFL_Sprite_SetAddColor(this.m_nSpNo, (nR * nRate) / 255, (nG * nRate) / 255, (nB * nRate) / 255, bMask ? 0 : nRate);
+	this.m_nCoverColorR = nR;
+	this.m_nCoverColorG = nG;
+	this.m_nCoverColorB = nB;
+	this.m_nCoverRate = nRate;
+}
+
+void T_Sprite::fill(int nX, int nY, int nWidth, int nHeight, int nR, int nG, int nB, int nRate)
+{
+	drawGraph_Fill(this, nX, nY, nWidth, nHeight, nR, nG, nB);
+	if (this.existAlpha())
+	{
+		drawGraph_FillAMap(this, nX, nY, nWidth, nHeight, nRate);
+	}
+}
+
+void T_Sprite::drawRect(ref T_Rect rcDraw, int nR, int nG, int nB, int nRate)
+{
+	if (this.m_nSpNo < 1)
+	{
+		return;
+	}
+	if (rcDraw === NULL || rcDraw.empty())
+	{
+		return;
+	}
+	色_補正(nR, nG, nB);
+	α値_補正(nRate);
+	DrawGraph.DrawLine(this.m_nSpNo, rcDraw.m_nSx, rcDraw.m_nSy, rcDraw.m_nEx, rcDraw.m_nSy, nR, nG, nB);
+	DrawGraph.DrawLine(this.m_nSpNo, rcDraw.m_nEx, rcDraw.m_nSy, rcDraw.m_nEx, rcDraw.m_nEy, nR, nG, nB);
+	DrawGraph.DrawLine(this.m_nSpNo, rcDraw.m_nEx, rcDraw.m_nEy, rcDraw.m_nSx, rcDraw.m_nEy, nR, nG, nB);
+	DrawGraph.DrawLine(this.m_nSpNo, rcDraw.m_nSx, rcDraw.m_nEy, rcDraw.m_nSx, rcDraw.m_nSy, nR, nG, nB);
+	if (this.existAlpha())
+	{
+		DrawGraph.DrawLineToAMap(this.m_nSpNo, rcDraw.m_nSx, rcDraw.m_nSy, rcDraw.m_nEx, rcDraw.m_nSy, nRate);
+		DrawGraph.DrawLineToAMap(this.m_nSpNo, rcDraw.m_nEx, rcDraw.m_nSy, rcDraw.m_nEx, rcDraw.m_nEy, nRate);
+		DrawGraph.DrawLineToAMap(this.m_nSpNo, rcDraw.m_nEx, rcDraw.m_nEy, rcDraw.m_nSx, rcDraw.m_nEy, nRate);
+		DrawGraph.DrawLineToAMap(this.m_nSpNo, rcDraw.m_nSx, rcDraw.m_nEy, rcDraw.m_nSx, rcDraw.m_nSy, nRate);
+	}
+}
+
+void T_Sprite::reverseLR()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return;
+	}
+	int nW = this.getWidth();
+	int nH = this.getHeight();
+	bool bAlpha = this.existAlpha();
+	T_Sprite spWork;
+	if (bAlpha)
+	{
+		spWork.create(nW, nH, 0, 0, 0, 0);
+	}
+	else
+	{
+		spWork.createPixelOnly(nW, nH);
+	}
+	spWork.copyReverseLR(this);
+	this.copyCg(0, 0, spWork, 0, 0, nW, nH);
+}
+
+void T_Sprite::reverseUD()
+{
+	if (this.m_nSpNo < 1)
+	{
+		return;
+	}
+	int nW = this.getWidth();
+	int nH = this.getHeight();
+	bool bAlpha = this.existAlpha();
+	T_Sprite spWork;
+	if (bAlpha)
+	{
+		spWork.create(nW, nH, 0, 0, 0, 0);
+	}
+	else
+	{
+		spWork.createPixelOnly(nW, nH);
+	}
+	spWork.copyReverseUD(this);
+	this.copyCg(0, 0, spWork, 0, 0, nW, nH);
+}
+
+void T_Sprite::getColor(ref int nR, ref int nG, ref int nB)
+{
+	nR = this.m_nR;
+	nG = this.m_nG;
+	nB = this.m_nB;
+}
+
+T_Rect T_Sprite::getRect()
+{
+	T_Rect rcWork;
+	rcWork.set(this.m_nX, this.m_nY, this.getWidth(), this.getHeight());
+	return rcWork;
+}
+
+bool T_Sprite::normalizeSize(ref int nWidth, ref int nHeight)
+{
+	int nW = nWidth;
+	int nH = nHeight;
+	if (nW < 0)
+	{
+		nW = this.getWidth();
+	}
+	if (nH < 0)
+	{
+		nH = this.getHeight();
+	}
+	if (nW < 1 || nH < 1)
+	{
+		return false;
+	}
+	nWidth = nW;
+	nHeight = nH;
+	return true;
+}
+

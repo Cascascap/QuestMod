@@ -1,0 +1,696 @@
+int T_BattleNumber::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_BattleNumber::getPosX()
+{
+	return this.m_nX;
+}
+
+int T_BattleNumber::getPosY()
+{
+	return this.m_nY;
+}
+
+int T_BattleNumber::getZ()
+{
+	return this.m_nZ;
+}
+
+int T_BattleNumber::getWidth()
+{
+	return this.m_nWidth;
+}
+
+ref T_PartsFlash T_BattleNumber::getMiss()
+{
+	return this.m_sMiss;
+}
+
+T_BattleNumber::T_BattleNumber()
+{
+	this.clear();
+}
+
+T_BattleNumber::~T_BattleNumber()
+{
+	this.delete();
+}
+
+void T_BattleNumber::create(int nNo, int nWidth)
+{
+	this.delete();
+	this.createNumber(10107, this.m_aspNumber);
+	this.createNumber(10144, this.m_aspSmall);
+	this.createNumber(10146, this.m_aspLarge);
+	this.m_nNo = nNo;
+	this.m_nWidth = nWidth;
+}
+
+void T_BattleNumber::delete()
+{
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspNumber[i].delete();
+		this.m_aspSmall[i].delete();
+		this.m_aspLarge[i].delete();
+	}
+	this.m_sMiss.delete();
+	this.clear();
+}
+
+void T_BattleNumber::clear()
+{
+	this.m_nNo = -1;
+	this.m_nX = -1;
+	this.m_nY = -1;
+	this.m_nZ = -1;
+	this.m_nWidth = -1;
+	this.m_abNumberShow.Fill(0, this.m_abNumberShow.Numof(), 0);
+	this.animeClear();
+}
+
+void T_BattleNumber::setPos(int nX, int nY)
+{
+	this.m_nX = nX;
+	this.m_nY = nY;
+}
+
+void T_BattleNumber::setZ(int nZ)
+{
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspNumber[i].setZ((nZ + cnt) - i);
+		this.m_aspSmall[i].setZ((nZ + cnt) - i);
+		this.m_aspLarge[i].setZ((nZ + cnt) - i);
+	}
+	this.m_nZ = nZ;
+}
+
+void T_BattleNumber::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_aspNumber.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_aspNumber[i].setShow(bShow);
+		this.m_aspSmall[i].setShow(bShow);
+		this.m_aspLarge[i].setShow(bShow);
+	}
+}
+
+bool T_BattleNumber::animeStart(int nType, int nSize, int nValue)
+{
+	this.animeEnd();
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	int nCgNo = 0;
+	int nSpace = 0;
+	int nCount = 0;
+	int nWidth = 0;
+	ref array@T_Sprite aspNumber = NULL;
+	switch (nType)
+	{
+		case 1:
+			switch (nSize)
+			{
+				case 1:
+					nCgNo = 10144;
+					nSpace = 22;
+					aspNumber <- this.m_aspSmall;
+					break;
+				case 2:
+					nCgNo = 10146;
+					nSpace = 42;
+					aspNumber <- this.m_aspLarge;
+					break;
+				default:
+					nCgNo = 10107;
+					nSpace = 32;
+					aspNumber <- this.m_aspNumber;
+					break;
+			}
+			break;
+		case 2:
+			switch (nSize)
+			{
+				case 1:
+					nCgNo = 10145;
+					nSpace = 22;
+					aspNumber <- this.m_aspSmall;
+					break;
+				case 2:
+					nCgNo = 10147;
+					nSpace = 42;
+					aspNumber <- this.m_aspLarge;
+					break;
+				default:
+					nCgNo = 10109;
+					nSpace = 32;
+					aspNumber <- this.m_aspNumber;
+					break;
+			}
+			break;
+		case 3:
+			nCgNo = 10106;
+			nSpace = 32;
+			aspNumber <- this.m_aspNumber;
+			break;
+		case 9:
+			if (!this.startMiss(false))
+			{
+				return false;
+			}
+			this.m_nAnimeType = nType;
+			return true;
+		default:
+			return false;
+	}
+	nWidth = ”Žš‚b‚f_•(nCgNo);
+	if (nWidth <= 0)
+	{
+		return false;
+	}
+	nCount = this.copyNumber(nValue, nCgNo, aspNumber);
+	if (nCount <= 0)
+	{
+		return false;
+	}
+	int nW = nSpace * nCount + (nWidth - nSpace);
+	int nX = this.m_nX + (this.m_nWidth - nW) / 2;
+	if (nX < 0)
+	{
+		nX = 0;
+	}
+	else if (nX + nW > 1024)
+	{
+		nX = 1024 - nW;
+	}
+	this.m_nAnimeType = nType;
+	this.m_nAnimeX = nX;
+	this.m_nAnimeY = this.m_nY;
+	this.m_nAnimeCount = nCount;
+	this.m_nAnimeWidth = nSpace;
+	this.m_aspAnimeNumber <- aspNumber;
+	return true;
+}
+
+void T_BattleNumber::animeEnd()
+{
+	if (this.m_nAnimeType <= 0)
+	{
+		return;
+	}
+	this.setShow(false);
+	this.m_sMiss.delete();
+	this.animeClear();
+}
+
+void T_BattleNumber::animeClear()
+{
+	this.m_nAnimeType = 0;
+	this.m_nAnimeX = -1;
+	this.m_nAnimeY = -1;
+	this.m_nAnimeCount = -1;
+	this.m_nAnimeWidth = -1;
+	this.m_aspAnimeNumber <- NULL;
+}
+
+void T_BattleNumber::anime(int nSize1, int nSize2)
+{
+	if (this.m_aspAnimeNumber === NULL)
+	{
+		return;
+	}
+	switch (this.m_nAnimeType)
+	{
+		case 1:
+		case 2:
+		case 3:
+			break;
+		case 9:
+			this.m_sMiss.update();
+			return;
+		default:
+			return;
+	}
+	int i = 0;
+	int nX = this.m_nAnimeX;
+	for (i = 0; i < this.m_nAnimeCount; ++i)
+	{
+		ref T_Sprite rfsSp = this.m_aspAnimeNumber[i];
+		if (this.m_abNumberShow[i])
+		{
+			if (i % 2 == 0)
+			{
+				if (nSize1 < 100)
+				{
+					rfsSp.setShow(1);
+					rfsSp.setPos(nX, this.m_nAnimeY + nSize1);
+				}
+			}
+			else if (nSize2 < 100)
+			{
+				rfsSp.setShow(1);
+				rfsSp.setPos(nX, this.m_nAnimeY + nSize2);
+			}
+		}
+		nX += this.m_nAnimeWidth;
+	}
+}
+
+void T_BattleNumber::miss()
+{
+	if (!this.startMiss(true))
+	{
+		return;
+	}
+	this.m_sMiss.delete();
+}
+
+void T_BattleNumber::updateMiss()
+{
+	if (this.m_nAnimeType == 9)
+	{
+		this.m_sMiss.update();
+	}
+}
+
+bool T_BattleNumber::startMiss(bool bWait)
+{
+	this.m_sMiss.create(-1);
+	this.m_sMiss.setPos(this.m_nX, this.m_nY);
+	this.m_sMiss.setZ(this.m_nZ);
+	return this.m_sMiss.playFromFileName(‚e‚Œ‚‚“‚ˆƒtƒ@ƒCƒ‹–¼("‰ñ”ðI"), bWait, false);
+}
+
+bool T_BattleNumber::createNumber(int nCgNo, ref array@T_Sprite aspNumber)
+{
+	if (aspNumber === NULL)
+	{
+		return false;
+	}
+	int nW = ”Žš‚b‚f_•(nCgNo);
+	int nH = ”Žš‚b‚f_‚(nCgNo);
+	if (nW <= 0 || nH <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = aspNumber.Numof();
+	ref T_Sprite rfsSp;
+	for (i = 0; i < cnt; ++i)
+	{
+		rfsSp <- aspNumber[i];
+		rfsSp.create(nW, nH, 0, 0, 0, 0);
+	}
+	return true;
+}
+
+int T_BattleNumber::copyNumber(int nValue, int nCgNo, ref array@T_Sprite aspNumber)
+{
+	int i = 0;
+	int cnt = aspNumber.Numof();
+	string szText = ”¼Šp”Žš(nValue, -1, 0);
+	int cnt2 = szText.LengthByte();
+	if (cnt < cnt2)
+	{
+		szText = ”¼Šp”Žš‹l‚ß(9, cnt);
+		cnt2 = cnt;
+	}
+	this.m_abNumberShow.Fill(0, this.m_abNumberShow.Numof(), 0);
+	int nW = ”Žš‚b‚f_•(nCgNo);
+	int nH = ”Žš‚b‚f_‚(nCgNo);
+	for (i = 0; i < cnt2; ++i)
+	{
+		this.m_abNumberShow[i] = ”Žš‚b‚f_ƒRƒs[(aspNumber[i], 0, 0, nCgNo, szText[i], 0, 0, nW, nH);
+	}
+	return cnt2;
+}
+
+T_BattleNumberManager::T_BattleNumberManager()
+{
+	this.m_anSize[0] = 9999;
+	this.m_anSize[1] = 9999;
+	this.m_anSize[2] = 32;
+	this.m_anSize[3] = 24;
+	this.m_anSize[4] = 16;
+	this.m_anSize[5] = 8;
+	this.m_anSize[6] = 4;
+	this.m_anSize[7] = 0;
+	this.m_anSize[8] = 4;
+	this.m_anSize[9] = 8;
+	this.m_anSize[10] = 8;
+	this.m_anSize[11] = 4;
+	this.m_anSize[12] = 0;
+	this.m_anSize[13] = 4;
+	this.m_anSize[14] = 8;
+	this.m_anSize[15] = 8;
+	this.m_anSize[16] = 4;
+	this.m_anSize[17] = 2;
+	this.m_anSize[18] = 0;
+	this.m_anSize[19] = 0;
+	this.m_anSize[20] = 0;
+	this.m_anSize[21] = 0;
+	this.m_anSize[22] = 0;
+	this.m_anSize[23] = 0;
+}
+
+T_BattleNumberManager::~T_BattleNumberManager()
+{
+	this.delete();
+}
+
+void T_BattleNumberManager::create(int nZ)
+{
+	this.delete();
+	int i = 0;
+	int cnt = 0;
+	ref T_BattleNumber rfsNumber;
+	cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = í“¬”Ô†_–¡•û(i);
+		rfsNumber <- this.m_asChara[i];
+		rfsNumber.create(nNo, 98);
+		rfsNumber.setPos(í“¬–¡•û_Šç‚wŒvŽZ(i), í“¬–¡•û_Šç‚xŒvŽZ(i) + 58);
+		rfsNumber.setZ(nZ);
+	}
+	cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = í“¬”Ô†_“G(i);
+		if (nNo != 12 && !í“¬ƒf[ƒ^_—LŒø(nNo))
+		{
+			continue;
+		}
+		rfsNumber <- this.m_asMonster[i];
+		rfsNumber.create(nNo, 196);
+		rfsNumber.setPos(í“¬“G_ˆÊ’u‚w(nNo), í“¬“G_ˆÊ’u‚x(nNo) + 228);
+		rfsNumber.setZ(nZ);
+	}
+}
+
+void T_BattleNumberManager::delete()
+{
+	int i = 0;
+	int cnt = 0;
+	cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].delete();
+	}
+	cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMonster[i].delete();
+	}
+}
+
+void T_BattleNumberManager::damage(int nNo, int nDamage, int nSize, bool bCritical)
+{
+	ref T_BattleNumber rfsNumber = this.get(nNo);
+	if (rfsNumber === NULL)
+	{
+		return;
+	}
+	if (!rfsNumber.animeStart(bCritical ? 2 : 1, nSize, nDamage))
+	{
+		return;
+	}
+	this.anime(rfsNumber);
+	rfsNumber.animeEnd();
+}
+
+void T_BattleNumberManager::damageAllChara(ref array@int anNo, ref array@int anDamage, ref array@int anSize, ref array@bool abCritical)
+{
+	if (!this.damageStartAll(anNo, anDamage, anSize, abCritical, this.m_asChara))
+	{
+		return;
+	}
+	this.animeAll(anNo, this.m_asChara);
+	this.animeEndAll();
+}
+
+void T_BattleNumberManager::damageAllMonster(ref array@int anNo, ref array@int anDamage, ref array@int anSize, ref array@bool abCritical)
+{
+	if (!this.damageStartAll(anNo, anDamage, anSize, abCritical, this.m_asMonster))
+	{
+		return;
+	}
+	this.animeAll(anNo, this.m_asMonster);
+	this.animeEndAll();
+}
+
+void T_BattleNumberManager::heal(int nNo, int nHeal)
+{
+	ref T_BattleNumber rfsNumber = this.get(nNo);
+	if (rfsNumber === NULL)
+	{
+		return;
+	}
+	if (!rfsNumber.animeStart(3, 0, nHeal))
+	{
+		return;
+	}
+	this.anime(rfsNumber);
+	rfsNumber.animeEnd();
+}
+
+void T_BattleNumberManager::healAllChara(ref array@int anNo, ref array@int anHeal)
+{
+	if (!this.healStartAll(anNo, anHeal, this.m_asChara))
+	{
+		return;
+	}
+	this.animeAll(anNo, this.m_asChara);
+	this.animeEndAll();
+}
+
+void T_BattleNumberManager::healAllMonster(ref array@int anNo, ref array@int anHeal)
+{
+	if (!this.healStartAll(anNo, anHeal, this.m_asMonster))
+	{
+		return;
+	}
+	this.animeAll(anNo, this.m_asMonster);
+	this.animeEndAll();
+}
+
+void T_BattleNumberManager::miss(int nNo)
+{
+	ref T_BattleNumber rfsNumber = this.get(nNo);
+	if (rfsNumber === NULL)
+	{
+		return;
+	}
+	rfsNumber.miss();
+}
+
+ref T_BattleNumber T_BattleNumberManager::get(int nNo)
+{
+	if (í“¬”Ô†_–¡•ûŠm”F(nNo))
+	{
+		return this.m_asChara[í“¬”Ô†_–¡•ûƒCƒ“ƒfƒNƒX(nNo)];
+	}
+	if (í“¬”Ô†_“GŠm”F(nNo))
+	{
+		return this.m_asMonster[í“¬”Ô†_“GƒCƒ“ƒfƒNƒX(nNo)];
+	}
+	return NULL;
+}
+
+bool T_BattleNumberManager::anime(ref T_BattleNumber rfsNumber)
+{
+	if (rfsNumber === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int idx1 = 2;
+	int idx2 = 0;
+	int nWaitTime = í“¬ƒo[_‘ŽžŠÔ() / 18;
+	CASTimer sTimer;
+	for (i = 0; i < 18; ++i)
+	{
+		sTimer.Reset();
+		rfsNumber.anime(this.m_anSize[idx1], this.m_anSize[idx2]);
+		UPDATE(true);
+		while (sTimer.Get() < nWaitTime)
+		{
+			UPDATE(true);
+		}
+		++idx1;
+		++idx2;
+	}
+	this.wait();
+	return true;
+}
+
+bool T_BattleNumberManager::damageStartAll(ref array@int anNo, ref array@int anDamage, ref array@int anSize, ref array@bool abCritical, ref array@T_BattleNumber asNumber)
+{
+	if (anNo === NULL || anDamage === NULL || asNumber === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = asNumber.Numof();
+	if (anNo.Numof() < cnt)
+	{
+		return false;
+	}
+	if (anDamage.Numof() < cnt)
+	{
+		return false;
+	}
+	if (abCritical.Numof() < cnt)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = anNo[i];
+		if (nNo <= 0)
+		{
+			continue;
+		}
+		int nDamage = anDamage[i];
+		if (nDamage == -2147483648)
+		{
+			continue;
+		}
+		ref T_BattleNumber rfsNumber = asNumber[i];
+		if (nDamage >= 0)
+		{
+			rfsNumber.animeStart(abCritical[i] ? 2 : 1, anSize[i], nDamage);
+		}
+		else
+		{
+			rfsNumber.animeStart(9, 0, -1);
+		}
+	}
+	return true;
+}
+
+bool T_BattleNumberManager::healStartAll(ref array@int anNo, ref array@int anHeal, ref array@T_BattleNumber asNumber)
+{
+	if (anNo === NULL || anHeal === NULL || asNumber === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = asNumber.Numof();
+	if (anNo.Numof() < cnt)
+	{
+		return false;
+	}
+	if (anHeal.Numof() < cnt)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = anNo[i];
+		if (nNo <= 0)
+		{
+			continue;
+		}
+		int nHeal = anHeal[i];
+		ref T_BattleNumber rfsNumber = asNumber[i];
+		if (nHeal > 0)
+		{
+			rfsNumber.animeStart(3, 0, nHeal);
+		}
+	}
+	return true;
+}
+
+void T_BattleNumberManager::animeAll(ref array@int anNo, ref array@T_BattleNumber asNumber)
+{
+	if (anNo === NULL || asNumber === NULL)
+	{
+		return;
+	}
+	int cnt = asNumber.Numof();
+	if (cnt <= 0)
+	{
+		return;
+	}
+	if (anNo.Numof() < cnt)
+	{
+		return;
+	}
+	int i = 0;
+	int j = 0;
+	int idx1 = 2;
+	int idx2 = 0;
+	int nWaitTime = í“¬ƒo[_‘ŽžŠÔ() / 18;
+	CASTimer sTimer;
+	for (i = 0; i < 18; ++i)
+	{
+		sTimer.Reset();
+		int nSize1 = this.m_anSize[idx1];
+		int nSize2 = this.m_anSize[idx2];
+		for (j = 0; j < cnt; ++j)
+		{
+			if (anNo[j] <= 0)
+			{
+				continue;
+			}
+			asNumber[j].anime(nSize1, nSize2);
+		}
+		UPDATE(true);
+		while (sTimer.Get() < nWaitTime)
+		{
+			for (j = 0; j < cnt; ++j)
+			{
+				if (anNo[j] <= 0)
+				{
+					continue;
+				}
+				asNumber[j].updateMiss();
+			}
+			UPDATE(true);
+		}
+		++idx1;
+		++idx2;
+	}
+	this.wait();
+}
+
+void T_BattleNumberManager::animeEndAll()
+{
+	int i = 0;
+	int cnt = 0;
+	cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].animeEnd();
+	}
+	cnt = this.m_asMonster.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asMonster[i].animeEnd();
+	}
+}
+
+void T_BattleNumberManager::wait()
+{
+	switch (í“¬‘¬“x())
+	{
+		case 1:
+			_W(500);
+			break;
+		case 0:
+		default:
+			break;
+	}
+}
+

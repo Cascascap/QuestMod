@@ -1,0 +1,212 @@
+int T_MapArea::getIndex(int nRow, int nCol)
+{
+	return nRow < 0 || nRow >= 4 || nCol < 0 || nCol >= 4 ? -1 : nRow * 4 + nCol;
+}
+
+int T_MapArea::getRow(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 16 ? -1 : nIndex / 4;
+}
+
+int T_MapArea::getCol(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 16 ? -1 : nIndex % 4;
+}
+
+int T_MapArea::getAreaX(int nIndex)
+{
+	return this._getAreaX(this.getCol(nIndex));
+}
+
+int T_MapArea::getAreaY(int nIndex)
+{
+	return this._getAreaY(this.getRow(nIndex));
+}
+
+int T_MapArea::_getAreaX(int nCol)
+{
+	return nCol < 0 || nCol >= 4 ? -1 : 700 + 26 * nCol;
+}
+
+int T_MapArea::_getAreaY(int nRow)
+{
+	return nRow < 0 || nRow >= 4 ? -1 : 16 + 26 * nRow;
+}
+
+T_MapArea::T_MapArea()
+{
+	this.clear();
+}
+
+T_MapArea::~T_MapArea()
+{
+	this.delete();
+}
+
+bool T_MapArea::create(int nZ, int nQuestNo)
+{
+	this.delete();
+	this.m_spBase.setCg(11371);
+	this.m_spBase.setPos(695, 11);
+	this.m_spBase.setZ(nZ);
+	this.m_spMark.setCg(11373);
+	this.m_spMark.setZ(nZ + 5);
+	int nGoalAreaNo = クエスト_ゴールエリア表示(nQuestNo);
+	if (nGoalAreaNo > 0)
+	{
+		this.m_spGoal.setCg(11376);
+		this.m_spGoal.setPos(this.getAreaX(nGoalAreaNo - 1), this.getAreaY(nGoalAreaNo - 1));
+		this.m_spGoal.setZ(nZ + 6);
+	}
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		for (j = 0; j < 4; ++j)
+		{
+			this.createArea(i, j, nZ + 1);
+		}
+	}
+	this.m_nQuestNo = nQuestNo;
+	this.update();
+	return true;
+}
+
+void T_MapArea::delete()
+{
+	int i = 0;
+	int cnt = this.m_asArea.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asArea[i].delete();
+		this.m_asRouteNS[i].delete();
+		this.m_asRouteEW[i].delete();
+	}
+	this.m_spBase.delete();
+	this.m_spMark.delete();
+	this.m_spGoal.delete();
+	this.clear();
+}
+
+void T_MapArea::clear()
+{
+	this.m_nQuestNo = -1;
+	this.m_nMapAreaNo = -1;
+}
+
+void T_MapArea::update()
+{
+	if (this.m_nQuestNo <= 0)
+	{
+		return;
+	}
+	int nNo = マップエリア番号();
+	bool bShow = this.m_spBase.getShow();
+	if (nNo > 0)
+	{
+		this.m_spMark.setPos(this.getAreaX(nNo - 1), this.getAreaY(nNo - 1));
+		this.m_spMark.setShow(bShow);
+		this.m_nMapAreaNo = nNo;
+	}
+	else
+	{
+		this.m_spMark.setShow(0);
+		this.m_nMapAreaNo = -1;
+	}
+}
+
+void T_MapArea::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_spMark.setShow(this.m_nMapAreaNo > 0 ? bShow : 0);
+	this.m_spGoal.setShow(bShow);
+	this.setAreaShow(bShow);
+}
+
+bool T_MapArea::suspend()
+{
+	int i = 0;
+	int cnt = this.m_asArea.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asArea[i].suspend();
+	}
+	cnt = this.m_asRouteNS.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asRouteNS[i].suspend();
+		this.m_asRouteEW[i].suspend();
+	}
+	this.m_spMark.suspend();
+	this.m_spGoal.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_MapArea::resume()
+{
+	int i = 0;
+	int cnt = this.m_asArea.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asArea[i].resume();
+	}
+	cnt = this.m_asRouteNS.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asRouteNS[i].resume();
+		this.m_asRouteEW[i].resume();
+	}
+	this.m_spMark.resume();
+	this.m_spGoal.resume();
+	return this.m_spBase.resume();
+}
+
+bool T_MapArea::createArea(int nRow, int nCol, int nZ)
+{
+	int idx = this.getIndex(nRow, nCol);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nX = this._getAreaX(nCol);
+	int nY = this._getAreaY(nRow);
+	ref T_Sprite rfsArea = this.m_asArea[idx];
+	rfsArea.setCg(11372);
+	rfsArea.setPos(nX, nY);
+	rfsArea.setZ(nZ);
+	if (nRow < 3)
+	{
+		ref T_Sprite rfsNs = this.m_asRouteNS[idx];
+		rfsNs.setCg(11374);
+		rfsNs.setPos(nX + 6, nY + 20);
+		rfsNs.setZ(nZ + 1);
+	}
+	if (nCol < 3)
+	{
+		ref T_Sprite rfsEW = this.m_asRouteEW[idx];
+		rfsEW.setCg(11375);
+		rfsEW.setPos(nX + 20, nY + 6);
+		rfsEW.setZ(nZ + 1);
+	}
+	return true;
+}
+
+void T_MapArea::setAreaShow(bool bShow)
+{
+	if (this.m_nQuestNo <= 0)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = this.m_asArea.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nAreaNo = i + 1;
+		this.m_asArea[i].setShow(クエスト_エリア表示_フラグ(this.m_nQuestNo, nAreaNo) ? bShow : 0);
+		bool bNS = クエスト_エリア表示_南(this.m_nQuestNo, nAreaNo);
+		bool bEW = クエスト_エリア表示_東(this.m_nQuestNo, nAreaNo);
+		this.m_asRouteNS[i].setShow(bNS ? bShow : 0);
+		this.m_asRouteEW[i].setShow(bEW ? bShow : 0);
+	}
+}
+

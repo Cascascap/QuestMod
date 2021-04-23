@@ -1,0 +1,159 @@
+T_MessageNameData::T_MessageNameData()
+{
+	this.m_nType = 0;
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nZ = -1;
+	this.m_nCgNo = 0;
+}
+
+T_MessageName::T_MessageName()
+{
+	this.clear();
+}
+
+T_MessageName::~T_MessageName()
+{
+	this.delete();
+}
+
+void T_MessageName::create()
+{
+	this.delete();
+}
+
+void T_MessageName::delete()
+{
+	this.deleteSp();
+	this.clear();
+}
+
+void T_MessageName::clear()
+{
+	this.m_nType = 0;
+	this.m_szName = "";
+}
+
+void T_MessageName::set(int nType, string szName)
+{
+	if (nType == this.m_nType && this.m_szName == szName)
+	{
+		return;
+	}
+	this.deleteSp();
+	if (nType == 9)
+	{
+		goto label0;
+	}
+	if (!this.createSp(nType, szName))
+	{
+		return;
+	}
+label0:
+	this.m_nType = nType;
+	this.m_szName = szName;
+	this.setShow(nType > 0 && nType != 9);
+}
+
+void T_MessageName::setShow(bool bShow)
+{
+	bShow = this.m_szName.Length() > 0 ? bShow : 0;
+	Ｐ＿表示設定(62, bShow);
+	Ｐ＿表示設定(61, bShow);
+	Ｐ＿メッセージウィンドウ表示連動設定(62, bShow);
+	Ｐ＿メッセージウィンドウ表示連動設定(61, bShow);
+}
+
+int T_MessageName::getType()
+{
+	return this.m_nType;
+}
+
+string T_MessageName::getName()
+{
+	return this.m_szName;
+}
+
+bool T_MessageName::createSp(int nType, string szName)
+{
+	int idx = this.search(nType);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int len = szName.LengthByte();
+	if (len < 1)
+	{
+		return true;
+	}
+	ref T_MessageNameData rfsData = this.m_asData[idx];
+	Ｐ＿ＣＧ設定(62, "%d" % rfsData.m_nCgNo, 1);
+	Ｐ＿座標設定(62, rfsData.m_nX, rfsData.m_nY);
+	Ｐ＿Ｚ座標設定(62, rfsData.m_nZ);
+	Ｐ＿フォント種類設定(61, 256, 1);
+	int fontSize = 26;
+	float spacing = 0.949999988079071;
+	FitText2(szName, 212, 256, fontSize, 12, fontSize, spacing, spacing, spacing);
+	Ｐ＿フォントサイズ設定(61, fontSize, 1);
+	Ｐ＿フォント色設定(61, 255, 245, 100, 1);
+	Ｐ＿フォント太字幅設定(61, 実数変換(40), 1);
+	Ｐ＿テキスト字間隔設定(61, -3, 1);
+	Ｐ＿テキスト設定(61, szName, 1);
+	cg_metrics_t cmFrame;
+	ＣＧ_情報(rfsData.m_nCgNo, cmFrame);
+	int nX = rfsData.m_nX + cmFrame.nWidth / 2;
+	int nY = rfsData.m_nY + cmFrame.nHeight / 2;
+	Ｐ＿原点座標設定(61, 5);
+	Ｐ＿座標設定(61, nX, nY);
+	Ｐ＿Ｚ座標設定(61, rfsData.m_nZ + 1);
+	return true;
+}
+
+void T_MessageName::deleteSp()
+{
+	Ｐ＿メッセージウィンドウ表示連動設定(62, false);
+	Ｐ＿メッセージウィンドウ表示連動設定(61, false);
+	Ｐ＿削除(62);
+	Ｐ＿削除(61);
+	this.m_nType = 0;
+	this.m_szName = "";
+}
+
+bool T_MessageName::add(int nType, int nX, int nY, int nZ, int nCgNo)
+{
+	if (nType < 1 || nType == 9)
+	{
+		return false;
+	}
+	if (this.search(nType) >= 0)
+	{
+		return false;
+	}
+	T_MessageNameData sData;
+	sData.m_nType = nType;
+	sData.m_nX = nX;
+	sData.m_nY = nY;
+	sData.m_nZ = nZ;
+	sData.m_nCgNo = nCgNo;
+	this.m_asData.PushBack(sData);
+	return true;
+}
+
+int T_MessageName::search(int nType)
+{
+	if (nType < 1 || nType == 9)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asData.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asData[i].m_nType == nType)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

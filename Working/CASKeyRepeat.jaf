@@ -1,0 +1,91 @@
+CASKeyRepeat::CASKeyRepeat()
+{
+	this.m_nKey = -1;
+	this.m_bKeyDown = false;
+	this.m_bKeyDownLoop = false;
+	this.m_bFirstClickOff = false;
+	this.m_nRepeatFirstTime = 350;
+	this.m_nRepeatTime = 50;
+}
+
+void CASKeyRepeat::Init(int nKey, bool FirstKeyDownCancel)
+{
+	this.m_nKey = nKey;
+	this.Reset(FirstKeyDownCancel);
+}
+
+void CASKeyRepeat::Reset(bool FirstKeyDownCancel)
+{
+	this.m_bKeyDown = false;
+	this.m_bKeyDownLoop = false;
+	this.m_bFirstClickOff = FirstKeyDownCancel && AFL_IsKeyDown(this.m_nKey);
+}
+
+bool CASKeyRepeat::IsFirstClick()
+{
+	if (this.m_nKey == -1)
+	{
+		return false;
+	}
+	if (!this.m_bFirstClickOff)
+	{
+		return false;
+	}
+	if (AFL_IsKeyDown(this.m_nKey))
+	{
+		if (!this.m_bKeyDown)
+		{
+			this.m_bKeyDown = true;
+		}
+	}
+	else if (this.m_bKeyDown)
+	{
+		this.m_bKeyDown = false;
+		this.m_bFirstClickOff = false;
+	}
+	return true;
+}
+
+bool CASKeyRepeat::IsKeyDown()
+{
+	if (this.m_nKey == -1)
+	{
+		return false;
+	}
+	if (this.IsFirstClick())
+	{
+		return false;
+	}
+	if (AFL_IsKeyDown(this.m_nKey))
+	{
+		if (!this.m_bKeyDown)
+		{
+			this.m_bKeyDown = true;
+			this.m_bKeyDownLoop = false;
+			this.m_Timer.Reset();
+			return true;
+		}
+		if (!this.m_bKeyDownLoop)
+		{
+			if (this.m_Timer.Get() < this.m_nRepeatFirstTime)
+			{
+				return false;
+			}
+		}
+		else if (this.m_Timer.Get() < this.m_nRepeatTime)
+		{
+			return false;
+		}
+		this.m_bKeyDownLoop = true;
+		this.m_Timer.Reset();
+		return true;
+	}
+	else if (this.m_bKeyDown)
+	{
+		this.m_bKeyDown = false;
+		this.m_bKeyDownLoop = false;
+		this.m_bFirstClickOff = false;
+	}
+	return false;
+}
+

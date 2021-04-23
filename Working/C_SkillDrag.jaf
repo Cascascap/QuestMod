@@ -1,0 +1,15 @@
+int スキル_ドラッグ実行(int nCharaNo, int nIndex, ref T_SkillButton rfsSkill)
+{
+	return g_sSkillDrag.run(nCharaNo, nIndex, rfsSkill);
+}
+
+void スキル_ドラッグ(int nX, int nY)
+{
+	g_sSkillDrag.execDrag(nX, nY);
+}
+
+bool スキル_ドロップ(int nX, int nY)
+{
+	return g_sSkillDrag.execDrop(nX, nY);
+}
+

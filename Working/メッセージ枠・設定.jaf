@@ -1,0 +1,29 @@
+void 字枠(int Ｍ番号, int 動作, int 効果番号, int 効果時間)
+{
+	if (Ｍ番号 != 0)
+	{
+		SYS_ASSERTE_AREA_ID(Ｍ番号);
+	}
+	CMessageWindowModel a;
+	if (Ｍ番号 == 0)
+	{
+		a = g_MessageWindowModelManager.GetMessageWindow(_Ｍ枠);
+	}
+	else
+	{
+		a = g_MessageWindowModelManager.GetMessageWindow(Ｍ番号);
+	}
+	字枠セット(Ｍ番号, 動作);
+	SYS_画面更新(効果番号, 効果時間, a.効果番号, a.効果時間);
+}
+
+void 字枠セット(int Ｍ番号, int 動作)
+{
+	SYS_字枠セット(Ｍ番号, 動作, true);
+}
+
+void メッセージウィンドウ非表示()
+{
+	SYS_メッセージウィンドウ非表示();
+}
+

@@ -1,0 +1,281 @@
+#ゲーム_メイン()
+{
+	キャラ_１軍使用済み解除();
+	パーティ入れ替え回数_設定(0);
+	while (true)
+	{
+		画面_クリア(true, true);
+		仮字枠非表示();
+		システム曲_再生();
+		int nRet = g_sTown.run();
+		switch (nRet)
+		{
+			case 600014:
+				jump ゲーム_クエスト;
+			case 600012:
+				jump ゲーム_アイテム屋;
+			case 600013:
+				jump ゲーム_パーティ編成;
+			case 600011:
+				jump ゲーム_ランス城;
+			default:
+				break;
+		}
+	}
+}
+
+void 街マップ_削除()
+{
+	g_sTown.delete();
+	ランス城_削除();
+	アイテム屋_削除();
+	パーティ編成_削除();
+	クエスト_削除();
+}
+
+int 街マップ_上矢印(int nID)
+{
+	return g_sTown.moveUp(nID);
+}
+
+int 街マップ_下矢印(int nID)
+{
+	return g_sTown.moveDown(nID);
+}
+
+int 街マップ_左矢印(int nID)
+{
+	return g_sTown.moveLeft(nID);
+}
+
+int 街マップ_右矢印(int nID)
+{
+	return g_sTown.moveRight(nID);
+}
+
+void 街マップ_選択設定(int nID, bool bSelect)
+{
+	g_sTown.setSelect(nID, bSelect);
+}
+
+int 街マップ_土台作成(int nCgNo)
+{
+	T_Sprite spBase;
+	T_Sprite spWork1;
+	T_Sprite spWork2;
+	if (spWork1.setCg(nCgNo) < 0)
+	{
+		return -1;
+	}
+	if (spWork2.setCg(11001) < 0)
+	{
+		return -1;
+	}
+	if (ランス城_掃除中確認())
+	{
+		spWork2.blendCg(167, 0, 11154, 255);
+	}
+	int nW1 = spWork1.getWidth();
+	int nH1 = spWork1.getHeight();
+	int nW2 = spWork2.getWidth();
+	int nH2 = 53;
+	spBase.create(nW1, nH1, 0, 0, 0, 255);
+	spBase.copyCg(0, 0, spWork2, 0, 0, _min(nW1, nW2), nH2);
+	if (spWork1.existAlpha())
+	{
+		drawGraph_BlendAMap(spBase, 0, 0, spWork1, 0, 0, nW1, nH1);
+	}
+	else
+	{
+		drawGraph_Copy(spBase, 0, nH2, spWork1, 0, nH2, nW1, nH1 - nH2);
+	}
+	spWork1.delete();
+	spWork2.delete();
+	return spBase.detach();
+}
+
+bool 街マップ_タブ作成(ref T_ButtonGroup sButtonGroup, int nID)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	bool bRet = false;
+	int nX = 0;
+	int nY = 8;
+	if (nID != 600011)
+	{
+		if (ランス城_選択可能())
+		{
+			if (_街マップ_タブ作成(sButtonGroup, 600011, nX, nY, 11005, 112))
+			{
+				bRet = true;
+			}
+		}
+	}
+	nX += 256;
+	if (nID != 600012)
+	{
+		if (_街マップ_タブ作成(sButtonGroup, 600012, nX, nY, 11006, 113))
+		{
+			bRet = true;
+		}
+	}
+	nX += 256;
+	if (nID != 600013)
+	{
+		if (_街マップ_タブ作成(sButtonGroup, 600013, nX, nY, 11007, 114))
+		{
+			bRet = true;
+		}
+	}
+	nX += 256;
+	if (nID != 600014)
+	{
+		if (_街マップ_タブ作成(sButtonGroup, 600014, nX, nY, 11008, 115))
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool _街マップ_タブ作成(ref T_ButtonGroup sButtonGroup, int nID, int nX, int nY, int nCgNo, int nKey)
+{
+	if (sButtonGroup === NULL)
+	{
+		return false;
+	}
+	sButtonGroup.addButtonRect(nID, 256, 45, -1, -1, -1, -1);
+	sButtonGroup.setButtonFrameCg(nID, 0, nCgNo, 4, 0, 0);
+	sButtonGroup.setButtonPos(nID, nX, nY);
+	sButtonGroup.setButtonKey(nID, nKey);
+	return true;
+}
+
+int カーソル移動_システムバー＞ミニステータス(int nID)
+{
+	switch (nID)
+	{
+		case 900001:
+			break;
+		case 900002:
+			return ミニステータス_前ボタン_遷移(1);
+		case 900003:
+			return ミニステータス_前ボタン_遷移(2);
+		default:
+			break;
+	}
+	return ミニステータス_先頭ボタン();
+}
+
+int カーソル移動_ミニステータス＞システムバー(int nID)
+{
+	switch (ミニステータス_遷移インデクス(nID))
+	{
+		case 0:
+			return 900001;
+		case 1:
+			return 900002;
+		case 2:
+		case 3:
+		case 4:
+		default:
+			break;
+	}
+	return 900003;
+}
+
+int カーソル移動_街マップ＞システムバー(int nID)
+{
+	switch (nID)
+	{
+		case 600011:
+			break;
+		case 600012:
+			return 900002;
+		case 600013:
+		case 600014:
+			return 900003;
+		default:
+			break;
+	}
+	return 900001;
+}
+
+int カーソル移動_システムバー＞街マップ(int nID, ref T_ButtonGroup sButton)
+{
+	if (sButton === NULL)
+	{
+		return nID;
+	}
+	switch (nID)
+	{
+		case 900001:
+			break;
+		case 900002:
+			return sButton.getButtonActive(600012) ? 600012 : 600013;
+		case 900003:
+			return sButton.getButtonActive(600013) ? 600013 : 600014;
+		default:
+			break;
+	}
+	int i = 0;
+	for (i = 600011; i <= 600014; ++i)
+	{
+		if (sButton.getButtonActive(i))
+		{
+			return i;
+		}
+	}
+	return nID;
+}
+
+int カーソル移動_街マップ左(int nID, ref T_ButtonGroup sButton)
+{
+	if (sButton === NULL)
+	{
+		return nID;
+	}
+	int i = 0;
+	for (i = nID - 1; i >= 600011; --i)
+	{
+		if (sButton.getButtonActive(i))
+		{
+			return i;
+		}
+	}
+	for (i = 600014; i > nID; --i)
+	{
+		if (sButton.getButtonActive(i))
+		{
+			return i;
+		}
+	}
+	return nID;
+}
+
+int カーソル移動_街マップ右(int nID, ref T_ButtonGroup sButton)
+{
+	if (sButton === NULL)
+	{
+		return nID;
+	}
+	int i = 0;
+	for (i = nID + 1; i <= 600014; ++i)
+	{
+		if (sButton.getButtonActive(i))
+		{
+			return i;
+		}
+	}
+	for (i = 600011; i < nID; ++i)
+	{
+		if (sButton.getButtonActive(i))
+		{
+			return i;
+		}
+	}
+	return nID;
+}
+

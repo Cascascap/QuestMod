@@ -1,0 +1,570 @@
+int T_InputText::getMaxCount()
+{
+	return this.m_nMaxCount;
+}
+
+int T_InputText::getLineCount()
+{
+	return this.m_aszText.Numof();
+}
+
+string T_InputText::getText(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_aszText.Numof() ? "" : this.m_aszText[nIndex];
+}
+
+int T_InputText::getTextID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_aszText.Numof() ? -1 : 200000 + nIndex + 1;
+}
+
+int T_InputText::getTextIndex(int nID)
+{
+	int idx = nID + -200001;
+	return idx < 0 || idx >= this.m_aszText.Numof() ? -1 : idx;
+}
+
+T_InputText::T_InputText()
+{
+	this.clear();
+}
+
+T_InputText::~T_InputText()
+{
+	this.delete();
+}
+
+bool T_InputText::create(int nMaxCount, int nLineCount, string szComment, int nPhase)
+{
+	this.delete();
+	if (!this.m_aszText.Empty())
+	{
+		this.m_aszText.Free();
+	}
+	if (nMaxCount <= 0 || nLineCount <= 0)
+	{
+		return false;
+	}
+	this.m_asText.Alloc(nLineCount);
+	this.m_aszText.Alloc(nLineCount);
+	string szMax = "";
+	int nOkW = 0;
+	int nOkH = 0;
+	int nCancelW = 0;
+	int nCancelH = 0;
+	T_Button sOk;
+	T_Button sCancel;
+	szComment = szComment.Empty() ? "Input Text." : szComment;
+	szMax = nLineCount > 1 ? "%d lines, %d characters per line" % nLineCount % (nMaxCount * 2) : "Up to %d characters" % (nMaxCount * 2);
+	if (nPhase < 0)
+	{
+		this.createButton("Confirm", nOkW, nOkH, sOk);
+		this.createButton("Cancel", nCancelW, nCancelH, sCancel);
+	}
+	int nTextW = 28 * nMaxCount + 6;
+	int nTextH = 34;
+	int nW1 = テキスト_幅(24, szComment, -4);
+	int nW2 = nOkW + nCancelW + 72;
+	int nW3 = テキスト_幅(24, szMax, -4);
+	int nH1 = _max(nOkH, nCancelH);
+	int nH2 = nH1 > 0 ? nH1 + 24 : 0;
+	int nBaseW = _max(nTextW, _max(nW1, _max(nW2, nW3))) + 48;
+	int nBaseH = nTextH * nLineCount + 144;
+	int nMaxY = 72 + nTextH * nLineCount + 24;
+	this.m_spBase.create(nBaseW, nBaseH + nH2, 0, 0, 0, 128);
+	if (nPhase >= 0)
+	{
+		this.m_spBase.setPos(キャラ生成_入力領域位置Ｘ(nBaseW), キャラ生成_入力領域位置Ｙ(nBaseH));
+	}
+	else
+	{
+		this.m_spBase.setPosCenter();
+	}
+	this.m_spBase.setZ(9001, -1);
+	sact_text_metrics_t tmText;
+	tmText.nSize = 24;
+	tmText.nColorR = 255;
+	tmText.nColorG = 255;
+	tmText.nColorB = 255;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	this.m_spBase.textDrawPos2(2, 24, 24, szComment, tmText, -4, 1.0, false, false);
+	this.m_spBase.textDrawPos2(2, 24, nMaxY, szMax, tmText, -4, 1.0, false, false);
+	int i = 0;
+	int nX = this.m_spBase.getPosX();
+	int nY = this.m_spBase.getPosY();
+	int nZ = this.m_spBase.getZ();
+	int nTx = 24;
+	int nTy = 72;
+	for (i = 0; i < nLineCount; ++i)
+	{
+		int nX2 = nX + nTx;
+		int nY2 = nY + nTy;
+		ref T_DrawText rfsText = this.m_asText[i];
+		rfsText.create(nTextW, nTextH, nMaxCount, 0, 0, 1);
+		rfsText.setFontSize(28);
+		rfsText.setFontType(0);
+		rfsText.setFontColor(0, 0, 0);
+		rfsText.setFontBold(0);
+		rfsText.setTextSpace(0);
+		rfsText.setPos(nX2 + 3, nY2);
+		rfsText.setZ(nZ + 5);
+		this.m_spBase.fill(nTx, nTy, nTextW, nTextH, 0, 0, 0, 255);
+		this.m_spBase.fill(nTx + 1, nTy + 1, nTextW - 2, nTextH - 2, 255, 255, 255, 255);
+		nTy += nTextH;
+	}
+	this.m_sButton.create();
+	for (i = 0; i < nLineCount; ++i)
+	{
+		ref T_DrawText rfsText = this.m_asText[i];
+		ボタン登録_矩形(this.m_sButton, this.getTextID(i), rfsText.getPosX() - 3, rfsText.getPosY(), nTextW, nTextH, false);
+	}
+	if (nPhase > 0)
+	{
+		ボタン登録_ＣＧ(this.m_sButton, 100001, 654, 722, 12304, -1, -1, -2147483648, -2147483648);
+		ボタン登録_ＣＧ(this.m_sButton, 100002, 788, 722, 12305, -1, -1, -2147483648, -2147483648);
+		ボタン登録_ＣＧ(this.m_sButton, 100003, 922, 722, 12306, -1, -1, -2147483648, -2147483648);
+		this.m_sButton.setButtonActive(100002, nPhase > 1);
+	}
+	else if (nPhase == 0)
+	{
+		ボタン登録_ＣＧ(this.m_sButton, 100004, 654, 722, 12307, -1, -1, -2147483648, -2147483648);
+		ボタン登録_ＣＧ(this.m_sButton, 100002, 788, 722, 12305, -1, -1, -2147483648, -2147483648);
+		ボタン登録_ＣＧ(this.m_sButton, 100003, 922, 722, 12306, -1, -1, -2147483648, -2147483648);
+	}
+	else
+	{
+		int nButtonY = nY + nMaxY + 48;
+		this.m_sButton.addButton(200101, sOk);
+		this.m_sButton.setButtonPos(200101, (nX + nBaseW) - nOkW - nCancelW - 48, nButtonY);
+		this.m_sButton.addButton(200102, sCancel);
+		this.m_sButton.setButtonPos(200102, (nX + nBaseW) - nCancelW - 24, nButtonY);
+	}
+	this.m_sButton.setZ(nZ + 1);
+	this.m_nPhase = nPhase;
+	this.m_nMaxCount = nMaxCount;
+	return true;
+}
+
+void T_InputText::delete()
+{
+	int i = 0;
+	int cnt = this.m_asText.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asText[i].delete();
+	}
+	if (!this.m_asText.Empty())
+	{
+		this.m_asText.Free();
+	}
+	this.m_spBase.delete();
+	this.m_sButton.delete();
+	this.clear();
+}
+
+void T_InputText::clear()
+{
+	this.m_nPhase = -1;
+	this.m_nMaxCount = 0;
+	this.m_nTextIndex = -1;
+}
+
+int T_InputText::run(int nStartLine)
+{
+	if (this.m_nMaxCount <= 0)
+	{
+		return 0;
+	}
+	int nRet = 0;
+	this.loadText();
+	this.setShow(true);
+	if (nStartLine >= 0 && nStartLine < this.m_asText.Numof())
+	{
+		this.execInput(nStartLine);
+	}
+	int nID = this.getTextID(0);
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+		if (this.getTextIndex(nID) < 0)
+		{
+			nID = this.getTextID(0);
+		}
+	}
+	this.setShow(false);
+	return nRet;
+}
+
+bool T_InputText::setText(int nIndex, string szText)
+{
+	if (this.m_nMaxCount <= 0)
+	{
+		return false;
+	}
+	if (nIndex < 0 || nIndex >= this.m_aszText.Numof())
+	{
+		return false;
+	}
+	this.m_aszText[nIndex] = テキスト切詰(szText, this.m_nMaxCount);
+	return true;
+}
+
+void T_InputText::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asText.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asText[i].setShow(bShow);
+	}
+	this.m_spBase.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+}
+
+string T_InputText::getJointText(string szNewLine)
+{
+	int i = 0;
+	int cnt = this.m_aszText.Numof();
+	int nCount = 0;
+	for (i = cnt; i > 0; --i)
+	{
+		if (!this.m_aszText[i - 1].Empty())
+		{
+			nCount = i;
+			break;
+		}
+	}
+	if (nCount <= 0)
+	{
+		return "";
+	}
+	return _テキスト統合_改行あり(this.m_aszText, "$", nCount);
+}
+
+bool T_InputText::createButton(string szText, ref int nWidth, ref int nHeight, ref T_Button sButton)
+{
+	if (szText.Empty())
+	{
+		return false;
+	}
+	if (nWidth === NULL || nHeight === NULL || sButton === NULL)
+	{
+		return false;
+	}
+	int nW0 = テキスト_幅(24, szText, -4);
+	int nH0 = 24;
+	int nW1 = nW0 + 2;
+	int nH1 = nH0 + 2;
+	int nW = nW1 + 4;
+	int nH = nH1 + 4;
+	T_TextSprite spWork;
+	spWork.create(nW, nH, 255, 255, 255, 255);
+	spWork.fill(2, 2, nW1, nH1, 0, 0, 0, 128);
+	sact_text_metrics_t tmText;
+	tmText.nSize = 24;
+	tmText.nColorR = 255;
+	tmText.nColorG = 255;
+	tmText.nColorB = 255;
+	tmText.nWeight = 0;
+	tmText.nFace = 258;
+	tmText.nShadowPixelL = 0;
+	tmText.nShadowPixelR = 0;
+	tmText.nShadowPixelU = 0;
+	tmText.nShadowPixelD = 0;
+	tmText.nShadowColorR = 0;
+	tmText.nShadowColorG = 0;
+	tmText.nShadowColorB = 0;
+	spWork.textDrawCenter(0, szText, tmText, -4);
+	sButton.createSp(spWork, NULL, NULL);
+	sButton.createFrame(0, nW, nH, 216, 255, 0, 102, -2147483648, -2147483648, 0);
+	sButton.createFrame(1, nW, nH, 255, 0, 0, 128, -2147483648, -2147483648, 0);
+	nWidth = nW;
+	nHeight = nH;
+	return true;
+}
+
+bool T_InputText::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	switch (nID)
+	{
+		case 200101:
+			this.saveText();
+			nRet = nID;
+			return true;
+		case 200102:
+			nRet = nID;
+			return true;
+		case 200103:
+			return this.execClose(nRet);
+		case 100001:
+		case 100004:
+			this.saveText();
+			nRet = nID;
+			return true;
+		case 100002:
+			return this.execUndo(nID, nRet);
+		case 100003:
+			return this.execCancel(nID, nRet);
+		default:
+			break;
+	}
+	if (nID > 200000)
+	{
+		return this.execInput(this.getTextIndex(nID));
+	}
+	return false;
+}
+
+bool T_InputText::execInput(int nIndex)
+{
+	if (this.m_nMaxCount <= 0)
+	{
+		return false;
+	}
+	if (nIndex < 0 || nIndex >= this.m_asText.Numof())
+	{
+		return false;
+	}
+	this.m_sButton.resetSelect();
+	ref T_DrawText rfsText = this.m_asText[nIndex];
+	文字入力エリア(1, rfsText.getPosX() + 0, rfsText.getPosY() + 3, rfsText.getZ() + 5, "");
+	文字入力エリア２(1, rfsText.getWidth() - 6, rfsText.getHeight() - 6, 0, 255, 255, 255, 0, -2147483648, -2147483648, -2147483648);
+	文字入力エリア文字(1, 28, 0, 0, 0, 0, 0, 0);
+	string szOld = rfsText.getText();
+	string szText = szOld;
+	SYS_文字入力エリアクリッピング文字数設定(1, this.m_nMaxCount);
+	while (true)
+	{
+		文字入力(1, szText);
+		szText = テキスト切詰(szText, this.m_nMaxCount);
+		if (this.checkText(szText))
+		{
+			rfsText.setText(szText, false);
+			break;
+		}
+		szText = szOld;
+	}
+	this.m_nTextIndex = nIndex;
+	return false;
+}
+
+bool T_InputText::execClose(ref int nRet)
+{
+	nRet = 0;
+	選択_項目追加(1, "Confirm", -1, -1, -1, "", -1);
+	選択_項目追加(2, "Cancel", -1, -1, -1, "", -1);
+	選択_項目追加(3, "Return to text input", -1, -1, -1, "", -1);
+	選択_カーソル設定(1);
+	switch (選択_実行(false, 0, 0, false))
+	{
+		case 1:
+			nRet = 200101;
+			return true;
+		case 2:
+			nRet = 200102;
+			return true;
+		default:
+			break;
+	}
+	return false;
+}
+
+bool T_InputText::execUndo(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (this.m_nPhase > 0)
+	{
+		nRet = nID;
+		return true;
+	}
+	if (this.m_nPhase == 0)
+	{
+		nRet = nID;
+		return true;
+	}
+	return false;
+}
+
+bool T_InputText::execCancel(int nID, ref int nRet)
+{
+	nRet = 0;
+	if (this.m_nPhase > 0)
+	{
+		if (選択_確認("Canceling character creation.@Okay?", 1, "Yes", "No", -1, -1, false))
+		{
+			nRet = nID;
+			return true;
+		}
+		return false;
+	}
+	if (this.m_nPhase == 0)
+	{
+		nRet = nID;
+		return true;
+	}
+	return false;
+}
+
+int T_InputText::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.m_sButton.resetSelect();
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.m_sButton.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (this.m_nPhase < 0)
+		{
+			if (キャンセル_確認())
+			{
+				nRet = 200103;
+				break;
+			}
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_InputText::checkKey(int nID)
+{
+	int nRet = this.m_sButton.checkKey();
+	if (nRet > 0)
+	{
+		return nRet;
+	}
+	if (キー_押下(9))
+	{
+		bool bShift = キー_押下(16);
+		キー_離し待ち(9, true);
+		return this.getNextTextID(bShift);
+	}
+	return 0;
+}
+
+bool T_InputText::checkText(string szText)
+{
+	if (this.m_nPhase < 0)
+	{
+		return true;
+	}
+	int i = 0;
+	int cnt = szText.Length();
+	for (i = 0; i < cnt; ++i)
+	{
+		string szText2 = szText.GetPart(i, 1);
+		if (szText2.LengthByte() < 2)
+		{
+			int c = szText2[0];
+			if (c < 32)
+			{
+				選択_通知("Control characters cannot be used.", "OK", false);
+				return false;
+			}
+			if (c == 96 || c == 124)
+			{
+				選択_通知("Format characters cannot be used.", "OK", false);
+				return false;
+			}
+			if (c == 36 || c == 64)
+			{
+				選択_通知("Line break characters cannot be used.", "OK", false);
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool T_InputText::loadText()
+{
+	int i = 0;
+	int cnt = this.m_asText.Numof();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asText[i].setText(this.m_aszText[i], false);
+	}
+	return true;
+}
+
+bool T_InputText::saveText()
+{
+	int i = 0;
+	int cnt = this.m_asText.Numof();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.setText(i, this.m_asText[i].getText());
+	}
+	return true;
+}
+
+void T_InputText::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.m_sButton.resetSelect();
+		this.m_sButton.setButtonSelect(nID, true, true);
+		return;
+	}
+	if (nID > 200000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+	}
+}
+
+int T_InputText::getNextTextID(bool bShift)
+{
+	int cnt = this.m_aszText.Numof();
+	if (cnt < 0)
+	{
+		return 0;
+	}
+	if (cnt == 1)
+	{
+		return this.getTextID(0);
+	}
+	if (this.m_nTextIndex < 0)
+	{
+		return this.getTextID(0);
+	}
+	int idx = bShift ? this.m_nTextIndex - 1 : this.m_nTextIndex + 1;
+	if (idx < 0)
+	{
+		return this.getTextID(cnt - 1);
+	}
+	if (idx >= cnt)
+	{
+		return this.getTextID(0);
+	}
+	return this.getTextID(idx);
+}
+

@@ -1,0 +1,221 @@
+void メッセージ枠_効果音再生(string szText)
+{
+	if (AFL_Config_GetMessageSpeedRate() >= 1.0)
+	{
+		return;
+	}
+	if (メッセージスキップ中())
+	{
+		return;
+	}
+	メッセージ効果音_再生(szText);
+}
+
+void R8_Message(int nMsgNum, int nNumofMsg, string szText)
+{
+	メッセージ名札_ログ登録();
+	SYS_Message(nMsgNum, nNumofMsg, szText);
+}
+
+void R8_A()
+{
+	SYS_A();
+	メッセージ名札_ログクリア();
+}
+
+void R8_B()
+{
+	SYS_B();
+}
+
+bool メッセージ枠登録(int nNo, int nCgNo, int nX, int nY, int nTextX, int nTextY, int nTextWidth, int nTextHeight, int nTextSpace, int nLineSpace, int nSpeed, int nFontSize, int nFontFace, int nFontWeight, int nFontColorR, int nFontColorG, int nFontColorB, int nShadowPixelL, int nShadowPixelU, int nShadowPixelR, int nShadowPixelD, int nShadowColorR, int nShadowColorG, int nShadowColorB, int nIconNo, int nSystemButtonNo)
+{
+	if (!メッセージ_枠番号確認(nNo))
+	{
+		return false;
+	}
+	cg_metrics_t cmFrame;
+	if (!ＣＧ_情報(nCgNo, cmFrame))
+	{
+		return false;
+	}
+	Ａ＿メッセージウィンドウＣＧ設定(nNo, "%d" % nCgNo);
+	Ａ＿メッセージウィンドウ座標設定(nNo, nX, nY);
+	int nWidth = cmFrame.nWidth;
+	int nHeight = cmFrame.nHeight;
+	メッセージエリア余白(nNo, nTextY, nWidth - nTextX - nTextWidth, nHeight - nTextY - nTextHeight, nTextX);
+	字初期値(nNo, nFontFace < 0 ? 256 : nFontFace);
+	字サイズ初期値(nNo, nFontSize);
+	字太初期値(nNo, nFontWeight);
+	字色初期値(nNo, nFontColorR, nFontColorG, nFontColorB);
+	字速度初期値(nNo, nSpeed);
+	字配置初期値(nNo, 1);
+	字飾り初期値(nNo, nShadowPixelU, nShadowPixelR, nShadowPixelD, nShadowPixelL, nShadowColorR, nShadowColorG, nShadowColorB);
+	字間隔(nNo, 0, nLineSpace);
+	メッセージ枠_キー待ち設定(nNo, nIconNo, nX, nY);
+	メッセージボタン_設定(nNo, nSystemButtonNo);
+	return true;
+}
+
+void メッセージ_初期化(int nMode)
+{
+	if (nMode == 0)
+	{
+		メッセージ枠_初期設定();
+		メッセージボタン_初期設定();
+	}
+	メッセージ名札_作成();
+	メッセージ枠_退避クリア();
+	既読スキップ中フラグクリア();
+	オートモード音声あり待ち時間(500);
+	AFL_SetDrawMessageCharFunction(&メッセージ枠_効果音再生);
+	メッセージ_オーバーライド設定();
+}
+
+void メッセージ_終了処理()
+{
+	メッセージ_オーバーライド解除();
+	AFL_SetDrawMessageCharFunction(NULL);
+	メッセージ_枠消去();
+	メッセージ名札_削除();
+	メッセージ枠_退避クリア();
+	既読スキップ中フラグクリア();
+}
+
+void メッセージ_オーバーライド設定()
+{
+	AFL_OverrideMessageFunction(&R8_Message);
+	AFL_OverrideMessageRFunction(NULL);
+	AFL_OverrideMessageAFunction(&R8_A);
+	AFL_OverrideMessageBFunction(&R8_B);
+}
+
+void メッセージ_オーバーライド解除()
+{
+	AFL_OverrideMessageFunction(NULL);
+	AFL_OverrideMessageRFunction(NULL);
+	AFL_OverrideMessageAFunction(NULL);
+	AFL_OverrideMessageBFunction(NULL);
+}
+
+void メッセージ_枠表示(int nNo, int nFaceCgNo, string szName, bool bFaceFlag)
+{
+	nFaceCgNo = 顔ＣＧ番号確認(nNo, nFaceCgNo);
+	if (nFaceCgNo < 0)
+	{
+		return;
+	}
+	ref CMessageWindowModel messageWindow = g_MessageWindowModelManager.GetMessageWindow(nNo);
+	int textX = messageWindow.GetX() + messageWindow.余白左;
+	if (textX < 100 || イベントＣＧ表示中())
+	{
+	}
+	else
+	{
+		顔準備(bFaceFlag ? nFaceCgNo : 0);
+	}
+	_メッセージ_枠表示(nNo, nFaceCgNo, szName);
+}
+
+void _メッセージ_枠表示(int nNo, int nFaceCgNo, string szName)
+{
+	if (!メッセージ_枠番号確認(nNo))
+	{
+		return;
+	}
+	マップイベント_キー離し待ち();
+	字枠セット(nNo, 2);
+	メッセージ名札_設定(nNo, nFaceCgNo, szName);
+	メッセージ効果音_準備(nNo, nFaceCgNo);
+	オートモードＣＧ表示許可設定(true);
+	既読スキップモードＣＧ表示許可設定(true);
+	g_nMessageNo = nNo;
+}
+
+void メッセージ_枠表示Ｆ(int nNo, int nCharaNo, string szName, bool bFaceFlag)
+{
+	int nFaceCgNo = 顔ＣＧ番号確認(nNo, 99);
+	if (nFaceCgNo < 0)
+	{
+		return;
+	}
+	if (イベントＣＧ表示中())
+	{
+	}
+	else
+	{
+		顔準備Ｆ(bFaceFlag ? nCharaNo : 0);
+	}
+	_メッセージ_枠表示Ｆ(nNo, nCharaNo, szName);
+}
+
+void _メッセージ_枠表示Ｆ(int nNo, int nCharaNo, string szName)
+{
+	if (!メッセージ_枠番号確認(nNo))
+	{
+		return;
+	}
+	マップイベント_キー離し待ち();
+	字枠セット(nNo, 2);
+	メッセージ名札_設定Ｆ(nNo, nCharaNo, szName);
+	メッセージ効果音_準備Ｆ(nNo, nCharaNo);
+	オートモードＣＧ表示許可設定(true);
+	既読スキップモードＣＧ表示許可設定(true);
+	g_nMessageNo = nNo;
+}
+
+void メッセージ_枠消去()
+{
+	メッセージ効果音_解放();
+	メッセージ名札_設定(0, 0, "");
+	オートモードＣＧ表示許可設定(false);
+	既読スキップモードＣＧ表示許可設定(false);
+	if (メッセージ_枠番号確認(g_nMessageNo))
+	{
+		字枠セット(g_nMessageNo, 0);
+	}
+	g_nMessageNo = 0;
+	SYS_ResetCurrentMessageWindowNumber();
+}
+
+int メッセージ_枠番号()
+{
+	return g_nMessageNo;
+}
+
+bool メッセージ_枠表示中()
+{
+	return g_nMessageNo > 0;
+}
+
+bool メッセージ_枠番号確認(int nNo)
+{
+	return nNo >= 1 && nNo < 40;
+}
+
+void メッセージ枠_退避()
+{
+	if (g_bメッセージ退避)
+	{
+		return;
+	}
+	メッセージ枠_退避クリア();
+	g_MessageWindowManager.HideAll();
+	g_bメッセージ退避 = true;
+}
+
+void メッセージ枠_復元()
+{
+	if (!g_bメッセージ退避)
+	{
+		return;
+	}
+	g_MessageWindowManager.ShowAll();
+	メッセージ枠_退避クリア();
+}
+
+void メッセージ枠_退避クリア()
+{
+	g_bメッセージ退避 = false;
+}
+

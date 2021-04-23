@@ -1,0 +1,48 @@
+CASPartsManager::CASPartsManager()
+{
+}
+
+CASPartsManager::~CASPartsManager()
+{
+	return;
+}
+
+int CASPartsManager::CreateHandle()
+{
+	int EmptyIndex = this.m_HandleList.Find(0, this.m_HandleList.Numof(), 0);
+	if (EmptyIndex != -1)
+	{
+		this.m_HandleList[EmptyIndex] = 1;
+		return EmptyIndex;
+	}
+	int NewIndex = this.m_HandleList.Numof();
+	this.m_HandleList.Realloc(this.m_HandleList.Numof() + 1);
+	this.m_HandleList[NewIndex] = 1;
+	return NewIndex;
+}
+
+void CASPartsManager::ReleaseHandle(int Handle)
+{
+	Ｐ＿削除(this.GetPartsNumberFromHandle(Handle));
+	this.m_HandleList[Handle] = 0;
+}
+
+int CASPartsManager::GetPartsNumberFromHandle(int Handle)
+{
+	if (!this.CheckHandle(Handle))
+	{
+		return 0;
+	}
+	return 1000000000 + Handle + 1000;
+}
+
+bool CASPartsManager::CheckHandle(int Handle)
+{
+	if (Handle < 0 || Handle >= this.m_HandleList.Numof() || this.m_HandleList[Handle] == 0)
+	{
+		system.Error("AsraFramework内部エラー\nCASPartsManager - ハンドルエラー");
+		return false;
+	}
+	return true;
+}
+

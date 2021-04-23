@@ -1,0 +1,166 @@
+T_BattleTimeOver::T_BattleTimeOver()
+{
+	this.clear();
+}
+
+T_BattleTimeOver::~T_BattleTimeOver()
+{
+	this.delete();
+}
+
+bool T_BattleTimeOver::create(int nZ)
+{
+	this.delete();
+	this.m_spBase.setCg(10332);
+	this.m_spBase.setPos(0, 360);
+	this.m_spBase.setZ(nZ);
+	this.m_spText.setCg(10331);
+	this.m_spText.setZ(nZ + 1);
+	this.m_nStatus = 0;
+	return true;
+}
+
+void T_BattleTimeOver::delete()
+{
+	this.m_spBase.delete();
+	this.m_spText.delete();
+	this.clear();
+}
+
+void T_BattleTimeOver::clear()
+{
+	this.moveEnd();
+	this.m_nStatus = -1;
+}
+
+bool T_BattleTimeOver::update()
+{
+	switch (this.m_nStatus)
+	{
+		case 1:
+			return this.moveIn();
+		case 2:
+			return this.moveWait();
+		case 3:
+			return this.moveOut();
+		case 0:
+		case 9:
+		default:
+			break;
+	}
+	g_bBattleTimeOverUpdate = false;
+	return false;
+}
+
+bool T_BattleTimeOver::start()
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	this.m_nStatus = 1;
+	this.m_nStrX = 1024;
+	this.m_nStrY = 344;
+	this.m_nEndX = 268;
+	this.m_nEndY = 344;
+	this.m_spBase.setBlendRate(0);
+	this.m_spText.setPos(this.m_nStrX, this.m_nStrY);
+	this.m_spBase.setShow(1);
+	this.m_spText.setShow(1);
+	this.m_sTimer.Reset();
+	Œø‰Ê‰¹_ƒ^ƒCƒ€ƒI[ƒo();
+	return true;
+}
+
+bool T_BattleTimeOver::end()
+{
+	if (this.m_nStatus < 0)
+	{
+		return false;
+	}
+	this.moveEnd();
+	return true;
+}
+
+void T_BattleTimeOver::wait()
+{
+	if (this.m_nStatus <= 0)
+	{
+		return;
+	}
+	while (this.m_nStatus < 9)
+	{
+		UPDATE(true);
+	}
+	this.moveEnd();
+}
+
+bool T_BattleTimeOver::moveIn()
+{
+	if (this.m_nStatus != 1)
+	{
+		return false;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime < 250)
+	{
+		int nRate = ŽÀ”ŒvŽZ(255.0, nTime, 250.0);
+		int nX = this.m_nStrX + ŽÀ”ŒvŽZ(this.m_nEndX - this.m_nStrX, nTime, 250.0);
+		int nY = this.m_nStrY + ŽÀ”ŒvŽZ(this.m_nEndY - this.m_nStrY, nTime, 250.0);
+		this.m_spBase.setBlendRate(nRate);
+		this.m_spText.setPos(nX, nY);
+		return true;
+	}
+	this.m_spBase.setBlendRate(255);
+	this.m_spText.setPos(this.m_nEndX, this.m_nEndY);
+	this.m_nStatus = 2;
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_BattleTimeOver::moveWait()
+{
+	if (this.m_nStatus != 2)
+	{
+		return false;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime < 750)
+	{
+		return true;
+	}
+	this.m_nStatus = 9;
+	return true;
+}
+
+bool T_BattleTimeOver::moveOut()
+{
+	if (this.m_nStatus != 3)
+	{
+		return false;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime < 250)
+	{
+		int nX = this.m_nStrX + ŽÀ”ŒvŽZ(this.m_nEndX - this.m_nStrX, nTime, 250.0);
+		int nY = this.m_nStrY + ŽÀ”ŒvŽZ(this.m_nEndY - this.m_nStrY, nTime, 250.0);
+		this.m_spText.setPos(nX, nY);
+		return true;
+	}
+	this.m_spText.setPos(this.m_nEndX, this.m_nEndY);
+	this.moveEnd();
+	return true;
+}
+
+void T_BattleTimeOver::moveEnd()
+{
+	this.m_nStatus = 0;
+	this.m_nStrX = -2147483648;
+	this.m_nStrY = -2147483648;
+	this.m_nEndX = -2147483648;
+	this.m_nEndY = -2147483648;
+	this.m_spBase.setShow(0);
+	this.m_spText.setShow(0);
+	g_bBattleTimeOverUpdate = false;
+}
+

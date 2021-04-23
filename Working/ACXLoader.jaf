@@ -1,0 +1,69 @@
+bool ‚`‚b‚w_ƒ[ƒh(string szFileName)
+{
+	if (system.ExistFile(szFileName) == 0)
+	{
+		return false;
+	}
+	g_szAcxName = szFileName;
+	return ACXLoader.Load(szFileName);
+}
+
+void ‚`‚b‚w_‰ğ•ú()
+{
+	ACXLoader.Release();
+	g_szAcxName = "";
+}
+
+int ‚`‚b‚w_s”()
+{
+	return ACXLoader.GetNumofLine();
+}
+
+int ‚`‚b‚w_—ñ”()
+{
+	return ACXLoader.GetNumofColumn();
+}
+
+int ‚`‚b‚w_”’l(int nLine, int nColumn)
+{
+	int nValue = 0;
+	if (!ACXLoader.GetDataInt(nLine, nColumn, nValue))
+	{
+		‚`‚b‚w_ƒGƒ‰[(nLine, nColumn, "???", "”’lƒGƒ‰[");
+		return 0;
+	}
+	return nValue;
+}
+
+string ‚`‚b‚w_•¶š(int nLine, int nColumn)
+{
+	string szText = "";
+	if (!ACXLoader.GetDataString(nLine, nColumn, szText))
+	{
+		‚`‚b‚w_ƒGƒ‰[(nLine, nColumn, szText, "ƒeƒLƒXƒgƒGƒ‰[");
+		return "";
+	}
+	return ‹ó”’íœ(szText);
+}
+
+void ‚`‚b‚w_ƒGƒ‰[(int nLine, int nColumn, string szText, string szComment)
+{
+	string szMsg = szComment + "y" + g_szAcxName + "z(%d" % nLine + ", %d)" % nColumn + "F" + szText;
+	system.Error(szMsg);
+}
+
+bool ‚`‚b‚w_ƒ}ƒbƒvî•ñ(int nLine, ref T_MapInfo psData)
+{
+	return ACXLoader.GetDataStruct(nLine, psData);
+}
+
+bool ‚`‚b‚w_ƒrƒ‹ƒ{[ƒhî•ñ(int nLine, ref T_BillboardInfo psData)
+{
+	return ACXLoader.GetDataStruct(nLine, psData);
+}
+
+bool ‚`‚b‚w_í“¬”wŒiî•ñ(int nLine, ref T_BattleBackInfo psData)
+{
+	return ACXLoader.GetDataStruct(nLine, psData);
+}
+

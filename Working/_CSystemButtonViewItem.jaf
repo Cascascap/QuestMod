@@ -1,0 +1,96 @@
+_CSystemButtonViewItem::_CSystemButtonViewItem()
+{
+	this._m_first = true;
+	this._m_btn_index = -2147483648;
+	this._m_state = -2147483648;
+	this.m_Show = true;
+}
+
+void _CSystemButtonViewItem::_Create(int _btn_index)
+{
+	this._m_btn_index = _btn_index;
+}
+
+void _CSystemButtonViewItem::_Delete()
+{
+	this.m_CGSprite.Release();
+	this._m_first = true;
+	this._m_btn_index = -2147483648;
+	this._m_state = -2147483648;
+}
+
+void _CSystemButtonViewItem::_Update()
+{
+	if (this._m_btn_index < 0 || this._m_btn_index >= _g_SystemButtonDocument._GetButtonCount(_g_SystemButtonView._GetId()))
+	{
+		DebugErrorMB("_m_btn_index=%d\n_g_SystemButtonDocument._GetButtonCount(%d)=%d\n" % this._m_btn_index % _g_SystemButtonView._GetId() % _g_SystemButtonDocument._GetButtonCount(_g_SystemButtonView._GetId()));
+		return;
+	}
+	if (this._m_first)
+	{
+		_g_SystemButtonDocument._SetToSpriteCg(this.m_CGSprite, _g_SystemButtonView._GetId(), this._m_btn_index, 0);
+	}
+	int _state = this._ComputeState();
+	if (this._m_first || _state != this._m_state)
+	{
+		this._m_state = _state;
+		if (this._m_state == 3)
+		{
+			this.m_CGSprite.SetShow(false);
+		}
+		else
+		{
+			this.m_CGSprite.SetShow(this.m_Show);
+			_g_SystemButtonDocument._SetToSpriteCg(this.m_CGSprite, _g_SystemButtonView._GetId(), this._m_btn_index, this._m_state);
+		}
+	}
+	this._m_first = false;
+}
+
+int _CSystemButtonViewItem::_ComputeState()
+{
+	int MessageWindowNumber = _g_SystemButtonView._GetId();
+	ref CASRect VisibleRect = _g_SystemButtonDocument.GetVisibleRectByIndex(MessageWindowNumber, this._m_btn_index);
+	if (VisibleRect.GetX() != -2147483648)
+	{
+		int CursorX = 0;
+		int CursorY = 0;
+		if (!AFL_Mouse_GetPos(CursorX, CursorY))
+		{
+			return 3;
+		}
+		if (!VisibleRect.IsIn(CursorX, CursorY))
+		{
+			return 3;
+		}
+	}
+	if (!_g_SystemButtonDocument._IsEnable(MessageWindowNumber, this._m_btn_index))
+	{
+		return 2;
+	}
+	if (_g_SystemButtonDocument.IsPixelDecide(MessageWindowNumber, this._m_btn_index))
+	{
+		if (this.m_CGSprite.IsMouseCursorIn())
+		{
+			return 1;
+		}
+	}
+	else if (this.m_CGSprite.IsMouseCursorInRect())
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void _CSystemButtonViewItem::_SetShow(bool _show)
+{
+	this.m_Show = _show;
+	this._m_first = true;
+	this._Update();
+}
+
+bool _CSystemButtonViewItem::_IsSelecting()
+{
+	return this._m_state == 1;
+}
+

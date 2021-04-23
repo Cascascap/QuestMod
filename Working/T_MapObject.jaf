@@ -1,0 +1,426 @@
+void T_MapObject::setMapPos(int nMapX, int nMapY)
+{
+	this.m_sObject.SetMapPos(nMapX, nMapY);
+}
+
+void T_MapObject::setHoseiX(int nHoseiX)
+{
+	this.m_sObject.SetHoseiX(実数変換(nHoseiX));
+}
+
+void T_MapObject::setHoseiY(int nHoseiY)
+{
+	this.m_sObject.SetHoseiY(実数変換(nHoseiY));
+}
+
+void T_MapObject::setHoseiZ(int nHoseiZ)
+{
+	this.m_sObject.SetHoseiZ(実数変換(nHoseiZ));
+}
+
+void T_MapObject::setScale(int nScale)
+{
+	this.m_sObject.SetScale(実数変換(nScale));
+}
+
+void T_MapObject::setAngle(int nAngle)
+{
+	this.m_sObject.SetAngle(実数変換(nAngle));
+}
+
+void T_MapObject::setMotionLoopFrameRange(int nBeginFrame, int nEndFrame)
+{
+	this.m_sObject.SetMotionLoopFrameRange(nBeginFrame, nEndFrame);
+}
+
+void T_MapObject::setMotionState(int nState)
+{
+	this.m_sObject.SetMotionState(nState);
+}
+
+void T_MapObject::setMotionFrame(float fFrame)
+{
+	this.m_sObject.SetMotionFrame(fFrame);
+}
+
+void T_MapObject::setNextMotionLoopFrameRange(int nBeginFrame, int nEndFrame)
+{
+	this.m_sObject.SetNextMotionLoopFrameRange(nBeginFrame, nEndFrame);
+}
+
+void T_MapObject::setNextMotionState(int nState)
+{
+	this.m_sObject.SetNextMotionState(nState);
+}
+
+void T_MapObject::setNextMotionFrame(float fFrame)
+{
+	this.m_sObject.SetNextMotionFrame(fFrame);
+}
+
+void T_MapObject::setDraw(bool bDrawFlag)
+{
+	this.m_sObject.SetDraw(bDrawFlag);
+}
+
+void T_MapObject::setFPS(float fFPS)
+{
+	this.m_sObject.SetFPS(fFPS);
+}
+
+int T_MapObject::getMotionState()
+{
+	return this.m_sObject.GetMotionState();
+}
+
+float T_MapObject::getMotionFrame()
+{
+	return this.m_sObject.GetMotionFrame();
+}
+
+bool T_MapObject::getDraw()
+{
+	return this.m_sObject.GetDraw();
+}
+
+float T_MapObject::getFPS()
+{
+	return this.m_sObject.GetFPS();
+}
+
+float T_MapObject::getDistance()
+{
+	return this.m_fDistance;
+}
+
+ref CMapObject T_MapObject::get()
+{
+	return this.m_sObject;
+}
+
+T_MapObject::T_MapObject()
+{
+	this.clear();
+}
+
+T_MapObject::~T_MapObject()
+{
+	this.delete();
+}
+
+bool T_MapObject::create(int nMapX, int nMapY, bool bDraw)
+{
+	this.delete();
+	int nNo = 置物番号(nMapX, nMapY);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	ref T_ObjectInfo rfInfo = g_sObjectInfo.get(nNo);
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	this.m_sObject.Create(g_sMapMode.GetPlugin(), rfInfo.getType());
+	this.m_sObject.Set(rfInfo.m_szName, bDraw, "Data\\PolyData\\Etc\\");
+	this.setHoseiX(置物データ_補正Ｘ(nMapX, nMapY));
+	this.setHoseiY(置物データ_補正Ｙ(nMapX, nMapY));
+	this.setHoseiZ(置物データ_補正Ｚ(nMapX, nMapY));
+	this.setScale(置物データ_サイズ(nMapX, nMapY));
+	this.setAngle(置物データ_角度(nMapX, nMapY));
+	this.setMapPos(nMapX, nMapY);
+	if (rfInfo.isMotion())
+	{
+		if (this.setMotion(rfInfo.m_szName, rfInfo.m_nBegin, rfInfo.m_nEnd, bDraw))
+		{
+			this.setMotionState(rfInfo.m_nState);
+			this.setMotionFrame(rfInfo.m_nBegin);
+			this.setMotionLoopFrameRange(rfInfo.m_nLoopBegin, rfInfo.m_nLoopEnd);
+		}
+	}
+	this.m_fDistance = 当り距離計算(nNo, rfInfo.m_nEnterFlag);
+	return true;
+}
+
+void T_MapObject::delete()
+{
+	this.m_sObject.Release();
+	this.clear();
+}
+
+void T_MapObject::clear()
+{
+	this.m_fDistance = -3.40282346638529E+38;
+	this.m_nMotionNo = -1;
+	this.m_nMotionCount = 0;
+}
+
+bool T_MapObject::setMotionNo(int nMotionNo)
+{
+	if (this.m_nMotionCount < 1)
+	{
+		return false;
+	}
+	if (nMotionNo < 0 || nMotionNo >= this.m_nMotionCount)
+	{
+		nMotionNo = 0;
+	}
+	if (nMotionNo == this.m_nMotionNo)
+	{
+		return true;
+	}
+	this.m_sObject.SwapMotion();
+	this.m_nMotionNo = nMotionNo;
+	return true;
+}
+
+bool T_MapObject::setMotion(string szMotionName, int nBeginFrame, int nEndFrame, bool bWait)
+{
+	if (!this.m_sObject.SetMotion(szMotionName, nBeginFrame, nEndFrame, bWait))
+	{
+		return false;
+	}
+	if (this.m_nMotionNo < 0)
+	{
+		this.m_nMotionNo = 0;
+		this.m_nMotionCount = 1;
+	}
+	return true;
+}
+
+bool T_MapObject::setNextMotion(string szMotionName, int nBeginFrame, int nEndFrame, bool bWait)
+{
+	if (this.m_nMotionNo < 0)
+	{
+		return this.setMotion(szMotionName, nBeginFrame, nEndFrame, bWait);
+	}
+	if (!this.m_sObject.SetNextMotion(szMotionName, nBeginFrame, nEndFrame, bWait))
+	{
+		return false;
+	}
+	this.m_nMotionCount = 2;
+	return true;
+}
+
+T_MapObjectManager::T_MapObjectManager()
+{
+}
+
+T_MapObjectManager::~T_MapObjectManager()
+{
+	this.delete();
+}
+
+void T_MapObjectManager::create()
+{
+	this.delete();
+	int nX = 0;
+	int nY = 0;
+	for (nX = 0; nX < 50; ++nX)
+	{
+		for (nY = 0; nY < 50; ++nY)
+		{
+			this.set(nX, nY, false);
+		}
+	}
+}
+
+void T_MapObjectManager::delete()
+{
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		this.m_asObject[i].delete();
+	}
+}
+
+void T_MapObjectManager::align()
+{
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		this.m_asObject[i].get().Align();
+	}
+}
+
+void T_MapObjectManager::setDraw(bool bDrawFlag)
+{
+	int i = 0;
+	for (i = 0; i < 2500; ++i)
+	{
+		this.m_asObject[i].setDraw(bDrawFlag);
+	}
+}
+
+bool T_MapObjectManager::set(int nMapX, int nMapY, bool bDraw)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	if (!rfObj.create(nMapX, nMapY, bDraw))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_MapObjectManager::setHoseiX(int nMapX, int nMapY, int nHoseiX)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setHoseiX(nHoseiX);
+	return true;
+}
+
+bool T_MapObjectManager::setHoseiY(int nMapX, int nMapY, int nHoseiY)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setHoseiY(nHoseiY);
+	return true;
+}
+
+bool T_MapObjectManager::setHoseiZ(int nMapX, int nMapY, int nHoseiZ)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setHoseiZ(nHoseiZ);
+	return true;
+}
+
+bool T_MapObjectManager::setScale(int nMapX, int nMapY, int nScale)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setScale(nScale);
+	return true;
+}
+
+bool T_MapObjectManager::setAngle(int nMapX, int nMapY, int nAngle)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setAngle(nAngle);
+	return true;
+}
+
+bool T_MapObjectManager::setMotion(int nMapX, int nMapY, string szMotionName, int nBeginFrame, int nEndFrame, bool bWait)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	return rfObj.setMotion(szMotionName, nBeginFrame, nEndFrame, bWait);
+}
+
+bool T_MapObjectManager::setMotionState(int nMapX, int nMapY, int nState)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setMotionState(nState);
+	return true;
+}
+
+bool T_MapObjectManager::setMotionFrame(int nMapX, int nMapY, float fFrame)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setMotionFrame(fFrame);
+	return true;
+}
+
+bool T_MapObjectManager::setFPS(int nMapX, int nMapY, float fFPS)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return false;
+	}
+	rfObj.setFPS(fFPS);
+	return true;
+}
+
+int T_MapObjectManager::getMotionState(int nMapX, int nMapY)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return -1;
+	}
+	return rfObj.getMotionState();
+}
+
+float T_MapObjectManager::getMotionFrame(int nMapX, int nMapY)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return -1.0;
+	}
+	return rfObj.getMotionFrame();
+}
+
+bool T_MapObjectManager::getDraw(int nMapX, int nMapY)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return true;
+	}
+	return rfObj.getDraw();
+}
+
+float T_MapObjectManager::getFPS(int nMapX, int nMapY)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return -1.0;
+	}
+	return rfObj.getFPS();
+}
+
+ref CMapObject T_MapObjectManager::getObject(int nMapX, int nMapY)
+{
+	ref T_MapObject rfObj = this.get(nMapX, nMapY);
+	if (rfObj === NULL)
+	{
+		return NULL;
+	}
+	return rfObj.get();
+}
+
+ref T_MapObject T_MapObjectManager::get(int nMapX, int nMapY)
+{
+	int idx = マップ位置_インデクス(nMapX, nMapY);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asObject[idx];
+}
+

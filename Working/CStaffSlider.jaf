@@ -1,0 +1,67 @@
+CStaffSlider::CStaffSlider()
+{
+	this.Init();
+}
+
+CStaffSlider::~CStaffSlider()
+{
+	this.Release();
+}
+
+void CStaffSlider::Init()
+{
+	return;
+}
+
+void CStaffSlider::Release()
+{
+	this.m_StaffList.Free();
+}
+
+void CStaffSlider::AddStaff(string StaffName, string Job)
+{
+	this.m_StaffList.Realloc(this.m_StaffList.Numof() + 1);
+	ref CStaffData StaffData = this.m_StaffList[this.m_StaffList.Numof() - 1];
+	StaffData.SetStaff(StaffName, Job);
+}
+
+void CStaffSlider::SetLogo()
+{
+	this.Release();
+	this.m_LogoData.SetLogo();
+}
+
+void CStaffSlider::UpdatePos(int PosX, int PosY)
+{
+	int i = 0;
+	int TotalHeight = 0;
+	array@int StartPosYList;
+	for (; i < this.m_StaffList.Numof(); ++i)
+	{
+		int StartY = this.m_StaffList[i].GetHeight();
+		StartPosYList.PushBack(StartY);
+		TotalHeight += StartY;
+	}
+	int BaseStatPosY = (768 - TotalHeight) / 2;
+	for (i = 0; i < this.m_StaffList.Numof(); ++i)
+	{
+		this.m_StaffList[i].UpdatePos(PosX, PosY + BaseStatPosY);
+		BaseStatPosY += StartPosYList[i];
+	}
+	BaseStatPosY = (768 - this.m_LogoData.GetHeight()) / 2;
+	if (this.m_StaffList.Empty())
+	{
+		this.m_LogoData.UpdatePos(PosX, PosY + BaseStatPosY);
+	}
+}
+
+void CStaffSlider::UpdateZ(int PosZ)
+{
+	int i = 0;
+	for (i = 0; i < this.m_StaffList.Numof(); ++i)
+	{
+		this.m_StaffList[i].UpdateZ(PosZ);
+	}
+	this.m_LogoData.UpdateZ(PosZ);
+}
+

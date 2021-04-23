@@ -1,0 +1,46 @@
+void GetTabStops(ref array@string aszText, ref array@int tabStops, int fontSize, int fontNumber, float spacing, int fixedWidthSpacing)
+{
+	tabStops.Free();
+	SetFontSize(fontSize);
+	SelectFontNumber(fontNumber);
+	SetFixedWidthSpacing(fixedWidthSpacing);
+	SetSpacing(spacing);
+	array@int tabWidths;
+	int i = 0;
+	int lineCount = aszText.Numof();
+	array@string columns;
+	for (i = 0; i < lineCount; ++i)
+	{
+		string line = aszText[i];
+		if (SplitTabs(line, columns))
+		{
+			int columnCount = columns.Numof();
+			while (tabWidths.Numof() < columnCount - 1)
+			{
+				tabWidths.PushBack(0);
+			}
+			int c = 0;
+			for (c = 0; c < columnCount - 1; ++c)
+			{
+				int width = MeasureText(columns[c], true);
+				int oldWidth = tabWidths[c];
+				if (width > oldWidth)
+				{
+					tabWidths[c] = width;
+				}
+			}
+		}
+	}
+	if (tabWidths.Numof() > 0)
+	{
+		int spaceWidth = 8;
+		int x = 0;
+		for (i = 0; i < tabWidths.Numof(); ++i)
+		{
+			x += tabWidths[i];
+			x += spaceWidth;
+			tabStops.PushBack(x);
+		}
+	}
+}
+

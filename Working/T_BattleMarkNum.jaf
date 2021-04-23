@@ -1,0 +1,190 @@
+int T_BattleMarkNum::getStatus()
+{
+	return this.m_nStatus;
+}
+
+bool T_BattleMarkNum::isCreated()
+{
+	return this.m_nStatus >= 0;
+}
+
+bool T_BattleMarkNum::isPrepare()
+{
+	return this.m_nStatus > 0 && this.m_sMark.getMarkNo() == 31;
+}
+
+bool T_BattleMarkNum::isGuard()
+{
+	return this.m_nStatus > 0 && this.m_sMark.getMarkNo() == 32;
+}
+
+bool T_BattleMarkNum::isBurster()
+{
+	return this.m_nStatus > 0 && this.m_sMark.getMarkNo() == 33;
+}
+
+bool T_BattleMarkNum::isStealth()
+{
+	return this.m_nStatus > 0 && this.m_sMark.getMarkNo() == 34;
+}
+
+bool T_BattleMarkNum::isProtect()
+{
+	return this.m_nStatus > 0 && this.m_sMark.getMarkNo() == 35;
+}
+
+bool T_BattleMarkNum::isBarrier()
+{
+	return this.m_nStatus > 0 && this.m_sMark.getMarkNo() == 36;
+}
+
+bool T_BattleMarkNum::getShow()
+{
+	return this.m_bShow;
+}
+
+T_BattleMarkNum::T_BattleMarkNum()
+{
+	this.clear();
+}
+
+T_BattleMarkNum::~T_BattleMarkNum()
+{
+	this.delete();
+}
+
+bool T_BattleMarkNum::create()
+{
+	this.delete();
+	this.m_sMark.create();
+	this.m_sNumber.create(46, 28, -1, 0, 1, 1);
+	this.m_sNumber.setFontType(258);
+	this.m_sNumber.setFontSize(22);
+	this.m_sNumber.setFontColor(255, 255, 255);
+	this.m_sNumber.setFontBold(1);
+	this.m_sNumber.setShadowPixel(1, 1, 1, 1);
+	this.m_sNumber.setShadowColor(0, 0, 0);
+	this.m_nStatus = 0;
+	return true;
+}
+
+void T_BattleMarkNum::delete()
+{
+	this.m_sMark.delete();
+	this.m_sNumber.delete();
+	this.clear();
+}
+
+void T_BattleMarkNum::clear()
+{
+	this.m_nStatus = -1;
+	this.m_bShow = false;
+}
+
+bool T_BattleMarkNum::update()
+{
+	if (this.m_nStatus <= 0)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	return this.m_sMark.update();
+}
+
+void T_BattleMarkNum::reset()
+{
+	this.set(0, 0, "");
+}
+
+bool T_BattleMarkNum::setPrepare(bool bPrepare)
+{
+	return this.set(31, bPrepare, "") > 0;
+}
+
+int T_BattleMarkNum::setGuard(int nGuard)
+{
+	return this.set(32, nGuard, "%d%" % nGuard);
+}
+
+int T_BattleMarkNum::setBurster(int nBurster)
+{
+	return this.set(33, nBurster, "");
+}
+
+int T_BattleMarkNum::setStealth(int nStealth)
+{
+	return this.set(34, nStealth, "");
+}
+
+int T_BattleMarkNum::setProtect(int nProtect)
+{
+	return this.set(35, nProtect, "");
+}
+
+int T_BattleMarkNum::setBarrier(int nBarrier)
+{
+	return this.set(36, nBarrier, "%D‰ñ" % nBarrier);
+}
+
+void T_BattleMarkNum::setPos(int nX, int nY)
+{
+	this.m_sMark.setPos(nX, nY);
+	this.m_sNumber.setPos(nX + 13, nY + 13);
+}
+
+void T_BattleMarkNum::setZ(int nZ)
+{
+	this.m_sMark.setZ(nZ);
+	this.m_sNumber.setZ(nZ + 1);
+}
+
+void T_BattleMarkNum::setShow(bool bShow)
+{
+	if (this.m_nStatus > 0)
+	{
+		this.m_sMark.setShow(bShow);
+		this.m_sNumber.setShow(bShow);
+	}
+	else
+	{
+		this.m_sMark.setShow(false);
+		this.m_sNumber.setShow(false);
+	}
+	this.m_bShow = bShow;
+}
+
+int T_BattleMarkNum::set(int nMarkNo, int nStatus, string szText)
+{
+	if (this.m_nStatus < 0)
+	{
+		return -1;
+	}
+	if (nMarkNo > 0)
+	{
+		if (nStatus > 0)
+		{
+			this.m_sMark.set(nMarkNo);
+			this.m_sNumber.setText(szText, false);
+			this.m_nStatus = nStatus;
+			this.m_sNumber.setPos(this.m_sMark.getPosX() + 13, this.m_sMark.getPosY() + (nMarkNo == 32 ? 13 : 17));
+		}
+		else if (this.m_sMark.getMarkNo() == nMarkNo)
+		{
+			this.m_sMark.set(0);
+			this.m_sNumber.setText("", false);
+			this.m_nStatus = 0;
+		}
+	}
+	else
+	{
+		this.m_sMark.set(0);
+		this.m_sNumber.setText("", false);
+		this.m_nStatus = 0;
+	}
+	this.setShow(this.m_bShow);
+	return this.m_nStatus;
+}
+

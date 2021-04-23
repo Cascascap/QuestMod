@@ -1,0 +1,230 @@
+void CBackSceneDocument::_SetCaptionTextPos(int _x, int _y)
+{
+	this._m_caption_text_pos.Set(_x, _y);
+}
+
+void CBackSceneDocument::_SetCaptionText(string _text)
+{
+	this._m_caption_text = _text;
+}
+
+void CBackSceneDocument::_SetCaptionNumeralTM(sact_text_metrics_t _tm)
+{
+	this._m_caption_numeral_tm = _tm;
+}
+
+void CBackSceneDocument::_SetCaptionTextTM(sact_text_metrics_t _tm)
+{
+	this._m_caption_text_tm = _tm;
+}
+
+string CBackSceneDocument::_GetCaptionText()
+{
+	return this._m_caption_text;
+}
+
+CASPos CBackSceneDocument::_GetCaptionTextPos()
+{
+	return this._m_caption_text_pos;
+}
+
+sact_text_metrics_t CBackSceneDocument::_GetCaptionNumeralTM()
+{
+	return this._m_caption_numeral_tm;
+}
+
+sact_text_metrics_t CBackSceneDocument::_GetCaptionTextTM()
+{
+	return this._m_caption_text_tm;
+}
+
+CBackSceneDocument::CBackSceneDocument()
+{
+	this.m_ButtonListByMessageWindow.Alloc(40, 6);
+	this._m_caption_text = "Scene";
+	this._m_caption_text_pos.Set(0, 0);
+	this._m_caption_numeral_pos.Set(50, 0);
+	this.m_CaptionNumberPosListByMessageWindow.Alloc(40);
+	this.m_nPageNumberCharSpace = 0;
+	this.m_SceneSliderBackCG = "";
+	this.m_SceneSliderBoxCG = "";
+	this.m_SceneSliderBoxOnCursorCG = "";
+}
+
+void CBackSceneDocument::_SetBtn(int _id, int _x, int _y, int _z, string _cg1, string _cg2)
+{
+	if (!this._asserte_button_id(_id))
+	{
+		return;
+	}
+	this._m_bt[_id]._SetPos(_x, _y);
+	this._m_bt[_id]._SetZ(_z);
+	this._m_bt[_id]._SetCgPln(_cg1);
+	this._m_bt[_id]._SetCgHlt(_cg2);
+	int Index = 0;
+	for (Index = 0; Index < this.m_ButtonListByMessageWindow.Numof(); ++Index)
+	{
+		this.m_ButtonListByMessageWindow[Index][_id]._SetPos(_x, _y);
+		this.m_ButtonListByMessageWindow[Index][_id]._SetZ(_z);
+		this.m_ButtonListByMessageWindow[Index][_id]._SetCgPln(_cg1);
+		this.m_ButtonListByMessageWindow[Index][_id]._SetCgHlt(_cg2);
+	}
+}
+
+void CBackSceneDocument::SetButtonByMessageWindow(int MessageWindowNumber, int ButtonIndex, int X, int Y, int Z, string CGName, string OnCursorCGName)
+{
+	if (MessageWindowNumber < 0 || MessageWindowNumber >= this.m_ButtonListByMessageWindow.Numof() || ButtonIndex < 0 || ButtonIndex >= this.m_ButtonListByMessageWindow.Numof(2))
+	{
+		return;
+	}
+	ref _CButtonCgInfo Button = this.m_ButtonListByMessageWindow[MessageWindowNumber][ButtonIndex];
+	Button._SetPos(X, Y);
+	Button._SetZ(Z);
+	Button._SetCgPln(CGName);
+	Button._SetCgHlt(OnCursorCGName);
+}
+
+void CBackSceneDocument::_SetBtnSound(int _id, int _click, int _cursor)
+{
+	if (!this._asserte_button_id(_id))
+	{
+		return;
+	}
+	this._m_bt[_id]._SetClickSound(_click);
+	this._m_bt[_id]._SetCursorSound(_cursor);
+	int Index = 0;
+	for (Index = 0; Index < this.m_ButtonListByMessageWindow.Numof(); ++Index)
+	{
+		this.m_ButtonListByMessageWindow[Index][_id]._SetClickSound(_click);
+		this.m_ButtonListByMessageWindow[Index][_id]._SetCursorSound(_cursor);
+	}
+}
+
+_CButtonCgInfo CBackSceneDocument::_GetButton(int _id)
+{
+	if (!this._asserte_button_id(_id))
+	{
+		_CButtonCgInfo _t;
+		return _t;
+	}
+	return this._m_bt[_id];
+}
+
+_CButtonCgInfo CBackSceneDocument::GetButtonByMessageWindow(int MessageWindowNumber, int ButtonIndex)
+{
+	if (MessageWindowNumber < 0 || MessageWindowNumber >= this.m_ButtonListByMessageWindow.Numof() || ButtonIndex < 0 || ButtonIndex >= this.m_ButtonListByMessageWindow.Numof(2))
+	{
+		return this._GetButton(ButtonIndex);
+	}
+	return this.m_ButtonListByMessageWindow[MessageWindowNumber][ButtonIndex];
+}
+
+bool CBackSceneDocument::_asserte_button_id(int _id)
+{
+	if (_id < 0 || _id >= this._m_bt.Numof())
+	{
+		DebugErrorMB("_id=%d\n_m_bt.Numof()=%d" % _id % this._m_bt.Numof());
+		return false;
+	}
+	return true;
+}
+
+void CBackSceneDocument::_SetCaptionNumeralPos(int _x, int _y)
+{
+	this._m_caption_numeral_pos.Set(_x, _y);
+	int Index = 0;
+	for (Index = 0; Index < this.m_CaptionNumberPosListByMessageWindow.Numof(); ++Index)
+	{
+		this.m_CaptionNumberPosListByMessageWindow[Index].Set(_x, _y);
+	}
+}
+
+void CBackSceneDocument::SetCaptionNumeralPosByMessageWindow(int MessageWindowNumber, int X, int Y)
+{
+	if (MessageWindowNumber < 0 || MessageWindowNumber >= this.m_CaptionNumberPosListByMessageWindow.Numof())
+	{
+		return;
+	}
+	this.m_CaptionNumberPosListByMessageWindow[MessageWindowNumber].Set(X, Y);
+}
+
+CASPos CBackSceneDocument::_GetCaptionNumeralPos()
+{
+	return this._m_caption_numeral_pos;
+}
+
+CASPos CBackSceneDocument::GetCaptionNumeralPosByMessageWindow(int MessageWindowNumber)
+{
+	if (MessageWindowNumber < 0 || MessageWindowNumber >= this.m_CaptionNumberPosListByMessageWindow.Numof())
+	{
+		return this._m_caption_numeral_pos;
+	}
+	return this.m_CaptionNumberPosListByMessageWindow[MessageWindowNumber];
+}
+
+void CBackSceneDocument::SetPageNumberCharSpace(int nCharSpace)
+{
+	this.m_nPageNumberCharSpace = nCharSpace;
+}
+
+int CBackSceneDocument::GetPageNumberCharSpace()
+{
+	return this.m_nPageNumberCharSpace;
+}
+
+void CBackSceneDocument::SetSceneSliderBackCG(string CG)
+{
+	this.m_SceneSliderBackCG = CG;
+}
+
+void CBackSceneDocument::SetSceneSliderBackPos(CASPos Pos)
+{
+	this.m_SceneSliderBackPos = Pos;
+}
+
+void CBackSceneDocument::SetSceneSliderBoxCG(string CG, string OnCursorCG)
+{
+	this.m_SceneSliderBoxCG = CG;
+	this.m_SceneSliderBoxOnCursorCG = OnCursorCG;
+}
+
+void CBackSceneDocument::SetSceneSliderRect(CASRect Rect)
+{
+	this.m_SceneSliderRect = Rect;
+}
+
+void CBackSceneDocument::SetSceneSliderShowRect(CASRect Rect)
+{
+	this.m_SceneSliderShowRect = Rect;
+}
+
+string CBackSceneDocument::GetSceneSliderBackCG()
+{
+	return this.m_SceneSliderBackCG;
+}
+
+CASPos CBackSceneDocument::GetSceneSliderBackPos()
+{
+	return this.m_SceneSliderBackPos;
+}
+
+string CBackSceneDocument::GetSceneSliderBoxCG()
+{
+	return this.m_SceneSliderBoxCG;
+}
+
+string CBackSceneDocument::GetSceneSliderBoxOnCursorCG()
+{
+	return this.m_SceneSliderBoxOnCursorCG;
+}
+
+CASRect CBackSceneDocument::GetSceneSliderRect()
+{
+	return this.m_SceneSliderRect;
+}
+
+CASRect CBackSceneDocument::GetSceneSliderShowRect()
+{
+	return this.m_SceneSliderShowRect;
+}
+

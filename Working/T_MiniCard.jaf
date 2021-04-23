@@ -1,0 +1,242 @@
+void T_MiniCard::setDeadShow(bool bDeadShow)
+{
+	this.m_bDeadShow = bDeadShow;
+}
+
+void T_MiniCard::setMarkShow(bool bMarkShow)
+{
+	this.m_bMarkShow = bMarkShow;
+}
+
+int T_MiniCard::getPosX()
+{
+	return this.m_rcBase.m_nSx;
+}
+
+int T_MiniCard::getPosY()
+{
+	return this.m_rcBase.m_nSy;
+}
+
+int T_MiniCard::getZ()
+{
+	return this.getFaceZ();
+}
+
+int T_MiniCard::getFaceX()
+{
+	return this.m_sFace.getPosX();
+}
+
+int T_MiniCard::getFaceY()
+{
+	return this.m_sFace.getPosY();
+}
+
+int T_MiniCard::getFaceZ()
+{
+	return this.m_sFace.getZ();
+}
+
+bool T_MiniCard::getShow()
+{
+	return this.m_sFace.getShow();
+}
+
+int T_MiniCard::getCharaNo()
+{
+	return this.m_sSkill.getCharaNo();
+}
+
+bool T_MiniCard::getDeadShow()
+{
+	return this.m_bDeadShow;
+}
+
+bool T_MiniCard::getMarkShow()
+{
+	return this.m_bMarkShow;
+}
+
+ref T_Rect T_MiniCard::getBaseRect()
+{
+	return this.m_rcBase;
+}
+
+ref T_CharaFace T_MiniCard::getFace()
+{
+	return this.m_sFace;
+}
+
+ref T_Bar T_MiniCard::getHpBar()
+{
+	return this.m_sHpBar;
+}
+
+ref T_JobIcon T_MiniCard::getJob()
+{
+	return this.m_sJob.getIcon();
+}
+
+ref T_MiniSkill T_MiniCard::getSkill()
+{
+	return this.m_sSkill;
+}
+
+bool T_MiniCard::isSuspend()
+{
+	return this.m_spParts.isSuspend();
+}
+
+T_MiniCard::T_MiniCard()
+{
+	this.clear();
+}
+
+T_MiniCard::~T_MiniCard()
+{
+	this.delete();
+}
+
+bool T_MiniCard::create(int nCharaNo)
+{
+	this.delete();
+	if (!this.m_sFace.create(nCharaNo, 2))
+	{
+		return false;
+	}
+	this.m_spParts.setCg(10099);
+	this.m_spNonSkill.setCg(10132);
+	this.m_spDead.setCg(10129);
+	this.m_spMark.setCg(10094);
+	this.m_sName.create(200, 20, -1, 0, 0, 1);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setFontType(258);
+	this.m_sName.setSpacing(0.949999988079071);
+	this.m_sName.setFontSize(20);
+	this.m_sName.setFontColor(255, 245, 100);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setText(キャラ_名前(nCharaNo), false);
+	this.m_sHpBar.createCg(1, 10098, 0, 0);
+	this.m_sJob.create(キャラ_職業(nCharaNo), 1);
+	this.m_sSkill.create(nCharaNo);
+	return true;
+}
+
+void T_MiniCard::delete()
+{
+	this.m_spParts.delete();
+	this.m_spNonSkill.delete();
+	this.m_spDead.delete();
+	this.m_spMark.delete();
+	this.m_sFace.delete();
+	this.m_sName.delete();
+	this.m_sHpBar.delete();
+	this.m_sJob.delete();
+	this.m_sSkill.delete();
+	this.clear();
+}
+
+void T_MiniCard::clear()
+{
+	this.m_bDeadShow = false;
+	this.m_bMarkShow = false;
+	this.m_rcBase.clear();
+}
+
+bool T_MiniCard::update(bool bAnime, int nTotalTime)
+{
+	int nCharaNo = this.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	if (bAnime)
+	{
+		this.m_sHpBar.update(キャラ_体力(nCharaNo), nTotalTime);
+	}
+	this.m_sHpBar.setValue(キャラ_体力(nCharaNo), キャラ_体力最大(nCharaNo));
+	this.m_sJob.setLevel(キャラ_レベル(nCharaNo), キャラ_レベル最大(nCharaNo));
+	this.m_sSkill.update();
+	this.setShow(this.m_spParts.getShow());
+	return true;
+}
+
+void T_MiniCard::setPos(int nX, int nY)
+{
+	this.m_spParts.setPos(nX + 1, nY + 1);
+	this.m_spNonSkill.setPos(nX + 139, nY + 2);
+	this.m_spDead.setPos(nX + 0, nY + 0);
+	this.m_spMark.setPos(nX, nY);
+	this.m_sFace.setPos(nX + 3, nY + 3);
+	this.m_sName.setPos(nX + 2, nY + -1);
+	this.m_sHpBar.setPos(nX + 2, nY + 115);
+	this.m_sJob.setPos(nX + 104, nY + 20);
+	this.m_sSkill.setPos(nX + 122, nY + 2);
+	this.m_rcBase.set(nX, nY, 202, 124);
+}
+
+void T_MiniCard::setZ(int nZ)
+{
+	this.m_sFace.setZ(nZ);
+	this.m_sSkill.setZ(nZ);
+	nZ += 10;
+	this.m_spParts.setZ(nZ);
+	this.m_sName.setZ(nZ + 1);
+	this.m_sHpBar.setZ(nZ + 1);
+	this.m_sJob.setZ(nZ + 1);
+	this.m_spNonSkill.setZ(nZ + 5);
+	this.m_spDead.setZ(nZ + 4);
+	this.m_spMark.setZ(nZ + 10);
+}
+
+void T_MiniCard::setShow(bool bShow)
+{
+	this.m_spParts.setShow(bShow);
+	this.m_sFace.setShow(bShow);
+	this.m_sName.setShow(bShow);
+	this.m_sHpBar.setShow(bShow, -1);
+	this.m_sJob.setShow(bShow);
+	this.m_sSkill.setShow(bShow);
+	this.m_spNonSkill.setShow(this.m_sSkill.getActiveCount() > 0 ? 0 : bShow);
+	this.m_spDead.setShow(this.m_bMarkShow ? 0 : this.m_bDeadShow && bShow);
+	this.m_spMark.setShow(this.m_bMarkShow && bShow);
+}
+
+void T_MiniCard::setBlendRate(int nBlendRate)
+{
+	this.m_spParts.setBlendRate(nBlendRate);
+	this.m_spNonSkill.setBlendRate(nBlendRate);
+	this.m_spDead.setBlendRate(nBlendRate);
+	this.m_sFace.setBlendRate(nBlendRate);
+	this.m_sName.setBlendRate(nBlendRate);
+	this.m_sHpBar.setBlendRate(nBlendRate);
+	this.m_sJob.setBlendRate(nBlendRate);
+	this.m_sSkill.setBlendRate(nBlendRate);
+}
+
+bool T_MiniCard::suspend()
+{
+	this.m_spNonSkill.suspend();
+	this.m_spDead.suspend();
+	this.m_sFace.suspend();
+	this.m_sName.suspend();
+	this.m_sHpBar.suspend();
+	this.m_sJob.suspend();
+	this.m_sSkill.suspend();
+	return this.m_spParts.suspend();
+}
+
+bool T_MiniCard::resume()
+{
+	this.m_spNonSkill.resume();
+	this.m_spDead.resume();
+	this.m_sFace.resume();
+	this.m_sName.resume();
+	this.m_sHpBar.resume();
+	this.m_sJob.resume();
+	this.m_sSkill.resume();
+	return this.m_spParts.resume();
+}
+

@@ -1,0 +1,316 @@
+int T_MiniStatus::getZ()
+{
+	return this.m_nZ;
+}
+
+bool T_MiniStatus::getShow()
+{
+	return this.m_bShow;
+}
+
+int T_MiniStatus::getLockIndex()
+{
+	return this.m_nLockIndex;
+}
+
+bool T_MiniStatus::isCreated()
+{
+	return this.m_nZ >= 0;
+}
+
+T_MiniStatus::T_MiniStatus()
+{
+	this.clear();
+}
+
+T_MiniStatus::~T_MiniStatus()
+{
+	this.delete();
+}
+
+bool T_MiniStatus::create(int nZ)
+{
+	this.m_nZ = nZ;
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.createCard(i, 味方パーティ_番号(i + 1));
+	}
+	this.m_spFrame.create(202, 124, 0, 255, 255, 128);
+	this.m_spFrame.setZ(nZ + 20);
+	return true;
+}
+
+void T_MiniStatus::delete()
+{
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCard[i].delete();
+	}
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_MiniStatus::clear()
+{
+	this.m_nZ = -1;
+	this.m_bShow = false;
+	this.m_nLockIndex = -1;
+}
+
+bool T_MiniStatus::update()
+{
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	bool bRet = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_MiniCard rfChara = this.m_asCard[i];
+		int nOld = rfChara.getCharaNo();
+		int nCharaNo = 味方パーティ_番号(i + 1);
+		if (nOld > 0)
+		{
+			if (nCharaNo > 0)
+			{
+				if (nOld != nCharaNo)
+				{
+					if (this.createCard(i, nCharaNo))
+					{
+						bRet = true;
+					}
+				}
+				else if (rfChara.update(false, 250))
+				{
+					bRet = true;
+				}
+			}
+			else
+			{
+				rfChara.delete();
+				bRet = true;
+			}
+		}
+		else if (nCharaNo > 0)
+		{
+			if (this.createCard(i, nCharaNo))
+			{
+				bRet = true;
+			}
+		}
+	}
+	return bRet;
+}
+
+void T_MiniStatus::updateHpAll(int nTotalTime)
+{
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_MiniCard rfChara = this.m_asCard[i];
+		rfChara.getHpBar().animeStart(キャラ_体力(rfChara.getCharaNo()), nTotalTime);
+	}
+	UPDATE(true);
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (nTime < nTotalTime)
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			ref T_MiniCard rfChara = this.m_asCard[i];
+			rfChara.getHpBar().anime(nTime);
+		}
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref T_MiniCard rfChara = this.m_asCard[i];
+		rfChara.getHpBar().animeEnd();
+	}
+}
+
+bool T_MiniStatus::lock(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asCard.Numof())
+	{
+		this.m_spFrame.setShow(0);
+		this.m_nLockIndex = -1;
+		return false;
+	}
+	int nX = ミニステータス_位置Ｘ(nIndex);
+	int nY = ミニステータス_位置Ｙ(nIndex);
+	this.m_spFrame.setPos(nX + -1, nY + -1);
+	this.m_spFrame.setShow(1);
+	this.m_nLockIndex = nIndex;
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_MiniStatus::blink()
+{
+	if (this.m_nLockIndex < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 350)
+	{
+		return true;
+	}
+	bool bShow = this.m_spFrame.getShow();
+	this.m_spFrame.setShow(!bShow);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_MiniStatus::drop(int nIndex, int nCharaNo)
+{
+	ref T_MiniCard rfsCard = this.getFromIndex(nIndex);
+	if (rfsCard === NULL)
+	{
+		return false;
+	}
+	int nCharaNo2 = rfsCard.getCharaNo();
+	if (nCharaNo2 > 0)
+	{
+		if (nCharaNo2 == nCharaNo)
+		{
+			return false;
+		}
+		this.erase(nCharaNo2);
+	}
+	int nOld = this.erase(nCharaNo);
+	if (nOld >= 0)
+	{
+		this.add(nOld, nCharaNo2);
+	}
+	this.add(nIndex, nCharaNo);
+	return true;
+}
+
+bool T_MiniStatus::add(int nIndex, int nCharaNo)
+{
+	if (!this.createCard(nIndex, nCharaNo))
+	{
+		return false;
+	}
+	味方パーティ_登録(nIndex + 1, nCharaNo);
+	キャラ_登録状態設定(nCharaNo, 1);
+	return true;
+}
+
+int T_MiniStatus::erase(int nCharaNo)
+{
+	int nNo = 味方パーティ_検索(nCharaNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	this.deleteCard(nNo - 1);
+	味方パーティ_登録(nNo, 0);
+	キャラ_登録状態設定(nCharaNo, 2);
+	return nNo - 1;
+}
+
+void T_MiniStatus::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asCard[i].setShow(bShow);
+	}
+	this.m_spFrame.setShow(0);
+	this.m_bShow = bShow;
+}
+
+ref T_MiniCard T_MiniStatus::get(int nCharaNo)
+{
+	return this.getFromIndex(味方パーティ_検索(nCharaNo) - 1);
+}
+
+ref T_MiniCard T_MiniStatus::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asCard.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asCard[nIndex];
+}
+
+bool T_MiniStatus::createCard(int nIndex, int nCharaNo)
+{
+	if (nIndex < 0 || nIndex >= this.m_asCard.Numof())
+	{
+		return false;
+	}
+	ref T_MiniCard rfChara = this.m_asCard[nIndex];
+	if (!rfChara.create(nCharaNo))
+	{
+		return false;
+	}
+	rfChara.setPos(ミニステータス_位置Ｘ(nIndex), ミニステータス_位置Ｙ(nIndex));
+	rfChara.setZ(this.m_nZ);
+	rfChara.update(false, 250);
+	rfChara.setShow(this.m_bShow);
+	return true;
+}
+
+bool T_MiniStatus::deleteCard(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asCard.Numof())
+	{
+		return false;
+	}
+	this.m_asCard[nIndex].delete();
+	return true;
+}
+
+bool T_MiniStatus::suspend()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asCard[i].suspend())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_MiniStatus::resume()
+{
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asCard[i].resume())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_MiniStatus::isSuspend()
+{
+	int i = 0;
+	int cnt = this.m_asCard.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asCard[i].isSuspend())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+

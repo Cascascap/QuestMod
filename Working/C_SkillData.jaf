@@ -1,0 +1,664 @@
+int compSkill(int nSkillNo1, int nSkillNo2)
+{
+	int nColor1 = スキル_パネル色(nSkillNo1);
+	int nColor2 = スキル_パネル色(nSkillNo2);
+	if (nColor1 < nColor2)
+	{
+		return -1;
+	}
+	if (nColor1 > nColor2)
+	{
+		return 1;
+	}
+	if (nSkillNo1 < nSkillNo2)
+	{
+		return -1;
+	}
+	if (nSkillNo1 > nSkillNo2)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+void スキル_初期化()
+{
+	return;
+}
+
+bool キャラスキル_登録(int nCharaNo, int nIndex, int nSkillNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	if (nIndex < 0 || nIndex >= キャラ_スキル枠最大(nCharaNo))
+	{
+		return false;
+	}
+	if (キャラスキル_外し(nCharaNo, nIndex) < 0)
+	{
+		return false;
+	}
+	if (!キャラスキル_登録可能(nCharaNo))
+	{
+		return false;
+	}
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	キャラ_スキル実装中設定(nCharaNo, nNo, nIndex + 1);
+	return true;
+}
+
+bool キャラスキル_全登録(int nCharaNo, ref array@int anSkillNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	if (anSkillNo === NULL)
+	{
+		return false;
+	}
+	キャラスキル_全外し(nCharaNo);
+	int i = 0;
+	int cnt = anSkillNo.Numof();
+	bool bRet = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (キャラスキル_登録(nCharaNo, i, anSkillNo[i]))
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+int キャラスキル_外し(int nCharaNo, int nIndex)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (nIndex < 0 || nIndex >= キャラ_スキル枠最大(nCharaNo))
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	int nPos = nIndex + 1;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (キャラ_スキル実装中(nCharaNo, i) == nPos)
+		{
+			キャラ_スキル実装中設定(nCharaNo, i, 0);
+			return i;
+		}
+	}
+	return 0;
+}
+
+bool キャラスキル_全外し(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		キャラ_スキル実装中設定(nCharaNo, i, 0);
+	}
+	return true;
+}
+
+int キャラスキル_実装数(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (キャラ_スキル実装中(nCharaNo, i) > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+bool キャラスキル_実装可能(int nCharaNo, int nSkillNo)
+{
+	int idx = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	switch (スキル_タイプ(nSkillNo))
+	{
+		case 10:
+		case 20:
+			return キャラ_スキル実装中(nCharaNo, idx) == 0;
+		case 30:
+		default:
+			break;
+	}
+	return false;
+}
+
+bool キャラスキル_登録可能(int nCharaNo)
+{
+	int cnt = キャラスキル_実装数(nCharaNo);
+	return cnt < 0 ? 0 : cnt < キャラ_スキル枠最大(nCharaNo);
+}
+
+bool キャラスキル_新規追加(int nCharaNo, int nSkillNo, int nPoint, bool bAuto)
+{
+	if (キャラ_スキルポイント(nCharaNo) < nPoint)
+	{
+		選択_通知("Not enough points saved.", "OK", false);
+		return false;
+	}
+	if (!キャラスキル_空き確認(nCharaNo))
+	{
+		return false;
+	}
+	string skillName = テキスト_スキル名(nSkillNo);
+	if (!選択_確認_拡張(20, "Learn " + skillName.GetPart(1, skillName.Length() - 2) + "?", 1, "Yes", "No", -1, -1, bAuto))
+	{
+		return false;
+	}
+	int nNo = キャラスキル_追加(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	int nValue = -1;
+	switch (スキル_タイプ(nSkillNo))
+	{
+		case 10:
+			nValue = キャラ_スキル使用回数最大設定(nCharaNo, nNo, キャラスキル_追加回数(nSkillNo));
+			キャラ_スキル使用回数設定(nCharaNo, nNo, nValue > 0 ? nValue : 0);
+			break;
+		case 20:
+		case 30:
+			nValue = キャラ_スキルランク設定(nCharaNo, nNo, 1);
+			break;
+		default:
+			break;
+	}
+	if (nValue <= 0)
+	{
+		return false;
+	}
+	キャラ_スキルポイント－(nCharaNo, nPoint);
+	キャラ_スキル保有設定(nCharaNo, nNo, 1);
+	キャラ_スキル表示文設定(nCharaNo, nNo, スキル_表示文(nSkillNo));
+	return true;
+}
+
+bool キャラスキル_更新(int nCharaNo, int nSkillNo, int nPoint)
+{
+	bool bRet = false;
+	if (キャラ_スキルポイント(nCharaNo) < nPoint)
+	{
+		選択_通知("Not enough points saved.", "OK", false);
+		return false;
+	}
+	switch (スキル_タイプ(nSkillNo))
+	{
+		case 10:
+			bRet = キャラスキル_使用回数最大＋(nCharaNo, nSkillNo, キャラスキル_追加回数(nSkillNo));
+			break;
+		case 20:
+		case 30:
+			bRet = キャラスキル_ランク＋(nCharaNo, nSkillNo);
+			break;
+		default:
+			break;
+	}
+	if (!bRet)
+	{
+		return false;
+	}
+	キャラ_スキルポイント－(nCharaNo, nPoint);
+	return bRet;
+}
+
+bool キャラスキル_使用回数最大＋(int nCharaNo, int nSkillNo, int nCount)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	int nOld = キャラ_スキル使用回数最大(nCharaNo, nNo);
+	if (nOld < 0)
+	{
+		return false;
+	}
+	string skillName = テキスト_スキル名(nSkillNo);
+	if (!選択_確認_拡張(21, "Increase usages of @" + skillName.GetPart(1, skillName.Length() - 2) + " by %d?" % nCount, 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	int nValue = キャラ_スキル使用回数最大設定(nCharaNo, nNo, 数値_加算(nOld, nCount));
+	if (nValue < 0)
+	{
+		return false;
+	}
+	キャラ_スキル使用回数＋(nCharaNo, nNo);
+	return true;
+}
+
+bool キャラスキル_ランク＋(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	int nValue = キャラ_スキルランク(nCharaNo, nNo);
+	if (nValue < 0)
+	{
+		return false;
+	}
+	string skillName = テキスト_スキル名(nSkillNo);
+	if (!選択_確認_拡張(22, "Raise level of @" + skillName.GetPart(1, skillName.Length() - 2) + " by 1?", 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	nValue = キャラ_スキルランク設定(nCharaNo, nNo, 数値_加算(nValue, 1));
+	return nValue > 0;
+}
+
+int キャラスキル_追加回数(int nSkillNo)
+{
+	return nSkillNo == 384 ? 3 : 1;
+}
+
+bool キャラスキル_削除(int nCharaNo, int nSkillNo)
+{
+	if (!キャラスキル_保有中(nCharaNo, nSkillNo))
+	{
+		return false;
+	}
+	string szName = テキスト_スキル名(nSkillNo);
+	string szText1 = szName + "will be erased. Okay?@※  When obtained again,  ※@";
+	string szText2 = szName + "will be erased.@Are you sure?";
+	switch (スキル_タイプ(nSkillNo))
+	{
+		case 10:
+			szText1 += "※Will be reduced to [1 use].※";
+			break;
+		case 20:
+		case 30:
+			szText1 += "※Will become [Rank 1].※";
+			break;
+		default:
+			return false;
+	}
+	if (!選択_確認(szText1, 2, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	if (!選択_確認(szText2, 2, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	キャラスキル_消去(nCharaNo, nSkillNo);
+	return true;
+}
+
+int キャラスキル_実装一覧(int nCharaNo, ref array@int anSkillNo)
+{
+	if (anSkillNo === NULL)
+	{
+		return -1;
+	}
+	if (!anSkillNo.Empty())
+	{
+		anSkillNo.Free();
+	}
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	int nMax = 数値_補正(キャラ_スキル枠最大(nCharaNo), 0, 6);
+	if (nMax <= 0)
+	{
+		return 0;
+	}
+	anSkillNo.Alloc(nMax);
+	anSkillNo.Fill(0, nMax, 0);
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nSkillNo = キャラ_スキル番号(nCharaNo, i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		int nPos = キャラ_スキル実装中(nCharaNo, i);
+		if (nPos <= 0 || nPos > nMax)
+		{
+			continue;
+		}
+		anSkillNo[nPos - 1] = nSkillNo;
+	}
+	return nMax;
+}
+
+int キャラスキル_保有一覧(int nCharaNo, ref array@int anSkillNo)
+{
+	if (anSkillNo === NULL)
+	{
+		return -1;
+	}
+	if (!anSkillNo.Empty())
+	{
+		anSkillNo.Free();
+	}
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	int nItemSkill = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nSkillNo = キャラ_スキル番号(nCharaNo, i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		if (キャラ_スキル保有(nCharaNo, i) == 0)
+		{
+			continue;
+		}
+		if (スキル_パネル色(nSkillNo) == 104)
+		{
+			nItemSkill = nSkillNo;
+			continue;
+		}
+		anSkillNo.PushBack(nSkillNo);
+	}
+	anSkillNo.Sort(&compSkill);
+	anSkillNo.Realloc(18);
+	anSkillNo[17] = nItemSkill;
+	return 18;
+}
+
+int キャラスキル_保有数(int nCharaNo, bool bItemSkill)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	int nCount = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nSkillNo = キャラ_スキル番号(nCharaNo, i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		if (!bItemSkill && スキル_パネル色(nSkillNo) == 104)
+		{
+			continue;
+		}
+		if (キャラ_スキル保有(nCharaNo, i) == 1)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int キャラスキル_追加一覧(int nCharaNo, ref array@int anSkillNo)
+{
+	if (anSkillNo === NULL)
+	{
+		return -1;
+	}
+	if (!anSkillNo.Empty())
+	{
+		anSkillNo.Free();
+	}
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = 取得可能スキル_数();
+	int idx = 0;
+	for (i = 1; i <= cnt; ++i)
+	{
+		int nSkillNo = 取得可能スキル_番号(i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		if (スキル_パネル色(nSkillNo) == 104)
+		{
+			continue;
+		}
+		if (キャラスキル_保有中(nCharaNo, nSkillNo))
+		{
+			continue;
+		}
+		anSkillNo.PushBack(nSkillNo);
+	}
+	if (anSkillNo.Numof() > 36)
+	{
+		anSkillNo.Realloc(36);
+	}
+	anSkillNo.Sort(&compSkill);
+	return anSkillNo.Numof();
+}
+
+void キャラスキル_使用回数回復(int nCharaNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (キャラ_スキル保有(nCharaNo, i) <= 0)
+		{
+			continue;
+		}
+		int nSkillNo = キャラ_スキル番号(nCharaNo, i);
+		if (nSkillNo <= 0)
+		{
+			continue;
+		}
+		switch (スキル_タイプ(nSkillNo))
+		{
+			case 10:
+				int nValue = キャラ_スキル使用回数最大(nCharaNo, i);
+				キャラ_スキル使用回数設定(nCharaNo, i, nValue > 0 ? nValue : 0);
+				break;
+			case 20:
+			case 30:
+			default:
+				break;
+		}
+	}
+}
+
+int キャラスキル_検索(int nCharaNo, int nSkillNo)
+{
+	if (!キャラ_確認(nCharaNo))
+	{
+		return -1;
+	}
+	if (nSkillNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = キャラ_スキル数();
+	for (i = 1; i <= cnt; ++i)
+	{
+		if (nSkillNo == キャラ_スキル番号(nCharaNo, i))
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int キャラスキル_追加(int nCharaNo, int nSkillNo)
+{
+	return ＣＳ追加(nCharaNo, nSkillNo, 0);
+}
+
+void キャラスキル_消去(int nCharaNo, int nSkillNo)
+{
+	ＣＳ削除(nCharaNo, nSkillNo);
+}
+
+int キャラスキル_使用禁止(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_スキル使用禁止(nCharaNo, nNo);
+}
+
+int キャラスキル_使用回数＋(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_スキル使用回数＋(nCharaNo, nNo);
+}
+
+int キャラスキル_使用回数－(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_スキル使用回数－(nCharaNo, nNo);
+}
+
+int キャラスキル_使用回数(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_スキル使用回数(nCharaNo, nNo);
+}
+
+int キャラスキル_使用回数最大(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_スキル使用回数最大(nCharaNo, nNo);
+}
+
+int キャラスキル_ランク(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_スキルランク(nCharaNo, nNo);
+}
+
+bool キャラスキル_新規(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	return キャラ_スキル保有(nCharaNo, nNo) == 0;
+}
+
+bool キャラスキル_保有中(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return false;
+	}
+	return キャラ_スキル保有(nCharaNo, nNo) == 1;
+}
+
+int キャラスキル_実装中(int nCharaNo, int nSkillNo)
+{
+	int nNo = キャラスキル_検索(nCharaNo, nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return キャラ_スキル実装中(nCharaNo, nNo);
+}
+
+bool キャラスキル_空き確認(int nCharaNo)
+{
+	int cnt1 = キャラスキル_保有数(nCharaNo, false);
+	int cnt2 = キャラ_スキル枠キープ数(nCharaNo);
+	int nMax = 18 - cnt2 - 1;
+	if (cnt1 < nMax)
+	{
+		return true;
+	}
+	string szMsg = "No open skill slots.";
+	if (cnt2 > 0)
+	{
+		szMsg += "@※%D slots are reserved@for future events." % cnt2;
+	}
+	選択_通知(szMsg, "OK", false);
+	return false;
+}
+
+int キャラスキル_コスト(int nCharaNo, int nSkillNo)
+{
+	int nNo = 取得可能スキル_検索(nSkillNo);
+	if (nNo <= 0)
+	{
+		return -1;
+	}
+	return 取得可能スキル_ポイント(nNo);
+}
+
+string キャラスキル_取得不可能説明(int nCharaNo, int nSkillNo)
+{
+	int nNo = 取得可能スキル_検索(nSkillNo);
+	if (nNo <= 0)
+	{
+		return "";
+	}
+	return テキスト改行変換(取得不可能スキル_説明(nNo), "$");
+}
+

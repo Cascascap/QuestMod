@@ -1,0 +1,114 @@
+CConfigTabView::CConfigTabView()
+{
+}
+
+void CConfigTabView::Release()
+{
+	this.m_TabButtonList.Free();
+	this.m_BaseSprite.Release();
+}
+
+void CConfigTabView::Create(int nZ, int nWidth, int nHeight, int nActiveIndex, array@string TabNameList)
+{
+	if (!system.IsDebugMode())
+	{
+		TabNameList.PopBack();
+	}
+	this.CreateBaseSprite(nZ, nWidth, nHeight - 1);
+	this.CreateTabButtonList(nZ + 1, nHeight, nActiveIndex, TabNameList);
+}
+
+void CConfigTabView::SetCG(int nZ, array@_CCgInfo@2 CGInfoList, int nActiveIndex)
+{
+	if (!system.IsDebugMode())
+	{
+		array@_CCgInfo@2 TempCGInfoList;
+		TempCGInfoList.Alloc(CGInfoList.Numof(), CGInfoList.Numof(2));
+		int i = 0;
+		int j = 0;
+		for (i = 0; i < TempCGInfoList.Numof(); ++i)
+		{
+			for (j = 0; j < TempCGInfoList.Numof(2); ++j)
+			{
+				TempCGInfoList[i][j] = CGInfoList[i][j];
+			}
+		}
+		CGInfoList.Alloc(TempCGInfoList.Numof() - 1, TempCGInfoList.Numof(2));
+		for (i = 0; i < CGInfoList.Numof(); ++i)
+		{
+			for (j = 0; j < CGInfoList.Numof(2); ++j)
+			{
+				CGInfoList[i][j] = TempCGInfoList[i][j];
+			}
+		}
+	}
+	this.m_TabButtonList.Alloc(CGInfoList.Numof());
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_TabButtonList.Numof(); ++nIndex)
+	{
+		int nX = CGInfoList[nIndex][0]._GetX();
+		int nY = CGInfoList[nIndex][0]._GetY();
+		string ActiveCG = CGInfoList[nIndex][0]._GetCg();
+		string DisableCG = CGInfoList[nIndex][1]._GetCg();
+		string OnCursorCG = CGInfoList[nIndex][2]._GetCg();
+		string CG = nIndex == nActiveIndex ? ActiveCG : DisableCG;
+		if (system.IsDebugMode() && nIndex == this.m_TabButtonList.Numof() - 1)
+		{
+			int nTabHeight = 32;
+			this.m_TabButtonList[nIndex].Create(700, 3, nZ, nTabHeight, "デバッグ", nIndex == nActiveIndex);
+		}
+		else
+		{
+			this.m_TabButtonList[nIndex].SetCG(nX, nY, nZ, CG, OnCursorCG, nIndex == nActiveIndex);
+		}
+	}
+}
+
+void CConfigTabView::CreateBaseSprite(int nZ, int nWidth, int nHeight)
+{
+	this.m_BaseSprite.AddCreatePixelOnly(nWidth, nHeight);
+	this.m_BaseSprite.AddFill(0, 0, nWidth, nHeight, 128, 128, 128);
+	this.m_BaseSprite.Build();
+	this.m_BaseSprite.SetZ(nZ);
+}
+
+void CConfigTabView::CreateTabButtonList(int nZ, int nHeight, int nActiveIndex, ref array@string TabNameList)
+{
+	this.m_TabButtonList.Alloc(TabNameList.Numof());
+	int nX = 0;
+	int nY = 3;
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_TabButtonList.Numof(); ++nIndex)
+	{
+		int nTabHeight = nHeight - 3;
+		if (nIndex != nActiveIndex)
+		{
+			--nTabHeight;
+		}
+		this.m_TabButtonList[nIndex].Create(nX, nY, nZ, nTabHeight, TabNameList[nIndex], nIndex == nActiveIndex);
+		nX += this.m_TabButtonList[nIndex].GetWidth();
+	}
+}
+
+void CConfigTabView::Update()
+{
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_TabButtonList.Numof(); ++nIndex)
+	{
+		this.m_TabButtonList[nIndex].Update();
+	}
+}
+
+int CConfigTabView::GetOnMouseCursorObject()
+{
+	int nIndex = 0;
+	for (nIndex = 0; nIndex < this.m_TabButtonList.Numof(); ++nIndex)
+	{
+		if (this.m_TabButtonList[nIndex].IsMouseCursorInRect())
+		{
+			return nIndex;
+		}
+	}
+	return -1;
+}
+

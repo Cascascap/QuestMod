@@ -1,0 +1,188 @@
+T_GirlMessage::T_GirlMessage()
+{
+	this.clear();
+}
+
+T_GirlMessage::~T_GirlMessage()
+{
+	this.delete();
+}
+
+bool T_GirlMessage::run(int nCgNo, string szText)
+{
+	int nZ = 9191;
+	if (!this.create(nCgNo, nZ))
+	{
+		return false;
+	}
+	this.wait(500);
+	this.showText();
+	this.wait(1000);
+	this.showMessage(szText);
+	this.delete();
+	ＣＧモード_登録(nCgNo);
+	return true;
+}
+
+bool T_GirlMessage::create(int nCgNo, int nZ)
+{
+	this.delete();
+	if (this.m_spGirl.setCg(nCgNo) <= 0)
+	{
+		return false;
+	}
+	if (this.m_spText.setCg(nCgNo + 100) <= 0)
+	{
+		return false;
+	}
+	this.m_spGirl.setPos(0, 0);
+	this.m_spGirl.setZ(nZ + 1);
+	this.m_spText.setPos(0, 0);
+	this.m_spText.setZ(nZ + 2);
+	this.m_spBase.createPixelOnly(1024, 768);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_spBaseCg.setCg(50051);
+	this.m_nWidth = this.m_spBaseCg.getWidth();
+	this.m_nHeight = this.m_spBaseCg.getHeight();
+	this.drawBase(0);
+	this.m_spBase.setShow(1);
+	this.m_spGirl.setShow(1);
+	this.m_nPhase = 0;
+	this.m_sTimer.Reset();
+	return true;
+}
+
+void T_GirlMessage::delete()
+{
+	this.m_spBase.delete();
+	this.m_spGirl.delete();
+	this.m_spText.delete();
+	this.m_spBaseCg.delete();
+	this.clear();
+}
+
+void T_GirlMessage::clear()
+{
+	this.m_nWidth = 0;
+	this.m_nHeight = 0;
+	this.m_nPhase = -1;
+}
+
+bool T_GirlMessage::showText()
+{
+	this.m_nPhase = 1;
+	T_Sprite spWork;
+	spWork.copy(this.m_spText, true);
+	spWork.setShow(1);
+	int nTime = 0;
+	float fBeginMagRate = 10.0;
+	float fEndMagRate = 1.0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label0:
+	if (nTime < 500)
+	{
+		float fRate = nTime / 500.0;
+		fRate = 1.0 - Math.Pow(1.0 - fRate, 4.0);
+		float fMag = fBeginMagRate + (fEndMagRate - fBeginMagRate) * fRate;
+		スプライト_変形(spWork, 0.0, fMag);
+		this.update();
+		nTime = sTimer.Get();
+		goto label0;
+	}
+	spWork.delete();
+	this.m_spText.setShow(1);
+	return true;
+}
+
+bool T_GirlMessage::showMessage(string szText)
+{
+	this.m_spText.setShow(0);
+	int nTime = this.update();
+	this.m_nPhase = 2;
+	if (szText.Empty())
+	{
+		return false;
+	}
+	array@string aszText;
+	int i = 0;
+	int cnt = _テキスト分割_強制改行(szText, "$", -1, aszText);
+	T_PartsAnime sIcon;
+	sIcon.create(-1);
+	sIcon.setLoopCg("500%02d", 21, 5, 200);
+	sIcon.setPos(800, 661);
+	sIcon.setZ(9211);
+	女の子台詞枠();
+	for (i = 0; i < cnt; ++i)
+	{
+		S(aszText[i]);
+		R();
+	}
+	B();
+	sIcon.setShow(true);
+	メッセージ送り_待ち();
+	sIcon.delete();
+	女の子台詞消去();
+	this.m_nPhase = 9;
+	this.m_sTimer.SetPassTime(nTime);
+	this.wait(0);
+	return true;
+}
+
+int T_GirlMessage::update()
+{
+	if (this.m_nPhase < 0)
+	{
+		return -1;
+	}
+	int nTime = this.m_sTimer.Get();
+	if (nTime > 2000)
+	{
+		nTime = nTime % 2000;
+	}
+	if (this.m_nPhase != 2)
+	{
+		this.drawBase(nTime);
+	}
+	UPDATE(true);
+	return nTime;
+}
+
+void T_GirlMessage::wait(int nWaitTime)
+{
+	this.update();
+	CASTimer sTimer;
+	メッセージ送り_クリア();
+	sTimer.Reset();
+	while (!メッセージ送り_確認())
+	{
+		if (nWaitTime > 0 && sTimer.Get() >= nWaitTime)
+		{
+			break;
+		}
+		this.update();
+	}
+	メッセージ送り_クリア();
+}
+
+bool T_GirlMessage::drawBase(int nTime)
+{
+	if (this.m_nWidth <= 0 || this.m_nHeight <= 0)
+	{
+		return false;
+	}
+	int nW = 実数計算(this.m_nWidth, nTime, 2000.0);
+	int nH = 実数計算(this.m_nHeight, nTime, 2000.0);
+	int nX = 0;
+	int nY = 0;
+	for (nY = -nH; nY < 768; nY += this.m_nHeight)
+	{
+		for (nX = nW - this.m_nWidth; nX < 1024; nX += this.m_nWidth)
+		{
+			drawGraph_Copy(this.m_spBase, nX, nY, this.m_spBaseCg, 0, 0, this.m_nWidth, this.m_nHeight);
+		}
+	}
+	return true;
+}
+

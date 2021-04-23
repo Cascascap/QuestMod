@@ -1,0 +1,5 @@
+bool ゲームインストール確認(string ゲーム名)
+{
+	return InstallInfo.IsInstalledGame(ゲーム名);
+}
+

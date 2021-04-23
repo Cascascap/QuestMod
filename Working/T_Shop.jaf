@@ -1,0 +1,530 @@
+int T_Shop::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 4 ? -1 : 110000 + nIndex + 1;
+}
+
+int T_Shop::getItemIndex(int nID)
+{
+	int idx = nID + -110001;
+	return idx < 0 || idx >= 4 ? -1 : idx;
+}
+
+int T_Shop::getFirstButton()
+{
+	return this.getButtonID(0);
+}
+
+int T_Shop::getLastButton()
+{
+	return this.getButtonID(3);
+}
+
+T_Shop::T_Shop()
+{
+	this.clear();
+}
+
+T_Shop::~T_Shop()
+{
+	this.delete();
+}
+
+int T_Shop::run()
+{
+	int nRet = 0;
+	int nID = this.getFirstButton();
+	if (!this.create())
+	{
+		return -1;
+	}
+	_EFFECT(1, 100);
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	this.delete();
+	return nRet;
+}
+
+int T_Shop::moveUp(int nID)
+{
+	if (nID > 920000)
+	{
+		return this.getLastButton();
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞ミニステータス(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ＞システムバー(nID);
+	}
+	if (nID > 110000)
+	{
+		int idx = this.getItemIndex(nID);
+		if (idx > 0)
+		{
+			return this.getButtonID(idx - 1);
+		}
+		return this.m_sButton.getButtonActive(600011) ? 600011 : 600013;
+	}
+	return this.getFirstButton();
+}
+
+int T_Shop::moveDown(int nID)
+{
+	if (nID > 920000)
+	{
+		return カーソル移動_ミニステータス＞システムバー(nID);
+	}
+	if (nID > 900000)
+	{
+		return カーソル移動_システムバー＞街マップ(nID, this.m_sButton);
+	}
+	if (nID > 600000)
+	{
+		return this.getFirstButton();
+	}
+	if (nID > 110000)
+	{
+		int idx = this.getItemIndex(nID);
+		if (idx < 3)
+		{
+			return this.getButtonID(idx + 1);
+		}
+		return ミニステータス_次ボタン_遷移(2);
+	}
+	return this.getLastButton();
+}
+
+int T_Shop::moveLeft(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ左(nID, this.m_sButton);
+	}
+	if (nID > 110000)
+	{
+		return nID;
+	}
+	return this.getFirstButton();
+}
+
+int T_Shop::moveRight(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 600000)
+	{
+		return カーソル移動_街マップ右(nID, this.m_sButton);
+	}
+	if (nID > 110000)
+	{
+		return nID;
+	}
+	return this.getLastButton();
+}
+
+void T_Shop::setSelect(int nID, bool bSelect)
+{
+	if (nID > 900000)
+	{
+		システムバー_選択設定(nID, bSelect, true);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+	}
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+bool T_Shop::create()
+{
+	this.delete();
+	システムバー_作成(12, -1, true);
+	this.createBase(◆アイテム屋／表示);
+	this.m_sMessage.create(6);
+	this.m_sMessage.set(Ｔアイテム屋／テキスト(0));
+	this.m_sButton.create();
+	int i = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		ボタン登録_矩形(this.m_sButton, this.getButtonID(i), ステータス_アイテムＸ(i), ステータス_アイテムＹ(i), 100, 100, true);
+	}
+	街マップ_タブ作成(this.m_sButton, 600012);
+	this.m_sButton.setZ(11);
+	this.setButtonActive();
+	this.setShow(true);
+	this.m_sShortcutInfo.create(9901);
+	this.m_sShortcutInfo.addAll(this.m_sButton);
+	this.m_sShortcutInfo.addAll(システムバー_ボタン群());
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&アイテム屋_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&アイテム屋_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&アイテム屋_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&アイテム屋_右矢印);
+	this.m_sInputKey.setSelectCallback(&アイテム屋_選択設定);
+	return true;
+}
+
+bool T_Shop::createBase(int nMode)
+{
+	this.m_spBase.attach(街マップ_土台作成(11101));
+	switch (nMode)
+	{
+		case 1:
+			this.m_spBase.blendCg(558, 307, 11105, 255);
+			break;
+		case 2:
+			this.m_spBase.blendCg(187, 173, 11106, 255);
+			break;
+		case 0:
+		default:
+			break;
+	}
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(1);
+	return true;
+}
+
+void T_Shop::delete()
+{
+	this.hideComment(-1);
+	this.m_spBase.delete();
+	this.m_sMessage.delete();
+	this.m_sButton.delete();
+	this.m_sShortcutInfo.delete();
+	this.m_sInputKey.delete();
+	システムバー_削除();
+	this.clear();
+}
+
+void T_Shop::clear()
+{
+	this.m_nCommentID = -1;
+}
+
+bool T_Shop::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	this.m_sShortcutInfo.setShow(false);
+	switch (nID)
+	{
+		case 100009:
+			return true;
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.execSystemBar(nID);
+	}
+	if (nID > 600000)
+	{
+		switch (nID)
+		{
+			case 600001:
+			case 600011:
+			case 600013:
+			case 600014:
+				nRet = nID;
+				return true;
+			default:
+				break;
+		}
+		return false;
+	}
+	if (nID > 110000)
+	{
+		return this.execItem(nID, nRet);
+	}
+	return false;
+}
+
+bool T_Shop::execSystemBar(int nID)
+{
+	int nRet = -1;
+	システムバー_実行前();
+	while (nID > 0)
+	{
+		if (nID == 900002)
+		{
+			this.m_sMessage.set(Ｔアイテム屋／テキスト(1));
+		}
+		else
+		{
+			this.m_sMessage.set("");
+		}
+		if (システムバー_処理(nID, nRet))
+		{
+			break;
+		}
+		nID = nRet;
+		システムバー_ボタン有効設定();
+	}
+	システムバー_実行後();
+	if (nRet == 910002)
+	{
+		システムメニュー_ロード();
+	}
+	this.m_sMessage.set(Ｔアイテム屋／テキスト(0));
+	return false;
+}
+
+bool T_Shop::execItem(int nID, ref int nRet)
+{
+	bool bRet = false;
+	int nIndex = this.getItemIndex(nID);
+	int nType = ステータス_アイテム種別(nIndex);
+	if (nType <= 0)
+	{
+		return false;
+	}
+	this.resetSelect();
+	this.m_sMessage.set(Ｔアイテム屋／テキスト(0));
+	if (!アイテム倉庫_作成(6, nType, 0, 0))
+	{
+		return false;
+	}
+	効果音_窓開き();
+	_EFFECT(1, 100);
+	int nID2 = アイテム倉庫_先頭アイテム();
+	while (true)
+	{
+		nID2 = アイテム倉庫_選択確認(nID2);
+		int nRet2 = 0;
+		if (nID2 > 900000)
+		{
+			nRet = nID2;
+			break;
+		}
+		if (アイテム倉庫_実行(nID2, nRet2))
+		{
+			break;
+		}
+		if (nRet2 > 0)
+		{
+			this.buyItem(nRet2);
+		}
+	}
+	アイテム倉庫_削除();
+	if (nRet > 900000)
+	{
+		return this.execSystemBar(nRet);
+	}
+	this.m_sMessage.set(Ｔアイテム屋／テキスト(0));
+	return bRet;
+}
+
+bool T_Shop::buyItem(int nItemNo)
+{
+	if (nItemNo <= 0)
+	{
+		return false;
+	}
+	アイテム倉庫_再作成(-1, -1, -1, -1, -1);
+	システムバー_更新(2, -1);
+	数値点滅_開始();
+	ミニステータス_ボタン表示設定(false);
+	効果音_アイテム購入();
+	UPDATE(true);
+	return true;
+}
+
+int T_Shop::checkSelect(int nID)
+{
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(nID, true);
+	}
+	while (true)
+	{
+		int nID2 = 0;
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 100009;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_Shop::checkInput(ref int nSelectID)
+{
+	nSelectID = 0;
+	switch (システムバー_入力確認(nSelectID))
+	{
+		case 0:
+			if (nSelectID > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sButton.setInputFlag(false);
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nSelectID))
+	{
+		case 0:
+			break;
+		case 1:
+			システムバー_入力ＯＦＦ();
+			return 1;
+		case 2:
+			return 2;
+		default:
+			break;
+	}
+	if (nSelectID > 0)
+	{
+		this.showComment(nSelectID);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+label0:
+	this.m_sButton.setInputFlag(true);
+	システムバー_入力ＯＮ();
+	return 0;
+}
+
+int T_Shop::checkKey(int nID)
+{
+	int nID2 = システムバー_キー確認(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	this.m_sShortcutInfo.check();
+	return 0;
+}
+
+bool T_Shop::checkWheel()
+{
+	ホイール_クリア();
+	return false;
+}
+
+void T_Shop::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	システムバー_選択解除();
+	this.hideComment(-1);
+}
+
+void T_Shop::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 900000)
+	{
+		システムバー_カーソル設定(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_Shop::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	int idx = this.getItemIndex(nID);
+	if (idx < 0)
+	{
+		this.hideComment(-1);
+		return;
+	}
+	int nNo = アイテム倉庫_アイテム番号(idx);
+	this.m_nCommentID = nID;
+}
+
+void T_Shop::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_Shop::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+	システムバー_表示設定(bShow);
+}
+
+void T_Shop::setButtonActive()
+{
+	int i = 0;
+	for (i = 0; i < 4; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getButtonID(i), true);
+	}
+}
+

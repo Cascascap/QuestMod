@@ -1,0 +1,176 @@
+T_AliceLogo::T_AliceLogo()
+{
+	this.clear();
+}
+
+T_AliceLogo::~T_AliceLogo()
+{
+	this.delete();
+}
+
+void T_AliceLogo::run()
+{
+	int nKey = 0;
+	this.create();
+	nKey = this.phase1();
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+	nKey = this.wait(1500);
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+	nKey = this.phase2();
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+	nKey = this.phase3();
+	if (nKey > 0)
+	{
+		goto label0;
+	}
+label0:
+	if (nKey > 0)
+	{
+		キー_離し待ち(nKey, true);
+	}
+	this.delete();
+}
+
+void T_AliceLogo::create()
+{
+	this.delete();
+	this.m_spBase.createPixelOnly(1024, 768);
+	this.m_spBase.fill(0, 0, 1024, 768, 255, 255, 255, 255);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(9001);
+	this.m_spBase.setShow(1);
+	this.m_spLogo.setCg(19999);
+	this.m_spLogo.setPos(0, 0);
+	this.m_spLogo.setZ(9002);
+	this.m_spLogo.setShow(1);
+}
+
+void T_AliceLogo::delete()
+{
+	this.m_spBase.delete();
+	this.m_spLogo.delete();
+	this.clear();
+}
+
+void T_AliceLogo::clear()
+{
+	return;
+}
+
+int T_AliceLogo::phase1()
+{
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label0:
+	if (nTime < 750)
+	{
+		int nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			return nKey;
+		}
+		int nRate = 実数計算(255.0, nTime, 750.0);
+		this.m_spBase.setBlendRate(nRate);
+		this.m_spLogo.setBlendRate(nRate);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label0;
+	}
+	this.m_spBase.setBlendRate(255);
+	this.m_spLogo.setBlendRate(255);
+	UPDATE(true);
+	return 0;
+}
+
+int T_AliceLogo::phase2()
+{
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label0:
+	if (nTime < 500)
+	{
+		int nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			return nKey;
+		}
+		int nRate = 255 - 実数計算(255.0, nTime, 750.0);
+		this.m_spBase.setBlendRate(nRate);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label0;
+	}
+	this.m_spBase.setBlendRate(0);
+	this.m_spBase.setShow(0);
+	UPDATE(true);
+	return 0;
+}
+
+int T_AliceLogo::phase3()
+{
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+label0:
+	if (nTime < 500)
+	{
+		int nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			return nKey;
+		}
+		int nRate = 255 - 実数計算(255.0, nTime, 750.0);
+		this.m_spLogo.setBlendRate(nRate);
+		UPDATE(true);
+		nTime = sTimer.Get();
+		goto label0;
+	}
+	this.m_spLogo.setBlendRate(0);
+	this.m_spLogo.setShow(0);
+	UPDATE(true);
+	return 0;
+}
+
+int T_AliceLogo::wait(int nWaitTime)
+{
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (sTimer.Get() < nWaitTime)
+	{
+		int nKey = this.checkKey();
+		if (nKey > 0)
+		{
+			return nKey;
+		}
+		UPDATE(true);
+	}
+	return 0;
+}
+
+int T_AliceLogo::checkKey()
+{
+	int nKey = 0;
+	nKey = ホイール_確認(true);
+	if (nKey == 9992)
+	{
+		return nKey;
+	}
+	nKey = キー_メッセージ送り();
+	if (nKey > 0)
+	{
+		return nKey;
+	}
+	return 0;
+}
+

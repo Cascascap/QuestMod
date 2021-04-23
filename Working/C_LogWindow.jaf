@@ -1,0 +1,190 @@
+void logWindowMessage(int nMsgNum, int nNumofMsg, string szText)
+{
+	ログテキスト_追加(szText);
+}
+
+void logWindowR()
+{
+	bool bUpdate = キー_未読スキップ() == 0;
+	マウス_フラグクリア();
+	ログテキスト_登録(bUpdate);
+}
+
+void logWindowA()
+{
+	ログテキスト_登録(true);
+	Ａ();
+}
+
+void logWindowB()
+{
+	ログテキスト_登録(true);
+}
+
+void scrollLogWindow(int nValue)
+{
+	g_sLogWindow.scroll(nValue);
+}
+
+void ログ窓_初期化()
+{
+	ログデータ_初期化();
+	ログテキスト_クリア();
+}
+
+void ログ窓_終了処理()
+{
+	ログ窓_閉じ(true, true);
+	ログデータ_削除();
+}
+
+void ログテキスト_クリア()
+{
+	g_nLogText = "";
+	g_nLogColor = 0;
+}
+
+void ログテキスト_追加(string szText)
+{
+	g_nLogText += szText;
+}
+
+void ログテキスト_登録(bool bUpdate)
+{
+	Ｔ(g_nLogText, g_nLogColor, bUpdate);
+	g_nLogText = "";
+}
+
+void ログテキスト_色設定(int nColor)
+{
+	g_nLogColor = nColor > 0 && nColor < 6 ? nColor : 0;
+}
+
+void ログテキスト_色(int nColor, ref int nR, ref int nG, ref int nB)
+{
+	switch (nColor)
+	{
+		case 1:
+			nR = 255;
+			nG = 255;
+			nB = 0;
+			break;
+		case 2:
+			nR = 255;
+			nG = 0;
+			nB = 255;
+			break;
+		case 3:
+			nR = 0;
+			nG = 255;
+			nB = 255;
+			break;
+		case 4:
+			nR = 0;
+			nG = 255;
+			nB = 0;
+			break;
+		case 5:
+			nR = 250;
+			nG = 230;
+			nB = 170;
+			break;
+		case 0:
+		default:
+			nR = 255;
+			nG = 255;
+			nB = 255;
+			break;
+	}
+}
+
+void 仮字枠表示()
+{
+	return;
+}
+
+void 仮字枠閉じ()
+{
+	return;
+}
+
+void 仮字枠非表示()
+{
+	return;
+}
+
+void 仮字枠再表示()
+{
+	return;
+}
+
+bool 仮字枠表示確認()
+{
+	return false;
+}
+
+void ログ窓_開き(bool bClear)
+{
+	return;
+}
+
+void ログ窓_閉じ(bool bClear, bool bDelete)
+{
+	return;
+}
+
+void ログ窓_非表示()
+{
+	return;
+}
+
+void ログ窓_再表示()
+{
+	return;
+}
+
+int ログ窓_番号()
+{
+	return 0;
+}
+
+bool ログ窓_表示確認()
+{
+	return false;
+}
+
+void ログ窓_入力確認()
+{
+	return;
+}
+
+void ログ窓_入力ＯＮ()
+{
+	return;
+}
+
+void ログ窓_入力ＯＦＦ()
+{
+	return;
+}
+
+void Ｔ(string szText, int nColor, bool bUpdate)
+{
+	return;
+}
+
+void Ｌ(int nColor)
+{
+	return;
+}
+
+void Ａ()
+{
+	return;
+}
+
+void ＴＣ(int nColor)
+{
+	return;
+}
+

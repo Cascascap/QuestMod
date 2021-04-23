@@ -1,0 +1,21 @@
+int AFL_BGM_GetPlayLength()
+{
+	return SYS_BGM_GetPlayLength();
+}
+
+int AFL_BGM_GetPlayPos()
+{
+	return SYS_BGM_GetPlayPos();
+}
+
+void AFL_BGM_Play(int BGMNumber, int Volume, int TotalTime)
+{
+	SYS_PlayBGM(BGMNumber, 0, 1, TotalTime, Volume);
+}
+
+void AFL_BGM_BeginFade(int Volume, int TotalTime)
+{
+	SYS_BGM_SetVolume(Volume);
+	SYS_BGM_BeginFade(TotalTime);
+}
+

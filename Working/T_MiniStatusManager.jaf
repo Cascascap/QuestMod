@@ -1,0 +1,828 @@
+bool T_MiniStatusManager::blink()
+{
+	return this.m_sStatus.blink();
+}
+
+void T_MiniStatusManager::setCursor(int nID)
+{
+	this.m_sButton.setButtonCursor(nID);
+}
+
+void T_MiniStatusManager::setInputFlag(bool bInputFlag)
+{
+	this.m_sButton.setInputFlag(bInputFlag);
+}
+
+int T_MiniStatusManager::getCharaNoFromID(int nID)
+{
+	return this.getCharaNo(this.getStatusIndex(nID));
+}
+
+bool T_MiniStatusManager::getButtonActive(int nID)
+{
+	return this.m_sButton.getButtonActive(nID);
+}
+
+int T_MiniStatusManager::getButtonKey(int nID)
+{
+	return this.m_sButton.getButtonKey(nID);
+}
+
+int T_MiniStatusManager::getSelectID()
+{
+	return this.m_sButton.getSelectID();
+}
+
+int T_MiniStatusManager::getKeyDownID()
+{
+	return this.m_sButton.getKeyDownID();
+}
+
+int T_MiniStatusManager::getClickID()
+{
+	return this.m_sButton.getClickID();
+}
+
+bool T_MiniStatusManager::isKeyDown()
+{
+	return this.m_sButton.isKeyDown();
+}
+
+bool T_MiniStatusManager::isClick()
+{
+	return this.m_sButton.isClick();
+}
+
+ref T_MiniCard T_MiniStatusManager::get(int nCharaNo)
+{
+	return this.m_sStatus.get(nCharaNo);
+}
+
+ref T_ButtonGroup T_MiniStatusManager::getButton()
+{
+	return this.m_sButton;
+}
+
+bool T_MiniStatusManager::isCreated()
+{
+	return this.m_spBase.isCreated();
+}
+
+bool T_MiniStatusManager::isSuspend()
+{
+	return this.m_spBase.isSuspend();
+}
+
+int T_MiniStatusManager::getStatusID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 5 ? -1 : 921000 + nIndex + 1;
+}
+
+int T_MiniStatusManager::getStatusIndex(int nID)
+{
+	int idx = nID + -921001;
+	return idx < 0 || idx >= 5 ? -1 : idx;
+}
+
+int T_MiniStatusManager::getCardID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 5 ? -1 : 922000 + nIndex + 1;
+}
+
+int T_MiniStatusManager::getCardIndex(int nID)
+{
+	int idx = nID + -922001;
+	return idx < 0 || idx >= 5 ? -1 : idx;
+}
+
+T_MiniStatusManager::T_MiniStatusManager()
+{
+	this.clear();
+	this.m_anKeyTable[0] = 0;
+	this.m_anKeyTable[1] = 3;
+	this.m_anKeyTable[2] = 1;
+	this.m_anKeyTable[3] = 4;
+	this.m_anKeyTable[4] = 2;
+}
+
+T_MiniStatusManager::~T_MiniStatusManager()
+{
+	this.delete();
+}
+
+bool T_MiniStatusManager::create(int nZ)
+{
+	this.m_spBase.setCg(10100);
+	this.m_spBase.setPos(0, 587);
+	this.m_spBase.setZ(nZ);
+	this.m_sStatus.create(nZ + 10);
+	this.m_sButton.create();
+	this.m_sButtonLock.create();
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.createButton(i, nZ + 20);
+	}
+	ボタン登録_矩形(this.m_sButtonLock, 920001, 0, 0, 1024, 587, false);
+	ボタン登録_ＣＧ(this.m_sButton, 920002, 413, 720, 10092, -1, -1, -2147483648, -2147483648);
+	this.m_sButton.setButtonZ(920002, nZ + 50);
+	this.m_sButtonLock.setZ(nZ + 20);
+	this.setButtonActive();
+	this.m_sInputKey.create(1, this.m_sButtonLock);
+	this.m_sInputKey.setArrowUpCallback(&ミニステータス_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&ミニステータス_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&ミニステータス_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&ミニステータス_右矢印);
+	return true;
+}
+
+void T_MiniStatusManager::delete()
+{
+	this.m_spBase.delete();
+	this.m_sStatus.delete();
+	this.m_sButton.delete();
+	this.m_sButtonLock.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_MiniStatusManager::clear()
+{
+	this.m_bButtonShow = false;
+	this.m_bPartyActive = false;
+	this.m_nLockCardID = 0;
+}
+
+int T_MiniStatusManager::moveUp(int nID)
+{
+	if (this.m_nLockCardID <= 0)
+	{
+		return nID;
+	}
+	return nID != 920001 ? 920001 : this.m_nLockCardID;
+}
+
+int T_MiniStatusManager::moveDown(int nID)
+{
+	if (this.m_nLockCardID <= 0)
+	{
+		return nID;
+	}
+	return nID != 920001 ? 920001 : this.m_nLockCardID;
+}
+
+int T_MiniStatusManager::moveLeft(int nID)
+{
+	if (this.m_nLockCardID <= 0)
+	{
+		return nID;
+	}
+	return nID != 920001 ? this.getPrevButton(nID) : this.getLastButton();
+}
+
+int T_MiniStatusManager::moveRight(int nID)
+{
+	if (this.m_nLockCardID <= 0)
+	{
+		return nID;
+	}
+	return nID != 920001 ? this.getNextButton(nID) : this.getFirstButton();
+}
+
+int T_MiniStatusManager::exec(int nID)
+{
+	switch (nID)
+	{
+		case 920002:
+			if (this.m_bPartyActive)
+			{
+				パーティ状況_実行();
+			}
+			return 0;
+		default:
+			break;
+	}
+	if (nID > 922000)
+	{
+		return this.execCard(nID);
+	}
+	if (nID > 921000)
+	{
+		return this.execStatus(nID);
+	}
+	return 0;
+}
+
+bool T_MiniStatusManager::remake()
+{
+	if (!this.m_spBase.isCreated())
+	{
+		return false;
+	}
+	this.m_sStatus.create(this.m_sStatus.getZ());
+	this.setShow(this.m_spBase.getShow());
+	return true;
+}
+
+bool T_MiniStatusManager::update(bool bAnime, int nTotalTime)
+{
+	if (!this.m_spBase.isCreated())
+	{
+		return false;
+	}
+	if (bAnime)
+	{
+		this.m_sStatus.updateHpAll(nTotalTime);
+	}
+	if (!this.m_sStatus.update())
+	{
+		return false;
+	}
+	this.setButtonActive();
+	this.setButtonShow(this.m_bButtonShow);
+	return true;
+}
+
+void T_MiniStatusManager::updateChara(int nCharaNo, bool bAnime, int nTotalTime)
+{
+	ref T_MiniCard rfChara = this.m_sStatus.get(nCharaNo);
+	if (rfChara === NULL)
+	{
+		return;
+	}
+	rfChara.update(bAnime, nTotalTime);
+}
+
+void T_MiniStatusManager::checkStatus(int nID)
+{
+	if (!this.m_spBase.isCreated())
+	{
+		return;
+	}
+	if (!this.m_bButtonShow)
+	{
+		return;
+	}
+	int i = 0;
+	int nID2 = 0;
+	if (nID > 922000)
+	{
+		int idx = this.getCardIndex(nID);
+		if (idx < 0)
+		{
+			goto label0;
+		}
+		if (味方パーティ_登録済(idx + 1))
+		{
+			nID2 = this.getStatusID(idx);
+		}
+		goto label0;
+	}
+	if (nID > 921000)
+	{
+		nID2 = nID;
+		goto label0;
+	}
+label0:
+	for (i = 0; i < 5; ++i)
+	{
+		int nID3 = this.getStatusID(i);
+		this.m_sButton.setButtonShow(nID3, nID3 == nID2);
+	}
+	if (nID < 0)
+	{
+		this.m_sButton.setButtonShow(920002, false);
+	}
+	else if (this.m_bPartyActive)
+	{
+		this.m_sButton.setButtonShow(920002, nID == 920002 || this.m_spBase.mouseInRect());
+	}
+}
+
+int T_MiniStatusManager::checkInput(ref int nSelectID)
+{
+	if (!this.m_spBase.isCreated())
+	{
+		return 0;
+	}
+	if (!this.m_bButtonShow)
+	{
+		return 0;
+	}
+	int nID = 0;
+	int nRet = this.m_sButton.checkInput(nID);
+	switch (nRet)
+	{
+		case 2:
+			break;
+		case 1:
+			if (this.checkDrag(nID))
+			{
+				nRet = 2;
+			}
+			break;
+		case 0:
+			this.checkStatus(nID);
+			break;
+		default:
+			this.checkStatus(0);
+			break;
+	}
+	nSelectID = nID;
+	return nRet;
+}
+
+int T_MiniStatusManager::checkKey(int nID)
+{
+	if (!this.m_spBase.isCreated())
+	{
+		return 0;
+	}
+	if (!this.m_bButtonShow)
+	{
+		return 0;
+	}
+	int nID2 = this.m_sButton.checkKey();
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (!キー_押下(83))
+	{
+		return 0;
+	}
+	int idx = -1;
+	if (nID > 922000)
+	{
+		idx = this.getCardIndex(nID);
+		goto label0;
+	}
+	if (nID > 921000)
+	{
+		idx = this.getStatusIndex(nID);
+		goto label0;
+	}
+label0:
+	if (idx < 0)
+	{
+		goto label1;
+	}
+	if (this.getCharaNo(idx) <= 0)
+	{
+		goto label1;
+	}
+	効果音_クリック();
+	キー_離し待ち(83, true);
+	return this.getStatusID(idx);
+label1:
+	効果音_エラー();
+	キー_離し待ち(83, true);
+	return 0;
+}
+
+void T_MiniStatusManager::resetSelect()
+{
+	this.m_sButton.resetSelect();
+	this.m_sButtonLock.resetSelect();
+	this.checkStatus(-1);
+}
+
+void T_MiniStatusManager::setSelect(int nID, bool bSelect)
+{
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+	this.checkStatus(bSelect ? nID : -1);
+}
+
+void T_MiniStatusManager::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_sStatus.setShow(bShow);
+	this.m_sButtonLock.setShow(false);
+	this.setButtonShow(bShow);
+}
+
+void T_MiniStatusManager::setButtonShow(bool bShow)
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_sButton.setButtonShow(this.getStatusID(i), false);
+		this.m_sButton.setButtonShow(this.getCardID(i), bShow);
+	}
+	this.m_sButton.setButtonShow(920002, false);
+	this.m_bButtonShow = bShow;
+}
+
+void T_MiniStatusManager::setButtonActive()
+{
+	int i = 0;
+	this.m_bPartyActive = false;
+	for (i = 0; i < 5; ++i)
+	{
+		bool bActive = 味方パーティ_登録済(i + 1);
+		this.m_sButton.setButtonActive(this.getStatusID(i), bActive);
+		this.m_sButton.setButtonActive(this.getCardID(i), bActive);
+		if (bActive)
+		{
+			this.m_bPartyActive = true;
+		}
+	}
+	this.m_sButton.setButtonActive(920002, this.m_bPartyActive);
+}
+
+void T_MiniStatusManager::setSelectCard(int nIndex, bool bSelect)
+{
+	int nID = this.getCardID(nIndex);
+	if (nID <= 0)
+	{
+		return;
+	}
+	this.m_sButton.setButtonActive(nID, true);
+	this.m_sButton.setButtonSelect(nID, bSelect, true);
+}
+
+int T_MiniStatusManager::getPrevButton(int nID)
+{
+	int idx = this.getKeyboardIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastButton();
+	}
+	int i = 0;
+	for (i = idx - 1; i >= 0; --i)
+	{
+		int nID2 = this.getKeyboardButton(i);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+	}
+	for (i = 4; i > idx; --i)
+	{
+		int nID2 = this.getKeyboardButton(i);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+	}
+	return nID;
+}
+
+int T_MiniStatusManager::getNextButton(int nID)
+{
+	int idx = this.getKeyboardIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstButton();
+	}
+	int i = 0;
+	for (i = idx + 1; i < 5; ++i)
+	{
+		int nID2 = this.getKeyboardButton(i);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+	}
+	for (i = 0; i < idx; ++i)
+	{
+		int nID2 = this.getKeyboardButton(i);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+	}
+	return nID;
+}
+
+int T_MiniStatusManager::getFirstButton()
+{
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nID = this.getKeyboardButton(i);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return this.getCardIndex(this.m_anKeyTable[0]);
+}
+
+int T_MiniStatusManager::getLastButton()
+{
+	int i = 0;
+	for (i = 4; i >= 0; --i)
+	{
+		int nID = this.getKeyboardButton(i);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return this.getCardIndex(this.m_anKeyTable[4]);
+}
+
+int T_MiniStatusManager::getKeyboardIndex(int nID)
+{
+	if (nID > 922000)
+	{
+		return this.m_anKeyTable.Find(0, this.m_anKeyTable.Numof(), this.getCardIndex(nID));
+	}
+	if (nID > 921000)
+	{
+		return this.m_anKeyTable.Find(0, this.m_anKeyTable.Numof(), this.getStatusIndex(nID));
+	}
+	return -1;
+}
+
+int T_MiniStatusManager::getPrevButtonFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_anKeyTable.Numof())
+	{
+		return -1;
+	}
+	int i = 0;
+	int nID = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		nID = this.getKeyboardButton(nIndex - i);
+		if (nID > 0)
+		{
+			return nID;
+		}
+		nID = this.getKeyboardButton(nIndex + i);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return -1;
+}
+
+int T_MiniStatusManager::getNextButtonFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_anKeyTable.Numof())
+	{
+		return -1;
+	}
+	int i = 0;
+	int nID = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		nID = this.getKeyboardButton(nIndex + i);
+		if (nID > 0)
+		{
+			return nID;
+		}
+		nID = this.getKeyboardButton(nIndex - i);
+		if (nID > 0)
+		{
+			return nID;
+		}
+	}
+	return -1;
+}
+
+bool T_MiniStatusManager::suspend()
+{
+	this.m_sStatus.suspend();
+	return this.m_spBase.suspend();
+}
+
+bool T_MiniStatusManager::resume()
+{
+	this.m_sStatus.resume();
+	return this.m_spBase.resume();
+}
+
+bool T_MiniStatusManager::createButton(int nIndex, int nZ)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return false;
+	}
+	int nX = ミニステータス_位置Ｘ(nIndex);
+	int nY = ミニステータス_位置Ｙ(nIndex);
+	int nID1 = this.getStatusID(nIndex);
+	int nID2 = this.getCardID(nIndex);
+	T_Button sButton;
+	ボタン登録_ＣＧ(this.m_sButton, nID1, nX + 106, nY + 72, 11055, -1, -1, -2147483648, -2147483648);
+	if (!矩形_ボタン作成(204, 124, false, sButton, 202, 124, -1, -1))
+	{
+		return false;
+	}
+	this.m_sButton.addButton(nID2, sButton);
+	this.m_sButton.setButtonPos(nID2, nX, nY);
+	this.m_sButton.setButtonZ(nID1, nZ + 20);
+	this.m_sButton.setButtonZ(nID2, nZ);
+	this.m_sButtonLock.addButton(nID2, sButton);
+	this.m_sButtonLock.setButtonPos(nID2, nX, nY);
+	return true;
+}
+
+int T_MiniStatusManager::execCard(int nID)
+{
+	if (!this.m_sButton.getButtonActive(nID))
+	{
+		return 0;
+	}
+	if (画面操作モード確認() == 1)
+	{
+		this.moveChara(this.getCardIndex(nID));
+	}
+	else
+	{
+		this.checkStatus(-1);
+		this.drag(nID);
+	}
+	return 0;
+}
+
+int T_MiniStatusManager::execStatus(int nID)
+{
+	int nCharaNo = this.getCharaNoFromID(nID);
+	if (nCharaNo <= 0)
+	{
+		return 0;
+	}
+	int nID2 = Ｒ８ステータス画面(0, nCharaNo, -1, 0);
+	this.lockChara(-1);
+	this.remake();
+	return nID2 != nID ? nID2 : 0;
+}
+
+bool T_MiniStatusManager::drag(int nID)
+{
+	int idx = this.getCardIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref T_MiniCard rfsCard = this.m_sStatus.getFromIndex(idx);
+	if (rfsCard === NULL)
+	{
+		return false;
+	}
+	int nCharaNo = rfsCard.getCharaNo();
+	if (nCharaNo <= 0)
+	{
+		return false;
+	}
+	int nDropIndex = 0;
+	if (!ミニステータス_ドラッグ実行(idx, nCharaNo, rfsCard.getFace().getSp(), nDropIndex))
+	{
+		if (this.removeChara(nCharaNo))
+		{
+			効果音_パーティー変更();
+		}
+		else
+		{
+			効果音_キャンセル();
+		}
+	}
+	else
+	{
+		if (!this.m_sStatus.drop(nDropIndex, nCharaNo))
+		{
+			効果音_ドロップ();
+			return false;
+		}
+		効果音_パーティー変更();
+	}
+	this.setButtonActive();
+	this.setButtonShow(this.m_spBase.getShow());
+	return true;
+}
+
+bool T_MiniStatusManager::removeChara(int nCharaNo)
+{
+	if (!味方パーティ_存在確認(nCharaNo))
+	{
+		return false;
+	}
+	if (!クエスト_パーティ編成可能())
+	{
+		選択_通知("Characters cannot be removed from the party@during this quest.", "OK", false);
+		return false;
+	}
+	if (味方パーティ_登録数() < 2)
+	{
+		選択_通知("Cannot be removed from the party.@Must deploy more than one person.", "OK", false);
+		return false;
+	}
+	if (!選択_確認_拡張(13, テキスト_キャラ名(nCharaNo) + "@will be removed from the party. Okay?", 1, "Yes", "No", -1, -1, false))
+	{
+		return false;
+	}
+	return this.m_sStatus.erase(nCharaNo) >= 0;
+}
+
+bool T_MiniStatusManager::moveChara(int nIndex)
+{
+	if (!this.lockChara(nIndex))
+	{
+		return false;
+	}
+	this.m_sButtonLock.setShow(true);
+	int nID = this.checkSelectLock();
+	if (nID <= 0)
+	{
+		goto label0;
+	}
+	switch (nID)
+	{
+		case 920001:
+			this.removeChara(this.getCharaNo(nIndex));
+			break;
+		default:
+			if (!this.m_sStatus.drop(this.getCardIndex(nID), this.getCharaNo(nIndex)))
+			{
+				goto label0;
+			}
+			break;
+	}
+	this.setButtonActive();
+	this.setButtonShow(this.m_spBase.getShow());
+	UPDATE(true);
+label0:
+	this.m_sButtonLock.setShow(false);
+	this.lockChara(-1);
+	return false;
+}
+
+bool T_MiniStatusManager::lockChara(int nIndex)
+{
+	bool bRet = this.m_sStatus.lock(nIndex);
+	this.m_nLockCardID = bRet ? this.getCardID(nIndex) : 0;
+	g_bMiniStatusBlink = bRet;
+	return bRet;
+}
+
+int T_MiniStatusManager::checkSelectLock()
+{
+	int nID = 0;
+	int nRet = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		this.m_sButtonLock.setButtonSelect(this.m_nLockCardID, true, true);
+	}
+	else
+	{
+		this.m_sButtonLock.setButtonCursor(this.m_nLockCardID);
+	}
+	while (true)
+	{
+		int nRet2 = this.m_sButtonLock.checkInput(nID);
+		if (nRet2 == 2)
+		{
+			nRet = nID;
+			break;
+		}
+		if (キャンセル_確認())
+		{
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			this.m_sInputKey.check(nID);
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+bool T_MiniStatusManager::checkDrag(int nID)
+{
+	if (画面操作モード確認() != 0)
+	{
+		return false;
+	}
+	if (nID > 922000)
+	{
+		return this.m_sButton.getButtonActive(nID);
+	}
+	return false;
+}
+
+int T_MiniStatusManager::getCharaNo(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= 5)
+	{
+		return -1;
+	}
+	return 味方パーティ_番号(nIndex + 1);
+}
+
+int T_MiniStatusManager::getKeyboardButton(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_anKeyTable.Numof())
+	{
+		return -1;
+	}
+	int idx = this.m_anKeyTable[nIndex];
+	return this.getCardID(idx);
+}
+

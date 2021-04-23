@@ -1,0 +1,46 @@
+CASFreeSprite::CASFreeSprite()
+{
+	this.m_Handle = -1;
+	this.Create();
+}
+
+CASFreeSprite::~CASFreeSprite()
+{
+	this.Release();
+}
+
+void CASFreeSprite::Create()
+{
+	this.Release();
+	this.m_Handle = AFL_CreateFreeSpriteHandle();
+}
+
+void CASFreeSprite::Release()
+{
+	if (this.m_Handle == -1)
+	{
+		return;
+	}
+	AFL_ReleaseFreeSpriteHandle(this.m_Handle);
+	this.m_Handle = -1;
+}
+
+int CASFreeSprite::GetSpriteNumber()
+{
+	return AFL_GetFreeSpriteNum(this.m_Handle);
+}
+
+bool CASFreeSprite::IsExist()
+{
+	if (this.m_Handle == 1)
+	{
+		return false;
+	}
+	return AFL_IsExistFreeSprite(this.m_Handle);
+}
+
+void CASFreeSprite::Recreate()
+{
+	AFL_RecreateFreeSprite(this.m_Handle);
+}
+

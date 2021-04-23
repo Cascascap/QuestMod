@@ -1,0 +1,155 @@
+CConfigTabButton::CConfigTabButton()
+{
+	this.m_Active = false;
+	this.m_nTextLRSpace = 2;
+	this.m_CharSpriteProperty.SetSize(20);
+}
+
+CConfigTabButton::~CConfigTabButton()
+{
+	this.Release();
+}
+
+void CConfigTabButton::Release()
+{
+	this.m_CGStateSprite.Release();
+	this.m_OnCursorSprite.Release();
+	this.m_TextSprite.Release();
+	this.m_BaseSprite.Release();
+}
+
+void CConfigTabButton::Create(int nX, int nY, int nZ, int nHeight, string Name, bool bActive)
+{
+	this.m_nType = 0;
+	this.m_Active = bActive;
+	if (bActive)
+	{
+		this.m_CharSpriteProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+		this.m_CharSpriteProperty.SetEdgeWeight(1.0);
+		this.m_CharSpriteProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+	}
+	else
+	{
+		this.m_CharSpriteProperty.SetColor(CF_CASColor(128, 128, 128, 255));
+		this.m_CharSpriteProperty.SetEdgeWeight(1.0);
+		this.m_CharSpriteProperty.SetEdgeColor(CF_CASColor(64, 64, 64, 255));
+	}
+	int nWidth = this.CalcWidth(Name);
+	if (!bActive)
+	{
+		nY += 2;
+		nHeight -= 2;
+	}
+	this.CreateBaseSprite(nX, nY, nZ, nWidth, nHeight, bActive);
+	this.CreateTextSprite(nX, nY + (nHeight - this.m_CharSpriteProperty.GetSize()) / 2, nZ + 1, Name);
+	this.CreateOnCursorSprite(nX, nY, nZ + 2, nWidth, nHeight);
+}
+
+void CConfigTabButton::SetCG(int nX, int nY, int nZ, string CG, string OnCursorCG, bool Active)
+{
+	this.m_nType = 1;
+	this.m_Active = Active;
+	this.m_CGStateSprite.Alloc(2);
+	this.m_CGStateSprite.GetSprite(0).SetCG(CG);
+	this.m_CGStateSprite.GetSprite(1).SetCG(OnCursorCG);
+	this.m_CGStateSprite.SetPos(nX, nY);
+	this.m_CGStateSprite.SetZ(nZ);
+	this.m_CGStateSprite.SetActive(0);
+}
+
+void CConfigTabButton::CreateBaseSprite(int nX, int nY, int nZ, int nWidth, int nHeight, bool bActive)
+{
+	this.m_BaseSprite.AddCreatePixelOnly(nWidth, nHeight);
+	this.m_BaseSprite.AddFillGradationHorizon(0, 0, nWidth, nHeight, 144, 144, 144, 160, 160, 160);
+	int nDarkR = 64;
+	int nDarkG = 64;
+	int nDarkB = 64;
+	if (bActive)
+	{
+		int nLightR = 255;
+		int nLightG = 255;
+		int nLightB = 255;
+		this.m_BaseSprite.AddFill(0, 0, nWidth, 1, nLightR, nLightG, nLightB);
+		this.m_BaseSprite.AddFill(0, 0, 1, nHeight, nLightR, nLightG, nLightB);
+		this.m_BaseSprite.AddFill(nWidth - 1, 0, 1, nHeight, nDarkR, nDarkG, nDarkB);
+	}
+	else
+	{
+		int nLightR = 160;
+		int nLightG = 160;
+		int nLightB = 160;
+		this.m_BaseSprite.AddFill(0, 0, nWidth, 1, nLightR, nLightG, nLightB);
+		this.m_BaseSprite.AddFill(0, 0, 1, nHeight, nLightR, nLightG, nLightB);
+		this.m_BaseSprite.AddFill(nWidth - 1, 0, 1, nHeight, nDarkR, nDarkG, nDarkB);
+	}
+	this.m_BaseSprite.Build();
+	this.m_BaseSprite.SetPos(nX, nY);
+	this.m_BaseSprite.SetZ(nZ);
+}
+
+void CConfigTabButton::CreateTextSprite(int nX, int nY, int nZ, string Name)
+{
+	this.m_TextSprite.SetText(Name, this.m_CharSpriteProperty);
+	this.m_TextSprite.SetPos(nX + this.m_nTextLRSpace, nY);
+	this.m_TextSprite.SetZ(nZ);
+}
+
+void CConfigTabButton::CreateOnCursorSprite(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.m_OnCursorSprite.AddCreate(nWidth, nHeight);
+	this.m_OnCursorSprite.AddFillWithAlpha(0, 0, nWidth, nHeight, 255, 255, 255, 96);
+	this.m_OnCursorSprite.Build();
+	this.m_OnCursorSprite.SetPos(nX, nY);
+	this.m_OnCursorSprite.SetZ(nZ);
+	this.m_OnCursorSprite.SetShow(false);
+}
+
+int CConfigTabButton::CalcWidth(string Name)
+{
+	return (this.m_CharSpriteProperty.GetPixelWidth() * Name.LengthByte()) / 2 + this.m_nTextLRSpace * 2;
+}
+
+void CConfigTabButton::Update()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			if (!this.m_Active && this.m_BaseSprite.IsMouseCursorInRect())
+			{
+				this.m_OnCursorSprite.SetShow(true);
+			}
+			else
+			{
+				this.m_OnCursorSprite.SetShow(false);
+			}
+			break;
+		case 1:
+			this.m_CGStateSprite.SetActive(!this.m_Active && this.m_CGStateSprite.IsMouseCursorInRect() ? 1 : 0);
+			break;
+	}
+}
+
+bool CConfigTabButton::IsMouseCursorInRect()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_BaseSprite.IsMouseCursorInRect();
+		case 1:
+			return this.m_CGStateSprite.IsMouseCursorInRect();
+	}
+	return false;
+}
+
+int CConfigTabButton::GetWidth()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_BaseSprite.GetWidth();
+		case 1:
+			return this.m_CGStateSprite.GetCGWidth();
+	}
+	return 0;
+}
+

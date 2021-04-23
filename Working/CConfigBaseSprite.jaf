@@ -1,0 +1,39 @@
+CConfigBaseSprite::CConfigBaseSprite()
+{
+}
+
+void CConfigBaseSprite::Release()
+{
+	this.m_Sprite.Release();
+}
+
+void CConfigBaseSprite::Create(int nX, int nY, int nZ, int nWidth, int nHeight)
+{
+	this.m_Sprite.SetType(1);
+	ref CASConstructionSprite Sprite = this.m_Sprite.GetConstructionSprite();
+	Sprite.AddCreatePixelOnly(nWidth, nHeight);
+	Sprite.AddFillGradationHorizon(0, 0, nWidth, nHeight, 140, 140, 140, 160, 160, 160);
+	int nLightR = 255;
+	int nLightG = 255;
+	int nLightB = 255;
+	int nDarkR = 64;
+	int nDarkG = 64;
+	int nDarkB = 64;
+	Sprite.AddFill(0, 0, nWidth, 1, nLightR, nLightG, nLightB);
+	Sprite.AddFill(0, 0, 1, nHeight, nLightR, nLightG, nLightB);
+	Sprite.AddFill(nWidth - 1, 0, 1, nHeight, nDarkR, nDarkG, nDarkB);
+	Sprite.AddFill(1, nHeight - 1, nWidth - 1, 1, nDarkR, nDarkG, nDarkB);
+	Sprite.Build();
+	this.m_Sprite.SetPos(nX, nY);
+	this.m_Sprite.SetZ(nZ);
+}
+
+void CConfigBaseSprite::SetCG(int nX, int nY, int nZ, string CGName)
+{
+	this.m_Sprite.SetType(0);
+	ref CASCGSprite Sprite = this.m_Sprite.GetCGSprite();
+	Sprite.SetCG(CGName);
+	this.m_Sprite.SetPos(nX, nY);
+	this.m_Sprite.SetZ(nZ);
+}
+

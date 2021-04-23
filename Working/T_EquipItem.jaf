@@ -1,0 +1,245 @@
+int T_EquitItem::getType()
+{
+	return this.m_nType;
+}
+
+int T_EquitItem::getItemType()
+{
+	return this.m_nItemType;
+}
+
+int T_EquitItem::getPosX()
+{
+	return this.m_spBase.getPosX();
+}
+
+int T_EquitItem::getPosY()
+{
+	return this.m_spBase.getPosY();
+}
+
+int T_EquitItem::getCharaNo(int nIndex)
+{
+	return this.m_sList.getCharaNo(nIndex);
+}
+
+int T_EquitItem::getActive(int nIndex)
+{
+	return this.m_sList.getActive(nIndex);
+}
+
+T_EquitItem::T_EquitItem()
+{
+	this.clear();
+}
+
+T_EquitItem::~T_EquitItem()
+{
+	this.delete();
+}
+
+bool T_EquitItem::create(int nZ, int nType, int nItemType, ref array@int anCharaNo)
+{
+	this.delete();
+	if (!this.m_sList.create(nZ + 1, nType, nItemType, anCharaNo))
+	{
+		return false;
+	}
+	this.m_spBase.setCg(10411);
+	this.m_spBase.setPos(0, 0);
+	this.m_spBase.setZ(nZ);
+	this.m_sButton.create();
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		ボタン登録_矩形(this.m_sButton, 540000 + i + 1, 39, 0 + 128 * i, 489, 128, false);
+	}
+	if (nType == 6)
+	{
+		this.m_spArea.setCg(10412);
+		this.m_spArea.setPos(39, 641);
+		this.m_spArea.setZ(nZ + 1);
+		ボタン登録_矩形(this.m_sButton, 549999, 39, 641, this.m_spArea.getWidth(), this.m_spArea.getHeight(), true);
+	}
+	this.m_sButton.setZ(nZ + 10);
+	this.m_nType = nType;
+	this.m_nItemType = nItemType;
+	this.m_sInputKey.create(0, this.m_sButton);
+	return true;
+}
+
+void T_EquitItem::delete()
+{
+	this.m_spBase.delete();
+	this.m_spArea.delete();
+	this.m_sList.delete();
+	this.m_sButton.delete();
+	this.m_sInputKey.delete();
+	this.clear();
+}
+
+void T_EquitItem::clear()
+{
+	this.m_nType = -1;
+	this.m_nItemType = -1;
+}
+
+int T_EquitItem::check(ref T_Sprite rfsSp)
+{
+	int nID = this.m_sButton.checkIntersect(rfsSp);
+	if (nID <= 0)
+	{
+		return -1;
+	}
+	return nID == 549999 ? 999 : nID + -540001;
+}
+
+int T_EquitItem::checkSelect()
+{
+	int nID = 0;
+	キー_クリア(true);
+	this.m_sButton.resetSelect();
+	if (キー優先())
+	{
+		this.setSelect(this.m_nType == 6 ? 999 : 0);
+	}
+	while (true)
+	{
+		int nRet = this.m_sButton.checkInput(nID);
+		if (nRet == 2)
+		{
+			return nID == 549999 ? 999 : nID + -540001;
+		}
+		if (nRet != 1)
+		{
+			if (キャンセル_確認())
+			{
+				break;
+			}
+			this.m_sInputKey.check(nID);
+		}
+		UPDATE(true);
+	}
+	return -1;
+}
+
+void T_EquitItem::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_spArea.setShow(bShow);
+	this.m_sList.setShow(bShow);
+	this.m_sButton.setShow(bShow);
+}
+
+bool T_EquitItem::setSelect(int nIndex)
+{
+	if (nIndex == 999)
+	{
+		this.m_sButton.setButtonSelect(549999, true, false);
+		return true;
+	}
+	if (nIndex < 0 || nIndex >= this.m_sList.getCount())
+	{
+		this.m_sButton.resetSelect();
+		return false;
+	}
+	this.m_sButton.setButtonSelect(540000 + nIndex + 1, true, false);
+	return true;
+}
+
+bool T_EquitItem::setItem(int nIndex, int nItemNo)
+{
+	int nCharaNo = 0;
+	int nGold = 0;
+	ref T_EquipList rfChara;
+	if (nIndex != 999)
+	{
+		rfChara <- this.m_sList.getFromIndex(nIndex);
+		if (rfChara === NULL)
+		{
+			return false;
+		}
+		if (!アイテム_確認(nItemNo))
+		{
+			return false;
+		}
+		if (!rfChara.getActive())
+		{
+			選択_通知("Unable to equip.", "OK", false);
+			return false;
+		}
+		nCharaNo = rfChara.getCharaNo();
+	}
+	if (this.m_nType == 6)
+	{
+		nGold = アイテム_価格(nItemNo);
+		if (nGold < 0)
+		{
+			return false;
+		}
+		if (nGold > 所持金())
+		{
+			選択_通知("Not enough money.", "OK", false);
+			return false;
+		}
+	}
+	if (nCharaNo > 0)
+	{
+		if (!キャラ_装備外し確認(nCharaNo, this.m_nItemType))
+		{
+			return false;
+		}
+	}
+	string szName = テキスト_アイテム名(nItemNo);
+	if (this.m_nType == 6)
+	{
+		if (!選択_確認_拡張(10, "Purchase " + szName.GetPart(1, szName.Length() - 2) + "?", 1, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+		アイテム_存在設定(nItemNo, 7);
+		所持金－(nGold);
+		消費金額＋(nGold);
+	}
+	if (nCharaNo > 0)
+	{
+		if (!キャラ_装備設定(nCharaNo, this.m_nItemType, nItemNo))
+		{
+			return false;
+		}
+		if (rfChara.setItem(nItemNo) < 0)
+		{
+			return false;
+		}
+		効果音_アイテム装備(nItemNo);
+	}
+	else
+	{
+		効果音_ドロップ();
+	}
+	if (this.m_nType == 6)
+	{
+		if (nIndex != 999)
+		{
+			_W(125);
+		}
+	}
+	else
+	{
+		_W(125);
+	}
+	return true;
+}
+
+void T_EquitItem::setActive(int nItemNo)
+{
+	this.m_sList.setActive(nItemNo);
+	int i = 0;
+	int cnt = this.m_sList.getCount();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_sButton.setButtonActive(540000 + i + 1, this.m_sList.getActive(i));
+	}
+}
+

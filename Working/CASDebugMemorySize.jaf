@@ -1,0 +1,71 @@
+CASDebugMemorySize::CASDebugMemorySize()
+{
+	this.m_Show = false;
+	this.m_AllowedMemorySize = 192;
+}
+
+void CASDebugMemorySize::SetShow(bool Show)
+{
+	if (this.m_Show == Show)
+	{
+		return;
+	}
+	if (Show)
+	{
+		this.m_TextProperty.SetSize(12);
+		this.m_TextProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+		this.m_TextProperty.SetEdgeWeight(1.0);
+		this.m_TextProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+		this.m_TextSprite.SetPos(0, 16);
+		this.m_TextSprite.SetZ(18001);
+		this.m_TextSprite.SetShow(true);
+	}
+	else
+	{
+		this.m_TextSprite.Release();
+		this.m_CurrentAllocatedMemorySize = 0;
+		this.m_MaxAllocatedMemorySize = 0;
+	}
+	this.m_Show = Show;
+}
+
+bool CASDebugMemorySize::GetShow()
+{
+	return this.m_Show;
+}
+
+void CASDebugMemorySize::Update()
+{
+	int PrevCurrentAllocatedMemorySize = this.m_CurrentAllocatedMemorySize;
+	int MaxAllocatedMemorySize = ChipmunkSpriteEngine.Debug_GetMaxAllocatedMemorySize();
+	this.m_CurrentAllocatedMemorySize = ChipmunkSpriteEngine.Debug_GetCurrentAllocatedMemorySize();
+	if (this.IsCompulsorilyShow())
+	{
+		this.SetShow(true);
+	}
+	if (!this.m_Show)
+	{
+		return;
+	}
+	this.m_TextSprite.SetPos(this.IsShowLeft() ? 0 : ChipmunkSpriteEngine.GetScreenWidth() - this.m_TextSprite.GetWidth(), 16);
+	if (this.m_CurrentAllocatedMemorySize == PrevCurrentAllocatedMemorySize && this.m_MaxAllocatedMemorySize == MaxAllocatedMemorySize)
+	{
+		return;
+	}
+	this.m_TextSprite.SetText("M:%4d/%4d" % this.m_CurrentAllocatedMemorySize % MaxAllocatedMemorySize, this.m_TextProperty);
+	this.m_MaxAllocatedMemorySize = MaxAllocatedMemorySize;
+}
+
+bool CASDebugMemorySize::IsShowLeft()
+{
+	int MouseX = -1;
+	int MouseY = -1;
+	AFL_Mouse_GetPos(MouseX, MouseY);
+	return MouseX >= ChipmunkSpriteEngine.GetScreenWidth() / 2;
+}
+
+bool CASDebugMemorySize::IsCompulsorilyShow()
+{
+	return this.m_CurrentAllocatedMemorySize >= this.m_AllowedMemorySize;
+}
+

@@ -1,0 +1,30 @@
+T_CharaData::T_CharaData()
+{
+	this.clear();
+}
+
+void T_CharaData::clear()
+{
+	this.m_nCharaNo = -1;
+	this.m_nOriginalNo = -1;
+}
+
+bool T_CharaData::empty()
+{
+	return this.m_nCharaNo <= 0 || this.m_nOriginalNo <= 0;
+}
+
+bool T_CharaData::equal(ref T_CharaData sData)
+{
+	if (sData === NULL)
+	{
+		return false;
+	}
+	return this.m_nCharaNo == sData.m_nCharaNo && this.m_nOriginalNo == sData.m_nOriginalNo;
+}
+
+bool T_CharaData::equalNo(int nCharaNo, int nOriginalNo)
+{
+	return this.m_nCharaNo == nCharaNo && this.m_nOriginalNo == nOriginalNo;
+}
+

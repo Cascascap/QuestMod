@@ -1,0 +1,124 @@
+bool _CSystemButtonDocumentItemFnc::_Is(sys_btn_fnc_t _v)
+{
+	return _v == this._m_fnc;
+}
+
+sys_btn_fnc_t _CSystemButtonDocumentItemFnc::_GetFunc()
+{
+	return this._m_fnc;
+}
+
+int _CSystemButtonDocumentItemFnc::_GetX()
+{
+	return this._m_x;
+}
+
+int _CSystemButtonDocumentItemFnc::_GetY()
+{
+	return this._m_y;
+}
+
+_CSystemButtonDocumentItemFnc::_CSystemButtonDocumentItemFnc()
+{
+	this._m_fnc = NULL;
+	this._m_x = -2147483648;
+	this._m_y = -2147483648;
+	this._m_z = 1;
+	this._m_plain_cg = "";
+	this._m_hilite_cg = "";
+	this._m_cover_cg = "";
+	this._m_invalid_at_rem = false;
+	this.m_DisableCG = "";
+	this.m_PixelDecide = true;
+	this.m_VisibleRect.Set(-2147483648, -2147483648, -2147483648, -2147483648);
+}
+
+void _CSystemButtonDocumentItemFnc::_Set(int _x, int _y, int _z, string _plain_cg, string _hilite_cg, sys_btn_fnc_t _fnc, bool PixelDecide)
+{
+	this._m_x = _x;
+	this._m_y = _y;
+	this._m_z = _z;
+	this._m_plain_cg = _plain_cg;
+	this._m_hilite_cg = _hilite_cg;
+	this._m_fnc = _fnc;
+	this.m_PixelDecide = PixelDecide;
+}
+
+void _CSystemButtonDocumentItemFnc::_SetForRem(string _cover_cg)
+{
+	this._m_cover_cg = _cover_cg;
+	this._m_invalid_at_rem = true;
+}
+
+void _CSystemButtonDocumentItemFnc::SetDisableCG(string CGName)
+{
+	this.m_DisableCG = CGName;
+}
+
+void _CSystemButtonDocumentItemFnc::SetIsEnableSystemButtonFunc(FTIsEnableSystemButton Func)
+{
+	this.m_IsEnableSystemButtonFunc = Func;
+}
+
+bool _CSystemButtonDocumentItemFnc::_IsEnable()
+{
+	if (this.m_IsEnableSystemButtonFunc != NULL)
+	{
+		if (!this.m_IsEnableSystemButtonFunc())
+		{
+			return false;
+		}
+	}
+	if (_g_‰ñ‘z’† && this._m_invalid_at_rem)
+	{
+		return false;
+	}
+	return true;
+}
+
+void _CSystemButtonDocumentItemFnc::_SetToSpriteCg(ref CASCGSprite _sp, int _state)
+{
+	switch (_state)
+	{
+		case 0:
+			_sp.SetCG(this._m_plain_cg);
+			break;
+		case 1:
+			_sp.SetCG(this._m_hilite_cg);
+			break;
+		case 2:
+			if (_g_‰ñ‘z’† && this._m_invalid_at_rem)
+			{
+				if (this._m_cover_cg.Empty())
+				{
+					_sp.Release();
+				}
+				else
+				{
+					_sp.SetCG(this._m_cover_cg);
+				}
+			}
+			else if (this.m_DisableCG.Empty())
+			{
+				_sp.Release();
+			}
+			else
+			{
+				_sp.SetCG(this.m_DisableCG);
+			}
+			break;
+	}
+	_sp.SetPos(this._m_x, this._m_y);
+	_sp.SetZ(this._m_z);
+}
+
+ref CASRect _CSystemButtonDocumentItemFnc::GetVisibleRect()
+{
+	return this.m_VisibleRect;
+}
+
+bool _CSystemButtonDocumentItemFnc::IsPixelDecide()
+{
+	return this.m_PixelDecide;
+}
+

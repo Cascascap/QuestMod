@@ -1,0 +1,293 @@
+void シィル／城１()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, 0, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Gate' A;
+	音楽(0, 1, 1000);
+	枠消去();
+	立ち絵表示(1000, 1, 200);
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2450, "");
+	'"Thank you for waiting, Master."' A;
+	セリフ(2000, "");
+	'"...Hey."' A;
+	セリフ(2110, "");
+	'"I\'ve brought Sill-san with me."' A;
+	セリフ(2450, "");
+	'"Thank you for showing me the way, Lady Kou."' A;
+	'"I will take her to her room, then."' A;
+	セリフ(2000, "");
+	'"...Mm, thanks."' A;
+	エフェクトセット表示(7001, 5510, 5120, 0, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Sill\'s Room' A;
+	枠消去();
+	立ち絵表示(1010, 1, 200);
+	音楽(77, -1, -1);
+	セリフ(2000, "");
+	'"Well, there we go."' A;
+	セリフ(2450, "");
+	'"Yes."' A;
+	ト書き();
+	'Sill\'s block of ice had been brought into the room.' A;
+	セリフ(2450, "");
+	'"I will take my leave, then, Master.' R;
+	' Call me if you have need of anything else."' A;
+	セリフ(2000, "");
+	'"Yeah, good work."' A;
+	ト書き();
+	'Biscuitta left with a bow of her head.' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"Hmm..."' A;
+	ト書き();
+	'Rance was alone with Sill in the room.' A;
+	セリフ(2000, "");
+	'"...Well, you\'re still frozen."' A;
+	'"Sheesh, how much trouble do I have to go through now that you\'re like this?"' A;
+	'"I\'m gonna punish you so hard when you come out.' R;
+	' First I\'ll tie you up and make you cry while we have sex."' A;
+	'"........."' A;
+	セリフ(2005, "");
+	'"Well, first I\'ve got to find girls over level 35."' A;
+	セリフ(2000, "");
+	'"I can put Sill back to normal whenever I want, but not being able to have sex is a matter of life and death."' A;
+	'"...Sheesh, just sit tight for a bit."' A;
+	'"Yeah, I\'ll get you back to normal sooner or later."' A;
+	音楽(0, 1, 1000);
+	'"........."' A;
+	'"Okay, guess I\'ll go do a quest or something."' A;
+	'"Fwahhh..."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Sill\'s room was prepared.' A;
+	ADVOFF();
+}
+
+void シィル／城２()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(0, -1, -1);
+	セット表示(5510, 5120, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Sill\'s Room' A;
+	枠消去();
+	立ち絵表示(1010, 1, 200);
+	ト書き();
+	'Sachiko had come to visit Sill.' A;
+	音楽(93, -1, -1);
+	セリフ(2020, "");
+	'"*mumble* *mumble*...' R;
+	' I\'d be grateful if I could get just a few more points on my tests... *mumble* *mumble*..."' A;
+	ト書き();
+	'Sachiko held her hands together before Sill, muttering quietly.' A;
+	'　' R;
+	'  "........."' A;
+	セリフ(2020, "");
+	'"*bow* *bow*... Thank you very much..."' A;
+	セリフ(2030, "");
+	'"Oh? Whatcha up to?"' A;
+	セリフ(2020, "");
+	'"Oh, Miss Suzume. Just praying.' R;
+	' It seems that your wishes come true if you pray to Miss Sill."' A;
+	'"One of the maids told me so."' A;
+	セリフ(2033, "");
+	'"That\'s pretty dumb..."' A;
+	セリフ(2030, "");
+	'"But unable to resist the temptation, Suzume too joined her hands together..."' A;
+	セリフ(2033, "");
+	'"Aaand *mumble* *mumble*...' R;
+	' I want some cotton candy.' R;
+	' I want some cotton candy.' R;
+	' I\'ll leave it to you, Sill."' A;
+	ト書き();
+	'Suzume bowed her head to Sill.' A;
+	'　' R;
+	'  "........."' A;
+	セリフ(2100, "");
+	'"Oh? What are you doing?"' A;
+	セリフ(2020, "");
+	'"Oh, Miss Alkanese.' R;
+	' The thing is..."' A;
+	エフェクトセット表示(7002, 5510, 5120, 1010, 0, 0);
+	ト書き();
+	'Sachiko and company were all praying together in Sill\'s room.' A;
+	セリフ(2020, "");
+	'"........."' A;
+	セリフ(2033, "");
+	'"........."' A;
+	セリフ(2100, "");
+	'"........."' A;
+	ト書き();
+	'　' R;
+	'  <gooong...>' A;
+	セリフ(2002, "");
+	'"Don\'t kill off my slave without asking me!!"' A;
+	ト書き();
+	'Rance Kiiick!' A;
+	全画面揺れ(2, false);
+	セリフ(2023, "");
+	'"Aaaaah!"' A;
+	ト書き();
+	'　' R;
+	'  "........."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance put a stop to it.' A;
+	ADVOFF();
+}
+
+void シィル／城３()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	音楽(0, -1, -1);
+	セット表示(5510, 5120, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Sill\'s Room' A;
+	音楽(93, -1, -1);
+	枠消去();
+	立ち絵表示(1010, 1, 200);
+	ト書き();
+	'Rance and company were eating shaved ice in Sill\'s room.' A;
+	セリフ(2001, "");
+	'"Gahahaha, eat all you want, guys!' R;
+	' After all, the supply\'s infinite!' A;
+	セリフ(2450, "");
+	'"...Please tell me if you would like more."' A;
+	ト書き();
+	'Biscuitta carefully scraped away Sill\'s ice.' A;
+	セリフ(2030, "");
+	'"Sill\'s shaved ice sure is good."' A;
+	セリフ(2100, "");
+	'"I like strawberry-flavored!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, have all you want!"' A;
+	セリフ(2113, "");
+	'"Umm... is this really alright?' R;
+	' I sort of feel bad for Sill-san..."' A;
+	セリフ(2000, "");
+	'"You don\'t have to feel bad about it, Kou.' R;
+	' Since I say it\'s okay, it\'s okay."' A;
+	'"And it\'s Sill\'s fault for not coming out of there.' R;
+	' She deserves being made into shaved ice."' A;
+	セリフ(2021, "");
+	'"Sir... do you actually hate Miss Sill...?"' A;
+	セリフ(2000, "");
+	'"........."' A;
+	セリフ(2005, "");
+	'"...It just doesn\'t matter how I treat her ’cause she\'s my slave, dumbass.' R;
+	' Who cares if I like her or not?"' A;
+	セリフ(2020, "");
+	'"Uh... huh...?"' A;
+	セリフ(2021, "");
+	'"Heh?"' A;
+	セリフ(2033, "");
+	'"There, there, Sachiko."' A;
+	セリフ(2021, "");
+	'"Huh? Why are you patting my head?"' A;
+	セリフ(2100, "");
+	'"Sachiko, I think it\'s not that he hates her, but..."' A;
+	セリフ(2005, "");
+	'"*glare*"' A;
+	セリフ(2102, "");
+	'"Ah, *shiver* *shiver*' R;
+	' No, it\'s nothing."' A;
+	セリフ(2000, "");
+	'"Hmph!"' A;
+	セリフ(2111, "");
+	'"Heheh..."' A;
+	セリフ(2021, "");
+	'"??"' A;
+	セリフ(2450, "");
+	'"Would you prefer strawberry or lemon, Master?"' A;
+	セリフ(2000, "");
+	'"I want azuki."' A;
+	セリフ(2023, "");
+	'"Wow, fancy!"' A;
+	セリフ(2001, "");
+	'"Gahahaha, I\'m the lord of the castle, after all."' A;
+	音楽(0, 1, 1000);
+	ト書き();
+	'　' R;
+	'  <chatter, clamor, chatter>' A;
+	'　' R;
+	'  "........."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance and company enjoyed shaved ice in Sill\'s room.' A;
+	ADVOFF();
+}
+
+void シィル／城／汎用()
+{
+	EV("", -2147483648);
+	if (イベント(0))
+	{
+		return;
+	}
+	ADVON();
+	セット表示(5510, 5120, 0, 0);
+	ト書き();
+	'　' R;
+	'     Rance Castle   Sill\'s Room' A;
+	枠消去();
+	立ち絵表示(1010, 1, 200);
+	ト書き();
+	'Rance had come to check on Sill.' A;
+	セリフ(2000, "");
+	'"Hmph, I thought maybe she\'d pop out of there on her own eventually, but..."' A;
+	'"........."' A;
+	'"Well, I am a genius. I\'ll figure something out."' A;
+	セリフ(2004, "");
+	'"For now, I should prioritize finding girls I can fuck."' A;
+	セリフ(2000, "");
+	'"Heh, you come later, you hear?"' A;
+	セリフ(2005, "");
+	'"........."' A;
+	セリフ(2000, "");
+	'"...Well, don\'t worry. I\'ll get you out of here just before I really, really forget about you."' A;
+	セリフ２(2020, "");
+	'"Siiir, are you ready?"' A;
+	ト書き();
+	'Rance heard Sachiko calling him from outside.' A;
+	セリフ(2000, "");
+	'"Yeah, I\'m comin\'."' A;
+	'"........."' A;
+	'"Well, I\'m off."' A;
+	ト書き();
+	'Rance left the room.' A;
+	ト書き();
+	'　' R;
+	'  "........."' A;
+	枠消去();
+	立ち絵表示(0, 1, 200);
+	ト書き();
+	'Rance set off on a quest after checking in on Sill for a bit.' A;
+	ADVOFF();
+}
+

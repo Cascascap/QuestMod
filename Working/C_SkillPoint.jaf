@@ -1,0 +1,35 @@
+int スキルポイント_取得(int nCharaNo, bool bScroll)
+{
+	return g_sSkillPoint.run(nCharaNo, 9111, bScroll, false);
+}
+
+void scrollSkillPoint(int nValue)
+{
+	g_sSkillPoint.scroll(nValue);
+}
+
+int スキルポイント_上矢印(int nID)
+{
+	return g_sSkillPoint.moveUp(nID);
+}
+
+int スキルポイント_下矢印(int nID)
+{
+	return g_sSkillPoint.moveDown(nID);
+}
+
+int スキルポイント_左矢印(int nID)
+{
+	return g_sSkillPoint.moveLeft(nID);
+}
+
+int スキルポイント_右矢印(int nID)
+{
+	return g_sSkillPoint.moveRight(nID);
+}
+
+void スキルポイント_選択設定(int nID, bool bSelect)
+{
+	g_sSkillPoint.setSelect(nID, bSelect);
+}
+

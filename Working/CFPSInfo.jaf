@@ -1,0 +1,70 @@
+bool CFPSInfo::IsCreated()
+{
+	return this.m_sText.isCreated();
+}
+
+CFPSInfo::CFPSInfo()
+{
+	this.m_nMapX = -1;
+	this.m_nMapY = -1;
+	this.m_szMapName = "";
+}
+
+CFPSInfo::~CFPSInfo()
+{
+	this.Release();
+}
+
+bool CFPSInfo::Create(int nX, int nY, int nZ)
+{
+	this.Release();
+	this.m_sText.create(300, 32, -1, 0, 0, 1);
+	this.m_sText.setPos(nX, nY);
+	this.m_sText.setZ(nZ);
+	this.m_sText.setFontType(0);
+	this.m_sText.setFontSize(14);
+	this.m_sText.setFontBold(1);
+	this.m_sText.setShadowPixel(1, 1, 1, 1);
+	this.m_sText.setShadowColor(0, 0, 0);
+	return true;
+}
+
+void CFPSInfo::Release()
+{
+	this.m_sText.delete();
+}
+
+void CFPSInfo::Update()
+{
+	if (!this.m_sText.isCreated())
+	{
+		return;
+	}
+	int nX = ÇRÇcÉLÉÉÉâ_à íuÇw();
+	int nY = ÇRÇcÉLÉÉÉâ_à íuÇx();
+	if (this.m_nMapX == nX && this.m_nMapY == nY)
+	{
+		return;
+	}
+	string szText = ÉeÉLÉXÉg_ñºëO(this.m_szMapName);
+	szText += " X=%02d Y=%02d" % ÇlÇwÅÑÇsÇw(nX) % ÇlÇxÅÑÇsÇx(nY);
+	szText += " (%02d, %02d)" % nX % nY;
+	this.m_sText.setText(szText, false);
+	this.m_nMapX = nX;
+	this.m_nMapY = nY;
+}
+
+void CFPSInfo::SetShow(bool bShow)
+{
+	this.m_sText.setShow(bShow);
+	if (bShow)
+	{
+		AFL_DebugFPS_SetShow(bShow);
+	}
+}
+
+void CFPSInfo::SetMapName(string szMapName)
+{
+	this.m_szMapName = szMapName;
+}
+

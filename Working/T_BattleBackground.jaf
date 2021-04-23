@@ -1,0 +1,56 @@
+T_BattleBackground::T_BattleBackground()
+{
+}
+
+T_BattleBackground::~T_BattleBackground()
+{
+	this.delete();
+}
+
+bool T_BattleBackground::create(int nNo)
+{
+	this.delete();
+	T_ColorInfo sInfo;
+	if (!í“¬”wŒi_Fî•ñ(nNo, sInfo))
+	{
+		return false;
+	}
+	this.setColor(sInfo);
+	return true;
+}
+
+void T_BattleBackground::delete()
+{
+	this.m_spColor.delete();
+	this.clear();
+}
+
+void T_BattleBackground::clear()
+{
+	this.m_bShow = false;
+}
+
+void T_BattleBackground::setColor(ref T_ColorInfo rfsInfo)
+{
+	if (rfsInfo === NULL)
+	{
+		this.m_spColor.delete();
+		return;
+	}
+	int nW = ‚R‚cí“¬_ƒrƒ…[•();
+	int nH = ‚R‚cí“¬_ƒrƒ…[‚();
+	this.m_spColor.createPixelOnly(nW, nH);
+	this.m_spColor.fill(0, 0, nW, nH, rfsInfo.m_nPixelColorR, rfsInfo.m_nPixelColorG, rfsInfo.m_nPixelColorB, 255);
+	this.m_spColor.setBlendRate(rfsInfo.m_nDrawFilter == 0 ? rfsInfo.m_nAlpha : 255);
+	this.m_spColor.setPos(‚R‚cí“¬_ƒrƒ…[ˆÊ’u‚w(), ‚R‚cí“¬_ƒrƒ…[ˆÊ’u‚x());
+	this.m_spColor.setZ(111);
+	this.m_spColor.setShow(this.m_bShow);
+	AFL_Sprite_SetDrawFilter(this.m_spColor.getSpNo(), rfsInfo.m_nDrawFilter);
+}
+
+void T_BattleBackground::setShow(bool bShow)
+{
+	this.m_spColor.setShow(bShow);
+	this.m_bShow = bShow;
+}
+

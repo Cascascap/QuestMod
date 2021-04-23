@@ -1,0 +1,267 @@
+#ゲーム_マップ()
+{
+	if (!マップ_ロード直後())
+	{
+		画面_クリア(true, true);
+	}
+	仮字枠非表示();
+	マップ制御_ループ();
+	クエスト_終了();
+	jump ゲーム_メイン;
+}
+
+void マップ制御_ループ()
+{
+	int nValue = 0;
+	while (true)
+	{
+		if (マップ_未ロード())
+		{
+			break;
+		}
+		マップ制御_ロード後(-1);
+		マップイベント_後処理();
+		switch (マップ制御_実行(nValue))
+		{
+			case 21:
+			case 22:
+			case 29:
+				goto label0;
+			default:
+				break;
+		}
+	}
+label0:
+	マップ制御_終了(false);
+}
+
+int マップ制御_実行(ref int nValue)
+{
+	◆復帰値 = 0;
+	◆当たり = 0;
+	◆ＸＸ = 0;
+	◆ＹＹ = 0;
+	◆ＮＮ = 0;
+	int nRet = マップ_実行(nValue);
+	switch (nRet)
+	{
+		case 11:
+		case 12:
+			◆復帰値 = nRet;
+			◆当たり = キャラ_当たりフラグ();
+			◆ＸＸ = ＭＸ＞ＴＸ(キャラ_当たりＸ());
+			◆ＹＹ = ＭＹ＞ＴＹ(キャラ_当たりＹ());
+			◆ＮＮ = Ｒ８キャラＮ();
+			break;
+		case 13:
+			◆復帰値 = nRet;
+			◆当たり = nValue;
+			◆ＸＸ = Ｒ８キャラＸ();
+			◆ＹＹ = Ｒ８キャラＹ();
+			break;
+		case 19:
+			効果音_エンカウント();
+		case 2:
+		case 21:
+		case 22:
+		case 29:
+			◆復帰値 = nRet;
+			◆ＸＸ = Ｒ８キャラＸ();
+			◆ＹＹ = Ｒ８キャラＹ();
+			◆ＮＮ = Ｒ８キャラＮ();
+			break;
+		default:
+			break;
+	}
+	マップイベント_前処理(1);
+	switch (Ｔマップ割り込み())
+	{
+		case 1:
+			◆復帰値 = 21;
+			break;
+		case 2:
+			◆復帰値 = 22;
+			break;
+		default:
+			break;
+	}
+	return ◆復帰値;
+}
+
+void マップ制御_終了(bool bLoad)
+{
+	if (マップ_未ロード())
+	{
+		return;
+	}
+	マップ_終了処理(bLoad);
+	if (bLoad)
+	{
+		if (!迷宮音楽_バベル再生中())
+		{
+			迷宮音楽_停止();
+		}
+	}
+	else
+	{
+		迷宮音楽_停止();
+	}
+	マップイベント_クリア();
+	ビュー状態保存モード_ＯＮ();
+	◆ＸＸ = -1;
+	◆ＹＹ = -1;
+	◆ＮＮ = -1;
+	◆復帰値 = -1;
+	◆当たり = 0;
+}
+
+bool マップ制御_ロード後(int nフラグ)
+{
+	if (!マップ_ロード直後())
+	{
+		return false;
+	}
+	マップ_表示設定(true, nフラグ < 0 ? マップ_キャラ表示フラグ() : nフラグ, 0);
+	マップ_表示待ち(true);
+	マップ_状態設定(1);
+	return true;
+}
+
+bool マップ制御_復元()
+{
+	if (!マップ_退避中())
+	{
+		return false;
+	}
+	Ｒ８マップロード(マップ_退避番号(), 0, true, false);
+	マップ_位置設定(マップ_退避位置Ｘ(), マップ_退避位置Ｙ());
+	キャラ_方向設定(マップ_退避方向());
+	キャラ_ポリゴン変更(マップ_退避マーカー());
+	キャラ_エンカウント設定(マップ_退避歩き距離１(), マップ_退避歩き距離２(), マップ_退避エンカウントチェック中());
+	マップ_復元();
+	システムバー_表示設定(true);
+	システムバー_有効設定(true);
+	マップ部品_表示設定(true);
+	マップ制御_ロード後(1);
+	◆ＸＸ = Ｒ８キャラＸ();
+	◆ＹＹ = Ｒ８キャラＹ();
+	◆ＮＮ = Ｒ８キャラＮ();
+	◆復帰値 = 0;
+	return true;
+}
+
+void マップイベント_前処理(int nFlag)
+{
+	if (回想モード_実行中())
+	{
+		return;
+	}
+	ビュー状態保存モード_ＯＮ();
+	Ｒ８キャラ停止();
+	数値点滅_終了();
+	説明_消し(-1);
+	Ｆｌａｓｈ_削除();
+	Ｆｌａｓｈ_通知クリア();
+	if (g_bEventFlag)
+	{
+		return;
+	}
+	g_bEventFlag = true;
+	g_bReleaseFlag = true;
+	if (!マップ_ロード中())
+	{
+		return;
+	}
+	if (nFlag > 0)
+	{
+		マップ制御_ロード後(-1);
+	}
+	g_bPlayerShow = Ｒ８キャラ表示中();
+	g_bMapDrawFlag = マップ_表示設定(nFlag, nFlag > 0 ? g_bPlayerShow : false, 0);
+	マップ_更新停止();
+}
+
+void マップイベント_後処理()
+{
+	if (回想モード_実行中())
+	{
+		return;
+	}
+	bool bFlag = 画面_表示中();
+	キャラ_移動終了();
+	キャラ_スクロール戻し();
+	システムバー_表示設定(true);
+	システムバー_有効設定(true);
+	マップ部品_表示設定(true);
+	キャラ_更新設定(true);
+	if (マップ_ロード中())
+	{
+		マップ_更新再開();
+		マップ_表示設定(g_bEventFlag ? g_bMapDrawFlag : 1, g_bEventFlag ? g_bPlayerShow : 1, 0);
+		画面_クリア(true, false);
+		if (bFlag)
+		{
+			_EFFECT(1, 500);
+		}
+		else
+		{
+			UPDATE(true);
+		}
+		Ｒ８キャラ停止解除();
+		迷宮音楽_再生();
+	}
+	else
+	{
+		画面_クリア(true, true);
+	}
+	ビュー状態保存モード_ＯＦＦ();
+	システムバー_更新(2, -1);
+	マップ部品_状態更新(2, 0, -1);
+	数値点滅_開始();
+	g_bEventFlag = false;
+	g_bReleaseFlag = false;
+}
+
+void マップイベント_クリア()
+{
+	g_bEventFlag = false;
+	g_bMapDrawFlag = false;
+	g_bReleaseFlag = false;
+}
+
+bool マップイベント中()
+{
+	return g_bEventFlag;
+}
+
+void マップイベント_キー離し待ち()
+{
+	if (!g_bReleaseFlag)
+	{
+		return;
+	}
+	bool bContinue = true;
+	while (bContinue)
+	{
+		bContinue = false;
+		if (キー_押下(87))
+		{
+			bContinue = true;
+		}
+		if (キー_押下(83))
+		{
+			bContinue = true;
+		}
+		if (キー_押下(65))
+		{
+			bContinue = true;
+		}
+		if (キー_押下(68))
+		{
+			bContinue = true;
+		}
+		UPDATE(true);
+	}
+	g_bReleaseFlag = false;
+}
+

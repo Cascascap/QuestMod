@@ -1,0 +1,212 @@
+CASCGSpriteImp::CASCGSpriteImp()
+{
+	this.m_CGName = "";
+	this.m_nAlpha = 255;
+	this.m_bShow = true;
+	this.m_nSpriteNum = -1;
+	this.m_nCGWidth = 0;
+	this.m_nCGHeight = 0;
+}
+
+CASCGSpriteImp::~CASCGSpriteImp()
+{
+	this.Release();
+}
+
+void CASCGSpriteImp::Release()
+{
+	if (this.m_nSpriteNum != -1)
+	{
+		DeleteSprite(this.m_nSpriteNum);
+		this.m_nSpriteNum = -1;
+	}
+	this.m_CGName = "";
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nZ = 0;
+	this.m_nAlpha = 255;
+	this.m_bShow = true;
+	this.m_nCGWidth = 0;
+	this.m_nCGHeight = 0;
+}
+
+bool CASCGSpriteImp::SetCG(string CGName)
+{
+	if (this.m_CGName == CGName)
+	{
+		return true;
+	}
+	if (this.m_nSpriteNum == -1)
+	{
+		this.m_nSpriteNum = GetUnuseSpriteNum(1000);
+	}
+	if (!SetSpriteCg(this.m_nSpriteNum, CGName))
+	{
+		DeleteSprite(this.m_nSpriteNum);
+		this.m_nSpriteNum = -1;
+		return false;
+	}
+	cg_metrics_t CGMetrics;
+	if (GetCgMetrics(CGName, CGMetrics))
+	{
+		this.m_nCGWidth = CGMetrics.nWidth;
+		this.m_nCGHeight = CGMetrics.nHeight;
+	}
+	else
+	{
+		this.m_nCGWidth = 0;
+		this.m_nCGHeight = 0;
+	}
+	SetSpritePos(this.m_nSpriteNum, this.m_nX, this.m_nY);
+	SetSpriteZ(this.m_nSpriteNum, this.m_nZ);
+	SetSpriteBlendRate(this.m_nSpriteNum, this.m_nAlpha);
+	ShowSprite(this.m_nSpriteNum, this.m_bShow);
+	this.m_CGName = CGName;
+	return true;
+}
+
+void CASCGSpriteImp::SetPos(int nX, int nY)
+{
+	if (this.m_nX == nX && this.m_nY == nY)
+	{
+		return;
+	}
+	this.m_nX = nX;
+	this.m_nY = nY;
+	if (this.m_nSpriteNum != -1)
+	{
+		SetSpritePos(this.m_nSpriteNum, this.m_nX, this.m_nY);
+	}
+}
+
+void CASCGSpriteImp::SetZ(int nZ)
+{
+	if (this.m_nZ == nZ)
+	{
+		return;
+	}
+	this.m_nZ = nZ;
+	if (this.m_nSpriteNum != -1)
+	{
+		SetSpriteZ(this.m_nSpriteNum, this.m_nZ);
+	}
+}
+
+void CASCGSpriteImp::SetAlpha(int nAlpha)
+{
+	if (this.m_nAlpha == nAlpha)
+	{
+		return;
+	}
+	this.m_nAlpha = nAlpha;
+	if (this.m_nSpriteNum != -1)
+	{
+		SetSpriteBlendRate(this.m_nSpriteNum, this.m_nAlpha);
+	}
+}
+
+void CASCGSpriteImp::SetShow(bool bShow)
+{
+	if (this.m_bShow == bShow)
+	{
+		return;
+	}
+	this.m_bShow = bShow;
+	if (this.m_nSpriteNum != -1)
+	{
+		ShowSprite(this.m_nSpriteNum, this.m_bShow);
+	}
+}
+
+bool CASCGSpriteImp::GetShow()
+{
+	return this.m_bShow;
+}
+
+bool CASCGSpriteImp::IsMouseCursorIn()
+{
+	if (this.m_nSpriteNum == -1)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	int nX = 0;
+	int nY = 0;
+	if (!AFL_Mouse_GetPos(nX, nY))
+	{
+		return false;
+	}
+	return ChipmunkSpriteEngine.SP_IsPtIn(this.m_nSpriteNum, nX, nY);
+}
+
+int CASCGSpriteImp::GetX()
+{
+	return this.m_nX;
+}
+
+int CASCGSpriteImp::GetY()
+{
+	return this.m_nY;
+}
+
+int CASCGSpriteImp::GetZ()
+{
+	return this.m_nZ;
+}
+
+int CASCGSpriteImp::GetCGWidth()
+{
+	return this.m_nCGWidth;
+}
+
+int CASCGSpriteImp::GetCGHeight()
+{
+	return this.m_nCGHeight;
+}
+
+bool CASCGSpriteImp::IsMouseCursorInRect()
+{
+	if (this.m_nSpriteNum == -1)
+	{
+		return false;
+	}
+	if (!this.m_bShow)
+	{
+		return false;
+	}
+	int nX = 0;
+	int nY = 0;
+	if (!AFL_Mouse_GetPos(nX, nY))
+	{
+		return false;
+	}
+	return ChipmunkSpriteEngine.SP_IsPtInRect(this.m_nSpriteNum, nX, nY);
+}
+
+void CASCGSpriteImp::Rebuild()
+{
+	this.m_nSpriteNum = -1;
+	string CGName = this.m_CGName;
+	int nX = this.m_nX;
+	int nY = this.m_nY;
+	int nZ = this.m_nZ;
+	int nAlpha = this.m_nAlpha;
+	bool bShow = this.m_bShow;
+	this.m_CGName = "";
+	this.m_nX = 0;
+	this.m_nY = 0;
+	this.m_nZ = 0;
+	this.m_nAlpha = 255;
+	this.m_bShow = true;
+	this.m_nCGWidth = 0;
+	this.m_nCGHeight = 0;
+	this.SetCG(CGName);
+	this.SetPos(nX, nY);
+	this.SetZ(nZ);
+	this.SetAlpha(nAlpha);
+	this.SetShow(bShow);
+}
+

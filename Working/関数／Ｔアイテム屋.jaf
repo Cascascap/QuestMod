@@ -1,0 +1,489 @@
+void Ｔアイテム屋()
+{
+	ログ登録Ａ(2);
+	int aa = 0;
+	int bb = 0;
+	int nni = 0;
+	int ii = 0;
+	int iic = 0;
+	◆アイテム屋／表示 = 0;
+	if (RAND(5) == 1)
+	{
+		◆アイテム屋／表示 = 1;
+	}
+	if (Ｉ有無(263, 0, "") != 0)
+	{
+		◆アイテム屋／表示 = 2;
+	}
+	if (EV("フロスト売店１", -2147483648) == false && Ｑ状態(36, -1) == 2)
+	{
+		フロスト売店１();
+		MM[34] = 1;
+		MM[42] = 1;
+	}
+	iic = Ｃ番号取得(1);
+	if (EV("フロスト売店／捕獲ロープ", -2147483648) == false && ＣＬＶ(iic, -1) >= 10 && Ｑ状態(68, -1) == 2)
+	{
+		フロスト売店／捕獲ロープ();
+		◆アイテム補充数[186] = 1;
+	}
+	if (EV("フロスト売店３", -2147483648) == false && ＣＬＶ(iic, -1) >= 23)
+	{
+		フロスト売店３();
+		if (◆アイテム補充数[58] == 0)
+		{
+			◆アイテム補充数[58] = 1;
+			◆アイテム補充数[46] = 1;
+			◆アイテム補充数[30] = 1;
+			◆アイテム補充数[14] = 1;
+			◆アイテム補充数[163] = 1;
+			◆アイテム補充数[151] = 1;
+			◆アイテム補充数[137] = 1;
+			◆アイテム補充数[122] = 1;
+			◆アイテム補充数[106] = 1;
+			◆アイテム補充数[109] = 1;
+			◆アイテム補充数[90] = 1;
+			◆アイテム補充数[75] = 1;
+		}
+	}
+	if (ＣＬＶ(iic, -1) >= 32)
+	{
+		int iii = 0;
+		for (; ; )
+		{
+			iii = 91;
+			if (◆アイテム補充数[iii] == 0 && ◆アイテム補充数[90] >= 3)
+			{
+				◆アイテム補充数[iii] = 1;
+				フロスト売店Ｂ２(0, "Modified Buster Sword");
+				break;
+			}
+			iii = 76;
+			if (◆アイテム補充数[iii] == 0 && ◆アイテム補充数[75] >= 3)
+			{
+				◆アイテム補充数[iii] = 1;
+				フロスト売店Ｂ２(0, "Modified Rapier");
+				break;
+			}
+			iii = 138;
+			if (◆アイテム補充数[iii] == 0 && ◆アイテム補充数[137] >= 3)
+			{
+				◆アイテム補充数[iii] = 1;
+				フロスト売店Ｂ２(0, "Modified Longbow");
+				break;
+			}
+			iii = 107;
+			if (◆アイテム補充数[iii] == 0 && ◆アイテム補充数[106] >= 3)
+			{
+				◆アイテム補充数[iii] = 1;
+				フロスト売店Ｂ２(0, "Modified Hammer B");
+				break;
+			}
+			iii = 123;
+			if (◆アイテム補充数[iii] == 0 && ◆アイテム補充数[122] >= 3)
+			{
+				◆アイテム補充数[iii] = 1;
+				フロスト売店Ｂ２(0, "Modified Spear");
+				break;
+			}
+			iii = 152;
+			if (◆アイテム補充数[iii] == 0 && ◆アイテム補充数[151] >= 3)
+			{
+				◆アイテム補充数[iii] = 1;
+				フロスト売店Ｂ２(0, "Modified Knuckle");
+				break;
+			}
+			break;
+		}
+	}
+	if (EV("フロスト売店４", -2147483648) == false && ＣＬＶ(iic, -1) >= 43)
+	{
+		フロスト売店４();
+		if (◆アイテム補充数[61] == 0)
+		{
+			◆アイテム補充数[61] = 1;
+			◆アイテム補充数[50] = 1;
+			◆アイテム補充数[36] = 1;
+			◆アイテム補充数[19] = 1;
+			◆アイテム補充数[166] = 1;
+			◆アイテム補充数[155] = 1;
+			◆アイテム補充数[142] = 1;
+			◆アイテム補充数[127] = 1;
+			◆アイテム補充数[111] = 1;
+			◆アイテム補充数[95] = 1;
+			◆アイテム補充数[81] = 1;
+		}
+	}
+	if (EV("フロスト売店５", -2147483648) == false && ＣＬＶ(iic, -1) >= 49)
+	{
+		フロスト売店５();
+		if (◆アイテム補充数[12] == 0)
+		{
+			◆アイテム補充数[12] = 1;
+			◆アイテム補充数[41] = 1;
+			◆アイテム補充数[21] = 1;
+			◆アイテム補充数[53] = 1;
+			◆アイテム補充数[63] = 1;
+		}
+	}
+	if (EV("フロスト売店／たまの下着", -2147483648) == false && Ｉ有無(262, 0, "") != 0)
+	{
+		フロスト売店／たまの下着();
+	}
+	if (EV("フロスト売店／寄付について", -2147483648) == false && ◆寄付 != 0)
+	{
+		フロスト売店／寄付について();
+		◆寄付ボーナス = 25;
+	}
+	nni = 262;
+	if (Ｉ有無(nni, 0, "") == 0 && Ｑ状態(36, -1) == 2)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 263;
+	if (Ｉ有無(nni, 0, "") == 0 && EV("フロスト売店／たまの下着", -2147483648) != false)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 265;
+	if (Ｉ有無(nni, 0, "") == 0 && クリア確認(82) == 1)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 266;
+	if (Ｉ有無(nni, 0, "") == 0 && クリア確認(82) == 1)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 306;
+	if (Ｉ有無(nni, 0, "") == 0)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 268;
+	if (Ｑ状態(33, -1) == 2 && Ｉ有無(nni, 0, "") == 0)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 170;
+	if (Ｃ番号取得(30) != 0 && FA[52] == 0)
+	{
+		FA[52] = 1;
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 267;
+	if (◆名声ランク >= 2 && Ｉ有無(nni, 0, "") == 0)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 67;
+	if (Ｉ有無(nni, 0, "") == 0 && Ｑ状態(96, -1) == 2)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 305;
+	if (Ｉ有無(nni, 6, "") == 0 && Ｑ状態(20, -1) == 2)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 304;
+	if (Ｉ有無(nni, 6, "") == 0 && ◆ワールド >= 3)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 258;
+	if (Ｉ有無(nni, 0, "") == 0 && FA[263] == 1)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	nni = 74;
+	if (Ｉ有無(nni, 0, "") == 0 && ◆ワールド == 3)
+	{
+		Ｔアイテム屋／入荷品(nni);
+	}
+	if (EV("フロスト売店／寄付について", -2147483648) != false && ◆寄付 >= ◆寄付ボーナス)
+	{
+		int ▲商品 = 0;
+		if (FA[125] == 0)
+		{
+			FA[125] = 売店のボーナス商品設定();
+		}
+		if (FA[125] != 0)
+		{
+			▲商品 = FA[125];
+		}
+		if (▲商品 != 0)
+		{
+			◆ＢＢ = Ｔアイテム屋／入荷品(▲商品);
+			if (◆ＢＢ != 0)
+			{
+				◆ＡＡ = ◆寄付ボーナス;
+				フロスト売店５／寄付溜まった／汎用();
+			}
+		}
+		if (▲商品 == 0 || ◆ＢＢ == 0)
+		{
+			lint ra = RAND(4);
+			◆一時文字列 = "";
+			if (ra == 1)
+			{
+				◆一時文字列 = "lucky can cans are now worth more EXP";
+				FA[272]++;
+			}
+			if (ra == 2)
+			{
+				◆一時文字列 = "odds of encountering a lucky can can have increased";
+				FA[269] += 50;
+			}
+			if (ra == 3)
+			{
+				◆一時文字列 = "odds of encountering a pocky rock have increased";
+				FA[270] += 50;
+			}
+			if (ra == 4)
+			{
+				◆一時文字列 = "odds of encountering a treasure dango have increased";
+				FA[271] += 50;
+			}
+			◆ＡＡ = ◆寄付ボーナス;
+			フロスト売店／寄付／その他();
+			FA[325]++;
+		}
+		◆寄付ボーナス += 25;
+		FA[125] = 売店のボーナス商品設定();
+	}
+	for (nni = 1; nni < 348; ++nni)
+	{
+		if (◆アイテム補充数[nni] != 0)
+		{
+			Ｔアイテム屋／入荷品(nni);
+		}
+	}
+	LOG("\n■Frostbuy\n");
+	lint item1 = 0;
+	lint item2 = 0;
+	lint item3 = 0;
+	lint item4 = 0;
+	アイテム総数確認(item1, item2, item3, item4);
+	LOG("・Your current item data: Equipped (%s), In Vault (%s), Store Products (%s)\n" % string3(item1) % string3(item2) % string3(item3));
+}
+
+int 売店のボーナス商品設定()
+{
+	int aa = 0;
+	int ra = RAND(23);
+	if (FA[263] == 1 || ◆ワールド >= 2)
+	{
+		ra = RAND(28);
+	}
+	if (ra == 1)
+	{
+		aa = 270;
+	}
+	if (ra == 2)
+	{
+		aa = 271;
+	}
+	if (ra == 3)
+	{
+		aa = 273;
+	}
+	if (ra == 4)
+	{
+		aa = 274;
+	}
+	if (ra == 5)
+	{
+		aa = 276;
+	}
+	if (ra == 6)
+	{
+		aa = 277;
+	}
+	if (ra == 7)
+	{
+		aa = 279;
+	}
+	if (ra == 8)
+	{
+		aa = 280;
+	}
+	if (ra == 9)
+	{
+		aa = 5;
+	}
+	if (ra == 10)
+	{
+		aa = 283;
+	}
+	if (ra == 11)
+	{
+		aa = 285;
+	}
+	if (ra == 12)
+	{
+		aa = 286;
+	}
+	if (ra == 13)
+	{
+		aa = 288;
+	}
+	if (ra == 14)
+	{
+		aa = 289;
+	}
+	if (ra == 15)
+	{
+		aa = 291;
+	}
+	if (ra == 16)
+	{
+		aa = 292;
+	}
+	if (ra == 17)
+	{
+		aa = 294;
+	}
+	if (ra == 18)
+	{
+		aa = 295;
+	}
+	if (ra == 19)
+	{
+		aa = 297;
+	}
+	if (ra == 20)
+	{
+		aa = 298;
+	}
+	if (ra == 21)
+	{
+		aa = 300;
+	}
+	if (ra == 22)
+	{
+		aa = 301;
+	}
+	if (ra == 23)
+	{
+		aa = 188;
+	}
+	if (ra == 24)
+	{
+		aa = 13;
+	}
+	if (ra == 25)
+	{
+		aa = 56;
+	}
+	if (ra == 26)
+	{
+		aa = 48;
+	}
+	if (ra == 27)
+	{
+		aa = 17;
+	}
+	if (ra == 28)
+	{
+		aa = 42;
+	}
+	return aa;
+}
+
+void Ｔアイテム屋／店を出た()
+{
+	if (Ｃ番号取得(48) == 0 && Ｉ有無(265, 0, "") != 0)
+	{
+		Ｃ生成(48);
+	}
+	if (Ｃ番号取得(56) == 0 && Ｉ有無(266, 0, "") != 0)
+	{
+		Ｃ生成(56);
+	}
+}
+
+int Ｔアイテム屋／入荷品(int nni)
+{
+	if (Ｉ有無(nni, 6, "") != 0)
+	{
+		return 0;
+	}
+	int ii = 0;
+	if (◆アイテム補充数[nni] != 0)
+	{
+		◆アイテム補充数[nni]++;
+	}
+	ii = Ｉ生成(nni, 0);
+	Ｉ存在(ii, 6);
+	LOG_TADA("　アイテム補充数（" + Ｉ固有名前(nni) + "）＝" + string(◆アイテム補充数[nni]) + "\n");
+	if (nni == 306)
+	{
+		FA[33]++;
+	}
+	if (nni == 268)
+	{
+		FA[112]++;
+	}
+	return ii;
+}
+
+string Ｔアイテム屋／テキスト(lint flag)
+{
+	if (flag == 1)
+	{
+		if (Ｉ総数取得(7) == 0)
+		{
+			return "Looks like your vault's$empty, Boss.";
+		}
+		if (Ｉ総数取得(7) > 200)
+		{
+			return "Looks like your vault's$full, Boss. I'll buy your stuff, then!$A flat fee a' 10 Gold each!";
+		}
+		return "Your vault, Boss?$Why don'tcha buy somethin'$from us instead?";
+	}
+	int ra = 0;
+	if (◆アイテム屋／表示 == 2)
+	{
+		ra = RAND(3);
+		if (ra == 1)
+		{
+			return "Achoo!$Sorry I'm in my undies.$I just had the one change a' clothes.";
+		}
+		if (ra == 2)
+		{
+			return "Why do I look like this?$'Cause you bought my clothes, Boss!";
+		}
+		if (ra == 3)
+		{
+			return "If ya don't need the clothes ya bought from me it'd be nice if ya threw 'em out or sold 'em back.";
+		}
+	}
+	ra = RAND(6);
+	if (ra == 1)
+	{
+		return "Welcome to Frostbuy, Boss!$Now get Frostbuyin'!";
+	}
+	if (ra == 2)
+	{
+		return "I guarantee all our goods're$perfectly respectable!$Buy a bunch, 'kay?";
+	}
+	if (ra == 3)
+	{
+		return "We've got a sale on Special equipment today!$(The price is the same as always, though.)";
+	}
+	if (ra == 4)
+	{
+		return "Today's Ladies' Day!$Ladies get half off, but I guess that's$got nothin' ta do with you, Boss, huh?";
+	}
+	if (ra == 5)
+	{
+		return "Good products are expensive,$bad ones are cheap!$We do honest business here!";
+	}
+	if (ra == 6)
+	{
+		return "We also sell day-to-day$necessities, so get what ya need$after ya buy your equipment!";
+	}
+	return "";
+}
+

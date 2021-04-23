@@ -1,0 +1,545 @@
+void T_DragMouse::setDragCallback(ftDragCallback pCallback)
+{
+	this.m_pDragCallback = pCallback;
+}
+
+void T_DragMouse::setDropCallback(ftDropCallback pCallback)
+{
+	this.m_pDropCallback = pCallback;
+}
+
+void T_DragMouse::setMoveUpCallback(ftMoveUpCallback pCallback)
+{
+	this.m_pMoveUpCallback = pCallback;
+}
+
+void T_DragMouse::setMoveDownCallback(ftMoveDownCallback pCallback)
+{
+	this.m_pMoveDownCallback = pCallback;
+}
+
+void T_DragMouse::setMoveLeftCallback(ftMoveLeftCallback pCallback)
+{
+	this.m_pMoveLeftCallback = pCallback;
+}
+
+void T_DragMouse::setMoveRightCallback(ftMoveRightCallback pCallback)
+{
+	this.m_pMoveRightCallback = pCallback;
+}
+
+void T_DragMouse::setDragCallbackType(int nType)
+{
+	this.m_nDragCallbackType = nType;
+}
+
+void T_DragMouse::setSoundDrag(int nSoundNo)
+{
+	this.m_nSoundDrag = nSoundNo;
+}
+
+void T_DragMouse::setSoundDrop(int nSoundNo)
+{
+	this.m_nSoundDrop = nSoundNo;
+}
+
+void T_DragMouse::setSoundError(int nSoundNo)
+{
+	this.m_nSoundError = nSoundNo;
+}
+
+int T_DragMouse::getSoundDrag()
+{
+	return this.m_nSoundDrag;
+}
+
+int T_DragMouse::getSoundDrop()
+{
+	return this.m_nSoundDrop;
+}
+
+int T_DragMouse::getSoundError()
+{
+	return this.m_nSoundError;
+}
+
+T_DragMouse::T_DragMouse()
+{
+	this.clear();
+}
+
+T_DragMouse::~T_DragMouse()
+{
+	this.delete();
+}
+
+bool T_DragMouse::create(ref T_Sprite rfDragSp, ref T_Rect rfDragRect)
+{
+	this.delete();
+	if (!スプライト_有効(rfDragSp))
+	{
+		return false;
+	}
+	this.m_nOldX = rfDragSp.getPosX();
+	this.m_nOldY = rfDragSp.getPosY();
+	this.setDragRect(rfDragSp.getWidth(), rfDragSp.getHeight(), rfDragRect);
+	this.m_rfDragSp <- rfDragSp;
+	return true;
+}
+
+bool T_DragMouse::create2(ref T_TextSprite rfDragSp, ref T_Rect rfDragRect)
+{
+	this.delete();
+	if (!テキストスプライト_有効(rfDragSp))
+	{
+		return false;
+	}
+	this.m_nOldX = rfDragSp.getPosX();
+	this.m_nOldY = rfDragSp.getPosY();
+	this.setDragRect(rfDragSp.getWidth(), rfDragSp.getHeight(), rfDragRect);
+	this.m_rfDragSp2 <- rfDragSp;
+	return true;
+}
+
+void T_DragMouse::delete()
+{
+	this.clear();
+}
+
+void T_DragMouse::clear()
+{
+	this.m_rfDragSp <- NULL;
+	this.m_rfDragSp2 <- NULL;
+	this.m_nOldX = -1;
+	this.m_nOldY = -1;
+	this.m_nMinX = -1;
+	this.m_nMinY = -1;
+	this.m_nMaxX = -1;
+	this.m_nMaxY = -1;
+	this.m_nSoundDrag = -1;
+	this.m_nSoundDrop = -1;
+	this.m_nSoundError = -1;
+	this.m_pDragCallback = NULL;
+	this.m_pDropCallback = NULL;
+	this.m_pMoveUpCallback = NULL;
+	this.m_pMoveDownCallback = NULL;
+	this.m_pMoveLeftCallback = NULL;
+	this.m_pMoveRightCallback = NULL;
+	this.m_nDragCallbackType = 0;
+	this.clearDrag();
+}
+
+bool T_DragMouse::run(int nAnimeTime)
+{
+	bool bRet = false;
+	if (!this.start())
+	{
+		goto label0;
+	}
+	while (true)
+	{
+		int nRet = this.drag();
+		if (nRet < 0)
+		{
+			goto label0;
+		}
+		if (nRet == 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	if (this.m_pDropCallback != NULL)
+	{
+		if (!this.m_pDropCallback(this.m_nCurrentX, this.m_nCurrentY))
+		{
+			goto label0;
+		}
+	}
+	else
+	{
+		this.setPos(this.m_nCurrentX, this.m_nCurrentY);
+	}
+	this.playSoundDrop();
+	bRet = true;
+	goto label1;
+label0:
+	this.error(nAnimeTime);
+label1:
+	this.end();
+	return bRet;
+}
+
+bool T_DragMouse::runJoypad(int nAnimeTime)
+{
+	bool bRet = false;
+	if (!this.startJoypad())
+	{
+		goto label0;
+	}
+	while (true)
+	{
+		int nRet = this.dragJoypad();
+		if (nRet < 0)
+		{
+			goto label0;
+		}
+		if (nRet == 0)
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+	if (this.m_pDropCallback != NULL)
+	{
+		if (!this.m_pDropCallback(this.m_nCurrentX, this.m_nCurrentY))
+		{
+			goto label0;
+		}
+	}
+	else
+	{
+		this.setPos(this.m_nCurrentX, this.m_nCurrentY);
+	}
+	this.playSoundDrop();
+	bRet = true;
+	goto label1;
+label0:
+	this.error(nAnimeTime);
+label1:
+	this.endJoypad();
+	return bRet;
+}
+
+bool T_DragMouse::start()
+{
+	if (!スプライト_有効(this.m_rfDragSp) && !テキストスプライト_有効(this.m_rfDragSp2))
+	{
+		return false;
+	}
+	if (this.m_nCurrentX != -2147483648 && this.m_nCurrentY != -2147483648)
+	{
+		return false;
+	}
+	this.end();
+	int nMx = 0;
+	int nMy = 0;
+	if (!マウス_位置取得(nMx, nMy))
+	{
+		return false;
+	}
+	if (!キー_押下(1))
+	{
+		return false;
+	}
+	int nW = 0;
+	int nH = 0;
+	if (this.m_rfDragSp !== NULL)
+	{
+		nW = this.m_rfDragSp.getWidth();
+		nH = this.m_rfDragSp.getHeight();
+	}
+	if (this.m_rfDragSp2 !== NULL)
+	{
+		nW = this.m_rfDragSp2.getWidth();
+		nH = this.m_rfDragSp2.getHeight();
+	}
+	this.m_nStartX = 数値_補正(nMx - nW / 2, this.m_nMinX, this.m_nMaxX);
+	this.m_nStartY = 数値_補正(nMy - nH / 2, this.m_nMinY, this.m_nMaxY);
+	this.m_nCurrentX = this.m_nStartX;
+	this.m_nCurrentY = this.m_nStartY;
+	this.setPos(this.m_nStartX, this.m_nStartY);
+	this.m_nStartMx = this.m_nStartX + nW / 2;
+	this.m_nStartMy = this.m_nStartY + nH / 2;
+	if (nMx != this.m_nStartMx || nMy != this.m_nStartMy)
+	{
+		マウス_位置設定_強制(this.m_nStartMx, this.m_nStartMy);
+		AFL_Mouse_GetPos(this.m_nStartMx, this.m_nStartMy);
+	}
+	this.m_nCurrentMx = this.m_nStartMx;
+	this.m_nCurrentMy = this.m_nStartMy;
+	this.playSoundDrag();
+	return true;
+}
+
+void T_DragMouse::end()
+{
+	if (this.m_nCurrentX == -2147483648 || this.m_nCurrentY == -2147483648)
+	{
+		return;
+	}
+	キー_離し待ち(1, true);
+	this.clearDrag();
+}
+
+void T_DragMouse::clearDrag()
+{
+	this.m_nStartX = -2147483648;
+	this.m_nStartY = -2147483648;
+	this.m_nCurrentX = -2147483648;
+	this.m_nCurrentY = -2147483648;
+	this.m_nStartMx = -1;
+	this.m_nStartMy = -1;
+	this.m_nCurrentMx = -1;
+	this.m_nCurrentMy = -1;
+	this.m_nKey = -1;
+}
+
+int T_DragMouse::drag()
+{
+	if (this.m_nCurrentX == -2147483648 || this.m_nCurrentY == -2147483648)
+	{
+		return -1;
+	}
+	int nMx = 0;
+	int nMy = 0;
+	if (!マウス_位置取得(nMx, nMy))
+	{
+		return 0;
+	}
+	if (!キー_押下(1))
+	{
+		return 0;
+	}
+	if (nMx == this.m_nCurrentMx && nMy == this.m_nCurrentMy)
+	{
+		if (this.m_nDragCallbackType == 1)
+		{
+			this.setPos(this.m_nCurrentX, this.m_nCurrentY);
+		}
+		return 1;
+	}
+	int nX = (this.m_nStartX + nMx) - this.m_nStartMx;
+	int nY = (this.m_nStartY + nMy) - this.m_nStartMy;
+	bool bFlag = false;
+	if (nX < this.m_nMinX || nX > this.m_nMaxX)
+	{
+		nMx = this.m_nCurrentMx;
+		bFlag = true;
+	}
+	if (nY < this.m_nMinY || nY > this.m_nMaxY)
+	{
+		nMy = this.m_nCurrentMy;
+		bFlag = true;
+	}
+	if (bFlag)
+	{
+		AFL_Mouse_GetPos(nMx, nMy);
+	}
+	this.m_nCurrentMx = nMx;
+	this.m_nCurrentMy = nMy;
+	this.m_nCurrentX = (this.m_nStartX + this.m_nCurrentMx) - this.m_nStartMx;
+	this.m_nCurrentY = (this.m_nStartY + this.m_nCurrentMy) - this.m_nStartMy;
+	this.setPos(this.m_nCurrentX, this.m_nCurrentY);
+	return 2;
+}
+
+bool T_DragMouse::startJoypad()
+{
+	if (!スプライト_有効(this.m_rfDragSp) && !テキストスプライト_有効(this.m_rfDragSp2))
+	{
+		return false;
+	}
+	if (this.m_nCurrentX != -2147483648 && this.m_nCurrentY != -2147483648)
+	{
+		return false;
+	}
+	this.end();
+	int nKey = キー_決定_マウスなし();
+	if (nKey <= 0)
+	{
+		return false;
+	}
+	this.m_nStartX = this.m_nOldX;
+	this.m_nStartY = this.m_nOldY;
+	this.m_nCurrentX = this.m_nStartX;
+	this.m_nCurrentY = this.m_nStartY;
+	this.m_nKey = nKey;
+	this.playSoundDrag();
+	return true;
+}
+
+void T_DragMouse::endJoypad()
+{
+	if (this.m_nCurrentX == -2147483648 || this.m_nCurrentY == -2147483648)
+	{
+		return;
+	}
+	キー_離し待ち(this.m_nKey, true);
+	this.clearDrag();
+}
+
+int T_DragMouse::dragJoypad()
+{
+	if (this.m_nCurrentX == -2147483648 || this.m_nCurrentY == -2147483648)
+	{
+		return -1;
+	}
+	if (!キー_押下(this.m_nKey))
+	{
+		return 0;
+	}
+	int nX = this.m_nCurrentX;
+	int nY = this.m_nCurrentY;
+	if (キー_上矢印(false) > 0)
+	{
+		if (this.m_pMoveUpCallback != NULL)
+		{
+			this.m_pMoveUpCallback(nX, nY);
+		}
+		else
+		{
+			nY -= 10;
+		}
+	}
+	else if (キー_下矢印(false) > 0)
+	{
+		if (this.m_pMoveDownCallback != NULL)
+		{
+			this.m_pMoveDownCallback(nX, nY);
+		}
+		else
+		{
+			nY += 10;
+		}
+	}
+	else if (キー_左矢印(false) > 0)
+	{
+		if (this.m_pMoveLeftCallback != NULL)
+		{
+			this.m_pMoveLeftCallback(nX, nY);
+		}
+		else
+		{
+			nX -= 10;
+		}
+	}
+	else if (キー_右矢印(false) > 0)
+	{
+		if (this.m_pMoveRightCallback != NULL)
+		{
+			this.m_pMoveRightCallback(nX, nY);
+		}
+		else
+		{
+			nX += 10;
+		}
+	}
+	else
+	{
+		return 1;
+	}
+	nX = 数値_補正(nX, this.m_nMinX, this.m_nMaxX);
+	nY = 数値_補正(nY, this.m_nMinY, this.m_nMaxY);
+	if (nX == this.m_nCurrentX && nY == this.m_nCurrentY)
+	{
+		if (this.m_nDragCallbackType == 1)
+		{
+			this.setPos(this.m_nCurrentX, this.m_nCurrentY);
+		}
+		return 1;
+	}
+	this.m_nCurrentX = nX;
+	this.m_nCurrentY = nY;
+	this.setPos(this.m_nCurrentX, this.m_nCurrentY);
+	return 2;
+}
+
+void T_DragMouse::setPos(int nX, int nY)
+{
+	nX = 数値_補正(nX, this.m_nMinX, this.m_nMaxX);
+	nY = 数値_補正(nY, this.m_nMinY, this.m_nMaxY);
+	if (スプライト_有効(this.m_rfDragSp))
+	{
+		this.m_rfDragSp.setPos(nX, nY);
+	}
+	else if (テキストスプライト_有効(this.m_rfDragSp2))
+	{
+		this.m_rfDragSp2.setPos(nX, nY);
+	}
+	else
+	{
+		return;
+	}
+	if (this.m_pDragCallback != NULL)
+	{
+		this.m_pDragCallback(nX, nY);
+	}
+}
+
+void T_DragMouse::setDragRect(int nWidth, int nHeight, ref T_Rect rfDragRect)
+{
+	if (rfDragRect !== NULL && !rfDragRect.empty())
+	{
+		this.m_nMinX = rfDragRect.m_nSx;
+		this.m_nMinY = rfDragRect.m_nSy;
+		this.m_nMaxX = rfDragRect.getWidth() - nWidth;
+		this.m_nMaxY = rfDragRect.getHeight() - nHeight;
+	}
+	else
+	{
+		this.m_nMinX = 0;
+		this.m_nMinY = 0;
+		this.m_nMaxX = 1024 - nWidth;
+		this.m_nMaxY = 768 - nHeight;
+	}
+}
+
+void T_DragMouse::playSoundDrag()
+{
+	if (this.m_nSoundDrag > 0)
+	{
+		効果音_再生(this.m_nSoundDrag);
+	}
+	else if (this.m_nSoundDrag < 0)
+	{
+		効果音_ドラッグ();
+	}
+}
+
+void T_DragMouse::playSoundDrop()
+{
+	if (this.m_nSoundDrop > 0)
+	{
+		効果音_再生(this.m_nSoundDrop);
+	}
+	else if (this.m_nSoundDrop < 0)
+	{
+		効果音_ドロップ();
+	}
+}
+
+void T_DragMouse::playSoundError()
+{
+	if (this.m_nSoundError > 0)
+	{
+		効果音_再生(this.m_nSoundError);
+	}
+	else if (this.m_nSoundError < 0)
+	{
+		効果音_キャンセル();
+	}
+}
+
+void T_DragMouse::error(int nAnimeTime)
+{
+	this.playSoundError();
+	if (nAnimeTime > 0)
+	{
+		int nW = this.m_nOldX - this.m_nCurrentX;
+		int nH = this.m_nOldY - this.m_nCurrentY;
+		int nTime = 0;
+		CASTimer sTimer;
+		sTimer.Reset();
+		while (nTime < nAnimeTime)
+		{
+			float fX = 実数計算(nW, nTime, nAnimeTime);
+			float fY = 実数計算(nH, nTime, nAnimeTime);
+			this.setPos(this.m_nCurrentX + fX, this.m_nCurrentY + fY);
+			UPDATE(true);
+			nTime = sTimer.Get();
+		}
+	}
+	this.setPos(this.m_nOldX, this.m_nOldY);
+}
+

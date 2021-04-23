@@ -1,0 +1,222 @@
+T_Key::T_Key()
+{
+	this.m_aszName[1] = "É}ÉEÉXç∂É{É^Éì";
+	this.m_aszName[2] = "É}ÉEÉXâEÉ{É^Éì";
+	this.m_aszName[4] = "É}ÉEÉXíÜâõÉ{É^Éì";
+	this.m_aszName[8] = "Back Space";
+	this.m_aszName[9] = "Tab";
+	this.m_aszName[13] = "Enter";
+	this.m_aszName[16] = "Shift";
+	this.m_aszName[17] = "Ctrl";
+	this.m_aszName[18] = "Alt";
+	this.m_aszName[19] = "Pause";
+	this.m_aszName[20] = "Caps Lock";
+	this.m_aszName[27] = "Esc";
+	this.m_aszName[32] = "Space";
+	this.m_aszName[33] = "Page Up";
+	this.m_aszName[34] = "Page Down";
+	this.m_aszName[35] = "End";
+	this.m_aszName[36] = "Home";
+	this.m_aszName[37] = "Å©";
+	this.m_aszName[38] = "Å™";
+	this.m_aszName[39] = "Å®";
+	this.m_aszName[40] = "Å´";
+	this.m_aszName[45] = "Insert";
+	this.m_aszName[46] = "Delete";
+	this.m_aszName[48] = "ÇO";
+	this.m_aszName[49] = "ÇP";
+	this.m_aszName[50] = "ÇQ";
+	this.m_aszName[51] = "ÇR";
+	this.m_aszName[52] = "ÇS";
+	this.m_aszName[53] = "ÇT";
+	this.m_aszName[54] = "ÇU";
+	this.m_aszName[55] = "ÇV";
+	this.m_aszName[56] = "ÇW";
+	this.m_aszName[57] = "ÇX";
+	this.m_aszName[65] = "Ç`";
+	this.m_aszName[66] = "Ça";
+	this.m_aszName[67] = "Çb";
+	this.m_aszName[68] = "Çc";
+	this.m_aszName[69] = "Çd";
+	this.m_aszName[70] = "Çe";
+	this.m_aszName[71] = "Çf";
+	this.m_aszName[72] = "Çg";
+	this.m_aszName[73] = "Çh";
+	this.m_aszName[74] = "Çi";
+	this.m_aszName[75] = "Çj";
+	this.m_aszName[76] = "Çk";
+	this.m_aszName[77] = "Çl";
+	this.m_aszName[78] = "Çm";
+	this.m_aszName[79] = "Çn";
+	this.m_aszName[80] = "Ço";
+	this.m_aszName[81] = "Çp";
+	this.m_aszName[82] = "Çq";
+	this.m_aszName[83] = "Çr";
+	this.m_aszName[84] = "Çs";
+	this.m_aszName[85] = "Çt";
+	this.m_aszName[86] = "Çu";
+	this.m_aszName[87] = "Çv";
+	this.m_aszName[88] = "Çw";
+	this.m_aszName[89] = "Çx";
+	this.m_aszName[90] = "Çy";
+	this.m_aszName[96] = "ÇO";
+	this.m_aszName[97] = "ÇP";
+	this.m_aszName[98] = "ÇQ";
+	this.m_aszName[99] = "ÇR";
+	this.m_aszName[100] = "ÇS";
+	this.m_aszName[101] = "ÇT";
+	this.m_aszName[102] = "ÇU";
+	this.m_aszName[103] = "ÇV";
+	this.m_aszName[104] = "ÇW";
+	this.m_aszName[105] = "ÇX";
+	this.m_aszName[106] = "Åñ";
+	this.m_aszName[107] = "Å{";
+	this.m_aszName[109] = "Å|";
+	this.m_aszName[110] = "ÅD";
+	this.m_aszName[111] = "Å^";
+	this.m_aszName[112] = "ÇeÇP";
+	this.m_aszName[113] = "ÇeÇQ";
+	this.m_aszName[114] = "ÇeÇR";
+	this.m_aszName[115] = "ÇeÇS";
+	this.m_aszName[116] = "ÇeÇT";
+	this.m_aszName[117] = "ÇeÇU";
+	this.m_aszName[118] = "ÇeÇV";
+	this.m_aszName[119] = "ÇeÇW";
+	this.m_aszName[120] = "ÇeÇX";
+	this.m_aszName[121] = "ÇeÇPÇO";
+	this.m_aszName[122] = "ÇeÇPÇP";
+	this.m_aszName[123] = "ÇeÇPÇQ";
+	this.m_aszName[124] = "ÇeÇPÇR";
+	this.m_aszName[125] = "ÇeÇPÇS";
+	this.m_aszName[126] = "ÇeÇPÇT";
+	this.m_aszName[127] = "ÇeÇPÇU";
+	this.m_aszName[128] = "ÇeÇPÇV";
+	this.m_aszName[129] = "ÇeÇPÇW";
+	this.m_aszName[130] = "ÇeÇPÇX";
+	this.m_aszName[131] = "ÇeÇQÇO";
+	this.m_aszName[132] = "ÇeÇQÇP";
+	this.m_aszName[133] = "ÇeÇQÇQ";
+	this.m_aszName[134] = "ÇeÇQÇR";
+	this.m_aszName[135] = "ÇeÇQÇS";
+	this.m_nMouseX = -1;
+	this.m_nMouseY = -1;
+	this.m_bMouseFlag = true;
+}
+
+void T_Key::init()
+{
+	this.clearMouseFlag();
+}
+
+void T_Key::clear(bool bWheel)
+{
+	if (bWheel)
+	{
+		ÉzÉCÅ[Éã_ÉNÉäÉA();
+	}
+}
+
+bool T_Key::isDown(int nKey)
+{
+	if (AFL_IsKeyDown(nKey))
+	{
+		this.setMouseFlag(nKey == 1 || nKey == 2 || nKey == 4, nKey);
+		return true;
+	}
+	return false;
+}
+
+bool T_Key::setMousePos(int nX, int nY, bool bMouseFlag)
+{
+	if (!É}ÉEÉXÉJÅ[É\Éãé©ìÆà⁄ìÆ())
+	{
+		return false;
+	}
+	if (SystemService.MoveMouseCursorPosImmediately(nX, nY))
+	{
+		if (AFL_Mouse_GetPos(nX, nY))
+		{
+			this.m_nMouseX = nX;
+			this.m_nMouseY = nY;
+			this.setMouseFlag(bMouseFlag, -1);
+			return true;
+		}
+	}
+	this.m_nMouseX = -1;
+	this.m_nMouseY = -1;
+	return false;
+}
+
+bool T_Key::getMousePos(ref int nX, ref int nY)
+{
+	if (AFL_Mouse_GetPos(nX, nY))
+	{
+		if (nX != this.m_nMouseX || nY != this.m_nMouseY)
+		{
+			this.m_nMouseX = nX;
+			this.m_nMouseY = nY;
+			this.setMouseFlag(true, -1);
+		}
+		return true;
+	}
+	this.m_nMouseX = -1;
+	this.m_nMouseY = -1;
+	return false;
+}
+
+int T_Key::checkWheel(bool bClear)
+{
+	int nForward = 0;
+	int nBack = 0;
+	AFL_MouseWheel_GetCount(nForward, nBack);
+	if (bClear)
+	{
+		ÉzÉCÅ[Éã_ÉNÉäÉA();
+	}
+	if (nForward > 0)
+	{
+		this.setMouseFlag(true, -1);
+		return 9991;
+	}
+	if (nBack > 0)
+	{
+		this.setMouseFlag(true, -1);
+		return 9992;
+	}
+	return 0;
+}
+
+void T_Key::clearMouseFlag()
+{
+	this.m_nMouseX = -1;
+	this.m_nMouseY = -1;
+	this.m_bMouseFlag = true;
+	ÉJÅ[É\Éã_ÉNÉäÉA();
+}
+
+void T_Key::setMouseFlag(bool bFlag, int nKey)
+{
+	if (this.m_bMouseFlag == bFlag)
+	{
+		return;
+	}
+	this.m_bMouseFlag = bFlag;
+}
+
+bool T_Key::getMouseFlag()
+{
+	int nX = 0;
+	int nY = 0;
+	this.getMousePos(nX, nY);
+	return this.m_bMouseFlag;
+}
+
+string T_Key::getName(int nKey)
+{
+	if (nKey <= 0 || nKey >= this.m_aszName.Numof())
+	{
+		return "ÅHÅHÅH";
+	}
+	return this.m_aszName[nKey];
+}
+

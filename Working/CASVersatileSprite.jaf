@@ -1,0 +1,252 @@
+CASVersatileSprite::CASVersatileSprite()
+{
+	this.m_nType = 0;
+}
+
+void CASVersatileSprite::Release()
+{
+	this.m_ConstructionStateSprite.Release();
+	this.m_CGStateSprite.Release();
+	this.m_ConstructionSprite.Release();
+	this.m_CGSprite.Release();
+}
+
+void CASVersatileSprite::SetType(int nType)
+{
+	if (this.m_nType == nType)
+	{
+		return;
+	}
+	this.m_nType = nType;
+}
+
+ref CASCGSprite CASVersatileSprite::GetCGSprite()
+{
+	return this.m_CGSprite;
+}
+
+ref CASConstructionSprite CASVersatileSprite::GetConstructionSprite()
+{
+	return this.m_ConstructionSprite;
+}
+
+ref CASCGStateSprite CASVersatileSprite::GetCGStateSprite()
+{
+	return this.m_CGStateSprite;
+}
+
+ref CASConstructionStateSprite CASVersatileSprite::GetConstructionStateSprite()
+{
+	return this.m_ConstructionStateSprite;
+}
+
+void CASVersatileSprite::SetPos(int nX, int nY)
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			this.m_CGSprite.SetPos(nX, nY);
+			break;
+		case 1:
+			this.m_ConstructionSprite.SetPos(nX, nY);
+			break;
+		case 2:
+			this.m_CGStateSprite.SetPos(nX, nY);
+			break;
+		case 3:
+			this.m_ConstructionStateSprite.SetPos(nX, nY);
+			break;
+	}
+}
+
+void CASVersatileSprite::SetZ(int nZ)
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			this.m_CGSprite.SetZ(nZ);
+			break;
+		case 1:
+			this.m_ConstructionSprite.SetZ(nZ);
+			break;
+		case 2:
+			this.m_CGStateSprite.SetZ(nZ);
+			break;
+		case 3:
+			this.m_ConstructionStateSprite.SetZ(nZ);
+			break;
+	}
+}
+
+void CASVersatileSprite::SetShow(bool bShow)
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			this.m_CGSprite.SetShow(bShow);
+			break;
+		case 1:
+			this.m_ConstructionSprite.SetShow(bShow);
+			break;
+		case 2:
+			this.m_CGStateSprite.SetShow(bShow);
+			break;
+		case 3:
+			this.m_ConstructionStateSprite.SetShow(bShow);
+			break;
+	}
+}
+
+bool CASVersatileSprite::GetShow()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.GetShow();
+		case 1:
+			return this.m_ConstructionSprite.GetShow();
+		case 2:
+			return this.m_CGStateSprite.GetShow();
+		case 3:
+			return this.m_ConstructionStateSprite.GetShow();
+	}
+	return false;
+}
+
+int CASVersatileSprite::GetX()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.GetX();
+		case 1:
+			return this.m_ConstructionSprite.GetX();
+		case 2:
+			return this.m_CGStateSprite.GetX();
+		case 3:
+			return this.m_ConstructionStateSprite.GetX();
+	}
+	return 0;
+}
+
+int CASVersatileSprite::GetY()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.GetY();
+		case 1:
+			return this.m_ConstructionSprite.GetY();
+		case 2:
+			return this.m_CGStateSprite.GetY();
+		case 3:
+			return this.m_ConstructionStateSprite.GetY();
+	}
+	return 0;
+}
+
+int CASVersatileSprite::GetZ()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.GetZ();
+		case 1:
+			return this.m_ConstructionSprite.GetZ();
+		case 2:
+			return this.m_CGStateSprite.GetZ();
+		case 3:
+			return this.m_ConstructionStateSprite.GetZ();
+	}
+	return 0;
+}
+
+int CASVersatileSprite::GetWidth()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.GetCGWidth();
+		case 1:
+			return this.m_ConstructionSprite.GetWidth();
+		case 2:
+			return this.m_CGStateSprite.GetCGWidth();
+		case 3:
+			return this.m_ConstructionStateSprite.GetWidth();
+	}
+	return 0;
+}
+
+int CASVersatileSprite::GetHeight()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.GetCGHeight();
+		case 1:
+			return this.m_ConstructionSprite.GetHeight();
+		case 2:
+			return this.m_CGStateSprite.GetCGHeight();
+		case 3:
+			return this.m_ConstructionStateSprite.GetHeight();
+	}
+	return 0;
+}
+
+bool CASVersatileSprite::IsMouseCursorIn()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.IsMouseCursorIn();
+		case 1:
+			return this.m_ConstructionSprite.IsMouseCursorIn();
+		case 2:
+			return this.m_CGStateSprite.IsMouseCursorIn();
+		case 3:
+			return this.m_ConstructionStateSprite.IsMouseCursorIn();
+	}
+	return false;
+}
+
+bool CASVersatileSprite::IsMouseCursorInRect()
+{
+	switch (this.m_nType)
+	{
+		case 0:
+			return this.m_CGSprite.IsMouseCursorInRect();
+		case 1:
+			return this.m_ConstructionSprite.IsMouseCursorInRect();
+		case 2:
+			return this.m_CGStateSprite.IsMouseCursorInRect();
+		case 3:
+			return this.m_ConstructionStateSprite.IsMouseCursorInRect();
+	}
+	return false;
+}
+
+void CASVersatileSprite::SetActiveState(int nIndex)
+{
+	switch (this.m_nType)
+	{
+		case 2:
+			this.m_CGStateSprite.SetActive(nIndex);
+			break;
+		case 3:
+			this.m_ConstructionStateSprite.SetActive(nIndex);
+			break;
+	}
+}
+
+int CASVersatileSprite::GetActiveState()
+{
+	switch (this.m_nType)
+	{
+		case 2:
+			return this.m_CGStateSprite.GetActive();
+		case 3:
+			return this.m_ConstructionStateSprite.GetActive();
+	}
+	return -1;
+}
+

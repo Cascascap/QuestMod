@@ -1,0 +1,137 @@
+T_SkillDrag::T_SkillDrag()
+{
+	this.clear();
+}
+
+T_SkillDrag::~T_SkillDrag()
+{
+	this.delete();
+}
+
+int T_SkillDrag::run(int nCharaNo, int nIndex, ref T_SkillButton rfsSkill)
+{
+	if (!this.create(9161, nCharaNo, rfsSkill))
+	{
+		return -1;
+	}
+	this.m_nOldIndex = nIndex;
+	rfsSkill.setShow(false);
+	int idx = this.exec();
+	rfsSkill.setShow(true);
+	this.delete();
+	return idx;
+}
+
+bool T_SkillDrag::create(int nZ, int nCharaNo, ref T_SkillButton rfsSkill)
+{
+	this.delete();
+	if (rfsSkill === NULL)
+	{
+		return false;
+	}
+	int nSkillNo = rfsSkill.getSkillNo();
+	if (nSkillNo <= 0)
+	{
+		return false;
+	}
+	if (!this.m_sLarge.create(nCharaNo))
+	{
+		return false;
+	}
+	this.m_sLarge.setZ(nZ);
+	if (!this.m_sSkill.create(0, nSkillNo, キャラスキル_ランク(nCharaNo, nSkillNo)))
+	{
+		return false;
+	}
+	this.m_sSkill.setNumber(キャラスキル_使用回数(nCharaNo, nSkillNo), -1);
+	this.m_sSkill.setPos(rfsSkill.getSp().getPosX(), rfsSkill.getSp().getPosY());
+	this.m_sSkill.setZ(nZ + 20);
+	this.m_sLarge.setShow(true);
+	this.m_sSkill.setShow(true);
+	return true;
+}
+
+void T_SkillDrag::delete()
+{
+	this.m_sLarge.delete();
+	this.m_sSkill.delete();
+	this.clear();
+}
+
+void T_SkillDrag::clear()
+{
+	this.m_nOldIndex = -1;
+	this.m_nSelectIndex = -1;
+	this.m_nTargetIndex = -1;
+}
+
+int T_SkillDrag::exec()
+{
+	bool bRet = false;
+	T_Rect sRect;
+	T_DragMouse sDrag;
+	sRect.set2(43, 59, 539, 731);
+	sDrag.create2(this.m_sSkill.getSp(), sRect);
+	sDrag.setSoundDrop(0);
+	sDrag.setSoundError(0);
+	sDrag.setDragCallback(&スキル_ドラッグ);
+	sDrag.setDropCallback(&スキル_ドロップ);
+	if (キー_押下(1))
+	{
+		bRet = sDrag.run(0);
+	}
+	else
+	{
+		bRet = sDrag.runJoypad(0);
+	}
+	sDrag.delete();
+	return bRet ? this.m_nTargetIndex : -1;
+}
+
+void T_SkillDrag::execDrag(int nX, int nY)
+{
+	if (this.m_sSkill.getSkillNo() <= 0)
+	{
+		return;
+	}
+	this.m_sSkill.setPos(nX, nY);
+	int idx = this.m_sLarge.check(this.m_sSkill.getSp().getSp());
+	this.setSelect(idx);
+}
+
+bool T_SkillDrag::execDrop(int nX, int nY)
+{
+	if (this.m_sSkill.getSkillNo() <= 0)
+	{
+		return false;
+	}
+	this.m_sSkill.setPos(nX, nY);
+	bool bRet = false;
+	if (this.m_nSelectIndex < 0)
+	{
+		goto label0;
+	}
+	bRet = true;
+	this.m_nTargetIndex = this.m_nSelectIndex;
+label0:
+	this.setSelect(-1);
+	this.m_sSkill.setShow(false);
+	return bRet;
+}
+
+void T_SkillDrag::setSelect(int nIndex)
+{
+	if (nIndex == this.m_nSelectIndex)
+	{
+		return;
+	}
+	if (this.m_sLarge.setSelect(nIndex))
+	{
+		this.m_nSelectIndex = nIndex;
+	}
+	else
+	{
+		this.m_nSelectIndex = -1;
+	}
+}
+

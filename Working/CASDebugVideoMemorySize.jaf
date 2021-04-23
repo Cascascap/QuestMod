@@ -1,0 +1,74 @@
+CASDebugVideoMemorySize::CASDebugVideoMemorySize()
+{
+	this.m_Show = false;
+	this.m_AllowedMemorySize = 94371840;
+}
+
+void CASDebugVideoMemorySize::SetShow(bool Show)
+{
+	if (this.m_Show == Show)
+	{
+		return;
+	}
+	if (Show)
+	{
+		this.m_TextProperty.SetSize(12);
+		this.m_TextProperty.SetColor(CF_CASColor(255, 255, 255, 255));
+		this.m_TextProperty.SetEdgeWeight(1.0);
+		this.m_TextProperty.SetEdgeColor(CF_CASColor(0, 0, 0, 255));
+		this.m_TextSprite.SetPos(0, 44);
+		this.m_TextSprite.SetZ(18001);
+		this.m_TextSprite.SetShow(true);
+	}
+	else
+	{
+		this.m_TextSprite.Release();
+		this.m_MaxSize = 0;
+		this.m_UseSize = 0;
+		this.m_UseMaxSize = 0;
+	}
+	this.m_Show = Show;
+}
+
+bool CASDebugVideoMemorySize::GetShow()
+{
+	return this.m_Show;
+}
+
+void CASDebugVideoMemorySize::Update()
+{
+	int l_MaxSize = 0;
+	int l_UseMaxSize = 0;
+	int l_PrevUseSize = this.m_UseSize;
+	ChipmunkSpriteEngine.Debug_GetVideoMemoryInfo(l_MaxSize, this.m_UseSize, l_UseMaxSize);
+	if (this.IsCompulsorilyShow())
+	{
+		this.SetShow(true);
+	}
+	if (!this.m_Show)
+	{
+		return;
+	}
+	this.m_TextSprite.SetPos(this.IsShowLeft() ? 0 : ChipmunkSpriteEngine.GetScreenWidth() - this.m_TextSprite.GetWidth(), 44);
+	if (this.m_MaxSize == l_MaxSize && l_UseMaxSize == this.m_UseSize && this.m_UseMaxSize == l_UseMaxSize)
+	{
+		return;
+	}
+	this.m_TextSprite.SetText("V:%4d/%4d" % (this.m_UseSize / 1024 / 1024) % (l_UseMaxSize / 1024 / 1024), this.m_TextProperty);
+	this.m_MaxSize = l_MaxSize;
+	this.m_UseMaxSize = l_UseMaxSize;
+}
+
+bool CASDebugVideoMemorySize::IsShowLeft()
+{
+	int MouseX = -1;
+	int MouseY = -1;
+	AFL_Mouse_GetPos(MouseX, MouseY);
+	return MouseX >= ChipmunkSpriteEngine.GetScreenWidth() / 2;
+}
+
+bool CASDebugVideoMemorySize::IsCompulsorilyShow()
+{
+	return this.m_UseSize >= this.m_AllowedMemorySize;
+}
+

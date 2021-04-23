@@ -1,0 +1,568 @@
+void T_MapQuest::setObjectNo(int nObjectNo)
+{
+	this.m_nObjectNo = nObjectNo;
+}
+
+int T_MapQuest::getNo()
+{
+	return this.m_nNo;
+}
+
+int T_MapQuest::getObjectNo()
+{
+	return this.m_nObjectNo;
+}
+
+int T_MapQuest::getValue()
+{
+	return this.m_nValue;
+}
+
+bool T_MapQuest::isSuspend()
+{
+	return this.m_sBonus.isSuspend();
+}
+
+T_MapQuest::T_MapQuest()
+{
+	this.clear();
+}
+
+T_MapQuest::~T_MapQuest()
+{
+	this.delete();
+}
+
+bool T_MapQuest::create(int nNo, int nX, int nY, int nZ)
+{
+	this.delete();
+	if (!クエスト_ボーナス番号確認(nNo))
+	{
+		return false;
+	}
+	bool bBold = 太字確認(258, 40);
+	this.m_sBonus.create(21, 22, -1, 0, 1, 1);
+	this.m_sBonus.setFontType(258);
+	this.m_sBonus.setFontSize(22);
+	this.m_sBonus.setFontColor(255, 255, 255);
+	this.m_sBonus.setFontBold(bBold);
+	this.m_sBonus.setPos(nX, nY);
+	this.m_sBonus.setZ(nZ);
+	this.m_sBonusMax.create(21, 22, -1, 0, 1, 1);
+	this.m_sBonusMax.setFontType(258);
+	this.m_sBonusMax.setFontSize(22);
+	this.m_sBonusMax.setFontColor(255, 255, 255);
+	this.m_sBonusMax.setFontBold(bBold);
+	this.m_sBonusMax.setPos(nX + 29, nY + 0);
+	this.m_sBonusMax.setZ(nZ);
+	this.m_spBall.setCg(11304);
+	this.m_spBall.setPos(nX + 58, nY + -8);
+	this.m_spBall.setZ(nZ);
+	this.m_nNo = nNo;
+	this.set();
+	return true;
+}
+
+void T_MapQuest::delete()
+{
+	this.m_sBonus.delete();
+	this.m_sBonusMax.delete();
+	this.m_spBall.delete();
+	this.m_sBall.delete();
+	this.clear();
+}
+
+void T_MapQuest::clear()
+{
+	this.m_nNo = -1;
+	this.m_nObjectNo = -1;
+	this.m_nValue = -1;
+	this.m_bShow = false;
+	this.m_nBallStatus = -1;
+}
+
+bool T_MapQuest::blinkStart()
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	int nBonus = クエスト_ボーナス(this.m_nNo);
+	if (nBonus < 0)
+	{
+		return false;
+	}
+	if (!数値点滅_登録_テキスト(this.m_sBonus, this.m_nValue, nBonus))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool T_MapQuest::animeStart()
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_nBallStatus > 0)
+	{
+		return false;
+	}
+	this.m_sBall.create(-1);
+	this.m_sBall.setOrigin(5);
+	this.m_sBall.setPos(this.m_spBall.getPosX() + this.m_spBall.getWidth() / 2, this.m_spBall.getPosY() + this.m_spBall.getHeight() / 2);
+	this.m_sBall.setZ(this.m_spBall.getZ() + 1);
+	this.m_sBall.playFromFileName(Ｆｌａｓｈファイル名("＋１玉点灯"), false, true);
+	this.m_nBallStatus = 1;
+	return true;
+}
+
+bool T_MapQuest::animeUpdate()
+{
+	if (this.m_nBallStatus != 1)
+	{
+		return false;
+	}
+	if (this.m_sBall.update() >= 0)
+	{
+		return true;
+	}
+	this.animeEnd();
+	return false;
+}
+
+void T_MapQuest::animeEnd()
+{
+	if (this.m_nBallStatus < 0 || this.m_nBallStatus > 1)
+	{
+		return;
+	}
+	this.m_sBall.delete();
+	this.m_nBallStatus = 2;
+	this.m_spBall.setShow(this.m_bShow);
+}
+
+bool T_MapQuest::checkBall(int nObjectNo)
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_nObjectNo <= 0 || nObjectNo <= 0)
+	{
+		return false;
+	}
+	if (this.m_nObjectNo != nObjectNo)
+	{
+		return false;
+	}
+	if (this.m_nBallStatus >= 0)
+	{
+		return false;
+	}
+	int nMax = クエスト_ボーナス最大(this.m_nNo);
+	if (nMax <= 0)
+	{
+		return false;
+	}
+	if (クエスト_ボーナス(this.m_nNo) < nMax)
+	{
+		return false;
+	}
+	this.m_nBallStatus = 0;
+	return true;
+}
+
+bool T_MapQuest::eraseBall()
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	this.m_spBall.setShow(0);
+	効果_フラッシュ_待ちあり("＋１玉消灯", 673, 216 + (this.m_nNo - 1) * 40, 9601);
+	return true;
+}
+
+bool T_MapQuest::set()
+{
+	if (this.m_nNo <= 0)
+	{
+		return false;
+	}
+	int nBonus = クエスト_ボーナス(this.m_nNo);
+	this.m_sBonus.setText(nBonus < 0 ? "－" : "%d" % nBonus, false);
+	this.m_nValue = nBonus;
+	int nMax = クエスト_ボーナス最大(this.m_nNo);
+	this.m_sBonusMax.setText(nMax < 0 ? "－" : "%d" % nMax, false);
+	if (this.m_nBallStatus < 0)
+	{
+		this.m_nBallStatus = nMax > 0 && nBonus >= nMax ? 2 : -1;
+	}
+	this.setShow(this.m_bShow);
+	return true;
+}
+
+void T_MapQuest::setShow(bool bShow)
+{
+	this.m_sBonus.setShow(bShow);
+	this.m_sBonusMax.setShow(bShow);
+	this.m_spBall.setShow(this.m_nBallStatus > 1 ? bShow : 0);
+	this.m_bShow = bShow;
+	if (!bShow)
+	{
+		this.animeEnd();
+	}
+}
+
+bool T_MapQuest::suspend()
+{
+	if (!this.m_spBall.suspend())
+	{
+		return false;
+	}
+	if (!this.m_sBonusMax.suspend())
+	{
+		return false;
+	}
+	return this.m_sBonus.suspend();
+}
+
+bool T_MapQuest::resume()
+{
+	if (!this.m_spBall.resume())
+	{
+		return false;
+	}
+	if (!this.m_sBonusMax.resume())
+	{
+		return false;
+	}
+	return this.m_sBonus.resume();
+}
+
+bool T_MapQuestManager::isSuspend()
+{
+	return this.m_sName.isSuspend();
+}
+
+T_MapQuestManager::T_MapQuestManager()
+{
+	this.clear();
+}
+
+T_MapQuestManager::~T_MapQuestManager()
+{
+	this.delete();
+}
+
+bool T_MapQuestManager::create(int nZ)
+{
+	this.delete();
+	this.m_sName.create(179, 22, -1, 0, 1, 1);
+	this.m_sName.setDrawType(2);
+	this.m_sName.setMaxLines(1);
+	this.m_sName.setPos(828, 227);
+	this.m_sName.setZ(nZ);
+	this.m_sName.setTextSpace(-4);
+	this.m_sName.setFontSize(20);
+	this.m_sName.setFontType(258);
+	this.m_sName.setFontBold(0);
+	this.m_sName.setFontColor(255, 245, 100);
+	this.m_sName.setText(クエスト_名前(クエスト_攻略番号()), false);
+	this.m_sBar.createCg(1, 11303, 0, 0);
+	this.m_sBar.setPos(823, 270);
+	this.m_sBar.setZ(nZ);
+	this.m_sBar.setValue(◆クエスト進行率, 100);
+	this.m_sExpBonus.create(40, 24, 3, 3, 1, true);
+	this.m_sExpBonus.setFontType(258);
+	this.m_sExpBonus.setFontSize(24);
+	this.m_sExpBonus.setFontColor(255, 255, 255);
+	this.m_sExpBonus.setFontBold(太字確認(258, 40));
+	this.m_sExpBonus.setPos(947, 304);
+	this.m_sExpBonus.setZ(nZ);
+	this.m_sExpBonus.setValue(◆クエストＥＸＰボーナス, false);
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[i].create(i + 1, 926, 356 + 40 * i, nZ);
+	}
+	this.m_asBonus[0].setObjectNo(210);
+	this.m_bUpdate = true;
+	return true;
+}
+
+void T_MapQuestManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[i].delete();
+	}
+	this.m_sName.delete();
+	this.m_sBar.delete();
+	this.m_sExpBonus.delete();
+	this.clear();
+}
+
+void T_MapQuestManager::clear()
+{
+	this.m_bUpdate = false;
+	this.m_bShow = false;
+	this.m_bBlinkBar = 0;
+	if (!this.m_anBall.Empty())
+	{
+		this.m_anBall.Free();
+	}
+}
+
+bool T_MapQuestManager::update(int nMode, int nObjectNo, int nTotalTime)
+{
+	if (!this.m_bUpdate)
+	{
+		return false;
+	}
+	bool bRet = false;
+	switch (nMode)
+	{
+		case 2:
+			bRet = this.blinkStart();
+			this._update(nObjectNo, 0);
+			break;
+		case 1:
+			this._update(nObjectNo, nTotalTime);
+			break;
+		case 0:
+		default:
+			this._update(nObjectNo, 0);
+			break;
+	}
+	return bRet;
+}
+
+bool T_MapQuestManager::blinkBar()
+{
+	if (!this.m_bUpdate)
+	{
+		return false;
+	}
+	if (!this.m_bBlinkBar)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 500)
+	{
+		return true;
+	}
+	bool bShow = this.m_sBar.getShow();
+	this.m_sBar.setShow(!bShow, -1);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_MapQuestManager::startAnime(bool bRet)
+{
+	int i = 0;
+	int cnt = this.m_anBall.Numof();
+	if (!this.m_bUpdate)
+	{
+		goto label0;
+	}
+	if (!bRet)
+	{
+		goto label0;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[this.m_anBall[i]].animeStart();
+	}
+	return true;
+label0:
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[this.m_anBall[i]].animeEnd();
+	}
+	if (!this.m_anBall.Empty())
+	{
+		this.m_anBall.Free();
+	}
+	return false;
+}
+
+bool T_MapQuestManager::updateAnime()
+{
+	if (!this.m_bUpdate)
+	{
+		return false;
+	}
+	bool bRet = false;
+	int i = 0;
+	int cnt = this.m_anBall.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asBonus[this.m_anBall[i]].animeUpdate())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_MapQuestManager::eraseBall(int nNo)
+{
+	if (nNo < 1 || nNo > this.m_asBonus.Numof())
+	{
+		return false;
+	}
+	return this.m_asBonus[nNo - 1].eraseBall();
+}
+
+void T_MapQuestManager::setShow(bool bShow)
+{
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[i].setShow(bShow);
+	}
+	this.m_sName.setShow(bShow);
+	this.m_sBar.setShow(bShow, -1);
+	this.m_sExpBonus.setShow(bShow);
+	this.m_bShow = bShow;
+	this.checkBlinkBar();
+}
+
+bool T_MapQuestManager::suspend()
+{
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!this.m_asBonus[i].suspend())
+		{
+			return false;
+		}
+	}
+	if (!this.m_sName.suspend())
+	{
+		return false;
+	}
+	if (!this.m_sBar.suspend())
+	{
+		return false;
+	}
+	return this.m_sExpBonus.suspend();
+}
+
+bool T_MapQuestManager::resume()
+{
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!this.m_asBonus[i].resume())
+		{
+			return false;
+		}
+	}
+	if (!this.m_sName.resume())
+	{
+		return false;
+	}
+	if (!this.m_sBar.resume())
+	{
+		return false;
+	}
+	return this.m_sExpBonus.resume();
+}
+
+bool T_MapQuestManager::blinkStart()
+{
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	bool bRet = 数値点滅_登録_数字テキスト(this.m_sExpBonus, ◆クエストＥＸＰボーナス);
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asBonus[i].blinkStart())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+void T_MapQuestManager::_update(int nObjectNo, int nTotalTime)
+{
+	nTotalTime = nTotalTime < 0 ? 250 : nTotalTime;
+	this.checkBall(nObjectNo);
+	if (nTotalTime <= 0)
+	{
+		this.m_sBar.setValue(◆クエスト進行率, -1);
+		this.m_sExpBonus.setValue(◆クエストＥＸＰボーナス, false);
+		goto label0;
+	}
+	this.m_sBar.animeStart(◆クエスト進行率, nTotalTime);
+	this.m_sExpBonus.slotStart(◆クエストＥＸＰボーナス, nTotalTime);
+	int nTime = 0;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (nTime < nTotalTime)
+	{
+		this.m_sBar.anime(nTime);
+		this.m_sExpBonus.slot(nTime);
+		UPDATE(true);
+		nTime = sTimer.Get();
+	}
+	this.m_sBar.animeEnd();
+	this.m_sExpBonus.slotEnd();
+	UPDATE(true);
+label0:
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asBonus[i].set();
+	}
+	this.checkBlinkBar();
+}
+
+bool T_MapQuestManager::checkBlinkBar()
+{
+	bool bBlinkBar = ◆クエスト進行率 >= 90 ? this.m_bShow : 0;
+	if (bBlinkBar != this.m_bBlinkBar)
+	{
+		this.m_sBar.setShow(this.m_bShow, -1);
+		this.m_sTimer.Reset();
+		this.m_bBlinkBar = bBlinkBar;
+	}
+	return this.m_bBlinkBar;
+}
+
+bool T_MapQuestManager::checkBall(int nObjectNo)
+{
+	int i = 0;
+	int cnt = this.m_asBonus.Numof();
+	bool bRet = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (!this.m_asBonus[i].checkBall(nObjectNo))
+		{
+			continue;
+		}
+		if (this.m_anBall.Find(0, this.m_anBall.Numof(), i) >= 0)
+		{
+			continue;
+		}
+		this.m_anBall.PushBack(i);
+		bRet = true;
+	}
+	if (bRet)
+	{
+		Ｆｌａｓｈ_通知登録(&startBallAnime);
+	}
+	return bRet;
+}
+

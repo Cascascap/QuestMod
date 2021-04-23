@@ -1,0 +1,458 @@
+string ‹@”\•¶š—ñ(int aa, int bb)
+{
+	if (aa == 2)
+	{
+		return "Attack+%d" % bb;
+	}
+	if (aa == 3)
+	{
+		return "Attack-%d" % bb;
+	}
+	if (aa == 4)
+	{
+		return "Defense+%d" % bb;
+	}
+	if (aa == 5)
+	{
+		return "Defense-%d" % bb;
+	}
+	if (aa == 6)
+	{
+		return "Evasion+%d" % bb;
+	}
+	if (aa == 7)
+	{
+		return "Evasion-%d" % bb;
+	}
+	if (aa == 8)
+	{
+		return "Accuracy+%d" % bb;
+	}
+	if (aa == 9)
+	{
+		return "Accuracy-%d" % bb;
+	}
+	if (aa == 18)
+	{
+		return "Critical+%d" % bb;
+	}
+	if (aa == 19)
+	{
+		return "Stun+%d" % bb;
+	}
+	if (aa == 10)
+	{
+		return "Resilience+%d" % bb;
+	}
+	if (aa == 11)
+	{
+		return "Resilience-%d" % bb;
+	}
+	if (aa == 14)
+	{
+		return "Magic+%d" % bb;
+	}
+	if (aa == 15)
+	{
+		return "Magic-%d" % bb;
+	}
+	if (aa == 12)
+	{
+		return "Resistance+%d" % bb;
+	}
+	if (aa == 13)
+	{
+		return "Resistance-%d" % bb;
+	}
+	if (aa == 16)
+	{
+		return "Speed+%d" % bb;
+	}
+	if (aa == 17)
+	{
+		return "Speed-%d" % bb;
+	}
+	if (aa == 20)
+	{
+		return "HP+%d" % bb;
+	}
+	if (aa == 21)
+	{
+		return "Fire Damage -%d%" % bb;
+	}
+	if (aa == 22)
+	{
+		return "Ice Damage -%d%" % bb;
+	}
+	if (aa == 23)
+	{
+		return "Electric Damage -%d%" % bb;
+	}
+	if (aa == 24)
+	{
+		return "Light Damage -%d%" % bb;
+	}
+	if (aa == 25)
+	{
+		return "Darkness Damage -%d%" % bb;
+	}
+	if (aa == 86)
+	{
+		return "Physical Damage -20%";
+	}
+	if (aa == 87)
+	{
+		return "Magical Damage -20%";
+	}
+	if (aa == 90)
+	{
+		return "All Damage -20%";
+	}
+	if (aa == 39)
+	{
+		return "Talent %d%" % bb;
+	}
+	if (aa == 81)
+	{
+		return "Talent R %d%" % bb;
+	}
+	if (aa == 29)
+	{
+		return "Experience Gain +%d%" % bb;
+	}
+	if (aa == 82)
+	{
+		return "Experience Gain -%d%" % bb;
+	}
+	if (aa == 40)
+	{
+		return "Small Fry Killer";
+	}
+	if (aa == 88)
+	{
+		return "Efficient Action";
+	}
+	if (aa == 84)
+	{
+		return "Body Boost 10%";
+	}
+	if (aa == 91)
+	{
+		return "Body Boost 5%";
+	}
+	if (aa == 85)
+	{
+		return "One of a kind";
+	}
+	if (aa == 42)
+	{
+		return "Coolness +%d" % bb;
+	}
+	if (aa == 43)
+	{
+		return "Sexiness +%d" % bb;
+	}
+	if (aa == 92)
+	{
+		return "Sitting Duck";
+	}
+	if (aa == 30 && bb == 5)
+	{
+		return "Attribute: |Fire|";
+	}
+	if (aa == 30 && bb == 4)
+	{
+		return "Attribute: |Ice|";
+	}
+	if (aa == 30 && bb == 3)
+	{
+		return "Attribute: |Electric|";
+	}
+	if (aa == 30 && bb == 1)
+	{
+		return "Attribute: |Light|";
+	}
+	if (aa == 30 && bb == 2)
+	{
+		return "Attribute: |Darkness|";
+	}
+	if (aa == 31 && bb == 16)
+	{
+		return "Effective Against Flying";
+	}
+	if (aa == 31 && bb == 17)
+	{
+		return "Effective Against Breakables";
+	}
+	if (aa == 31 && bb == 18)
+	{
+		return "Effective Against Armored";
+	}
+	if (aa == 31 && bb == 19)
+	{
+		return "Effective Against Molluscs";
+	}
+	if (aa == 31 && bb == 20)
+	{
+		return "Effective Against Spirits";
+	}
+	if (aa == 31 && bb == 21)
+	{
+		return "Effective Against Zombies";
+	}
+	if (aa == 31 && bb == 6)
+	{
+		return "Effective Against Insects";
+	}
+	if (aa == 31 && bb == 7)
+	{
+		return "Effective Against Plants";
+	}
+	if (aa == 31 && bb == 8)
+	{
+		return "Effective Against Hannies";
+	}
+	if (aa == 31 && bb == 13)
+	{
+		return "Effective Against Kalars";
+	}
+	if (aa == 31 && bb == 11)
+	{
+		return "Effective Against Ancients";
+	}
+	if (aa == 31 && bb == 12)
+	{
+		return "Effective Against Constructs";
+	}
+	if (aa == 35)
+	{
+		return "Full Recovery After Battle";
+	}
+	if (aa == 36)
+	{
+		return "Partial Recovery After Battle";
+	}
+	if (aa == 37)
+	{
+		return "Nullifies Hanny Attacks";
+	}
+	if (aa == 38)
+	{
+		return "Lowers Encounter Rate";
+	}
+	if (aa == 78)
+	{
+		return "";
+	}
+	if (aa == 32)
+	{
+		return "Level Restriction Lowered";
+	}
+	if (aa == 27)
+	{
+		return "Talent Cap +%d" % bb;
+	}
+	if (aa == 73)
+	{
+		return "Talent Cap +%d" % bb;
+	}
+	if (aa == 28)
+	{
+		return "Skill Points +%d" % bb;
+	}
+	if (aa == 50)
+	{
+		return "Protection Rate +%d" % bb;
+	}
+	if (aa == 45)
+	{
+		return "Double Action";
+	}
+	if (aa == 33)
+	{
+		return "";
+	}
+	if (aa == 34)
+	{
+		return "";
+	}
+	if (aa == 26)
+	{
+		return "";
+	}
+	if (aa == 20)
+	{
+		return "";
+	}
+	if (aa == 63)
+	{
+		return "";
+	}
+	if (aa == 75)
+	{
+		return "";
+	}
+	if (aa == 76)
+	{
+		return "Level: " + string2(bb, 0);
+	}
+	if (aa == 67)
+	{
+		return "";
+	}
+	if (aa == 0)
+	{
+		return "";
+	}
+	return "Function Number" + string(aa) + "-" + string(bb);
+}
+
+void ‚b‹@”\“K‰(int iic, int aa, int bb, int Œø‰Ê”{—¦)
+{
+	if (Ÿ‚c‚a^ÄŒvZƒƒO == 1)
+	{
+		LOG_TADA(‹@”\•¶š—ñ(aa, bb) + "@");
+	}
+	if (Œø‰Ê”{—¦ != 100)
+	{
+		bb = ”{—¦ŒvZŠÖ”(bb, Œø‰Ê”{—¦);
+	}
+	if (aa == 27)
+	{
+		if (‚b‚k‚uÅ‘å(iic, -1) < 999)
+		{
+			‚b‚k‚uÅ‘å(iic, ‚b‚k‚uÅ‘å(iic, -1) + bb);
+			if (‚b‚k‚uÅ‘å(iic, -1) > 999)
+			{
+				‚b‚k‚uÅ‘å(iic, 999);
+			}
+		}
+	}
+	if (aa == 73)
+	{
+		if (‚b‚k‚uÅ‘å(iic, -1) < 999)
+		{
+			‚b‚k‚uÅ‘å(iic, ‚b‚k‚uÅ‘å(iic, -1) + bb);
+			if (‚b‚k‚uÅ‘å(iic, -1) > 35)
+			{
+				‚b‚k‚uÅ‘å(iic, 35);
+			}
+		}
+	}
+	if (aa == 20)
+	{
+		‚b‘Ì—ÍÅ‘å(iic, ‚b‘Ì—ÍÅ‘å(iic, -1) + bb);
+		Ÿ“K‰^‘Ì—Í += bb;
+	}
+	if (aa == 16)
+	{
+		‚b‘f‘‚³(iic, ‚b‘f‘‚³(iic, -1) + bb);
+		Ÿ“K‰^‘f‘‚³ += bb;
+	}
+	if (aa == 17)
+	{
+		‚b‘f‘‚³(iic, ‚b‘f‘‚³(iic, -1) - bb);
+		Ÿ“K‰^‘f‘‚³ -= bb;
+	}
+	if (aa == 2)
+	{
+		‚bUŒ‚—Í(iic, ‚bUŒ‚—Í(iic, -1) + bb);
+		Ÿ“K‰^UŒ‚—Í += bb;
+	}
+	if (aa == 3)
+	{
+		‚bUŒ‚—Í(iic, ‚bUŒ‚—Í(iic, -1) - bb);
+		Ÿ“K‰^UŒ‚—Í -= bb;
+	}
+	if (aa == 4)
+	{
+		‚b–hŒä—Í(iic, ‚b–hŒä—Í(iic, -1) + bb);
+		Ÿ“K‰^–hŒä—Í += bb;
+	}
+	if (aa == 5)
+	{
+		‚b–hŒä—Í(iic, ‚b–hŒä—Í(iic, -1) - bb);
+		Ÿ“K‰^–hŒä—Í -= bb;
+	}
+	if (aa == 6)
+	{
+		‚b‰ñ”ğ—¦(iic, ‚b‰ñ”ğ—¦(iic, -1) + bb);
+		Ÿ“K‰^‰ñ”ğ—¦ += bb;
+	}
+	if (aa == 7)
+	{
+		‚b‰ñ”ğ—¦(iic, ‚b‰ñ”ğ—¦(iic, -1) - bb);
+		Ÿ“K‰^‰ñ”ğ—¦ -= bb;
+	}
+	if (aa == 8)
+	{
+		‚b–½’†—¦(iic, ‚b–½’†—¦(iic, -1) + bb);
+		Ÿ“K‰^–½’†—¦ += bb;
+	}
+	if (aa == 9)
+	{
+		‚b–½’†—¦(iic, ‚b–½’†—¦(iic, -1) - bb);
+		Ÿ“K‰^–½’†—¦ -= bb;
+	}
+	if (aa == 19)
+	{
+		‚bÕŒ‚—¦(iic, ‚bÕŒ‚—¦(iic, -1) + bb);
+		Ÿ“K‰^ÕŒ‚—¦ += bb;
+	}
+	if (aa == 10)
+	{
+		‚b‘Ï«—¦(iic, ‚b‘Ï«—¦(iic, -1) + bb);
+		Ÿ“K‰^‘Ï«—¦ += bb;
+	}
+	if (aa == 11)
+	{
+		‚b‘Ï«—¦(iic, ‚b‘Ï«—¦(iic, -1) - bb);
+		Ÿ“K‰^‘Ï«—¦ -= bb;
+	}
+	if (aa == 18)
+	{
+		‚b•KE—¦(iic, ‚b•KE—¦(iic, -1) + bb);
+		Ÿ“K‰^•KE—¦ += bb;
+	}
+	if (aa == 12)
+	{
+		‚b–‚’ï—Í(iic, ‚b–‚’ï—Í(iic, -1) + bb);
+		Ÿ“K‰^–‚’ï—Í += bb;
+	}
+	if (aa == 13)
+	{
+		‚b–‚’ï—Í(iic, ‚b–‚’ï—Í(iic, -1) - bb);
+		Ÿ“K‰^–‚’ï—Í -= bb;
+	}
+	if (aa == 14)
+	{
+		‚b–‚–@—Í(iic, ‚b–‚–@—Í(iic, -1) + bb);
+		Ÿ“K‰^–‚–@—Í += bb;
+	}
+	if (aa == 15)
+	{
+		‚b–‚–@—Í(iic, ‚b–‚–@—Í(iic, -1) - bb);
+		Ÿ“K‰^–‚–@—Í -= bb;
+	}
+	if (aa == 21)
+	{
+		‚b‰Š‘Ï«(iic, ‚b‰Š‘Ï«(iic, -1) + bb);
+	}
+	if (aa == 22)
+	{
+		‚b•X‘Ï«(iic, ‚b•X‘Ï«(iic, -1) + bb);
+	}
+	if (aa == 23)
+	{
+		‚b—‹‘Ï«(iic, ‚b—‹‘Ï«(iic, -1) + bb);
+	}
+	if (aa == 24)
+	{
+		‚bŒõ‘Ï«(iic, ‚bŒõ‘Ï«(iic, -1) + bb);
+	}
+	if (aa == 25)
+	{
+		‚bˆÅ‘Ï«(iic, ‚bˆÅ‘Ï«(iic, -1) + bb);
+	}
+}
+

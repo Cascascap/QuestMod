@@ -1,0 +1,10 @@
+void ‚b‚fƒ‚[ƒh“o˜^(string ‚b‚f–¼)
+{
+	PassRegister.RegistText(0, ‚b‚f–¼);
+}
+
+bool ‚b‚fƒ‚[ƒhŠm”F(string ‚b‚f–¼)
+{
+	return PassRegister.ExistText(0, ‚b‚f–¼);
+}
+

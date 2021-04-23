@@ -1,0 +1,170 @@
+CASParts::CASParts()
+{
+	this.m_Handle = g_ASPartsManager.CreateHandle();
+}
+
+CASParts::~CASParts()
+{
+	this.Release();
+}
+
+void CASParts::Release()
+{
+	if (this.m_Handle == -1)
+	{
+		return;
+	}
+	g_ASPartsManager.ReleaseHandle(this.m_Handle);
+	this.m_Handle = -1;
+}
+
+int CASParts::GetPartsNumber()
+{
+	return g_ASPartsManager.GetPartsNumberFromHandle(this.m_Handle);
+}
+
+void CASParts::SetCG(string CGName, int State)
+{
+	‚oQ‚b‚fİ’è(this.GetPartsNumber(), CGName, State);
+}
+
+void CASParts::SetLoopCG(string CGName, int Numof, int Time, int State)
+{
+	‚oQƒ‹[ƒv‚b‚fİ’è(this.GetPartsNumber(), CGName, Numof, Time, State, 1);
+}
+
+void CASParts::SetText(string Text, int State)
+{
+	‚oQƒeƒLƒXƒgİ’è(this.GetPartsNumber(), Text, State);
+}
+
+void CASParts::SetFontSize(int Size)
+{
+	‚oQƒtƒHƒ“ƒgƒTƒCƒYİ’è(this.GetPartsNumber(), Size, 1);
+}
+
+void CASParts::SetFontBoldWeight(float Weight, int State)
+{
+	‚oQƒtƒHƒ“ƒg‘¾š•İ’è(this.GetPartsNumber(), Weight, State);
+}
+
+void CASParts::SetFontEdgeWeight(float Weight, int State)
+{
+	‚oQƒtƒHƒ“ƒg‰æ‚è•İ’è(this.GetPartsNumber(), Weight, State);
+}
+
+void CASParts::SetFontColor(int ColorR, int ColorG, int ColorB, int State)
+{
+	‚oQƒtƒHƒ“ƒgFİ’è(this.GetPartsNumber(), ColorR, ColorG, ColorB, State);
+}
+
+void CASParts::SetFontEdgeColor(int ColorR, int ColorG, int ColorB, int State)
+{
+	‚oQƒtƒHƒ“ƒg‰æ‚èFİ’è(this.GetPartsNumber(), ColorR, ColorG, ColorB, State);
+}
+
+void CASParts::SetNumeralCG(string CGName, int State)
+{
+	‚oQ”š‚b‚fİ’è(this.GetPartsNumber(), CGName, State);
+}
+
+void CASParts::SetNumeralNumber(int Number, int State)
+{
+	‚oQ”šİ’è(this.GetPartsNumber(), Number, State);
+}
+
+void CASParts::SetRectangleDetection(int Width, int Height)
+{
+	‚oQ‹éŒ`”»’èİ’è(this.GetPartsNumber(), ‚oQ‚wÀ•Wæ“¾(this.GetPartsNumber()), ‚oQ‚xÀ•Wæ“¾(this.GetPartsNumber()), Width, Height);
+}
+
+void CASParts::SetFlash(string FlashFileName)
+{
+	‚oQƒtƒ‰ƒbƒVƒ…İ’è(this.GetPartsNumber(), FlashFileName, 1);
+}
+
+int CASParts::GetFlashCurrentFrameNumber()
+{
+	return GoatGUIEngine.GetPartsFlashCurrentFrameNumber(this.GetPartsNumber(), 1);
+}
+
+void CASParts::BackFlashBeginFrame()
+{
+	‚oQƒtƒ‰ƒbƒVƒ…ŠJnƒtƒŒ[ƒ€ˆÚ“®(this.GetPartsNumber(), 1);
+}
+
+void CASParts::StepFlashFinalFrame()
+{
+	‚oQƒtƒ‰ƒbƒVƒ…ÅIƒtƒŒ[ƒ€ƒXƒeƒbƒv(this.GetPartsNumber(), 1);
+}
+
+void CASParts::SetPos(int X, int Y)
+{
+	‚oQÀ•Wİ’è(this.GetPartsNumber(), X, Y);
+}
+
+void CASParts::SetZ(int Z)
+{
+	‚oQ‚yÀ•Wİ’è(this.GetPartsNumber(), Z);
+}
+
+void CASParts::SetShow(bool Show)
+{
+	‚oQ•\¦İ’è(this.GetPartsNumber(), Show);
+}
+
+void CASParts::SetAlpha(int Alpha)
+{
+	‚oQƒAƒ‹ƒtƒ@’lİ’è(this.GetPartsNumber(), Alpha);
+}
+
+void CASParts::SetAddColor(int Red, int Green, int Blue)
+{
+	‚oQ‰ÁZFİ’è(this.GetPartsNumber(), Red, Green, Blue);
+}
+
+void CASParts::SetMultipleColor(int Red, int Green, int Blue)
+{
+	‚oQæZFİ’è(this.GetPartsNumber(), Red, Green, Blue);
+}
+
+void CASParts::SetOriginPosMode(int OriginPosMode)
+{
+	‚oQŒ´“_À•Wİ’è(this.GetPartsNumber(), OriginPosMode);
+}
+
+void CASParts::SetParentParts(ref CASParts ParentParts)
+{
+	‚oQƒIƒ“ƒJ[ƒ\ƒ‹•\¦˜A“®İ’è(this.GetPartsNumber(), ParentParts.GetPartsNumber());
+}
+
+void CASParts::SetMessageWindowShowLink(bool ShowLink)
+{
+	‚oQƒƒbƒZ[ƒWƒEƒBƒ“ƒhƒE•\¦˜A“®İ’è(this.GetPartsNumber(), ShowLink);
+}
+
+void CASParts::SetClickable(bool Clickable)
+{
+	‚oQƒNƒŠƒbƒN‰Â”\İ’è(this.GetPartsNumber(), Clickable);
+}
+
+bool CASParts::IsShow()
+{
+	return ‚oQ•\¦İ’èæ“¾(this.GetPartsNumber());
+}
+
+void CASParts::SetOnCursorSoundNumber(int SoundNumber)
+{
+	‚oQƒIƒ“ƒJ[ƒ\ƒ‹Œø‰Ê‰¹İ’è(this.GetPartsNumber(), SoundNumber);
+}
+
+void CASParts::SetClickSoundNumber(int SoundNumber)
+{
+	‚oQƒNƒŠƒbƒNŒø‰Ê‰¹İ’è(this.GetPartsNumber(), SoundNumber);
+}
+
+void CASParts::SetGroupNumber(int GroupNumber)
+{
+	‚oQƒOƒ‹[ƒvİ’è(this.GetPartsNumber(), GroupNumber);
+}
+

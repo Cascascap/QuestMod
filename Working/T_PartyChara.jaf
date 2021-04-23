@@ -1,0 +1,548 @@
+int T_PartyCharaManager::getIndex(int nCharaNo)
+{
+	return this.search(nCharaNo);
+}
+
+int T_PartyCharaManager::getLockIndex(int nCharaNo)
+{
+	return this.m_nLockIndex;
+}
+
+T_PartyCharaManager::T_PartyCharaManager()
+{
+	this.clear();
+}
+
+T_PartyCharaManager::~T_PartyCharaManager()
+{
+	this.delete();
+}
+
+bool T_PartyCharaManager::create(int nMode, int nZ)
+{
+	this.delete();
+	this.m_anBackupParty.Fill(0, this.m_anBackupParty.Numof(), 0);
+	this.m_anChangeList.Fill(0, this.m_anChangeList.Numof(), 0);
+	this.m_nMode = nMode;
+	this.m_nZ = nZ;
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nNo = 味方パーティ_番号(i + 1);
+		if (this.set(i, nNo, false))
+		{
+			this.m_anBackupParty[i] = nNo;
+		}
+	}
+	this.m_spFrame.create(334, 170, 0, 255, 255, 128);
+	this.m_spFrame.setZ(nZ + 10);
+	return true;
+}
+
+void T_PartyCharaManager::delete()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asChara[i].delete();
+	}
+	this.m_spFrame.delete();
+	this.clear();
+}
+
+void T_PartyCharaManager::clear()
+{
+	this.m_nMode = -1;
+	this.m_nZ = -1;
+	this.m_nLockIndex = -1;
+}
+
+bool T_PartyCharaManager::remake()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	bool bRet = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.set(i, this.getCharaNo(i), true))
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_PartyCharaManager::update()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	bool bRet = false;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asChara[i].update())
+		{
+			bRet = true;
+		}
+	}
+	return bRet;
+}
+
+bool T_PartyCharaManager::change()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	if (this.m_nMode != 2 && this.m_nMode != 3)
+	{
+		goto label0;
+	}
+	if (クエスト_パーティ編成無制限())
+	{
+		goto label0;
+	}
+	int nCount = this.getChangeCount();
+	if (nCount <= 0)
+	{
+		goto label0;
+	}
+	int nMax = 名声_ランク();
+	nCount += パーティ入れ替え回数();
+	if (nCount > nMax)
+	{
+		選択_通知("There are no substitutions remaining.", "OK", false);
+		return false;
+	}
+	if (this.m_nMode == 2)
+	{
+		if (!選択_確認_拡張(12, "Use this party formation?@※Substitutions remaining: " + テキスト_全角数値(nMax - nCount) + " ", 1, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+	}
+	if (this.m_nMode == 3)
+	{
+		if (!選択_確認_拡張(40, "Return to battle screen?@※Substitutions remaining: " + テキスト_全角数値(nMax - nCount) + " ", 1, "Yes", "No", -1, -1, false))
+		{
+			return false;
+		}
+	}
+	パーティ入れ替え回数_設定(nCount);
+label0:
+	if (this.m_nMode == 3)
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			this.m_anChangeList[i] = this.m_asChara[i].getCharaNo();
+		}
+		return true;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		味方パーティ_登録(i + 1, this.m_asChara[i].getCharaNo());
+	}
+	return true;
+}
+
+bool T_PartyCharaManager::checkDrop(int nIndex, int nCharaNo)
+{
+	if (this.m_nMode != 2 && this.m_nMode != 3)
+	{
+		return true;
+	}
+	if (クエスト_パーティ編成無制限())
+	{
+		return true;
+	}
+	ref T_CharaCard rfsChara = this.getFromIndex(nIndex);
+	if (rfsChara === NULL)
+	{
+		return true;
+	}
+	int nOldIndex = this.search(nCharaNo);
+	if (nIndex == nOldIndex)
+	{
+		return true;
+	}
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	array@int anCharaNo[5];
+	for (i = 0; i < cnt; ++i)
+	{
+		anCharaNo[i] = this.m_asChara[i].getCharaNo();
+	}
+	anCharaNo[nIndex] = nCharaNo;
+	if (nOldIndex >= 0)
+	{
+		anCharaNo[nOldIndex] = rfsChara.getCharaNo();
+	}
+	int nCount = this._getChangeCount(anCharaNo);
+	if (nCount <= 0)
+	{
+		return true;
+	}
+	if (nCount + パーティ入れ替え回数() > 名声_ランク())
+	{
+		選択_通知("There are no substitutions remaining.", "OK", false);
+		return false;
+	}
+	return true;
+}
+
+bool T_PartyCharaManager::checkLoadMain(int nPartyNo)
+{
+	if (this.m_nMode == 3)
+	{
+		return false;
+	}
+	if (this.m_nMode != 2)
+	{
+		return true;
+	}
+	if (クエスト_パーティ編成無制限())
+	{
+		return true;
+	}
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	array@int anCharaNo[5];
+	for (i = 0; i < 5; ++i)
+	{
+		int nCharaNo = メイン編成(nPartyNo, i);
+		if (キャラ_配置可能(nCharaNo))
+		{
+			anCharaNo[i] = nCharaNo;
+		}
+	}
+	int nCount = this._getChangeCount(anCharaNo);
+	if (nCount <= 0)
+	{
+		return true;
+	}
+	if (nCount + パーティ入れ替え回数() > 名声_ランク())
+	{
+		選択_通知("There are no substitutions remaining,@so no one can be called.", "OK", false);
+		return false;
+	}
+	return true;
+}
+
+bool T_PartyCharaManager::drop(int nIndex, int nCharaNo)
+{
+	ref T_CharaCard rfsChara = this.getFromIndex(nIndex);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	int nCharaNo2 = rfsChara.getCharaNo();
+	if (nCharaNo2 > 0)
+	{
+		if (nCharaNo2 == nCharaNo)
+		{
+			return false;
+		}
+		this.erase(nCharaNo2, 2);
+	}
+	int nOld = this.erase(nCharaNo, 2);
+	if (nOld >= 0)
+	{
+		this.add(nOld, nCharaNo2);
+	}
+	this.add(nIndex, nCharaNo);
+	return true;
+}
+
+bool T_PartyCharaManager::loadMain(int nPartyNo)
+{
+	if (!メイン編成登録中(nPartyNo))
+	{
+		return false;
+	}
+	this.removeAll();
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		int nCharaNo = メイン編成(nPartyNo, i);
+		if (キャラ_配置可能(nCharaNo))
+		{
+			this.add(i, nCharaNo);
+		}
+	}
+	return true;
+}
+
+bool T_PartyCharaManager::add(int nIndex, int nCharaNo)
+{
+	if (!this.set(nIndex, nCharaNo, true))
+	{
+		return false;
+	}
+	キャラ_登録状態設定(nCharaNo, 1);
+	return true;
+}
+
+int T_PartyCharaManager::erase(int nCharaNo, int nStatus)
+{
+	int idx = this.search(nCharaNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	this.set(idx, 0, false);
+	キャラ_登録状態設定(nCharaNo, nStatus);
+	if (nStatus == 0)
+	{
+		int idx2 = this.m_anBackupParty.Find(0, this.m_anBackupParty.Numof(), nCharaNo);
+		if (idx2 >= 0)
+		{
+			this.m_anBackupParty[idx2] = 0;
+		}
+	}
+	return idx;
+}
+
+void T_PartyCharaManager::removeAll()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		int nCharaNo = this.m_asChara[i].getCharaNo();
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		this.erase(nCharaNo, 2);
+	}
+}
+
+void T_PartyCharaManager::reset()
+{
+	this.removeAll();
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.add(i, this.m_anBackupParty[i]);
+	}
+}
+
+bool T_PartyCharaManager::lock(int nCharaNo)
+{
+	int idx = this.search(nCharaNo);
+	if (idx < 0)
+	{
+		this.m_spFrame.setShow(0);
+		this.m_nLockIndex = -1;
+		return false;
+	}
+	this.m_spFrame.setPos(戦闘味方_位置Ｘ(idx), 戦闘味方_位置Ｙ(idx));
+	this.m_spFrame.setShow(1);
+	this.m_nLockIndex = idx;
+	return true;
+}
+
+bool T_PartyCharaManager::blink()
+{
+	if (this.m_nLockIndex < 0)
+	{
+		return false;
+	}
+	if (this.m_sTimer.Get() < 350)
+	{
+		return true;
+	}
+	bool bShow = this.m_spFrame.getShow();
+	this.m_spFrame.setShow(!bShow);
+	this.m_sTimer.Reset();
+	return true;
+}
+
+bool T_PartyCharaManager::set(int nIndex, int nCharaNo, bool bShow)
+{
+	ref T_CharaCard rfsChara = this.getFromIndex(nIndex);
+	if (rfsChara === NULL)
+	{
+		return false;
+	}
+	if (!rfsChara.create(nCharaNo, 0))
+	{
+		return false;
+	}
+	rfsChara.setPos(戦闘味方_位置Ｘ(nIndex), 戦闘味方_位置Ｙ(nIndex));
+	rfsChara.setZ(this.m_nZ, false);
+	rfsChara.setShow(bShow);
+	return true;
+}
+
+void T_PartyCharaManager::setShow(bool bShow, int nIndex)
+{
+	this.m_spFrame.setShow(0);
+	if (nIndex < 0)
+	{
+		int i = 0;
+		int cnt = this.m_asChara.Numof();
+		for (i = 0; i < cnt; ++i)
+		{
+			this.setCharaShow(i, bShow);
+		}
+	}
+	else
+	{
+		this.setCharaShow(nIndex, bShow);
+	}
+}
+
+int T_PartyCharaManager::getCharaNo(int nIndex)
+{
+	ref T_CharaCard rfsChara = this.getFromIndex(nIndex);
+	if (rfsChara === NULL)
+	{
+		return -1;
+	}
+	return rfsChara.getCharaNo();
+}
+
+int T_PartyCharaManager::getCharaCount()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	int nCount = 0;
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asChara[i].getCharaNo() > 0)
+		{
+			++nCount;
+		}
+	}
+	return nCount;
+}
+
+int T_PartyCharaManager::getChangeCount()
+{
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	array@int anCharaNo[5];
+	for (i = 0; i < cnt; ++i)
+	{
+		anCharaNo[i] = this.m_asChara[i].getCharaNo();
+	}
+	return this._getChangeCount(anCharaNo);
+}
+
+int T_PartyCharaManager::getBackupParty(ref array@int anBackupParty)
+{
+	int cnt = this.m_anBackupParty.Numof();
+	if (anBackupParty === NULL || anBackupParty.Numof() < cnt)
+	{
+		return -1;
+	}
+	anBackupParty.Copy(0, this.m_anBackupParty, 0, cnt);
+	return cnt;
+}
+
+int T_PartyCharaManager::getChangeList(ref array@int anChangeList)
+{
+	int cnt = this.m_anChangeList.Numof();
+	if (anChangeList === NULL || anChangeList.Numof() < cnt)
+	{
+		return -1;
+	}
+	anChangeList.Copy(0, this.m_anChangeList, 0, cnt);
+	return cnt;
+}
+
+ref T_CharaCard T_PartyCharaManager::get(int nCharaNo)
+{
+	int idx = this.search(nCharaNo);
+	if (idx < 0)
+	{
+		return NULL;
+	}
+	return this.m_asChara[idx];
+}
+
+ref T_CharaCard T_PartyCharaManager::getFromIndex(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_asChara.Numof())
+	{
+		return NULL;
+	}
+	return this.m_asChara[nIndex];
+}
+
+void T_PartyCharaManager::setCharaShow(int nIndex, bool bShow)
+{
+	ref T_CharaCard rfsChara = this.getFromIndex(nIndex);
+	if (rfsChara === NULL)
+	{
+		return;
+	}
+	if (this.m_nMode == 3)
+	{
+		rfsChara.setDeadShow(キャラ_状態変化(rfsChara.getCharaNo()) == 3);
+	}
+	rfsChara.setShow(bShow);
+}
+
+int T_PartyCharaManager::_getChangeCount(ref array@int anCharaNo)
+{
+	if (anCharaNo === NULL)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = anCharaNo.Numof();
+	int nCount = 0;
+	if (this.m_nMode == 3)
+	{
+		for (i = 0; i < cnt; ++i)
+		{
+			int nCharaNo1 = anCharaNo[i];
+			int nCharaNo2 = this.m_anBackupParty[i];
+			nCharaNo1 = nCharaNo1 > 0 ? nCharaNo1 : 0;
+			nCharaNo2 = nCharaNo2 > 0 ? nCharaNo2 : 0;
+			if (nCharaNo1 != nCharaNo2)
+			{
+				++nCount;
+			}
+		}
+		return nCount;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		int nCharaNo = anCharaNo[i];
+		if (nCharaNo <= 0)
+		{
+			continue;
+		}
+		if (this.m_anBackupParty.Find(0, this.m_anBackupParty.Numof(), nCharaNo) < 0)
+		{
+			++nCount;
+		}
+	}
+	if (this.m_nMode == 2)
+	{
+		return nCount > 0 ? 1 : 0;
+	}
+	return nCount;
+}
+
+int T_PartyCharaManager::search(int nCharaNo)
+{
+	if (nCharaNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asChara.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asChara[i].getCharaNo() == nCharaNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+

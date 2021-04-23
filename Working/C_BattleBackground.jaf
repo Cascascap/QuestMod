@@ -1,0 +1,91 @@
+bool í“¬”wŒi_ì¬(int nMapNo)
+{
+	if (!g_sBattleBackground.create(Ÿí“¬”wŒi”Ô†))
+	{
+		return false;
+	}
+	g_sBattleBackground.setShow(true);
+	return true;
+}
+
+void í“¬”wŒi_íœ()
+{
+	g_sBattleBackground.delete();
+}
+
+void í“¬”wŒi_Fİ’è(ref T_ColorInfo rfsInfo)
+{
+	g_sBattleBackground.setColor(rfsInfo);
+}
+
+void í“¬”wŒi_•\¦İ’è(bool bShow)
+{
+	g_sBattleBackground.setShow(bShow);
+}
+
+string í“¬”wŒi_–¼‘O(int nMapNo)
+{
+	string szName = í“¬”wŒi_ƒf[ƒ^–¼(Ÿí“¬”wŒi”Ô†);
+	if (!szName.Empty())
+	{
+		return szName;
+	}
+	return "bgA_00_douk";
+}
+
+void í“¬”wŒi_‰Šú‰»()
+{
+	g_sBattleBackInfo.init();
+}
+
+int í“¬”wŒi_‘I‘ğ()
+{
+	return g_sBattleBackInfo.select();
+}
+
+bool í“¬”wŒi_Fî•ñİ’è(int nNo, ref T_ColorInfo sInfo, bool bSave)
+{
+	return g_sBattleBackInfo.setColor(nNo, sInfo, bSave);
+}
+
+string í“¬”wŒi_ƒf[ƒ^–¼(int nNo)
+{
+	return g_sBattleBackInfo.getName(nNo);
+}
+
+int í“¬”wŒi_ƒCƒ“ƒfƒNƒX(int nNo)
+{
+	return g_sBattleBackInfo.getIndex(nNo);
+}
+
+int í“¬”wŒi_”()
+{
+	return g_sBattleBackInfo.getCount();
+}
+
+int í“¬”wŒi_”Ô†(string szName)
+{
+	return g_sBattleBackInfo.getNo(szName);
+}
+
+bool í“¬”wŒi_Fî•ñ(int nNo, ref T_ColorInfo sColor)
+{
+	ref T_BattleBackInfo rfInfo = g_sBattleBackInfo.get(nNo);
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	return rfInfo.getColor(sColor);
+}
+
+bool í“¬”wŒi_æ“¾(int nNo, ref T_BattleBackInfo sInfo)
+{
+	ref T_BattleBackInfo rfInfo = g_sBattleBackInfo.get(nNo);
+	if (rfInfo === NULL)
+	{
+		return false;
+	}
+	sInfo = rfInfo;
+	return true;
+}
+

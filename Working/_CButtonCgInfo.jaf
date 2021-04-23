@@ -1,0 +1,172 @@
+void _CButtonCgInfo::_SetCgPln(string _cg)
+{
+	this._SetCg(this._m_cg_pln, _cg);
+}
+
+void _CButtonCgInfo::_SetCgHlt(string _cg)
+{
+	this._SetCg(this._m_cg_hlt, _cg);
+}
+
+void _CButtonCgInfo::_SetCgInv(string _cg)
+{
+	this._SetCg(this._m_cg_inv, _cg);
+}
+
+void _CButtonCgInfo::_SetCgChk(string _cg)
+{
+	this._SetCg(this._m_cg_chk, _cg);
+}
+
+void _CButtonCgInfo::_SetCgHltChk(string _cg)
+{
+	this._SetCg(this._m_cg_hlt_chk, _cg);
+}
+
+void _CButtonCgInfo::_SetClickSound(int _click)
+{
+	this._m_click_sound = _click;
+}
+
+void _CButtonCgInfo::_SetCursorSound(int _cursor)
+{
+	this._m_cursor_sound = _cursor;
+}
+
+bool _CButtonCgInfo::_IsSetCgPln()
+{
+	return !this._m_cg_pln.Empty();
+}
+
+bool _CButtonCgInfo::_IsSetCgHlt()
+{
+	return !this._m_cg_hlt.Empty();
+}
+
+bool _CButtonCgInfo::_IsSetCgInv()
+{
+	return !this._m_cg_inv.Empty();
+}
+
+bool _CButtonCgInfo::_IsSetCgChk()
+{
+	return !this._m_cg_chk.Empty();
+}
+
+bool _CButtonCgInfo::_IsSetCgHltChk()
+{
+	return this._m_cg_hlt_chk.Empty();
+}
+
+int _CButtonCgInfo::_GetX()
+{
+	return this._m_x;
+}
+
+int _CButtonCgInfo::_GetY()
+{
+	return this._m_y;
+}
+
+int _CButtonCgInfo::_GetZ()
+{
+	return this._m_z;
+}
+
+int _CButtonCgInfo::_GetClickSound()
+{
+	return this._m_click_sound;
+}
+
+int _CButtonCgInfo::_GetCursorSound()
+{
+	return this._m_cursor_sound;
+}
+
+void _CButtonCgInfo::_SetCg(ref string _dst, string _src)
+{
+	if (_src != "")
+	{
+		_dst = _src;
+	}
+}
+
+_CButtonCgInfo::_CButtonCgInfo()
+{
+	this._m_x = -2147483648;
+	this._m_y = -2147483648;
+	this._m_z = 1;
+	this._m_cg_pln = "";
+	this._m_cg_hlt = "";
+	this._m_cg_inv = "";
+	this._m_cg_chk = "";
+	this._m_cg_hlt_chk = "";
+	this._m_click_sound = 0;
+	this._m_cursor_sound = 0;
+}
+
+void _CButtonCgInfo::_SetPos(int _x, int _y)
+{
+	if (_x != -2147483648)
+	{
+		this._m_x = _x;
+	}
+	if (_y != -2147483648)
+	{
+		this._m_y = _y;
+	}
+}
+
+void _CButtonCgInfo::_SetZ(int _z)
+{
+	if (_z != -2147483648)
+	{
+		this._m_z = _z;
+	}
+}
+
+string _CButtonCgInfo::_GetCg(bool _hilite, bool _check, bool _invalid)
+{
+	if (_invalid)
+	{
+		if (!this._m_cg_inv.Empty())
+		{
+			return this._m_cg_inv;
+		}
+		return this._m_cg_pln;
+	}
+	if (_hilite && _check)
+	{
+		if (!this._m_cg_hlt_chk.Empty())
+		{
+			return this._m_cg_hlt_chk;
+		}
+		if (!this._m_cg_hlt.Empty())
+		{
+			return this._m_cg_hlt;
+		}
+		if (!this._m_cg_chk.Empty())
+		{
+			return this._m_cg_chk;
+		}
+		return this._m_cg_pln;
+	}
+	if (_hilite)
+	{
+		if (!this._m_cg_hlt.Empty())
+		{
+			return this._m_cg_hlt;
+		}
+		return this._m_cg_pln;
+	}
+	if (_check)
+	{
+		if (!this._m_cg_chk.Empty())
+		{
+			return this._m_cg_chk;
+		}
+		return this._m_cg_pln;
+	}
+	return this._m_cg_pln;
+}
+

@@ -1,0 +1,282 @@
+int T_SkillPoint::moveUp(int nID)
+{
+	switch (nID)
+	{
+		case 109999:
+			return this.getLastNew(-1);
+		default:
+			break;
+	}
+	if (nID > 300000)
+	{
+		return this.m_sHoldSkill.getPrev(nID);
+	}
+	if (nID > 200000)
+	{
+		int nID2 = this.m_sNewSkill.moveUp(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.getLastNew(this.m_sNewSkill.getCol(nID));
+	}
+	if (nID > 110000)
+	{
+		return this.moveUpErase(nID);
+	}
+	return this.getFirstHold();
+}
+
+int T_SkillPoint::moveDown(int nID)
+{
+	switch (nID)
+	{
+		case 109999:
+			return this.getFirstNew(-1);
+		default:
+			break;
+	}
+	if (nID > 300000)
+	{
+		return this.m_sHoldSkill.getNext(nID);
+	}
+	if (nID > 200000)
+	{
+		int nID2 = this.m_sNewSkill.moveDown(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.getFirstNew(this.m_sNewSkill.getCol(nID));
+	}
+	if (nID > 110000)
+	{
+		return this.moveDownErase(nID);
+	}
+	return this.getLastHold();
+}
+
+int T_SkillPoint::moveLeft(int nID)
+{
+	switch (nID)
+	{
+		case 109999:
+			return this.getFirstNew(-1);
+		default:
+			break;
+	}
+	if (nID > 300000)
+	{
+		return this.m_sNewSkill.moveLeftFromHold(this.m_sHoldSkill.getButtonIndex(nID));
+	}
+	if (nID > 200000)
+	{
+		int nID2 = this.m_sNewSkill.moveLeft(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.moveFromNewToErase(this.m_sNewSkill.getRow(nID));
+	}
+	if (nID > 110000)
+	{
+		return this.m_sHoldSkill.moveFromNew(this.getEraseIndex(nID));
+	}
+	return this.getFirstHold();
+}
+
+int T_SkillPoint::moveRight(int nID)
+{
+	switch (nID)
+	{
+		case 109999:
+			return this.getFirstHold();
+		default:
+			break;
+	}
+	if (nID > 300000)
+	{
+		return this.moveFromHoldToErase(this.m_sHoldSkill.getButtonIndex(nID));
+	}
+	if (nID > 200000)
+	{
+		int nID2 = this.m_sNewSkill.moveRight(nID);
+		if (nID2 > 0)
+		{
+			return nID2;
+		}
+		return this.m_sHoldSkill.moveFromNew(this.m_sNewSkill.getRow(nID));
+	}
+	if (nID > 110000)
+	{
+		return this.m_sNewSkill.moveRightFromHold(this.getEraseIndex(nID));
+	}
+	return this.getLastHold();
+}
+
+int T_SkillPoint::moveUpErase(int nID)
+{
+	int idx = this.getEraseIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int i = 0;
+	for (i = idx - 1; i >= 0; --i)
+	{
+		int nID2 = this.getEraseID(i);
+		if (this.m_sButton.getButtonShow(nID2))
+		{
+			return nID2;
+		}
+	}
+	for (i = 16; i > idx; --i)
+	{
+		int nID2 = this.getEraseID(i);
+		if (this.m_sButton.getButtonShow(nID2))
+		{
+			return nID2;
+		}
+	}
+label0:
+	return this.m_sButton.getButtonShow(nID) ? nID : this.getFirstHold();
+}
+
+int T_SkillPoint::moveDownErase(int nID)
+{
+	int idx = this.getEraseIndex(nID);
+	if (idx < 0)
+	{
+		goto label0;
+	}
+	int i = 0;
+	for (i = idx + 1; i < 17; ++i)
+	{
+		int nID2 = this.getEraseID(i);
+		if (this.m_sButton.getButtonShow(nID2))
+		{
+			return nID2;
+		}
+	}
+	for (i = 0; i < idx; ++i)
+	{
+		int nID2 = this.getEraseID(i);
+		if (this.m_sButton.getButtonShow(nID2))
+		{
+			return nID2;
+		}
+	}
+label0:
+	return this.m_sButton.getButtonShow(nID) ? nID : this.getLastHold();
+}
+
+int T_SkillPoint::moveFromNewToErase(int nIndex)
+{
+	if (nIndex < 0)
+	{
+		goto label0;
+	}
+	int i = 0;
+	int nID = 0;
+	for (i = 0; i < 17; ++i)
+	{
+		nID = this.getEraseID(nIndex - i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+		nID = this.getEraseID(nIndex + i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+label0:
+	return this.m_sHoldSkill.moveFromNew(nIndex);
+}
+
+int T_SkillPoint::moveFromHoldToErase(int nIndex)
+{
+	if (nIndex < 0)
+	{
+		goto label0;
+	}
+	int i = 0;
+	int nID = 0;
+	for (i = 0; i < 17; ++i)
+	{
+		nID = this.getEraseID(nIndex + i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+		nID = this.getEraseID(nIndex - i);
+		if (this.m_sButton.getButtonShow(nID))
+		{
+			return nID;
+		}
+	}
+label0:
+	return this.m_sNewSkill.moveRightFromHold(nIndex);
+}
+
+int T_SkillPoint::getFirstHold()
+{
+	int nID = this.m_sHoldSkill.getFirst();
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.m_sNewSkill.getFirst(-1);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return 109999;
+}
+
+int T_SkillPoint::getLastHold()
+{
+	int nID = this.m_sHoldSkill.getLast();
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.m_sNewSkill.getLast(-1);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return 109999;
+}
+
+int T_SkillPoint::getFirstNew(int nCol)
+{
+	int nID = this.m_sNewSkill.getFirst(nCol);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.m_sHoldSkill.getFirst();
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return 109999;
+}
+
+int T_SkillPoint::getLastNew(int nCol)
+{
+	int nID = this.m_sNewSkill.getLast(nCol);
+	if (nID > 0)
+	{
+		return nID;
+	}
+	nID = this.m_sHoldSkill.getLast();
+	if (nID > 0)
+	{
+		return nID;
+	}
+	return 109999;
+}
+

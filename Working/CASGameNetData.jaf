@@ -1,0 +1,16 @@
+void CASGameNetData::Set(string Type, string Param)
+{
+	this.m_Type = Type;
+	this.m_Param = Param;
+}
+
+string CASGameNetData::GetType()
+{
+	return this.m_Type;
+}
+
+string CASGameNetData::GetParam()
+{
+	return this.m_Param;
+}
+

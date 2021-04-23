@@ -1,0 +1,656 @@
+int CMonsterList::GetNumof()
+{
+	return this.m_MonsterList.Numof();
+}
+
+float CMonsterList::GetPosListX(int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_anPosList.Numof() ? this.m_anPosList[nIndex].fX : 0.0;
+}
+
+float CMonsterList::GetPosListY(int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_anPosList.Numof() ? this.m_anPosList[nIndex].fY : 0.0;
+}
+
+float CMonsterList::GetPosListZ(int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_anPosList.Numof() ? this.m_anPosList[nIndex].fZ : 0.0;
+}
+
+float CMonsterList::GetAngleList(int nIndex)
+{
+	return nIndex >= 0 && nIndex < this.m_anAngleList.Numof() ? this.m_anAngleList[nIndex] : 0.0;
+}
+
+CMonsterList::CMonsterList()
+{
+}
+
+bool CMonsterList::Create(ref CReignPlugin rfPlugin, ref array@int anMonsterNo)
+{
+	this.Release();
+	if (anMonsterNo === NULL)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = anMonsterNo.Numof();
+	if (cnt <= 0)
+	{
+		return false;
+	}
+	this.m_MonsterList.Alloc(cnt);
+	for (i = 0; i < cnt; ++i)
+	{
+		if (anMonsterNo[i] > 0)
+		{
+			this.CreateMonster(i, rfPlugin);
+		}
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.SetMonster(i, anMonsterNo[i]);
+	}
+	return true;
+}
+
+void CMonsterList::Release()
+{
+	int i = 0;
+	int cnt = this.m_MonsterList.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_MonsterList[i].Release();
+	}
+	this.m_MonsterList.Free();
+}
+
+bool CMonsterList::Remake(ref CReignPlugin rfPlugin, int nIndex, int nMonsterNo)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	if (!Monster.Create(rfPlugin))
+	{
+		return false;
+	}
+	if (!this.SetMonster(nIndex, nMonsterNo))
+	{
+		return false;
+	}
+	Monster.SetDraw(true);
+	return true;
+}
+
+void CMonsterList::Update()
+{
+	int i = 0;
+	int cnt = this.m_MonsterList.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_MonsterList[i].Update();
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_MonsterList[i].UpdateMotion();
+	}
+}
+
+int CMonsterList::GetMonsterNo(int nIndex)
+{
+	ref CMonster rfMonster = this.GetMonster(nIndex);
+	if (rfMonster === NULL)
+	{
+		return 0;
+	}
+	return rfMonster.GetMonsterNo();
+}
+
+int CMonsterList::GetMotionNo(int nIndex)
+{
+	ref CMonster rfMonster = this.GetMonster(nIndex);
+	if (rfMonster === NULL)
+	{
+		return 0;
+	}
+	return rfMonster.GetMotionNo();
+}
+
+ref CMonster CMonsterList::GetMonster(int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this.m_MonsterList.Numof())
+	{
+		return NULL;
+	}
+	return this.m_MonsterList[nIndex];
+}
+
+void CMonsterList::Align(float fCameraX, float fCameraY, float fCameraZ, SMatrix ViewProjInvMatrix, SProjection Projection)
+{
+	int nNumof = this.m_MonsterList.Numof();
+	this.m_anPosList[0].Set(-1.0, 0.00400000018998981, 0.0);
+	this.m_anPosList[1].Set(-0.649999976158142, 0.00400000018998981, 1.0);
+	this.m_anPosList[2].Set(0.0, 0.00400000018998981, 0.0);
+	this.m_anPosList[3].Set(0.649999976158142, 0.00400000018998981, 1.0);
+	this.m_anPosList[4].Set(1.0, 0.00400000018998981, 0.0);
+	this.m_anAngleList[0] = -15.0;
+	this.m_anAngleList[1] = -8.0;
+	this.m_anAngleList[2] = 0.0;
+	this.m_anAngleList[3] = 8.0;
+	this.m_anAngleList[4] = 15.0;
+	int i = 0;
+	for (i = 0; i < nNumof; ++i)
+	{
+		ref CMonster Monster = this.m_MonsterList[i];
+		int nIndex = í“¬”z’u_“G•À‚Ñ(i);
+		if (nIndex < this.m_anPosList.Numof())
+		{
+			Monster.GetInstance().SetPos(this.m_anPosList[nIndex].fX + Monster.GetOffsetX(), this.m_anPosList[nIndex].fY + Monster.GetOffsetY() + 0.00400000018998981, this.m_anPosList[nIndex].fZ + Monster.GetOffsetZ());
+			Monster.GetInstance().SetAngle(this.m_anAngleList[nIndex]);
+		}
+	}
+}
+
+void CMonsterList::SetDraw(bool bDraw)
+{
+	int i = 0;
+	int cnt = this.m_MonsterList.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_MonsterList[i].SetDraw(bDraw);
+	}
+}
+
+bool CMonsterList::SetMonster(int nIndex, int nMonsterNo)
+{
+	if (!this.BeginMonsterLoading(nIndex, nMonsterNo))
+	{
+		return false;
+	}
+	‚R‚cí“¬_ƒ[ƒh‘Ò‚¿(false);
+	return this.EndMonsterLoading(nIndex);
+}
+
+bool CMonsterList::SetMotion(int nIndex, int nMotionNo, int nMotionState)
+{
+	if (!this.BeginMotionLoading(nIndex, nMotionNo))
+	{
+		return false;
+	}
+	‚R‚cí“¬_ƒ[ƒh‘Ò‚¿(true);
+	return this.EndMotionLoading(nIndex, nMotionState);
+}
+
+bool CMonsterList::SetNextMotion(int nIndex, int nNextMotionNo, bool bWait)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	if (nNextMotionNo < 0)
+	{
+		return false;
+	}
+	if (!Monster.BeginNextMotionLoading(nNextMotionNo))
+	{
+		return false;
+	}
+	if (bWait)
+	{
+		‚R‚cí“¬_ƒ[ƒh‘Ò‚¿(true);
+	}
+	if (!Monster.EndNextMotionLoading())
+	{
+		return false;
+	}
+	return true;
+}
+
+bool CMonsterList::SetPos(int nIndex, float fX, float fY, float fZ)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	int idx = í“¬”z’u_“G•À‚Ñ(nIndex);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref S3D rfsPos = this.m_anPosList[idx];
+	fX = fX == -3.40282346638529E+38 ? rfsPos.fX : fX;
+	fY = fY == -3.40282346638529E+38 ? rfsPos.fY : fY;
+	fZ = fZ == -3.40282346638529E+38 ? rfsPos.fZ : fZ;
+	Monster.SetPos(fX + Monster.GetOffsetX(), fY + Monster.GetOffsetY() + 0.00400000018998981, fZ + Monster.GetOffsetZ());
+	return true;
+}
+
+bool CMonsterList::StartMotion(int nIndex, int nMotionNo, int nTime)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	if (Monster.GetMotionNo() == nMotionNo)
+	{
+		return true;
+	}
+	if (!this.SetNextMotion(nIndex, nMotionNo, true))
+	{
+		return false;
+	}
+	Monster.BeginMotionBlend(nMotionNo, nTime < 0 ? 100 : nTime);
+	return true;
+}
+
+void CMonsterList::WaitMotionBlend(int nIndex)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return;
+	}
+	while (Monster.IsMotionBlend())
+	{
+		UPDATE(true);
+	}
+}
+
+void CMonsterList::WaitMotionStop(int nIndex, bool bDead)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return;
+	}
+	if (Monster.IsMotionLoop())
+	{
+		return;
+	}
+	while (!Monster.IsMotionStop())
+	{
+		if (bDead && Monster.CheckDead())
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+}
+
+void CMonsterList::WaitMotionFrame(int nIndex, int nPercent)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return;
+	}
+	if (Monster.IsMotionLoop())
+	{
+		return;
+	}
+	while (!Monster.IsMotionStop())
+	{
+		if (Monster.CheckFrame(nPercent))
+		{
+			break;
+		}
+		UPDATE(true);
+	}
+}
+
+bool CMonsterList::IsMotionStop(int nIndex)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	return Monster.IsMotionStop();
+}
+
+bool CMonsterList::StartMotionAll(ref array@int anNo, int nMotionNo, int nTime)
+{
+	if (nMotionNo < 0)
+	{
+		return false;
+	}
+	int i = 0;
+	int cnt = this.m_MonsterList.Numof();
+	array@bool abFlag;
+	abFlag.Alloc(cnt);
+	abFlag.Fill(0, cnt, 0);
+	for (i = 0; i < cnt; ++i)
+	{
+		ref CMonster Monster = this.m_MonsterList[i];
+		if (anNo[i] > 0)
+		{
+			abFlag[i] = Monster.BeginNextMotionLoading(nMotionNo);
+		}
+	}
+	if (abFlag.Find(0, cnt, 1) < 0)
+	{
+		return false;
+	}
+	‚R‚cí“¬_ƒ[ƒh‘Ò‚¿(true);
+	for (i = 0; i < cnt; ++i)
+	{
+		if (abFlag[i])
+		{
+			this.m_MonsterList[i].EndNextMotionLoading();
+		}
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		if (abFlag[i])
+		{
+			this.m_MonsterList[i].BeginMotionBlend(nMotionNo, nTime < 0 ? 100 : nTime);
+		}
+	}
+	return true;
+}
+
+void CMonsterList::WaitMotionBlendAll(ref array@int anNo)
+{
+	int i = 0;
+	int cnt = this.m_MonsterList.Numof();
+	bool bContinue = true;
+	while (bContinue)
+	{
+		bContinue = false;
+		for (i = 0; i < cnt; ++i)
+		{
+			if (anNo[i] <= 0)
+			{
+				continue;
+			}
+			ref CMonster Monster = this.m_MonsterList[i];
+			if (Monster.IsMotionBlend())
+			{
+				bContinue = true;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+}
+
+void CMonsterList::WaitMotionStopAll(ref array@int anNo, ref array@bool abDead)
+{
+	int i = 0;
+	int cnt = this.m_MonsterList.Numof();
+	array@bool abFlag;
+	abFlag.Alloc(cnt);
+	abFlag.Fill(0, cnt, 0);
+	for (i = 0; i < cnt; ++i)
+	{
+		if (anNo[i] <= 0)
+		{
+			continue;
+		}
+		ref CMonster Monster = this.m_MonsterList[i];
+		if (Monster.IsMotionLoop())
+		{
+			continue;
+		}
+		abFlag[i] = true;
+	}
+	if (abFlag.Find(0, cnt, 1) < 0)
+	{
+		return;
+	}
+	bool bContinue = true;
+	while (bContinue)
+	{
+		bContinue = false;
+		for (i = 0; i < cnt; ++i)
+		{
+			if (abFlag[i])
+			{
+				ref CMonster Monster = this.m_MonsterList[i];
+				if (!Monster.IsMotionStop())
+				{
+					bContinue = true;
+				}
+				if (abDead[i] && Monster.CheckDead())
+				{
+					abFlag[i] = false;
+					continue;
+				}
+			}
+		}
+		UPDATE(true);
+	}
+}
+
+bool CMonsterList::Flash(int nIndex, int nTime)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	bool bFlag = false;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (sTimer.Get() < nTime)
+	{
+		bFlag = !bFlag;
+		if (bFlag)
+		{
+			Monster.SetAmbient(1.0, 1.0, 1.0);
+		}
+		else
+		{
+			Monster.SetAmbient(0.0, 0.0, 0.0);
+		}
+		UPDATE(true);
+	}
+	Monster.SetAmbient(0.0, 0.0, 0.0);
+	UPDATE(true);
+	return true;
+}
+
+bool CMonsterList::FlashAll(ref array@int anNo, int nTime)
+{
+	int i = 0;
+	int cnt = this.m_MonsterList.Numof();
+	if (anNo === NULL || anNo.Numof() < cnt)
+	{
+		return false;
+	}
+	bool bFlag = false;
+	CASTimer sTimer;
+	sTimer.Reset();
+	while (sTimer.Get() < nTime)
+	{
+		bFlag = !bFlag;
+		for (i = 0; i < cnt; ++i)
+		{
+			if (anNo[i] > 0)
+			{
+				ref CMonster Monster = this.m_MonsterList[i];
+				if (bFlag)
+				{
+					Monster.SetAmbient(1.0, 1.0, 1.0);
+				}
+				else
+				{
+					Monster.SetAmbient(0.0, 0.0, 0.0);
+				}
+			}
+		}
+		UPDATE(true);
+	}
+	return true;
+}
+
+bool CMonsterList::Blink(int nIndex, int nCount, int nTime)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	bool bFlag = false;
+	int i = 0;
+	int cnt = nCount * 2;
+	CASTimer sTimer;
+	for (i = 0; i < cnt; ++i)
+	{
+		sTimer.Reset();
+		bFlag = !bFlag;
+		if (bFlag)
+		{
+			Monster.SetAmbient(1.0, 1.0, 1.0);
+		}
+		else
+		{
+			Monster.SetAmbient(0.0, 0.0, 0.0);
+		}
+		while (sTimer.Get() < nTime)
+		{
+			UPDATE(true);
+		}
+	}
+	return true;
+}
+
+void CMonsterList::Redraw(ref array@int anMonsterIndex, int nTotalTime)
+{
+	if (anMonsterIndex === NULL)
+	{
+		return;
+	}
+	int i = 0;
+	int cnt = anMonsterIndex.Numof();
+	if (cnt <= 0)
+	{
+		return;
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref CMonster rfMonster = this.GetMonster(anMonsterIndex[i]);
+		if (rfMonster === NULL)
+		{
+			continue;
+		}
+		rfMonster.SetDraw(true);
+		rfMonster.SetAlpha(0.0);
+		rfMonster.BeginMotionLoading(0);
+	}
+	‚R‚cí“¬_ƒ[ƒh‘Ò‚¿(true);
+	for (i = 0; i < cnt; ++i)
+	{
+		ref CMonster rfMonster = this.GetMonster(anMonsterIndex[i]);
+		if (rfMonster !== NULL)
+		{
+			rfMonster.EndMotionLoading(-1);
+		}
+	}
+	int nStartTime = system.GetTime();
+	for (; ; )
+	{
+		int nTime = system.GetTime() - nStartTime;
+		if (nTime >= nTotalTime)
+		{
+			break;
+		}
+		float fAlpha = nTime / nTotalTime;
+		for (i = 0; i < cnt; ++i)
+		{
+			ref CMonster rfMonster = this.GetMonster(anMonsterIndex[i]);
+			if (rfMonster !== NULL)
+			{
+				rfMonster.SetAlpha(fAlpha);
+			}
+		}
+		UPDATE(true);
+	}
+	for (i = 0; i < cnt; ++i)
+	{
+		ref CMonster rfMonster = this.GetMonster(anMonsterIndex[i]);
+		if (rfMonster !== NULL)
+		{
+			rfMonster.SetAlpha(1.0);
+		}
+	}
+	UPDATE(true);
+}
+
+bool CMonsterList::CreateMonster(int nIndex, ref CReignPlugin rfPlugin)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	if (!Monster.Create(rfPlugin))
+	{
+		return false;
+	}
+	Monster.SetDraw(false);
+	return true;
+}
+
+bool CMonsterList::BeginMonsterLoading(int nIndex, int nMonsterNo)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	if (nMonsterNo <= 0)
+	{
+		return false;
+	}
+	if (!Monster.BeginLoading(nMonsterNo - 100000))
+	{
+		return false;
+	}
+	return this.BeginMotionLoading(nIndex, 0);
+}
+
+bool CMonsterList::EndMonsterLoading(int nIndex)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	if (!Monster.EndLoading())
+	{
+		return false;
+	}
+	return this.EndMotionLoading(nIndex, -1);
+}
+
+bool CMonsterList::BeginMotionLoading(int nIndex, int nMotionNo)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	if (nMotionNo < 0)
+	{
+		return false;
+	}
+	return Monster.BeginMotionLoading(nMotionNo);
+}
+
+bool CMonsterList::EndMotionLoading(int nIndex, int nMotionState)
+{
+	ref CMonster Monster = this.GetMonster(nIndex);
+	if (Monster === NULL)
+	{
+		return false;
+	}
+	return Monster.EndMotionLoading(nMotionState);
+}
+

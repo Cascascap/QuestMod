@@ -1,0 +1,858 @@
+void T_GirlsRoom::scroll(int nValue)
+{
+	this.m_sList.setTopIndex(nValue);
+}
+
+int T_GirlsRoom::getMonsterNo(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 24 ? 0 : this.m_sList.getList(this.m_sList.getTopIndex() + nIndex);
+}
+
+bool T_GirlsRoom::isCreated()
+{
+	return this.m_spBase.isCreated();
+}
+
+bool T_GirlsRoom::getInputViewFlag()
+{
+	return this.m_nInputViewFlag > 0;
+}
+
+int T_GirlsRoom::getButtonID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= 24 ? -1 : 110000 + nIndex + 1;
+}
+
+int T_GirlsRoom::getGirlsIndex(int nID)
+{
+	if (nID < 110000)
+	{
+		return -1;
+	}
+	int idx = nID + -110001;
+	return idx < 0 || idx >= 24 ? -1 : idx;
+}
+
+int T_GirlsRoom::getMotionID(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anMotionNo.Numof() ? -1 : 120000 + nIndex + 1;
+}
+
+int T_GirlsRoom::getMotionIndex(int nID)
+{
+	int idx = nID + -120001;
+	return idx < 0 || idx >= this.m_anMotionNo.Numof() ? -1 : idx;
+}
+
+int T_GirlsRoom::getMotionNo(int nIndex)
+{
+	return nIndex < 0 || nIndex >= this.m_anMotionNo.Numof() ? -1 : this.m_anMotionNo[nIndex];
+}
+
+T_GirlsRoom::T_GirlsRoom()
+{
+	this.m_rcView.set(11, 18, 700, 700);
+	this.clear();
+}
+
+T_GirlsRoom::~T_GirlsRoom()
+{
+	this.delete();
+}
+
+bool T_GirlsRoom::create()
+{
+	this.delete();
+	if (!this.m_sList.create())
+	{
+		return false;
+	}
+	システムバー_作成(15, -1, true);
+	this.m_spBase.setCg(25001);
+	this.m_spBase.setPos(0, 0);
+	this.m_spComment.setCg(25002);
+	this.m_spComment.setPos(634, 692);
+	this.m_sScroll.create(2, 568, 130000, 0, 0);
+	this.m_sScroll.setPos(994, 72);
+	this.m_sScroll.setActive(-1, true);
+	this.m_sScroll.setCallback(&scrollGirlsRoomList);
+	this.m_sScroll.setValue(0, this.m_sList.getListCount(), 24);
+	this.m_sButton.create();
+	int i = 0;
+	for (i = 0; i < 24; ++i)
+	{
+		ボタン登録_矩形(this.m_sButton, this.getButtonID(i), まめ知識一覧_Ｘ(i), まめ知識一覧_Ｙ(i), 267, 27, false);
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		ボタン登録_ＣＧ(this.m_sButton, this.getMotionID(i), 12 + 140 * i, 692, 25011 + i, -1, -1, -2147483648, -2147483648);
+	}
+	ボタン登録_矩形(this.m_sButton, 100009, 634, 692, this.m_spComment.getWidth(), this.m_spComment.getHeight(), false);
+	ボタン登録_ＣＧ(this.m_sButton, 100099, 990, 14, 10007, -1, -1, -2147483648, -2147483648);
+	this.setZ(1);
+	this.setButtonActive();
+	this.setShow(true);
+	this.m_sShortcutInfo.create(9901);
+	this.m_sShortcutInfo.addAll(this.m_sButton);
+	this.m_sShortcutInfo.addAll(システムバー_ボタン群());
+	this.m_sInputKey.create(0, this.m_sButton);
+	this.m_sInputKey.setArrowUpCallback(&女の子モンスター部屋_上矢印);
+	this.m_sInputKey.setArrowDownCallback(&女の子モンスター部屋_下矢印);
+	this.m_sInputKey.setArrowLeftCallback(&女の子モンスター部屋_左矢印);
+	this.m_sInputKey.setArrowRightCallback(&女の子モンスター部屋_右矢印);
+	this.m_sInputKey.setSelectCallback(&女の子モンスター部屋_選択設定);
+	this.m_nInputViewFlag = 1;
+	return true;
+}
+
+void T_GirlsRoom::delete()
+{
+	this.hideComment(-1);
+	this.m_spBase.delete();
+	this.m_spComment.delete();
+	this.m_sList.delete();
+	this.m_sScroll.delete();
+	this.m_sButton.delete();
+	this.m_sShortcutInfo.delete();
+	this.m_sInputKey.delete();
+	システムバー_削除();
+	this.clear();
+}
+
+void T_GirlsRoom::clear()
+{
+	this.m_nCommentID = -1;
+	this.m_nInputViewFlag = -1;
+	this.m_anMotionNo.Fill(0, this.m_anMotionNo.Numof(), 0);
+}
+
+int T_GirlsRoom::run()
+{
+	int nRet = 0;
+	int nID = this.getFirstList();
+	while (true)
+	{
+		nID = this.checkSelect(nID);
+		if (this.exec(nID, nRet))
+		{
+			break;
+		}
+	}
+	return nRet;
+}
+
+int T_GirlsRoom::moveUp(int nID)
+{
+	if (nID > 900000)
+	{
+		return this.getFirstMotion();
+	}
+	if (nID > 130000)
+	{
+		goto label0;
+	}
+	if (nID > 120000)
+	{
+		return 900001;
+	}
+	if (nID > 110000)
+	{
+		return this.getPrevList(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+		case 100003:
+		case 100009:
+			break;
+		case 100099:
+			return this.getLastList();
+		default:
+			break;
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_GirlsRoom::moveDown(int nID)
+{
+	if (nID > 900000)
+	{
+		return this.getFirstMotion();
+	}
+	if (nID > 130000)
+	{
+		goto label0;
+	}
+	if (nID > 120000)
+	{
+		return 900001;
+	}
+	if (nID > 110000)
+	{
+		return this.getNextList(nID);
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+		case 100003:
+		case 100009:
+			break;
+		case 100099:
+			return this.getFirstList();
+		default:
+			break;
+	}
+label0:
+	return this.getLastList();
+}
+
+int T_GirlsRoom::moveLeft(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_前ボタン(nID);
+	}
+	if (nID > 130000)
+	{
+		goto label0;
+	}
+	if (nID > 120000)
+	{
+		return this.getPrevMotion(nID);
+	}
+	if (nID > 110000)
+	{
+		return 100009;
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+		case 100003:
+			break;
+		case 100009:
+			return this.getLastMotion();
+		case 100099:
+			return 100009;
+		default:
+			break;
+	}
+label0:
+	return this.getFirstList();
+}
+
+int T_GirlsRoom::moveRight(int nID)
+{
+	if (nID > 900000)
+	{
+		return システムバー_次ボタン(nID);
+	}
+	if (nID > 130000)
+	{
+		goto label0;
+	}
+	if (nID > 120000)
+	{
+		return this.getNextMotion(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.getFirstMotion();
+	}
+	switch (nID)
+	{
+		case 100001:
+		case 100002:
+		case 100003:
+		case 100009:
+			break;
+		case 100099:
+			return this.getFirstMotion();
+		default:
+			break;
+	}
+label0:
+	return this.getLastList();
+}
+
+bool T_GirlsRoom::exec(int nID, ref int nRet)
+{
+	nRet = 0;
+	this.m_sShortcutInfo.setShow(false);
+	switch (nID)
+	{
+		case 100001:
+			３Ｄ女の子部屋_回転();
+			return false;
+		case 100002:
+			３Ｄ女の子部屋_ズーム();
+			return false;
+		case 100003:
+			３Ｄ女の子部屋_平行移動();
+			return false;
+		case 100099:
+			return 選択_確認("Leave gal monster room?", 1, "Yes", "No", -1, -1, false);
+		default:
+			break;
+	}
+	if (nID > 900000)
+	{
+		return this.systemBar(nID);
+	}
+	if (nID > 130000)
+	{
+		this.m_sScroll.exec(nID);
+		return false;
+	}
+	if (nID > 120000)
+	{
+		return this.execMotion(nID);
+	}
+	if (nID > 110000)
+	{
+		return this.execLock(nID);
+	}
+	return false;
+}
+
+bool T_GirlsRoom::execLock(int nID)
+{
+	int idx = this.getGirlsIndex(nID);
+	if (idx < 0)
+	{
+		return false;
+	}
+	int nMonsterNo = this.m_sList.getList(idx);
+	if (nMonsterNo <= 0)
+	{
+		return false;
+	}
+	if (nMonsterNo != this.m_sList.getLockNo())
+	{
+		this.m_sList.setLockNo(nMonsterNo);
+		３Ｄ女の子部屋_モンスター変更(女の子モンスター_３Ｄ番号(nMonsterNo));
+		this.setButtonActive();
+		this.setButtonShow(true);
+	}
+	return false;
+}
+
+bool T_GirlsRoom::execMotion(int nID)
+{
+	int nMotionNo = this.getMotionNo(this.getMotionIndex(nID));
+	if (nMotionNo <= 0)
+	{
+		return false;
+	}
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getMotionID(i), false);
+	}
+	３Ｄ女の子部屋_モーション開始(nMotionNo);
+	３Ｄ女の子部屋_モーション終了待ち();
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getMotionID(i), this.m_anMotionNo[i] > 0);
+	}
+	return false;
+}
+
+int T_GirlsRoom::systemBar(int nID)
+{
+	int nRet = システムバー_実行(nID);
+	if (nRet == 910002)
+	{
+		システムメニュー_ロード();
+	}
+	return 0;
+}
+
+int T_GirlsRoom::checkSelect(int nID)
+{
+	int nRet = 0;
+	int nID2 = 0;
+	キー_クリア(true);
+	this.resetSelect();
+	if (キー優先())
+	{
+		nID2 = nID;
+		this.setSelect(nID2, true);
+	}
+	while (true)
+	{
+		int nRet2 = this.checkInput(nID2);
+		if (nRet2 == 2)
+		{
+			nRet = nID2;
+			break;
+		}
+		this.checkWheel();
+		if (キャンセル_確認())
+		{
+			nRet = 100099;
+			break;
+		}
+		if (nRet2 != 1)
+		{
+			int nID3 = this.checkKey(nID2);
+			if (nID3 > 0)
+			{
+				nRet = nID3;
+				break;
+			}
+		}
+		UPDATE(true);
+	}
+	return nRet;
+}
+
+int T_GirlsRoom::checkInput(ref int nSelectID)
+{
+	int nID2 = 0;
+	switch (システムバー_入力確認(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			this.setInputViewFlag(false);
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sScroll.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.m_sButton.checkInput(nID2))
+	{
+		case 0:
+			if (nID2 > 0)
+			{
+				goto label0;
+			}
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.setInputViewFlag(false);
+			システムバー_入力ＯＦＦ();
+			nSelectID = nID2;
+			return 1;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+	switch (this.checkInputView(nID2))
+	{
+		case 0:
+			break;
+		case 1:
+			this.m_sScroll.setInputFlag(false);
+			this.m_sButton.setInputFlag(false);
+			nSelectID = nID2;
+			return 2;
+		case 2:
+			nSelectID = nID2;
+			return 2;
+		default:
+			break;
+	}
+label0:
+	if (nID2 > 0)
+	{
+		this.showComment(nID2);
+	}
+	else
+	{
+		this.hideComment(-1);
+	}
+	this.m_sScroll.setInputFlag(true);
+	this.m_sButton.setInputFlag(true);
+	this.setInputViewFlag(true);
+	システムバー_入力ＯＮ();
+	if (nID2 != nSelectID)
+	{
+		this.setSelect(nSelectID, false);
+	}
+	nSelectID = nID2;
+	return 0;
+}
+
+int T_GirlsRoom::checkKey(int nID)
+{
+	int nID2 = システムバー_キー確認(nID);
+	if (nID2 > 0)
+	{
+		return nID2;
+	}
+	if (this.m_sScroll.checkKey())
+	{
+		return 0;
+	}
+	if (this.m_sInputKey.check(nID))
+	{
+		return 0;
+	}
+	this.m_sShortcutInfo.check();
+	return 0;
+}
+
+bool T_GirlsRoom::checkWheel()
+{
+	if (this.m_rcView.mouseInRect())
+	{
+		switch (ホイール_確認(true))
+		{
+			case 9991:
+				３Ｄ女の子部屋_カメラ距離設定(３Ｄ女の子部屋_カメラ距離() - 0.200000002980232);
+				break;
+			case 9992:
+				３Ｄ女の子部屋_カメラ距離設定(３Ｄ女の子部屋_カメラ距離() + 0.200000002980232);
+				break;
+			default:
+				break;
+		}
+		ホイール_クリア();
+		return true;
+	}
+	if (this.m_sScroll.checkWheel())
+	{
+		return true;
+	}
+	ホイール_クリア();
+	return false;
+}
+
+int T_GirlsRoom::checkInputView(ref int nSelectID)
+{
+	nSelectID = 0;
+	if (this.m_nInputViewFlag <= 0)
+	{
+		return -1;
+	}
+	this.clearInputView();
+	if (!this.m_rcView.mouseInRect())
+	{
+		return 0;
+	}
+	if (キー_押下(1))
+	{
+		nSelectID = 100001;
+		return 1;
+	}
+	if (キー_押下(2))
+	{
+		nSelectID = 100002;
+		return 1;
+	}
+	if (キー_押下(4))
+	{
+		nSelectID = 100003;
+		return 1;
+	}
+	return 0;
+}
+
+void T_GirlsRoom::clearInputView()
+{
+	３Ｄ女の子部屋_マウスクリア();
+}
+
+void T_GirlsRoom::resetSelect()
+{
+	this.m_sScroll.resetSelect();
+	this.m_sButton.resetSelect();
+	システムバー_選択解除();
+	this.hideComment(-1);
+}
+
+void T_GirlsRoom::setSelect(int nID, bool bSelect)
+{
+	if (nID > 900000)
+	{
+		システムバー_選択設定(nID, bSelect, true);
+		return;
+	}
+	if (nID > 130000)
+	{
+		this.m_sScroll.setSelect(nID, bSelect);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonSelect(nID, bSelect, true);
+		return;
+	}
+	if (bSelect)
+	{
+		this.showComment(nID);
+	}
+	else
+	{
+		this.hideComment(nID);
+	}
+}
+
+void T_GirlsRoom::setCursor(int nID)
+{
+	if (キー優先())
+	{
+		this.resetSelect();
+		this.setSelect(nID, true);
+		return;
+	}
+	if (nID > 900000)
+	{
+		システムバー_カーソル設定(nID);
+		return;
+	}
+	if (nID > 130000)
+	{
+		this.m_sScroll.setCursor(nID);
+		return;
+	}
+	if (nID > 100000)
+	{
+		this.m_sButton.setButtonCursor(nID);
+		return;
+	}
+}
+
+void T_GirlsRoom::showComment(int nID)
+{
+	if (this.m_nCommentID == nID)
+	{
+		return;
+	}
+	string szText = "";
+	switch (nID)
+	{
+		case 100009:
+			szText = "Left mouse button + cursor movement...@will change your view.@Will rotate the view around.@@Right mouse button + cursor up/down...@will change the camera zoom.@Can also use the mouse wheel.@@Middle mouse button (push wheel) + cursor movement...@will change your view.@@※To reset these changes, switch to another gal,@ or re-enter the gal monster room.@@Motion button (1-3)@will play back gal monster battle action.@Some gal monsters only have [1] and [2].";
+			break;
+		default:
+			this.hideComment(-1);
+			return;
+	}
+	if (説明_表示(nID, "", szText, "", 500, false) > 0)
+	{
+		説明_位置設定(this.m_sButton.getButtonPosX(nID), this.m_sButton.getButtonPosY(nID) - 説明_高());
+	}
+	this.m_nCommentID = nID;
+}
+
+void T_GirlsRoom::hideComment(int nID)
+{
+	nID = nID < 0 ? this.m_nCommentID : nID;
+	if (nID > 0)
+	{
+		説明_消し(nID);
+	}
+	this.m_nCommentID = -1;
+}
+
+void T_GirlsRoom::setZ(int nZ)
+{
+	this.m_spBase.setZ(nZ);
+	this.m_sList.setZ(nZ + 1);
+	this.m_sScroll.setZ(nZ + 1);
+	this.m_sButton.setZ(nZ + 5);
+	int i = 0;
+	for (i = 0; i < 5; ++i)
+	{
+		this.m_sButton.setButtonZ(this.getMotionID(i), 111);
+	}
+	this.m_sButton.setButtonZ(100009, 111);
+	this.m_spComment.setZ(106);
+}
+
+void T_GirlsRoom::setShow(bool bShow)
+{
+	this.m_spBase.setShow(bShow);
+	this.m_spComment.setShow(bShow);
+	this.m_sList.setShow(bShow);
+	this.m_sScroll.setShow(bShow);
+	システムバー_表示設定(bShow);
+	this.setButtonShow(bShow);
+}
+
+void T_GirlsRoom::setButtonShow(bool bShow)
+{
+	this.m_sButton.setShow(bShow);
+	this.m_anMotionNo.Fill(0, this.m_anMotionNo.Numof(), 0);
+	int i = 0;
+	int nMonsterNo = 女の子モンスター_３Ｄ番号(this.m_sList.getLockNo());
+	if (モーションあり(nMonsterNo, 1))
+	{
+		this.m_anMotionNo[i++] = 1;
+	}
+	if (モーションあり(nMonsterNo, 2))
+	{
+		this.m_anMotionNo[i++] = 2;
+	}
+	if (モーションあり(nMonsterNo, 4))
+	{
+		this.m_anMotionNo[i++] = 4;
+	}
+	for (i = 0; i < 5; ++i)
+	{
+		int nID = this.getMotionID(i);
+		bool bActive = this.m_anMotionNo[i] > 0;
+		this.m_sButton.setButtonActive(nID, bActive);
+		this.m_sButton.setButtonShow(nID, bActive ? bShow : 0);
+	}
+}
+
+void T_GirlsRoom::setButtonActive()
+{
+	int i = 0;
+	int idx = this.m_sList.getTopIndex();
+	for (i = 0; i < 24; ++i)
+	{
+		this.m_sButton.setButtonActive(this.getButtonID(i), this.m_sList.getList(idx + i) > 0);
+	}
+	this.m_sButton.setButtonActive(100009, false);
+}
+
+void T_GirlsRoom::setInputViewFlag(bool bInputViewFlag)
+{
+	if (this.m_nInputViewFlag < 0)
+	{
+		return;
+	}
+	if (!bInputViewFlag)
+	{
+		this.clearInputView();
+	}
+	this.m_nInputViewFlag = bInputViewFlag ? 1 : 0;
+}
+
+int T_GirlsRoom::getPrevList(int nID)
+{
+	int idx = this.getGirlsIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastList();
+	}
+	--idx;
+	if (this.getMonsterNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+	return this.getLastList();
+}
+
+int T_GirlsRoom::getNextList(int nID)
+{
+	int idx = this.getGirlsIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstList();
+	}
+	++idx;
+	if (this.getMonsterNo(idx) > 0)
+	{
+		return this.getButtonID(idx);
+	}
+	return this.getFirstList();
+}
+
+int T_GirlsRoom::getFirstList()
+{
+	int cnt = this.m_sList.getListCount();
+	if (cnt <= 0)
+	{
+		return 100009;
+	}
+	return this.getButtonID(0);
+}
+
+int T_GirlsRoom::getLastList()
+{
+	int cnt = this.m_sList.getListCount();
+	if (cnt <= 0)
+	{
+		return 100009;
+	}
+	return cnt < 24 ? this.getButtonID(cnt - 1) : this.getButtonID(23);
+}
+
+int T_GirlsRoom::getPrevMotion(int nID)
+{
+	int idx = this.getMotionIndex(nID);
+	if (idx < 0)
+	{
+		return this.getLastMotion();
+	}
+	--idx;
+	if (this.getMotionNo(idx) > 0)
+	{
+		return this.getMotionID(idx);
+	}
+	return this.getLastList();
+}
+
+int T_GirlsRoom::getNextMotion(int nID)
+{
+	int idx = this.getMotionIndex(nID);
+	if (idx < 0)
+	{
+		return this.getFirstMotion();
+	}
+	++idx;
+	if (this.getMotionNo(idx) > 0)
+	{
+		return this.getMotionID(idx);
+	}
+	return 100009;
+}
+
+int T_GirlsRoom::getFirstMotion()
+{
+	if (this.getMotionNo(0) > 0)
+	{
+		return this.getMotionID(0);
+	}
+	return 100009;
+}
+
+int T_GirlsRoom::getLastMotion()
+{
+	int i = 0;
+	int cnt = this.m_anMotionNo.Numof();
+	for (i = cnt - 1; i >= 0; --i)
+	{
+		if (this.getMotionNo(i) > 0)
+		{
+			return this.getMotionID(i);
+		}
+	}
+	return 100009;
+}
+

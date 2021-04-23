@@ -1,0 +1,234 @@
+int T_NumberCg::load()
+{
+	return ++this.m_nCount;
+}
+
+int T_NumberCg::unload()
+{
+	return --this.m_nCount;
+}
+
+int T_NumberCg::getCgNo()
+{
+	return this.m_nCgNo;
+}
+
+int T_NumberCg::getWidth()
+{
+	return this.m_nWidth;
+}
+
+int T_NumberCg::getHeight()
+{
+	return this.m_nHeight;
+}
+
+int T_NumberCg::getCount()
+{
+	return this.m_nCount;
+}
+
+int T_NumberCg::getHyphen()
+{
+	return this.m_anSpNo[this.m_anSpNo.Numof() - 1];
+}
+
+T_NumberCg::T_NumberCg()
+{
+	this.clear();
+}
+
+bool T_NumberCg::create(int nCgNo, bool bHyphen)
+{
+	this.delete();
+	array@T_Sprite aspWork;
+	aspWork.Alloc(bHyphen ? 11 : 10);
+	if (‚b‚f_•ªŠ„_‰¡(nCgNo, aspWork) < 0)
+	{
+		return false;
+	}
+	this.m_nCgNo = nCgNo;
+	this.m_nWidth = aspWork[0].getWidth();
+	this.m_nHeight = aspWork[0].getHeight();
+	this.m_nCount = 0;
+	int i = 0;
+	int cnt = aspWork.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_anSpNo[i] = aspWork[i].detach();
+	}
+	aspWork.Free();
+	return true;
+}
+
+void T_NumberCg::delete()
+{
+	int i = 0;
+	int cnt = this.m_anSpNo.Numof();
+	T_Sprite spWork;
+	for (i = 0; i < cnt; ++i)
+	{
+		spWork.attach(this.m_anSpNo[i]);
+		spWork.delete();
+	}
+	this.clear();
+}
+
+void T_NumberCg::clear()
+{
+	this.m_nCgNo = 0;
+	this.m_nWidth = -1;
+	this.m_nHeight = -1;
+	this.m_nCount = -1;
+	this.m_anSpNo.Fill(0, this.m_anSpNo.Numof(), -1);
+}
+
+bool T_NumberCg::setHyphen(int nHyphenCgNo)
+{
+	T_Sprite spWork;
+	ref int rfSpNo = this.m_anSpNo[this.m_anSpNo.Numof() - 1];
+	spWork.attach(rfSpNo);
+	spWork.delete();
+	rfSpNo = -1;
+	if (spWork.setCg(nHyphenCgNo) <= 0)
+	{
+		return false;
+	}
+	rfSpNo = spWork.detach();
+	return true;
+}
+
+int T_NumberCg::getSpNo(int nNumber)
+{
+	if (nNumber < 0 || nNumber > 9)
+	{
+		return -1;
+	}
+	return this.m_anSpNo[nNumber];
+}
+
+T_NumberCgManager::T_NumberCgManager()
+{
+}
+
+T_NumberCgManager::~T_NumberCgManager()
+{
+	this.free();
+}
+
+void T_NumberCgManager::free()
+{
+	int i = 0;
+	int cnt = this.m_asNumberCg.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		this.m_asNumberCg[i].delete();
+	}
+	if (!this.m_asNumberCg.Empty())
+	{
+		this.m_asNumberCg.Free();
+	}
+}
+
+bool T_NumberCgManager::load(int nCgNo, bool bHyphen)
+{
+	int idx = this.search(nCgNo);
+	if (idx >= 0)
+	{
+		this.m_asNumberCg[idx].load();
+		return true;
+	}
+	T_NumberCg sNumCg;
+	if (!sNumCg.create(nCgNo, bHyphen))
+	{
+		return false;
+	}
+	sNumCg.load();
+	this.m_asNumberCg.PushBack(sNumCg);
+	return true;
+}
+
+bool T_NumberCgManager::unload(int nCgNo)
+{
+	int idx = this.search(nCgNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	ref T_NumberCg rfNumCg = this.m_asNumberCg[idx];
+	if (rfNumCg.unload() <= 0)
+	{
+		rfNumCg.delete();
+		this.m_asNumberCg.Erase(idx);
+	}
+	return true;
+}
+
+bool T_NumberCgManager::setHyphen(int nCgNo, int nHyphenCgNo)
+{
+	int idx = this.search(nCgNo);
+	if (idx < 0)
+	{
+		return false;
+	}
+	return this.m_asNumberCg[idx].setHyphen(nHyphenCgNo);
+}
+
+int T_NumberCgManager::getWidth(int nCgNo)
+{
+	int idx = this.search(nCgNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.m_asNumberCg[idx].getWidth();
+}
+
+int T_NumberCgManager::getHeight(int nCgNo)
+{
+	int idx = this.search(nCgNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.m_asNumberCg[idx].getHeight();
+}
+
+int T_NumberCgManager::getSpNo(int nCgNo, int nNumber)
+{
+	int idx = this.search(nCgNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.m_asNumberCg[idx].getSpNo(nNumber);
+}
+
+int T_NumberCgManager::getHyphen(int nCgNo)
+{
+	int idx = this.search(nCgNo);
+	if (idx < 0)
+	{
+		return -1;
+	}
+	return this.m_asNumberCg[idx].getHyphen();
+}
+
+int T_NumberCgManager::search(int nCgNo)
+{
+	if (nCgNo <= 0)
+	{
+		return -1;
+	}
+	int i = 0;
+	int cnt = this.m_asNumberCg.Numof();
+	for (i = 0; i < cnt; ++i)
+	{
+		if (this.m_asNumberCg[i].getCgNo() == nCgNo)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
