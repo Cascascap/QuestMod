@@ -1,4 +1,4 @@
-void ‚h‰Šú‰»(int ii)
+void ItemInitialize(int ii)
 {
 	s‚h ‰Šúƒf[ƒ^;
 	‚h[ii] = ‰Šúƒf[ƒ^;
@@ -902,7 +902,7 @@ int ‚h‹ó‚«”Ô†æ“¾()
 	{
 		if (‚h‘¶İ(ii, -1) == 0)
 		{
-			‚h‰Šú‰»(ii);
+			ItemInitialize(ii);
 			return ii;
 		}
 	}
@@ -944,38 +944,38 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 	int bb = 0;
 	if (no == 1)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6000, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Adventurer Outfit", 11, 12, 10, 4, 20, 12, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6000, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Adventurer Outfit", 11, 12, 10, 4, 20, 12, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 13)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6648, 10000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "High Grade Adventurer Outfit", 11, 12, 30, 4, 70, 12, 70, 91, 0, 29, 10, 0, 0);
+		ItemGenerateData0(ii, 6648, 10000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "High Grade Adventurer Outfit", 11, 12, 30, 4, 70, 12, 70, 91, 0, 29, 10, 0, 0);
 	}
 	if (no == 56)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6649, 30000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Commander's Uniform", 11, 12, 30, 4, 50, 12, 50, 91, 0, 92, 0, 0, 0);
+		ItemGenerateData0(ii, 6649, 30000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Commander's Uniform", 11, 12, 30, 4, 50, 12, 50, 91, 0, 92, 0, 0, 0);
 	}
 	if (no == 4)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6415, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Miko Outfit", 11, 12, 11, 4, 3, 12, 3, 36, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6415, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Miko Outfit", 11, 12, 11, 4, 3, 12, 3, 36, 1, 0, 0, 0, 0);
 	}
 	if (no == 6)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6365, 100, 1, 0, 0, 3, 0, 5, 6, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Maid Outfit", 11, 12, 11, 4, 40, 12, 13, 8, 10, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6365, 100, 1, 0, 0, 3, 0, 5, 6, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Maid Outfit", 11, 12, 11, 4, 40, 12, 13, 8, 10, 0, 0, 0, 0);
 	}
 	if (no == 336)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6628, 100, 1, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "White Nurse Outfit", 11, 12, 21, 4, 80, 12, 80, 14, 100, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6628, 100, 1, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "White Nurse Outfit", 11, 12, 21, 4, 80, 12, 80, 14, 100, 0, 0, 0, 0);
 	}
 	if (no == 337)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6629, 100, 1, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Black Nurse Outfit", 11, 12, 21, 4, 80, 12, 80, 2, 100, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6629, 100, 1, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Black Nurse Outfit", 11, 12, 21, 4, 80, 12, 80, 2, 100, 0, 0, 0, 0);
 	}
 	if (no == 5)
 	{
@@ -993,63 +993,63 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			aa = 6421;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, aa, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "T-Shirt", 11, 12, 11, 4, 1, 12, 1, 38, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, aa, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "T-Shirt", 11, 12, 11, 4, 1, 12, 1, 38, 1, 0, 0, 0, 0);
 	}
 	if (no == 8)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6001, 300, 1, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leather Armor", 11, 13, 10, 4, 30, 12, 30, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6001, 300, 1, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Leather Armor", 11, 13, 10, 4, 30, 12, 30, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 9)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6437, 300, 1, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leather Armor XA", 11, 13, 11, 4, 45, 12, 45, 10, 10, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6437, 300, 1, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Leather Armor XA", 11, 13, 11, 4, 45, 12, 45, 10, 10, 0, 0, 0, 0);
 	}
 	if (no == 12)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6437, 1200, 35, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resist Armor", 11, 13, 11, 4, 20, 12, 20, 86, 0, 87, 0, 0, 0);
+		ItemGenerateData0(ii, 6437, 1200, 35, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Resist Armor", 11, 13, 11, 4, 20, 12, 20, 86, 0, 87, 0, 0, 0);
 	}
 	if (no == 11)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6413, 300, 1, 0, 0, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ninja Outfit", 11, 13, 11, 4, 45, 12, 80, 11, 10, 6, 10, 0, 0);
+		ItemGenerateData0(ii, 6413, 300, 1, 0, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Ninja Outfit", 11, 13, 11, 4, 45, 12, 80, 11, 10, 6, 10, 0, 0);
 	}
 	if (no == 14)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6002, 1000, 20, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tough Leather Armor", 11, 13, 20, 4, 60, 12, 60, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6002, 1000, 20, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Tough Leather Armor", 11, 13, 20, 4, 60, 12, 60, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 15)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6438, 1000, 20, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tough Leather Armor XB", 11, 13, 21, 4, 80, 12, 80, 10, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6438, 1000, 20, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Tough Leather Armor XB", 11, 13, 21, 4, 80, 12, 80, 10, 20, 0, 0, 0, 0);
 	}
 	if (no == 16)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6422, 1000, 20, 0, 0, 3, 0, 0, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cultux", 11, 13, 21, 4, 120, 12, 50, 16, 2, 23, 60, 0, 0);
+		ItemGenerateData0(ii, 6422, 1000, 20, 0, 0, 3, 0, 0, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Cultux", 11, 13, 21, 4, 120, 12, 50, 16, 2, 23, 60, 0, 0);
 	}
 	if (no == 17)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6651, 1000, 30, 0, 0, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Quintessential Ninja", 11, 13, 31, 4, 120, 12, 150, 16, 10, 6, 30, 91, 0);
+		ItemGenerateData0(ii, 6651, 1000, 30, 0, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Quintessential Ninja", 11, 13, 31, 4, 120, 12, 150, 16, 10, 6, 30, 91, 0);
 	}
 	if (no == 19)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6003, 5000, 40, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Composite Leather Armor", 11, 13, 30, 4, 150, 12, 150, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6003, 5000, 40, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Composite Leather Armor", 11, 13, 30, 4, 150, 12, 150, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 21)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6638, 20000, 55, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Composite Leather Armor", 11, 13, 31, 4, 180, 12, 180, 86, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6638, 20000, 55, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Modified Composite Leather Armor", 11, 13, 31, 4, 180, 12, 180, 86, 0, 0, 0, 0, 0);
 	}
 	if (no == 20)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6423, 5000, 45, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "DR Leather Armor", 11, 13, 31, 4, 100, 12, 100, 21, 50, 2, 100, 42, 1);
+		ItemGenerateData0(ii, 6423, 5000, 45, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "DR Leather Armor", 11, 13, 31, 4, 100, 12, 100, 21, 50, 2, 100, 42, 1);
 	}
 	if (no == 22)
 	{
@@ -1058,8 +1058,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6619, 5000, 45, 1, 0, 3, 0, 5, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sacred Tree Armor", 11, 13, 40, 4, 280, 12, 280, 16, 10, 90, 0, 84, 0);
+		ItemGenerateData0(ii, 6619, 5000, 45, 1, 0, 3, 0, 5, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Sacred Tree Armor", 11, 13, 40, 4, 280, 12, 280, 16, 10, 90, 0, 84, 0);
 	}
 	if (no == 24)
 	{
@@ -1068,78 +1068,78 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6625, 5000, 45, 0, 0, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Emperor's Armor", 11, 13, 41, 4, 400, 12, 200, 24, 30, 25, 30, 84, 0);
+		ItemGenerateData0(ii, 6625, 5000, 45, 0, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Emperor's Armor", 11, 13, 41, 4, 400, 12, 200, 24, 30, 25, 30, 84, 0);
 	}
 	if (no == 25)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6004, 800, 5, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Armor", 11, 14, 10, 4, 40, 12, 20, 7, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6004, 800, 5, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Light Armor", 11, 14, 10, 4, 40, 12, 20, 7, 20, 0, 0, 0, 0);
 	}
 	if (no == 26)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6436, 800, 5, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Armor XA", 11, 14, 11, 4, 60, 12, 30, 7, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6436, 800, 5, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Light Armor XA", 11, 14, 11, 4, 60, 12, 30, 7, 20, 0, 0, 0, 0);
 	}
 	if (no == 30)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6005, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Iron Armor", 11, 14, 20, 4, 80, 12, 40, 7, 40, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6005, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Iron Armor", 11, 14, 20, 4, 80, 12, 40, 7, 40, 0, 0, 0, 0);
 	}
 	if (no == 32)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6417, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crystal Armor", 11, 14, 21, 4, 30, 12, 400, 7, 40, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6417, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Crystal Armor", 11, 14, 21, 4, 30, 12, 400, 7, 40, 0, 0, 0, 0);
 	}
 	if (no == 33)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6412, 2000, 20, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Warrior Armor", 11, 14, 21, 4, 80, 12, 40, 2, 40, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6412, 2000, 20, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Warrior Armor", 11, 14, 21, 4, 80, 12, 40, 2, 40, 0, 0, 0, 0);
 	}
 	if (no == 31)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6409, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Iron Armor X", 11, 14, 21, 4, 100, 12, 60, 7, 40, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6409, 2000, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Iron Armor X", 11, 14, 21, 4, 100, 12, 60, 7, 40, 0, 0, 0, 0);
 	}
 	if (no == 36)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6006, 8000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Coarse Armor", 11, 14, 30, 4, 200, 12, 100, 7, 60, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6006, 8000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Coarse Armor", 11, 14, 30, 4, 200, 12, 100, 7, 60, 0, 0, 0, 0);
 	}
 	if (no == 41)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6635, 28000, 55, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Coarse Armor", 11, 14, 31, 4, 250, 12, 150, 17, 5, 86, 0, 0, 0);
+		ItemGenerateData0(ii, 6635, 28000, 55, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Coarse Armor", 11, 14, 31, 4, 250, 12, 150, 17, 5, 86, 0, 0, 0);
 	}
 	if (no == 42)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6652, 98000, 50, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sengoku Rance Armor", 11, 14, 31, 4, 220, 12, 220, 90, 0, 84, 0, 42, 5);
+		ItemGenerateData0(ii, 6652, 98000, 50, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Sengoku Rance Armor", 11, 14, 31, 4, 220, 12, 220, 90, 0, 84, 0, 42, 5);
 	}
 	if (no == 321)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6448, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leazas Red General Armor", 11, 14, 30, 4, 100, 12, 100, 2, 100, 16, 2, 0, 0);
+		ItemGenerateData0(ii, 6448, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Leazas Red General Armor", 11, 14, 30, 4, 100, 12, 100, 2, 100, 16, 2, 0, 0);
 	}
 	if (no == 34)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6448, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Leazas Red General Armor", 11, 14, 30, 4, 200, 12, 200, 2, 100, 16, 2, 0, 0);
+		ItemGenerateData0(ii, 6448, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Leazas Red General Armor", 11, 14, 30, 4, 200, 12, 200, 2, 100, 16, 2, 0, 0);
 	}
 	if (no == 38)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6414, 8000, 37, 0, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Heavy Armor", 11, 14, 31, 4, 200, 12, 150, 7, 100, 17, 25, 0, 0);
+		ItemGenerateData0(ii, 6414, 8000, 37, 0, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Heavy Armor", 11, 14, 31, 4, 200, 12, 150, 7, 100, 17, 25, 0, 0);
 	}
 	if (no == 39)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6627, 8000, 37, 0, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bikini Armor", 11, 14, 31, 4, 98, 12, 98, 11, 100, 86, 0, 87, 0);
+		ItemGenerateData0(ii, 6627, 8000, 37, 0, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Bikini Armor", 11, 14, 31, 4, 98, 12, 98, 11, 100, 86, 0, 87, 0);
 	}
 	if (no == 37)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6410, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hell Setter", 11, 14, 31, 4, 120, 12, 80, 2, 50, 7, 80, 0, 0);
+		ItemGenerateData0(ii, 6410, 8000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Hell Setter", 11, 14, 31, 4, 120, 12, 80, 2, 50, 7, 80, 0, 0);
 	}
 	if (no == 40)
 	{
@@ -1148,8 +1148,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6620, 8000, 45, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Champion", 11, 14, 40, 4, 350, 12, 300, 90, 0, 2, 200, 84, 0);
+		ItemGenerateData0(ii, 6620, 8000, 45, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Champion", 11, 14, 40, 4, 350, 12, 300, 90, 0, 2, 200, 84, 0);
 	}
 	if (no == 27)
 	{
@@ -1159,48 +1159,48 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 20);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6336, 8000, 0, 0, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6336, 8000, 0, 0, 2, 0, 0, 0, 0, 0, 0);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Oda Armor", 11, 14, 31, 4, 160, 12, 160, 17, 15, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Oda Armor", 11, 14, 31, 4, 160, 12, 160, 17, 15, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
 	}
 	if (no == 43)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6007, 250, 1, 0, 0, 0, 4, 5, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Prelan Robe", 11, 15, 10, 4, 25, 12, 60, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6007, 250, 1, 0, 0, 0, 4, 5, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Prelan Robe", 11, 15, 10, 4, 25, 12, 60, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 46)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6008, 1200, 20, 0, 0, 0, 4, 5, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Loose Robe", 11, 15, 20, 4, 50, 12, 100, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6008, 1200, 20, 0, 0, 0, 4, 5, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Loose Robe", 11, 15, 20, 4, 50, 12, 100, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 47)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6405, 1200, 23, 0, 0, 0, 4, 5, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Split Robe", 11, 15, 21, 4, 45, 12, 95, 16, 10, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6405, 1200, 23, 0, 0, 0, 4, 5, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Split Robe", 11, 15, 21, 4, 45, 12, 95, 16, 10, 0, 0, 0, 0);
 	}
 	if (no == 48)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6650, 4800, 40, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Holy Robe", 11, 15, 31, 4, 400, 12, 400, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6650, 4800, 40, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Holy Robe", 11, 15, 31, 4, 400, 12, 400, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 50)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6009, 4800, 40, 0, 0, 0, 4, 5, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "High Grade Loose Robe", 11, 15, 30, 4, 120, 12, 200, 87, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6009, 4800, 40, 0, 0, 0, 4, 5, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "High Grade Loose Robe", 11, 15, 30, 4, 120, 12, 200, 87, 0, 0, 0, 0, 0);
 	}
 	if (no == 53)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6636, 24800, 55, 0, 0, 0, 4, 5, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Black Robe", 11, 15, 31, 4, 200, 12, 200, 87, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6636, 24800, 55, 0, 0, 0, 4, 5, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Black Robe", 11, 15, 31, 4, 200, 12, 200, 87, 0, 0, 0, 0, 0);
 	}
 	if (no == 51)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6404, 4800, 40, 0, 0, 0, 4, 5, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Idiot", 11, 15, 31, 4, 1, 12, 1, 14, 100, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6404, 4800, 40, 0, 0, 0, 4, 5, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Magic Idiot", 11, 15, 31, 4, 1, 12, 1, 14, 100, 0, 0, 0, 0);
 	}
 	if (no == 52)
 	{
@@ -1209,8 +1209,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6621, 4800, 45, 0, 0, 0, 4, 5, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Minister", 11, 15, 40, 4, 200, 12, 200, 14, 100, 84, 0, 90, 0);
+		ItemGenerateData0(ii, 6621, 4800, 45, 0, 0, 0, 4, 5, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Magic Minister", 11, 15, 40, 4, 200, 12, 200, 14, 100, 84, 0, 90, 0);
 	}
 	if (no == 54)
 	{
@@ -1219,8 +1219,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6626, 4800, 45, 0, 0, 0, 4, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Orgarhythm", 11, 15, 41, 4, 100, 12, 100, 14, 200, 84, 0, 0, 0);
+		ItemGenerateData0(ii, 6626, 4800, 45, 0, 0, 0, 4, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Orgarhythm", 11, 15, 41, 4, 100, 12, 100, 14, 200, 84, 0, 0, 0);
 	}
 	if (no == 7)
 	{
@@ -1230,43 +1230,43 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 54);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6248, 4800, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData0(ii, 6248, 4800, 0, 0, 0, 0, 0, 0, 0, 0, 8);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lia's Clothes", 11, 15, 31, 4, 100, 12, 100, 35, 1, 43, 1, £g‘Ìƒu[ƒXƒg, 0);
+		ItemGenerateData1(ii, no, lv, "Lia's Clothes", 11, 15, 31, 4, 100, 12, 100, 35, 1, 43, 1, £g‘Ìƒu[ƒXƒg, 0);
 	}
 	if (no == 55)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6010, 180, 10, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "White Belt Gi", 11, 16, 10, 4, 10, 12, 10, 29, 30, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6010, 180, 10, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "White Belt Gi", 11, 16, 10, 4, 10, 12, 10, 29, 30, 0, 0, 0, 0);
 	}
 	if (no == 58)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6011, 700, 30, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Black Belt Gi", 11, 16, 20, 4, 25, 12, 25, 29, 30, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6011, 700, 30, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Black Belt Gi", 11, 16, 20, 4, 25, 12, 25, 29, 30, 0, 0, 0, 0);
 	}
 	if (no == 59)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6411, 700, 25, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "China Dress", 11, 16, 21, 4, 25, 12, 25, 29, 30, 6, 10, 43, 1);
+		ItemGenerateData0(ii, 6411, 700, 25, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "China Dress", 11, 16, 21, 4, 25, 12, 25, 29, 30, 6, 10, 43, 1);
 	}
 	if (no == 61)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6012, 3000, 40, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Red Belt Gi", 11, 16, 30, 4, 50, 12, 50, 29, 30, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6012, 3000, 40, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Red Belt Gi", 11, 16, 30, 4, 50, 12, 50, 29, 30, 0, 0, 0, 0);
 	}
 	if (no == 63)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6637, 23000, 60, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Initiation Clothes", 11, 16, 31, 4, 100, 12, 100, 29, 30, 86, 0, 0, 0);
+		ItemGenerateData0(ii, 6637, 23000, 60, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Initiation Clothes", 11, 16, 31, 4, 100, 12, 100, 29, 30, 86, 0, 0, 0);
 	}
 	if (no == 62)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6442, 3000, 40, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Killer Gi", 11, 16, 31, 4, 1, 12, 1, 2, 88, 18, 50, 0, 0);
+		ItemGenerateData0(ii, 6442, 3000, 40, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Killer Gi", 11, 16, 31, 4, 1, 12, 1, 2, 88, 18, 50, 0, 0);
 	}
 	if (no == 64)
 	{
@@ -1275,8 +1275,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6622, 3000, 50, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ulaanbaatar", 11, 16, 40, 4, 300, 12, 300, 10, 100, 90, 0, 84, 0);
+		ItemGenerateData0(ii, 6622, 3000, 50, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Ulaanbaatar", 11, 16, 40, 4, 300, 12, 300, 10, 100, 90, 0, 84, 0);
 	}
 	if (no == 10)
 	{
@@ -1286,28 +1286,28 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 19);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6372, 8000, 0, 0, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6372, 8000, 0, 0, 2, 0, 0, 0, 0, 0, 0);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sailor Uniform", 11, 12, 11, 4, 35, 12, 40, 10, 10, 43, 1, £g‘Ìƒu[ƒXƒg, 0);
+		ItemGenerateData1(ii, no, lv, "Sailor Uniform", 11, 12, 11, 4, 35, 12, 40, 10, 10, 43, 1, £g‘Ìƒu[ƒXƒg, 0);
 	}
 	if (no == 3)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6373, 8000, 1, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tarampi Suit", 11, 12, 21, 4, 75, 12, 75, 42, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6373, 8000, 1, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Tarampi Suit", 11, 12, 21, 4, 75, 12, 75, 42, 1, 0, 0, 0, 0);
 	}
 	if (no == 2)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6324, 8000, 1, 0, 0, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Stealth Suit", 11, 12, 41, 4, 10, 12, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6324, 8000, 1, 0, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Stealth Suit", 11, 12, 41, 4, 10, 12, 10, 0, 0, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 57)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6629, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6629, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		aa = 100;
 		bb = 100;
 		int loop = 0;
@@ -1328,17 +1328,17 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 				LOG_TADA("@" + ‚b–¼‘O(iic, "") + "@‡¬ " + string(aa) + " " + string(bb) + "\n");
 			}
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Strengthened Synthetic Clothes", 11, 12, 21, 4, aa, 12, bb, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, 0, "Strengthened Synthetic Clothes", 11, 12, 21, 4, aa, 12, bb, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 66)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6100, 250, 1, 1, 2, 0, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dagger", 1, 3, 10, 2, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6100, 250, 1, 1, 2, 0, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Dagger", 1, 3, 10, 2, 20, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 67)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6387, 2000, 1, 0, 0, 0, 0, 0, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Accurate Dagger", 1, 3, 11, 2, 10, 8, 50, 39, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6387, 2000, 1, 0, 0, 0, 0, 0, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Accurate Dagger", 1, 3, 11, 2, 10, 8, 50, 39, 0, 0, 0, 0, 0);
 	}
 	if (no == 70)
 	{
@@ -1348,7 +1348,7 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 54);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6249, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData0(ii, 6249, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 8);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
@@ -1359,17 +1359,17 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			£UŒ‚—Í = lv * 100;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lia's Whip", 1, 3, 21, 2, £UŒ‚—Í, 8, 50, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Lia's Whip", 1, 3, 21, 2, £UŒ‚—Í, 8, 50, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0);
 	}
 	if (no == 68)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6101, 50, 1, 1, 2, 0, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Club", 1, 10, 10, 2, 80, 9, 30, 19, 25, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6101, 50, 1, 1, 2, 0, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Club", 1, 10, 10, 2, 80, 9, 30, 19, 25, 0, 0, 0, 0);
 	}
 	if (no == 74)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6312, 5000, 1, 1, 2, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Two-handed Shield", 1, 10, 10, 2, 10, 4, 100, 12, 100, 20, 500, 0, 0);
+		ItemGenerateData0(ii, 6312, 5000, 1, 1, 2, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Two-handed Shield", 1, 10, 10, 2, 10, 4, 100, 12, 100, 20, 500, 0, 0);
 	}
 	if (no == 69)
 	{
@@ -1379,58 +1379,58 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 55);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6374, 110, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData0(ii, 6374, 110, 0, 0, 0, 0, 0, 0, 0, 0, 8);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Omikuji Box", 1, 10, 11, 2, 100, 9, 100, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Omikuji Box", 1, 10, 11, 2, 100, 9, 100, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0);
 	}
 	if (no == 71)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6102, 300, 1, 1, 2, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Shortsword", 1, 3, 10, 2, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6102, 300, 1, 1, 2, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Shortsword", 1, 3, 10, 2, 50, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 72)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6388, 500, 10, 0, 0, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ninja Knife", 1, 3, 11, 2, 110, 6, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6388, 500, 10, 0, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Ninja Knife", 1, 3, 11, 2, 110, 6, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 75)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6103, 1000, 20, 1, 2, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Rapier", 1, 3, 20, 2, 150, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6103, 1000, 20, 1, 2, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Rapier", 1, 3, 20, 2, 150, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 76)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6430, 3000, 30, 1, 2, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Rapier", 1, 3, 20, 2, 220, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6430, 3000, 30, 1, 2, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Rapier", 1, 3, 20, 2, 220, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 77)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6390, 1000, 25, 0, 0, 0, 0, 0, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Critical Knife", 1, 3, 21, 2, 280, 18, 40, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6390, 1000, 25, 0, 0, 0, 0, 0, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Critical Knife", 1, 3, 21, 2, 280, 18, 40, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 78)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6389, 1000, 25, 0, 0, 0, 0, 0, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Compound Rapier", 1, 3, 21, 2, 180, 8, 10, 16, 5, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6389, 1000, 25, 0, 0, 0, 0, 0, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Compound Rapier", 1, 3, 21, 2, 180, 8, 10, 16, 5, 0, 0, 0, 0);
 	}
 	if (no == 81)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6104, 7000, 40, 1, 2, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Villa Blade", 1, 3, 30, 2, 320, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6104, 7000, 40, 1, 2, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Villa Blade", 1, 3, 30, 2, 320, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 85)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6639, 7000, 50, 1, 0, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Over Blade", 1, 3, 31, 2, 390, 30, 2, 81, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6639, 7000, 50, 1, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Over Blade", 1, 3, 31, 2, 390, 30, 2, 81, 0, 0, 0, 0, 0);
 	}
 	if (no == 82)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6391, 7000, 45, 1, 2, 0, 0, 0, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cuckri", 1, 3, 31, 2, 320, 14, 300, 16, 5, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6391, 7000, 45, 1, 2, 0, 0, 0, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Cuckri", 1, 3, 31, 2, 320, 14, 300, 16, 5, 0, 0, 0, 0);
 	}
 	if (no == 83)
 	{
@@ -1439,8 +1439,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6612, 7000, 45, 1, 2, 0, 0, 0, 6, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Uruncel Blade", 1, 3, 40, 2, 400, 14, 300, 18, 50, 84, 0, 81, 0);
+		ItemGenerateData0(ii, 6612, 7000, 45, 1, 2, 0, 0, 0, 6, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Uruncel Blade", 1, 3, 40, 2, 400, 14, 300, 18, 50, 84, 0, 81, 0);
 	}
 	if (no == 84)
 	{
@@ -1450,73 +1450,73 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 24);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6623, 7000, 0, 1, 2, 0, 0, 0, 6, 0, 8);
+		ItemGenerateData0(ii, 6623, 7000, 0, 1, 2, 0, 0, 0, 6, 0, 8);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Decapitation Blade", 1, 3, 41, 2, 333, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Decapitation Blade", 1, 3, 41, 2, 333, £g‘Ìƒu[ƒXƒg, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 86)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6105, 350, 2, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Longsword", 1, 2, 10, 2, 70, 9, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6105, 350, 2, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Longsword", 1, 2, 10, 2, 70, 9, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 87)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6392, 350, 10, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lightning Sword", 1, 2, 11, 2, 120, 30, 3, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6392, 350, 10, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Lightning Sword", 1, 2, 11, 2, 120, 30, 3, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 88)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6443, 1500, 10, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Zombie Sword", 1, 2, 11, 2, 130, 31, 21, 31, 6, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6443, 1500, 10, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Zombie Sword", 1, 2, 11, 2, 130, 31, 21, 31, 6, 0, 0, 0, 0);
 	}
 	if (no == 90)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6106, 1500, 22, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Buster Sword", 1, 2, 20, 2, 200, 9, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6106, 1500, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Buster Sword", 1, 2, 20, 2, 200, 9, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 91)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6431, 4000, 32, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Buster Sword", 1, 2, 20, 2, 300, 9, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6431, 4000, 32, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Buster Sword", 1, 2, 20, 2, 300, 9, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 92)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6394, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Katana", 1, 2, 21, 2, 350, 18, 10, 39, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6394, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Katana", 1, 2, 21, 2, 350, 18, 10, 39, 0, 0, 0, 0, 0);
 	}
 	if (no == 94)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6394, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Paper Cutter", 1, 2, 21, 2, 250, 8, 50, 18, 10, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6394, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Paper Cutter", 1, 2, 21, 2, 250, 8, 50, 18, 10, 0, 0, 0, 0);
 	}
 	if (no == 93)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6395, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Iceberg Sword", 1, 2, 21, 2, 400, 30, 4, 9, 25, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6395, 1500, 32, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Iceberg Sword", 1, 2, 21, 2, 400, 30, 4, 9, 25, 0, 0, 0, 0);
 	}
 	if (no == 95)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6107, 9000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Super Sword", 1, 2, 30, 2, 500, 9, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6107, 9000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Super Sword", 1, 2, 30, 2, 500, 9, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 98)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6640, 9000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ultra Sword", 1, 2, 31, 2, 600, 14, 600, 9, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6640, 9000, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Ultra Sword", 1, 2, 31, 2, 600, 14, 600, 9, 20, 0, 0, 0, 0);
 	}
 	if (no == 96)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6396, 9000, 52, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hideo's Sword", 1, 2, 31, 2, 700, 9, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6396, 9000, 52, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Hideo's Sword", 1, 2, 31, 2, 700, 9, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 99)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6641, 9000, 62, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hero's Sword", 1, 2, 31, 2, 900, 5, 100, 13, 100, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6641, 9000, 62, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Hero's Sword", 1, 2, 31, 2, 900, 5, 100, 13, 100, 0, 0, 0, 0);
 	}
 	if (no == 97)
 	{
@@ -1525,8 +1525,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6613, 9000, 52, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Persiom", 1, 2, 40, 2, 1000, 8, 20, 20, 500, 84, 0, 81, 0);
+		ItemGenerateData0(ii, 6613, 9000, 52, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Persiom", 1, 2, 40, 2, 1000, 8, 20, 20, 500, 84, 0, 81, 0);
 	}
 	if (no == 100)
 	{
@@ -1537,68 +1537,68 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		}
 		lv = 0;
 		ItemEquippedCharacter(ii, 1, 1);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6323, 9000, 0, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Chaos the Darksword", 1, 2, 41, 2, 2000, 18, 30, 81, 0, 82, 60, 0, 0);
+		ItemGenerateData0(ii, 6323, 9000, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Chaos the Darksword", 1, 2, 41, 2, 2000, 18, 30, 81, 0, 82, 60, 0, 0);
 	}
 	if (no == 320)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6447, 9000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "By Road", 1, 2, 31, 2, 450, 9, 40, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6447, 9000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "By Road", 1, 2, 31, 2, 450, 9, 40, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 131)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6447, 9000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "By Road", 1, 2, 31, 2, 450, 9, 40, 84, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6447, 9000, 40, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "By Road", 1, 2, 31, 2, 450, 9, 40, 84, 0, 0, 0, 0, 0);
 	}
 	if (no == 133)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6108, 400, 1, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Shortbow", 1, 5, 10, 2, 40, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6108, 400, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Shortbow", 1, 5, 10, 2, 40, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 134)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6397, 400, 10, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Elite Kalar Bow", 1, 5, 11, 2, 80, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6397, 400, 10, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Elite Kalar Bow", 1, 5, 11, 2, 80, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 135)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6330, 7000, 3, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ear-hunter Boomerang", 1, 5, 11, 2, 44, 31, 13, 8, 30, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6330, 7000, 3, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Ear-hunter Boomerang", 1, 5, 11, 2, 44, 31, 13, 8, 30, 0, 0, 0, 0);
 	}
 	if (no == 137)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6109, 1900, 20, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Longbow", 1, 5, 20, 2, 150, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6109, 1900, 20, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Longbow", 1, 5, 20, 2, 150, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 138)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6434, 5000, 30, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Longbow", 1, 5, 20, 2, 250, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6434, 5000, 30, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Longbow", 1, 5, 20, 2, 250, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 139)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6398, 1900, 29, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Insect-killer Bow", 1, 5, 21, 2, 250, 31, 6, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6398, 1900, 29, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Insect-killer Bow", 1, 5, 21, 2, 250, 31, 6, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 140)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6445, 1900, 29, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ancient-hunter Bow", 1, 5, 21, 2, 270, 31, 11, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6445, 1900, 29, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Ancient-hunter Bow", 1, 5, 21, 2, 270, 31, 11, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 142)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6110, 8800, 40, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Power Attack Bow", 1, 5, 30, 2, 350, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6110, 8800, 40, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Power Attack Bow", 1, 5, 30, 2, 350, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 145)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6644, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Giga Attack Bow", 1, 5, 31, 2, 500, 10, 5, 4, 5, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6644, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Giga Attack Bow", 1, 5, 31, 2, 500, 10, 5, 4, 5, 0, 0, 0, 0);
 	}
 	if (no == 143)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6399, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Artisan's Bow", 1, 5, 31, 2, 450, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6399, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Artisan's Bow", 1, 5, 31, 2, 450, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 144)
 	{
@@ -1607,28 +1607,28 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6616, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Stronger", 1, 5, 40, 2, 999, 8, 20, 10, 50, 84, 0, 81, 0);
+		ItemGenerateData0(ii, 6616, 8800, 50, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Stronger", 1, 5, 40, 2, 999, 8, 20, 10, 50, 84, 0, 81, 0);
 	}
 	if (no == 170)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6321, 8800, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6321, 8800, 1, 0, 0, 3, 0, 0, 0, 0, 0);
 		aa = 400;
 		if (Ÿƒ[ƒ‹ƒh == 3)
 		{
 			aa = 600;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Arquebus", 1, 6, 30, 2, aa, 16, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Arquebus", 1, 6, 30, 2, aa, 16, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 319)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6321, 8800, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6321, 8800, 1, 0, 0, 3, 0, 0, 0, 0, 0);
 		aa = 600;
 		if (Ÿƒ[ƒ‹ƒh == 3)
 		{
 			aa = 990;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Arquebus", 1, 6, 31, 2, aa, 16, 20, 39, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Arquebus", 1, 6, 31, 2, aa, 16, 20, 39, 0, 0, 0, 0, 0);
 	}
 	if (no == 171)
 	{
@@ -1638,7 +1638,7 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 29);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6322, 8800, 0, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6322, 8800, 0, 0, 0, 3, 0, 0, 0, 0, 0);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
@@ -1649,72 +1649,72 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			aa = 1000;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tulip 1", 1, 6, 40, 2, aa, 8, 20, 19, 20, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Tulip 1", 1, 6, 40, 2, aa, 8, 20, 19, 20, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
 	}
 	if (no == 101)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6111, 260, 5, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Strongman Hammer", 1, 4, 10, 2, 200, 9, 30, 19, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6111, 260, 5, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Strongman Hammer", 1, 4, 10, 2, 200, 9, 30, 19, 20, 0, 0, 0, 0);
 	}
 	if (no == 104)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6111, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Killer Hammer", 1, 4, 11, 2, 70, 9, 10, 18, 30, 39, 0, 0, 0);
+		ItemGenerateData0(ii, 6111, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Killer Hammer", 1, 4, 11, 2, 70, 9, 10, 18, 30, 39, 0, 0, 0);
 	}
 	if (no == 103)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6329, 980, 3, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Priest's Mace", 1, 4, 10, 2, 150, 31, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6329, 980, 3, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Priest's Mace", 1, 4, 10, 2, 150, 31, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 102)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6370, 260, 15, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dewdrop Axe", 1, 4, 11, 2, 400, 9, 30, 20, 50, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6370, 260, 15, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Dewdrop Axe", 1, 4, 11, 2, 400, 9, 30, 20, 50, 0, 0, 0, 0);
 	}
 	if (no == 106)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6112, 900, 20, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hammer B", 1, 4, 20, 2, 500, 9, 30, 19, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6112, 900, 20, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Hammer B", 1, 4, 20, 2, 500, 9, 30, 19, 20, 0, 0, 0, 0);
 	}
 	if (no == 107)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6432, 3000, 30, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Hammer B", 1, 4, 20, 2, 700, 9, 30, 19, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6432, 3000, 30, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Hammer B", 1, 4, 20, 2, 700, 9, 30, 19, 20, 0, 0, 0, 0);
 	}
 	if (no == 109)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6439, 1580, 25, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pastor's Mace", 1, 4, 20, 2, 500, 4, 50, 31, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6439, 1580, 25, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Pastor's Mace", 1, 4, 20, 2, 500, 4, 50, 31, 20, 0, 0, 0, 0);
 	}
 	if (no == 110)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6439, 1580, 25, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pastor's Mace D", 1, 4, 20, 2, 700, 31, 8, 31, 20, 31, 11, 0, 0);
+		ItemGenerateData0(ii, 6439, 1580, 25, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Pastor's Mace D", 1, 4, 20, 2, 700, 31, 8, 31, 20, 31, 11, 0, 0);
 	}
 	if (no == 108)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6440, 900, 25, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mollusc Crusher", 1, 4, 21, 2, 700, 9, 30, 19, 10, 31, 19, 0, 0);
+		ItemGenerateData0(ii, 6440, 900, 25, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Mollusc Crusher", 1, 4, 21, 2, 700, 9, 30, 19, 10, 31, 19, 0, 0);
 	}
 	if (no == 111)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6113, 6000, 40, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Big Hammer", 1, 4, 30, 2, 800, 9, 30, 19, 20, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6113, 6000, 40, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Big Hammer", 1, 4, 30, 2, 800, 9, 30, 19, 20, 0, 0, 0, 0);
 	}
 	if (no == 115)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6642, 6000, 50, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "10-Ton Hammer", 1, 4, 31, 2, 1200, 9, 60, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6642, 6000, 50, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "10-Ton Hammer", 1, 4, 31, 2, 1200, 9, 60, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 112)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6441, 6000, 45, 1, 2, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Becky", 1, 4, 31, 2, 1000, 9, 40, 5, 99, 19, 30, 0, 0);
+		ItemGenerateData0(ii, 6441, 6000, 45, 1, 2, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Becky", 1, 4, 31, 2, 1000, 9, 40, 5, 99, 19, 30, 0, 0);
 	}
 	if (no == 113)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6329, 8580, 45, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bishop's Mace", 1, 4, 31, 2, 800, 14, 500, 31, 20, 30, 2, 0, 0);
+		ItemGenerateData0(ii, 6329, 8580, 45, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Bishop's Mace", 1, 4, 31, 2, 800, 14, 500, 31, 20, 30, 2, 0, 0);
 	}
 	if (no == 114)
 	{
@@ -1723,39 +1723,39 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6614, 8580, 45, 0, 0, 0, 0, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Comet", 1, 4, 40, 2, 800, 19, 50, 8, 25, 84, 0, 31, 12);
+		ItemGenerateData0(ii, 6614, 8580, 45, 0, 0, 0, 0, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Comet", 1, 4, 40, 2, 800, 19, 50, 8, 25, 84, 0, 31, 12);
 	}
 	if (no == 117)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6318, 260, 5, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Warrior's Spear", 1, 7, 10, 2, 120, 17, 5, 8, 10, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6318, 260, 5, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Warrior's Spear", 1, 7, 10, 2, 120, 17, 5, 8, 10, 0, 0, 0, 0);
 	}
 	if (no == 118)
 	{
 		ItemEquippedCharacter(ii, 1, 20);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6375, 260, 0, 0, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Poison Dango", 1, 7, 11, 2, 100, 17, 5, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6375, 260, 0, 0, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Poison Dango", 1, 7, 11, 2, 100, 17, 5, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 119)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6400, 260, 12, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Spear", 1, 7, 11, 2, 200, 17, 5, 30, 5, 8, 10, 0, 0);
+		ItemGenerateData0(ii, 6400, 260, 12, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Flame Spear", 1, 7, 11, 2, 200, 17, 5, 30, 5, 8, 10, 0, 0);
 	}
 	if (no == 122)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6319, 1500, 22, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Spear", 1, 7, 20, 2, 200, 17, 5, 8, 10, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6319, 1500, 22, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Spear", 1, 7, 20, 2, 200, 17, 5, 8, 10, 0, 0, 0, 0);
 	}
 	if (no == 123)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6433, 5500, 32, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Spear", 1, 7, 20, 2, 280, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6433, 5500, 32, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Spear", 1, 7, 20, 2, 280, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 124)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6446, 1500, 27, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Spear", 1, 7, 21, 2, 420, 17, 5, 30, 1, 8, 10, 0, 0);
+		ItemGenerateData0(ii, 6446, 1500, 27, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Light Spear", 1, 7, 21, 2, 420, 17, 5, 30, 1, 8, 10, 0, 0);
 	}
 	if (no == 125)
 	{
@@ -1764,28 +1764,28 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6634, 1500, 30, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6634, 1500, 30, 1, 0, 0, 0, 0, 0, 0, 0);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Naginata", 1, 7, 21, 2, 380, 14, 190, 8, 10, 4, 45, £g‘Ìƒu[ƒXƒg, 0);
+		ItemGenerateData1(ii, no, lv, "Naginata", 1, 7, 21, 2, 380, 14, 190, 8, 10, 4, 45, £g‘Ìƒu[ƒXƒg, 0);
 	}
 	if (no == 127)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6320, 6800, 40, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Halberd", 1, 7, 30, 2, 550, 17, 5, 8, 10, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6320, 6800, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Halberd", 1, 7, 30, 2, 550, 17, 5, 8, 10, 0, 0, 0, 0);
 	}
 	if (no == 130)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6643, 6800, 40, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Halberd S", 1, 7, 30, 2, 650, 17, 5, 8, 10, 91, 0, 0, 0);
+		ItemGenerateData0(ii, 6643, 6800, 40, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Halberd S", 1, 7, 30, 2, 650, 17, 5, 8, 10, 91, 0, 0, 0);
 	}
 	if (no == 128)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6401, 6800, 44, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Anguirus", 1, 7, 31, 2, 800, 17, 5, 5, 30, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6401, 6800, 44, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Anguirus", 1, 7, 31, 2, 800, 17, 5, 5, 30, 0, 0, 0, 0);
 	}
 	if (no == 129)
 	{
@@ -1794,48 +1794,48 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6615, 6800, 44, 1, 2, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Terror Spear", 1, 7, 40, 2, 950, 8, 10, 16, 5, 18, 50, 84, 0);
+		ItemGenerateData0(ii, 6615, 6800, 44, 1, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Terror Spear", 1, 7, 40, 2, 950, 8, 10, 16, 5, 18, 50, 84, 0);
 	}
 	if (no == 148)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6114, 100, 1, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Glove", 1, 9, 10, 2, 5, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6114, 100, 1, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Glove", 1, 9, 10, 2, 5, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 149)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6427, 100, 1, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Good Will Punch", 1, 9, 11, 2, 5, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6427, 100, 1, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Good Will Punch", 1, 9, 11, 2, 5, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 151)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6115, 900, 20, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Knuckle", 1, 9, 20, 2, 50, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6115, 900, 20, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Knuckle", 1, 9, 20, 2, 50, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 152)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6435, 2000, 30, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Knuckle", 1, 9, 20, 2, 100, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6435, 2000, 30, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Modified Knuckle", 1, 9, 20, 2, 100, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 153)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6428, 900, 20, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Config", 1, 9, 21, 2, 50, 8, 10, 39, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6428, 900, 20, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Config", 1, 9, 21, 2, 50, 8, 10, 39, 0, 0, 0, 0, 0);
 	}
 	if (no == 155)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6116, 3200, 40, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Metal Glove", 1, 9, 30, 2, 200, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6116, 3200, 40, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Metal Glove", 1, 9, 30, 2, 200, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 158)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6645, 3200, 80, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Veteran Glove", 1, 9, 31, 2, 400, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6645, 3200, 80, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Veteran Glove", 1, 9, 31, 2, 400, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 156)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6429, 3200, 40, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Killfig", 1, 9, 31, 2, 100, 8, 10, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6429, 3200, 40, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Killfig", 1, 9, 31, 2, 100, 8, 10, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 157)
 	{
@@ -1844,8 +1844,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6617, 3200, 46, 0, 0, 0, 0, 0, 0, 7, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dragon Gloves", 1, 9, 40, 2, 400, 18, 50, 84, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6617, 3200, 46, 0, 0, 0, 0, 0, 0, 7, 0);
+		ItemGenerateData1(ii, no, lv, "Dragon Gloves", 1, 9, 40, 2, 400, 18, 50, 84, 0, 0, 0, 0, 0);
 	}
 	if (no == 178)
 	{
@@ -1855,43 +1855,43 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 23);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6325, 260, 0, 0, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData0(ii, 6325, 260, 0, 0, 0, 0, 0, 0, 6, 0, 0);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Puncher", 1, 9, 40, 2, 1, 19, 80, 8, 50, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Puncher", 1, 9, 40, 2, 1, 19, 80, 8, 50, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
 	}
 	if (no == 160)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6117, 298, 1, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Haies Staff", 1, 8, 10, 14, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6117, 298, 1, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Haies Staff", 1, 8, 10, 14, 30, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 161)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6402, 298, 11, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Ice Stick", 1, 8, 11, 14, 60, 30, 4, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6402, 298, 11, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Magic Ice Stick", 1, 8, 11, 14, 60, 30, 4, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 163)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6118, 1980, 20, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Sylph Staff", 1, 8, 20, 14, 120, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6118, 1980, 20, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Sylph Staff", 1, 8, 20, 14, 120, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 164)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6444, 1980, 24, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Shining LED Staff", 1, 8, 21, 14, 180, 30, 1, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6444, 1980, 24, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Shining LED Staff", 1, 8, 21, 14, 180, 30, 1, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 166)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6119, 6900, 40, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Gaia Staff", 1, 8, 30, 14, 250, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6119, 6900, 40, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Gaia Staff", 1, 8, 30, 14, 250, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 167)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6646, 6900, 40, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Boss's Staff", 1, 8, 30, 14, 300, 30, 2, 91, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6646, 6900, 40, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Boss's Staff", 1, 8, 30, 14, 300, 30, 2, 91, 0, 0, 0, 0, 0);
 	}
 	if (no == 165)
 	{
@@ -1901,13 +1901,13 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 84);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6653, 6900, 20, 0, 0, 0, 4, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6653, 6900, 20, 0, 0, 0, 4, 0, 0, 0, 0);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Queen's Staff", 1, 8, 31, 14, 350, 12, 100, 20, 500, 88, 0, £g‘Ìƒu[ƒXƒg, 0);
+		ItemGenerateData1(ii, no, lv, "Queen's Staff", 1, 8, 31, 14, 350, 12, 100, 20, 500, 88, 0, £g‘Ìƒu[ƒXƒg, 0);
 	}
 	if (no == 168)
 	{
@@ -1916,8 +1916,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			lv = 9;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6618, 6900, 50, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Buddha", 1, 8, 40, 14, 400, 2, 330, 16, 10, 84, 0, 81, 0);
+		ItemGenerateData0(ii, 6618, 6900, 50, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Buddha", 1, 8, 40, 14, 400, 2, 330, 16, 10, 84, 0, 81, 0);
 	}
 	if (no == 169)
 	{
@@ -1927,141 +1927,141 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 			lv = 9;
 		}
 		ItemEquippedCharacter(ii, 1, 39);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6624, 6900, 0, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData0(ii, 6624, 6900, 0, 0, 0, 0, 4, 5, 0, 0, 0);
 		int £g‘Ìƒu[ƒXƒg = 0;
 		if (lv != 0 && FA[309] == 1)
 		{
 			£g‘Ìƒu[ƒXƒg = 84;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crystal Rod", 1, 8, 41, 14, 333, 39, 0, 88, 0, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Crystal Rod", 1, 8, 41, 14, 333, 39, 0, 88, 0, £g‘Ìƒu[ƒXƒg, 0, 0, 0);
 	}
 	if (no == 205)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6250, 2000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Accuracy Boots", 17, 0, 0, 8, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6250, 2000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Accuracy Boots", 17, 0, 0, 8, 30, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 340)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6250, 500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Accuracy Boots", 17, 0, 0, 8, 15, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6250, 500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Accuracy Boots", 17, 0, 0, 8, 15, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 191)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6206, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Evasion Boots", 17, 0, 0, 6, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6206, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Evasion Boots", 17, 0, 0, 6, 20, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 192)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6206, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Evasion Boots", 17, 0, 0, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6206, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Evasion Boots", 17, 0, 0, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 193)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6205, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resilience Necklace", 17, 0, 0, 10, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6205, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Resilience Necklace", 17, 0, 0, 10, 30, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 194)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6205, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resilience Necklace", 17, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6205, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Resilience Necklace", 17, 0, 0, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 212)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6407, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pocket Hammer", 17, 0, 0, 19, 30, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6407, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Pocket Hammer", 17, 0, 0, 19, 30, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 341)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6407, 800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pocket Hammer", 17, 0, 0, 19, 15, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6407, 800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Pocket Hammer", 17, 0, 0, 19, 15, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 213)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6408, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bloomers", 17, 0, 0, 8, 10, 6, 10, 19, 10, 10, 10, 0, 0);
+		ItemGenerateData0(ii, 6408, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Bloomers", 17, 0, 0, 8, 10, 6, 10, 19, 10, 10, 10, 0, 0);
 	}
 	if (no == 196)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6208, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 40, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6208, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 40, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 197)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6208, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6208, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 198)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6208, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 25, 10, 20, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6208, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Additional Armor", 17, 0, 0, 4, 25, 10, 20, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 189)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6209, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resistance Ring", 17, 0, 0, 12, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6209, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Resistance Ring", 17, 0, 0, 12, 50, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 190)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6209, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Resistance Ring", 17, 0, 0, 12, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6209, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Resistance Ring", 17, 0, 0, 12, 20, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 172)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6654, 1000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Super Resistance Ring", 17, 0, 0, 12, 200, 16, 5, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6654, 1000, 40, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Super Resistance Ring", 17, 0, 0, 12, 200, 16, 5, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 215)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6312, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mr. Hiroshi", 17, 0, 0, 10, 20, 7, 30, 4, 5, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6312, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Mr. Hiroshi", 17, 0, 0, 10, 20, 7, 30, 4, 5, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 216)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6378, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Marble", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6378, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Marble", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 219)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6251, 100, 20, 0, 0, 0, 4, 5, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crystal", 17, 0, 0, 14, 100, 12, 100, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6251, 100, 20, 0, 0, 0, 4, 5, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Crystal", 17, 0, 0, 14, 100, 12, 100, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 218)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6425, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Portrait~", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6425, 100, 1, 0, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Portrait~", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 217)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6378, 100, 1, 1, 0, 0, 0, 0, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Orochi's Scale", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6378, 100, 1, 1, 0, 0, 0, 0, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Orochi's Scale", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 209)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6380, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Soul Shackle", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6380, 100, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Soul Shackle", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 214)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6416, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hanny Goods", 17, 0, 0, 37, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6416, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Hanny Goods", 17, 0, 0, 37, 1, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 199)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6384, 0, 1, 1, 0, 3, 4, 5, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cardboard Armor", 17, 0, 0, 4, 15, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6384, 0, 1, 1, 0, 3, 4, 5, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Cardboard Armor", 17, 0, 0, 4, 15, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 195)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6207, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Poison Mask", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6207, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Poison Mask", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 211)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6406, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6406, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		aa = 15;
 		if (RLV >= 30)
 		{
@@ -2071,390 +2071,390 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			aa = 55;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Pocketknife", 17, 0, 0, 2, aa, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Pocketknife", 17, 0, 0, 2, aa, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 335)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6647, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Abnormal Bloomers", 17, 43, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6647, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Abnormal Bloomers", 17, 43, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 200)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6210, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6210, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		for (; ; )
 		{
 			if (lv >= 2 && RAND(4) == 1)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 50, 10, 10, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 50, 10, 10, 0, 0, 0, 0, 0, 0);
 				break;
 			}
 			if (lv >= 2 && RAND(4) == 2)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 50, 18, 10, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 50, 18, 10, 0, 0, 0, 0, 0, 0);
 				break;
 			}
-			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			ItemGenerateData1(ii, no, lv, "Flame Charm", 17, 0, 0, 21, 80, 0, 0, 0, 0, 0, 0, 0, 0);
 			break;
 		}
 	}
 	if (no == 201)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6211, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6211, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		for (; ; )
 		{
 			if (lv >= 2 && RAND(4) == 1)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 50, 10, 10, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 50, 10, 10, 0, 0, 0, 0, 0, 0);
 				break;
 			}
 			if (lv >= 2 && RAND(4) == 2)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 50, 12, 20, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 50, 12, 20, 0, 0, 0, 0, 0, 0);
 				break;
 			}
-			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			ItemGenerateData1(ii, no, lv, "Ice Charm", 17, 0, 0, 22, 80, 0, 0, 0, 0, 0, 0, 0, 0);
 			break;
 		}
 	}
 	if (no == 202)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6212, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6212, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		for (; ; )
 		{
 			if (lv >= 2 && RAND(4) == 1)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 50, 10, 10, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 50, 10, 10, 0, 0, 0, 0, 0, 0);
 				break;
 			}
 			if (lv >= 2 && RAND(4) == 2)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 50, 4, 20, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 50, 4, 20, 0, 0, 0, 0, 0, 0);
 				break;
 			}
-			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			ItemGenerateData1(ii, no, lv, "Electric Charm", 17, 0, 0, 23, 80, 0, 0, 0, 0, 0, 0, 0, 0);
 			break;
 		}
 	}
 	if (no == 203)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6213, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6213, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		for (; ; )
 		{
 			if (lv >= 2 && RAND(4) == 1)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Charm", 17, 0, 0, 24, 50, 2, 50, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Light Charm", 17, 0, 0, 24, 50, 2, 50, 0, 0, 0, 0, 0, 0);
 				break;
 			}
 			if (lv >= 2 && RAND(4) == 2)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Charm", 17, 0, 0, 24, 50, 14, 50, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Light Charm", 17, 0, 0, 24, 50, 14, 50, 0, 0, 0, 0, 0, 0);
 				break;
 			}
-			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Light Charm", 17, 0, 0, 24, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			ItemGenerateData1(ii, no, lv, "Light Charm", 17, 0, 0, 24, 80, 0, 0, 0, 0, 0, 0, 0, 0);
 			break;
 		}
 	}
 	if (no == 204)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6214, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6214, 900, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		for (; ; )
 		{
 			if (lv >= 2 && RAND(4) == 1)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 50, 2, 50, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 50, 2, 50, 0, 0, 0, 0, 0, 0);
 				break;
 			}
 			if (lv >= 2 && RAND(4) == 2)
 			{
-				‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 50, 14, 50, 0, 0, 0, 0, 0, 0);
+				ItemGenerateData1(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 50, 14, 50, 0, 0, 0, 0, 0, 0);
 				break;
 			}
-			‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 80, 0, 0, 0, 0, 0, 0, 0, 0);
+			ItemGenerateData1(ii, no, lv, "Dark Charm", 17, 0, 0, 25, 80, 0, 0, 0, 0, 0, 0, 0, 0);
 			break;
 		}
 	}
 	if (no == 206)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6335, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Learning Device", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6335, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Learning Device", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 343)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6335, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Modified Learning Device", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6335, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Modified Learning Device", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 180)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6326, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Harumaki", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6326, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Harumaki", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 226)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Sel)", 17, 18, 0, 60, 0, 61, 5, 62, 35, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Scroll (Sel)", 17, 18, 0, 60, 0, 61, 5, 62, 35, 0, 0, 0, 0);
 	}
 	if (no == 224)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Shitomone)", 17, 18, 0, 60, 0, 61, 10, 62, 46, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Scroll (Shitomone)", 17, 18, 0, 60, 0, 61, 10, 62, 46, 0, 0, 0, 0);
 	}
 	if (no == 223)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Karma)", 17, 18, 0, 60, 0, 61, 10, 62, 25, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Scroll (Karma)", 17, 18, 0, 60, 0, 61, 10, 62, 25, 0, 0, 0, 0);
 	}
 	if (no == 220)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		aa = 6;
 		if (‚pó‘Ô(76, -1) == 2)
 		{
 			aa = 1;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Elenoa)", 17, 18, 0, 60, 0, 61, aa, 62, 10, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Scroll (Elenoa)", 17, 18, 0, 60, 0, 61, aa, 62, 10, 0, 0, 0, 0);
 	}
 	if (no == 222)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Nozomi)", 17, 18, 0, 60, 140, 61, 10, 62, 13, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Scroll (Nozomi)", 17, 18, 0, 60, 140, 61, 10, 62, 13, 0, 0, 0, 0);
 	}
 	if (no == 225)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Wichita)", 17, 18, 0, 60, 0, 61, 10, 62, 11, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Scroll (Wichita)", 17, 18, 0, 60, 0, 61, 10, 62, 11, 0, 0, 0, 0);
 	}
 	if (no == 221)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6334, 1000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		aa = 20;
 		if (‚pó‘Ô(76, -1) == 2)
 		{
 			aa = 1;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Scroll (Mill)", 17, 18, 0, 60, 0, 61, aa, 62, 43, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Scroll (Mill)", 17, 18, 0, 60, 0, 61, aa, 62, 43, 0, 0, 0, 0);
 	}
 	if (no == 227)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Can Can", 17, 20, 0, 63, 114, 75, 1, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Can Can", 17, 20, 0, 63, 114, 75, 1, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 228)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6501, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "97 Chi-Ha", 17, 20, 0, 63, 113, 75, 1, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6501, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "97 Chi-Ha", 17, 20, 0, 63, 113, 75, 1, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 229)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6502, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Gecky", 17, 20, 0, 63, 115, 75, 1, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6502, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Gecky", 17, 20, 0, 63, 115, 75, 1, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 230)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6503, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magisco", 17, 20, 0, 63, 116, 75, 2, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6503, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Magisco", 17, 20, 0, 63, 116, 75, 2, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 231)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6504, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kraken", 17, 20, 0, 63, 117, 75, 1, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6504, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Kraken", 17, 20, 0, 63, 117, 75, 1, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 232)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6505, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Crab Girl", 17, 20, 0, 63, 118, 75, 2, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6505, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Crab Girl", 17, 20, 0, 63, 118, 75, 2, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 233)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6506, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Splish-Splash", 17, 20, 0, 63, 119, 75, 2, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6506, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Splish-Splash", 17, 20, 0, 63, 119, 75, 2, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 234)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6507, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Frog Lady", 17, 20, 0, 63, 120, 75, 2, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6507, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Frog Lady", 17, 20, 0, 63, 120, 75, 2, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 235)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6508, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Maid Lady", 17, 20, 0, 63, 121, 75, 2, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6508, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Maid Lady", 17, 20, 0, 63, 121, 75, 2, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 236)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6509, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Zashiki-Warashi", 17, 20, 0, 63, 122, 75, 2, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6509, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Zashiki-Warashi", 17, 20, 0, 63, 122, 75, 2, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 243)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6516, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ralga's Cat", 17, 20, 0, 63, 346, 75, 3, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6516, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Ralga's Cat", 17, 20, 0, 63, 346, 75, 3, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 237)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6510, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lantyrn", 17, 20, 0, 63, 123, 75, 3, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6510, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Lantyrn", 17, 20, 0, 63, 123, 75, 3, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 238)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6511, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tokko", 17, 20, 0, 63, 124, 75, 3, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6511, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Tokko", 17, 20, 0, 63, 124, 75, 3, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 239)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6512, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Majician", 17, 20, 0, 63, 125, 75, 3, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6512, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Majician", 17, 20, 0, 63, 125, 75, 3, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 242)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6515, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Captain Vanilla", 17, 20, 0, 63, 128, 75, 4, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6515, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Captain Vanilla", 17, 20, 0, 63, 128, 75, 4, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 240)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6513, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Nekomatamata", 17, 20, 0, 63, 126, 75, 4, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6513, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Nekomatamata", 17, 20, 0, 63, 126, 75, 4, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 241)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6514, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Valkyrie", 17, 20, 0, 63, 127, 75, 4, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6514, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Valkyrie", 17, 20, 0, 63, 127, 75, 4, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 244)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6632, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Battle Booklet", 17, 20, 0, 63, 129, 75, 3, 76, 1, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6632, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Battle Booklet", 17, 20, 0, 63, 129, 75, 3, 76, 1, 0, 0, 0, 0);
 	}
 	if (no == 210)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6331, 800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "FastPass", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6331, 800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "FastPass", 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 208)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6376, 100, 1, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Angel Mirror", 17, 0, 0, 34, 226, 26, 5, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6376, 100, 1, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, lv, "Angel Mirror", 17, 0, 0, 34, 226, 26, 5, 0, 0, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 181)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6200, 980, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ibeprofun Box", 17, 0, 0, 34, 206, 26, 1, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6200, 980, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Ibeprofun Box", 17, 0, 0, 34, 206, 26, 1, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 182)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6216, 19800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ibeprofun EX Box", 17, 0, 0, 34, 207, 26, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6216, 19800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Ibeprofun EX Box", 17, 0, 0, 34, 207, 26, 2, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 183)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6217, 98800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ibeprofun EX+ Box", 17, 0, 0, 34, 208, 26, 3, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6217, 98800, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Ibeprofun EX+ Box", 17, 0, 0, 34, 208, 26, 3, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 184)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6379, 2000, 1, 1, 2, 3, 0, 0, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Epinephrend", 17, 0, 0, 34, 209, 26, 1, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6379, 2000, 1, 1, 2, 3, 0, 0, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Epinephrend", 17, 0, 0, 34, 209, 26, 1, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 185)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6201, 7700, 1, 1, 2, 3, 4, 5, 0, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Magic Key", 17, 0, 0, 34, 210, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6201, 7700, 1, 1, 2, 3, 4, 5, 0, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Magic Key", 17, 0, 0, 34, 210, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 186)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6202, 1500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Capture Rope", 17, 0, 0, 34, 166, 26, 2, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6202, 1500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Capture Rope", 17, 0, 0, 34, 166, 26, 2, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 318)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6202, 1500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Strong Capture Rope", 17, 0, 0, 34, 451, 26, 8, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6202, 1500, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Strong Capture Rope", 17, 0, 0, 34, 451, 26, 8, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 187)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6203, 9900, 1, 0, 0, 3, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Explosive Rounds", 17, 0, 0, 34, 167, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6203, 9900, 1, 0, 0, 3, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Explosive Rounds", 17, 0, 0, 34, 167, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 188)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6204, 9999, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hanny Zippo", 17, 0, 0, 34, 302, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6204, 9999, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, lv, "Hanny Zippo", 17, 0, 0, 34, 302, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 179)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6337, 7700, 1, 0, 0, 0, 0, 0, 6, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Stealth Device", 17, 0, 0, 34, 215, 26, 3, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6337, 7700, 1, 0, 0, 0, 0, 0, 6, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Stealth Device", 17, 0, 0, 34, 215, 26, 3, 0, 0, 0, 0, 0, 0);
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 207)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6333, 10000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Box of Cakes", 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6333, 10000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Box of Cakes", 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 255)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lotion A", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Lotion A", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 256)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lotion B", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Lotion B", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 257)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lotion C", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6215, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Lotion C", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 258)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6338, 50000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Jewel", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6338, 50000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Jewel", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 259)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6361, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kugu Piece A", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6361, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Kugu Piece A", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 260)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6362, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kugu Piece B", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6362, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Kugu Piece B", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 261)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6363, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Kugu Piece C", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6363, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Kugu Piece C", 23, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 262)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6364, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tama's Underwear", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6364, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Tama's Underwear", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 263)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6365, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Tama's Dress", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6365, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Tama's Dress", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 267)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6383, 1500, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Reddish Feather", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6383, 1500, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Reddish Feather", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 265)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6366, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mercenary Tama", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6366, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Mercenary Tama", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 266)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6367, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Mercenary Hag", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6367, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Mercenary Hag", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 322)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6600, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Poster Cylinder", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6600, 1000, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Poster Cylinder", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 268)
 	{
@@ -2467,13 +2467,13 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			£‰¿Ši = 20000;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6385, £‰¿Ši, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Character Ticket", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6385, £‰¿Ši, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Character Ticket", 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "A bonus ticket that allows$the creation of one character$during the Character Creation quest.");
 	}
 	if (no == 342)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6660, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6660, 12000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		aa = 30 + FA[347] / 15;
 		if (aa > 999)
 		{
@@ -2484,232 +2484,232 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			bb = 999;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Hanny King's Crown", 17, 0, 0, 2, aa, 12, bb, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Hanny King's Crown", 17, 0, 0, 2, aa, 12, bb, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 269)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6339, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Manga Meat Bone", 21, 0, 1, 20, 100, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6339, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Manga Meat Bone", 21, 0, 1, 20, 100, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 270)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6300, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Manga Meat", 21, 0, 2, 20, 200, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6300, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Manga Meat", 21, 0, 2, 20, 200, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 271)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6340, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Rabbit Stew", 21, 0, 3, 20, 300, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6340, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Rabbit Stew", 21, 0, 3, 20, 300, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 323)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6601, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Health Up Set", 21, 0, 4, 20, 400, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6601, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Health Up Set", 21, 0, 4, 20, 400, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 272)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6341, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Wooden Bear", 21, 0, 1, 2, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6341, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Wooden Bear", 21, 0, 1, 2, 50, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 273)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6342, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Steel Bear", 21, 0, 2, 2, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6342, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Steel Bear", 21, 0, 2, 2, 70, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 274)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6301, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Solid Gold Bear", 21, 0, 3, 2, 100, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6301, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Solid Gold Bear", 21, 0, 3, 2, 100, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 324)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6602, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Attack Up Set", 21, 0, 4, 2, 120, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6602, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Attack Up Set", 21, 0, 4, 2, 120, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 275)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6302, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Shiitake", 21, 0, 1, 4, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6302, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Shiitake", 21, 0, 1, 4, 20, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 276)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6343, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Protective Marimo", 21, 0, 2, 4, 35, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6343, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Protective Marimo", 21, 0, 2, 4, 35, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 277)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6344, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Protective God", 21, 0, 3, 4, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6344, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Protective God", 21, 0, 3, 4, 50, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 325)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6603, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Defense Up Set", 21, 0, 4, 4, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6603, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Defense Up Set", 21, 0, 4, 4, 70, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 278)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6345, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Well-Boned Fish", 21, 0, 1, 14, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6345, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Well-Boned Fish", 21, 0, 1, 14, 50, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 279)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6303, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Dora Cat's Bell", 21, 0, 2, 14, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6303, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Dora Cat's Bell", 21, 0, 2, 14, 70, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 280)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6346, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Common Seahorse", 21, 0, 3, 14, 100, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6346, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Common Seahorse", 21, 0, 3, 14, 100, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 326)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6604, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Magic Up Set", 21, 0, 4, 14, 120, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6604, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Magic Up Set", 21, 0, 4, 14, 120, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 281)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6347, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Stomachache Spirit", 21, 0, 1, 12, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6347, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Stomachache Spirit", 21, 0, 1, 12, 20, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 282)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6304, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Cowlick", 21, 0, 2, 12, 35, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6304, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Cowlick", 21, 0, 2, 12, 35, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 283)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6348, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Love Pet", 21, 0, 3, 12, 50, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6348, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Love Pet", 21, 0, 3, 12, 50, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 327)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6605, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Resistance Up Set", 21, 0, 4, 12, 70, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6605, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Resistance Up Set", 21, 0, 4, 12, 70, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 290)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6349, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Inadequate Clock", 21, 0, 1, 16, 3, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6349, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Inadequate Clock", 21, 0, 1, 16, 3, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 291)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6350, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Quick, Strange Bug", 21, 0, 2, 16, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6350, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Quick, Strange Bug", 21, 0, 2, 16, 4, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 292)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6351, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Rocket Engine", 21, 0, 3, 16, 5, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6351, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Rocket Engine", 21, 0, 3, 16, 5, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 330)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6608, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Speed Up Set", 21, 0, 4, 16, 6, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6608, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Speed Up Set", 21, 0, 4, 16, 6, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 287)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6352, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Ritchie Rod", 21, 0, 1, 8, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6352, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Ritchie Rod", 21, 0, 1, 8, 4, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 288)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6353, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Piggyback Pal", 21, 0, 2, 8, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6353, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Piggyback Pal", 21, 0, 2, 8, 7, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 289)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6306, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Moja Doll", 21, 0, 3, 8, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6306, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Moja Doll", 21, 0, 3, 8, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 329)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6607, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Accuracy Up Set", 21, 0, 4, 8, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6607, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Accuracy Up Set", 21, 0, 4, 8, 12, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 284)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6354, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Miss Stake", 21, 0, 1, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6354, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Miss Stake", 21, 0, 1, 6, 4, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 285)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6305, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Nimble Feather", 21, 0, 2, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6305, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Nimble Feather", 21, 0, 2, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 286)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6307, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Dodgy Soup", 21, 0, 3, 6, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6307, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Dodgy Soup", 21, 0, 3, 6, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 328)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6606, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Evasion Up Set", 21, 0, 4, 6, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6606, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Evasion Up Set", 21, 0, 4, 6, 12, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 293)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6355, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Scratched-Up CD", 21, 0, 1, 18, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6355, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Scratched-Up CD", 21, 0, 1, 18, 4, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 294)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6356, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Totally Broken Radio", 21, 0, 2, 18, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6356, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Totally Broken Radio", 21, 0, 2, 18, 7, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 295)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6308, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Watch & Game", 21, 0, 3, 18, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6308, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Watch & Game", 21, 0, 3, 18, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 331)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6609, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Critical Up Set", 21, 0, 4, 18, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6609, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Critical Up Set", 21, 0, 4, 18, 12, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 296)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6357, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Melting Ice", 21, 0, 1, 19, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6357, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Melting Ice", 21, 0, 1, 19, 4, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 297)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6358, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Prizeless Snack", 21, 0, 2, 19, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6358, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Prizeless Snack", 21, 0, 2, 19, 7, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 298)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6309, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Shockwave Alberto Belt", 21, 0, 3, 19, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6309, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Shockwave Alberto Belt", 21, 0, 3, 19, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 332)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6610, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Stun Up Set", 21, 0, 4, 19, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6610, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Stun Up Set", 21, 0, 4, 19, 12, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 299)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6359, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Stretchy Noodles", 21, 0, 1, 10, 4, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6359, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Stretchy Noodles", 21, 0, 1, 10, 4, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 300)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6360, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Canned Air", 21, 0, 2, 10, 7, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6360, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Canned Air", 21, 0, 2, 10, 7, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 301)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6310, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Defiance Crown", 21, 0, 3, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6310, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Defiance Crown", 21, 0, 3, 10, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 333)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6611, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Resilience Up Set", 21, 0, 4, 10, 12, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6611, 50000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Resilience Up Set", 21, 0, 4, 10, 12, 0, 0, 0, 0, 0, 0, 0, 0);
 	}
 	if (no == 304)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6311, 150000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Forbidden Talent", 21, 0, 0, 27, 20, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6311, 150000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Forbidden Talent", 21, 0, 0, 27, 20, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Super-duper blasphemous.$Whoever equips this has their talent cap raised by 20.");
 	}
 	if (no == 305)
@@ -2718,153 +2718,168 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 		{
 			FA[78] = 2000;
 		}
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6311, 2000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData0(ii, 6311, 2000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
 		‚h‰¿Ši(ii, FA[78]);
 		FA[78] = FA[78] + 500;
 		if (FA[78] > 20000)
 		{
 			FA[78] = 20000;
 		}
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Forbidden Talent - Weak", 21, 0, 0, 27, 5, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, 0, "Forbidden Talent - Weak", 21, 0, 0, 27, 5, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "An offense to the heavens.$Whoever equips this has their talent cap raised by 5.");
 	}
 	if (no == 252)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6311, 150000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Forbidden Talent - V", 21, 0, 0, 27, 3, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6311, 150000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Forbidden Talent - V", 21, 0, 0, 27, 3, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Just a bit heretical.$Whoever equips this has their talent cap raised by 3.");
 	}
 	if (no == 303)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6377, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "God's Plan", 21, 0, 0, 28, 3, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6377, 10000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "God's Plan", 21, 0, 0, 28, 3, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "You're not supposed to have this.$You're REALLY not supposed to have this.$Whoever equips this item will gain 3 skill points.");
 	}
 	if (no == 306)
 	{
 		int £‰¿Ši = 100;
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6381, £‰¿Ši, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Skill Again", 21, 0, 0, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6381, £‰¿Ši, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Skill Again", 21, 0, 0, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Useful, refreshing, heretical.$Whoever equips this will have their skill points reset (but won't gain any, of course).");
 	}
 	if (no == 307)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6218, 10000, 1, 0, 0, 0, 0, 0, 0, 0, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Gal Monster Tamer Handbook", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6218, 10000, 1, 0, 0, 0, 0, 0, 0, 0, 8);
+		ItemGenerateData1(ii, no, 0, "Gal Monster Tamer Handbook", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Equipping this text will let you learn Familiar Knowledge.$It can be discarded after acquiring the skill.");
 	}
 	if (no == 309)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6386, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Alice Coin", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6386, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Alice Coin", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Equipping this coin will let you learn Alice's Protection.$It can be discarded after acquiring the skill.");
 	}
 	if (no == 310)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6247, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Rocky Chunk", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6247, 5000, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Rocky Chunk", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Equip this chunk and you too can learn to Rock On.$It can be discarded after acquiring the skill.");
 	}
 	if (no == 302)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6349, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, 0, "Broken Clock", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6349, 200, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Broken Clock", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "A gift from Rance, her precious treasure.");
 		‚hŠO‚¹‚Ü‚¹‚ñ(ii, 1);
 	}
 	if (no == 315)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6314, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lyrica", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6314, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Lyrica", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "A captured kalar girl.$She's bound with ropes, so she can't resist.");
 	}
 	if (no == 317)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6426, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Despair Key", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6426, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Despair Key", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Key to the entrance of the Despair Group Management Department.$Don't lose it, okay?");
 	}
 	if (no == 339)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6426, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Prison Key", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6426, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Prison Key", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "The key to the cell Eropicha is locked in.");
 	}
 	if (no == 311)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6313, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Grapes", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6313, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Grapes", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Round, swollen grapes.$You'll hurt your stomach if you eat them raw, but they're delicious when cooked!");
 	}
 	if (no == 334)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6630, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Lizard-Away", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6630, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Lizard-Away", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Trying to land on these is likely to$dislocate something. The flying lizards$have learned that the hard way.");
 	}
 	if (no == 312)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6315, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Cow", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6315, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Cow", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Well behaved, but tied up just to be safe.$...Looks tasty?");
 	}
 	if (no == 313)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6368, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Bug", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6368, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Bug", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "There's no such thing as a program without bugs.$They exist in all routines.$We are at their mercy.");
 	}
 	if (no == 314)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6327, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Ninja Glue", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6327, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Ninja Glue", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "A specialty glue made just for capturing ninjas.$Non-ninjas won't even notice it.");
 	}
 	if (no == 316)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6332, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Appraiser's Ink", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6332, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Appraiser's Ink", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "With this appraisal ink, unidentified items will rise 1 rank at the end of a quest.");
 	}
 	if (no == 338)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6631, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Blank Map", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6631, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Blank Map", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Your surroundings will appear on the map.");
 	}
 	if (no == 247)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6655, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts A", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6655, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Human Parts A", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
 	}
 	if (no == 248)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6656, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts B", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6656, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Human Parts B", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
 	}
 	if (no == 249)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6657, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts C", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6657, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Human Parts C", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
 	}
 	if (no == 250)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6658, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts D", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6658, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Human Parts D", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
 	}
 	if (no == 251)
 	{
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6659, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Human Parts E", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData0(ii, 6659, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Human Parts E", 22, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		‚hî•ñ(ii, "Probably best not to look too closely or think too hard about this.");
+	}
+	if (no == 344)
+	{
+		LOG("Adding Nikkou into the game");
+		lv = 0; //lv is the item rank
+		ItemEquippedCharacter(ii, 1, 1);
+		‚h¶¬^ƒf[ƒ^‚O(ii, 6323, 9000, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Nikkou the Holy Blade", 1, 2, 41, 2, 2000, 18, 30, 81, 0, 82, 60, 0, 0);
+	}
+	if (no == 345)
+	{
+		int £‰¿Ši = 100;
+		ItemGenerateData0(ii, 6382, £‰¿Ši, 1, 1, 2, 3, 4, 5, 6, 7, 8);
+		ItemGenerateData1(ii, no, 0, "Skill Again2", 21, 0, 0, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		‚hî•ñ(ii, "Useful, refreshing, heretical.$Whoever equips this will have their skill points reset (but won't gain any, of course).");
 	}
 }
 
-void ‚h¶¬^ƒf[ƒ^‚P(int ii, int no, int lv, string –¼‘O, int type, int type2, int £í—Şƒ‰ƒ“ƒN, int ‹@”\‚P, int Œø‰Ê‚P, int ‹@”\‚Q, int Œø‰Ê‚Q, int ‹@”\‚R, int Œø‰Ê‚R, int ‹@”\‚S, int Œø‰Ê‚S, int ‹@”\‚T, int Œø‰Ê‚T)
+void ItemGenerateData1(int ii, int no, int lv, string –¼‘O, int type, int type2, int £í—Şƒ‰ƒ“ƒN, int ‹@”\‚P, int Œø‰Ê‚P, int ‹@”\‚Q, int Œø‰Ê‚Q, int ‹@”\‚R, int Œø‰Ê‚R, int ‹@”\‚S, int Œø‰Ê‚S, int ‹@”\‚T, int Œø‰Ê‚T)
 {
 	int £ƒ[ƒ‹ƒhƒ{[ƒiƒX = 0;
 	if (£í—Şƒ‰ƒ“ƒN == 11 || £í—Şƒ‰ƒ“ƒN == 21 || £í—Şƒ‰ƒ“ƒN == 31)
@@ -4110,7 +4125,7 @@ int ‚h‹@”\—L–³(int ii, int pp)
 	return 0;
 }
 
-void ‚h¶¬^ƒf[ƒ^‚O(int ii, int ‚b‚f, int ‰¿Ši, int ƒŒƒxƒ‹, int E‚P, int E‚Q, int E‚R, int E‚S, int E‚T, int E‚U, int E‚V, int E‚W)
+void ItemGenerateData0(int ii, int ‚b‚f, int ‰¿Ši, int ƒŒƒxƒ‹, int E‚P, int E‚Q, int E‚R, int E‚S, int E‚T, int E‚U, int E‚V, int E‚W)
 {
 	if (‰¿Ši > 9999999)
 	{
@@ -4348,8 +4363,8 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 				return 0;
 			}
 			lv = 4;
-			‚h¶¬^ƒf[ƒ^‚O(ii, 6438, 1000, 39, 1, 0, 3, 0, 5, 6, 0, 8);
-			‚h¶¬^ƒf[ƒ^‚P(ii, 15, lv, "Tough Leather Armor XB", 11, 13, 21, 4, 80, 12, 80, 10, 20, 86, 0, 0, 0);
+			ItemGenerateData0(ii, 6438, 1000, 39, 1, 0, 3, 0, 5, 6, 0, 8);
+			ItemGenerateData1(ii, 15, lv, "Tough Leather Armor XB", 11, 13, 21, 4, 80, 12, 80, 10, 20, 86, 0, 0, 0);
 			‚hî•ñ(ii, "©“®¶¬");
 		}
 		if (Ÿiiq == 169)
@@ -4371,8 +4386,8 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 				return 0;
 			}
 			lv = 0;
-			‚h¶¬^ƒf[ƒ^‚O(ii, 6395, 1500, 32, 1, 0, 0, 0, 0, 6, 0, 0);
-			‚h¶¬^ƒf[ƒ^‚P(ii, 93, lv, "Iceberg Sword", 1, 2, 21, 2, 400, 30, 4, 84, 0, 0, 0, 0, 0);
+			ItemGenerateData0(ii, 6395, 1500, 32, 1, 0, 0, 0, 0, 6, 0, 0);
+			ItemGenerateData1(ii, 93, lv, "Iceberg Sword", 1, 2, 21, 2, 400, 30, 4, 84, 0, 0, 0, 0, 0);
 			‚hî•ñ(ii, "©“®¶¬");
 		}
 		if (Ÿiiq == 172)
@@ -4385,8 +4400,8 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 				{
 					return 0;
 				}
-				‚h¶¬^ƒf[ƒ^‚O(ii, 6413, 300, 28, 0, 0, 0, 0, 0, 6, 0, 0);
-				‚h¶¬^ƒf[ƒ^‚P(ii, 11, 0, "Underwater Ninja Clothes", 11, 13, 21, 4, 85, 12, 40, 22, 70, 16, 4, 86, 0);
+				ItemGenerateData0(ii, 6413, 300, 28, 0, 0, 0, 0, 0, 6, 0, 0);
+				ItemGenerateData1(ii, 11, 0, "Underwater Ninja Clothes", 11, 13, 21, 4, 85, 12, 40, 22, 70, 16, 4, 86, 0);
 				‚hî•ñ(ii, "©“®¶¬");
 			}
 			if (ra == 2)
@@ -4396,8 +4411,8 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 				{
 					return 0;
 				}
-				‚h¶¬^ƒf[ƒ^‚O(ii, 6008, 1200, 27, 0, 0, 0, 4, 5, 0, 0, 8);
-				‚h¶¬^ƒf[ƒ^‚P(ii, 46, lv, "Underwater Loose Robe", 11, 15, 21, 4, 100, 12, 20, 22, 50, 86, 0, 0, 0);
+				ItemGenerateData0(ii, 6008, 1200, 27, 0, 0, 0, 4, 5, 0, 0, 8);
+				ItemGenerateData1(ii, 46, lv, "Underwater Loose Robe", 11, 15, 21, 4, 100, 12, 20, 22, 50, 86, 0, 0, 0);
 				‚hî•ñ(ii, "©“®¶¬");
 			}
 		}
@@ -4668,7 +4683,7 @@ int ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H()
 	return 0;
 }
 
-int ‚h—L–³(int no, int fg, string ğŒ)
+int ItemInInventory(int no, int fg, string ğŒ)
 {
 	int loop = 0;
 	for (loop = 1; loop < 3001; ++loop)
@@ -4701,7 +4716,7 @@ int ‚h—L–³(int no, int fg, string ğŒ)
 	return 0;
 }
 
-int ‚h—L–³^\‘¢‘Ì”Ô†(int iino, int fg)
+int ItemInInventory^\‘¢‘Ì”Ô†(int iino, int fg)
 {
 	if (fg == 0 && ‚h‘¶İ(iino, -1) == 7)
 	{
@@ -4753,7 +4768,7 @@ int ‚o‚s‚`Q‚hŒÂ”(int ino)
 	return cc;
 }
 
-int ‚o‚s‚`Q‚h—L–³(int ino)
+int ‚o‚s‚`QItemInInventory(int ino)
 {
 	int loop = 0;
 	int cc = 0;
@@ -4796,7 +4811,7 @@ void ‚h•Û—L(int no)
 
 void ‚híœ(int ii)
 {
-	‚h‰Šú‰»(ii);
+	ItemInitialize(ii);
 }
 
 int ‚hŒÅ—L”Ô†‚Åíœ(int no, int fg)
@@ -4806,19 +4821,19 @@ int ‚hŒÅ—L”Ô†‚Åíœ(int no, int fg)
 	{
 		if (fg != 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == fg)
 		{
-			‚h‰Šú‰»(loop);
+			ItemInitialize(loop);
 		}
 		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 7)
 		{
-			‚h‰Šú‰»(loop);
+			ItemInitialize(loop);
 		}
 		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) == 11)
 		{
-			‚h‰Šú‰»(loop);
+			ItemInitialize(loop);
 		}
 		if (fg == 0 && ‚hŒÅ—L”Ô†(loop, -1) == no && ‚h‘¶İ(loop, -1) > 19)
 		{
-			‚h‰Šú‰»(loop);
+			ItemInitialize(loop);
 		}
 	}
 	return 0;

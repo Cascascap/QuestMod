@@ -1075,126 +1075,126 @@ void Ｔエピローグデータ生成()
 	int ino = 0;
 	mno = 142;
 	ino = 227;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 153;
 	ino = 228;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 164;
 	ino = 229;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 197;
 	ino = 230;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 165;
 	ino = 231;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 168;
 	ino = 232;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 175;
 	ino = 233;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 187;
 	ino = 234;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 188;
 	ino = 235;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 198;
 	ino = 236;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 206;
 	ino = 237;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 231;
 	ino = 238;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 230;
 	ino = 239;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 239;
 	ino = 240;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 240;
 	ino = 241;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 220;
 	ino = 242;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 199;
 	ino = 243;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;
 	}
 	mno = 456;
 	ino = 244;
-	if (Ｉ有無(ino, 0, "") == 0 && bb < 9)
+	if (ItemInInventory(ino, 0, "") == 0 && bb < 9)
 	{
 		未捕獲モンスター[bb] = mno;
 		++bb;

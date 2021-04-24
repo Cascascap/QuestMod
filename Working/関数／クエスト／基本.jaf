@@ -1109,7 +1109,7 @@ void ‚p‹N“®“o˜^^Šî–{(lint fg)
 	‚pà–¾•¶(iiq, 3, " but be careful when using it.");
 	‚pà–¾•¶(iiq, 4, "@");
 	‚p”­¶êŠ(iiq, "@");
-	‚pƒLƒbƒg(iiq, 9);
+	QuestKit(iiq, 9);
 	iiq = 213;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 10, 2, 0);
 	‚p–¼‘O(iiq, "Action Confirmation Version");
@@ -1117,10 +1117,10 @@ void ‚p‹N“®“o˜^^Šî–{(lint fg)
 	‚pà–¾•¶(iiq, 2, "Bring refreshments to Mr. Doessky, the biographical author secluding himself in Epiphany cave.");
 	‚pà–¾•¶(iiq, 3, " ");
 	‚p”­¶êŠ(iiq, "Epiphany Cave, near Teti Lake");
-	‚pƒLƒbƒg(iiq, 9);
+	QuestKit(iiq, 9);
 }
 
-lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
+lint QuestProcessingBasic(lint dd, lint no, lint fg)
 {
 	lint rr = 0;
 	lint bre = 0;
@@ -1140,14 +1140,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 2);
+			QuestBasicRegistration(50, 11, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			}
 			return 0;
 		}
@@ -1568,7 +1568,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 1);
+			QuestBasicRegistration(50, 11, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -1578,7 +1578,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Epiphany Cave Depths";
-				‚l‚`‚o“Ç‚İ‚İ(no, 11, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 11, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(19, 34, 12, 5, 0);
@@ -1716,34 +1716,34 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 10;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 12, 2);
+			QuestBasicRegistration(50, 12, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 0, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Clicquot Pasture North";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 0, 1, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
 				}
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Clicquot Pasture South";
-				‚l‚`‚o“Ç‚İ‚İ(no, 39, 1, 0, 0, 0, 0, 2, 0, 0);
+				MAPReading(no, 39, 1, 0, 0, 0, 0, 2, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
 					‚l‚cŒÅ’è(12, 37, 18, 11, 0);
 					‚l‚cŒÅ’è(13, 38, 1, 8, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 68, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 68, 0, 1);
+					MDRandom(0, 1, 68, 0, 1);
+					MDRandom(0, 1, 68, 0, 1);
 				}
 			}
 			return 0;
@@ -1837,14 +1837,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(40, 13, 2);
+			QuestBasicRegistration(40, 13, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 3, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 11";
-				‚l‚`‚o“Ç‚İ‚İ(no, 27, 0, 0, 1, 0, 1, 1, 0, 0);
+				MAPReading(no, 27, 0, 0, 1, 0, 1, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(16, 31, 10, 5, 0);
@@ -1853,7 +1853,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 28, 0, 0, 1, 1, 1, 1, 0, 0);
+				MAPReading(no, 28, 0, 0, 1, 1, 1, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(4, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -1865,7 +1865,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 13";
-				‚l‚`‚o“Ç‚İ‚İ(no, 29, 0, 0, 0, 1, 1, 1, 0, 0);
+				MAPReading(no, 29, 0, 0, 0, 1, 1, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(4, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -1875,7 +1875,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 					‚l‚cŒÅ’è(38, 14, 1, 71, 2);
 					‚l‚cŒÅ’è(38, 24, 10, 200, 0);
 					‚l‚cŒÅ’è(36, 38, 10, 200, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			return 0;
@@ -2036,26 +2036,26 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				£‹à = 5;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(40, £‹à, 2);
+			QuestBasicRegistration(40, £‹à, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 3, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 11";
-				‚l‚`‚o“Ç‚İ‚İ(no, 27, 0, 0, 1, 0, 0, 0, 0, 0);
+				MAPReading(no, 27, 0, 0, 1, 0, 0, 0, 0, 0);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 28, 0, 0, 1, 1, 0, 0, 0, 0);
+				MAPReading(no, 28, 0, 0, 1, 1, 0, 0, 0, 0);
 				‚l‚cŒÅ’è(38, 34, 10, 200, 0);
 				‚l‚cŒÅ’è(26, 17, 10, 201, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 13";
-				‚l‚`‚o“Ç‚İ‚İ(no, 29, 0, 0, 0, 1, 1, 1, 0, 0);
+				MAPReading(no, 29, 0, 0, 0, 1, 1, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(38, 24, 8, 50, 0);
@@ -2065,9 +2065,9 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Arizona";
-				‚l‚`‚o“Ç‚İ‚İ(no, 105, 0, 0, 0, 0, 5, 3, 3, 0);
+				MAPReading(no, 105, 0, 0, 0, 0, 5, 3, 3, 0);
 				‚l‚`‚oŠî‘bŒ^“o˜^(1);
-				ƒNƒGƒXƒgŠî–{“o˜^(40, 13, 4);
+				QuestBasicRegistration(40, 13, 4);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(12, 0, 0, 0, 0);
 				Ÿí“¬”wŒi”Ô† = 54;
 				g‚l = 5611;
@@ -2146,14 +2146,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 1);
+			QuestBasicRegistration(50, 11, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 3, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Epiphany Cave Depths";
-				‚l‚`‚o“Ç‚İ‚İ(no, 11, 0, 1, 0, 0, 2, 1, 0, 0);
+				MAPReading(no, 11, 0, 1, 0, 0, 2, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -2166,13 +2166,13 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Epiphany Cave 2F";
-				‚l‚`‚o“Ç‚İ‚İ(no, 103, 1, 0, 0, 1, 1, 1, 1, 0);
+				MAPReading(no, 103, 1, 0, 0, 1, 1, 1, 1, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(31, 18, 18, 5, 0);
 					if (FA[61] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 					‚l‚cŒÅ’è(38, 20, 15, 0, 0);
 				}
@@ -2180,7 +2180,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Epiphany Cave 1F";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 1, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 1, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(3, 0, 0, 0, 0);
 			}
 		}
@@ -2299,7 +2299,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ = 1;
 			ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 1;
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 2);
+			QuestBasicRegistration(50, 11, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 5, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(11, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -2307,15 +2307,15 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 0, 0, 2, 5, 0);
+				MAPReading(no, 0, 0, 0, 0, 0, 0, 2, 5, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 90, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 80, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 80, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 80, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 25, 3, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 25, 0, 1);
+					MDRandom(0, 18, 90, 0, 1);
+					MDRandom(0, 18, 80, 0, 1);
+					MDRandom(0, 18, 80, 0, 1);
+					MDRandom(0, 18, 80, 0, 1);
+					MDRandom(0, 2, 25, 3, 1);
+					MDRandom(0, 2, 25, 0, 1);
 				}
 			}
 			return 0;
@@ -2369,7 +2369,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(16);
 			Ÿ‚l‚`‚o–¼‘O = "????";
-			ƒNƒGƒXƒgŠî–{“o˜^(500, 0, 3);
+			QuestBasicRegistration(500, 0, 3);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -2377,7 +2377,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(25, 20, 18, 10, 0);
@@ -2422,7 +2422,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(16);
 			Ÿ‚l‚`‚o–¼‘O = "????";
-			ƒNƒGƒXƒgŠî–{“o˜^(500, 0, 3);
+			QuestBasicRegistration(500, 0, 3);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -2430,7 +2430,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(25, 20, 18, 10, 0);
@@ -2470,7 +2470,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(16);
 			Ÿ‚l‚`‚o–¼‘O = "????";
-			ƒNƒGƒXƒgŠî–{“o˜^(500, 0, 3);
+			QuestBasicRegistration(500, 0, 3);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -2478,7 +2478,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(25, 20, 18, 10, 0);
@@ -2519,7 +2519,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(16);
 			Ÿ‚l‚`‚o–¼‘O = "????";
-			ƒNƒGƒXƒgŠî–{“o˜^(500, 0, 3);
+			QuestBasicRegistration(500, 0, 3);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -2527,7 +2527,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 37, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(25, 20, 18, 10, 0);
@@ -2609,7 +2609,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (re == 1)
 			{
 				FA[83] = iic;
-				int ii = ‚h—L–³(268, 0, "");
+				int ii = ItemInInventory(268, 0, "");
 				if (ii != 0)
 				{
 					‚híœ(ii);
@@ -2775,7 +2775,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 	}
 	if (Ÿiiq == 33)
 	{
-		ƒNƒGƒXƒgŠî–{“o˜^(100, 0, 3);
+		QuestBasicRegistration(100, 0, 3);
 		if (dd == 8)
 		{
 			ƒJƒ‰[–Œ(0);
@@ -2824,7 +2824,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(80, 12, 11);
+			QuestBasicRegistration(80, 12, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(10, 10, 6, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 5, 0);
@@ -2832,7 +2832,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Point A";
-				‚l‚`‚o“Ç‚İ‚İ(no, 12, 1, 1, 0, 1, 4, 2, 1, 0);
+				MAPReading(no, 12, 1, 1, 0, 1, 4, 2, 1, 0);
 				‚l’u•¨(7, 23, 304);
 				‚l’u•¨(8, 23, 304);
 				if (‚l[no].‰“o˜^ == 0)
@@ -2851,12 +2851,12 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West Laborie Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 123, 1, 0, 0, 1, 2, 1, 1, 0);
+				MAPReading(no, 123, 1, 0, 0, 1, 2, 1, 1, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(10, 7, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(17, 14, 13, 0, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 86, 3, 1);
+					MDRandom(0, 1, 86, 3, 1);
 				}
 			}
 			return 0;
@@ -3123,14 +3123,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(2);
 			Ÿ‚l‚`‚o–¼‘O = "Mock Forest";
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 12, 11);
+			QuestBasicRegistration(50, 12, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(7, 9, 9, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 121, 0, 0, 0, 0, 2, 2, 2, 0);
+				MAPReading(no, 121, 0, 0, 0, 0, 2, 2, 2, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(16, 25, 10, 10, 0);
@@ -3153,7 +3153,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				‚O‚Q‚fĞˆõ();
 				return 0;
 			}
-			if (fg == 9 && ‚h—L–³(135, 8, "") != 0)
+			if (fg == 9 && ItemInInventory(135, 8, "") != 0)
 			{
 				‚O‚Q‚f•ó” ();
 				return 1;
@@ -3164,7 +3164,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 	}
 	if (Ÿiiq == 67)
 	{
-		ƒNƒGƒXƒgŠî–{“o˜^(0, 0, 11);
+		QuestBasicRegistration(0, 0, 11);
 		if (dd == 8)
 		{
 			ƒpƒXƒeƒ‹‹­Š­(0);
@@ -3205,28 +3205,28 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(15);
 			Ÿ‚l‚`‚o–¼‘O = "Cidade North Yard";
-			ƒNƒGƒXƒgŠî–{“o˜^(40, 11, 2);
+			QuestBasicRegistration(40, 11, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(5, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(7, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 10)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 36, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 36, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
+					MDRandom(0, 18, 10, 0, 1);
 					if (‚pó‘Ô(Ÿiiq, -1) == 2 && ‚b”Ô†æ“¾(21) == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 20, 0, 1);
+						MDRandom(0, 10, 20, 0, 1);
 					}
 				}
 			}
@@ -3307,24 +3307,24 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			Ÿ‚l‚`‚o–¼‘O = "Strawzend";
 			ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 1;
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 2);
+			QuestBasicRegistration(50, 11, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(4, 4, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(85, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 3, 6);
 			if (no == 14)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 6202, 0, 0, 0, 0, 3, 0, 0, 0);
+				MAPReading(no, 6202, 0, 0, 0, 0, 3, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 160, 4, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 16, 0, 0, 1);
+					MDRandom(0, 1, 160, 4, 1);
 				}
 			}
 			return 0;
@@ -3385,63 +3385,63 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(14);
-			ƒNƒGƒXƒgŠî–{“o˜^(80, 14, 6);
+			QuestBasicRegistration(80, 14, 6);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(6, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rhinoceros Beetle Corridor 1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 47, 0, 0, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 47, 0, 0, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rhinoceros Beetle Corridor 2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 0, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 0, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(2, 0, 0, 0, 0);
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rhinoceros Beetle Corridor 3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 1, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(5, 0, 0, 0, 0);
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rhinoceros Beetle Corridor 4";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 3, 0, 3, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 3, 0, 3, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(5, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 72, 0, 1);
+					MDRandom(1, 1, 72, 0, 1);
 				}
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Drone Beetle Storeroom 1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 1, 1, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(6, 11, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[62] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 					if (‚o‚s‚`—L–³^ŒÅ—L(1) == 0 && ‚b”Ô†æ“¾(39) == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 300, 0, 1);
+						MDRandom(0, 10, 300, 0, 1);
 					}
 				}
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Drone Beetle Storeroom 2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 48, 0, 0, 0, 1, 2, 2, 1, 1);
+				MAPReading(no, 48, 0, 0, 0, 1, 2, 2, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(6, 11, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -3454,13 +3454,13 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Black Tea Center";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 2, 0, 1, 1);
+				MAPReading(no, 0, 1, 0, 0, 0, 2, 0, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(9, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(117, -1) != 2 && ‚h—L–³(259, 0, "") == 0)
+					if (‚pó‘Ô(117, -1) != 2 && ItemInInventory(259, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 259, 0, 1);
+						MDRandom(1, 1, 259, 0, 1);
 					}
 				}
 			}
@@ -3558,38 +3558,38 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 11);
+			QuestBasicRegistration(50, 11, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 9, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(11, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 3, 0);
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Casper Private Forest C";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 1, 2, 1, 0);
+				MAPReading(no, 0, 0, 1, 0, 0, 1, 2, 1, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 50, 0, 1);
+					MDRandom(0, 18, 50, 0, 1);
 				}
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Casper Private Forest B";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 2, 2, 2, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 2, 2, 2, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 50, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 50, 0, 1);
-					if (‚h—L–³(26, 0, "") == 0)
+					MDRandom(0, 15, 0, 0, 1);
+					MDRandom(0, 18, 50, 0, 1);
+					MDRandom(0, 18, 50, 0, 1);
+					if (ItemInInventory(26, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 2, 26, 0, 1);
+						MDRandom(1, 2, 26, 0, 1);
 					}
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Casper Private Forest A";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 1, 2, 2, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 1, 2, 2, 0);
 			}
 			return 0;
 		}
@@ -3650,7 +3650,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 					}
 					ƒAƒCƒhƒ‹^‘˜‹öí‚R^í“¬Œã();
 					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 50, 0, 1);
+					MDRandom(1, 8, 50, 0, 1);
 					return 0;
 				}
 				ƒAƒCƒhƒ‹^ƒGƒsƒ[ƒO(0);
@@ -3672,18 +3672,18 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 1);
+			QuestBasicRegistration(50, 11, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(7, 2, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 6)
 			{
 				‚l‚`‚oŠî‘bŒ^“o˜^(1);
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 0, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 0, 1, 0, 0);
 			}
 			if (no == 7)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 25, 0, 0, 0, 1, 0, 1, 0, 0);
+				MAPReading(no, 25, 0, 0, 0, 1, 0, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(24, 37, 18, 90, 0);
@@ -3691,9 +3691,9 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 					‚l‚cŒÅ’è(35, 28, 10, 50, 0);
 					‚l‚cŒÅ’è(34, 18, 10, 50, 0);
 					‚l‚cŒÅ’è(28, 24, 10, 50, 0);
-					if (‚h—L–³(9, 0, "") == 0)
+					if (ItemInInventory(9, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 2, 9, 0, 1);
+						MDRandom(1, 2, 9, 0, 1);
 					}
 				}
 			}
@@ -3769,10 +3769,10 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(3);
-			ƒNƒGƒXƒgŠî–{“o˜^(60, 13, 1);
+			QuestBasicRegistration(60, 13, 1);
 			if (QD[9] == 1)
 			{
-				ƒNƒGƒXƒgŠî–{“o˜^(60, 13, 5);
+				QuestBasicRegistration(60, 13, 5);
 			}
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(15, 19, 0, 0, 0);
@@ -3780,7 +3780,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 14, 0, 1, 0, 0, 2, 1, 0, 1);
+				MAPReading(no, 14, 0, 1, 0, 0, 2, 1, 0, 1);
 				if (QD[1] == 1)
 				{
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(18, 0, 0, 0, 0);
@@ -3812,14 +3812,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				if (‚l[no].‰“o˜^ == 0 && QD[9] == 1)
 				{
 					‚l‚cŒÅ’è(24, 6, 10, 70, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
 				}
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cosmetics";
-				‚l‚`‚o“Ç‚İ‚İ(no, 141, 1, 0, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 141, 1, 0, 1, 0, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(15, 6, 19, 0, 0);
 				if (QD[1] == 1)
 				{
@@ -3835,16 +3835,16 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				}
 				if (‚l[no].‰“o˜^ == 0 && QD[9] == 1)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
 				}
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Furniture and General Goods";
-				‚l‚`‚o“Ç‚İ‚İ(no, 15, 0, 0, 1, 1, 2, 1, 0, 2);
+				MAPReading(no, 15, 0, 0, 1, 1, 2, 1, 0, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(15, 19, 19, 0, 0);
 				if (QD[1] == 1)
 				{
@@ -3876,21 +3876,21 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				if (‚l[no].‰“o˜^ == 0 && QD[9] == 1)
 				{
 					‚l‚cŒÅ’è(41, 5, 18, 30, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
+					MDRandom(0, 10, 71, 0, 1);
 					‚l‚cŒÅ’è(43, 16, 15, 0, 0);
 				}
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Women's Clothing";
-				‚l‚`‚o“Ç‚İ‚İ(no, 143, 0, 0, 0, 1, 3, 1, 3, 2);
+				MAPReading(no, 143, 0, 0, 0, 1, 3, 1, 3, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(14, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			return 0;
@@ -4121,14 +4121,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(80, 12, 11);
+			QuestBasicRegistration(80, 12, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 9, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(13, 11, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(3, 5, 9);
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Inner Fortress";
-				‚l‚`‚o“Ç‚İ‚İ(no, 121, 0, 0, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 121, 0, 0, 1, 0, 2, 1, 1, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(26, 37, 18, 30, 0);
@@ -4141,7 +4141,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Point A";
-				‚l‚`‚o“Ç‚İ‚İ(no, 12, 1, 1, 1, 1, 2, 0, 1, 1);
+				MAPReading(no, 12, 1, 1, 1, 1, 2, 0, 1, 1);
 				if (EV("‚O‚Q‚a‹l‚ßŠ", -2147483648) == false)
 				{
 					‚l’u•¨(7, 23, 304);
@@ -4163,7 +4163,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West Laborie Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 123, 1, 0, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 123, 1, 0, 1, 1, 2, 1, 1, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(17, 14, 13, 0, 0);
@@ -4289,19 +4289,19 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 2);
+			QuestBasicRegistration(50, 11, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(16, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 11";
-				‚l‚`‚o“Ç‚İ‚İ(no, 27, 0, 0, 1, 0, 3, 1, 0, 0);
+				MAPReading(no, 27, 0, 0, 1, 0, 3, 1, 0, 0);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 28, 0, 0, 1, 1, 2, 1, 3, 0);
+				MAPReading(no, 28, 0, 0, 1, 1, 2, 1, 3, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(16, 21, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -4312,7 +4312,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 13";
-				‚l‚`‚o“Ç‚İ‚İ(no, 29, 0, 0, 0, 1, 3, 3, 0, 0);
+				MAPReading(no, 29, 0, 0, 0, 1, 3, 3, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(16, 21, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -4322,7 +4322,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 					‚l‚cŒÅ’è(36, 38, 10, 200, 0);
 					if (FA[63] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 				}
 			}
@@ -4440,54 +4440,54 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 1);
+			QuestBasicRegistration(50, 11, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 3);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(22, 14, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(3, 0, 0);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Witch's Cave-D1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 0, 1, 4, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 0, 1, 4, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 2, 72, 1, 1);
+					MDRandom(1, 2, 72, 1, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Witch's Cave-D2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 0, 0, 4, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 0, 0, 4, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 2, 87, 1, 1);
+					MDRandom(1, 2, 87, 1, 1);
 				}
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Witch's Cave-D3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 0, 1, 3, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 0, 1, 3, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 2, 103, 1, 1);
+					MDRandom(1, 2, 103, 1, 1);
 				}
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Witch's Cave-D4";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 0, 0, 3, 1);
+				MAPReading(no, 0, 0, 1, 0, 1, 0, 0, 3, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 2, 134, 1, 1);
+					MDRandom(1, 2, 134, 1, 1);
 				}
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Witch's Cave-D5";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 1, 4, 1);
+				MAPReading(no, 0, 1, 0, 0, 0, 0, 1, 4, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 161, 1, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+					MDRandom(0, 2, 161, 1, 1);
+					MDRandom(1, 18, 90, 0, 1);
 				}
 			}
 			return 0;
@@ -4546,14 +4546,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 10;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 13, 1);
+			QuestBasicRegistration(50, 13, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(17, 20, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(4, 4, 9);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 14, 0, 1, 0, 0, 2, 0, 0, 1);
+				MAPReading(no, 14, 0, 1, 0, 0, 2, 0, 0, 1);
 				‚l’u•¨(26, 41, 302);
 				‚l‚cŒÅ’è(26, 42, 10, 25, 0);
 				if (‚l[no].‰“o˜^ == 0)
@@ -4569,34 +4569,34 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cosmetics";
-				‚l‚`‚o“Ç‚İ‚İ(no, 141, 1, 0, 1, 0, 2, 2, 0, 1);
+				MAPReading(no, 141, 1, 0, 1, 0, 2, 2, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Furniture and General Goods";
-				‚l‚`‚o“Ç‚İ‚İ(no, 15, 0, 0, 1, 1, 2, 4, 0, 1);
+				MAPReading(no, 15, 0, 0, 1, 1, 2, 4, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[148] == 0)
 					{
 						‚l‚cŒÅ’è(41, 5, 1, 102, 0);
 					}
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Women's Clothing";
-				‚l‚`‚o“Ç‚İ‚İ(no, 143, 0, 0, 0, 1, 3, 2, 0, 1);
+				MAPReading(no, 143, 0, 0, 0, 1, 3, 2, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(26, 34, 18, 90, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 71, 5, 1);
+					MDRandom(0, 1, 71, 5, 1);
 				}
 			}
 			return 0;
@@ -4696,7 +4696,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 12;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 13, 1);
+			QuestBasicRegistration(50, 13, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(18, 0, 0, 0, 0);
 			if (QD[1] == 1)
@@ -4708,7 +4708,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Toys";
-				‚l‚`‚o“Ç‚İ‚İ(no, 142, 1, 0, 1, 0, 3, 1, 0, 2);
+				MAPReading(no, 142, 1, 0, 1, 0, 3, 1, 0, 2);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(14, 13, 10, 11, 0);
@@ -4717,12 +4717,12 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Menswear";
-				‚l‚`‚o“Ç‚İ‚İ(no, 144, 0, 0, 0, 1, 2, 0, 0, 2);
+				MAPReading(no, 144, 0, 0, 0, 1, 2, 0, 0, 2);
 			}
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 14, 0, 1, 0, 0, 2, 1, 0, 2);
+				MAPReading(no, 14, 0, 1, 0, 0, 2, 1, 0, 2);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(40, 35, 8, 50, 0);
@@ -4734,7 +4734,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cosmetics";
-				‚l‚`‚o“Ç‚İ‚İ(no, 141, 1, 0, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 141, 1, 0, 1, 0, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 				}
@@ -4742,8 +4742,8 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Furniture and General Goods";
-				‚l‚`‚o“Ç‚İ‚İ(no, 15, 0, 0, 1, 1, 2, 1, 0, 2);
-				if (‚h—L–³(88, 8, "") == 0)
+				MAPReading(no, 15, 0, 0, 1, 1, 2, 1, 0, 2);
+				if (ItemInInventory(88, 8, "") == 0)
 				{
 					int lank = 0;
 					lank = ŸƒNƒGƒXƒgí“¬‰ñ” / 8;
@@ -4760,7 +4760,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Women's Clothing";
-				‚l‚`‚o“Ç‚İ‚İ(no, 143, 0, 1, 0, 1, 3, 1, 0, 2);
+				MAPReading(no, 143, 0, 1, 0, 1, 3, 1, 0, 2);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 				}
@@ -4886,7 +4886,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 11);
+			QuestBasicRegistration(50, 11, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(23, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -4895,7 +4895,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Mushroom Forest";
-				‚l‚`‚o“Ç‚İ‚İ(no, 2101, 0, 0, 0, 0, 1, 1, 1, 0);
+				MAPReading(no, 2101, 0, 0, 0, 0, 1, 1, 1, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(26, 39, 6, 0, 0);
@@ -4915,8 +4915,8 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 					‚l‚cŒÅ’è(30, 21, 6, 0, 0);
 					‚l‚cŒÅ’è(30, 22, 16, 0, 0);
 					‚l‚cŒÅ’è(29, 15, 18, 90, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 193, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 191, 0, 1);
+					MDRandom(0, 2, 193, 0, 1);
+					MDRandom(0, 2, 191, 0, 1);
 				}
 			}
 			return 0;
@@ -4960,14 +4960,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(90, 11, 201);
+			QuestBasicRegistration(90, 11, 201);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(2, 4, 4, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(26, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Prohibited Area Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 161, 1, 0, 0, 0, 0, 1, 0, 2);
+				MAPReading(no, 161, 1, 0, 0, 0, 0, 1, 0, 2);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 				}
@@ -4975,7 +4975,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Frequent Accident Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 16, 1, 1, 0, 0, 2, 0, 0, 2);
+				MAPReading(no, 16, 1, 1, 0, 0, 2, 0, 0, 2);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (QD[1] == 1)
@@ -4998,7 +4998,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Yukihira";
-				‚l‚`‚o“Ç‚İ‚İ(no, 163, 0, 1, 1, 1, 5, 2, 2, 2);
+				MAPReading(no, 163, 0, 1, 1, 1, 5, 2, 2, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(26, 27, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -5020,7 +5020,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Mt. Hakkoda";
-				‚l‚`‚o“Ç‚İ‚İ(no, 17, 0, 0, 1, 0, 1, 1, 0, 1);
+				MAPReading(no, 17, 0, 0, 1, 0, 1, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(27, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -5036,7 +5036,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "????";
-				‚l‚`‚o“Ç‚İ‚İ(no, 162, 0, 0, 0, 0, 6, 0, 3, 0);
+				MAPReading(no, 162, 0, 0, 0, 0, 6, 0, 3, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 0, 0, 0, 0);
 				ŸƒNƒGƒXƒgis—¦ = 0;
 			}
@@ -5285,26 +5285,26 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(8);
-			ƒNƒGƒXƒgŠî–{“o˜^(100, 22, 1);
+			QuestBasicRegistration(100, 22, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 9, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(4, 4, 9);
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Central Lerolen";
-				‚l‚`‚o“Ç‚İ‚İ(no, 42, 1, 0, 1, 1, 0, 2, 0, 0);
+				MAPReading(no, 42, 1, 0, 1, 1, 0, 2, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 				if (QD[5] == 0 && EV("‚O‚W‚a^–é‚Ì‰e^”Ä—p", -2147483648) == true && EV("‚O‚W‚a^–é“oê", -2147483648) == true && ‚hƒNƒGƒXƒg‘qŒÉ‚Ì—L–³(314) != 0)
 				{
 					QD[5] = 1;
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 90, 0, 1);
+					MDRandom(1, 8, 90, 0, 1);
 					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
 				}
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚h—L–³(226, 0, "") == 0 && ‚b”Ô†æ“¾(35) == 0)
+					if (ItemInInventory(226, 0, "") == 0 && ‚b”Ô†æ“¾(35) == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 226, 0, 1);
+						MDRandom(0, 1, 226, 0, 1);
 					}
 					‚l‚cŒÅ’è(28, 29, 10, 44, 0);
 				}
@@ -5312,18 +5312,18 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "North Lerolen";
-				‚l‚`‚o“Ç‚İ‚İ(no, 43, 0, 1, 0, 0, 3, 2, 0, 2);
+				MAPReading(no, 43, 0, 1, 0, 0, 3, 2, 0, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(29, 0, 0, 0, 0);
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "West Lerolen";
-				‚l‚`‚o“Ç‚İ‚İ(no, 46, 0, 0, 1, 0, 3, 0, 2, 2);
+				MAPReading(no, 46, 0, 0, 1, 0, 3, 0, 2, 2);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "East Lerolen";
-				‚l‚`‚o“Ç‚İ‚İ(no, 45, 0, 0, 0, 1, 3, 2, 0, 2);
+				MAPReading(no, 45, 0, 0, 0, 1, 3, 2, 0, 2);
 			}
 			if (no == 2 || no == 5 || no == 7)
 			{
@@ -5332,19 +5332,19 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 					if (QD[1] == 0)
 					{
 						QD[1] = no;
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 10, 0, 1);
+						MDRandom(1, 18, 10, 0, 1);
 						break;
 					}
 					if (QD[2] == 0 && QD[1] != no)
 					{
 						QD[2] = no;
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 12, 0, 1);
+						MDRandom(1, 8, 12, 0, 1);
 						break;
 					}
 					if (QD[3] == 0 && QD[2] != no)
 					{
 						QD[3] = no;
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 314, 0, 1);
+						MDRandom(1, 1, 314, 0, 1);
 						break;
 					}
 					break;
@@ -5416,14 +5416,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(20, 21, 2);
+			QuestBasicRegistration(20, 21, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(30, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(6, 6, 0);
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 11";
-				‚l‚`‚o“Ç‚İ‚İ(no, 27, 0, 0, 1, 0, 6, 1, 2, 3);
+				MAPReading(no, 27, 0, 0, 1, 0, 6, 1, 2, 3);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(29, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -5435,12 +5435,12 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 28, 0, 0, 1, 1, 6, 1, 2, 3);
+				MAPReading(no, 28, 0, 0, 1, 1, 6, 1, 2, 3);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 75, 3, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 137, 3, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 151, 3, 1);
+					MDRandom(0, 2, 75, 3, 1);
+					MDRandom(0, 2, 137, 3, 1);
+					MDRandom(0, 2, 151, 3, 1);
 					‚l‚cŒÅ’è(16, 23, 17, 0, 0);
 					‚l‚cŒÅ’è(17, 24, 17, 0, 0);
 					‚l‚cŒÅ’è(18, 23, 17, 0, 0);
@@ -5449,13 +5449,13 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 13";
-				‚l‚`‚o“Ç‚İ‚İ(no, 29, 0, 0, 0, 1, 6, 1, 2, 3);
+				MAPReading(no, 29, 0, 0, 0, 1, 6, 1, 2, 3);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(33, 11, 8, 90, 0);
 					if (FA[64] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 					if (FA[56] == 0)
 					{
@@ -5583,61 +5583,61 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(150, 23, 11);
+			QuestBasicRegistration(150, 23, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 10, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(28, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ifo Forest West Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 1, 0, 1, 0);
+				MAPReading(no, 0, 0, 1, 1, 0, 1, 0, 1, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(26, 0, 0, 0, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ifo Forest Trash can";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 1, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 1, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 50, 0, 1);
+					MDRandom(0, 8, 50, 0, 1);
 				}
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ifo Forest East Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 1, 0, 3, 0);
+				MAPReading(no, 0, 0, 1, 0, 1, 1, 0, 3, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 50, 0, 1);
+					MDRandom(0, 8, 50, 0, 1);
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ifo Forest Acorn";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 1, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 1, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 50, 0, 1);
+					MDRandom(0, 8, 50, 0, 1);
 				}
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ifo Forest Again";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 1, 0, 1, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 1, 0, 1, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 50, 0, 1);
+					MDRandom(0, 8, 50, 0, 1);
 				}
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ifo Forest Depths";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 1, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 1, 1, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 28, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 50, 0, 1);
+					MDRandom(0, 8, 50, 0, 1);
 				}
 			}
 			return 0;
@@ -5675,7 +5675,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				{
 					ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
 					–\‚ê‚ñ–V^ƒLƒoqD‚«‚Ì‚¨‚Á‚³‚ñ();
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 18, 60, 0, 1);
+					MDRandom(0, 18, 60, 0, 1);
 					return 0;
 				}
 				–\‚ê‚ñ–V^Œ»‚ê‚é^”Ä—p();
@@ -5702,69 +5702,69 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(14);
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 14, 6);
+			QuestBasicRegistration(200, 14, 6);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 27, 26, 28, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kimura Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 322, 0, 0, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 322, 0, 0, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(14, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kitashita Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 1, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(16, 0, 0, 0, 0);
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Nagashima Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(22, 0, 0, 0, 0);
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Suzuki Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(17, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(117, -1) != 2 && ‚h—L–³(260, 0, "") == 0)
+					if (‚pó‘Ô(117, -1) != 2 && ItemInInventory(260, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 260, 0, 1);
+						MDRandom(1, 1, 260, 0, 1);
 					}
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Satou Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 1, 1, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(24, 0, 0, 0, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Tanaka Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(24, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(117, -1) != 2 && ‚h—L–³(261, 0, "") == 0)
+					if (‚pó‘Ô(117, -1) != 2 && ItemInInventory(261, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 261, 0, 1);
+						MDRandom(1, 1, 261, 0, 1);
 					}
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Maehara Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 323, 1, 0, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 323, 1, 0, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(27, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -5777,13 +5777,13 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Tadayama Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 5, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 5, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(28, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚h—L–³(220, 0, "") == 0 && ‚b”Ô†æ“¾(10) == 0)
+					if (ItemInInventory(220, 0, "") == 0 && ‚b”Ô†æ“¾(10) == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 220, 0, 1);
+						MDRandom(0, 1, 220, 0, 1);
 					}
 				}
 			}
@@ -5838,28 +5838,28 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(100, 21, 4);
+			QuestBasicRegistration(100, 21, 4);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(37, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 5, 0);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Back Door";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 1, 0, 0);
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Naoko's Pathway";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 20, 0, 1);
+					MDRandom(0, 8, 20, 0, 1);
 				}
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Barres's Treasure Vault";
-				‚l‚`‚o“Ç‚İ‚İ(no, 38, 0, 1, 0, 1, 2, 1, 0, 0);
+				MAPReading(no, 38, 0, 1, 0, 1, 2, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(20, 23, 8, 10, 0);
@@ -5875,7 +5875,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Queen's Secret Room";
-				‚l‚`‚o“Ç‚İ‚İ(no, 19, 1, 0, 0, 0, 2, 1, 0, 0);
+				MAPReading(no, 19, 1, 0, 0, 0, 2, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(31, 36, 18, 50, 0);
@@ -6055,7 +6055,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(160, 22, 2);
+			QuestBasicRegistration(160, 22, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 38, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(6, 0, 0);
@@ -6063,12 +6063,12 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 11";
-				‚l‚`‚o“Ç‚İ‚İ(no, 27, 0, 0, 1, 0, 1, 1, 2, 3);
+				MAPReading(no, 27, 0, 0, 1, 0, 1, 1, 2, 3);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 28, 0, 0, 0, 1, 1, 1, 2, 2);
+				MAPReading(no, 28, 0, 0, 0, 1, 1, 1, 2, 2);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(38, 34, 8, 10, 0);
@@ -6077,11 +6077,11 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Mesopotamia";
-				ƒNƒGƒXƒgŠî–{“o˜^(160, 22, 1);
+				QuestBasicRegistration(160, 22, 1);
 				Ÿí“¬”wŒi”Ô† = 54;
 				g‚l = 5611;
 				ŸƒLƒƒƒ‰ˆÊ’u = 0;
-				‚l‚`‚o“Ç‚İ‚İ(no, 30, 0, 0, 0, 0, 0, 1, 1, 1);
+				MAPReading(no, 30, 0, 0, 0, 0, 0, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(38, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -6205,14 +6205,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 10;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 22, 1);
+			QuestBasicRegistration(200, 22, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 33, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Wallaby Village";
-				‚l‚`‚o“Ç‚İ‚İ(no, 106, 0, 1, 0, 0, 2, 1, 0, 1);
+				MAPReading(no, 106, 0, 1, 0, 0, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(37, 28, 18, 80, 0);
@@ -6223,62 +6223,62 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cave Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 1, 1, 0, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 0, 0, 0, 0);
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Poisonous Route";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 0, 0, 0, 0);
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Extra Poisonous Route";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rat's Corpse";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 1, 1, 0, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 0, 0, 0, 0);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "There's no such thing as happiness";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 1, 1, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 0, 0, 0, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Famous Suicide Spot";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(33, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
+					MDRandom(0, 13, 0, 0, 1);
 				}
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Wallala Village";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 1, 0, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(33, 0, 0, 0, 0);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "What's a wallaby";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 151, 4, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 137, 4, 1);
+					MDRandom(0, 2, 151, 4, 1);
+					MDRandom(0, 2, 137, 4, 1);
 				}
 			}
 			return 0;
@@ -6386,7 +6386,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(100, 13, 11);
+			QuestBasicRegistration(100, 13, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -6394,30 +6394,30 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Thinthin Road 3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 122, 0, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 122, 0, 1, 0, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(2);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 90, 0, 1);
+					MDRandom(1, 8, 90, 0, 1);
 				}
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Thinthin Road 2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(2);
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Thinthin Road 1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(13, 0, 0, 0, 0);
 			}
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "West Thinthin Exit";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(2);
 			}
 			return 0;
@@ -6483,69 +6483,69 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 23, 4);
+			QuestBasicRegistration(200, 23, 4);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 10, 10, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(34, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(4, 7, 0);
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Curse Castle";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 1, 0, 0, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+					MDRandom(1, 18, 90, 0, 1);
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Curse Castle";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 0, 2, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 0, 2, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(38, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 31, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 25, 4, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 25, 8, 1);
+					MDRandom(0, 2, 31, 0, 1);
+					MDRandom(0, 2, 25, 4, 1);
+					MDRandom(0, 2, 25, 8, 1);
 				}
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Curse Castle";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 1, 2, 1, 0, 2);
+				MAPReading(no, 0, 1, 1, 1, 1, 2, 1, 0, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 34, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 60, 0, 1);
+					MDRandom(1, 18, 60, 0, 1);
 				}
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Curse Castle";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 0, 2, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 0, 2, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(38, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[121] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 92, 0, 1);
+						MDRandom(0, 2, 92, 0, 1);
 					}
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 68, 4, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 68, 8, 1);
+					MDRandom(0, 2, 68, 4, 1);
+					MDRandom(0, 2, 68, 8, 1);
 				}
 			}
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Curse Castle";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(37, 31, 0, 0, 0);
 			}
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Curse Castle";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 2, 0, 2, 1);
+				MAPReading(no, 0, 1, 0, 0, 1, 2, 0, 2, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 30, 0, 1);
+					MDRandom(1, 8, 30, 0, 1);
 				}
 			}
 			return 0;
@@ -6635,31 +6635,31 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(14);
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 24, 6);
+			QuestBasicRegistration(300, 24, 6);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Saitama";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 1, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 29, 38, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Tokushima";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 29, 38, 0, 0);
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ehime";
-				‚l‚`‚o“Ç‚İ‚İ(no, 48, 0, 0, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 48, 0, 0, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 29, 38, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -6672,61 +6672,61 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Aomori";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 2, 1, 3, 1);
+				MAPReading(no, 0, 1, 0, 1, 0, 2, 1, 3, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 30, 0, 0, 0);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Chiba";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 30, 0, 0, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kagoshima";
-				‚l‚`‚o“Ç‚İ‚İ(no, 47, 0, 0, 1, 1, 4, 1, 1, 1);
+				MAPReading(no, 47, 0, 0, 1, 1, 4, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(25, 30, 0, 0, 0);
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Toyama";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 2, 4, 1, 4);
+				MAPReading(no, 0, 0, 1, 0, 1, 2, 4, 1, 4);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 33, 0, 0, 0);
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Wakayama";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 1, 1, 0, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 33, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚h—L–³(221, 0, "") == 0 && ‚b”Ô†æ“¾(43) == 0)
+					if (ItemInInventory(221, 0, "") == 0 && ‚b”Ô†æ“¾(43) == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 221, 0, 1);
+						MDRandom(0, 1, 221, 0, 1);
 					}
 				}
 			}
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Iwate";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 36, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(118, -1) != 2 && ‚h—L–³(259, 0, "") == 0)
+					if (‚pó‘Ô(118, -1) != 2 && ItemInInventory(259, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 259, 0, 1);
+						MDRandom(1, 1, 259, 0, 1);
 					}
 				}
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Etorofu";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 1, 0, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 36, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 15, 0, 0, 1);
+					MDRandom(1, 15, 0, 0, 1);
 				}
 			}
 			return 0;
@@ -6780,48 +6780,48 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 23, 2);
+			QuestBasicRegistration(300, 23, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 5, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 36, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 4, 0);
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Nabata Mountain Range Trailhead";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 0, 0, 0, 0);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Nabata Mountain Range Fuji";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 2, 1, 0, 0);
+				MAPReading(no, 0, 1, 1, 1, 0, 2, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(36, 37, 0, 0, 0);
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Nabatake Mountain 1-1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 2, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 1, 2, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(36, 0, 0, 0, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "NB Mountain 2-15";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 2, 1, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 2, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(36, 37, 0, 0, 0);
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Nabatake Mountain 1-2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 2, 1, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 2, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(36, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "NB Mountain 2-5";
-				‚l‚`‚o“Ç‚İ‚İ(no, 18, 0, 1, 0, 0, 3, 2, 2, 0);
+				MAPReading(no, 18, 0, 1, 0, 0, 3, 2, 2, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(36, 37, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -6832,7 +6832,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Nabatake Mountain 1-3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 18, 0, 1, 0, 0, 3, 1, 2, 0);
+				MAPReading(no, 18, 0, 1, 0, 0, 3, 1, 2, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(36, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -6940,7 +6940,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(6);
-			ƒNƒGƒXƒgŠî–{“o˜^(250, 22, 2);
+			QuestBasicRegistration(250, 22, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(40, 0, 0, 0, 0);
 			if (QD[2] == 1)
@@ -6952,7 +6952,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Meg's Ranch North";
-				‚l‚`‚o“Ç‚İ‚İ(no, 21, 0, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 21, 0, 1, 0, 0, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -6964,7 +6964,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Meg's Ranch Road";
 				ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ = 0;
-				‚l‚`‚o“Ç‚İ‚İ(no, 40, 0, 0, 1, 0, 0, 1, 0, 0);
+				MAPReading(no, 40, 0, 0, 1, 0, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(40, 39, 0, 0, 0);
 				if (QD[3] == 1)
 				{
@@ -6994,32 +6994,32 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Meg's Ranch Center";
-				‚l‚`‚o“Ç‚İ‚İ(no, 49, 1, 0, 1, 1, 0, 1, 0, 0);
+				MAPReading(no, 49, 1, 0, 1, 1, 0, 1, 0, 0);
 				if (QD[2] == 1 && QD[3] == 0)
 				{
 					QD[3] = 1;
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 70, 0, 1);
+					MDRandom(1, 18, 70, 0, 1);
 					‚l‚cŒÅ’è(43, 24, 8, 61, 0);
 				}
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(41, 35, 8, 20, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 40, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 40, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 40, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 30, 0, 1);
+					MDRandom(0, 8, 40, 0, 1);
+					MDRandom(0, 8, 40, 0, 1);
+					MDRandom(0, 8, 40, 0, 1);
+					MDRandom(1, 8, 30, 0, 1);
 				}
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Meg's Ranch East";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 0, 3, 15, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 0, 3, 15, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(39, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 40, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 40, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 8, 40, 0, 1);
+					MDRandom(0, 8, 40, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			return 0;
@@ -7235,7 +7235,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 23, 11);
+			QuestBasicRegistration(200, 23, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(40, 10, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -7243,31 +7243,31 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West 103";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 1, 0, 0, 0);
+				MAPReading(no, 0, 0, 1, 1, 0, 1, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 90, 0, 1);
+					MDRandom(1, 8, 90, 0, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West 203";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 0, 0, 0);
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West 104";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 2, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 1, 0, 2, 0, 0, 0);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West 204";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 1, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 1, 0, 0, 0);
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West 105";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 3, 0, 3, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 3, 0, 3, 0);
 			}
 			return 0;
 		}
@@ -7334,35 +7334,35 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 22, 12);
+			QuestBasicRegistration(200, 22, 12);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(39, 42, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(4, 4, 9);
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 4,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 1, 1, 0, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(43, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 15, 0, 0, 1);
+					MDRandom(1, 15, 0, 0, 1);
 				}
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 3,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 1, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(43, 0, 0, 0, 0);
 			}
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Trail Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 1, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 1, 0, 0, 0);
 			}
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Trail Rest Stop";
-				‚l‚`‚o“Ç‚İ‚İ(no, 22, 0, 0, 1, 1, 0, 0, 0, 0);
+				MAPReading(no, 22, 0, 0, 1, 1, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -7376,37 +7376,37 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 2,000";
 				if (FA[50] == 0)
 				{
-					‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 2, 0);
+					MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 2, 0);
 				}
 				if (FA[50] == 1)
 				{
-					‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 1, 2, 1, 2, 0);
+					MAPReading(no, 0, 1, 0, 1, 1, 2, 1, 2, 0);
 				}
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 2,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 0, 1, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 139, 0, 1);
+					MDRandom(0, 2, 139, 0, 1);
 				}
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 3,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 1, 0, 0, 2, 1, 0, 1);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 4,500";
 				if (FA[50] == 0)
 				{
-					‚l‚`‚o“Ç‚İ‚İ(no, 23, 1, 0, 0, 1, 0, 1, 0, 1);
+					MAPReading(no, 23, 1, 0, 0, 1, 0, 1, 0, 1);
 				}
 				if (FA[50] == 1)
 				{
-					‚l‚`‚o“Ç‚İ‚İ(no, 23, 1, 1, 0, 1, 0, 1, 0, 1);
+					MAPReading(no, 23, 1, 1, 0, 1, 0, 1, 0, 1);
 				}
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(43, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
@@ -7422,7 +7422,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 5,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 10, 2, 3, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 10, 2, 3, 0);
 			}
 			return 0;
 		}
@@ -7630,34 +7630,34 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(350, 23, 12);
+			QuestBasicRegistration(350, 23, 12);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(44, 39, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(4, 6, 0);
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cave screams are coming from";
-				‚l‚`‚o“Ç‚İ‚İ(no, 104, 0, 0, 0, 0, 5, 3, 2, 1);
+				MAPReading(no, 104, 0, 0, 0, 0, 5, 3, 2, 1);
 				Ÿí“¬”wŒi”Ô† = 54;
 				g‚l = 5611;
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 68, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 77, 0, 1);
+					MDRandom(0, 2, 68, 0, 1);
+					MDRandom(0, 2, 77, 0, 1);
 					‚l‚cŒÅ’è(26, 22, 18, 90, 0);
 				}
 			}
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Trail Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+				MAPReading(no, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(42, 39, 0, 0, 0);
 			}
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Trail Rest Stop";
-				‚l‚`‚o“Ç‚İ‚İ(no, 22, 0, 0, 1, 1, 0, 0, 0, 0);
+				MAPReading(no, 22, 0, 0, 1, 1, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -7668,13 +7668,13 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 2,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 0, 0, 0, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 0, 0, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(42, 39, 0, 0, 0);
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 2,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 1, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 				}
@@ -7682,31 +7682,31 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 3,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 2, 0, 2, 1);
+				MAPReading(no, 0, 0, 1, 0, 1, 2, 0, 2, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(43, 0, 0, 0, 0);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 4,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 23, 0, 0, 1, 1, 0, 0, 0, 1);
+				MAPReading(no, 23, 0, 0, 1, 1, 0, 0, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(43, 44, 0, 0, 0);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 5,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 2, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 2, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[66] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 				}
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 5,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 41, 0, 0, 1, 0, 2, 0, 0, 0);
+				MAPReading(no, 41, 0, 0, 1, 0, 2, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(30, 23, 8, 40, 0);
@@ -7854,7 +7854,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(14);
-			ƒNƒGƒXƒgŠî–{“o˜^(400, 24, 6);
+			QuestBasicRegistration(400, 24, 6);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 3);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(39, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(8, 8, 9);
@@ -7862,104 +7862,104 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 01";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(33, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 15, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(1, 15, 0, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 02";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 1, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(33, 0, 0, 0, 0);
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 03";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(33, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (‚o‚s‚`—L–³^ŒÅ—L(39) != 0 && ‚b”Ô†æ“¾(29) == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 300, 0, 1);
+						MDRandom(0, 10, 300, 0, 1);
 					}
 				}
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 04";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 1, 3, 3);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 1, 3, 3);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(39, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(118, -1) != 2 && ‚h—L–³(260, 0, "") == 0)
+					if (‚pó‘Ô(118, -1) != 2 && ItemInInventory(260, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 260, 0, 1);
+						MDRandom(1, 1, 260, 0, 1);
 					}
-					if (‚h—L–³(33, 0, "") == 0)
+					if (ItemInInventory(33, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 33, 0, 1);
+						MDRandom(0, 2, 33, 0, 1);
 					}
-					if (‚h—L–³(59, 0, "") == 0)
+					if (ItemInInventory(59, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 59, 0, 1);
+						MDRandom(0, 2, 59, 0, 1);
 					}
 				}
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 05";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 1, 3, 3);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 1, 3, 3);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(39, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(118, -1) != 2 && ‚h—L–³(261, 0, "") == 0)
+					if (‚pó‘Ô(118, -1) != 2 && ItemInInventory(261, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 261, 0, 1);
+						MDRandom(1, 1, 261, 0, 1);
 					}
-					if (‚h—L–³(108, 0, "") == 0)
+					if (ItemInInventory(108, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 108, 0, 1);
+						MDRandom(0, 2, 108, 0, 1);
 					}
-					if (‚h—L–³(139, 0, "") == 0)
+					if (ItemInInventory(139, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 139, 0, 1);
+						MDRandom(0, 2, 139, 0, 1);
 					}
 				}
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 06";
-				‚l‚`‚o“Ç‚İ‚İ(no, 322, 1, 1, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 322, 1, 1, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(39, 0, 0, 0, 0);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 10";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 1, 1, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 0, 0, 0, 0);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 11";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 8, 0, 3, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 8, 0, 3, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚h—L–³(255, 0, "") != 0)
+					if (ItemInInventory(255, 0, "") != 0)
 					{
-						if (‚h—L–³(256, 0, "") == 0)
+						if (ItemInInventory(256, 0, "") == 0)
 						{
-							‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 256, 0, 1);
+							MDRandom(0, 2, 256, 0, 1);
 						}
-						if (‚h—L–³(257, 0, "") == 0)
+						if (ItemInInventory(257, 0, "") == 0)
 						{
-							‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 257, 0, 1);
+							MDRandom(0, 2, 257, 0, 1);
 						}
 					}
 				}
@@ -7967,7 +7967,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 323, 0, 1, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 323, 0, 1, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(35, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -7980,35 +7980,35 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 14";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 2, 1, 1, 1);
+				MAPReading(no, 0, 1, 0, 1, 0, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(44, 0, 0, 0, 0);
 			}
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 15";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(43, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 15, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 308, 0, 1);
+					MDRandom(1, 15, 0, 0, 1);
+					MDRandom(0, 2, 308, 0, 1);
+					MDRandom(0, 2, 308, 0, 1);
+					MDRandom(0, 2, 308, 0, 1);
 				}
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "MAP 16";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 2, 1, 1, 1);
+				MAPReading(no, 0, 1, 0, 0, 1, 2, 1, 1, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(43, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[67] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 198, 0, 1);
+					MDRandom(0, 13, 0, 0, 1);
+					MDRandom(0, 1, 198, 0, 1);
 				}
 			}
 			return 0;
@@ -8080,7 +8080,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(8);
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 22, 1);
+			QuestBasicRegistration(200, 22, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(41, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -8119,101 +8119,101 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Central Wamasya";
-				‚l‚`‚o“Ç‚İ‚İ(no, 42, 1, 1, 1, 1, 0, 1, 0, 0);
+				MAPReading(no, 42, 1, 1, 1, 1, 0, 1, 0, 0);
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "North Wamasya";
-				‚l‚`‚o“Ç‚İ‚İ(no, 43, 0, 1, 0, 0, 0, 1, 0, 0);
+				MAPReading(no, 43, 0, 1, 0, 0, 0, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (QD[1] == 2)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+						MDRandom(1, 18, 90, 0, 1);
 					}
 					if (QD[2] == 2 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 124, 0, 1);
+						MDRandom(1, 1, 124, 0, 1);
 					}
 					if (QD[3] == 2 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 164, 0, 1);
+						MDRandom(1, 1, 164, 0, 1);
 					}
 					if (QD[4] == 2 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 15, 0, 1);
+						MDRandom(1, 1, 15, 0, 1);
 					}
 				}
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "West Wamasya";
-				‚l‚`‚o“Ç‚İ‚İ(no, 46, 0, 0, 1, 0, 0, 2, 0, 0);
+				MAPReading(no, 46, 0, 0, 1, 0, 0, 2, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (QD[1] == 5)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+						MDRandom(1, 18, 90, 0, 1);
 					}
 					if (QD[2] == 5 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 124, 0, 1);
+						MDRandom(1, 1, 124, 0, 1);
 					}
 					if (QD[3] == 5 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 164, 0, 1);
+						MDRandom(1, 1, 164, 0, 1);
 					}
 					if (QD[4] == 5 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 15, 0, 1);
+						MDRandom(1, 1, 15, 0, 1);
 					}
 				}
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "East Wamasya";
-				‚l‚`‚o“Ç‚İ‚İ(no, 45, 0, 0, 0, 1, 0, 0, 0, 0);
+				MAPReading(no, 45, 0, 0, 0, 1, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (QD[1] == 7)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+						MDRandom(1, 18, 90, 0, 1);
 					}
 					if (QD[2] == 7 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 124, 0, 1);
+						MDRandom(1, 1, 124, 0, 1);
 					}
 					if (QD[3] == 7 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 164, 0, 1);
+						MDRandom(1, 1, 164, 0, 1);
 					}
 					if (QD[4] == 7 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 15, 0, 1);
+						MDRandom(1, 1, 15, 0, 1);
 					}
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "South Wamasya";
-				‚l‚`‚o“Ç‚İ‚İ(no, 44, 1, 0, 0, 0, 0, 2, 0, 0);
+				MAPReading(no, 44, 1, 0, 0, 0, 0, 2, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (QD[1] == 10)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+						MDRandom(1, 18, 90, 0, 1);
 					}
 					if (QD[2] == 10 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 124, 0, 1);
+						MDRandom(1, 1, 124, 0, 1);
 					}
 					if (QD[3] == 10 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 164, 0, 1);
+						MDRandom(1, 1, 164, 0, 1);
 					}
 					if (QD[4] == 10 && RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 15, 0, 1);
+						MDRandom(1, 1, 15, 0, 1);
 					}
 				}
 			}
@@ -8276,35 +8276,35 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(290, 23, 11);
+			QuestBasicRegistration(290, 23, 11);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 5, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(46, 51, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(6, 6, 0);
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Point B";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 0, 0, 1, 0);
+				MAPReading(no, 0, 0, 1, 0, 0, 0, 0, 1, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Inner Fortress";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 0, 0, 1, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 0, 0, 1, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Point A";
-				‚l‚`‚o“Ç‚İ‚İ(no, 12, 1, 1, 1, 1, 0, 0, 1, 0);
+				MAPReading(no, 12, 1, 1, 1, 1, 0, 0, 1, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(46, 28, 18, 10, 0);
@@ -8313,23 +8313,23 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest West Laborie Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 123, 1, 0, 1, 0, 4, 0, 3, 2);
+				MAPReading(no, 123, 1, 0, 1, 0, 4, 0, 3, 2);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Hidden Path 1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 4, 0, 3, 2);
+				MAPReading(no, 0, 0, 0, 1, 1, 4, 0, 3, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(50, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 78, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 91, 0, 1);
+					MDRandom(0, 2, 78, 0, 1);
+					MDRandom(0, 2, 91, 0, 1);
 				}
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Hidden Path 2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 4, 0, 3, 1);
+				MAPReading(no, 0, 1, 0, 0, 1, 4, 0, 3, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(50, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -8338,18 +8338,18 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Hidden Path 3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 4, 0, 3, 2);
+				MAPReading(no, 0, 1, 1, 0, 0, 4, 0, 3, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(50, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 13, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kalar Forest Hidden Path 4";
-				‚l‚`‚o“Ç‚İ‚İ(no, 13, 0, 1, 0, 0, 4, 0, 6, 2);
+				MAPReading(no, 13, 0, 1, 0, 0, 4, 0, 6, 2);
 				ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 3);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(86, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
@@ -8498,31 +8498,31 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 22, 12);
+			QuestBasicRegistration(300, 22, 12);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(5, 5, 5, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(42, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(4, 8, 9);
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 4,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 2, 1, 0, 0);
+				MAPReading(no, 0, 0, 1, 1, 0, 2, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 47, 0, 0, 0);
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 3,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 2, 4, 0, 1);
+				MAPReading(no, 0, 0, 1, 0, 1, 2, 4, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(42, 0, 0, 0, 0);
 			}
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Trail Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 1, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 1, 0, 0, 0);
 			}
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Trail Rest Stop";
-				‚l‚`‚o“Ç‚İ‚İ(no, 22, 0, 0, 1, 1, 0, 0, 0, 1);
+				MAPReading(no, 22, 0, 0, 1, 1, 0, 0, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -8533,24 +8533,24 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 2,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 2, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 2, 1, 0, 0);
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 2,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 0, 1, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(42, 0, 0, 0, 0);
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 3,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 1, 2, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 1, 2, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(42, 0, 0, 0, 0);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 4,500";
-				‚l‚`‚o“Ç‚İ‚İ(no, 23, 1, 0, 1, 1, 2, 1, 0, 1);
+				MAPReading(no, 23, 1, 0, 1, 1, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 47, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -8560,13 +8560,13 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 5,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 1, 4, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 1, 4, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 47, 0, 0, 0);
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 6,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 41, 1, 0, 1, 0, 1, 0, 1, 0);
+				MAPReading(no, 41, 1, 0, 1, 0, 1, 0, 1, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(52, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -8577,21 +8577,21 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 7,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 1, 0, 2, 1);
+				MAPReading(no, 0, 1, 1, 0, 0, 1, 0, 2, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(52, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+					MDRandom(0, 13, 0, 0, 1);
 				}
 			}
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 8,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 1, 1, 3, 0);
+				MAPReading(no, 0, 0, 1, 0, 0, 1, 1, 3, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(52, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+					MDRandom(1, 18, 90, 0, 1);
 				}
 			}
 			return 0;
@@ -8701,43 +8701,43 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 10;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 31, 2);
+			QuestBasicRegistration(300, 31, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 52, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(2, 5, 9);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma Wetland-1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 5, 2, 0, 0);
+				MAPReading(no, 0, 0, 1, 0, 0, 5, 2, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma Wetland-2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 5, 2, 0, 1);
+				MAPReading(no, 0, 1, 1, 0, 0, 5, 2, 0, 1);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[70] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 				}
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma Wetland-3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 5, 2, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 5, 2, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 			}
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma Wetland-4";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 5, 2, 0, 1);
+				MAPReading(no, 0, 1, 0, 0, 0, 5, 2, 0, 1);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+					MDRandom(1, 18, 90, 0, 1);
 				}
 			}
 			return 0;
@@ -8830,110 +8830,110 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(10, 24, 2);
+			QuestBasicRegistration(10, 24, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(57, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(3, 3, 0);
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma A";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 1, 0, 0, 0);
+				MAPReading(no, 0, 0, 1, 1, 0, 1, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (no == QD[1])
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 55, 0, 1);
+						MDRandom(0, 10, 55, 0, 1);
 					}
 				}
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma B";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 0, 3, 0, 1);
+				MAPReading(no, 0, 0, 0, 1, 1, 0, 3, 0, 1);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (no == QD[1])
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 55, 0, 1);
+						MDRandom(0, 10, 55, 0, 1);
 					}
 				}
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma C";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 2, 4, 0, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 2, 4, 0, 1);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (no == QD[1])
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 55, 0, 1);
+						MDRandom(0, 10, 55, 0, 1);
 					}
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma D";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 0, 1, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (no == QD[1])
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 55, 0, 1);
+						MDRandom(0, 10, 55, 0, 1);
 					}
 				}
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma E";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 1, 2, 2, 2, 1);
+				MAPReading(no, 0, 0, 1, 1, 1, 2, 2, 2, 1);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (no == QD[1])
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 55, 0, 1);
+						MDRandom(0, 10, 55, 0, 1);
 					}
 				}
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma F";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 0, 1, 0, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 0, 1, 0, 1);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (no == QD[1])
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 55, 0, 1);
+						MDRandom(0, 10, 55, 0, 1);
 					}
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 15, 0, 0, 1);
+					MDRandom(1, 15, 0, 0, 1);
 				}
 			}
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma G";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 1, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 1, 0, 1, 1, 0, 1);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (no == QD[1])
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 55, 0, 1);
+						MDRandom(0, 10, 55, 0, 1);
 					}
 				}
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Kadonoma H";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 0, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 0, 1, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 18, 90, 0, 1);
+					MDRandom(1, 18, 90, 0, 1);
 				}
 			}
 			return 0;
@@ -8995,7 +8995,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(14);
 			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
-			ƒNƒGƒXƒgŠî–{“o˜^(350, 24, 6);
+			QuestBasicRegistration(350, 24, 6);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
@@ -9003,18 +9003,18 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-6";
-				‚l‚`‚o“Ç‚İ‚İ(no, 47, 0, 1, 0, 0, 1, 1, 0, 1);
+				MAPReading(no, 47, 0, 1, 0, 0, 1, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-10";
-				‚l‚`‚o“Ç‚İ‚İ(no, 48, 0, 1, 1, 0, 1, 1, 0, 1);
+				MAPReading(no, 48, 0, 1, 1, 0, 1, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -9027,67 +9027,67 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-101";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 1, 1, 0, 2);
+				MAPReading(no, 0, 0, 0, 1, 1, 1, 1, 0, 2);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(45, 0, 0, 0, 0);
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-77";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 3, 1, 0, 3);
+				MAPReading(no, 0, 0, 1, 0, 1, 3, 1, 0, 3);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(41, 0, 0, 0, 0);
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 1, 0, 1);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 0, 0, 0, 0);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-45";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 1, 6, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 1, 6, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(41, 0, 0, 0, 0);
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5A-12";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 1, 6, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 1, 6, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 48, 0, 0, 0);
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5A-22";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 3, 3, 0, 1);
+				MAPReading(no, 0, 1, 1, 1, 0, 3, 3, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(49, 0, 0, 0, 0);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5A-32";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 1, 1, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 1, 1, 1, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(50, 0, 0, 0, 0);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5B-10";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 0, 1, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(48, 0, 0, 0, 0);
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-6,000";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 1, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(50, 0, 0, 0, 0);
 			}
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Area 5-???";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 4, 1, 4, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 4, 1, 4, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(49, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(119, -1) != 2 && ‚h—L–³(259, 0, "") == 0)
+					if (‚pó‘Ô(119, -1) != 2 && ItemInInventory(259, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 259, 0, 1);
+						MDRandom(1, 1, 259, 0, 1);
 					}
 				}
 			}
@@ -9140,7 +9140,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 21, 1);
+			QuestBasicRegistration(300, 21, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 40, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(2, 0, 0);
@@ -9148,29 +9148,29 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Party of One Dungeon 1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 1, 0, 0, 0, 0, 0);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Party of One Dungeon 2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 1, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 1, 1, 1, 0, 1, 0, 0);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Party of One Dungeon 3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 0, 1, 0, 1);
+				MAPReading(no, 0, 0, 0, 0, 1, 0, 1, 0, 1);
 			}
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Party of One Dungeon 4";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 0, 0, 0, 1, 0, 1);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Ralga's Mansion";
-				‚l‚`‚o“Ç‚İ‚İ(no, 20, 1, 1, 0, 0, 0, 1, 0, 0);
+				MAPReading(no, 20, 1, 1, 0, 0, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
-				ƒNƒGƒXƒgŠî–{“o˜^(300, 21, 1);
+				QuestBasicRegistration(300, 21, 1);
 				Ÿí“¬”wŒi”Ô† = 52;
 				g‚l = 5655;
 				if (‚l[no].‰“o˜^ == 0)
@@ -9194,10 +9194,10 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Quiet Forest";
 				‚l‚`‚oŠî‘bŒ^“o˜^(2);
-				‚l‚`‚o“Ç‚İ‚İ(no, 125, 0, 1, 0, 0, 0, 2, 0, 0);
+				MAPReading(no, 125, 0, 1, 0, 0, 0, 2, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 90, 0, 1);
+					MDRandom(1, 8, 90, 0, 1);
 				}
 			}
 			return 0;
@@ -9357,14 +9357,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 32, 7);
+			QuestBasicRegistration(300, 32, 7);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(61, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater Shrine Point A";
-				‚l‚`‚o“Ç‚İ‚İ(no, 25, 0, 0, 1, 0, 2, 0, 0, 0);
+				MAPReading(no, 25, 0, 0, 1, 0, 2, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 0, 0, 0, 0);
 				Ÿí“¬”wŒi”Ô† = 53;
 				g‚l = 5700;
@@ -9376,7 +9376,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater Shrine Point B";
-				‚l‚`‚o“Ç‚İ‚İ(no, 25, 0, 0, 1, 1, 2, 0, 0, 0);
+				MAPReading(no, 25, 0, 0, 1, 1, 2, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 0, 0, 0, 0);
 				Ÿí“¬”wŒi”Ô† = 53;
 				g‚l = 5700;
@@ -9388,7 +9388,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater Shrine Point C";
-				‚l‚`‚o“Ç‚İ‚İ(no, 25, 0, 0, 1, 1, 1, 0, 0, 0);
+				MAPReading(no, 25, 0, 0, 1, 1, 1, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 0, 0, 0, 0);
 				Ÿí“¬”wŒi”Ô† = 53;
 				g‚l = 5700;
@@ -9400,7 +9400,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater Shrine Point D";
-				‚l‚`‚o“Ç‚İ‚İ(no, 25, 0, 0, 0, 1, 2, 0, 0, 0);
+				MAPReading(no, 25, 0, 0, 0, 1, 2, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 0, 0, 0, 0);
 				Ÿí“¬”wŒi”Ô† = 53;
 				g‚l = 5700;
@@ -9412,43 +9412,43 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater A-1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 2, 3, 4);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 2, 3, 4);
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater A-2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 3, 2, 1, 4);
+				MAPReading(no, 0, 1, 0, 1, 0, 3, 2, 1, 4);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[68] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater A-3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 1, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 1, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 15, 0, 0, 1);
+					MDRandom(1, 15, 0, 0, 1);
 				}
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater B-1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 1, 1, 2, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 1, 1, 2, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater C-1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 2, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 2, 0, 0, 0);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater C-2";
-				‚l‚`‚o“Ç‚İ‚İ(no, 24, 1, 1, 0, 0, 10, 1, 0, 2);
+				MAPReading(no, 24, 1, 1, 0, 0, 10, 1, 0, 2);
 				if (EV("‚P‚O‚`…’†‚Ì–å", -2147483648) == false)
 				{
 					‚l’u•¨(25, 28, 306);
@@ -9462,12 +9462,12 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater C-3";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 2, 0, 6, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 2, 0, 6, 0);
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Mothercow";
-				‚l‚`‚o“Ç‚İ‚İ(no, 26, 0, 0, 0, 1, 0, 0, 5, 0);
+				MAPReading(no, 26, 0, 0, 0, 1, 0, 0, 5, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 				Ÿí“¬”wŒi”Ô† = 53;
 				g‚l = 5700;
@@ -9487,7 +9487,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Underwater D-1";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 10, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 10, 1, 0, 0);
 			}
 			return 0;
 		}
@@ -9709,14 +9709,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			ŸƒLƒƒƒ‰ˆÊ’u = 0;
-			ƒNƒGƒXƒgŠî–{“o˜^(400, 31, 1);
+			QuestBasicRegistration(400, 31, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(59, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Hyper Building 21F";
-				‚l‚`‚o“Ç‚İ‚İ(no, 54, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 54, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(17, 15, 8, 10, 0);
@@ -9725,17 +9725,17 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Hyper Building 22F";
-				‚l‚`‚o“Ç‚İ‚İ(no, 55, 0, 0, 0, 0, 10, 0, 0, 0);
+				MAPReading(no, 55, 0, 0, 0, 0, 10, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(34, 39, 8, 50, 0);
-					if (‚h—L–³(93, 0, "") == 0)
+					if (ItemInInventory(93, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 93, 0, 1);
+						MDRandom(0, 2, 93, 0, 1);
 					}
-					if (‚h—L–³(203, 0, "") == 0)
+					if (ItemInInventory(203, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 203, 0, 1);
+						MDRandom(0, 2, 203, 0, 1);
 					}
 				}
 			}
@@ -9823,14 +9823,14 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(0, 0, 2);
+			QuestBasicRegistration(0, 0, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			}
 			return 0;
 		}
@@ -9972,7 +9972,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(14);
 			Ÿ‚l‚`‚o–¼‘O = "ƒ}ƒbƒv‚Ì–¼‘O‚P‚O•¶š";
-			ƒNƒGƒXƒgŠî–{“o˜^(450, 34, 6);
+			QuestBasicRegistration(450, 34, 6);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(54, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 5, 9);
@@ -9980,93 +9980,93 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 322, 0, 1, 1, 0, 0, 0, 0, 1);
+				MAPReading(no, 322, 0, 1, 1, 0, 0, 0, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 49, 50, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
+					MDRandom(0, 1, 308, 0, 1);
 				}
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 3, 0, 4, 0);
+				MAPReading(no, 0, 0, 1, 0, 1, 3, 0, 4, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 49, 50, 0, 0);
 			}
 			if (no == 3)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 0, 0, 0, 1);
+				MAPReading(no, 0, 0, 1, 1, 0, 0, 0, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 50, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(119, -1) != 2 && ‚h—L–³(260, 0, "") == 0)
+					if (‚pó‘Ô(119, -1) != 2 && ItemInInventory(260, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 260, 0, 1);
+						MDRandom(1, 1, 260, 0, 1);
 					}
 				}
 			}
 			if (no == 4)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 6, 0, 4, 1);
+				MAPReading(no, 0, 0, 1, 0, 1, 6, 0, 4, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(47, 49, 0, 0, 0);
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 2, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 2, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 54, 0, 0, 0);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 3, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 3, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 54, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					if (‚pó‘Ô(119, -1) != 2 && ‚h—L–³(261, 0, "") == 0)
+					if (‚pó‘Ô(119, -1) != 2 && ItemInInventory(261, 0, "") == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 1, 261, 0, 1);
+						MDRandom(1, 1, 261, 0, 1);
 					}
 				}
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 6, 0, 4, 1);
+				MAPReading(no, 0, 1, 0, 0, 1, 6, 0, 4, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 54, 0, 0, 0);
 			}
 			if (no == 8)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 3, 0, 1);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 3, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(53, 54, 0, 0, 0);
 			}
 			if (no == 9)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 2, 0, 0, 1);
+				MAPReading(no, 0, 1, 1, 0, 0, 2, 0, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(54, 55, 0, 0, 0);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 0, 3, 6, 1);
+				MAPReading(no, 0, 0, 1, 1, 0, 0, 3, 6, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(55, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[69] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 				}
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 323, 0, 1, 0, 1, 2, 0, 0, 0);
+				MAPReading(no, 323, 0, 1, 0, 1, 2, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(58, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -10083,31 +10083,31 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(54, 56, 0, 0, 0);
 			}
 			if (no == 13)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 0, 0, 3, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 0, 0, 3, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(54, 61, 0, 0, 0);
 			}
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 1, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(61, 0, 0, 0, 0);
 			}
 			if (no == 15)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(58, 0, 0, 0, 0);
 			}
 			if (no == 16)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 1, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(56, 0, 0, 0, 0);
 			}
 			return 0;
@@ -10171,13 +10171,13 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(3);
 			Ÿ‚l‚`‚o–¼‘O = "Hanny Secret Base";
-			ƒNƒGƒXƒgŠî–{“o˜^(50, 11, 57);
+			QuestBasicRegistration(50, 11, 57);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(11, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 142, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 142, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (‚b”Ô†æ“¾(12) == 0)
@@ -10187,20 +10187,20 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 					‚l‚cŒÅ’è(22, 21, 17, 1, 0);
 					‚l‚cŒÅ’è(20, 24, 17, 1, 0);
 					‚l‚cŒÅ’è(21, 24, 17, 1, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
+					MDRandom(0, 17, 1, 0, 1);
 				}
 			}
 			return 0;
@@ -10327,85 +10327,85 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(400, 33, 5);
+			QuestBasicRegistration(400, 33, 5);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(60, 53, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			if (no == 16)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 0, 3, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 0, 0, 3, 0);
 			}
 			if (no == 13)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(60, 55, 55, 0, 0);
 			}
 			if (no == 14)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 0, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 0, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(60, 56, 56, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
 				}
 			}
 			if (no == 5)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(60, 55, 55, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
 					‚l‚cŒÅ’è(NNx, NNy, 18, 40, 0);
 				}
 			}
 			if (no == 9)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(60, 55, 55, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
+					MDRandom(0, 10, 30, 0, 1);
 				}
 			}
 			if (no == 6)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 1, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 1, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(60, 56, 56, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(NNx, NNy, 18, 20, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
 				}
 			}
 			if (no == 10)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 0, 0, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(60, 56, 56, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
+					MDRandom(0, 10, 10, 0, 1);
 				}
 			}
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 31, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 31, 0, 0, 0, 0, 0, 0, 0, 0);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -10616,15 +10616,15 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				if (QD[5] >= 4)
 				{
-					ƒNƒGƒXƒgŠî–{“o˜^(10, 33, 10);
+					QuestBasicRegistration(10, 33, 10);
 					break;
 				}
 				if (QD[5] >= 2)
 				{
-					ƒNƒGƒXƒgŠî–{“o˜^(10, 33, 9);
+					QuestBasicRegistration(10, 33, 9);
 					break;
 				}
-				ƒNƒGƒXƒgŠî–{“o˜^(10, 33, 8);
+				QuestBasicRegistration(10, 33, 8);
 				break;
 			}
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(3, 3, 3, 3);
@@ -10736,22 +10736,22 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				if (ra == 1)
 				{
 					ŸƒLƒƒƒ‰ˆÊ’u = 11;
-					‚l‚`‚o“Ç‚İ‚İ(no, mapdata, 1, 1, 0, 0, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
+					MAPReading(no, mapdata, 1, 1, 0, 0, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
 				}
 				if (ra == 2)
 				{
 					ŸƒLƒƒƒ‰ˆÊ’u = 11;
-					‚l‚`‚o“Ç‚İ‚İ(no, mapdata, 0, 1, 0, 1, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
+					MAPReading(no, mapdata, 0, 1, 0, 1, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
 				}
 				if (ra == 3)
 				{
 					ŸƒLƒƒƒ‰ˆÊ’u = 12;
-					‚l‚`‚o“Ç‚İ‚İ(no, mapdata, 1, 0, 1, 0, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
+					MAPReading(no, mapdata, 1, 0, 1, 0, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
 				}
 				if (ra == 4)
 				{
 					ŸƒLƒƒƒ‰ˆÊ’u = 12;
-					‚l‚`‚o“Ç‚İ‚İ(no, mapdata, 0, 0, 1, 1, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
+					MAPReading(no, mapdata, 0, 0, 1, 1, map_ƒ‚ƒ“ƒXƒ^[, 0, map_ƒgƒ‰ƒbƒv, map_–`Œ¯Œ÷Ñ);
 				}
 				QD[3] = 0;
 				if (QD[2] < FA[51] && QD[7] == 0)
@@ -10785,11 +10785,11 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				{
 					if (QD[3] != 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 30, 0, 1);
+						MDRandom(1, 8, 30, 0, 1);
 					}
 					if (RAND(6) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+						MDRandom(0, 15, 0, 0, 1);
 					}
 				}
 				if (mapdata == 32)
@@ -10805,11 +10805,11 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				}
 				if (mapdata == 33 || RAND(6) == 1)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+					MDRandom(0, 13, 0, 0, 1);
 				}
 				if (mapdata == 33)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 				if (mapdata == 34)
 				{
@@ -11072,44 +11072,44 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 				ŸƒLƒƒƒ‰ˆÊ’u = 10;
 			}
 			ŸƒNƒGƒXƒgƒp[ƒeƒB•Ò¬‹Ö~ = 1;
-			ƒNƒGƒXƒgŠî–{“o˜^(100, 31, 2);
+			QuestBasicRegistration(100, 31, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(83, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Clean Mud Point";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 0, 1, 0, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Wharf Roach Habitat";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 1, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Earthworm Habitat";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 0, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bullfrog Habitat";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 1, 0, 0, 0, 0, 0);
+				MAPReading(no, 0, 1, 1, 1, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Crayfish Habitat";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 0, 0, 0, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 			}
 			if (no == 14)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Worker Bug Habitat";
-				‚l‚`‚o“Ç‚İ‚İ(no, 35, 1, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 35, 1, 0, 0, 0, 0, 0, 0, 0);
 				‚q‚WƒvƒŒƒCƒ„[ƒ}[ƒJ[Ø‚è‘Ö‚¦(1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
@@ -11328,7 +11328,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(100, 21, 2);
+			QuestBasicRegistration(100, 21, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(26, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -11336,26 +11336,26 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cripple Dungeon";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 3, 0, 0, 0);
+				MAPReading(no, 0, 0, 1, 1, 0, 3, 0, 0, 0);
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cripple Dungeon";
-				‚l‚`‚o“Ç‚İ‚İ(no, 106, 0, 1, 0, 1, 6, 5, 0, 0);
+				MAPReading(no, 106, 0, 1, 0, 1, 6, 5, 0, 0);
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cripple Dungeon";
-				‚l‚`‚o“Ç‚İ‚İ(no, 106, 1, 0, 1, 0, 6, 0, 0, 0);
+				MAPReading(no, 106, 1, 0, 1, 0, 6, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 90, 0, 1);
+					MDRandom(1, 8, 90, 0, 1);
 				}
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Cripple Dungeon";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 0, 1, 3, 0, 0, 0);
+				MAPReading(no, 0, 1, 0, 0, 1, 3, 0, 0, 0);
 			}
 			return 0;
 		}
@@ -11398,76 +11398,76 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 22, 4);
+			QuestBasicRegistration(200, 22, 4);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(31, 35, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 4, 0);
 			if (no == 1)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bolbod Castle Entrance";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 1, 0, 1);
 			}
 			if (no == 2)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bolbod Castle Lobby";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 0, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 1, 0, 1, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 10, 10, 0, 1);
+					MDRandom(1, 10, 10, 0, 1);
 				}
 			}
 			if (no == 6)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bolbod Castle 3F";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 1, 0, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 1, 0, 1, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 10, 20, 0, 1);
+					MDRandom(1, 10, 20, 0, 1);
 				}
 			}
 			if (no == 10)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bolbod Castle Basement";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 1, 0, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(27, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 10, 30, 0, 1);
+					MDRandom(1, 10, 30, 0, 1);
 				}
 			}
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bolbod Castle West Room";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 0, 2, 1, 0, 1);
+				MAPReading(no, 0, 0, 0, 1, 0, 2, 1, 0, 1);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 10, 40, 0, 1);
+					MDRandom(1, 10, 40, 0, 1);
 				}
 			}
 			if (no == 11)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bolbod Castle East Area";
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 1, 2, 1, 0, 1);
+				MAPReading(no, 0, 1, 0, 1, 1, 2, 1, 0, 1);
 				ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(27, 0, 0, 0, 0);
 			}
 			if (no == 12)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Castle Garden";
 				‚l‚`‚oŠî‘bŒ^“o˜^(2);
-				‚l‚`‚o“Ç‚İ‚İ(no, 124, 0, 0, 0, 1, 2, 1, 0, 1);
-				ƒNƒGƒXƒgŠî–{“o˜^(200, 22, 11);
+				MAPReading(no, 124, 0, 0, 0, 1, 2, 1, 0, 1);
+				QuestBasicRegistration(200, 22, 11);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					if (FA[65] == 0)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 105, 0, 1);
+						MDRandom(0, 10, 105, 0, 1);
 					}
 				}
 			}
 			if (no == 7)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Bolbod Castle Armory";
-				‚l‚`‚o“Ç‚İ‚İ(no, 38, 0, 1, 0, 0, 2, 1, 0, 0);
+				MAPReading(no, 38, 0, 1, 0, 0, 2, 1, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(27, 22, 10, 50, 0);
@@ -11568,36 +11568,36 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 12;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(250, 11, 1);
+			QuestBasicRegistration(250, 11, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(9, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(49, 49, 41, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 5)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 1, 1, 0, 1, 0, 3, 0);
+				MAPReading(no, 0, 0, 1, 1, 0, 1, 0, 3, 0);
 			}
 			if (no == 6)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 1, 0, 3, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 1, 0, 3, 0);
 			}
 			if (no == 7)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 1, 1, 1, 1, 3, 0);
+				MAPReading(no, 0, 0, 0, 1, 1, 1, 1, 3, 0);
 			}
 			if (no == 8)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 1, 0, 3, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 1, 0, 3, 0);
 			}
 			if (no == 9)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 1, 0, 1, 0, 1, 0, 3, 0);
+				MAPReading(no, 0, 1, 0, 1, 0, 1, 0, 3, 0);
 			}
 			if (no == 10)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 0, 0, 0, 0, 1, 1, 1, 3, 0);
+				MAPReading(no, 0, 0, 0, 0, 1, 1, 1, 3, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(1, 8, 90, 0, 1);
+					MDRandom(1, 8, 90, 0, 1);
 				}
 			}
 			return 0;
@@ -11774,7 +11774,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(6);
 			Ÿ‚l‚`‚o–¼‘O = "Guatalcanal Field";
-			ƒNƒGƒXƒgŠî–{“o˜^(5, 14, 2);
+			QuestBasicRegistration(5, 14, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -11782,7 +11782,7 @@ lint ƒNƒGƒXƒgˆ—^Šî–{(lint dd, lint no, lint fg)
 			ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			if (no == 1)
 			{
-				‚l‚`‚o“Ç‚İ‚İ(no, 39, 0, 0, 0, 0, 0, 0, 0, 0);
+				MAPReading(no, 39, 0, 0, 0, 0, 0, 0, 0, 0);
 				if (‚l[no].‰“o˜^ == 0)
 				{
 					‚l‚cŒÅ’è(29, 16, 18, 20, 0);

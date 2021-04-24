@@ -25,7 +25,7 @@ int アイテム_ＣＧ番号(int nItemNo)
 	return ＩＣＧ番号(nItemNo, -1);
 }
 
-string アイテム_名前(int nItemNo)
+string Item_Name(int nItemNo)
 {
 	if (!アイテム_確認(nItemNo))
 	{
@@ -279,7 +279,7 @@ bool アイテム_初期化(int nItemNo)
 	{
 		return false;
 	}
-	Ｉ初期化(nItemNo);
+	ItemInitialize(nItemNo);
 	return true;
 }
 
@@ -295,7 +295,7 @@ bool アイテム_鑑定(int nItemNo)
 	return true;
 }
 
-bool アイテム_寄付(int nItemNo, bool bFlag)
+bool Item_Donation(int nItemNo, bool bFlag)
 {
 	if (!アイテム_確認(nItemNo))
 	{
@@ -317,7 +317,7 @@ bool アイテム_寄付(int nItemNo, bool bFlag)
 	効果音_寄付();
 	Ｔアイテム寄付売却捨てる前(nItemNo);
 	アイテム_存在設定(nItemNo, 0);
-	アイテム_補充(nItemNo);
+	Item_Replenish(nItemNo);
 	寄付＋();
 	Ｔ寄付した物(nItemNo);
 	return true;
@@ -342,7 +342,7 @@ bool アイテム_売却(int nItemNo)
 	効果音_売却();
 	Ｔアイテム寄付売却捨てる前(nItemNo);
 	アイテム_存在設定(nItemNo, 0);
-	アイテム_補充(nItemNo);
+	Item_Replenish(nItemNo);
 	int nGold = Ｉ価格(nItemNo, -1);
 	所持金＋(nGold > 1000 ? 100 : 10);
 	return true;
@@ -412,7 +412,7 @@ bool アイテム_装備外し確認(int nItemNo)
 	return true;
 }
 
-bool アイテム_補充(int nItemNo)
+bool Item_Replenish(int nItemNo)
 {
 	return false;
 }
@@ -423,7 +423,7 @@ bool アイテム_所持確認(int n固有番号)
 	{
 		return false;
 	}
-	return Ｉ有無(n固有番号, 0, "") > 0;
+	return ItemInInventory(n固有番号, 0, "") > 0;
 }
 
 int アイテム_有無(int n固有番号, int nType)
@@ -432,7 +432,7 @@ int アイテム_有無(int n固有番号, int nType)
 	{
 		return -1;
 	}
-	return Ｉ有無(n固有番号, nType, "");
+	return ItemInInventory(n固有番号, nType, "");
 }
 
 string アイテム_固有名(int n固有番号)
@@ -1213,9 +1213,9 @@ bool アイテム_装備可能(int nItemNo, int nCharaNo)
 	return アイテム_装備職業(nItemNo, キャラ_職業(nCharaNo)) > 0;
 }
 
-int アイテム_強化ランク(int nItemNo)
+int ItemEnchancementRank(int nItemNo)
 {
-	string szName = アイテム_名前(nItemNo);
+	string szName = Item_Name(nItemNo);
 	if (szName.Empty())
 	{
 		return -1;

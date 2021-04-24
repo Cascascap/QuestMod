@@ -1,4 +1,4 @@
-void Ｒ８宝箱からアイテム(int nItemNo)
+void RegisterItemFromTreasureChest(int nItemNo)
 {
 	T_ItemComment sItemComment;
 	sItemComment.treasure(nItemNo, アイテム_確定済(nItemNo));

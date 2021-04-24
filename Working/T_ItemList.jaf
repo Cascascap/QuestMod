@@ -45,8 +45,8 @@ int compItem_Rank(int nItemNo1, int nItemNo2)
 
 int compItem_Syllabary(int nItemNo1, int nItemNo2)
 {
-	string szName1 = アイテム_名前(nItemNo1);
-	string szName2 = アイテム_名前(nItemNo2);
+	string szName1 = Item_Name(nItemNo1);
+	string szName2 = Item_Name(nItemNo2);
 	if (szName1 < szName2)
 	{
 		return -1;
@@ -303,8 +303,8 @@ int compItem_ResistDarkness(int nItemNo1, int nItemNo2)
 
 int compItem_RankUp(int nItemNo1, int nItemNo2)
 {
-	int nValue1 = アイテム_強化ランク(nItemNo1);
-	int nValue2 = アイテム_強化ランク(nItemNo2);
+	int nValue1 = ItemEnchancementRank(nItemNo1);
+	int nValue2 = ItemEnchancementRank(nItemNo2);
 	if (nValue1 < nValue2)
 	{
 		return -1;
@@ -318,8 +318,8 @@ int compItem_RankUp(int nItemNo1, int nItemNo2)
 
 int compItem_RankDown(int nItemNo1, int nItemNo2)
 {
-	int nValue1 = アイテム_強化ランク(nItemNo1);
-	int nValue2 = アイテム_強化ランク(nItemNo2);
+	int nValue1 = ItemEnchancementRank(nItemNo1);
+	int nValue2 = ItemEnchancementRank(nItemNo2);
 	if (nValue1 < nValue2)
 	{
 		return 1;
@@ -404,7 +404,7 @@ T_ItemList::~T_ItemList()
 int T_ItemList::create(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType)
 {
 	this.clear();
-	int cnt = アイテム倉庫_一覧(nType, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType, this.m_anItemNo);
+	int cnt = ItemWherehouseList(nType, nItemType, nJobType, nEquipType, nCharaNo, nItemTypeEx, nLockType, this.m_anItemNo);
 	if (cnt < 0)
 	{
 		return -1;

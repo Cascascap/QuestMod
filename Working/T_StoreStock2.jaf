@@ -164,7 +164,7 @@ bool T_StoreStock::exec(int nID, ref int nRet)
 	}
 	if (nID > 580000)
 	{
-		アイテム倉庫_一覧スクロール(nID);
+		ItemWherehouseListスクロール(nID);
 		return false;
 	}
 	if (nID > 575000)
@@ -226,7 +226,7 @@ bool T_StoreStock::execSort(int nID)
 		default:
 			break;
 	}
-	int nMode = アイテム倉庫_一覧ソート(nSortMode);
+	int nMode = ItemWherehouseListソート(nSortMode);
 	if (nMode <= 0)
 	{
 		return false;
@@ -491,11 +491,11 @@ bool T_StoreStock::lockItem(int nMode, int nItemNo)
 {
 	bool bRet = false;
 	this.m_sList.lock(-1);
-	アイテム倉庫_一覧ロック(-1);
+	ItemWherehouseListロック(-1);
 	switch (nMode)
 	{
 		case 1:
-			bRet = アイテム倉庫_一覧ロック(nItemNo);
+			bRet = ItemWherehouseListロック(nItemNo);
 			break;
 		case 2:
 			bRet = this.m_sList.lock(nItemNo);

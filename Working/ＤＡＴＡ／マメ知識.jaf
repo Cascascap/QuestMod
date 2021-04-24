@@ -1087,7 +1087,7 @@ string マメ知識文字列(int no)
 		文字列 += "■Rare Items A (Character-specific Equipment)■$";
 		no = 7;
 		▲品名 = "Lia's Clothes";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1098,7 +1098,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t";
 		no = 10;
 		▲品名 = "Sailor Uniform";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1109,7 +1109,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 27;
 		▲品名 = "Oda Armor";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1120,7 +1120,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t\t";
 		no = 70;
 		▲品名 = "Lia's Whip";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1131,7 +1131,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 69;
 		▲品名 = "Omikuji Box";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1142,7 +1142,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t";
 		no = 84;
 		▲品名 = "Decapitation Blade";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1153,7 +1153,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 100;
 		▲品名 = "Chaos the Darksword";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1164,7 +1164,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t";
 		no = 169;
 		▲品名 = "Crystal Rod";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1175,7 +1175,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 171;
 		▲品名 = "Tulip 1";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1186,7 +1186,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t\t\t";
 		no = 178;
 		▲品名 = "Puncher";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1197,7 +1197,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 125;
 		▲品名 = "Naginata";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1208,7 +1208,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t\t";
 		no = 165;
 		▲品名 = "Queen's Staff";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1221,7 +1221,7 @@ string マメ知識文字列(int no)
 		文字列 += "■Rare Items B■$";
 		no = 54;
 		▲品名 = "Orgarhythm";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1232,7 +1232,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t";
 		no = 24;
 		▲品名 = "Emperor's Armor";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1243,7 +1243,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 22;
 		▲品名 = "Sacred Tree Armor";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1254,7 +1254,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t";
 		no = 64;
 		▲品名 = "Ulaanbaatar";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1265,7 +1265,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 40;
 		▲品名 = "Champion";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1276,7 +1276,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t\t";
 		no = 52;
 		▲品名 = "Magic Minister";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1287,7 +1287,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 83;
 		▲品名 = "Uruncel Blade";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1298,7 +1298,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t";
 		no = 97;
 		▲品名 = "Persiom";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1309,7 +1309,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 114;
 		▲品名 = "Comet";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1320,7 +1320,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t\t\t";
 		no = 129;
 		▲品名 = "Terror Spear";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1331,7 +1331,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 144;
 		▲品名 = "Stronger";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1342,7 +1342,7 @@ string マメ知識文字列(int no)
 		文字列 += "\t\t\t\t";
 		no = 168;
 		▲品名 = "Buddha";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -1353,7 +1353,7 @@ string マメ知識文字列(int no)
 		文字列 += "$";
 		no = 157;
 		▲品名 = "Dragon Gloves";
-		if (Ｉ有無(no, 0, "") != 0)
+		if (ItemInInventory(no, 0, "") != 0)
 		{
 			文字列 += " ★ " + ▲品名;
 		}
@@ -3115,7 +3115,7 @@ lint マメ／女の子モンスター一覧(lint fg)
 
 void 女の子モンスターログ表示(int ino, ref int cn, int fg)
 {
-	if (Ｉ有無(ino, 0, "") != 0)
+	if (ItemInInventory(ino, 0, "") != 0)
 	{
 		cn++;
 		if (fg == 1)
@@ -3451,7 +3451,7 @@ void 女の子モンスターログ表示(int ino, ref int cn, int fg)
 			LOG("\n");
 		}
 	}
-	if (Ｉ有無(ino, 0, "") == 0 && fg == 1)
+	if (ItemInInventory(ino, 0, "") == 0 && fg == 1)
 	{
 		if (FA[268] == 1)
 		{
@@ -3469,67 +3469,67 @@ int マメ／レアアイテムＢの数()
 	int cn = 0;
 	int no = 0;
 	no = 54;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 24;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 22;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 64;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 40;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 52;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 83;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 97;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 114;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 129;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 144;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 168;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}
 	no = 157;
-	if (Ｉ有無(no, 0, "") != 0)
+	if (ItemInInventory(no, 0, "") != 0)
 	{
 		++cn;
 	}

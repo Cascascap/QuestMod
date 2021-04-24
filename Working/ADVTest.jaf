@@ -523,7 +523,7 @@ lint ‚s‘I‘ðŒQ‚`‚c‚u(int ff)
 		no++;
 		‚`‚s(ff, no, "‰©ò^‚¨“°^‚»‚êˆÈŠO‚Ì–¼", 0);
 		no++;
-		‚`‚s(ff, no, "‰©ò^‚¨“°^‚¿‚Ê•œŠˆ", 0);
+		‚`‚s(ff, no, "ChinuRevivalDialogue", 0);
 		no++;
 		‚`‚s(ff, no, "‚¿‚Ê^Ø‚è‘Ö‚¦‚P", 0);
 		no++;

@@ -492,7 +492,7 @@ string テキスト_固有キャラ短縮名(int nCharaNo)
 
 string テキスト_アイテム名(int nItemNo)
 {
-	return テキスト_名前(アイテム_名前(nItemNo));
+	return テキスト_名前(Item_Name(nItemNo));
 }
 
 string テキスト_固有アイテム名(int nItemNo)

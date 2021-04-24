@@ -714,7 +714,7 @@ void 黄泉／お堂／それ以外の名()
 	ADVOFF();
 }
 
-void 黄泉／お堂／ちぬ復活()
+void ChinuRevivalDialogue()
 {
 	EV("", -2147483648);
 	if (イベント(0))

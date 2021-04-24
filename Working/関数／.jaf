@@ -2972,7 +2972,7 @@ void Ｃレベルドレイン(int iic, int fg)
 				LOG("    Absorbed Item: %s\n" % Ｉ名前(ii, ""));
 			}
 			ii = Ｃアイテム外す(iic, 21);
-			Ｉ初期化(ii);
+			ItemInitialize(ii);
 		}
 		if (Ｃ転生回数(iic, -1) == 1)
 		{
@@ -4937,7 +4937,7 @@ lint Ｔマグナム設置処理(lint iiq, lint fg)
 	if (iiq == 171)
 	{
 		◆マグナム最大 = 20;
-		if (Ｉ有無(64, 0, "") == 0 && FA[211] == 0)
+		if (ItemInInventory(64, 0, "") == 0 && FA[211] == 0)
 		{
 			▲中身固定 = 64;
 		}
@@ -4968,7 +4968,7 @@ lint Ｔマグナム設置処理(lint iiq, lint fg)
 	if (iiq == 127)
 	{
 		◆マグナム最大 = 15;
-		if (Ｉ有無(24, 0, "") == 0 && FA[242] == 0)
+		if (ItemInInventory(24, 0, "") == 0 && FA[242] == 0)
 		{
 			▲中身固定 = 24;
 		}
@@ -4988,7 +4988,7 @@ lint Ｔマグナム設置処理(lint iiq, lint fg)
 	{
 		◆マグナム最大 = 15;
 		▲中身固定 = 344;
-		if (Ｉ有無(54, 0, "") == 0 && FA[244] == 0)
+		if (ItemInInventory(54, 0, "") == 0 && FA[244] == 0)
 		{
 			▲中身固定 = 54;
 		}
@@ -5096,7 +5096,7 @@ lint 城の女の子モンスターの有無()
 	lint iino = 0;
 	for (iino = 227; iino < 246; iino++)
 	{
-		if (Ｉ有無(iino, 0, "") != 0)
+		if (ItemInInventory(iino, 0, "") != 0)
 		{
 			return 1;
 		}

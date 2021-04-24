@@ -210,7 +210,7 @@ void T_StoreList::setLock(bool bLock)
 
 void T_StoreList::draw(int nItemNo)
 {
-	string itemName = アイテム_名前(nItemNo);
+	string itemName = Item_Name(nItemNo);
 	this.m_sName.setMaxLines(1);
 	this.m_sName.setText(itemName, false);
 	string szText = アイテム_実装条件(nItemNo);

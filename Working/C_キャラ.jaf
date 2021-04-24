@@ -2025,7 +2025,7 @@ bool キャラ_装備設定(int nCharaNo, int nType, int nItemNo)
 		if (アイテム_消滅します(nOldItemNo) > 0)
 		{
 			アイテム_存在設定(nOldItemNo, 0);
-			アイテム_補充(nOldItemNo);
+			Item_Replenish(nOldItemNo);
 		}
 	}
 	キャラ_再計算(nCharaNo, true);

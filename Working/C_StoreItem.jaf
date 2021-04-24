@@ -116,17 +116,17 @@ bool アイテム倉庫_ステータススクロールあり()
 	return g_sStoreItem.getStatusScroll();
 }
 
-void アイテム倉庫_一覧スクロール(int nID)
+void ItemWherehouseListスクロール(int nID)
 {
 	g_sStoreItem.scrollList(nID);
 }
 
-int アイテム倉庫_一覧ソート(int nSortMode)
+int ItemWherehouseListソート(int nSortMode)
 {
 	return g_sStoreItem.sortList(nSortMode);
 }
 
-int アイテム倉庫_一覧ロック(int nItemNo)
+int ItemWherehouseListロック(int nItemNo)
 {
 	return g_sStoreItem.lockList(nItemNo);
 }
@@ -304,7 +304,7 @@ int アイテム倉庫_位置Ｙ(int nIndex, bool bAdjust)
 	return 0 + 128 * nIndex + (bAdjust ? 0 : 0);
 }
 
-int アイテム倉庫_一覧(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType, ref array@int anItemList)
+int ItemWherehouseList(int nType, int nItemType, int nJobType, int nEquipType, int nCharaNo, int nItemTypeEx, int nLockType, ref array@int anItemList)
 {
 	if (anItemList === NULL)
 	{
@@ -332,19 +332,19 @@ int アイテム倉庫_一覧(int nType, int nItemType, int nJobType, int nEquipType, in
 		{
 			continue;
 		}
-		if (!アイテム倉庫_一覧_種類確認(i, nItemType, nItemTypeEx))
+		if (!ItemWherehouseList_種類確認(i, nItemType, nItemTypeEx))
 		{
 			continue;
 		}
-		if (!アイテム倉庫_一覧_職業確認(i, nJobType))
+		if (!ItemWherehouseList_職業確認(i, nJobType))
 		{
 			continue;
 		}
-		if (!アイテム倉庫_一覧_装備タイプ確認(i, nEquipType, nCharaNo))
+		if (!ItemWherehouseList_装備タイプ確認(i, nEquipType, nCharaNo))
 		{
 			continue;
 		}
-		if (!アイテム倉庫_一覧_ＬＯＣＫタイプ確認(i, nLockType))
+		if (!ItemWherehouseList_ＬＯＣＫタイプ確認(i, nLockType))
 		{
 			continue;
 		}
@@ -364,7 +364,7 @@ int アイテム倉庫_一覧(int nType, int nItemType, int nJobType, int nEquipType, in
 	return anItemList.Numof();
 }
 
-bool アイテム倉庫_一覧_種類確認(int nItemNo, int nItemType, int nItemTypeEx)
+bool ItemWherehouseList_種類確認(int nItemNo, int nItemType, int nItemTypeEx)
 {
 	if (nItemType <= 0)
 	{
@@ -373,11 +373,11 @@ bool アイテム倉庫_一覧_種類確認(int nItemNo, int nItemType, int nItemTypeEx)
 	switch (nItemType)
 	{
 		case 21:
-			return アイテム倉庫_一覧_オプション確認(nItemNo, nItemTypeEx);
+			return ItemWherehouseList_オプション確認(nItemNo, nItemTypeEx);
 		case 1:
-			return アイテム倉庫_一覧_武器確認(nItemNo, nItemTypeEx);
+			return ItemWherehouseList_武器確認(nItemNo, nItemTypeEx);
 		case 11:
-			return アイテム倉庫_一覧_防具確認(nItemNo, nItemTypeEx);
+			return ItemWherehouseList_防具確認(nItemNo, nItemTypeEx);
 		case 17:
 			switch (アイテム_種類(nItemNo))
 			{
@@ -394,7 +394,7 @@ bool アイテム倉庫_一覧_種類確認(int nItemNo, int nItemType, int nItemTypeEx)
 	return false;
 }
 
-bool アイテム倉庫_一覧_オプション確認(int nItemNo, int nItemTypeEx)
+bool ItemWherehouseList_オプション確認(int nItemNo, int nItemTypeEx)
 {
 	if (!アイテム種類_オプション(nItemNo))
 	{
@@ -422,7 +422,7 @@ bool アイテム倉庫_一覧_オプション確認(int nItemNo, int nItemTypeEx)
 	return false;
 }
 
-bool アイテム倉庫_一覧_武器確認(int nItemNo, int nItemTypeEx)
+bool ItemWherehouseList_武器確認(int nItemNo, int nItemTypeEx)
 {
 	if (!アイテム種類_武器(nItemNo))
 	{
@@ -456,7 +456,7 @@ bool アイテム倉庫_一覧_武器確認(int nItemNo, int nItemTypeEx)
 	return false;
 }
 
-bool アイテム倉庫_一覧_防具確認(int nItemNo, int nItemTypeEx)
+bool ItemWherehouseList_防具確認(int nItemNo, int nItemTypeEx)
 {
 	if (!アイテム種類_防具(nItemNo))
 	{
@@ -484,7 +484,7 @@ bool アイテム倉庫_一覧_防具確認(int nItemNo, int nItemTypeEx)
 	return false;
 }
 
-bool アイテム倉庫_一覧_装備タイプ確認(int nItemNo, int nEquipType, int nCharaNo)
+bool ItemWherehouseList_装備タイプ確認(int nItemNo, int nEquipType, int nCharaNo)
 {
 	if (nEquipType <= 0 || nCharaNo <= 0)
 	{
@@ -506,7 +506,7 @@ bool アイテム倉庫_一覧_装備タイプ確認(int nItemNo, int nEquipType, int nCharaNo)
 	return false;
 }
 
-bool アイテム倉庫_一覧_ＬＯＣＫタイプ確認(int nItemNo, int nLockType)
+bool ItemWherehouseList_ＬＯＣＫタイプ確認(int nItemNo, int nLockType)
 {
 	if (nLockType <= 0)
 	{
@@ -524,7 +524,7 @@ bool アイテム倉庫_一覧_ＬＯＣＫタイプ確認(int nItemNo, int nLockType)
 	return false;
 }
 
-bool アイテム倉庫_一覧_職業確認(int nItemNo, int nJobType)
+bool ItemWherehouseList_職業確認(int nItemNo, int nJobType)
 {
 	if (nJobType <= 0)
 	{
@@ -554,11 +554,11 @@ int アイテム倉庫_数(int nType, int nItemType, int nJobType)
 		{
 			continue;
 		}
-		if (!アイテム倉庫_一覧_種類確認(i, nItemType, 0))
+		if (!ItemWherehouseList_種類確認(i, nItemType, 0))
 		{
 			continue;
 		}
-		if (!アイテム倉庫_一覧_職業確認(i, nJobType))
+		if (!ItemWherehouseList_職業確認(i, nJobType))
 		{
 			continue;
 		}

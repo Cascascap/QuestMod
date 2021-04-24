@@ -351,7 +351,7 @@ bool T_StoreItem::donation(int nID)
 	{
 		return false;
 	}
-	if (!アイテム_寄付(this.getItemNo(idx), true))
+	if (!Item_Donation(this.getItemNo(idx), true))
 	{
 		return false;
 	}

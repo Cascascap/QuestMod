@@ -305,7 +305,7 @@ void T_ResultItem::donation()
 		{
 			continue;
 		}
-		if (アイテム_寄付(nItemNo, false))
+		if (Item_Donation(nItemNo, false))
 		{
 			bUpdate = true;
 		}

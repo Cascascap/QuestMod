@@ -86,7 +86,7 @@ int クエスト_キット(int nQuestNo)
 	{
 		return -1;
 	}
-	return Ｑキット(nQuestNo, -1);
+	return QuestKit(nQuestNo, -1);
 }
 
 int クエスト_参加回数(int nQuestNo)

@@ -107,7 +107,7 @@ lint ‚p“ïˆÕ“x(lint iiq, int aa)
 	return 0;
 }
 
-lint ‚pƒLƒbƒg(lint iiq, int aa)
+lint QuestKit(lint iiq, int aa)
 {
 	if (aa == -1)
 	{
@@ -413,83 +413,83 @@ void ƒNƒGƒXƒgI—¹ˆ—(int fg)
 	‚b‘Sˆõ•â‹‹();
 	if (fg == 1 || fg == 4)
 	{
-		if (Ÿiiq == 126 && ‚h—L–³(304, 8, "") != 0)
+		if (Ÿiiq == 126 && ItemInInventory(304, 8, "") != 0)
 		{
 			FA[79] = 1;
 		}
-		if (Ÿiiq == 63 && ‚h—L–³(303, 8, "") != 0)
+		if (Ÿiiq == 63 && ItemInInventory(303, 8, "") != 0)
 		{
 			FA[58] = 1;
 		}
-		if (Ÿiiq == 63 && ‚h—L–³(305, 8, "") != 0)
+		if (Ÿiiq == 63 && ItemInInventory(305, 8, "") != 0)
 		{
 			FA[80] = 1;
 		}
-		if (Ÿiiq == 70 && ‚h—L–³(9, 8, "") != 0)
+		if (Ÿiiq == 70 && ItemInInventory(9, 8, "") != 0)
 		{
 			FA[91] = 1;
 		}
-		if (Ÿiiq == 70 && ‚h—L–³(26, 8, "") != 0)
+		if (Ÿiiq == 70 && ItemInInventory(26, 8, "") != 0)
 		{
 			FA[92] = 1;
 		}
-		if (Ÿiiq == 40 && ‚h—L–³(87, 8, "") != 0)
+		if (Ÿiiq == 40 && ItemInInventory(87, 8, "") != 0)
 		{
 			FA[89] = 1;
 		}
-		if (Ÿiiq == 40 && ‚h—L–³(161, 8, "") != 0)
+		if (Ÿiiq == 40 && ItemInInventory(161, 8, "") != 0)
 		{
 			FA[90] = 1;
 		}
-		if (Ÿiiq == 92 && ‚h—L–³(92, 8, "") != 0)
+		if (Ÿiiq == 92 && ItemInInventory(92, 8, "") != 0)
 		{
 			FA[121] = 1;
 		}
-		if (Ÿiiq == 61 && ‚h—L–³(102, 8, "") != 0)
+		if (Ÿiiq == 61 && ItemInInventory(102, 8, "") != 0)
 		{
 			FA[148] = 1;
 		}
-		if (Ÿiiq == 111 && ‚h—L–³(301, 8, "") != 0)
+		if (Ÿiiq == 111 && ItemInInventory(301, 8, "") != 0)
 		{
 			FA[220] = 1;
 		}
-		if (Ÿiiq == 112 && ‚h—L–³(298, 8, "") != 0)
+		if (Ÿiiq == 112 && ItemInInventory(298, 8, "") != 0)
 		{
 			FA[221] = 1;
 		}
-		if (Ÿiiq == 113 && ‚h—L–³(286, 8, "") != 0)
+		if (Ÿiiq == 113 && ItemInInventory(286, 8, "") != 0)
 		{
 			FA[222] = 1;
 		}
-		if (Ÿiiq == 169 && ‚h—L–³(68, 8, "") != 0)
+		if (Ÿiiq == 169 && ItemInInventory(68, 8, "") != 0)
 		{
 			FA[226] = 1;
 		}
-		if (Ÿiiq == 176 && ‚h—L–³(16, 8, "") != 0)
+		if (Ÿiiq == 176 && ItemInInventory(16, 8, "") != 0)
 		{
 			FA[231] = 1;
 		}
-		if (Ÿiiq == 207 && ‚h—L–³(142, 8, "") != 0)
+		if (Ÿiiq == 207 && ItemInInventory(142, 8, "") != 0)
 		{
 			FA[235] = 1;
 		}
-		if (Ÿiiq == 207 && ‚h—L–³(36, 8, "") != 0)
+		if (Ÿiiq == 207 && ItemInInventory(36, 8, "") != 0)
 		{
 			FA[236] = 1;
 		}
-		if (Ÿiiq == 207 && ‚h—L–³(271, 8, "") != 0)
+		if (Ÿiiq == 207 && ItemInInventory(271, 8, "") != 0)
 		{
 			FA[237] = 1;
 		}
-		if (Ÿiiq == 207 && ‚h—L–³(280, 8, "") != 0)
+		if (Ÿiiq == 207 && ItemInInventory(280, 8, "") != 0)
 		{
 			FA[237] = 1;
 		}
-		if (Ÿiiq == 207 && ‚h—L–³(295, 8, "") != 0)
+		if (Ÿiiq == 207 && ItemInInventory(295, 8, "") != 0)
 		{
 			FA[237] = 1;
 		}
-		if (Ÿiiq == 171 && ‚h—L–³(93, 8, "") != 0)
+		if (Ÿiiq == 171 && ItemInInventory(93, 8, "") != 0)
 		{
 			FA[239] = 1;
 		}
@@ -505,7 +505,7 @@ void ƒNƒGƒXƒgI—¹ˆ—(int fg)
 			if (‚hí—Ş(ii, -1) == 22)
 			{
 				LOG_TADA("@ƒNƒGƒXƒg‘qŒÉi" + ‚h–¼‘O(ii, "") + "jˆ•ª\n");
-				‚h‰Šú‰»(ii);
+				ItemInitialize(ii);
 			}
 			if (‚hŒÅ—L”Ô†(ii, -1) == 258)
 			{
@@ -514,7 +514,7 @@ void ƒNƒGƒXƒgI—¹ˆ—(int fg)
 			}
 			if (fg == 2 || fg == 3)
 			{
-				‚h‰Šú‰»(ii);
+				ItemInitialize(ii);
 			}
 			FA[97]++;
 		}
@@ -1221,7 +1221,7 @@ void ƒNƒGƒXƒgI—¹ˆ—^ƒNƒŠƒAƒtƒ‰ƒO()
 		‚pó‘Ô(54, 1);
 	}
 	iiq = 84;
-	if (‚h—L–³(255, 0, "") != 0)
+	if (ItemInInventory(255, 0, "") != 0)
 	{
 		‚pó‘Ô(iiq, 1);
 	}
@@ -1633,7 +1633,7 @@ void ƒNƒGƒXƒgI—¹ˆ—^ƒNƒŠƒAƒtƒ‰ƒO()
 				break;
 			}
 			no = 61;
-			if (‚b”Ô†æ“¾(no) == 0 && ‚h—L–³(267, 0, "") != 0)
+			if (‚b”Ô†æ“¾(no) == 0 && ItemInInventory(267, 0, "") != 0)
 			{
 				break;
 			}
@@ -1651,7 +1651,7 @@ void ƒNƒGƒXƒgI—¹ˆ—^ƒNƒŠƒAƒtƒ‰ƒO()
 			int ii = 0;
 			for (ii = 1; ii < 3001; ++ii)
 			{
-				if (‚h—L–³^\‘¢‘Ì”Ô†(ii, 0) != 0 && ‚hí—ŞÚ×(ii, -1) == 18 && ‚h‹@”\(ii, 3, -1) != 0 && ‚hŒø‰Ê(ii, 2, -1) == 0)
+				if (ItemInInventory^\‘¢‘Ì”Ô†(ii, 0) != 0 && ‚hí—ŞÚ×(ii, -1) == 18 && ‚h‹@”\(ii, 3, -1) != 0 && ‚hŒø‰Ê(ii, 2, -1) == 0)
 				{
 					LOG_TADA("@–Ú˜^" + ‚h–¼‘O(ii, "") + " " + ƒLƒƒƒ‰ŒÅ—L”Ô†•¶š—ñ(‚hŒø‰Ê(ii, 3, -1), 0) + "\n");
 					no = ‚hŒø‰Ê(ii, 3, -1);
@@ -1677,7 +1677,7 @@ void ƒNƒGƒXƒgI—¹ˆ—^ƒNƒŠƒAƒtƒ‰ƒO()
 			FA[60] = no;
 		}
 	}
-	if (Ÿiiq == 42 && ‚h—L–³(188, 8, "") != 0)
+	if (Ÿiiq == 42 && ItemInInventory(188, 8, "") != 0)
 	{
 		FA[56] = 1;
 	}
@@ -1792,7 +1792,7 @@ void ƒNƒGƒXƒgI—¹ˆ—^ƒNƒŠƒAƒtƒ‰ƒO()
 	}
 }
 
-void ƒNƒGƒXƒgŠî–{“o˜^(int a2, int a3, int a4)
+void QuestBasicRegistration(int a2, int a3, int a4)
 {
 	ŸƒNƒGƒXƒg‚f‚n‚k‚c = a2;
 	Ÿ•ó” ’†gƒ^ƒCƒv = a3;
@@ -1835,29 +1835,29 @@ void ƒ{[ƒiƒX“o˜^(int a1, int a2, int a3)
 	}
 }
 
-lint ƒNƒGƒXƒgˆ—(lint dd, lint no, lint fg)
+lint QuestProcessing(lint dd, lint no, lint fg)
 {
-	if (‚pƒLƒbƒg(Ÿiiq, -1) == 0)
+	if (QuestKit(Ÿiiq, -1) == 0)
 	{
-		return ƒNƒGƒXƒgˆ—^Šî–{(dd, no, fg);
+		return QuestProcessingBasic(dd, no, fg);
 	}
-	if (‚pƒLƒbƒg(Ÿiiq, -1) == 1)
+	if (QuestKit(Ÿiiq, -1) == 1)
 	{
-		return ƒNƒGƒXƒgˆ—^’Ç‰Á(dd, no, fg);
+		return QuestProcessingExtra(dd, no, fg);
 	}
-	if (Ÿƒvƒ‰ƒXƒLƒbƒg == 1 && ‚pƒLƒbƒg(Ÿiiq, -1) == 2)
+	if (Ÿƒvƒ‰ƒXƒLƒbƒg == 1 && QuestKit(Ÿiiq, -1) == 2)
 	{
-		return ƒNƒGƒXƒgˆ—^ƒ}ƒOƒiƒ€(dd, no, fg);
+		return QuestProcessingMagnum(dd, no, fg);
 	}
-	if (‚pƒLƒbƒg(Ÿiiq, -1) == 3)
+	if (QuestKit(Ÿiiq, -1) == 3)
 	{
 		return ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(dd, no, fg);
 	}
-	if (‚pƒLƒbƒg(Ÿiiq, -1) == 5)
+	if (QuestKit(Ÿiiq, -1) == 5)
 	{
-		return ƒNƒGƒXƒgˆ—^‚x‚x(dd, no, fg);
+		return QuestProcessingYY(dd, no, fg);
 	}
-	LOG_TADA("‚d‚q‚q‚n‚q@ƒNƒGƒXƒgˆ— " + ‚p–¼‘O(Ÿiiq, "") + "@" + string(‚pƒLƒbƒg(Ÿiiq, -1)) + "\n");
+	LOG_TADA("‚d‚q‚q‚n‚q@QuestProcessing " + ‚p–¼‘O(Ÿiiq, "") + "@" + string(QuestKit(Ÿiiq, -1)) + "\n");
 	return 1;
 }
 
@@ -2039,7 +2039,7 @@ label0:
 			ii = ‚bƒIƒvƒVƒ‡ƒ“(iic, -1);
 			‚b‚e‚`(iic, £“]¶‚w, ‚hŒÅ—L”Ô†(ii, -1));
 			ii = ‚bƒAƒCƒeƒ€ŠO‚·(iic, 21);
-			‚h‰Šú‰»(ii);
+			ItemInitialize(ii);
 		}
 		if (aa == 0)
 		{
@@ -2554,12 +2554,12 @@ lint Š„‚è‚İ‚Q^“ÁêƒCƒxƒ“ƒg(lint fg)
 			ƒNƒŒƒCƒ“^ƒ}ƒŠƒAî•ñ();
 			return 1;
 		}
-		if (EV("ƒNƒŒƒCƒ“^ƒGƒŒƒmƒAî•ñ", -2147483648) == false && ‚b”Ô†æ“¾(10) == 0 && ‚h—L–³(220, 0, "") == 0 && ƒNƒŠƒAŠm”F(122) == 1)
+		if (EV("ƒNƒŒƒCƒ“^ƒGƒŒƒmƒAî•ñ", -2147483648) == false && ‚b”Ô†æ“¾(10) == 0 && ItemInInventory(220, 0, "") == 0 && ƒNƒŠƒAŠm”F(122) == 1)
 		{
 			ƒNƒŒƒCƒ“^ƒGƒŒƒmƒAî•ñ();
 			return 1;
 		}
-		if (EV("ƒNƒŒƒCƒ“^ƒ~ƒ‹î•ñ", -2147483648) == false && ‚b”Ô†æ“¾(43) == 0 && ‚h—L–³(221, 0, "") == 0 && ƒNƒŠƒAŠm”F(123) == 1)
+		if (EV("ƒNƒŒƒCƒ“^ƒ~ƒ‹î•ñ", -2147483648) == false && ‚b”Ô†æ“¾(43) == 0 && ItemInInventory(221, 0, "") == 0 && ƒNƒŠƒAŠm”F(123) == 1)
 		{
 			ƒNƒŒƒCƒ“^ƒ~ƒ‹î•ñ();
 			return 1;
@@ -3846,10 +3846,10 @@ lint Š„‚è‚İ‚Q^“]ˆÚŒã“Áê(int fg)
 		lint ii = ‚bƒIƒvƒVƒ‡ƒ“(iic, -1);
 		‚b‘Ì“à“ÁêƒAƒCƒeƒ€‚Ìæ“¾ˆ—(iic, ii);
 		ii = ‚bƒAƒCƒeƒ€ŠO‚·(iic, 21);
-		‚h‰Šú‰»(ii);
+		ItemInitialize(ii);
 		return 1;
 	}
-	iic = ‚o‚s‚`Q‚h—L–³(335);
+	iic = ‚o‚s‚`QItemInInventory(335);
 	if (iic != 0)
 	{
 		if (‚b‚k‚u(iic, -1) == ‚b‚k‚uÅ‘å(iic, -1) && ‚b‚k‚uÅ‘å(iic, -1) != 999)
@@ -3903,7 +3903,7 @@ lint Š„‚è‚İ‚Q^í“¬Œã(lint fg)
 			return 1;
 		}
 	}
-	iic = ‚o‚s‚`Q‚h—L–³(209);
+	iic = ‚o‚s‚`QItemInInventory(209);
 	if (iic != 0 && ‚o‚s‚`‘”() != 1)
 	{
 		‚r‚`‚c‚u(‚b–¼‘O(iic, "") + " went home.", "", "");
@@ -4089,7 +4089,7 @@ void ‚sƒNƒGƒXƒgƒƒjƒ…[‘O()
 		‚pó‘Ô(iiq, 1);
 	}
 	iiq = 129;
-	if (‚h—L–³(268, 0, "") != 0)
+	if (ItemInInventory(268, 0, "") != 0)
 	{
 		if (‚pó‘Ô(iiq, -1) == 0)
 		{
@@ -4455,7 +4455,7 @@ lint ‚sƒNƒGƒXƒgŠJn(int iiq)
 	ŸƒCƒxƒ“ƒg•\¦–³‚µ = 0;
 	‚sƒ}ƒOƒiƒ€İ’uˆ—(Ÿiiq, 1);
 	ƒƒO^ƒNƒGƒXƒgŠJn();
-	re = ƒNƒGƒXƒgˆ—(8, 0, 0);
+	re = QuestProcessing(8, 0, 0);
 	if (re != 0)
 	{
 		ƒNƒGƒXƒgI—¹ˆ—(re);
@@ -4600,11 +4600,11 @@ void ƒNƒGƒXƒgŠJn‰Šú‰»()
 	{
 		if (‚h‘¶İ(ii, -1) == 8)
 		{
-			‚h‰Šú‰»(ii);
+			ItemInitialize(ii);
 		}
 		if (‚h‘¶İ(ii, -1) == 9)
 		{
-			‚h‰Šú‰»(ii);
+			ItemInitialize(ii);
 		}
 	}
 	for (iic = 20; iic < 201; ++iic)
@@ -4778,7 +4778,7 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 				ƒGƒ“ƒJƒEƒ“ƒgÄŒvZ("");
 				return 0;
 			}
-			re = ƒNƒGƒXƒgˆ—(9, 0, 7);
+			re = QuestProcessing(9, 0, 7);
 			if (re != 0)
 			{
 				break;
@@ -4800,7 +4800,7 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 				re = 2;
 				break;
 			}
-			re = ƒNƒGƒXƒgˆ—(9, 0, 8);
+			re = QuestProcessing(9, 0, 8);
 			if (re != 0)
 			{
 				break;
@@ -4813,10 +4813,10 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 			if (‚l‚cî•ñ”Ô†(xx, yy) == 1)
 			{
 				‚l‚cÁ‚µ(xx, yy);
-				re = ƒNƒGƒXƒgˆ—(9, 0, 10);
+				re = QuestProcessing(9, 0, 10);
 				break;
 			}
-			re = ƒNƒGƒXƒgˆ—(9, 0, 7);
+			re = QuestProcessing(9, 0, 7);
 			if (re != 0)
 			{
 				break;
@@ -4832,7 +4832,7 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 				re = 2;
 				break;
 			}
-			re = ƒNƒGƒXƒgˆ—(9, 0, 8);
+			re = QuestProcessing(9, 0, 8);
 			if (re != 0)
 			{
 				break;
@@ -4854,18 +4854,18 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 		if (Ÿ•œ‹A’l == 12 && ‚l‚cî•ñ(xx, yy) == 1)
 		{
 			•ó” ˆ—(xx, yy);
-			re = ƒNƒGƒXƒgˆ—(9, 0, 9);
+			re = QuestProcessing(9, 0, 9);
 			break;
 		}
 		if (Ÿ•œ‹A’l == 12 && ‚l‚cî•ñ(xx, yy) == 2)
 		{
 			Ô•ó” ˆ—(xx, yy);
-			re = ƒNƒGƒXƒgˆ—(9, 0, 9);
+			re = QuestProcessing(9, 0, 9);
 			break;
 		}
 		if (Ÿ•œ‹A’l == 12 && (‚l‚cî•ñ(xx, yy) == 3 || ‚l‚cî•ñ(xx, yy) == 4))
 		{
-			re = ƒNƒGƒXƒgˆ—(9, 0, 11);
+			re = QuestProcessing(9, 0, 11);
 			if (re != 0)
 			{
 				break;
@@ -4873,11 +4873,11 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 			re = “]ˆÚˆ—(xx, yy);
 			if (re == 0)
 			{
-				re = ƒNƒGƒXƒgˆ—(9, 0, 6);
+				re = QuestProcessing(9, 0, 6);
 				‚q‚W–ß‚µ();
 				break;
 			}
-			re = ƒNƒGƒXƒgˆ—(9, 0, 5);
+			re = QuestProcessing(9, 0, 5);
 			break;
 		}
 		if (Ÿ•œ‹A’l == 12 && (‚l‚cî•ñ(xx, yy) == 8 || ‚l‚cî•ñ(xx, yy) == 9 || ‚l‚cî•ñ(xx, yy) == 10 || ‚l‚cî•ñ(xx, yy) == 12 || ‚l‚cî•ñ(xx, yy) == 18))
@@ -4886,7 +4886,7 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 			{
 				‚q‚WƒWƒ“ƒOƒ‹(402, true);
 			}
-			re = ƒNƒGƒXƒgˆ—(9, ƒCƒxƒ“ƒgˆ—(xx, yy), 4);
+			re = QuestProcessing(9, ƒCƒxƒ“ƒgˆ—(xx, yy), 4);
 			break;
 		}
 		if (Ÿ•œ‹A’l == 12 && ‚l‚cî•ñ(xx, yy) == 15)
@@ -5124,7 +5124,7 @@ int •ó” ˆ—(int £‚w‚w, int £‚x‚x)
 		' inside.' R;
 		R();
 		'Sending it to storage.' B;
-		‚q‚W•ó” ‚©‚çƒAƒCƒeƒ€(£’†g);
+		RegisterItemFromTreasureChest(£’†g);
 		if (ŸƒƒO•ó”  != "")
 		{
 			LOG("ETreasure Chest " + ŸƒƒO•ó”  + " ¨ " + £’†g‚Ì–¼‘O + "\n");
@@ -5344,7 +5344,7 @@ int Ô•ó” ˆ—(int £‚w‚w, int £‚x‚x)
 			' inside.' R;
 			R();
 			'Sending it to storage.' B;
-			‚q‚W•ó” ‚©‚çƒAƒCƒeƒ€(£’†g);
+			RegisterItemFromTreasureChest(£’†g);
 			if (ŸƒƒO•ó”  != "")
 			{
 				LOG("ETreasure Chest " + ŸƒƒO•ó”  + " ¨ " + £’†g‚Ì–¼‘O + "\n");
@@ -5423,19 +5423,19 @@ int •ó” ‚Ì’†g¶¬(lint fg, lint £ŒÅ’è’†g, lint £‚a‚o)
 		{
 			if (Ÿƒvƒ‰ƒXƒLƒbƒg == 1 && ƒNƒŠƒAŠm”F(76) == 1)
 			{
-				if (‚h—L–³(221, 0, "") == 0 && ‚b—L–³(43) == 0)
+				if (ItemInInventory(221, 0, "") == 0 && ‚b—L–³(43) == 0)
 				{
 					£’†g = 221;
 					£‚a‚o = 0;
 					break;
 				}
-				if (‚h—L–³(220, 0, "") == 0 && ‚b—L–³(10) == 0)
+				if (ItemInInventory(220, 0, "") == 0 && ‚b—L–³(10) == 0)
 				{
 					£’†g = 220;
 					£‚a‚o = 0;
 					break;
 				}
-				if (‚h—L–³(223, 0, "") == 0 && ‚b—L–³(25) == 0)
+				if (ItemInInventory(223, 0, "") == 0 && ‚b—L–³(25) == 0)
 				{
 					£’†g = 223;
 					£‚a‚o = 0;
@@ -5444,19 +5444,19 @@ int •ó” ‚Ì’†g¶¬(lint fg, lint £ŒÅ’è’†g, lint £‚a‚o)
 			}
 			if (Ÿƒvƒ‰ƒXƒLƒbƒg == 1 && ƒNƒŠƒAŠm”F(194) == 1)
 			{
-				if (‚h—L–³(222, 0, "") == 0 && ‚b—L–³(13) == 0)
+				if (ItemInInventory(222, 0, "") == 0 && ‚b—L–³(13) == 0)
 				{
 					£’†g = 222;
 					£‚a‚o = 0;
 					break;
 				}
-				if (‚h—L–³(224, 0, "") == 0 && ‚b—L–³(46) == 0)
+				if (ItemInInventory(224, 0, "") == 0 && ‚b—L–³(46) == 0)
 				{
 					£’†g = 224;
 					£‚a‚o = 0;
 					break;
 				}
-				if (‚h—L–³(225, 0, "") == 0 && ‚b—L–³(11) == 0)
+				if (ItemInInventory(225, 0, "") == 0 && ‚b—L–³(11) == 0)
 				{
 					£’†g = 225;
 					£‚a‚o = 0;
@@ -5783,131 +5783,131 @@ int ƒŒƒAƒAƒCƒeƒ€‚ğ‘I‚Ô()
 	{
 		if (Ÿƒvƒ‰ƒXƒLƒbƒg == 0)
 		{
-			if (Ÿƒ[ƒ‹ƒh >= 2 && ‚h—L–³(309, 0, "") == 0 && RAND(2) == 1)
+			if (Ÿƒ[ƒ‹ƒh >= 2 && ItemInInventory(309, 0, "") == 0 && RAND(2) == 1)
 			{
 				£’†g = 309;
 				break;
 			}
 		}
-		if (FA[13] == 1 && ‚h—L–³(258, 0, "") == 0 && RAND(3) == 1)
+		if (FA[13] == 1 && ItemInInventory(258, 0, "") == 0 && RAND(3) == 1)
 		{
 			£’†g = 258;
 			break;
 		}
-		if (Ÿiiq != 31 && RAND(2) == 1 && ‚h—L–³(226, 0, "") == 0 && ‚b”Ô†æ“¾(35) == 0)
+		if (Ÿiiq != 31 && RAND(2) == 1 && ItemInInventory(226, 0, "") == 0 && ‚b”Ô†æ“¾(35) == 0)
 		{
 			£’†g = 226;
 			break;
 		}
-		if (ƒNƒŠƒAŠm”F(123) == 1 && RAND(2) == 1 && ‚h—L–³(223, 0, "") == 0 && ‚b—L–³(25) == 0)
+		if (ƒNƒŠƒAŠm”F(123) == 1 && RAND(2) == 1 && ItemInInventory(223, 0, "") == 0 && ‚b—L–³(25) == 0)
 		{
 			£’†g = 223;
 			break;
 		}
 		if (RAND(3) != 1 && FA[188] >= 1 && ƒNƒŠƒAŠm”F(153) == 0)
 		{
-			if (‚h—L–³(255, 0, "") == 0)
+			if (ItemInInventory(255, 0, "") == 0)
 			{
 				£’†g = 255;
 				break;
 			}
-			if (‚h—L–³(256, 0, "") == 0)
+			if (ItemInInventory(256, 0, "") == 0)
 			{
 				£’†g = 256;
 				break;
 			}
-			if (‚h—L–³(257, 0, "") == 0)
+			if (ItemInInventory(257, 0, "") == 0)
 			{
 				£’†g = 257;
 				break;
 			}
 		}
-		if (EV("ƒtƒƒXƒg”„“X^•ßŠlƒ[ƒv", -2147483648) == true && ‚h—L–³(186, 7, "") == 0 && RAND(3) == 1)
+		if (EV("ƒtƒƒXƒg”„“X^•ßŠlƒ[ƒv", -2147483648) == true && ItemInInventory(186, 7, "") == 0 && RAND(3) == 1)
 		{
 			£’†g = 186;
 			break;
 		}
-		if (RAND(3) == 1 && ‚h—L–³(305, 0, "") == 0)
+		if (RAND(3) == 1 && ItemInInventory(305, 0, "") == 0)
 		{
 			£’†g = 305;
 			break;
 		}
-		if (RAND(5) == 1 && ‚h—L–³(206, 0, "") == 0)
+		if (RAND(5) == 1 && ItemInInventory(206, 0, "") == 0)
 		{
 			£’†g = 206;
 			break;
 		}
-		if (RAND(5) == 1 && ‚h—L–³(214, 0, "") == 0)
+		if (RAND(5) == 1 && ItemInInventory(214, 0, "") == 0)
 		{
 			£’†g = 214;
 			break;
 		}
-		if (RAND(5) == 1 && ‚h—L–³(318, 0, "") == 0 && ‚h—L–³(186, 0, "") != 0)
+		if (RAND(5) == 1 && ItemInInventory(318, 0, "") == 0 && ItemInInventory(186, 0, "") != 0)
 		{
 			£’†g = 318;
 			break;
 		}
-		if (RAND(3) == 1 && ‚h—L–³(170, 0, "") == 0 && ‚b”Ô†æ“¾(30) != 0)
+		if (RAND(3) == 1 && ItemInInventory(170, 0, "") == 0 && ‚b”Ô†æ“¾(30) != 0)
 		{
 			£’†g = 170;
 			break;
 		}
-		if (RAND(8) == 1 && ‚h—L–³(319, 0, "") == 0 && ‚h—L–³(170, 0, "") != 0)
+		if (RAND(8) == 1 && ItemInInventory(319, 0, "") == 0 && ItemInInventory(170, 0, "") != 0)
 		{
 			£’†g = 319;
 			break;
 		}
-		if (RAND(15) == 1 && ‚h—L–³(183, 0, "") == 0 && ‚h—L–³(182, 0, "") != 0)
+		if (RAND(15) == 1 && ItemInInventory(183, 0, "") == 0 && ItemInInventory(182, 0, "") != 0)
 		{
 			£’†g = 183;
 			break;
 		}
-		if (RAND(20) == 1 && ‚h—L–³(336, 0, "") == 0 && ‚pó‘Ô(71, -1) == 2)
+		if (RAND(20) == 1 && ItemInInventory(336, 0, "") == 0 && ‚pó‘Ô(71, -1) == 2)
 		{
 			£’†g = 336;
 			break;
 		}
-		if (RAND(20) == 2 && ‚h—L–³(337, 0, "") == 0 && ‚pó‘Ô(71, -1) == 2)
+		if (RAND(20) == 2 && ItemInInventory(337, 0, "") == 0 && ‚pó‘Ô(71, -1) == 2)
 		{
 			£’†g = 337;
 			break;
 		}
-		if (RAND(15) == 1 && Ÿƒ[ƒ‹ƒh == 3 && ‚h—L–³(102, 0, "") == 0)
+		if (RAND(15) == 1 && Ÿƒ[ƒ‹ƒh == 3 && ItemInInventory(102, 0, "") == 0)
 		{
 			£’†g = 102;
 			break;
 		}
-		if (RAND(15) == 1 && Ÿƒ[ƒ‹ƒh == 3 && ‚h—L–³(3, 0, "") == 0)
+		if (RAND(15) == 1 && Ÿƒ[ƒ‹ƒh == 3 && ItemInInventory(3, 0, "") == 0)
 		{
 			£’†g = 3;
 			break;
 		}
-		if (RAND(15) == 1 && Ÿƒ[ƒ‹ƒh == 3 && ‚h—L–³(6, 0, "") == 0)
+		if (RAND(15) == 1 && Ÿƒ[ƒ‹ƒh == 3 && ItemInInventory(6, 0, "") == 0)
 		{
 			£’†g = 6;
 			break;
 		}
 		ra = RAND(4);
 		nni = 224;
-		if (ra == 1 && ‚h—L–³(nni, 0, "") == 0 && ‚b—L–³(46) == 0)
+		if (ra == 1 && ItemInInventory(nni, 0, "") == 0 && ‚b—L–³(46) == 0)
 		{
 			£’†g = nni;
 			break;
 		}
 		nni = 223;
-		if (ra == 2 && ‚h—L–³(nni, 0, "") == 0 && ‚b—L–³(25) == 0)
+		if (ra == 2 && ItemInInventory(nni, 0, "") == 0 && ‚b—L–³(25) == 0)
 		{
 			£’†g = nni;
 			break;
 		}
 		nni = 225;
-		if (ra == 3 && ‚h—L–³(nni, 0, "") == 0 && ‚b—L–³(11) == 0)
+		if (ra == 3 && ItemInInventory(nni, 0, "") == 0 && ‚b—L–³(11) == 0)
 		{
 			£’†g = nni;
 			break;
 		}
 		nni = 222;
-		if (ra == 4 && ‚h—L–³(nni, 0, "") == 0 && ‚b—L–³(13) == 0 && ‚pó‘Ô(40, -1) == 2)
+		if (ra == 4 && ItemInInventory(nni, 0, "") == 0 && ‚b—L–³(13) == 0 && ‚pó‘Ô(40, -1) == 2)
 		{
 			£’†g = nni;
 			break;
@@ -5915,109 +5915,109 @@ int ƒŒƒAƒAƒCƒeƒ€‚ğ‘I‚Ô()
 		if (RAND(3) == 1)
 		{
 			nni = 7;
-			if (‚b—L–³(54) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(54) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 10;
-			if (‚h—L–³(nni, 0, "") == 0)
+			if (ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 27;
-			if (‚b—L–³(20) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(20) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 70;
-			if (‚b—L–³(54) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(54) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 69;
-			if (‚b—L–³(55) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(55) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 84;
-			if (‚pó‘Ô(180, -1) == 2 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚pó‘Ô(180, -1) == 2 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 100;
-			if (‚pó‘Ô(190, -1) == 2 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚pó‘Ô(190, -1) == 2 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 169;
-			if (‚pó‘Ô(179, -1) == 2 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚pó‘Ô(179, -1) == 2 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 171;
-			if (‚b—L–³(29) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(29) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 2;
-			if (‚b—L–³(23) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(23) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 178;
-			if (‚b—L–³(23) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(23) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 125;
-			if (‚b—L–³(12) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(12) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 165;
-			if (‚b—L–³(84) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(84) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 54;
-			if (FA[244] != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (FA[244] != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 24;
-			if (FA[242] != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (FA[242] != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 118;
-			if (‚b—L–³(20) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(20) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 131;
-			if (‚b—L–³(93) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(93) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 34;
-			if (‚b—L–³(93) != 0 && ‚h—L–³(nni, 0, "") == 0)
+			if (‚b—L–³(93) != 0 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
@@ -6027,67 +6027,67 @@ int ƒŒƒAƒAƒCƒeƒ€‚ğ‘I‚Ô()
 		{
 			lint ra = RAND(11);
 			nni = 22;
-			if (ra == 1 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 1 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 40;
-			if (ra == 2 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 2 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 52;
-			if (ra == 3 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 3 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 64;
-			if (ra == 4 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 4 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 83;
-			if (ra == 5 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 5 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 97;
-			if (ra == 6 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 6 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 114;
-			if (ra == 7 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 7 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 129;
-			if (ra == 8 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 8 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 144;
-			if (ra == 9 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 9 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 157;
-			if (ra == 10 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 10 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
 			}
 			nni = 168;
-			if (ra == 11 && ‚h—L–³(nni, 0, "") == 0)
+			if (ra == 11 && ItemInInventory(nni, 0, "") == 0)
 			{
 				£’†g = nni;
 				break;
@@ -6154,7 +6154,7 @@ int ƒŒƒAƒAƒCƒeƒ€‚ğ‘I‚Ô()
 		£’†g = 0;
 		break;
 	}
-	if (‚h—L–³(£’†g, 0, "‘qŒÉŠO‚àŠÜ‚Ş") != 0)
+	if (ItemInInventory(£’†g, 0, "‘qŒÉŠO‚àŠÜ‚Ş") != 0)
 	{
 		£’†g = 0;
 	}
@@ -7002,15 +7002,15 @@ int ‚¿•¨‚ğ‘I‚Ô()
 	{
 		£’†g = 205;
 	}
-	if (FA[188] >= 4 && (RAND(4) == 1 || ‚h—L–³(305, 0, "") == 0))
+	if (FA[188] >= 4 && (RAND(4) == 1 || ItemInInventory(305, 0, "") == 0))
 	{
 		£’†g = 305;
 	}
-	if (Ÿƒ[ƒ‹ƒh >= 3 && (RAND(5) == 1 || ‚h—L–³(252, 0, "") == 0))
+	if (Ÿƒ[ƒ‹ƒh >= 3 && (RAND(5) == 1 || ItemInInventory(252, 0, "") == 0))
 	{
 		£’†g = 252;
 	}
-	if (Ÿƒ[ƒ‹ƒh >= 3 && (RAND(15) == 1 || ‚h—L–³(343, 0, "") == 0))
+	if (Ÿƒ[ƒ‹ƒh >= 3 && (RAND(15) == 1 || ItemInInventory(343, 0, "") == 0))
 	{
 		£’†g = 343;
 	}
@@ -7297,74 +7297,74 @@ int ƒEƒ‹ƒgƒ‰ƒŒƒA‚ğ‘I‚Ô(lint fg)
 	if (Ÿƒ[ƒ‹ƒh == 3)
 	{
 		nni = 100;
-		if (‚h—L–³(nni, 0, "") == 0)
+		if (ItemInInventory(nni, 0, "") == 0)
 		{
 			’†g‚ÌŒÂ”++;
 			•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 		}
 	}
 	nni = 22;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 40;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 52;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 64;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 83;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 97;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 114;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 129;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 144;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 157;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
 	}
 	nni = 168;
-	if (‚h—L–³(nni, 0, "") == 0)
+	if (ItemInInventory(nni, 0, "") == 0)
 	{
 		’†g‚ÌŒÂ”++;
 		•ó” ‚Ì’†g[’†g‚ÌŒÂ”] = nni;
@@ -7908,7 +7908,7 @@ void ‚p‚l“o˜^(lint no)
 	Ÿ‚l‚`‚oÀ‘• = 1;
 	ŸƒNƒGƒXƒgí“¬‰ñ”^‚l‚`‚o“à = 0;
 	ƒGƒ“ƒJƒEƒ“ƒgÄŒvZ("ƒGƒŠƒAØ‚è‘Ö‚¦");
-	ƒNƒGƒXƒgˆ—(7, no, 0);
+	QuestProcessing(7, no, 0);
 	‚l[no].‰“o˜^ = Ÿ‚l‚`‚o”Ô†;
 	ŸƒNƒGƒXƒgí“¬‰ñ”^‚l‚`‚o“à = 0;
 	FA[143] = 0;
@@ -7951,7 +7951,7 @@ void ‚p‚l“o˜^(lint no)
 	}
 }
 
-void ‚l‚`‚o“Ç‚İ‚İ(int BMAP, int map, int ‚m“]ˆÚ, int ‚r“]ˆÚ, int ‚d“]ˆÚ, int ‚v“]ˆÚ, int ƒ‚ƒ“ƒXƒ^[, int •ó” , int ƒgƒ‰ƒbƒv, int –`Œ¯Œ÷Ñ)
+void MAPReading(int BMAP, int map, int ‚m“]ˆÚ, int ‚r“]ˆÚ, int ‚d“]ˆÚ, int ‚v“]ˆÚ, int ƒ‚ƒ“ƒXƒ^[, int •ó” , int ƒgƒ‰ƒbƒv, int –`Œ¯Œ÷Ñ)
 {
 	int loop = 0;
 	int loop2 = 0;
@@ -8153,7 +8153,7 @@ void ‚l‚`‚o“Ç‚İ‚İ(int BMAP, int map, int ‚m“]ˆÚ, int ‚r“]ˆÚ, int ‚d“]ˆÚ, int ‚
 	}
 	Ÿ‚a‚l‚`‚o = BMAP;
 	Ÿ‚l‚`‚o”Ô† = map;
-	LOG_TADA("\n¡‚l‚`‚o“Ç‚İ‚İ\n");
+	LOG_TADA("\n¡MAPReading\n");
 	LOG_TADA("@@BMAP(" + string(BMAP) + ")©ƒf[ƒ^”Ô†(" + string(map) + ")\n");
 	‚q‚Wƒ}ƒbƒvƒ[ƒh(map, map_gno, true, false);
 	‚q‚Wƒ}ƒbƒvƒJƒƒ‰‚k‚n‚b‚j(false);
@@ -8766,11 +8766,11 @@ void ‚l‚`‚o“Ç‚İ‚İ(int BMAP, int map, int ‚m“]ˆÚ, int ‚r“]ˆÚ, int ‚d“]ˆÚ, int ‚
 			}
 			if (aa == 0)
 			{
-				‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 0, 0, 0);
+				MDRandom(0, 1, 0, 0, 0);
 			}
 			if (aa == 1)
 			{
-				‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 0, 0, 0);
+				MDRandom(0, 2, 0, 0, 0);
 			}
 		}
 		if (FA[146] == 1)
@@ -8780,17 +8780,17 @@ void ‚l‚`‚o“Ç‚İ‚İ(int BMAP, int map, int ‚m“]ˆÚ, int ‚r“]ˆÚ, int ‚d“]ˆÚ, int ‚
 		while (ƒgƒ‰ƒbƒv != 0)
 		{
 			--ƒgƒ‰ƒbƒv;
-			‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 0);
+			MDRandom(0, 6, 0, 0, 0);
 		}
 		while (–`Œ¯Œ÷Ñ != 0)
 		{
 			--–`Œ¯Œ÷Ñ;
-			‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 5, 0, 0, 0);
+			MDRandom(0, 5, 0, 0, 0);
 		}
 		while (ƒ‚ƒ“ƒXƒ^[ != 0)
 		{
 			--ƒ‚ƒ“ƒXƒ^[;
-			‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 0);
+			MDRandom(0, 16, 0, 0, 0);
 		}
 		if (ŸƒNƒGƒXƒgƒ{[ƒiƒX•¨–³‚µ == 1)
 		{
@@ -8944,7 +8944,7 @@ int ‚l‚cŒÅ’è(lint xx, lint yy, lint î•ñ, lint î•ñ”Ô†, lint •ó” ƒ‰ƒ“ƒN)
 	return 1;
 }
 
-int ‚l‚cƒ‰ƒ“ƒ_ƒ€(lint no, lint î•ñ, lint î•ñ”Ô†, lint •ó” ƒ‰ƒ“ƒN, lint £—Dæ’u•¨)
+int MDRandom(lint no, lint î•ñ, lint î•ñ”Ô†, lint •ó” ƒ‰ƒ“ƒN, lint £—Dæ’u•¨)
 {
 	lint loop = 0;
 	lint xx = 0;
