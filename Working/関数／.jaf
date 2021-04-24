@@ -5013,7 +5013,7 @@ lint Ｔマグナム設置処理(lint iiq, lint fg)
 	{
 		if (▲中身固定 != 344)
 		{
-			ii = 宝箱の中身生成(3, ▲中身固定, ▲ＢＰ);
+			ii = TreasureChestContentGeneration(3, ▲中身固定, ▲ＢＰ);
 		}
 		if (▲中身固定 == 344)
 		{

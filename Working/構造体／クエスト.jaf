@@ -4853,13 +4853,13 @@ lint ‚sƒ}ƒbƒvŠ„‚è‚İ()
 		}
 		if (Ÿ•œ‹A’l == 12 && ‚l‚cî•ñ(xx, yy) == 1)
 		{
-			•ó” ˆ—(xx, yy);
+			TreasureChestProcessing(xx, yy);
 			re = QuestProcessing(9, 0, 9);
 			break;
 		}
 		if (Ÿ•œ‹A’l == 12 && ‚l‚cî•ñ(xx, yy) == 2)
 		{
-			Ô•ó” ˆ—(xx, yy);
+			RedTreasureChestProcessing(xx, yy);
 			re = QuestProcessing(9, 0, 9);
 			break;
 		}
@@ -5063,7 +5063,7 @@ int ‹àE‚¢ˆ—(int £‚w‚w, int £‚x‚x)
 	return 0;
 }
 
-int •ó” ˆ—(int £‚w‚w, int £‚x‚x)
+int TreasureChestProcessing(int £‚w‚w, int £‚x‚x)
 {
 	int £ŒÅ’è’†g = ‚l[Ÿ‚a‚l‚`‚o].maptz[£‚w‚w][£‚x‚x];
 	int lank = ‚l[Ÿ‚a‚l‚`‚o].maptv[£‚w‚w][£‚x‚x];
@@ -5077,11 +5077,11 @@ int •ó” ˆ—(int £‚w‚w, int £‚x‚x)
 	{
 		if (£ŒÅ’è’†g != 0)
 		{
-			£’†g = •ó” ‚Ì’†g¶¬(0, £ŒÅ’è’†g, lank);
+			£’†g = TreasureChestContentGeneration(0, £ŒÅ’è’†g, lank);
 		}
 		if (£ŒÅ’è’†g == 0)
 		{
-			£’†g = •ó” ‚Ì’†g¶¬(0, 0, 0);
+			£’†g = TreasureChestContentGeneration(0, 0, 0);
 		}
 	}
 	LOG_TADA("„•ó” ÚG");
@@ -5138,7 +5138,7 @@ int •ó” ˆ—(int £‚w‚w, int £‚x‚x)
 	return 0;
 }
 
-int Ô•ó” ˆ—(int £‚w‚w, int £‚x‚x)
+int RedTreasureChestProcessing(int £‚w‚w, int £‚x‚x)
 {
 	int £ŒÅ’è’†g = ‚l[Ÿ‚a‚l‚`‚o].maptz[£‚w‚w][£‚x‚x];
 	int lank = ‚l[Ÿ‚a‚l‚`‚o].maptv[£‚w‚w][£‚x‚x];
@@ -5311,11 +5311,11 @@ int Ô•ó” ˆ—(int £‚w‚w, int £‚x‚x)
 		int £’†g = 0;
 		if (£ŒÅ’è’†g != 0)
 		{
-			£’†g = •ó” ‚Ì’†g¶¬(0, £ŒÅ’è’†g, lank);
+			£’†g = TreasureChestContentGeneration(0, £ŒÅ’è’†g, lank);
 		}
 		if (£ŒÅ’è’†g == 0)
 		{
-			£’†g = •ó” ‚Ì’†g¶¬(1, 0, 0);
+			£’†g = TreasureChestContentGeneration(1, 0, 0);
 		}
 		if (£ŒÅ’è’†g == 0)
 		{
@@ -5359,7 +5359,7 @@ int Ô•ó” ˆ—(int £‚w‚w, int £‚x‚x)
 	return 0;
 }
 
-int •ó” ‚Ì’†g¶¬(lint fg, lint £ŒÅ’è’†g, lint £‚a‚o)
+int TreasureChestContentGeneration(lint fg, lint £ŒÅ’è’†g, lint £‚a‚o)
 {
 	lint £’†g = 0;
 	lint ra = 0;
