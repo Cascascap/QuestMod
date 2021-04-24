@@ -10,7 +10,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 4, "¦This is an impossible quest");
 	‚pà–¾•¶(iiq, 5, "   Low level characters won't amount to much");
 	‚p”­¶êŠ(iiq, "Rising Dragon Mountain");
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 202;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 35, 0);
@@ -21,7 +21,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 4, "Finally, this quest tells the full story! (Adults only)");
 	‚pà–¾•¶(iiq, 5, "¦Someone will fall victim to the Abstinence Morurun");
 	‚p”­¶êŠ(iiq, "Leazas   Leazas Castle");
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	iiq = 141;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 32, 0);
 	‚p–¼‘O(iiq, "Exterminate the Strange Rurontas");
@@ -31,7 +31,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 4, "@");
 	‚pà–¾•¶(iiq, 5, "¦Only sorcerers may participate");
 	‚p”­¶êŠ(iiq, "Department Store Ruins");
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 142;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 32, 0);
@@ -42,7 +42,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 4, "@");
 	‚pà–¾•¶(iiq, 5, "¦Only healers may participate");
 	‚p”­¶êŠ(iiq, "Forest");
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 143;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 20, 35, 0);
@@ -53,7 +53,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 4, "@");
 	‚pà–¾•¶(iiq, 5, "@");
 	‚p”­¶êŠ(iiq, "Evolution Research Lab");
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 203;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 15, 35, 0);
@@ -65,7 +65,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 5, "@");
 	‚p”­¶êŠ(iiq, "Zeth   Trade Center");
 	‚pQ‰ÁğŒ(iiq, 1, 1, 0);
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 206;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 15, 25, 0);
@@ -79,7 +79,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pQ‰ÁğŒ(iiq, 2, 49, 0);
 	‚pQ‰ÁğŒ(iiq, 2, 16, 0);
 	‚pQ‰ÁğŒ(iiq, 1, 2, 0);
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 147;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 0, 62, 0);
@@ -90,7 +90,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 4, "The challenge never ends, the dungeon never ends.");
 	‚pà–¾•¶(iiq, 5, "¦All who would challenge it are welcome");
 	‚p”­¶êŠ(iiq, "Eastern Helman   Ancient Ruins");
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 157;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 15, 40, 0);
@@ -102,7 +102,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 5, "@");
 	‚p”­¶êŠ(iiq, "Free City Zone   Hyper Building");
 	‚pQ‰ÁğŒ(iiq, 5, 100, 0);
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 158;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 5, 36, 0);
@@ -113,7 +113,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 4, " ");
 	‚pà–¾•¶(iiq, 5, "@");
 	‚p”­¶êŠ(iiq, "Spawar Cave");
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 	‚pƒƒCƒ“(iiq, 9);
 	iiq = 106;
 	‚p‰ŠúƒZƒbƒg(fg, iiq, 0, 0, 3);
@@ -125,7 +125,7 @@ void ‚p‹N“®“o˜^^ƒTƒCƒRƒ(lint fg)
 	‚pà–¾•¶(iiq, 5, "¦Will never be marked clear");
 	‚p”­¶êŠ(iiq, "Dark Alice's Mansion");
 	‚pQ‰ÁğŒ(iiq, 1, 1, 0);
-	‚pƒLƒbƒg(iiq, 3);
+	QuestKit(iiq, 3);
 }
 
 lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
@@ -148,7 +148,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(900, 43, 14);
+			QuestBasicRegistration(900, 43, 14);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(1, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(42, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(5, 0, 0);
@@ -156,9 +156,9 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 1:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 12,000";
-					‚l‚`‚o“Ç‚İ‚İ(no, 328, 0, 0, 1, 0, 0, 0, 0, 0);
+					MAPReading(no, 328, 0, 0, 1, 0, 0, 0, 0, 0);
 					‚l‚`‚oŠî‘bŒ^“o˜^(4);
-					ƒNƒGƒXƒgŠî–{“o˜^(900, 43, 201);
+					QuestBasicRegistration(900, 43, 201);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(94, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -169,16 +169,16 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 2:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 11,650";
-					‚l‚`‚o“Ç‚İ‚İ(no, 4001, 0, 0, 1, 1, 0, 0, 0, 0);
+					MAPReading(no, 4001, 0, 0, 1, 1, 0, 0, 0, 0);
 					‚l‚`‚oŠî‘bŒ^“o˜^(4);
-					ƒNƒGƒXƒgŠî–{“o˜^(900, 43, 201);
+					QuestBasicRegistration(900, 43, 201);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(94, 0, 0, 0, 0);
 					break;
 				case 3:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 11,350";
-					‚l‚`‚o“Ç‚İ‚İ(no, 4301, 0, 0, 1, 1, 0, 0, 0, 0);
+					MAPReading(no, 4301, 0, 0, 1, 1, 0, 0, 0, 0);
 					‚l‚`‚oŠî‘bŒ^“o˜^(4);
-					ƒNƒGƒXƒgŠî–{“o˜^(900, 43, 201);
+					QuestBasicRegistration(900, 43, 201);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(94, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -188,9 +188,9 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 4:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Gale Cave Depths";
-					‚l‚`‚o“Ç‚İ‚İ(no, 101, 0, 1, 0, 1, 0, 0, 0, 0);
+					MAPReading(no, 101, 0, 1, 0, 1, 0, 0, 0, 0);
 					‚l‚`‚oŠî‘bŒ^“o˜^(1);
-					ƒNƒGƒXƒgŠî–{“o˜^(900, 43, 1);
+					QuestBasicRegistration(900, 43, 1);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(95, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -206,7 +206,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 5:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 9,750";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7201, 0, 1, 1, 0, 0, 0, 0, 0);
+					MAPReading(no, 7201, 0, 1, 1, 0, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(96, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -217,7 +217,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 6:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 10,000";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7301, 0, 0, 0, 1, 0, 0, 0, 0);
+					MAPReading(no, 7301, 0, 0, 0, 1, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(96, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -233,7 +233,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 7:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 10,350";
-					‚l‚`‚o“Ç‚İ‚İ(no, 41, 0, 0, 0, 1, 0, 0, 0, 0);
+					MAPReading(no, 41, 0, 0, 0, 1, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(96, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(30, 26, 8, 71, 0);
 					if (‚l[no].‰“o˜^ == 0)
@@ -244,9 +244,9 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 8:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Gale Cave";
-					‚l‚`‚o“Ç‚İ‚İ(no, 105, 1, 0, 0, 0, 0, 0, 0, 0);
+					MAPReading(no, 105, 1, 0, 0, 0, 0, 0, 0, 0);
 					‚l‚`‚oŠî‘bŒ^“o˜^(1);
-					ƒNƒGƒXƒgŠî–{“o˜^(900, 43, 1);
+					QuestBasicRegistration(900, 43, 1);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(95, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(28, 35, 8, 81, 0);
 					if (‚l[no].‰“o˜^ == 0)
@@ -256,7 +256,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 9:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 9,350";
-					‚l‚`‚o“Ç‚İ‚İ(no, 23, 1, 0, 1, 0, 0, 0, 0, 0);
+					MAPReading(no, 23, 1, 0, 1, 0, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(96, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -269,7 +269,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 10:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 9,000";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7002, 0, 0, 1, 0, 0, 0, 0, 0);
+					MAPReading(no, 7002, 0, 0, 1, 0, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(97, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -281,7 +281,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 11:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 8,750";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7204, 0, 0, 1, 1, 0, 0, 0, 0);
+					MAPReading(no, 7204, 0, 0, 1, 1, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(97, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -293,7 +293,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 12:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 8,350";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7202, 0, 1, 0, 1, 0, 0, 0, 0);
+					MAPReading(no, 7202, 0, 1, 0, 1, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(97, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -309,14 +309,14 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 13:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Trail Entrance";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7001, 0, 0, 1, 0, 0, 0, 0, 0);
-					ƒNƒGƒXƒgŠî–{“o˜^(350, 23, 12);
+					MAPReading(no, 7001, 0, 0, 1, 0, 0, 0, 0, 0);
+					QuestBasicRegistration(350, 23, 12);
 					‚l‚cŒÅ’è(10, 26, 15, 0, 0);
 					break;
 				case 14:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Rest Stop";
-					‚l‚`‚o“Ç‚İ‚İ(no, 22, 0, 0, 0, 1, 0, 0, 0, 0);
-					ƒNƒGƒXƒgŠî–{“o˜^(900, 43, 12);
+					MAPReading(no, 22, 0, 0, 0, 1, 0, 0, 0, 0);
+					QuestBasicRegistration(900, 43, 12);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(31, 20, 8, 141, 0);
 					if (‚l[no].‰“o˜^ == 0)
@@ -329,7 +329,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 15:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Secret Trail";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7301, 0, 0, 1, 0, 0, 0, 0, 0);
+					MAPReading(no, 7301, 0, 0, 1, 0, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(97, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(20, 25, 8, 151, 0);
 					if (‚l[no].‰“o˜^ == 0)
@@ -340,7 +340,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 16:
 					Ÿ‚l‚`‚o–¼‘O = "Rising Dragon Mountain Elevation: 8,000";
-					‚l‚`‚o“Ç‚İ‚İ(no, 7203, 0, 0, 0, 1, 0, 0, 0, 0);
+					MAPReading(no, 7203, 0, 0, 0, 1, 0, 0, 0, 0);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(97, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -844,7 +844,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 11;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 23, 4);
+			QuestBasicRegistration(300, 23, 4);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 0, 1, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(41, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(3, 0, 0);
@@ -852,7 +852,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 3:
 					Ÿ‚l‚`‚o–¼‘O = "Barres's Treasure Vault";
-					‚l‚`‚o“Ç‚İ‚İ(no, 38, 0, 1, 0, 0, 0, 0, 0, 0);
+					MAPReading(no, 38, 0, 1, 0, 0, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(38, 15, 15, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
@@ -886,7 +886,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 7:
 					Ÿ‚l‚`‚o–¼‘O = "Queen's Secret Room";
-					‚l‚`‚o“Ç‚İ‚İ(no, 19, 0, 0, 0, 0, 0, 0, 0, 0);
+					MAPReading(no, 19, 0, 0, 0, 0, 0, 0, 0, 0);
 					if (‚l[no].‰“o˜^ == 0)
 					{
 						‚l‚cŒÅ’è(28, 36, 8, 71, 0);
@@ -938,7 +938,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 				QD[1]++;
 				QD[2]++;
 			}
-			if (fg == 8 && EV("ƒŠƒA‚ÌæÜß^ƒŠƒA‚Ì•", -2147483648) == false && EV("ƒŠƒA‚ÌæÜß^‚O‚V‚P", -2147483648) != false && ‚o‚s‚`Q‚h—L–³(7) != 0)
+			if (fg == 8 && EV("ƒŠƒA‚ÌæÜß^ƒŠƒA‚Ì•", -2147483648) == false && EV("ƒŠƒA‚ÌæÜß^‚O‚V‚P", -2147483648) != false && ‚o‚s‚`QItemInInventory(7) != 0)
 			{
 				ƒŠƒA‚ÌæÜß^ƒŠƒA‚Ì•();
 			}
@@ -1222,7 +1222,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 23, 1);
+			QuestBasicRegistration(300, 23, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 1, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(115, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -1230,7 +1230,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 1:
 					Ÿ‚l‚`‚o–¼‘O = "Department Store Ruins";
-					‚l‚`‚o“Ç‚İ‚İ(no, 3301, 0, 0, 0, 0, 0, 0, 7, 0);
+					MAPReading(no, 3301, 0, 0, 0, 0, 0, 0, 7, 0);
 					‚l‚cŒÅ’è(32, 31, 18, 11, 0);
 					‚l‚cŒÅ’è(37, 31, 1, 0, 0);
 					‚q‚W’u•¨”z’u(16, 27, 0, -1);
@@ -1298,7 +1298,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 23, 5);
+			QuestBasicRegistration(300, 23, 5);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(1, 0, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(116, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
@@ -1306,13 +1306,13 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 1:
 					Ÿ‚l‚`‚o–¼‘O = "Some Forest";
-					‚l‚`‚o“Ç‚İ‚İ(no, 83, 0, 0, 0, 0, 0, 0, 0, 0);
+					MAPReading(no, 83, 0, 0, 0, 0, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(20, 32, 18, 11, 0);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 12, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 12, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 12, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 12, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 12, 0, 1);
+					MDRandom(0, 10, 12, 0, 1);
+					MDRandom(0, 10, 12, 0, 1);
+					MDRandom(0, 10, 12, 0, 1);
+					MDRandom(0, 10, 12, 0, 1);
+					MDRandom(0, 10, 12, 0, 1);
 					break;
 				default:
 					break;
@@ -1470,7 +1470,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 12;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(400, 33, 1);
+			QuestBasicRegistration(400, 33, 1);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 1, 1, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(117, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(3, 3, 3);
@@ -1478,7 +1478,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 10:
 					Ÿ‚l‚`‚o–¼‘O = "Evolution Research Lab Depths";
-					‚l‚`‚o“Ç‚İ‚İ(no, 1002, 0, 0, 1, 0, 2, 2, 2, 2);
+					MAPReading(no, 1002, 0, 0, 1, 0, 2, 2, 2, 2);
 					if (‚l[no].‰“o˜^ == 0)
 					{
 						‚l‚cŒÅ’è(9, 26, 8, 101, 0);
@@ -1486,15 +1486,15 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 11:
 					Ÿ‚l‚`‚o–¼‘O = "Evolution Research Lab";
-					‚l‚`‚o“Ç‚İ‚İ(no, 1302, 0, 0, 0, 1, 1, 1, 0, 1);
+					MAPReading(no, 1302, 0, 0, 0, 1, 1, 1, 0, 1);
 					‚l‚cŒÅ’è(26, 27, 8, 111, 0);
 					break;
 				case 15:
 					Ÿ‚l‚`‚o–¼‘O = "Evolution Research Lab Underground";
-					‚l‚`‚o“Ç‚İ‚İ(no, 5101, 0, 0, 0, 0, 0, 0, 0, 0);
+					MAPReading(no, 5101, 0, 0, 0, 0, 0, 0, 0, 0);
 					‚l‚`‚oŠî‘bŒ^“o˜^(5);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(117, 0, 0, 0, 0);
-					if (‚h—L–³(335, 0, "") == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
+					if (ItemInInventory(335, 0, "") == 0 && ‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0)
 					{
 						‚l‚cŒÅ’è(28, 9, 10, 152, 0);
 					}
@@ -1599,7 +1599,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(100, 13, 13);
+			QuestBasicRegistration(100, 13, 13);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(2, 2, 1, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(3, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(3, 0, 9);
@@ -1607,8 +1607,8 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 7:
 					Ÿ‚l‚`‚o–¼‘O = "Gourmet Floor";
-					‚l‚`‚o“Ç‚İ‚İ(no, 15, 0, 0, 0, 0, 0, 0, 0, 0);
-					ƒNƒGƒXƒgŠî–{“o˜^(250, 23, 13);
+					MAPReading(no, 15, 0, 0, 0, 0, 0, 0, 0, 0);
+					QuestBasicRegistration(250, 23, 13);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(32, 31, 0, 0, 0);
 					‚l‚cŒÅ’è(23, 15, 5, 0, 0);
 					‚l‚cŒÅ’è(8, 18, 18, 1, 0);
@@ -1653,8 +1653,8 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 8:
 					Ÿ‚l‚`‚o–¼‘O = "Beauty Floor";
-					‚l‚`‚o“Ç‚İ‚İ(no, 142, 0, 0, 0, 0, 0, 0, 0, 0);
-					ƒNƒGƒXƒgŠî–{“o˜^(350, 33, 13);
+					MAPReading(no, 142, 0, 0, 0, 0, 0, 0, 0, 0);
+					QuestBasicRegistration(350, 33, 13);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(46, 47, 0, 0, 0);
 					‚l‚cŒÅ’è(14, 13, 10, 82, 0);
 					‚l‚cŒÅ’è(12, 29, 5, 0, 0);
@@ -1687,7 +1687,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 10:
 					Ÿ‚l‚`‚o–¼‘O = "Fashion Floor";
-					‚l‚`‚o“Ç‚İ‚İ(no, 14, 0, 0, 0, 0, 0, 0, 0, 0);
+					MAPReading(no, 14, 0, 0, 0, 0, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(26, 19, 10, 102, 0);
 					‚l‚cŒÅ’è(6, 17, 18, 1, 0);
 					‚l‚cŒÅ’è(15, 34, 18, 1, 0);
@@ -1723,8 +1723,8 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					break;
 				case 11:
 					Ÿ‚l‚`‚o–¼‘O = "Culture Floor";
-					‚l‚`‚o“Ç‚İ‚İ(no, 144, 0, 0, 0, 0, 0, 0, 0, 0);
-					ƒNƒGƒXƒgŠî–{“o˜^(150, 23, 13);
+					MAPReading(no, 144, 0, 0, 0, 0, 0, 0, 0, 0);
+					QuestBasicRegistration(150, 23, 13);
 					ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(15, 22, 0, 0, 0);
 					‚l‚cŒÅ’è(15, 37, 5, 0, 0);
 					‚l‚cŒÅ’è(19, 25, 18, 1, 0);
@@ -2068,7 +2068,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(300, 33, 13);
+			QuestBasicRegistration(300, 33, 13);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 1, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(1, 0, 0);
@@ -2076,7 +2076,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 1:
 					Ÿ‚l‚`‚o–¼‘O = "???";
-					‚l‚`‚o“Ç‚İ‚İ(no, 84, 0, 0, 0, 0, 0, 0, 7, 0);
+					MAPReading(no, 84, 0, 0, 0, 0, 0, 0, 7, 0);
 					‚l‚cŒÅ’è(12, 21, 3, 0, 0);
 					‚l‚cŒÅ’è(23, 17, 8, 11, 0);
 					‚l‚cŒÅ’è(37, 21, 8, 12, 0);
@@ -2106,7 +2106,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					‚l‚cŒÅ’è(25, 35, 5, 0, 0);
 					‚l‚cŒÅ’è(24, 34, 2, 0, 0);
 					‚l‚cŒÅ’è(15, 27, 2, 0, 0);
-					if (‚h—L–³(39, 0, "") == 0)
+					if (ItemInInventory(39, 0, "") == 0)
 					{
 						‚l‚cŒÅ’è(34, 32, 1, 39, 0);
 					}
@@ -2313,7 +2313,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					}
 					break;
 				case 14:
-					if (‚h—L–³(339, 0, "") == 0)
+					if (ItemInInventory(339, 0, "") == 0)
 					{
 						‘o‰‹‚ ‚Î‚ê—·^‚O‚P‚S();
 						ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(50);
@@ -2594,7 +2594,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					‚q‚WƒWƒ“ƒOƒ‹(5014, false);
 					if (rr == 1)
 					{
-						if (‚h—L–³(339, 0, "") == 0)
+						if (ItemInInventory(339, 0, "") == 0)
 						{
 							‘o‰‹‚ ‚Î‚ê—·^‚R‚P‚S^‚Q();
 							ADVON();
@@ -2644,7 +2644,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "%s Stratum, somewhere" % Numbereth(FA[224]);
 			}
-			if (‚h—L–³(338, 0, "") == 0)
+			if (ItemInInventory(338, 0, "") == 0)
 			{
 				ŸƒNƒGƒXƒgƒGƒŠƒA•\¦‹Ö~ = 1;
 			}
@@ -2711,19 +2711,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 1, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2731,19 +2731,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2751,19 +2751,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2771,19 +2771,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2791,19 +2791,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2811,19 +2811,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2831,19 +2831,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2851,19 +2851,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2871,19 +2871,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2891,19 +2891,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2911,19 +2911,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 1, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2931,19 +2931,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 1, 0, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 1, 0, 1, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2951,19 +2951,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2971,19 +2971,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 1, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -2991,19 +2991,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 1, 0, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 1, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -3011,19 +3011,19 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					switch (QD[1])
 					{
 						case 0:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 						case 1:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 2:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 0, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 3:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 1, 0, 0, 0, 0);
 							break;
 						case 4:
-							‚l‚`‚o“Ç‚İ‚İ(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
+							MAPReading(no, mapNo, 1, 0, 0, 0, 0, 0, 0, 0);
 							break;
 					}
 					break;
@@ -3047,66 +3047,66 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 				}
 				else if (no == QD[4])
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
+					MDRandom(0, 19, 0, 0, 1);
 				}
 				else if (no == QD[5])
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
+					MDRandom(0, 6, 0, 0, 1);
 				}
 				else if (no == QD[6])
 				{
 					if (FA[225] == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 3, 0, 1);
+						MDRandom(0, 10, 3, 0, 1);
 					}
 					else
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 10, 4, 0, 1);
+						MDRandom(0, 10, 4, 0, 1);
 					}
 				}
 				else if (no == QD[7])
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 5, 0, 0, 1);
+					MDRandom(0, 5, 0, 0, 1);
 				}
 				else if (no == QD[8])
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 8, 5, 0, 1);
+					MDRandom(0, 8, 5, 0, 1);
 				}
 				else if (no == QD[9])
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 13, 0, 0, 1);
+					MDRandom(0, 13, 0, 0, 1);
 				}
 				else if (no == QD[10])
 				{
-					‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 15, 0, 0, 1);
+					MDRandom(0, 15, 0, 0, 1);
 				}
 				if (RAND(3) != 1 && no != QD[3] && no != QD[4])
 				{
@@ -3115,7 +3115,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					r = RAND(6);
 					for (i = 1; i < r; ++i)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 6, 0, 0, 1);
+						MDRandom(0, 6, 0, 0, 1);
 					}
 				}
 				if (RAND(3) != 1 && no != QD[3] && no != QD[4])
@@ -3125,18 +3125,18 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					r = RAND(4);
 					for (i = 1; i < r; ++i)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 16, 0, 0, 1);
+						MDRandom(0, 16, 0, 0, 1);
 					}
 				}
 				if (RAND(3) != 1 && no != QD[3])
 				{
 					if (RAND(2) == 1)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 1, 0, 0, 1);
+						MDRandom(0, 1, 0, 0, 1);
 					}
 					else
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 2, 0, 0, 1);
+						MDRandom(0, 2, 0, 0, 1);
 					}
 				}
 				if (RAND(3) != 1)
@@ -3146,7 +3146,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					r = RAND(4);
 					for (i = 1; i < r; ++i)
 					{
-						‚l‚cƒ‰ƒ“ƒ_ƒ€(0, 19, 0, 0, 1);
+						MDRandom(0, 19, 0, 0, 1);
 					}
 				}
 			}
@@ -3377,7 +3377,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			‚l‚`‚oŠî‘bŒ^“o˜^(5);
 			Ÿí“¬”wŒi”Ô† = 19;
 			g‚l = 5790;
-			ƒNƒGƒXƒgŠî–{“o˜^(200, 33, 13);
+			QuestBasicRegistration(200, 33, 13);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 1, 0, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(0, 0, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(1, 0, 9);
@@ -3388,7 +3388,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 1:
 					Ÿ‚l‚`‚o–¼‘O = "Hyperbuilding 21F";
-					‚l‚`‚o“Ç‚İ‚İ(no, 54, 0, 0, 0, 0, 0, 0, 0, 0);
+					MAPReading(no, 54, 0, 0, 0, 0, 0, 0, 0, 0);
 					‚l‚cŒÅ’è(16, 14, 16, 1, 0);
 					‚l‚cŒÅ’è(17, 14, 8, 11, 0);
 					‚l‚cŒÅ’è(18, 14, 16, 1, 0);
@@ -3572,7 +3572,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 		if (dd == 7)
 		{
 			‚l‚`‚oŠî‘bŒ^“o˜^(1);
-			ƒNƒGƒXƒgŠî–{“o˜^(350, 23, 4);
+			QuestBasicRegistration(350, 23, 4);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 1, 1, 0);
 			ƒGƒ“ƒJƒEƒ“ƒg’†g“o˜^(46, 53, 0, 0, 0);
 			ƒ{[ƒiƒX“o˜^(3, 5, 7);
@@ -3582,7 +3582,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				case 1:
 					Ÿ‚l‚`‚o–¼‘O = "Spawar Cave";
-					‚l‚`‚o“Ç‚İ‚İ(no, 301, 0, 0, 0, 0, 5, 3, 5, 3);
+					MAPReading(no, 301, 0, 0, 0, 0, 5, 3, 5, 3);
 					‚l‚cŒÅ’è(36, 41, 8, 11, 0);
 					‚l‚cŒÅ’è(16, 34, 10, 12, 0);
 					‚l‚cŒÅ’è(17, 32, 10, 12, 0);
@@ -3701,13 +3701,13 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 			{
 				ŸƒLƒƒƒ‰ˆÊ’u = 13;
 			}
-			ƒNƒGƒXƒgŠî–{“o˜^(40, 13, 2);
+			QuestBasicRegistration(40, 13, 2);
 			ƒgƒ‰ƒbƒvŠm—¦“o˜^(0, 3, 0, 0);
 			ƒ{[ƒiƒX“o˜^(0, 0, 0);
 			if (no == 5)
 			{
 				Ÿ‚l‚`‚o–¼‘O = "Route 11";
-				‚l‚`‚o“Ç‚İ‚İ(no, 27, 0, 0, 1, 0, 1, 1, 0, 0);
+				MAPReading(no, 27, 0, 0, 1, 0, 1, 1, 0, 0);
 			}
 			return 0;
 		}
@@ -5687,7 +5687,7 @@ void ŠÖ”^ƒTƒCƒRƒ^ƒ}ƒ‹ƒOƒŠƒbƒh‚w^ƒNƒGƒXƒgİ’è()
 	{
 		treasureType = RAND(3) * 10 + 3;
 	}
-	ƒNƒGƒXƒgŠî–{“o˜^(900, treasureType, 6);
+	QuestBasicRegistration(900, treasureType, 6);
 }
 
 void ŠÖ”^ƒTƒCƒRƒ^ƒ}ƒ‹ƒOƒŠƒbƒh‚w^ƒGƒ“ƒJƒEƒ“ƒgİ’è(int no)
@@ -6127,77 +6127,77 @@ bool ŠÖ”^ƒTƒCƒRƒ^‘o‰‹‚ ‚Î‚ê—·^¶‘¶Šm”F()
 void ŠÖ”^ƒTƒCƒRƒ^—‚Ìqƒ‚ƒ“ƒXƒ^[ƒY^“oê—‚Ìqƒ‚ƒ“ƒXƒ^[İ’è()
 {
 	array@int girlMonsterlist;
-	if (‚h—L–³(227, 0, "") == 0)
+	if (ItemInInventory(227, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(142);
 	}
-	if (‚h—L–³(228, 0, "") == 0)
+	if (ItemInInventory(228, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(153);
 	}
-	if (‚h—L–³(229, 0, "") == 0)
+	if (ItemInInventory(229, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(164);
 	}
-	if (‚h—L–³(230, 0, "") == 0)
+	if (ItemInInventory(230, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(197);
 	}
-	if (‚h—L–³(231, 0, "") == 0)
+	if (ItemInInventory(231, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(165);
 	}
-	if (‚h—L–³(232, 0, "") == 0)
+	if (ItemInInventory(232, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(168);
 	}
-	if (‚h—L–³(233, 0, "") == 0)
+	if (ItemInInventory(233, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(175);
 	}
-	if (‚h—L–³(234, 0, "") == 0)
+	if (ItemInInventory(234, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(187);
 	}
-	if (‚h—L–³(235, 0, "") == 0)
+	if (ItemInInventory(235, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(188);
 	}
-	if (‚h—L–³(236, 0, "") == 0)
+	if (ItemInInventory(236, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(198);
 	}
-	if (‚h—L–³(237, 0, "") == 0)
+	if (ItemInInventory(237, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(206);
 	}
-	if (‚h—L–³(238, 0, "") == 0)
+	if (ItemInInventory(238, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(231);
 	}
-	if (‚h—L–³(239, 0, "") == 0)
+	if (ItemInInventory(239, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(230);
 	}
-	if (‚h—L–³(242, 0, "") == 0)
+	if (ItemInInventory(242, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(220);
 	}
-	if (‚h—L–³(243, 0, "") == 0)
+	if (ItemInInventory(243, 0, "") == 0)
 	{
 		girlMonsterlist.PushBack(199);
 	}
 	if (Ÿƒ[ƒ‹ƒh == 3)
 	{
-		if (‚h—L–³(240, 0, "") == 0)
+		if (ItemInInventory(240, 0, "") == 0)
 		{
 			girlMonsterlist.PushBack(239);
 		}
-		if (‚h—L–³(241, 0, "") == 0)
+		if (ItemInInventory(241, 0, "") == 0)
 		{
 			girlMonsterlist.PushBack(240);
 		}
-		if (‚h—L–³(244, 0, "") == 0)
+		if (ItemInInventory(244, 0, "") == 0)
 		{
 			girlMonsterlist.PushBack(456);
 		}

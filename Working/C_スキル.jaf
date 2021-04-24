@@ -22,7 +22,7 @@ bool スキル_大技(int nSkillNo)
 	{
 		return true;
 	}
-	return Ｓ大技(nSkillNo, -1) > 0;
+	return SkillBigTechnique(nSkillNo, -1) > 0;
 }
 
 int スキル_機能(int nSkillNo)
@@ -76,7 +76,7 @@ bool スキル_削除不可(int nSkillNo)
 	{
 		return false;
 	}
-	return Ｓ削除不可(nSkillNo, -1) > 0;
+	return SkillCannotBeDeleted(nSkillNo, -1) > 0;
 }
 
 int スキル_タイプ(int nSkillNo)
@@ -157,7 +157,7 @@ bool スキル_初ターン使用禁止技(int nSkillNo)
 	{
 		return false;
 	}
-	return Ｓ初ターン使用禁止技(nSkillNo, -1) > 0;
+	return SkillFirstTurnUseProhibitedTechnique(nSkillNo, -1) > 0;
 }
 
 bool スキル_同一戦闘一度のみ技(int nSkillNo)
@@ -166,7 +166,7 @@ bool スキル_同一戦闘一度のみ技(int nSkillNo)
 	{
 		return false;
 	}
-	return Ｓ同一戦闘一度のみ技(nSkillNo, -1) > 0;
+	return SkillOnlyOneUsePerBattle(nSkillNo, -1) > 0;
 }
 
 int スキル_要溜め(int nSkillNo)
@@ -175,7 +175,7 @@ int スキル_要溜め(int nSkillNo)
 	{
 		return -1;
 	}
-	return Ｓ要溜め(nSkillNo, -1);
+	return SkillRequired(nSkillNo, -1);
 }
 
 string スキル_ＥＦ(int nSkillNo)

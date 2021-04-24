@@ -526,7 +526,7 @@ int キャラスキル_検索(int nCharaNo, int nSkillNo)
 
 int キャラスキル_追加(int nCharaNo, int nSkillNo)
 {
-	return ＣＳ追加(nCharaNo, nSkillNo, 0);
+	return CharacterSkillAdd(nCharaNo, nSkillNo, 0);
 }
 
 void キャラスキル_消去(int nCharaNo, int nSkillNo)

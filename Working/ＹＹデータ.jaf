@@ -719,20 +719,20 @@ lint QuestProcessingYY(lint dd, lint no, lint fg)
 			{
 				ƒnƒjƒNƒG‚R^is‰ï˜b‚T();
 				iic = ‚b”Ô†æ“¾(87);
-				‚b‚r’Ç‰Á(iic, 489, 3);
+				CharacterSkillAdd(iic, 489, 3);
 				‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 489, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 				‚bÄŒvZ(iic);
 				iic = ‚b”Ô†æ“¾(88);
-				‚b‚r’Ç‰Á(iic, 283, 4);
+				CharacterSkillAdd(iic, 283, 4);
 				‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 283, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 				‚bÄŒvZ(iic);
 				iic = ‚b”Ô†æ“¾(89);
-				‚b‚r’Ç‰Á(iic, 225, 6);
+				CharacterSkillAdd(iic, 225, 6);
 				‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 225, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 				‚bÄŒvZ(iic);
 				iic = ‚b”Ô†æ“¾(90);
-				‚b‚r’Ç‰Á(iic, 248, 3);
-				‚b‚r’Ç‰Á(iic, 142, 4);
+				CharacterSkillAdd(iic, 248, 3);
+				CharacterSkillAdd(iic, 142, 4);
 				‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 248, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 				‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 142, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 				‚bÄŒvZ(iic);
@@ -741,17 +741,17 @@ lint QuestProcessingYY(lint dd, lint no, lint fg)
 				if (Ÿƒ[ƒ‹ƒh == 2)
 				{
 					iic = ‚b”Ô†æ“¾(87);
-					‚b‚r’Ç‰Á(iic, 489, 1);
+					CharacterSkillAdd(iic, 489, 1);
 					iic = ‚b”Ô†æ“¾(89);
-					‚b‚r’Ç‰Á(iic, 225, 6);
+					CharacterSkillAdd(iic, 225, 6);
 					‚o‚s‚`ƒXƒLƒ‹‰ñ•œ("");
 				}
 				if (Ÿƒ[ƒ‹ƒh == 3)
 				{
 					iic = ‚b”Ô†æ“¾(87);
-					‚b‚r’Ç‰Á(iic, 489, 2);
+					CharacterSkillAdd(iic, 489, 2);
 					iic = ‚b”Ô†æ“¾(89);
-					‚b‚r’Ç‰Á(iic, 225, 12);
+					CharacterSkillAdd(iic, 225, 12);
 					‚o‚s‚`ƒXƒLƒ‹‰ñ•œ("");
 				}
 				ƒNƒGƒXƒgis—¦‘‚«Š·‚¦(90);
@@ -892,20 +892,20 @@ lint QuestProcessingYY(lint dd, lint no, lint fg)
 			ƒnƒj[Å‘åƒŒƒxƒ‹•ÏX();
 			‚o‚s‚`ƒŒƒxƒ‹‡‚í‚¹(92);
 			iic = ‚b”Ô†æ“¾(87);
-			‚b‚r’Ç‰Á(iic, 489, 3);
+			CharacterSkillAdd(iic, 489, 3);
 			‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 489, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 			‚bÄŒvZ(iic);
 			iic = ‚b”Ô†æ“¾(88);
-			‚b‚r’Ç‰Á(iic, 283, 4);
+			CharacterSkillAdd(iic, 283, 4);
 			‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 283, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 			‚bÄŒvZ(iic);
 			iic = ‚b”Ô†æ“¾(89);
-			‚b‚r’Ç‰Á(iic, 225, 6);
+			CharacterSkillAdd(iic, 225, 6);
 			‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 225, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 			‚bÄŒvZ(iic);
 			iic = ‚b”Ô†æ“¾(90);
-			‚b‚r’Ç‰Á(iic, 248, 3);
-			‚b‚r’Ç‰Á(iic, 142, 4);
+			CharacterSkillAdd(iic, 248, 3);
+			CharacterSkillAdd(iic, 142, 4);
 			‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 248, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 			‚bƒXƒLƒ‹‹­§À‘•‚`(iic, 142, ‚b‚r‹ó‚«À‘•”Ô†æ“¾(iic));
 			‚bÄŒvZ(iic);
@@ -1014,17 +1014,17 @@ lint QuestProcessingYY(lint dd, lint no, lint fg)
 				iic = ‚b”Ô†æ“¾(13);
 				if (‚b‚r‹ó‚«”Ô†æ“¾(iic) != 0 && ‚b‚r—L–³(iic, 592, 0) == 0)
 				{
-					‚b‚r’Ç‰Á(iic, 592, 0);
+					CharacterSkillAdd(iic, 592, 0);
 				}
 				iic = ‚b”Ô†æ“¾(60);
 				if (‚b‚r‹ó‚«”Ô†æ“¾(iic) != 0 && ‚b‚r—L–³(iic, 592, 0) == 0)
 				{
-					‚b‚r’Ç‰Á(iic, 592, 0);
+					CharacterSkillAdd(iic, 592, 0);
 				}
 				iic = ‚b”Ô†æ“¾(12);
 				if (‚b‚r‹ó‚«”Ô†æ“¾(iic) != 0 && ‚b‚r—L–³(iic, 592, 0) == 0)
 				{
-					‚b‚r’Ç‰Á(iic, 592, 0);
+					CharacterSkillAdd(iic, 592, 0);
 				}
 				if (‚hƒNƒGƒXƒg‘qŒÉ‚Í–”t‚Å‚·‚©H() == 0 && ItemInInventory(342, 0, "") == 0)
 				{
@@ -1169,25 +1169,25 @@ void ƒXƒLƒ‹‰ñ”‘‰Á()
 	if (Ÿƒ[ƒ‹ƒh == 2)
 	{
 		iic = ‚b”Ô†æ“¾(87);
-		‚b‚r’Ç‰Á(iic, 420, 14);
+		CharacterSkillAdd(iic, 420, 14);
 		iic = ‚b”Ô†æ“¾(88);
-		‚b‚r’Ç‰Á(iic, 420, 10);
-		‚b‚r’Ç‰Á(iic, 121, 6);
-		‚b‚r’Ç‰Á(iic, 211, 3);
+		CharacterSkillAdd(iic, 420, 10);
+		CharacterSkillAdd(iic, 121, 6);
+		CharacterSkillAdd(iic, 211, 3);
 		iic = ‚b”Ô†æ“¾(89);
-		‚b‚r’Ç‰Á(iic, 420, 4);
-		‚b‚r’Ç‰Á(iic, 221, 4);
-		‚b‚r’Ç‰Á(iic, 227, 8);
+		CharacterSkillAdd(iic, 420, 4);
+		CharacterSkillAdd(iic, 221, 4);
+		CharacterSkillAdd(iic, 227, 8);
 		iic = ‚b”Ô†æ“¾(90);
-		‚b‚r’Ç‰Á(iic, 420, 8);
-		‚b‚r’Ç‰Á(iic, 282, 4);
-		‚b‚r’Ç‰Á(iic, 212, 8);
+		CharacterSkillAdd(iic, 420, 8);
+		CharacterSkillAdd(iic, 282, 4);
+		CharacterSkillAdd(iic, 212, 8);
 		if (Ÿiiq == 224)
 		{
 			iic = ‚b”Ô†æ“¾(87);
-			‚b‚r’Ç‰Á(iic, 489, 1);
+			CharacterSkillAdd(iic, 489, 1);
 			iic = ‚b”Ô†æ“¾(89);
-			‚b‚r’Ç‰Á(iic, 225, 4);
+			CharacterSkillAdd(iic, 225, 4);
 		}
 		‚bÄŒvZ(iic);
 		‚o‚s‚`ƒXƒLƒ‹‰ñ•œ("");
@@ -1195,26 +1195,26 @@ void ƒXƒLƒ‹‰ñ”‘‰Á()
 	if (Ÿƒ[ƒ‹ƒh == 3)
 	{
 		iic = ‚b”Ô†æ“¾(87);
-		‚b‚r’Ç‰Á(iic, 277, 4);
-		‚b‚r’Ç‰Á(iic, 420, 28);
+		CharacterSkillAdd(iic, 277, 4);
+		CharacterSkillAdd(iic, 420, 28);
 		iic = ‚b”Ô†æ“¾(88);
-		‚b‚r’Ç‰Á(iic, 420, 20);
-		‚b‚r’Ç‰Á(iic, 121, 12);
-		‚b‚r’Ç‰Á(iic, 211, 6);
+		CharacterSkillAdd(iic, 420, 20);
+		CharacterSkillAdd(iic, 121, 12);
+		CharacterSkillAdd(iic, 211, 6);
 		iic = ‚b”Ô†æ“¾(89);
-		‚b‚r’Ç‰Á(iic, 420, 8);
-		‚b‚r’Ç‰Á(iic, 221, 8);
-		‚b‚r’Ç‰Á(iic, 227, 12);
+		CharacterSkillAdd(iic, 420, 8);
+		CharacterSkillAdd(iic, 221, 8);
+		CharacterSkillAdd(iic, 227, 12);
 		iic = ‚b”Ô†æ“¾(90);
-		‚b‚r’Ç‰Á(iic, 420, 16);
-		‚b‚r’Ç‰Á(iic, 282, 4);
-		‚b‚r’Ç‰Á(iic, 212, 12);
+		CharacterSkillAdd(iic, 420, 16);
+		CharacterSkillAdd(iic, 282, 4);
+		CharacterSkillAdd(iic, 212, 12);
 		if (Ÿiiq == 224)
 		{
 			iic = ‚b”Ô†æ“¾(87);
-			‚b‚r’Ç‰Á(iic, 489, 2);
+			CharacterSkillAdd(iic, 489, 2);
 			iic = ‚b”Ô†æ“¾(89);
-			‚b‚r’Ç‰Á(iic, 225, 8);
+			CharacterSkillAdd(iic, 225, 8);
 		}
 		‚bÄŒvZ(iic);
 		‚o‚s‚`ƒXƒLƒ‹‰ñ•œ("");

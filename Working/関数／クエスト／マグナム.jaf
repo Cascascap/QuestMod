@@ -1580,7 +1580,7 @@ lint QuestProcessingMagnum(lint dd, lint no, lint fg)
 			{
 				g‚l = 5070;
 				‚r‚`‚c‚u("¡Sachiko   Skill rank up", "¡", "¡Skill: Holy Healing Marks š¨šš");
-				‚b‚r’Ç‰Á(iic, 298, 3);
+				CharacterSkillAdd(iic, 298, 3);
 			}
 			g‚l = 5070;
 			‚r‚`‚c‚u("¡Sachiko   Mr. Hiroshi power up", "¡", "¡Item: Mr. Hiroshi was strengthened");

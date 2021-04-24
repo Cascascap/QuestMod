@@ -2866,16 +2866,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 	{
 		LOG("Adding Nikkou into the game");
 		lv = 0; //lv is the item rank
-		ItemEquippedCharacter(ii, 1, 1);
-		‚h¶¬^ƒf[ƒ^‚O(ii, 6323, 9000, 0, 1, 0, 0, 0, 0, 0, 0, 0);
-		‚h¶¬^ƒf[ƒ^‚P(ii, no, lv, "Nikkou the Holy Blade", 1, 2, 41, 2, 2000, 18, 30, 81, 0, 82, 60, 0, 0);
-	}
-	if (no == 345)
-	{
-		int £‰¿Ši = 100;
-		ItemGenerateData0(ii, 6382, £‰¿Ši, 1, 1, 2, 3, 4, 5, 6, 7, 8);
-		ItemGenerateData1(ii, no, 0, "Skill Again2", 21, 0, 0, 67, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		‚hî•ñ(ii, "Useful, refreshing, heretical.$Whoever equips this will have their skill points reset (but won't gain any, of course).");
+		ItemGenerateData0(ii, 6323, 9000, 62, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemGenerateData1(ii, no, lv, "Nikkou the Holy Blade", 1, 2, 41, 2, 2000, 18, 30, 81, 0, 82, 60, 0, 0);
 	}
 }
 

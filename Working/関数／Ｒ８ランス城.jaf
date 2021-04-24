@@ -2124,7 +2124,7 @@ lint 処理関数(int no, int fg, string 文字, int iic, int ero)
 			{
 				return 1;
 			}
-			Ｃスキルポイント(iic, Ｃスキルポイント(iic, -1) + 1);
+			CharacterSkillPoints(iic, CharacterSkillPoints(iic, -1) + 1);
 			Ｃ城ボーナス回数(iic, Ｃ城ボーナス回数(iic, -1) + 1);
 			ADVON();
 			セット表示(5511, 5071, 0, 0);
@@ -2132,7 +2132,7 @@ lint 処理関数(int no, int fg, string 文字, int iic, int ero)
 			'That night, the sound of a mysterious flute could be heard.' R;
 			S(Ｃ短縮名前(iic, ""));
 			' gained 1 skill point.' R;
-			'Current skill points: ' NH(Ｃスキルポイント(iic, -1), 0, 0);
+			'Current skill points: ' NH(CharacterSkillPoints(iic, -1), 0, 0);
 			'.' B;
 			Ｒ８ジングル(457, false);
 			AA();

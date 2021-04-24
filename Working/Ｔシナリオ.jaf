@@ -371,7 +371,7 @@ void 汎用／迷宮内でスキルポイント()
 	ト書き();
 	顔表示／総合(◆ＡＡ);
 	'At some point, ' S(Ｃ名前(◆ＡＡ, ""));
-	' saved up ' NH(Ｃスキルポイント(◆ＡＡ, -1), 0, 0);
+	' saved up ' NH(CharacterSkillPoints(◆ＡＡ, -1), 0, 0);
 	' skill points.' R;
 	'　' R;
 	'Maybe some new moves would be nice...' A;

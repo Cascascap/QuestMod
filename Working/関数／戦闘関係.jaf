@@ -7985,7 +7985,7 @@ int ‚s•¨—UŒ‚s“®(int iic1, int iic2, int iis)
 	{
 		LOG_TADA("\n„‚s•¨—UŒ‚s“®i" + ‚b’Zk–¼‘O(iic1, "") + "@¨@" + ‚b’Zk–¼‘O(iic2, "") + "j\n");
 		LOG_TADA("@@ƒXƒLƒ‹–¼" + ‚r–¼‘O(iis, "") + "@”{—¦(" + string(‚r”{—¦(iis, -1)) + ")ãŒÀ(" + string(‚rƒ_ƒ[ƒWãŒÀ(iis, -1)) + ")–½’†(" + string(‚b–½’†—¦(iic1, -1)) + ")•KE(" + string(‚b•KE—¦(iic1, -1)) + ")ÕŒ‚(" + string(‚bÕŒ‚—¦(iic1, -1)) + ")");
-		if (‚r—v—­‚ß(iis, -1) == 1)
+		if (SkillRequired(iis, -1) == 1)
 		{
 			LOG_TADA("@—v—­‚ß");
 		}
@@ -8017,11 +8017,11 @@ int ‚s•¨—UŒ‚s“®(int iic1, int iic2, int iis)
 		s“®I—¹ˆ—(iic1, iic2, iis);
 		return 0;
 	}
-	if (‚r‘å‹Z(iis, -1) == 1)
+	if (SkillBigTechnique(iis, -1) == 1)
 	{
 		‚s‘äŒ¶¬(iic1, iis, "UŒ‚‘å‹Z");
 	}
-	if (‚r‘å‹Z(iis, -1) == 0)
+	if (SkillBigTechnique(iis, -1) == 0)
 	{
 		‚s‘äŒ¶¬(iic1, iis, "UŒ‚’Êí");
 	}
@@ -8215,16 +8215,16 @@ int ‚s–‚–@UŒ‚s“®(int iic1, int iic2, int iis)
 		{
 			‚s‘äŒ¶¬(iic1, iis, "–‚–@–¼‘O");
 		}
-		if (ra == 2 && ‚r‘å‹Z(iis, -1) == 0)
+		if (ra == 2 && SkillBigTechnique(iis, -1) == 0)
 		{
 			‚s‘äŒ¶¬(iic1, iis, "UŒ‚’Êí");
 		}
-		if (ra == 2 && ‚r‘å‹Z(iis, -1) == 1)
+		if (ra == 2 && SkillBigTechnique(iis, -1) == 1)
 		{
 			‚s‘äŒ¶¬(iic1, iis, "UŒ‚‘å‹Z");
 		}
 	}
-	if (Ÿ“G‘¤s“® == 1 && ‚r‘å‹Z(iis, -1) == 1)
+	if (Ÿ“G‘¤s“® == 1 && SkillBigTechnique(iis, -1) == 1)
 	{
 		if (‚b‘äŒ(iic1, 4, "") != "")
 		{
@@ -8235,7 +8235,7 @@ int ‚s–‚–@UŒ‚s“®(int iic1, int iic2, int iis)
 			‚s‘äŒ¶¬(iic1, iis, "–‚–@–¼‘O");
 		}
 	}
-	if (Ÿ“G‘¤s“® == 1 && ‚r‘å‹Z(iis, -1) == 0)
+	if (Ÿ“G‘¤s“® == 1 && SkillBigTechnique(iis, -1) == 0)
 	{
 		if (‚b‘äŒ(iic1, 3, "") != "")
 		{
@@ -8408,7 +8408,7 @@ int ‚s“Áês“®(int iic1, int iic2, int iis)
 	if (Ÿ‚c‚a^í“¬ƒƒO == 1)
 	{
 		LOG_TADA("\n„‚s“Áês“®i" + ‚b’Zk–¼‘O(iic1, "") + "i" + ‚r–¼‘O(iis, "") + "j@¨@" + ‚b’Zk–¼‘O(iic2, "") + "j\n");
-		if (‚r—v—­‚ß(iis, -1) == 1)
+		if (SkillRequired(iis, -1) == 1)
 		{
 			LOG_TADA("@@—­‚ß‚ª•K—v‚ÈUŒ‚‚Å‚·\n");
 		}
@@ -10596,7 +10596,7 @@ int ƒNƒŠƒeƒBƒJƒ‹ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 
 int —­‚ßŒvZ(lint iic1, lint iic2, lint iis)
 {
-	if (‚r—v—­‚ß(iis, -1) == 1)
+	if (SkillRequired(iis, -1) == 1)
 	{
 		if ((‚b—­‚ß(iic1, -1) == 0 || Ÿ—­‚ßÀsƒtƒ‰ƒO == 1) && Ÿ—­‚ßÀsƒtƒ‰ƒO != 9)
 		{
@@ -12682,7 +12682,7 @@ int ‚b‚rg—p‹Ö~Ø‚è‘Ö‚¦(int iic, int fg)
 		if (fg == 1)
 		{
 			‚b‚rg—p‹Ö~(iic, iic_s, 0);
-			if (‚r‰ƒ^[ƒ“g—p‹Ö~‹Z(no, -1) == 1)
+			if (SkillFirstTurnUseProhibitedTechnique(no, -1) == 1)
 			{
 				‚b‚rg—p‹Ö~(iic, iic_s, 1);
 				aa = 1;
@@ -12716,11 +12716,11 @@ int ‚b‚rg—p‹Ö~Ø‚è‘Ö‚¦(int iic, int fg)
 		}
 		if (fg == 2 && ‚b‚rg—p‹Ö~(iic, iic_s, -1) != 3)
 		{
-			if (‚r‰ƒ^[ƒ“g—p‹Ö~‹Z(no, -1) == 1)
+			if (SkillFirstTurnUseProhibitedTechnique(no, -1) == 1)
 			{
 				‚b‚rg—p‹Ö~(iic, iic_s, 0);
 			}
-			if (‚r“¯ˆêí“¬ˆê“x‚Ì‚İ‹Z(no, -1) == 1 && ‚b‚rí“¬g—pÏ‚İ(iic, iic_s, -1) == 1)
+			if (SkillOnlyOneUsePerBattle(no, -1) == 1 && ‚b‚rí“¬g—pÏ‚İ(iic, iic_s, -1) == 1)
 			{
 				‚b‚rg—p‹Ö~(iic, iic_s, 2);
 			}

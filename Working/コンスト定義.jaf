@@ -336,6 +336,7 @@ void Šç‚b‚f“o˜^‰Šú‰»()
 	Šç“o˜^(2989, "Sayu", 1);
 	Šç“o˜^(2990, "Kuuyou", 1);
 	Šç“o˜^(2991, "Alex Valse", 1);
+	Šç“o˜^(2991, "Kentarou Ogawa", 1);
 }
 
 void Šç“o˜^(int no, string •¶š—ñ, int aa)

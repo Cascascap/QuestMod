@@ -2647,7 +2647,7 @@ lint QuestProcessingBasic(lint dd, lint no, lint fg)
 				if (‚b‚r—L–³(iic, iis, 0) != 0)
 				{
 					‚b‚e‚`(iic, 15, iis);
-					‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, ‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, -1) + 10);
+					CharacterSkillPoints(iic, CharacterSkillPoints(iic, -1) + 10);
 				}
 				iis = 352;
 				if (‚b‚r—L–³(iic, iis, 0) != 0)
@@ -3193,7 +3193,7 @@ lint QuestProcessingBasic(lint dd, lint no, lint fg)
 			ƒpƒXƒeƒ‹‹­Š­^í“¬Œã(0);
 			iic = ‚b”Ô†æ“¾(1);
 			‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 0);
-			‚b‚r’Ç‰Á(iic, 365, 0);
+			CharacterSkillAdd(iic, 365, 0);
 			MM[14] = 1;
 			MM[15] = 1;
 			FA[104]++;
@@ -11191,7 +11191,7 @@ lint QuestProcessingBasic(lint dd, lint no, lint fg)
 			{
 				g‚l = 5071;
 				‚r‚`‚c‚u("¡Sachiko   Skill rank up ", "¡", "¡Skill: Holy Healing Marks No star ¨ š");
-				‚b‚r’Ç‰Á(iic, 298, 2);
+				CharacterSkillAdd(iic, 298, 2);
 			}
 			return 1;
 		}

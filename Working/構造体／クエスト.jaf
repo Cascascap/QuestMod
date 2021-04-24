@@ -942,7 +942,7 @@ void クエスト終了処理／クリアフラグ()
 			FA[5] = 2;
 			Ｃ生成(24);
 			iic = Ｃ番号取得(24);
-			ＣＳ追加(iic, 361, 0);
+			CharacterSkillAdd(iic, 361, 0);
 		}
 		if (◆iiq == 16)
 		{
@@ -3527,7 +3527,7 @@ lint 割り込み２／キャライベント(lint iic)
 			if (rr == 2)
 			{
 				ＣＦＡ(iic, 12, 2);
-				ＣＳ追加(iic, 373, 0);
+				CharacterSkillAdd(iic, 373, 0);
 			}
 			if (rr == 3)
 			{
@@ -3808,7 +3808,7 @@ lint 割り込み２／転移後特殊(int fg)
 		int loop = 0;
 		for (loop = 1; loop < 6; ++loop)
 		{
-			if (PTA[loop] != 0 && Ｃスキルポイント(PTA[loop], -1) >= 40 && Ｃ番号(PTA[loop], -1) != 1)
+			if (PTA[loop] != 0 && CharacterSkillPoints(PTA[loop], -1) >= 40 && Ｃ番号(PTA[loop], -1) != 1)
 			{
 				◆ＡＡ = PTA[loop];
 				汎用／迷宮内でスキルポイント();

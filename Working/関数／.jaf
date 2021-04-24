@@ -609,7 +609,7 @@ void ƒŒƒxƒ‹ƒAƒbƒvˆ—(lint iic)
 		‚b‚k‚u(iic, ‚b‚k‚u(iic, -1) + 1);
 		‚b‚d‚w‚o(iic, 0);
 		vva = ‚sí“¬Œã‚Ìæ“¾ƒXƒLƒ‹ƒ|ƒCƒ“ƒgZo(iic);
-		‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, ‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, -1) + vva);
+		CharacterSkillPoints(iic, CharacterSkillPoints(iic, -1) + vva);
 		‚bÄŒvZ(iic);
 	}
 }
@@ -1335,9 +1335,9 @@ void ‚bƒƒOî•ñ(int iic)
 	}
 	LOG("\n");
 	LOG(" HP: %s " % string3(‚b‘Ì—ÍÅ‘å(iic, -1)));
-	if (‚b‰Šú^‘Ì—ÍÅ‘å(iic, -1) != 0)
+	if (CharacterInitialMaxHP(iic, -1) != 0)
 	{
-		LOG("(Talent: %s%) " % string3(‚b‰Šú^‘Ì—ÍÅ‘å(iic, -1)));
+		LOG("(Talent: %s%) " % string3(CharacterInitialMaxHP(iic, -1)));
 	}
 	if (Ÿ“Áê^‘Ì—Í != 0)
 	{
@@ -1353,9 +1353,9 @@ void ‚bƒƒOî•ñ(int iic)
 	}
 	LOG("\n");
 	LOG(" Attack: %s " % string3(‚bUŒ‚—Í(iic, -1)));
-	if (‚b‰Šú^UŒ‚—Í(iic, -1) != 0)
+	if (CharacterInitialAttackPower(iic, -1) != 0)
 	{
-		LOG("(Talent: %s%) " % string3(‚b‰Šú^UŒ‚—Í(iic, -1)));
+		LOG("(Talent: %s%) " % string3(CharacterInitialAttackPower(iic, -1)));
 	}
 	if (Ÿ“Áê^UŒ‚—Í != 0)
 	{
@@ -1409,9 +1409,9 @@ void ‚bƒƒOî•ñ(int iic)
 	}
 	LOG("\n");
 	LOG(" Accuracy: %s " % string3(‚b–½’†—¦(iic, -1)));
-	if (‚b‰Šú^–½’†—¦(iic, -1) != 0)
+	if (CharacterInitialHitRate(iic, -1) != 0)
 	{
-		LOG("(Talent: %s%) " % string3(‚b‰Šú^–½’†—¦(iic, -1)));
+		LOG("(Talent: %s%) " % string3(CharacterInitialHitRate(iic, -1)));
 	}
 	if (Ÿ“Áê^–½’†—¦ != 0)
 	{
@@ -2811,7 +2811,7 @@ void ƒCƒxƒ“ƒg‚Åƒ‚ƒ‹ƒ‹ƒ“”­“®(int no)
 		if (no == 22)
 		{
 			‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 0);
-			‚b‚r’Ç‰Á(iic, 366, 1);
+			CharacterSkillAdd(iic, 366, 1);
 		}
 	}
 }
@@ -2993,7 +2993,7 @@ void ‚bƒŒƒxƒ‹ƒhƒŒƒCƒ“(int iic, int fg)
 			{
 				if (‚b“]¶‰ñ”(iic, -1) < 6)
 				{
-					‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, ‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, -1) + 2);
+					CharacterSkillPoints(iic, CharacterSkillPoints(iic, -1) + 2);
 					LOG("    2 skill points\n");
 				}
 				‚b‚e‚`(iic, 33, ‚b‚e‚`(iic, 33, -1) + 5);
@@ -3031,7 +3031,7 @@ void ‚bƒXƒLƒ‹ƒhƒŒƒCƒ“(int iic)
 	‚b‚e‚`(iic, 44, 0);
 	‚b‚e‚`(iic, 45, 0);
 	aa = ‚bÅ‘åƒXƒLƒ‹ƒ|ƒCƒ“ƒgæ“¾(iic);
-	‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, aa);
+	CharacterSkillPoints(iic, aa);
 	‚b[iic].ÅIæ“¾ƒXƒLƒ‹”Ô† = 0;
 	‚b[iic].ÅIæ“¾ƒXƒLƒ‹”Ô†‚Ég‚Á‚½ƒXƒLƒ‹ƒ|ƒCƒ“ƒg = 0;
 	int £]–‚ƒXƒLƒ‹ = 0;
@@ -3045,35 +3045,35 @@ void ‚bƒXƒLƒ‹ƒhƒŒƒCƒ“(int iic)
 	‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(iic, 0, "ƒXƒLƒ‹");
 	if (£]–‚ƒXƒLƒ‹ == 1)
 	{
-		‚b‚r’Ç‰Á(iic, 321, 1);
+		CharacterSkillAdd(iic, 321, 1);
 	}
 	if (‚b‚e‚`(iic, 4, -1) == 2)
 	{
-		‚b‚r’Ç‰Á(iic, 357, 0);
+		CharacterSkillAdd(iic, 357, 0);
 	}
 	if (‚b‚e‚`(iic, 4, -1) == 3)
 	{
-		‚b‚r’Ç‰Á(iic, 358, 0);
+		CharacterSkillAdd(iic, 358, 0);
 	}
 	if (‚b‚e‚`(iic, 4, -1) == 4)
 	{
-		‚b‚r’Ç‰Á(iic, 359, 0);
+		CharacterSkillAdd(iic, 359, 0);
 	}
 	if (‚b‚e‚`(iic, 4, -1) == 5)
 	{
-		‚b‚r’Ç‰Á(iic, 360, 0);
+		CharacterSkillAdd(iic, 360, 0);
 	}
 	if (‚b‚e‚`(iic, 5, -1) == 1)
 	{
-		‚b‚r’Ç‰Á(iic, 311, 0);
+		CharacterSkillAdd(iic, 311, 0);
 	}
 	if (‚b‚e‚`(iic, 36, -1) == 7)
 	{
-		‚b‚r’Ç‰Á(iic, 312, 0);
+		CharacterSkillAdd(iic, 312, 0);
 	}
 	if (‚b‚e‚`(iic, 15, -1) != 0)
 	{
-		‚b‚r’Ç‰Á(iic, ‚b‚e‚`(iic, 15, -1), 0);
+		CharacterSkillAdd(iic, ‚b‚e‚`(iic, 15, -1), 0);
 	}
 	ƒXƒLƒ‹^ƒ‚ƒ‹ƒ‹ƒ“”íŠQÒ’Ç‰Á(iic);
 	‚b“o˜^ƒXƒLƒ‹‘S‰ğœ(iic);
@@ -3095,57 +3095,57 @@ void ƒXƒLƒ‹^ƒ‚ƒ‹ƒ‹ƒ“”íŠQÒ’Ç‰Á(int iic)
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 1)
 	{
-		‚b‚r’Ç‰Á(iic, 376, 0);
+		CharacterSkillAdd(iic, 376, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 2)
 	{
 		‚b‚ríœ(iic, 376);
-		‚b‚r’Ç‰Á(iic, 377, 0);
+		CharacterSkillAdd(iic, 377, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 3)
 	{
 		‚b‚ríœ(iic, 377);
-		‚b‚r’Ç‰Á(iic, 378, 0);
+		CharacterSkillAdd(iic, 378, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 4)
 	{
 		‚b‚ríœ(iic, 378);
-		‚b‚r’Ç‰Á(iic, 379, 0);
+		CharacterSkillAdd(iic, 379, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 5)
 	{
 		‚b‚ríœ(iic, 379);
-		‚b‚r’Ç‰Á(iic, 380, 0);
+		CharacterSkillAdd(iic, 380, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 6)
 	{
 		‚b‚ríœ(iic, 380);
-		‚b‚r’Ç‰Á(iic, 381, 0);
+		CharacterSkillAdd(iic, 381, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 7)
 	{
 		‚b‚ríœ(iic, 381);
-		‚b‚r’Ç‰Á(iic, 483, 0);
+		CharacterSkillAdd(iic, 483, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 8)
 	{
 		‚b‚ríœ(iic, 483);
-		‚b‚r’Ç‰Á(iic, 484, 0);
+		CharacterSkillAdd(iic, 484, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 9)
 	{
 		‚b‚ríœ(iic, 484);
-		‚b‚r’Ç‰Á(iic, 485, 0);
+		CharacterSkillAdd(iic, 485, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) == 10)
 	{
 		‚b‚ríœ(iic, 485);
-		‚b‚r’Ç‰Á(iic, 486, 0);
+		CharacterSkillAdd(iic, 486, 0);
 	}
 	if (‚b“]¶‰ñ”(iic, -1) > 10)
 	{
 		‚b‚ríœ(iic, 486);
-		‚b‚r’Ç‰Á(iic, 566, 0);
+		CharacterSkillAdd(iic, 566, 0);
 	}
 }
 
@@ -3549,27 +3549,27 @@ void ƒj[ƒpƒbƒp^–Ÿ—V(lint iic, string î•ñ, lint item_no)
 		if (cno == 68)
 		{
 			‚r‚`‚c‚u^‰æ–Ê–³‚µ("¡Biscuitta   Skill acquired", "¡", "¡Skill: Stone Splitter");
-			‚b‚r’Ç‰Á(iic, 540, 0);
+			CharacterSkillAdd(iic, 540, 0);
 		}
 		if (cno == 53)
 		{
 			‚r‚`‚c‚u^‰æ–Ê–³‚µ("¡Bear   Skill acquired", "¡", "¡Skill: My Waifu");
-			‚b‚r’Ç‰Á(iic, 541, 0);
+			CharacterSkillAdd(iic, 541, 0);
 		}
 		if (cno == 11)
 		{
 			‚r‚`‚c‚u^‰æ–Ê–³‚µ("¡Wichita   Skill acquired", "¡", "¡Skill: Low Blow");
-			‚b‚r’Ç‰Á(iic, 549, 0);
+			CharacterSkillAdd(iic, 549, 0);
 		}
 		if (cno == 31)
 		{
 			‚r‚`‚c‚u^‰æ–Ê–³‚µ("¡Megadeth   Skill acquired", "¡", "¡Skill: Volley");
-			‚b‚r’Ç‰Á(iic, 137, 0);
+			CharacterSkillAdd(iic, 137, 0);
 		}
 		if (cno == 15)
 		{
 			‚r‚`‚c‚u^‰æ–Ê–³‚µ("¡Yulan   Skill acquired", "¡", "¡Skill: Lemon Attack");
-			‚b‚r’Ç‰Á(iic, 552, 0);
+			CharacterSkillAdd(iic, 552, 0);
 		}
 		if (cno == 36)
 		{
@@ -3606,12 +3606,12 @@ void ƒj[ƒpƒbƒp^–Ÿ—V(lint iic, string î•ñ, lint item_no)
 		if (‚b‚e‚`(iic, 37, -1) == 0)
 		{
 			‚b‚e‚`(iic, 37, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, ‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, -1) + 1);
+			CharacterSkillPoints(iic, CharacterSkillPoints(iic, -1) + 1);
 			ƒg‘‚«();
 			'That night, the sound of a mysterious flute could be heard.' R;
 			S(‚b’Zk–¼‘O(iic, ""));
 			' gained 1 skill point.' R;
-			'Current skill points: ' NH(‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, -1), 0, 0);
+			'Current skill points: ' NH(CharacterSkillPoints(iic, -1), 0, 0);
 			'.' B;
 			‚q‚WƒWƒ“ƒOƒ‹(457, false);
 			AA();

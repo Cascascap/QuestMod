@@ -442,6 +442,10 @@ string ƒLƒƒƒ‰ŒÅ—L”Ô†•¶š—ñ(lint no, int fg)
 		{
 			return "Battle Booklet";
 		}
+		if (no == 347)
+		{
+			return "Kentarou Ogawa";
+		}
 	}
 	if (fg == 1)
 	{
@@ -885,6 +889,10 @@ string ƒLƒƒƒ‰ŒÅ—L”Ô†•¶š—ñ(lint no, int fg)
 		{
 			return "Battle Booklet";
 		}
+		if (no == 347)
+		{
+			return "Kentarou";
+		}
 	}
 	return "NoName";
 }
@@ -1253,7 +1261,7 @@ lint ‚bƒQƒXƒg(lint iic, int aa)
 	return 0;
 }
 
-lint ‚bíœ‹Ö~(lint iic, int aa)
+lint CharacterDeletionProhibited(lint iic, int aa)
 {
 	if (aa == -1)
 	{
@@ -1918,7 +1926,7 @@ lint ‚bƒIƒvƒVƒ‡ƒ“(lint iic, int aa)
 	return 0;
 }
 
-lint ‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(lint iic, int aa)
+lint CharacterSkillPoints(lint iic, int aa)
 {
 	if (aa == -1)
 	{
@@ -1976,7 +1984,7 @@ lint ‚b‚e‚`(lint iic, int no, int aa)
 	return 0;
 }
 
-lint ‚b‰Šú^‘Ì—ÍÅ‘å(lint iic, int aa)
+lint CharacterInitialMaxHP(lint iic, int aa)
 {
 	if (aa == -1)
 	{
@@ -2004,7 +2012,7 @@ lint ‚b‰Šú^‘f‘‚³(lint iic, int aa)
 	return 0;
 }
 
-lint ‚b‰Šú^UŒ‚—Í(lint iic, int aa)
+lint CharacterInitialAttackPower(lint iic, int aa)
 {
 	if (aa == -1)
 	{
@@ -2032,7 +2040,7 @@ lint ‚b‰Šú^–hŒä—Í(lint iic, int aa)
 	return 0;
 }
 
-lint ‚b‰Šú^–½’†—¦(lint iic, int aa)
+lint CharacterInitialHitRate(lint iic, int aa)
 {
 	if (aa == -1)
 	{
@@ -2720,42 +2728,42 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 	{
 		‚b‚r‘S‰Šú‰»(iic);
-		‚b‚r’Ç‰Á(iic, 569, 0);
+		CharacterSkillAdd(iic, 569, 0);
 		‚b‚¿•¨ƒXƒLƒ‹(iic, 569);
-		‚b‚r’Ç‰Á(iic, 568, ‚b‚e‚`(iic, 3, -1));
+		CharacterSkillAdd(iic, 568, ‚b‚e‚`(iic, 3, -1));
 		‚b‚rE‹Æ•ÊŠî–{ƒXƒLƒ‹“o˜^(iic, ‚bE‹Æ(iic, -1), 0);
 		ƒXƒLƒ‹^ƒ‚ƒ‹ƒ‹ƒ“”íŠQÒ’Ç‰Á(iic);
 	}
 	if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 	{
 		‚b‰Šú^‘f‘‚³(iic, 0);
-		‚b‰Šú^UŒ‚—Í(iic, 0);
+		CharacterInitialAttackPower(iic, 0);
 		‚b‰Šú^–hŒä—Í(iic, 0);
 		‚b‰Šú^–‚–@—Í(iic, 0);
 		‚b‰Šú^–‚’ï—Í(iic, 0);
-		‚b‰Šú^–½’†—¦(iic, 0);
+		CharacterInitialHitRate(iic, 0);
 		‚b‰Šú^‰ñ”ğ—¦(iic, 0);
 		‚b‰Šú^ÕŒ‚—¦(iic, 0);
 		‚b‰Šú^‘Ï«—¦(iic, 0);
 		‚b‰Šú^•KE—¦(iic, 0);
-		‚b‰Šú^‘Ì—ÍÅ‘å(iic, 0);
+		CharacterInitialMaxHP(iic, 0);
 	}
 	if (no == 2)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2916, 1, 1, 20, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2916, 1, 1, 20, 3, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
 			if (‚b‚e‚`(iic, 12, -1) == 2)
 			{
-				‚b‚r’Ç‰Á(iic, 373, 0);
+				CharacterSkillAdd(iic, 373, 0);
 			}
 			if (‚b‚e‚`(iic, 59, -1) == 1)
 			{
-				‚b‚r’Ç‰Á(iic, 383, 3);
+				CharacterSkillAdd(iic, 383, 3);
 			}
 			aa = ‚b‚e‚`(iic, 61, -1);
 			bb = ‚b‚e‚`(iic, 66, -1);
@@ -2765,7 +2773,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			}
 			if (aa != 0)
 			{
-				‚b‚r’Ç‰Á(iic, aa, bb);
+				CharacterSkillAdd(iic, aa, bb);
 			}
 			aa = ‚b‚e‚`(iic, 62, -1);
 			bb = ‚b‚e‚`(iic, 67, -1);
@@ -2775,7 +2783,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			}
 			if (aa != 0)
 			{
-				‚b‚r’Ç‰Á(iic, aa, bb);
+				CharacterSkillAdd(iic, aa, bb);
 			}
 			aa = ‚b‚e‚`(iic, 63, -1);
 			bb = ‚b‚e‚`(iic, 68, -1);
@@ -2785,7 +2793,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			}
 			if (aa != 0)
 			{
-				‚b‚r’Ç‰Á(iic, aa, bb);
+				CharacterSkillAdd(iic, aa, bb);
 			}
 			aa = ‚b‚e‚`(iic, 64, -1);
 			bb = ‚b‚e‚`(iic, 69, -1);
@@ -2795,7 +2803,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			}
 			if (aa != 0)
 			{
-				‚b‚r’Ç‰Á(iic, aa, bb);
+				CharacterSkillAdd(iic, aa, bb);
 			}
 			aa = ‚b‚e‚`(iic, 65, -1);
 			bb = ‚b‚e‚`(iic, 70, -1);
@@ -2805,7 +2813,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			}
 			if (aa != 0)
 			{
-				‚b‚r’Ç‰Á(iic, aa, bb);
+				CharacterSkillAdd(iic, aa, bb);
 			}
 			return 1;
 		}
@@ -2817,19 +2825,19 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		{
 			if (‚b‚e‚`(iic, 47, -1) == 1)
 			{
-				‚b‰Šú^‘Ì—ÍÅ‘å(iic, 120);
+				CharacterInitialMaxHP(iic, 120);
 			}
 			if (‚b‚e‚`(iic, 47, -1) == 2)
 			{
-				‚b‰Šú^‘Ì—ÍÅ‘å(iic, 130);
+				CharacterInitialMaxHP(iic, 130);
 			}
 			if (‚b‚e‚`(iic, 48, -1) == 1)
 			{
-				‚b‰Šú^UŒ‚—Í(iic, 120);
+				CharacterInitialAttackPower(iic, 120);
 			}
 			if (‚b‚e‚`(iic, 48, -1) == 2)
 			{
-				‚b‰Šú^UŒ‚—Í(iic, 130);
+				CharacterInitialAttackPower(iic, 130);
 			}
 			if (‚b‚e‚`(iic, 49, -1) == 1)
 			{
@@ -2857,7 +2865,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			}
 			if (‚b‚e‚`(iic, 53, -1) == 1)
 			{
-				‚b‰Šú^–½’†—¦(iic, 30);
+				CharacterInitialHitRate(iic, 30);
 			}
 			if (‚b‚e‚`(iic, 54, -1) == 1)
 			{
@@ -2886,23 +2894,23 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2000, 1, 5, 9999, 6, 0);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 4);
-			‚bíœ‹Ö~(iic, 1);
+			CharacterGenerateBasicData(iic, no, "", 2000, 1, 5, 9999, 6, 0);
+			CharacterSkillPoints(iic, 4);
+			CharacterDeletionProhibited(iic, 1);
 			‚b«•Ê(iic, 1);
 			‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 100, 8);
-			‚b‚r’Ç‰Á(iic, 147, 1);
-			‚b‚r’Ç‰Á(iic, 211, 2);
-			‚b‚r’Ç‰Á(iic, 382, 2);
+			CharacterSkillAdd(iic, 100, 8);
+			CharacterSkillAdd(iic, 147, 1);
+			CharacterSkillAdd(iic, 211, 2);
+			CharacterSkillAdd(iic, 382, 2);
 			if (‚pó‘Ô(67, -1) == 2)
 			{
 				‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 0);
-				‚b‚r’Ç‰Á(iic, 365, 0);
+				CharacterSkillAdd(iic, 365, 0);
 			}
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 147, 0, 0, 0, 0);
 			return 1;
@@ -2917,9 +2925,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 120);
-			‚b‰Šú^–½’†—¦(iic, 20);
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 120);
+			CharacterInitialAttackPower(iic, 120);
+			CharacterInitialHitRate(iic, 20);
+			CharacterInitialMaxHP(iic, 120);
 			return 1;
 		}
 	}
@@ -2927,18 +2935,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2100, 1, 1, 60, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2100, 1, 1, 60, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1100);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 316, 2);
-			‚b‚r’Ç‰Á(iic, 273, 2);
+			CharacterSkillAdd(iic, 316, 2);
+			CharacterSkillAdd(iic, 273, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -2951,8 +2959,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 120);
-			‚b‰Šú^–½’†—¦(iic, 30);
+			CharacterInitialMaxHP(iic, 120);
+			CharacterInitialHitRate(iic, 30);
 			return 1;
 		}
 	}
@@ -2960,20 +2968,20 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2120, 1, 1, 70, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2120, 1, 1, 70, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1120);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 382, 2);
-			‚b‚r’Ç‰Á(iic, 314, 3);
-			‚b‚r’Ç‰Á(iic, 233, 1);
-			‚b‚r’Ç‰Á(iic, 292, 0);
+			CharacterSkillAdd(iic, 382, 2);
+			CharacterSkillAdd(iic, 314, 3);
+			CharacterSkillAdd(iic, 233, 1);
+			CharacterSkillAdd(iic, 292, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -2986,7 +2994,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 110);
+			CharacterInitialAttackPower(iic, 110);
 			‚b‰Šú^ÕŒ‚—¦(iic, 20);
 			‚b‰Šú^‘f‘‚³(iic, 5);
 			‚b‰Šú^‰ñ”ğ—¦(iic, 15);
@@ -2997,16 +3005,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2130, 1, 15, 35, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2130, 1, 15, 35, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1130);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 14);
+			CharacterSkillPoints(iic, 14);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 308, 1);
-			‚b‚r’Ç‰Á(iic, 310, 1);
+			CharacterSkillAdd(iic, 308, 1);
+			CharacterSkillAdd(iic, 310, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3026,19 +3034,19 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2300, 1, 1, 44, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2300, 1, 1, 44, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1300);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 382, 2);
-			‚b‚r’Ç‰Á(iic, 271, 3);
-			‚b‚r’Ç‰Á(iic, 274, 1);
+			CharacterSkillAdd(iic, 382, 2);
+			CharacterSkillAdd(iic, 271, 3);
+			CharacterSkillAdd(iic, 274, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3051,7 +3059,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 95);
+			CharacterInitialMaxHP(iic, 95);
 			‚b‰Šú^‘f‘‚³(iic, 3);
 			return 1;
 		}
@@ -3060,18 +3068,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2500, 1, 44, 44, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2500, 1, 44, 44, 4, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 382, 2);
-			‚b‚r’Ç‰Á(iic, 104, 8);
-			‚b‚r’Ç‰Á(iic, 134, 3);
-			‚b‚r’Ç‰Á(iic, 276, 3);
-			‚b‚r’Ç‰Á(iic, 277, 3);
-			‚b‚r’Ç‰Á(iic, 279, 4);
-			‚b‚r’Ç‰Á(iic, 317, 4);
+			CharacterSkillAdd(iic, 382, 2);
+			CharacterSkillAdd(iic, 104, 8);
+			CharacterSkillAdd(iic, 134, 3);
+			CharacterSkillAdd(iic, 276, 3);
+			CharacterSkillAdd(iic, 277, 3);
+			CharacterSkillAdd(iic, 279, 4);
+			CharacterSkillAdd(iic, 317, 4);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 104, 100, 134, 207, 0, 0);
 			return 1;
 		}
@@ -3094,19 +3102,19 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2500, 1, 1, 47, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2500, 1, 1, 47, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1500);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 382, 2);
-			‚b‚r’Ç‰Á(iic, 317, 2);
-			‚b‚r’Ç‰Á(iic, 275, 1);
+			CharacterSkillAdd(iic, 382, 2);
+			CharacterSkillAdd(iic, 317, 2);
+			CharacterSkillAdd(iic, 275, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3135,20 +3143,20 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			{
 				aa = 70;
 			}
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2948, 1, aa, 70, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2948, 1, aa, 70, 5, 0);
 			‚b«•Ê(iic, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 382, 2);
-			‚b‚r’Ç‰Á(iic, 104, 10);
-			‚b‚r’Ç‰Á(iic, 106, 10);
-			‚b‚r’Ç‰Á(iic, 459, 1);
-			‚b‚r’Ç‰Á(iic, 123, 3);
-			‚b‚r’Ç‰Á(iic, 314, 4);
-			‚b‚r’Ç‰Á(iic, 317, 4);
-			‚b‚r’Ç‰Á(iic, 316, 4);
+			CharacterSkillAdd(iic, 382, 2);
+			CharacterSkillAdd(iic, 104, 10);
+			CharacterSkillAdd(iic, 106, 10);
+			CharacterSkillAdd(iic, 459, 1);
+			CharacterSkillAdd(iic, 123, 3);
+			CharacterSkillAdd(iic, 314, 4);
+			CharacterSkillAdd(iic, 317, 4);
+			CharacterSkillAdd(iic, 316, 4);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 104, 106, 123, 459, 0, 0);
 			return 1;
 		}
@@ -3163,8 +3171,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
 			‚b‰Šú^‘f‘‚³(iic, 10);
-			‚b‰Šú^UŒ‚—Í(iic, 130);
-			‚b‰Šú^–½’†—¦(iic, 30);
+			CharacterInitialAttackPower(iic, 130);
+			CharacterInitialHitRate(iic, 30);
 			return 1;
 		}
 	}
@@ -3173,16 +3181,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
 			int aa = 170;
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2948, 1, 100, 170, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2948, 1, 100, 170, 5, 0);
 			‚b«•Ê(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 99);
+			CharacterSkillPoints(iic, 99);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 382, 2);
-			‚b‚r’Ç‰Á(iic, 459, 1);
-			‚b‚r’Ç‰Á(iic, 259, 3);
+			CharacterSkillAdd(iic, 382, 2);
+			CharacterSkillAdd(iic, 459, 1);
+			CharacterSkillAdd(iic, 259, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3196,8 +3204,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
 			‚b‰Šú^‘f‘‚³(iic, 10);
-			‚b‰Šú^UŒ‚—Í(iic, 130);
-			‚b‰Šú^–½’†—¦(iic, 50);
+			CharacterInitialAttackPower(iic, 130);
+			CharacterInitialHitRate(iic, 50);
 			return 1;
 		}
 	}
@@ -3205,21 +3213,21 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2560, 1, 15, 30, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2560, 1, 15, 30, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1560);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 14);
+			CharacterSkillPoints(iic, 14);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 1);
+			CharacterSkillAdd(iic, 383, 1);
 			‚b‚ríœ(iic, 169);
 			‚b‚ríœ(iic, 176);
-			‚b‚r’Ç‰Á(iic, 181, 4);
-			‚b‚r’Ç‰Á(iic, 168, 4);
-			‚b‚r’Ç‰Á(iic, 194, 2);
-			‚b‚r’Ç‰Á(iic, 122, 5);
+			CharacterSkillAdd(iic, 181, 4);
+			CharacterSkillAdd(iic, 168, 4);
+			CharacterSkillAdd(iic, 194, 2);
+			CharacterSkillAdd(iic, 122, 5);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3232,7 +3240,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 90);
+			CharacterInitialAttackPower(iic, 90);
 			return 1;
 		}
 	}
@@ -3240,20 +3248,20 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2570, 1, 10, 35, 4, 0);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 9);
+			CharacterGenerateBasicData(iic, no, "", 2570, 1, 10, 35, 4, 0);
+			CharacterSkillPoints(iic, 9);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 1);
-			‚b‚r’Ç‰Á(iic, 314, 2);
-			‚b‚r’Ç‰Á(iic, 126, 2);
-			‚b‚r’Ç‰Á(iic, 527, 0);
+			CharacterSkillAdd(iic, 383, 1);
+			CharacterSkillAdd(iic, 314, 2);
+			CharacterSkillAdd(iic, 126, 2);
+			CharacterSkillAdd(iic, 527, 0);
 			if (EV("’¬•à‚«^ƒEƒBƒ`ƒ^", -2147483648) == true)
 			{
-				‚b‚r’Ç‰Á(iic, 549, 0);
+				CharacterSkillAdd(iic, 549, 0);
 			}
 			return 1;
 		}
@@ -3267,7 +3275,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 95);
+			CharacterInitialAttackPower(iic, 95);
 			return 1;
 		}
 	}
@@ -3275,20 +3283,20 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2580, 1, 30, 42, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2580, 1, 30, 42, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1580);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 29);
+			CharacterSkillPoints(iic, 29);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 1);
-			‚b‚r’Ç‰Á(iic, 187, 2);
-			‚b‚r’Ç‰Á(iic, 201, 2);
-			‚b‚r’Ç‰Á(iic, 452, 0);
-			‚b‚r’Ç‰Á(iic, 529, 0);
-			‚b‚r’Ç‰Á(iic, 536, 0);
+			CharacterSkillAdd(iic, 383, 1);
+			CharacterSkillAdd(iic, 187, 2);
+			CharacterSkillAdd(iic, 201, 2);
+			CharacterSkillAdd(iic, 452, 0);
+			CharacterSkillAdd(iic, 529, 0);
+			CharacterSkillAdd(iic, 536, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3309,16 +3317,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2590, 1, 25, 59, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2590, 1, 25, 59, 4, 0);
 			‚b‚e‚`(iic, 13, 2);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 24);
+			CharacterSkillPoints(iic, 24);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 372, 0);
-			‚b‚r’Ç‰Á(iic, 154, 2);
-			‚b‚r’Ç‰Á(iic, 536, 0);
+			CharacterSkillAdd(iic, 372, 0);
+			CharacterSkillAdd(iic, 154, 2);
+			CharacterSkillAdd(iic, 536, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3331,10 +3339,10 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 90);
-			‚b‰Šú^UŒ‚—Í(iic, 110);
+			CharacterInitialMaxHP(iic, 90);
+			CharacterInitialAttackPower(iic, 110);
 			‚b‰Šú^‘f‘‚³(iic, 5);
-			‚b‰Šú^–½’†—¦(iic, 20);
+			CharacterInitialHitRate(iic, 20);
 			return 1;
 		}
 	}
@@ -3342,13 +3350,13 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2963, 1, 1, 25, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2963, 1, 1, 25, 4, 0);
 			‚b«•Ê(iic, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 117, 4);
+			CharacterSkillAdd(iic, 117, 4);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3369,20 +3377,20 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2330, 1, 22, 22, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2330, 1, 22, 22, 4, 0);
 			‚b‚e‚`(iic, 13, 2);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 21);
+			CharacterSkillPoints(iic, 21);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 314, 1);
-			‚b‚r’Ç‰Á(iic, 315, 1);
-			‚b‚r’Ç‰Á(iic, 317, 1);
-			‚b‚r’Ç‰Á(iic, 316, 1);
-			‚b‚r’Ç‰Á(iic, 284, 1);
-			‚b‚r’Ç‰Á(iic, 285, 1);
-			‚b‚r’Ç‰Á(iic, 286, 1);
+			CharacterSkillAdd(iic, 314, 1);
+			CharacterSkillAdd(iic, 315, 1);
+			CharacterSkillAdd(iic, 317, 1);
+			CharacterSkillAdd(iic, 316, 1);
+			CharacterSkillAdd(iic, 284, 1);
+			CharacterSkillAdd(iic, 285, 1);
+			CharacterSkillAdd(iic, 286, 1);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 0, 0, 0, 0, 0);
 			return 1;
 		}
@@ -3403,17 +3411,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2600, 1, 25, 50, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2600, 1, 25, 50, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1600);
 			‚b‚e‚`(iic, 13, 2);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 24);
+			CharacterSkillPoints(iic, 24);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 202, 1);
-			‚b‚r’Ç‰Á(iic, 304, 1);
-			‚b‚r’Ç‰Á(iic, 532, 1);
+			CharacterSkillAdd(iic, 202, 1);
+			CharacterSkillAdd(iic, 304, 1);
+			CharacterSkillAdd(iic, 532, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3428,7 +3436,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 130);
+			CharacterInitialMaxHP(iic, 130);
 			return 1;
 		}
 	}
@@ -3436,15 +3444,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2610, 1, 1, 37, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2610, 1, 1, 37, 3, 0);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 296, 1);
-			‚b‚r’Ç‰Á(iic, 322, 4);
-			‚b‚r’Ç‰Á(iic, 464, 0);
+			CharacterSkillAdd(iic, 296, 1);
+			CharacterSkillAdd(iic, 322, 4);
+			CharacterSkillAdd(iic, 464, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3457,8 +3465,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 95);
-			‚b‰Šú^UŒ‚—Í(iic, 90);
+			CharacterInitialMaxHP(iic, 95);
+			CharacterInitialAttackPower(iic, 90);
 			return 1;
 		}
 	}
@@ -3466,13 +3474,13 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2943, 1, 1, 18, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2943, 1, 1, 18, 3, 0);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 313, 1);
+			CharacterSkillAdd(iic, 313, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3493,17 +3501,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2550, 1, 1, 27, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2550, 1, 1, 27, 3, 0);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 125, 3);
-			‚b‚r’Ç‰Á(iic, 314, 1);
+			CharacterSkillAdd(iic, 125, 3);
+			CharacterSkillAdd(iic, 314, 1);
 			if (EV("’¬•à‚«^ƒ†ƒ‰ƒ“", -2147483648) == true)
 			{
-				‚b‚r’Ç‰Á(iic, 552, 0);
+				CharacterSkillAdd(iic, 552, 0);
 			}
 			return 1;
 		}
@@ -3524,14 +3532,14 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2811, 1, 27, 27, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2811, 1, 27, 27, 6, 0);
 			‚b‚e‚`(iic, 13, 2);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 26);
+			CharacterSkillPoints(iic, 26);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 585, 1);
+			CharacterSkillAdd(iic, 585, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3551,7 +3559,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2020, 2, 1, 49, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2020, 2, 1, 49, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1020);
 			‚b‚d‚w‚o(iic, 99);
 			‚b‚e‚`(iic, 13, 2);
@@ -3559,11 +3567,11 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 212, 3);
-			‚b‚r’Ç‰Á(iic, 298, 1);
+			CharacterSkillAdd(iic, 212, 3);
+			CharacterSkillAdd(iic, 298, 1);
 			if (‚pó‘Ô(29, -1) == 2)
 			{
-				‚b‚r’Ç‰Á(iic, 298, 2);
+				CharacterSkillAdd(iic, 298, 2);
 			}
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 119, 212, 0, 0, 0);
 			return 1;
@@ -3580,7 +3588,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 50);
+			CharacterInitialAttackPower(iic, 50);
 			return 1;
 		}
 	}
@@ -3588,16 +3596,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2110, 2, 25, 40, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2110, 2, 25, 40, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1111);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 24);
+			CharacterSkillPoints(iic, 24);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 323, 1);
-			‚b‚r’Ç‰Á(iic, 373, 0);
+			CharacterSkillAdd(iic, 323, 1);
+			CharacterSkillAdd(iic, 373, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3617,9 +3625,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2964, 2, 8, 19, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2964, 2, 8, 19, 3, 0);
 			‚b«•Ê(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 7);
+			CharacterSkillPoints(iic, 7);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
@@ -3643,17 +3651,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 0, 2, 10, 42, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 0, 2, 10, 42, 6, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1620);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 9);
+			CharacterSkillPoints(iic, 9);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 151, 1);
-			‚b‚r’Ç‰Á(iic, 127, 4);
-			‚b‚r’Ç‰Á(iic, 238, 5);
+			CharacterSkillAdd(iic, 151, 1);
+			CharacterSkillAdd(iic, 127, 4);
+			CharacterSkillAdd(iic, 238, 5);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3673,14 +3681,14 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2630, 2, 25, 47, 3, 0);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 24);
+			CharacterGenerateBasicData(iic, no, "", 2630, 2, 25, 47, 3, 0);
+			CharacterSkillPoints(iic, 24);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 259, 1);
+			CharacterSkillAdd(iic, 259, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3701,25 +3709,25 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2030, 6, 12, 49, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2030, 6, 12, 49, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1030);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 11);
+			CharacterSkillPoints(iic, 11);
 			‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 1);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 120, 2);
-			‚b‚r’Ç‰Á(iic, 100, 2);
-			‚b‚r’Ç‰Á(iic, 121, 3);
-			‚b‚r’Ç‰Á(iic, 265, 1);
-			‚b‚r’Ç‰Á(iic, 266, 1);
-			‚b‚r’Ç‰Á(iic, 267, 1);
-			‚b‚r’Ç‰Á(iic, 450, 1);
+			CharacterSkillAdd(iic, 120, 2);
+			CharacterSkillAdd(iic, 100, 2);
+			CharacterSkillAdd(iic, 121, 3);
+			CharacterSkillAdd(iic, 265, 1);
+			CharacterSkillAdd(iic, 266, 1);
+			CharacterSkillAdd(iic, 267, 1);
+			CharacterSkillAdd(iic, 450, 1);
 			if (‚pó‘Ô(32, -1) == 2)
 			{
-				‚b‚r’Ç‰Á(iic, 366, 1);
+				CharacterSkillAdd(iic, 366, 1);
 				‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 0);
 			}
 			return 1;
@@ -3743,21 +3751,21 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2220, 6, 15, 38, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2220, 6, 15, 38, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1220);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 14);
+			CharacterSkillPoints(iic, 14);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 362, 1);
-			‚b‚r’Ç‰Á(iic, 266, 1);
-			‚b‚r’Ç‰Á(iic, 324, 2);
-			‚b‚r’Ç‰Á(iic, 267, 3);
-			‚b‚r’Ç‰Á(iic, 211, 3);
-			‚b‚r’Ç‰Á(iic, 268, 3);
-			‚b‚r’Ç‰Á(iic, 553, 0);
+			CharacterSkillAdd(iic, 362, 1);
+			CharacterSkillAdd(iic, 266, 1);
+			CharacterSkillAdd(iic, 324, 2);
+			CharacterSkillAdd(iic, 267, 3);
+			CharacterSkillAdd(iic, 211, 3);
+			CharacterSkillAdd(iic, 268, 3);
+			CharacterSkillAdd(iic, 553, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3779,18 +3787,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2090, 6, 20, 40, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2090, 6, 20, 40, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1090);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 121, 5);
+			CharacterSkillAdd(iic, 121, 5);
 			if (FA[5] == 2)
 			{
-				‚b‚r’Ç‰Á(iic, 361, 0);
+				CharacterSkillAdd(iic, 361, 0);
 			}
 			return 1;
 		}
@@ -3811,14 +3819,14 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2730, 6, 1, 29, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2730, 6, 1, 29, 4, 0);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 373, 0);
-			‚b‚r’Ç‰Á(iic, 374, 0);
+			CharacterSkillAdd(iic, 373, 0);
+			CharacterSkillAdd(iic, 374, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3838,18 +3846,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2196, 6, 1, 36, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2196, 6, 1, 36, 5, 0);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 219, 20);
-			‚b‚r’Ç‰Á(iic, 537, 0);
-			‚b‚r’Ç‰Á(iic, 538, 0);
+			CharacterSkillAdd(iic, 219, 20);
+			CharacterSkillAdd(iic, 537, 0);
+			CharacterSkillAdd(iic, 538, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3862,7 +3870,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 80);
+			CharacterInitialAttackPower(iic, 80);
 			‚b‰Šú^‰ñ”ğ—¦(iic, 10);
 			return 1;
 		}
@@ -3871,14 +3879,14 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2797, 6, 35, 42, 6, 0);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 34);
+			CharacterGenerateBasicData(iic, no, "", 2797, 6, 35, 42, 6, 0);
+			CharacterSkillPoints(iic, 34);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 584, 0);
+			CharacterSkillAdd(iic, 584, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3891,7 +3899,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 110);
+			CharacterInitialAttackPower(iic, 110);
 			return 1;
 		}
 	}
@@ -3899,24 +3907,24 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2050, 3, 1, 50, 5, 1);
+			CharacterGenerateBasicData(iic, no, "", 2050, 3, 1, 50, 5, 1);
 			‚b—§‚¿ŠG‚b‚f(iic, 1050);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 290, 1);
-			‚b‚r’Ç‰Á(iic, 174, 3);
-			‚b‚r’Ç‰Á(iic, 254, 1);
-			‚b‚r’Ç‰Á(iic, 255, 1);
-			‚b‚r’Ç‰Á(iic, 256, 1);
-			‚b‚r’Ç‰Á(iic, 257, 1);
-			‚b‚r’Ç‰Á(iic, 368, 1);
-			‚b‚r’Ç‰Á(iic, 383, 1);
+			CharacterSkillAdd(iic, 290, 1);
+			CharacterSkillAdd(iic, 174, 3);
+			CharacterSkillAdd(iic, 254, 1);
+			CharacterSkillAdd(iic, 255, 1);
+			CharacterSkillAdd(iic, 256, 1);
+			CharacterSkillAdd(iic, 257, 1);
+			CharacterSkillAdd(iic, 368, 1);
+			CharacterSkillAdd(iic, 383, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3929,8 +3937,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 110);
-			‚b‰Šú^–½’†—¦(iic, 15);
+			CharacterInitialAttackPower(iic, 110);
+			CharacterInitialHitRate(iic, 15);
 			return 1;
 		}
 	}
@@ -3938,17 +3946,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2540, 3, 1, 48, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2540, 3, 1, 48, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1540);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 349, 0);
+			CharacterSkillAdd(iic, 349, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -3969,24 +3977,24 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2200, 3, 1, 1, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2200, 3, 1, 1, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1200);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 367, 1);
+			CharacterSkillAdd(iic, 367, 1);
 			‚b‚ríœ(iic, 108);
-			‚b‚r’Ç‰Á(iic, 108, 1);
-			‚b‚r’Ç‰Á(iic, 109, 1);
-			‚b‚r’Ç‰Á(iic, 110, 1);
-			‚b‚r’Ç‰Á(iic, 336, 0);
-			‚b‚r’Ç‰Á(iic, 337, 0);
-			‚b‚r’Ç‰Á(iic, 338, 0);
-			‚b‚r’Ç‰Á(iic, 339, 0);
-			‚b‚r’Ç‰Á(iic, 340, 0);
-			‚b‚r’Ç‰Á(iic, 563, 0);
+			CharacterSkillAdd(iic, 108, 1);
+			CharacterSkillAdd(iic, 109, 1);
+			CharacterSkillAdd(iic, 110, 1);
+			CharacterSkillAdd(iic, 336, 0);
+			CharacterSkillAdd(iic, 337, 0);
+			CharacterSkillAdd(iic, 338, 0);
+			CharacterSkillAdd(iic, 339, 0);
+			CharacterSkillAdd(iic, 340, 0);
+			CharacterSkillAdd(iic, 563, 0);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 108, 109, 110, 0, 0, 0);
 			return 1;
 		}
@@ -4011,15 +4019,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 0, 3, 30, 75, 5, 0);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 29);
+			CharacterGenerateBasicData(iic, no, "", 0, 3, 30, 75, 5, 0);
+			CharacterSkillPoints(iic, 29);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 323, 2);
-			‚b‚r’Ç‰Á(iic, 237, 2);
+			CharacterSkillAdd(iic, 323, 2);
+			CharacterSkillAdd(iic, 237, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4032,9 +4040,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 110);
+			CharacterInitialAttackPower(iic, 110);
 			‚b‰Šú^–hŒä—Í(iic, 110);
-			‚b‰Šú^–½’†—¦(iic, 20);
+			CharacterInitialHitRate(iic, 20);
 			return 1;
 		}
 	}
@@ -4042,15 +4050,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2770, 3, 20, 40, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2770, 3, 20, 40, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1770);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 289, 4);
+			CharacterSkillAdd(iic, 289, 4);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4070,13 +4078,13 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2680, 3, 1, 38, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2680, 3, 1, 38, 3, 0);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 319, 3);
+			CharacterSkillAdd(iic, 319, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4089,10 +4097,10 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 90);
+			CharacterInitialMaxHP(iic, 90);
 			‚b‰Šú^–hŒä—Í(iic, 80);
 			‚b‰Šú^–‚’ï—Í(iic, 70);
-			‚b‰Šú^–½’†—¦(iic, 30);
+			CharacterInitialHitRate(iic, 30);
 			return 1;
 		}
 	}
@@ -4100,16 +4108,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2945, 3, 1, 18, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2945, 3, 1, 18, 3, 0);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 521, 0);
+			CharacterSkillAdd(iic, 521, 0);
 			if (EV("’¬•à‚«^ƒƒKƒfƒX", -2147483648) == true)
 			{
-				‚b‚r’Ç‰Á(iic, 137, 0);
+				CharacterSkillAdd(iic, 137, 0);
 			}
 			return 1;
 		}
@@ -4130,16 +4138,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2230, 3, 1, 9999, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2230, 3, 1, 9999, 3, 0);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 373, 0);
-			‚b‚r’Ç‰Á(iic, 288, 2);
-			‚b‚r’Ç‰Á(iic, 287, 2);
-			‚b‚r’Ç‰Á(iic, 290, 0);
+			CharacterSkillAdd(iic, 373, 0);
+			CharacterSkillAdd(iic, 288, 2);
+			CharacterSkillAdd(iic, 287, 2);
+			CharacterSkillAdd(iic, 290, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4152,7 +4160,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 30);
+			CharacterInitialMaxHP(iic, 30);
 			return 1;
 		}
 	}
@@ -4160,22 +4168,22 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2060, 5, 20, 50, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2060, 5, 20, 50, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1060);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 221, 3);
-			‚b‚r’Ç‰Á(iic, 224, 2);
-			‚b‚r’Ç‰Á(iic, 265, 1);
-			‚b‚r’Ç‰Á(iic, 266, 1);
-			‚b‚r’Ç‰Á(iic, 267, 1);
-			‚b‚r’Ç‰Á(iic, 320, 2);
-			‚b‚r’Ç‰Á(iic, 146, 4);
-			‚b‚r’Ç‰Á(iic, 311, 1);
+			CharacterSkillAdd(iic, 221, 3);
+			CharacterSkillAdd(iic, 224, 2);
+			CharacterSkillAdd(iic, 265, 1);
+			CharacterSkillAdd(iic, 266, 1);
+			CharacterSkillAdd(iic, 267, 1);
+			CharacterSkillAdd(iic, 320, 2);
+			CharacterSkillAdd(iic, 146, 4);
+			CharacterSkillAdd(iic, 311, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4197,11 +4205,11 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2160, 5, 40, 67, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2160, 5, 40, 67, 6, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1160);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 41);
+			CharacterSkillPoints(iic, 41);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
@@ -4219,8 +4227,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 110);
-			‚b‰Šú^UŒ‚—Í(iic, 110);
+			CharacterInitialMaxHP(iic, 110);
+			CharacterInitialAttackPower(iic, 110);
 			‚b‰Šú^–‚–@—Í(iic, 110);
 			‚b‰Šú^ÕŒ‚—¦(iic, 20);
 			return 1;
@@ -4235,18 +4243,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			{
 				aa = 67;
 			}
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2160, 5, aa, 67, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2160, 5, aa, 67, 6, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1160);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 104, 15);
-			‚b‚r’Ç‰Á(iic, 223, 10);
-			‚b‚r’Ç‰Á(iic, 225, 5);
-			‚b‚r’Ç‰Á(iic, 227, 20);
-			‚b‚r’Ç‰Á(iic, 216, 3);
+			CharacterSkillAdd(iic, 104, 15);
+			CharacterSkillAdd(iic, 223, 10);
+			CharacterSkillAdd(iic, 225, 5);
+			CharacterSkillAdd(iic, 227, 20);
+			CharacterSkillAdd(iic, 216, 3);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 104, 223, 227, 216, 0, 0);
 			return 1;
 		}
@@ -4260,8 +4268,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 110);
-			‚b‰Šú^UŒ‚—Í(iic, 110);
+			CharacterInitialMaxHP(iic, 110);
+			CharacterInitialAttackPower(iic, 110);
 			‚b‰Šú^–‚–@—Í(iic, 110);
 			‚b‰Šú^ÕŒ‚—¦(iic, 20);
 			return 1;
@@ -4271,7 +4279,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2949, 5, 1, 44, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2949, 5, 1, 44, 3, 0);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
@@ -4296,13 +4304,13 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2720, 5, 1, 33, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2720, 5, 1, 33, 5, 0);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 216, 4);
+			CharacterSkillAdd(iic, 216, 4);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 216, 221, 227, 0, 0, 0);
 			return 1;
 		}
@@ -4316,8 +4324,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 110);
-			‚b‰Šú^–½’†—¦(iic, 15);
+			CharacterInitialAttackPower(iic, 110);
+			CharacterInitialHitRate(iic, 15);
 			return 1;
 		}
 	}
@@ -4325,7 +4333,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2105, 5, 40, 66, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2105, 5, 40, 66, 6, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1105);
 			‚b‚e‚`(iic, 17, 323);
 			‚b‚e‚`(iic, 18, 326);
@@ -4333,13 +4341,13 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			‚b‚e‚`(iic, 20, 333);
 			‚b‚e‚`(iic, 21, 325);
 			‚b‚e‚`(iic, 13, 2);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 41);
+			CharacterSkillPoints(iic, 41);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 272, 4);
-			‚b‚r’Ç‰Á(iic, 216, 4);
+			CharacterSkillAdd(iic, 272, 4);
+			CharacterSkillAdd(iic, 216, 4);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4361,15 +4369,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2795, 5, 35, 50, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2795, 5, 35, 50, 5, 0);
 			‚b‚e‚`(iic, 13, 2);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 34);
+			CharacterSkillPoints(iic, 34);
 			‚b—§‚¿ŠG‚b‚f(iic, 1795);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 583, 0);
+			CharacterSkillAdd(iic, 583, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4382,7 +4390,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 80);
+			CharacterInitialMaxHP(iic, 80);
 			‚b‰Šú^‘Ï«—¦(iic, 100);
 			return 1;
 		}
@@ -4391,16 +4399,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2430, 5, 100, 300, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2430, 5, 100, 300, 6, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1430);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 99);
+			CharacterSkillPoints(iic, 99);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 247, 0);
+			CharacterSkillAdd(iic, 247, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4413,8 +4421,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 60);
-			‚b‰Šú^UŒ‚—Í(iic, 110);
+			CharacterInitialMaxHP(iic, 60);
+			CharacterInitialAttackPower(iic, 110);
 			return 1;
 		}
 	}
@@ -4422,8 +4430,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2070, 4, 35, 50, 6, 3);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 36);
+			CharacterGenerateBasicData(iic, no, "", 2070, 4, 35, 50, 6, 3);
+			CharacterSkillPoints(iic, 36);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
@@ -4431,12 +4439,12 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		{
 			‚b‚ríœ(iic, 169);
 			‚b‚ríœ(iic, 168);
-			‚b‚r’Ç‰Á(iic, 187, 5);
-			‚b‚r’Ç‰Á(iic, 189, 3);
-			‚b‚r’Ç‰Á(iic, 190, 1);
-			‚b‚r’Ç‰Á(iic, 290, 0);
-			‚b‚r’Ç‰Á(iic, 383, 3);
-			‚b‚r’Ç‰Á(iic, 433, 0);
+			CharacterSkillAdd(iic, 187, 5);
+			CharacterSkillAdd(iic, 189, 3);
+			CharacterSkillAdd(iic, 190, 1);
+			CharacterSkillAdd(iic, 290, 0);
+			CharacterSkillAdd(iic, 383, 3);
+			CharacterSkillAdd(iic, 433, 0);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 187, 189, 0, 0, 0, 0);
 			return 1;
 		}
@@ -4461,17 +4469,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2140, 4, 15, 35, 4, 4);
+			CharacterGenerateBasicData(iic, no, "", 2140, 4, 15, 35, 4, 4);
 			‚b—§‚¿ŠG‚b‚f(iic, 1140);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 14);
+			CharacterSkillPoints(iic, 14);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 2);
-			‚b‚r’Ç‰Á(iic, 308, 1);
-			‚b‚r’Ç‰Á(iic, 309, 1);
+			CharacterSkillAdd(iic, 383, 2);
+			CharacterSkillAdd(iic, 308, 1);
+			CharacterSkillAdd(iic, 309, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4491,9 +4499,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2530, 4, 8, 24, 3, 1);
+			CharacterGenerateBasicData(iic, no, "", 2530, 4, 8, 24, 3, 1);
 			‚b—§‚¿ŠG‚b‚f(iic, 1530);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 7);
+			CharacterSkillPoints(iic, 7);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
@@ -4523,25 +4531,25 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2510, 4, 1, 48, 5, 3);
+			CharacterGenerateBasicData(iic, no, "", 2510, 4, 1, 48, 5, 3);
 			‚b—§‚¿ŠG‚b‚f(iic, 1510);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 2);
+			CharacterSkillAdd(iic, 383, 2);
 			‚b‚ríœ(iic, 169);
 			‚b‚ríœ(iic, 168);
-			‚b‚r’Ç‰Á(iic, 330, 1);
-			‚b‚r’Ç‰Á(iic, 177, 1);
-			‚b‚r’Ç‰Á(iic, 194, 4);
-			‚b‚r’Ç‰Á(iic, 195, 4);
-			‚b‚r’Ç‰Á(iic, 250, 3);
-			‚b‚r’Ç‰Á(iic, 369, 1);
+			CharacterSkillAdd(iic, 330, 1);
+			CharacterSkillAdd(iic, 177, 1);
+			CharacterSkillAdd(iic, 194, 4);
+			CharacterSkillAdd(iic, 195, 4);
+			CharacterSkillAdd(iic, 250, 3);
+			CharacterSkillAdd(iic, 369, 1);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 194, 250, 0, 0, 0, 0);
 			return 1;
 		}
@@ -4563,20 +4571,20 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2310, 4, 1, 69, 4, 2);
+			CharacterGenerateBasicData(iic, no, "", 2310, 4, 1, 69, 4, 2);
 			‚b—§‚¿ŠG‚b‚f(iic, 1310);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 3);
-			‚b‚r’Ç‰Á(iic, 328, 1);
-			‚b‚r’Ç‰Á(iic, 370, 1);
-			‚b‚r’Ç‰Á(iic, 250, 4);
+			CharacterSkillAdd(iic, 383, 3);
+			CharacterSkillAdd(iic, 328, 1);
+			CharacterSkillAdd(iic, 370, 1);
+			CharacterSkillAdd(iic, 250, 4);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4598,13 +4606,13 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2947, 4, 1, 25, 3, 3);
+			CharacterGenerateBasicData(iic, no, "", 2947, 4, 1, 25, 3, 3);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 2);
+			CharacterSkillAdd(iic, 383, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4624,15 +4632,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2640, 4, 1, 30, 3, 1);
+			CharacterGenerateBasicData(iic, no, "", 2640, 4, 1, 30, 3, 1);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 265, 2);
-			‚b‚r’Ç‰Á(iic, 266, 2);
-			‚b‚r’Ç‰Á(iic, 383, 2);
+			CharacterSkillAdd(iic, 265, 2);
+			CharacterSkillAdd(iic, 266, 2);
+			CharacterSkillAdd(iic, 383, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4652,18 +4660,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2670, 4, 15, 34, 5, 2);
+			CharacterGenerateBasicData(iic, no, "", 2670, 4, 15, 34, 5, 2);
 			‚b—§‚¿ŠG‚b‚f(iic, 1670);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 14);
+			CharacterSkillPoints(iic, 14);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 153, 50);
+			CharacterSkillAdd(iic, 153, 50);
 			if (ƒNƒŠƒAŠm”F(183) == 0)
 			{
-				‚b‚r’Ç‰Á(iic, 373, 0);
+				CharacterSkillAdd(iic, 373, 0);
 			}
 			return 1;
 		}
@@ -4686,19 +4694,19 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2650, 4, 20, 61, 5, 3);
+			CharacterGenerateBasicData(iic, no, "", 2650, 4, 20, 61, 5, 3);
 			‚b—§‚¿ŠG‚b‚f(iic, 1650);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 3);
-			‚b‚r’Ç‰Á(iic, 195, 2);
-			‚b‚r’Ç‰Á(iic, 189, 2);
-			‚b‚r’Ç‰Á(iic, 326, 2);
-			‚b‚r’Ç‰Á(iic, 329, 1);
+			CharacterSkillAdd(iic, 383, 3);
+			CharacterSkillAdd(iic, 195, 2);
+			CharacterSkillAdd(iic, 189, 2);
+			CharacterSkillAdd(iic, 326, 2);
+			CharacterSkillAdd(iic, 329, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4711,7 +4719,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 90);
+			CharacterInitialMaxHP(iic, 90);
 			‚b‰Šú^–‚–@—Í(iic, 120);
 			return 1;
 		}
@@ -4720,14 +4728,14 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2660, 4, 1, 25, 3, 2);
+			CharacterGenerateBasicData(iic, no, "", 2660, 4, 1, 25, 3, 2);
 			‚b‚e‚`(iic, 13, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 300, 0);
-			‚b‚r’Ç‰Á(iic, 301, 0);
+			CharacterSkillAdd(iic, 300, 0);
+			CharacterSkillAdd(iic, 301, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4740,7 +4748,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 120);
+			CharacterInitialMaxHP(iic, 120);
 			return 1;
 		}
 	}
@@ -4748,15 +4756,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2127, 4, 50, 53, 5, 4);
+			CharacterGenerateBasicData(iic, no, "", 2127, 4, 50, 53, 5, 4);
 			‚b«•Ê(iic, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 3);
-			‚b‚r’Ç‰Á(iic, 534, 5);
-			‚b‚r’Ç‰Á(iic, 535, 5);
+			CharacterSkillAdd(iic, 383, 3);
+			CharacterSkillAdd(iic, 534, 5);
+			CharacterSkillAdd(iic, 535, 5);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 534, 535, 0, 0, 0, 0);
 			return 1;
 		}
@@ -4777,23 +4785,23 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2490, 7, 1, 45, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2490, 7, 1, 45, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1490);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 145, 4);
-			‚b‚r’Ç‰Á(iic, 331, 1);
-			‚b‚r’Ç‰Á(iic, 332, 1);
-			‚b‚r’Ç‰Á(iic, 333, 1);
-			‚b‚r’Ç‰Á(iic, 334, 1);
-			‚b‚r’Ç‰Á(iic, 335, 1);
-			‚b‚r’Ç‰Á(iic, 292, 0);
+			CharacterSkillAdd(iic, 145, 4);
+			CharacterSkillAdd(iic, 331, 1);
+			CharacterSkillAdd(iic, 332, 1);
+			CharacterSkillAdd(iic, 333, 1);
+			CharacterSkillAdd(iic, 334, 1);
+			CharacterSkillAdd(iic, 335, 1);
+			CharacterSkillAdd(iic, 292, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4806,7 +4814,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 120);
+			CharacterInitialMaxHP(iic, 120);
 			‚b‰Šú^‰ñ”ğ—¦(iic, 20);
 			return 1;
 		}
@@ -4815,9 +4823,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2280, 7, 15, 22, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2280, 7, 15, 22, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1280);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 14);
+			CharacterSkillPoints(iic, 14);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
@@ -4835,7 +4843,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 95);
+			CharacterInitialAttackPower(iic, 95);
 			‚b‰Šú^–‚’ï—Í(iic, 130);
 			return 1;
 		}
@@ -4844,18 +4852,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2210, 7, 35, 55, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2210, 7, 35, 55, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1210);
 			‚b‚e‚`(iic, 13, 3);
 			‚b“]¶‰ñ”(iic, 3);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 40);
+			CharacterSkillPoints(iic, 40);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 6);
 			¡Ÿ‚Ì“]¶‚k‚u(iic, 0, "ÄŒvZ");
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 259, 3);
+			CharacterSkillAdd(iic, 259, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4864,9 +4872,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 110);
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 110);
-			‚b‰Šú^–½’†—¦(iic, 10);
+			CharacterInitialAttackPower(iic, 110);
+			CharacterInitialMaxHP(iic, 110);
+			CharacterInitialHitRate(iic, 10);
 			‚b‰Šú^ÕŒ‚—¦(iic, 10);
 			‚b‰Šú^•KE—¦(iic, 10);
 			return 1;
@@ -4876,16 +4884,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2760, 7, 20, 38, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2760, 7, 20, 38, 5, 0);
 			‚b‚e‚`(iic, 13, 2);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 146, 6);
-			‚b‚r’Ç‰Á(iic, 247, 0);
-			‚b‚r’Ç‰Á(iic, 528, 0);
+			CharacterSkillAdd(iic, 146, 6);
+			CharacterSkillAdd(iic, 247, 0);
+			CharacterSkillAdd(iic, 528, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -4905,24 +4913,24 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2965, 7, 1, 66, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2965, 7, 1, 66, 3, 0);
 			‚b«•Ê(iic, 9);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 441, 0);
+			CharacterSkillAdd(iic, 441, 0);
 			if (EV("’¬•à‚«^¼ƒNƒ}", -2147483648) == true)
 			{
-				‚b‚r’Ç‰Á(iic, 541, 0);
+				CharacterSkillAdd(iic, 541, 0);
 			}
 			if (‚pó‘Ô(108, -1) == 2)
 			{
-				‚b‚r’Ç‰Á(iic, 542, 0);
+				CharacterSkillAdd(iic, 542, 0);
 			}
 			if (‚pó‘Ô(109, -1) == 2)
 			{
-				‚b‚r’Ç‰Á(iic, 543, 0);
+				CharacterSkillAdd(iic, 543, 0);
 			}
 			return 1;
 		}
@@ -4943,7 +4951,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2946, 7, 1, 77, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2946, 7, 1, 77, 3, 0);
 			‚b«•Ê(iic, 1);
 			return 1;
 		}
@@ -4968,18 +4976,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2450, 7, 20, 38, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2450, 7, 20, 38, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1450);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 482, 1);
+			CharacterSkillAdd(iic, 482, 1);
 			if (EV("’¬•à‚«^ƒrƒXƒPƒbƒ^", -2147483648) == true)
 			{
-				‚b‚r’Ç‰Á(iic, 540, 0);
+				CharacterSkillAdd(iic, 540, 0);
 			}
 			return 1;
 		}
@@ -5001,9 +5009,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2325, 7, 1, 38, 5, 1);
+			CharacterGenerateBasicData(iic, no, "", 2325, 7, 1, 38, 5, 1);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			‚b—§‚¿ŠG‚b‚f(iic, 1325);
@@ -5011,8 +5019,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 383, 1);
-			‚b‚r’Ç‰Á(iic, 516, 3);
+			CharacterSkillAdd(iic, 383, 1);
+			CharacterSkillAdd(iic, 516, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5025,8 +5033,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 95);
-			‚b‰Šú^UŒ‚—Í(iic, 95);
+			CharacterInitialMaxHP(iic, 95);
+			CharacterInitialAttackPower(iic, 95);
 			return 1;
 		}
 	}
@@ -5034,15 +5042,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2180, 8, 1, 8, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2180, 8, 1, 8, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1180);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 217, 3);
-			‚b‚r’Ç‰Á(iic, 295, 1);
+			CharacterSkillAdd(iic, 217, 3);
+			CharacterSkillAdd(iic, 295, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5060,15 +5068,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2750, 8, 1, 43, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2750, 8, 1, 43, 3, 0);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 323, 1);
-			‚b‚r’Ç‰Á(iic, 253, 4);
-			‚b‚r’Ç‰Á(iic, 300, 0);
+			CharacterSkillAdd(iic, 323, 1);
+			CharacterSkillAdd(iic, 253, 4);
+			CharacterSkillAdd(iic, 300, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5086,7 +5094,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2040, 8, 1, 10, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2040, 8, 1, 10, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1040);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
@@ -5098,8 +5106,8 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			{
 				aa = 4;
 			}
-			‚b‚r’Ç‰Á(iic, 232, aa);
-			‚b‚r’Ç‰Á(iic, 295, 1);
+			CharacterSkillAdd(iic, 232, aa);
+			CharacterSkillAdd(iic, 295, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5115,16 +5123,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2520, 8, 20, 45, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2520, 8, 20, 45, 6, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1521);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 321, 4);
-			‚b‚r’Ç‰Á(iic, 373, 0);
+			CharacterSkillAdd(iic, 321, 4);
+			CharacterSkillAdd(iic, 373, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5140,14 +5148,14 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2803, 5, 15, 20, 4, 0);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 14);
+			CharacterGenerateBasicData(iic, no, "", 2803, 5, 15, 20, 4, 0);
+			CharacterSkillPoints(iic, 14);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 200, 5);
-			‚b‚r’Ç‰Á(iic, 442, 0);
+			CharacterSkillAdd(iic, 200, 5);
+			CharacterSkillAdd(iic, 442, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5163,16 +5171,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2150, 8, 20, 20, 5, 0);
+			CharacterGenerateBasicData(iic, no, "", 2150, 8, 20, 20, 5, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1150);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 19);
+			CharacterSkillPoints(iic, 19);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 152, 1);
-			‚b‚r’Ç‰Á(iic, 269, 1);
+			CharacterSkillAdd(iic, 152, 1);
+			CharacterSkillAdd(iic, 269, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5194,16 +5202,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2290, 8, 14, 47, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2290, 8, 14, 47, 3, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1290);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 13);
+			CharacterSkillPoints(iic, 13);
 			‚b‚e‚`(iic, 13, 1);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 448, 3);
-			‚b‚r’Ç‰Á(iic, 294, 0);
+			CharacterSkillAdd(iic, 448, 3);
+			CharacterSkillAdd(iic, 294, 0);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 448, 0, 0, 0, 0, 0);
 			return 1;
 		}
@@ -5229,14 +5237,14 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2944, 8, 1, 22, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2944, 8, 1, 22, 3, 0);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 218, 20);
-			‚b‚r’Ç‰Á(iic, 520, 0);
+			CharacterSkillAdd(iic, 218, 20);
+			CharacterSkillAdd(iic, 520, 0);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 218, 0, 0, 0, 0);
 			return 1;
 		}
@@ -5259,18 +5267,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2740, 8, 1, 23, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2740, 8, 1, 23, 3, 0);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 265, 1);
-			‚b‚r’Ç‰Á(iic, 266, 1);
-			‚b‚r’Ç‰Á(iic, 267, 1);
-			‚b‚r’Ç‰Á(iic, 297, 1);
-			‚b‚r’Ç‰Á(iic, 295, 1);
-			‚b‚r’Ç‰Á(iic, 300, 0);
+			CharacterSkillAdd(iic, 265, 1);
+			CharacterSkillAdd(iic, 266, 1);
+			CharacterSkillAdd(iic, 267, 1);
+			CharacterSkillAdd(iic, 297, 1);
+			CharacterSkillAdd(iic, 295, 1);
+			CharacterSkillAdd(iic, 300, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5292,17 +5300,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2305, 8, 1, 38, 4, 0);
+			CharacterGenerateBasicData(iic, no, "", 2305, 8, 1, 38, 4, 0);
 			‚b—§‚¿ŠG‚b‚f(iic, 1305);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			‚b‚e‚`(iic, 13, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 200, 5);
+			CharacterSkillAdd(iic, 200, 5);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5322,17 +5330,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2085, 5, 1, 38, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2085, 5, 1, 38, 6, 0);
 			‚b‚e‚`(iic, 13, 1);
 			‚b—§‚¿ŠG‚b‚f(iic, 1085);
 			‚b“]¶‰ñ”(iic, 1);
-			‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
+			CharacterSkillPoints(iic, 2);
 			‚b‰Šú^ƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, 2);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 200, 5);
+			CharacterSkillAdd(iic, 200, 5);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5352,7 +5360,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2936, 8, 2, 2, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2936, 8, 2, 2, 3, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
@@ -5376,12 +5384,12 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2801, 8, 2, 10, 3, 0);
+			CharacterGenerateBasicData(iic, no, "", 2801, 8, 2, 10, 3, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 356, 3);
+			CharacterSkillAdd(iic, 356, 3);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "‘•”õ")
@@ -5397,15 +5405,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2991, 4, 58, 60, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2991, 4, 58, 60, 6, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 187, 5);
-			‚b‚r’Ç‰Á(iic, 190, 5);
-			‚b‚r’Ç‰Á(iic, 193, 2);
-			‚b‚r’Ç‰Á(iic, 384, 10);
+			CharacterSkillAdd(iic, 187, 5);
+			CharacterSkillAdd(iic, 190, 5);
+			CharacterSkillAdd(iic, 193, 2);
+			CharacterSkillAdd(iic, 384, 10);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 187, 193, 190, 384, 0, 0);
 			return 1;
 		}
@@ -5415,7 +5423,7 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 150);
+			CharacterInitialMaxHP(iic, 150);
 			‚b‰Šú^–‚–@—Í(iic, 150);
 			return 1;
 		}
@@ -5424,16 +5432,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2966, 4, 35, 35, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2966, 4, 35, 35, 6, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 168, 5);
-			‚b‚r’Ç‰Á(iic, 171, 5);
-			‚b‚r’Ç‰Á(iic, 176, 5);
-			‚b‚r’Ç‰Á(iic, 190, 2);
-			‚b‚r’Ç‰Á(iic, 384, 10);
+			CharacterSkillAdd(iic, 168, 5);
+			CharacterSkillAdd(iic, 171, 5);
+			CharacterSkillAdd(iic, 176, 5);
+			CharacterSkillAdd(iic, 190, 2);
+			CharacterSkillAdd(iic, 384, 10);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 168, 171, 176, 190, 384, 0);
 			return 1;
 		}
@@ -5450,17 +5458,17 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2440, 1, 60, 999, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2440, 1, 60, 999, 6, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 102, 10);
-			‚b‚r’Ç‰Á(iic, 104, 8);
-			‚b‚r’Ç‰Á(iic, 500, 18);
-			‚b‚r’Ç‰Á(iic, 124, 6);
-			‚b‚r’Ç‰Á(iic, 384, 10);
-			‚b‚r’Ç‰Á(iic, 314, 4);
+			CharacterSkillAdd(iic, 102, 10);
+			CharacterSkillAdd(iic, 104, 8);
+			CharacterSkillAdd(iic, 500, 18);
+			CharacterSkillAdd(iic, 124, 6);
+			CharacterSkillAdd(iic, 384, 10);
+			CharacterSkillAdd(iic, 314, 4);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 102, 104, 124, 500, 384);
 			return 1;
 		}
@@ -5474,9 +5482,9 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
 		{
-			‚b‰Šú^UŒ‚—Í(iic, 120);
-			‚b‰Šú^–½’†—¦(iic, 20);
-			‚b‰Šú^‘Ì—ÍÅ‘å(iic, 120);
+			CharacterInitialAttackPower(iic, 120);
+			CharacterInitialHitRate(iic, 20);
+			CharacterInitialMaxHP(iic, 120);
 			‚b‰Šú^‘Ï«—¦(iic, 40);
 			return 1;
 		}
@@ -5485,16 +5493,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2996, 1, 30, 50, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2996, 1, 30, 50, 6, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 102, 6);
-			‚b‚r’Ç‰Á(iic, 104, 4);
-			‚b‚r’Ç‰Á(iic, 420, 10);
-			‚b‚r’Ç‰Á(iic, 384, 10);
-			‚b‚r’Ç‰Á(iic, 317, 4);
+			CharacterSkillAdd(iic, 102, 6);
+			CharacterSkillAdd(iic, 104, 4);
+			CharacterSkillAdd(iic, 420, 10);
+			CharacterSkillAdd(iic, 384, 10);
+			CharacterSkillAdd(iic, 317, 4);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 102, 104, 420, 384, 0);
 			return 1;
 		}
@@ -5514,18 +5522,18 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2974, 6, 30, 50, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2974, 6, 30, 50, 6, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 420, 10);
-			‚b‚r’Ç‰Á(iic, 384, 10);
-			‚b‚r’Ç‰Á(iic, 121, 8);
-			‚b‚r’Ç‰Á(iic, 267, 3);
-			‚b‚r’Ç‰Á(iic, 268, 4);
-			‚b‚r’Ç‰Á(iic, 211, 5);
-			‚b‚r’Ç‰Á(iic, 265, 4);
+			CharacterSkillAdd(iic, 420, 10);
+			CharacterSkillAdd(iic, 384, 10);
+			CharacterSkillAdd(iic, 121, 8);
+			CharacterSkillAdd(iic, 267, 3);
+			CharacterSkillAdd(iic, 268, 4);
+			CharacterSkillAdd(iic, 211, 5);
+			CharacterSkillAdd(iic, 265, 4);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 121, 420, 211, 267, 268, 0);
 			return 1;
 		}
@@ -5546,15 +5554,15 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2995, 5, 30, 50, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2995, 5, 30, 50, 6, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 420, 10);
-			‚b‚r’Ç‰Á(iic, 384, 10);
-			‚b‚r’Ç‰Á(iic, 221, 8);
-			‚b‚r’Ç‰Á(iic, 227, 6);
+			CharacterSkillAdd(iic, 420, 10);
+			CharacterSkillAdd(iic, 384, 10);
+			CharacterSkillAdd(iic, 221, 8);
+			CharacterSkillAdd(iic, 227, 6);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 420, 221, 227, 384, 0);
 			return 1;
 		}
@@ -5574,16 +5582,16 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 	{
 		if (ƒtƒ‰ƒO == "Šî–{")
 		{
-			‚b¶¬^Šî–{ƒf[ƒ^(iic, no, "", 2994, 2, 30, 50, 6, 0);
+			CharacterGenerateBasicData(iic, no, "", 2994, 2, 30, 50, 6, 0);
 			return 1;
 		}
 		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
 		{
-			‚b‚r’Ç‰Á(iic, 420, 10);
-			‚b‚r’Ç‰Á(iic, 384, 10);
-			‚b‚r’Ç‰Á(iic, 212, 8);
-			‚b‚r’Ç‰Á(iic, 249, 4);
-			‚b‚r’Ç‰Á(iic, 317, 3);
+			CharacterSkillAdd(iic, 420, 10);
+			CharacterSkillAdd(iic, 384, 10);
+			CharacterSkillAdd(iic, 212, 8);
+			CharacterSkillAdd(iic, 249, 4);
+			CharacterSkillAdd(iic, 317, 3);
 			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 420, 212, 249, 0, 0);
 			return 1;
 		}
@@ -5599,11 +5607,54 @@ lint ‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^(lint iic, lint no, string ƒtƒ‰ƒO)
 			return 1;
 		}
 	}
+
+	if (no == 347)
+	{
+		if (ƒtƒ‰ƒO == "Šî–{")
+		{
+			CharacterGenerateBasicData(iic, no, "", 2000, 1, 5, 9999, 6, 0);
+			CharacterSkillPoints(iic, 4);
+			CharacterDeletionProhibited(iic, 1);
+			‚b«•Ê(iic, 1);
+			‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 1);
+			return 1;
+		}
+		if (ƒtƒ‰ƒO == "ƒXƒLƒ‹")
+		{
+			CharacterSkillAdd(iic, 100, 8);
+			CharacterSkillAdd(iic, 600, 1);
+			CharacterSkillAdd(iic, 211, 2);
+			CharacterSkillAdd(iic, 382, 2);
+			if (‚pó‘Ô(67, -1) == 2)
+			{
+				‚bƒXƒLƒ‹˜gƒL[ƒv”(iic, 0);
+				CharacterSkillAdd(iic, 365, 0);
+			}
+			‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 147, 0, 0, 0, 0);
+			return 1;
+		}
+		if (ƒtƒ‰ƒO == "‘•”õ")
+		{
+			ii = ‚h¶¬(86, 0);
+			‚b•Ší(iic, ii);
+			ii = ‚h¶¬(1, 0);
+			‚b–h‹ï(iic, ii);
+			return 1;
+		}
+		if (ƒtƒ‰ƒO == "ƒXƒe[ƒ^ƒX")
+		{
+			CharacterInitialAttackPower(iic, 120);
+			CharacterInitialHitRate(iic, 20);
+			CharacterInitialMaxHP(iic, 120);
+			return 1;
+		}
+	}
+
 	LOG_TADA("‚d‚q‚q‚n‚q@‚b¶¬^ƒLƒƒƒ‰ƒf[ƒ^@iic=" + string(iic) + "@" + ƒtƒ‰ƒO + "\n");
 	return 0;
 }
 
-void ‚b¶¬^Šî–{ƒf[ƒ^(int iic, int no, string –¼‘O, int Šç‚b‚f, int E‹Æ, int ‚k‚u, int ‚k‚uÅ‘å, int ƒXƒLƒ‹˜gÅ‘å, int £ƒ‰ƒ“ƒ_ƒ€‚R)
+void CharacterGenerateBasicData(int iic, int no, string –¼‘O, int Šç‚b‚f, int E‹Æ, int ‚k‚u, int ‚k‚uÅ‘å, int ƒXƒLƒ‹˜gÅ‘å, int £ƒ‰ƒ“ƒ_ƒ€‚R)
 {
 	‚b‰Šú‰»(iic);
 	‚b”Ô†(iic, no);
@@ -5717,84 +5768,84 @@ void ‚b‚rE‹Æ•ÊŠî–{ƒXƒLƒ‹“o˜^(int iic, int E‹Æ, int Œ³E‹Æ)
 	}
 	if (E‹Æ == 1)
 	{
-		‚b‚r’Ç‰Á(iic, 100, 8);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 100, 8);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 384, 0, 0, 0, 0);
 	}
 	if (E‹Æ == 2)
 	{
-		‚b‚r’Ç‰Á(iic, 119, 2);
-		‚b‚r’Ç‰Á(iic, 100, 6);
-		‚b‚r’Ç‰Á(iic, 212, 3);
-		‚b‚r’Ç‰Á(iic, 213, 3);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 119, 2);
+		CharacterSkillAdd(iic, 100, 6);
+		CharacterSkillAdd(iic, 212, 3);
+		CharacterSkillAdd(iic, 213, 3);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 212, 384, 0, 0, 0);
 	}
 	if (E‹Æ == 3)
 	{
-		‚b‚r’Ç‰Á(iic, 108, 8);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 108, 8);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 108, 384, 0, 0, 0, 0);
 	}
 	if (E‹Æ == 6)
 	{
-		‚b‚r’Ç‰Á(iic, 100, 6);
-		‚b‚r’Ç‰Á(iic, 121, 2);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 100, 6);
+		CharacterSkillAdd(iic, 121, 2);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 121, 384, 0, 0, 0);
 	}
 	if (E‹Æ == 7)
 	{
-		‚b‚r’Ç‰Á(iic, 112, 8);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 112, 8);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 112, 384, 0, 0, 0, 0);
 	}
 	if (E‹Æ == 5)
 	{
-		‚b‚r’Ç‰Á(iic, 100, 6);
-		‚b‚r’Ç‰Á(iic, 221, 2);
-		‚b‚r’Ç‰Á(iic, 227, 2);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 100, 6);
+		CharacterSkillAdd(iic, 221, 2);
+		CharacterSkillAdd(iic, 227, 2);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 221, 227, 0, 0, 0);
 	}
 	if (E‹Æ == 4 && £ƒ^ƒCƒv == 1)
 	{
-		‚b‚r’Ç‰Á(iic, 383, 1);
-		‚b‚r’Ç‰Á(iic, 200, 3);
-		‚b‚r’Ç‰Á(iic, 174, 2);
-		‚b‚r’Ç‰Á(iic, 176, 2);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 383, 1);
+		CharacterSkillAdd(iic, 200, 3);
+		CharacterSkillAdd(iic, 174, 2);
+		CharacterSkillAdd(iic, 176, 2);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 174, 176, 384, 0, 0, 0);
 	}
 	if (E‹Æ == 4 && £ƒ^ƒCƒv == 2)
 	{
-		‚b‚r’Ç‰Á(iic, 383, 1);
-		‚b‚r’Ç‰Á(iic, 200, 3);
-		‚b‚r’Ç‰Á(iic, 181, 2);
-		‚b‚r’Ç‰Á(iic, 182, 2);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 383, 1);
+		CharacterSkillAdd(iic, 200, 3);
+		CharacterSkillAdd(iic, 181, 2);
+		CharacterSkillAdd(iic, 182, 2);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 181, 182, 384, 0, 0, 0);
 	}
 	if (E‹Æ == 4 && £ƒ^ƒCƒv == 3)
 	{
-		‚b‚r’Ç‰Á(iic, 383, 1);
-		‚b‚r’Ç‰Á(iic, 200, 3);
-		‚b‚r’Ç‰Á(iic, 168, 2);
-		‚b‚r’Ç‰Á(iic, 169, 2);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 383, 1);
+		CharacterSkillAdd(iic, 200, 3);
+		CharacterSkillAdd(iic, 168, 2);
+		CharacterSkillAdd(iic, 169, 2);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 168, 169, 384, 0, 0, 0);
 	}
 	if (E‹Æ == 4 && £ƒ^ƒCƒv == 4)
 	{
-		‚b‚r’Ç‰Á(iic, 200, 3);
-		‚b‚r’Ç‰Á(iic, 533, 5);
-		‚b‚r’Ç‰Á(iic, 384, 20);
+		CharacterSkillAdd(iic, 200, 3);
+		CharacterSkillAdd(iic, 533, 5);
+		CharacterSkillAdd(iic, 384, 20);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 533, 384, 0, 0, 0, 0);
 	}
 	if (E‹Æ == 8)
 	{
-		‚b‚r’Ç‰Á(iic, 384, 20);
-		‚b‚r’Ç‰Á(iic, 100, 6);
+		CharacterSkillAdd(iic, 384, 20);
+		CharacterSkillAdd(iic, 100, 6);
 		‚bƒXƒLƒ‹‹­§À‘•(iic, 100, 384, 0, 0, 0, 0);
 	}
 }
@@ -6319,20 +6370,20 @@ void ‚bÄŒvZ(int iic)
 	ŸŠî–{^‘Ï«—¦ = ‚b‘Ï«—¦(iic, -1);
 	ŸŠî–{^•KE—¦ = ‚b•KE—¦(iic, -1);
 	ŸŠî–{^‘f‘‚³ = ‚b‘f‘‚³(iic, -1);
-	if (‚b‰Šú^‘Ì—ÍÅ‘å(iic, -1) != 0)
+	if (CharacterInitialMaxHP(iic, -1) != 0)
 	{
-		‚b‘Ì—ÍÅ‘å(iic, ”{—¦ŒvZŠÖ”(‚b‘Ì—ÍÅ‘å(iic, -1), ‚b‰Šú^‘Ì—ÍÅ‘å(iic, -1)));
+		‚b‘Ì—ÍÅ‘å(iic, ”{—¦ŒvZŠÖ”(‚b‘Ì—ÍÅ‘å(iic, -1), CharacterInitialMaxHP(iic, -1)));
 		if (Ÿ‚c‚a^ÄŒvZƒƒO == 1)
 		{
-			LOG_TADA("@{‘Ì—Í " + string(‚b‰Šú^‘Ì—ÍÅ‘å(iic, -1)) + "“\n");
+			LOG_TADA("@{‘Ì—Í " + string(CharacterInitialMaxHP(iic, -1)) + "“\n");
 		}
 	}
-	if (‚b‰Šú^UŒ‚—Í(iic, -1) != 0)
+	if (CharacterInitialAttackPower(iic, -1) != 0)
 	{
-		‚bUŒ‚—Í(iic, ”{—¦ŒvZŠÖ”(‚bUŒ‚—Í(iic, -1), ‚b‰Šú^UŒ‚—Í(iic, -1)));
+		‚bUŒ‚—Í(iic, ”{—¦ŒvZŠÖ”(‚bUŒ‚—Í(iic, -1), CharacterInitialAttackPower(iic, -1)));
 		if (Ÿ‚c‚a^ÄŒvZƒƒO == 1)
 		{
-			LOG_TADA("@{UŒ‚—Í " + string(‚b‰Šú^UŒ‚—Í(iic, -1)) + "“\n");
+			LOG_TADA("@{UŒ‚—Í " + string(CharacterInitialAttackPower(iic, -1)) + "“\n");
 		}
 	}
 	if (‚b‰Šú^–hŒä—Í(iic, -1) != 0)
@@ -6367,12 +6418,12 @@ void ‚bÄŒvZ(int iic)
 			LOG_TADA("@{‘f‘‚³ " + string(‚b‰Šú^‘f‘‚³(iic, -1)) + "‚o\n");
 		}
 	}
-	if (‚b‰Šú^–½’†—¦(iic, -1) != 0)
+	if (CharacterInitialHitRate(iic, -1) != 0)
 	{
-		‚b–½’†—¦(iic, ‚b–½’†—¦(iic, -1) + ‚b‰Šú^–½’†—¦(iic, -1));
+		‚b–½’†—¦(iic, ‚b–½’†—¦(iic, -1) + CharacterInitialHitRate(iic, -1));
 		if (Ÿ‚c‚a^ÄŒvZƒƒO == 1)
 		{
-			LOG_TADA("@{–½’† " + string(‚b‰Šú^–½’†—¦(iic, -1)) + "‚o\n");
+			LOG_TADA("@{–½’† " + string(CharacterInitialHitRate(iic, -1)) + "‚o\n");
 		}
 	}
 	if (‚b‰Šú^‰ñ”ğ—¦(iic, -1) != 0)
@@ -6859,7 +6910,7 @@ void ‚bÄŒvZ(int iic)
 			LOG_TADA("‚¿•¨iƒXƒLƒ‹jØ‚è‘Ö‚¦||||@‚¿•¨‚ğŠO‚µ‚½\n");
 		}
 		‚b‚ríœ(iic, ‚b‚¿•¨ƒXƒLƒ‹(iic, -1));
-		‚b‚r’Ç‰Á(iic, 569, 0);
+		CharacterSkillAdd(iic, 569, 0);
 		‚b‚¿•¨ƒXƒLƒ‹(iic, 569);
 	}
 	if (£‚¿•¨ƒXƒLƒ‹ != 0 && ‚b‚¿•¨ƒXƒLƒ‹(iic, -1) != £‚¿•¨ƒXƒLƒ‹)
@@ -6869,7 +6920,7 @@ void ‚bÄŒvZ(int iic)
 			LOG_TADA("‚¿•¨iƒXƒLƒ‹jØ‚è‘Ö‚¦||||@‚¿•¨‚ğ•t‚¯‚½or•t‚¯‘Ö‚¦‚½\n");
 		}
 		‚b‚ríœ(iic, ‚b‚¿•¨ƒXƒLƒ‹(iic, -1));
-		‚b‚r’Ç‰Á(iic, £‚¿•¨ƒXƒLƒ‹, £‚¿•¨ƒXƒLƒ‹”);
+		CharacterSkillAdd(iic, £‚¿•¨ƒXƒLƒ‹, £‚¿•¨ƒXƒLƒ‹”);
 		‚b‚¿•¨ƒXƒLƒ‹(iic, £‚¿•¨ƒXƒLƒ‹);
 	}
 	Ÿg‘Ìƒu[ƒXƒg = 100;
@@ -6953,7 +7004,7 @@ void ‚bÄŒvZ(int iic)
 	if (‚b‚e‚`(iic, 36, -1) == 7 && ‚b‚e‚`(iic, 7, -1) == 0)
 	{
 		‚b‚e‚`(iic, 7, 1);
-		‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, ‚bƒXƒLƒ‹ƒ|ƒCƒ“ƒg(iic, -1) + 10);
+		CharacterSkillPoints(iic, CharacterSkillPoints(iic, -1) + 10);
 	}
 	if (Ÿ‚c‚a^ÄŒvZƒƒO == 1)
 	{
@@ -7591,7 +7642,7 @@ lint ‚b‚rƒ‰ƒ“ƒ_ƒ€‚Åg—pÏ‚İ‚É‚·‚é(int iic)
 	return iic_s;
 }
 
-int ‚b‚r’Ç‰Á(int iic, int iis, int ‰ñ”)
+int CharacterSkillAdd(int iic, int iis, int ‰ñ”)
 {
 	int aa = 0;
 	int loop = 0;
@@ -7697,7 +7748,7 @@ void ‚b‚r’Ç‰Á^‘SƒLƒƒƒ‰(lint iis, int max)
 	{
 		if (‚b“o˜^ó‘Ô(iic, -1) != 0)
 		{
-			‚b‚r’Ç‰Á(iic, iis, max);
+			CharacterSkillAdd(iic, iis, max);
 		}
 	}
 }

@@ -1007,23 +1007,23 @@ void ‚b“G“o˜^(int iic, int no)
 		}
 		if (FA[136] == 1)
 		{
-			‚b‚r’Ç‰Á(iic, 476, 0);
+			CharacterSkillAdd(iic, 476, 0);
 		}
 		if (FA[137] == 1)
 		{
-			‚b‚r’Ç‰Á(iic, 477, 0);
+			CharacterSkillAdd(iic, 477, 0);
 		}
 		if (FA[138] == 1)
 		{
-			‚b‚r’Ç‰Á(iic, 478, 0);
+			CharacterSkillAdd(iic, 478, 0);
 		}
 		if (FA[139] == 1)
 		{
-			‚b‚r’Ç‰Á(iic, 479, 0);
+			CharacterSkillAdd(iic, 479, 0);
 		}
 		if (FA[140] == 1)
 		{
-			‚b‚r’Ç‰Á(iic, 480, 0);
+			CharacterSkillAdd(iic, 480, 0);
 		}
 	}
 	£–½’† = 110;
@@ -2132,8 +2132,8 @@ void ‚b“G“o˜^(int iic, int no)
 			£‘Ì—Í += ‚pƒNƒŠƒA‰ñ”(Ÿiiq, -1) * 1000;
 		}
 		‚b“G“o˜^‚P(iic, no, 100273, "Angel Knight Clone", 0, 14, 22, £‘Ì—Í, 60, 2000, 300, 2000, 300, £–½’†, £‰ñ”ğ + 20, 0, £ÕŒ‚, £ÕŒ‚, 0, 0, 0, 0, 0, 0, 191, "", 2, 15, 172, "", 2, 15, 179, "", 2, 15, 388, "", 1, 100, 475, "", 1, 0);
-		‚b‚r’Ç‰Á(iic, 246, 4);
-		‚b‚r’Ç‰Á(iic, 307, 0);
+		CharacterSkillAdd(iic, 246, 4);
+		CharacterSkillAdd(iic, 307, 0);
 		‚b‚k‚u(iic, 60);
 		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Commencing extermination!");
 		“G‘äŒ“o˜^(iic, "UŒ‚", "Finding additional targets.$...Perish!");
@@ -2302,7 +2302,7 @@ void ‚b“G“o˜^(int iic, int no)
 		‚b“G“o˜^‚P(iic, no, 100196, "Modern", 1, 13, 22, 5000, 60, 1200, 200, 100, 800, 500, 30, 0, 0, 100, 4, 0, 0, 0, 40, 40, 140, "", 1, 50, 141, "", 2, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
 		if (EV("‚P‚Q‚`æ‘ãƒJƒ‰[^í“¬Œã", -2147483648) == false)
 		{
-			‚b‚r’Ç‰Á(iic, 305, 0);
+			CharacterSkillAdd(iic, 305, 0);
 		}
 		‚b‚k‚u(iic, 45);
 		“G‘äŒ“o˜^(iic, "‘Ò‹@", "I'll take revenge for Pastel.");
@@ -2314,7 +2314,7 @@ void ‚b“G“o˜^(int iic, int no)
 		‚b“G“o˜^‚P(iic, no, 100197, "Vivid", 1, 13, 22, 3000, 60, 1200, 200, 100, 800, 500, 30, 0, 0, 500, 5, 0, 0, 0, 0, 0, 434, "", 1, 100, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0, 0, "", 1, 0);
 		if (EV("‚P‚Q‚`’†¢‘ãƒJƒ‰[^í“¬Œã", -2147483648) == false)
 		{
-			‚b‚r’Ç‰Á(iic, 305, 0);
+			CharacterSkillAdd(iic, 305, 0);
 		}
 		‚b‚k‚u(iic, 45);
 		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Not coming?");
@@ -2353,7 +2353,7 @@ void ‚b“G“o˜^(int iic, int no)
 		‚b‚rˆê“xg—p(iic, 1, 1);
 		if (EV("‚P‚Q‚`æ‘c‚Æ‚Ì‘ÎŒˆ^í“¬Œã", -2147483648) == false)
 		{
-			‚b‚r’Ç‰Á(iic, 305, 0);
+			CharacterSkillAdd(iic, 305, 0);
 		}
 		‚b‚k‚u(iic, 45);
 		“G‘äŒ“o˜^(iic, "‘Ò‹@", "Heheheh...");
@@ -2479,7 +2479,7 @@ void ‚b“G“o˜^(int iic, int no)
 	if (no == 383)
 	{
 		‚b“G“o˜^‚P(iic, no, 100229, "BS", 1, 2, 22, 14400, 50, 1700, 2000, 1000, 1500, 250, 0, 0, 80, 80, 0, 0, 0, 0, 0, 0, 224, "", 2, 20, 506, "", 0, 30, 472, "", 1, 100, 0, "", 0, 0, 0, "", 0, 0);
-		‚b‚r’Ç‰Á(iic, 298, 1);
+		CharacterSkillAdd(iic, 298, 1);
 		‚b‚rˆê“xg—p(iic, 2, 1);
 		‚b‚k‚u(iic, 50);
 		“G‘äŒ“o˜^(iic, "‘Ò‹@", "All is for the Great Goddess Alice.");
@@ -2579,7 +2579,7 @@ void ‚b“G“o˜^(int iic, int no)
 		‚b“G“o˜^‚P(iic, no, 100237, "Am Yisael", 1, 24, 22, 40000, 70, 1500, 1000, 1000, 1000, 300, 0, 0, 20, 90, 0, 0, 0, 0, 0, 0, 545, "", 1, 30, 519, "", 1, 30, 557, "", 2, 40, 546, "", 2, 100, 475, "", 1, 0);
 		‚b‚k‚u(iic, 60);
 		‚b‚rˆê“xg—p(iic, 1, 1);
-		‚b‚r’Ç‰Á(iic, 305, 0);
+		CharacterSkillAdd(iic, 305, 0);
 		“G‘äŒ“o˜^(iic, "‘Ò‹@", "...Heheh, what a scary face.");
 		“G‘äŒ“o˜^(iic, "UŒ‚", "This is for a new era.");
 		“G‘äŒ“o˜^(iic, "x‰‡", "Enter my embrace.");

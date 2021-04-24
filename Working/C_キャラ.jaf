@@ -378,7 +378,7 @@ int キャラ_スキルポイント(int nCharaNo)
 	{
 		return -1;
 	}
-	return Ｃスキルポイント(nCharaNo, -1);
+	return CharacterSkillPoints(nCharaNo, -1);
 }
 
 int キャラ_スキル枠最大(int nCharaNo)
@@ -1173,8 +1173,8 @@ int キャラ_スキルポイント設定(int nCharaNo, int nValue)
 	{
 		return -1;
 	}
-	Ｃスキルポイント(nCharaNo, nValue);
-	return Ｃスキルポイント(nCharaNo, -1);
+	CharacterSkillPoints(nCharaNo, nValue);
+	return CharacterSkillPoints(nCharaNo, -1);
 }
 
 int キャラ_スキルポイント＋(int nCharaNo, int nValue)

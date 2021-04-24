@@ -505,7 +505,7 @@ lint QuestProcessingExtra(lint dd, lint no, lint fg)
 			iic = ‚b”Ô†æ“¾(58);
 			if (‚b‚r—L–³^Å‘å‰ñ”(iic, 232, 0) < 4)
 			{
-				‚b‚r’Ç‰Á(iic, 232, 1);
+				CharacterSkillAdd(iic, 232, 1);
 				‚r‚`‚c‚u("¡Atago   Skill uses up", "¡", "¡Skill: Dancer +1");
 			}
 			return 1;
@@ -1177,7 +1177,7 @@ lint QuestProcessingExtra(lint dd, lint no, lint fg)
 			lint iic = ‚b”Ô†æ“¾(53);
 			if (‚b‚r—L–³(iic, 542, 0) == 0)
 			{
-				‚b‚r’Ç‰Á(iic, 542, 0);
+				CharacterSkillAdd(iic, 542, 0);
 				g‚l = 5070;
 				‚r‚`‚c‚u("¡Bear   New Skill", "¡", "¡Skill: My Waifu (#2)");
 			}
@@ -1200,7 +1200,7 @@ lint QuestProcessingExtra(lint dd, lint no, lint fg)
 			lint iic = ‚b”Ô†æ“¾(53);
 			if (‚b‚r—L–³(iic, 543, 0) == 0)
 			{
-				‚b‚r’Ç‰Á(iic, 543, 0);
+				CharacterSkillAdd(iic, 543, 0);
 				g‚l = 5070;
 				‚r‚`‚c‚u("¡Bear   New Skill", "¡", "¡Skill: My Waifu (#3)");
 			}
