@@ -2410,9 +2410,9 @@ lint QuestProcessingBasic(lint dd, lint no, lint fg)
 				}
 				‚P‚W‚`“Ş—‚Ì‰¤^í“¬Œã();
 				¡ƒ{ƒXŒ‚”j‹L˜^(255);
-				LOG("Can add Nikkou here: ");
-				‚q‚WƒAƒCƒeƒ€æ“¾(344, 0);
-				LOG("Nikkou added");
+				//Use this place to test the items. It will drop when clearing Lord of the Abyss quest. Just replace Nikkou's (344) code with your item code
+				//‚q‚WƒAƒCƒeƒ€æ“¾(344, 0);
+				//LOG("Nikkou added");
 				return 1;
 			}
 			return Š„‚è‚İ‚Q(fg);

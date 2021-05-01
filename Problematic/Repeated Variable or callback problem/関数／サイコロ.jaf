@@ -599,7 +599,7 @@ lint ƒNƒGƒXƒgˆ—^ƒTƒCƒRƒ(lint dd, lint no, lint fg)
 					}
 					ãÄ—³R“o’¸^‚O‚P‚P^³‰ğ();
 					int ii = 0;
-					ii = ‚h¶¬(QD[9], 0);
+					ii = ItemGeneration(QD[9], 0);
 					‚h‘¶İ(ii, 8);
 					Ÿ‚`‚` = ii;
 					ãÄ—³R“o’¸^‚O‚P‚P^‚S();
@@ -6060,9 +6060,9 @@ int ŠÖ”^ƒTƒCƒRƒ^ƒ}ƒ‹ƒOƒŠƒbƒh‚w^ƒ{ƒXİ’è()
 void ŠÖ”^ƒTƒCƒRƒ^‘o‰‹‚ ‚Î‚ê—·^‘•”õ‰ğœ()
 {
 	int iic = ‚b”Ô†æ“¾(49);
-	QD[1] = ‚b•Ší(iic, -1);
+	QD[1] = CharacterWeapon(iic, -1);
 	QD[2] = ‚b–h‹ï(iic, -1);
-	if (‚b•Ší(iic, -1) != 0)
+	if (CharacterWeapon(iic, -1) != 0)
 	{
 		‚bƒAƒCƒeƒ€ŠO‚·(iic, 1);
 	}
@@ -6072,9 +6072,9 @@ void ŠÖ”^ƒTƒCƒRƒ^‘o‰‹‚ ‚Î‚ê—·^‘•”õ‰ğœ()
 	}
 	‚bÄŒvZ(iic);
 	int iic = ‚b”Ô†æ“¾(16);
-	QD[5] = ‚b•Ší(iic, -1);
+	QD[5] = CharacterWeapon(iic, -1);
 	QD[6] = ‚b–h‹ï(iic, -1);
-	if (‚b•Ší(iic, -1) != 0)
+	if (CharacterWeapon(iic, -1) != 0)
 	{
 		‚bƒAƒCƒeƒ€ŠO‚·(iic, 1);
 	}
@@ -6090,7 +6090,7 @@ void ŠÖ”^ƒTƒCƒRƒ^‘o‰‹‚ ‚Î‚ê—·^‘•”õ•œ‹A()
 	int iic = ‚b”Ô†æ“¾(49);
 	if (QD[1] != 0)
 	{
-		‚b•Ší(iic, QD[1]);
+		CharacterWeapon(iic, QD[1]);
 	}
 	if (QD[2] != 0)
 	{
@@ -6100,7 +6100,7 @@ void ŠÖ”^ƒTƒCƒRƒ^‘o‰‹‚ ‚Î‚ê—·^‘•”õ•œ‹A()
 	int iic = ‚b”Ô†æ“¾(16);
 	if (QD[5] != 0)
 	{
-		‚b•Ší(iic, QD[5]);
+		CharacterWeapon(iic, QD[5]);
 	}
 	if (QD[6] != 0)
 	{

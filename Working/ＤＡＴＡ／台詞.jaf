@@ -1062,7 +1062,7 @@ void ‚b‘äŒ“o˜^(lint iic, lint no, lint iis, string ğŒ)
 		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "We can't let our guard down here...");
 		ƒZƒŠƒt“o˜^(iic, "–À‹{^‹Ù”—", "The traps in these kinds of places are annoying, aren't they?");
 		ƒZƒŠƒt“o˜^(iic, "I—¹", "");
-		if ((ğŒ == "UŒ‚’Êí" || ğŒ == "UŒ‚‘å‹Z") && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 171)
+		if ((ğŒ == "UŒ‚’Êí" || ğŒ == "UŒ‚‘å‹Z") && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) != 171)
 		{
 			Ÿí“¬‘äŒ = "I can fight even without my Tulip.";
 		}

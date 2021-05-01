@@ -1877,7 +1877,7 @@ void ‚sw“üƒXƒLƒ‹“o˜^(int iic)
 	if (cl == 1 || cl == 2 || cl == 5 || cl == 6)
 	{
 		int £‘„‚©‚Ë = 0;
-		if (‚b‚r—L–³^ƒ‰ƒ“ƒN(iic, 317, 0) >= 3 && ‚hí—ŞÚ×(‚b•Ší(iic, -1), -1) == 7)
+		if (‚b‚r—L–³^ƒ‰ƒ“ƒN(iic, 317, 0) >= 3 && ‚hí—ŞÚ×(CharacterWeapon(iic, -1), -1) == 7)
 		{
 			£‘„‚©‚Ë = 1;
 		}
@@ -2983,7 +2983,7 @@ void ‚sw“üƒXƒLƒ‹“o˜^(int iic)
 		}
 		if (bb == 1)
 		{
-			if (‚hí—ŞÚ×(‚b•Ší(iic, -1), -1) == 6)
+			if (‚hí—ŞÚ×(CharacterWeapon(iic, -1), -1) == 6)
 			{
 				ƒXƒLƒ‹ƒ|ƒ“(iic, iis, aa, "");
 			}
@@ -3001,7 +3001,7 @@ void ‚sw“üƒXƒLƒ‹“o˜^(int iic)
 		}
 		if (bb == 1 && Ÿƒ[ƒ‹ƒh == 3)
 		{
-			if (‚hí—ŞÚ×(‚b•Ší(iic, -1), -1) == 6)
+			if (‚hí—ŞÚ×(CharacterWeapon(iic, -1), -1) == 6)
 			{
 				ƒXƒLƒ‹ƒ|ƒ“(iic, iis, aa, "");
 			}

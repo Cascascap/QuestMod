@@ -25,7 +25,7 @@ int キャラ_ゲスト(int nCharaNo)
 	return Ｃゲスト(nCharaNo, -1);
 }
 
-int キャラ_削除禁止(int nCharaNo)
+int CharacterDelitionProhibitedCheck(int nCharaNo)
 {
 	return キャラ_番号(nCharaNo) != 2;
 }
@@ -342,7 +342,7 @@ int キャラ_武器(int nCharaNo)
 	{
 		return -1;
 	}
-	return Ｃ武器(nCharaNo, -1);
+	return CharacterWeapon(nCharaNo, -1);
 }
 
 int キャラ_防具(int nCharaNo)
@@ -1118,8 +1118,8 @@ int キャラ_武器設定(int nCharaNo, int nValue)
 		Ｃアイテム外す(nCharaNo, 1);
 		return 0;
 	}
-	Ｃ武器(nCharaNo, nValue);
-	return Ｃ武器(nCharaNo, -1);
+	CharacterWeapon(nCharaNo, nValue);
+	return CharacterWeapon(nCharaNo, -1);
 }
 
 int キャラ_防具設定(int nCharaNo, int nValue)

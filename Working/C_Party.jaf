@@ -534,7 +534,7 @@ bool パーティ一覧_キャラ削除確認(int nMode, int nCharaNo)
 		return false;
 	}
 	string szName = テキスト_キャラ名(nCharaNo);
-	if (キャラ_削除禁止(nCharaNo) > 0)
+	if (CharacterDelitionProhibitedCheck(nCharaNo) > 0)
 	{
 		選択_通知(szName + "@ cannot be deleted.", "OK", false);
 		return false;

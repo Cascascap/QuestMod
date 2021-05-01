@@ -5822,7 +5822,7 @@ void ‚sí“¬‘O‰Šú‰»^ƒLƒƒƒ‰(lint iic, lint fg)
 	if (‚b”Ô†(iic, -1) == 12)
 	{
 		iics = ‚b‚r—L–³(iic, 453, 0);
-		if (iics != 0 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 125)
+		if (iics != 0 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) != 125)
 		{
 			‚b‚rg—p‰ñ”(iic, iics, 0);
 		}
@@ -5830,7 +5830,7 @@ void ‚sí“¬‘O‰Šú‰»^ƒLƒƒƒ‰(lint iic, lint fg)
 	if (‚b”Ô†(iic, -1) == 93)
 	{
 		iics = ‚b‚r—L–³(iic, 459, 0);
-		if (iics != 0 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 131)
+		if (iics != 0 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) != 131)
 		{
 			‚b‚rg—p‰ñ”(iic, iics, 0);
 		}
@@ -5838,7 +5838,7 @@ void ‚sí“¬‘O‰Šú‰»^ƒLƒƒƒ‰(lint iic, lint fg)
 	if (‚b”Ô†(iic, -1) == 55)
 	{
 		iics = ‚b‚r—L–³(iic, 448, 0);
-		if (iics != 0 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 69)
+		if (iics != 0 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) != 69)
 		{
 			‚b‚rg—p‰ñ”(iic, iics, 0);
 		}
@@ -5846,7 +5846,7 @@ void ‚sí“¬‘O‰Šú‰»^ƒLƒƒƒ‰(lint iic, lint fg)
 	if (‚b”Ô†(iic, -1) == 29)
 	{
 		iics = ‚b‚r—L–³(iic, 518, 0);
-		if (iics != 0 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 171)
+		if (iics != 0 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) != 171)
 		{
 			‚b‚rg—p‰ñ”(iic, iics, 0);
 		}
@@ -5854,7 +5854,7 @@ void ‚sí“¬‘O‰Šú‰»^ƒLƒƒƒ‰(lint iic, lint fg)
 	if (‚b”Ô†(iic, -1) == 30)
 	{
 		iics = ‚b‚r—L–³(iic, 594, 0);
-		if (iics != 0 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 170 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) != 319)
+		if (iics != 0 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) != 170 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) != 319)
 		{
 			‚b‚rg—p‰ñ”(iic, iics, 0);
 		}
@@ -6156,7 +6156,7 @@ void ‚sí“¬‘O‰Šú‰»^ƒLƒƒƒ‰(lint iic, lint fg)
 		LOG_TADA("@æ§UŒ‚@”­“®@" + string(‚b‚r—L–³^ƒ‰ƒ“ƒN•ÊŒø‰Ê(iic, 252, 0)) + "“@\n");
 		FA[73] = iic;
 	}
-	if (‚b”Ô†(iic, -1) == 23 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == 178 && RAND(2) == 1)
+	if (‚b”Ô†(iic, -1) == 23 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == 178 && RAND(2) == 1)
 	{
 		‚b‰B–§—¦(iic, 150);
 	}
@@ -6513,7 +6513,7 @@ void í“¬Œãˆ—(lint re)
 		int ii = 0;
 		if (Ÿí“¬ŒãƒAƒCƒeƒ€æ“¾^—‚Ìq != 0)
 		{
-			ii = ‚h¶¬(Ÿí“¬ŒãƒAƒCƒeƒ€æ“¾, 0);
+			ii = ItemGeneration(Ÿí“¬ŒãƒAƒCƒeƒ€æ“¾, 0);
 			if (ii != 0)
 			{
 				‚h‘¶İ(ii, 8);
@@ -6711,7 +6711,7 @@ void ‚s‡”Ô¶¬(int fg)
 				{
 					PTA_BOX[loop] -= 20;
 				}
-				if (fg == 0 && PTA_CN[loop] == 0 && ‚hŒÅ—L”Ô†(‚b•Ší(PTA[loop], -1), -1) == 170)
+				if (fg == 0 && PTA_CN[loop] == 0 && ‚hŒÅ—L”Ô†(CharacterWeapon(PTA[loop], -1), -1) == 170)
 				{
 					PTA_BOX[loop] -= 20;
 				}
@@ -8039,43 +8039,43 @@ int ‚s•¨—UŒ‚s“®(int iic1, int iic2, int iis)
 	{
 		Ÿ‚d‚eŒÅ’è = 0;
 		Ÿí“¬‚d‚e = "•¨—UŒ‚Šî–{";
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 9)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 9)
 		{
 			Ÿí“¬‚d‚e = "Ši“¬UŒ‚";
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 2)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 2)
 		{
 			Ÿí“¬‚d‚e = "Œ•UŒ‚";
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 3)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 3)
 		{
 			Ÿí“¬‚d‚e = "Œ•UŒ‚";
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 5)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 5)
 		{
 			Ÿí“¬‚d‚e = "ËŒ‚UŒ‚";
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 8)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 8)
 		{
 			Ÿí“¬‚d‚e = "ñUŒ‚";
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 7)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 7)
 		{
 			Ÿí“¬‚d‚e = "‘„UŒ‚";
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 4)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 4)
 		{
 			Ÿí“¬‚d‚e = "•€UŒ‚";
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 6)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 6)
 		{
 			Ÿí“¬‚d‚e = "“S–C";
 		}
-		if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 171)
+		if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 171)
 		{
 			Ÿí“¬‚d‚e = "ƒ`ƒ…[ƒŠƒbƒv";
 		}
-		if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 70)
+		if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 70)
 		{
 			Ÿí“¬‚d‚e = "•ÚUŒ‚";
 		}
@@ -8278,7 +8278,7 @@ int ‚s–‚–@UŒ‚s“®(int iic1, int iic2, int iis)
 			Ÿí“¬‚d‚e = "ƒAƒ“ƒRƒN02";
 		}
 	}
-	if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 169 || ‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 165)
+	if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 169 || ‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 165)
 	{
 		aa = 40;
 		if (‚o‚s‚`‘”() == 2 && ‚o‚s‚`—L–³^ŒÅ—L(1) != 0)
@@ -9395,7 +9395,7 @@ int –½’†ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 	{
 		aa -= 10;
 	}
-	if (‚bƒ^ƒCƒv(iic2, -1) == 16 && ‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 5 && ‚b‚r—L–³(iic1, 318, 0) != 0)
+	if (‚bƒ^ƒCƒv(iic2, -1) == 16 && ‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 5 && ‚b‚r—L–³(iic1, 318, 0) != 0)
 	{
 		aa += 80;
 		Ÿí“¬ƒƒO‚P += " (Increased accuracy against flying)";
@@ -9455,7 +9455,7 @@ int –½’†ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 			LOG_TADA("@@â‘Î‰ñ”ğ—¦i" + string(aa) + "@@‰ñ”ğ—Í" + string(‚b‰ñ”ğ—¦(iic2, -1)) + "j\n");
 		}
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 4 && aa > 85)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 4 && aa > 85)
 	{
 		aa = 85;
 	}
@@ -9463,7 +9463,7 @@ int –½’†ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 	{
 		aa = 50;
 	}
-	if ((‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 2 || ‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 3) && ‚b”Ô†(iic2, -1) == 241)
+	if ((‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 2 || ‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 3) && ‚b”Ô†(iic2, -1) == 241)
 	{
 		aa = 0;
 		£â‘Î‚ÉŠO‚ê‚é = 1;
@@ -9788,7 +9788,7 @@ void •¨—‘®«ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 	{
 		return;
 	}
-	ŸUŒ‚‘®« = ‚h‹@”\æ“¾(‚b•Ší(iic1, -1), 30);
+	ŸUŒ‚‘®« = ‚h‹@”\æ“¾(CharacterWeapon(iic1, -1), 30);
 	if (‚r‘®«(iis, -1) != 0)
 	{
 		ŸUŒ‚‘®« = ‚r‘®«(iis, -1);
@@ -9909,23 +9909,23 @@ void •¨—‘®«ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 			LOG_TADA("@@m" + string(Ÿí“¬^”{—¦) + "nˆÅ‚Ì’m¯‚ÌŒø‰Ê‚É‚æ‚è{" + string(aa) + "“\n");
 		}
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 2)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 2)
 	{
 		FA[141] = 11;
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 3)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 3)
 	{
 		FA[141] = 12;
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 4)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 4)
 	{
 		FA[141] = 13;
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 7)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 7)
 	{
 		FA[141] = 14;
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 5)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 5)
 	{
 		FA[141] = 15;
 	}
@@ -9947,7 +9947,7 @@ void –‚–@‘®«ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 			LOG_TADA("@@¨Œã•t‚¯”{—¦m" + string(Ÿí“¬^ÅI’Ç‰Á”{—¦) + "nã“_i" + ‘®«•¶š—ñ(ŸUŒ‚‘®«) + "j@ƒ_ƒ[ƒW‚PD‚T”{\n");
 		}
 	}
-	int £UŒ‚‘®«^•Ší = ‚h‹@”\æ“¾(‚b•Ší(iic1, -1), 30);
+	int £UŒ‚‘®«^•Ší = ‚h‹@”\æ“¾(CharacterWeapon(iic1, -1), 30);
 	if (ŸUŒ‚‘®« == £UŒ‚‘®«^•Ší)
 	{
 		Ÿí“¬^”{—¦ += 20;
@@ -10156,11 +10156,11 @@ void ƒ_ƒ[ƒW•â³ŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 		bb = 1;
 		aa = ‚bí‘°(iic2, -1);
 	}
-	if (‚bƒ^ƒCƒv(iic2, -1) == 19 && ‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 7 && ‚b‚r—L–³(iic1, 317, 0) != 0)
+	if (‚bƒ^ƒCƒv(iic2, -1) == 19 && ‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 7 && ‚b‚r—L–³(iic1, 317, 0) != 0)
 	{
 		bb = 2;
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 4 && ‚b‚r—L–³(iic1, 316, 0) != 0 && (‚bƒ^ƒCƒv(iic2, -1) == 17 || ‚bí‘°(iic2, -1) == 5))
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 4 && ‚b‚r—L–³(iic1, 316, 0) != 0 && (‚bƒ^ƒCƒv(iic2, -1) == 17 || ‚bí‘°(iic2, -1) == 5))
 	{
 		bb = 3;
 	}
@@ -10507,7 +10507,7 @@ void “ÅŒvZ(lint iic1, lint iic2, lint iis)
 		{
 			bb = 100;
 		}
-		if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 118)
+		if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 118)
 		{
 			bb = 100;
 			FA[337]++;
@@ -10786,7 +10786,7 @@ void ÅIƒ_ƒ[ƒWŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 		Ÿƒ_ƒ[ƒW”šƒTƒCƒY = 1;
 		ŸƒƒO‚Q’Ç‰Á += " (reflected with forehead)";
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 2 && ‚b‚r—L–³(iic2, 476, 0) != 0)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 2 && ‚b‚r—L–³(iic2, 476, 0) != 0)
 	{
 		Ÿí“¬^”{—¦ = ”{—¦ŒvZŠÖ”(Ÿí“¬^”{—¦, 10);
 		if (Ÿ‚c‚a^í“¬ƒƒO == 1 && ğŒ == "")
@@ -10796,7 +10796,7 @@ void ÅIƒ_ƒ[ƒWŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 		Ÿƒ_ƒ[ƒW”šƒTƒCƒY = 1;
 		ŸƒƒO‚Q’Ç‰Á += " (strong against sword attacks)";
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 3 && ‚b‚r—L–³(iic2, 477, 0) != 0)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 3 && ‚b‚r—L–³(iic2, 477, 0) != 0)
 	{
 		Ÿí“¬^”{—¦ = ”{—¦ŒvZŠÖ”(Ÿí“¬^”{—¦, 10);
 		if (Ÿ‚c‚a^í“¬ƒƒO == 1 && ğŒ == "")
@@ -10806,7 +10806,7 @@ void ÅIƒ_ƒ[ƒWŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 		Ÿƒ_ƒ[ƒW”šƒTƒCƒY = 1;
 		ŸƒƒO‚Q’Ç‰Á += " (strong against shortsword attacks)";
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 4 && ‚b‚r—L–³(iic2, 478, 0) != 0)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 4 && ‚b‚r—L–³(iic2, 478, 0) != 0)
 	{
 		Ÿí“¬^”{—¦ = ”{—¦ŒvZŠÖ”(Ÿí“¬^”{—¦, 10);
 		if (Ÿ‚c‚a^í“¬ƒƒO == 1 && ğŒ == "")
@@ -10816,7 +10816,7 @@ void ÅIƒ_ƒ[ƒWŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 		Ÿƒ_ƒ[ƒW”šƒTƒCƒY = 1;
 		ŸƒƒO‚Q’Ç‰Á += " (strong against hammer attacks)";
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 7 && ‚b‚r—L–³(iic2, 479, 0) != 0)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 7 && ‚b‚r—L–³(iic2, 479, 0) != 0)
 	{
 		Ÿí“¬^”{—¦ = ”{—¦ŒvZŠÖ”(Ÿí“¬^”{—¦, 10);
 		if (Ÿ‚c‚a^í“¬ƒƒO == 1 && ğŒ == "")
@@ -10826,7 +10826,7 @@ void ÅIƒ_ƒ[ƒWŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 		Ÿƒ_ƒ[ƒW”šƒTƒCƒY = 1;
 		ŸƒƒO‚Q’Ç‰Á += " (strong against spear attacks)";
 	}
-	if (‚hí—ŞÚ×(‚b•Ší(iic1, -1), -1) == 5 && ‚b‚r—L–³(iic2, 480, 0) != 0)
+	if (‚hí—ŞÚ×(CharacterWeapon(iic1, -1), -1) == 5 && ‚b‚r—L–³(iic2, 480, 0) != 0)
 	{
 		Ÿí“¬^”{—¦ = ”{—¦ŒvZŠÖ”(Ÿí“¬^”{—¦, 10);
 		if (Ÿ‚c‚a^í“¬ƒƒO == 1 && ğŒ == "")
@@ -11105,7 +11105,7 @@ void ÅIƒ_ƒ[ƒWŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 	{
 		for (; ; )
 		{
-			if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 100)
+			if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 100)
 			{
 				Ÿí“¬ƒƒO‚P += " (Invincibility effect removed)";
 				if (ğŒ == "")
@@ -11230,7 +11230,7 @@ void ÅIƒ_ƒ[ƒWŒvZ(lint iic1, lint iic2, lint iis, string ğŒ)
 			aa = 20;
 		}
 		aa = aa + ‚b‚r—L–³^ƒ‰ƒ“ƒN•ÊŒø‰Ê(iic1, 325, 0);
-		if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 84)
+		if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 84)
 		{
 			aa += 20;
 		}
@@ -11371,7 +11371,7 @@ void €–SŒvZ(lint iic1, lint iic2, lint iis)
 	{
 		LOG_TADA("@@¦@II@“|‚µ‚½@II\n");
 	}
-	if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 156 && RAND(4) != 1)
+	if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 156 && RAND(4) != 1)
 	{
 		Ÿs“®‰ñ”‰ñ•œ = 1;
 	}
@@ -11585,7 +11585,7 @@ void ƒ_ƒ[ƒWŒãŒvZ(lint iic1, lint iic2, lint iis)
 		‚b‘Ì—Í(iic1, 1);
 		‚b‚r”Ô†(iic1, 1, 384);
 	}
-	if (‚hŒÅ—L”Ô†(‚b•Ší(iic1, -1), -1) == 149 && RAND(6) == 1)
+	if (‚hŒÅ—L”Ô†(CharacterWeapon(iic1, -1), -1) == 149 && RAND(6) == 1)
 	{
 		ŸŠñ•t++;
 	}
@@ -11804,7 +11804,7 @@ int ‚s˜A‘±s“®‰ñ”(int iic, int iis)
 	{
 		£UŒ‚‰ñ” = 1;
 		vx = ‚b‚r—L–³^ƒ‰ƒ“ƒN(iic, 315, 0);
-		if (vx != 0 && ‚hí—ŞÚ×(‚b•Ší(iic, -1), -1) == 3)
+		if (vx != 0 && ‚hí—ŞÚ×(CharacterWeapon(iic, -1), -1) == 3)
 		{
 			if (RAND(4) == 1)
 			{
@@ -11820,7 +11820,7 @@ int ‚s˜A‘±s“®‰ñ”(int iic, int iis)
 			}
 		}
 		vx = ‚b‚r—L–³^ƒ‰ƒ“ƒN(iic, 314, 0);
-		if (vx == 4 && ‚hí—ŞÚ×(‚b•Ší(iic, -1), -1) == 2)
+		if (vx == 4 && ‚hí—ŞÚ×(CharacterWeapon(iic, -1), -1) == 2)
 		{
 			if (RAND(10) == 1 && FA[75] != 3)
 			{
@@ -11833,7 +11833,7 @@ int ‚s˜A‘±s“®‰ñ”(int iic, int iis)
 				LOG_TADA("‚c‚aFŒ•‚Ì˜AŒ‚Šm—¦@" + string(FA[72]) + "^" + string(FA[71]) + "\n");
 			}
 		}
-		if (‚b”Ô†(iic, -1) == 93 && ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == 131 && RAND(2) == 1)
+		if (‚b”Ô†(iic, -1) == 93 && ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == 131 && RAND(2) == 1)
 		{
 			++£UŒ‚‰ñ”;
 		}
@@ -11846,7 +11846,7 @@ int ‚s˜A‘±s“®‰ñ”(int iic, int iis)
 	{
 		++£UŒ‚‰ñ”;
 	}
-	if (‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == 83 && £UŒ‚‰ñ” == 1)
+	if (‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == 83 && £UŒ‚‰ñ” == 1)
 	{
 		£UŒ‚‰ñ” = 2;
 	}
@@ -12401,7 +12401,7 @@ int ‚sí“¬Œã‚Ìæ“¾ŒoŒ±’lZo(int fg)
 				£Œø‰Ê”{—¦ += £‚o‚w;
 				PTA_EXP_A2[loop] = 1;
 			}
-			if (‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == 100 && Ÿƒ[ƒ‹ƒh != 3)
+			if (‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == 100 && Ÿƒ[ƒ‹ƒh != 3)
 			{
 				£Œø‰Ê”{—¦ -= 60;
 				PTA_EXP_A2[loop] = 0;
@@ -12691,7 +12691,7 @@ int ‚b‚rg—p‹Ö~Ø‚è‘Ö‚¦(int iic, int fg)
 					‚b‚rg—p‹Ö~(iic, iic_s, 0);
 				}
 			}
-			if (‚r”­“®ğŒ^•Ší(no, -1) != 0 && ‚r”­“®ğŒ^•Ší(no, -1) != ‚hí—ŞÚ×(‚b•Ší(iic, -1), -1))
+			if (‚r”­“®ğŒ^•Ší(no, -1) != 0 && ‚r”­“®ğŒ^•Ší(no, -1) != ‚hí—ŞÚ×(CharacterWeapon(iic, -1), -1))
 			{
 				‚b‚rg—p‹Ö~(iic, iic_s, 3);
 			}
@@ -12724,7 +12724,7 @@ int ‚b‚rg—p‹Ö~Ø‚è‘Ö‚¦(int iic, int fg)
 			{
 				‚b‚rg—p‹Ö~(iic, iic_s, 2);
 			}
-			if (‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == 170 || ‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == 319)
+			if (‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == 170 || ‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == 319)
 			{
 				if (‚rŠî–{‹Z(no, -1) == 1 && ‚b‚rí“¬g—pÏ‚İ(iic, iic_s, -1) == 1)
 				{

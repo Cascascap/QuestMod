@@ -1550,7 +1550,7 @@ void Ｃログ情報(int iic)
 		{
 			LOG("   →+10% from Alice's Protection\n");
 		}
-		if (Ｉ機能取得(Ｃ武器(iic, -1), 84) != 0)
+		if (Ｉ機能取得(CharacterWeapon(iic, -1), 84) != 0)
 		{
 			LOG("   →+10% from weapon effect\n");
 		}
@@ -1558,7 +1558,7 @@ void Ｃログ情報(int iic)
 		{
 			LOG("   →+10% from armor effect\n");
 		}
-		if (Ｉ機能取得(Ｃ武器(iic, -1), 91) != 0)
+		if (Ｉ機能取得(CharacterWeapon(iic, -1), 91) != 0)
 		{
 			LOG("   →+5% from weapon effect\n");
 		}
@@ -1846,9 +1846,9 @@ void Ｃログ情報(int iic)
 	if (FA[344] == 1)
 	{
 		LOG("－－Equipped Item(s)－－－－－－－－－－－－－－－－－－－－－\n");
-		if (Ｃ武器(iic, -1) != 0)
+		if (CharacterWeapon(iic, -1) != 0)
 		{
-			Ｃログ情報／アイテム(Ｃ武器(iic, -1));
+			Ｃログ情報／アイテム(CharacterWeapon(iic, -1));
 		}
 		if (Ｃ防具(iic, -1) != 0)
 		{
@@ -2775,7 +2775,7 @@ lint メイクキャラ台詞配列番号取得(int iic)
 lint Ｃかっこよさ(int iic)
 {
 	int aa = 0;
-	aa += Ｉ機能取得(Ｃ武器(iic, -1), 42);
+	aa += Ｉ機能取得(CharacterWeapon(iic, -1), 42);
 	aa += Ｉ機能取得(Ｃ防具(iic, -1), 42);
 	aa += Ｉ機能取得(Ｃ持ち物(iic, -1), 42);
 	return aa;
@@ -4660,9 +4660,9 @@ void ゲスト全削除()
 void Ｃ装備しているアイテムを消す(int iic)
 {
 	LOG_TADA("　ゲストが装備しているアイテムを消しました\n");
-	if (Ｃ武器(iic, -1) != 0)
+	if (CharacterWeapon(iic, -1) != 0)
 	{
-		Ｉ削除(Ｃ武器(iic, -1));
+		Ｉ削除(CharacterWeapon(iic, -1));
 	}
 	if (Ｃ防具(iic, -1) != 0)
 	{
@@ -5017,7 +5017,7 @@ lint Ｔマグナム設置処理(lint iiq, lint fg)
 		}
 		if (▲中身固定 == 344)
 		{
-			ii = Ｉ生成カスタム("マグナム用");
+			ii = ItemGenerationカスタム("マグナム用");
 		}
 		if (ii != 0)
 		{
@@ -5113,15 +5113,15 @@ lint 全員棍棒ですか？()
 		if (PTA[loop] != 0)
 		{
 			▲棍棒だよ = 0;
-			if (Ｃ武器(PTA[loop], -1) == 0)
+			if (CharacterWeapon(PTA[loop], -1) == 0)
 			{
 				▲棍棒だよ = 1;
 			}
-			if (Ｉ固有番号(Ｃ武器(PTA[loop], -1), -1) == 68)
+			if (Ｉ固有番号(CharacterWeapon(PTA[loop], -1), -1) == 68)
 			{
 				▲棍棒だよ = 1;
 			}
-			if (Ｉ固有番号(Ｃ武器(PTA[loop], -1), -1) == 160)
+			if (Ｉ固有番号(CharacterWeapon(PTA[loop], -1), -1) == 160)
 			{
 				▲棍棒だよ = 1;
 			}

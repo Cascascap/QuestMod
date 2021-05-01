@@ -414,7 +414,7 @@ int Ｔアイテム屋／入荷品(int nni)
 	{
 		◆アイテム補充数[nni]++;
 	}
-	ii = Ｉ生成(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	Ｉ存在(ii, 6);
 	LOG_TADA("　アイテム補充数（" + Ｉ固有名前(nni) + "）＝" + string(◆アイテム補充数[nni]) + "\n");
 	if (nni == 306)

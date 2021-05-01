@@ -61,7 +61,7 @@ void RegenerateItemText(lint ii)
 	s‚h oldItem0;
 	oldItem0 = ‚h[0];
 	lastDescriptionArgument = "__INVALID__";
-	‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(0, itemNumber, 0);
+	ItemGeneration^ŒÅ—Lƒf[ƒ^^‚`(0, itemNumber, 0);
 	if (lastDescriptionArgument != "__INVALID__")
 	{
 		string oldItemName = ‚h–¼‘O(ii, "");

@@ -1866,7 +1866,7 @@ lint Ｃ弱点属性(lint iic, int aa)
 	return 0;
 }
 
-lint Ｃ武器(lint iic, int aa)
+lint CharacterWeapon(lint iic, int aa)
 {
 	if (aa == -1)
 	{
@@ -2917,9 +2917,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(86, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(86, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -2951,9 +2951,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(101, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(25, 0);
+			ii = ItemGeneration(101, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(25, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -2986,9 +2986,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(90, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(25, 0);
+			ii = ItemGeneration(90, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(25, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3019,9 +3019,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(86, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(25, 0);
+			ii = ItemGeneration(86, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(25, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3051,9 +3051,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(86, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(25, 0);
+			ii = ItemGeneration(86, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(25, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3085,11 +3085,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(128, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(37, 0);
+			ii = ItemGeneration(128, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(37, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(182, 0);
+			ii = ItemGeneration(182, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -3119,11 +3119,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(128, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(37, 0);
+			ii = ItemGeneration(128, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(37, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(182, 0);
+			ii = ItemGeneration(182, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -3162,9 +3162,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(320, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(321, 0);
+			ii = ItemGeneration(320, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(321, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3195,9 +3195,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(131, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(34, 0);
+			ii = ItemGeneration(131, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(34, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3232,9 +3232,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3267,9 +3267,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3279,7 +3279,7 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 			return 1;
 		}
 	}
-	if (no == 12)
+	if (no == 12) //Rizna
 	{
 		if (フラグ == "基本")
 		{
@@ -3301,9 +3301,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(125, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(125, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3331,9 +3331,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(92, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(92, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3361,9 +3361,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3396,9 +3396,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(86, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(25, 0);
+			ii = ItemGeneration(86, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(25, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3426,11 +3426,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(217, 0);
+			ii = ItemGeneration(217, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -3457,9 +3457,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3485,9 +3485,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(104, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(104, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3517,9 +3517,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3544,9 +3544,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3578,11 +3578,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(71, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(10, 0);
+			ii = ItemGeneration(71, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(10, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(215, 0);
+			ii = ItemGeneration(215, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -3610,10 +3610,10 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(27, 0);
+			ii = ItemGeneration(27, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(118, 0);
-			Ｃ武器(iic, ii);
+			ii = ItemGeneration(118, 0);
+			CharacterWeapon(iic, ii);
 			return 1;
 		}
 		if (フラグ == "ステータス")
@@ -3636,9 +3636,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3666,9 +3666,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3693,9 +3693,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3734,9 +3734,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(71, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(71, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3770,11 +3770,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(2, 0);
+			ii = ItemGeneration(2, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(178, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(179, 0);
+			ii = ItemGeneration(178, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(179, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -3804,9 +3804,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(75, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(14, 0);
+			ii = ItemGeneration(75, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(14, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3831,9 +3831,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3862,9 +3862,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3891,9 +3891,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3929,9 +3929,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(134, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(8, 0);
+			ii = ItemGeneration(134, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(8, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -3961,9 +3961,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(140, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(8, 0);
+			ii = ItemGeneration(140, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(8, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4000,13 +4000,13 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(133, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(8, 0);
+			ii = ItemGeneration(133, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(8, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(216, 0);
+			ii = ItemGeneration(216, 0);
 			Ｃ持ち物(iic, ii);
-			ii = Ｉ生成(302, 0);
+			ii = ItemGeneration(302, 0);
 			Ｃオプション(iic, ii);
 			return 1;
 		}
@@ -4032,9 +4032,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(133, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(133, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4063,9 +4063,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(171, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(171, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4089,9 +4089,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(170, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(170, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4123,9 +4123,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(133, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(133, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4152,9 +4152,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(134, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(8, 0);
+			ii = ItemGeneration(134, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(8, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4188,9 +4188,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(103, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(14, 0);
+			ii = ItemGeneration(103, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(14, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4219,9 +4219,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(124, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(19, 0);
+			ii = ItemGeneration(124, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(19, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4260,9 +4260,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(124, 5);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(19, 5);
+			ii = ItemGeneration(124, 5);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(19, 5);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4289,9 +4289,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4316,9 +4316,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4352,9 +4352,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(166, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(50, 0);
+			ii = ItemGeneration(166, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(50, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4382,9 +4382,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4413,9 +4413,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(124, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(19, 0);
+			ii = ItemGeneration(124, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(19, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4450,9 +4450,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(165, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(43, 0);
+			ii = ItemGeneration(165, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(43, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4484,9 +4484,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(160, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(43, 0);
+			ii = ItemGeneration(160, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(43, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4511,13 +4511,13 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(160, 6);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(43, 6);
+			ii = ItemGeneration(160, 6);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(43, 6);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(280, 0);
+			ii = ItemGeneration(280, 0);
 			Ｃオプション(iic, ii);
-			ii = Ｉ生成(200, 0);
+			ii = ItemGeneration(200, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -4555,9 +4555,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(160, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(43, 0);
+			ii = ItemGeneration(160, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(43, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4589,9 +4589,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(163, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(46, 0);
+			ii = ItemGeneration(163, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(46, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4617,9 +4617,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(160, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(160, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4645,9 +4645,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4677,11 +4677,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(218, 0);
+			ii = ItemGeneration(218, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -4711,9 +4711,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4740,9 +4740,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4770,9 +4770,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(166, 5);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(53, 5);
+			ii = ItemGeneration(166, 5);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(53, 5);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4806,9 +4806,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(148, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(3, 0);
+			ii = ItemGeneration(148, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(3, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4835,9 +4835,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(148, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(6, 0);
+			ii = ItemGeneration(148, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(6, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4898,9 +4898,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(148, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(148, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4936,9 +4936,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(148, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(148, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4961,9 +4961,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(148, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(148, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -4993,9 +4993,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(152, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(6, 0);
+			ii = ItemGeneration(152, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(6, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5025,9 +5025,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(148, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(148, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5055,7 +5055,7 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5081,7 +5081,7 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5185,11 +5185,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(70, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(7, 0);
+			ii = ItemGeneration(70, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(7, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(180, 0);
+			ii = ItemGeneration(180, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -5217,12 +5217,12 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(69, 0);
-			Ｃ武器(iic, ii);
+			ii = ItemGeneration(69, 0);
+			CharacterWeapon(iic, ii);
 			FA[102] = 2;
-			ii = Ｉ生成(3, 0);
+			ii = ItemGeneration(3, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(304, 0);
+			ii = ItemGeneration(304, 0);
 			Ｃオプション(iic, ii);
 			Ｉ機能(ii, 1, 0);
 			Ｉ情報(ii, "Raises the user's talent cap by 20.$$※Effect activated");
@@ -5250,11 +5250,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(181, 0);
+			ii = ItemGeneration(181, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -5283,11 +5283,11 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
-			ii = Ｉ生成(208, 0);
+			ii = ItemGeneration(208, 0);
 			Ｃ持ち物(iic, ii);
 			return 1;
 		}
@@ -5315,9 +5315,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5345,9 +5345,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5369,9 +5369,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(66, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(66, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5474,9 +5474,9 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(98, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(37, 0);
+			ii = ItemGeneration(98, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(37, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5508,8 +5508,8 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(122, 0);
-			Ｃ武器(iic, ii);
+			ii = ItemGeneration(122, 0);
+			CharacterWeapon(iic, ii);
 			return 1;
 		}
 		if (フラグ == "ステータス")
@@ -5539,8 +5539,8 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(72, 0);
-			Ｃ武器(iic, ii);
+			ii = ItemGeneration(72, 0);
+			CharacterWeapon(iic, ii);
 			return 1;
 		}
 		if (フラグ == "ステータス")
@@ -5568,8 +5568,8 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(103, 0);
-			Ｃ武器(iic, ii);
+			ii = ItemGeneration(103, 0);
+			CharacterWeapon(iic, ii);
 			return 1;
 		}
 		if (フラグ == "ステータス")
@@ -5597,8 +5597,8 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(122, 0);
-			Ｃ武器(iic, ii);
+			ii = ItemGeneration(122, 0);
+			CharacterWeapon(iic, ii);
 			return 1;
 		}
 		if (フラグ == "ステータス")
@@ -5608,13 +5608,12 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 		}
 	}
 
-	if (no == 347)
+	if (no == 347) //Kentarou
 	{
 		if (フラグ == "基本")
 		{
-			CharacterGenerateBasicData(iic, no, "", 2000, 1, 5, 9999, 6, 0);
-			CharacterSkillPoints(iic, 4);
-			CharacterDeletionProhibited(iic, 1);
+			CharacterGenerateBasicData(iic, no, "", 2994, 1, 62, 100, 6, 0);
+			CharacterSkillPoints(iic, 61);
 			Ｃ性別(iic, 1);
 			Ｃスキル枠キープ数(iic, 1);
 			return 1;
@@ -5628,16 +5627,15 @@ lint Ｃ生成／キャラデータ(lint iic, lint no, string フラグ)
 			if (Ｑ状態(67, -1) == 2)
 			{
 				Ｃスキル枠キープ数(iic, 0);
-				CharacterSkillAdd(iic, 365, 0);
 			}
 			Ｃスキル強制実装(iic, 100, 147, 0, 0, 0, 0);
 			return 1;
 		}
 		if (フラグ == "装備")
 		{
-			ii = Ｉ生成(86, 0);
-			Ｃ武器(iic, ii);
-			ii = Ｉ生成(1, 0);
+			ii = ItemGeneration(344, 0);
+			CharacterWeapon(iic, ii);
+			ii = ItemGeneration(1, 0);
 			Ｃ防具(iic, ii);
 			return 1;
 		}
@@ -5852,7 +5850,7 @@ void ＣＳ職業別基本スキル登録(int iic, int 職業, int 元職業)
 
 void Ｃ削除(lint iic)
 {
-	if (Ｃ武器(iic, -1) != 0 && Ｉ外せません(Ｃ武器(iic, -1), -1) == 0)
+	if (CharacterWeapon(iic, -1) != 0 && Ｉ外せません(CharacterWeapon(iic, -1), -1) == 0)
 	{
 		Ｃアイテム外す(iic, 1);
 	}
@@ -6534,7 +6532,7 @@ void Ｃ再計算(int iic)
 					LOG_TADA("\n");
 				}
 			}
-			if (iis == 314 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 2)
+			if (iis == 314 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 2)
 			{
 				if (◆ＤＢ／再計算ログ == 1)
 				{
@@ -6561,7 +6559,7 @@ void Ｃ再計算(int iic)
 					LOG_TADA("\n");
 				}
 			}
-			if (iis == 315 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 3)
+			if (iis == 315 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 3)
 			{
 				if (◆ＤＢ／再計算ログ == 1)
 				{
@@ -6580,7 +6578,7 @@ void Ｃ再計算(int iic)
 					LOG_TADA("\n");
 				}
 			}
-			if (iis == 316 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 4)
+			if (iis == 316 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 4)
 			{
 				if (◆ＤＢ／再計算ログ == 1)
 				{
@@ -6601,7 +6599,7 @@ void Ｃ再計算(int iic)
 					LOG_TADA("\n");
 				}
 			}
-			if (iis == 317 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 7)
+			if (iis == 317 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 7)
 			{
 				if (◆ＤＢ／再計算ログ == 1)
 				{
@@ -6633,7 +6631,7 @@ void Ｃ再計算(int iic)
 					LOG_TADA("\n");
 				}
 			}
-			if (iis == 318 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 5)
+			if (iis == 318 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 5)
 			{
 				if (◆ＤＢ／再計算ログ == 1)
 				{
@@ -6653,7 +6651,7 @@ void Ｃ再計算(int iic)
 					LOG_TADA("\n");
 				}
 			}
-			if (iis == 319 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 6)
+			if (iis == 319 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 6)
 			{
 				if (◆ＤＢ／再計算ログ == 1)
 				{
@@ -6680,7 +6678,7 @@ void Ｃ再計算(int iic)
 					LOG_TADA("\n");
 				}
 			}
-			if (iis == 593 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 6)
+			if (iis == 593 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 6)
 			{
 				if (◆ＤＢ／再計算ログ == 1)
 				{
@@ -6736,7 +6734,7 @@ void Ｃ再計算(int iic)
 				tカロリア = 1621;
 				Ｃ立ち絵ＣＧ(iic, 1621);
 			}
-			if (iis == 574 && Ｉ固有番号(Ｃ武器(iic, -1), -1) == 68)
+			if (iis == 574 && Ｉ固有番号(CharacterWeapon(iic, -1), -1) == 68)
 			{
 				Ｃ攻撃力(iic, 倍率計算関数(Ｃ攻撃力(iic, -1), 120));
 			}
@@ -6805,7 +6803,7 @@ void Ｃ再計算(int iic)
 	}
 	if (ＣＳ有無／ランク(iic, 317, 0) >= 3)
 	{
-		if (Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 7)
+		if (Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 7)
 		{
 			iic_s = ＣＳ番号取得(iic, 100, 0);
 			if (iic_s != 0)
@@ -6833,7 +6831,7 @@ void Ｃ再計算(int iic)
 				ＣＳ番号(iic, iic_s, 579);
 			}
 		}
-		if (Ｉ種類詳細(Ｃ武器(iic, -1), -1) != 7)
+		if (Ｉ種類詳細(CharacterWeapon(iic, -1), -1) != 7)
 		{
 			iic_s = ＣＳ番号取得(iic, 101, 0);
 			if (iic_s != 0)
@@ -6873,9 +6871,9 @@ void Ｃ再計算(int iic)
 	◆適応／耐性率 = 0;
 	◆適応／必殺率 = 0;
 	◆適応／素早さ = 0;
-	if (Ｃ武器(iic, -1) != 0)
+	if (CharacterWeapon(iic, -1) != 0)
 	{
-		ＣＩ適応(iic, Ｃ武器(iic, -1), ▲武器の極め);
+		ＣＩ適応(iic, CharacterWeapon(iic, -1), ▲武器の極め);
 	}
 	if (Ｃ防具(iic, -1) != 0)
 	{
@@ -6928,7 +6926,7 @@ void Ｃ再計算(int iic)
 	{
 		◆身体ブースト += 10;
 	}
-	if (Ｉ機能取得(Ｃ武器(iic, -1), 84) != 0)
+	if (Ｉ機能取得(CharacterWeapon(iic, -1), 84) != 0)
 	{
 		◆身体ブースト += 10;
 	}
@@ -6936,7 +6934,7 @@ void Ｃ再計算(int iic)
 	{
 		◆身体ブースト += 10;
 	}
-	if (Ｉ機能取得(Ｃ武器(iic, -1), 91) != 0)
+	if (Ｉ機能取得(CharacterWeapon(iic, -1), 91) != 0)
 	{
 		◆身体ブースト += 5;
 	}
@@ -6997,7 +6995,7 @@ void Ｃ再計算(int iic)
 		Ｃ防御力(iic, Ｃ防御力(iic, -1) / 5);
 		Ｃ魔抵力(iic, Ｃ魔抵力(iic, -1) / 5);
 	}
-	if (Ｃ番号(iic, -1) == 27 && Ｉ種類詳細(Ｃ武器(iic, -1), -1) == 6)
+	if (Ｃ番号(iic, -1) == 27 && Ｉ種類詳細(CharacterWeapon(iic, -1), -1) == 6)
 	{
 		Ｃ命中率(iic, 10);
 	}
@@ -7132,7 +7130,7 @@ int ＣＩ武器機能の有無と効果(int iic, int 機能番号)
 {
 	int ii = 0;
 	int loop = 0;
-	ii = Ｃ武器(iic, -1);
+	ii = CharacterWeapon(iic, -1);
 	if (ii == 0)
 	{
 		return 0;
@@ -7155,7 +7153,7 @@ int ＣＩ武器の弱点効果の有無(int iic, int タイプ種族)
 {
 	int ii = 0;
 	int loop = 0;
-	ii = Ｃ武器(iic, -1);
+	ii = CharacterWeapon(iic, -1);
 	if (ii == 0)
 	{
 		return 0;
@@ -7200,7 +7198,7 @@ int Ｃアイテム外す(int iic, int fg)
 	LOG_TADA("＞Ｃアイテム外す ");
 	if (fg == 1)
 	{
-		LOG_TADA(Ｉ名前(Ｃ武器(iic, -1), "") + "\n");
+		LOG_TADA(Ｉ名前(CharacterWeapon(iic, -1), "") + "\n");
 	}
 	if (fg == 11)
 	{
@@ -7216,7 +7214,7 @@ int Ｃアイテム外す(int iic, int fg)
 	}
 	if (fg == 1)
 	{
-		ii = Ｃ武器(iic, -1);
+		ii = CharacterWeapon(iic, -1);
 		Ｃ[iic].武器 = 0;
 	}
 	if (fg == 11)

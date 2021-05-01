@@ -2397,19 +2397,19 @@ void ‚b“G“o˜^(int iic, int no)
 		lint iic2 = 0;
 		lint vv = 0;
 		iic2 = ‚b”Ô†æ“¾(1);
-		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 2)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic2, -1), -1) == 2)
 		{
 			vv = 476;
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 3)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic2, -1), -1) == 3)
 		{
 			vv = 477;
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 7)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic2, -1), -1) == 7)
 		{
 			vv = 479;
 		}
-		if (‚hí—ŞÚ×(‚b•Ší(iic2, -1), -1) == 4)
+		if (‚hí—ŞÚ×(CharacterWeapon(iic2, -1), -1) == 4)
 		{
 			vv = 478;
 		}

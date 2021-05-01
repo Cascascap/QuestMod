@@ -910,7 +910,7 @@ int ‚h‹ó‚«”Ô†æ“¾()
 	return 0;
 }
 
-int ‚h¶¬(int no, int lv)
+int ItemGeneration(int no, int lv)
 {
 	int aa = 0;
 	int ii = ‚h‹ó‚«”Ô†æ“¾();
@@ -927,7 +927,7 @@ int ‚h¶¬(int no, int lv)
 	{
 		lv = 9;
 	}
-	‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(ii, no, lv);
+	ItemGeneration^ŒÅ—Lƒf[ƒ^^‚`(ii, no, lv);
 	if (‚hŒÅ—L”Ô†(ii, -1) == 0)
 	{
 		LOG_TADA("‚d‚q‚q‚n‚q@y" + system.GetFuncStackName(0) + "z  " + string(no) + "‚ª–³‚¢ \n");
@@ -937,7 +937,7 @@ int ‚h¶¬(int no, int lv)
 	return ii;
 }
 
-void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
+void ItemGeneration^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 {
 	int RLV = ‚b‚k‚u(‚b”Ô†æ“¾(1), -1);
 	int aa = 0;
@@ -2866,7 +2866,8 @@ void ‚h¶¬^ŒÅ—Lƒf[ƒ^^‚`(int ii, int no, int lv)
 	{
 		LOG("Adding Nikkou into the game");
 		lv = 0; //lv is the item rank
-		ItemGenerateData0(ii, 6323, 9000, 62, 1, 0, 0, 0, 0, 0, 0, 0);
+		ItemEquippedCharacter(ii, 1, 347);
+		ItemGenerateData0(ii, 6655, 9000, 62, 1, 0, 0, 0, 0, 0, 0, 0);
 		ItemGenerateData1(ii, no, lv, "Nikkou the Holy Blade", 1, 2, 41, 2, 2000, 18, 30, 81, 0, 82, 60, 0, 0);
 	}
 }
@@ -4172,7 +4173,7 @@ void ItemGenerateData0(int ii, int ‚b‚f, int ‰¿Ši, int ƒŒƒxƒ‹, int E‚P, int E‚
 	}
 }
 
-lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
+lint ItemGenerationƒJƒXƒ^ƒ€(string ğŒ)
 {
 	lint ii = 0;
 	lint ra = 0;
@@ -4181,7 +4182,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 	{
 		if (Ÿiiq == 121)
 		{
-			ii = ‚h¶¬(72, 0);
+			ii = ItemGeneration(72, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4192,7 +4193,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 70)
 		{
-			ii = ‚h¶¬(134, 0);
+			ii = ItemGeneration(134, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4203,7 +4204,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 62)
 		{
-			ii = ‚h¶¬(119, 0);
+			ii = ItemGeneration(119, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4214,7 +4215,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 61)
 		{
-			ii = ‚h¶¬(87, 0);
+			ii = ItemGeneration(87, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4225,7 +4226,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 122)
 		{
-			ii = ‚h¶¬(104, 0);
+			ii = ItemGeneration(104, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4236,7 +4237,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 40)
 		{
-			ii = ‚h¶¬(164, 0);
+			ii = ItemGeneration(164, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4247,7 +4248,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 88)
 		{
-			ii = ‚h¶¬(139, 0);
+			ii = ItemGeneration(139, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4258,7 +4259,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 92)
 		{
-			ii = ‚h¶¬(124, 0);
+			ii = ItemGeneration(124, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4269,7 +4270,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 123)
 		{
-			ii = ‚h¶¬(92, 0);
+			ii = ItemGeneration(92, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4280,7 +4281,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 71)
 		{
-			ii = ‚h¶¬(109, 0);
+			ii = ItemGeneration(109, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4291,7 +4292,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 97)
 		{
-			ii = ‚h¶¬(59, 0);
+			ii = ItemGeneration(59, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4302,7 +4303,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 48)
 		{
-			ii = ‚h¶¬(82, 0);
+			ii = ItemGeneration(82, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4313,7 +4314,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 64)
 		{
-			ii = ‚h¶¬(33, 0);
+			ii = ItemGeneration(33, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4324,7 +4325,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 124)
 		{
-			ii = ‚h¶¬(16, 0);
+			ii = ItemGeneration(16, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4335,7 +4336,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 77)
 		{
-			ii = ‚h¶¬(96, 0);
+			ii = ItemGeneration(96, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4361,7 +4362,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 169)
 		{
-			ii = ‚h¶¬(68, 0);
+			ii = ItemGeneration(68, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4410,7 +4411,7 @@ lint ‚h¶¬ƒJƒXƒ^ƒ€(string ğŒ)
 		}
 		if (Ÿiiq == 176)
 		{
-			ii = ‚h¶¬(16, 0);
+			ii = ItemGeneration(16, 0);
 			if (ii == 0)
 			{
 				return 0;
@@ -4479,7 +4480,7 @@ void ‚hŠÓ’è(int ii)
 
 void ‚hƒNƒGƒXƒg‘qŒÉ‚É’Ç‰Á(int no)
 {
-	int ii = ‚h¶¬(no, 0);
+	int ii = ItemGeneration(no, 0);
 	‚h‘¶İ(ii, 8);
 }
 
@@ -4502,7 +4503,7 @@ int ‚h‹@”\æ“¾(int ii, int ‹@”\”Ô†)
 
 void ‚h¬’·‘•”õ‚Ìˆ—(int iic)
 {
-	‚h¬’·‘•”õ‚Ìˆ—^“à•”(iic, ‚b•Ší(iic, -1));
+	‚h¬’·‘•”õ‚Ìˆ—^“à•”(iic, CharacterWeapon(iic, -1));
 	‚h¬’·‘•”õ‚Ìˆ—^“à•”(iic, ‚b–h‹ï(iic, -1));
 }
 
@@ -4739,7 +4740,7 @@ int ‚o‚s‚`Q‚hŒÂ”(int ino)
 		iic = PTA[loop];
 		if (iic != 0 && ‚bó‘Ô•Ï‰»(iic, -1) != 3)
 		{
-			if (‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == ino)
+			if (‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == ino)
 			{
 				++cc;
 			}
@@ -4770,7 +4771,7 @@ int ‚o‚s‚`QItemInInventory(int ino)
 		iic = PTA[loop];
 		if (iic != 0 && ‚bó‘Ô•Ï‰»(iic, -1) != 3)
 		{
-			if (‚hŒÅ—L”Ô†(‚b•Ší(iic, -1), -1) == ino)
+			if (‚hŒÅ—L”Ô†(CharacterWeapon(iic, -1), -1) == ino)
 			{
 				return iic;
 			}
@@ -4793,7 +4794,7 @@ int ‚o‚s‚`QItemInInventory(int ino)
 
 void ‚h•Û—L(int no)
 {
-	int ii = ‚h¶¬(no, 0);
+	int ii = ItemGeneration(no, 0);
 	if (ii == 0)
 	{
 		return;
@@ -4941,7 +4942,7 @@ string ‚hŒÅ—L–¼‘O(int no)
 	int ii = 0;
 	string •¶š—ñ = "‚d‚’‚’‚‚’ƒAƒCƒeƒ€";
 	LOG_TADA("‚hŒÅ—L–¼‘OŠm”F‚Ìˆ×@—Õ‚Å");
-	ii = ‚h¶¬(no, 0);
+	ii = ItemGeneration(no, 0);
 	•¶š—ñ = ‚h–¼‘O(ii, "");
 	‚híœ(ii);
 	return •¶š—ñ;
@@ -4952,7 +4953,7 @@ lint ‚hŒÅ—L‚b‚f”Ô†(int no)
 	int ii = 0;
 	int cgno = 0;
 	LOG_TADA("‚h‚b‚f”Ô†Šm”F‚Ìˆ×@—Õ‚Å");
-	ii = ‚h¶¬(no, 0);
+	ii = ItemGeneration(no, 0);
 	cgno = 0;
 	cgno = ‚h‚b‚f”Ô†(ii, -1);
 	‚híœ(ii);
@@ -4965,7 +4966,7 @@ lint ‚hŒÅ—Lí—Şƒ‰ƒ“ƒN(int no)
 	int aa = 0;
 	aa = 0;
 	LOG_TADA("‚hƒ‰ƒ“ƒN‚Ìˆ×@—Õ‚Å");
-	ii = ‚h¶¬(no, 0);
+	ii = ItemGeneration(no, 0);
 	aa = ‚hí—Şƒ‰ƒ“ƒN(ii, -1);
 	‚híœ(ii);
 	return aa;
@@ -5004,46 +5005,46 @@ void ‚h‰‹N“®“o˜^()
 	ŸƒAƒCƒeƒ€•â[”[340] = 1;
 	ŸƒAƒCƒeƒ€•â[”[341] = 1;
 	nni = 269;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 272;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 275;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 278;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 281;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 284;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 287;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 290;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 293;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 296;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 299;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 202;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 204;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 	nni = 205;
-	ii = ‚h¶¬(nni, 0);
+	ii = ItemGeneration(nni, 0);
 	‚h‘¶İ(ii, 6);
 }
 
@@ -5096,7 +5097,7 @@ int ‚q‚WƒAƒCƒeƒ€æ“¾(int no, lint lv)
 	}
 	if (ii == 0)
 	{
-		ii = ‚h¶¬(no, lv);
+		ii = ItemGeneration(no, lv);
 		if (ii != 0)
 		{
 			‚h‘¶İ(ii, 8);

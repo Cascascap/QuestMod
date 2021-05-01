@@ -1647,6 +1647,13 @@ void クエスト終了処理／クリアフラグ()
 			{
 				break;
 			}
+			//Adding Kentarou in the bar
+			no = 347;
+			if (Ｃ番号取得(no) == 0)
+			{
+				LOG("Adding Kentarou to bar");
+				break;
+			}
 			no = 0;
 			int ii = 0;
 			for (ii = 1; ii < 3001; ++ii)
@@ -2687,7 +2694,7 @@ lint 割り込み２／特殊イベント(lint fg)
 	{
 		lint ii = Ｃオプション(iic, -1);
 		Ｉ削除(ii);
-		ii = Ｉ生成(269, 0);
+		ii = ItemGeneration(269, 0);
 		Ｃオプション(iic, ii);
 		ＳＡＤＶ("■Kibako is up to something.", "■ Kibako has gained 2 max health!", "■ Wonder how...");
 		FA[323]++;
@@ -5638,7 +5645,7 @@ int TreasureChestContentGeneration(lint fg, lint ▲固定中身, lint ▲ＢＰ)
 	}
 	if (▲中身 != 344)
 	{
-		ii = Ｉ生成(▲中身, ▲ＢＰ);
+		ii = ItemGeneration(▲中身, ▲ＢＰ);
 		if (ii == 0)
 		{
 			return 0;
@@ -5647,7 +5654,7 @@ int TreasureChestContentGeneration(lint fg, lint ▲固定中身, lint ▲ＢＰ)
 	}
 	if (▲中身 == 344)
 	{
-		ii = Ｉ生成カスタム("宝箱の中身");
+		ii = ItemGenerationカスタム("宝箱の中身");
 		if (ii == 0)
 		{
 			return 0;
