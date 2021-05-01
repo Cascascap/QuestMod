@@ -1,0 +1,68 @@
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\FreeImage.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\arc_conv.exe
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\ipf33.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\IPHtoPNG.exe
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\PNGtoIPH.exe
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\zlib32.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\ALDExplorer2.exe
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\ALDExplorer2.pdb
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\FreeImageNET.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\SwfFormat.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\zlibnet.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\FreeImageNET.xml
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\Interop.WMPLib.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csprojAssemblyReference.cache
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.ResolveComReference.cache
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.FileFormatSelectionForm.resources
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.FindFileForm.resources
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.ExplorerForm.resources
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.ImportFileTypeForm.resources
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.PrefixForm.resources
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.PropertiesForm.resources
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.Properties.Resources.resources
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.GenerateResource.cache
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.CoreCompileInputs.cache
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.CopyComplete
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.exe
+C:\Users\cesar\Documents\Downloads\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.pdb
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\FreeImage.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\arc_conv.exe
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\ipf33.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\IPHtoPNG.exe
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\tools\PNGtoIPH.exe
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\zlib32.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\ALDExplorer2.exe
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\ALDExplorer2.pdb
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\FreeImageNET.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\SwfFormat.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\zlibnet.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\FreeImageNET.xml
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\Interop.WMPLib.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\bin\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csprojAssemblyReference.cache
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\Interop.ShockwaveFlashObjects.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\Interop.WMPLib.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\AxInterop.ShockwaveFlashObjects.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\AxInterop.WMPLib.dll
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.ResolveComReference.cache
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.FileFormatSelectionForm.resources
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.FindFileForm.resources
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.ExplorerForm.resources
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.ImportFileTypeForm.resources
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.PrefixForm.resources
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.PropertiesForm.resources
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.Properties.Resources.resources
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.GenerateResource.cache
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.CoreCompileInputs.cache
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.csproj.CopyComplete
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.exe
+C:\Users\Casca\Desktop\Gian\Gian\Workspace\Rance Mods\ALD_Explorer2\Source Code\ALDExplorer2\obj\x86\Debug\ALDExplorer2.pdb
